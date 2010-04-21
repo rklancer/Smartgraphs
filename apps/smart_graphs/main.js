@@ -27,7 +27,7 @@ SmartGraphs.main = function main() {
   
   var data = SmartGraphs.store.find(SmartGraphs.DataSeries, '1');
   // use a controller...
-  SmartGraphs.setPath('mainPage.mainPane.listView.content', data.get('series'));
+  SmartGraphs.setPath('mainPage.mainPane.tableView.content', data.get('series'));
 
 };
 
