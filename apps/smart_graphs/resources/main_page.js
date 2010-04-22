@@ -39,42 +39,79 @@ SmartGraphs.mainPage = SC.Page.design({
     }),
 
 
-    tableView: SC.ScrollView.design({
+    tableView: SC.CollectionView.design({
       layout: { left: 485, top: 365, width: 455, height: 335 },
       classNames: ['smartgraph-pane'],  
-
-      _subContentHeightDidChange: function () {
-        var contentView = this.get('contentView');
-        var xsView = contentView.get('xsView');
-        var ysView = contentView.get('ysView');
+  
+      
+      childViews: ['labelsView', 'scrollerView'],
+      
+      labelsView: SC.CollectionView.design({
+        layout: { left: 0, top: 0, width: 455, height: 30 },
+        childViews: ['xsLabel', 'ysLabel'],
         
-        var xh = xsView.get('calculatedHeight') + xsView.get('layout').top;
-        var yh = ysView.get('calculatedHeight') + ysView.get('layout').top;
-      
-        var newLayout = SC.copy(contentView.get('layout'));
-        newLayout.height = Math.max(xh, yh);
-        contentView.set('layout', newLayout);
-        
-        console.log('_subContentHeightDidChange');
-      }.observes('.contentView.xsView.calculatedHeight', '.contentView.ysView.calculatedHeight'),
-      
-      
-      contentView:  SC.StackedView.design({
-        childViews: ['xsView', 'ysView'],
-
-        xsView: SC.ListView.design({
-          layout: { left: 5, top: 10, width: 50 },
-          contentBinding: 'SmartGraphs.dataSeriesController.xs',
-          selectionBinding: 'SmartGraphs.dataSeriesController.selection',
-          rowHeight: 18
+        xsLabel: SC.LabelView.design({
+          layout: { left: 25, width: 20, top: 7, height: 20 },
+          displayValue: 'x'
         }),
         
-        ysView: SC.ListView.design({
-          layout: { left: 60, top: 10, width: 50 },
-          contentBinding: 'SmartGraphs.dataSeriesController.ys',
-          selectionBinding: 'SmartGraphs.dataSeriesController.selection',
-          rowHeight: 18
+        ysLabel: SC.LabelView.design({
+          layout: { left: 75, width: 20, top: 7, height: 20 },
+          displayValue: 'y'
         })
+      }),
+      
+      
+      scrollerView: SC.ScrollView.design({
+        layout: { left: 0, top: 30, width: 455, height: 315 },
+
+        borderStyle: SC.BORDER_NONE,
+        
+        contentView: SC.CollectionView.design({
+          childViews: ['xsView', 'ysView'],
+          
+          xsView: SC.ListView.design({
+            layout: { left: 10, top: 0, width: 40 },
+            isEditable: YES,
+            canEditContent: NO,
+            contentValueKey: 'x',
+            contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
+            selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+            rowHeight: 18
+          }),
+        
+          ysView: SC.ListView.design({
+            layout: { left: 60, top: 0, width: 40 },
+            isEditable: YES,
+            canEditContent: NO,
+            contentValueKey: 'y',
+            contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
+            selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+            rowHeight: 18
+          })
+        }),
+        
+        _subContentHeightDidChange: function () {
+
+          // it doesn't work to place this logic inside the hash passed to the design method in contentView, because
+          // .observes('.xsView.calculatedHeight') tries to addObserver to the *constructor* that is returned
+          // by design(); there must be some magic in CollectionView that eventually replaces the constructor pointed
+          // to by xsView with the object created by that constructor)
+
+          var contentView = this.get('contentView');
+          var xsView = contentView.get('xsView');
+          var ysView = contentView.get('ysView');
+
+          var xh = xsView.get('calculatedHeight') + xsView.get('layout').top;
+          var yh = ysView.get('calculatedHeight') + ysView.get('layout').top;
+
+          var newLayout = SC.copy(contentView.get('layout'));
+          newLayout.height = Math.max(xh, yh);
+          contentView.set('layout', newLayout);
+
+          console.log('_subContentHeightDidChange');
+        }.observes('.contentView.xsView.calculatedHeight', '.contentView.ysView.calculatedHeight')
+        
       })
     })
   })

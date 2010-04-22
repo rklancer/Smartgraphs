@@ -13,16 +13,18 @@
 
 SmartGraphs.dataSeriesController = SC.ArrayController.create(
 /** @scope SmartGraphs.dataSeriesController.prototype */ {
+
   xs: function () {
-    return this.get('content').map( function (pair) { return pair[0]; } );
+    return this.get('content').map( function (pair) { return pair.x; } );
   }.property('content').cacheable(),
   
   ys: function () {
-    return this.get('content').map( function (pair) { return pair[1]; } );
+    return this.get('content').map( function (pair) { return pair.y; } );
   }.property('content').cacheable(),
   
   _contentDidChange: function () {
     console.log('dataSeriesController invalidating property "content"');
     this.notifyPropertyChange('content');
   }.observes('.content.[]')
+
 }) ;

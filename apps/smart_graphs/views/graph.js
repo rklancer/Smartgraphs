@@ -77,8 +77,8 @@ SmartGraphs.GraphView = SC.View.extend(
     
     for (var i = 0, ii = series.get('length'); i < ii; i++) {
       var pair = series.objectAt(i);
-      var x = padding.left + (pair[0] * xScale);
-      var y = padding.top + plotHeight - (pair[1] * yScale);
+      var x = padding.left + (pair.x * xScale);
+      var y = padding.top + plotHeight - (pair.y * yScale);
       
       var point = r.circle(x, y).attr({
         stroke: "#aa0000",

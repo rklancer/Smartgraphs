@@ -17,7 +17,7 @@ SmartGraphs.DataSeries.FIXTURES = [
     series: (function () {
       var ret = [];
       for (var i = 0; i < 25; i++) {
-        ret.push([i/5.0, i]);
+        ret.push({x: i/5.0, y: i});
       }
       return ret;
     }())
