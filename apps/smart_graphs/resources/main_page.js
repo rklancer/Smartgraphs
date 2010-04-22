@@ -43,16 +43,19 @@ SmartGraphs.mainPage = SC.Page.design({
       layout: { left: 485, top: 365, width: 455, height: 335 },
       classNames: ['smartgraph-pane'],  
 
-      _contentHeightDidChange: function () {
-        var xh = this.getPath('contentView.xsView.calculatedHeight'),
-            yh = this.getPath('contentView.ysView.calculatedHeight'),
-            h  = Math.max(xh, yh);
-      
-        var layout = SC.copy(this.getPath('contentView.layout'));
-        layout.height = h;
-        this.setPath('contentView.layout', layout);
+      _subContentHeightDidChange: function () {
+        var contentView = this.get('contentView');
+        var xsView = contentView.get('xsView');
+        var ysView = contentView.get('ysView');
         
-        console.log('_contentHeightDidChange');
+        var xh = xsView.get('calculatedHeight') + xsView.get('layout').top;
+        var yh = ysView.get('calculatedHeight') + ysView.get('layout').top;
+      
+        var newLayout = SC.copy(contentView.get('layout'));
+        newLayout.height = Math.max(xh, yh);
+        contentView.set('layout', newLayout);
+        
+        console.log('_subContentHeightDidChange');
       }.observes('.contentView.xsView.calculatedHeight', '.contentView.ysView.calculatedHeight'),
       
       
@@ -60,14 +63,14 @@ SmartGraphs.mainPage = SC.Page.design({
         childViews: ['xsView', 'ysView'],
 
         xsView: SC.ListView.design({
-          layout: { left: 5, width: 50 },
+          layout: { left: 5, top: 10, width: 50 },
           contentBinding: 'SmartGraphs.dataSeriesController.xs',
           selectionBinding: 'SmartGraphs.dataSeriesController.selection',
           rowHeight: 18
         }),
         
         ysView: SC.ListView.design({
-          layout: { left: 60, width: 50 },
+          layout: { left: 60, top: 10, width: 50 },
           contentBinding: 'SmartGraphs.dataSeriesController.ys',
           selectionBinding: 'SmartGraphs.dataSeriesController.selection',
           rowHeight: 18
