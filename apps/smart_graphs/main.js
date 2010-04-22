@@ -11,6 +11,7 @@
 // As you develop your application you will probably want to override this.
 // See comments for some pointers on what to do next.
 //
+
 SmartGraphs.main = function main() {
 
   // Step 1: Instantiate Your Views
@@ -27,8 +28,7 @@ SmartGraphs.main = function main() {
   
   var data = SmartGraphs.store.find(SmartGraphs.DataSeries, '1');
   // use a controller...
-  SmartGraphs.setPath('mainPage.mainPane.tableView.content', data.get('series'));
-
+  SmartGraphs.dataSeriesController.set('content', data.get('series'));
 };
 
 function main() { SmartGraphs.main(); }

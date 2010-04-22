@@ -31,14 +31,29 @@ SmartGraphs.mainPage = SC.Page.design({
     }),
     
     graphView: SmartGraphs.GraphView.design({
+      seriesBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
+      selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+      
       layout: { left: 485, top: 20, width: 455, height: 335 },
       classNames: ['smartgraph-pane']
     }),
     
     tableView: SC.ListView.design({
       layout: { left: 485, top: 365, width: 455, height: 335 },
-      classNames: ['smartgraph-pane'],      
-      rowHeight: 18 
+      classNames: ['smartgraph-pane'],
+      contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
+      selectionBinding: 'SmartGraphs.dataSeriesController.selection'
     })
+
+    // tableView: SC.ScrollView.design({
+    //   layout: { left: 485, top: 365, width: 455, height: 335 },
+    //   classNames: ['smartgraph-pane'],  
+    //   
+    //   content: SC.ListView.design({
+    //     contentBinding: 'SmartGraphs.dataSeriesController.content',
+    //     selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+    //     rowHeight: 18
+    //   })
+    // })
   })
 });

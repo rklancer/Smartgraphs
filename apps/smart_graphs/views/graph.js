@@ -22,8 +22,6 @@ SmartGraphs.GraphView = SC.View.extend(
   
   // you'll want to add in a controller here.
   
-  seriesBinding: 'SmartGraphs.mainPage.mainPane.tableView.content',
-  selectionBinding: 'SmartGraphs.mainPage.mainPane.tableView.selection',
   highlighted: null,
   
   classNames: ['graph-view'],
