@@ -42,10 +42,21 @@ SmartGraphs.mainPage = SC.Page.design({
       layout: { left: 485, top: 365, width: 455, height: 335 },
       classNames: ['smartgraph-pane'],  
       
-      contentView: SC.ListView.design({
-        contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
-        selectionBinding: 'SmartGraphs.dataSeriesController.selection',
-        rowHeight: 18
+      contentView:  SC.StackedView.design({
+        childViews: [
+          SC.ListView.design({
+            layout: { left: 5, top: 5, width: 50 },
+            contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
+            selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+            rowHeight: 18
+          }),
+          SC.ListView.design({
+            layout: { left: 60, top: 5, width: 50 },
+            contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
+            selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+            rowHeight: 18
+          })
+        ]
       })
     })
   })
