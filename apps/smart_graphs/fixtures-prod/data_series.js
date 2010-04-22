@@ -16,7 +16,7 @@ SmartGraphs.DataSeries.FIXTURES = [
     guid: 1,
     series: (function () {
       var ret = [];
-      for (var i = 0.0; i < 25.0; i++) {
+      for (var i = 0; i < 25; i++) {
         ret.push([i/5.0, i]);
       }
       return ret;

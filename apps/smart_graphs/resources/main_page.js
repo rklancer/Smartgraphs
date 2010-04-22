@@ -38,25 +38,40 @@ SmartGraphs.mainPage = SC.Page.design({
       classNames: ['smartgraph-pane']
     }),
 
+
     tableView: SC.ScrollView.design({
       layout: { left: 485, top: 365, width: 455, height: 335 },
       classNames: ['smartgraph-pane'],  
+
+      _contentHeightDidChange: function () {
+        var xh = this.getPath('contentView.xsView.calculatedHeight'),
+            yh = this.getPath('contentView.ysView.calculatedHeight'),
+            h  = Math.max(xh, yh);
+      
+        var layout = SC.copy(this.getPath('contentView.layout'));
+        layout.height = h;
+        this.setPath('contentView.layout', layout);
+        
+        console.log('_contentHeightDidChange');
+      }.observes('.contentView.xsView.calculatedHeight', '.contentView.ysView.calculatedHeight'),
+      
       
       contentView:  SC.StackedView.design({
-        childViews: [
-          SC.ListView.design({
-            layout: { left: 5, top: 5, width: 50 },
-            contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
-            selectionBinding: 'SmartGraphs.dataSeriesController.selection',
-            rowHeight: 18
-          }),
-          SC.ListView.design({
-            layout: { left: 60, top: 5, width: 50 },
-            contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
-            selectionBinding: 'SmartGraphs.dataSeriesController.selection',
-            rowHeight: 18
-          })
-        ]
+        childViews: ['xsView', 'ysView'],
+
+        xsView: SC.ListView.design({
+          layout: { left: 5, width: 50 },
+          contentBinding: 'SmartGraphs.dataSeriesController.xs',
+          selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+          rowHeight: 18
+        }),
+        
+        ysView: SC.ListView.design({
+          layout: { left: 60, width: 50 },
+          contentBinding: 'SmartGraphs.dataSeriesController.ys',
+          selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+          rowHeight: 18
+        })
       })
     })
   })
