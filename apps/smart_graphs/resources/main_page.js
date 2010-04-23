@@ -65,9 +65,27 @@ SmartGraphs.mainPage = SC.Page.design({
         borderStyle: SC.BORDER_NONE,
         
         contentView: SC.CollectionView.design({
-          childViews: ['xsView', 'ysView'],
+          childViews: ['xsView', 'ysView'],          
+
+          xHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
+          yHeightBinding: SC.Binding.from('.ysView.height').oneWay(),
           
+          height: function () {
+            return Math.max(this.get('xHeight'), this.get('yHeight'));
+          }.property('xHeight', 'yHeight').cacheable(),
+          
+          _heightDidChange: function () {
+            var newLayout = SC.copy(this.get('layout'));
+            newLayout.height = this.get('height');
+            this.set('layout', newLayout);     
+          }.observes('height'),
+
           xsView: SC.ListView.design({
+            height: function () {
+              var layout = this.get('layout');
+              return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
+            }.property('calculatedHeight', 'layout').cacheable(),
+            
             layout: { left: 10, top: 0, bottom: 15, width: 50 },
             isEditable: YES,
             canEditContent: NO,
@@ -78,6 +96,11 @@ SmartGraphs.mainPage = SC.Page.design({
           }),
         
           ysView: SC.ListView.design({
+            height: function () {
+              var layout = this.get('layout');
+              return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
+            }.property('calculatedHeight', 'layout').cacheable(),
+              
             layout: { left: 70, top: 0, bottom: 15, width: 50 },
             isEditable: YES,
             canEditContent: NO,
@@ -85,34 +108,7 @@ SmartGraphs.mainPage = SC.Page.design({
             contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
             selectionBinding: 'SmartGraphs.dataSeriesController.selection',
             rowHeight: 18
-          }),
-
-          init: function () {
-            sc_super();
-            
-            this._contentHeightDidChange = function () {
-              console.log('_contentHeightDidChange');
-
-              var xsView = this.get('xsView');
-              var ysView = this.get('ysView');
-
-              var xLayout = xsView.get('layout');
-              var yLayout = ysView.get('layout');
-              
-              var xh = xsView.get('calculatedHeight') + (xLayout.top || 0) + (xLayout.bottom || 0);
-              var yh = ysView.get('calculatedHeight') + (yLayout.top || 0) + (yLayout.bottom || 0);
-              
-              var newLayout = SC.copy(this.get('layout'));
-              newLayout.height = Math.max(xh, yh);
-              this.set('layout', newLayout);
-            };
-            
-            var xsView = this.get('xsView');
-            var ysView = this.get('ysView');
-            
-            xsView.addObserver('calculatedHeight', this, this._contentHeightDidChange);
-            ysView.addObserver('calculatedHeight', this, this._contentHeightDidChange);
-          }
+          })
         })
       })
     })
