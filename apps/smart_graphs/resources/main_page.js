@@ -38,7 +38,6 @@ SmartGraphs.mainPage = SC.Page.design({
       classNames: ['smartgraph-pane']
     }),
 
-
     tableView: SC.CollectionView.design({
       layout: { left: 485, top: 365, width: 455, height: 335 },
       classNames: ['smartgraph-pane'],  
@@ -63,7 +62,7 @@ SmartGraphs.mainPage = SC.Page.design({
       
       
       scrollerView: SC.ScrollView.design({
-        layout: { left: 0, top: 30, width: 455, height: 315 },
+        layout: { left: 0, top: 30, width: 455, height: 305 },
 
         borderStyle: SC.BORDER_NONE,
         
@@ -88,30 +87,41 @@ SmartGraphs.mainPage = SC.Page.design({
             contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
             selectionBinding: 'SmartGraphs.dataSeriesController.selection',
             rowHeight: 18
-          })
-        }),
-        
-        _subContentHeightDidChange: function () {
+          }),
 
-          // it doesn't work to place this logic inside the hash passed to the design method in contentView, because
-          // .observes('.xsView.calculatedHeight') tries to addObserver to the *constructor* that is returned
-          // by design(); there must be some magic in CollectionView that eventually replaces the constructor pointed
-          // to by xsView with the object created by that constructor)
+          init: function () { 
 
-          var contentView = this.get('contentView');
-          var xsView = contentView.get('xsView');
-          var ysView = contentView.get('ysView');
+            // make sure to do invoke this AFTER init time because at some point between when init() is called
+            // and when the next run loop finishes, xsView is automagically transformed from a constructor (i.e., the
+            // return value of SC.ListView.design()) to an actual object of the anonymous SC.ListView sublass created
+            // by SC.ListView.design()
+            
+            this.invokeLast( function () {                  
+              this._contentHeightDidChange = function () {
+                console.log('_contentHeightDidChange');
 
-          var xh = xsView.get('calculatedHeight') + xsView.get('layout').top;
-          var yh = ysView.get('calculatedHeight') + ysView.get('layout').top;
+                var xsView = this.get('xsView');
+                var ysView = this.get('ysView');
 
-          var newLayout = SC.copy(contentView.get('layout'));
-          newLayout.height = Math.max(xh, yh);
-          contentView.set('layout', newLayout);
+                var xh = xsView.get('calculatedHeight') + xsView.get('layout').top;
+                var yh = ysView.get('calculatedHeight') + ysView.get('layout').top;
 
-          console.log('_subContentHeightDidChange');
-        }.observes('.contentView.xsView.calculatedHeight', '.contentView.ysView.calculatedHeight')
-        
+                var newLayout = SC.copy(this.get('layout'));
+                newLayout.height = Math.max(xh, yh);
+                this.set('layout', newLayout);
+              };
+              
+              var xsView = this.get('xsView');
+              var ysView = this.get('ysView');
+              
+              xsView.addObserver('calculatedHeight', this, this._contentHeightDidChange);
+              ysView.addObserver('calculatedHeight', this, this._contentHeightDidChange);
+              xsView.notifyPropertyChange('calculatedHeight');
+            });
+
+            sc_super();
+          }  
+        })
       })
     })
   })
