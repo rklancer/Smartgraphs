@@ -30,12 +30,26 @@ SmartGraphs.mainPage = SC.Page.design({
       classNames: ['smartgraph-pane']
     }),
     
-    graphView: SmartGraphs.GraphView.design({
-      seriesBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
-      selectionBinding: 'SmartGraphs.dataSeriesController.selection',
+    graphView: SmartGraphs.RaphaelCollectionView.design({
+      layout: { left: 485, top: 20, width: 455, height: 335 },      
+      childViews: 'axesView'.w(),
+      classNames: ['smartgraph-pane'],
       
-      layout: { left: 485, top: 20, width: 455, height: 335 },
-      classNames: ['smartgraph-pane']
+      axesView: SmartGraphs.AxesView.design({
+        layoutBinding: '.parentView.layout',
+        xMinBinding: 'SmartGraphs.axesController.xMin',
+        xMaxBinding: 'SmartGraphs.axesController.xMax',
+        yMinBinding: 'SmartGraphs.axesController.yMin',
+        yMaxBinding: 'SmartGraphs.axesController.yMax',
+        xScaleBinding: 'SmartGraphs.axesController.xScale',
+        yScaleBinding: 'SmartGraphs.axesController.yScale'
+      })
+    //   
+    //   series1View: SmartGraphs.SeriesView.design({
+    //     axesBinding: 'SmartGraphs.axesController',
+    //     contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
+    //     selectionBinding: 'SmartGraphs.dataSeriesController.selection'
+    //   })
     }),
 
     tableView: SC.CollectionView.design({
@@ -75,9 +89,7 @@ SmartGraphs.mainPage = SC.Page.design({
           }.property('xHeight', 'yHeight').cacheable(),
           
           _heightDidChange: function () {
-            var newLayout = SC.copy(this.get('layout'));
-            newLayout.height = this.get('height');
-            this.set('layout', newLayout);     
+            this.adjust('height', this.get('height'));
           }.observes('height'),
 
           xsView: SC.ListView.design({

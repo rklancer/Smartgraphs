@@ -27,8 +27,9 @@ SmartGraphs.main = function main() {
   // ex: SmartGraphs.contactsController.set('content',SmartGraphs.contacts);
   
   var data = SmartGraphs.store.find(SmartGraphs.DataSeries, '1');
-  // use a controller...
+  var axes = SmartGraphs.store.find(SmartGraphs.Axes, '1');
   SmartGraphs.dataSeriesController.set('content', data.get('series'));
+  SmartGraphs.axesController.set('content', axes);
 };
 
 function main() { SmartGraphs.main(); }
