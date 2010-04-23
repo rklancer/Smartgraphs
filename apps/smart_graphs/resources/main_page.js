@@ -42,7 +42,6 @@ SmartGraphs.mainPage = SC.Page.design({
       layout: { left: 485, top: 365, width: 455, height: 335 },
       classNames: ['smartgraph-pane'],  
   
-      
       childViews: ['labelsView', 'scrollerView'],
       
       labelsView: SC.CollectionView.design({
@@ -50,16 +49,15 @@ SmartGraphs.mainPage = SC.Page.design({
         childViews: ['xsLabel', 'ysLabel'],
         
         xsLabel: SC.LabelView.design({
-          layout: { left: 25, width: 20, top: 7, height: 20 },
+          layout: { left: 30, width: 20, top: 7, height: 20 },
           displayValue: 'x'
         }),
         
         ysLabel: SC.LabelView.design({
-          layout: { left: 75, width: 20, top: 7, height: 20 },
+          layout: { left: 90, width: 20, top: 7, height: 20 },
           displayValue: 'y'
         })
       }),
-      
       
       scrollerView: SC.ScrollView.design({
         layout: { left: 0, top: 30, width: 455, height: 305 },
@@ -70,7 +68,7 @@ SmartGraphs.mainPage = SC.Page.design({
           childViews: ['xsView', 'ysView'],
           
           xsView: SC.ListView.design({
-            layout: { left: 10, top: 0, width: 40 },
+            layout: { left: 10, top: 0, bottom: 15, width: 50 },
             isEditable: YES,
             canEditContent: NO,
             contentValueKey: 'x',
@@ -80,7 +78,7 @@ SmartGraphs.mainPage = SC.Page.design({
           }),
         
           ysView: SC.ListView.design({
-            layout: { left: 60, top: 0, width: 40 },
+            layout: { left: 70, top: 0, bottom: 15, width: 50 },
             isEditable: YES,
             canEditContent: NO,
             contentValueKey: 'y',
@@ -91,7 +89,7 @@ SmartGraphs.mainPage = SC.Page.design({
 
           init: function () { 
 
-            // make sure to do invoke this AFTER init time because at some point between when init() is called
+            // make sure to invoke this AFTER init time because at some point between when init() is called
             // and when the next run loop finishes, xsView is automagically transformed from a constructor (i.e., the
             // return value of SC.ListView.design()) to an actual object of the anonymous SC.ListView sublass created
             // by SC.ListView.design()
@@ -103,9 +101,12 @@ SmartGraphs.mainPage = SC.Page.design({
                 var xsView = this.get('xsView');
                 var ysView = this.get('ysView');
 
-                var xh = xsView.get('calculatedHeight') + xsView.get('layout').top;
-                var yh = ysView.get('calculatedHeight') + ysView.get('layout').top;
-
+                var xLayout = xsView.get('layout');
+                var yLayout = ysView.get('layout');
+                
+                var xh = xsView.get('calculatedHeight') + (xLayout.top || 0) + (xLayout.bottom || 0);
+                var yh = ysView.get('calculatedHeight') + (yLayout.top || 0) + (yLayout.bottom || 0);
+                
                 var newLayout = SC.copy(this.get('layout'));
                 newLayout.height = Math.max(xh, yh);
                 this.set('layout', newLayout);
