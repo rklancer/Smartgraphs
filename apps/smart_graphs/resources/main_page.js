@@ -87,41 +87,32 @@ SmartGraphs.mainPage = SC.Page.design({
             rowHeight: 18
           }),
 
-          init: function () { 
-
-            // make sure to invoke this AFTER init time because at some point between when init() is called
-            // and when the next run loop finishes, xsView is automagically transformed from a constructor (i.e., the
-            // return value of SC.ListView.design()) to an actual object of the anonymous SC.ListView sublass created
-            // by SC.ListView.design()
+          init: function () {
+            sc_super();
             
-            this.invokeLast( function () {                  
-              this._contentHeightDidChange = function () {
-                console.log('_contentHeightDidChange');
+            this._contentHeightDidChange = function () {
+              console.log('_contentHeightDidChange');
 
-                var xsView = this.get('xsView');
-                var ysView = this.get('ysView');
-
-                var xLayout = xsView.get('layout');
-                var yLayout = ysView.get('layout');
-                
-                var xh = xsView.get('calculatedHeight') + (xLayout.top || 0) + (xLayout.bottom || 0);
-                var yh = ysView.get('calculatedHeight') + (yLayout.top || 0) + (yLayout.bottom || 0);
-                
-                var newLayout = SC.copy(this.get('layout'));
-                newLayout.height = Math.max(xh, yh);
-                this.set('layout', newLayout);
-              };
-              
               var xsView = this.get('xsView');
               var ysView = this.get('ysView');
-              
-              xsView.addObserver('calculatedHeight', this, this._contentHeightDidChange);
-              ysView.addObserver('calculatedHeight', this, this._contentHeightDidChange);
-              xsView.notifyPropertyChange('calculatedHeight');
-            });
 
-            sc_super();
-          }  
+              var xLayout = xsView.get('layout');
+              var yLayout = ysView.get('layout');
+              
+              var xh = xsView.get('calculatedHeight') + (xLayout.top || 0) + (xLayout.bottom || 0);
+              var yh = ysView.get('calculatedHeight') + (yLayout.top || 0) + (yLayout.bottom || 0);
+              
+              var newLayout = SC.copy(this.get('layout'));
+              newLayout.height = Math.max(xh, yh);
+              this.set('layout', newLayout);
+            };
+            
+            var xsView = this.get('xsView');
+            var ysView = this.get('ysView');
+            
+            xsView.addObserver('calculatedHeight', this, this._contentHeightDidChange);
+            ysView.addObserver('calculatedHeight', this, this._contentHeightDidChange);
+          }
         })
       })
     })

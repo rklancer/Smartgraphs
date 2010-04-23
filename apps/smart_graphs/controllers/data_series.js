@@ -23,6 +23,7 @@ SmartGraphs.dataSeriesController = SC.ArrayController.create(
   }.property('content').cacheable(),
   
   _contentDidChange: function () {
+    console.log('_contentDidChange');
     this.notifyPropertyChange('content');
   }.observes('.content.[]')
 
