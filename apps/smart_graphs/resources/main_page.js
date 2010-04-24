@@ -36,7 +36,6 @@ SmartGraphs.mainPage = SC.Page.design({
       classNames: ['smartgraph-pane'],
       
       axesView: SmartGraphs.AxesView.design({
-        layoutBinding: '.parentView.layout',
         xMinBinding: 'SmartGraphs.axesController.xMin',
         xMaxBinding: 'SmartGraphs.axesController.xMax',
         yMinBinding: 'SmartGraphs.axesController.yMin',

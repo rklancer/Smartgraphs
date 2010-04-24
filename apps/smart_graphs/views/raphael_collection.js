@@ -14,17 +14,13 @@ SmartGraphs.RaphaelCollectionView = SC.CollectionView.extend(
 /** @scope SmartGraphs.RaphaelCollectionView.prototype */ {
 
   raphaelObject: null,
-  
-  render: function (context, firstTime) {
-    if (firstTime) {
-      context = context.begin('div').addClass('graph').end();
-    }
-  },
-  
   didCreateLayer: function () {
+    console.log('didCreateLayer');
+    
     var raphaelConstructor = Raphael;  // make jslint stop complaining that Raphael needs to be called with 'new' because of the initial cap
     var layout = this.get('layout');
     
+    this.$().append("<div class='graph'></div>");
     var raphaelObject = raphaelConstructor(this.$('.graph')[0], layout.width, layout.height);
     this.set('raphaelObject', raphaelObject);
   }
