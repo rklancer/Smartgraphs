@@ -30,25 +30,33 @@ SmartGraphs.mainPage = SC.Page.design({
       classNames: ['smartgraph-pane']
     }),
     
-    graphView: SmartGraphs.RaphaelCollectionView.design({
+    graphView: SmartGraphs.RaphaelView.design({
       layout: { left: 485, top: 20, width: 455, height: 335 },      
-      childViews: 'axesView'.w(),
+      childViews: 'axesView series1View'.w(),
       classNames: ['smartgraph-pane'],
-      
-      axesView: SmartGraphs.AxesView.design({
+
+      axesView: SmartGraphs.AxesView.design({    
         xMinBinding: 'SmartGraphs.axesController.xMin',
         xMaxBinding: 'SmartGraphs.axesController.xMax',
         yMinBinding: 'SmartGraphs.axesController.yMin',
         yMaxBinding: 'SmartGraphs.axesController.yMax',
         xScaleBinding: 'SmartGraphs.axesController.xScale',
-        yScaleBinding: 'SmartGraphs.axesController.yScale'
+        yScaleBinding: 'SmartGraphs.axesController.yScale',
+        paddingBinding: 'SmartGraphs.axesController.padding'
+      }),
+      
+      series1View: SmartGraphs.SeriesView.design({
+        xMinBinding: 'SmartGraphs.axesController.xMin',
+        xMaxBinding: 'SmartGraphs.axesController.xMax',
+        yMinBinding: 'SmartGraphs.axesController.yMin',
+        yMaxBinding: 'SmartGraphs.axesController.yMax',
+        xScaleBinding: 'SmartGraphs.axesController.xScale',
+        yScaleBinding: 'SmartGraphs.axesController.yScale',
+        paddingBinding: 'SmartGraphs.axesController.padding',
+        contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
+        selectionBinding: 'SmartGraphs.dataSeriesController.selection'
       })
-    //   
-    //   series1View: SmartGraphs.SeriesView.design({
-    //     axesBinding: 'SmartGraphs.axesController',
-    //     contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
-    //     selectionBinding: 'SmartGraphs.dataSeriesController.selection'
-    //   })
+      
     }),
 
     tableView: SC.CollectionView.design({

@@ -47,7 +47,7 @@ SmartGraphs.GraphView = SC.View.extend(
     
     if (series && !this._isGraphed) {
       this._renderGraph(this.$('.graph')[0]);
-      console.log('rendered');
+      console.log ('rendered');
       this._isGraphed = true;
     }
   },
