@@ -53,6 +53,7 @@ SmartGraphs.mainPage = SC.Page.design({
         xScaleBinding: 'SmartGraphs.axesController.xScale',
         yScaleBinding: 'SmartGraphs.axesController.yScale',
         paddingBinding: 'SmartGraphs.axesController.padding',
+        controllerBinding: 'SmartGraphs.dataSeriesController',
         contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
         selectionBinding: 'SmartGraphs.dataSeriesController.selection'
       })
@@ -106,7 +107,6 @@ SmartGraphs.mainPage = SC.Page.design({
             }.property('calculatedHeight', 'layout').cacheable(),
             
             layout: { left: 10, top: 0, bottom: 15, width: 50 },
-            isEditable: YES,
             canEditContent: NO,
             contentValueKey: 'x',
             contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
@@ -122,7 +122,7 @@ SmartGraphs.mainPage = SC.Page.design({
               
             layout: { left: 70, top: 0, bottom: 15, width: 50 },
             isEditable: YES,
-            canEditContent: NO,
+            canEditContent: YES,
             contentValueKey: 'y',
             contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
             selectionBinding: 'SmartGraphs.dataSeriesController.selection',

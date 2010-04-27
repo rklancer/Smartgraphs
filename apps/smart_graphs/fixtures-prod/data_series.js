@@ -17,7 +17,8 @@ SmartGraphs.DataSeries.FIXTURES = [
     series: (function () {
       var ret = [];
       for (var i = 0; i < 25; i++) {
-        ret.push({x: i/5.0, y: i + Math.random()});
+        // fixme - this is in lieu of having a real data model for the points
+        ret.push({x: i/5.0, y: i + Math.random(), set: function (key, val) { this[key] = parseFloat(val); }});
       }
       return ret;
     }())

@@ -14,10 +14,13 @@ SmartGraphs.SeriesView = SC.View.extend(
 /** @scope SmartGraphs.SeriesView.prototype */ {
   
   _raphaelObjForId: {},     // index of raphael objects representing data points in this series, by id
+  _dataPointForId: {},
   _highlightedNodeId: undefined,
 
   NO_HIGHLIGHT_ATTR: { opacity: 0.5, r: 4 },
   HIGHLIGHT_ATTR: { opacity: 1.0, r: 5 },
+  SELECTED_ATTR: { stroke: '#FF670C', fill: '#FF670C' },
+  NOT_SELECTED_ATTR: { stroke: "#aa0000", fill: "#aa0000" },
   DATA_POINT_ID_MATCHER : '',
   id : '',
   
@@ -30,14 +33,27 @@ SmartGraphs.SeriesView = SC.View.extend(
     parent.registerChildView(this, this.id);
   },
   
-  displayProperties: 'xMin xMax yMin yMax padding'.w(),
+  displayProperties: 'xMin xMax yMin yMax padding selection'.w(),
   
   didCreateLayer: function () {
     this.$().css('zIndex', '-1');
   },
   
   mouseDown: function (e) {
-    console.log('hello from data point!');
+    var pair = this._dataPointForId[e.target.id];
+    
+    console.log('pair = ' + pair);
+    if (pair) {
+      var controller = this.get('controller');
+      var selection = this.get('selection');
+      
+      if (selection.contains(pair)) {
+        controller.deselectObject(pair);
+      }
+      else {
+        controller.selectObject(pair, YES);
+      }
+    }
   },
   
   render: function (context, firstTime) {
@@ -60,26 +76,34 @@ SmartGraphs.SeriesView = SC.View.extend(
       var xScale = plotWidth / xMax;
       var yScale = plotHeight / yMax;
       
-      var points = this._raphaelObjForId;
-      
-      for (var objName in points) {
-        if (points.hasOwnProperty(objName)) points[objName].remove();
+      var rObjs = this._raphaelObjForId;
+      for (var objName in rObjs) {
+        if (rObjs.hasOwnProperty(objName)) rObjs[objName].remove();
       }
+
+      this._raphaelObjForId = {};
+      this._dataPointForId = {};
       
       var series = this.get('content');
+      var selection = this.get('selection');
       
       for (var i = 0, ii = series.get('length'); i < ii; i++) {
         var pair = series.objectAt(i);
         var x = padding.left + (pair.x * xScale);
         var y = padding.top + plotHeight - (pair.y * yScale);
     
-        var point = raphael.circle(x, y).attr({
-          stroke: "#aa0000",
-          fill: "#aa0000"
-        }).attr(this.NO_HIGHLIGHT_ATTR);
+        var point = raphael.circle(x, y).attr(this.NO_HIGHLIGHT_ATTR);
+        
+        if (selection.contains(pair)) {
+          point.attr(this.SELECTED_ATTR);
+        }
+        else {
+          point.attr(this.NOT_SELECTED_ATTR);
+        }
     
         point.node.id = this.id + '-data-point-%@'.fmt(i);
-        points[point.node.id] = point;
+        this._raphaelObjForId[point.node.id] = point;
+        this._dataPointForId[point.node.id] = pair;
       }
     }
   }
