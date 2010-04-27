@@ -17,10 +17,10 @@ SmartGraphs.SeriesView = SC.View.extend(
   _dataPointForId: {},
   _highlightedPoint: null,
 
-  NO_HIGHLIGHT_ATTR: { opacity: 0.5, r: 4 },
-  HIGHLIGHT_ATTR: { opacity: 1.0, r: 5 },
-  SELECTED_ATTR: { stroke: '#FF670C', fill: '#FF670C' },
-  NOT_SELECTED_ATTR: { stroke: "#aa0000", fill: "#aa0000" },
+  NO_HIGHLIGHT_ATTR: { r: 4 },
+  HIGHLIGHT_ATTR: { r: 5 },
+  SELECTED_ATTR: { stroke: '#aa0000', fill: '#aa0000', opacity: 0.8 },
+  NOT_SELECTED_ATTR: { stroke: "#BFADA7", fill: "#BFADA7", opacity: 0.5 },
   DATA_POINT_ID_MATCHER : '',
   id : '',
   
@@ -33,7 +33,7 @@ SmartGraphs.SeriesView = SC.View.extend(
     parent.registerChildView(this, this.id);
   },
   
-  displayProperties: 'xMin xMax yMin yMax padding selection'.w(),
+  displayProperties: 'xMin xMax yMin yMax padding selection content'.w(),
   
   didCreateLayer: function () {
     this.$().css('zIndex', '-1');
