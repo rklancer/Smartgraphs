@@ -38,7 +38,6 @@ SmartGraphs.AxesView = SC.View.extend(
       var plotHeight = height - padding.top - padding.bottom;
       
       if (this._x) {
-        console.log('removing x axis...');
         this._x.remove();
       }
       this._x = raphael.g.axis(padding.left, padding.top + plotHeight, plotWidth, 0, xMax, xMax, 0);    // x axis
@@ -48,9 +47,5 @@ SmartGraphs.AxesView = SC.View.extend(
 
       this.renderChildViews(context, firstTime);
     }
-  },
-  
-  mouseDown: function (e) { 
-    console.log('mousedown');
   }
 });

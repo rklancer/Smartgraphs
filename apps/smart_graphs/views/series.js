@@ -15,7 +15,7 @@ SmartGraphs.SeriesView = SC.View.extend(
   
   _raphaelObjForId: {},     // index of raphael objects representing data points in this series, by id
   _dataPointForId: {},
-  _highlightedNodeId: undefined,
+  _highlightedPoint: null,
 
   NO_HIGHLIGHT_ATTR: { opacity: 0.5, r: 4 },
   HIGHLIGHT_ATTR: { opacity: 1.0, r: 5 },
@@ -42,7 +42,6 @@ SmartGraphs.SeriesView = SC.View.extend(
   mouseDown: function (e) {
     var pair = this._dataPointForId[e.target.id];
     
-    console.log('pair = ' + pair);
     if (pair) {
       var controller = this.get('controller');
       var selection = this.get('selection');
@@ -54,6 +53,19 @@ SmartGraphs.SeriesView = SC.View.extend(
         controller.selectObject(pair, YES);
       }
     }
+  },
+  
+  mouseEntered: function (e) {
+    console.log('mouseEntered ' + e.target.id);
+    var point = this._raphaelObjForId[e.target.id];
+    
+    if (point) point.attr(this.HIGHLIGHT_ATTR);
+    this._highlightedPoint = point;
+  },
+  
+  mouseExited: function (e) {
+    var point = this._highlightedPoint;
+    if (point) point.attr(this.NO_HIGHLIGHT_ATTR);    
   },
   
   render: function (context, firstTime) {
