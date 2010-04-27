@@ -14,9 +14,10 @@
 SmartGraphs.dataSeriesController = SC.ArrayController.create(
 /** @scope SmartGraphs.dataSeriesController.prototype */ {
   
+  totalChanges: 0,
+  
   _valuesDidChange: function () {
-    console.log('values did change');
-    this.notifyPropertyChange('arrangedObjects');
+    this.incrementProperty('totalChanges');
   },
   
   _arrayDidChange: function () {

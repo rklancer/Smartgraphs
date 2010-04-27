@@ -33,11 +33,7 @@ SmartGraphs.SeriesView = SC.View.extend(
     parent.registerChildView(this, this.id);
   },
   
-  displayProperties: 'xMin xMax yMin yMax padding selection content'.w(),
-  
-  _contentDidChange: function () {
-    console.log('series view content changed');  
-  }.observes('.content'),
+  displayProperties: 'xMin xMax yMin yMax padding selection content content.totalChanges content.[]'.w(),
   
   didCreateLayer: function () {
     this.$().css('zIndex', '-1');
