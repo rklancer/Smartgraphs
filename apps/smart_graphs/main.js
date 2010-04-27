@@ -26,9 +26,9 @@ SmartGraphs.main = function main() {
   // TODO: Set the content property on your primary controller
   // ex: SmartGraphs.contactsController.set('content',SmartGraphs.contacts);
   
-  var data = SmartGraphs.store.find(SmartGraphs.DataSeries, '1');
+  var data = SmartGraphs.store.find(SmartGraphs.DataSeries, 'series-1');
   var axes = SmartGraphs.store.find(SmartGraphs.Axes, '1');
-  SmartGraphs.dataSeriesController.set('content', data.get('series'));
+  SmartGraphs.dataSeriesController.set('content', data.get('points'));
   SmartGraphs.axesController.set('content', axes);
 };
 

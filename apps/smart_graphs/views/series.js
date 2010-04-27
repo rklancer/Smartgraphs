@@ -35,6 +35,10 @@ SmartGraphs.SeriesView = SC.View.extend(
   
   displayProperties: 'xMin xMax yMin yMax padding selection content'.w(),
   
+  _contentDidChange: function () {
+    console.log('series view content changed');  
+  }.observes('.content'),
+  
   didCreateLayer: function () {
     this.$().css('zIndex', '-1');
   },
@@ -69,6 +73,8 @@ SmartGraphs.SeriesView = SC.View.extend(
   },
   
   render: function (context, firstTime) {
+    
+    console.log('rendering');
     var parent = this.get('parentView');
     var raphael = parent.get('raphaelObject');
     var padding = this.get('padding');
@@ -101,8 +107,8 @@ SmartGraphs.SeriesView = SC.View.extend(
       
       for (var i = 0, ii = series.get('length'); i < ii; i++) {
         var pair = series.objectAt(i);
-        var x = padding.left + (pair.x * xScale);
-        var y = padding.top + plotHeight - (pair.y * yScale);
+        var x = padding.left + (pair.get('x') * xScale);
+        var y = padding.top + plotHeight - (pair.get('y') * yScale);
     
         var point = raphael.circle(x, y).attr(this.NO_HIGHLIGHT_ATTR);
         

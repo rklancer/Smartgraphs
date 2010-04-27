@@ -13,18 +13,15 @@
 
 SmartGraphs.dataSeriesController = SC.ArrayController.create(
 /** @scope SmartGraphs.dataSeriesController.prototype */ {
-
-  xs: function () {
-    return this.get('content').map( function (pair) { return pair.x; } );
-  }.property('content').cacheable(),
   
-  ys: function () {
-    return this.get('content').map( function (pair) { return pair.y; } );
-  }.property('content').cacheable(),
+  _valuesDidChange: function () {
+    console.log('values did change');
+    this.notifyPropertyChange('arrangedObjects');
+  },
   
-  _contentDidChange: function () {
-    console.log('_contentDidChange');
-    this.notifyPropertyChange('content');
-  }.observes('.content.[]')
-
+  _arrayDidChange: function () {
+    this.forEach(function (item) { 
+      console.log("adding observer to item: " + item); 
+      item.addObserver('y', this, this._valuesDidChange); }, this);
+  }.observes('.[]')
 }) ;
