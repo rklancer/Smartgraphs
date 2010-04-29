@@ -19,5 +19,6 @@ body.sc-theme {
 }
 
 .html-view .inner {
-  padding: 5px 10px 5px 10px;
+  padding: 5px 20px 5px 20px;
+  font-size: 18px;
 }

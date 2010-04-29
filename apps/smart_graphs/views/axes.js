@@ -28,7 +28,9 @@ SmartGraphs.AxesView = SC.View.extend(
     var xMin = this.get('xMin'),
         xMax = this.get('xMax'),
         yMin = this.get('yMin'),
-        yMax = this.get('yMax');
+        yMax = this.get('yMax'),
+        xSteps = this.get('xSteps'),
+        ySteps = this.get('ySteps');
 
     if (raphael && padding && layout && (xMin !== undefined) && (xMax !== undefined) && (yMin !== undefined) && (yMax !== undefined)) {
       var height = layout.height,
@@ -40,10 +42,10 @@ SmartGraphs.AxesView = SC.View.extend(
       if (this._x) {
         this._x.remove();
       }
-      this._x = raphael.g.axis(padding.left, padding.top + plotHeight, plotWidth, 0, xMax, xMax, 0);    // x axis
+      this._x = raphael.g.axis(padding.left, padding.top + plotHeight, plotWidth, 0, xMax, xSteps, 0);    // x axis
     
       if (this._y) this._y.remove();
-      this._y = raphael.g.axis(padding.left, padding.top + plotHeight, plotHeight, 0, yMax, yMax, 1);   // y axis
+      this._y = raphael.g.axis(padding.left, padding.top + plotHeight, plotHeight, 0, yMax, ySteps, 1);   // y axis
 
       this.renderChildViews(context, firstTime);
     }

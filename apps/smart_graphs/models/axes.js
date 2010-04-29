@@ -22,6 +22,6 @@ SmartGraphs.Axes = SC.Record.extend(
   xMin: SC.Record.attr(Number),
   yMax: SC.Record.attr(Number),
   yMin: SC.Record.attr(Number),
-  yScale: SC.Record.attr(Number),
-  xScale: SC.Record.attr(Number)
+  ySteps: SC.Record.attr(Number),
+  xSteps: SC.Record.attr(Number)
 }) ;

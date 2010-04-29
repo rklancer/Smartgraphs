@@ -15,20 +15,23 @@ SmartGraphs.mainPage = SC.Page.design({
   mainPane: SC.MainPane.design({
     layout: { width: 960, height: 720 },
     
-    childViews: 'textView bottomLeftView graphView tableView'.w(),
+    childViews: 'textView graphView tableView'.w(),
     
     textView: SmartGraphs.HTMLView.design({
-      layout: { left: 20, top: 20, width: 455, height: 335 },
+      layout: { left: 20, top: 20, width: 455, height: 680 },
       classNames: ['smartgraph-pane'],
       
-      html: "<h2>Hi There!</h2> Try <a href='http://sproutcore.com'>Sproutcore</a> for all your: " +
-        "<ul> <li> Software Needs <li> Graphing needs <li> Macrobiotic diets </ul>"
+      // html: "<h2>Hi There!</h2> Try <a href='http://sproutcore.com'>Sproutcore</a> for all your: " +
+      //   "<ul> <li> Software Needs <li> Graphing needs <li> Macrobiotic diets </ul>"
+      
+      html: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. These data are shown in the scatterplot and the table at right." + 
+           "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
     }),
     
-    bottomLeftView: SC.LabelView.design({
-      layout: { left: 20, top: 365, width: 455, height: 335 },
-      classNames: ['smartgraph-pane']
-    }),
+    // bottomLeftView: SC.LabelView.design({
+    //   layout: { left: 20, top: 365, width: 455, height: 335 },
+    //   classNames: ['smartgraph-pane']
+    // }),
     
     graphView: SmartGraphs.RaphaelView.design({
       layout: { left: 485, top: 20, width: 455, height: 335 },      
@@ -40,8 +43,8 @@ SmartGraphs.mainPage = SC.Page.design({
         xMaxBinding: 'SmartGraphs.axesController.xMax',
         yMinBinding: 'SmartGraphs.axesController.yMin',
         yMaxBinding: 'SmartGraphs.axesController.yMax',
-        xScaleBinding: 'SmartGraphs.axesController.xScale',
-        yScaleBinding: 'SmartGraphs.axesController.yScale',
+        xStepsBinding: 'SmartGraphs.axesController.xSteps',
+        yStepsBinding: 'SmartGraphs.axesController.ySteps',
         paddingBinding: 'SmartGraphs.axesController.padding'
       }),
       
@@ -71,13 +74,13 @@ SmartGraphs.mainPage = SC.Page.design({
         childViews: ['xsLabel', 'ysLabel'],
         
         xsLabel: SC.LabelView.design({
-          layout: { left: 30, width: 20, top: 7, height: 20 },
-          displayValue: 'x'
+          layout: { left: 10, width: 40, top: 7, height: 20 },
+          displayValue: 'time'
         }),
         
         ysLabel: SC.LabelView.design({
-          layout: { left: 90, width: 20, top: 7, height: 20 },
-          displayValue: 'y'
+          layout: { left: 70, width: 50, top: 7, height: 20 },
+          displayValue: 'distance'
         })
       }),
       
