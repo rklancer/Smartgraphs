@@ -63,13 +63,13 @@ SmartGraphs.mainPage = SC.Page.design({
       
     }),
 
-    tableView: SC.CollectionView.design({
+    tableView: SC.View.design({
       layout: { left: 485, top: 365, width: 455, height: 335 },
       classNames: ['smartgraph-pane'],  
   
       childViews: ['labelsView', 'scrollerView'],
       
-      labelsView: SC.CollectionView.design({
+      labelsView: SC.View.design({
         layout: { left: 0, top: 0, width: 455, height: 30 },
         childViews: ['xsLabel', 'ysLabel'],
         
@@ -89,7 +89,7 @@ SmartGraphs.mainPage = SC.Page.design({
 
         borderStyle: SC.BORDER_NONE,
         
-        contentView: SC.CollectionView.design({
+        contentView: SC.View.design({
           childViews: ['xsView', 'ysView'],          
 
           xHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
