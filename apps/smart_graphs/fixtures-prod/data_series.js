@@ -21,7 +21,7 @@ SmartGraphs.DataSeries.FIXTURES = [
     guid: 'series-1',
     points: (function () {
       var recs = [];
-      for (var i = 1; i < 25; i++) {
+      for (var i = 1; i <= 25; i++) {
         recs.push(i+'');
       }
       return recs;

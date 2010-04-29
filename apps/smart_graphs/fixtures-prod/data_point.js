@@ -9,11 +9,11 @@ sc_require('models/data_point');
 SmartGraphs.DataPoint.FIXTURES = (function () {
   var recs = [], rec;
 
-  for (var i = 0; i < 24; i++) {
+  for (var i = 1; i <= 25; i++) {
     rec = {};
-    rec.guid = (i+1)+'';
-    rec.x = i/5.0;
-    rec.y = i + Math.random();
+    rec.guid = i+'';
+    rec.x = (i-1)/5.0;
+    rec.y = i -  1 + Math.random();
     rec.series = 'series-1';
     recs.push(rec);
   }

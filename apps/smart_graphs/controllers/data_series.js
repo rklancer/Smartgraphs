@@ -24,5 +24,8 @@ SmartGraphs.dataSeriesController = SC.ArrayController.create(
     this.forEach(function (item) { 
       console.log("adding observer to item: " + item); 
       item.addObserver('y', this, this._valuesDidChange); }, this);
+      
+      // FIXME (unless we stop using the 'totalChanges' property to indicate need to re-render):
+      // need to REMOVE observers too! (to prevent us from rerendering when removed objects change)
   }.observes('.[]')
 }) ;
