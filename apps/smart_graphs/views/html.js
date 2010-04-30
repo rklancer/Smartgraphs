@@ -21,10 +21,14 @@ SmartGraphs.HTMLView = SC.View.extend(
   render: function (context, firstTime) {
     var html = this.get('html');
     
-    if (firstTime) {
-      context = context.begin('div').addClass('inner').end();
-    }
+    // apparently it's okay, even preferred, to set the html using the context object even if it isn't firstTime.
+    console.log("rendering HTMLView: this.$('.inner') = " + this.$('.inner'));
+    context = context.begin('div').addClass('inner').html(html).end();
+    
 
-    this.$('.inner').html(html);
+  },
+  
+  didCreateLayer: function () {
+    console.log('HTMLView didCreateLayer()'); 
   }
 });
