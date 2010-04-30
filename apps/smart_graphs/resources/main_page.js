@@ -9,25 +9,47 @@
 //SmartGraphs.generateLayout = function (corner,   
 SmartGraphs.mainPage = SC.Page.design({
 
-  // The main pane is made visible on screen as soon as your app is loaded.
-  // Add childViews to this pane for views to display immediately on page 
-  // load.
+  // obviously, these non-mainPane views could be controlled by a controller.
+  introView: SmartGraphs.HTMLView.design({      
+    html: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " +
+          "These data are shown in the scatterplot and the table at right." + 
+           "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
+  }),
+  
+  followupView: SmartGraphs.HTMLView.design({
+    html: "For how long did Maria talk with her coach?"
+  }),
+  
+  topperView: SmartGraphs.HTMLView.design({
+    html: "Did you notice that Maria's coach must have written down her position three times while they were talking?"+
+          "<br><br>About how long did it take Maria to start running again after the third time?"
+  }),
+  
   mainPane: SC.MainPane.design({
     layout: { width: 960, height: 720 },
     
-    childViews: 'textView graphView tableView'.w(),
+    childViews: 'promptView graphView tableView'.w(),
     
-    textView: SmartGraphs.HTMLView.design({
+    promptView: SC.View.design({
       layout: { left: 20, top: 20, width: 455, height: 680 },
       classNames: ['smartgraph-pane'],
       
-      // html: "<h2>Hi There!</h2> Try <a href='http://sproutcore.com'>Sproutcore</a> for all your: " +
-      //   "<ul> <li> Software Needs <li> Graphing needs <li> Macrobiotic diets </ul>"
-      
-      html: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. These data are shown in the scatterplot and the table at right." + 
-           "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
+      childViews: 'tabView'.w(),
+
+      tabView: SC.TabView.design({ 
+        layout: {top: 30, bottom: 5, left: 5, right: 5 }, 
+        items: [ 
+          { title: "Maria's Run", value: 'SmartGraphs.mainPage.introView' },
+          { title: 'A Pep Talk', value: 'SmartGraphs.mainPage.followupView' },
+          { title: 'Back to Running', value: 'SmartGraphs.mainPage.topperView' }
+        ], 
+        itemTitleKey: 'title', 
+        itemValueKey: 'value', 
+        nowShowing: 'SmartGraphs.mainPage.introView',
+        userDefaultKey: 'mainPaneTab'
+      })
     }),
-    
+
     // bottomLeftView: SC.LabelView.design({
     //   layout: { left: 20, top: 365, width: 455, height: 335 },
     //   classNames: ['smartgraph-pane']
