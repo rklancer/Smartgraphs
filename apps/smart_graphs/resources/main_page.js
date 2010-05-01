@@ -16,12 +16,6 @@ SmartGraphs.mainPage = SC.Page.design({
         content: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " +
               "These data are shown in the scatterplot and the table at right." + 
               "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
-      // ,
-      // 
-      // SC.ButtonView.design({
-      //   layout: { width: 80 },
-      //   title: "Next"
-      // })]
   }),
   
   followupView: SC.StaticContentView.design({
@@ -44,7 +38,7 @@ SmartGraphs.mainPage = SC.Page.design({
       layout: { left: 20, top: 20, width: 455, height: 680 },
       classNames: ['smartgraph-pane'],
       
-      childViews: 'tabView'.w(),
+      childViews: 'tabView nextButton'.w(),
 
       tabView: SC.TabView.design({ 
         layout: {top: 30, bottom: 5, left: 5, right: 5 }, 
@@ -55,8 +49,12 @@ SmartGraphs.mainPage = SC.Page.design({
         ], 
         itemTitleKey: 'title', 
         itemValueKey: 'value', 
-        nowShowing: 'SmartGraphs.mainPage.introView',
-        userDefaultKey: 'mainPaneTab'
+        nowShowing: 'SmartGraphs.mainPage.introView'
+      }),
+      
+      nextButton: SC.ButtonView.design({
+        layout: { top: 620, left: 325, width: 80 },
+        title: "Next"
       })
     }),
 
