@@ -9,19 +9,29 @@
 //SmartGraphs.generateLayout = function (corner,   
 SmartGraphs.mainPage = SC.Page.design({
 
+  // random change.
   // obviously, these non-mainPane views could be controlled by a controller.
-  introView: SmartGraphs.HTMLView.design({      
-    html: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " +
-          "These data are shown in the scatterplot and the table at right." + 
-           "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
+  introView: SC.StaticContentView.design({
+        classNames: ['sg-question'],
+        content: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " +
+              "These data are shown in the scatterplot and the table at right." + 
+              "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
+      // ,
+      // 
+      // SC.ButtonView.design({
+      //   layout: { width: 80 },
+      //   title: "Next"
+      // })]
   }),
   
-  followupView: SmartGraphs.HTMLView.design({
-    html: "For how long did Maria talk with her coach?"
+  followupView: SC.StaticContentView.design({
+    classNames: ['sg-question'],
+    content: "For how long did Maria talk with her coach?"
   }),
   
-  topperView: SmartGraphs.HTMLView.design({
-    html: "Did you notice that Maria's coach must have written down her position three times while they were talking?"+
+  topperView: SC.StaticContentView.design({
+    classNames: ['sg-question'],
+    content: "Did you notice that Maria's coach must have written down her position three times while they were talking?"+
           "<br><br>About how long did it take Maria to start running again after the third time?"
   }),
   

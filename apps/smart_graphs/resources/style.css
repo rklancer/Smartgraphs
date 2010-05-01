@@ -18,7 +18,8 @@ body.sc-theme {
   border: 1px solid #A2B5D7;
 }
 
-.html-view .inner {
-  padding: 25px 20px 5px 20px;
+.sc-view.sg-question {
+  padding: 25px 20px 5px 20px;  
   font-size: 18px;
+  position: absolute;
 }
