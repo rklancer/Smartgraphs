@@ -54,8 +54,28 @@ SmartGraphs.mainPage = SC.Page.design({
       
       nextButton: SC.ButtonView.design({
         layout: { top: 620, left: 325, width: 80 },
-        title: "Next"
-      })
+        title: "Next",
+        target: 'SmartGraphs.mainPage.mainPane.promptView',
+        action: 'nextTab'
+      }),
+      
+      // a really, really ugly way to go to the next tab.
+      nextTab : function() {
+        console.log('yo! i wuz clicked!');
+        
+        var tabs = this.get('tabView');
+        var showing = tabs.get('nowShowing');
+        
+        console.log('showing = ' + showing + '; typeof showing = ' + typeof showing);
+        switch (showing) {
+          case 'SmartGraphs.mainPage.introView':
+            tabs.set('nowShowing', 'SmartGraphs.mainPage.followupView');
+            break;
+          case 'SmartGraphs.mainPage.followupView':
+            tabs.set('nowShowing', 'SmartGraphs.mainPage.topperView');
+            break;
+        }
+      }
     }),
 
     // bottomLeftView: SC.LabelView.design({
