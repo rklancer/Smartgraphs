@@ -12,10 +12,10 @@ SmartGraphs.mainPage = SC.Page.design({
   // random change.
   // obviously, these non-mainPane views could be controlled by a controller.
   introView: SC.StaticContentView.design({
-        classNames: ['sg-question'],
-        content: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " +
-              "These data are shown in the scatterplot and the table at right." + 
-              "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
+    classNames: ['sg-question'],
+    content: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " +
+          "These data are shown in the scatterplot and the table at right." + 
+          "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
   }),
   
   followupView: SC.StaticContentView.design({
@@ -38,7 +38,7 @@ SmartGraphs.mainPage = SC.Page.design({
       layout: { left: 20, top: 20, width: 455, height: 680 },
       classNames: ['smartgraph-pane'],
       
-      childViews: 'tabView nextButton'.w(),
+      childViews: 'tabView nextButton backButton'.w(),
 
       tabView: SC.TabView.design({ 
         layout: {top: 30, bottom: 5, left: 5, right: 5 }, 
@@ -56,17 +56,31 @@ SmartGraphs.mainPage = SC.Page.design({
         layout: { top: 620, left: 325, width: 80 },
         title: "Next",
         target: 'SmartGraphs.mainPage.mainPane.promptView',
-        action: 'nextTab'
+        action: 'nextTab',
+        nowShowingBinding: 'SmartGraphs.mainPage.mainPane.promptView.tabView.nowShowing',
+        isEnabled: function () {
+          var nowShowing = this.get('nowShowing');
+          return (nowShowing !== 'SmartGraphs.mainPage.topperView');
+        }.property('nowShowing')
       }),
       
-      // a really, really ugly way to go to the next tab.
+      backButton: SC.ButtonView.design({
+        layout: { top: 620, left: 50, width: 80 },
+        title: "Back",
+        target: 'SmartGraphs.mainPage.mainPane.promptView',
+        action: 'backTab',
+        nowShowingBinding: 'SmartGraphs.mainPage.mainPane.promptView.tabView.nowShowing',
+        isEnabled: function () {
+          var nowShowing = this.get('nowShowing');
+          return (nowShowing !== 'SmartGraphs.mainPage.introView');
+        }.property('nowShowing')
+      }),
+      
+      // a really, really ugly way to go to the next tab. (refactor to use a more-generic tab *controller*...)
       nextTab : function() {
-        console.log('yo! i wuz clicked!');
-        
         var tabs = this.get('tabView');
         var showing = tabs.get('nowShowing');
-        
-        console.log('showing = ' + showing + '; typeof showing = ' + typeof showing);
+
         switch (showing) {
           case 'SmartGraphs.mainPage.introView':
             tabs.set('nowShowing', 'SmartGraphs.mainPage.followupView');
@@ -75,7 +89,22 @@ SmartGraphs.mainPage = SC.Page.design({
             tabs.set('nowShowing', 'SmartGraphs.mainPage.topperView');
             break;
         }
+      },
+      // a similarly ugly way to go to the previous tab.
+      backTab : function() {
+        var tabs = this.get('tabView');
+        var showing = tabs.get('nowShowing');
+
+        switch (showing) {
+          case 'SmartGraphs.mainPage.topperView':
+            tabs.set('nowShowing', 'SmartGraphs.mainPage.followupView');
+            break;
+          case 'SmartGraphs.mainPage.followupView':
+            tabs.set('nowShowing', 'SmartGraphs.mainPage.introView');
+            break;
+        }
       }
+      
     }),
 
     // bottomLeftView: SC.LabelView.design({
