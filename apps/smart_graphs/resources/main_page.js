@@ -201,10 +201,12 @@ SmartGraphs.mainPage = SC.Page.design({
               var layout = this.get('layout');
               return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
             }.property('calculatedHeight', 'layout').cacheable(),
-              
+            
             layout: { left: 70, top: 0, bottom: 15, width: 50 },
             isEditable: YES,
             canEditContent: YES,
+            // as per http://groups.google.com/group/sproutcore/browse_thread/thread/6564941be2b51276/fcf4eb11a1ea268f?#fcf4eb11a1ea268f
+            exampleView: SmartGraphs.EditableListItemView,
             contentValueKey: 'y',
             contentBinding: 'SmartGraphs.dataSeriesController.arrangedObjects',
             selectionBinding: 'SmartGraphs.dataSeriesController.selection',
