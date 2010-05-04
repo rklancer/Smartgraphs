@@ -23,3 +23,11 @@ body.sc-theme {
   font-size: 18px;
   position: absolute;
 }
+
+.sc-view.sg-question div {
+  font-size: 18px;
+}
+
+.sc-view.sg-question textarea {
+  font-size: 18px;
+}

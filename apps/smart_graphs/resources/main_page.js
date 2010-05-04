@@ -2,14 +2,12 @@
 // Project:   SmartGraphs - mainPage
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
-/*globals SmartGraphs */
+/*globals SmartGraphs CC*/
 
 // This page describes the main user interface for your application.
 
-//SmartGraphs.generateLayout = function (corner,   
 SmartGraphs.mainPage = SC.Page.design({
 
-  // random change.
   // obviously, these non-mainPane views could be controlled by a controller.
   introView: SC.StaticContentView.design({
     classNames: ['sg-question'],
@@ -18,9 +16,14 @@ SmartGraphs.mainPage = SC.Page.design({
           "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
   }),
   
-  followupView: SC.StaticContentView.design({
-    classNames: ['sg-question'],
-    content: "For how long did Maria talk with her coach?"
+  followupView: SC.View.design({
+    childViews: 'question1'.w(),
+    classNames: 'sg-question', 
+    
+    question1: SC.QuestionView.design({
+			useStaticLayout: YES,
+			prompt: 'For how long did Maria talk with her coach?'
+		})
   }),
   
   topperView: SC.StaticContentView.design({
@@ -170,6 +173,8 @@ SmartGraphs.mainPage = SC.Page.design({
         
         contentView: SC.View.design({
           childViews: ['xsView', 'ysView'],          
+
+          // look at SC.ContentDisplay for this too
 
           xHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
           yHeightBinding: SC.Binding.from('.ysView.height').oneWay(),
