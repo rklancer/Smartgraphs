@@ -26,6 +26,9 @@ SlideBuilder
   addAnnotation
   removeAnnotation
   
+  it gets events from the component dataseries, axis, etc. views; it can route or delegate them to e.g.,
+  AnnotationBuilders, or directly to Wizards, or to Annotations (imagine an clickable annotation)
+  
   
   note that an annotationbuilder may add and remove marks to the slide, e.g., as the user
   drags the annotation around, etc, until the annotation is "built" 
@@ -48,7 +51,11 @@ Wizard
   the wizard could presumably attach an annotation to the slide, and play it when the user clicks
   a certain button (e.g., a 'show me' or 'show me again' button)  
   
-
+  it could interrogate the Annotation constructed by an AnnotationBuilder and then, if acceptable, tell the
+  AnnotationBuilder to create the annotation
+  
+  å
+  
 Tool
 
   tools (need a better name) are like wizards without a lot of prompting
