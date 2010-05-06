@@ -15,10 +15,10 @@ SmartGraphs.SeriesView = SC.View.extend(
   
   _raphaelObjForId: {},     // index of raphael objects representing data points in this series, by id
   _dataPointForId: {},
-  _highlightedPoint: null,
+  _highlightedPoint: null,   // unclear whether this is a DOM object or a DataPoint record...
 
   NO_HIGHLIGHT_ATTR: { r: 4 },
-  HIGHLIGHT_ATTR: { r: 5 },
+  HIGHLIGHT_ATTR: { r: 6 },
   SELECTED_ATTR: { stroke: '#aa0000', fill: '#aa0000', opacity: 0.8 },
   NOT_SELECTED_ATTR: { stroke: "#BFADA7", fill: "#BFADA7", opacity: 0.5 },
   DATA_POINT_ID_MATCHER : '',
@@ -66,6 +66,7 @@ SmartGraphs.SeriesView = SC.View.extend(
   mouseExited: function (e) {
     var point = this._highlightedPoint;
     if (point) point.attr(this.NO_HIGHLIGHT_ATTR);    
+    this._highlightedPoint = null;
   },
   
   render: function (context, firstTime) {
@@ -107,6 +108,9 @@ SmartGraphs.SeriesView = SC.View.extend(
         var y = padding.top + plotHeight - (pair.get('y') * yScale);
     
         var point = raphael.circle(x, y).attr(this.NO_HIGHLIGHT_ATTR);
+        
+        // we want: if this point corresponds to the highlighted PAIR, highlight it.
+        // but note that this requires a different data model
         
         if (selection.contains(pair)) {
           point.attr(this.SELECTED_ATTR);
