@@ -40,7 +40,6 @@ SmartGraphs.SeriesView = SC.View.extend(
   },
   
   mouseDown: function (e) {
-    debugger;
     var pair = this._dataPointForId[e.target.id];
     
     if (pair) {
@@ -57,7 +56,6 @@ SmartGraphs.SeriesView = SC.View.extend(
   },
   
   mouseEntered: function (e) {
-    debugger;
     console.log('mouseEntered ' + e.target.id);
     var point = this._raphaelObjForId[e.target.id];
     
