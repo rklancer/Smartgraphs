@@ -128,8 +128,20 @@ after looking at SC.View, I think the thing to do is bind axesController to axes
     
   (note how willBegiveLiveResize() and didEndLiveResize() are paired)
   
+---
 
+
+SC.RenderContext.element() returns the DOM node for the RenderContext
+  1. if the RenderContext already is associated with a DOM node (e.g., if you passed its constructor a node) it returns that node
+  2. if the RenderContext does not already have an associated DOM node (e.g., if you passed a tag name string to its constructor) it creates a node.
   
+    You won't see much of createElement(); the SC.RenderContext *class* contains a 'factory' property that references a div node. (the factory DOM node is kept around, and only created (recreated?) if the 'factory' property is undefined when element() is called)
+    
+  SC.RenderContext.element() creates a node by setting the whole string of the render context (i.e., including the outermost tag of the layer!) to be the innerHTML of the 'factory' node, then cloning that node and returning a reference to the clone.
+  
+  when 
+    
+    
     
   *** 'frame' property of view represents the bounding rect for the view, relative to the top left corner of the parent view
     
@@ -168,6 +180,7 @@ after looking at SC.View, I think the thing to do is bind axesController to axes
 
   Set this property to YES whenever the view needs to layout its child views. 
   Normally this property is set automatically whenever the layout property for a child view changes.
+  
 
 
 
