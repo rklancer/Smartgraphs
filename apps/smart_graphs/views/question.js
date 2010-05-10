@@ -2,7 +2,7 @@
 // Project:   Cc.QuestionView
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
-/*globals CC */
+/*globals SmartGraphs SC*/
 
 /** @class
 
@@ -10,37 +10,31 @@
 
   @extends SC.View
 */
-SC.QuestionView = SC.StackedView.extend(SC.StaticLayout, {
+SmartGraphs.QuestionView = SC.View.extend({
+	//layout: {top: 20, left: 20, right: 0},
 	
-	layout: {top: 0, left: 0, right: 0},
-
-  classNames: ['question','open-response-question'],
-
   contentDisplayProperties: 'prompt'.w(),
-
 	prompt: "[prompt]",
-	
-	useStaticLayout: NO,
-		
+
 	childViews: 'promptView inputView checkButton'.w(),
 	
 	promptView: SC.StaticContentView.design({
 		contentBinding: "*parentView.prompt"
 	}),
 
-	inputView: SC.View.design(SC.StaticLayout, {
-		layout: {left: 20, top: 5, right: 20, height: 95 },
-		useStaticLayout: YES,
-		childViews: 'textFieldView'.w(),
-		textFieldView: SC.TextFieldView.design({
-			classNames: 'question-input',
-			isTextArea: YES
-		})
-	}),
-	
-	checkButton: SC.ButtonView.design(SC.StaticLayout, {
+  inputView: SC.View.design({
+     layout: { height: 20 },
+     useStaticLayout: YES,
+     childViews: 'textFieldView'.w(),
+     textFieldView: SC.TextFieldView.design({
+       //classNames: 'question-input',
+       isTextArea: YES
+     })
+    }),
+    
+	checkButton: SC.ButtonView.design({
     useStaticLayout: YES,
-	  layout: { top: 10, left: 20, width: 120 },
+	  //layout: { top: 10, left: 20, width: 120 },
 	  title: "Check Answer",
     answerBinding: '*parentView.inputView.textFieldView.value',
 	  action: function () {
