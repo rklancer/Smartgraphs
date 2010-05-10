@@ -19,10 +19,14 @@ SmartGraphs.RaphaelView = SC.View.extend(
   
   didCreateLayer: function () {    
     var raphaelConstructor = Raphael;  // make jslint stop complaining that Raphael needs to be called with 'new' because of the initial cap
-    var layout = this.get('layout');
+    var frame = this.get('frame');
     
-    this.$().append("<div class='graph'></div>");
-    var raphaelObject = raphaelConstructor(this.$('.graph')[0], layout.width, layout.height);
+    var raphaelObject = raphaelConstructor(this.get('layer'), frame.width, frame.height);
+    
+    // cache a reference to the raphaelObject in the top level dom element ('canvas') created by Raphael
+    // note that all the *other* dom nodes created by Raphael are already given a 'raphael' property by Raphael itself
+    raphaelObject.canvas.raphael = raphaelObject;
+    
     this.set('raphaelObject', raphaelObject);
   },
   

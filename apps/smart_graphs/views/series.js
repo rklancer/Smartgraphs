@@ -40,6 +40,7 @@ SmartGraphs.SeriesView = SC.View.extend(
   },
   
   mouseDown: function (e) {
+    debugger;
     var pair = this._dataPointForId[e.target.id];
     
     if (pair) {
@@ -56,6 +57,7 @@ SmartGraphs.SeriesView = SC.View.extend(
   },
   
   mouseEntered: function (e) {
+    debugger;
     console.log('mouseEntered ' + e.target.id);
     var point = this._raphaelObjForId[e.target.id];
     
@@ -70,10 +72,11 @@ SmartGraphs.SeriesView = SC.View.extend(
   },
   
   render: function (context, firstTime) {
-    
-    console.log('rendering');
+
     var parent = this.get('parentView');
-    var raphael = parent.get('raphaelObject');
+    var raphaelNode = parent.$().children()[0];
+    var raphael = (raphaelNode && raphaelNode.raphael) ? raphaelNode.raphael : null;
+    
     var padding = this.get('padding');
     var layout = parent.get('layout');
     var xMin = this.get('xMin'),
