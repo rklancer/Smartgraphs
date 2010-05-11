@@ -4,6 +4,8 @@
 // ==========================================================================
 /*globals SmartGraphs CC*/
 
+sc_require('main');
+
 // This page describes the main user interface for your application.
 SmartGraphs.mainPage = SC.Page.design({
 
@@ -33,14 +35,14 @@ SmartGraphs.mainPage = SC.Page.design({
     //     }),
 
     classNames: 'sg-question'.w(),
-    inputType: 'annotation',
+    inputType: SmartGraphs.GRAPH_ANNOTATION_RESPONSE,
     prompt: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " + "These data are shown in the scatterplot and the table at right." + "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
   }),
 
 
   followupView: SmartGraphs.QuestionView.design({
     classNames: 'sg-question'.w(),
-    inputType: 'text',
+    inputType: SmartGraphs.TEXT_RESPONSE,
     prompt: 'For how long did Maria talk with her coach?'
   }),
 

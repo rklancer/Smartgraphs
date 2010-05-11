@@ -12,6 +12,9 @@
 // See comments for some pointers on what to do next.
 //
 
+SmartGraphs.TEXT_RESPONSE = 'text';
+SmartGraphs.GRAPH_ANNOTATION_RESPONSE = 'annotation';
+
 SmartGraphs.main = function main() {
 
   // Step 1: Instantiate Your Views

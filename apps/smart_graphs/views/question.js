@@ -11,6 +11,7 @@
   @extends SC.View
 */
 
+sc_require('main');
 
 SmartGraphs.QuestionView = SC.View.extend({
 	//layout: {top: 20, left: 20, right: 0},
@@ -18,13 +19,10 @@ SmartGraphs.QuestionView = SC.View.extend({
   contentDisplayProperties: 'prompt'.w(),
 	prompt: "[prompt]",
 	
-//	inputType: SmartGraphs.TEXT,      // default; should migrate this to a controller
+//	inputType: SmartGraphs.TEXT_RESPONSE,      // default; should migrate this to a controller
 
   textInputShouldBeVisibleBinding: SC.Binding.transform( function (value) {
-    console.log('textInputShouldBeVisible firing!');
-    var ret = (value === 'text');
-    console.log('textInputShouldBeVisible returning ' + ret);
-    return ret;
+    return (value === SmartGraphs.TEXT_RESPONSE);
   }).from('.inputType'),
 
 	childViews: 'promptView inputView checkButton'.w(),
@@ -34,15 +32,15 @@ SmartGraphs.QuestionView = SC.View.extend({
 	}),
 
   inputView: SC.View.design({
-     layout: { height: 20 },
-     useStaticLayout: YES,
-     isVisibleBinding: '.parentView.textInputShouldBeVisible',
-     childViews: 'textFieldView'.w(),
-     textFieldView: SC.TextFieldView.design({
-       //classNames: 'question-input',
-       isTextArea: YES
-     })
-    }),
+   layout: { height: 20 },
+   useStaticLayout: YES,
+   isVisibleBinding: '.parentView.textInputShouldBeVisible',
+   childViews: 'textFieldView'.w(),
+   textFieldView: SC.TextFieldView.design({
+     //classNames: 'question-input',
+     isTextArea: YES
+   })
+  }),
 
 	checkButton: SC.ButtonView.design({
     useStaticLayout: YES,
