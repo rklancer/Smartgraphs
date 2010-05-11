@@ -19,12 +19,30 @@ SmartGraphs.QuestionView = SC.View.extend({
   contentDisplayProperties: 'prompt'.w(),
 	prompt: "[prompt]",
 	
-//	inputType: SmartGraphs.TEXT_RESPONSE,      // default; should migrate this to a controller
+  inputType: SmartGraphs.TEXT_RESPONSE,      // default; should migrate this to a controller
 
   textInputShouldBeVisibleBinding: SC.Binding.transform( function (value) {
     return (value === SmartGraphs.TEXT_RESPONSE);
   }).from('.inputType'),
 
+  // FIXME this should migrate to a controller, of course!
+  
+  answer: function () {
+    var inputType = this.get('inputType');
+
+    if (inputType === SmartGraphs.TEXT_RESPONSE) {
+      var ret = this.getPath('inputView.textFieldView.value').strip();
+      console.log('inputView.textFieldView.value = ' + ret);
+      return ret;
+    }
+    else if (inputType === SmartGraphs.GRAPH_ANNOTATION_RESPONSE) {
+      // simple logic here is that the 'answer' is the x-value of the selection... make this more general.
+      var selection = SmartGraphs.getPath('dataSeriesController.selection');
+      console.log('selection = ' + selection);
+      return (selection.get('length') === 1) ? selection.toArray().objectAt(0).get('x') : null;
+    }
+  }.property('.inputType', '.inputView.textFieldView.value', 'SmartGraphs.dataSeriesController.selection'),
+  
 	childViews: 'promptView inputView checkButton'.w(),
 	
 	promptView: SC.StaticContentView.design({
@@ -32,7 +50,7 @@ SmartGraphs.QuestionView = SC.View.extend({
 	}),
 
   inputView: SC.View.design({
-   layout: { height: 20 },
+   layout: { height: 20, width: 150 },
    useStaticLayout: YES,
    isVisibleBinding: '.parentView.textInputShouldBeVisible',
    childViews: 'textFieldView'.w(),
@@ -46,9 +64,18 @@ SmartGraphs.QuestionView = SC.View.extend({
     useStaticLayout: YES,
 	  //layout: { top: 10, left: 20, width: 120 },
 	  title: "Check Answer",
-    answerBinding: '*parentView.inputView.textFieldView.value',
+    //answerBinding: '.parentView.answer',
+    
 	  action: function () {
-	    SC.AlertPane.info('You said "' + this.get('answer') + '"; I won\'t try to check this answer for you until we\'ve thought more carefully about UI and data modeling issues');
+	    var answer = this.getPath('parentView.answer');
+	    
+	    //handle empty answers.
+	    if (answer === this.getPath('parentView.correctAnswer')) {
+	      SC.AlertPane.info("'" + answer + "' is the correct answer!");
+	    }
+	    else {
+	      SC.AlertPane.info("Sorry, '" + answer + "' is not the correct answer.");
+	    }
 	  }
 	})
 });

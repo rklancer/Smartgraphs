@@ -36,6 +36,7 @@ SmartGraphs.mainPage = SC.Page.design({
 
     classNames: 'sg-question'.w(),
     inputType: SmartGraphs.GRAPH_ANNOTATION_RESPONSE,
+    correctAnswer: 4,
     prompt: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " + "These data are shown in the scatterplot and the table at right." + "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
   }),
 
@@ -43,7 +44,8 @@ SmartGraphs.mainPage = SC.Page.design({
   followupView: SmartGraphs.QuestionView.design({
     classNames: 'sg-question'.w(),
     inputType: SmartGraphs.TEXT_RESPONSE,
-    prompt: 'For how long did Maria talk with her coach?'
+    correctAnswer: '2',
+    prompt: 'For how many minutes did Maria talk with her coach?'
   }),
 
   topperView: SC.StaticContentView.design({
