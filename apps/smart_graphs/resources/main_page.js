@@ -9,37 +9,12 @@ sc_require('main');
 // This page describes the main user interface for your application.
 SmartGraphs.mainPage = SC.Page.design({
 
-  // obviously, these non-mainPane views could be controlled by a controller.
   introView: SmartGraphs.QuestionView.design({
-    // TODO: Need to hide the inputView field
-    
-    //childViews: 'readyButton'.w(),
-
-    // readyButton: SC.ButtonView.design({
-    //       layout: {
-    //         top: 400,
-    //         left: 20,
-    //         width: 120
-    //       },
-    //       title: "My Answer is Ready",
-    //       answerBinding: 'SmartGraphs.dataSeriesController.selection',
-    //       action: function() {
-    //         // Match student response to question and determine if the corect answer was given
-    //         // For now: x=4, y=800 is the correct answer
-    //         if ((1 == this.get("answer").get("length")) && (4 == this.get("answer").toArray().objectAt(0).get("x"))) {
-    //           SC.AlertPane.info('Correct');
-    //         } else {
-    //           SC.AlertPane.info('Incorrect');
-    //         }
-    //       }
-    //     }),
-
     classNames: 'sg-question'.w(),
     inputType: SmartGraphs.GRAPH_ANNOTATION_RESPONSE,
     correctAnswer: 4,
     prompt: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " + "These data are shown in the scatterplot and the table at right." + "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
   }),
-
 
   followupView: SmartGraphs.QuestionView.design({
     classNames: 'sg-question'.w(),
@@ -158,11 +133,7 @@ SmartGraphs.mainPage = SC.Page.design({
       }
 
     }),
-
-    // bottomLeftView: SC.LabelView.design({
-    //   layout: { left: 20, top: 365, width: 455, height: 335 },
-    //   classNames: ['smartgraph-pane']
-    // }),
+    
     graphView: SmartGraphs.RaphaelView.design({
       layout: {
         left: 485,

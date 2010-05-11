@@ -17,5 +17,4 @@ SmartGraphs.DataPoint = SC.Record.extend(
     inverse: 'points' }),
   x: SC.Record.attr(Number),
   y: SC.Record.attr(Number)
-
 }) ;
