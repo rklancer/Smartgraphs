@@ -15,6 +15,7 @@ SmartGraphs.dataSeriesController = SC.ArrayController.create(
 /** @scope SmartGraphs.dataSeriesController.prototype */ {
   
   totalChanges: 0,
+  allowsMultipleSelection: NO,
   
   _valuesDidChange: function () {
     this.incrementProperty('totalChanges');

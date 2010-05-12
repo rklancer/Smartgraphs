@@ -50,7 +50,7 @@ SmartGraphs.SeriesView = SC.View.extend(
         controller.deselectObject(pair);
       }
       else {
-        controller.selectObject(pair, YES);
+        controller.selectObject(pair, NO);
       }
     }
   },
