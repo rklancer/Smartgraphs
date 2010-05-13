@@ -19,6 +19,19 @@ SmartGraphs.Question.FIXTURES = [
     correctResponseFeedback: "That's correct. Maria stopped at 4 minutes, after having run 800 meters.",
     incorrectResponseFeedback: 
       "That's not quite right. Remember that when Maria stops, her distance stays the same at successive time points." +
-      "See if you can use that hint to find the point where Maria first stopped to talk to her coach."     
+      "See if you can use that hint to find the point where Maria first stopped to talk to her coach. " +
+      "(imagine this and similar feedback being displayed in animated, graphical form)"
+  },
+  
+  { guid: '2',
+    responseType: SmartGraphs.TEXT_RESPONSE,
+    prompt: 'For how many minutes did Maria talk with her coach?',
+    correctResponse: '2',
+    correctResponseFeedback: "That's correct. Maria stopped at 4 minutes, and didn't move again until 6 minutes.",
+    incorrectResponseFeedback: 
+      "That's not correct. Look for the group of time points where the y value, which represents Maria's distance " +
+      "remains the same. Subtract the latest time from the earliest time. " +
+      "(imagine this feedback broken into component steps, each graphical in nature, that build up an visual/animated " +
+      "set of annotations that can be reviewed later.)"
   }
 ];
