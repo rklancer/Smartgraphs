@@ -12,6 +12,10 @@
 */
 sc_require('models/question');
 
+// even for this simple question controller, it might make sense to use a delegate pattern
+// e.g., set a delegate object that knows how to fetch the answer and be able to write new delegates without rewriting
+// or adding on to a question controller
+
 SmartGraphs.questionController = SC.ObjectController.create(
 /** @scope SmartGraphs.questionController.prototype */ {
 
@@ -31,7 +35,7 @@ SmartGraphs.questionController = SC.ObjectController.create(
   }.property(),   
     
   textResponse: null,     // views should bind value to this
-  
+
   shouldAcceptGraphicalResponse: function () {
     console.log(this.get('responseType'));
     console.log(SmartGraphs.GRAPH_ANNOTATION_RESPONSE);
