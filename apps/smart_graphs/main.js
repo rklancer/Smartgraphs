@@ -12,8 +12,6 @@
 // See comments for some pointers on what to do next.
 //
 
-SmartGraphs.TEXT_RESPONSE = 'text';
-SmartGraphs.GRAPH_ANNOTATION_RESPONSE = 'annotation';
 
 SmartGraphs.main = function main() {
 
@@ -33,6 +31,9 @@ SmartGraphs.main = function main() {
   var axes = SmartGraphs.store.find(SmartGraphs.Axes, '1');
   SmartGraphs.dataSeriesController.set('content', data.get('points'));
   SmartGraphs.axesController.set('content', axes);
+  
+  var firstQuestion = SmartGraphs.store.find(SmartGraphs.Question, '1');
+  SmartGraphs.questionController.set('content', firstQuestion);
 };
 
 function main() { SmartGraphs.main(); }

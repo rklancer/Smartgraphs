@@ -11,7 +11,7 @@
   @extends SC.View
 */
 
-sc_require('main');
+sc_require('models/question');   // for now; that's where SmartGraphs.TextResponse is defined.
 
 SmartGraphs.QuestionView = SC.View.extend({
   contentDisplayProperties: 'prompt'.w(),

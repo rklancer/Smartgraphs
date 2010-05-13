@@ -1,0 +1,55 @@
+// ==========================================================================
+// Project:   SmartGraphs.questionController
+// Copyright: ©2010 My Company, Inc.
+// ==========================================================================
+/*globals SmartGraphs */
+
+/** @class
+
+  (Document Your Controller Here)
+
+  @extends SC.Object
+*/
+sc_require('models/question');
+
+SmartGraphs.questionController = SC.ObjectController.create(
+/** @scope SmartGraphs.questionController.prototype */ {
+
+  checkAnswer: function () {
+    if (this.get('response') === this.get('correctResponse')) {
+      this.set('feedback', this.get('correctResponseFeedback'));
+    }
+    else {
+      this.set('feedback', this.get('incorrectResponseFeedback'));
+    }
+  },
+  
+  feedback: null,
+
+  shouldAcceptTextResponse: function () {
+    return (this.get('responseType') === SmartGraphs.TEXT_RESPONSE);
+  }.property(),   
+    
+  textResponse: null,     // views should bind value to this
+  
+  shouldAcceptGraphicalResponse: function () {
+    console.log(this.get('responseType'));
+    console.log(SmartGraphs.GRAPH_ANNOTATION_RESPONSE);
+    return (this.get('responseType') === SmartGraphs.GRAPH_ANNOTATION_RESPONSE);
+  }.property(),
+  
+  graphicalResponse: function () {
+    var selection = SmartGraphs.dataSeriesController.get('selection');
+    return (selection.get('length') === 1) ? selection.toArray().objectAt(0).get('x') : null;
+  }.property(),
+
+  response: function () {
+    if (this.get('shouldAcceptTextResponse')) {
+      return this.get('textResponse');
+    }
+    else if (this.get('shouldAcceptGraphicalResponse')) {
+      return this.get('graphicalResponse');
+    }
+    else return null;
+  }.property()
+}) ;
