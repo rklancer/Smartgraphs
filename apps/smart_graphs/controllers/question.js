@@ -19,7 +19,7 @@ sc_require('models/question');
 SmartGraphs.questionController = SC.ObjectController.create(
 /** @scope SmartGraphs.questionController.prototype */ {
 
-  checkAnswer: function () {
+  checkResponse: function () {
     if (this.get('response') === this.get('correctResponse')) {
       this.set('feedback', this.get('correctResponseFeedback'));
     }
@@ -36,6 +36,7 @@ SmartGraphs.questionController = SC.ObjectController.create(
     
   textResponse: null,     // views should bind value to this
 
+  // text response vs. graphical response could be delegated (controller sets delegate depending on record type)
   shouldAcceptGraphicalResponse: function () {
     console.log(this.get('responseType'));
     console.log(SmartGraphs.GRAPH_ANNOTATION_RESPONSE);
@@ -44,7 +45,9 @@ SmartGraphs.questionController = SC.ObjectController.create(
   
   graphicalResponse: function () {
     var selection = SmartGraphs.dataSeriesController.get('selection');
-    return (selection.get('length') === 1) ? selection.toArray().objectAt(0).get('x') : null;
+
+    // for simplicity's sake, the value of the response is the x coordinate of the selected point, as a string.
+    return (selection.get('length') === 1) ? selection.toArray().objectAt(0).get('x')+'' : null;
   }.property(),
 
   response: function () {
