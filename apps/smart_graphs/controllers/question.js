@@ -20,6 +20,7 @@ SmartGraphs.questionController = SC.ObjectController.create(
 /** @scope SmartGraphs.questionController.prototype */ {
 
   checkResponse: function () {
+    console.log("checking response");
     if (this.get('response') === this.get('correctResponse')) {
       this.set('feedback', this.get('correctResponseFeedback'));
     }
