@@ -1,7 +1,14 @@
 =============================================================================
 Project:   SmartGraphs
-Copyright: ©2010 My Company, Inc.
+Copyright: ©2010 Concord Consortium
 =============================================================================
 
-TODO: Describe Your Project
+To install:
 
+git clone git://github.com/rklancer/Smartgraphs.git
+git submodule update --init
+cd abbot
+rake init
+cd ..
+abbot/bin/sc-server
+...then visit localhost:4020/smart_graphs
