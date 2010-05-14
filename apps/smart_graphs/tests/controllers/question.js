@@ -66,8 +66,6 @@ test('checkResponse should work correctly with text response', function() {
   qc.checkResponse();
   feedback = qc.get('feedback');
   equals(feedback, '[incorrect-feedback]', 'Feedback property after checkResponse() on an incorrect response should be appropriate');
-  
-  ok(false, "Breaking a test to make sure Hudson is really running our tests.");
 });
 
 
