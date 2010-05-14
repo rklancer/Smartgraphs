@@ -1,3 +1,6 @@
 [submodule "capybara-testrunner"]
 	path = capybara-testrunner
 	url = http://github.com/scytacki/capybara-testrunner.git
+[submodule "abbot"]
+	path = abbot
+	url = git://github.com/sproutit/sproutcore-abbot.git
