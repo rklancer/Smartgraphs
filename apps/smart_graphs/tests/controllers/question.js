@@ -68,7 +68,6 @@ test('checkResponse should work correctly with text response', function() {
   equals(feedback, '[incorrect-feedback]', 'Feedback property after checkResponse() on an incorrect response should be appropriate');
   
   ok(false, "Breaking a test to make sure Hudson is really running our tests.");
-  
 });
 
 
