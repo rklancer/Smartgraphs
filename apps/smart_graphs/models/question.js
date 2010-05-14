@@ -23,5 +23,9 @@ SmartGraphs.Question = SC.Record.extend(
   prompt: SC.Record.attr(String),
   correctResponse: SC.Record.attr(String),
   correctResponseFeedback: SC.Record.attr(String),      // ..for now, they are simple textual feedback           
-  incorrectResponseFeedback: SC.Record.attr(String)     // eventually feedbacks should be 'actions'
+  incorrectResponseFeedback: SC.Record.attr(String),     // eventually feedbacks should be 'actions'
+  
+  // transient properties that could eventually migrate to a separate Response model
+  feedback: null,
+  textResponse: null
 }) ;

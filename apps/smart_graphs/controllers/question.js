@@ -27,19 +27,13 @@ SmartGraphs.questionController = SC.ObjectController.create(
       this.set('feedback', this.get('incorrectResponseFeedback'));
     }
   },
-  
-  feedback: null,
 
   shouldAcceptTextResponse: function () {
     return (this.get('responseType') === SmartGraphs.TEXT_RESPONSE);
   }.property(),   
-    
-  textResponse: null,     // views should bind value to this
 
   // text response vs. graphical response could be delegated (controller sets delegate depending on record type)
   shouldAcceptGraphicalResponse: function () {
-    console.log(this.get('responseType'));
-    console.log(SmartGraphs.GRAPH_ANNOTATION_RESPONSE);
     return (this.get('responseType') === SmartGraphs.GRAPH_ANNOTATION_RESPONSE);
   }.property(),
   
