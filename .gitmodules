@@ -1,0 +1,3 @@
+[submodule "capybara-testrunner"]
+	path = capybara-testrunner
+	url = http://github.com/scytacki/capybara-testrunner.git
