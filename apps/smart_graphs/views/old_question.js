@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Cc.QuestionView
+// Project:   SmartGraphs.OldQuestionView
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals SmartGraphs SC*/
@@ -13,7 +13,7 @@
 
 sc_require('models/question');   // for now; that's where SmartGraphs.TextResponse is defined.
 
-SmartGraphs.QuestionView = SC.View.extend({
+SmartGraphs.OldQuestionView = SC.View.extend({
   contentDisplayProperties: 'prompt'.w(),
   prompt: "[prompt]",
 

@@ -9,14 +9,14 @@ sc_require('main');
 // This page describes the main user interface for your application.
 SmartGraphs.mainPage = SC.Page.design({
 
-  introView: SmartGraphs.QuestionView.design({
+  introView: SmartGraphs.OldQuestionView.design({
     classNames: 'sg-question'.w(),
     inputType: SmartGraphs.GRAPH_ANNOTATION_RESPONSE,
     correctAnswer: 4,
     prompt: "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " + "These data are shown in the scatterplot and the table at right." + "<br><br>Click on a point in the scatterplot where Maria stopped to talk with her coach."
   }),
 
-  followupView: SmartGraphs.QuestionView.design({
+  followupView: SmartGraphs.OldQuestionView.design({
     classNames: 'sg-question'.w(),
     inputType: SmartGraphs.TEXT_RESPONSE,
     correctAnswer: '2',
