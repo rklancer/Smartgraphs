@@ -25,6 +25,7 @@ SmartGraphs.questionController = SC.ObjectController.create(
     console.log("checking response");
     if (this.get('response') === this.get('correctResponse')) {
       this.set('feedback', this.get('correctResponseFeedback'));
+      this.set('isAnswered', true);
     }
     else {
       this.set('feedback', this.get('incorrectResponseFeedback'));

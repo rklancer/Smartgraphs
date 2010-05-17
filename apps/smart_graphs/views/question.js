@@ -17,10 +17,12 @@ SmartGraphs.QuestionView = SC.View.extend(
   childViews: 'promptView inputView checkButton feedbackView'.w(),
 
   promptView: SC.StaticContentView.design({
-    contentBinding: ".parentView.prompt"
+    displayProperties: 'content'.w(),
+    contentBinding: SC.Binding.oneWay('.parentView.prompt')
   }),
 
   inputView: SC.View.design({
+    displayProperties: 'isVisible'.w(),
     layout: {
       height: 20,
       width: 150
@@ -29,7 +31,8 @@ SmartGraphs.QuestionView = SC.View.extend(
     isVisibleBinding: '.parentView.textInputShouldBeVisible',
     childViews: 'textFieldView'.w(),
     textFieldView: SC.TextFieldView.design({
-      isTextArea: YES
+      isTextArea: YES,
+      valueBinding: '.parentView.parentView.controller.textResponse'
     })
   }),
 
@@ -41,6 +44,10 @@ SmartGraphs.QuestionView = SC.View.extend(
   }),
   
   feedbackView: SC.StaticContentView.design({
-    contentBinding: '.parentView.feedback'
+    displayProperties: 'content'.w(),         // shouldn't this be default?
+    contentBinding: SC.Binding.oneWay('.parentView.feedback'),   // FIXME: aargh it go away if empty!
+    // StaticContentView will refuse to render if its content is falsy.
+    // Even if you want it to show an empty string. This is probably a bug.
+    isVisibleBinding: SC.Binding.oneWay('.parentView.feedback').bool()
   })
 });

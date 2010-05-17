@@ -42,12 +42,12 @@ can you bind selection of questionController to that value, or do we have to obs
 to do:
 
 * adjust the question model with short name
-* create a simple activity model
+* create a simple activity model (questionSequenceController)
 * create a query
 * make the questionsequenceview an arraycontroller with the appropriate flags set
 * endow questionsequenceview with an 'questionSequence' property that points to a questionsequence model object and sets the content property accordingly
 * create segmentedview with appropriate
-* create next/back buttons and bind accordingly
+* create next/back buttons and bind accordinglyx`
 
 
 

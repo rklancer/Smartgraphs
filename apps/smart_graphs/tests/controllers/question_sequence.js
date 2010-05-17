@@ -8,8 +8,7 @@ module("SmartGraphs.questionSequenceController");
 
 // TODO: Replace with real unit test for SmartGraphs.questionSequenceController
 test("test description", function() {
-  var expected = "test";
-  var result   = "test";
-  equals(result, expected, "test should equal test");
+  testsAreWritten = false;
+  ok(testsAreWritten, "Tests for questionSequenceController should be written.");
 });
 
