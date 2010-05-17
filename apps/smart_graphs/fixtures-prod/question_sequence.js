@@ -9,6 +9,6 @@ sc_require('models/question_sequence');
 SmartGraphs.QuestionSequence.FIXTURES = [
 
   { guid: 'sequence-1',
-    questions: ['1','2']
+    questions: ['1','2', '3']
   }
 ];
