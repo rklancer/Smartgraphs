@@ -10,9 +10,24 @@
 
   @extends SC.Object
 */
-SmartGraphs.questionSequenceController = SC.ObjectController.create(
+
+SmartGraphs.questionSequenceController = SC.ArrayController.create(
 /** @scope SmartGraphs.questionSequenceController.prototype */ {
 
-  // TODO: Add your own code here.
+  allowsEmptySelection: NO,
+  allowsMultipleSelection: NO,
 
+  sequenceDidChange: function () {
+    var sequence = this.get('sequence');
+
+    var query = SC.Query.local(SmartGraphs.Question, { 
+      conditions: 'sequence = {sequence}', 
+      sequence: sequence,
+      orderBy: 'index ASC' 
+    });
+    
+    var questions = SmartGraphs.store.find(query);
+    this.set('content', questions);
+    this.selectObject(this.firstObject());
+  }.observes('sequence')
 }) ;

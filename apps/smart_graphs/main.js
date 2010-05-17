@@ -32,8 +32,8 @@ SmartGraphs.main = function main() {
   SmartGraphs.dataSeriesController.set('content', data.get('points'));
   SmartGraphs.axesController.set('content', axes);
   
-  var firstQuestion = SmartGraphs.store.find(SmartGraphs.Question, '1');
-  SmartGraphs.questionController.set('content', firstQuestion);
+  var theSequence = SmartGraphs.store.find(SmartGraphs.QuestionSequence, 'sequence-1');
+  SmartGraphs.questionSequenceController.set('sequence', theSequence);
 };
 
 function main() { SmartGraphs.main(); }

@@ -18,6 +18,8 @@ sc_require('models/question');
 
 SmartGraphs.questionController = SC.ObjectController.create(
 /** @scope SmartGraphs.questionController.prototype */ {
+  
+  contentBinding: 'SmartGraphs.questionSequenceController.selection',
 
   checkResponse: function () {
     console.log("checking response");
