@@ -1,3 +1,34 @@
+
+5/17/10
+
+make questionsequenceview an arraycontroller whose content is that query result
+make it single selection, no empty selection
+
+bind questionController to selection
+
+to add:
+
+* segmented view (bind to content)
+* next/back buttons (need isFirst, isLast, next(), back() on questionSequenceController)
+
+segmentedview has 'itemvaluekey' and a 'value' properties.
+
+
+can you bind selection of questionController to that value, or do we have to observe the 'value' and set selection accordingly?
+
+
+to do:
+
+* adjust the question model with short name
+* create a simple activity model
+* make the questionsequenceview an arraycontroller with the appropriate flags set
+* endow questionsequenceview with an 'questionSequence' property that points to a questionsequence model object and sets the content property accordingly
+* create segmentedview with appropriate
+* create next/back buttons and bind accordingly
+
+
+
+
 5/12/10
 
 let's get back to simple.
