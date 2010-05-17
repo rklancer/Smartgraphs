@@ -1,6 +1,26 @@
 
 5/17/10
 
+
+make use of this pattern:
+
+
+
+// find contact record.
+var contactRecord = MyApp.store.find(MyApp.Contact, 4);
+// find events assigned to that contact.
+var localEventQuery = SC.Query.local(MyApp.Event, {
+   conditions: 'assignedTo = {contact}',
+   contact: contactRecord
+});
+
+IOW
+
+seq = SmartGraphs.store.find(SmartGraphs.QuestionSequence, 'sequence-1');
+query = SC.Query.local(SmartGraphs.Question, { conditions: 'sequence = {sequence}', sequence: seq, orderBy: 'index ASC' })
+qs = SmartGraphs.store.find(query)
+
+
 make questionsequenceview an arraycontroller whose content is that query result
 make it single selection, no empty selection
 
@@ -17,10 +37,13 @@ segmentedview has 'itemvaluekey' and a 'value' properties.
 can you bind selection of questionController to that value, or do we have to observe the 'value' and set selection accordingly?
 
 
+
+
 to do:
 
 * adjust the question model with short name
 * create a simple activity model
+* create a query
 * make the questionsequenceview an arraycontroller with the appropriate flags set
 * endow questionsequenceview with an 'questionSequence' property that points to a questionsequence model object and sets the content property accordingly
 * create segmentedview with appropriate

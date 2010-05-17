@@ -8,7 +8,10 @@ sc_require('models/question');
 
 SmartGraphs.Question.FIXTURES = [
 
-  { guid: '1',
+  { guid: 1,
+    sequence: 'sequence-1',
+    index: 1,
+    shortName: "Maria Runs",
     responseType: SmartGraphs.GRAPH_ANNOTATION_RESPONSE,
     prompt: 
        "Maria ran practice laps around the track. Her coach wrote the distance she ran after each minute. " + 
@@ -23,7 +26,10 @@ SmartGraphs.Question.FIXTURES = [
       "(imagine this and similar feedback being displayed in animated, graphical form)"
   },
   
-  { guid: '2',
+  { guid: 2,
+    sequence: 'sequence-1',
+    index: 2,
+    shortName: "She get a pep talk",
     responseType: SmartGraphs.TEXT_RESPONSE,
     prompt: 'For how many minutes did Maria talk with her coach?',
     correctResponse: '2',
