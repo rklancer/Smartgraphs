@@ -51,20 +51,20 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
   
   nextQuestionIsSelectableBinding: SC.Binding.oneWay('*nextQuestion.isSelectable'),
   
-  forwardOneQuestionIsAllowed: function () {
+  canSelectNextQuestion: function () {
     return (!this.get('isLastQuestion') && this.get('nextQuestionIsSelectable'));
   }.property('isLastQuestion', 'nextQuestionIsSelectable').cacheable(),
     
-  backOneQuestionIsAllowedBinding: SC.Binding.not('.isFirstQuestion'),
+  canSelectPreviousQuestionBinding: SC.Binding.not('.isFirstQuestion'),
 
-  forwardOneQuestion: function () {
-    if (this.get('forwardOneQuestionIsAllowed')) { 
+  selectNextQuestion: function () {
+    if (this.get('canSelectNextQuestion')) { 
       this.selectObject( this.get('nextQuestion') );
     }
   },
 
-  backOneQuestion: function () {
-    if (this.get('backOneQuestionIsAllowed')) {
+  selectPreviousQuestion: function () {
+    if (this.get('canSelectPreviousQuestion')) {
       this.selectObject( this.get('previousQuestion') );
     }
   },

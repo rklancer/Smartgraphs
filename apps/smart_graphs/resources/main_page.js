@@ -68,8 +68,8 @@ SmartGraphs.mainPage = SC.Page.design({
         },
         title: "Next",
         target: 'SmartGraphs.questionSequenceController',
-        action: 'forwardOneQuestion',
-        isEnabledBinding: 'SmartGraphs.questionSequenceController.forwardOneQuestionIsAllowed',
+        action: 'selectNextQuestion',
+        isEnabledBinding: 'SmartGraphs.questionSequenceController.canSelectNextQuestion',
         isVisibleBinding: SC.Binding.not('SmartGraphs.questionSequenceController.isLastQuestion').oneWay()
       }),
 
@@ -82,8 +82,8 @@ SmartGraphs.mainPage = SC.Page.design({
         },
         title: "Back",
         target: 'SmartGraphs.questionSequenceController',
-        action: 'backOneQuestion',
-        isEnabledBinding: 'SmartGraphs.questionSequenceController.backOneQuestionIsAllowed',
+        action: 'selectPreviousQuestion',
+        isEnabledBinding: 'SmartGraphs.questionSequenceController.canSelectPreviousQuestion',
         isVisibleBinding: SC.Binding.not('SmartGraphs.questionSequenceController.isFirstQuestion').oneWay()
       })
     }),
