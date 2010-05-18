@@ -20,14 +20,14 @@ body.sc-theme {
 
 .sc-view.sg-question {
   padding: 25px 20px 5px 20px;  
-  font-size: 18px;
+  font-size: 16px;
   position: absolute;
 }
 
 .sc-view.sg-question div {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .sc-view.sg-question textarea {
-  font-size: 18px;
+  font-size: 16px;
 }
