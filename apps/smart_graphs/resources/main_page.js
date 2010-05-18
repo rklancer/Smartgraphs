@@ -235,12 +235,13 @@ SmartGraphs.mainPage = SC.Page.design({
                 })
             })
         }),
+        
         authorView: SC.ListView.design({
             layout: {
                 left: 20,
                 top: 720,
                 bottom: 15,
-                width: 940
+                width: 1600
             },
             //contentValueKey: "prompt",
             contentBinding: "SmartGraphs.questionSequenceController.arrangedObjects",

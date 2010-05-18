@@ -22,7 +22,7 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
     if (value !== undefined && value.get('isSelectable')) {
       this.selectObject(value);
     }
-    
+
     return this.get('selection').toArray().objectAt(0);
   }.property('selection'),
   
