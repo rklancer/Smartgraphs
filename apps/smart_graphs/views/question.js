@@ -51,3 +51,25 @@ SmartGraphs.QuestionView = SC.View.extend(
     isVisibleBinding: SC.Binding.oneWay('.parentView.feedback').bool()
   })
 });
+
+/** @class
+
+  (Document Your View Here)
+
+  @extends SC.View
+*/
+SmartGraphs.QuestionAuthorView = SC.View.extend(
+/** @scope SmartGraphs.QuestionAuthorView.prototype */ {
+
+/*  childViews: 'promptView correctResponseView'.w(),
+
+  promptView: SC.StaticContentView.design({
+    displayProperties: 'content'.w(),
+    contentBinding: SC.Binding.oneWay('.parentView.prompt')
+  }),
+
+  correctResponseView: SC.StaticContentView.design({
+    displayProperties: 'content'.w(),
+    contentBinding: SC.Binding.oneWay('.parentView.correctResponse')
+  })*/
+});
