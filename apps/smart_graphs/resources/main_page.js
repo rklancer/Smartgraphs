@@ -34,7 +34,14 @@ SmartGraphs.mainPage = SC.Page.design({
         },
         itemsBinding: 'SmartGraphs.questionSequenceController',
         itemTitleKey: 'shortName',
-        itemIsEnabledKey: 'isAnswered'
+        itemIsEnabledKey: 'isSelectable',
+        valueBinding: 'SmartGraphs.questionSequenceController.selectedQuestion',
+        
+        // remember to refresh display if the next question becomes selectable
+        _nextQuestionPossiblyBecameSelectable: function () {
+          console.log("_nextQuestionPossiblyBecameSelectable");
+          this.displayDidChange();
+        }.observes('SmartGraphs.questionSequenceController*nextQuestion.isSelectable')
       }),
       
       questionView: SmartGraphs.QuestionView.design({
@@ -62,7 +69,8 @@ SmartGraphs.mainPage = SC.Page.design({
         title: "Next",
         target: 'SmartGraphs.questionSequenceController',
         action: 'forwardOneQuestion',
-        isEnabledBinding: 'SmartGraphs.questionSequenceController.forwardOneQuestionIsAllowed'
+        isEnabledBinding: 'SmartGraphs.questionSequenceController.forwardOneQuestionIsAllowed',
+        isVisibleBinding: SC.Binding.not('SmartGraphs.questionSequenceController.isLastQuestion').oneWay()
       }),
 
       backButton: SC.ButtonView.design({
@@ -75,7 +83,8 @@ SmartGraphs.mainPage = SC.Page.design({
         title: "Back",
         target: 'SmartGraphs.questionSequenceController',
         action: 'backOneQuestion',
-        isEnabledBinding: 'SmartGraphs.questionSequenceController.backOneQuestionIsAllowed'
+        isEnabledBinding: 'SmartGraphs.questionSequenceController.backOneQuestionIsAllowed',
+        isVisibleBinding: SC.Binding.not('SmartGraphs.questionSequenceController.isFirstQuestion').oneWay()
       })
     }),
     

@@ -17,36 +17,43 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
   allowsEmptySelection: NO,
   allowsMultipleSelection: NO,
 
-  currentQuestionBinding: SC.Binding.single('.selection'),
+  selectedQuestion: function (key, value) {
+    
+    if (value !== undefined && value.get('isSelectable')) {
+      this.selectObject(value);
+    }
+    
+    return this.get('selection').toArray().objectAt(0);
+  }.property('selection'),
   
-  indexOfCurrentQuestion : function () {
+  indexOfSelectedQuestion : function () {
     var selection = this.get('selection');
     var indexSet = selection.indexSetForSource(this);
     var index = indexSet ? indexSet.toArray().objectAt(0) : undefined;
     
     return index;
-  }.property('currentQuestion', 'content', '[]').cacheable(),
+  }.property('selectedQuestion', 'content', '[]').cacheable(),
   
   previousQuestion: function () {
-    var index = this.get('indexOfCurrentQuestion');
+    var index = this.get('indexOfSelectedQuestion');
     
     return (index > 0) ? this.objectAt(index-1) : null;
-  }.property('currentQuestion', 'content', '[]').cacheable(),
+  }.property('selectedQuestion', 'content', '[]').cacheable(),
 
   nextQuestion: function () {
-    var index = this.get('indexOfCurrentQuestion');
+    var index = this.get('indexOfSelectedQuestion');
     
     return (index + 1 < this.get('length')) ? this.objectAt(index+1) : null;
-  }.property('currentQuestion', 'content', '[]').cacheable(),
+  }.property('selectedQuestion', 'content', '[]').cacheable(),
 
   isFirstQuestionBinding: SC.Binding.bool('.previousQuestion').not(),
   isLastQuestionBinding: SC.Binding.bool('.nextQuestion').not(),
-
-  currentQuestionIsAnsweredBinding: SC.Binding.oneWay('SmartGraphs.questionController.isAnswered'),
   
-  forwardOneQuestionIsAllowed: function () { 
-    return (!this.get('isLastQuestion') && this.get('currentQuestionIsAnswered'));
-  }.property('isLastQuestion', 'currentQuestionIsAnswered').cacheable(),
+  nextQuestionIsSelectableBinding: SC.Binding.oneWay('*nextQuestion.isSelectable'),
+  
+  forwardOneQuestionIsAllowed: function () {
+    return (!this.get('isLastQuestion') && this.get('nextQuestionIsSelectable'));
+  }.property('isLastQuestion', 'nextQuestionIsSelectable').cacheable(),
     
   backOneQuestionIsAllowedBinding: SC.Binding.not('.isFirstQuestion'),
 

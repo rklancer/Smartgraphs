@@ -19,19 +19,34 @@ sc_require('models/question');
 SmartGraphs.questionController = SC.ObjectController.create(
 /** @scope SmartGraphs.questionController.prototype */ {
   
-  contentBinding: 'SmartGraphs.questionSequenceController.selection',
+  contentBinding: 'SmartGraphs.questionSequenceController.selectedQuestion',
 
+  contentDidChange: function () {
+    // you can always navigate to the current question!
+    this.set('isSelectable', true);
+  }.observes('.content'),
+  
   checkResponse: function () {
-    console.log("checking response");
     if (this.get('response') === this.get('correctResponse')) {
-      this.set('feedback', this.get('correctResponseFeedback'));
-      this.set('isAnswered', true);
+      this.didReceiveCorrectResponse();
     }
     else {
-      this.set('feedback', this.get('incorrectResponseFeedback'));
+      this.didReceiveIncorrectResponse();
     }
   },
 
+  didReceiveCorrectResponse: function () {
+    this.set('feedback', this.get('correctResponseFeedback'));
+    this.set('isAnswered', true);
+  
+    var nextQ = SmartGraphs.questionSequenceController.get('nextQuestion');
+    if (nextQ) nextQ.set('isSelectable', true);
+  },
+
+  didReceiveIncorrectResponse: function () {
+    this.set('feedback', this.get('incorrectResponseFeedback'));  
+  },
+  
   shouldAcceptTextResponse: function () {
     return (this.get('responseType') === SmartGraphs.TEXT_RESPONSE);
   }.property(),   

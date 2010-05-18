@@ -31,7 +31,14 @@ SmartGraphs.Question = SC.Record.extend(
   incorrectResponseFeedback: SC.Record.attr(String),    // eventually feedbacks should be 'actions'
   
   // transient properties that could eventually migrate to a separate Response model for persistent storage
-  isAnswered: false,
+  isAnswered: false,        // set after the question has been correctly answered
   feedback: null,
-  textResponse: null
+  textResponse: null,
+  
+  // the 'isSelectable' property is set to YES for:
+  //   * the *first* question
+  //   * the *next* question once you've correctly answered the current question,
+  //   * any question you've previously answered correctly  
+
+  isSelectable: false
 }) ;
