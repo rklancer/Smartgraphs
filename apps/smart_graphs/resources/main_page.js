@@ -31,7 +31,10 @@ SmartGraphs.mainPage = SC.Page.design({
       navButtons: SC.SegmentedView.design({
         layout: {
           top: 25
-        }
+        },
+        itemsBinding: 'SmartGraphs.questionSequenceController',
+        itemTitleKey: 'shortName',
+        itemIsEnabledKey: 'isAnswered'
       }),
       
       questionView: SmartGraphs.QuestionView.design({
@@ -58,8 +61,8 @@ SmartGraphs.mainPage = SC.Page.design({
         },
         title: "Next",
         target: 'SmartGraphs.questionSequenceController',
-        action: 'nextQuestion',
-        isEnabledBinding: 'SmartGraphs.questionSequenceController.nextQuestionIsAllowed'
+        action: 'forwardOneQuestion',
+        isEnabledBinding: 'SmartGraphs.questionSequenceController.forwardOneQuestionIsAllowed'
       }),
 
       backButton: SC.ButtonView.design({
@@ -71,8 +74,8 @@ SmartGraphs.mainPage = SC.Page.design({
         },
         title: "Back",
         target: 'SmartGraphs.questionSequenceController',
-        action: 'prevQuestion',
-        isEnabledBinding: 'SmartGraphs.questionSequenceController.prevQuestionIsAllowed'
+        action: 'backOneQuestion',
+        isEnabledBinding: 'SmartGraphs.questionSequenceController.backOneQuestionIsAllowed'
       })
     }),
     

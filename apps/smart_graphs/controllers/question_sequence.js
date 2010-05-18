@@ -16,9 +16,7 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
 
   allowsEmptySelection: NO,
   allowsMultipleSelection: NO,
-  nextQuestionIsAllowed: false,       // until set by observer
-  prevQuestionIsAllowed: false,       // until set by observer
-  
+
   currentQuestionBinding: SC.Binding.single('.selection'),
   
   indexOfCurrentQuestion : function () {
@@ -28,30 +26,42 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
     
     return index;
   }.property('currentQuestion', 'content', '[]').cacheable(),
-
-
-  _setPrevNextQuestionIsAllowed: function () {
+  
+  previousQuestion: function () {
     var index = this.get('indexOfCurrentQuestion');
     
-    this.set('nextQuestionIsAllowed',
-      SmartGraphs.questionController.get('isAnswered') && (index + 1 < this.get('length')));
-      
-    this.set('prevQuestionIsAllowed', index > 0);
-  }.observes('currentQuestion', 'content', '[]', 'SmartGraphs.questionController.isAnswered'),
-
+    return (index > 0) ? this.objectAt(index-1) : null;
+  }.property('currentQuestion', 'content', '[]').cacheable(),
 
   nextQuestion: function () {
-    if (this.get('nextQuestionIsAllowed')) {
-      this.selectObject(this.objectAt(this.get('indexOfCurrentQuestion')+1));
+    var index = this.get('indexOfCurrentQuestion');
+    
+    return (index + 1 < this.get('length')) ? this.objectAt(index+1) : null;
+  }.property('currentQuestion', 'content', '[]').cacheable(),
+
+  isFirstQuestionBinding: SC.Binding.bool('.previousQuestion').not(),
+  isLastQuestionBinding: SC.Binding.bool('.nextQuestion').not(),
+
+  currentQuestionIsAnsweredBinding: SC.Binding.oneWay('SmartGraphs.questionController.isAnswered'),
+  
+  forwardOneQuestionIsAllowed: function () { 
+    return (!this.get('isLastQuestion') && this.get('currentQuestionIsAnswered'));
+  }.property('isLastQuestion', 'currentQuestionIsAnswered').cacheable(),
+    
+  backOneQuestionIsAllowedBinding: SC.Binding.not('.isFirstQuestion'),
+
+  forwardOneQuestion: function () {
+    if (this.get('forwardOneQuestionIsAllowed')) { 
+      this.selectObject( this.get('nextQuestion') );
     }
   },
 
-  prevQuestion: function () {
-    if (this.get('prevQuestionIsAllowed')) {
-      this.selectObject(this.objectAt(this.get('indexOfCurrentQuestion')-1));
+  backOneQuestion: function () {
+    if (this.get('backOneQuestionIsAllowed')) {
+      this.selectObject( this.get('previousQuestion') );
     }
   },
-  
+
   sequenceDidChange: function () {
     var sequence = this.get('sequence');
 
