@@ -28,6 +28,16 @@ body.sc-theme {
   font-size: 16px;
 }
 
+.sc-view.sg-question p {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.sc-view.sg-question .sc-button-view {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
 .sc-view.sg-question textarea {
   font-size: 16px;
 }
