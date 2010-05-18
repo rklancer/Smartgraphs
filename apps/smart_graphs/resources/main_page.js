@@ -9,27 +9,6 @@ sc_require('main');
 // This page describes the main user interface for your application.
 SmartGraphs.mainPage = SC.Page.design({
 
-  introView: SmartGraphs.QuestionView.design({
-    classNames: 'sg-question'.w(),
-    
-    controllerBinding: 'SmartGraphs.questionController',
-    promptBinding: 'SmartGraphs.questionController.prompt',
-    textInputShouldBeVisibleBinding: 'SmartGraphs.questionController.shouldAcceptTextResponse',
-    feedbackBinding: 'SmartGraphs.questionController.feedback'
-  }),
-
-  followupView: SmartGraphs.OldQuestionView.design({
-    classNames: 'sg-question'.w(),
-    inputType: SmartGraphs.TEXT_RESPONSE,
-    correctAnswer: '2',
-    prompt: 'For how many minutes did Maria talk with her coach?'
-  }),
-
-  topperView: SC.StaticContentView.design({
-    classNames: 'sg-question'.w(),
-    content: "Did you notice that Maria's coach must have written down her position three times while they were talking?" + "<br><br>About how long did it take Maria to start running again after the third time?"
-  }),
-
   mainPane: SC.MainPane.design({
     layout: {
       width: 960,
@@ -47,93 +26,54 @@ SmartGraphs.mainPage = SC.Page.design({
       },
       classNames: ['smartgraph-pane'],
 
-      childViews: 'tabView nextButton backButton'.w(),
+      childViews: 'navButtons questionView nextButton backButton'.w(),
 
-      tabView: SC.TabView.design({
+      navButtons: SC.SegmentedView.design({
         layout: {
-          top: 30,
+          top: 25
+        }
+      }),
+      
+      questionView: SmartGraphs.QuestionView.design({
+        classNames: 'sg-question'.w(),
+        layout: { 
+          top: 50,
           bottom: 5,
           left: 5,
           right: 5
         },
-        items: [{
-          title: "Maria's Run",
-          value: 'SmartGraphs.mainPage.introView'
-        },
-        {
-          title: 'A Pep Talk',
-          value: 'SmartGraphs.mainPage.followupView'
-        },
-        {
-          title: 'Back to Running',
-          value: 'SmartGraphs.mainPage.topperView'
-        }],
-        itemTitleKey: 'title',
-        itemValueKey: 'value',
-        nowShowing: 'SmartGraphs.mainPage.introView'
+
+        controllerBinding: 'SmartGraphs.questionController',
+        promptBinding: 'SmartGraphs.questionController.prompt',
+        textInputShouldBeVisibleBinding: 'SmartGraphs.questionController.shouldAcceptTextResponse',
+        feedbackBinding: 'SmartGraphs.questionController.feedback'
       }),
 
       nextButton: SC.ButtonView.design({
+        displayProperties: ['isEnabled'],
         layout: {
           top: 620,
           left: 325,
           width: 80
         },
         title: "Next",
-        target: 'SmartGraphs.mainPage.mainPane.promptView',
-        action: 'nextTab',
-        nowShowingBinding: 'SmartGraphs.mainPage.mainPane.promptView.tabView.nowShowing',
-        isEnabled: function() {
-          var nowShowing = this.get('nowShowing');
-          return (nowShowing !== 'SmartGraphs.mainPage.topperView');
-        }.property('nowShowing')
+        target: 'SmartGraphs.questionSequenceController',
+        action: 'nextQuestion',
+        isEnabledBinding: 'SmartGraphs.questionSequenceController.nextQuestionIsAllowed'
       }),
 
       backButton: SC.ButtonView.design({
+        displayProperties: ['isEnabled'],
         layout: {
           top: 620,
           left: 50,
           width: 80
         },
         title: "Back",
-        target: 'SmartGraphs.mainPage.mainPane.promptView',
-        action: 'backTab',
-        nowShowingBinding: 'SmartGraphs.mainPage.mainPane.promptView.tabView.nowShowing',
-        isEnabled: function() {
-          var nowShowing = this.get('nowShowing');
-          return (nowShowing !== 'SmartGraphs.mainPage.introView');
-        }.property('nowShowing')
-      }),
-
-      // a really, really ugly way to go to the next tab. (refactor to use a more-generic tab *controller*...)
-      nextTab: function() {
-        var tabs = this.get('tabView');
-        var showing = tabs.get('nowShowing');
-
-        switch (showing) {
-        case 'SmartGraphs.mainPage.introView':
-          tabs.set('nowShowing', 'SmartGraphs.mainPage.followupView');
-          break;
-        case 'SmartGraphs.mainPage.followupView':
-          tabs.set('nowShowing', 'SmartGraphs.mainPage.topperView');
-          break;
-        }
-      },
-      // a similarly ugly way to go to the previous tab.
-      backTab: function() {
-        var tabs = this.get('tabView');
-        var showing = tabs.get('nowShowing');
-
-        switch (showing) {
-        case 'SmartGraphs.mainPage.topperView':
-          tabs.set('nowShowing', 'SmartGraphs.mainPage.followupView');
-          break;
-        case 'SmartGraphs.mainPage.followupView':
-          tabs.set('nowShowing', 'SmartGraphs.mainPage.introView');
-          break;
-        }
-      }
-
+        target: 'SmartGraphs.questionSequenceController',
+        action: 'prevQuestion',
+        isEnabledBinding: 'SmartGraphs.questionSequenceController.prevQuestionIsAllowed'
+      })
     }),
     
     graphView: SmartGraphs.RaphaelView.design({

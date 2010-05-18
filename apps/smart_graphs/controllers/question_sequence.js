@@ -16,32 +16,36 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
 
   allowsEmptySelection: NO,
   allowsMultipleSelection: NO,
+  nextQuestionIsAllowed: false,       // until set by observer
+  prevQuestionIsAllowed: false,       // until set by observer
   
   currentQuestionBinding: SC.Binding.single('.selection'),
-
+  
   indexOfCurrentQuestion : function () {
     var selection = this.get('selection');
     var indexSet = selection.indexSetForSource(this);
-    var index = indexSet.toArray().objectAt(0);
+    var index = indexSet ? indexSet.toArray().objectAt(0) : undefined;
     
     return index;
-  }.property('selection', 'content').cacheable(),
-  
-  nextQuestionIsAllowed: function () {
-    return this.getPath('currentQuestion.isAnswered') &&
-      (this.get('indexOfCurrentQuestion') + 1 < this.get('length'));
-  }.property(),
-  
+  }.property('currentQuestion', 'content', '[]').cacheable(),
+
+
+  _setPrevNextQuestionIsAllowed: function () {
+    var index = this.get('indexOfCurrentQuestion');
+    
+    this.set('nextQuestionIsAllowed',
+      SmartGraphs.questionController.get('isAnswered') && (index + 1 < this.get('length')));
+      
+    this.set('prevQuestionIsAllowed', index > 0);
+  }.observes('currentQuestion', 'content', '[]', 'SmartGraphs.questionController.isAnswered'),
+
+
   nextQuestion: function () {
-    if (this.get('nextQuestionIsAllowed')) {    
+    if (this.get('nextQuestionIsAllowed')) {
       this.selectObject(this.objectAt(this.get('indexOfCurrentQuestion')+1));
     }
   },
-  
-  prevQuestionIsAllowed: function () {
-    return (this.get('indexOfCurrentQuestion') > 0);
-  }.property(),
-  
+
   prevQuestion: function () {
     if (this.get('prevQuestionIsAllowed')) {
       this.selectObject(this.objectAt(this.get('indexOfCurrentQuestion')-1));
