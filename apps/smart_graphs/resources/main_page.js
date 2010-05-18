@@ -32,16 +32,16 @@ SmartGraphs.mainPage = SC.Page.design({
         layout: {
           top: 25
         },
+        
+        // in order to enable the button for the next question when it becomes selectable:
+        displayProperties: 'nextQuestionIsSelectable'.w(),
+
         itemsBinding: 'SmartGraphs.questionSequenceController',
         itemTitleKey: 'shortName',
         itemIsEnabledKey: 'isSelectable',
         valueBinding: 'SmartGraphs.questionSequenceController.selectedQuestion',
-        
-        // remember to refresh display if the next question becomes selectable
-        _nextQuestionPossiblyBecameSelectable: function () {
-          console.log("_nextQuestionPossiblyBecameSelectable");
-          this.displayDidChange();
-        }.observes('SmartGraphs.questionSequenceController*nextQuestion.isSelectable')
+        nextQuestionIsSelectableBinding:
+          SC.Binding.oneWay('SmartGraphs.questionSequenceController*nextQuestion.isSelectable')
       }),
       
       questionView: SmartGraphs.QuestionView.design({
