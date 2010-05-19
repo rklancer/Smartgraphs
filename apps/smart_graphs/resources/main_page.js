@@ -11,7 +11,7 @@ SmartGraphs.mainPage = SC.Page.design({
 
     mainPane: SC.MainPane.design({
         layout: {
-            width: 960,
+            width: 1770,
             height: 820
         },
         
@@ -236,17 +236,15 @@ SmartGraphs.mainPage = SC.Page.design({
             })
         }),
         
-        authorView: SC.ListView.design({
+        authorView: SmartGraphs.QuestionAuthorView.design({
             layout: {
-                left: 20,
-                top: 720,
-                bottom: 15,
-                width: 1600
+                left: 965,
+                top: 5,
+                bottom: 20,
+                width: 600
             },
-            //contentValueKey: "prompt",
-            contentBinding: "SmartGraphs.questionSequenceController.arrangedObjects",
-            //exampleView: SmartGraphs.QuestionAuthorView,
-            canEditContent: NO
+            contentBinding: "SmartGraphs.questionSequenceController.selectedQuestion",
+            canEditContent: NO // TODO: Change this to allow authoring later
         })
     })
 });
