@@ -55,52 +55,90 @@ SmartGraphs.QuestionView = SC.View.extend(/** @scope SmartGraphs.QuestionView.pr
  */
 SmartGraphs.QuestionAuthorView = SC.View.extend(/** @scope SmartGraphs.QuestionAuthorView.prototype */{
 
-    childViews: 'indexViewLabel indexView promptViewLabel promptView correctResponseViewLabel correctResponseView'.w(),
-	
+    childViews: 'titleLabel indexViewLabel indexView shortNameViewLabel shortNameView responseTypeViewLabel responseTypeView promptViewLabel promptView correctResponseViewLabel correctResponseView correctResponseFeedbackViewLabel correctResponseFeedbackView incorrectResponseFeedbackViewLabel incorrectResponseFeedbackView'.w(),
+    
+    titleLabel: SC.StaticContentView.design({
+        backgroundColor: "black",
+        content: "Selected Question's Data:"
+    }),
+    
     indexViewLabel: SC.StaticContentView.design({
         displayProperties: 'isVisible'.w(),
-        layout: {
-            top: 0
-        },
+        backgroundColor: "grey",
         content: "Question#:"
-    }),    
+    }),
     indexView: SC.StaticContentView.design({
         displayProperties: 'isVisible'.w(),
-        layout: {
-            top: 20
-        },
-        contentBinding: "*parentView.content.index"
+        backgroundColor: "darkgrey",
+        contentBinding: "*parentView.content.index",
+        canEditContent: YES
+    }),
+    
+    shortNameViewLabel: SC.StaticContentView.design({
+        displayProperties: 'isVisible'.w(),
+        backgroundColor: "grey",
+        content: "Short Name for navigation tabs:"
+    }),
+    shortNameView: SC.StaticContentView.design({
+        displayProperties: 'isVisible'.w(),
+        backgroundColor: "darkgrey",
+        contentBinding: "*parentView.content.shortName"
+    }),
+    
+    responseTypeViewLabel: SC.StaticContentView.design({
+        displayProperties: 'isVisible'.w(),
+        backgroundColor: "grey",
+        content: "Response Type:"
+    }),
+    responseTypeView: SC.StaticContentView.design({
+        displayProperties: 'isVisible'.w(),
+        backgroundColor: "darkgrey",
+        contentBinding: "*parentView.content.responseType"
     }),
     
     promptViewLabel: SC.StaticContentView.design({
         displayProperties: 'isVisible'.w(),
-        layout: {
-            top: 45
-        },
+        backgroundColor: "grey",
         content: "Question Prompt:"
-    }),    
+    }),
     promptView: SC.StaticContentView.design({
         displayProperties: 'isVisible'.w(),
-        layout: {
-            top: 85
-        },
+        backgroundColor: "darkgrey",
         contentBinding: "*parentView.content.prompt"
-		// TODO: set CSS 
+        // TODO: set CSS 
     }),
     
     correctResponseViewLabel: SC.StaticContentView.design({
         displayProperties: 'isVisible'.w(),
-        layout: {
-            top: 110
-        },
+        backgroundColor: "grey",
         content: "Correct Response:"
     }),
     correctResponseView: SC.StaticContentView.design({
         displayProperties: 'isVisible'.w(),
-        layout: {
-            top: 130
-        },
+        backgroundColor: "darkgrey",
         contentBinding: "*parentView.content.correctResponse"
+    }),
+    
+    correctResponseFeedbackViewLabel: SC.StaticContentView.design({
+        displayProperties: 'isVisible'.w(),
+        backgroundColor: "grey",
+        content: "Correct Response Feedback:"
+    }),
+    correctResponseFeedbackView: SC.StaticContentView.design({
+        displayProperties: 'isVisible'.w(),
+        backgroundColor: "darkgrey",
+        contentBinding: "*parentView.content.correctResponseFeedback"
+    }),
+    
+    incorrectResponseFeedbackViewLabel: SC.StaticContentView.design({
+        displayProperties: 'isVisible'.w(),
+        backgroundColor: "grey",
+        content: "Incorrect Response Feedback:"
+    }),
+    incorrectResponseFeedbackView: SC.StaticContentView.design({
+        displayProperties: 'isVisible'.w(),
+        backgroundColor: "darkgrey",
+        contentBinding: "*parentView.content.incorrectResponseFeedback"
     })
 
 });

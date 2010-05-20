@@ -11,7 +11,7 @@ SmartGraphs.mainPage = SC.Page.design({
 
     mainPane: SC.MainPane.design({
         layout: {
-            width: 1770,
+            width: 1470,
             height: 820
         },
         
@@ -241,10 +241,10 @@ SmartGraphs.mainPage = SC.Page.design({
                 left: 965,
                 top: 5,
                 bottom: 20,
-                width: 600
+                width: 300
             },
             contentBinding: "SmartGraphs.questionSequenceController.selectedQuestion",
-            canEditContent: NO // TODO: Change this to allow authoring later
+			canEditContent: YES // TODO: Make authoring actually work
         })
     })
 });
