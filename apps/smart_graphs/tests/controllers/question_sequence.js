@@ -4,7 +4,6 @@
 // ==========================================================================
 /*globals SmartGraphs module test ok equals same stop start qhash qsc q1 q2*/
 
-
 var qhash = {
   correctResponseFeedback: '[correct-feedback]',
   incorrectResponseFeedback: '[incorrect-feedback]',
@@ -29,13 +28,9 @@ module("SmartGraphs.questionSequenceController", {
 
     qsc.sequenceDidChange = function () {};
     
-    // this rigmarole is necessary just to set content... I think. Hmm.
-    qsc.set('allowsEmptySelection', YES);
-    qsc.set('selection', SC.SelectionSet.create());
     qsc.set('content', questions);
     q1.set('isSelectable', true);       // should be done by questionController
     qsc.set('selectedQuestion', q1);
-    qsc.set('allowsEmptySelection', NO);   
   }
 });
 
@@ -64,22 +59,37 @@ test('indexOfCurrentQuestion, previousQuestion, nextQuestion, isFirstQuestion, i
 });
 
 
-// test: setting selectedQuestion honors isSelectable
-
-
 test('canSelectPreviousQuestion works', function () {
-  qsc.set('currentQuestion', q1);
+  q1.set('isSelectable', YES);
+  qsc.set('selectedQuestion', q1);
   ok(!qsc.get('canSelectPreviousQuestion'), 'canSelectPreviousQuestion should be false for first question');
   
-  qsc.set('currentQuestion', q2);
+  q2.set('isSelectable', YES);
+  qsc.set('selectedQuestion', q2);
   ok(qsc.get('canSelectPreviousQuestion'), 'canSelectPreviousQuestion should be true for second question');
   
-  qsc.set('currentQuestion', q1);
+  qsc.set('selectedQuestion', q1);
   ok(!qsc.get('canSelectPreviousQuestion'), 
     'canSelectPreviousQuestion should be reset to false after navigting back to first question');
 });
 
 test('canSelectNextQuestion works', function () {
+  q1.set('isSelectable', YES);
+  q2.set('isSelectable', NO);
+  qsc.set('selectedQuestion', q1);
+  
+  ok(!qsc.get('canSelectNextQuestion'), 'canSelectNextQuestion should be false if next question is not selectable');
+
+  // need to test set isSelectable in a run loop because canSelectNextQuestion is a computed property that won't updated
+  // until a binding syncs... bear in mind that isSelectable will be updated inside a runloop (button click) anyway
+  SC.RunLoop.begin();
+  q2.set('isSelectable', YES);  
+  SC.RunLoop.end();
+  ok(qsc.get('canSelectNextQuestion'), 'canSelectNextQuestion should be true if next question is selectable');
+  
+  qsc.set('selectedQuestion', q2);
+  ok(!qsc.get('nextQuestion'), '(should be at last question before testing canSelectNextQuestion for last question.)');
+  ok(!qsc.get('canSelectNextQuestion'), 'canSelectNextQuestion should be false if we are at the last question.');
 });
 
 

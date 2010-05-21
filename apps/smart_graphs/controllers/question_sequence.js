@@ -17,12 +17,18 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
   allowsEmptySelection: NO,
   allowsMultipleSelection: NO,
 
+   // override selectObject to allow self-bindings in questionSequenceController to sync...
+
+  selectObject: function (value) {
+    SC.RunLoop.begin();       
+    sc_super();
+    SC.RunLoop.end();    
+  },
+  
   selectedQuestion: function (key, value) {
     
     if (value !== undefined && value.get('isSelectable')) {
-      SC.RunLoop.begin();    // allow self-bindings in questionSequenceController to sync...
       this.selectObject(value);
-      SC.RunLoop.end();
     }
 
     return this.get('selection').toArray().objectAt(0);
@@ -50,24 +56,23 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
 
   isFirstQuestionBinding: SC.Binding.bool('.previousQuestion').not(),
   isLastQuestionBinding: SC.Binding.bool('.nextQuestion').not(),
-  
+
+  canSelectPreviousQuestionBinding: SC.Binding.not('.isFirstQuestion'),  
   nextQuestionIsSelectableBinding: SC.Binding.oneWay('*nextQuestion.isSelectable'),
   
   canSelectNextQuestion: function () {
     return (!this.get('isLastQuestion') && this.get('nextQuestionIsSelectable'));
   }.property('isLastQuestion', 'nextQuestionIsSelectable').cacheable(),
     
-  canSelectPreviousQuestionBinding: SC.Binding.not('.isFirstQuestion'),
-
-  selectNextQuestion: function () {
-    if (this.get('canSelectNextQuestion')) { 
-      this.selectObject( this.get('nextQuestion') );
-    }
-  },
-
   selectPreviousQuestion: function () {
     if (this.get('canSelectPreviousQuestion')) {
       this.selectObject( this.get('previousQuestion') );
+    }
+  },
+  
+  selectNextQuestion: function () {
+    if (this.get('canSelectNextQuestion')) { 
+      this.selectObject( this.get('nextQuestion') );
     }
   },
 
