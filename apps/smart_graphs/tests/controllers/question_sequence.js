@@ -2,7 +2,7 @@
 // Project:   SmartGraphs.questionSequenceController Unit Test
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
-/*globals SmartGraphs module test ok equals same stop start qhash qsc q1 q2*/
+/*globals SmartGraphs module test ok equals same stop start qhash qsc q1 q2 seq1 seq2*/
 
 var qhash = {
   correctResponseFeedback: '[correct-feedback]',
@@ -15,7 +15,7 @@ var qhash = {
 
 var qsc = SmartGraphs.questionSequenceController;
 
-module("SmartGraphs.questionSequenceController", {
+module("SmartGraphs.questionSequenceController question navigation", {
   setup: function () {
     var questions = [];
     
@@ -25,8 +25,6 @@ module("SmartGraphs.questionSequenceController", {
     
     q1 = questions[0];
     q2 = questions[1];
-
-    qsc.sequenceDidChange = function () {};
     
     qsc.set('content', questions);
     q1.set('isSelectable', true);       // should be done by questionController
@@ -93,8 +91,35 @@ test('canSelectNextQuestion works', function () {
 });
 
 
-test("all tests written", function() {
-  var allTestsAreWritten = false;
-  ok(allTestsAreWritten, "*All* tests for questionSequenceController should be written.");
+module("SmartGraphs.questionSequenceController question-sequence navigation", {
+  setup: function () {
+    SmartGraphs.Question.FIXTURES = [
+      SC.mixin(SC.copy(qhash), {guid: 'q1', sequence: 'test-sequence-1'}),
+      SC.mixin(SC.copy(qhash), {guid: 'q2', sequence: 'test-sequence-2'})
+    ];
+    
+    SmartGraphs.QuestionSequence.FIXTURES = [
+      { guid: 'test-sequence-1', questions: ['q1'] },
+      { guid: 'test-sequence-2', questions: ['q2'] } 
+    ];
+
+    SmartGraphs.set('store', SC.Store.create().from(SC.Record.fixtures));
+    
+    seq1 = SmartGraphs.store.find(SmartGraphs.QuestionSequence, 'test-sequence-1');
+    seq2 = SmartGraphs.store.find(SmartGraphs.QuestionSequence, 'test-sequence-2');
+    q1 = SmartGraphs.store.find(SmartGraphs.Question, 'q1');
+    q2 = SmartGraphs.store.find(SmartGraphs.Question, 'q2');
+  }
 });
 
+test("Moving to a new sequence via setting sequence property", function () {
+  qsc.set('sequence', seq1);
+  equals(qsc.get('length'), 1, 'Content should have length 1 after setting sequence to test-sequence-1');
+  equals(qsc.objectAt(0), q1, 'Content should consist of q1 after setting sequence to test-sequence-1');
+  equals(qsc.get('selectedQuestion'), q1, 'selectedQuestion should be first question of first sequence after setting sequence to first sequence.');
+
+  qsc.set('sequence', seq2);
+  equals(qsc.get('length'), 1, 'Content should have length 1 after setting sequence to test-sequence-2');
+  equals(qsc.objectAt(0), q2, 'Content should consist of q2 after setting sequence to test-sequence-2');  
+  equals(qsc.get('selectedQuestion'), q2, 'selectedQuestion should be first question of second sequence after setting sequence to second sequence.');
+});
