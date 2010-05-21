@@ -1,0 +1,304 @@
+
+5/17/10
+
+
+make use of this pattern:
+
+
+
+// find contact record.
+var contactRecord = MyApp.store.find(MyApp.Contact, 4);
+// find events assigned to that contact.
+var localEventQuery = SC.Query.local(MyApp.Event, {
+   conditions: 'assignedTo = {contact}',
+   contact: contactRecord
+});
+
+IOW
+
+seq = Smartgraphs.store.find(Smartgraphs.QuestionSequence, 'sequence-1');
+query = SC.Query.local(Smartgraphs.Question, { conditions: 'sequence = {sequence}', sequence: seq, orderBy: 'index ASC' })
+qs = Smartgraphs.store.find(query)
+
+
+make questionsequenceview an arraycontroller whose content is that query result
+make it single selection, no empty selection
+
+bind questionController to selection
+
+to add:
+
+* segmented view (bind to content)
+* next/back buttons (need isFirst, isLast, next(), back() on questionSequenceController)
+
+segmentedview has 'itemvaluekey' and a 'value' properties.
+
+
+can you bind selection of questionController to that value, or do we have to observe the 'value' and set selection accordingly?
+
+
+
+
+to do:
+
+* adjust the question model with short name
+* create a simple activity model (questionSequenceController)
+* create a query
+* make the questionsequenceview an arraycontroller with the appropriate flags set
+* endow questionsequenceview with an 'questionSequence' property that points to a questionsequence model object and sets the content property accordingly
+* create segmentedview with appropriate
+* create next/back buttons and bind accordinglyx`
+
+
+
+
+5/12/10
+
+let's get back to simple.
+keep the tabs the same.
+set the first tab view to be a 'new' question view.
+
+
+question MODEL
+
+  responseType
+  prompt
+  correctResponse
+  correctResponseFeedback
+  incorrectResponseFeedback
+  
+  
+question CONTROLLER
+
+  checkAnswer()
+  feedback
+  shouldAcceptTextResponse
+  textResponse
+  shouldAcceptGraphicalResponse
+  graphicalResponse
+  response
+  
+  
+question VIEW
+
+  display prompt
+  display response if non-null
+  display text area if shouldAcceptTextResponse is YES
+  bind 'check answer' button to
+  
+
+main.js
+
+  should fetch the first question fixture
+  should set up the question controller
+
+main_page.js
+
+  the 'introView' should be a 
+  
+
+adjust the fixture 
+
+
+
+*** see tomdale on pages and containerviews:
+
+  http://groups.google.com/group/sproutcore/msg/9f59c491b9c27464
+
+
+
+
+
+
+you presumably want multiple questionview instances, each bound to a question controller
+there should be a higher level object that sets up the question controllers as needed
+
+naah.
+
+* set up your files in your main.js like this:
+
+  (the idea is that this logic could be implemented in an app state/root controller)
+  
+  create 3 question controllers (which should not have to concern themselves with views!)  
+  create 3 off-screen panes bound to those controllers
+  each pane contains a questionview
+  
+  set up a question flow controller
+  
+   isFirst property (views can observe to disable back button)
+   isLast property (views can use to enable forward button)
+   items is an array of question controllers
+   nowShowing is the current question controller
+   endow controller with next(), prev() methods to move nowShowing
+   itemEnabledKey - pass through to tab controller
+   
+   
+   eventually the tab controller could 'build' the activity incrementally
+   
+
+question controllers:
+
+
+----
+
+5/5/10:
+
+
+"allow the user to click a point on the graph to answer the question"
+
+okay, what's the flow we're imagining will eventually happen
+
+
+a wizard poses a question
+  the datapoint relays a selection event to the dataseries it's in
+  
+  the dataseries relays the event to the slide/slidebuilder
+  
+  the slidebuilder looks at its policy somehow and knows that the correct event is to delegate to the annotationbuilder
+  
+  the annotationbuilder sends an addannotation event to the slidebuilder (to notate where the annotation is proposed to happen)
+  
+  when the 'check answer' button is clicked, the wizard inspects that annotationbuilder's datapoint property
+  
+
+decompose this into the models needed for this story:
+
+
+there should be a controller for a wizard-like component, with a state machine and underlying model...
+
+there should be a
+
+
+
+try implementing in this iteration:
+
+a new series data model and corresponding views
+a slidebuilder (that accepts setAxes, addSeries and addAnnotation)
+
+a relay between the mousedown on the datapoint model,
+
+ * the datapointview gets a click event
+ * its controller notifies the dataseriescontroller
+ * the arraycontroller for dataseries sets isselected on the datapoint (triggering re-render)
+ 
+ * however, after this, TURN SELECTION OFF in the dataseriesview control (as we're going to be annotating, not selecting)
+ (in general, model the listitemview/listview contract if possible?)
+ 
+
+ * now, the wizard should be notified directly of the selection event (instead of going through an annotation builder .. yet)
+
+ * wizard should check the value of the selected point and act accordingly
+ 
+ * then, add an annotation to the *slide* object (and redisplay)
+ 
+ 
+what's needed?
+
+* ignore changes having to do with rewriting wizard
+
+
+DataPointView
+DataPointController
+DataSeriesView (at least a new version)
+DataSeriesController (at least a new version)
+AxisView
+AxisController
+
+SlideBuilderView
+SlideBuilderController
+WizardController
+
+
+models
+
+Axis
+Slide
+SimpleAnnotation (no or trivial controller)
+
+Wizard (this could be renamed eventually)
+
+
+steps?
+
+
+* refactor DataSeriesView to be a CollectionView with DataSeriesView as the exampleView
+* make a 'lab book slide' model & controller
+* make a 'simple data point annotation' model
+* put the first question in a 'wizard' object
+* make it so the wizard causes a 'lab book slide' to be created from the data series
+* make the 'lab book slide builder' cause annotations to be displayed
+* make it so the wizard checks its answer by getting events relayed from datapoint-dataseries-slide chain, and reflects the answer by simply adding a 'simple annotation' object
+
+
+---
+
+notes on refactoring dataseriesview
+
+  * rename to dataseriesview from seriesview
+  * use the collectionviewdelegate to make decisions regarding selection etc (note the 'annotationbuilder' scenario above implies that selection could be used to indicate which datapoint to annotate, rather than merely to 'select')
+  
+  * 'collectionview handles event input for the entire collection' (from docs for SC.CollectionView)
+  
+  * note 'action' and 'actOnSelect' properties of CollectionView
+  * note on SC.CollectionView's contentValueKey property: "If you are writing your own custom item view for a collection, you can get this behavior automatically by including the SC.Control mixin on your view. You can also ignore this property if you like. The collection view itself does not use this property to impact rendering."
+  * "In general you do not want your child views to actually respond to mouse and keyboard events themselves. It is better to let the collection view do that."
+  
+  * see the notes on exampleView to implement 
+  * nowShowing: "The set of indexes that are currently tracked by the collection view"
+  ****  contentIndexForLayerId()!
+  * contentIndexesInRect() "Override to return an IndexSet with the indexes that are at least partially visible in the passed rectangle"
+  
+  * contentPropertyDidChange(): OH! "This is only called if you have set observesContentProperties to YES." (tell Avi`)
+  
+  * itemViewForContentObject()
+  
+  
+  
+  so; the plan?
+  
+  * how much layout does collectionview really do?
+  * and how do we handle context building for raphael?
+  
+  - moved raphaeljs to frameworks/raphael
+  
+  what might it look like?
+  
+  should we make the analogy
+  
+  layer::svg element
+  render : overwrites the layer
+  
+  contextbuilders keep track of innerhtml
+  should contextbuilder overwrite layer?
+  
+  is there an analogy? 
+  
+  
+
+okay
+
+- why does overriding createLayer() still result in a div being created? how can this be overridden?
+- how does listItemView work?
+
+
+
+NOTE
+
+Every dom node created with raphael has a 'raphael' property pointing to the raphael object that represents it
+every raphael element has a 'paper' property pointing to the 'main' raphael object
+the main raphael object has a 'canvas' (instead of 'node') property pointing to the parent dom element(svg/vml node) containing the paper.
+
+Phew.
+
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+ 
