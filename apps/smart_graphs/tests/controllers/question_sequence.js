@@ -9,7 +9,9 @@ var qhash = {
   correctResponseFeedback: '[correct-feedback]',
   incorrectResponseFeedback: '[incorrect-feedback]',
   prompt: '[prompt]',
-  isSelectable: NO  
+  responseType: SmartGraphs.TEXT_RESPONSE,
+  correctResponse: '[correct-response]',
+  isSelectable: NO
 };
 
 var qsc = SmartGraphs.questionSequenceController;
@@ -19,22 +21,25 @@ module("SmartGraphs.questionSequenceController", {
     var questions = [];
     
     for (var i = 1; i <= 2; i++) {
-      questions.push( SmartGraphs.Question.create(qhash, { 
-        responseType: SmartGraphs.TEXT_RESPONSE,
-        correctResponse: '[correct-response]'
-      }));
+      questions.push( SmartGraphs.store.createRecord(SmartGraphs.Question, qhash) );
     }
     
     q1 = questions[0];
     q2 = questions[1];
+
+    qsc.sequenceDidChange = function () {};
     
+    // this rigmarole is necessary just to set content... I think. Hmm.
+    qsc.set('allowsEmptySelection', YES);
+    qsc.set('selection', SC.SelectionSet.create());
     qsc.set('content', questions);
+    q1.set('isSelectable', true);       // should be done by questionController
+    qsc.set('selectedQuestion', q1);
+    qsc.set('allowsEmptySelection', NO);   
   }
 });
 
 test('indexOfCurrentQuestion, previousQuestion, nextQuestion, isFirstQuestion, isLastQuestion work', function () {
-  q1.set('isSelectable', true);
-  qsc.set('selectedQuestion', q1);
   
   equals(qsc.get('indexOfSelectedQuestion'), 0, 'indexOfSelectedQuestion should be 0 for first question');
   ok(!qsc.get('previousQuestion'), 'previousQuestion should be falsy for first question');
@@ -42,6 +47,7 @@ test('indexOfCurrentQuestion, previousQuestion, nextQuestion, isFirstQuestion, i
   ok(qsc.get('isFirstQuestion'), 'isFirstQuestion should be true for first question');
   ok(!qsc.get('isLastQuestion'), 'isLastQuestion should be false for first question');
   
+  q2.set('isSelectable', YES);
   qsc.set('selectedQuestion', q2);
   equals(qsc.get('indexOfSelectedQuestion'), 1, 'indexOfSelectedQuestion should be 1 for second question');
   equals(qsc.get('previousQuestion'), q1, 'previousQuestion should be first question for second question');

@@ -20,7 +20,9 @@ SmartGraphs.questionSequenceController = SC.ArrayController.create(
   selectedQuestion: function (key, value) {
     
     if (value !== undefined && value.get('isSelectable')) {
+      SC.RunLoop.begin();    // allow self-bindings in questionSequenceController to sync...
       this.selectObject(value);
+      SC.RunLoop.end();
     }
 
     return this.get('selection').toArray().objectAt(0);
