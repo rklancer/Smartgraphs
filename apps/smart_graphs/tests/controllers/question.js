@@ -66,11 +66,6 @@ module("SmartGraphs.questionController interaction between questions", {
 
   
 test('isSelectable should be set properly', function () {
-
-  ok(!q1.get('isSelectable'), 'isSelectable should be false before question is navigated to');
-  
-  qc.set('content', q1);
-  ok(q1.get('isSelectable'), 'isSelectable should be true after question is navigated to');
   
   ok(!q2.get('isSelectable'), 'isSelectable should be false before previous question is answered successfully');
   qc.set('textResponse', '[incorrect-response]');

@@ -20,11 +20,6 @@ SmartGraphs.questionController = SC.ObjectController.create(
 /** @scope SmartGraphs.questionController.prototype */ {
   
   contentBinding: 'SmartGraphs.questionSequenceController.selectedQuestion',
-
-  contentDidChange: function () {
-    // you can always navigate to the current question!
-    this.set('isSelectable', true);
-  }.observes('.content'),
   
   checkResponse: function () {
     if (this.get('response') === this.get('correctResponse')) {
