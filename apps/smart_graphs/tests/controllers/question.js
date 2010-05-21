@@ -10,14 +10,16 @@ var qhash = {
   prompt: '[prompt]'
 };
 
+var textQHash = SC.mixin(SC.copy(qhash), {
+  responseType: SmartGraphs.TEXT_RESPONSE,
+  correctResponse: '[correct-response]'
+});
+
 var qc = SmartGraphs.questionController;
 
 module("SmartGraphs.questionController text response", {
   setup: function () {
-    textQ = SmartGraphs.Question.create(qhash, { 
-      responseType: SmartGraphs.TEXT_RESPONSE,
-      correctResponse: '[correct-response]'
-    });    
+    textQ = SmartGraphs.store.createRecord(SmartGraphs.Question, textQHash);
     qc.set('content', textQ);
    }
 });
@@ -46,15 +48,8 @@ test('checkResponse should work correctly with text response', function() {
 module("SmartGraphs.questionController interaction between questions", {
   
   setup: function () {
-    q1 = SmartGraphs.Question.create(qhash, { 
-      responseType: SmartGraphs.TEXT_RESPONSE,
-      correctResponse: '[correct-response]'
-    });
-    
-    q2 = SmartGraphs.Question.create(qhash, {
-      responseType: SmartGraphs.TEXT_RESPONSE,
-      correctResponse: '[correct-response]'
-    });
+    q1 = SmartGraphs.store.createRecord(SmartGraphs.Question, textQHash);
+    q2 = SmartGraphs.store.createRecord(SmartGraphs.Question, textQHash);
     
     // mock questionSequenceController
     oldQSC = SmartGraphs.questionSequenceController;
@@ -101,11 +96,11 @@ module("SmartGraphs.questionController graphical response", {
     SmartGraphs.dataSeriesController = SC.Object.create( {
       selection: SC.SelectionSet.create()
     });
-    
-    graphicalQ = SmartGraphs.Question.create(qhash, {
+
+    graphicalQ = SmartGraphs.store.createRecord(SmartGraphs.Question, SC.mixin(SC.copy(qhash), {
       responseType: SmartGraphs.GRAPH_ANNOTATION_RESPONSE,
       correctResponse: '1'
-    });
+    }));
   
     correctDataPoint = SmartGraphs.DataPoint.create({
       x: 1,
