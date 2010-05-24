@@ -9,6 +9,7 @@
  @extends SC.View
  */
 Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionAuthorView.prototype */{
+	isVisible: NO,
 
     childViews: 'titleLabel indexViewLabel indexView shortNameViewLabel shortNameView responseTypeViewLabel responseTypeView promptViewLabel promptView correctResponseViewLabel correctResponseView correctResponseFeedbackViewLabel correctResponseFeedbackView incorrectResponseFeedbackViewLabel incorrectResponseFeedbackView'.w(),
     
@@ -25,8 +26,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
     indexView: SC.StaticContentView.design({
         displayProperties: 'isVisible'.w(),
         backgroundColor: "darkgrey",
-        contentBinding: "*parentView.content.index",
-        canEditContent: YES
+        contentBinding: "*parentView.content.index"
     }),
     
     shortNameViewLabel: SC.StaticContentView.design({

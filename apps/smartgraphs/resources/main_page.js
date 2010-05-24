@@ -15,7 +15,7 @@ Smartgraphs.mainPage = SC.Page.design({
       height: 820
     },
 
-    childViews: 'promptView graphView tableView authorView'.w(),
+    childViews: 'promptView graphView tableView authoringModeButton authorView'.w(),
 
     promptView: SC.View.design({
       layout: {
@@ -232,6 +232,17 @@ Smartgraphs.mainPage = SC.Page.design({
       })
     }),
 
+    authoringModeButton: SC.ButtonView.design({
+      layout: {
+        left: 20,
+        top: 710
+      },
+        useStaticLayout: YES,
+        title: 'Toggle Authoring Mode',
+        targetBinding: 'Smartgraphs.authoringController',
+        action: 'toggleAuthoring'
+    }),
+	
     authorView: Smartgraphs.QuestionAuthorView.design({
       layout: {
         left: 965,

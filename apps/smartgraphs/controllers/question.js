@@ -35,7 +35,9 @@ Smartgraphs.questionController = SC.ObjectController.create(
     this.set('isAnswered', true);
   
     var nextQ = Smartgraphs.questionSequenceController.get('nextQuestion');
-    if (nextQ) nextQ.set('isSelectable', true);
+    if (nextQ) {
+		nextQ.set('isSelectable', true);
+	}
   },
 
   didReceiveIncorrectResponse: function () {
@@ -60,11 +62,14 @@ Smartgraphs.questionController = SC.ObjectController.create(
 
   response: function () {
     if (this.get('shouldAcceptTextResponse')) {
-      return this.get('textResponse');
-    }
-    else if (this.get('shouldAcceptGraphicalResponse')) {
-      return this.get('graphicalResponse');
-    }
-    else return null;
+		return this.get('textResponse');
+	}
+	else 
+		if (this.get('shouldAcceptGraphicalResponse')) {
+			return this.get('graphicalResponse');
+		}
+		else {
+			return null;
+		}
   }.property()
 }) ;
