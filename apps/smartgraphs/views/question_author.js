@@ -19,7 +19,6 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
     }),
     
     indexViewLabel: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "grey",
         content: "Question#:"
     }),
@@ -30,68 +29,56 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
     }),
     
     shortNameViewLabel: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "grey",
         content: "Short Name for navigation tabs:"
     }),
     shortNameView: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "darkgrey",
         contentBinding: "*parentView.content.shortName"
     }),
     
     responseTypeViewLabel: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "grey",
         content: "Response Type:"
     }),
     responseTypeView: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "darkgrey",
         contentBinding: "*parentView.content.responseType"
     }),
     
     promptViewLabel: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "grey",
         content: "Question Prompt:"
     }),
     promptView: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "darkgrey",
         contentBinding: "*parentView.content.prompt"
         // TODO: set CSS 
     }),
     
     correctResponseViewLabel: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "grey",
         content: "Correct Response:"
     }),
     correctResponseView: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "darkgrey",
         contentBinding: "*parentView.content.correctResponse"
     }),
     
     correctResponseFeedbackViewLabel: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "grey",
         content: "Correct Response Feedback:"
     }),
     correctResponseFeedbackView: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "darkgrey",
         contentBinding: "*parentView.content.correctResponseFeedback"
     }),
     
     incorrectResponseFeedbackViewLabel: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "grey",
         content: "Incorrect Response Feedback:"
     }),
     incorrectResponseFeedbackView: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
         backgroundColor: "darkgrey",
         contentBinding: "*parentView.content.incorrectResponseFeedback"
     })
