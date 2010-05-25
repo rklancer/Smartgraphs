@@ -18,6 +18,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
             height: 20,
             width: 300
         },
+		textAlign: "center",
         backgroundColor: "black",
         value: "Selected Question's Data:"
     }),
@@ -58,7 +59,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
             width: 300
         },
 		isEditable: YES,
-        backgroundColor: "darkgrey",
+        backgroundColor: "darkblue",
         valueBinding: "*parentView.content.shortName"
     }),
     
@@ -78,7 +79,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
             width: 300
         },
 		isEditable: YES,
-        backgroundColor: "darkgrey",
+        backgroundColor: "darkblue",
         valueBinding: "*parentView.content.responseType"
     }),
     
@@ -99,7 +100,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
         },
 		isInlineEditorMultiline:YES,
 		isEditable: YES,
-        backgroundColor: "darkgrey",
+        backgroundColor: "darkblue",
         valueBinding: "*parentView.content.prompt"
         // TODO: set CSS 
     }),
@@ -121,7 +122,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
         },
 		isInlineEditorMultiline: YES,
 		isEditable: YES,
-        backgroundColor: "darkgrey",
+        backgroundColor: "darkblue",
         valueBinding: "*parentView.content.correctResponse"
     }),
     
@@ -142,7 +143,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
         },
 		isInlineEditorMultiline: YES,
 		isEditable: YES,
-        backgroundColor: "darkgrey",
+        backgroundColor: "darkblue",
         valueBinding: "*parentView.content.correctResponseFeedback"
     }),
     
@@ -163,7 +164,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
         },
 		isInlineEditorMultiline: YES,
 		isEditable: YES,
-        backgroundColor: "darkgrey",
+        backgroundColor: "darkblue",
         valueBinding: "*parentView.content.incorrectResponseFeedback"
     })
 
