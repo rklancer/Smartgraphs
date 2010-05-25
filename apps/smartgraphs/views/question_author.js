@@ -9,78 +9,162 @@
  @extends SC.View
  */
 Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionAuthorView.prototype */{
-	isVisible: NO,
-
+    isVisible: NO,
     childViews: 'titleLabel indexViewLabel indexView shortNameViewLabel shortNameView responseTypeViewLabel responseTypeView promptViewLabel promptView correctResponseViewLabel correctResponseView correctResponseFeedbackViewLabel correctResponseFeedbackView incorrectResponseFeedbackViewLabel incorrectResponseFeedbackView'.w(),
     
-    titleLabel: SC.StaticContentView.design({
+    titleLabel: SC.LabelView.design({
+        layout: {
+            top: 0,
+            height: 20,
+            width: 300
+        },
         backgroundColor: "black",
-        content: "Selected Question's Data:"
+        value: "Selected Question's Data:"
     }),
     
-    indexViewLabel: SC.StaticContentView.design({
+    indexViewLabel: SC.LabelView.design({
+        layout: {
+            top: 20,
+            height: 20,
+            width: 300
+        },
         backgroundColor: "grey",
-        content: "Question#:"
+        value: "Question#:"
     }),
-    indexView: SC.StaticContentView.design({
-        displayProperties: 'isVisible'.w(),
+    indexView: SC.LabelView.design({
+        layout: {
+            top: 40,
+            height: 20,
+            width: 300
+        },
+		isEditable: NO, // TODO: Add controls for adding, removing, and moving questions in the question sequence
         backgroundColor: "darkgrey",
-        contentBinding: "*parentView.content.index"
+        valueBinding: "*parentView.content.index"
     }),
     
-    shortNameViewLabel: SC.StaticContentView.design({
+    shortNameViewLabel: SC.LabelView.design({
+        layout: {
+            top: 60,
+            height: 20,
+            width: 300
+        },
         backgroundColor: "grey",
-        content: "Short Name for navigation tabs:"
+        value: "Short Name for navigation tabs:"
     }),
-    shortNameView: SC.StaticContentView.design({
+    shortNameView: SC.LabelView.design({
+        layout: {
+            top: 80,
+            height: 20,
+            width: 300
+        },
+		isEditable: YES,
         backgroundColor: "darkgrey",
-        contentBinding: "*parentView.content.shortName"
+        valueBinding: "*parentView.content.shortName"
     }),
     
-    responseTypeViewLabel: SC.StaticContentView.design({
+    responseTypeViewLabel: SC.LabelView.design({
+        layout: {
+            top: 100,
+            height: 20,
+            width: 300
+        },
         backgroundColor: "grey",
-        content: "Response Type:"
+        value: "Response Type:"
     }),
-    responseTypeView: SC.StaticContentView.design({
+    responseTypeView: SC.LabelView.design({
+        layout: {
+            top: 120,
+            height: 20,
+            width: 300
+        },
+		isEditable: YES,
         backgroundColor: "darkgrey",
-        contentBinding: "*parentView.content.responseType"
+        valueBinding: "*parentView.content.responseType"
     }),
     
-    promptViewLabel: SC.StaticContentView.design({
+    promptViewLabel: SC.LabelView.design({
+        layout: {
+            top: 140,
+            height: 20,
+            width: 300
+        },
         backgroundColor: "grey",
-        content: "Question Prompt:"
+        value: "Question Prompt:"
     }),
-    promptView: SC.StaticContentView.design({
+    promptView: SC.LabelView.design({
+        layout: {
+            top: 160,
+            height: 80,
+            width: 300
+        },
+		isInlineEditorMultiline:YES,
+		isEditable: YES,
         backgroundColor: "darkgrey",
-        contentBinding: "*parentView.content.prompt"
+        valueBinding: "*parentView.content.prompt"
         // TODO: set CSS 
     }),
     
-    correctResponseViewLabel: SC.StaticContentView.design({
+    correctResponseViewLabel: SC.LabelView.design({
+        layout: {
+            top: 240,
+            height: 20,
+            width: 300
+        },
         backgroundColor: "grey",
-        content: "Correct Response:"
+        value: "Correct Response:"
     }),
-    correctResponseView: SC.StaticContentView.design({
+    correctResponseView: SC.LabelView.design({
+        layout: {
+            top: 260,
+            height: 80,
+            width: 300
+        },
+		isInlineEditorMultiline: YES,
+		isEditable: YES,
         backgroundColor: "darkgrey",
-        contentBinding: "*parentView.content.correctResponse"
+        valueBinding: "*parentView.content.correctResponse"
     }),
     
-    correctResponseFeedbackViewLabel: SC.StaticContentView.design({
+    correctResponseFeedbackViewLabel: SC.LabelView.design({
+        layout: {
+            top: 340,
+            height: 20,
+            width: 300
+        },
         backgroundColor: "grey",
-        content: "Correct Response Feedback:"
+        value: "Correct Response Feedback:"
     }),
-    correctResponseFeedbackView: SC.StaticContentView.design({
+    correctResponseFeedbackView: SC.LabelView.design({
+        layout: {
+            top: 360,
+            height: 80,
+            width: 300
+        },
+		isInlineEditorMultiline: YES,
+		isEditable: YES,
         backgroundColor: "darkgrey",
-        contentBinding: "*parentView.content.correctResponseFeedback"
+        valueBinding: "*parentView.content.correctResponseFeedback"
     }),
     
-    incorrectResponseFeedbackViewLabel: SC.StaticContentView.design({
+    incorrectResponseFeedbackViewLabel: SC.LabelView.design({
+        layout: {
+            top: 440,
+            height: 20,
+            width: 300
+        },
         backgroundColor: "grey",
-        content: "Incorrect Response Feedback:"
+        value: "Incorrect Response Feedback:"
     }),
-    incorrectResponseFeedbackView: SC.StaticContentView.design({
+    incorrectResponseFeedbackView: SC.LabelView.design({
+        layout: {
+            top: 460,
+            height: 80,
+            width: 300
+        },
+		isInlineEditorMultiline: YES,
+		isEditable: YES,
         backgroundColor: "darkgrey",
-        contentBinding: "*parentView.content.incorrectResponseFeedback"
+        valueBinding: "*parentView.content.incorrectResponseFeedback"
     })
 
 });
