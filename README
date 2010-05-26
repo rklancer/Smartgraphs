@@ -12,4 +12,4 @@ cd abbot
 rake init
 cd ..
 abbot/bin/sc-server
-...then visit localhost:4020/smart_graphs
+...then visit localhost:4020/smartgraphs
