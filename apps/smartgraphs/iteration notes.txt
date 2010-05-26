@@ -1,4 +1,244 @@
+5/26/10
 
+What to actually implement to get text dialog working
+
+GuidedUserActivity
+  pages
+  
+GuidePage
+  activity
+  text
+  dialog
+  
+Dialog
+  // eventually we'll interpose a dialogstepsequence so that a dialog can have su
+  steps
+  
+DialogStep
+  index
+  dialog
+  beforeText
+  responseTemplate: toOne(ResponseTemplate)
+  correctResponse: toOne(ResponseVerifer)
+  staticAnnotations: (i.e., static, not replayable annotations)
+  afterText
+
+ResponseTemplate
+  dialogSteps: toMany(DialogStep)
+  type: 
+  formatString:
+  
+CorrectResponse
+  // a DialogStep without a correctResponse is basically an 'open response'
+  responseTemplate: 
+  value
+
+StaticAnnotationList:
+  annotations: toMany(StaticAnnotation)
+
+StaticAnnotation
+  list:       toOne(StaticAnnotation)
+  type        (a string)
+  arguments   (?)
+
+
+
+
+
+5/25/10
+
+new objects:
+
+GuidedUserActivity    (an 'activity' or a sequence of 'pages', without all the connotations of 'activity' -- e.g,  it could be a wizard)
+ActivityStep          (a 'page' in the 'activity', with the expectation that steps can be followed linearly -- if a student needs help with a step, he gets it in the step itself)
+Dialog                (a description of the dialog between system and user that takes place during a single ActivityStep)
+DialogStep            (a step in that dialog)
+
+points to remember about Dialogs:
+
+1. the dialog is linear. The expectation is you continue until student 'gets it right'
+2. at any point, you might want to, say, have student record their notes about what they're doing. That's a dialogStep?
+3. there's an optional 'finish' step after the student gets it right, which must be completed before they can move on.
+4. but we'll enforce that there aren't any more 'check responses' at that point.
+
+
+A dialog step consists of 
+
+text (displayed before or after the answer form)
+a graphical action (specified by a 'name'))
+an answer form -or- a reflection form (which I guess can take a similar form but doesn't record the answer to the same place and doesn't have a 'check answer' button)
+[eventually, you might want to include a button that the user can click on to perform some action like open a tool]
+(simplify, simplify! no 'text before' and 'text after' stuff. just text...)
+
+
+the answer form is a template with (with a list of actions to take after an answer)
+the graphical action consists of a list of actions by name
+the buttons contain "ok" if no answer form; "show me again" if action; "check my answer" and "i don't know" if there's an answer form
+there can also be a list of actions defined in a step
+
+alternatively, a step can be a link to a 'subdialog'
+
+instead of having a 'finally clause', allow a dialog to contain multiple DialogStepSequences.
+
+Answering a question correctly (see AnswerForm) in a DialogStepSequence skips to the next sequence, if any.
+
+
+I think we have what we need to model this.
+
+
+GuidedUserActivity
+  steps: toMany(GuidePage)
+  
+
+GuidePage
+  guidedUserActivity: toOne(GuidedUserActivity)
+  text:
+  configuration:
+  lowerRight: ?
+  upperRight: ?
+  dialog: toOne(Dialog)
+
+
+Dialog
+  index: Number
+  GuidePage: toOne(GuidePage)
+  sequences: toMany(DialogStepSequence)
+  dialog: toOne(Dialog)
+  steps: toMany(DialogSteps)
+  
+
+DialogStepSequence
+  dialog: toOne(Dialog)
+  index: 
+  steps: toMany(DialogStep)
+
+
+DialogStep
+  index: Number
+  sequence: toOne(DialogStepSequence)
+  
+  beforeText: String
+  responseForm: toOne(ResponseForm)
+  responseVerifier: toOne(ResponseVerifer)
+  graphicalActions: toOne(ActionSequence)
+
+  afterText: String
+  subDialog: toOne(Dialog)
+
+  actions: toOne(ActionSequence)
+  
+
+ResponseForm:
+  type: String  (one of two constants)
+  correctResponse:
+  eventually, other fields that allow 
+    
+    
+ActionSequence:
+  actions: toMany(Action)
+  
+
+Action:
+  index: Number
+  sequence: toOne(ActionSequence)
+
+
+
+EARLIER THOUGHTS BELOW:
+
+
+each DialogStep can 'be' a:
+
+posed question              response buttons: checzk answer, OK (if no answer is expected), I don't know
+rephrased question          response buttons: check answer, OK (if no answer is expected), I don't know
+subquestion                 response buttons: check answer, OK (if no answer is expected), I don't know
+graphical hint              response buttons: check answer, OK (if no answer is expected), show me again
+textual hint                response buttons: check answer, OK (if no answer is expected)
+reflection opportunity      response buttons: OK
+textual response            response buttons: OK (or none if it's the last?)
+graphical response          response buttons: OK, show me again
+
+* possibly separate the prompting from the setting of a new response expectation
+* the funny bit is the idea of a 'prompt'. we want it to repeat, possibly being overridden. 
+**  Actually, we need an 'answer form' independent of the 'prompt'
+* each step can have associated with it some actions
+
+trying again...
+each step can have
+
+text (the 'prompt' goes here, but this can be a hint or whatever)
+an 'answer form' (the idea being these repeat until a new one is introduced)
+graphic response
+(associated actions)
+post-incorrect-response text
+post-correct-response text
+
+
+
+
+
+Dialog:
+
+  firstStep                   (first dialogStep to pose)
+  afterCompletionStep:        (follow these steps after success)
+
+DialogStep:
+
+(actions:
+  set a new response expectation
+  do some named actions that annotate the graph
+  do some named actions that display a transient annotation
+  set a new reflective response question
+  switch to a sub-question...)
+
+
+  repeatableActions           ('graphical scaffolding')
+  
+  hasCheckResponseButton
+  hasShowAgainButton          (to replay actions ... although, which actions?)
+  hasOkButton                 (for 'think about it' or 'write what you think will happen' type dialog steps)
+
+  newResponseExpectation      (set this to a new ResponseExpectation to ask a new question)
+  text
+  actions                     (a set of actions performed by this step)
+  afterCorrectResponseText
+  afterIncorrectResponseText
+  
+  subDialog                   (a dialog branch -- possibly including a new response expectation -- to be followed to completion between this step and the next) 
+  nextStep
+  
+
+reflectionDialogStep
+graphicalDialogStep
+textDialogStep
+checkAnswerDialogStep
+
+
+textReponseStep
+graphicalResponseStep
+learnerInputStep
+requestLearnerResponseStep
+
+
+
+
+askForResponse
+
+  OK (if reflective input)
+  Watch Again:
+  
+
+
+
+  
+issues:
+  checking that there's any response at all
+  saving a reflective response
+  templating for text output (how to say "put a dropdown here between the words 'ran for' and 'minutes'")
+  templating for actions on logbook (e.g., how to say 'student's answer should represent length param of length annotation')
+  
+  
+  
 5/17/10
 
 
