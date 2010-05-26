@@ -14,6 +14,12 @@
 Smartgraphs.GuidePage = SC.Record.extend(
 /** @scope Smartgraphs.GuidePage.prototype */ {
 
-  // TODO: Add your own code here.
-
+  activity: SC.Record.toOne('Smartgraphs.GuidedUserActivity', {
+    inverse: 'pages'
+  }),
+  
+  text: SC.Record.attr('String'),
+  
+  dialog: SC.Record.toOne('Smartgraphs.Dialog')
+  
 }) ;

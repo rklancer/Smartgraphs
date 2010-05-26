@@ -14,6 +14,8 @@
 Smartgraphs.Dialog = SC.Record.extend(
 /** @scope Smartgraphs.Dialog.prototype */ {
 
-  // TODO: Add your own code here.
+  steps: SC.Record.toMany('Smartgraphs.DialogStep', {
+    inverse: 'dialog'
+  })
 
 }) ;

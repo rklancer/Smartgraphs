@@ -19,14 +19,13 @@ DialogStep
   dialog
   beforeText
   responseTemplate: toOne(ResponseTemplate)
-  correctResponse: toOne(ResponseVerifer)
   staticAnnotations: (i.e., static, not replayable annotations)
   afterText
 
 ResponseTemplate
-  dialogSteps: toMany(DialogStep)
   type: 
   formatString:
+  correctResponse
   
 CorrectResponse
   // a DialogStep without a correctResponse is basically an 'open response'
@@ -39,7 +38,7 @@ StaticAnnotationList:
 StaticAnnotation
   list:       toOne(StaticAnnotation)
   type        (a string)
-  arguments   (?)
+  args        (?)
 
 
 

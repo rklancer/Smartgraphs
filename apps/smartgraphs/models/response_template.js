@@ -13,7 +13,13 @@
 */
 Smartgraphs.ResponseTemplate = SC.Record.extend(
 /** @scope Smartgraphs.ResponseTemplate.prototype */ {
-
-  // TODO: Add your own code here.
+  
+  type: SC.Record.attr(String),
+  
+  templateString: SC.Record.attr(String),
+  
+  correctResponse: SC.Record.toOne('Smartgraphs.CorrectResponse', {
+    inverse: 'responseTemplate'
+  })
 
 }) ;

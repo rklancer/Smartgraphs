@@ -14,6 +14,7 @@
 Smartgraphs.GuidedUserActivity = SC.Record.extend(
 /** @scope Smartgraphs.GuidedUserActivity.prototype */ {
 
-  // TODO: Add your own code here.
-
+  pages: SC.Record.toMany('Smartgraphs.GuidePage', {
+    inverse: 'activity'
+  })
 }) ;

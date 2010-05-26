@@ -13,7 +13,13 @@
 */
 Smartgraphs.StaticAnnotation = SC.Record.extend(
 /** @scope Smartgraphs.StaticAnnotation.prototype */ {
-
-  // TODO: Add your own code here.
-
+  
+  list: SC.Record.toOne('Smartgraphs.StaticAnnotationList', {
+    inverse: 'annotations'
+  }),
+  
+  type: SC.Record.attr(String),
+  
+  args: SC.Record.attr(String)
+  
 }) ;

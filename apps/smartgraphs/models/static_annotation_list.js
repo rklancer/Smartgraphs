@@ -14,6 +14,8 @@
 Smartgraphs.StaticAnnotationList = SC.Record.extend(
 /** @scope Smartgraphs.StaticAnnotationList.prototype */ {
 
-  // TODO: Add your own code here.
+  annotations: SC.Record.toMany('Smartgraphs.StaticAnnotation', {
+    inverse: 'list'
+  })
 
 }) ;
