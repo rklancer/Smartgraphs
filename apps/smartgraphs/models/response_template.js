@@ -11,15 +11,23 @@
   @extends SC.Record
   @version 0.1
 */
+
+Smartgraphs.TEXT_RESPONSE = 'text';
+Smartgraphs.GRAPH_ANNOTATION_RESPONSE = 'annotation';
+
+// consider:
+// Smartgraphs.ResponseType = SC.Record.extend({
+//   name: SC.Record.attr(String)      // each ResponseTemplate could link to a ResponseType record
+// });
+
+
 Smartgraphs.ResponseTemplate = SC.Record.extend(
 /** @scope Smartgraphs.ResponseTemplate.prototype */ {
   
-  type: SC.Record.attr(String),
+  // use this to determine what type of input to accept (and what input fields to display or not display)
+  type: SC.Record.attr(String),             
   
-  templateString: SC.Record.attr(String),
-  
-  correctResponse: SC.Record.toOne('Smartgraphs.CorrectResponse', {
-    inverse: 'responseTemplate'
-  })
+  // could be parsed to generate input fields. (Not using this yet.)
+  templateString: SC.Record.attr(String)
 
 }) ;

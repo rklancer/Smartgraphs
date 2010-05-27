@@ -8,7 +8,7 @@ GuidePageController
 
 DialogController
 
-DialogStepController
+DialogTurnController
 
  shouldHaveShowAgainButton
  shouldHaveCheckAnswerButton
@@ -125,10 +125,10 @@ Dialog
   steps: toMany(DialogSteps)
   
 
-DialogStepSequence
+DialogTurnSequence
   dialog: toOne(Dialog)
   index: 
-  steps: toMany(DialogStep)
+  turns: toMany(DialogTurns)
 
 
 DialogStep
