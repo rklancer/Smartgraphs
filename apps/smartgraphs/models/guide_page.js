@@ -26,5 +26,12 @@ Smartgraphs.GuidePage = SC.Record.extend(
   //nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
   
   // transient properties not saved to db  
-  currentDialogTurn: null
+  currentDialogTurn: null,
+
+  // the 'isSelectable' property is set to YES for:
+  //   * the *first* page
+  //   * the *next* page once the current dialog has marked the page finished
+  //   * any page you've previously visited
+  
+  isSelectable: NO
 }) ;
