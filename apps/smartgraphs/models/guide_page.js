@@ -18,7 +18,7 @@ Smartgraphs.GuidePage = SC.Record.extend(
     inverse: 'pages'   // gPages?
   }),
   
-  text: SC.Record.attr('String'),
+  pageIntroText: SC.Record.attr('String'),
 
   firstDialogTurn: SC.Record.toOne('Smartgraphs.DialogTurn'),
 
@@ -26,7 +26,7 @@ Smartgraphs.GuidePage = SC.Record.extend(
   //nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
   
   // transient properties not saved to db  
-  currentDialogTurn: null,
+  selectedDialogTurn: null,
 
   // the 'isSelectable' property is set to YES for:
   //   * the *first* page

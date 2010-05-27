@@ -15,9 +15,9 @@ Smartgraphs.mainPage = SC.Page.design({
       height: 820
     },
 
-    childViews: 'promptView graphView tableView authoringModeButton authorView'.w(),
+    childViews: 'dialogView graphView tableView'.w(), // 'authoringModeButton authorView'
 
-    promptView: SC.View.design({
+    dialogView: SC.View.design({
       layout: {
         left: 20,
         top: 20,
@@ -43,6 +43,14 @@ Smartgraphs.mainPage = SC.Page.design({
         nextQuestionIsSelectableBinding: SC.Binding.oneWay('Smartgraphs.questionSequenceController*nextQuestion.isSelectable')
       }),
 
+      pageIntroTextView: SC.StaticContentView({
+        contentBinding: 'Smartgraphs.GuidePageController.pageIntroText'
+      }),
+      
+      dialogTurnView: Smartgraphs.DialogTurnView.design({
+        
+      }),
+      
       questionView: Smartgraphs.QuestionView.design({
         classNames: 'sg-question'.w(),
         layout: {

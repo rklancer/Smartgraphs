@@ -30,6 +30,6 @@ Smartgraphs.DialogTurn = SC.Record.extend(
   
   nextTurnAfterCorrectResponse: SC.Record.toOne('Smartgraphs.DialogTurn'),
   
-  nextTurnAfterIncorrectReponse: SC.Record.toOne('Smartgraphs.DialogTurn')
+  nextTurnAfterIncorrectResponse: SC.Record.toOne('Smartgraphs.DialogTurn')
 
 }) ;
