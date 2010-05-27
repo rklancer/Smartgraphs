@@ -1,3 +1,22 @@
+5/27/10:
+
+next step: controllers and actions
+
+GuidedUserActivityController
+
+GuidePageController
+
+DialogController
+
+DialogStepController
+
+ shouldHaveShowAgainButton
+ shouldHaveCheckAnswerButton
+ shouldshowAgain
+  
+
+(thinking ahead: where will 
+
 5/26/10
 
 What to actually implement to get text dialog working
