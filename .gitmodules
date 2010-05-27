@@ -4,3 +4,6 @@
 [submodule "abbot"]
 	path = abbot
 	url = git://github.com/sproutit/sproutcore-abbot.git
+[submodule "frameworks/cc"]
+	path = frameworks/cc
+	url = git://github.com/sfentress/CC-SproutCore.git
