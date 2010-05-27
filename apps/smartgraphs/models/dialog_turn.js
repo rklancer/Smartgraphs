@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.DialogStep
+// Project:   Smartgraphs.DialogTurn
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
@@ -11,21 +11,23 @@
   @extends SC.Record
   @version 0.1
 */
-Smartgraphs.DialogStep = SC.Record.extend(
-/** @scope Smartgraphs.DialogStep.prototype */ {
+Smartgraphs.DialogTurn = SC.Record.extend(
+/** @scope Smartgraphs.DialogTurn.prototype */ {
 
   dialog: SC.Record.toOne('Smartgraphs.Dialog', {
     inverse: 'steps'
   }),
   
-  index: SC.Record.attr(Number),
-  
   beforeText: SC.Record.attr(String),
   
   responseTemplate: SC.Record.toOne('Smartgraphs.ResponseTemplate'),
+
+  correctResponse: SC.Record.toOne('Smartgraphs.CorrectAnswer'),
   
   staticAnnotationList: SC.Record.toOne('Smartgraphs.StaticAnnotationList'),
   
-  afterText: SC.Record.attr(String)
+  afterText: SC.Record.attr(String),
+  
+  nextTurn: SC.Record.toOne('Smartgraphs.DialogTurn')
 
 }) ;
