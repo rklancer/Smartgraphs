@@ -36,8 +36,8 @@ Smartgraphs.questionController = SC.ObjectController.create(
   
     var nextQ = Smartgraphs.questionSequenceController.get('nextQuestion');
     if (nextQ) {
-		nextQ.set('isSelectable', true);
-	}
+	  	nextQ.set('isSelectable', true);
+  	}
   },
 
   didReceiveIncorrectResponse: function () {

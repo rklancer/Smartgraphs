@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.GuidedUserActivity
+// Project:   Smartgraphs.GuidePageSequence
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
@@ -11,8 +11,8 @@
   @extends SC.Record
   @version 0.1
 */
-Smartgraphs.GuidedUserActivity = SC.Record.extend(
-/** @scope Smartgraphs.GuidedUserActivity.prototype */ {
+Smartgraphs.GuidePageSequence = SC.Record.extend(
+/** @scope Smartgraphs.GuidePageSequence.prototype */ {
 
   pages: SC.Record.toMany('Smartgraphs.GuidePage', {
     inverse: 'activity'

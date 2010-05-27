@@ -1,8 +1,16 @@
 5/27/10:
 
+view layer changes:
+
+ mainPage.promptView becomes 'dialogView'
+ 
+ 
+
+
+
 next step: controllers and actions
 
-GuidedUserActivityController
+GuidePageSequenceController
 
 GuidePageController
 
@@ -10,18 +18,14 @@ DialogController
 
 DialogTurnController
 
- shouldHaveShowAgainButton
- shouldHaveCheckAnswerButton
- shouldshowAgain
-  
 
-(thinking ahead: where will 
+
 
 5/26/10
 
 What to actually implement to get text dialog working
 
-GuidedUserActivity
+GuidePageSequence
   pages
   
 GuidePage
@@ -67,7 +71,7 @@ StaticAnnotation
 
 new objects:
 
-GuidedUserActivity    (an 'activity' or a sequence of 'pages', without all the connotations of 'activity' -- e.g,  it could be a wizard)
+GuidePageSequence    (an 'activity' or a sequence of 'pages', without all the connotations of 'activity' -- e.g,  it could be a wizard)
 ActivityStep          (a 'page' in the 'activity', with the expectation that steps can be followed linearly -- if a student needs help with a step, he gets it in the step itself)
 Dialog                (a description of the dialog between system and user that takes place during a single ActivityStep)
 DialogStep            (a step in that dialog)
@@ -104,12 +108,12 @@ Answering a question correctly (see AnswerForm) in a DialogStepSequence skips to
 I think we have what we need to model this.
 
 
-GuidedUserActivity
+GuidePageSequence
   steps: toMany(GuidePage)
   
 
 GuidePage
-  guidedUserActivity: toOne(GuidedUserActivity)
+  guidedUserActivity: toOne(GuidePageSequence)
   text:
   configuration:
   lowerRight: ?

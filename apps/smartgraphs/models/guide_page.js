@@ -14,14 +14,17 @@
 Smartgraphs.GuidePage = SC.Record.extend(
 /** @scope Smartgraphs.GuidePage.prototype */ {
 
-  activity: SC.Record.toOne('Smartgraphs.GuidedUserActivity', {
-    inverse: 'pages'
+  activity: SC.Record.toOne('Smartgraphs.GuidePageSequence', {
+    inverse: 'pages'   // gPages?
   }),
   
   text: SC.Record.attr('String'),
 
   firstDialogTurn: SC.Record.toOne('Smartgraphs.DialogTurn'),
 
-  nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
+  index: SC.Record.attr(Number),
+  //nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
   
+  // transient properties not saved to db  
+  currentDialogTurn: null
 }) ;

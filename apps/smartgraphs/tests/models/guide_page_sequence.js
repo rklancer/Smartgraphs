@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.GuidedUserActivity Unit Test
+// Project:   Smartgraphs.GuidePageSequence Unit Test
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.GuidedUserActivity");
+module("Smartgraphs.GuidePageSequence");
 
-// TODO: Replace with real unit test for GuidedUserActivity
+// TODO: Replace with real unit test for GuidePageSequence
 test("test description", function() {
   var expected = "test";
   var result   = "test";

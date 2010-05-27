@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.GuidedUserActivity Fixtures
+// Project:   Smartgraphs.GuidePageSequence Fixtures
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/guided_user_activity');
+sc_require('models/guide_page_sequence');
 
-Smartgraphs.GuidedUserActivity.FIXTURES = [
+Smartgraphs.GuidePageSequence.FIXTURES = [
 
   // TODO: Add your data fixtures here.
   // All fixture records must have a unique primary key (default 'guid').  See 
