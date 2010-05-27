@@ -18,8 +18,10 @@ Smartgraphs.StaticAnnotation = SC.Record.extend(
     inverse: 'annotations'
   }),
   
+  // a string specifying an annotation command (HighlightRegion)
   type: SC.Record.attr(String),
   
+  // a string that can be eval'ed (?) to generate an argument list for the annotation command.
   args: SC.Record.attr(String)
   
 }) ;

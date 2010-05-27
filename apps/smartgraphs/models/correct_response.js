@@ -14,12 +14,8 @@
 Smartgraphs.CorrectResponse = SC.Record.extend(
 /** @scope Smartgraphs.CorrectResponse.prototype */ {
 
-  // this model is separate from responseTemplate to allow for some polymorphism 
-  // (i.e, eventually it might not just have a single, String, 'value' parameter) 
-  responseTemplate: SC.Record.toOne('Smartgraphs.ResponseTemplate', {
-    inverse: 'correctResponse'
-  }),
-  
-  value: SC.Record.attr(String)
+  // this model is generic for now, but consider that it might eventually specify, in stead of a single correct
+  // answer, a formula for determining the correct answer 
 
+  value: SC.Record.attr(String)
 }) ;

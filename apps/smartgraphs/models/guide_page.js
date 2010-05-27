@@ -19,7 +19,9 @@ Smartgraphs.GuidePage = SC.Record.extend(
   }),
   
   text: SC.Record.attr('String'),
-  
-  dialog: SC.Record.toOne('Smartgraphs.Dialog')
+
+  firstDialogTurn: SC.Record.toOne('Smartgraphs.DialogTurn'),
+
+  nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
   
 }) ;

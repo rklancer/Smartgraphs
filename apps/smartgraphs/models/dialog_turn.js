@@ -14,20 +14,21 @@
 Smartgraphs.DialogTurn = SC.Record.extend(
 /** @scope Smartgraphs.DialogTurn.prototype */ {
 
-  dialog: SC.Record.toOne('Smartgraphs.Dialog', {
-    inverse: 'steps'
-  }),
-  
-  beforeText: SC.Record.attr(String),
+  // text to diplay *before* the question prompt
+  beforeText: SC.Record.attr(String),                                           
   
   responseTemplate: SC.Record.toOne('Smartgraphs.ResponseTemplate'),
 
-  correctResponse: SC.Record.toOne('Smartgraphs.CorrectAnswer'),
+  correctResponse: SC.Record.toOne('Smartgraphs.CorrectResponse'),              // is 'open response' if null
   
-  staticAnnotationList: SC.Record.toOne('Smartgraphs.StaticAnnotationList'),
+  // e.g., instructions to highlight portions of the graph. *static* annotations do not require 'play again' buttons.
+  staticAnnotationList: SC.Record.toOne('Smartgraphs.StaticAnnotationList'),   
   
-  afterText: SC.Record.attr(String),
+  // text
+  afterText: SC.Record.attr(String),      
   
-  nextTurn: SC.Record.toOne('Smartgraphs.DialogTurn')
+  nextTurnAfterCorrectResponse: SC.Record.toOne('Smartgraphs.DialogTurn'),
+  
+  nextTurnAfterIncorrectReponse: SC.Record.toOne('Smartgraphs.DialogTurn')
 
 }) ;
