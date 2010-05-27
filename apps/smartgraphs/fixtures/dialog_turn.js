@@ -4,7 +4,7 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/dialog_step');
+sc_require('models/dialog_turn');
 
 Smartgraphs.DialogTurn.FIXTURES = [
 
