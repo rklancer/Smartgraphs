@@ -15,9 +15,6 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
 
   contentBinding: 'Smartgraphs.guidePageSequenceController.selectedPage',
   
-  selectedDialogTurn: function () {  
-  }.property(),
-  
   contentDidChange: function () {
     // utter the first dialog turn if user hasn't been to this page before; 
     // otherwise, leave dialog state at whatever state user saw last time they were on this page

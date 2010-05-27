@@ -26,7 +26,7 @@ Smartgraphs.mainPage = SC.Page.design({
       },
       classNames: ['smartgraph-pane'],
 
-      childViews: 'navButtons questionView nextButton backButton'.w(),
+      childViews: 'navButtons introTextView dialogTurnView nextButton backButton'.w(),
 
       navButtons: SC.SegmentedView.design({
         layout: {
@@ -43,8 +43,9 @@ Smartgraphs.mainPage = SC.Page.design({
         nextQuestionIsSelectableBinding: SC.Binding.oneWay('Smartgraphs.questionSequenceController*nextQuestion.isSelectable')
       }),
 
-      pageIntroTextView: SC.StaticContentView({
-        contentBinding: 'Smartgraphs.GuidePageController.pageIntroText'
+      introTextView: SC.StaticContentView({
+        displayProperties: 'content'.w(),
+        contentBinding: 'Smartgraphs.GuidePageController.introText'
       }),
       
       dialogTurnView: Smartgraphs.DialogTurnView.design({
