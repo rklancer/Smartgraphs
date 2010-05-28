@@ -23,74 +23,79 @@ Smartgraphs.mainPage = SC.Page.design({
         width: 455,
         height: 680
       },
-      classNames: ['smartgraph-pane'],
+      classNames: 'smartgraph-pane'.w(),
       
-      childViews: 'navButtons introTextView dialogTurnView nextButton backButton'.w(),
+      childViews: 'navButtons textView nextButton backButton'.w(),
+
       navButtons: SC.SegmentedView.design({
         layout: {
           top: 25
         },
         
         // in order to enable the button for the next question when it becomes selectable:
-        displayProperties: 'nextQuestionIsSelectable'.w(),
+        displayProperties: 'nextPageIsSelectable'.w(),
         
-        itemsBinding: 'Smartgraphs.questionSequenceController',
-        itemTitleKey: 'shortName',
+        itemsBinding: 'Smartgraphs.guidePageSequenceController',
+        itemTitleKey: 'title',
         itemIsEnabledKey: 'isSelectable',
-        valueBinding: 'Smartgraphs.questionSequenceController.selectedQuestion',
-        nextQuestionIsSelectableBinding: SC.Binding.oneWay('Smartgraphs.questionSequenceController*nextQuestion.isSelectable')
+        valueBinding: 'Smartgraphs.guidePageSequenceController.selectedPage',
+        nextPageIsSelectableBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController*nextPage.isSelectable')
       }),
-      
-      introTextView: SC.StaticContentView({
-        displayProperties: 'content'.w(),
-        contentBinding: 'Smartgraphs.guidePageController.introText'
-      }),
-      
-      dialogTurnView: Smartgraphs.DialogTurnView.design({
 
-      }),
-      
-      questionView: Smartgraphs.QuestionView.design({
-        classNames: 'sg-question'.w(),
+      // provide padding and style rules for the intro text and dialog
+      textView: SC.View.design({
         layout: {
-          top: 50,
-          bottom: 5,
-          left: 5,
-          right: 5
+          top: 60,
+          left: 20,
+          right: 20,
+          bottom: 80
         },
+
+        classNames: 'text-view'.w(),
         
-        controllerBinding: 'Smartgraphs.questionController',
-        promptBinding: 'Smartgraphs.questionController.prompt',
-        textInputShouldBeVisibleBinding: 'Smartgraphs.questionController.shouldAcceptTextResponse',
-        feedbackBinding: 'Smartgraphs.questionController.feedback'
+        childViews: 'introTextView dialogTurnView'.w(),
+        
+        introTextView: SC.StaticContentView.design({
+          contentBinding: 'Smartgraphs.guidePageController.introText',
+          
+          // needed otherwise Sproutcore never updates the size of the div
+          contentDidChange: function () {
+            this.contentLayoutDidChange();
+          }.observes('content')
+        }),
+
+        dialogTurnView: Smartgraphs.DialogTurnView.design({
+        })
       }),
       
       nextButton: SC.ButtonView.design({
         displayProperties: ['isEnabled'],
         layout: {
-          top: 620,
-          left: 325,
+          bottom: 36,
+          height: 24,
+          right: 50,
           width: 80
         },
         title: "Next",
-        target: 'Smartgraphs.questionSequenceController',
-        action: 'selectNextQuestion',
-        isEnabledBinding: 'Smartgraphs.questionSequenceController.canSelectNextQuestion',
-        isVisibleBinding: SC.Binding.not('Smartgraphs.questionSequenceController.isLastQuestion').oneWay()
+        target: 'Smartgraphs.guidePageSequenceController',
+        action: 'selectNextPage',
+        isEnabledBinding: 'Smartgraphs.guidePageSequenceController.canSelectNextPage',
+        isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isLastPage').oneWay()
       }),
       
       backButton: SC.ButtonView.design({
         displayProperties: ['isEnabled'],
         layout: {
-          top: 620,
+          bottom: 36,
+          height: 24,
           left: 50,
           width: 80
         },
         title: "Back",
-        target: 'Smartgraphs.questionSequenceController',
-        action: 'selectPreviousQuestion',
-        isEnabledBinding: 'Smartgraphs.questionSequenceController.canSelectPreviousQuestion',
-        isVisibleBinding: SC.Binding.not('Smartgraphs.questionSequenceController.isFirstQuestion').oneWay()
+        target: 'Smartgraphs.guidePageSequenceController',
+        action: 'selectPreviousPage',
+        isEnabledBinding: 'Smartgraphs.guidePageSequenceController.canSelectPreviousPage',
+        isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isFirstPage').oneWay()
       })
     }),
     

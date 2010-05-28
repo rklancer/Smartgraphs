@@ -14,15 +14,18 @@
 Smartgraphs.GuidePage = SC.Record.extend(
 /** @scope Smartgraphs.GuidePage.prototype */ {
 
-  activity: SC.Record.toOne('Smartgraphs.GuidePageSequence', {
+  sequence: SC.Record.toOne('Smartgraphs.GuidePageSequence', {
     inverse: 'pages'   // gPages?
   }),
+
+  index: SC.Record.attr(Number),
   
-  introText: SC.Record.attr('String'),
+  title: SC.Record.attr(String),
+  
+  introText: SC.Record.attr(String),
 
   firstDialogTurn: SC.Record.toOne('Smartgraphs.DialogTurn'),
 
-  index: SC.Record.attr(Number),
   //nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
   
   // *** transient properties not saved to db
@@ -35,5 +38,5 @@ Smartgraphs.GuidePage = SC.Record.extend(
   //   * the *next* page once the current dialog has marked the page finished
   //   * any page you've previously visited
   
-  isSelectable: NO
+  isSelectable: YES // FIXME: Change this back to NO after we've set up the initial views
 }) ;

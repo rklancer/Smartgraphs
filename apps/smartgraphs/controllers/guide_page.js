@@ -22,7 +22,6 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
     if (SC.none(this.get('selectedDialogTurn'))) {
       this.set('selectedDialogTurn', this.get('firstDialogTurn'));
     }
-  }
-.observes('content')
+  }.observes('content')
 
 });

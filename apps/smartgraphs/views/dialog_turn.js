@@ -10,9 +10,9 @@
 
   @extends SC.View
 */
-Smartgraphs.DialogTurnView = SC.View.extend(
+Smartgraphs.DialogTurnView = SC.StaticContentView.extend(
 /** @scope Smartgraphs.DialogTurnView.prototype */ {
 
-  // TODO: Add your own code here.
+  content: "(This is the DialogTurnView.)"
 
 });
