@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.guidePageController Unit Test
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 

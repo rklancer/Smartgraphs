@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.dialogTurnController
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -13,6 +13,6 @@
 Smartgraphs.dialogTurnController = SC.ObjectController.create(
 /** @scope Smartgraphs.dialogTurnController.prototype */ {
 
-  contentBinding: 'Smartgraphs.GuidePageController.selectedDialogTurn'
+  contentBinding: 'Smartgraphs.guidePageController.selectedDialogTurn'
 
 }) ;

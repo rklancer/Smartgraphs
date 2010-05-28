@@ -1,26 +1,28 @@
 // ==========================================================================
 // Project:   Smartgraphs.guidePageController
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
+ (Document Your Controller Here)
+ @extends SC.ObjectController
+ */
+sc_require('models/guide_page');
 
-  (Document Your Controller Here)
-
-  @extends SC.ObjectController
-*/
 Smartgraphs.guidePageController = SC.ObjectController.create(
-/** @scope Smartgraphs.guidePageController.prototype */ {
+/** @scope Smartgraphs.guidePageController.prototype */
+{
 
   contentBinding: 'Smartgraphs.guidePageSequenceController.selectedPage',
   
-  contentDidChange: function () {
+  contentDidChange: function(){
     // utter the first dialog turn if user hasn't been to this page before; 
     // otherwise, leave dialog state at whatever state user saw last time they were on this page
     if (SC.none(this.get('selectedDialogTurn'))) {
       this.set('selectedDialogTurn', this.get('firstDialogTurn'));
     }
-  }.observes('content')
-  
-}) ;
+  }
+.observes('content')
+
+});
