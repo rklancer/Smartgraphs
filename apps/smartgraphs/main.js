@@ -29,7 +29,12 @@ Smartgraphs.main = function main() {
   
   var data = Smartgraphs.store.find(Smartgraphs.DataSeries, 'series-1');
   var axes = Smartgraphs.store.find(Smartgraphs.Axes, '1');
-  Smartgraphs.dataSeriesController.set('content', data.get('points'));
+
+	var query = SC.Query.local(Smartgraphs.DataPoint, {conditions: 'series = {series}', series: data, orderBy: 'x'} );
+	var dataPoints = Smartgraphs.store.find(query);
+	
+	Smartgraphs.dataSeriesController.set('content', dataPoints);
+	// Smartgraphs.dataSeriesController.set('content', data.get('points'));
   Smartgraphs.axesController.set('content', axes);
   
   var theSequence = Smartgraphs.store.find(Smartgraphs.QuestionSequence, 'sequence-1');
