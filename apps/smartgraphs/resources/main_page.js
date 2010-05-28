@@ -25,7 +25,7 @@ Smartgraphs.mainPage = SC.Page.design({
       },
       classNames: ['smartgraph-pane'],
       
-      childViews: 'navButtons  introTextView dialogTurnView nextButton backButton'.w(),
+      childViews: 'navButtons introTextView dialogTurnView nextButton backButton'.w(),
       navButtons: SC.SegmentedView.design({
         layout: {
           top: 25
