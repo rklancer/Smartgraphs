@@ -4,3 +4,6 @@
 [submodule "frameworks/cc"]
 	path = frameworks/cc
 	url = git://github.com/sfentress/CC-SproutCore.git
+[submodule "capybara-testrunner"]
+	path = capybara-testrunner
+	url = git://github.com/rklancer/capybara-testrunner.git
