@@ -12,7 +12,5 @@
 */
 Smartgraphs.DialogTurnView = SC.StaticContentView.extend(
 /** @scope Smartgraphs.DialogTurnView.prototype */ {
-
   content: "(This is the DialogTurnView.)"
-
 });

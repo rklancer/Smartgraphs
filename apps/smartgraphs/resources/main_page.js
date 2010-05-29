@@ -14,8 +14,9 @@ Smartgraphs.mainPage = SC.Page.design({
       width: 1470,
       height: 820
     },
-    
+
     childViews: 'dialogView graphView tableView'.w(), // TODO put back 'authoringModeButton authorView'
+    
     dialogView: SC.View.design({
       layout: {
         left: 20,
@@ -23,19 +24,20 @@ Smartgraphs.mainPage = SC.Page.design({
         width: 455,
         height: 680
       },
+
       classNames: 'smartgraph-pane'.w(),
-      
+
       childViews: 'navButtons textView nextButton backButton'.w(),
 
       navButtons: SC.SegmentedView.design({
         layout: {
           top: 25
         },
-        
+
         // in order to enable the button for the next question when it becomes selectable:
         displayProperties: 'nextPageIsSelectable'.w(),
-        
-        itemsBinding: 'Smartgraphs.guidePageSequenceController',
+
+        itemsBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController'),
         itemTitleKey: 'title',
         itemIsEnabledKey: 'isSelectable',
         valueBinding: 'Smartgraphs.guidePageSequenceController.selectedPage',
@@ -52,22 +54,37 @@ Smartgraphs.mainPage = SC.Page.design({
         },
 
         classNames: 'text-view'.w(),
-        
-        childViews: 'introTextView dialogTurnView'.w(),
-        
-        introTextView: SC.StaticContentView.design({
-          contentBinding: 'Smartgraphs.guidePageController.introText',
-          
-          // needed otherwise Sproutcore never updates the size of the div
-          contentDidChange: function () {
-            this.contentLayoutDidChange();
-          }.observes('content')
-        }),
 
+        childViews: 'introTextView testView dialogTurnView'.w(),
+
+        introTextView: SC.StaticContentView.design({
+          contentBinding: 'Smartgraphs.guidePageController.introText'
+        }),
+        
+        testView: SC.View.design({
+          layout: {
+            height: 24
+          },
+          
+          useStaticLayout: YES,
+          
+          childViews: 'leftButton rightButton'.w(),
+          
+          leftButton: SC.ButtonView.design({
+            layout: {left: 0, width: 80},
+            title: "Left"
+          }),
+          
+          rightButton: SC.ButtonView.design({
+            layout: {right: 0, width: 80},
+            title: 'Right'
+          })
+        }),
+          
         dialogTurnView: Smartgraphs.DialogTurnView.design({
         })
       }),
-      
+
       nextButton: SC.ButtonView.design({
         displayProperties: ['isEnabled'],
         layout: {
@@ -82,7 +99,7 @@ Smartgraphs.mainPage = SC.Page.design({
         isEnabledBinding: 'Smartgraphs.guidePageSequenceController.canSelectNextPage',
         isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isLastPage').oneWay()
       }),
-      
+
       backButton: SC.ButtonView.design({
         displayProperties: ['isEnabled'],
         layout: {
@@ -98,7 +115,7 @@ Smartgraphs.mainPage = SC.Page.design({
         isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isFirstPage').oneWay()
       })
     }),
-    
+
     graphView: Smartgraphs.RaphaelView.design({
       layout: {
         left: 485,
@@ -108,7 +125,7 @@ Smartgraphs.mainPage = SC.Page.design({
       },
       childViews: 'axesView series1View'.w(),
       classNames: ['smartgraph-pane'],
-      
+
       axesView: Smartgraphs.AxesView.design({
         xMinBinding: 'Smartgraphs.axesController.xMin',
         xMaxBinding: 'Smartgraphs.axesController.xMax',
@@ -118,7 +135,7 @@ Smartgraphs.mainPage = SC.Page.design({
         yStepsBinding: 'Smartgraphs.axesController.ySteps',
         paddingBinding: 'Smartgraphs.axesController.padding'
       }),
-      
+
       series1View: Smartgraphs.SeriesView.design({
         xMinBinding: 'Smartgraphs.axesController.xMin',
         xMaxBinding: 'Smartgraphs.axesController.xMax',
@@ -131,9 +148,9 @@ Smartgraphs.mainPage = SC.Page.design({
         contentBinding: 'Smartgraphs.dataSeriesController.arrangedObjects',
         selectionBinding: 'Smartgraphs.dataSeriesController.selection'
       })
-    
+
     }),
-    
+
     tableView: SC.View.design({
       layout: {
         left: 485,
@@ -142,9 +159,9 @@ Smartgraphs.mainPage = SC.Page.design({
         height: 335
       },
       classNames: ['smartgraph-pane'],
-      
+
       childViews: ['labelsView', 'scrollerView'],
-      
+
       labelsView: SC.View.design({
         layout: {
           left: 0,
@@ -153,7 +170,7 @@ Smartgraphs.mainPage = SC.Page.design({
           height: 30
         },
         childViews: ['xsLabel', 'ysLabel'],
-        
+
         xsLabel: SC.LabelView.design({
           layout: {
             left: 10,
@@ -163,7 +180,7 @@ Smartgraphs.mainPage = SC.Page.design({
           },
           displayValue: 'time'
         }),
-        
+
         ysLabel: SC.LabelView.design({
           layout: {
             left: 70,
@@ -174,7 +191,7 @@ Smartgraphs.mainPage = SC.Page.design({
           displayValue: 'distance'
         })
       }),
-      
+
       scrollerView: SC.ScrollView.design({
         layout: {
           left: 0,
@@ -182,33 +199,30 @@ Smartgraphs.mainPage = SC.Page.design({
           width: 455,
           height: 305
         },
-        
+
         borderStyle: SC.BORDER_NONE,
-        
+
         contentView: SC.View.design({
           childViews: ['xsView', 'ysView'],
-          
+
           // look at SC.ContentDisplay for this too
           xHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
           yHeightBinding: SC.Binding.from('.ysView.height').oneWay(),
-          
+
           height: function(){
             return Math.max(this.get('xHeight'), this.get('yHeight'));
-          }
-.property('xHeight', 'yHeight').cacheable()          ,
-          
+          }.property('xHeight', 'yHeight').cacheable()          ,
+
           _heightDidChange: function(){
             this.adjust('height', this.get('height'));
-          }
-.observes('height')          ,
-          
+          }.observes('height')          ,
+
           xsView: SC.ListView.design({
             height: function(){
               var layout = this.get('layout');
               return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-            }
-.property('calculatedHeight', 'layout').cacheable()            ,
-            
+            }.property('calculatedHeight', 'layout').cacheable()            ,
+
             layout: {
               left: 10,
               top: 0,
@@ -221,14 +235,13 @@ Smartgraphs.mainPage = SC.Page.design({
             selectionBinding: 'Smartgraphs.dataSeriesController.selection',
             rowHeight: 18
           }),
-          
+
           ysView: SC.ListView.design({
             height: function(){
               var layout = this.get('layout');
               return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-            }
-.property('calculatedHeight', 'layout').cacheable()            ,
-            
+            }.property('calculatedHeight', 'layout').cacheable()            ,
+
             layout: {
               left: 70,
               top: 0,
@@ -247,7 +260,7 @@ Smartgraphs.mainPage = SC.Page.design({
         })
       })
     }),
-    
+
     authoringModeButton: SC.ButtonView.design({
       layout: {
         left: 20,
@@ -258,7 +271,7 @@ Smartgraphs.mainPage = SC.Page.design({
       targetBinding: 'Smartgraphs.authoringController',
       action: 'toggleAuthoring'
     }),
-    
+
     authorView: Smartgraphs.QuestionAuthorView.design({
       layout: {
         left: 965,
