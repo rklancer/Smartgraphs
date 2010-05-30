@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.CorrectResponse Fixtures
+// Project:   Smartgraphs.ResponseVerifier Fixtures
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/correct_response');
+sc_require('models/response_verifier');
 
-Smartgraphs.CorrectResponse.FIXTURES = [
+Smartgraphs.ResponseVerifier.FIXTURES = [
 
   // TODO: Add your data fixtures here.
   // All fixture records must have a unique primary key (default 'guid').  See 

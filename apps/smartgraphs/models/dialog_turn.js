@@ -19,8 +19,8 @@ Smartgraphs.DialogTurn = SC.Record.extend(
   
   responseTemplate: SC.Record.toOne('Smartgraphs.ResponseTemplate'),
 
-  // a DialogTurn with a ResponseTemplate but no CorrectResponse should be considered 'open response'
-  correctResponse: SC.Record.toOne('Smartgraphs.CorrectResponse'),
+  // a DialogTurn with a ResponseTemplate but no ResponseVerifier should be considered 'open response'
+  responseVerifier: SC.Record.toOne('Smartgraphs.ResponseVerifier'),
   
   // e.g., instructions to highlight portions of the graph. *static* annotations do not require 'play again' buttons.
   staticAnnotationList: SC.Record.toOne('Smartgraphs.StaticAnnotationList'),   
