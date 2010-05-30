@@ -55,33 +55,14 @@ Smartgraphs.mainPage = SC.Page.design({
 
         classNames: 'text-view'.w(),
 
-        childViews: 'introTextView testView dialogTurnView'.w(),
+        childViews: 'introTextView dialogTurnView'.w(),
 
         introTextView: SC.StaticContentView.design({
           contentBinding: 'Smartgraphs.guidePageController.introText'
         }),
-        
-        testView: SC.View.design({
-          layout: {
-            height: 24
-          },
-          
-          useStaticLayout: YES,
-          
-          childViews: 'leftButton rightButton'.w(),
-          
-          leftButton: SC.ButtonView.design({
-            layout: {left: 0, width: 80},
-            title: "Left"
-          }),
-          
-          rightButton: SC.ButtonView.design({
-            layout: {right: 0, width: 80},
-            title: 'Right'
-          })
-        }),
           
         dialogTurnView: Smartgraphs.DialogTurnView.design({
+          UseStaticLayout: YES
         })
       }),
 
@@ -93,10 +74,10 @@ Smartgraphs.mainPage = SC.Page.design({
           right: 50,
           width: 80
         },
-        title: "Next",
+        title: "Next >>",
         target: 'Smartgraphs.guidePageSequenceController',
         action: 'selectNextPage',
-        isEnabledBinding: 'Smartgraphs.guidePageSequenceController.canSelectNextPage',
+        isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController.canSelectNextPage'),
         isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isLastPage').oneWay()
       }),
 
@@ -108,10 +89,10 @@ Smartgraphs.mainPage = SC.Page.design({
           left: 50,
           width: 80
         },
-        title: "Back",
+        title: "<< Back",
         target: 'Smartgraphs.guidePageSequenceController',
         action: 'selectPreviousPage',
-        isEnabledBinding: 'Smartgraphs.guidePageSequenceController.canSelectPreviousPage',
+        isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController.canSelectPreviousPage'),
         isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isFirstPage').oneWay()
       })
     }),
