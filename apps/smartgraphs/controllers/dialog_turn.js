@@ -13,6 +13,18 @@
 Smartgraphs.dialogTurnController = SC.ObjectController.create(
 /** @scope Smartgraphs.dialogTurnController.prototype */ {
 
-  contentBinding: 'Smartgraphs.guidePageController.selectedDialogTurn'
+  contentBinding: 'Smartgraphs.guidePageController.selectedDialogTurn',
+  
+  didReceiveCorrectResponse: function () {
+  },
+  
+  didReceiveIncorrectResponse: function () { 
+  },
+  
+  didReceiveIncompleteResponse: function () {
+  },
+  
+  didReceiveMalformedResponse: function () {
+  }
 
 }) ;

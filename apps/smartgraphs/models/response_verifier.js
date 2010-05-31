@@ -14,8 +14,9 @@
 Smartgraphs.ResponseVerifier = SC.Record.extend(
 /** @scope Smartgraphs.ResponseVerifier.prototype */ {
 
-  // this model is generic for now, but consider that it might eventually specify, in stead of a single correct
-  // answer, a formula for determining the correct answer 
+  // e.g., what kind of response verifier we want
+  verifierDelegateClassName: SC.Record.attr(String),
 
-  value: SC.Record.attr(String)
+  // the verifier delegate will interpret this string as appropriate.
+  configString: SC.Record.attr(String)
 }) ;
