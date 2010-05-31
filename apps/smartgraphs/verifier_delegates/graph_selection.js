@@ -37,34 +37,26 @@ Smartgraphs.GraphSelectionVerifierDelegate = Smartgraphs.VerifierDelegate.extend
     this.set('responseIsCorrect', responseXValue === expectedXValue);     
   },
 
-  // note you can't have a Binding object here, because each object created from this class needs its own Binding object
+  // note you can't specify a Binding object here, (a la SC.Binding.from('Smartraphs...'), because each object created
+  // created from this class needs its own Binding object. Does this hint that verifier delegates should be singletons?
   graphSelectionBinding: 'Smartgraphs.dataSeriesController.selection',
 
   responseIsReady: function () {
     var selection = this.get('graphSelection');
-    var ret = (!!selection && selection.get('length') === 1);
-    console.log('calculating responseIsReady: ' + ret);
-    return ret;
+    return (!!selection && selection.get('length') === 1);
   }.property('graphSelection').cacheable(),
     
   responseIsIncomplete: function () {
-    var ret = !this.get('responseIsReady');
-    console.log('calculating responseIsIncomplete: ' + ret);
-    return ret;
-  }.property('graphSelection').cacheable(),
+    return !this.get('responseIsReady');
+  }.property('responseIsReady').cacheable(),
   
   responseIsMalformed: function () {
     var selection = this.get('graphSelection');
-    var ret = (selection && selection.get('length') > 1);
-    console.log('calculating responseIsMalformed: ' + ret);
-    return ret;
+    return (selection && selection.get('length') > 1);
   }.property('graphSelection').cacheable(),
   
   selectedPoint: function () {
     var selection = this.get('graphSelection');
-    var ret = ((selection && selection.get('length') === 1) ? selection.toArray().objectAt(0) : undefined);
-    console.log('calculating selectedPoint: ');
-    console.log(ret);
-    return ret;
+    return ((selection && selection.get('length') === 1) ? selection.toArray().objectAt(0) : undefined);
   }.property('graphSelection').cacheable()
 });
