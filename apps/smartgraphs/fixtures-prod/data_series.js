@@ -13,8 +13,7 @@ Smartgraphs.Pair = SC.Object.extend({
 
 Smartgraphs.DataSeries.FIXTURES = [
 
-  { 
-    guid: 'series-1',
+  { guid: 'series-1',
     points: (function () {
       var recs = [];
       for (var i = 1; i <= 10; i++) {
