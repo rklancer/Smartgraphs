@@ -16,7 +16,6 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
   contentBinding: 'Smartgraphs.dialogTurnController.responseVerifier',
   
   contentDidChange: function () {
-    console.log('Smartgraphs.responseVerifierController contentDidChange');
     var content = this.get('content');
 
     if (content) {
@@ -32,6 +31,7 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
   }.observes('content'),
 
   responseCanBeCheckedBinding: SC.Binding.bool('.verifierDelegate').oneWay(),
+  responseIsReadyBinding: SC.Binding.oneWay('*verifierDelegate.responseIsReady'),
   
   checkResponse: function () {
     var delegate = this.get('verifierDelegate');

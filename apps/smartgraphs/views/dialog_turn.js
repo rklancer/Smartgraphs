@@ -22,9 +22,9 @@ Smartgraphs.DialogTurnView = SC.View.extend(
   }),
   
   responseFieldsView: SC.StaticContentView.design({
-    _updateChildViews: function () {
-      console.log('responseFieldsView _updateChildViews()');
+    _updateChildViews: function () {      
       this.removeAllChildren();
+      this.contentLayoutDidChange();
 
       var fieldTypes = Smartgraphs.responseTemplateController.get('fieldTypes');
       var fieldValues = Smartgraphs.responseTemplateController.get('fieldValues');
@@ -73,7 +73,8 @@ Smartgraphs.DialogTurnView = SC.View.extend(
         right: 0
       },
       title: 'Check My Answer',
-      isVisibleBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.checkResponseShouldBeEnabled'),
+      isVisibleBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.checkResponseShouldBeVisible'),
+      isEnabledBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.checkResponseShouldBeEnabled'),
       target: 'Smartgraphs.responseVerifierController',
       action: 'checkResponse'
     })

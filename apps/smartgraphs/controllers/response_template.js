@@ -21,34 +21,26 @@ Smartgraphs.responseTemplateController = SC.ObjectController.create(
   updateResponse: function (index, value) {
     var responseArray = this.get('responseArray');
     responseArray.replace(index, 1, [value]);
+    this.notifyPropertyChange('responseArray');
   },
 
   contentDidChange: function () {
+    if (!this.get('content')) return;     // nothing to do.
+
     var templateString = this.get('templateString');
     
     // TODO:
     // parse template string
     // update fieldValues and fieldTypes accordingly
+    // use FlowLayout from quilmes?
     
     // for now:
     
-    var fieldTypes = [];
-    var fieldValues = [];
-    var responseArray =[];
-    
-    // for now:
-    if (this.get('content')) {      
-      fieldTypes = ['textarea'];
-      fieldValues = [''];
-      responseArray = [undefined];
-    }
-
     this.beginPropertyChanges();
-    this.set('fieldTypes',  fieldTypes);
-    this.set('fieldValues', fieldValues);
-    this.set('responseArray', responseArray);
+    this.set('fieldTypes',  ['(a textarea)']);
+    this.set('fieldValues', ['']);
+    this.set('responseArray', [undefined]);
     this.endPropertyChanges();
-
   }.observes('content')
   
 }) ;

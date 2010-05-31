@@ -12,7 +12,7 @@
 */
 Smartgraphs.dialogTurnController = SC.ObjectController.create(
 /** @scope Smartgraphs.dialogTurnController.prototype */ {
-
+  
   contentBinding: 'Smartgraphs.guidePageController.selectedDialogTurn',
   
   didReceiveCorrectResponse: function () {
@@ -32,5 +32,6 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
   },
   
   // TODO: let content dictate what buttons are available (including 'ok', 'show me again', 'i dont know'...)
-  checkResponseShouldBeEnabledBinding: SC.Binding.oneWay('Smartgraphs.responseVerifierController.responseCanBeChecked')
+  checkResponseShouldBeVisibleBinding: SC.Binding.oneWay('Smartgraphs.responseVerifierController.responseCanBeChecked'),
+  checkResponseShouldBeEnabledBinding: SC.Binding.oneWay('Smartgraphs.responseVerifierController.responseIsReady')
 }) ;

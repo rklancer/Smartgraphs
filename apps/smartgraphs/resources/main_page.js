@@ -62,7 +62,6 @@ Smartgraphs.mainPage = SC.Page.design({
         }),
           
         dialogTurnView: Smartgraphs.DialogTurnView.design({
-          UseStaticLayout: YES
         })
       }),
 
