@@ -4,6 +4,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('verifier_delegates/verifier_delegate');
+
 Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.extend({
 
   checkResponse: function () {
@@ -27,24 +29,26 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.exte
     // parsing of the templateString in ResponseTemplate
     
     var responseArray = Smartgraphs.responseTemplateController.get('responseArray');
-    var response = responseArray ? responseArray.objectAt(0).strip() : null;
+    var response = responseArray.get('length') > 0 ? responseArray.objectAt(0) : null;
+
+    if (typeof response === 'string') {
+      response = response.strip();
+    }
     
-    this.set('responseIsComplete', !SC.none(response));
-    if (SC.none(response)) return;
+    this.set('responseIsIncomplete', (!response || response.length === 0));
+
+    if (this.get('responseIsIncomplete')) return;
     
     // eventually we could process responseAsString in a more sophisticated way, perhaps adding units, etc.
     this.set('responseAsString', response);
     
+    this.set('responseIsMalformed', NO);
     if (responseTypeIsNumber) {
       response = parseFloat(response);
-      if (isNaN(response)) {
-        this.set('responseIsMalformed', YES);
-        return;
-      }
+      if (isNaN(response)) this.set('responseIsMalformed', YES);
     }
+    if (this.get('responseIsMalformed')) return;
 
     this.set('responseIsCorrect', response === expectedResponse);
   }
-  
-
 });

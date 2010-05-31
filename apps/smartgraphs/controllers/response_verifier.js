@@ -10,17 +10,18 @@
 
   @extends SC.Object
 */
-Smartgraphs.responseVerifierController = SC.ObjectController.create(
+Smartgraphs.responseVerifierController = SC.ObjectController.create( 
 /** @scope Smartgraphs.responseVerifierController.prototype */ {
   
   contentBinding: 'Smartgraphs.dialogTurnController.responseVerifier',
   
   contentDidChange: function () {
+    console.log('Smartgraphs.responseVerifierController contentDidChange');
     var content = this.get('content');
 
     if (content) {
       var delegatePath = 'Smartgraphs.' + this.get('verifierDelegateClassName');
-      var delegate = SC.ObjectForPropertyPath(delegatePath).create();
+      var delegate = SC.objectForPropertyPath(delegatePath).create();
       delegate.set('configString', this.get('configString'));
       
       this.set('verifierDelegate', delegate);
@@ -29,16 +30,18 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
       this.set('verifierDelegate', null);
     }
   }.observes('content'),
+
+  responseCanBeCheckedBinding: SC.Binding.bool('.verifierDelegate').oneWay(),
   
   checkResponse: function () {
     var delegate = this.get('verifierDelegate');
     delegate.checkResponse();
     
-    var isComplete = delegate.get('responseIsComplete');
+    var isIncomplete = delegate.get('responseIsIncomplete');
     var isMalformed = delegate.get('responseIsMalformed');
     var isCorrect = delegate.get('responseIsCorrect');
     
-    if (!isComplete) {
+    if (isIncomplete) {
       Smartgraphs.dialogTurnController.didReceiveIncompleteResponse();
       return;
     }

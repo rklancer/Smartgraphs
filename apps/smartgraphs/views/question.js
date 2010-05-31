@@ -28,7 +28,7 @@ Smartgraphs.QuestionView = SC.View.extend(/** @scope Smartgraphs.QuestionView.pr
         isVisibleBinding: '.parentView.textInputShouldBeVisible',
         childViews: 'textFieldView'.w(),
         textFieldView: SC.TextFieldView.design({
-            isTextArea: YES,
+            isTextArea: NO,
             valueBinding: '.parentView.parentView.controller.textResponse'
         })
     }),

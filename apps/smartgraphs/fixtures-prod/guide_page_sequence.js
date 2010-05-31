@@ -7,6 +7,7 @@
 sc_require('models/guide_page_sequence');
 
 Smartgraphs.GuidePageSequence.FIXTURES = [
+
   { guid: 'sequence-1',
     pages: ['1','2']
   }

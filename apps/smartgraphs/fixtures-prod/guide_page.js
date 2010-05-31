@@ -15,7 +15,7 @@ Smartgraphs.GuidePage.FIXTURES = [
     introText: "<p>Maria ran practice laps around the school track. Her coach recorded the distances she ran after each " +
                "minute.</p>" + 
                "<p>These data are shown in the scatter plot and the table at right.</p>",
-    firstDialogTurn: null
+    firstDialogTurn: 'turn-1'
   },
   
   { guid: 2,
@@ -23,7 +23,7 @@ Smartgraphs.GuidePage.FIXTURES = [
     index: 2,
     title: "She Stops to Talk",
     introText: "Well?",
-    firstDialogTurn: null
+    firstDialogTurn: 'turn-2'
   }  
 
 ];

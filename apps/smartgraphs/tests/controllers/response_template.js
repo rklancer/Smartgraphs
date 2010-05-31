@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.responseVerifierController Unit Test
+// Project:   Smartgraphs.responseTemplateController Unit Test
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.responseVerifierController");
+module("Smartgraphs.responseTemplateController");
 
-// TODO: Replace with real unit test for Smartgraphs.responseVerifierController
+// TODO: Replace with real unit test for Smartgraphs.responseTemplateController
 test("test description", function() {
   var expected = "test";
   var result   = "test";

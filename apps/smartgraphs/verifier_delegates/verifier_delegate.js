@@ -15,6 +15,7 @@ Smartgraphs.VerifierDelegate = SC.Object.extend({
   // implement these in each subclass
   checkResponse: null,
   responseAsString: '',
-  responseIsComplete: NO,
+  responseIsIncomplete: YES,
+  responseIsMalformed: NO,
   responseIsCorrect: NO
 });

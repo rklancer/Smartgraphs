@@ -8,28 +8,21 @@ sc_require('models/dialog_turn');
 
 Smartgraphs.DialogTurn.FIXTURES = [
 
-  // TODO: Add your data fixtures here.
-  // All fixture records must have a unique primary key (default 'guid').  See 
-  // the example below.
-
-  // { guid: 1,
-  //   firstName: "Michael",
-  //   lastName: "Scott" },
-  //
-  // { guid: 2,
-  //   firstName: "Dwight",
-  //   lastName: "Schrute" },
-  //
-  // { guid: 3,
-  //   firstName: "Jim",
-  //   lastName: "Halpert" },
-  //
-  // { guid: 4,
-  //   firstName: "Pam",
-  //   lastName: "Beesly" },
-  //
-  // { guid: 5,
-  //   firstName: "Ryan",
-  //   lastName: "Howard" }
-
+  { guid: 'turn-1',
+    beforeText: 'For how many minutes did Maria rest?',
+    responseTemplate: 'template-1',
+    responseVerifier: 'verifier-1',
+    afterText: '',
+    nextTurnAfterCorrectResponse: null,
+    nextTurnAfterIncorrectResponse: null
+  },
+  
+  { guid: 'turn-2',
+    beforeText: 'This is dialog turn 2',
+    responseTemplate: null,
+    responseVerifier: null,
+    afterText: '',
+    nextTurnAfterCorrectResponse: null,
+    nextTurnAfterIncorrectResponse: null
+  }
 ];
