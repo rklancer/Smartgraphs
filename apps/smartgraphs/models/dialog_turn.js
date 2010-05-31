@@ -28,8 +28,8 @@ Smartgraphs.DialogTurn = SC.Record.extend(
   // text to display *after* the question prompt, before the buttons
   afterText: SC.Record.attr(String),      
   
-  nextTurnAfterCorrectResponse: SC.Record.toOne('Smartgraphs.DialogTurn'),
+  nextTurnForNominalResponse: SC.Record.toOne('Smartgraphs.DialogTurn'),
   
-  nextTurnAfterIncorrectResponse: SC.Record.toOne('Smartgraphs.DialogTurn')
+  nextTurnForIncorrectResponse: SC.Record.toOne('Smartgraphs.DialogTurn')
 
 }) ;

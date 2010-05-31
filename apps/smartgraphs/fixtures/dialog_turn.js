@@ -13,16 +13,16 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseTemplate: 'template-1',
     responseVerifier: 'verifier-1',
     afterText: '',
-    nextTurnAfterCorrectResponse: null,
-    nextTurnAfterIncorrectResponse: null
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null
   },
   
   { guid: 'turn-2',
-    beforeText: 'This is dialog turn 2',
+    beforeText: 'Click on the point where Maria first stopped to rest.',
     responseTemplate: null,
-    responseVerifier: null,
+    responseVerifier: 'verifier-2',
     afterText: '',
-    nextTurnAfterCorrectResponse: null,
-    nextTurnAfterIncorrectResponse: null
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null
   }
 ];

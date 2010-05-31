@@ -18,12 +18,15 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
   contentDidChange: function () {
     var content = this.get('content');
 
+    var oldDelegate = this.get('verifierDelegate');
+    if (oldDelegate) oldDelegate.destroy();
+
     if (content) {
       var delegatePath = 'Smartgraphs.' + this.get('verifierDelegateClassName');
-      var delegate = SC.objectForPropertyPath(delegatePath).create();
-      delegate.set('configString', this.get('configString'));
-      
-      this.set('verifierDelegate', delegate);
+      var newDelegate = SC.objectForPropertyPath(delegatePath).create();
+      newDelegate.set('configString', this.get('configString'));
+
+      this.set('verifierDelegate', newDelegate);
     }
     else {
       this.set('verifierDelegate', null);

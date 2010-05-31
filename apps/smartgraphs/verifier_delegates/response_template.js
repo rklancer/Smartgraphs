@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.ResponseVerifierTemplateDelegate
+// Project:   Smartgraphs.ResponseTemplateVerifierDelegate
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
@@ -16,16 +16,16 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.exte
     var responseTypeIsNumeric = NO;
     var configString = this.get('configString');
     
-    if (configString.indexOf('number: ') === 0) {
+    if (configString.indexOf('number:') === 0) {
       responseTypeIsNumeric = YES;
-      expectedResponse = parseFloat(configString.substring(8));
+      expectedResponse = parseFloat(configString.substring(7));
     }
-    else if (configString.indexOf('string: ' === 0)) {
-      expectedResponse = configString.substring(8);
+    else if (configString.indexOf('string:' === 0)) {
+      expectedResponse = configString.substring(7);
     }
     else {
       // FIXME: use SC.Error?
-      throw "ResponseTemplateVerifierDelegate received a configString that didn't start with 'number: ' or 'string: '";
+      throw "ResponseTemplateVerifierDelegate received a configString that didn't start with 'number:' or 'string:'";
     }      
 
     var response = this.get('response');
@@ -59,8 +59,7 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.exte
   
   responseIsReady: function () {
     var response = this.get('response');
-    var ret = (!!response && (response.length > 0));
-    return ret;
+    return (!!response && (response.length > 0));
   }.property('response').cacheable(), 
   
   responseIsIncomplete: function () {
