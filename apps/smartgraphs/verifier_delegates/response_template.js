@@ -6,7 +6,7 @@
 
 sc_require('verifier_delegates/verifier_delegate');
 
-Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.extend({
+Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.create({
   
   checkResponse: function () {
 

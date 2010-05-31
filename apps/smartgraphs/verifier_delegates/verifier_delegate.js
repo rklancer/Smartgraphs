@@ -15,14 +15,7 @@ Smartgraphs.VerifierDelegate = SC.Object.extend({
   isVerifierDelegate: YES,
   configString: '',
   
-  destroy: function () {
-    sc_super();
-    this.get('bindings').forEach(function (binding) {
-      //binding.disconnect();
-    });
-  },
-  
-  // implement these in each subclass
+  // implement these in each instance
   checkResponse: null,
   responseAsString: '',
   responseIsIncomplete: YES,

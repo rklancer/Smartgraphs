@@ -6,7 +6,7 @@
 
 sc_require('verifier_delegates/verifier_delegate');
 
-Smartgraphs.GraphSelectionVerifierDelegate = Smartgraphs.VerifierDelegate.extend({
+Smartgraphs.GraphSelectionVerifierDelegate = Smartgraphs.VerifierDelegate.create({
 
   checkResponse: function () {
     // note that we'll need to find some way to tell the delegate *which* dataseries to observe
@@ -37,8 +37,6 @@ Smartgraphs.GraphSelectionVerifierDelegate = Smartgraphs.VerifierDelegate.extend
     this.set('responseIsCorrect', responseXValue === expectedXValue);     
   },
 
-  // note you can't specify a Binding object here, (a la SC.Binding.from('Smartraphs...'), because each object created
-  // created from this class needs its own Binding object. Does this hint that verifier delegates should be singletons?
   graphSelectionBinding: 'Smartgraphs.dataSeriesController.selection',
 
   responseIsReady: function () {
