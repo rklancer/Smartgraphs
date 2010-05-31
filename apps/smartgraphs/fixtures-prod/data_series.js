@@ -13,10 +13,6 @@ Smartgraphs.Pair = SC.Object.extend({
 
 Smartgraphs.DataSeries.FIXTURES = [
 
-  // TODO: Add your data fixtures here.
-  // All fixture records must have a unique primary key (default 'guid').  See 
-  // the example below.
-
   { 
     guid: 'series-1',
     points: (function () {

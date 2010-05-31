@@ -1,3 +1,29 @@
+5/30/10:
+
+(renamed CorrectResponse to ResponseVerifer)
+
+OK, now we have a division of responsibility when checking answers.
+
+If the dialog will need to present input area(s) (possibly intermixed with text), the ResponseTemplate will contain the
+necessary information (in its templateString)
+
+There should also be an associated ResponseVerifier which has responsibility for checking the answer.
+
+OKAY:
+
+  * responseTemplate should have an array that contains the responses. These might be processed, depending.
+  * responseVerifier should have a 'type' parameter that specifies the type of answer to be checked.
+   
+  based on the responseVerifier's 'type' parameter, the responseVerifier will check a different delegate
+  it can pass its 'value' parameter to the delegate, which is responsible for figuring out what to do with it.
+
+  verifier-delegates/
+    ReponseTemplateVerifierDelegate
+    GraphSelectionVerifierDelegate
+ 
+
+
+
 5/27/10:
 
 view layer changes:
