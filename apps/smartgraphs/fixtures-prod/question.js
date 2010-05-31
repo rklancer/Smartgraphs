@@ -4,10 +4,11 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/question');
+//sc_require('models/question');
 
-Smartgraphs.Question.FIXTURES = [
-
+//Smartgraphs.Question.FIXTURES =
+(function () {
+  var old_question_fixtures = [
   { guid: 1,
     sequence: 'sequence-1',
     index: 1,
@@ -59,4 +60,4 @@ Smartgraphs.Question.FIXTURES = [
       "waited longer to start running.)</i></p>"
       
   }
-];
+];}());

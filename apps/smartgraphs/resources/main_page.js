@@ -239,28 +239,28 @@ Smartgraphs.mainPage = SC.Page.design({
           })
         })
       })
-    }),
+    }) //,
 
-    authoringModeButton: SC.ButtonView.design({
-      layout: {
-        left: 20,
-        top: 710
-      },
-      useStaticLayout: YES,
-      title: 'Toggle Authoring Mode',
-      targetBinding: 'Smartgraphs.authoringController',
-      action: 'toggleAuthoring'
-    }),
-
-    authorView: Smartgraphs.QuestionAuthorView.design({
-      layout: {
-        left: 965,
-        top: 5,
-        bottom: 20,
-        width: 300
-      },
-      contentBinding: "Smartgraphs.questionSequenceController.selectedQuestion",
-      canEditContent: YES // TODO: Make authoring actually work
-    })
+    // authoringModeButton: SC.ButtonView.design({
+    //   layout: {
+    //     left: 20,
+    //     top: 710
+    //   },
+    //   useStaticLayout: YES,
+    //   title: 'Toggle Authoring Mode',
+    //   targetBinding: 'Smartgraphs.authoringController',
+    //   action: 'toggleAuthoring'
+    // }),
+    // 
+    // authorView: Smartgraphs.QuestionAuthorView.design({
+    //   layout: {
+    //     left: 965,
+    //     top: 5,
+    //     bottom: 20,
+    //     width: 300
+    //   },
+    //   contentBinding: "Smartgraphs.questionSequenceController.selectedQuestion",
+    //   canEditContent: YES // TODO: Make authoring actually work
+    // })
   })
 });
