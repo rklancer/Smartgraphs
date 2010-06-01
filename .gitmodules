@@ -1,9 +1,9 @@
-[submodule "capybara-testrunner"]
-	path = capybara-testrunner
-	url = http://github.com/scytacki/capybara-testrunner.git
 [submodule "abbot"]
 	path = abbot
 	url = git://github.com/sproutit/sproutcore-abbot.git
 [submodule "frameworks/cc"]
 	path = frameworks/cc
 	url = git://github.com/sfentress/CC-SproutCore.git
+[submodule "capybara-testrunner"]
+	path = capybara-testrunner
+	url = git://github.com/rklancer/capybara-testrunner.git
