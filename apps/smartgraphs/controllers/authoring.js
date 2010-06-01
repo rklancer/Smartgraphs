@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.authoring
+// Project:   Smartgraphs.authoringController
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
@@ -8,7 +8,9 @@
  Controlls authoring mode and business logic
  @extends SC.Object
  */
-sc_require('models/question');
+
+// the now-obsolete model this controller worked with (uncommenting causes errors in testrunner)
+//sc_require('models/question');
 
 Smartgraphs.authoringController = SC.ObjectController.create(
 /** @scope Smartgraphs.authoringController.prototype */
