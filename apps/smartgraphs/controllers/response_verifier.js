@@ -19,7 +19,10 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
     var content = this.get('content');
     console.log('Smartgraphs.responseVerifierController observed content');
 
-    if (!content) return;         // nothing to do
+    if (!content) {
+      // nothing to do
+      return;
+    }
     
     this.invokeOnce(this._setVerifierDelegate);
   }.observes('content'),
@@ -27,8 +30,11 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
   _setVerifierDelegate: function () {
     console.log('_setVerifierDelegate');
     var delegatePath = 'Smartgraphs.' + this.get('verifierDelegateName') + 'VerifierDelegate';
+    console.log('delegatePath:'+delegatePath);
     var delegate = SC.objectForPropertyPath(delegatePath);
+    console.log('delegate:'+delegate);
     delegate.set('configString', this.get('configString'));
+    console.log('delegate.configString:'+delegate.configString);
     this.set('verifierDelegate', delegate);
   },
   

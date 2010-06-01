@@ -45,7 +45,9 @@ Smartgraphs.DialogTurnView = SC.View.extend(
       var fieldTypes = this.get('fieldTypes');
       var fieldValues = this.get('fieldValues');
       
-      if (!fieldTypes) return;
+      if (!fieldTypes) {
+        return;
+      }
 
       for (var i = 0, ii = fieldTypes.get('length'); i < ii; i++) {
         var viewDesign = SC.View.design({

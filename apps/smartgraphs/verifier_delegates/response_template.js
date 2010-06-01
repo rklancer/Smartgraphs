@@ -15,7 +15,9 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.crea
 
   checkResponse: function () {
 
-    if (this.get('responseIsIncomplete')) return;
+    if (this.get('responseIsIncomplete')) {
+      return;
+    }
 
     var expectedResponse;
     var responseTypeIsNumeric = NO;
@@ -41,9 +43,13 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.crea
     this.set('responseIsMalformed', NO);
     if (responseTypeIsNumeric) {
       response = parseFloat(response);
-      if (isNaN(response)) this.set('responseIsMalformed', YES);
+      if (isNaN(response)) {
+        this.set('responseIsMalformed', YES);
+      }
     }
-    if (this.get('responseIsMalformed')) return;
+    if (this.get('responseIsMalformed')) {
+      return;
+    }
 
     this.set('responseIsCorrect', response === expectedResponse);
   },
@@ -58,8 +64,12 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.crea
     console.log('ResponseTemplateVerifierDelegate observed responseArray');
     var responseArray = this.get('responseArray');
     
-    if (this._oldResponseArray) this._oldResponseArray.removeObserver('[]', this, this.rawResponseDidChange);
-    if (responseArray) responseArray.addObserver('[]', this, this.rawResponseDidChange);
+    if (this._oldResponseArray) {
+      this._oldResponseArray.removeObserver('[]', this, this.rawResponseDidChange);
+    }
+    if (responseArray) {
+      responseArray.addObserver('[]', this, this.rawResponseDidChange);
+    }
     this._oldResponseArray = responseArray;
 
     this.rawResponseDidChange();        // don't forget to calculate the new response value from the responseArray

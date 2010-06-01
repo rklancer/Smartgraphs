@@ -26,11 +26,13 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
   },
   
   didReceiveCorrectResponse: function () {
+    console.log('didReceiveCorrectResponse');
     var nextTurn = this.get('nextTurnForNominalResponse');
     Smartgraphs.guidePageController.set('selectedDialogTurn', nextTurn);
   },
   
   didReceiveIncorrectResponse: function () {
+    console.log('didReceiveIncorrectResponse');
     var nextTurn = this.get('nextTurnForIncorrectResponse');
     Smartgraphs.guidePageController.set('selectedDialogTurn', nextTurn);
   },

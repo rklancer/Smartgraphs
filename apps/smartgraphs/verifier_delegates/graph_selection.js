@@ -11,8 +11,12 @@ Smartgraphs.GraphSelectionVerifierDelegate = Smartgraphs.VerifierDelegate.create
   checkResponse: function () {
     // note that we'll need to find some way to tell the delegate *which* dataseries to observe
 
-    if (this.get('responseIsIncomplete')) return;
-    if (this.get('responseIsMalformed')) return;
+    if (this.get('responseIsIncomplete')) {
+      return;
+    }
+    if (this.get('responseIsMalformed')) {
+      return;
+    }
 
     var expectedXValue;
     var configString = this.get('configString');

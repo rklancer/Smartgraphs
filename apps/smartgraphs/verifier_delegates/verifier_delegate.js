@@ -20,5 +20,6 @@ Smartgraphs.VerifierDelegate = SC.Object.extend({
   responseAsString: '',
   responseIsIncomplete: YES,
   responseIsMalformed: NO,
-  responseIsCorrect: NO
+  responseIsCorrect: NO,
+  responseIsReady: NO
 });
