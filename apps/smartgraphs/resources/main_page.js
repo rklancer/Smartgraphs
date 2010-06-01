@@ -11,8 +11,8 @@ Smartgraphs.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
     layout: {
-      width: 1470,
-      height: 820
+      width: 960,
+      height: 600
     },
 
     childViews: 'dialogView graphView tableView'.w(), // TODO put back 'authoringModeButton authorView'
@@ -20,9 +20,9 @@ Smartgraphs.mainPage = SC.Page.design({
     dialogView: SC.View.design({
       layout: {
         left: 20,
-        top: 20,
+        top: 10,
         width: 455,
-        height: 680
+        height: 580
       },
 
       classNames: 'smartgraph-pane'.w(),
@@ -100,9 +100,9 @@ Smartgraphs.mainPage = SC.Page.design({
     graphView: Smartgraphs.RaphaelView.design({
       layout: {
         left: 485,
-        top: 20,
+        top: 10,
         width: 455,
-        height: 335
+        height: 285
       },
       childViews: 'axesView series1View'.w(),
       classNames: ['smartgraph-pane'],
@@ -135,9 +135,9 @@ Smartgraphs.mainPage = SC.Page.design({
     tableView: SC.View.design({
       layout: {
         left: 485,
-        top: 365,
+        bottom: 10,
         width: 455,
-        height: 335
+        height: 285
       },
       classNames: ['smartgraph-pane'],
 
@@ -178,7 +178,7 @@ Smartgraphs.mainPage = SC.Page.design({
           left: 0,
           top: 30,
           width: 455,
-          height: 305
+          height: 255
         },
 
         borderStyle: SC.BORDER_NONE,
