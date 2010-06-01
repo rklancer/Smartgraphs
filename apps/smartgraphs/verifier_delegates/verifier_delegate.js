@@ -4,9 +4,6 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-
-// thought question: should these delegates really be singletons?
-
 // VerifierDelegate classes know
 //  (1) where in the property path to get the response (e.g., if from some annotation object on the graph, or from the responseTemplateController)
 //  (2) how to interpret the 'value' parameter of the ResponseVerifier object

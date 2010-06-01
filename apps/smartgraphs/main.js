@@ -34,7 +34,6 @@ Smartgraphs.main = function main() {
 	var dataPoints = Smartgraphs.store.find(query);
 	
 	Smartgraphs.dataSeriesController.set('content', dataPoints);
-	// Smartgraphs.dataSeriesController.set('content', data.get('points'));
   Smartgraphs.axesController.set('content', axes);
   
   var theSequence = Smartgraphs.store.find(Smartgraphs.GuidePageSequence, 'sequence-1');
