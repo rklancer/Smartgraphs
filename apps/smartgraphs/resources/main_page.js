@@ -138,6 +138,7 @@ Smartgraphs.mainPage = SC.Page.design({
 				layout: {right: 0, top: 0, width: 250, height: 40},
 				sensorApplet: CC.SensorAppletView.design({
 					layout: {left: 0, top: 0, width: 1, height: 1},
+					safariSensorStatePath: 'Smartgraphs.mainPage.mainPane.tableView.sensorAppletView.sensorApplet.sensorState',
 					hideButtons: YES,
 					dt: 0.1,
 					resultsBinding: "Smartgraphs.dataSeriesController",
@@ -178,10 +179,7 @@ Smartgraphs.mainPage = SC.Page.design({
 						this.set('isEnabled', NO);
 						this.setPath('parentView.stopButton.isEnabled', YES);
 						this.setPath('parentView.resetButton.isEnabled', YES);
-						this.get('applet').run(this.appletAction);
-					},
-					appletAction: function(applet) {
-						applet.startCollecting();
+						this.get('applet').start();
 					}
 				}),
 
@@ -192,10 +190,7 @@ Smartgraphs.mainPage = SC.Page.design({
 					appletBinding: "*parentView.sensorApplet",
 					action: function() {
 						this.set('isEnabled', NO);
-						this.get('applet').run(this.appletAction);
-					},
-					appletAction: function(applet) {
-						applet.stopCollecting();
+						this.get('applet').stop();
 					}
 				}),
 
@@ -209,13 +204,10 @@ Smartgraphs.mainPage = SC.Page.design({
 						this.set('isEnabled', NO);
 						this.setPath('parentView.stopButton.isEnabled', NO);
 						this.setPath('parentView.startButton.isEnabled', YES);
-						this.get('applet').run(this.appletAction);
+						this.get('applet').reset();
 						var content = this.getPath('results.content');
 						content.invoke('destroy');
 						Smartgraphs.store.commitRecords();
-					},
-					appletAction: function(applet) {
-						applet.stopCollecting();
 					}
 				})
 				
