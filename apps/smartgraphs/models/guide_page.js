@@ -38,5 +38,5 @@ Smartgraphs.GuidePage = SC.Record.extend(
   //   * the *next* page once the current dialog has marked the page finished
   //   * any page you've previously visited
   
-  isSelectable: YES // FIXME: Change this back to NO after we've set up the initial views
+  isSelectable: NO
 }) ;

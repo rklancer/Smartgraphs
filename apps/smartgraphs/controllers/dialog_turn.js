@@ -15,12 +15,24 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
   
   contentBinding: 'Smartgraphs.guidePageController.selectedDialogTurn',
   
+  contentDidChange: function () {
+    this.invokeOnce(this._updateDialogIsComplete);  
+  }.observes('content'),
+  
+  _updateDialogIsComplete: function () {
+    if (this.get('isLastTurn')) {
+      Smartgraphs.guidePageSequenceController.set('nextPageIsSelectable', YES);
+    }
+  },
+  
   didReceiveCorrectResponse: function () {
-    Smartgraphs.guidePageController.set('selectedDialogTurn', this.get('nextTurnForNominalResponse'));
+    var nextTurn = this.get('nextTurnForNominalResponse');
+    Smartgraphs.guidePageController.set('selectedDialogTurn', nextTurn);
   },
   
   didReceiveIncorrectResponse: function () {
-    Smartgraphs.guidePageController.set('selectedDialogTurn', this.get('nextTurnForIncorrectResponse'));
+    var nextTurn = this.get('nextTurnForIncorrectResponse');
+    Smartgraphs.guidePageController.set('selectedDialogTurn', nextTurn);
   },
   
   didReceiveIncompleteResponse: function () {

@@ -76,7 +76,7 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
   canSelectPreviousPageBinding: SC.Binding.not('.isFirstPage'),
 
   nextPageIsSelectable: null,
-  nextPageIsSelectableBinding: SC.Binding.oneWay('*nextPage.isSelectable'),
+  nextPageIsSelectableBinding: '*nextPage.isSelectable',
 
   canSelectNextPage: function () {
     return (!this.get('isLastPage') && this.get('nextPageIsSelectable'));
@@ -93,4 +93,5 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
       this.selectObject( this.get('nextPage') );
     }
   }
+  
 }) ;

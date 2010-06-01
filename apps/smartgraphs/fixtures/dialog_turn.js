@@ -15,7 +15,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseVerifier: 'verifier-1',
     afterText: '',
     nextTurnForNominalResponse: 'turn-1-done',
-    nextTurnForIncorrectResponse: 'turn-1a'
+    nextTurnForIncorrectResponse: 'turn-1a',
+    isLastTurn: NO
   },
   
   { guid: 'turn-1a',
@@ -27,7 +28,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
       "<p>Incorrect.</p>" +
       "<p>Hint 1: Look at the graph and table and find where Maria’s distance stayed the same.</p>",
     nextTurnForNominalResponse: 'turn-1-done',
-    nextTurnForIncorrectResponse: 'turn-1b'
+    nextTurnForIncorrectResponse: 'turn-1b',
+    isLastTurn: NO
   },
   
   { guid: 'turn-1b',
@@ -40,7 +42,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
       "<p>Hint 2: In these two intervals, Maria’s distance changed as time passed.</p>" +
       "<p><i>The intervals on the left and right will be highlighted</i></p>",
     nextTurnForNominalResponse: 'turn-1-done',
-    nextTurnForIncorrectResponse: 'turn-1c'
+    nextTurnForIncorrectResponse: 'turn-1c',
+    isLastTurn: NO    
   },
   
   { guid: 'turn-1c',
@@ -53,7 +56,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
       "<p>Hint 3: In this interval, Maria’s distance stayed the same as time passed.</p>" +
       "<p><i>The stationary interval will be highlighted</i></p>",    
     nextTurnForNominalResponse: 'turn-1-done',
-    nextTurnForIncorrectResponse: 'turn-1d'
+    nextTurnForIncorrectResponse: 'turn-1d',
+    isLastTurn: NO    
   },
   
   { guid: 'turn-1d',
@@ -64,7 +68,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseVerifier: null,
     afterText: '',
     nextTurnForNominalResponse: null,
-    nextTurnForIncorrectResponse: null
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES    
   },
   
   { guid: 'turn-1-done',
@@ -75,7 +80,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseVerifer: null,
     afterText: '',
     nextTurnForNominalResponse: null,
-    nextTurnForIncorrectResponse: null
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES    
   },
   
   { guid: 'turn-2',
@@ -85,7 +91,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseVerifier: 'verifier-2',
     afterText: '',
     nextTurnForNominalResponse: 'turn-2-done',
-    nextTurnForIncorrectResponse: 'turn-2a'
+    nextTurnForIncorrectResponse: 'turn-2a',
+    isLastTurn: NO    
   },
   
   { guid: 'turn-2a',
@@ -97,7 +104,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
       "<p>Incorrect.</p>" +
       "<p>Hint 1: Look at the data and find how many minutes passed before Maria stopped.</p>",
     nextTurnForNominalResponse: 'turn-2-done',
-    nextTurnForIncorrectResponse: 'turn-2b'
+    nextTurnForIncorrectResponse: 'turn-2b',
+    isLastTurn: NO    
   },
   
   { guid: 'turn-2b',
@@ -110,7 +118,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
       "<p>Hint 2: Here is where Maria stopped. Find her distance at this point.</p>" +
       "<p><i>The point at 4 minutes, 800 meters will be highlighted.</i></p>",
     nextTurnForNominalResponse: 'turn-2-done',
-    nextTurnForIncorrectResponse: 'turn-2c'
+    nextTurnForIncorrectResponse: 'turn-2c',
+    isLastTurn: NO    
   },
   
   { guid: 'turn-2c',
@@ -124,7 +133,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
       "<p><i>A horizontal line will be drawn from the 800 meter point on the y axis to the point at " +
       "4 minutes, 800 meters.</i></p>",
     nextTurnForNominalResponse: 'turn-2-done',
-    nextTurnForIncorrectResponse: 'turn-2d'
+    nextTurnForIncorrectResponse: 'turn-2d',
+    isLastTurn: NO    
   },
   
   { guid: 'turn-2d',
@@ -135,7 +145,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseVerifier: null,
     afterText: '',
     nextTurnForNominalResponse: null,
-    nextTurnForIncorrectResponse: null
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES    
   },
   
   { guid: 'turn-2-done',
@@ -145,6 +156,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseVerifier: null,
     afterText: '',
     nextTurnForNominalResponse: null,
-    nextTurnForIncorrectResponse: null
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES
   }
 ];
