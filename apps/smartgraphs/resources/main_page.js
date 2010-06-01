@@ -159,14 +159,25 @@ Smartgraphs.mainPage = SC.Page.design({
 						// ignore for now
 						// SC.RunLoop.begin();
 						// SC.RunLoop.end();
-				  }
+				  },
+				  sensorsReady: function() {
+						SC.RunLoop.begin();
+						// enable the start button
+						this.setPath('parentView.startButton.isEnabled', YES);
+						this.getPath('parentView.resetButton').action();
+						SC.RunLoop.end();
+					}
 		  	}),
 		
 				startButton: SC.ButtonView.design({
 					layout: { centerY: 0, centerX: -85, height: 40, width: 80},
+					isEnabled: NO, // disabled until the sensor applet signals that it is ready
 					title: "Start",
 					appletBinding: "*parentView.sensorApplet",
 					action: function() {
+						this.set('isEnabled', NO);
+						this.setPath('parentView.stopButton.isEnabled', YES);
+						this.setPath('parentView.resetButton.isEnabled', YES);
 						this.get('applet').run(this.appletAction);
 					},
 					appletAction: function(applet) {
@@ -176,9 +187,11 @@ Smartgraphs.mainPage = SC.Page.design({
 
 				stopButton: SC.ButtonView.design({
 					layout: { centerY: 0, centerX: 0, height: 40, width: 80},
+					isEnabled: NO, // disabled until the sensor applet signals that it is ready
 					title: "Stop",
 					appletBinding: "*parentView.sensorApplet",
 					action: function() {
+						this.set('isEnabled', NO);
 						this.get('applet').run(this.appletAction);
 					},
 					appletAction: function(applet) {
@@ -188,13 +201,21 @@ Smartgraphs.mainPage = SC.Page.design({
 
 				resetButton: SC.ButtonView.design({
 					layout: { centerY: 0, centerX: 85, height: 40, width: 80},
+					isEnabled: NO, // disabled until the sensor applet signals that it is ready
 					title: "Reset",
-					appletBinding: "*parentView.resultsList",
+					appletBinding: "*parentView.sensorApplet",
 					resultsBinding: "Smartgraphs.dataSeriesController",
 					action: function() {
+						this.set('isEnabled', NO);
+						this.setPath('parentView.stopButton.isEnabled', NO);
+						this.setPath('parentView.startButton.isEnabled', YES);
+						this.get('applet').run(this.appletAction);
 						var content = this.getPath('results.content');
 						content.invoke('destroy');
 						Smartgraphs.store.commitRecords();
+					},
+					appletAction: function(applet) {
+						applet.stopCollecting();
 					}
 				})
 				
