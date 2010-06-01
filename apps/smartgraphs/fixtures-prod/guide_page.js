@@ -12,9 +12,10 @@ Smartgraphs.GuidePage.FIXTURES = [
     sequence: 'sequence-1',
     index: 1,
     title: "Maria Runs",
-    introText: "<p>Maria ran practice laps around the school track. Her coach recorded the distances she ran after each " +
-               "minute.</p>" + 
-               "<p>These data are shown in the scatter plot and the table at right.</p>",
+    introText:
+       "<p>Maria ran practice laps around the school track. " +
+       "Her coach recorded the distance she ran after each minute.</p>" + 
+      "<p>These data are shown in the scatter plot and the table at right.</p>",
     firstDialogTurn: 'turn-1'
   },
   
@@ -22,8 +23,11 @@ Smartgraphs.GuidePage.FIXTURES = [
     sequence: 'sequence-1',
     index: 2,
     title: "She Stops to Talk",
-    introText: "Well?",
+    introText: 
+      "<p>Maria ran practice laps around the school track. " +
+      "Her coach recorded the distance she ran after each minute.</p>" + 
+     "<p>These data are shown in the scatter plot and the table at right.</p>",
     firstDialogTurn: 'turn-2'
-  }  
-
+  }
+  
 ];
