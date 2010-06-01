@@ -12,7 +12,7 @@ Smartgraphs.NoSelectionVerifierDelegate = Smartgraphs.VerifierDelegate.create({
   
   checkResponse: function () {
     console.log('NoSelectionVerifierDelegate.checkResponse called');
-    this.set('responseIsCorrect', true);     
+    this.set('responseIsCorrect', YES);     
   },
   responseAsString: '',
   responseIsIncomplete: NO,

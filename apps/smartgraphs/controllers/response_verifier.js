@@ -36,6 +36,8 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
     delegate.set('configString', this.get('configString'));
     console.log('delegate.configString:'+delegate.configString);
     this.set('verifierDelegate', delegate);
+    console.log('responseCanBeChecked:'+this.get('responseCanBeChecked'));
+    console.log('responseIsReady:'+this.get('responseIsReady'));
   },
   
   responseCanBeChecked: null,
