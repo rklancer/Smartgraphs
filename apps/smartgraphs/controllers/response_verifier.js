@@ -12,22 +12,32 @@
 */
 Smartgraphs.responseVerifierController = SC.ObjectController.create( 
 /** @scope Smartgraphs.responseVerifierController.prototype */ {
-  
-  contentBinding: 'Smartgraphs.dialogTurnController.responseVerifier',
+
+  contentBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.responseVerifier'),
   
   contentDidChange: function () {
     var content = this.get('content');
-    if (!content) return;         // nothing to do
+    console.log('Smartgraphs.responseVerifierController observed content');
 
+    if (!content) return;         // nothing to do
+    
+    this.invokeOnce(this._setVerifierDelegate);
+  }.observes('content'),
+
+  _setVerifierDelegate: function () {
+    console.log('_setVerifierDelegate');
     var delegatePath = 'Smartgraphs.' + this.get('verifierDelegateName') + 'VerifierDelegate';
     var delegate = SC.objectForPropertyPath(delegatePath);
     delegate.set('configString', this.get('configString'));
     this.set('verifierDelegate', delegate);
-  }.observes('content'),
-
-  responseCanBeCheckedBinding: SC.Binding.bool('.verifierDelegate').oneWay(),
-  responseIsReadyBinding: SC.Binding.oneWay('*verifierDelegate.responseIsReady'),
+  },
   
+  responseCanBeChecked: null,
+  responseCanBeCheckedBinding: SC.Binding.bool('.verifierDelegate').oneWay(),
+
+  responseIsReady: null,
+  responseIsReadyBinding: SC.Binding.oneWay('*verifierDelegate.responseIsReady'),
+
   checkResponse: function () {
     var delegate = this.get('verifierDelegate');
     delegate.checkResponse();

@@ -26,6 +26,8 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
   },
 
   sequenceDidChange: function () {
+    console.log('Smartgraphs.guidePageSequenceController observed sequence');
+    
     var sequence = this.get('sequence');
     var pages = sequence.get('pages');
     this.set('content', pages);
@@ -64,10 +66,16 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
     return (index + 1 < this.get('length')) ? this.objectAt(index+1) : null;
   }.property('selectedPage', 'content', '[]').cacheable(),
 
+  isFirstPage: null,
   isFirstPageBinding: SC.Binding.bool('.previousPage').not(),
+  
+  isLastPage: null,
   isLastPageBinding: SC.Binding.bool('.nextPage').not(),
 
+  canSelectPreviousPage: null,
   canSelectPreviousPageBinding: SC.Binding.not('.isFirstPage'),
+
+  nextPageIsSelectable: null,
   nextPageIsSelectableBinding: SC.Binding.oneWay('*nextPage.isSelectable'),
 
   canSelectNextPage: function () {

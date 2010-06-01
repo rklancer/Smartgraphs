@@ -23,11 +23,6 @@ Smartgraphs.ResponseTemplate = SC.Record.extend(
   //
   // e.g., 'Maria ran {number} {minutes|meters|miles per hour}"  
 
-  templateString: SC.Record.attr(String),
+  templateString: SC.Record.attr(String)
   
-  // after parse, the controller sets these fields to correspond the the type of fields that need to be shown.
-  // (some fields may be label fields)
-  fieldTypes: [],
-  fieldValues: [],
-  responseArray: []
 }) ;

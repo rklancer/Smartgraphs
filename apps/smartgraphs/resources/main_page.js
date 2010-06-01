@@ -58,7 +58,8 @@ Smartgraphs.mainPage = SC.Page.design({
         childViews: 'introTextView dialogTurnView'.w(),
 
         introTextView: SC.StaticContentView.design({
-          contentBinding: 'Smartgraphs.guidePageController.introText'
+          contentBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.introText'),
+          isVisibleBinding: SC.Binding.bool('Smartgraphs.guidePageController.introText')
         }),
           
         dialogTurnView: Smartgraphs.DialogTurnView.design({

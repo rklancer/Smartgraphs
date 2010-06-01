@@ -27,5 +27,5 @@ Smartgraphs.dataSeriesController = SC.ArrayController.create(
       
       // FIXME (unless we stop using the 'totalChanges' property to indicate need to re-render):
       // need to REMOVE observers too! (to prevent us from rerendering when removed objects change)
-  }.observes('.[]')
+  }.observes('[]')
 }) ;

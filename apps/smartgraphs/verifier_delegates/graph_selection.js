@@ -37,7 +37,7 @@ Smartgraphs.GraphSelectionVerifierDelegate = Smartgraphs.VerifierDelegate.create
     this.set('responseIsCorrect', responseXValue === expectedXValue);     
   },
 
-  graphSelectionBinding: 'Smartgraphs.dataSeriesController.selection',
+  graphSelectionBinding: SC.Binding.oneWay('Smartgraphs.dataSeriesController.selection'),
 
   responseIsReady: function () {
     var selection = this.get('graphSelection');

@@ -8,6 +8,11 @@ sc_require('verifier_delegates/verifier_delegate');
 
 Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.create({
   
+  // init: function () {
+  //   sc_super();
+  //   this.responseArrayDidChange();
+  // },
+
   checkResponse: function () {
 
     if (this.get('responseIsIncomplete')) return;
@@ -46,16 +51,30 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.crea
   // Simplified implementation for now; will handle more objects in the responseArray after we implement actual
   // parsing of the templateString in ResponseTemplate
 
-  responseDidChange: function () {
-    var responseArray = Smartgraphs.responseTemplateController.get('responseArray');
-    var response = (responseArray && responseArray.get('length') > 0) ? responseArray.objectAt(0) : null;
+  responseArrayBinding: SC.Binding.oneWay('Smartgraphs.responseTemplateController.responseArray'),
+  _oldResponseArray: null,
+  
+  responseArrayDidChange: function () {
+    console.log('ResponseTemplateVerifierDelegate observed responseArray');
+    var responseArray = this.get('responseArray');
+    
+    if (this._oldResponseArray) this._oldResponseArray.removeObserver('[]', this, this.rawResponseDidChange);
+    if (responseArray) responseArray.addObserver('[]', this, this.rawResponseDidChange);
+    this._oldResponseArray = responseArray;
 
+    this.rawResponseDidChange();        // don't forget to calculate the new response value from the responseArray
+  }.observes('responseArray'),
+  
+  rawResponseDidChange: function () {
+    console.log('Smartgraphs.ResponseTemplateVerifierDelegate rawResponseDidChange');
+    var responseArray = this.get('responseArray');
+    var response = (responseArray && responseArray.get(length) > 0) ? responseArray.objectAt(0) : null;
+    
     if (typeof response === 'string') {
       response = response.strip();
     }
-    
     this.set('response', response);
-  }.observes('Smartgraphs.responseTemplateController.responseArray'),
+  },
   
   responseIsReady: function () {
     var response = this.get('response');

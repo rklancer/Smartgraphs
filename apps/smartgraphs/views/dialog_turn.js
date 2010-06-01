@@ -18,16 +18,32 @@ Smartgraphs.DialogTurnView = SC.View.extend(
   childViews: 'beforeTextView responseFieldsView afterTextView buttonsView'.w(),
   
   beforeTextView: SC.StaticContentView.design({
-    contentBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.beforeText')
+    contentBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.beforeText'),
+    isVisibleBinding: SC.Binding.bool('Smartgraphs.dialogTurnController.beforeText')
   }),
   
   responseFieldsView: SC.StaticContentView.design({
-    _updateChildViews: function () {      
+    
+    fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
+    fieldValuesBinding: 'Smartgraphs.responseTemplateController.fieldValues',
+    
+    fieldsTypesDidChange: function () {
+      console.log('fieldTypesDidChange');
+      this.invokeOnce(this._updateChildViews);
+    }.observes('fieldTypes'),
+    
+    fieldValuesDidChange: function () {
+      console.log('fieldValuesDidChange');      
+      this.invokeOnce(this._updateChildViews);
+    }.observes('fieldValues'),
+    
+    _updateChildViews: function () {
+      console.log('_updateChildViews');   
       this.removeAllChildren();
       this.contentLayoutDidChange();
 
-      var fieldTypes = Smartgraphs.responseTemplateController.get('fieldTypes');
-      var fieldValues = Smartgraphs.responseTemplateController.get('fieldValues');
+      var fieldTypes = this.get('fieldTypes');
+      var fieldValues = this.get('fieldValues');
       
       if (!fieldTypes) return;
 
@@ -43,20 +59,22 @@ Smartgraphs.DialogTurnView = SC.View.extend(
           childViews: [SC.TextFieldView.design({
             index: i,
             valueDidChange: function () {
+              console.log("responseFieldsView's child textFieldView observed value");
               var index = this.get('index');
               Smartgraphs.responseTemplateController.updateResponse(index, this.get('value'));
-            }.observes('.value')
+            }.observes('value')
           })]
         });
         this.appendChild(viewDesign.create());
       }
       
       this.contentLayoutDidChange();
-    }.observes('Smartgraphs.responseTemplateController.content')
+    }
   }),
   
   afterTextView: SC.StaticContentView.design({
-    contentBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.afterText')
+    contentBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.afterText'),
+    isVisibleBinding: SC.Binding.bool('Smartgraphs.dialogTurnController.afterText')
   }),
   
   buttonsView: SC.View.design({
@@ -78,6 +96,5 @@ Smartgraphs.DialogTurnView = SC.View.extend(
       target: 'Smartgraphs.responseVerifierController',
       action: 'checkResponse'
     })
-  })  
-  
+  })
 });
