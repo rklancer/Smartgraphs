@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.questionSequenceController Unit Test
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start qhash qsc q1 q2 seq1 seq2*/
 

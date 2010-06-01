@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.DataSeries Fixtures
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -13,12 +13,7 @@ Smartgraphs.Pair = SC.Object.extend({
 
 Smartgraphs.DataSeries.FIXTURES = [
 
-  // TODO: Add your data fixtures here.
-  // All fixture records must have a unique primary key (default 'guid').  See 
-  // the example below.
-
-  { 
-    guid: 'series-1',
+  { guid: 'series-1',
     points: (function () {
       var recs = [];
       for (var i = 1; i <= 10; i++) {
@@ -27,21 +22,4 @@ Smartgraphs.DataSeries.FIXTURES = [
       return recs;
     }())
   }
-  //
-  // { guid: 2,
-  //   firstName: "Dwight",
-  //   lastName: "Schrute" },
-  // 
-  // { guid: 3,
-  //   firstName: "Jim",
-  //   lastName: "Halpert" },
-  // 
-  // { guid: 4,
-  //   firstName: "Pam",
-  //   lastName: "Beesly" },
-  // 
-  // { guid: 5,
-  //   firstName: "Ryan",
-  //   lastName: "Howard" }
-
 ];

@@ -1,21 +1,15 @@
 // ==========================================================================
-// Project:   Smartgraphs.Axes Fixtures
+// Project:   Smartgraphs.ResponseTemplate Fixtures
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/axes');
+sc_require('models/response_template');
 
-Smartgraphs.Axes.FIXTURES = [
+Smartgraphs.ResponseTemplate.FIXTURES = [
 
-  { guid: 1,
-    xMin: 0,
-    xMax: 10,
-    yMin: 0,
-    yMax: 2000,
-    xSteps: 10,
-    ySteps: 10
+  { guid: 'template-1',
+    templateString: '(a textarea should show)'
   }
-
 
 ];

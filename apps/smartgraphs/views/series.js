@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.SeriesView
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -56,7 +56,6 @@ Smartgraphs.SeriesView = SC.View.extend(
   },
   
   mouseEntered: function (e) {
-    console.log('mouseEntered ' + e.target.id);
     var point = this._raphaelObjForId[e.target.id];
     
     if (point) point.attr(this.HIGHLIGHT_ATTR);

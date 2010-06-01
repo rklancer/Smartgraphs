@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.AxesView Unit Test
+// Project:   Smartgraphs.GuidePageSequence Unit Test
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.AxesView");
+module("Smartgraphs.GuidePageSequence");
 
-// TODO: Replace with real unit test for Smartgraphs.AxesView
+// TODO: Replace with real unit test for GuidePageSequence
 test("test description", function() {
   var expected = "test";
   var result   = "test";

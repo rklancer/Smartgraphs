@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.DataSeries
+// Project:   Smartgraphs.StaticAnnotationList
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
@@ -11,11 +11,11 @@
   @extends SC.Record
   @version 0.1
 */
-Smartgraphs.DataSeries = SC.Record.extend(
-/** @scope Smartgraphs.DataSeries.prototype */ {
+Smartgraphs.StaticAnnotationList = SC.Record.extend(
+/** @scope Smartgraphs.StaticAnnotationList.prototype */ {
 
-  // TODO: Add your own code here.
-  
-  points: SC.Record.toMany('Smartgraphs.DataPoint', {
-    inverse: 'series'})
+  annotations: SC.Record.toMany('Smartgraphs.StaticAnnotation', {
+    inverse: 'list'
+  })
+
 }) ;

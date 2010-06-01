@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.DataSeries
+// Project:   Smartgraphs.GuidePageSequence
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
@@ -11,11 +11,11 @@
   @extends SC.Record
   @version 0.1
 */
-Smartgraphs.DataSeries = SC.Record.extend(
-/** @scope Smartgraphs.DataSeries.prototype */ {
+Smartgraphs.GuidePageSequence = SC.Record.extend(
+/** @scope Smartgraphs.GuidePageSequence.prototype */ {
 
-  // TODO: Add your own code here.
-  
-  points: SC.Record.toMany('Smartgraphs.DataPoint', {
-    inverse: 'series'})
+  pages: SC.Record.toMany('Smartgraphs.GuidePage', {
+    inverse: 'sequence',
+    orderBy: ['index']
+  })
 }) ;

@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs - mainPage
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs CC*/
 
@@ -11,22 +11,23 @@ Smartgraphs.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
     layout: {
-      width: 1470,
-      height: 820
+      width: 960,
+      height: 600
     },
 
-    childViews: 'promptView graphView tableView authoringModeButton authorView'.w(),
-
-    promptView: SC.View.design({
+    childViews: 'dialogView graphView tableView'.w(), // TODO put back 'authoringModeButton authorView'
+    
+    dialogView: SC.View.design({
       layout: {
         left: 20,
-        top: 20,
+        top: 10,
         width: 455,
-        height: 680
+        height: 580
       },
-      classNames: ['smartgraph-pane'],
 
-      childViews: 'navButtons questionView nextButton backButton'.w(),
+      classNames: 'smartgraph-pane'.w(),
+
+      childViews: 'navButtons textView nextButton backButton'.w(),
 
       navButtons: SC.SegmentedView.design({
         layout: {
@@ -34,65 +35,74 @@ Smartgraphs.mainPage = SC.Page.design({
         },
 
         // in order to enable the button for the next question when it becomes selectable:
-        displayProperties: 'nextQuestionIsSelectable'.w(),
+        displayProperties: 'nextPageIsSelectable'.w(),
 
-        itemsBinding: 'Smartgraphs.questionSequenceController',
-        itemTitleKey: 'shortName',
+        itemsBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController'),
+        itemTitleKey: 'title',
         itemIsEnabledKey: 'isSelectable',
-        valueBinding: 'Smartgraphs.questionSequenceController.selectedQuestion',
-        nextQuestionIsSelectableBinding: SC.Binding.oneWay('Smartgraphs.questionSequenceController*nextQuestion.isSelectable')
+        valueBinding: 'Smartgraphs.guidePageSequenceController.selectedPage',
+        nextPageIsSelectableBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController*nextPage.isSelectable')
       }),
 
-      questionView: Smartgraphs.QuestionView.design({
-        classNames: 'sg-question'.w(),
+      // provide padding and style rules for the intro text and dialog
+      textView: SC.View.design({
         layout: {
-          top: 50,
-          bottom: 5,
-          left: 5,
-          right: 5
+          top: 60,
+          left: 20,
+          right: 20,
+          bottom: 80
         },
 
-        controllerBinding: 'Smartgraphs.questionController',
-        promptBinding: 'Smartgraphs.questionController.prompt',
-        textInputShouldBeVisibleBinding: 'Smartgraphs.questionController.shouldAcceptTextResponse',
-        feedbackBinding: 'Smartgraphs.questionController.feedback'
+        classNames: 'text-view'.w(),
+
+        childViews: 'introTextView dialogTurnView'.w(),
+
+        introTextView: SC.StaticContentView.design({
+          contentBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.introText'),
+          isVisibleBinding: SC.Binding.bool('Smartgraphs.guidePageController.introText')
+        }),
+          
+        dialogTurnView: Smartgraphs.DialogTurnView.design({
+        })
       }),
 
       nextButton: SC.ButtonView.design({
         displayProperties: ['isEnabled'],
         layout: {
-          top: 620,
-          left: 325,
+          bottom: 36,
+          height: 24,
+          right: 50,
           width: 80
         },
-        title: "Next",
-        target: 'Smartgraphs.questionSequenceController',
-        action: 'selectNextQuestion',
-        isEnabledBinding: 'Smartgraphs.questionSequenceController.canSelectNextQuestion',
-        isVisibleBinding: SC.Binding.not('Smartgraphs.questionSequenceController.isLastQuestion').oneWay()
+        title: "Next >>",
+        target: 'Smartgraphs.guidePageSequenceController',
+        action: 'selectNextPage',
+        isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController.canSelectNextPage'),
+        isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isLastPage').oneWay()
       }),
 
       backButton: SC.ButtonView.design({
         displayProperties: ['isEnabled'],
         layout: {
-          top: 620,
+          bottom: 36,
+          height: 24,
           left: 50,
           width: 80
         },
-        title: "Back",
-        target: 'Smartgraphs.questionSequenceController',
-        action: 'selectPreviousQuestion',
-        isEnabledBinding: 'Smartgraphs.questionSequenceController.canSelectPreviousQuestion',
-        isVisibleBinding: SC.Binding.not('Smartgraphs.questionSequenceController.isFirstQuestion').oneWay()
+        title: "<< Back",
+        target: 'Smartgraphs.guidePageSequenceController',
+        action: 'selectPreviousPage',
+        isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController.canSelectPreviousPage'),
+        isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isFirstPage').oneWay()
       })
     }),
 
     graphView: Smartgraphs.RaphaelView.design({
       layout: {
         left: 485,
-        top: 20,
+        top: 10,
         width: 455,
-        height: 335
+        height: 285
       },
       childViews: 'axesView series1View'.w(),
       classNames: ['smartgraph-pane'],
@@ -125,9 +135,9 @@ Smartgraphs.mainPage = SC.Page.design({
     tableView: SC.View.design({
       layout: {
         left: 485,
-        top: 365,
+        bottom: 10,
         width: 455,
-        height: 335
+        height: 285
       },
       classNames: ['smartgraph-pane'],
 
@@ -235,7 +245,7 @@ Smartgraphs.mainPage = SC.Page.design({
           left: 0,
           top: 30,
           width: 455,
-          height: 305
+          height: 255
         },
 
         borderStyle: SC.BORDER_NONE,
@@ -249,17 +259,17 @@ Smartgraphs.mainPage = SC.Page.design({
 
           height: function(){
             return Math.max(this.get('xHeight'), this.get('yHeight'));
-          }.property('xHeight', 'yHeight').cacheable()            ,
+          }.property('xHeight', 'yHeight').cacheable()          ,
 
           _heightDidChange: function(){
             this.adjust('height', this.get('height'));
-          }.observes('height')            ,
+          }.observes('height')          ,
 
           xsView: SC.ListView.design({
             height: function(){
               var layout = this.get('layout');
               return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-            }.property('calculatedHeight', 'layout').cacheable()              ,
+            }.property('calculatedHeight', 'layout').cacheable()            ,
 
             layout: {
               left: 10,
@@ -278,7 +288,7 @@ Smartgraphs.mainPage = SC.Page.design({
             height: function(){
               var layout = this.get('layout');
               return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-            }.property('calculatedHeight', 'layout').cacheable(),
+            }.property('calculatedHeight', 'layout').cacheable()            ,
 
             layout: {
               left: 70,
@@ -297,28 +307,28 @@ Smartgraphs.mainPage = SC.Page.design({
           })
         })
       })
-    }),
+    }) //,
 
-    authoringModeButton: SC.ButtonView.design({
-      layout: {
-        left: 20,
-        top: 710
-      },
-        useStaticLayout: YES,
-        title: 'Toggle Authoring Mode',
-        targetBinding: 'Smartgraphs.authoringController',
-        action: 'toggleAuthoring'
-    }),
-	
-    authorView: Smartgraphs.QuestionAuthorView.design({
-      layout: {
-        left: 965,
-        top: 5,
-        bottom: 20,
-        width: 300
-      },
-      contentBinding: "Smartgraphs.questionSequenceController.selectedQuestion",
-      canEditContent: YES // TODO: Make authoring actually work
-    })
+    // authoringModeButton: SC.ButtonView.design({
+    //   layout: {
+    //     left: 20,
+    //     top: 710
+    //   },
+    //   useStaticLayout: YES,
+    //   title: 'Toggle Authoring Mode',
+    //   targetBinding: 'Smartgraphs.authoringController',
+    //   action: 'toggleAuthoring'
+    // }),
+    // 
+    // authorView: Smartgraphs.QuestionAuthorView.design({
+    //   layout: {
+    //     left: 965,
+    //     top: 5,
+    //     bottom: 20,
+    //     width: 300
+    //   },
+    //   contentBinding: "Smartgraphs.questionSequenceController.selectedQuestion",
+    //   canEditContent: YES // TODO: Make authoring actually work
+    // })
   })
 });

@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.QuestionSequence Unit Test
-// Copyright: ©2010 My Company, Inc.
+// Project:   Smartgraphs.guidePageController Unit Test
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.QuestionSequence");
+module("Smartgraphs.guidePageController");
 
-// TODO: Replace with real unit test for QuestionSequence
+// TODO: Replace with real unit test for Smartgraphs.guidePageController
 test("test description", function() {
   var expected = "test";
   var result   = "test";

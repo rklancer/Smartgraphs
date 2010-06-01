@@ -16,11 +16,25 @@ body.sc-theme {
   background-color: #E5E8EF;
   color: black;
   border: 1px solid #A2B5D7;
+  font-size: 16px;
 }
 
+.sc-view.text-view, .sc-view.text-view .sc-view {
+  font-size: 16px;
+}
+
+.sc-view.text-view textarea, .sc-view.text-view .sc-view textarea {
+  font-size: 16px;
+}
+
+.text-view p {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+/*
 .sc-view.sg-question {
   padding: 25px 20px 5px 20px;  
-  font-size: 16px;
+
   position: absolute;
 }
 
@@ -41,3 +55,5 @@ body.sc-theme {
 .sc-view.sg-question textarea {
   font-size: 16px;
 }
+
+*/

@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.questionController Unit Test
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start qc textQ q1 q2 oldQSC oldDSC graphicalQ correctDataPoint incorrectDataPoint*/
 

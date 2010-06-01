@@ -1,14 +1,14 @@
 // ==========================================================================
-// Project:   Smartgraphs.QuestionSequence Fixtures
-// Copyright: ©2010 My Company, Inc.
+// Project:   Smartgraphs.GuidePageSequence Fixtures
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/question_sequence');
+sc_require('models/guide_page_sequence');
 
-Smartgraphs.QuestionSequence.FIXTURES = [
+Smartgraphs.GuidePageSequence.FIXTURES = [
 
   { guid: 'sequence-1',
-    questions: ['1','2', '3']
+    pages: ['1','2']
   }
 ];
