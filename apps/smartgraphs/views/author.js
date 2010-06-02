@@ -10,7 +10,7 @@
  */
 Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.prototype */{
     isVisible: NO,
-    childViews: 'titleLabel indexViewLabel indexView shortNameViewLabel shortNameView responseTypeViewLabel responseTypeView promptViewLabel promptView correctResponseViewLabel correctResponseView correctResponseFeedbackViewLabel correctResponseFeedbackView incorrectResponseFeedbackViewLabel incorrectResponseFeedbackView'.w(),
+    childViews: 'titleLabel indexViewLabel indexView titleViewLabel titleView promptViewLabel promptView correctResponseViewLabel correctResponseView correctResponseFeedbackViewLabel correctResponseFeedbackView incorrectResponseFeedbackViewLabel incorrectResponseFeedbackView'.w(),
     
     titleLabel: SC.LabelView.design({
         layout: {
@@ -43,7 +43,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
         valueBinding: "*parentView.content.index"
     }),
     
-    shortNameViewLabel: SC.LabelView.design({
+    titleViewLabel: SC.LabelView.design({
         layout: {
             top: 60,
             height: 20,
@@ -52,7 +52,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
         backgroundColor: "grey",
         value: "Title for Guide Page tabs:"
     }),
-    shortNameView: SC.LabelView.design({
+    titleView: SC.LabelView.design({
         layout: {
             top: 80,
             height: 20,
@@ -63,29 +63,9 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
         valueBinding: "*parentView.content.title"
     }),
     
-    responseTypeViewLabel: SC.LabelView.design({
-        layout: {
-            top: 100,
-            height: 20,
-            width: 300
-        },
-        backgroundColor: "grey",
-        value: "Response Type:"
-    }),
-    responseTypeView: SC.LabelView.design({
-        layout: {
-            top: 120,
-            height: 20,
-            width: 300
-        },
-		isEditable: YES,
-        backgroundColor: "darkblue",
-        valueBinding: "*parentView.content.responseType"
-    }),
-    
     promptViewLabel: SC.LabelView.design({
         layout: {
-            top: 140,
+            top: 100,
             height: 20,
             width: 300
         },
@@ -94,7 +74,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
     }),
     promptView: SC.LabelView.design({
         layout: {
-            top: 160,
+            top: 120,
             height: 80,
             width: 300
         },
@@ -107,7 +87,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
     
     correctResponseViewLabel: SC.LabelView.design({
         layout: {
-            top: 240,
+            top: 200,
             height: 20,
             width: 300
         },
@@ -116,7 +96,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
     }),
     correctResponseView: SC.LabelView.design({
         layout: {
-            top: 260,
+            top: 220,
             height: 80,
             width: 300
         },
@@ -128,7 +108,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
     
     correctResponseFeedbackViewLabel: SC.LabelView.design({
         layout: {
-            top: 340,
+            top: 300,
             height: 20,
             width: 300
         },
@@ -137,7 +117,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
     }),
     correctResponseFeedbackView: SC.LabelView.design({
         layout: {
-            top: 360,
+            top: 320,
             height: 80,
             width: 300
         },
@@ -149,7 +129,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
     
     incorrectResponseFeedbackViewLabel: SC.LabelView.design({
         layout: {
-            top: 440,
+            top: 400,
             height: 20,
             width: 300
         },
@@ -158,7 +138,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
     }),
     incorrectResponseFeedbackView: SC.LabelView.design({
         layout: {
-            top: 460,
+            top: 420,
             height: 80,
             width: 300
         },
