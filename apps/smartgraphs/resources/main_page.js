@@ -15,14 +15,14 @@ Smartgraphs.mainPage = SC.Page.design({
       height: 600
     },
 
-    childViews: 'dialogView graphView tableView'.w(), // TODO put back 'authoringModeButton authorView'
+    childViews: 'dialogView graphView tableView sensorAppletView'.w(), // TODO put back 'authoringModeButton authorView'
     
     dialogView: SC.View.design({
       layout: {
         left: 20,
         top: 10,
-        width: 455,
-        height: 580
+        width: 453,
+        height: 578
       },
 
       classNames: 'smartgraph-pane'.w(),
@@ -97,12 +97,13 @@ Smartgraphs.mainPage = SC.Page.design({
       })
     }),
 
+
     graphView: Smartgraphs.RaphaelView.design({
       layout: {
-        left: 485,
+        right: 20,
         top: 10,
-        width: 455,
-        height: 285
+        width: 453,
+        height: 283
       },
       childViews: 'axesView series1View'.w(),
       classNames: ['smartgraph-pane'],
@@ -134,108 +135,20 @@ Smartgraphs.mainPage = SC.Page.design({
 
     tableView: SC.View.design({
       layout: {
-        left: 485,
+        right: 320,
         bottom: 10,
-        width: 455,
-        height: 285
+        width: 153,
+        height: 283
       },
       classNames: ['smartgraph-pane'],
 
-      childViews: ['labelsView', 'scrollerView', 'sensorAppletView'],
-
-			sensorAppletView: SC.View.design({
-				childViews: 'sensorApplet startButton stopButton resetButton'.w(),
-				layout: {right: 0, top: 0, width: 250, height: 40},
-				sensorApplet: CC.SensorAppletView.design({
-					layout: {left: 0, top: 0, width: 1, height: 1},
-					hideButtons: YES,
-					dt: 0.1,
-					resultsBinding: "Smartgraphs.dataSeriesController",
-			    listenerPath: "Smartgraphs.mainPage.mainPane.tableView.sensorAppletView.sensorApplet", // absolute path to this instance...
-				  dataReceived: function(type, numPoints, data) {
-						SC.RunLoop.begin();
-						var content = this.getPath('results.content');
-						var dt = this.get('dt');
-						var size = content.length();
-				    for (var i = 0; i < numPoints; i++) {
-							var yVal = data[i];
-							var xVal = (size * dt) + ((i+1) * dt);
-							var record = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {x: xVal, y: yVal*1000, series: 'series-1'});
-						}
-						Smartgraphs.store.commitRecords();
-						SC.RunLoop.end();
-				  },
-				  dataStreamEvent: function(type, numPoints, data) {
-						// ignore for now
-						// SC.RunLoop.begin();
-						// SC.RunLoop.end();
-				  },
-				  sensorsReady: function() {
-						SC.RunLoop.begin();
-						// enable the start button
-						this.setPath('parentView.startButton.isEnabled', YES);
-						this.getPath('parentView.resetButton').action();
-						SC.RunLoop.end();
-					}
-		  	}),
-		
-				startButton: SC.ButtonView.design({
-					layout: { centerY: 0, centerX: -85, height: 40, width: 80},
-					isEnabled: NO, // disabled until the sensor applet signals that it is ready
-					title: "Start",
-					appletBinding: "*parentView.sensorApplet",
-					action: function() {
-						this.set('isEnabled', NO);
-						this.setPath('parentView.stopButton.isEnabled', YES);
-						this.setPath('parentView.resetButton.isEnabled', YES);
-						this.get('applet').run(this.appletAction);
-					},
-					appletAction: function(applet) {
-						applet.startCollecting();
-					}
-				}),
-
-				stopButton: SC.ButtonView.design({
-					layout: { centerY: 0, centerX: 0, height: 40, width: 80},
-					isEnabled: NO, // disabled until the sensor applet signals that it is ready
-					title: "Stop",
-					appletBinding: "*parentView.sensorApplet",
-					action: function() {
-						this.set('isEnabled', NO);
-						this.get('applet').run(this.appletAction);
-					},
-					appletAction: function(applet) {
-						applet.stopCollecting();
-					}
-				}),
-
-				resetButton: SC.ButtonView.design({
-					layout: { centerY: 0, centerX: 85, height: 40, width: 80},
-					isEnabled: NO, // disabled until the sensor applet signals that it is ready
-					title: "Reset",
-					appletBinding: "*parentView.sensorApplet",
-					resultsBinding: "Smartgraphs.dataSeriesController",
-					action: function() {
-						this.set('isEnabled', NO);
-						this.setPath('parentView.stopButton.isEnabled', NO);
-						this.setPath('parentView.startButton.isEnabled', YES);
-						this.get('applet').run(this.appletAction);
-						var content = this.getPath('results.content');
-						content.invoke('destroy');
-						Smartgraphs.store.commitRecords();
-					},
-					appletAction: function(applet) {
-						applet.stopCollecting();
-					}
-				})
-				
-			}),
+      childViews: ['labelsView', 'scrollerView'],
 
       labelsView: SC.View.design({
         layout: {
           left: 0,
           top: 0,
-          width: 455,
+          width: 153,
           height: 30
         },
         childViews: ['xsLabel', 'ysLabel'],
@@ -265,8 +178,8 @@ Smartgraphs.mainPage = SC.Page.design({
         layout: {
           left: 0,
           top: 30,
-          width: 455,
-          height: 255
+          width: 153,
+          height: 253
         },
 
         borderStyle: SC.BORDER_NONE,
@@ -328,7 +241,97 @@ Smartgraphs.mainPage = SC.Page.design({
           })
         })
       })
-    }) //,
+    }),
+    
+    
+		sensorAppletView: SC.View.design({
+			childViews: 'sensorApplet startButton stopButton resetButton'.w(),
+      classNames: 'smartgraph-pane'.w(),			
+			layout: {right: 20, bottom: 10, width: 288, height: 283},
+			sensorApplet: CC.SensorAppletView.design({
+				layout: {left: 0, top: 0, width: 1, height: 1},
+				hideButtons: YES,
+				dt: 0.1,
+				resultsBinding: "Smartgraphs.dataSeriesController",
+		    listenerPath: "Smartgraphs.mainPage.mainPane.sensorAppletView.sensorApplet", // absolute path to this instance...
+			  dataReceived: function(type, numPoints, data) {
+					SC.RunLoop.begin();
+					var content = this.getPath('results.content');
+					var dt = this.get('dt');
+					var size = content.length();
+			    for (var i = 0; i < numPoints; i++) {
+						var yVal = data[i];
+						var xVal = (size * dt) + ((i+1) * dt);
+						var record = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {x: xVal, y: yVal*1000, series: 'series-1'});
+					}
+					Smartgraphs.store.commitRecords();
+					SC.RunLoop.end();
+			  },
+			  dataStreamEvent: function(type, numPoints, data) {
+					// ignore for now
+					// SC.RunLoop.begin();
+					// SC.RunLoop.end();
+			  },
+			  sensorsReady: function() {
+					SC.RunLoop.begin();
+					// enable the start button
+					this.setPath('parentView.startButton.isEnabled', YES);
+					this.getPath('parentView.resetButton').action();
+					SC.RunLoop.end();
+				}
+	  	}),
+	
+			startButton: SC.ButtonView.design({
+				layout: { centerY: 0, centerX: -85, height: 40, width: 80},
+				isEnabled: NO, // disabled until the sensor applet signals that it is ready
+				title: "Start",
+				appletBinding: "*parentView.sensorApplet",
+				action: function() {
+					this.set('isEnabled', NO);
+					this.setPath('parentView.stopButton.isEnabled', YES);
+					this.setPath('parentView.resetButton.isEnabled', YES);
+					this.get('applet').run(this.appletAction);
+				},
+				appletAction: function(applet) {
+					applet.startCollecting();
+				}
+			}),
+
+			stopButton: SC.ButtonView.design({
+				layout: { centerY: 0, centerX: 0, height: 40, width: 80},
+				isEnabled: NO, // disabled until the sensor applet signals that it is ready
+				title: "Stop",
+				appletBinding: "*parentView.sensorApplet",
+				action: function() {
+					this.set('isEnabled', NO);
+					this.get('applet').run(this.appletAction);
+				},
+				appletAction: function(applet) {
+					applet.stopCollecting();
+				}
+			}),
+
+			resetButton: SC.ButtonView.design({
+				layout: { centerY: 0, centerX: 85, height: 40, width: 80},
+				isEnabled: NO, // disabled until the sensor applet signals that it is ready
+				title: "Reset",
+				appletBinding: "*parentView.sensorApplet",
+				resultsBinding: "Smartgraphs.dataSeriesController",
+				action: function() {
+					this.set('isEnabled', NO);
+					this.setPath('parentView.stopButton.isEnabled', NO);
+					this.setPath('parentView.startButton.isEnabled', YES);
+					this.get('applet').run(this.appletAction);
+					var content = this.getPath('results.content');
+					content.invoke('destroy');
+					Smartgraphs.store.commitRecords();
+				},
+				appletAction: function(applet) {
+					applet.stopCollecting();
+				}
+			})
+		})
+
 
     // authoringModeButton: SC.ButtonView.design({
     //   layout: {
