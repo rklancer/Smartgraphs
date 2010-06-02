@@ -40,17 +40,21 @@ body.sc-theme {
   padding-left: 6px;
 }
 
-/*.sc-segmented-view .sc-segment.sc-middle-segment .sc-button-inner {
-  padding-left: 0px;
-  padding-right: 0px;
-}*/
+.sc-theme .sc-segmented-view .sc-segment.sc-last-segment {
+  padding-right: 1px;
+}
 
 .sc-theme .sc-segmented-view .sc-segment .sc-button-inner {
   padding-right: 1px;
 }
 
 .sc-theme .sc-segmented-view .sc-segment.sc-last-segment .sc-button-inner {
-  padding-right: 6px;
+  padding-right: 5px;
+  margin-right: 0;
+}
+
+.sc-theme .sc-segmented-view .sc-segment.sc-first-segment .sc-button-inner {
+   margin-left: -1px;
 }
 
 /*
