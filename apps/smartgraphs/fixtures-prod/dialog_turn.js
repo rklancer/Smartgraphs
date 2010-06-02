@@ -81,7 +81,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES    
+    isLastTurn: YES
   },
   
   { guid: 'turn-2',
@@ -142,28 +142,28 @@ Smartgraphs.DialogTurn.FIXTURES = [
       "<p>Remember from the last question that Maria stopped at four minutes. " +
       "Use the graph to convince yourself that she had run 800 meters by that point.</p>",
     responseTemplate: null,
-    responseVerifier: 'verifier-4',
+    responseVerifier: null,
     afterText: '',
-    nextTurnForNominalResponse: 'turn-3',
-    nextTurnForIncorrectResponse: 'turn-3',
-    isLastTurn: NO    
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES    
   },
   
   { guid: 'turn-2-correct',
     beforeText: 
       "<p>Correct. Maria had run 800 meters when she stopped at four minutes</p>",
     responseTemplate: null,
-    responseVerifier: 'verifier-4',
+    responseVerifier: null,
     afterText: '',
-    nextTurnForNominalResponse: 'turn-3',
-    nextTurnForIncorrectResponse: 'turn-3',
-    isLastTurn: NO
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES
   },
   
   { guid: 'turn-3',
     beforeText: 
       "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>"+
-      "<p>'Maria stoped to talk to her coach for",
+      "<p>'Maria stopped to talk to her coach for",
     responseTemplate: 'template-1',
     responseVerifier: 'verifier-3',
     afterText: "minutes.'",
@@ -218,7 +218,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-3-incorrect',
     beforeText:
       "<p>Remember from the last question that Maria stopped at four minutes? " +
-      "Notice on the graph that see started moving again at six muntes."+
+      "Notice on the graph that see started moving again at six minutes."+
       "That means she stopped to talk for two minutes.</p>",
     responseTemplate: null,
     responseVerifier: null,
@@ -230,7 +230,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   
   { guid: 'turn-3-correct',
     beforeText: 
-      "<p>Correct. After four minutes, Maria stopped to talk for two minutes, and started moving again at six muntes.</p>",
+      "<p>Correct. After four minutes, Maria stopped to talk for two minutes, and started moving again at six minutes.</p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
