@@ -87,7 +87,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-2',
     beforeText: 
       "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+    responseTemplate: 'textarea',
     responseVerifier: 'verifier-2',
     afterText: '',
     nextTurnForNominalResponse: 'turn-2-correct',
@@ -98,7 +98,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-2-1',
     beforeText:
       "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+    responseTemplate: 'textarea',
     responseVerifier: 'verifier-2',
     afterText:
       "<p>Incorrect.</p>" +
@@ -111,7 +111,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-2-2',
     beforeText:
       "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+    responseTemplate: 'textarea',
     responseVerifier: 'verifier-2',
     afterText:
       "<p>Incorrect.</p>" +
@@ -125,7 +125,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-2-3',
     beforeText:
       "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+    responseTemplate: 'textarea',
     responseVerifier: 'verifier-2',
     afterText:
       "<p>Incorrect.</p>" +
@@ -164,7 +164,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     beforeText: 
       "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>"+
       "<p>'Maria stopped to talk to her coach for",
-    responseTemplate: 'template-1',
+    responseTemplate: 'textarea',
     responseVerifier: 'verifier-3',
     afterText: "minutes.'",
     nextTurnForNominalResponse: 'turn-3-correct',
@@ -175,7 +175,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-3-1',
     beforeText:
       "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+    responseTemplate: 'textarea',
     responseVerifier: 'verifier-3',
     afterText:
       "<p>Incorrect.</p>" +
@@ -189,7 +189,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-3-2',
     beforeText:
       "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+    responseTemplate: 'textarea',
     responseVerifier: 'verifier-3',
     afterText:
       "<p>Incorrect.</p>" +
@@ -203,7 +203,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-3-3',
     beforeText:
       "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+    responseTemplate: 'textarea',
     responseVerifier: 'verifier-3',
     afterText:
       "<p>Incorrect.</p>" +
