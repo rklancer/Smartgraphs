@@ -85,18 +85,18 @@ Smartgraphs.DialogTurnView = SC.View.extend(
       height: 24
     },
     
-    childViews: 'checkResponseButton'.w(),
+    childViews: 'nextTurnButton'.w(),
     
-    checkResponseButton: SC.ButtonView.design({
+    nextTurnButton: SC.ButtonView.design({
       layout: {
         width: 140,
         right: 0
       },
-      title: 'Check My Answer',
-      isVisibleBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.checkResponseShouldBeVisible'),
-      isEnabledBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.checkResponseShouldBeEnabled'),
-      target: 'Smartgraphs.responseVerifierController',
-      action: 'checkResponse'
+      titleBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.nextTurnButtonTitle'),
+      isVisibleBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.nextTurnButtonShouldBeVisible'),
+      isEnabledBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.nextTurnButtonShouldBeEnabled'),
+      target: 'Smartgraphs.dialogTurnController',
+      action: 'gotoNextTurn'
     })
   })
 });

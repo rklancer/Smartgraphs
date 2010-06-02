@@ -27,6 +27,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: 
       "<p>Incorrect.</p>" +
       "<p>Hint 1: Look at the graph and table and find where Maria’s distance stayed the same.</p>",
+    nextTurnButtonTitle: 'different',
     nextTurnForNominalResponse: 'turn-1-correct',
     nextTurnForIncorrectResponse: 'turn-1-2',
     isLastTurn: NO

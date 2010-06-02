@@ -24,6 +24,17 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
       Smartgraphs.guidePageSequenceController.set('nextPageIsSelectable', YES);
     }
   },
+
+  gotoNextTurn: function () {
+    if (Smartgraphs.responseVerifierController.get('verificationIsRequired')) {
+      Smartgraphs.responseVerifierController.checkResponse();
+    }
+    else {
+      // just go to the next turn
+      var nextTurn = this.get('nextTurnForNominalResponse');
+      Smartgraphs.guidePageController.set('selectedDialogTurn', nextTurn);      
+    }
+  },
   
   didReceiveCorrectResponse: function () {
     console.log('didReceiveCorrectResponse');
@@ -47,13 +58,32 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
   
   // TODO: let content dictate what buttons are available (including 'ok', 'show me again', 'i dont know'...)
   
+
+  // return a default value for the nextTurnButtonTitle unless it's explictly specified in the model
+  defaultNextTurnButtonTitle: "Check My Answer",
+  
+  rawNextTurnButtonTitleBinding: SC.Binding.oneWay('*content.nextTurnButtonTitle'),
+  nextTurnButtonTitle: function () {
+    var rawTitle = this.get('rawNextTurnButtonTitle');
+    return rawTitle ? rawTitle : this.get('defaultNextTurnButtonTitle');
+  }.property('rawNextTurnButtonTitle').cacheable(),
+
+
   // NOTE this pattern!
-  // first define the property 'checkResponseShouldBeVisible' on the controller, so it doesn't pass through to the proxied content
+  // first define the property 'nextTurnButtonShouldBeVisible' on the controller, so it doesn't pass through to the proxied content
   // then define a binding that will update the property on the controller.
   // (without it, you'll have two model objects attempting to share the same SC.Binding object)
-  checkResponseShouldBeVisible: null,
-  checkResponseShouldBeVisibleBinding: SC.Binding.oneWay('Smartgraphs.responseVerifierController.responseCanBeChecked'),
+    
+  nextTurnButtonShouldBeVisible: null,
+  nextTurnButtonShouldBeVisibleBinding: SC.Binding.not('.isLastTurn').oneWay(),
+  
+  verificationIsNotRequired: null,
+  verificationIsNotRequiredBinding: SC.Binding.not('Smartgraphs.responseVerifierController.verificationIsRequired').oneWay(),
+  
+  // Weird binding issue: can't use relative path syntax ('.verificationIsNotRequired') in the or transform below.
 
-  checkResponseShouldBeEnabled: null,
-  checkResponseShouldBeEnabledBinding: SC.Binding.oneWay('Smartgraphs.responseVerifierController.responseIsReady')
+  nextTurnButtonShouldBeEnabled: null,
+  nextTurnButtonShouldBeEnabledBinding: SC.Binding.or(
+    'Smartgraphs.dialogTurnController.verificationIsNotRequired', 
+    'Smartgraphs.responseVerifierController.responseIsReady')
 }) ;
