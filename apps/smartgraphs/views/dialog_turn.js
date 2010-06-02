@@ -111,7 +111,7 @@ Smartgraphs.DialogTurnView = SC.View.extend(
     
     nextTurnButton: SC.ButtonView.design({
       layout: {
-        width: 140,
+        width: 160,
         right: 0
       },
       titleBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.nextTurnButtonTitle'),
