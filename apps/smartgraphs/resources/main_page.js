@@ -11,11 +11,11 @@ Smartgraphs.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
     layout: {
-      width: 960,
-      height: 600
+      width: 1260,
+      height: 650
     },
 
-    childViews: 'dialogView graphView tableView sensorAppletView imageView'.w(), // TODO put back 'authoringModeButton authorView'
+    childViews: 'dialogView graphView tableView sensorAppletView imageView authoringModeButton authorView'.w(), 
     
     imageView: SC.ImageView.design({
       isVisibleBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.shouldShowImage'),
@@ -115,7 +115,7 @@ Smartgraphs.mainPage = SC.Page.design({
     graphView: Smartgraphs.RaphaelView.design({
       //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),
       layout: {
-        right: 20,
+        left: 480,
         top: 10,
         width: 453,
         height: 283
@@ -150,9 +150,9 @@ Smartgraphs.mainPage = SC.Page.design({
     tableView: SC.View.design({
       //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),      
       layout: {
-        right: 285,
-        bottom: 10,
-        width: 188,
+        left: 480,
+        top: 300,
+        width: 153,
         height: 283
       },
       classNames: ['smartgraph-pane'],
@@ -264,12 +264,7 @@ Smartgraphs.mainPage = SC.Page.design({
       //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),		  
       childViews: 'sensorApplet startButton stopButton resetButton'.w(),
       classNames: 'smartgraph-pane'.w(),     
-      layout: {
-        right: 20, 
-        bottom: 10, 
-        width: 253, 
-        height: 283
-      },
+			layout: {left: 640, top: 300, width: 288, height: 283},
 
       shouldBeEnabledBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.sensorAppletShouldBeEnabled'),
       _shouldBeEnabledWasTrue: null,
@@ -427,6 +422,28 @@ Smartgraphs.mainPage = SC.Page.design({
           this.get('applet')._nsamples = 0;
         }
       })
-		})
+		}),
+		
+    authoringModeButton: SC.ButtonView.design({
+      layout: {
+        left: 20,
+        top: 600
+      },
+      useStaticLayout: YES,
+      title: 'Toggle Authoring Mode',
+      targetBinding: 'Smartgraphs.authoringController',
+      action: 'toggleAuthoring'
+    }),
+     
+     authorView: Smartgraphs.AuthorView.design({
+       layout: {
+         left: 965,
+         top: 5,
+         bottom: 20,
+         width: 300
+       },
+       contentBinding: "Smartgraphs.guidePageSequenceController.selectedPage",
+       canEditContent: YES  //TODO: Make authoring actually work
+     })
   })
 });
