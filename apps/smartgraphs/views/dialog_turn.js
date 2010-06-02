@@ -22,6 +22,10 @@ Smartgraphs.DialogTurnView = SC.View.extend(
     isVisibleBinding: SC.Binding.bool('Smartgraphs.dialogTurnController.beforeText')
   }),
   
+  // FIXME: this could go into its own view class.
+  // responseFields could be a property on the responseTemplateController, bound to dialogTurnView
+  // (responses do properly live with the DialogTurn...)
+  
   responseFieldsView: SC.StaticContentView.design({
     
     fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
@@ -49,21 +53,39 @@ Smartgraphs.DialogTurnView = SC.View.extend(
         return;
       }
 
+      var type, viewDesign, isTextArea, layout;
+      
       for (var i = 0, ii = fieldTypes.get('length'); i < ii; i++) {
-        var viewDesign = SC.View.design({
-          useStaticLayout: YES,
-          layout: {
-            top: 0,
+        type = fieldTypes.objectAt(i);
+        
+        if (type === 'textarea') {
+          isTextArea = YES;
+          layout = {
+            height: 110
+          };
+        }
+        else if (type === 'numeric') {
+          isTextArea = NO;
+          layout = {
             height: 22,
-            left: 0,
-            width: 150
-          },
+            width: 100
+          };          
+        }
+        else {
+          throw "responseFieldsView received unexpected field type string '" + type + "'.";
+        }
+
+        viewDesign = SC.View.design({
+          useStaticLayout: YES,
+          layout: layout,
+
           childViews: [SC.TextFieldView.design({
+            isTextArea: isTextArea,
             index: i,
             valueDidChange: function () {
               console.log("responseFieldsView's child textFieldView observed value");
               var index = this.get('index');
-              Smartgraphs.responseTemplateController.updateResponse(index, this.get('value'));
+              Smartgraphs.dialogTurnController.updateResponse(index, this.get('value'));
             }.observes('value')
           })]
         });

@@ -9,11 +9,15 @@ sc_require('models/response_template');
 Smartgraphs.ResponseTemplate.FIXTURES = [
 
   { guid: 'template-numeric-1',
-    templateString: '(a textarea should show)'
+    fieldTypes: 'numeric'.w(),
+    fieldValues: [''],
+    numberOfResponseFields: 1
   },
   
   { guid: 'template-open-1',
-    templateString: '(this should specify a large textarea for an open response)'
+    fieldTypes: 'textarea'.w(),
+    fieldValues: [''],
+    numberOfResponseFields: 1
   }
 
 ];

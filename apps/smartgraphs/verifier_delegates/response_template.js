@@ -57,7 +57,7 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.crea
   // Simplified implementation for now; will handle more objects in the responseArray after we implement actual
   // parsing of the templateString in ResponseTemplate
 
-  responseArrayBinding: SC.Binding.oneWay('Smartgraphs.responseTemplateController.responseArray'),
+  responseArrayBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.responseArray'),
   _oldResponseArray: null,
   
   responseArrayDidChange: function () {

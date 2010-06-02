@@ -23,6 +23,8 @@ Smartgraphs.ResponseTemplate = SC.Record.extend(
   //
   // e.g., 'Maria ran {number} {minutes|meters|miles per hour}"  
 
-  templateString: SC.Record.attr(String)
+  templateString: SC.Record.attr(String),
+  fieldTypes: SC.Record.attr(Array),
+  fieldValues: SC.Record.attr(Array)
   
 }) ;

@@ -16,13 +16,29 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
   contentBinding: 'Smartgraphs.guidePageController.selectedDialogTurn',
   
   contentDidChange: function () {
-    this.invokeOnce(this._updateDialogIsComplete);  
+    this.invokeOnce(this._updateForChangedContent);  
   }.observes('content'),
   
-  _updateDialogIsComplete: function () {
+  _updateForChangedContent: function () {
+    var responseTemplate = this.getPath('responseTemplate');
+    var newArray = [];
+    
+    if (responseTemplate && !this.get('responseArray')) {
+      newArray.length = responseTemplate.get('numberOfResponseFields');
+      this.set('responseArray', newArray);
+    }
+    
     if (this.get('isLastTurn')) {
       Smartgraphs.guidePageSequenceController.set('nextPageIsSelectable', YES);
     }
+  },
+
+  // an unknown number of fields will be generated, so instead of creating a dynamically expanding and contracting list
+  // of properties which can be bound, we'll accept a simple 'updateResponse' message from the field with index 'index'
+  
+  updateResponse: function (index, value) {
+    var responseArray = this.get('responseArray');
+    responseArray.replace(index, 1, [value]);
   },
 
   gotoNextTurn: function () {

@@ -37,6 +37,9 @@ Smartgraphs.DialogTurn = SC.Record.extend(
   nextTurnForIncorrectResponse: SC.Record.toOne('Smartgraphs.DialogTurn'),
   
   // if YES, dialog is over when we hit this DialogTurn -- allow user to go to next page
-  isLastTurn: SC.Record.attr(Boolean)
+  isLastTurn: SC.Record.attr(Boolean),
+  
+  // student responses, if any...
+  responseArray: null
 
 }) ;
