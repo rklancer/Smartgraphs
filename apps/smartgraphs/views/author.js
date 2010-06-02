@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.QuestionAuthorView
+// Project:   Smartgraphs.AuthorView
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
 /*globals Smartgraphs */
@@ -8,7 +8,7 @@
  (Document Your View Here)
  @extends SC.View
  */
-Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionAuthorView.prototype */{
+Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.prototype */{
     isVisible: NO,
     childViews: 'titleLabel indexViewLabel indexView shortNameViewLabel shortNameView responseTypeViewLabel responseTypeView promptViewLabel promptView correctResponseViewLabel correctResponseView correctResponseFeedbackViewLabel correctResponseFeedbackView incorrectResponseFeedbackViewLabel incorrectResponseFeedbackView'.w(),
     
@@ -20,7 +20,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
         },
 		textAlign: "center",
         backgroundColor: "black",
-        value: "Selected Question's Data:"
+        value: "Author's Controls:"
     }),
     
     indexViewLabel: SC.LabelView.design({
@@ -30,7 +30,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
             width: 300
         },
         backgroundColor: "grey",
-        value: "Question#:"
+        value: "Guide Page index #:"
     }),
     indexView: SC.LabelView.design({
         layout: {
@@ -50,7 +50,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
             width: 300
         },
         backgroundColor: "grey",
-        value: "Short Name for navigation tabs:"
+        value: "Title for Guide Page tabs:"
     }),
     shortNameView: SC.LabelView.design({
         layout: {
@@ -60,7 +60,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
         },
 		isEditable: YES,
         backgroundColor: "darkblue",
-        valueBinding: "*parentView.content.shortName"
+        valueBinding: "*parentView.content.title"
     }),
     
     responseTypeViewLabel: SC.LabelView.design({
@@ -90,7 +90,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
             width: 300
         },
         backgroundColor: "grey",
-        value: "Question Prompt:"
+        value: "Introduction Text:"
     }),
     promptView: SC.LabelView.design({
         layout: {
@@ -101,7 +101,7 @@ Smartgraphs.QuestionAuthorView = SC.View.extend(/** @scope Smartgraphs.QuestionA
 		isInlineEditorMultiline:YES,
 		isEditable: YES,
         backgroundColor: "darkblue",
-        valueBinding: "*parentView.content.prompt"
+        valueBinding: "*parentView.content.introText"
         // TODO: set CSS 
     }),
     
