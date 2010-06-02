@@ -1,3 +1,92 @@
+open question for 6/2: 
+
+how to specify data series and axes per guide page? (actually, that should be easy!)
+
+how to specify applet on/off?
+
+
+6/1/10:
+
+* let responsetemplates link to a list of ResponseField objects?
+* create an 'open response' responsetemplate and let the view use it
+
+* about 'response verifier delegates':
+
+  * in general, the idea of objects that can be configured and that observe the system state are useful.
+  * (they convert the system state to a bunch of booleans, basically)
+  * some of these will observe the state of the data input from a sensor -- for example is there enough data yet?
+  * verifier delegates are *one such kind* that are for the specific case of user-initiated checking
+  * dialogturns will eventually have configurable feedback fields that can give 'real time' feedback e.g., 'you haven't entered enough data yet'
+  * stateObserverDelegates or whatever we want to rename responseVerifierDelegates could update those fields
+  
+* so we have the idea that dialogturns can gate progress in a configurable way based on feedback from the state observer
+* perhaps a progressGatingController will come into play? that can be configured with a suitable delegate configured via a suitable model object (analogously to responseVerifiers)
+* note we sort of have something analogous now in that you can't click check response button until !responseIsIncomplete
+* progress is gated now in these ways:
+    * you go to the next dialog turn after you click checkResponse (only if response is correct or incorrect, not malformed or incomplete in which case you should get feedback)
+    * you can't even click checkresponse until response is 'not incomplete'
+* later we can have: 
+    * you go to the next turn after you click OK
+    * but you can't click OK until state is 'ok to progress'
+
+
+*** THE CONCEPTS WE'LL USE:
+
+there's a 'progress' button
+the button can have a configurable title? ('check response', 'ok'). (As per Kofi let the authoring system enforce name of these things.)
+there's a system observer which distill system state into a configurable set of values, and can be configured in extensible way via:
+  1. naming the delegate object
+  2. config string
+  
+there's a *separate* response checker that takes the distilled system state and gives yes/no on progress to next step
+
+the system observer object can be used to turn buttons on/off, give 'real time' feedback (ie without waiting for student to click)
+
+the dialog turn has to be configured to 1) use a particular system observer 2) bind certain feedback fields (which *are* predefined) to certain keys on the system observer (which are specified as strings)
+
+I.E. we're blowing up 'response verifier' into two things
+
+
+*** FOR NOW this doesn't matter.
+
+we just need to implement OK button, right?
+
+
+
+*** how would this work?
+
+nextTurnButtonTitle: 'Check My Response'
+responseVerifier: response-1    // checks with systemStateDistiller; if null, goto 'nominal response'
+systemStateDistiller:'responseTemplate, 'graphSelection'  (-Distiller)
+
+(then there'd be a template language and/or fields on the DialogTurn model that bind the instant-feedback to distiller objects' various properties)
+
+checkResponse -> checkState
+
+responseIsCorrect/responseIsIncorrect -> stateIsOK
+responseIsMalformed+responseIsIncomplete+whatever else means that 'stateOK' is not valid -> stateIsValid
+checkState was called -> stateWasChecked
+
+
+
+*** what do we need now?
+
+nextTurnButtonTitle: "Submit My Answer"
+responseVerifier: null means progress button always enabled. *** Actually, we could create a null checker before separating distillers from gatingsupervisors
+
+
+sigh, all these java-y class names
+
+
+
+okay. we're good to go for open response
+
+
+
+
+  
+
+
 5/30/10:
 
 (renamed CorrectResponse to ResponseVerifer)
