@@ -27,27 +27,12 @@ Smartgraphs.mainPage = SC.Page.design({
 
       classNames: 'smartgraph-pane'.w(),
 
-      childViews: 'navButtons textView nextButton backButton'.w(),
-
-      navButtons: SC.SegmentedView.design({
-        layout: {
-          top: 25
-        },
-
-        // in order to enable the button for the next question when it becomes selectable:
-        displayProperties: 'nextPageIsSelectable'.w(),
-
-        itemsBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController'),
-        itemTitleKey: 'title',
-        itemIsEnabledKey: 'isSelectable',
-        valueBinding: 'Smartgraphs.guidePageSequenceController.selectedPage',
-        nextPageIsSelectableBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController*nextPage.isSelectable')
-      }),
+      childViews: 'textView navButtons nextButton backButton'.w(),
 
       // provide padding and style rules for the intro text and dialog
       textView: SC.View.design({
         layout: {
-          top: 60,
+          top: 20,
           left: 20,
           right: 20,
           bottom: 80
@@ -66,12 +51,28 @@ Smartgraphs.mainPage = SC.Page.design({
         })
       }),
 
+      navButtons: SC.SegmentedView.design({
+        layout: {
+          bottom: 36,
+          height: 24
+        },
+
+        // in order to enable the button for the next question when it becomes selectable:
+        displayProperties: 'nextPageIsSelectable'.w(),
+
+        itemsBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController'),
+        itemTitleKey: 'title',
+        itemIsEnabledKey: 'isSelectable',
+        valueBinding: 'Smartgraphs.guidePageSequenceController.selectedPage',
+        nextPageIsSelectableBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController*nextPage.isSelectable')
+      }),
+      
       nextButton: SC.ButtonView.design({
         displayProperties: ['isEnabled'],
         layout: {
           bottom: 36,
           height: 24,
-          right: 50,
+          right: 30,
           width: 80
         },
         title: "Next >>",
@@ -86,7 +87,7 @@ Smartgraphs.mainPage = SC.Page.design({
         layout: {
           bottom: 36,
           height: 24,
-          left: 50,
+          left: 30,
           width: 80
         },
         title: "<< Back",
