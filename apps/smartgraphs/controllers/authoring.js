@@ -9,8 +9,8 @@
  @extends SC.Object
  */
 
-// the now-obsolete model this controller worked with (uncommenting causes errors in testrunner)
-//sc_require('models/question');
+sc_require('models/dialog_turn');
+sc_require('models/guide_page');
 
 Smartgraphs.authoringController = SC.ObjectController.create(
 /** @scope Smartgraphs.authoringController.prototype */
