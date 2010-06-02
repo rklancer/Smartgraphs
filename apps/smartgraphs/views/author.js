@@ -92,7 +92,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
             width: 300
         },
         backgroundColor: "grey",
-        value: "Correct Response:"
+        value: "First Dialog Turn:"
     }),
     correctResponseView: SC.LabelView.design({
         layout: {
@@ -101,9 +101,10 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
             width: 300
         },
 		isInlineEditorMultiline: YES,
-		isEditable: YES,
+		isEditable: NO, // TODO: show which dialog turn is first in a better way
+		//YES,
         backgroundColor: "darkblue",
-        valueBinding: "*parentView.content.correctResponse"
+        valueBinding: "*parentView.content.firstDialogTurn"
     }),
     
     correctResponseFeedbackViewLabel: SC.LabelView.design({
@@ -113,7 +114,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
             width: 300
         },
         backgroundColor: "grey",
-        value: "Correct Response Feedback:"
+        value: "Selected Dialog Turn's Before Text:"
     }),
     correctResponseFeedbackView: SC.LabelView.design({
         layout: {
@@ -124,7 +125,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
 		isInlineEditorMultiline: YES,
 		isEditable: YES,
         backgroundColor: "darkblue",
-        valueBinding: "*parentView.content.correctResponseFeedback"
+        valueBinding: "*parentView.content.selectedDialogTurn.beforeText"
     }),
     
     incorrectResponseFeedbackViewLabel: SC.LabelView.design({
@@ -134,7 +135,7 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
             width: 300
         },
         backgroundColor: "grey",
-        value: "Incorrect Response Feedback:"
+        value: "Selected Dialog Turn's Response Type:"
     }),
     incorrectResponseFeedbackView: SC.LabelView.design({
         layout: {
@@ -143,9 +144,10 @@ Smartgraphs.AuthorView = SC.View.extend(/** @scope Smartgraphs.AuthorView.protot
             width: 300
         },
 		isInlineEditorMultiline: YES,
-		isEditable: YES,
+		isEditable: NO, // TODO: Make a editable control to dynamically change the template
+    //YES,
         backgroundColor: "darkblue",
-        valueBinding: "*parentView.content.incorrectResponseFeedback"
+        valueBinding: "*parentView.content.selectedDialogTurn.responseTemplate.guid"
     })
 
 });
