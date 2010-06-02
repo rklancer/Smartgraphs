@@ -31,6 +31,17 @@ body.sc-theme {
   margin-top: 0px;
   margin-bottom: 10px;
 }
+
+.sc-theme .sc-segmented-view .sc-segment {
+  padding-left: 1px;
+}
+
+.sc-segmented-view .sc-segment.sc-middle-segment .sc-button-inner {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
 /*
 .sc-view.sg-question {
   padding: 25px 20px 5px 20px;  
