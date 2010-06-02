@@ -21,10 +21,5 @@ Smartgraphs.ResponseVerifier.FIXTURES = [
   { guid: 'verifier-3',
     verifierDelegateName: 'ResponseTemplate',
     configString: 'number: 2'
-  },
-  
-  { guid: 'verifier-4',
-    verifierDelegateName: 'NoSelection',
-    configString: 'YES'
   }
 ];
