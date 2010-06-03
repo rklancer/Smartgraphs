@@ -101,5 +101,10 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
   nextTurnButtonShouldBeEnabled: null,
   nextTurnButtonShouldBeEnabledBinding: SC.Binding.or(
     'Smartgraphs.dialogTurnController.verificationIsNotRequired', 
-    'Smartgraphs.responseVerifierController.responseIsReady')
+    'Smartgraphs.responseVerifierController.responseIsReady'),
+  
+  
+  // just pass this through from the GuidePage model for now.
+  sensorAppletShouldBeEnabled: null,
+  sensorAppletShouldBeEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.sensorAppletShouldBeEnabled')
 }) ;

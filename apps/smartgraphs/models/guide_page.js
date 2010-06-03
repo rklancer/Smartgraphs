@@ -30,6 +30,8 @@ Smartgraphs.GuidePage = SC.Record.extend(
 
   axes: SC.Record.toOne('Smartgraphs.Axes'),
   
+  sensorAppletShouldBeEnabled: SC.Record.attr(Boolean),
+  
   // nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
   
   // *** transient properties not saved to db

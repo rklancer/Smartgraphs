@@ -22,7 +22,8 @@ Smartgraphs.GuidePage.FIXTURES = [
       'Click Stop after 10 seconds is up.</p>',
     firstDialogTurn: 'turn-1-start',
     dataSeries: 'series-sensor',
-    axes: 'axes-sensor'
+    axes: 'axes-sensor',
+    sensorAppletShouldBeEnabled: YES
   },
   
   { guid: 2,
@@ -35,7 +36,8 @@ Smartgraphs.GuidePage.FIXTURES = [
      'then at a faster, steady pace for 5 seconds. Click Stop when the time is up.</p>',
     firstDialogTurn: 'turn-2-start',
     dataSeries: 'series-sensor',
-    axes: 'axes-sensor'    
+    axes: 'axes-sensor',
+    sensorAppletShouldBeEnabled: YES    
   },
   
   { guid: 3,
@@ -48,7 +50,8 @@ Smartgraphs.GuidePage.FIXTURES = [
      'then walk faster for the remaining 3 seconds. Click Stop.</p>',
     firstDialogTurn: 'turn-3-start',
     dataSeries: 'series-sensor',
-    axes: 'axes-sensor'    
+    axes: 'axes-sensor',
+    sensorAppletShouldBeEnabled: YES    
   },
   
   { guid: 4,
@@ -61,7 +64,8 @@ Smartgraphs.GuidePage.FIXTURES = [
      '<p>These data are shown in the graph and the table at right.</p>',
     firstDialogTurn: 'turn-4-start',
     dataSeries: 'series-maria',
-    axes: 'axes-maria'
+    axes: 'axes-maria',
+    sensorAppletShouldBeEnabled: NO    
   },
   
   { guid: 5,
@@ -72,7 +76,8 @@ Smartgraphs.GuidePage.FIXTURES = [
      "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
     firstDialogTurn: 'turn-5-start',
     dataSeries: 'series-maria',
-    axes: 'axes-maria'
+    axes: 'axes-maria',
+    sensorAppletShouldBeEnabled: NO    
   },
   
   { guid: 6,
@@ -83,7 +88,7 @@ Smartgraphs.GuidePage.FIXTURES = [
      "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
     firstDialogTurn: 'turn-6-start',
     dataSeries: 'series-maria',
-    axes: 'axes-maria'    
+    axes: 'axes-maria',
+    sensorAppletShouldBeEnabled: NO    
   }
-  
 ];
