@@ -256,7 +256,13 @@ Smartgraphs.mainPage = SC.Page.design({
         // out of an abundance of caution: only stop applet on 'falling edge signal' of shouldBeEnabled
         if (!shouldBeEnabled && this._shouldBeEnabledWasTrue) {
           //console.log('sensorAppletView.shouldBeEnabled became falsy; stopping applet');
-          this.get('sensorApplet').stop();
+
+          // make sure to ignore the error thrown if the applet hasn't loaded at this point!
+          try {
+            this.get('sensorApplet').stop();
+          } 
+          catch (e) {
+          }
         }
         this._shouldBeEnabledWasTrue = shouldBeEnabled;
       }.observes('shouldBeEnabled'),
