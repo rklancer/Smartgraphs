@@ -16,13 +16,11 @@ Smartgraphs.dataSeriesController = SC.ArrayController.create(
 
   seriesBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.dataSeries'),
   
-  dataPoints: function () {
+  content: function () {
     var series = this.get('series');
     var query = SC.Query.local(Smartgraphs.DataPoint, {conditions: 'series = {series}', series: series, orderBy: 'x'} );
     return Smartgraphs.store.find(query);
   }.property('series').cacheable(),
-  
-  contentBinding: SC.Binding.from('.dataPoints'),
   
   allowsMultipleSelection: NO
 }) ;
