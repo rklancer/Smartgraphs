@@ -30,7 +30,9 @@ body.sc-theme {
 .sc-view.dialog-turn {
   background-color: white;
   padding: 10px 10px 10px 10px;
-  border: 1px solid #999999;
+  border: 1px solid #cccccc;
+  background-color: #EFEDDD;
+  margin-bottom: 10px;
 }
 
 .sc-view.dialog-turn .sc-view {
