@@ -110,13 +110,7 @@ Smartgraphs.mainPage = SC.Page.design({
       classNames: ['smartgraph-pane'],
 
       axesView: Smartgraphs.AxesView.design({
-        xMinBinding: 'Smartgraphs.axesController.xMin',
-        xMaxBinding: 'Smartgraphs.axesController.xMax',
-        yMinBinding: 'Smartgraphs.axesController.yMin',
-        yMaxBinding: 'Smartgraphs.axesController.yMax',
-        xStepsBinding: 'Smartgraphs.axesController.xSteps',
-        yStepsBinding: 'Smartgraphs.axesController.ySteps',
-        paddingBinding: 'Smartgraphs.axesController.padding'
+        axesBinding: 'Smartgraphs.axesController'
       }),
 
       series1View: Smartgraphs.SeriesView.design({
@@ -261,6 +255,7 @@ Smartgraphs.mainPage = SC.Page.design({
         
         // out of an abundance of caution: only stop applet on 'falling edge signal' of shouldBeEnabled
         if (!shouldBeEnabled && this._shouldBeEnabledWasTrue) {
+          console.log('sensorAppletView.shouldBeEnabled became falsy; stopping applet');
           this.get('sensorApplet').stop();
         }
         this._shouldBeEnabledWasTrue = shouldBeEnabled;
@@ -293,8 +288,7 @@ Smartgraphs.mainPage = SC.Page.design({
               'dataReceived called, but sensorAppletView was updating a different series than the current '+
               'series managed by the dataSeriesController');
           }
-          
-          SC.RunLoop.begin();
+
           var content = this.getPath('results.content');
           var dt = this.get('dt');
           var size = content.length();
@@ -304,8 +298,6 @@ Smartgraphs.mainPage = SC.Page.design({
             var xVal = (size * dt) + ((i+1) * dt);
             var record = Smartgraphs.dataSeriesController.addDataPoint(xVal, yVal/10);
           }
-          Smartgraphs.store.commitRecords();
-          SC.RunLoop.end();
         },
         
         dataStreamEvent: function(type, numPoints, data) {
@@ -325,16 +317,16 @@ Smartgraphs.mainPage = SC.Page.design({
        
       startButton: SC.ButtonView.design({
         layout: {
-          centerY: 0,
-          centerX: -85, 
-          height: 40, 
-          width: 80
+          centerX: 0, 
+          centerY: -60,          
+          height: 24, 
+          width: 160
         },
-        
-        isVisibleBinding: '*parentView.shouldBeEnabled',
+                
+        isVisibleBinding: '.parentView.shouldBeEnabled',
         isEnabled: NO, // disabled until the sensor applet signals that it is ready
         title: "Start",
-        appletBinding: "*parentView.sensorApplet",
+        appletBinding: ".parentView.sensorApplet",
 
         action: function() {
           this.set('isEnabled', NO);
@@ -347,16 +339,16 @@ Smartgraphs.mainPage = SC.Page.design({
       
       stopButton: SC.ButtonView.design({
         layout: {
-          centerY: 0, 
           centerX: 0, 
-          height: 40, 
-          width: 80
+          centerY: 0, 
+          height: 24, 
+          width: 160
         },
 
-        isVisibleBinding: '*parentView.shouldBeEnabled',    
+        isVisibleBinding: '.parentView.shouldBeEnabled',    
         isEnabled: NO, // disabled until the sensor applet signals that it is ready
         title: "Stop",
-        appletBinding: "*parentView.sensorApplet",
+        appletBinding: ".parentView.sensorApplet",
 
         action: function() {
           this.set('isEnabled', NO);
@@ -366,16 +358,16 @@ Smartgraphs.mainPage = SC.Page.design({
       
       resetButton: SC.ButtonView.design({        
         layout: { 
-          centerY: 0, 
-          centerX: 85, 
-          height: 40, 
-          width: 80
+          centerX: 0, 
+          centerY: 60, 
+          height: 24, 
+          width: 160
         },
-
-        isVisibleBinding: '*parentView.shouldBeEnabled', 
+        
+        isVisibleBinding: '.parentView.shouldBeEnabled', 
         isEnabled: NO, // disabled until the sensor applet signals that it is ready
         title: "Reset",
-        appletBinding: "*parentView.sensorApplet",
+        appletBinding: ".parentView.sensorApplet",
         resultsBinding: "Smartgraphs.dataSeriesController",
        
         action: function() {
