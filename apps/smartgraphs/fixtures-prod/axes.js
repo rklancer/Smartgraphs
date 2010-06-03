@@ -15,11 +15,13 @@ Smartgraphs.Axes.FIXTURES = [
     xMax: 60,
     xSteps: 6,
     xLabel: 'Time (seconds)',
+    xLabelAbbreviated: 'Time (s)',
 
     yMin: 0,
     yMax: 5,
     ySteps: 10,
-    yLabel: 'Position (meters)'
+    yLabel: 'Position (meters)',
+    yLabelAbbreviated: 'Position (m)'
   },
 
   { guid: 'axes-maria',
@@ -28,11 +30,13 @@ Smartgraphs.Axes.FIXTURES = [
     xMax: 10,
     xSteps: 10,
     xLabel: 'Time (minutes)',
+    xLabelAbbreviated: 'Time (min)',
     
     yMin: 0,
     yMax: 2000,
     ySteps: 10,
-    yLabel: 'Position (meters)'
+    yLabel: 'Position (meters)',
+    yLabelAbbreviated: 'Position (m)'
   }
 
 ];
