@@ -136,9 +136,9 @@ Smartgraphs.mainPage = SC.Page.design({
 
     tableView: SC.View.design({
       layout: {
-        right: 320,
+        right: 305,
         bottom: 10,
-        width: 153,
+        width: 168,
         height: 283
       },
       classNames: ['smartgraph-pane'],
@@ -149,7 +149,7 @@ Smartgraphs.mainPage = SC.Page.design({
         layout: {
           left: 0,
           top: 0,
-          width: 153,
+          width: 168,
           height: 30
         },
         childViews: ['xsLabel', 'ysLabel'],
@@ -157,7 +157,7 @@ Smartgraphs.mainPage = SC.Page.design({
         xsLabel: SC.LabelView.design({
           layout: {
             left: 10,
-            width: 40,
+            width: 70,
             top: 7,
             height: 20
           },
@@ -166,12 +166,12 @@ Smartgraphs.mainPage = SC.Page.design({
 
         ysLabel: SC.LabelView.design({
           layout: {
-            left: 70,
-            width: 50,
+            left: 90,
+            width: 70,
             top: 7,
             height: 20
           },
-          displayValue: 'distance'
+          displayValue: 'position'
         })
       }),
 
@@ -179,7 +179,7 @@ Smartgraphs.mainPage = SC.Page.design({
         layout: {
           left: 0,
           top: 30,
-          width: 153,
+          width: 168,
           height: 253
         },
 
@@ -194,23 +194,23 @@ Smartgraphs.mainPage = SC.Page.design({
 
           height: function(){
             return Math.max(this.get('xHeight'), this.get('yHeight'));
-          }.property('xHeight', 'yHeight').cacheable()          ,
+          }.property('xHeight', 'yHeight').cacheable(),
 
           _heightDidChange: function(){
             this.adjust('height', this.get('height'));
-          }.observes('height')          ,
+          }.observes('height'),
 
           xsView: SC.ListView.design({
             height: function(){
               var layout = this.get('layout');
               return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-            }.property('calculatedHeight', 'layout').cacheable()            ,
+            }.property('calculatedHeight', 'layout').cacheable(),
 
             layout: {
               left: 10,
               top: 0,
               bottom: 15,
-              width: 50
+              width: 70
             },
             canEditContent: NO,
             contentValueKey: 'x',
@@ -223,16 +223,15 @@ Smartgraphs.mainPage = SC.Page.design({
             height: function(){
               var layout = this.get('layout');
               return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-            }.property('calculatedHeight', 'layout').cacheable()            ,
+            }.property('calculatedHeight', 'layout').cacheable(),
 
             layout: {
-              left: 70,
+              left: 90,
               top: 0,
               bottom: 15,
-              width: 50
+              width: 70
             },
-            isEditable: YES,
-            canEditContent: YES,
+            canEditContent: NO,
             // as per http://groups.google.com/group/sproutcore/browse_thread/thread/6564941be2b51276/fcf4eb11a1ea268f?#fcf4eb11a1ea268f
             exampleView: Smartgraphs.EditableListItemView,
             contentValueKey: 'y',
@@ -248,7 +247,7 @@ Smartgraphs.mainPage = SC.Page.design({
 		sensorAppletView: SC.View.design({
       // childViews: 'sensorApplet startButton stopButton resetButton'.w(),
          classNames: 'smartgraph-pane'.w(),     
-         layout: {right: 20, bottom: 10, width: 288, height: 283}//,
+         layout: {right: 20, bottom: 10, width: 273, height: 283}//,
       // sensorApplet: CC.SensorAppletView.design({
       //  layout: {left: 0, top: 0, width: 1, height: 1},
       //  safariSensorStatePath: 'Smartgraphs.mainPage.mainPane.sensorAppletView.sensorApplet.sensorState',
