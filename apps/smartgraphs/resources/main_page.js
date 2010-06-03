@@ -255,7 +255,7 @@ Smartgraphs.mainPage = SC.Page.design({
         
         // out of an abundance of caution: only stop applet on 'falling edge signal' of shouldBeEnabled
         if (!shouldBeEnabled && this._shouldBeEnabledWasTrue) {
-          console.log('sensorAppletView.shouldBeEnabled became falsy; stopping applet');
+          //console.log('sensorAppletView.shouldBeEnabled became falsy; stopping applet');
           this.get('sensorApplet').stop();
         }
         this._shouldBeEnabledWasTrue = shouldBeEnabled;
@@ -278,15 +278,15 @@ Smartgraphs.mainPage = SC.Page.design({
         dataReceived: function(type, numPoints, data) {
           if (!this.getPath('parentView.shouldBeEnabled')) {
             // callback may be called while stoppage of the applet is pending
-            console.log('dataReceived called, but sensorAppletView.isEnabled = false');
+            //console.log('dataReceived called, but sensorAppletView.isEnabled = false');
             return;
           }
           
           // make sure timing issues don't change data series out from under our feet!
           if (this.get('dataSeriesBeingUpdated') !== Smartgraphs.dataSeriesController.get('series')) {
-            console.log(
-              'dataReceived called, but sensorAppletView was updating a different series than the current '+
-              'series managed by the dataSeriesController');
+            //console.log(
+            //  'dataReceived called, but sensorAppletView was updating a different series than the current '+
+            //  'series managed by the dataSeriesController');
           }
 
           var content = this.getPath('results.content');

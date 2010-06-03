@@ -32,17 +32,17 @@ Smartgraphs.DialogTurnView = SC.View.extend(
     fieldValuesBinding: 'Smartgraphs.responseTemplateController.fieldValues',
     
     fieldsTypesDidChange: function () {
-      console.log('fieldTypesDidChange');
+      //console.log('fieldTypesDidChange');
       this.invokeOnce(this._updateChildViews);
     }.observes('fieldTypes'),
     
     fieldValuesDidChange: function () {
-      console.log('fieldValuesDidChange');      
+      //console.log('fieldValuesDidChange');      
       this.invokeOnce(this._updateChildViews);
     }.observes('fieldValues'),
     
     _updateChildViews: function () {
-      console.log('_updateChildViews');   
+      //console.log('_updateChildViews');   
       this.removeAllChildren();
       this.contentLayoutDidChange();
 
@@ -83,7 +83,7 @@ Smartgraphs.DialogTurnView = SC.View.extend(
             isTextArea: isTextArea,
             index: i,
             valueDidChange: function () {
-              console.log("responseFieldsView's child textFieldView observed value");
+              //console.log("responseFieldsView's child textFieldView observed value");
               var index = this.get('index');
               Smartgraphs.dialogTurnController.updateResponse(index, this.get('value'));
             }.observes('value')

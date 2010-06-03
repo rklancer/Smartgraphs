@@ -61,7 +61,7 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.crea
   _oldResponseArray: null,
   
   responseArrayDidChange: function () {
-    console.log('ResponseTemplateVerifierDelegate observed responseArray');
+    //console.log('ResponseTemplateVerifierDelegate observed responseArray');
     var responseArray = this.get('responseArray');
     
     if (this._oldResponseArray) {
@@ -76,7 +76,7 @@ Smartgraphs.ResponseTemplateVerifierDelegate = Smartgraphs.VerifierDelegate.crea
   }.observes('responseArray'),
   
   rawResponseDidChange: function () {
-    console.log('Smartgraphs.ResponseTemplateVerifierDelegate rawResponseDidChange');
+    //console.log('Smartgraphs.ResponseTemplateVerifierDelegate rawResponseDidChange');
     var responseArray = this.get('responseArray');
     var response = (responseArray && responseArray.get(length) > 0) ? responseArray.objectAt(0) : null;
     
