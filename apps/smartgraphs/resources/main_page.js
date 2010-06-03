@@ -246,83 +246,83 @@ Smartgraphs.mainPage = SC.Page.design({
 
 
 		sensorAppletView: SC.View.design({
-			childViews: 'sensorApplet startButton stopButton resetButton'.w(),
-      classNames: 'smartgraph-pane'.w(),			
-			layout: {right: 20, bottom: 10, width: 288, height: 283},
-			sensorApplet: CC.SensorAppletView.design({
-				layout: {left: 0, top: 0, width: 1, height: 1},
-				safariSensorStatePath: 'Smartgraphs.mainPage.mainPane.tableView.sensorAppletView.sensorApplet.sensorState',
-				hideButtons: YES,
-				dt: 0.1,
-				resultsBinding: "Smartgraphs.dataSeriesController",
-		    listenerPath: "Smartgraphs.mainPage.mainPane.sensorAppletView.sensorApplet", // absolute path to this instance...
-			  dataReceived: function(type, numPoints, data) {
-					SC.RunLoop.begin();
-					var content = this.getPath('results.content');
-					var dt = this.get('dt');
-					var size = content.length();
-			    for (var i = 0; i < numPoints; i++) {
-						var yVal = data[i];
-						var xVal = (size * dt) + ((i+1) * dt);
-						var record = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {x: xVal, y: yVal*1000, series: 'series-1'});
-					}
-					Smartgraphs.store.commitRecords();
-					SC.RunLoop.end();
-			  },
-			  dataStreamEvent: function(type, numPoints, data) {
-					// ignore for now
-					// SC.RunLoop.begin();
-					// SC.RunLoop.end();
-			  },
-			  sensorsReady: function() {
-					SC.RunLoop.begin();
-					// enable the start button
-					this.setPath('parentView.startButton.isEnabled', YES);
-					this.getPath('parentView.resetButton').action();
-					SC.RunLoop.end();
-				}
-	  	}),
-	
-			startButton: SC.ButtonView.design({
-				layout: { centerY: 0, centerX: -85, height: 40, width: 80},
-				isEnabled: NO, // disabled until the sensor applet signals that it is ready
-				title: "Start",
-				appletBinding: "*parentView.sensorApplet",
-				action: function() {
-					this.set('isEnabled', NO);
-					this.setPath('parentView.stopButton.isEnabled', YES);
-					this.setPath('parentView.resetButton.isEnabled', YES);
-					this.get('applet').start();
-				}
-			}),
-
-			stopButton: SC.ButtonView.design({
-				layout: { centerY: 0, centerX: 0, height: 40, width: 80},
-				isEnabled: NO, // disabled until the sensor applet signals that it is ready
-				title: "Stop",
-				appletBinding: "*parentView.sensorApplet",
-				action: function() {
-					this.set('isEnabled', NO);
-					this.get('applet').stop();
-				}
-			}),
-
-			resetButton: SC.ButtonView.design({
-				layout: { centerY: 0, centerX: 85, height: 40, width: 80},
-				isEnabled: NO, // disabled until the sensor applet signals that it is ready
-				title: "Reset",
-				appletBinding: "*parentView.sensorApplet",
-				resultsBinding: "Smartgraphs.dataSeriesController",
-				action: function() {
-					this.set('isEnabled', NO);
-					this.setPath('parentView.stopButton.isEnabled', NO);
-					this.setPath('parentView.startButton.isEnabled', YES);
-					this.get('applet').reset();
-					var content = this.getPath('results.content');
-					content.invoke('destroy');
-					Smartgraphs.store.commitRecords();
-				}
-			})
+      // childViews: 'sensorApplet startButton stopButton resetButton'.w(),
+         classNames: 'smartgraph-pane'.w(),     
+         layout: {right: 20, bottom: 10, width: 288, height: 283}//,
+      // sensorApplet: CC.SensorAppletView.design({
+      //  layout: {left: 0, top: 0, width: 1, height: 1},
+      //  safariSensorStatePath: 'Smartgraphs.mainPage.mainPane.sensorAppletView.sensorApplet.sensorState',
+      //  hideButtons: YES,
+      //  dt: 0.1,
+      //  resultsBinding: "Smartgraphs.dataSeriesController",
+      //        listenerPath: "Smartgraphs.mainPage.mainPane.sensorAppletView.sensorApplet", // absolute path to this instance...
+      //   dataReceived: function(type, numPoints, data) {
+      //    SC.RunLoop.begin();
+      //    var content = this.getPath('results.content');
+      //    var dt = this.get('dt');
+      //    var size = content.length();
+      //     for (var i = 0; i < numPoints; i++) {
+      //      var yVal = data[i];
+      //      var xVal = (size * dt) + ((i+1) * dt);
+      //      var record = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {x: xVal, y: yVal*1000, series: 'series-1'});
+      //    }
+      //    Smartgraphs.store.commitRecords();
+      //    SC.RunLoop.end();
+      //   },
+      //   dataStreamEvent: function(type, numPoints, data) {
+      //    // ignore for now
+      //    // SC.RunLoop.begin();
+      //    // SC.RunLoop.end();
+      //   },
+      //   sensorsReady: function() {
+      //    SC.RunLoop.begin();
+      //    // enable the start button
+      //    this.setPath('parentView.startButton.isEnabled', YES);
+      //    this.getPath('parentView.resetButton').action();
+      //    SC.RunLoop.end();
+      //  }
+      //      }),
+      //  
+      // startButton: SC.ButtonView.design({
+      //  layout: { centerY: 0, centerX: -85, height: 40, width: 80},
+      //  isEnabled: NO, // disabled until the sensor applet signals that it is ready
+      //  title: "Start",
+      //  appletBinding: "*parentView.sensorApplet",
+      //  action: function() {
+      //    this.set('isEnabled', NO);
+      //    this.setPath('parentView.stopButton.isEnabled', YES);
+      //    this.setPath('parentView.resetButton.isEnabled', YES);
+      //    this.get('applet').start();
+      //  }
+      // }),
+      // 
+      // stopButton: SC.ButtonView.design({
+      //  layout: { centerY: 0, centerX: 0, height: 40, width: 80},
+      //  isEnabled: NO, // disabled until the sensor applet signals that it is ready
+      //  title: "Stop",
+      //  appletBinding: "*parentView.sensorApplet",
+      //  action: function() {
+      //    this.set('isEnabled', NO);
+      //    this.get('applet').stop();
+      //  }
+      // }),
+      // 
+      // resetButton: SC.ButtonView.design({
+      //  layout: { centerY: 0, centerX: 85, height: 40, width: 80},
+      //  isEnabled: NO, // disabled until the sensor applet signals that it is ready
+      //  title: "Reset",
+      //  appletBinding: "*parentView.sensorApplet",
+      //  resultsBinding: "Smartgraphs.dataSeriesController",
+      //  action: function() {
+      //    this.set('isEnabled', NO);
+      //    this.setPath('parentView.stopButton.isEnabled', NO);
+      //    this.setPath('parentView.startButton.isEnabled', YES);
+      //    this.get('applet').reset();
+      //    var content = this.getPath('results.content');
+      //    content.invoke('destroy');
+      //    Smartgraphs.store.commitRecords();
+      //  }
+      // })
 			
 		})
 
