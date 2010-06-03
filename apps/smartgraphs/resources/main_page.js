@@ -136,9 +136,9 @@ Smartgraphs.mainPage = SC.Page.design({
 
     tableView: SC.View.design({
       layout: {
-        right: 305,
+        right: 285,
         bottom: 10,
-        width: 168,
+        width: 188,
         height: 283
       },
       classNames: ['smartgraph-pane'],
@@ -149,7 +149,7 @@ Smartgraphs.mainPage = SC.Page.design({
         layout: {
           left: 0,
           top: 0,
-          width: 168,
+          width: 190,
           height: 30
         },
         childViews: ['xsLabel', 'ysLabel'],
@@ -157,21 +157,21 @@ Smartgraphs.mainPage = SC.Page.design({
         xsLabel: SC.LabelView.design({
           layout: {
             left: 10,
-            width: 70,
+            width: 80,
             top: 7,
             height: 20
           },
-          displayValue: 'time'
+          valueBinding: SC.Binding.oneWay('Smartgraphs.axesController.xLabelAbbreviated')
         }),
 
         ysLabel: SC.LabelView.design({
           layout: {
-            left: 90,
-            width: 70,
+            right: 10,
+            width: 80,
             top: 7,
             height: 20
           },
-          displayValue: 'position'
+          valueBinding: SC.Binding.oneWay('Smartgraphs.axesController.yLabelAbbreviated')
         })
       }),
 
@@ -179,8 +179,8 @@ Smartgraphs.mainPage = SC.Page.design({
         layout: {
           left: 0,
           top: 30,
-          width: 168,
-          height: 253
+          width: 190,
+          bottom: 15
         },
 
         borderStyle: SC.BORDER_NONE,
@@ -209,7 +209,6 @@ Smartgraphs.mainPage = SC.Page.design({
             layout: {
               left: 10,
               top: 0,
-              bottom: 15,
               width: 70
             },
             canEditContent: NO,
@@ -226,9 +225,8 @@ Smartgraphs.mainPage = SC.Page.design({
             }.property('calculatedHeight', 'layout').cacheable(),
 
             layout: {
-              left: 90,
+              left: 100,
               top: 0,
-              bottom: 15,
               width: 70
             },
             canEditContent: NO,
@@ -247,7 +245,7 @@ Smartgraphs.mainPage = SC.Page.design({
 		sensorAppletView: SC.View.design({
       // childViews: 'sensorApplet startButton stopButton resetButton'.w(),
          classNames: 'smartgraph-pane'.w(),     
-         layout: {right: 20, bottom: 10, width: 273, height: 283}//,
+         layout: {right: 20, bottom: 10, width: 253, height: 283}//,
       // sensorApplet: CC.SensorAppletView.design({
       //  layout: {left: 0, top: 0, width: 1, height: 1},
       //  safariSensorStatePath: 'Smartgraphs.mainPage.mainPane.sensorAppletView.sensorApplet.sensorState',
