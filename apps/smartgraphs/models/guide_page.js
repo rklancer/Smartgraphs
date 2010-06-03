@@ -26,7 +26,11 @@ Smartgraphs.GuidePage = SC.Record.extend(
 
   firstDialogTurn: SC.Record.toOne('Smartgraphs.DialogTurn'),
 
-  //nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
+  dataSeries: SC.Record.toOne('Smartgraphs.DataSeries'),
+
+  axes: SC.Record.toOne('Smartgraphs.Axes'),
+  
+  // nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
   
   // *** transient properties not saved to db
   
