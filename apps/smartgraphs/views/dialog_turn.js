@@ -38,6 +38,9 @@ Smartgraphs.DialogTurnView = SC.View.extend(
       fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
       fieldValuesBinding: 'Smartgraphs.responseTemplateController.fieldValues',
     
+      // hide if there is no response template; especially important because IE7 doesn't its height as 0 when empty.
+      isVisibleBinding: SC.Binding.bool('Smartgraphs.responseTemplateController.content'),
+          
       fieldsTypesDidChange: function () {
         //console.log('fieldTypesDidChange');
         this.invokeOnce(this._updateChildViews);
