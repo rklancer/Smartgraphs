@@ -13,15 +13,18 @@ Smartgraphs.GuidePage.FIXTURES = [
     index: 1,
     title: '1',
     introText: 
-      '<p>On the ground, draw a straight line that is at least 4 meters long. Mark off each meter. ' + 
-      'This will be the path that you will follow as you experiment with different walking motions. ' +
-      'Connect the GO!Motion sensor to your computer.</p>' +
-      '<p>(etc.) Click Stop after 10 seconds is up.</p>',
-    firstDialogTurn: 'turn-1-start',
-    dataSeries: 'series-sensor',
-    axes: 'axes-sensor',
-    sensorAppletShouldBeEnabled: YES
+      "<p>Have you ever tried to tell someone a story about a trip you took? " +
+      "Most likely, your story included words and pictures. In this activity, " +
+      "you will tell stories that convey information about motion during a specific type of journey.</p>" +
+      "<p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. "+
+      "Motion can be measured and represented on a graph.</p>",
+    firstDialogTurn: 'turn-1',
+    dataSeries: null,
+    axes: null,
+    sensorAppletShouldBeEnabled: NO
   },
+  
+  
   
   { guid: 2,
     sequence: 'sequence-1',

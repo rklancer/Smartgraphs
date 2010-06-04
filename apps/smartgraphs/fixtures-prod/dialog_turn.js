@@ -8,6 +8,20 @@ sc_require('models/dialog_turn');
 
 Smartgraphs.DialogTurn.FIXTURES = [
 
+  { guid: 'turn-1',
+    beforeText: 
+      "<p>In this activity, when you see the 'Next >>' button turned on, you are ready to go to the next page.</p>" +
+      "<p>Go ahead and click on the Next button now to see the next page.<p>",
+    responseTemplate: null,
+    responseVerifier: null,
+    afterText: '',
+    nextTurnButtonTitle: null,
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES
+  },
+
+
   { guid: 'turn-1-start',
     beforeText: 
       '<p>How are your motions represented in the position versus time graph? ' +
