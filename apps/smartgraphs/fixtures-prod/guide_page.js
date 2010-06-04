@@ -16,10 +16,7 @@ Smartgraphs.GuidePage.FIXTURES = [
       '<p>On the ground, draw a straight line that is at least 4 meters long. Mark off each meter. ' + 
       'This will be the path that you will follow as you experiment with different walking motions. ' +
       'Connect the GO!Motion sensor to your computer.</p>' +
-      '<p>When you are ready, click Start to start recording the position and time data for your movements. ' +
-      'Walk on the path for 10 seconds. ' +
-      'Experiment with different kinds of motions (walking fast, slow, forward, backward…) ' +
-      'Click Stop after 10 seconds is up.</p>',
+      '<p>(etc.) Click Stop after 10 seconds is up.</p>',
     firstDialogTurn: 'turn-1-start',
     dataSeries: 'series-sensor',
     axes: 'axes-sensor',

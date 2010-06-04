@@ -23,26 +23,28 @@ body.sc-theme {
 }
 
 .text-view p {
-  margin-top: 0px;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
-.sc-view.dialog-turn {
+.text-view .text-field-view-wrapper {
+  margin: 10px;
+}
+
+.sc-view.dialog-text {
   background-color: white;
-  padding: 10px 10px 10px 10px;
+  margin: 10px 0 10px 0;
   border: 1px solid #cccccc;
   background-color: #EFEDDD;
-  margin-bottom: 10px;
 }
 
-.sc-view.dialog-turn .sc-view {
+.sc-view.dialog-text .sc-view {
   color: black;
   font-size: 14px;
 }
 
-.sc-view.dialog-turn textarea, .sc-view.dialog-turn input {
+.sc-view.dialog-text textarea {
   padding: 5px;
-}
+}   
 
 
 /*** shrinks SegmentedView segments; careful! some of the negative margin hacks are for IE(7) ***/

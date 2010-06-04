@@ -22,7 +22,7 @@ Smartgraphs.DialogTurnView = SC.View.extend(
     
     childViews: 'beforeTextView responseFieldsView afterTextView'.w(),
     
-    classNames: 'dialog-turn'.w(),
+    classNames: 'dialog-text'.w(),
   
     beforeTextView: SC.StaticContentView.design({
       contentBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.beforeText'),
@@ -63,7 +63,7 @@ Smartgraphs.DialogTurnView = SC.View.extend(
           return;
         }
 
-        var type, viewDesign, isTextArea, layout, hint = '';
+        var type, textFieldWrapperDesign, isTextArea, layout, hint = '';
       
         for (var i = 0, ii = fieldTypes.get('length'); i < ii; i++) {
           type = fieldTypes.objectAt(i);
@@ -85,11 +85,13 @@ Smartgraphs.DialogTurnView = SC.View.extend(
           else {
             throw "responseFieldsView received unexpected field type string '" + type + "'.";
           }
-
-          viewDesign = SC.View.design({
+ 
+          // note that SC.TextFieldViews don't display properly at all if they have useStaticLayout: YES
+          textFieldWrapperDesign = SC.View.design({
             useStaticLayout: YES,
             layout: layout,
-
+            classNames: 'text-field-view-wrapper'.w(),
+        
             childViews: [SC.TextFieldView.design({
               isTextArea: isTextArea,
               hint: hint,
@@ -101,7 +103,7 @@ Smartgraphs.DialogTurnView = SC.View.extend(
               }.observes('value')
             })]
           });
-          this.appendChild(viewDesign.create());
+          this.appendChild(textFieldWrapperDesign.create());
         }
       
         this.contentLayoutDidChange();
