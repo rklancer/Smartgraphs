@@ -12,10 +12,10 @@ Smartgraphs.mainPage = SC.Page.design({
   mainPane: SC.MainPane.design({
     layout: {
       width: 1260,
-      height: 650
+      height: 1250
     },
 
-    childViews: 'dialogView graphView tableView sensorAppletView imageView authoringModeButton authorView'.w(), 
+    childViews: 'dialogView graphView tableView sensorAppletView imageView authoringModeButton authorScrollView'.w(), 
     
     imageView: SC.ImageView.design({
       isVisibleBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.shouldShowImage'),
@@ -37,7 +37,7 @@ Smartgraphs.mainPage = SC.Page.design({
         width: 453,
         height: 578
       },
-
+      
       classNames: 'smartgraph-pane'.w(),
 
       childViews: 'textView navButtons nextButton backButton'.w(),
@@ -50,18 +50,17 @@ Smartgraphs.mainPage = SC.Page.design({
           right: 20,
           bottom: 80
         },
-
+        
         classNames: 'text-view'.w(),
-
+        
         childViews: 'introTextView dialogTurnView'.w(),
-
+        
         introTextView: SC.StaticContentView.design({
           contentBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.introText'),
           isVisibleBinding: SC.Binding.bool('Smartgraphs.guidePageController.introText')
         }),
-          
-        dialogTurnView: Smartgraphs.DialogTurnView.design({
-        })
+        
+        dialogTurnView: Smartgraphs.DialogTurnView.design({})
       }),
 
       navButtons: SC.SegmentedView.design({
@@ -94,7 +93,7 @@ Smartgraphs.mainPage = SC.Page.design({
         isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePageSequenceController.canSelectNextPage'),
         isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isLastPage').oneWay()
       }),
-
+      
       backButton: SC.ButtonView.design({
         displayProperties: ['isEnabled'],
         layout: {
@@ -110,8 +109,8 @@ Smartgraphs.mainPage = SC.Page.design({
         isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageSequenceController.isFirstPage').oneWay()
       })
     }),
-
-
+    
+    
     graphView: Smartgraphs.RaphaelView.design({
       //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),
       layout: {
@@ -122,11 +121,11 @@ Smartgraphs.mainPage = SC.Page.design({
       },
       childViews: 'axesView series1View annotationsView'.w(),
       classNames: ['smartgraph-pane'],
-
+      
       axesView: Smartgraphs.AxesView.design({
         axesBinding: 'Smartgraphs.axesController'
       }),
-
+      
       series1View: Smartgraphs.SeriesView.design({
         xMinBinding: 'Smartgraphs.axesController.xMin',
         xMaxBinding: 'Smartgraphs.axesController.xMax',
@@ -144,9 +143,9 @@ Smartgraphs.mainPage = SC.Page.design({
         annotationsBinding: 'Smartgraphs.staticAnnotationsController',
         axesBinding: 'Smartgraphs.axesController'
       })
-
+    
     }),
-
+    
     tableView: SC.View.design({
       //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),      
       layout: {
@@ -156,9 +155,9 @@ Smartgraphs.mainPage = SC.Page.design({
         height: 283
       },
       classNames: ['smartgraph-pane'],
-
+      
       childViews: ['labelsView', 'scrollerView'],
-
+      
       labelsView: SC.View.design({
         layout: {
           left: 0,
@@ -167,7 +166,7 @@ Smartgraphs.mainPage = SC.Page.design({
           height: 30
         },
         childViews: ['xsLabel', 'ysLabel'],
-
+        
         xsLabel: SC.LabelView.design({
           layout: {
             right: 10,
@@ -178,7 +177,7 @@ Smartgraphs.mainPage = SC.Page.design({
 
           valueBinding: SC.Binding.oneWay('Smartgraphs.axesController.xLabelAbbreviated')
         }),
-
+        
         ysLabel: SC.LabelView.design({
           layout: {
             left: 10,
@@ -189,7 +188,7 @@ Smartgraphs.mainPage = SC.Page.design({
           valueBinding: SC.Binding.oneWay('Smartgraphs.axesController.yLabelAbbreviated')
         })
       }),
-
+      
       scrollerView: SC.ScrollView.design({
         layout: {
           left: 0,
@@ -197,16 +196,16 @@ Smartgraphs.mainPage = SC.Page.design({
           width: 190,
           bottom: 15
         },
-
+        
         borderStyle: SC.BORDER_NONE,
-
+        
         contentView: SC.View.design({
           childViews: ['xsView', 'ysView'],
-
+          
           // look at SC.ContentDisplay for this too
           xHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
           yHeightBinding: SC.Binding.from('.ysView.height').oneWay(),
-
+          
           height: function(){
             return Math.max(this.get('xHeight'), this.get('yHeight'));
           }.property('xHeight', 'yHeight').cacheable(),
@@ -233,7 +232,7 @@ Smartgraphs.mainPage = SC.Page.design({
             selectionBinding: 'Smartgraphs.dataSeriesController.selection',
             rowHeight: 18
           }),
-
+          
           ysView: SC.ListView.design({
             height: function(){
               var layout = this.get('layout');
@@ -257,7 +256,6 @@ Smartgraphs.mainPage = SC.Page.design({
         })
       })
     }),
-
 
 		sensorAppletView: SC.View.design({
 		  // don't actually hide the applet - it doesn't like it very much.
@@ -347,6 +345,7 @@ Smartgraphs.mainPage = SC.Page.design({
         },
         
         sensorsReady: function() {
+
           SC.RunLoop.begin();
           // enable the start button
           this.setPath('parentView.startButton.isEnabled', YES);
@@ -434,16 +433,21 @@ Smartgraphs.mainPage = SC.Page.design({
       targetBinding: 'Smartgraphs.authoringController',
       action: 'toggleAuthoring'
     }),
-     
-     authorView: Smartgraphs.AuthorView.design({
-       layout: {
-         left: 965,
-         top: 5,
-         bottom: 20,
-         width: 300
-       },
-       contentBinding: "Smartgraphs.guidePageSequenceController.selectedPage",
-       canEditContent: YES  //TODO: Make authoring actually work
-     })
+    
+    authorScrollView: SC.ScrollView.design({
+      isVisible: NO,
+      layout: {
+        left: 965,
+        top: 5,
+        width: 300
+      },
+      
+      borderStyle: SC.BORDER_NONE,
+      
+      contentView: Smartgraphs.AuthorView.design({
+        contentBinding: "Smartgraphs.guidePageSequenceController.selectedPage",
+        canEditContent: YES //TODO: Make authoring actually work
+      })
+    })
   })
 });
