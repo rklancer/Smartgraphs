@@ -20,13 +20,13 @@ Smartgraphs.authoringController = SC.ObjectController.create(
     
     toggleAuthoring: function(){
 		// TODO: Write a unit test instead of using a probe and observersForKey methods here
-		Smartgraphs.mainPage.mainPane.authorView.addProbe('isVisible');
+		Smartgraphs.mainPage.mainPane.authorScrollView.addProbe('isVisible');
 		// observersFor and observersForKey don't actually work!
-		//Smartgraphs.mainPage.mainPane.authorView.observersForKey('isVisible');
-        if (Smartgraphs.mainPage.mainPane.authorView.get('isVisible') == YES) {
-            Smartgraphs.mainPage.mainPane.authorView.set('isVisible', NO); 
+		//Smartgraphs.mainPage.mainPane.authorScrollView.observersForKey('isVisible');
+        if (Smartgraphs.mainPage.mainPane.authorScrollView.get('isVisible') == YES) {
+            Smartgraphs.mainPage.mainPane.authorScrollView.set('isVisible', NO); 
         }
-        else {Smartgraphs.mainPage.mainPane.authorView.set('isVisible', YES);
+        else {Smartgraphs.mainPage.mainPane.authorScrollView.set('isVisible', YES);
         }
     }
     
