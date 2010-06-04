@@ -23,31 +23,33 @@ Smartgraphs.GuidePage.FIXTURES = [
     axes: null,
     sensorAppletShouldBeEnabled: NO
   },
-  
-  
-  
+
   { guid: 2,
     sequence: 'sequence-1',
     index: 1,
     title: '2',
-    introText: 
-     '<p>Now you are going to try moving at two different speeds.</p>' +
-     '<p>Start at the 0-meter mark. When you are ready, click Start and walk at a slow, steady pace for 5 seconds, ' + 
-     'then at a faster, steady pace for 5 seconds. Click Stop when the time is up.</p>',
+    introText:
+      "<p>You are going to try moving in different ways on a straight path while collecting data with a motion " +
+      "sensor.</p>" +
+      "<p>When you are ready, click Start to record the position and time data for your movements. " +
+      "Walk on the path for 30 seconds. " +
+      "Experiment with different kinds of motions (walking fast, slow, forward, backward…). " +
+      "Click Stop after 30 seconds are up.</p>",
     firstDialogTurn: 'turn-2-start',
     dataSeries: 'series-sensor',
     axes: 'axes-sensor',
-    sensorAppletShouldBeEnabled: YES    
+    sensorAppletShouldBeEnabled: YES
   },
-  
+
   { guid: 3,
     sequence: 'sequence-1',
     index: 1,
     title: '3',
     introText: 
-     '<p>This time, you are going to record your position and time during three different tasks.</p>' +
-     '<p>Start at 0 meters again and click Start. Walk slowly for about 3 seconds, stop for 4 seconds, ' +
-     'then walk faster for the remaining 3 seconds. Click Stop.</p>',
+      "<p>Next you will try moving at two different speeds.</p>" +
+      "<p>Start close to the motion sensor. When you are ready, click Reset and then Start and walk away from the "+
+      "sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. " +
+      "Click Stop when the time is up.</p>",
     firstDialogTurn: 'turn-3-start',
     dataSeries: 'series-sensor',
     axes: 'axes-sensor',
@@ -59,21 +61,27 @@ Smartgraphs.GuidePage.FIXTURES = [
     index: 1,
     title: '4',
     introText: 
-     '<p>Maria ran practice laps around the school track. ' +
-     'Her coach recorded the distances she ran after each minute (60 seconds).</p>' +
-     '<p>These data are shown in the graph and the table at right.</p>',
+      "<p>This time, you are going to record your position and time during three different tasks.</p>" +
+      "<p>Start close to the motion sensor, click Reset, and then click Start. " +
+      "Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds. " + 
+      "Click Stop.</p>",
     firstDialogTurn: 'turn-4-start',
-    dataSeries: 'series-maria',
-    axes: 'axes-maria',
-    sensorAppletShouldBeEnabled: NO    
+    dataSeries: 'series-sensor',
+    axes: 'axes-sensor',
+    sensorAppletShouldBeEnabled: YES    
   },
-  
+
   { guid: 5,
     sequence: 'sequence-1',
     index: 1,
     title: '5',
     introText: 
-     "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
+      "<p>Now you that you’ve had a chance to create position versus time graphs from your own motions, " +
+      "let’s look at some graphs that were created by someone running.</p>" +
+      "<p>Maria ran practice laps around the school track. " +
+      "Her coach recorded the distances she ran after each minute. " +
+      "These data are shown in the graph and the table at right. " +
+      "Remember that the time was recorded in minutes rather than seconds.</p>",
     firstDialogTurn: 'turn-5-start',
     dataSeries: 'series-maria',
     axes: 'axes-maria',
@@ -90,5 +98,33 @@ Smartgraphs.GuidePage.FIXTURES = [
     dataSeries: 'series-maria',
     axes: 'axes-maria',
     sensorAppletShouldBeEnabled: NO    
+  },
+  
+  { guid: 7,
+    sequence: 'sequence-1',
+    index: 1,
+    title: '7',
+    introText: 
+     "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
+    firstDialogTurn: 'turn-7-start',
+    dataSeries: 'series-maria',
+    axes: 'axes-maria',
+    sensorAppletShouldBeEnabled: NO    
+  },
+  
+  { guid: 9,
+    sequence: 'sequence-1',
+    index: 1,
+    title: '9',
+    introText: 
+      "<p>Think back on the activities you just did.</p>" +
+      "<p>Now that you have had a chance to create your own position versus time graphs, " +
+      "explain what kind of details this graph can tell about motion on a straight track. " +
+      "Give examples of some details that a position versus time graph cannot tell.</p>",
+    firstDialogTurn: 'turn-9-start',
+    dataSeries: 'series-maria',
+    axes: 'axes-maria',
+    sensorAppletShouldBeEnabled: NO    
   }
+  
 ];
