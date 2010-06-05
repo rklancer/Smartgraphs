@@ -134,6 +134,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseTemplate: null,
     responseVerifier: 'verifier-1',
     afterText: "",
+    staticAnnotations: ['annotation-1', 'annotation-2'],
     nextTurnForNominalResponse: 'turn-5-correct',
     nextTurnForIncorrectResponse: 'turn-5-hint-3',
     isLastTurn: NO    
@@ -141,13 +142,13 @@ Smartgraphs.DialogTurn.FIXTURES = [
   
   { guid: 'turn-5-hint-3',
     beforeText: 
-
       "<p><b>Hint 3</b>: In this interval, Maria’s position <b>stayed the same</b> as time passed.</b></p>" +
       "<p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk " +
       "to her coach.</p>", 
     responseTemplate: null,
     responseVerifier: 'verifier-1',
     afterText: '',   
+    staticAnnotations: ['annotation-3'],
     nextTurnForNominalResponse: 'turn-5-correct',
     nextTurnForIncorrectResponse: 'turn-5-incorrect',
     isLastTurn: NO    
@@ -212,6 +213,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-2',
     afterText: '',
+    staticAnnotations: ['annotation-4'],
     nextTurnForNominalResponse: 'turn-6-correct',
     nextTurnForIncorrectResponse: 'turn-6-hint-3',
     isLastTurn: NO    
@@ -225,6 +227,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-2',
     afterText: '',
+    staticAnnotations: ['annotation-5'],    
     nextTurnForNominalResponse: 'turn-6-correct',
     nextTurnForIncorrectResponse: 'turn-6-incorrect',
     isLastTurn: NO    
@@ -272,6 +275,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-3',
     afterText: '',
+    staticAnnotations: ['annotation-3'],
     nextTurnForNominalResponse: 'turn-7-correct',
     nextTurnForIncorrectResponse: 'turn-7-hint-2',
     isLastTurn: NO    
@@ -285,6 +289,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-3',
     afterText: '',
+    staticAnnotations: ['annotation-3'],    
     nextTurnForNominalResponse: 'turn-7-correct',
     nextTurnForIncorrectResponse: 'turn-7-hint-3',
     isLastTurn: NO

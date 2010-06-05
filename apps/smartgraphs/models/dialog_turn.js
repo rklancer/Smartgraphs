@@ -23,7 +23,7 @@ Smartgraphs.DialogTurn = SC.Record.extend(
   responseVerifier: SC.Record.toOne('Smartgraphs.ResponseVerifier'),
   
   // e.g., instructions to highlight portions of the graph. *static* annotations do not require 'play again' buttons.
-  staticAnnotationList: SC.Record.toOne('Smartgraphs.StaticAnnotationList'),   
+  staticAnnotations: SC.Record.toMany('Smartgraphs.StaticAnnotation'),   
   
   // text to display *after* the question prompt, before the buttons
   afterText: SC.Record.attr(String),      

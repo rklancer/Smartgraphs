@@ -8,28 +8,28 @@ sc_require('models/static_annotation');
 
 Smartgraphs.StaticAnnotation.FIXTURES = [
 
-  // TODO: Add your data fixtures here.
-  // All fixture records must have a unique primary key (default 'guid').  See 
-  // the example below.
-
-  // { guid: 1,
-  //   firstName: "Michael",
-  //   lastName: "Scott" },
-  //
-  // { guid: 2,
-  //   firstName: "Dwight",
-  //   lastName: "Schrute" },
-  //
-  // { guid: 3,
-  //   firstName: "Jim",
-  //   lastName: "Halpert" },
-  //
-  // { guid: 4,
-  //   firstName: "Pam",
-  //   lastName: "Beesly" },
-  //
-  // { guid: 5,
-  //   firstName: "Ryan",
-  //   lastName: "Howard" }
-
+  { guid: 'annotation-1',
+    type: 'segment',
+    points: ['1','2','3','4']
+  },
+  
+  { guid: 'annotation-2',
+    type: 'segment',
+    points: ['6','7','8','9', '10']
+  },
+  
+  { guid: 'annotation-3',
+    type: 'segment',
+    points: ['4', '5', '6']
+  },
+  
+  { guid: 'annotation-4',
+    type: 'point',
+    points: ['4']
+  },
+  
+  { guid: 'annotation-5',
+    type: 'line',
+    points: ['4']
+  }
 ];

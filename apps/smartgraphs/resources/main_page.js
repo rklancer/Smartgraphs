@@ -106,7 +106,7 @@ Smartgraphs.mainPage = SC.Page.design({
         width: 453,
         height: 283
       },
-      childViews: 'axesView series1View'.w(),
+      childViews: 'axesView series1View annotationsView'.w(),
       classNames: ['smartgraph-pane'],
 
       axesView: Smartgraphs.AxesView.design({
@@ -124,6 +124,11 @@ Smartgraphs.mainPage = SC.Page.design({
         controllerBinding: 'Smartgraphs.dataSeriesController',
         contentBinding: 'Smartgraphs.dataSeriesController.arrangedObjects',
         selectionBinding: 'Smartgraphs.dataSeriesController.selection'
+      }),
+      
+      annotationsView: Smartgraphs.StaticAnnotationsView.design({
+        annotationsBinding: 'Smartgraphs.staticAnnotationsController',
+        axesBinding: 'Smartgraphs.axesController'
       })
 
     }),
