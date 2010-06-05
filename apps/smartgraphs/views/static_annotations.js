@@ -113,9 +113,9 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
     console.log(pathString);
     
     var path = this._raphael.path(pathString).attr({
-      'stroke-width': 4,
-      'fill-color': '#009754',
-      'stroke-opacity': 0.5,
+      'stroke-width': 14,
+      'stroke': '#aa0000',
+      'stroke-opacity': 0.2,
       'stroke-linecap': 'round',
       'stroke-linejoin': 'round'
     });
@@ -132,9 +132,10 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
     
     var coords = this._screenCoordinatesFor(point);
     
-    var highlight = this._raphael.circle(coords.x, coords.y, 6).attr({
-      fill: '#009754',
-      opacity: 0.5
+    var highlight = this._raphael.circle(coords.x, coords.y, 8).attr({
+      'stroke-opacity': 0.7,
+      'fill-opacity': 0.1,
+      stroke: '#aa0000'
     });
     
     this._raphaelObjects.push(highlight);
@@ -152,7 +153,7 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
     var pathString = 'M ' + coords.x + ' ' + coords.y + ' L ' + this._left + ' ' + coords.y;
     var path = this._raphael.path(pathString).attr({
       'stroke-width': 2,
-      'fill-color': '#009754',
+      'stroke': '#aa0000',
       'stroke-opacity': 0.7
     });
     

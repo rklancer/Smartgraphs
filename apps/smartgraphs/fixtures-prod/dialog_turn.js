@@ -227,7 +227,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-2',
     afterText: '',
-    staticAnnotations: ['annotation-5'],    
+    staticAnnotations: ['annotation-4', 'annotation-5'],    
     nextTurnForNominalResponse: 'turn-6-correct',
     nextTurnForIncorrectResponse: 'turn-6-incorrect',
     isLastTurn: NO    
