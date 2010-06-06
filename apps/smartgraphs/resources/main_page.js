@@ -286,8 +286,10 @@ Smartgraphs.mainPage = SC.Page.design({
         resultsBinding: "Smartgraphs.dataSeriesController",
         listenerPath: "Smartgraphs.mainPage.mainPane.sensorAppletView.sensorApplet", // absolute path to this instance...
         
-        everyNth: 5,
-        _nx: 0,
+        everyNth: 10,
+        maxPoints: 30,
+        _nsamples: 0,
+        _npoints: 0,
         
         dataReceived: function(type, numPoints, data) {
           if (!this.getPath('parentView.shouldBeEnabled')) {
@@ -308,12 +310,19 @@ Smartgraphs.mainPage = SC.Page.design({
           var dt = this.get('dt');
           var size = content.length();
           
+          var everyNth = this.get('everyNth');
+          var maxPoints = this.get('maxPoints');
+          
           for (var i = 0; i < numPoints; i++) {
-            var yVal = data[i];        
-            if (this._nx % this.everyNth === 0) {
-              var record = Smartgraphs.dataSeriesController.addDataPoint(this._nx*dt, yVal);
+            var yVal = data[i];      
+            if (this._nsamples % everyNth === 0) {
+              var record = Smartgraphs.dataSeriesController.addDataPoint(this._nsamples*dt, yVal);
+              if (Smartgraphs.dataSeriesController.get('length') >= maxPoints) {
+                this.getPath('parentView.stopButton').action();
+                return;
+              }
             }
-            this._nx++;
+            this._nsamples++;
           }
         },
         
@@ -351,7 +360,7 @@ Smartgraphs.mainPage = SC.Page.design({
           this.setPath('parentView.resetButton.isEnabled', YES);
           this.get('applet').start();
           this.set('dataSeriesBeingUpdated', Smartgraphs.dataSeriesController.get('series'));
-          this._nx = 0;
+          this.get('applet')._nsamples = 0;
         }
       }),
       
@@ -396,7 +405,7 @@ Smartgraphs.mainPage = SC.Page.design({
           var content = this.getPath('results.content');
           content.invoke('destroy');
           Smartgraphs.store.commitRecords();
-          this._nx = 0;
+          this.get('applet')._nsamples = 0;
         }
       })
 		})
