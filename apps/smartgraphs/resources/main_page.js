@@ -286,6 +286,9 @@ Smartgraphs.mainPage = SC.Page.design({
         resultsBinding: "Smartgraphs.dataSeriesController",
         listenerPath: "Smartgraphs.mainPage.mainPane.sensorAppletView.sensorApplet", // absolute path to this instance...
         
+        everyNth: 5,
+        _nx: 0,
+        
         dataReceived: function(type, numPoints, data) {
           if (!this.getPath('parentView.shouldBeEnabled')) {
             // callback may be called while stoppage of the applet is pending
@@ -301,13 +304,16 @@ Smartgraphs.mainPage = SC.Page.design({
           }
 
           var content = this.getPath('results.content');
+
           var dt = this.get('dt');
           var size = content.length();
           
           for (var i = 0; i < numPoints; i++) {
-            var yVal = data[i];
-            var xVal = (size * dt) + ((i+1) * dt);
-            var record = Smartgraphs.dataSeriesController.addDataPoint(xVal, yVal/10);
+            var yVal = data[i];        
+            if (this._nx % this.everyNth === 0) {
+              var record = Smartgraphs.dataSeriesController.addDataPoint(this._nx*dt, yVal);
+            }
+            this._nx++;
           }
         },
         
@@ -345,6 +351,7 @@ Smartgraphs.mainPage = SC.Page.design({
           this.setPath('parentView.resetButton.isEnabled', YES);
           this.get('applet').start();
           this.set('dataSeriesBeingUpdated', Smartgraphs.dataSeriesController.get('series'));
+          this._nx = 0;
         }
       }),
       
@@ -389,6 +396,7 @@ Smartgraphs.mainPage = SC.Page.design({
           var content = this.getPath('results.content');
           content.invoke('destroy');
           Smartgraphs.store.commitRecords();
+          this._nx = 0;
         }
       })
 		})
