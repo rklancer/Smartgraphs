@@ -96,11 +96,28 @@ Smartgraphs.DialogTurnView = SC.View.extend(
               isTextArea: isTextArea,
               hint: hint,
               index: i,
+              oldGuid: null,
+              
+              // note that this seeming cruft is caused by our inability (?) to bind to a particular model object.
+              // but maybe this could be refactored to bind to a model object.
+              
               valueDidChange: function () {
                 //console.log("responseFieldsView's child textFieldView observed value");
                 var index = this.get('index');
                 Smartgraphs.dialogTurnController.updateResponse(index, this.get('value'));
-              }.observes('value')
+              }.observes('value'),
+              
+              dialogTurnDidChange: function () {
+                var guid = Smartgraphs.dialogTurnController.get('guid');
+                if (guid !== this._oldGuid) {
+                  this.invokeOnce(this.clearValue);
+                }
+                this._oldGuid = guid;
+              }.observes('Smartgraphs.dialogTurnController.guid'),
+              
+              clearValue: function () {
+                this.set('value', null);
+              }
             })]
           });
           this.appendChild(textFieldWrapperDesign.create());
