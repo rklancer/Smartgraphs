@@ -38,7 +38,9 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
   
   updateResponse: function (index, value) {
     var responseArray = this.get('responseArray');
-    responseArray.replace(index, 1, [value]);
+    if (responseArray) {
+      responseArray.replace(index, 1, [value]);
+    }
   },
 
   gotoNextTurn: function () {
