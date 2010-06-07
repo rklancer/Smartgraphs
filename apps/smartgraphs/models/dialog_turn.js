@@ -39,6 +39,12 @@ Smartgraphs.DialogTurn = SC.Record.extend(
   // if YES, dialog is over when we hit this DialogTurn -- allow user to go to next page
   isLastTurn: SC.Record.attr(Boolean),
   
+  // if YES and isLastTurn is YES, immediately go to the next page on reaching this dialog turn.
+  // (the text of this dialog turn will be visible if the user hits 'back', however!)
+  
+  shouldAutoAdvance: SC.Record.attr(Boolean),
+
+  wasVisited: NO,             // transient; is set to YES after we switch to new turn
   // student responses, if any...
   responseArray: null
 

@@ -11,7 +11,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   // Page 1
   { guid: 'turn-1',
     beforeText: 
-      "<p>In this activity, when you see the 'Next >>' button turned on, you are ready to go to the next page.</p>" +
+      "<p>In this activity, when you see the 'Next >>' button turned on, you can go to the next page.</p>" +
       "<p>Go ahead and click on the Next button now to see the next page.<p>",
     responseTemplate: null,
     responseVerifier: null,
@@ -19,7 +19,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     nextTurnButtonTitle: null,
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: NO
   },
 
 
@@ -45,7 +46,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: YES
   },
 
 
@@ -70,7 +72,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: YES
   },
   
   
@@ -95,7 +98,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: YES
   },
 
 
@@ -164,7 +168,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: NO    
   },
   
   { guid: 'turn-5-correct',
@@ -176,7 +181,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     responseVerifer: null,
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: NO  
   },
   
   
@@ -241,7 +247,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES    
+    isLastTurn: YES,
+    shouldAutoAdvance: NO    
   },
   
   { guid: 'turn-6-correct',
@@ -253,7 +260,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: NO    
   },
 
   { guid: 'turn-7-start',
@@ -318,7 +326,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES    
+    isLastTurn: YES,
+    shouldAutoAdvance: NO
   },
 
   { guid: 'turn-7-correct',
@@ -330,7 +339,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: NO
   },
   
   { guid: 'turn-8-start',
@@ -353,6 +363,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: NO
   }     
 ];

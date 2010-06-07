@@ -14,9 +14,19 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
 /** @scope Smartgraphs.dialogTurnController.prototype */ {
   
   contentBinding: 'Smartgraphs.guidePageController.selectedDialogTurn',
+  _oldContent: null,
   
   contentDidChange: function () {
-    this.invokeOnce(this._updateForChangedContent);  
+    var content = this.get('content');
+
+    // update previous dialogTurn's wasVisited 
+    if (this._oldContent !== this.get('content')) {
+      if (this._oldContent) {
+        this._oldContent.set('wasVisited', YES);
+      }
+    }
+    this._oldContent = content;
+    this.invokeOnce(this._updateForChangedContent);
   }.observes('content'),
   
   _updateForChangedContent: function () {
@@ -30,6 +40,10 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
     
     if (this.get('isLastTurn')) {
       Smartgraphs.guidePageSequenceController.set('nextPageIsSelectable', YES);
+      // autoadvance if turn says to and we're not currently *re*visiting the turn (i.e., wasVisited = NO)
+      if (this.get('shouldAutoAdvance') && !this.get('wasVisited')) {
+        Smartgraphs.guidePageSequenceController.invokeLast('selectNextPage');
+      }
     }
   },
 
