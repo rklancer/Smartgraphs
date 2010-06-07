@@ -115,10 +115,10 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
     var path = this._raphael.path(pathString).attr({
       'stroke-width': 14,
       'stroke': '#aa0000',
-      'stroke-opacity': 0.2,
+      'stroke-opacity': 0.10,
       'stroke-linecap': 'round',
       'stroke-linejoin': 'round'
-    });
+    }).toBack();
     
     this._raphaelObjects.push(path);
   },
@@ -136,7 +136,7 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
       'stroke-opacity': 0.7,
       'fill-opacity': 0.1,
       stroke: '#aa0000'
-    });
+    }).toBack();
     
     this._raphaelObjects.push(highlight);
   },
@@ -155,7 +155,7 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
       'stroke-width': 2,
       'stroke': '#aa0000',
       'stroke-opacity': 0.7
-    });
+    }).toBack();
     
     this._raphaelObjects.push(path);
   },
