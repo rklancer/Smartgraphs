@@ -333,19 +333,19 @@ Smartgraphs.DialogTurn.FIXTURES = [
     isLastTurn: YES
   },
   
-  { guid: 'turn-9-start',
+  { guid: 'turn-8-start',
     beforeText: 
       "<p>What other elements would make the story complete?</p>",
     responseTemplate: 'template-open-1',
     responseVerifier: null,
     afterText: '',
     nextTurnButtonTitle: 'Submit My Response',
-    nextTurnForNominalResponse: 'turn-9-done',
+    nextTurnForNominalResponse: 'turn-8-done',
     nextTurnForIncorrectResponse: null,
     isLastTurn: NO
   },
 
-  { guid: 'turn-9-done',
+  { guid: 'turn-8-done',
     beforeText: 
       "<p>Your answer has been recorded. This is the end of the activity.</p>",
     responseTemplate: null,

@@ -112,16 +112,16 @@ Smartgraphs.GuidePage.FIXTURES = [
     sensorAppletShouldBeEnabled: NO    
   },
   
-  { guid: 9,
+  { guid: 8,
     sequence: 'sequence-1',
     index: 1,
-    title: '9',
+    title: '8',
     introText: 
       "<p>Think back on the activities you just did.</p>" +
       "<p>Now that you have had a chance to create your own position versus time graphs, " +
       "explain what kind of details this graph can tell about motion on a straight track. " +
       "Give examples of some details that a position versus time graph cannot tell.</p>",
-    firstDialogTurn: 'turn-9-start',
+    firstDialogTurn: 'turn-8-start',
     dataSeries: 'series-maria',
     axes: 'axes-maria',
     sensorAppletShouldBeEnabled: NO    
