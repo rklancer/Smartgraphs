@@ -58,6 +58,7 @@ Smartgraphs.DialogTurnView = SC.View.extend(
 
         var fieldTypes = this.get('fieldTypes');
         var fieldValues = this.get('fieldValues');
+        var childViews = [];
       
         if (!fieldTypes) {
           return;
@@ -105,26 +106,49 @@ Smartgraphs.DialogTurnView = SC.View.extend(
                 //console.log("responseFieldsView's child textFieldView observed value");
                 var index = this.get('index');
                 Smartgraphs.dialogTurnController.updateResponse(index, this.get('value'));
-              }.observes('value'),
-              
-              dialogTurnDidChange: function () {
-                var guid = Smartgraphs.dialogTurnController.get('guid');
-                if (guid !== this._oldGuid) {
-                  this.invokeOnce(this.clearValue);
-                }
-                this._oldGuid = guid;
-              }.observes('Smartgraphs.dialogTurnController.guid'),
-              
-              clearValue: function () {
-                this.set('value', null);
-              }
+              }.observes('value')
             })]
           });
-          this.appendChild(textFieldWrapperDesign.create());
+          
+          var view = textFieldWrapperDesign.create();
+          if (i === 0) {
+            this._firstTextFieldView = view.get('childViews').objectAt(0);
+          }
+          this.appendChild(view);
+          childViews.push(view);
         }
-      
         this.contentLayoutDidChange();
-      }
+        this.invokeOnce(this._beginEditingFirstView);         
+        this.set('childViews', childViews);
+      },
+      
+      
+      dialogTurnDidChange: function () {
+        var guid = Smartgraphs.dialogTurnController.get('guid');
+        if (guid !== this._oldGuid) {
+          this.invokeOnce(this._clearValuesAndResetEditing);
+        }
+        this._oldGuid = guid;
+      }.observes('Smartgraphs.dialogTurnController.guid'),
+            
+      _clearValuesAndResetEditing: function () {
+        var childViews = this.get('childViews');
+        
+        if (childViews) { 
+          childViews.forEach(function (view) {
+            var textfield = view.get('childViews').objectAt(0);
+            //textfield.discardEditing();
+            textfield.set('value', null);
+          });
+          this.invokeLater(this._beginEditingFirstView);
+        }
+      },
+        
+      _beginEditingFirstView: function () {
+        if (this._firstTextFieldView) {
+          this._firstTextFieldView.beginEditing();
+        }
+      } 
     }),
   
     afterTextView: SC.StaticContentView.design({
