@@ -155,17 +155,18 @@ Smartgraphs.mainPage = SC.Page.design({
 
         xsLabel: SC.LabelView.design({
           layout: {
-            left: 10,
+            right: 10,
             width: 80,
             top: 7,
             height: 20
           },
+
           valueBinding: SC.Binding.oneWay('Smartgraphs.axesController.xLabelAbbreviated')
         }),
 
         ysLabel: SC.LabelView.design({
           layout: {
-            right: 10,
+            left: 10,
             width: 80,
             top: 7,
             height: 20
@@ -206,10 +207,11 @@ Smartgraphs.mainPage = SC.Page.design({
             }.property('calculatedHeight', 'layout').cacheable(),
 
             layout: {
-              left: 10,
+              left: 100,
               top: 0,
               width: 70
             },
+
             canEditContent: NO,
             contentValueKey: 'x',
             contentBinding: 'Smartgraphs.dataSeriesController.arrangedObjects',
@@ -224,10 +226,11 @@ Smartgraphs.mainPage = SC.Page.design({
             }.property('calculatedHeight', 'layout').cacheable(),
 
             layout: {
-              left: 100,
+              left: 10,
               top: 0,
               width: 70
             },
+
             canEditContent: NO,
             // as per http://groups.google.com/group/sproutcore/browse_thread/thread/6564941be2b51276/fcf4eb11a1ea268f?#fcf4eb11a1ea268f
             exampleView: Smartgraphs.EditableListItemView,
