@@ -40,7 +40,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
 
   { guid: 'turn-2-done',
     beforeText: 
-      "<p>Your answer has been recorded. Click Next >> when you are ready.</p>",
+      "<p>Your answer for this question was recorded. </p> <p>Click Next >> when you are ready.</p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
@@ -66,7 +66,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
 
   { guid: 'turn-3-done',
     beforeText:
-      "<p>Your answer has been recorded. Click Next >> when you are ready.</p>",
+      "<p>Your answer for this question was recorded. </p> <p>Click Next >> when you are ready.</p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
@@ -92,7 +92,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
 
   { guid: 'turn-4-done',
     beforeText: 
-      "<p>Your answer has been recorded. Click Next >> when you are ready.</p>",    
+      "<p>Your answer for this question was recorded. </p> <p>Click Next >> when you are ready.</p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
@@ -241,7 +241,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
   
   { guid: 'turn-6-incorrect',
     beforeText:
-      "<p>Four minutes into her run, Maria stopped. At that point, Maria was 800 meters away from the start line.</p>",
+      "<p>Four minutes into her run, Maria stopped. At that point, Maria was 800 meters away from the start line.</p>" +
+      "<p>Click Next >> when you are ready.</p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
@@ -254,7 +255,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-6-correct',
     beforeText: 
       "<p>Correct! Four minutes into her run, Maria stopped. At that point, " +
-      "Maria’s was 800 meters away from the start line.</p>",
+      "Maria’s was 800 meters away from the start line.</p>" +
+      "<p>Click Next >> when you are ready.</p>",      
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
@@ -320,7 +322,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-7-incorrect',
     beforeText:
       "<p>Maria stopped during the horizontal segment of the graph. This is when her position did not change. " +
-      "As you can see, this interval lasted 2 minutes.</p>",
+      "As you can see, this interval lasted 2 minutes.</p>" +
+      "<p>Click Next >> when you are ready.</p>",      
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
@@ -333,7 +336,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
   { guid: 'turn-7-correct',
     beforeText: 
       "<p>Correct! Maria stopped during the horizontal segment of the graph. " +
-      "This is when her position did not change. As you can see, this interval lasted 2 minutes.</p>",
+      "This is when her position did not change. As you can see, this interval lasted 2 minutes.</p>" +
+      "<p>Click Next >> when you are ready.</p>",      
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
@@ -345,6 +349,10 @@ Smartgraphs.DialogTurn.FIXTURES = [
   
   { guid: 'turn-8-start',
     beforeText: 
+      "<p>Think back on the activities you just did.</p>" +
+      "<p>Now that you have had a chance to create your own position versus time graphs, " +
+      "explain what kind of details this graph can tell about motion on a straight track. " +
+      "Give examples of some details that a position versus time graph cannot tell.</p>" +
       "<p>What other elements would make the story complete?</p>",
     responseTemplate: 'template-open-1',
     responseVerifier: null,
@@ -357,7 +365,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
 
   { guid: 'turn-8-done',
     beforeText: 
-      "<p>Your answer has been recorded. This is the end of the activity.</p>",
+      "<p>Your answer has been recorded. This is the end of the activity.</p>",      
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',

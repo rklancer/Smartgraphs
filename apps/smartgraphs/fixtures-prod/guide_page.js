@@ -116,11 +116,7 @@ Smartgraphs.GuidePage.FIXTURES = [
     sequence: 'sequence-1',
     index: 1,
     title: '8',
-    introText: 
-      "<p>Think back on the activities you just did.</p>" +
-      "<p>Now that you have had a chance to create your own position versus time graphs, " +
-      "explain what kind of details this graph can tell about motion on a straight track. " +
-      "Give examples of some details that a position versus time graph cannot tell.</p>",
+    introText: '',
     firstDialogTurn: 'turn-8-start',
     dataSeries: 'series-maria',
     axes: 'axes-maria',
