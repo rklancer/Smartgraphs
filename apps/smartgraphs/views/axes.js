@@ -64,11 +64,17 @@ Smartgraphs.AxesView = SC.View.extend(
     this._xLabel = 
       raphael.text(padding.left + plotWidth/2, height - 10, xLabelText).attr({font: "14px Arial, sans-serif"});
     this._yLabel = 
-      raphael.text(10, padding.top + plotHeight/2, yLabelText).attr({font: "14px Arial, sans-serif"}).rotate(270);
+      raphael.text(10, padding.top + plotHeight/2, yLabelText).attr({font: "14px Arial, sans-serif"});
 
     this.renderChildViews(context, firstTime);
+    this.invokeLater(this.rotateLabel);
   },
   
+  // hack to work around Raphael bug where text doesn't rotate if hidden?
+  rotateLabel: function () {
+    if (this._yLabel) this._yLabel.rotate(270);
+  },
+    
   _clearObjects: function () {
     if (this._x) this._x.remove();
     if (this._y) this._y.remove();
