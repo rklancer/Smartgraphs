@@ -113,7 +113,7 @@ Smartgraphs.mainPage = SC.Page.design({
 
 
     graphView: Smartgraphs.RaphaelView.design({
-      isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),
+      //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),
       layout: {
         right: 20,
         top: 10,
@@ -148,7 +148,7 @@ Smartgraphs.mainPage = SC.Page.design({
     }),
 
     tableView: SC.View.design({
-      isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),      
+      //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),      
       layout: {
         right: 285,
         bottom: 10,
