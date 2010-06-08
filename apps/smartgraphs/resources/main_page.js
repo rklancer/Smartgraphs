@@ -15,7 +15,7 @@ Smartgraphs.mainPage = SC.Page.design({
       height: 600
     },
 
-    childViews: 'dialogView imageView graphView tableView sensorAppletView'.w(), // TODO put back 'authoringModeButton authorView'
+    childViews: 'dialogView graphView tableView sensorAppletView imageView'.w(), // TODO put back 'authoringModeButton authorView'
     
     imageView: SC.ImageView.design({
       isVisibleBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.shouldShowImage'),
@@ -260,7 +260,8 @@ Smartgraphs.mainPage = SC.Page.design({
 
 
 		sensorAppletView: SC.View.design({
-      isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),		  
+		  // don't actually hide the applet - it doesn't like it very much.
+      //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),		  
       childViews: 'sensorApplet startButton stopButton resetButton'.w(),
       classNames: 'smartgraph-pane'.w(),     
       layout: {
