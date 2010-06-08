@@ -26,29 +26,29 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
   },
  
   render: function (context, firstTime) {
-    console.log('rendering StaticAnnotationsView');
-    console.log(this.get('annotations'));
+    //console.log('rendering StaticAnnotationsView');
+    //console.log(this.get('annotations'));
       
     var parent = this.get('parentView');
     var raphael = parent.get('raphaelObject');
 
     if (!raphael) {
-      console.log('raphael undefined');
+      //console.log('raphael undefined');
       return;
     }
     
     var axes = this.get('axes');
     var annotations = this.get('annotations');
 
-    console.log('removing objects');
+    //console.log('removing objects');
     this._raphaelObjects.forEach(function (raphaelObject) {
-      console.log('removing object');
+      //console.log('removing object');
       raphaelObject.remove();
     });
     this._raphaelObjects = [];    
     
     if (!annotations || !axes || (axes.get('xMin') === undefined)) {
-      console.log('axes or annotations undefined or empty');
+      //console.log('axes or annotations undefined or empty');
       return;
     }
     
@@ -78,8 +78,8 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
   
   _renderAnnotation: function (annotation, raphael, axes) {
     
-    console.log('rendering annotation');
-    console.log(annotation);
+    //console.log('rendering annotation');
+    //console.log(annotation);
     
     if (annotation.get('type') === 'segment') {
       this._renderSegment(annotation);
@@ -90,11 +90,11 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
     else if (annotation.get('type')  === 'line') {
       this._renderLine(annotation);
     }
-    console.log("couldn't find type");
+    //console.log("couldn't find type");
   },
   
   _renderSegment: function (annotation) {
-    console.log('rendering segment');
+    //console.log('rendering segment');
 
     var points = annotation.get('points');
 
@@ -110,7 +110,7 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
     
     pathComponents.splice(pathComponents.length);      // get rid of trailing 'L'
     var pathString = pathComponents.join(' ');
-    console.log(pathString);
+    //console.log(pathString);
     
     var path = this._raphael.path(pathString).attr({
       'stroke-width': 14,
@@ -124,7 +124,7 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
   },
   
   _renderPoint: function (annotation) {
-    console.log('rendering point');
+    //console.log('rendering point');
     
     var point = annotation.get('points').objectAt(0);
     
@@ -143,7 +143,7 @@ Smartgraphs.StaticAnnotationsView = SC.View.extend(
   
   
   _renderLine: function (annotation) {
-    console.log('rendering line');
+    //console.log('rendering line');
     var point = annotation.get('points').objectAt(0);
     
     if (!point) return;
