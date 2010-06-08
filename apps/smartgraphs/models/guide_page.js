@@ -44,5 +44,8 @@ Smartgraphs.GuidePage = SC.Record.extend(
   //   * the *next* page once the current dialog has marked the page finished
   //   * any page you've previously visited
   
-  isSelectable: NO
+  isSelectable: NO,
+  
+  // a hack put in for the Randolph test to show imageView on first page only
+  shouldShowImage: SC.Record.attr(Boolean)
 }) ;

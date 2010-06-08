@@ -21,7 +21,8 @@ Smartgraphs.GuidePage.FIXTURES = [
     firstDialogTurn: 'turn-1',
     dataSeries: null,
     axes: null,
-    sensorAppletShouldBeEnabled: NO
+    sensorAppletShouldBeEnabled: NO,
+    shouldShowImage: YES
   },
 
   { guid: 2,
@@ -38,7 +39,8 @@ Smartgraphs.GuidePage.FIXTURES = [
     firstDialogTurn: 'turn-2-start',
     dataSeries: 'series-sensor',
     axes: 'axes-sensor',
-    sensorAppletShouldBeEnabled: YES
+    sensorAppletShouldBeEnabled: YES,
+    shouldShowImage: NO    
   },
 
   { guid: 3,
@@ -53,7 +55,8 @@ Smartgraphs.GuidePage.FIXTURES = [
     firstDialogTurn: 'turn-3-start',
     dataSeries: 'series-sensor',
     axes: 'axes-sensor',
-    sensorAppletShouldBeEnabled: YES    
+    sensorAppletShouldBeEnabled: YES,
+    shouldShowImage: NO    
   },
   
   { guid: 4,
@@ -68,7 +71,8 @@ Smartgraphs.GuidePage.FIXTURES = [
     firstDialogTurn: 'turn-4-start',
     dataSeries: 'series-sensor',
     axes: 'axes-sensor',
-    sensorAppletShouldBeEnabled: YES    
+    sensorAppletShouldBeEnabled: YES,
+    shouldShowImage: NO     
   },
 
   { guid: 5,
@@ -85,7 +89,8 @@ Smartgraphs.GuidePage.FIXTURES = [
     firstDialogTurn: 'turn-5-start',
     dataSeries: 'series-maria',
     axes: 'axes-maria',
-    sensorAppletShouldBeEnabled: NO    
+    sensorAppletShouldBeEnabled: NO,
+    shouldShowImage: NO       
   },
   
   { guid: 6,
@@ -97,7 +102,8 @@ Smartgraphs.GuidePage.FIXTURES = [
     firstDialogTurn: 'turn-6-start',
     dataSeries: 'series-maria',
     axes: 'axes-maria',
-    sensorAppletShouldBeEnabled: NO    
+    sensorAppletShouldBeEnabled: NO,
+    shouldShowImage: NO       
   },
   
   { guid: 7,
@@ -109,7 +115,8 @@ Smartgraphs.GuidePage.FIXTURES = [
     firstDialogTurn: 'turn-7-start',
     dataSeries: 'series-maria',
     axes: 'axes-maria',
-    sensorAppletShouldBeEnabled: NO    
+    sensorAppletShouldBeEnabled: NO,
+    shouldShowImage: NO      
   },
   
   { guid: 8,
@@ -120,7 +127,8 @@ Smartgraphs.GuidePage.FIXTURES = [
     firstDialogTurn: 'turn-8-start',
     dataSeries: 'series-maria',
     axes: 'axes-maria',
-    sensorAppletShouldBeEnabled: NO    
+    sensorAppletShouldBeEnabled: NO,
+    shouldShowImage: NO
   }
   
 ];

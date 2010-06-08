@@ -15,7 +15,20 @@ Smartgraphs.mainPage = SC.Page.design({
       height: 600
     },
 
-    childViews: 'dialogView graphView tableView sensorAppletView'.w(), // TODO put back 'authoringModeButton authorView'
+    childViews: 'dialogView imageView graphView tableView sensorAppletView'.w(), // TODO put back 'authoringModeButton authorView'
+    
+    imageView: SC.ImageView.design({
+      isVisibleBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.shouldShowImage'),
+      layout: {
+        right: 20,
+        top: 10,
+        width: 453,
+        height: 578
+      },
+      
+      //classNames: 'smartgraph-pane'.w()
+      value: sc_static('resources/walking_path.jpg')
+    }),
     
     dialogView: SC.View.design({
       layout: {
@@ -100,6 +113,7 @@ Smartgraphs.mainPage = SC.Page.design({
 
 
     graphView: Smartgraphs.RaphaelView.design({
+      isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),
       layout: {
         right: 20,
         top: 10,
@@ -134,6 +148,7 @@ Smartgraphs.mainPage = SC.Page.design({
     }),
 
     tableView: SC.View.design({
+      isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),      
       layout: {
         right: 285,
         bottom: 10,
@@ -245,7 +260,7 @@ Smartgraphs.mainPage = SC.Page.design({
 
 
 		sensorAppletView: SC.View.design({
-		  
+      isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),		  
       childViews: 'sensorApplet startButton stopButton resetButton'.w(),
       classNames: 'smartgraph-pane'.w(),     
       layout: {
