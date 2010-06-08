@@ -20,7 +20,7 @@ Smartgraphs.SeriesView = SC.View.extend(
   NO_HIGHLIGHT_ATTR: { r: 4 },
   HIGHLIGHT_ATTR: { r: 6 },
   SELECTED_ATTR: { stroke: '#aa0000', fill: '#aa0000', opacity: 0.8 },
-  NOT_SELECTED_ATTR: { stroke: "#BFADA7", fill: "#BFADA7", opacity: 0.5 },
+  NOT_SELECTED_ATTR: { stroke: "#BFADA7", fill: "#BFADA7", opacity: 0.8 },
   DATA_POINT_ID_MATCHER : '',
   id : '',
   
