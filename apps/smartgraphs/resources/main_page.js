@@ -291,7 +291,7 @@ Smartgraphs.mainPage = SC.Page.design({
         this._shouldBeEnabledWasTrue = shouldBeEnabled;
       }.observes('shouldBeEnabled'),
     
-      sensorApplet: CC.SensorAppletView.design({
+      sensorApplet: SC.View.design({//CC.SensorAppletView.design({
         layout: {
           left: 0, 
           top: 0, 
