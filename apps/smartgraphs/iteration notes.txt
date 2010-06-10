@@ -1,3 +1,52 @@
+6/10/10:
+
+merging master and randolph-test:
+
+* note kofi had to change layout of graphview to use 'left' not 'right' to fit his view on the right
+
+summary of changes to master since last common ancestor:
+
+
+
+
+
+things to fixup:
+
+  * general scheme of response applet loading .. the data path, at least, shouldn't be in a view; and deal with timing issues!
+  * some hooks for/research about applet loading forensics
+  * loading indicator for applet controls and delayed or background loading (make sure applet loading doesn't affect page progression)
+  * are there issues with pluggin in/unplugging sensor?
+  * IE developer tools
+  * what about JNA access to host usb libraries?
+  * what about static serving of applet jar -- is it possible?
+  * update to latest master and confirm it fixes text area click to focus problem.
+  * investigate updating to quilmes
+
+  * investigate timing and binding issues within the sproutcore app overall
+  * look at the response template model and view ... can using a "student response" model avoid 'manual' clearing and updating?
+
+  * create tests generally
+  * create tests that fail in IE?
+
+  * rationalizing how raphael views work 
+      (get rid of requirement that raphaelview be direct parent. create a base class that knows when to render? get rid of layer z index hack)
+
+  * decompose the axes model into 2-axes (create yAxisController and xAxisController?)
+  * make data series controller and axis controller not singletons, so multiple graphs can be displayed
+  * rationalize how plotting works -- axis should handle coordinate transforms!
+
+  * make view for individual static annotations,
+  * investigate the 'command' idea; how does this fit in with logbook data model?
+  
+  * investigate fixes needed for touch to work with raphael views
+  * lots more, I'm sure...
+
+
+
+
+
+----
+
 open question for 6/2: 
 
 how to specify data series and axes per guide page? (actually, that should be easy!)
