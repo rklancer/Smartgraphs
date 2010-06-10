@@ -8,7 +8,7 @@ sc_require('models/response_template');
 
 Smartgraphs.ResponseTemplate.FIXTURES = [
 
-  { guid: 'textarea',
+  { guid: 'template-1',
     templateString: '(a textarea should show)'
   }
 

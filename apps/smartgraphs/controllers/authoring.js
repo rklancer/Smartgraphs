@@ -9,8 +9,8 @@
  @extends SC.Object
  */
 
-sc_require('models/dialog_turn');
-sc_require('models/guide_page');
+// the now-obsolete model this controller worked with (uncommenting causes errors in testrunner)
+//sc_require('models/question');
 
 Smartgraphs.authoringController = SC.ObjectController.create(
 /** @scope Smartgraphs.authoringController.prototype */
@@ -20,13 +20,13 @@ Smartgraphs.authoringController = SC.ObjectController.create(
     
     toggleAuthoring: function(){
 		// TODO: Write a unit test instead of using a probe and observersForKey methods here
-		Smartgraphs.mainPage.mainPane.authorScrollView.addProbe('isVisible');
+		Smartgraphs.mainPage.mainPane.authorView.addProbe('isVisible');
 		// observersFor and observersForKey don't actually work!
-		//Smartgraphs.mainPage.mainPane.authorScrollView.observersForKey('isVisible');
-        if (Smartgraphs.mainPage.mainPane.authorScrollView.get('isVisible') == YES) {
-            Smartgraphs.mainPage.mainPane.authorScrollView.set('isVisible', NO); 
+		//Smartgraphs.mainPage.mainPane.authorView.observersForKey('isVisible');
+        if (Smartgraphs.mainPage.mainPane.authorView.get('isVisible') == YES) {
+            Smartgraphs.mainPage.mainPane.authorView.set('isVisible', NO); 
         }
-        else {Smartgraphs.mainPage.mainPane.authorScrollView.set('isVisible', YES);
+        else {Smartgraphs.mainPage.mainPane.authorView.set('isVisible', YES);
         }
     }
     
