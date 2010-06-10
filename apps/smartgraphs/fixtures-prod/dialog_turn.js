@@ -8,234 +8,370 @@ sc_require('models/dialog_turn');
 
 Smartgraphs.DialogTurn.FIXTURES = [
 
+  // Page 1
   { guid: 'turn-1',
     beforeText: 
-      "<p>Click the point in the scatter plot that shows when and where Maria might have stopped to talk to her coach.</p>",
+      "<p>In this activity, when you see the 'Next >>' button turned on, you can go to the next page.</p>" +
+      "<p>Go ahead and click on the Next button now to see the next page.<p>",
     responseTemplate: null,
-    responseVerifier: 'verifier-1',
+    responseVerifier: null,
     afterText: '',
-    nextTurnForNominalResponse: 'turn-1-correct',
-    nextTurnForIncorrectResponse: 'turn-1-1',
+    nextTurnButtonTitle: null,
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES,
+    shouldAutoAdvance: NO
+  },
+
+
+  // Page 2
+  { guid: 'turn-2-start',
+    beforeText: 
+      '<p>How are your motions represented in the position versus time graph? ' +
+      '(For example, what does the graph look like when you are standing still?)</p>',
+    responseTemplate: 'template-open-1',
+    responseVerifier: null,
+    afterText: '',
+    nextTurnButtonTitle: 'Submit My Response',
+    nextTurnForNominalResponse: 'turn-2-done',
+    nextTurnForIncorrectResponse: null,
     isLastTurn: NO
   },
-  
-  { guid: 'turn-1-1',
+
+  { guid: 'turn-2-done',
     beforeText: 
-      "<p>Click the point in the scatter plot that shows when and where Maria might have stopped to talk to her coach.</p>",
-    responseTemplate: null,
-    responseVerifier: 'verifier-1',
-    afterText: 
-      "<p>Incorrect.</p>" +
-      "<p>Hint 1: Look at the graph and table and find where Maria’s distance stayed the same.</p>",
-    nextTurnForNominalResponse: 'turn-1-correct',
-    nextTurnForIncorrectResponse: 'turn-1-2',
-    isLastTurn: NO
-  },
-  
-  { guid: 'turn-1-2',
-    beforeText: 
-      "<p>Click the point in the scatter plot that shows when and where Maria might have stopped to talk to her coach.</p>",
-    responseTemplate: null,
-    responseVerifier: 'verifier-1',
-    afterText:
-      "<p>Incorrect.</p>" +
-      "<p>Hint 2: In these two intervals, Maria’s distance changed as time passed.</p>" +
-      "<p><i>The intervals on the left and right will be highlighted</i></p>",
-    nextTurnForNominalResponse: 'turn-1-correct',
-    nextTurnForIncorrectResponse: 'turn-1-3',
-    isLastTurn: NO    
-  },
-  
-  { guid: 'turn-1-3',
-    beforeText: 
-      "<p>Click the point in the scatter plot that shows when and where Maria might have stopped to talk to her coach.</p>",
-    responseTemplate: null,
-    responseVerifier: 'verifier-1',
-    afterText:
-      "<p>Incorrect.</p>" +
-      "<p>Hint 3: In this interval, Maria’s distance stayed the same as time passed.</p>" +
-      "<p><i>The stationary interval will be highlighted</i></p>",    
-    nextTurnForNominalResponse: 'turn-1-correct',
-    nextTurnForIncorrectResponse: 'turn-1-incorrect',
-    isLastTurn: NO    
-  },
-  
-  { guid: 'turn-1-incorrect',
-    beforeText: 
-      "<p>If you look carefully, you'll see that between four and six minutes, Maria did not move.</p>" +
-      "<p>Therefore we say she stopped at four minutes</p>.",
+      "<p>Your answer for this question was recorded. </p> <p>Click Next >> when you are ready.</p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES    
+    isLastTurn: YES,
+    shouldAutoAdvance: YES
+  },
+
+
+  // Page 3
+  { guid: 'turn-3-start',
+    beforeText:
+      '<p>How are the two different speeds represented in the position versus time graph?</p>',
+    responseTemplate: 'template-open-1',
+    responseVerifier: null,
+    afterText: '',
+    nextTurnButtonTitle: 'Submit My Response',
+    nextTurnForNominalResponse: 'turn-3-done',
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: NO
+  },
+
+  { guid: 'turn-3-done',
+    beforeText:
+      "<p>Your answer for this question was recorded. </p> <p>Click Next >> when you are ready.</p>",
+    responseTemplate: null,
+    responseVerifier: null,
+    afterText: '',
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES,
+    shouldAutoAdvance: YES
   },
   
-  { guid: 'turn-1-correct',
+  
+  // Page 4
+  { guid: 'turn-4-start',
+    beforeText: 
+      "<p>What do you notice about the <b>steepness</b> of the three different segments during each of the motions?</p>",
+    responseTemplate: 'template-open-1',
+    responseVerifier: null,
+    afterText: '',
+    nextTurnButtonTitle: 'Submit My Response',
+    nextTurnForNominalResponse: 'turn-4-done',
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: NO
+  },
+
+  { guid: 'turn-4-done',
+    beforeText: 
+      "<p>Your answer for this question was recorded. </p> <p>Click Next >> when you are ready.</p>",
+    responseTemplate: null,
+    responseVerifier: null,
+    afterText: '',
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES,
+    shouldAutoAdvance: YES
+  },
+
+
+  // Page 5
+  { guid: 'turn-5-start',
+    beforeText: 
+      "<p>Click the point in the graph that shows when and where Maria might have first stopped to talk to her coach.</p>",
+    responseTemplate: null,
+    responseVerifier: 'verifier-1',
+    afterText: '',
+    nextTurnForNominalResponse: 'turn-5-correct',
+    nextTurnForIncorrectResponse: 'turn-5-hint-1',
+    isLastTurn: NO
+  },
+  
+  { guid: 'turn-5-hint-1',
+    beforeText:
+      "<p>Incorrect.</p>" +
+      "<p><b>Hint 1</b>: Look at the graph and table and find where Maria’s position <b>stayed the same.</b></p>" +
+      "<p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk " +
+      "to her coach.</p>",
+    responseTemplate: null,
+    responseVerifier: 'verifier-1',
+    afterText: '',
+    nextTurnForNominalResponse: 'turn-5-correct',
+    nextTurnForIncorrectResponse: 'turn-5-hint-2',
+    isLastTurn: NO
+  },
+  
+  { guid: 'turn-5-hint-2',
+    beforeText: 
+      "<p>Incorrect.</p>" +
+      "<p><b>Hint 2</b>: In these two intervals, Maria’s position <b>changed</b> as time passed.</b></p>" +
+      "<p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk " +
+      "to her coach.</p>",
+    responseTemplate: null,
+    responseVerifier: 'verifier-1',
+    afterText: "",
+    staticAnnotations: ['annotation-1', 'annotation-2'],
+    nextTurnForNominalResponse: 'turn-5-correct',
+    nextTurnForIncorrectResponse: 'turn-5-hint-3',
+    isLastTurn: NO    
+  },
+  
+  { guid: 'turn-5-hint-3',
+    beforeText: 
+      "<p><b>Hint 3</b>: In this interval, Maria’s position <b>stayed the same</b> as time passed.</b></p>" +
+      "<p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk " +
+      "to her coach.</p>", 
+    responseTemplate: null,
+    responseVerifier: 'verifier-1',
+    afterText: '',   
+    staticAnnotations: ['annotation-3'],
+    nextTurnForNominalResponse: 'turn-5-correct',
+    nextTurnForIncorrectResponse: 'turn-5-incorrect',
+    isLastTurn: NO    
+  },
+  
+  { guid: 'turn-5-incorrect',
+    beforeText:   
+      "<p>If you look carefully, you’ll see that between four and six minutes, Maria’s position did not change, " +
+      "meaning that she stopped at four minutes.</p>" +
+      "<p>Click Next >> when you are ready.</p>",
+    responseTemplate: null,
+    responseVerifier: null,
+    afterText: '',
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES,
+    shouldAutoAdvance: NO    
+  },
+  
+  { guid: 'turn-5-correct',
     beforeText: 
       "<p>Correct! Four minutes into her run, Maria’s distance stayed the same compared to the next few minutes, " +
-      "meaning she stopped running.",
+      "meaning she stopped running.</p>" +
+      "<p>Click Next >> when you are ready.</p>",
     responseTemplate: null,
     responseVerifer: null,
-    afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: NO  
   },
   
-  { guid: 'turn-2',
+  
+  { guid: 'turn-6-start',
     beforeText: 
       "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+    responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-2',
     afterText: '',
-    nextTurnForNominalResponse: 'turn-2-correct',
-    nextTurnForIncorrectResponse: 'turn-2-1',
+    nextTurnForNominalResponse: 'turn-6-correct',
+    nextTurnForIncorrectResponse: 'turn-6-hint-1',
     isLastTurn: NO    
   },
   
-  { guid: 'turn-2-1',
+
+  { guid: 'turn-6-hint-1',
     beforeText:
-      "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    responseTemplate: 'template-1',
-    responseVerifier: 'verifier-2',
-    afterText:
       "<p>Incorrect.</p>" +
-      "<p>Hint 1: Look at the data and find how many minutes passed before Maria stopped.</p>",
-    nextTurnForNominalResponse: 'turn-2-correct',
-    nextTurnForIncorrectResponse: 'turn-2-2',
-    isLastTurn: NO    
-  },
-  
-  { guid: 'turn-2-2',
-    beforeText:
-      "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+      "<p><b>Hint 1</b>: Look at the data and find how many minutes passed <b>before</b> Maria stopped.</p>" +
+      "<p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
+    responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-2',
-    afterText:
-      "<p>Incorrect.</p>" +
-      "<p>Hint 2: Here is where Maria stopped. Find her distance at this point.</p>" +
-      "<p><i>The point at 4 minutes, 800 meters will be highlighted.</i></p>",
-    nextTurnForNominalResponse: 'turn-2-correct',
-    nextTurnForIncorrectResponse: 'turn-2-3',
+    afterText: '',
+    nextTurnForNominalResponse: 'turn-6-correct',
+    nextTurnForIncorrectResponse: 'turn-6-hint-2',
     isLastTurn: NO    
   },
   
-  { guid: 'turn-2-3',
+  { guid: 'turn-6-hint-2',
     beforeText:
-      "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+      "<p>Incorrect.</p>" +
+      "<p><b>Hint 2</b>: Here is where Maria stopped. Find her position from the start of the track.</p>" +
+      "<p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
+    responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-2',
-    afterText:
-      "<p>Incorrect.</p>" +
-      "<p>Hint 3: Find Maria’s distance at this point.</p>" +
-      "<p><i>A horizontal line will be drawn from the 800 meter point on the y axis to the point at " +
-      "4 minutes, 800 meters.</i></p>",
-    nextTurnForNominalResponse: 'turn-2-correct',
-    nextTurnForIncorrectResponse: 'turn-2-incorrect',
+    afterText: '',
+    staticAnnotations: ['annotation-4'],
+    nextTurnForNominalResponse: 'turn-6-correct',
+    nextTurnForIncorrectResponse: 'turn-6-hint-3',
+    isLastTurn: NO    
+  },
+
+  { guid: 'turn-6-hint-3',
+    beforeText:
+      "<p>Incorrect.</p>" +    
+      "<p><b>Hint 3</b>: Here is where Maria stopped. Find her position from the start of the track.</p>" +
+      "<p>Try again. Find the y value (position) of this point?</p>",
+    responseTemplate: 'template-numeric-1',
+    responseVerifier: 'verifier-2',
+    afterText: '',
+    staticAnnotations: ['annotation-4', 'annotation-5'],    
+    nextTurnForNominalResponse: 'turn-6-correct',
+    nextTurnForIncorrectResponse: 'turn-6-incorrect',
     isLastTurn: NO    
   },
   
-  { guid: 'turn-2-incorrect',
+  { guid: 'turn-6-incorrect',
     beforeText:
-      "<p>Remember from the last question that Maria stopped at four minutes. " +
-      "Use the graph to convince yourself that she had run 800 meters by that point.</p>",
+      "<p>Four minutes into her run, Maria stopped. At that point, Maria was 800 meters away from the start line.</p>" +
+      "<p>Click Next >> when you are ready.</p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES    
+    isLastTurn: YES,
+    shouldAutoAdvance: NO    
   },
   
-  { guid: 'turn-2-correct',
+  { guid: 'turn-6-correct',
     beforeText: 
-      "<p>Correct. Maria had run 800 meters when she stopped at four minutes</p>",
+      "<p>Correct! Four minutes into her run, Maria stopped. At that point, " +
+      "Maria’s was 800 meters away from the start line.</p>" +
+      "<p>Click Next >> when you are ready.</p>",      
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
+    isLastTurn: YES,
+    shouldAutoAdvance: NO    
   },
-  
-  { guid: 'turn-3',
-    beforeText: 
-      "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>"+
-      "<p>'Maria stopped to talk to her coach for",
-    responseTemplate: 'template-1',
+
+  { guid: 'turn-7-start',
+    beforeText:
+      "<p>For how many minutes did Maria stop to talk to her coach?</p>",
+    responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-3',
-    afterText: "minutes.'",
-    nextTurnForNominalResponse: 'turn-3-correct',
-    nextTurnForIncorrectResponse: 'turn-3-1',
+    afterText: '',
+    nextTurnForNominalResponse: 'turn-7-correct',
+    nextTurnForIncorrectResponse: 'turn-7-hint-1',
     isLastTurn: NO    
   },
-  
-  { guid: 'turn-3-1',
+
+  { guid: 'turn-7-hint-1',
     beforeText:
-      "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+      "<p>Incorrect.</p>" +  
+      "<p><b>Hint 1</b>: Here is the interval when Maria’s distance stayed the same.</p>" +
+      "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
+    responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-3',
-    afterText:
+    afterText: '',
+    staticAnnotations: ['annotation-3'],
+    nextTurnForNominalResponse: 'turn-7-correct',
+    nextTurnForIncorrectResponse: 'turn-7-hint-2',
+    isLastTurn: NO    
+  },
+
+  { guid: 'turn-7-hint-2',
+    beforeText:
+      "<p>Incorrect.</p>" +    
+      "<p><b>Hint 2</b>: How much time elapsed during this interval?</p>" +    
+      "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
+    responseTemplate: 'template-numeric-1',
+    responseVerifier: 'verifier-3',
+    afterText: '',
+    staticAnnotations: ['annotation-3'],    
+    nextTurnForNominalResponse: 'turn-7-correct',
+    nextTurnForIncorrectResponse: 'turn-7-hint-3',
+    isLastTurn: NO
+  },
+
+  { guid: 'turn-7-hint-3',
+    beforeText:
       "<p>Incorrect.</p>" +
-      "<p>Hint 1: Here is the interval when Maria’s distance stayed the same.</p>"+
-      "<p><i>The stationary interval will be highlighted</i></p>",  
-    nextTurnForNominalResponse: 'turn-3-correct',
-    nextTurnForIncorrectResponse: 'turn-3-2',
-    isLastTurn: NO    
-  },
-  
-  { guid: 'turn-3-2',
-    beforeText:
-      "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>",
-    responseTemplate: 'template-1',
+      "<p><b>Hint 3</b>: After four minutes, Maria stopped and did not start moving again until six minutes. " +
+      "So, how many minutes passed?</p>" +
+      "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
+    responseTemplate: 'template-numeric-1',
     responseVerifier: 'verifier-3',
-    afterText:
-      "<p>Incorrect.</p>" +
-      "<p>Hint 2: How much time elapsed during this interval?</p>" +
-      "<p><i>The stationary interval points will be highlighted in sequence, starting on the left.</i></p>",
-    nextTurnForNominalResponse: 'turn-3-correct',
-    nextTurnForIncorrectResponse: 'turn-3-3',
+    afterText: '',
+    nextTurnForNominalResponse: 'turn-7-correct',
+    nextTurnForIncorrectResponse: 'turn-7-incorrect',
     isLastTurn: NO    
   },
-  
-  { guid: 'turn-3-3',
+
+  { guid: 'turn-7-incorrect',
     beforeText:
-      "<p>For <b>how many minutes</b> did Maria stop to talk to her coach?</p>",
-    responseTemplate: 'template-1',
-    responseVerifier: 'verifier-3',
-    afterText:
-      "<p>Incorrect.</p>" +
-      "<p>Hint 3: Maria stopped between four and six minutes, so how many minutes passed?</p>" +
-      "<p><i>A horizontal line will be drawn from the 4 minute point on the x axis to the point at " +
-      "6 minutes.</i></p>",
-    nextTurnForNominalResponse: 'turn-3-correct',
-    nextTurnForIncorrectResponse: 'turn-3-incorrect',
-    isLastTurn: NO    
-  },
-  
-  { guid: 'turn-3-incorrect',
-    beforeText:
-      "<p>Remember from the last question that Maria stopped at four minutes? " +
-      "Notice on the graph that see started moving again at six minutes."+
-      "That means she stopped to talk for two minutes.</p>",
+      "<p>Maria stopped during the horizontal segment of the graph. This is when her position did not change. " +
+      "As you can see, this interval lasted 2 minutes.</p>" +
+      "<p>Click Next >> when you are ready.</p>",      
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES    
+    isLastTurn: YES,
+    shouldAutoAdvance: NO
   },
-  
-  { guid: 'turn-3-correct',
+
+  { guid: 'turn-7-correct',
     beforeText: 
-      "<p>Correct. After four minutes, Maria stopped to talk for two minutes, and started moving again at six minutes.</p>",
+      "<p>Correct! Maria stopped during the horizontal segment of the graph. " +
+      "This is when her position did not change. As you can see, this interval lasted 2 minutes.</p>" +
+      "<p>Click Next >> when you are ready.</p>",      
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
     nextTurnForNominalResponse: null,
     nextTurnForIncorrectResponse: null,
-    isLastTurn: YES
-  }
+    isLastTurn: YES,
+    shouldAutoAdvance: NO
+  },
+  
+  { guid: 'turn-8-start',
+    beforeText: 
+      "<p>Think back on the activities you just did.</p>" +
+      "<p>Now that you have had a chance to create your own position versus time graphs, " +
+      "explain what kind of details this graph can tell about motion on a straight track. " +
+      "Give examples of some details that a position versus time graph cannot tell.</p>" +
+      "<p>What other elements would make the story complete?</p>",
+    responseTemplate: 'template-open-1',
+    responseVerifier: null,
+    afterText: '',
+    nextTurnButtonTitle: 'Submit My Response',
+    nextTurnForNominalResponse: 'turn-8-done',
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: NO
+  },
+
+  { guid: 'turn-8-done',
+    beforeText: 
+      "<p>Your answer has been recorded. This is the end of the activity.</p>",      
+    responseTemplate: null,
+    responseVerifier: null,
+    afterText: '',
+    nextTurnForNominalResponse: null,
+    nextTurnForIncorrectResponse: null,
+    isLastTurn: YES,
+    shouldAutoAdvance: NO
+  }     
 ];

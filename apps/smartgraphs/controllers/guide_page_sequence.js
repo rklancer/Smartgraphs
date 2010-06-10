@@ -26,7 +26,7 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
   },
 
   sequenceDidChange: function () {
-    console.log('Smartgraphs.guidePageSequenceController observed sequence');
+    //console.log('Smartgraphs.guidePageSequenceController observed sequence');
     
     var sequence = this.get('sequence');
     var pages = sequence.get('pages');

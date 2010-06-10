@@ -15,9 +15,12 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
 
   contentBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.responseVerifier'),
   
+  verificationIsRequired: null,
+  verificationIsRequiredBinding: SC.Binding.bool('.content'),
+  
   contentDidChange: function () {
     var content = this.get('content');
-    console.log('Smartgraphs.responseVerifierController observed content');
+    //console.log('Smartgraphs.responseVerifierController observed content');
 
     if (!content) {
       // nothing to do
@@ -28,21 +31,14 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
   }.observes('content'),
 
   _setVerifierDelegate: function () {
-    console.log('_setVerifierDelegate');
     var delegatePath = 'Smartgraphs.' + this.get('verifierDelegateName') + 'VerifierDelegate';
-    console.log('delegatePath:'+delegatePath);
     var delegate = SC.objectForPropertyPath(delegatePath);
-    console.log('delegate:'+delegate);
     delegate.set('configString', this.get('configString'));
-    console.log('delegate.configString:'+delegate.configString);
     this.set('verifierDelegate', delegate);
   },
-  
-  responseCanBeChecked: null,
-  responseCanBeCheckedBinding: SC.Binding.bool('.verifierDelegate').oneWay(),
 
   responseIsReady: null,
-  responseIsReadyBinding: SC.Binding.oneWay('*verifierDelegate.responseIsReady'),
+  responseIsReadyBinding: SC.Binding.bool('*verifierDelegate.responseIsReady'),
 
   checkResponse: function () {
     var delegate = this.get('verifierDelegate');

@@ -14,46 +14,62 @@ body.sc-theme {
 
 .sc-view.smartgraph-pane {
   background-color: #E5E8EF;
-  color: black;
+  color: #333333;
   border: 1px solid #A2B5D7;
-  font-size: 16px;
 }
 
-.sc-view.text-view, .sc-view.text-view .sc-view {
-  font-size: 16px;
-}
-
-.sc-view.text-view textarea, .sc-view.text-view .sc-view textarea {
+.sc-view.text-view .sc-view {
   font-size: 16px;
 }
 
 .text-view p {
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
-/*
-.sc-view.sg-question {
-  padding: 25px 20px 5px 20px;  
-
-  position: absolute;
+  margin: 10px;
 }
 
-.sc-view.sg-question div {
-  font-size: 16px;
+.text-view .text-field-view-wrapper {
+  margin: 10px;
 }
 
-.sc-view.sg-question p {
-  margin-top: 0px;
-  margin-bottom: 10px;
+.sc-view.dialog-text {
+  background-color: white;
+  margin: 10px 0 10px 0;
+  border: 1px solid #cccccc;
+  background-color: #EFEDDD;
 }
 
-.sc-view.sg-question .sc-button-view {
-  margin-top: 5px;
-  margin-bottom: 10px;
+.sc-view.dialog-text .sc-view {
+  color: black;
+  font-size: 14px;
 }
 
-.sc-view.sg-question textarea {
-  font-size: 16px;
+.sc-view.dialog-text textarea {
+  padding: 5px;
+}   
+
+
+/*** shrinks SegmentedView segments; careful! some of the negative margin hacks are for IE(7) ***/
+
+.sc-theme .sc-segmented-view .sc-segment {
+  padding-left: 1px;
 }
 
-*/
+.sc-theme .sc-segmented-view .sc-segment.sc-first-segment {
+  padding-left: 6px;
+}
+
+.sc-theme .sc-segmented-view .sc-segment.sc-last-segment {
+  padding-right: 1px;
+}
+
+.sc-theme .sc-segmented-view .sc-segment .sc-button-inner {
+  padding-right: 1px;
+}
+
+.sc-theme .sc-segmented-view .sc-segment.sc-last-segment .sc-button-inner {
+  padding-right: 5px;
+  margin-right: 0;
+}
+
+.sc-theme .sc-segmented-view .sc-segment.sc-first-segment .sc-button-inner {
+   margin-left: -1px;
+}

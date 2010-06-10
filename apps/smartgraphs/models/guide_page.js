@@ -26,7 +26,13 @@ Smartgraphs.GuidePage = SC.Record.extend(
 
   firstDialogTurn: SC.Record.toOne('Smartgraphs.DialogTurn'),
 
-  //nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
+  dataSeries: SC.Record.toOne('Smartgraphs.DataSeries'),
+
+  axes: SC.Record.toOne('Smartgraphs.Axes'),
+  
+  sensorAppletShouldBeEnabled: SC.Record.attr(Boolean),
+  
+  // nextStep: SC.Record.toOne('Smartgraphs.GuidePage')
   
   // *** transient properties not saved to db
   
@@ -38,5 +44,8 @@ Smartgraphs.GuidePage = SC.Record.extend(
   //   * the *next* page once the current dialog has marked the page finished
   //   * any page you've previously visited
   
-  isSelectable: NO
+  isSelectable: NO,
+  
+  // a hack put in for the Randolph test to show imageView on first page only
+  shouldShowImage: SC.Record.attr(Boolean)
 }) ;

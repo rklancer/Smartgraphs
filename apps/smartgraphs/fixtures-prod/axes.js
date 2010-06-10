@@ -8,14 +8,35 @@ sc_require('models/axes');
 
 Smartgraphs.Axes.FIXTURES = [
 
-  { guid: 1,
+
+  { guid: 'axes-sensor',        // TODO: modify these values
+
+    xMin: 0,
+    xMax: 60,
+    xSteps: 6,
+    xLabel: 'Time (seconds)',
+    xLabelAbbreviated: 'Time (s)',
+
+    yMin: 0,
+    yMax: 5,
+    ySteps: 10,
+    yLabel: 'Position (meters)',
+    yLabelAbbreviated: 'Position (m)'
+  },
+
+  { guid: 'axes-maria',
+  
     xMin: 0,
     xMax: 10,
+    xSteps: 10,
+    xLabel: 'Time (minutes)',
+    xLabelAbbreviated: 'Time (min)',
+    
     yMin: 0,
     yMax: 2000,
-    xSteps: 10,
-    ySteps: 10
+    ySteps: 10,
+    yLabel: 'Position (meters)',
+    yLabelAbbreviated: 'Position (m)'
   }
-
 
 ];
