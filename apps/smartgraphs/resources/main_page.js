@@ -20,10 +20,10 @@ Smartgraphs.mainPage = SC.Page.design({
     imageView: SC.ImageView.design({
       isVisibleBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.shouldShowImage'),
       layout: {
-        right: 20,
+        left: 485,
         top: 10,
-        width: 453,
-        height: 578
+        width: 455,
+        height: 580
       },
       
       //classNames: 'smartgraph-pane'.w()
@@ -114,7 +114,7 @@ Smartgraphs.mainPage = SC.Page.design({
     graphView: Smartgraphs.RaphaelView.design({
       //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),
       layout: {
-        left: 480,
+        left: 485,
         top: 10,
         width: 453,
         height: 283
@@ -149,9 +149,9 @@ Smartgraphs.mainPage = SC.Page.design({
     tableView: SC.View.design({
       //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),      
       layout: {
-        left: 480,
-        top: 300,
-        width: 153,
+        left: 485,
+        top: 305,
+        width: 188,
         height: 283
       },
       classNames: ['smartgraph-pane'],
@@ -262,7 +262,12 @@ Smartgraphs.mainPage = SC.Page.design({
       //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),		  
       childViews: 'sensorApplet startButton stopButton resetButton'.w(),
       classNames: 'smartgraph-pane'.w(),     
-			layout: {left: 640, top: 300, width: 288, height: 283},
+			layout: {
+			  left: 685, 
+			  top: 305, 
+			  width: 253, 
+			  height: 283
+			},
 
       shouldBeEnabledBinding: SC.Binding.oneWay('Smartgraphs.dialogTurnController.sensorAppletShouldBeEnabled'),
       _shouldBeEnabledWasTrue: null,
