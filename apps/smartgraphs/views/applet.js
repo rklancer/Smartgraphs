@@ -1,8 +1,8 @@
 // ==========================================================================
-// Project:   Cc.AppletView
-// Copyright: ©2010 My Company, Inc.
+// Project:   Smartgraphs.AppletView
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
-/*globals CC */
+/*globals Smartgraphs */
 
 /** @class
 
@@ -10,7 +10,7 @@
 
   @extends SC.View
 */
-CC.AppletView = SC.View.extend(
+Smartgraphs.AppletView = SC.View.extend(
 /** @scope Cc.AppletView.prototype */ {
   
   jarUrls: '',    // e.g. 'http://mw2.concord.org/public/lib/mwapplet.jar'. If more than one jar, they can be comma-separated

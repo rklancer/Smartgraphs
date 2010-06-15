@@ -1,8 +1,8 @@
 // ==========================================================================
-// Project:   CC.SensorAppletView
-// Copyright: ©2010 My Company, Inc.
+// Project:   Smartgraphs.SensorAppletView
+// Copyright: ©2010 Concord Consortium
 // ==========================================================================
-/*globals CC */
+/*globals Smartgraphs */
 
 /** @class
 
@@ -10,7 +10,7 @@
 
   @extends CC.AppletView
 */
-CC.SensorAppletView = CC.AppletView.extend(
+Smartgraphs.SensorAppletView = Smartgraphs.AppletView.extend(
 /** @scope CC.SensorAppletView.prototype */ {
 	
 	//OVERRIDES!!! These are typically overridden in the page definitions
