@@ -1,13 +1,28 @@
+6/16/10:
+
+Refactoring RaphaelViews to work better and to support prediction graphs/higher sampling rates, etc.
+
+Issues:
+
+resizability
+dealing with--possibly animating--scale changes
+eliding path/point difference (assume points can be their own views, maybe; but lines can't)
+avoiding memory leaks or slowness
+hooking into SC event system
+allowing annotations to be added (and animated) on top. Does SC.Animatable matter here?
+
+do we really need to make scatter plot views extend collection view? Is it worth it?
+
+I think so. Composability: you can implement different types of itemView (one for scatter plots, one for lollipop style plots) Options: you get isSelected support for example as well as recycling of views? Plus you don't have to handle events, I guess.
+
+(How does this play with touch events? I dunno.)
+
+Considerations:
+
+
+
+
 6/10/10:
-
-merging master and randolph-test:
-
-* note kofi had to change layout of graphview to use 'left' not 'right' to fit his view on the right
-
-summary of changes to master since last common ancestor:
-
-
-
 
 
 things to fixup:
