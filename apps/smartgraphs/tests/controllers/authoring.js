@@ -17,23 +17,13 @@ module("Smartgraphs.authoringController", {
 });
 
 // .. unit tests go here
-test("Check initial isAuthoring setting", function(){
-  var expected = false; 
-  var result = Smartgraphs.authoringController.get('isAuthoring');
-  assrtn = equals(result, expected, "isAuthoring should start false");
-  console.log("assrtn.results:");
-  console.log(assrtn.results);
-});
-
 test("toggleAuthoring function should toggle isAuthoring boolean", function(){
   var isAuthoring1 = Smartgraphs.authoringController.get('isAuthoring');
   var toggleAuthoringResult1 = Smartgraphs.authoringController.toggleAuthoring();
   var isAuthoring2 = Smartgraphs.authoringController.get('isAuthoring');
   var toggleAuthoringResult2 = Smartgraphs.authoringController.toggleAuthoring();
   var isAuthoring3 = Smartgraphs.authoringController.get('isAuthoring');
-  assrtn = equals(isAuthoring1, false, "isAuthoring should start false");
-  assrtn = equals(isAuthoring1, !isAuthoring2, "isAuthoring should be true after one call to toggleAuthoring()");
-  assrtn = equals(isAuthoring1, isAuthoring3, "isAuthoring should be false after two calls to toggleAuthoring()");
-  console.log("assrtn.results:");
-  console.log(assrtn.results);
+  equals(isAuthoring1, false, "isAuthoring should start false");
+  equals(isAuthoring1, !isAuthoring2, "isAuthoring should be true after one call to toggleAuthoring()");
+  equals(isAuthoring1, isAuthoring3, "isAuthoring should be false after two calls to toggleAuthoring()");
 });

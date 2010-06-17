@@ -5,13 +5,14 @@
 /*globals Smartgraphs */
 
 /** @class
- Controlls authoring mode and business logic
+ Controls authoring mode and business logic
  @extends SC.Object
  */
 sc_require('models/dialog_turn');
 sc_require('models/guide_page');
 
-Smartgraphs.authoringController = SC.ObjectController.create(/** @scope Smartgraphs.authoringController.prototype */
+Smartgraphs.authoringController = SC.ObjectController.create(
+/** @scope Smartgraphs.authoringController.prototype */
 {
   isAuthoring: NO,
   
