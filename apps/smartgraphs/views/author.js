@@ -286,8 +286,7 @@ Smartgraphs.AuthorView = SC.View.extend(
     //YES,
     backgroundColor: "darkgrey",
     valueBinding: "*parentView.content.selectedDialogTurn.nextTurnForIncorrectResponse.guid"
-  })
-,
+  }),
   
   isLastTurnViewLabel: SC.LabelView.design({
     layout: {
@@ -308,6 +307,6 @@ Smartgraphs.AuthorView = SC.View.extend(
     isEditable: NO, // TODO: Make an editor
     //YES,
     backgroundColor: "darkgrey",
-    valueBinding: "*parentView.content.selectedDialogTurn.isLastTurn"
+    valueBinding: "Smartgraphs.dialogTurnController.isLastTurn"
   })
 });
