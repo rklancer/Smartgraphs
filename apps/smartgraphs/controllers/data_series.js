@@ -15,7 +15,6 @@ Smartgraphs.dataSeriesController = SC.ArrayController.create(
 /** @scope Smartgraphs.dataSeriesController.prototype */ {
 
   seriesBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.dataSeries'),
-  seriesGuidBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.dataSeries.guid'),
   
   content: function () {
     var series = this.get('series');
