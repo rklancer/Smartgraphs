@@ -440,7 +440,6 @@ Smartgraphs.mainPage = SC.Page.design({
     }),
     
     authorScrollView: SC.ScrollView.design({
-      isVisible: NO,
       layout: {
         left: 965,
         top: 5,
@@ -451,8 +450,9 @@ Smartgraphs.mainPage = SC.Page.design({
       
       contentView: Smartgraphs.AuthorView.design({
         contentBinding: "Smartgraphs.guidePageSequenceController.selectedPage",
-        canEditContent: YES //TODO: Make authoring actually work
-      })
+        canEditContent: YES //TODO: Make authoring actually work (persistent)
+      }),
+      isVisibleBinding : "Smartgraphs.authoringController.isAuthoring"
     })
   })
 });
