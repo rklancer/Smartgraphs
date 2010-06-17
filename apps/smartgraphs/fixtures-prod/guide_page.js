@@ -12,10 +12,10 @@ Smartgraphs.GuidePage.FIXTURES = [
     sequence: 'sequence-1',
     index: 1,
     title: '1',
-    introText: 'Dynamic data',
+    introText: 'Prefab data',
     firstDialogTurn: 'turn-1',
-    dataSeries: 'series-sensor',
-    axes: 'axes-sensor',
+    dataSeries: 'series-maria',
+    axes: 'axes-maria',
     sensorAppletShouldBeEnabled: NO,
     shouldShowImage: NO
   },
@@ -24,10 +24,10 @@ Smartgraphs.GuidePage.FIXTURES = [
     sequence: 'sequence-1',
     index: 1,
     title: '2',
-    introText: 'Prefab data',
+    introText: 'Dynamic data',
     firstDialogTurn: 'turn-2',
-    dataSeries: 'series-maria',
-    axes: 'axes-maria',
+    dataSeries: 'series-sensor',
+    axes: 'axes-sensor',
     sensorAppletShouldBeEnabled: NO,
     shouldShowImage: NO    
   }

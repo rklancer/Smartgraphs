@@ -11,7 +11,7 @@ Smartgraphs.DialogTurn.FIXTURES = [
   // Page 1
   { guid: 'turn-1',
     beforeText: 
-      "<p>Try out the dynamic data here.<p>",
+      "<p>Try out the prefab data here.<p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
@@ -24,8 +24,8 @@ Smartgraphs.DialogTurn.FIXTURES = [
 
   // Page 2
   { guid: 'turn-2',
-    beforeText: 
-      "<p>Try out the prefab data here.<p>",
+    beforeText:
+      "<p>Try out the dynamic data here.<p>",
     responseTemplate: null,
     responseVerifier: null,
     afterText: '',
