@@ -211,15 +211,14 @@ Smartgraphs.mainPage = SC.Page.design({
           }.property('xHeight', 'yHeight').cacheable(),
 
           _heightDidChange: function(){
-            this.adjust('height', this.get('height'));
+            this.invokeOnce(this._adjustHeight);
           }.observes('height'),
 
-          xsView: SC.ListView.design({
-            height: function(){
-              var layout = this.get('layout');
-              return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-            }.property('calculatedHeight', 'layout').cacheable(),
-
+          _adjustHeight: function () {
+            this.adjust('height', this.get('height'));
+          },
+          
+          xsView: Smartgraphs.HeightObservableListView.design({
             layout: {
               left: 100,
               top: 0,
@@ -233,12 +232,7 @@ Smartgraphs.mainPage = SC.Page.design({
             rowHeight: 18
           }),
           
-          ysView: SC.ListView.design({
-            height: function(){
-              var layout = this.get('layout');
-              return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-            }.property('calculatedHeight', 'layout').cacheable(),
-
+          ysView: Smartgraphs.HeightObservableListView.design({
             layout: {
               left: 10,
               top: 0,
