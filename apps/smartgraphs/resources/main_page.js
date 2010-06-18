@@ -203,22 +203,22 @@ Smartgraphs.mainPage = SC.Page.design({
           childViews: ['xsView', 'ysView'],
           
           // look at SC.ContentDisplay for this too
-          xHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
-          yHeightBinding: SC.Binding.from('.ysView.height').oneWay(),
+          xHeightBinding: SC.Binding.from('.xsView.calculatedHeight').oneWay(),
+          yHeightBinding: SC.Binding.from('.ysView.calculatedHeight').oneWay(),
           
           height: function(){
             return Math.max(this.get('xHeight'), this.get('yHeight'));
           }.property('xHeight', 'yHeight').cacheable(),
-
+          
           _heightDidChange: function(){
             this.invokeOnce(this._adjustHeight);
           }.observes('height'),
-
+          
           _adjustHeight: function () {
             this.adjust('height', this.get('height'));
           },
           
-          xsView: Smartgraphs.HeightObservableListView.design({
+          xsView: Smartgraphs.HeightAdjustingListView.design({
             layout: {
               left: 100,
               top: 0,
@@ -232,7 +232,7 @@ Smartgraphs.mainPage = SC.Page.design({
             rowHeight: 18
           }),
           
-          ysView: Smartgraphs.HeightObservableListView.design({
+          ysView: Smartgraphs.HeightAdjustingListView.design({
             layout: {
               left: 10,
               top: 0,
