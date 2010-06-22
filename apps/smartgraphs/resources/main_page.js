@@ -111,37 +111,24 @@ Smartgraphs.mainPage = SC.Page.design({
     }),
     
     
-    graphView: Smartgraphs.RaphaelView.design({
-      //isVisibleBinding: SC.Binding.not('Smartgraphs.guidePageController.shouldShowImage').oneWay(),
+    graphView: Smartgraphs.RaphaelCanvasView.design({
       layout: {
         left: 485,
         top: 10,
         width: 453,
         height: 283
       },
-      childViews: 'axesView series1View annotationsView'.w(),
+      childViews: 'exampleView'.w(),
       classNames: ['smartgraph-pane'],
       
-      axesView: Smartgraphs.AxesView.design({
-        axesBinding: 'Smartgraphs.axesController'
-      }),
-      
-      series1View: Smartgraphs.SeriesView.design({
-        xMinBinding: 'Smartgraphs.axesController.xMin',
-        xMaxBinding: 'Smartgraphs.axesController.xMax',
-        yMinBinding: 'Smartgraphs.axesController.yMin',
-        yMaxBinding: 'Smartgraphs.axesController.yMax',
-        xScaleBinding: 'Smartgraphs.axesController.xScale',
-        yScaleBinding: 'Smartgraphs.axesController.yScale',
-        paddingBinding: 'Smartgraphs.axesController.padding',
-        controllerBinding: 'Smartgraphs.dataSeriesController',
-        contentBinding: 'Smartgraphs.dataSeriesController.arrangedObjects',
-        selectionBinding: 'Smartgraphs.dataSeriesController.selection'
-      }),
-      
-      annotationsView: Smartgraphs.StaticAnnotationsView.design({
-        annotationsBinding: 'Smartgraphs.staticAnnotationsController',
-        axesBinding: 'Smartgraphs.axesController'
+      exampleView: Smartgraphs.ExampleRaphaelView.design({
+        seriesBinding: 'Smartgraphs.dataSeriesController.arrangedObjects',
+        displayProperties: 'text'.w(),
+        
+        text: function () {
+          var series = this.get('series');
+          return (series && series.get('length') > 0) ? series.objectAt(0).get('y')+'' : null;
+        }.property('series')
       })
     
     }),

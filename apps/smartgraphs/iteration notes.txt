@@ -1,3 +1,96 @@
+6/21/10:
+
+
+OK. We *can* use a <g> or <group> element in Raphael to do event delegation, if we're willing to roll our own: http://smartgraph-demos.dev.concord.org/test-raphael-group.html
+
+The plan:
+
+We can probably do delayed building by using closures.
+
+Then we can actually do the dom manipulation after didAppendLayerToDocument
+
+
+
+notes regarding this idea.
+
+First, note that 'layer' is a computed property of a view. Views have a private property called _view_layer, which is what is set when 'layer' is explicitly assigned with set(). Otherwise, findLayerInParentLayer() is called to find the layer within the parent. (findLayerInParentLayer can return null if the layer hasn't been created.)
+
+Later, we may want to implement createLayer(). However, I don't think it's necessary to do so at first.
+
+so, what you could do is the following.
+
+RaphaelCanvasView calls render on each of its children (and Raphael based views in general can have child views, though some subclasses won't want them, e.g., DataPointViews)
+
+if firstTime = YES, the child view 'renders' by returning a callback. That callback takes as its argument the raphael object.
+
+the RaphaelCanvasView then calls all those callbacks, assigns IDs, and inserts them into the dom. 
+
+Raphael based views shouldn't use prepareContext or createLayer for now.
+
+(the Raphael set may come in handy here ... )
+
+
+normally:
+ * renderChildViews works by calling prepareContext()
+ * prepareContext() is the only thing in view.js that calls render()
+ * prepareContext() appears only to be called from createLayer(), updateLayer(), and renderChildViews()
+ * createLayer() calls prepareContext() with firstTime = YES.
+ * Ultimately, layers appear *only* to be created in createLayer(). However, a view's layer may be created 'indirectly', when createLayer() on one of its ancestors is called. createLayer() may end up getting called when a view gets appended to another, or is reparented.
+ * layers are found using getElementById on the layerId (normally!). However 'layer' is  settable property 
+
+Hmmm...
+
+some guidelines:
+
+part of the different when using Raphael is that the 'indirect' creation of layers won't happen.
+
+override everything that calls prepareContext():
+
+* renderChildViews: pass along the delayed builder
+* createLayer: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+use new raphael canvas to handle event delegation for data points?
+or would collection view's itemviewforevent handle things nicely even if you had a collection view that didn't, itself, generate a dom layer.
+
+actually I'm having a hard time understanding how that would work...  
+
+you need a parent view that dispatches the event to the underlying collectionview
+however, if the only connection between the item view (which is the event target) and the collection view is an id convention, then the view that actually receives the event has to be able to part the id.
+
+collectionviews do that on behalf of the itemviews. But in our case, the view with multiple collectionviews would need to have that smarts.
+
+on the other hand, what about grouping support in a collectionview?
+
+
+
+
+
+
+
+6/18/10:
+
+OK. Try using the collection view fast path mixin. alexiskander says it works if we fix a few known bugs; he can't post the fixes yet but he can help me fix them.
+
+First thing to do is create a CollectionView that has Raphael DataPointViews underneath.
+
+
+
+
+
+
 6/16/10:
 
 Refactoring RaphaelViews to work better and to support prediction graphs/higher sampling rates, etc.

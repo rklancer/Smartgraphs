@@ -17,17 +17,44 @@ Smartgraphs.RaphaelView = SC.View.extend(
   _childViewForId: {},
   _lastViewForMouseMove: null,
   
-  didCreateLayer: function () {    
-    var raphaelConstructor = Raphael;  // make jslint stop complaining that Raphael needs to be called with 'new' because of the initial cap
-    var frame = this.get('frame');
+  
+  
+  renderChildViews: function(context, firstTime) {
     
-    var raphaelObject = raphaelConstructor(this.get('layer'), frame.width, frame.height);
+    console.log('RaphaelView renderChildViews');
+    
+    var cv = this.get('childViews'), len = cv.length, idx, view ;
+    for (idx=0; idx<len; ++idx) {
+      view = cv[idx] ;
+      if (!view) continue;
+      
+      // we'll try this:
+      
+      //view.createLayer();
+      
+    }
+    return context ;  
+  },
+  
+
+  
+  didCreateLayer: function () {
+
+    console.log('RaphaelView didCreateLayer; layerId = ' + this.get('layerId'));    
+    var raphaelConstructor = Raphael;  // make jslint stop complaining that Raphael needs to be called with 'new' because of the initial cap
+    var oldLayer = this.get('layer');
+    var frame = this.get('frame');
+    var raphaelObject = raphaelConstructor(oldLayer, frame.width, frame.height);
+    
+
+
     
     // cache a reference to the raphaelObject in the top level dom element ('canvas') created by Raphael
     // note that all the *other* dom nodes created by Raphael are already given a 'raphael' property by Raphael itself
-    raphaelObject.canvas.raphael = raphaelObject;
-    
+    raphaelObject.canvas.raphael = raphaelObject;    
     this.set('raphaelObject', raphaelObject);
+
+
   },
   
   registerChildView: function (view, id) {

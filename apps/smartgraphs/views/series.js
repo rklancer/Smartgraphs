@@ -2,7 +2,7 @@
 // Project:   Smartgraphs.SeriesView
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
-/*globals Smartgraphs */
+/*globals Smartgraphs Raphael*/
 
 /** @class
 
@@ -35,8 +35,38 @@ Smartgraphs.SeriesView = SC.View.extend(
   
   displayProperties: 'xMin xMax yMin yMax padding selection content.[]'.w(),
   
+  createLayer: function () {
+    if (this.get('layer')) return this ; // nothing to do
+
+    var parent = this.get('parentView');
+    var parentLayer = parent.get('layer');
+    
+    // let's try creating a raphael 'canvas' as a way to group data points
+    
+    var raphaelConstructor = Raphael;  // make jslint stop complaining that Raphael needs to be called with 'new' because of the initial cap
+    var frame = this.get('frame');
+    
+    
+    var raphaelObject = raphaelConstructor(
+      
+      
+       frame.width, frame.height);
+    raphaelObject.canvas.raphael = raphaelObject;
+    // next: assign layerId
+
+    this.set('layer', raphaelObject.canvas) ;
+    this.render(null, YES);
+    
+    // now notify the view and its child views..
+    this._notifyDidCreateLayer() ;
+    
+    return this ;
+  },
+  
+  
+  
   didCreateLayer: function () {
-    this.$().css('zIndex', '-1');
+    console.log('seriesView didCreateLayer');
   },
   
   mouseDown: function (e) {
@@ -68,11 +98,14 @@ Smartgraphs.SeriesView = SC.View.extend(
     this._highlightedPoint = null;
   },
   
+
   render: function (context, firstTime) {
 
-    var parent = this.get('parentView');
-    var raphaelNode = parent.$().children()[0];
-    var raphael = (raphaelNode && raphaelNode.raphael) ? raphaelNode.raphael : null;
+    var layer = this.get('layer');
+    var raphael = (layer && layer.raphael) ? layer.raphael : null;
+    
+    console.log('SeriesView render(); raphael = ');
+    console.log(raphael);
     
     var padding = this.get('padding');
     var layout = parent.get('layout');
