@@ -18,6 +18,7 @@ Smartgraphs.ExampleRaphaelView = SC.View.extend(
 
   createLayer: function () {
     console.log('ExampleRaphaelView createLayer()');
+    // TODO
     sc_super();
   },
 
@@ -28,18 +29,56 @@ Smartgraphs.ExampleRaphaelView = SC.View.extend(
   },
   
   prepareRaphaelContext: function (raphaelContext, firstTime) {
-    console.log('ExampleRaphaelView prepareRaphaelContext()');
-    console.log('firstTime = ' + firstTime);
-    console.log('text = ' + this.get('text'));
-  },
-  
-  renderChildViews: function () {
+    console.log('ExampleRaphaelView prepareRaphaelContext()');       
+    
+    raphaelContext.id(this.get('layerId'));
+    this.render(raphaelContext, firstTime);
   },
 
+  renderCallback: function (raphael, text) {
+    return raphael.text(100, 100, text);          // return the Raphael object you created...
+  },
+    
   render: function (context, firstTime) {
     console.log('ExampleRaphaelView render()');
     console.log('firstTime = ' + firstTime);
-    console.log('text = ' + this.get('text'));    
-  }
+    console.log('text = ' + this.get('text'));    // 'text' is our example displayProperty
 
+    // this is how it would work...
+    
+    if (firstTime) {
+      context.push(this.renderCallback, this.get('text'));
+    }
+    else {
+      // context may or may not be a RaphaelContext. It could be an SC.RenderContext focused on the Raphael node.
+      
+      var raphael = this.get('raphael');
+      if (raphael) {
+        raphael.attr({text: this.get('text')});
+      }
+    }
+    
+    // this is what the base class (SC.View) does. Important to remember for thinking about how child views work here.
+    if (firstTime) this.renderChildViews(context, firstTime);
+  },
+  
+  renderChildViews: function (context, firstTime) {
+    console.log('ExampleRaphaelView renderChildViews()');
+    
+    var cv = this.get('childViews');
+    var view;
+    
+    for (var i=0, ii=cv.length; i<ii; ++i) {
+      view = cv[i];
+      if (!view) continue;
+
+      context.begin();
+      view.prepareRaphaelContext(context, firstTime);
+      context.end();
+    }
+
+    return context;
+  }
+  
+  
 });

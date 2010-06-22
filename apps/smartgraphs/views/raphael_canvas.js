@@ -23,17 +23,14 @@ Smartgraphs.RaphaelCanvasView = SC.View.extend(
     var frame = this.get('frame');
     var r = Raphael(layer, frame.width, frame.height);
     
-    var preparedRaphaelContext = this.get('_preparedRaphaelContext');
-    if (preparedRaphaelContext) preparedRaphaelContext.populateCanvas(r);
+    if (this._preparedRaphaelContext) this._preparedRaphaelContext.populateCanvas(r);
   },
   
   renderChildViews: function (context, firstTime) {
     console.log('RaphaelCanvasView renderChildViews()');
     
-    var cv = this.get('childViews'), 
-        len = cv.length, 
-        idx, 
-        view;
+    var cv = this.get('childViews');
+    var view;
     
     var raphaelContext = this.raphaelContext();
     
@@ -46,7 +43,7 @@ Smartgraphs.RaphaelCanvasView = SC.View.extend(
       raphaelContext.end();
     }
     
-    this.set('_preparedRaphaelContext', raphaelContext);
+    this._preparedRaphaelContext = raphaelContext;
 
     return context;
   },

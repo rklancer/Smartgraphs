@@ -4,6 +4,9 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+
+// I assume this will be an SC.Builder
+
 Smartgraphs.RaphaelContext = SC.Object.extend({
   
   isRaphaelContext: YES,
@@ -24,5 +27,8 @@ Smartgraphs.RaphaelContext = SC.Object.extend({
     // use our own special sauce here to insert grouping nodes with the appropriate layer ids whenever a view has child views
     
     raphael.text(100, 100, 'prepared!');
+  },
+  
+  id: function (id) {
   }
 });
