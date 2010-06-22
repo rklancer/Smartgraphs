@@ -49,7 +49,7 @@ Smartgraphs.RaphaelCanvasView = SC.View.extend(
   },
   
   raphaelContext: function () {
-    return Smartgraphs.RaphaelContext.create();
+    return Smartgraphs.RaphaelContext();
   }
 
 });

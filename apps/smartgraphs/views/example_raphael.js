@@ -11,8 +11,6 @@
   @extends SC.View
 */
 
-sc_require('system/raphael_context');
-
 Smartgraphs.ExampleRaphaelView = SC.View.extend(
 /** @scope Smartgraphs.ExampleRaphaelView.prototype */ {
 
@@ -36,7 +34,8 @@ Smartgraphs.ExampleRaphaelView = SC.View.extend(
   },
 
   renderCallback: function (raphael, text) {
-    return raphael.text(100, 100, text);          // return the Raphael object you created...
+    console.log('ExampleRaphaelView renderCallback');
+    return raphael.text(100, 100, text);      // return the Raphael object you created...
   },
     
   render: function (context, firstTime) {
@@ -47,14 +46,14 @@ Smartgraphs.ExampleRaphaelView = SC.View.extend(
     // this is how it would work...
     
     if (firstTime) {
-      context.push(this.renderCallback, this.get('text'));
+      context.push(this, this.renderCallback, this.get('text'));
     }
     else {
       // context may or may not be a RaphaelContext. It could be an SC.RenderContext focused on the Raphael node.
       
       var raphael = this.get('raphael');
       if (raphael) {
-        raphael.attr({text: this.get('text')});
+        raphael.attr({text: this.get('text') || ''});
       }
     }
     
@@ -78,7 +77,17 @@ Smartgraphs.ExampleRaphaelView = SC.View.extend(
     }
 
     return context;
-  }
+  },
   
+  mouseDown: function () {
+    console.log('I was clicked!');
+  },
+  
+  raphael: function () {
+    // TODO make this work right; see note below
+    var layer = this.get('layer');
+    
+    return layer.raphael;       // note this isn't guaranteed for group nodes we create unless we go to the trouble of caching a reference in the dom ourselves.
+  }.property()
   
 });

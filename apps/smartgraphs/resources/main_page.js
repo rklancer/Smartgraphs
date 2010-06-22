@@ -124,11 +124,11 @@ Smartgraphs.mainPage = SC.Page.design({
       exampleView: Smartgraphs.ExampleRaphaelView.design({
         seriesBinding: 'Smartgraphs.dataSeriesController.arrangedObjects',
         displayProperties: 'text'.w(),
-        
-        text: function () {
+
+        contentDidChange: function () {
           var series = this.get('series');
-          return (series && series.get('length') > 0) ? series.objectAt(0).get('y')+'' : null;
-        }.property('series')
+          this.set('text', (series && series.get('length') > 0) ? series.objectAt(0).get('y')+'' : null);
+        }.observes('*series.[]')
       })
     
     }),
