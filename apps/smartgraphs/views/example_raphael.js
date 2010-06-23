@@ -8,101 +8,51 @@
 
   (Document Your View Here)
 
-  @extends SC.View
+  @extends Smartgraphs.RaphaelView
 */
 
-Smartgraphs.ExampleRaphaelView = SC.View.extend(
+sc_require('views/raphael');
+
+Smartgraphs.ExampleRaphaelView = Smartgraphs.RaphaelView.extend(
 /** @scope Smartgraphs.ExampleRaphaelView.prototype */ {
 
-  displayProperties: ['len'],
+  displayProperties: ['rectWidth'],
   
-  createLayer: function () {
-    //console.log('ExampleRaphaelView createLayer()');
-    // TODO
-    sc_super();
+  renderCallback: function (raphael, width) {
+    // remember to return the Raphael object you created...
+    var rect = raphael.rect(50, 100, width, 25, 5).attr({ fill: '#aa0000', stroke: '#aa0000' });
+    if (width < 10) {
+      rect.hide();        // Raphael doesn't display rounded rectangles with zero widths correctly
+    }
+    return rect;
   },
-
-  updateLayer: function () {
-    // log the call, but note that we probably don't need to override this
-    //console.log('ExampleRaphaelView updateLayer()');
-    this.render(null, NO);
-  },
-  
-  prepareRaphaelContext: function (raphaelContext, firstTime) {
-    //console.log('ExampleRaphaelView prepareRaphaelContext()');       
-    
-    raphaelContext.id(this.get('layerId'));
-    this.render(raphaelContext, firstTime);
-  },
-
-  renderCallback: function (raphael, length) {
-    //console.log('ExampleRaphaelView renderCallback');
-    return raphael.rect(50, 100, length, 25, 5).attr({ fill: '#aa0000', stroke: '#aa0000' });      // remember to return the Raphael object you created...
-  },
-  
-  rectWidth: function () {
-    var len = this.get('len');
-    if (typeof len === 'string') len = parseInt(len, 10);
-    
-    return ((len/2000) * (this.getPath('parentView.frame').width - 100)) || 0;
-  }.property('len'),
   
   render: function (context, firstTime) {
-    
-    // note context is a RaphaelContext
-    
-    //console.log('ExampleRaphaelView render()');
-    //console.log('firstTime = ' + firstTime);
-    //console.log('len = ' + this.get('len'));    // 'text' is our example displayProperty
-
-    // this is how it would work...
+    // note context should always be a RaphaelContext
     
     if (firstTime) {
-      context.push(this, this.renderCallback, this.get('rectLength'));
+      context.callback(this, this.renderCallback, this.get('rectWidth'));
     }
     else {
-      // context may or may not be a RaphaelContext. It could be an SC.RenderContext focused on the Raphael node.
-      
-      var raphael = this.get('raphael');
-      if (raphael) {
-        raphael.attr( { width: this.get('rectWidth') } );
+      // TODO Actually the RaphaelContext should have the reference to the 'raphael' object and should have methods
+      // for finding and updating the raphael objects
+      var rect = this.get('raphael');
+      var width = this.get('rectWidth');
+      if (rect) {
+        if (width >= 10) {
+          rect.show().attr({ width: width });
+        }
+        else {
+          rect.hide();
+        } 
       }
     }
     
     // this is what the base class (SC.View) does. Important to remember for thinking about how child views work here.
     if (firstTime) this.renderChildViews(context, firstTime);
   },
-  
-  renderChildViews: function (context, firstTime) {
-    
-    // note context is a RaphaelContext    
-    
-    //console.log('ExampleRaphaelView renderChildViews()');
-    
-    var cv = this.get('childViews');
-    var view;
-    
-    for (var i=0, ii=cv.length; i<ii; ++i) {
-      view = cv[i];
-      if (!view) continue;
 
-      context = context.begin();
-      view.prepareRaphaelContext(context, firstTime);
-      context = context.end();
-    }
-
-    return context;
-  },
-  
   mouseDown: function () {
-    //console.log('I was clicked!');
-  },
-  
-  raphael: function () {
-    // TODO make this work right; see note below
-    var layer = this.get('layer');
-    
-    return layer.raphael;       // note this isn't guaranteed for group nodes we create unless we go to the trouble of caching a reference in the dom ourselves.
-  }.property()
-  
+    alert("Thank you for clicking.");
+  }
 });

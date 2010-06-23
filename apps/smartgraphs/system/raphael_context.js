@@ -16,7 +16,6 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
   isRaphaelContext: YES,
 
   init: function (prevContext) {
-
     this.prevObject = prevContext;
     this.isTopLevel = !prevContext;
     this.children = [];
@@ -24,17 +23,7 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
     return this;
   },
   
-  push: function (thisArg, callback) {
-    this._thisArg = thisArg;
-    this._callback = callback;
-    this._arguments = Array.prototype.slice.call(arguments, 2);           // store the arguments 2...n
-        
-    return this;
-  },
-
   begin: function() {
-    console.log('beginning raphael context');
-
     var ret = Smartgraphs.RaphaelContext(this);
     this.children.push(ret);
     
@@ -42,8 +31,19 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
   },
   
   end: function () {
-    console.log('ending raphael context');
     return this.prevObject || this;
+  },
+  
+  // For now the only way for render method to draw a graph is to pass a callback that calls the raphael methods itself. 
+  // Eventually I'll probably add methods to RaphaelContext with the same names as Raphael methods
+  // and that allow you to *find* and set attributes on pre-existing Raphael objects 
+  // (this would be useful during render when firstTime = NO)
+  callback: function (thisArg, callback) {
+    this._thisArg = thisArg;
+    this._callback = callback;
+    this._arguments = Array.prototype.slice.call(arguments, 2);           // store the arguments 2...n
+        
+    return this;
   },
 
   id: function (id) {
@@ -136,5 +136,4 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
       return raphaelObj.node;
     }
   }
-
 });

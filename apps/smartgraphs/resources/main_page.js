@@ -105,16 +105,18 @@ Smartgraphs.mainPage = SC.Page.design({
         width: 453,
         height: 283
       },
-      childViews: 'exampleView'.w(),
+      childViews: 'rectView'.w(),
       classNames: ['smartgraph-pane'],
       
-      exampleView: Smartgraphs.ExampleRaphaelView.design({
+      rectView: Smartgraphs.ExampleRaphaelView.design({
         selectionBinding: 'Smartgraphs.dataSeriesController.selection',
 
-        selectionDidChange: function () {
+        rectWidth: function () {
           var sel = this.get('selection');
-          this.set('len', (sel && sel.get('length') > 0) ? sel.toArray().objectAt(0).get('y')+'' : null);
-        }.observes('selection')
+          var len = (sel && sel.get('length') > 0) ? sel.toArray().objectAt(0).get('y')+'' : 0;
+          len = parseInt(len, 10);
+          return (len/2000) * (this.getPath('parentView.frame').width - 100);
+        }.property('selection')
       })
     
     }),
