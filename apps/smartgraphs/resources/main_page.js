@@ -15,20 +15,7 @@ Smartgraphs.mainPage = SC.Page.design({
       height: 1250
     },
 
-    childViews: 'dialogView graphView tableView imageView authoringModeButton authorScrollView'.w(), 
-    
-    imageView: SC.ImageView.design({
-      isVisibleBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.shouldShowImage'),
-      layout: {
-        left: 485,
-        top: 10,
-        width: 455,
-        height: 580
-      },
-      
-      //classNames: 'smartgraph-pane'.w()
-      value: sc_static('resources/walking_path.jpg')
-    }),
+    childViews: 'dialogView graphView tableView'.w(), 
     
     dialogView: SC.View.design({
       layout: {
