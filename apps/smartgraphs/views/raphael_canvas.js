@@ -33,14 +33,15 @@ Smartgraphs.RaphaelCanvasView = SC.View.extend(
     var view;
     
     var raphaelContext = this.raphaelContext();
+    raphaelContext.isTopLevel = YES;
     
     for (var i=0, ii=cv.length; i<ii; ++i) {
       view = cv[i];
       if (!view) continue;
 
-      raphaelContext.begin();
+      raphaelContext = raphaelContext.begin();
       view.prepareRaphaelContext(raphaelContext, firstTime);
-      raphaelContext.end();
+      raphaelContext = raphaelContext.end();
     }
     
     this._preparedRaphaelContext = raphaelContext;

@@ -14,46 +14,58 @@
 Smartgraphs.ExampleRaphaelView = SC.View.extend(
 /** @scope Smartgraphs.ExampleRaphaelView.prototype */ {
 
+  displayProperties: ['len'],
+  
   createLayer: function () {
-    console.log('ExampleRaphaelView createLayer()');
+    //console.log('ExampleRaphaelView createLayer()');
     // TODO
     sc_super();
   },
 
   updateLayer: function () {
     // log the call, but note that we probably don't need to override this
-    console.log('ExampleRaphaelView updateLayer()');
+    //console.log('ExampleRaphaelView updateLayer()');
     sc_super();
   },
   
   prepareRaphaelContext: function (raphaelContext, firstTime) {
-    console.log('ExampleRaphaelView prepareRaphaelContext()');       
+    //console.log('ExampleRaphaelView prepareRaphaelContext()');       
     
     raphaelContext.id(this.get('layerId'));
     this.render(raphaelContext, firstTime);
   },
 
-  renderCallback: function (raphael, text) {
-    console.log('ExampleRaphaelView renderCallback');
-    return raphael.text(100, 100, text);      // return the Raphael object you created...
+  renderCallback: function (raphael, length) {
+    //console.log('ExampleRaphaelView renderCallback');
+    return raphael.rect(50, 100, length, 25, 5).attr({ fill: '#aa0000', stroke: '#aa0000' });      // remember to return the Raphael object you created...
   },
+  
+  rectWidth: function () {
+    var len = this.get('len');
+    if (typeof len === 'string') len = parseInt(len, 10);
     
+    return ((len/2000) * (this.getPath('parentView.frame').width - 100)) || 0;
+  }.property('len'),
+  
   render: function (context, firstTime) {
-    console.log('ExampleRaphaelView render()');
-    console.log('firstTime = ' + firstTime);
-    console.log('text = ' + this.get('text'));    // 'text' is our example displayProperty
+    
+    // note context is a RaphaelContext
+    
+    //console.log('ExampleRaphaelView render()');
+    //console.log('firstTime = ' + firstTime);
+    //console.log('len = ' + this.get('len'));    // 'text' is our example displayProperty
 
     // this is how it would work...
     
     if (firstTime) {
-      context.push(this, this.renderCallback, this.get('text'));
+      context.push(this, this.renderCallback, this.get('rectLength'));
     }
     else {
       // context may or may not be a RaphaelContext. It could be an SC.RenderContext focused on the Raphael node.
       
       var raphael = this.get('raphael');
       if (raphael) {
-        raphael.attr({text: this.get('text') || ''});
+        raphael.attr( { width: this.get('rectWidth') } );
       }
     }
     
@@ -62,7 +74,10 @@ Smartgraphs.ExampleRaphaelView = SC.View.extend(
   },
   
   renderChildViews: function (context, firstTime) {
-    console.log('ExampleRaphaelView renderChildViews()');
+    
+    // note context is a RaphaelContext    
+    
+    //console.log('ExampleRaphaelView renderChildViews()');
     
     var cv = this.get('childViews');
     var view;
@@ -71,16 +86,16 @@ Smartgraphs.ExampleRaphaelView = SC.View.extend(
       view = cv[i];
       if (!view) continue;
 
-      context.begin();
+      context = context.begin();
       view.prepareRaphaelContext(context, firstTime);
-      context.end();
+      context = context.end();
     }
 
     return context;
   },
   
   mouseDown: function () {
-    console.log('I was clicked!');
+    //console.log('I was clicked!');
   },
   
   raphael: function () {

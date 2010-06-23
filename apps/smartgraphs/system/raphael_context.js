@@ -6,14 +6,21 @@
 
 //  Actually, we don't really use much of the SC.Builder functionality here, or at least we build it ourselves...
 
+// TODO this needs tests!
+
 Smartgraphs.RaphaelContext = SC.Builder.create({
   
+  // remember this isn't really an SC.Object. The semantics of this hash are different than if they were passed to SC.Extend
+  // Notably, defining 'children' in the hash would result in all RaphaelContexts sharing the same 'children' array
+   
   isRaphaelContext: YES,
 
-  children: [],
-  
   init: function (prevContext) {
+
     this.prevObject = prevContext;
+    this.isTopLevel = !prevContext;
+    this.children = [];
+
     return this;
   },
   
@@ -42,26 +49,45 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
   populateCanvas: function (raphael) {
     // given a raphael canvas, actually call the callbacks that will create dom nodes using raphael.
     // use our own special sauce here to insert grouping nodes with the appropriate layer ids whenever a view has child views
-    
-    var node;
+    var layerNode, 
+        childNode,
+        renderedNodes = [],
+        childNodes = [];
     
     if (this._callback) {
       var raphaelObj = this._callback.apply(this._thisArg, [raphael].concat(this._arguments));
-    
-      // raphaelObj may be a set... handle that case
-      
-      // call child context populateCanvas methods
-      // wrap all with a group element, if necessary
-      
-      // bless the right node with the id    
-      
-      
-      // just for now...
-      
-      raphaelObj.node.id = this._id;
+      renderedNodes = this.nodesForRaphaelObject(raphaelObj);
     }
     
-    return node;
+    for (var i = 0, ii = this.children.length; i < ii; i++) {
+      childNode = this.children[i].populateCanvas(raphael);
+      if (childNode) childNodes.push(childNode);
+    }
+
+    if (renderedNodes.length === 0 && childNodes.length === 0) {
+      return null;
+    }
+    if (renderedNodes.length === 1 && childNodes.length === 0) {
+      layerNode = renderedNodes[0];
+    }
+    else {
+      layerNode = this.wrap(renderedNodes, childNodes);
+    }
+
+    if (layerNode) layerNode.id = this._id;
+
+    return layerNode;
+  },
+  
+  wrap: function (nodes) {
+  },
+  
+  nodesForRaphaelObject: function (raphaelObj) {
+    //TODO
+    
+    //for now:
+    
+    return [raphaelObj.node];
   },
   
   id: function (id) {
