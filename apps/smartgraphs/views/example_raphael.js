@@ -25,7 +25,7 @@ Smartgraphs.ExampleRaphaelView = SC.View.extend(
   updateLayer: function () {
     // log the call, but note that we probably don't need to override this
     //console.log('ExampleRaphaelView updateLayer()');
-    sc_super();
+    this.render(null, NO);
   },
   
   prepareRaphaelContext: function (raphaelContext, firstTime) {
