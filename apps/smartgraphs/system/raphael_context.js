@@ -45,18 +45,24 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
     console.log('ending raphael context');
     return this.prevObject || this;
   },
+
+  id: function (id) {
+    this._id = id;
+    return this;
+  },
   
+  // TODO fix naming confusion between raphael 'paper' and raphael objects returned by shape methods
   populateCanvas: function (raphael) {
     // given a raphael canvas, actually call the callbacks that will create dom nodes using raphael.
     // use our own special sauce here to insert grouping nodes with the appropriate layer ids whenever a view has child views
-    var layerNode, 
+    var raphaelObjects = [],
         childNode,
-        renderedNodes = [],
-        childNodes = [];
+        childNodes = [],
+        layerNode;
     
     if (this._callback) {
       var raphaelObj = this._callback.apply(this._thisArg, [raphael].concat(this._arguments));
-      renderedNodes = this.nodesForRaphaelObject(raphaelObj);
+      raphaelObjects = this.flattenRaphaelSets(raphaelObj);
     }
     
     for (var i = 0, ii = this.children.length; i < ii; i++) {
@@ -64,34 +70,71 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
       if (childNode) childNodes.push(childNode);
     }
 
-    if (renderedNodes.length === 0 && childNodes.length === 0) {
+    if (raphaelObjects.length === 0 && childNodes.length === 0) {
       return null;
     }
-    if (renderedNodes.length === 1 && childNodes.length === 0) {
-      layerNode = renderedNodes[0];
+    if (raphaelObjects.length === 1 && childNodes.length === 0) {
+      layerNode = this.nodeForRaphaelObject(raphaelObjects[0]);
     }
-    else {
-      layerNode = this.wrap(renderedNodes, childNodes);
+    else if(!this.isTopLevel) {
+      // except for the top level context, each raphaeLContext corresponds to one view instance and must get a DOM node
+      layerNode = this.wrap( raphaelObjects.map( this.nodeForRaphaelObject ).concat(childNodes), raphael);
     }
 
-    if (layerNode) layerNode.id = this._id;
+    if (layerNode) {
+      layerNode.id = this._id;
+      if (!layerNode.raphael) layerNode.raphael = raphaelObj;
+    }
 
     return layerNode;
   },
   
-  wrap: function (nodes) {
+  wrap: function (nodes, raphael) {
+    // see http://smartgraph-demos.dev.concord.org/test-raphael-group.html
+    var wrapper = raphael.constructor.vml ?
+      document.createElement("group") :
+      document.createElementNS("http://www.w3.org/2000/svg", "g");
+    
+    var $wrapper = SC.$(wrapper);
+
+    // we know nodes.length > 0 or we wouldn't have been called.
+    $wrapper.insertBefore(SC.$(nodes[0]));
+      
+    for (var i=0, ii=nodes.length; i > ii; i++) {
+      $wrapper.append(nodes[i]);
+    }
+    
+    return $wrapper[0];
+  },
+   
+  flattenRaphaelSets: function (raphaelObj) {
+    // convert nested Raphael sets into a flattened list of Raphael shape objects
+
+    var objs = [];
+    if (raphaelObj.type === 'set') {
+      for (var i = 0, ii = raphaelObj.items.length; i < ii; i++) {
+        objs = objs.concat(this.flattenRaphaelSets(raphaelObj.items[i]));
+      }
+      return objs;
+    }
+    else {
+      return [raphaelObj];
+    }
   },
   
-  nodesForRaphaelObject: function (raphaelObj) {
-    //TODO
+  nodeForRaphaelObject: function (raphaelObj) {
+    var groupNode;
     
-    //for now:
+    if (!(raphaelObj.paper.constructor.vml || raphaelObj.paper.constructor.svg)) {
+      throw "RaphaelContext can't figure out from raphaelObj whether mode is SVG or VML";
+    }
     
-    return [raphaelObj.node];
-  },
-  
-  id: function (id) {
-    this._id = id;
-    return this;
+    if (raphaelObj.paper.constructor.vml && (groupNode = SC.$(raphaelObj.node).parent('group')[0])) {
+      return groupNode;
+    }
+    else {
+      return raphaelObj.node;
+    }
   }
+
 });
