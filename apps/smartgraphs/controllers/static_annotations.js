@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.staticAnnotationsController
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
