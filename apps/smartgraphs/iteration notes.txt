@@ -1,15 +1,29 @@
-6/22/10:
-
-populateCanvas method:
+6/23/2010:
 
 
-tree of pushed callbacks
+charlesjolley-: rklancer: the fastpath mixin addresses most of those bugs
+[12:55pm] charlesjolley-: eventually that will be the "normal" way
 
-begin
 
-  
- 
-end
+rklancer: i know alexiskander said there were a few bugs in the mixin he fixed but couldn't fix publicly yet...
+[12:56pm] alexiskander: rklancer: there are some bugs
+[12:56pm] alexiskander: but they are easy to fix
+[12:56pm] alexiskander: basically there are two parts: bugs in CollectionViewFastPath itself
+[12:56pm] alexiskander: which there is only one or two small ones
+[12:57pm] alexiskander: and then layerIdDidChange in SC.View
+[12:57pm] alexiskander: apparently I was out-of-it while I wrote it
+
+
+alexiskander: rklancer: layerId computed property I changed to take (key, value) arguments to allow setting as well as getting. It would set an internal _layerId property, and if said property were set, return it...
+[1:09pm] alexiskander: layerIdDidChange I refactored. The most important thing here is that it is vital that you check that the view being removed from the SC.View.views hash is "this"; something may have assigned another view that layer id before this view's layerId observer fires, and we don't want that other view to be removed from the hash
+[1:09pm] alexiskander: also, it appears that IE likes this.$().attr("id" more than layer.id = ;
+[1:10pm] alexiskander: rklancer: those are the view.js issues
+[1:10pm] rklancer: alexiskander that's a good place to start
+[1:10pm] alexiskander: CollecitonViewFastPath has a more minor change that probably won't cause you issues anyway
+[1:10pm] rklancer: I see the layerIdDidChange issue
+[1:11pm] rklancer: gtg shortly but copied to my notes
+[1:11pm] alexiskander: rklancer but basically, I made itemViewForContentIndex detect if the exampleView had changed; you (or most people) probably won't ever have trouble from this
+[1:12pm] rklancer: right I'm not expecting to change the exampleView on the fly
 
 
 
