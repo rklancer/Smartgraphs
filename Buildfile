@@ -1,7 +1,8 @@
 # ===========================================================================
-# Project:   SmartGraphs
-# Copyright: ©2010 My Company, Inc.
+# Project:   Smartgraphs
+# Copyright: ©2010 Concord Consortium
 # ===========================================================================
 
-# Add initial buildfile information here
-config :all, :required => [:sproutcore, :raphael, :cc]
+config :all, :required => [:sproutcore, 'g.raphael.plugins', :raphael, :cc]
+config 'g.raphael.plugins', :required => ['g.raphael']
+config 'g.raphael', :required => [:raphael]
