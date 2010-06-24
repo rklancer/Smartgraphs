@@ -14,14 +14,42 @@ Smartgraphs.RaphaelView = SC.View.extend(
 /** @scope Smartgraphs.RaphaelView.prototype */ {
 
   createLayer: function () {
-    //console.log('ExampleRaphaelView createLayer()');
-    // TODO
-    sc_super();
+    console.log('RaphaelView createLayer()');
+
+    if (this.get('layer')) return;          // move along, nothing to do here
+    
+    var raphaelContext = Smartgraphs.RaphaelContext();
+    raphaelContext.isTopLevel = NO;
+    
+    this.prepareRaphaelContext(raphaelContext, YES);
+    this.set('layer', raphaelContext.populateCanvas(this.get('raphaelCanvas')));
+
+    // now notify the view and its child views..
+    this._notifyDidCreateLayer();
   },
 
-  updateLayer: function () {
-    this.render(null, NO);  // eventually we'll create a RaphaelContext focused on the layer and provide update methods
+  raphaelCanvas: function () {
+    var pv;
+    
+    pv = this.get('parentView');
+    return pv.get('raphaelCanvas');     // recurse until you hit parent RaphaelCanvasView
+  }.property(),
+  
+  didCreateLayer: function () {
+    console.log('RaphaelView didCreateLayer()');
+    // Best to keep the raphael object tightly bound to the DOM node it's responsible for
+    this.set('raphael', this.get('layer').raphael);
   },
+  
+  updateLayer: function () {
+    // eventually we'll create a RaphaelContext focused on the layer and provide update methods
+    var dummyContext = {
+      begin: function () {},
+      end: function () {}
+    };
+    
+    this.render(dummyContext, NO);  
+  }, 
   
   prepareRaphaelContext: function (raphaelContext, firstTime) {
     raphaelContext.id(this.get('layerId'));
@@ -42,10 +70,5 @@ Smartgraphs.RaphaelView = SC.View.extend(
     }
 
     return context;
-  },
-  
-  raphael: function () {
-    var layer = this.get('layer');
-    return layer ? layer.raphael : null;
-  }.property()
+  }
 });
