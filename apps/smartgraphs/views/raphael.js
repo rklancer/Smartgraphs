@@ -14,8 +14,6 @@ Smartgraphs.RaphaelView = SC.View.extend(
 /** @scope Smartgraphs.RaphaelView.prototype */ {
 
   createLayer: function () {
-    console.log('RaphaelView createLayer()');
-
     if (this.get('layer')) return;          // move along, nothing to do here
     
     var raphaelContext = Smartgraphs.RaphaelContext();
@@ -27,6 +25,29 @@ Smartgraphs.RaphaelView = SC.View.extend(
     // now notify the view and its child views..
     this._notifyDidCreateLayer();
   },
+  
+  // Modified from SC.View's 'layer' getter/setter, which is problematic because it caches the found layer
+  // without an apparent mechanism to flush the cached value.
+  layer: function(key, value) {
+    if (value !== undefined) {
+      // setting layer
+      this._view_layer = value ;
+    } 
+    else {
+      // get layer
+      value = this._view_layer;           // use cached value only if explicitly set.
+      if (!value) {
+        var parent = this.get('parentView');
+        if (parent) parent = parent.get('layer');
+        if (parent) {
+          value = this.findLayerInParentLayer(parent);      // generally findLayerInParentLayer will be fast
+        }
+        parent = null ; // avoid memory leak
+      }
+    }
+    return value ;
+  }.property('isVisibleInWindow'),
+  
 
   raphaelCanvas: function () {
     var pv;
@@ -36,9 +57,10 @@ Smartgraphs.RaphaelView = SC.View.extend(
   }.property(),
   
   didCreateLayer: function () {
-    console.log('RaphaelView didCreateLayer()');
     // Best to keep the raphael object tightly bound to the DOM node it's responsible for
-    this.set('raphael', this.get('layer').raphael);
+    // debugger;
+    var layer = this.get('layer');
+    this.set('raphael', layer.raphael);
   },
   
   updateLayer: function () {

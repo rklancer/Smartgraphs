@@ -15,7 +15,7 @@ Smartgraphs.mainPage = SC.Page.design({
       height: 1250
     },
 
-    childViews: 'dialogView graphView tableView'.w(), 
+    childViews: 'dialogView replaceLayerButton graphView tableView'.w(), 
     
     dialogView: SC.View.design({
       layout: {
@@ -97,6 +97,17 @@ Smartgraphs.mainPage = SC.Page.design({
       })
     }),
     
+    replaceLayerButton: SC.ButtonView.design({
+      layout: {
+        left: 700,
+        top: 400,
+        height: 24,
+        width: 120
+      },
+      title: 'Replace Layer',
+      target: 'Smartgraphs.mainPage.mainPane.graphView.rectView',
+      action: 'replaceLayer'
+    }),
     
     graphView: Smartgraphs.RaphaelCanvasView.design({
       layout: {
@@ -110,15 +121,25 @@ Smartgraphs.mainPage = SC.Page.design({
       
       rectView: Smartgraphs.ExampleRaphaelView.design({
         selectionBinding: 'Smartgraphs.dataSeriesController.selection',
+        childViews: ['textView'],
 
         rectWidth: function () {
           var sel = this.get('selection');
           var len = (sel && sel.get('length') > 0) ? sel.toArray().objectAt(0).get('y')+'' : 0;
           len = parseInt(len, 10);
           return (len/2000) * (this.getPath('parentView.frame').width - 100);
-        }.property('selection')
+        }.property('selection'),
+        
+        textView: Smartgraphs.RaphaelTextView.design({
+          rectWidthBinding: '.parentView.rectWidth',
+          text: function () {
+            return Math.round(this.get('rectWidth'));
+          }.property('rectWidth'),
+          
+          x: 75,
+          y: 50          // obviously we'll need to deal with layout and frames and the like
+        })
       })
-    
     }),
     
     tableView: SC.View.design({

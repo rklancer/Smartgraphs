@@ -55,6 +55,7 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
   populateCanvas: function (raphael) {
     // given a raphael canvas, actually call the callbacks that will create dom nodes using raphael.
     // use our own special sauce here to insert grouping nodes with the appropriate layer ids whenever a view has child views
+    
     var raphaelObjects = [],
         childNode,
         childNodes = [],
@@ -83,13 +84,16 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
 
     if (layerNode) {
       layerNode.id = this._id;
-      if (!layerNode.raphael) layerNode.raphael = raphaelObj;
+      if (!layerNode.raphael) {
+        layerNode.raphael = raphaelObj;
+      }
     }
 
     return layerNode;
   },
   
   wrap: function (nodes, raphael) {
+
     // see http://smartgraph-demos.dev.concord.org/test-raphael-group.html
     var wrapper = raphael.constructor.vml ?
       document.createElement("group") :
@@ -99,11 +103,10 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
 
     // we know nodes.length > 0 or we wouldn't have been called.
     $wrapper.insertBefore(SC.$(nodes[0]));
-      
-    for (var i=0, ii=nodes.length; i > ii; i++) {
+
+    for (var i=0, ii=nodes.length; i < ii; i++) {
       $wrapper.append(nodes[i]);
     }
-    
     return $wrapper[0];
   },
    

@@ -15,16 +15,42 @@ sc_require('system/raphael_context');
 
 Smartgraphs.RaphaelCanvasView = SC.View.extend(
 /** @scope Smartgraphs.RaphaelCanvasView.prototype */ {
+
+
+  // override the base class notification mechanism, which wants to notify all our descendant views that their layer
+  // was created, at the moment our layer is created.
+  // That works for normal SC.Views but *our* child view layers aren't created until after we call populateCanvas()
+  
+  _notifyDidCreateLayer: function () {
+    this.didCreateLayer();
+    
+    var mixins = this.didCreateLayerMixin;
+    if (mixins) {
+      for (var i=0, ii=mixins.length; i<ii; ++i) {
+        mixins[i].call(this);
+      }
+    }
+  },
+  
+  // notify our children (and, recursively, their children) that their layers have been created.
+  _notifyDidCreateChildViewLayers: function () {
+    var cv = this.get('childViews');
+    for (var i=0, ii=cv.length; i<ii; ++i) {
+      if (!cv[i]) continue;
+      cv[i]._notifyDidCreateLayer();    // it s/b ok for our children to use the normal SC.View notification mechanism
+    }
+  },
   
   didCreateLayer: function () {
-    console.log('RaphaelCanvasView didCreateLayer');
-
     var layer = this.get('layer');
     var frame = this.get('frame');
     var r = Raphael(layer, frame.width, frame.height);
     this.set('raphaelCanvas', r);     // we really need to avoid raphaelCanvas vs. raphaelObject confusion
     
-    if (this._preparedRaphaelContext) this._preparedRaphaelContext.populateCanvas(r);
+    if (this._preparedRaphaelContext) {
+      this._preparedRaphaelContext.populateCanvas(r);
+      this._notifyDidCreateChildViewLayers();
+    }
   },
   
   // informs the SC.View that child views' layers should be placed in the contained svg/vml node rather than in this 
@@ -34,8 +60,6 @@ Smartgraphs.RaphaelCanvasView = SC.View.extend(
   }.property(),
   
   renderChildViews: function (context, firstTime) {
-    console.log('RaphaelCanvasView renderChildViews()');
-    
     var cv = this.get('childViews');
     var view;
     

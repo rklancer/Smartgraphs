@@ -12,6 +12,7 @@
 */
 
 sc_require('views/raphael');
+sc_require('views/raphael_text');
 
 Smartgraphs.ExampleRaphaelView = Smartgraphs.RaphaelView.extend(
 /** @scope Smartgraphs.ExampleRaphaelView.prototype */ {
@@ -32,6 +33,7 @@ Smartgraphs.ExampleRaphaelView = Smartgraphs.RaphaelView.extend(
     
     if (firstTime) {
       context.callback(this, this.renderCallback, this.get('rectWidth'));
+      this.renderChildViews(context, firstTime);      // don't forget to render child views
     }
     else {
       // TODO Actually the RaphaelContext should have the reference to the 'raphael' object and should have methods
@@ -47,9 +49,6 @@ Smartgraphs.ExampleRaphaelView = Smartgraphs.RaphaelView.extend(
         } 
       }
     }
-    
-    // this is what the base class (SC.View) does. Important to remember for thinking about how child views work here.
-    if (firstTime) this.renderChildViews(context, firstTime);
   },
 
   mouseDown: function () {
