@@ -132,7 +132,7 @@ Smartgraphs.RaphaelContext = SC.Builder.create({
       throw "RaphaelContext can't figure out from raphaelObj whether mode is SVG or VML";
     }
     
-    if (raphaelObj.paper.constructor.vml && (groupNode = SC.$(raphaelObj.node).parent('group')[0])) {
+    if (raphaelObj.paper.constructor.vml && (groupNode = raphaelObj.Group)) {
       return groupNode;
     }
     else {
