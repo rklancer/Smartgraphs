@@ -19,6 +19,7 @@ Smartgraphs.RaphaelView = SC.View.extend(
     var raphaelContext = Smartgraphs.RaphaelContext();
     raphaelContext.isTopLevel = NO;
     
+    console.log('RaphaelView createLayer');
     this.prepareRaphaelContext(raphaelContext, YES);
     this.set('layer', raphaelContext.populateCanvas(this.get('raphaelCanvas')));
 

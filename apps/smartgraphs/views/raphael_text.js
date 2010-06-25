@@ -20,8 +20,8 @@ Smartgraphs.RaphaelTextView = Smartgraphs.RaphaelView.extend(
     },
     
     render: function (context, firstTime) {
-      console.log('RaphaelTextView rendering');
       if (firstTime) {
+        console.log('RaphaelTextView firstTime=YES render');         
         context.callback(this, this.renderCallback, this.get('x'), this.get('y'), this.get('text'));
       }
       else { 

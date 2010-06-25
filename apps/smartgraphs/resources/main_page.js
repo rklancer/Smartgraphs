@@ -15,7 +15,7 @@ Smartgraphs.mainPage = SC.Page.design({
       height: 1250
     },
 
-    childViews: 'dialogView replaceLayerButton graphView tableView'.w(), 
+    childViews: 'dialogView replaceParentLayerButton replaceChildLayerButton graphView tableView'.w(), 
     
     dialogView: SC.View.design({
       layout: {
@@ -97,15 +97,27 @@ Smartgraphs.mainPage = SC.Page.design({
       })
     }),
     
-    replaceLayerButton: SC.ButtonView.design({
+    replaceParentLayerButton: SC.ButtonView.design({
       layout: {
         left: 700,
         top: 400,
         height: 24,
-        width: 120
+        width: 180
       },
-      title: 'Replace Layer',
+      title: 'Replace Parent Layer',
       target: 'Smartgraphs.mainPage.mainPane.graphView.rectView',
+      action: 'replaceLayer'
+    }),
+    
+    replaceChildLayerButton: SC.ButtonView.design({
+      layout: {
+        left: 700,
+        top: 450,
+        height: 24,
+        width: 180
+      },
+      title: 'Replace Child Layer',
+      target: 'Smartgraphs.mainPage.mainPane.graphView.rectView.textView',
       action: 'replaceLayer'
     }),
     
@@ -135,7 +147,7 @@ Smartgraphs.mainPage = SC.Page.design({
           text: function () {
             return Math.round(this.get('rectWidth'));
           }.property('rectWidth'),
-          
+
           x: 75,
           y: 50          // obviously we'll need to deal with layout and frames and the like
         })

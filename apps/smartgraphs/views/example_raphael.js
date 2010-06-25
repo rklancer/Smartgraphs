@@ -32,6 +32,7 @@ Smartgraphs.ExampleRaphaelView = Smartgraphs.RaphaelView.extend(
     // note context should always be a RaphaelContext
     
     if (firstTime) {
+      console.log('ExampleRaphaelView firstTime=YES render');
       context.callback(this, this.renderCallback, this.get('rectWidth'));
       this.renderChildViews(context, firstTime);      // don't forget to render child views
     }
