@@ -7,9 +7,18 @@ To install:
 
 git clone git://github.com/rklancer/Smartgraphs.git
 cd Smartgraphs
+rvm gemset import
 git submodule update --init
 cd abbot
 rake init
-cd ..
-abbot/bin/sc-server
+cd frameworks/sproutcore
+git remote add rklancer git://github.com/rklancer/sproutcore.git
+git checkout buildfile-fix
+cd ../../../
+abbot/bin/sc-server -v
+
 ...then visit localhost:4020/smartgraphs
+
+to open TestRunner visit http://localhost:4020/sproutcore/tests
+to see all tests visit http://localhost:4020/static/smartgraphs/en/current/tests.html
+  
