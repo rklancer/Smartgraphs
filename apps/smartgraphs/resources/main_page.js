@@ -325,7 +325,9 @@ Smartgraphs.mainPage = SC.Page.design({
           for (var i = 0; i < numPoints; i++) {
             var yVal = data[i];      
             if (this._nsamples % everyNth === 0) {
+              SC.RunLoop.begin();
               var record = Smartgraphs.dataSeriesController.addDataPoint(this._nsamples*dt, yVal);
+              SC.RunLoop.end();
               if (Smartgraphs.dataSeriesController.get('length') >= maxPoints) {
                 this.getPath('parentView.stopButton').action();
                 return;

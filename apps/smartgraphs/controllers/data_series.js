@@ -23,11 +23,9 @@ Smartgraphs.dataSeriesController = SC.ArrayController.create(
   }.property('series').cacheable(),
   
   addDataPoint: function (x, y) {
-    // for simplicity's sake, put this in a runloop for now...
-    SC.RunLoop.begin();
-    Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {x: x, y: y, series: this.getPath('series.guid')});
-    Smartgraphs.store.commitRecords();
-    SC.RunLoop.end();
+    var newPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {x: x, y: y});
+    newPoint.set('series', this.get('series'));
+    return newPoint;
   },
   
   allowsMultipleSelection: NO
