@@ -2,19 +2,19 @@
 // Project:   Smartgraphs.ExampleRaphaelView
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
-/*globals Smartgraphs */
+/*globals Smartgraphs RaphaelViews */
 
 /** @class
 
   (Document Your View Here)
 
-  @extends Smartgraphs.RaphaelView
+  @extends RaphaelViews.RaphaelView
 */
 
 sc_require('views/raphael');
 sc_require('views/raphael_text');
 
-Smartgraphs.ExampleRaphaelView = Smartgraphs.RaphaelView.extend(
+Smartgraphs.ExampleRaphaelView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.ExampleRaphaelView.prototype */ {
 
   displayProperties: ['rectWidth'],

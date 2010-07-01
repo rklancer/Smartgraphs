@@ -2,15 +2,15 @@
 // Project:   Smartgraphs.RaphaelTextView
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
-/*globals Smartgraphs */
+/*globals RaphaelViews */
 
 /** @class
 
   (Document Your View Here)
 
-  @extends Smartgraphs.RaphaelView
+  @extends RaphaelViews.RaphaelView
 */
-Smartgraphs.RaphaelTextView = Smartgraphs.RaphaelView.extend(
+Smartgraphs.RaphaelTextView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.RaphaelTextView.prototype */ {
   
     displayProperties: ['text'],

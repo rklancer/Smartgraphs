@@ -2,7 +2,7 @@
 // Project:   Smartgraphs - mainPage
 // Copyright: ©2010 Concord Consortium
 // ==========================================================================
-/*globals Smartgraphs CC*/
+/*globals Smartgraphs RaphaelViews CC*/
 
 sc_require('main');
 
@@ -121,7 +121,7 @@ Smartgraphs.mainPage = SC.Page.design({
       action: 'replaceLayer'
     }),
     
-    graphView: Smartgraphs.RaphaelCanvasView.design({
+    graphView: RaphaelViews.RaphaelCanvasView.design({
       layout: {
         left: 485,
         top: 10,
