@@ -7,3 +7,6 @@
 [submodule "capybara-testrunner"]
 	path = capybara-testrunner
 	url = git://github.com/rklancer/capybara-testrunner.git
+[submodule "frameworks/raphael_views"]
+	path = frameworks/raphael_views
+	url = git@github.com:rklancer/RaphaelViews.git
