@@ -7,7 +7,12 @@ To install:
 
 git clone git://github.com/rklancer/Smartgraphs.git
 cd Smartgraphs
+rvm gemset create Smartgraphs
+rvm gemset use Smartgraphs
+# import gems listed in the default.gems file
 rvm gemset import
+# Now you can easily use rvm to switch to a version of ruby and the specific gems needed for raclette with this command:
+#  rvm use <Ruby version number>@Smartgraphs
 git submodule update --init
 cd abbot
 rake init
