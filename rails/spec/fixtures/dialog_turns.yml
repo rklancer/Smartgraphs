@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  guid: MyString
+  beforeText: MyText
+  responseTemplate_id: MyString
+  responseVerifier_id: MyString
+  staticAnnotations_id: 1
+  nextTurnButtonTitle: MyString
+  nextTurnForNominalResponse_id: MyString
+  nextTurnForIncorrectResponse_id: MyString
+  isLastTurn: false
+  shouldAutoAdvance: false
+
+two:
+  guid: MyString
+  beforeText: MyText
+  responseTemplate_id: MyString
+  responseVerifier_id: MyString
+  staticAnnotations_id: 1
+  nextTurnButtonTitle: MyString
+  nextTurnForNominalResponse_id: MyString
+  nextTurnForIncorrectResponse_id: MyString
+  isLastTurn: false
+  shouldAutoAdvance: false

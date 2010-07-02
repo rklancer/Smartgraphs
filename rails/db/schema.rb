@@ -9,7 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100702173922) do
+ActiveRecord::Schema.define(:version => 20100702220856) do
+
+  create_table "dialog_turns", :force => true do |t|
+    t.string   "guid"
+    t.text     "beforeText"
+    t.string   "responseTemplate_id"
+    t.string   "responseVerifier_id"
+    t.integer  "staticAnnotations_id"
+    t.string   "nextTurnButtonTitle"
+    t.string   "nextTurnForNominalResponse_id"
+    t.string   "nextTurnForIncorrectResponse_id"
+    t.boolean  "isLastTurn"
+    t.boolean  "shouldAutoAdvance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dialog_turns_static_annotations", :id => false, :force => true do |t|
+    t.integer "dialog_turn_id"
+    t.integer "static_annotation_id"
+  end
 
   create_table "guide_page_sequences", :force => true do |t|
     t.string   "guid"
@@ -27,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20100702173922) do
     t.string   "axes_id"
     t.boolean  "sensorAppletShouldBeEnabled"
     t.boolean  "shoulDdShowImage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "static_annotations", :force => true do |t|
+    t.string   "guid"
+    t.string   "type"
+    t.string   "points_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

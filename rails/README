@@ -3,6 +3,10 @@ script/generate rspec_scaffold GuidePageSequence guid:string
 script/generate rspec_scaffold GuidePage guide_page_sequence_id:string index:integer title:string introText:text firstDialogTurn_id:string dataSeries_id:string axes_id:string sensorAppletShouldBeEnabled:boolean shoulDdShowImage:boolean
 rake db:create
 rake db:migrate
+script/generate rspec_scaffold DialogTurn guid:string beforeText:text responseTemplate_id:string responseVerifier_id:string staticAnnotations_id:integer nextTurnButtonTitle:string nextTurnForNominalResponse_id:string nextTurnForIncorrectResponse_id:string isLastTurn:boolean shouldAutoAdvance:boolean
+script/generate rspec_scaffold staticAnnotations guid:string type:string points_id:string
+script/generate migration CreateDialogTurnStaticAnnotationJoinTable
+rake db:migrate
 
 == Welcome to Rails
 

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  guid: MyString
+  type: MyString
+  points_id: MyString
+
+two:
+  guid: MyString
+  type: MyString
+  points_id: MyString

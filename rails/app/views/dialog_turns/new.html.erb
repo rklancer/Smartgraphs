@@ -1,0 +1,51 @@
+<h1>New dialog_turn</h1>
+
+<% form_for(@dialog_turn) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :guid %><br />
+    <%= f.text_field :guid %>
+  </p>
+  <p>
+    <%= f.label :beforeText %><br />
+    <%= f.text_area :beforeText %>
+  </p>
+  <p>
+    <%= f.label :responseTemplate_id %><br />
+    <%= f.text_field :responseTemplate_id %>
+  </p>
+  <p>
+    <%= f.label :responseVerifier_id %><br />
+    <%= f.text_field :responseVerifier_id %>
+  </p>
+  <p>
+    <%= f.label :staticAnnotations_id %><br />
+    <%= f.text_field :staticAnnotations_id %>
+  </p>
+  <p>
+    <%= f.label :nextTurnButtonTitle %><br />
+    <%= f.text_field :nextTurnButtonTitle %>
+  </p>
+  <p>
+    <%= f.label :nextTurnForNominalResponse_id %><br />
+    <%= f.text_field :nextTurnForNominalResponse_id %>
+  </p>
+  <p>
+    <%= f.label :nextTurnForIncorrectResponse_id %><br />
+    <%= f.text_field :nextTurnForIncorrectResponse_id %>
+  </p>
+  <p>
+    <%= f.label :isLastTurn %><br />
+    <%= f.check_box :isLastTurn %>
+  </p>
+  <p>
+    <%= f.label :shouldAutoAdvance %><br />
+    <%= f.check_box :shouldAutoAdvance %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', dialog_turns_path %>

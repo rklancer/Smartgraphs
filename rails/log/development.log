@@ -105,3 +105,59 @@ Migrating to CreateGuidePages (20100702173922)
 [0m
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("guide_page_sequences")[0m
   [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("guide_pages")[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateGuidePageSequences (20100702173842)
+Migrating to CreateGuidePages (20100702173922)
+Migrating to CreateDialogTurns (20100702220841)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "dialog_turns" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "guid" varchar(255), "beforeText" text, "responseTemplate_id" varchar(255), "responseVerifier_id" varchar(255), "staticAnnotations_id" integer, "nextTurnButtonTitle" varchar(255), "nextTurnForNominalResponse_id" varchar(255), "nextTurnForIncorrectResponse_id" varchar(255), "isLastTurn" boolean, "shouldAutoAdvance" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100702220841')[0m
+Migrating to CreateStaticAnnotations (20100702220848)
+  [4;35;1mSQL (16.1ms)[0m   [0mCREATE TABLE "static_annotations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "guid" varchar(255), "type" varchar(255), "points_id" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100702220848')[0m
+Migrating to CreateDialogTurnStaticAnnotationJoinTable (20100702220856)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "dialog_turns_static_annotations" ("dialog_turn_id" integer, "static_annotation_id" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100702220856')[0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("dialog_turns")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("dialog_turns_static_annotations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("guide_page_sequences")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("guide_pages")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("static_annotations")[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateGuidePageSequences (20100702173842)
+Migrating to CreateGuidePages (20100702173922)
+Migrating to CreateDialogTurns (20100702220841)
+Migrating to CreateStaticAnnotations (20100702220848)
+Migrating to CreateDialogTurnStaticAnnotationJoinTable (20100702220856)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("dialog_turns")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("dialog_turns_static_annotations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("guide_page_sequences")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("guide_pages")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("static_annotations")[0m

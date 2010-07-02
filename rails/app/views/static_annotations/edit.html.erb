@@ -1,0 +1,24 @@
+<h1>Editing static_annotations</h1>
+
+<% form_for(@static_annotations) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :guid %><br />
+    <%= f.text_field :guid %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.label :points_id %><br />
+    <%= f.text_field :points_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @static_annotations %> |
+<%= link_to 'Back', static_annotations_path %>
