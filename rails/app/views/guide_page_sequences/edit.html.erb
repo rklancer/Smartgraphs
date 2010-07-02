@@ -1,0 +1,16 @@
+<h1>Editing guide_page_sequence</h1>
+
+<% form_for(@guide_page_sequence) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :guid %><br />
+    <%= f.text_field :guid %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @guide_page_sequence %> |
+<%= link_to 'Back', guide_page_sequences_path %>

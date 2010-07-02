@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  guide_page_sequence_id: MyString
+  index: 1
+  title: MyString
+  introText: MyText
+  firstDialogTurn_id: MyString
+  dataSeries_id: MyString
+  axes_id: MyString
+  sensorAppletShouldBeEnabled: false
+  shoulDdShowImage: false
+
+two:
+  guide_page_sequence_id: MyString
+  index: 1
+  title: MyString
+  introText: MyText
+  firstDialogTurn_id: MyString
+  dataSeries_id: MyString
+  axes_id: MyString
+  sensorAppletShouldBeEnabled: false
+  shoulDdShowImage: false

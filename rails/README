@@ -1,3 +1,9 @@
+in rails dir:
+script/generate rspec_scaffold GuidePageSequence guid:string
+script/generate rspec_scaffold GuidePage guide_page_sequence_id:string index:integer title:string introText:text firstDialogTurn_id:string dataSeries_id:string axes_id:string sensorAppletShouldBeEnabled:boolean shoulDdShowImage:boolean
+rake db:create
+rake db:migrate
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create 

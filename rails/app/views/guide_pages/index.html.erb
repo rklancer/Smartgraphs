@@ -1,0 +1,36 @@
+<h1>Listing guide_pages</h1>
+
+<table>
+  <tr>
+    <th>Guide page sequence</th>
+    <th>Index</th>
+    <th>Title</th>
+    <th>Introtext</th>
+    <th>Firstdialogturn</th>
+    <th>Dataseries</th>
+    <th>Axes</th>
+    <th>Sensorappletshouldbeenabled</th>
+    <th>Shoulddshowimage</th>
+  </tr>
+
+<% @guide_pages.each do |guide_page| %>
+  <tr>
+    <td><%=h guide_page.guide_page_sequence_id %></td>
+    <td><%=h guide_page.index %></td>
+    <td><%=h guide_page.title %></td>
+    <td><%=h guide_page.introText %></td>
+    <td><%=h guide_page.firstDialogTurn_id %></td>
+    <td><%=h guide_page.dataSeries_id %></td>
+    <td><%=h guide_page.axes_id %></td>
+    <td><%=h guide_page.sensorAppletShouldBeEnabled %></td>
+    <td><%=h guide_page.shoulDdShowImage %></td>
+    <td><%= link_to 'Show', guide_page %></td>
+    <td><%= link_to 'Edit', edit_guide_page_path(guide_page) %></td>
+    <td><%= link_to 'Destroy', guide_page, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New guide_page', new_guide_page_path %>
