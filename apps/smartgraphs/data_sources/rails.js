@@ -17,6 +17,7 @@
 sc_require('models/guide_page_sequence');
 sc_require('models/guide_page');
 Smartgraphs.GUIDEPAGESEQUENCE_QUERY = SC.Query.local(Smartgraphs.GuidePageSequence);
+Smartgraphs.GUIDEPAGE_QUERY = SC.Query.local(Smartgraphs.GuidePage);
 
 Smartgraphs.RailsDataSource = SC.DataSource.extend(
 /** @scope Smartgraphs.RailsDataSource.prototype */
@@ -42,23 +43,29 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   // QUERY SUPPORT
   //
   fetch: function(store, query) {
-    console.group('Smartgraphs.RailsDataSource.fetch()');
+    console.log('Smartgraphs.RailsDataSource.fetch()');
+    console.log('query:', query);
 
     if (query === Smartgraphs.GUIDEPAGESEQUENCE_QUERY) {
       console.log('query === Smartgraphs.GUIDEPAGESEQUENCE_QUERY', query);
       this._jsonGet('/rails/guide_page_sequences', 'didFetchGuidePageSequences', store, query);
-      console.groupEnd();
+      console.log("group end");
+
+      return YES; // return YES since you handled the query
+    } else if (query === Smartgraphs.GUIDEPAGE_QUERY) {
+      console.log('query === Smartgraphs.GUIDEPAGE_QUERY', query);
+      this._jsonGet('/rails/guide_pages', 'didFetchGuidePageSequences', store, query);
+      console.log("group end");
 
       return YES; // return YES since you handled the query
     }
 
-    console.log('query !== Smartgraphs.GUIDEPAGESEQUENCE_QUERY', query);
-    console.groupEnd();
+    console.log("group end");
     return NO; // return NO since you did NOT handle the query
   },
 
   didFetchGuidePageSequences: function(response, store, query) {
-    console.group('Smartgraphs.RailsDataSource.didFetchGuidePageSequences()');
+    console.log('Smartgraphs.RailsDataSource.didFetchGuidePageSequences()');
 
     console.log('response.status = %d', response.get('status'));
     console.log("response: ", response);
@@ -68,16 +75,16 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
       var content = response.get('body').content;
       console.log('response.body.content: ', content);
 
-      console.group('store.loadRecords(Smartgraphs.GuidePageSequence, content)');
+      console.log('store.loadRecords(Smartgraphs.GuidePageSequence, content)');
       store.loadRecords(Smartgraphs.GuidePageSequence, content);
-      console.groupEnd();
+      console.log("group end");
 
-      console.group("store.dataSourceDidFetchQuery(query)");
+      console.log("store.dataSourceDidFetchQuery(query)");
       store.dataSourceDidFetchQuery(query);
-      console.groupEnd();
+      console.log("group end");
     } else store.dataSourceDidErrorQuery(query, response);
 
-    console.groupEnd();
+    console.log("group end");
   },
 
   // ..........................................................
@@ -94,7 +101,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   },
   
   didRetrieveRecord: function(response, store, storeKey) {
-    console.group('Smartgraphs.RailsDataSource.didRetrieveRecord()');
+    console.log('Smartgraphs.RailsDataSource.didRetrieveRecord()');
 
     console.log('response.status = %d', response.get('status'));
     console.log("response: ", response);
@@ -104,12 +111,12 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
       var content = response.get('body').content;
       console.log('response.body.content: ', content);
 
-      console.group('store.dataSourceDidComplete(storeKey, content)');
+      console.log('store.dataSourceDidComplete(storeKey, content)');
       store.dataSourceDidComplete(storeKey, content);
-      console.groupEnd();
+      console.log("group end");
     } else store.dataSourceDidError(storeKey);
 
-    console.groupEnd();
+    console.log("group end");
   },
 
   createRecord: function(store, storeKey) {
@@ -119,14 +126,14 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     modelHash[modelName] = store.readDataHash(storeKey);
     delete modelHash[modelName]['guid'];    // remove guid property before sending to rails
 
-    console.group('Smartgraphs.RailsDataSource.createRecord()');
+    console.log('Smartgraphs.RailsDataSource.createRecord()');
     SC.Request.postUrl('/rails/' + recordType.modelsName).header({
                     'Accept': 'application/json'
                 }).json()
 
           .notify(this, this.didCreateRecord, store, storeKey)
           .send(modelHash);
-    console.groupEnd();
+    console.log("group end");
     return YES;
   },
   

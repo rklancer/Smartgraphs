@@ -6,7 +6,7 @@
 
 Smartgraphs.main = function main() {
 
-    console.group('Smartgraphs.main()');
+    console.log('Smartgraphs.main()');
 
     // Step 1: Instantiate Your Views
     // The default code here will make the mainPane for your application visible
@@ -20,7 +20,7 @@ Smartgraphs.main = function main() {
     //  var theSequence = Smartgraphs.store.find(Smartgraphs.GuidePageSequence, 'sequence-1');
     //  console.log("theSequence:");
     //  console.log(theSequence);
-    var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGESEQUENCE_QUERY);
+    var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGE_QUERY);
 
     console.log('guide_page_sequences: ', guide_page_sequences);
     console.log('guide_page_sequences.toString(): ', guide_page_sequences.toString());
@@ -32,9 +32,9 @@ Smartgraphs.main = function main() {
     // the 'content' property of activityController and the guide_page_sequences SC.RecordArray
     // var firstActivity = guide_page_sequences.get('length') ? guide_page_sequences.objectAt(0) : null;   // popObject() returns LAST Activity
     // console.log('firstActivity:', firstActivity);
-    // console.group("Smartgraphs.activityController.set('content',firstActivity)");
+    // console.log("Smartgraphs.activityController.set('content',firstActivity)");
     // Smartgraphs.activityController.set('content',firstActivity);
-    // console.groupEnd();     // controller.set('content', ...)
+    // console.log("group end");     // controller.set('content', ...)
 
     // the following works as desired because the guide_page_sequences RecordArray is updated by the data store when the 
     // data source calls Smartgraphs.store.loadRecords() in the XMLHttpRequest callback. The guide_page_sequencesController observes
@@ -42,7 +42,7 @@ Smartgraphs.main = function main() {
     //  Smartgraphs.guidePageSequenceController.set('sequence', theSequence);
     Smartgraphs.guidePageSequenceController.set('sequence', guide_page_sequences.objectAt(0));
 
-    console.groupEnd(); // main()
+    console.log("group end"); // main()
 };
 
 function main() {

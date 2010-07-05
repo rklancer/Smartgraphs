@@ -7,6 +7,8 @@ class DialogTurnsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @dialog_turns }
+      dialog_turns = @dialog_turns.map {|dialog_turn| sproutcore_json(dialog_turn) }
+      format.json { render :json => { :content => dialog_turns } }
     end
   end
 
@@ -18,6 +20,8 @@ class DialogTurnsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @dialog_turn }
+      dialog_turn = sproutcore_json(@dialog_turn)
+      format.json { render :json => { :content => dialog_turn } }
     end
   end
 

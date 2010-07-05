@@ -356,3 +356,869 @@ Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-05 09:42:10) [G
 Rendering template within layouts/dialog_turns
 Rendering dialog_turns/index
 Completed in 15ms (View: 7, DB: 1) | 200 OK [http://localhost/dialog_turns]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:09:18) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_page_sequences.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:09:19) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_page_sequences.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:09:19) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_page_sequences.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:09:19) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:09:19) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_page_sequences.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePageSequencesController#show (for 127.0.0.1 at 2010-07-05 10:10:03) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePageSequence Load (28.8ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/show
+Completed in 151ms (View: 71, DB: 29) | 200 OK [http://localhost/guide_page_sequences/1]
+
+
+Processing GuidePageSequencesController#show to json (for 127.0.0.1 at 2010-07-05 10:10:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePageSequence Load (0.2ms)[0m   [0mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+
+NoMethodError (undefined method `activity_path' for #<GuidePageSequencesController:0x0000010253dec8>):
+  app/controllers/guide_page_sequences_controller.rb:26:in `block (2 levels) in show'
+  app/controllers/guide_page_sequences_controller.rb:20:in `show'
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (123.3ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-05 10:10:31) [GET]
+  [4;35;1mGuidePageSequence Load (0.5ms)[0m   [0mSELECT * FROM "guide_page_sequences" [0m
+  [4;36;1mGuidePage Load (2.3ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 29ms (View: 12, DB: 3) | 200 OK [http://localhost/guide_page_sequences]
+
+
+Processing GuidePageSequencesController#index to json (for 127.0.0.1 at 2010-07-05 10:10:37) [GET]
+  [4;35;1mGuidePageSequence Load (0.5ms)[0m   [0mSELECT * FROM "guide_page_sequences" [0m
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+
+NameError (undefined local variable or method `guide_page_sequences' for #<GuidePageSequencesController:0x00000102e840f0>):
+  app/controllers/guide_page_sequences_controller.rb:9:in `block (2 levels) in index'
+  app/controllers/guide_page_sequences_controller.rb:7:in `index'
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (74.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index to json (for 127.0.0.1 at 2010-07-05 10:21:31) [GET]
+
+ActionController::RoutingError (No route matches "/tasks/show/1" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePageSequencesController#show to json (for 127.0.0.1 at 2010-07-05 10:21:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePageSequence Load (47.7ms)[0m   [0mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+
+NoMethodError (undefined method `activity_path' for #<GuidePageSequencesController:0x00000104418eb0>):
+  app/controllers/guide_page_sequences_controller.rb:26:in `block (2 levels) in show'
+  app/controllers/guide_page_sequences_controller.rb:20:in `show'
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (69.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePageSequencesController#show (for 127.0.0.1 at 2010-07-05 10:22:14) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePageSequence Load (0.1ms)[0m   [0mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/show
+Completed in 10ms (View: 3, DB: 0) | 200 OK [http://localhost/guide_page_sequences/show/1]
+
+
+Processing GuidePageSequencesController#show to json (for 127.0.0.1 at 2010-07-05 10:22:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePageSequence Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+
+NoMethodError (undefined method `activity_path' for #<GuidePageSequencesController:0x0000010208eab0>):
+  app/controllers/guide_page_sequences_controller.rb:26:in `block (2 levels) in show'
+  app/controllers/guide_page_sequences_controller.rb:20:in `show'
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (122.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePageSequencesController#show to json (for 127.0.0.1 at 2010-07-05 10:23:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePageSequence Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Completed in 16ms (View: 1, DB: 0) | 200 OK [http://localhost/guide_page_sequences/show/1?format=json]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:26:04) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:28:40) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:29:35) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:29:43) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:29:49) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turn" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:29:56) [GET]
+
+ActionController::RoutingError (No route matches "/rails/" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-05 10:30:13) [GET]
+  [4;36;1mDialogTurn Load (0.5ms)[0m   [0;1mSELECT * FROM "dialog_turns" [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `block in sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:10:in `block (2 levels) in index'
+  app/controllers/dialog_turns_controller.rb:10:in `map'
+  app/controllers/dialog_turns_controller.rb:10:in `block in index'
+  app/controllers/dialog_turns_controller.rb:7:in `index'
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (82.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-05 10:30:21) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 26ms (View: 21, DB: 1) | 200 OK [http://localhost/guide_pages]
+
+
+Processing StaticAnnotationsController#index (for 127.0.0.1 at 2010-07-05 10:30:47) [GET]
+  [4;36;1mStaticAnnotations Load (1.8ms)[0m   [0;1mSELECT * FROM "static_annotations" [0m
+Rendering template within layouts/static_annotations
+Rendering static_annotations/index
+
+ActionView::TemplateError (undefined local variable or method `new_static_annotations_path' for #<ActionView::Base:0x0000010421ede0>) on line #24 of app/views/static_annotations/index.html.erb:
+21: 
+22: <br />
+23: 
+24: <%= link_to 'New static_annotations', new_static_annotations_path %>
+
+    app/views/static_annotations/index.html.erb:24
+    app/controllers/static_annotations_controller.rb:7:in `index'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (118.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:30:52) [GET]
+
+ActionController::RoutingError (No route matches "/static_annotation" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing StaticAnnotationsController#index (for 127.0.0.1 at 2010-07-05 10:30:56) [GET]
+  [4;35;1mStaticAnnotations Load (0.5ms)[0m   [0mSELECT * FROM "static_annotations" [0m
+Rendering template within layouts/static_annotations
+Rendering static_annotations/index
+
+ActionView::TemplateError (undefined local variable or method `new_static_annotations_path' for #<ActionView::Base:0x000001043528a0>) on line #24 of app/views/static_annotations/index.html.erb:
+21: 
+22: <br />
+23: 
+24: <%= link_to 'New static_annotations', new_static_annotations_path %>
+
+    app/views/static_annotations/index.html.erb:24
+    app/controllers/static_annotations_controller.rb:7:in `index'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (83.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-05 10:31:08) [GET]
+  [4;36;1mDialogTurn Load (0.6ms)[0m   [0;1mSELECT * FROM "dialog_turns" [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `block in sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:10:in `block (2 levels) in index'
+  app/controllers/dialog_turns_controller.rb:10:in `map'
+  app/controllers/dialog_turns_controller.rb:10:in `block in index'
+  app/controllers/dialog_turns_controller.rb:7:in `index'
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (142.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-05 10:38:03) [GET]
+  [4;35;1mGuidePageSequence Load (48.9ms)[0m   [0mSELECT * FROM "guide_page_sequences" [0m
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 64ms (View: 3, DB: 49) | 200 OK [http://localhost/guide_page_sequences]
+
+
+Processing GuidePageSequencesController#index to json (for 127.0.0.1 at 2010-07-05 10:38:15) [GET]
+  [4;35;1mGuidePageSequence Load (0.6ms)[0m   [0mSELECT * FROM "guide_page_sequences" [0m
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+
+NameError (undefined local variable or method `guide_page_sequences' for #<GuidePageSequencesController:0x000001028b7de0>):
+  app/controllers/guide_page_sequences_controller.rb:9:in `block (2 levels) in index'
+  app/controllers/guide_page_sequences_controller.rb:7:in `index'
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (132.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePageSequencesController#show to json (for 127.0.0.1 at 2010-07-05 10:38:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePageSequence Load (0.1ms)[0m   [0mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Completed in 12ms (View: 1, DB: 0) | 200 OK [http://localhost/guide_page_sequences/show/1?format=json]
+
+
+Processing GuidePageSequencesController#show (for 127.0.0.1 at 2010-07-05 10:38:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePageSequence Load (51.5ms)[0m   [0mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/show
+Completed in 62ms (View: 4, DB: 51) | 200 OK [http://localhost/guide_page_sequences/show/1]
+
+
+Processing GuidePageSequencesController#edit (for 127.0.0.1 at 2010-07-05 10:40:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePageSequence Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/edit
+Completed in 179ms (View: 173, DB: 0) | 200 OK [http://localhost/guide_page_sequences/1/edit]
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-05 10:40:10) [GET]
+  [4;35;1mGuidePageSequence Load (0.4ms)[0m   [0mSELECT * FROM "guide_page_sequences" [0m
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 12ms (View: 2, DB: 1) | 200 OK [http://localhost/guide_page_sequences]
+
+
+Processing GuidePageSequencesController#edit (for 127.0.0.1 at 2010-07-05 10:40:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePageSequence Load (1.5ms)[0m   [0mSELECT * FROM "guide_page_sequences" WHERE ("guide_page_sequences"."id" = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/edit
+Completed in 17ms (View: 8, DB: 1) | 200 OK [http://localhost/guide_page_sequences/1/edit]
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-05 10:40:20) [GET]
+  [4;36;1mGuidePageSequence Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 22ms (View: 3, DB: 1) | 200 OK [http://localhost/guide_page_sequences]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 10:59:42) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:04:40) [GET]
+
+ActionController::RoutingError (No route matches "/rails/activities.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:04:40) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:04:40) [GET]
+
+ActionController::RoutingError (No route matches "/rails/activities.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:04:40) [GET]
+
+ActionController::RoutingError (No route matches "/rails/activities.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:04:40) [GET]
+
+ActionController::RoutingError (No route matches "/rails/activities.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:06:45) [GET]
+
+ActionController::RoutingError (No route matches "/rails/activities.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:06:46) [GET]
+
+ActionController::RoutingError (No route matches "/rails/activities.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:06:47) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:06:47) [GET]
+
+ActionController::RoutingError (No route matches "/rails/activities.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:15:10) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-05 11:15:15) [GET]
+  [4;36;1mGuidePage Load (0.7ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 75ms (View: 66, DB: 1) | 200 OK [http://localhost/guide_pages]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:15:42) [GET]
+
+ActionController::RoutingError (No route matches "/rails" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:20:18) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:20:18) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:20:19) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 11:20:19) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 11:26:26) [GET]
+  [4;35;1mGuidePage Load (0.6ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 6ms (View: 1, DB: 1) | 406 Not Acceptable [http://localhost/guide_pages?format=json]
+
+
+Processing GuidePagesController#index to html (for 127.0.0.1 at 2010-07-05 11:26:48) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 12ms (View: 7, DB: 1) | 200 OK [http://localhost/guide_pages?format=html]
+
+
+Processing GuidePagesController#index to xml (for 127.0.0.1 at 2010-07-05 11:26:53) [GET]
+  [4;35;1mGuidePage Load (0.6ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 1574ms (View: 1570, DB: 1) | 200 OK [http://localhost/guide_pages?format=xml]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:14:17) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:14:18) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:14:19) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:14:19) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:19:51) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:19:53) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:19:53) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:19:53) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:19:53) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 12:20:42) [GET]
+  [4;36;1mGuidePage Load (0.7ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 42ms (View: 32, DB: 1) | 200 OK [http://localhost/guide_pages?format=json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 12:21:38) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/guide_pages.json]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:23:02) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 12:24:42) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/guide_pages.json]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-05 12:24:52) [GET]
+  [4;35;1mGuidePage Load (0.6ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 12ms (View: 3, DB: 1) | 200 OK [http://localhost/guide_pages]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:26:35) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:26:36) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:26:36) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:26:36) [GET]
+
+ActionController::RoutingError (No route matches "/rails/dialog_turns/1.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 12:26:37) [GET]
+
+ActionController::RoutingError (No route matches "/rails/guide_pages.json" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-05 12:58:46) [GET]
+  [4;36;1mGuidePageSequence Load (1.8ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 177ms (View: 55, DB: 2) | 200 OK [http://localhost/guide_page_sequences]
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-05 12:58:55) [GET]
+  [4;36;1mGuidePageSequence Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 15ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_page_sequences]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-05 12:59:03) [GET]
+  [4;36;1mGuidePage Load (0.7ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 36ms (View: 26, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-05 12:59:10) [GET]
+  [4;35;1mDialogTurn Load (0.6ms)[0m   [0mSELECT * FROM "dialog_turns" [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `block in sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:10:in `block (2 levels) in index'
+  app/controllers/dialog_turns_controller.rb:10:in `map'
+  app/controllers/dialog_turns_controller.rb:10:in `block in index'
+  app/controllers/dialog_turns_controller.rb:7:in `index'
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (88.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StaticAnnotationsController#index (for 127.0.0.1 at 2010-07-05 12:59:21) [GET]
+  [4;36;1mStaticAnnotations Load (0.4ms)[0m   [0;1mSELECT * FROM "static_annotations" [0m
+Rendering template within layouts/static_annotations
+Rendering static_annotations/index
+
+ActionView::TemplateError (undefined local variable or method `new_static_annotations_path' for #<ActionView::Base:0x00000100ee4e68>) on line #24 of app/views/static_annotations/index.html.erb:
+21: 
+22: <br />
+23: 
+24: <%= link_to 'New static_annotations', new_static_annotations_path %>
+
+    app/views/static_annotations/index.html.erb:24
+    app/controllers/static_annotations_controller.rb:7:in `index'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (151.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)

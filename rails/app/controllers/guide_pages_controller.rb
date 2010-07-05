@@ -7,6 +7,8 @@ class GuidePagesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @guide_pages }
+      guide_pages = @guide_pages.map {|guide_page| sproutcore_json(guide_page) }
+      format.json { render :json => { :content => guide_pages } }
     end
   end
 
@@ -18,6 +20,12 @@ class GuidePagesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @guide_page }
+      format.json do
+        render :json => {
+          :content => sproutcore_json(@guide_page),
+          :location => guide_page_path(@guide_page)
+        }
+      end
     end
   end
 
