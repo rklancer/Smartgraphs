@@ -1,0 +1,24 @@
+<h1>Listing static_annotations</h1>
+
+<table>
+  <tr>
+    <th>Guid</th>
+    <th>Type</th>
+    <th>Points</th>
+  </tr>
+
+<% @static_annotations.each do |static_annotations| %>
+  <tr>
+    <td><%=h static_annotations.guid %></td>
+    <td><%=h static_annotations.type %></td>
+    <td><%=h static_annotations.points_id %></td>
+    <td><%= link_to 'Show', static_annotations %></td>
+    <td><%= link_to 'Edit', edit_static_annotations_path(static_annotations) %></td>
+    <td><%= link_to 'Destroy', static_annotations, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New static_annotations', new_static_annotations_path %>

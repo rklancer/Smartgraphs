@@ -5,3 +5,4 @@
 
 # Add initial buildfile information here
 config :all, :required => [:sproutcore, :raphael, :cc]
+proxy "/rails", :to => "localhost:3000"

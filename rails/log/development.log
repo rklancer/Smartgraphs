@@ -321,3 +321,38 @@ ActionView::TemplateError (undefined local variable or method `new_static_annota
 Rendered rescues/_trace (100.8ms)
 Rendered rescues/_request_and_response (0.3ms)
 Rendering rescues/layout (internal_server_error)
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-05 07:26:48) [GET]
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Completed in 332ms (View: 27, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 07:27:00) [GET]
+
+ActionController::RoutingError (No route matches "/smartgraphs" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing DialogTurnsController#show (for 127.0.0.1 at 2010-07-05 09:42:04) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDialogTurn Load (0.2ms)[0m   [0mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+Rendering template within layouts/dialog_turns
+Rendering dialog_turns/show
+Completed in 74ms (View: 4, DB: 0) | 200 OK [http://localhost/dialog_turns/1]
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-05 09:42:10) [GET]
+  [4;36;1mDialogTurn Load (0.5ms)[0m   [0;1mSELECT * FROM "dialog_turns" [0m
+Rendering template within layouts/dialog_turns
+Rendering dialog_turns/index
+Completed in 15ms (View: 7, DB: 1) | 200 OK [http://localhost/dialog_turns]

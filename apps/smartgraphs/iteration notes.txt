@@ -740,6 +740,6 @@ Phew.
 
  
 
-
+sc-gen data-source Smartgraphs.RailsDataSource
  
  
