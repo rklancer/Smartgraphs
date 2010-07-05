@@ -1,9 +1,9 @@
-=============================================================================
-Project:   Smartgraphs
-Copyright: ©2010 Concord Consortium
-=============================================================================
+#=============================================================================
+#Project:   Smartgraphs
+#Copyright: ©2010 Concord Consortium
+#=============================================================================
 
-To install:
+#To install:
 
 git clone git://github.com/rklancer/Smartgraphs.git
 cd Smartgraphs
@@ -11,19 +11,28 @@ rvm gemset create Smartgraphs
 rvm gemset use Smartgraphs
 # import gems listed in the default.gems file
 rvm gemset import
-# Now you can easily use rvm to switch to a version of ruby and the specific gems needed for raclette with this command:
-#  rvm use <Ruby version number>@Smartgraphs
+# Now you can easily use rvm to switch to a version of ruby and the specific gems needed for raclette with a command like 1his:
+#  rvm use 1.9.1@Smartgraphs
 git submodule update --init
 cd abbot
 rake init
 cd frameworks/sproutcore
 git remote add rklancer git://github.com/rklancer/sproutcore.git
-git checkout buildfile-fix
+git checkout --track -b rklancer/buildfile-fix
 cd ../../../
+
+# First get the Ruby on Rails backend running
+cd rails
+script/server
+# Within 60 seconds you can use the rails pages at 
+# http://localhost:3000/
+# You can start with editing/creating Guide Page Sequences at:
+# http://localhost:3000/guide_page_sequences
+
+# Start the Sproutcore server another terminal window
+cd Smartgraphs
 abbot/bin/sc-server -v
-
-...then visit localhost:4020/smartgraphs
-
-to open TestRunner visit http://localhost:4020/sproutcore/tests
-to see all tests visit http://localhost:4020/static/smartgraphs/en/current/tests.html
-  
+#...then visit localhost:4020/smartgraphs
+#
+# to open TestRunner visit http://localhost:4020/sproutcore/tests
+# to see all Sproutcore tests visit  http://localhost:4020/static/smartgraphs/en/current/tests.html

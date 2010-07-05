@@ -161,3 +161,163 @@ Migrating to CreateDialogTurnStaticAnnotationJoinTable (20100702220856)
   [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("guide_page_sequences")[0m
   [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("guide_pages")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("static_annotations")[0m
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-05 04:51:09) [GET]
+  [4;36;1mGuidePageSequence Load (0.7ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 131ms (View: 74, DB: 1) | 200 OK [http://localhost/guide_page_sequences]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-05 04:51:10) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 35ms (View: 23, DB: 1) | 200 OK [http://localhost/guide_pages]
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-05 04:51:12) [GET]
+  [4;36;1mDialogTurn Load (0.5ms)[0m   [0;1mSELECT * FROM "dialog_turns" [0m
+Rendering template within layouts/dialog_turns
+Rendering dialog_turns/index
+Completed in 49ms (View: 24, DB: 1) | 200 OK [http://localhost/dialog_turns]
+
+
+Processing StaticAnnotationsController#index (for 127.0.0.1 at 2010-07-05 04:51:12) [GET]
+  [4;35;1mStaticAnnotations Load (0.4ms)[0m   [0mSELECT * FROM "static_annotations" [0m
+Rendering template within layouts/static_annotations
+Rendering static_annotations/index
+
+ActionView::TemplateError (undefined local variable or method `new_static_annotations_path' for #<ActionView::Base:0x000001033e35e0>) on line #24 of app/views/static_annotations/index.html.erb:
+21: 
+22: <br />
+23: 
+24: <%= link_to 'New static_annotations', new_static_annotations_path %>
+
+    app/views/static_annotations/index.html.erb:24
+    app/controllers/static_annotations_controller.rb:7:in `index'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (95.9ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing DialogTurnsController#show (for 127.0.0.1 at 2010-07-05 05:20:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDialogTurn Load (0.2ms)[0m   [0;1mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+Rendering template within layouts/dialog_turns
+Rendering dialog_turns/show
+Completed in 61ms (View: 28, DB: 0) | 200 OK [http://localhost/dialog_turns/1]
+
+
+Processing DialogTurnsController#edit (for 127.0.0.1 at 2010-07-05 05:20:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDialogTurn Load (0.3ms)[0m   [0mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+Rendering template within layouts/dialog_turns
+Rendering dialog_turns/edit
+Completed in 223ms (View: 152, DB: 0) | 200 OK [http://localhost/dialog_turns/1/edit]
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-05 05:21:02) [GET]
+  [4;36;1mDialogTurn Load (0.5ms)[0m   [0;1mSELECT * FROM "dialog_turns" [0m
+Rendering template within layouts/dialog_turns
+Rendering dialog_turns/index
+Completed in 12ms (View: 6, DB: 1) | 200 OK [http://localhost/dialog_turns]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-05 05:27:38) [GET]
+
+ActionController::RoutingError (No route matches "/static_annotations" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing StaticAnnotationsController#index (for 127.0.0.1 at 2010-07-05 05:28:26) [GET]
+  [4;35;1mStaticAnnotations Load (0.8ms)[0m   [0mSELECT * FROM "static_annotations" [0m
+Rendering template within layouts/static_annotations
+Rendering static_annotations/index
+
+ActionView::TemplateError (undefined local variable or method `new_static_annotations_path' for #<ActionView::Base:0x000001035cd340>) on line #24 of app/views/static_annotations/index.html.erb:
+21: 
+22: <br />
+23: 
+24: <%= link_to 'New static_annotations', new_static_annotations_path %>
+
+    app/views/static_annotations/index.html.erb:24
+    app/controllers/static_annotations_controller.rb:7:in `index'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (139.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateGuidePageSequences (20100702173842)
+Migrating to CreateGuidePages (20100702173922)
+Migrating to CreateDialogTurns (20100702220841)
+Migrating to CreateDialogTurnStaticAnnotationJoinTable (20100702220856)
+Migrating to CreateStaticAnnotations (20100705122810)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: table "static_annotations" already exists: CREATE TABLE "static_annotations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "guid" varchar(255), "type" varchar(255), "points_id" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateGuidePageSequences (20100702173842)
+Migrating to CreateGuidePages (20100702173922)
+Migrating to CreateDialogTurns (20100702220841)
+Migrating to CreateDialogTurnStaticAnnotationJoinTable (20100702220856)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("dialog_turns")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("dialog_turns_static_annotations")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("guide_page_sequences")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("guide_pages")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("static_annotations")[0m
+
+
+Processing StaticAnnotationsController#index (for 127.0.0.1 at 2010-07-05 05:38:32) [GET]
+  [4;36;1mStaticAnnotations Load (0.4ms)[0m   [0;1mSELECT * FROM "static_annotations" [0m
+Rendering template within layouts/static_annotations
+Rendering static_annotations/index
+
+ActionView::TemplateError (undefined local variable or method `new_static_annotations_path' for #<ActionView::Base:0x00000101589ca8>) on line #24 of app/views/static_annotations/index.html.erb:
+21: 
+22: <br />
+23: 
+24: <%= link_to 'New static_annotations', new_static_annotations_path %>
+
+    app/views/static_annotations/index.html.erb:24
+    app/controllers/static_annotations_controller.rb:7:in `index'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (100.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)

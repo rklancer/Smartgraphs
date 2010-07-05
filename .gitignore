@@ -3,3 +3,5 @@ sc-docs/
 .loadpath
 .project
 textmate.tmproj
+.DS_Store
+rails/.DS_Store
