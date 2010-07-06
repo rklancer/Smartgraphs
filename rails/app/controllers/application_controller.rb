@@ -15,9 +15,10 @@ class ApplicationController < ActionController::Base
   #To customize the JSON output of an object, write a json_for_activity protected method in TasksController (app/controllers/activities_controller.rb): 
   #Put the conversion method here so all controllers can use it
   def sproutcore_json(record)
+    record[:guid] = polymorphic_path(record)
     hash = record.as_json(:except => [:id, :created_at, :updated_at])
     
-    hash[:guid] = polymorphic_path(record)
+    # hash[:guid] = polymorphic_path(record)
     
     associations = record.class.reflect_on_all_associations
     

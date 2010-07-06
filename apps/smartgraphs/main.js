@@ -20,11 +20,17 @@ Smartgraphs.main = function main() {
     //  var theSequence = Smartgraphs.store.find(Smartgraphs.GuidePageSequence, 'sequence-1');
     //  console.log("theSequence:");
     //  console.log(theSequence);
-    var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGE_QUERY);
-
-    console.log('guide_page_sequences: ', guide_page_sequences);
-    console.log('guide_page_sequences.toString(): ', guide_page_sequences.toString());
-    console.log('guide_page_sequences.length: ', guide_page_sequences.get('length'));
+    //    console.log('Calling var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GuidePageSequence); with Smartgraphs.GuidePageSequence:', Smartgraphs.GuidePageSequence);
+    //    var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GuidePageSequence);
+    // console.log("loading guide_page_sequences with dataSource:", Smartgraphs.dataSource);
+    // var guide_page_sequences = Smartgraphs.dataSource.fetch(Smartgraphs.store, Smartgraphs.GUIDEPAGESEQUENCE_QUERY);
+    // 
+    // console.log('guide_page_sequences: ', guide_page_sequences);
+    // console.log('guide_page_sequences.toString(): ', guide_page_sequences.toString());
+    // console.log('guide_page_sequences.length: ', guide_page_sequences.get('length'));
+    console.log("loading guide_pages with dataSource:", Smartgraphs.dataSource);
+    var fetchResult = Smartgraphs.dataSource.fetch(Smartgraphs.store, Smartgraphs.GUIDEPAGE_QUERY);
+    console.log('fetchResult: ', fetchResult);
 
     // The following will not work as desired because 'guide_page_sequences' is not (and could not possibly be) updated with the
     // response from the server until after the XHR callback is allowed to execute. (Unless we use synchronous XHR...)
@@ -35,12 +41,11 @@ Smartgraphs.main = function main() {
     // console.log("Smartgraphs.activityController.set('content',firstActivity)");
     // Smartgraphs.activityController.set('content',firstActivity);
     // console.log("group end");     // controller.set('content', ...)
-
     // the following works as desired because the guide_page_sequences RecordArray is updated by the data store when the 
     // data source calls Smartgraphs.store.loadRecords() in the XMLHttpRequest callback. The guide_page_sequencesController observes
     // this property, and updates its 'selection' property appropriately; and the activityController observes that...
     //  Smartgraphs.guidePageSequenceController.set('sequence', theSequence);
-    Smartgraphs.guidePageSequenceController.set('sequence', guide_page_sequences.objectAt(0));
+    // Smartgraphs.guidePageSequenceController.set('sequence', guide_page_sequences);
 
     console.log("group end"); // main()
 };

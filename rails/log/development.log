@@ -1222,3 +1222,1086 @@ ActionView::TemplateError (undefined local variable or method `new_static_annota
 Rendered rescues/_trace (151.0ms)
 Rendered rescues/_request_and_response (0.3ms)
 Rendering rescues/layout (internal_server_error)
+/!\ FAILSAFE /!\  2010-07-05 20:59:01 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/!\ FAILSAFE /!\  2010-07-05 20:59:01 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/!\ FAILSAFE /!\  2010-07-05 20:59:02 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/!\ FAILSAFE /!\  2010-07-05 20:59:02 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/!\ FAILSAFE /!\  2010-07-05 20:59:37 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/!\ FAILSAFE /!\  2010-07-05 20:59:54 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/!\ FAILSAFE /!\  2010-07-05 21:00:02 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/!\ FAILSAFE /!\  2010-07-05 21:05:50 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+/!\ FAILSAFE /!\  Mon Jul 05 21:26:14 -0700 2010
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:14:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.8.7-p299@Smartgraphs/gems/rails-2.3.8/lib/commands/server.rb:111
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  2010-07-05 21:29:22 -0700
+  Status: 500 Internal Server Error
+  no such file to load -- sqlite3
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `block in require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:156:in `require'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:7:in `block in require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/reporting.rb:11:in `silence_warnings'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activesupport-2.3.8/lib/active_support/core_ext/kernel/requires.rb:5:in `require_library_or_gem'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:10:in `sqlite3_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `block (2 levels) in checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `block in checkout'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/monitor.rb:190:in `mon_synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:9:in `cache'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/query_cache.rb:28:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/activerecord-2.3.8/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/string_coercion.rb:25:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/head.rb:9:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/methodoverride.rb:24:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/params_parser.rb:15:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/session/cookie_store.rb:99:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/failsafe.rb:26:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `block in call'
+    <internal:prelude>:8:in `synchronize'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/lock.rb:11:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:114:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/reloader.rb:34:in `run'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/actionpack-2.3.8/lib/action_controller/dispatcher.rb:108:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/static.rb:31:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:47:in `block in call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `each'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/urlmap.rb:41:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rails-2.3.8/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/content_length.rb:13:in `call'
+    /Users/kweusijana/.rvm/gems/ruby-1.9.1-p378@Smartgraphs/gems/rack-1.1.0/lib/rack/handler/webrick.rb:48:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /Users/kweusijana/.rvm/rubies/ruby-1.9.1-p378/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-05 21:36:29) [GET]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 149ms (View: 13, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:37:23) [GET]
+  [4;36;1mGuidePage Load (18.3ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 100ms (View: 45, DB: 18) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:37:24) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-05 21:37:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDialogTurn Load (0.8ms)[0m   [0;1mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `send'
+  app/controllers/application_controller.rb:27:in `sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (42.3ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:37:24) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-05 21:37:55) [GET]
+  [4;36;1mGuidePageSequence Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 26ms (View: 13, DB: 1) | 200 OK [http://localhost/rails/guide_page_sequences]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-05 21:38:01) [GET]
+  [4;36;1mGuidePage Load (0.6ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 99ms (View: 87, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-05 21:38:06) [GET]
+  [4;35;1mDialogTurn Load (0.5ms)[0m   [0mSELECT * FROM "dialog_turns" [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `send'
+  app/controllers/application_controller.rb:27:in `sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:10:in `index'
+  app/controllers/dialog_turns_controller.rb:10:in `map'
+  app/controllers/dialog_turns_controller.rb:10:in `index'
+  app/controllers/dialog_turns_controller.rb:7:in `index'
+
+Rendered rescues/_trace (44.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StaticAnnotationsController#index (for 127.0.0.1 at 2010-07-05 21:38:12) [GET]
+  [4;36;1mStaticAnnotations Load (0.5ms)[0m   [0;1mSELECT * FROM "static_annotations" [0m
+Rendering template within layouts/static_annotations
+Rendering static_annotations/index
+
+ActionView::TemplateError (undefined local variable or method `new_static_annotations_path' for #<ActionView::Base:0x102d9abb8>) on line #24 of app/views/static_annotations/index.html.erb:
+21: 
+22: <br />
+23: 
+24: <%= link_to 'New static_annotations', new_static_annotations_path %>
+
+    app/views/static_annotations/index.html.erb:24
+    app/controllers/static_annotations_controller.rb:7:in `index'
+
+Rendered rescues/_trace (47.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:39:02) [GET]
+  [4;35;1mGuidePage Load (1.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 19ms (View: 1, DB: 2) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:39:13) [GET]
+  [4;36;1mGuidePage Load (1.3ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:59:47) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:59:48) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:59:48) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-05 21:59:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDialogTurn Load (0.2ms)[0m   [0;1mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `send'
+  app/controllers/application_controller.rb:27:in `sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (40.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 21:59:48) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 8ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePageSequencesController#index to json (for 127.0.0.1 at 2010-07-05 22:00:16) [GET]
+  [4;36;1mGuidePageSequence Load (68.7ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Completed in 90ms (View: 1, DB: 69) | 200 OK [http://localhost/rails/guide_page_sequences.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 22:01:20) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 22:07:28) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 11ms (View: 2, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 22:07:28) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 22:07:28) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-05 22:07:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDialogTurn Load (0.2ms)[0m   [0;1mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `send'
+  app/controllers/application_controller.rb:27:in `sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (128.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 22:07:29) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:09:25) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:09:25) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:09:25) [GET]
+  [4;36;1mGuidePage Load (65.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 75ms (View: 1, DB: 66) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-05 23:09:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDialogTurn Load (0.2ms)[0m   [0mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `send'
+  app/controllers/application_controller.rb:27:in `sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (132.1ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:09:27) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:10:05) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:10:06) [GET]
+  [4;36;1mGuidePage Load (1.1ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:10:06) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-05 23:10:06) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDialogTurn Load (0.2ms)[0m   [0;1mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:27:in `send'
+  app/controllers/application_controller.rb:27:in `sproutcore_json'
+  app/controllers/application_controller.rb:24:in `each'
+  app/controllers/application_controller.rb:24:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (124.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:10:07) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePageSequencesController#index to json (for 127.0.0.1 at 2010-07-05 23:24:13) [GET]
+  [4;36;1mGuidePageSequence Load (64.6ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Completed in 76ms (View: 1, DB: 65) | 200 OK [http://localhost/rails/guide_page_sequences.json]
+
+
+Processing GuidePageSequencesController#index to json (for 127.0.0.1 at 2010-07-05 23:32:13) [GET]
+  [4;36;1mGuidePageSequence Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+  [4;35;1mGuidePage Load (0.3ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Completed in 15ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_page_sequences.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:38:02) [GET]
+  [4;36;1mGuidePage Load (0.6ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-05 23:42:12) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 19ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:02:31) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:03:44) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:12:35) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:15:41) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:18:23) [GET]
+  [4;36;1mGuidePage Load (0.6ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:22:11) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:30:56) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:37:52) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 90ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 00:44:32) [GET]
+  [4;36;1mGuidePage Load (2.7ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 25ms (View: 4, DB: 3) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:44:47) [GET]
+  [4;35;1mGuidePage Load (1.0ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:46:25) [GET]
+  [4;36;1mGuidePage Load (0.6ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+
+NameError (undefined local variable or method `guid' for #<GuidePagesController:0x102f74880>):
+  app/controllers/application_controller.rb:19:in `sproutcore_json'
+  app/controllers/guide_pages_controller.rb:11:in `index'
+  app/controllers/guide_pages_controller.rb:11:in `map'
+  app/controllers/guide_pages_controller.rb:11:in `index'
+  app/controllers/guide_pages_controller.rb:8:in `index'
+
+Rendered rescues/_trace (33.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:55:29) [GET]
+  [4;35;1mGuidePage Load (23.3ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+
+NoMethodError (undefined method `guid=' for #<GuidePage:0x102b68de0>):
+  app/controllers/application_controller.rb:18:in `sproutcore_json'
+  app/controllers/guide_pages_controller.rb:11:in `index'
+  app/controllers/guide_pages_controller.rb:11:in `map'
+  app/controllers/guide_pages_controller.rb:11:in `index'
+  app/controllers/guide_pages_controller.rb:8:in `index'
+
+Rendered rescues/_trace (154.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 00:55:39) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+
+NoMethodError (undefined method `guid=' for #<GuidePage:0x102fc1dd8>):
+  app/controllers/application_controller.rb:18:in `sproutcore_json'
+  app/controllers/guide_pages_controller.rb:11:in `index'
+  app/controllers/guide_pages_controller.rb:11:in `map'
+  app/controllers/guide_pages_controller.rb:11:in `index'
+  app/controllers/guide_pages_controller.rb:8:in `index'
+
+Rendered rescues/_trace (38.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 00:58:11) [GET]
+  [4;35;1mGuidePage Load (66.7ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 84ms (View: 6, DB: 67) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:58:21) [GET]
+  [4;36;1mGuidePage Load (1.4ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 98ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 00:59:29) [GET]
+  [4;35;1mGuidePage Load (23.7ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 34ms (View: 1, DB: 24) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:08:13) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:12:10) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 9ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:14:17) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:16:59) [GET]
+  [4;35;1mGuidePage Load (20.6ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 30ms (View: 1, DB: 21) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:19:55) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 30ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:34:38) [GET]
+  [4;35;1mGuidePage Load (22.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 103ms (View: 1, DB: 22) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 01:38:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 82ms (View: 71, DB: 1) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#show to json (for 127.0.0.1 at 2010-07-06 01:38:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.4ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Completed in 11ms (View: 1, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1.json]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 01:39:33) [GET]
+  [4;36;1mGuidePage Load (52.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 65ms (View: 4, DB: 53) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#new (for 127.0.0.1 at 2010-07-06 01:39:39) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/new
+Completed in 237ms (View: 230, DB: 0) | 200 OK [http://localhost/rails/guide_pages/new]
+
+
+Processing GuidePagesController#create (for 127.0.0.1 at 2010-07-06 01:42:21) [POST]
+  Parameters: {"guide_page"=>{"axes_id"=>"axes-sensor", "introText"=>"<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward…). Click Stop after 30 seconds are up.</p>", "guide_page_sequence_id"=>"equence-1", "title"=>"2", "sensorAppletShouldBeEnabled"=>"1", "dataSeries_id"=>"series-sensor", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-2-start"}, "commit"=>"Create", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU="}
+  [4;35;1mGuidePage Create (22.3ms)[0m   [0mINSERT INTO "guide_pages" ("guide_page_sequence_id", "introText", "axes_id", "created_at", "title", "sensorAppletShouldBeEnabled", "updated_at", "dataSeries_id", "shoulDdShowImage", "index", "firstDialogTurn_id") VALUES('equence-1', '<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward…). Click Stop after 30 seconds are up.</p>', 'axes-sensor', '2010-07-06 08:42:21', '2', 't', '2010-07-06 08:42:21', 'series-sensor', 'f', 1, 'turn-2-start')[0m
+Redirected to http://localhost:3000/rails/guide_pages/2
+Completed in 90ms (DB: 22) | 302 Found [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 01:42:21) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 2) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 157ms (View: 5, DB: 0) | 200 OK [http://localhost/rails/guide_pages/2]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 01:42:26) [GET]
+  [4;35;1mGuidePage Load (0.6ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 17ms (View: 7, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:42:35) [GET]
+  [4;36;1mGuidePage Load (0.6ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 01:43:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.3ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 114ms (View: 103, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1/edit]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 01:43:52) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 21ms (View: 7, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 01:43:58) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 2) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 19ms (View: 14, DB: 0) | 200 OK [http://localhost/rails/guide_pages/2/edit]
+
+
+Processing GuidePagesController#update (for 127.0.0.1 at 2010-07-06 01:44:06) [PUT]
+  Parameters: {"guide_page"=>{"axes_id"=>"axes-sensor", "introText"=>"<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward…). Click Stop after 30 seconds are up.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"2", "sensorAppletShouldBeEnabled"=>"1", "dataSeries_id"=>"series-sensor", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-2-start"}, "commit"=>"Update", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU=", "id"=>"2"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 2) [0m
+  [4;35;1mGuidePage Update (0.4ms)[0m   [0mUPDATE "guide_pages" SET "updated_at" = '2010-07-06 08:44:06', "guide_page_sequence_id" = 'sequence-1' WHERE "id" = 2[0m
+Redirected to http://localhost:3000/rails/guide_pages/2
+Completed in 141ms (DB: 1) | 302 Found [http://localhost/rails/guide_pages/2]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 01:44:06) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGuidePage Load (0.3ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 2) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 23ms (View: 4, DB: 0) | 200 OK [http://localhost/rails/guide_pages/2]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 01:44:10) [GET]
+  [4;35;1mGuidePage Load (0.6ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 25ms (View: 11, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 01:49:44) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 21ms (View: 11, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:49:50) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:51:40) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+
+NoMethodError (undefined method `guide_page' for #<Hash:0x102c70cd8>):
+  app/controllers/guide_pages_controller.rb:11:in `index'
+  app/controllers/guide_pages_controller.rb:11:in `map'
+  app/controllers/guide_pages_controller.rb:11:in `index'
+  app/controllers/guide_pages_controller.rb:8:in `index'
+
+Rendered rescues/_trace (125.1ms)
+Rendered rescues/_request_and_response (0.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:52:30) [GET]
+  [4;35;1mGuidePage Load (0.6ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 16ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 01:53:08) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 15ms (View: 6, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:53:14) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 12ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:54:06) [GET]
+  [4;36;1mGuidePage Load (0.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 10ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 01:56:05) [GET]
+  [4;35;1mGuidePage Load (0.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-06 01:57:43) [GET]
+  [4;36;1mDialogTurn Load (0.6ms)[0m   [0;1mSELECT * FROM "dialog_turns" [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:28:in `send'
+  app/controllers/application_controller.rb:28:in `sproutcore_json'
+  app/controllers/application_controller.rb:25:in `each'
+  app/controllers/application_controller.rb:25:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:10:in `index'
+  app/controllers/dialog_turns_controller.rb:10:in `map'
+  app/controllers/dialog_turns_controller.rb:10:in `index'
+  app/controllers/dialog_turns_controller.rb:7:in `index'
+
+Rendered rescues/_trace (42.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)

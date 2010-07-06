@@ -2,12 +2,13 @@ class GuidePagesController < ApplicationController
   # GET /guide_pages
   # GET /guide_pages.xml
   def index
+    puts "GuidePagesController.index called"
     @guide_pages = GuidePage.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @guide_pages }
-      guide_pages = @guide_pages.map {|guide_page| sproutcore_json(guide_page) }
+      guide_pages = @guide_pages.map {|guide_page| sproutcore_json(guide_page)["guide_page"] }
       format.json { render :json => { :content => guide_pages } }
     end
   end
@@ -15,6 +16,7 @@ class GuidePagesController < ApplicationController
   # GET /guide_pages/1
   # GET /guide_pages/1.xml
   def show
+    puts "GuidePagesController.show called"
     @guide_page = GuidePage.find(params[:id])
 
     respond_to do |format|
@@ -22,7 +24,7 @@ class GuidePagesController < ApplicationController
       format.xml  { render :xml => @guide_page }
       format.json do
         render :json => {
-          :content => sproutcore_json(@guide_page),
+          :content => sproutcore_json(@guide_page)["guide_page"],
           :location => guide_page_path(@guide_page)
         }
       end

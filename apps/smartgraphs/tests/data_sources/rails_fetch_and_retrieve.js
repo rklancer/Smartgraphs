@@ -31,7 +31,7 @@ test("does the source that core.js associates with Smartgraphs store exists", fu
 
 test("do we get guide_page_sequences back from rails", function() {
   var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGE_QUERY);
-  statusEquals(guide_page_sequences, SC.Record.BUSY_LOADING, 'GuidePages should be loading');
+  statusEquals(guide_page_sequences, SC.Record.BUSY_LOADING, 'guide_page_sequences should be loading');
   
   statusQueue([
     { target: guide_page_sequences,

@@ -11,8 +11,11 @@ rvm gemset create Smartgraphs
 rvm gemset use Smartgraphs
 # import gems listed in the default.gems file
 rvm gemset import
-# Now you can easily use rvm to switch to a version of ruby and the specific gems needed for raclette with a command like 1his:
-#  rvm use 1.9.1@Smartgraphs
+# Now you can easily use rvm to switch to a version of ruby and the specific 
+# gems needed for raclette with a command like 1his:
+rvm use 1.9.1@Smartgraphs
+# If you are using a branch, this is a good time to check it out
+# Then run these commands:
 git submodule update --init
 cd abbot
 rake init
@@ -21,10 +24,13 @@ git remote add rklancer git://github.com/rklancer/sproutcore.git
 git checkout --track -b rklancer/buildfile-fix
 cd ../../../
 
-# First get the Ruby on Rails backend running
+# First get the Ruby on Rails backend running in another terminal window
+cd Smartgraphs
+rvm use 1.9.1@Smartgraphs
 cd rails
 script/server
-# Within 60 seconds you can use the rails pages at 
+# Within 60 seconds (wait until you see the pid and port reported)
+# you can use the rails pages at 
 # http://localhost:3000/
 # You can start with editing/creating Guide Page Sequences at:
 # http://localhost:3000/guide_page_sequences
