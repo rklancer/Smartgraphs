@@ -2305,3 +2305,424 @@ NameError (uninitialized constant DialogTurn::StaticAnnotation):
 Rendered rescues/_trace (42.9ms)
 Rendered rescues/_request_and_response (0.3ms)
 Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:06:41) [GET]
+  [4;36;1mGuidePage Load (0.6ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 47ms (View: 18, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#new (for 127.0.0.1 at 2010-07-06 02:06:44) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/new
+Completed in 25ms (View: 20, DB: 0) | 200 OK [http://localhost/rails/guide_pages/new]
+
+
+Processing GuidePagesController#create (for 127.0.0.1 at 2010-07-06 02:08:36) [POST]
+  Parameters: {"guide_page"=>{"axes_id"=>"axes-sensor", "introText"=>"<p>Next you will try moving at two different speeds.</p><p>Start close to the motion sensor. When you are ready, click Reset and then Start and walk away from the sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. Click Stop when the time is up.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"3", "sensorAppletShouldBeEnabled"=>"1", "dataSeries_id"=>"series-sensor", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-3-start"}, "commit"=>"Create", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU="}
+  [4;35;1mGuidePage Create (0.4ms)[0m   [0mINSERT INTO "guide_pages" ("guide_page_sequence_id", "introText", "axes_id", "created_at", "title", "sensorAppletShouldBeEnabled", "updated_at", "dataSeries_id", "shoulDdShowImage", "index", "firstDialogTurn_id") VALUES('sequence-1', '<p>Next you will try moving at two different speeds.</p><p>Start close to the motion sensor. When you are ready, click Reset and then Start and walk away from the sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. Click Stop when the time is up.</p>', 'axes-sensor', '2010-07-06 09:08:36', '3', 't', '2010-07-06 09:08:36', 'series-sensor', 'f', 1, 'turn-3-start')[0m
+Redirected to http://localhost:3000/rails/guide_pages/3
+Completed in 94ms (DB: 0) | 302 Found [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:08:36) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 3) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 19ms (View: 7, DB: 0) | 200 OK [http://localhost/rails/guide_pages/3]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:08:40) [GET]
+  [4;35;1mGuidePage Load (0.6ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 19ms (View: 9, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#new (for 127.0.0.1 at 2010-07-06 02:08:46) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/new
+Completed in 23ms (View: 13, DB: 0) | 200 OK [http://localhost/rails/guide_pages/new]
+
+
+Processing GuidePagesController#create (for 127.0.0.1 at 2010-07-06 02:09:36) [POST]
+  Parameters: {"guide_page"=>{"axes_id"=>"axes-sensor", "introText"=>"<p>This time, you are going to record your position and time during three different tasks.</p><p>Start close to the motion sensor, click Reset, and then click Start. Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds. Click Stop.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"4", "sensorAppletShouldBeEnabled"=>"1", "dataSeries_id"=>"series-sensor", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-4-start"}, "commit"=>"Create", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU="}
+  [4;36;1mGuidePage Create (0.6ms)[0m   [0;1mINSERT INTO "guide_pages" ("guide_page_sequence_id", "introText", "axes_id", "created_at", "title", "sensorAppletShouldBeEnabled", "updated_at", "dataSeries_id", "shoulDdShowImage", "index", "firstDialogTurn_id") VALUES('sequence-1', '<p>This time, you are going to record your position and time during three different tasks.</p><p>Start close to the motion sensor, click Reset, and then click Start. Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds. Click Stop.</p>', 'axes-sensor', '2010-07-06 09:09:36', '4', 't', '2010-07-06 09:09:36', 'series-sensor', 'f', 1, 'turn-4-start')[0m
+Redirected to http://localhost:3000/rails/guide_pages/4
+Completed in 16ms (DB: 1) | 302 Found [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:09:36) [GET]
+  Parameters: {"id"=>"4"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 4) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 20ms (View: 8, DB: 0) | 200 OK [http://localhost/rails/guide_pages/4]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:09:49) [GET]
+  [4;36;1mGuidePage Load (0.6ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 96ms (View: 11, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#new (for 127.0.0.1 at 2010-07-06 02:09:55) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/new
+Completed in 19ms (View: 13, DB: 0) | 200 OK [http://localhost/rails/guide_pages/new]
+
+
+Processing GuidePagesController#create (for 127.0.0.1 at 2010-07-06 02:11:05) [POST]
+  Parameters: {"guide_page"=>{"axes_id"=>"axes-maria", "introText"=>"<p>Now you that you’ve had a chance to create position versus time graphs from your own motions, let’s look at some graphs that were created by someone running.</p><p>Maria ran practice laps around the school track. Her coach recorded the distances she ran after each minute. These data are shown in the graph and the table at right. Remember that the time was recorded in minutes rather than seconds.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"5", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"series-maria", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-5-start"}, "commit"=>"Create", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU="}
+  [4;35;1mGuidePage Create (0.4ms)[0m   [0mINSERT INTO "guide_pages" ("guide_page_sequence_id", "introText", "axes_id", "created_at", "title", "sensorAppletShouldBeEnabled", "updated_at", "dataSeries_id", "shoulDdShowImage", "index", "firstDialogTurn_id") VALUES('sequence-1', '<p>Now you that you’ve had a chance to create position versus time graphs from your own motions, let’s look at some graphs that were created by someone running.</p><p>Maria ran practice laps around the school track. Her coach recorded the distances she ran after each minute. These data are shown in the graph and the table at right. Remember that the time was recorded in minutes rather than seconds.</p>', 'axes-maria', '2010-07-06 09:11:05', '5', 'f', '2010-07-06 09:11:05', 'series-maria', 'f', 1, 'turn-5-start')[0m
+Redirected to http://localhost:3000/rails/guide_pages/5
+Completed in 26ms (DB: 0) | 302 Found [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:11:05) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mGuidePage Load (0.4ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 5) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 11ms (View: 4, DB: 0) | 200 OK [http://localhost/rails/guide_pages/5]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:11:14) [GET]
+  [4;35;1mGuidePage Load (2.3ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 28ms (View: 14, DB: 2) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#new (for 127.0.0.1 at 2010-07-06 02:11:19) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/new
+Completed in 18ms (View: 12, DB: 0) | 200 OK [http://localhost/rails/guide_pages/new]
+
+
+Processing GuidePagesController#create (for 127.0.0.1 at 2010-07-06 02:12:06) [POST]
+  Parameters: {"guide_page"=>{"axes_id"=>"axes-maria", "introText"=>"<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"6", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"series-maria", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-6-start"}, "commit"=>"Create", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU="}
+  [4;36;1mGuidePage Create (0.5ms)[0m   [0;1mINSERT INTO "guide_pages" ("guide_page_sequence_id", "introText", "axes_id", "created_at", "title", "sensorAppletShouldBeEnabled", "updated_at", "dataSeries_id", "shoulDdShowImage", "index", "firstDialogTurn_id") VALUES('sequence-1', '<p>Remember that the data on the right is the Maria''s distance, recorded every minute (60 seconds) by her coach.<p>', 'axes-maria', '2010-07-06 09:12:06', '6', 'f', '2010-07-06 09:12:06', 'series-maria', 'f', 1, 'turn-6-start')[0m
+Redirected to http://localhost:3000/rails/guide_pages/6
+Completed in 16ms (DB: 1) | 302 Found [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:12:06) [GET]
+  Parameters: {"id"=>"6"}
+  [4;35;1mGuidePage Load (0.3ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 6) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://localhost/rails/guide_pages/6]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:12:08) [GET]
+  [4;36;1mGuidePage Load (0.7ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 26ms (View: 16, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#new (for 127.0.0.1 at 2010-07-06 02:12:20) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/new
+Completed in 21ms (View: 15, DB: 0) | 200 OK [http://localhost/rails/guide_pages/new]
+
+
+Processing GuidePagesController#create (for 127.0.0.1 at 2010-07-06 02:12:56) [POST]
+  Parameters: {"guide_page"=>{"axes_id"=>"axes-maria", "introText"=>"<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"7", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"series-maria", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-7-start"}, "commit"=>"Create", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU="}
+  [4;35;1mGuidePage Create (0.4ms)[0m   [0mINSERT INTO "guide_pages" ("guide_page_sequence_id", "introText", "axes_id", "created_at", "title", "sensorAppletShouldBeEnabled", "updated_at", "dataSeries_id", "shoulDdShowImage", "index", "firstDialogTurn_id") VALUES('sequence-1', '<p>Remember that the data on the right is the Maria''s distance, recorded every minute (60 seconds) by her coach.<p>', 'axes-maria', '2010-07-06 09:12:56', '7', 'f', '2010-07-06 09:12:56', 'series-maria', 'f', 1, 'turn-7-start')[0m
+Redirected to http://localhost:3000/rails/guide_pages/7
+Completed in 25ms (DB: 0) | 302 Found [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:12:56) [GET]
+  Parameters: {"id"=>"7"}
+  [4;36;1mGuidePage Load (0.3ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 7) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 15ms (View: 4, DB: 0) | 200 OK [http://localhost/rails/guide_pages/7]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:13:00) [GET]
+  [4;35;1mGuidePage Load (0.9ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 119ms (View: 18, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#new (for 127.0.0.1 at 2010-07-06 02:13:06) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/new
+Completed in 24ms (View: 13, DB: 0) | 200 OK [http://localhost/rails/guide_pages/new]
+
+
+Processing GuidePagesController#create (for 127.0.0.1 at 2010-07-06 02:13:40) [POST]
+  Parameters: {"guide_page"=>{"axes_id"=>"axes-maria", "introText"=>"", "guide_page_sequence_id"=>"sequence-1", "title"=>"8", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"series-maria", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-8-start"}, "commit"=>"Create", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU="}
+  [4;36;1mGuidePage Create (0.4ms)[0m   [0;1mINSERT INTO "guide_pages" ("guide_page_sequence_id", "introText", "axes_id", "created_at", "title", "sensorAppletShouldBeEnabled", "updated_at", "dataSeries_id", "shoulDdShowImage", "index", "firstDialogTurn_id") VALUES('sequence-1', '', 'axes-maria', '2010-07-06 09:13:40', '8', 'f', '2010-07-06 09:13:40', 'series-maria', 'f', 1, 'turn-8-start')[0m
+Redirected to http://localhost:3000/rails/guide_pages/8
+Completed in 12ms (DB: 0) | 302 Found [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:13:40) [GET]
+  Parameters: {"id"=>"8"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 8) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/rails/guide_pages/8]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:13:43) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 33ms (View: 21, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:13:54) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 113ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:22:25) [GET]
+  [4;36;1mGuidePage Load (65.3ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 205ms (View: 94, DB: 65) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-06 02:24:02) [GET]
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Completed in 131ms (View: 13, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:24:10) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 225ms (View: 214, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 02:24:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 74ms (View: 68, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1/edit]
+
+
+Processing GuidePagesController#update (for 127.0.0.1 at 2010-07-06 02:24:58) [PUT]
+  Parameters: {"guide_page"=>{"axes_id"=>"", "introText"=>"<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p><b>You will learn that the motion of an object can be described by its position, direction of motion, and speed!</b> Motion can be measured and represented on a graph.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"1", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"", "shoulDdShowImage"=>"1", "index"=>"1", "firstDialogTurn_id"=>"turn-1"}, "commit"=>"Update", "authenticity_token"=>"Rwo4hef4JmyBt1/Kn5rYTOXqjE/WEKNE1eAZYQNG+bo=", "id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+  [4;36;1mGuidePage Update (0.4ms)[0m   [0;1mUPDATE "guide_pages" SET "updated_at" = '2010-07-06 09:24:58', "introText" = '<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p><b>You will learn that the motion of an object can be described by its position, direction of motion, and speed!</b> Motion can be measured and represented on a graph.</p>' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/rails/guide_pages/1
+Completed in 14ms (DB: 1) | 302 Found [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:24:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 36ms (View: 30, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:25:25) [GET]
+  [4;36;1mGuidePage Load (1.0ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 15ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 02:26:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 18ms (View: 13, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1/edit]
+
+
+Processing GuidePagesController#update (for 127.0.0.1 at 2010-07-06 02:26:50) [PUT]
+  Parameters: {"guide_page"=>{"axes_id"=>"", "introText"=>"<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"1", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-1"}, "commit"=>"Update", "authenticity_token"=>"Rwo4hef4JmyBt1/Kn5rYTOXqjE/WEKNE1eAZYQNG+bo=", "id"=>"1"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+  [4;35;1mGuidePage Update (0.3ms)[0m   [0mUPDATE "guide_pages" SET "updated_at" = '2010-07-06 09:26:50', "introText" = '<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>', "shoulDdShowImage" = 'f' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/rails/guide_pages/1
+Completed in 12ms (DB: 0) | 302 Found [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:26:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:27:10) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 31ms (View: 6, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:27:51) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 23ms (View: 6, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 02:28:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 18ms (View: 12, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1/edit]
+
+
+Processing GuidePagesController#update (for 127.0.0.1 at 2010-07-06 02:28:36) [PUT]
+  Parameters: {"guide_page"=>{"axes_id"=>"", "introText"=>"<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"1", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"", "shoulDdShowImage"=>"1", "index"=>"1", "firstDialogTurn_id"=>"turn-1"}, "commit"=>"Update", "authenticity_token"=>"Rwo4hef4JmyBt1/Kn5rYTOXqjE/WEKNE1eAZYQNG+bo=", "id"=>"1"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+  [4;35;1mGuidePage Update (0.3ms)[0m   [0mUPDATE "guide_pages" SET "updated_at" = '2010-07-06 09:28:36', "shoulDdShowImage" = 't' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/rails/guide_pages/1
+Completed in 58ms (DB: 1) | 302 Found [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:28:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-06 02:29:05) [GET]
+  [4;35;1mGuidePageSequence Load (17.8ms)[0m   [0mSELECT * FROM "guide_page_sequences" [0m
+  [4;36;1mGuidePage Load (0.3ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 131ms (View: 51, DB: 18) | 200 OK [http://localhost/rails/guide_page_sequences]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:29:07) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 32ms (View: 22, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing DialogTurnsController#index (for 127.0.0.1 at 2010-07-06 02:29:07) [GET]
+  [4;36;1mDialogTurn Load (0.8ms)[0m   [0;1mSELECT * FROM "dialog_turns" [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:28:in `send'
+  app/controllers/application_controller.rb:28:in `sproutcore_json'
+  app/controllers/application_controller.rb:25:in `each'
+  app/controllers/application_controller.rb:25:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:10:in `index'
+  app/controllers/dialog_turns_controller.rb:10:in `map'
+  app/controllers/dialog_turns_controller.rb:10:in `index'
+  app/controllers/dialog_turns_controller.rb:7:in `index'
+
+Rendered rescues/_trace (110.5ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing StaticAnnotationsController#index (for 127.0.0.1 at 2010-07-06 02:29:07) [GET]
+  [4;35;1mStaticAnnotations Load (0.4ms)[0m   [0mSELECT * FROM "static_annotations" [0m
+Rendering template within layouts/static_annotations
+Rendering static_annotations/index
+
+ActionView::TemplateError (undefined local variable or method `new_static_annotations_path' for #<ActionView::Base:0x1030369a8>) on line #24 of app/views/static_annotations/index.html.erb:
+21: 
+22: <br />
+23: 
+24: <%= link_to 'New static_annotations', new_static_annotations_path %>
+
+    app/views/static_annotations/index.html.erb:24
+    app/controllers/static_annotations_controller.rb:7:in `index'
+
+Rendered rescues/_trace (46.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:31:21) [GET]
+  [4;36;1mGuidePage Load (0.9ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 15ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:31:21) [GET]
+  [4;35;1mGuidePage Load (0.9ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 14ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:31:22) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 15ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-06 02:31:22) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDialogTurn Load (0.3ms)[0m   [0mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:28:in `send'
+  app/controllers/application_controller.rb:28:in `sproutcore_json'
+  app/controllers/application_controller.rb:25:in `each'
+  app/controllers/application_controller.rb:25:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (129.2ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:32:07) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 16ms (View: 4, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 02:33:24) [GET]
+  [4;35;1mGuidePage Load (0.9ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 15ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePageSequencesController#index (for 127.0.0.1 at 2010-07-06 02:34:05) [GET]
+  [4;36;1mGuidePageSequence Load (0.4ms)[0m   [0;1mSELECT * FROM "guide_page_sequences" [0m
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages".guide_page_sequence_id = 1) [0m
+Rendering template within layouts/guide_page_sequences
+Rendering guide_page_sequences/index
+Completed in 21ms (View: 4, DB: 1) | 200 OK [http://localhost/rails/guide_page_sequences]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 02:34:16) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 21ms (View: 14, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1/edit]
+
+
+Processing GuidePagesController#update (for 127.0.0.1 at 2010-07-06 02:34:20) [PUT]
+  Parameters: {"guide_page"=>{"axes_id"=>"", "introText"=>"<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"1", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-1"}, "commit"=>"Update", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU=", "id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+  [4;36;1mGuidePage Update (0.3ms)[0m   [0;1mUPDATE "guide_pages" SET "updated_at" = '2010-07-06 09:34:20', "shoulDdShowImage" = 'f' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/rails/guide_pages/1
+Completed in 63ms (DB: 1) | 302 Found [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 02:34:21) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 86ms (View: 4, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:34:23) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 38ms (View: 25, DB: 1) | 200 OK [http://localhost/rails/guide_pages]

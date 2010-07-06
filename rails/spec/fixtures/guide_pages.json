@@ -1,0 +1,98 @@
+{
+    "content": [{
+        "introText": "<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>",
+        "guide_page_sequence_id": "sequence-1",
+        "axes_id": "",
+        "title": "1",
+        "guid": "/rails/guide_pages/1",
+        "sensorAppletShouldBeEnabled": false,
+        "dataSeries_id": "",
+        "shoulDdShowImage": true,
+        "index": 1,
+        "firstDialogTurn_id": "turn-1"
+    },
+    {
+        "introText": "<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward\u2026). Click Stop after 30 seconds are up.</p>",
+        "guide_page_sequence_id": "sequence-1",
+        "axes_id": "axes-sensor",
+        "title": "2",
+        "guid": "/rails/guide_pages/2",
+        "sensorAppletShouldBeEnabled": true,
+        "dataSeries_id": "series-sensor",
+        "shoulDdShowImage": false,
+        "index": 1,
+        "firstDialogTurn_id": "turn-2-start"
+    },
+    {
+        "introText": "<p>Next you will try moving at two different speeds.</p><p>Start close to the motion sensor. When you are ready, click Reset and then Start and walk away from the sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. Click Stop when the time is up.</p>",
+        "guide_page_sequence_id": "sequence-1",
+        "axes_id": "axes-sensor",
+        "title": "3",
+        "guid": "/rails/guide_pages/3",
+        "sensorAppletShouldBeEnabled": true,
+        "dataSeries_id": "series-sensor",
+        "shoulDdShowImage": false,
+        "index": 1,
+        "firstDialogTurn_id": "turn-3-start"
+    },
+    {
+        "introText": "<p>This time, you are going to record your position and time during three different tasks.</p><p>Start close to the motion sensor, click Reset, and then click Start. Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds. Click Stop.</p>",
+        "guide_page_sequence_id": "sequence-1",
+        "axes_id": "axes-sensor",
+        "title": "4",
+        "guid": "/rails/guide_pages/4",
+        "sensorAppletShouldBeEnabled": true,
+        "dataSeries_id": "series-sensor",
+        "shoulDdShowImage": false,
+        "index": 1,
+        "firstDialogTurn_id": "turn-4-start"
+    },
+    {
+        "introText": "<p>Now you that you\u2019ve had a chance to create position versus time graphs from your own motions, let\u2019s look at some graphs that were created by someone running.</p><p>Maria ran practice laps around the school track. Her coach recorded the distances she ran after each minute. These data are shown in the graph and the table at right. Remember that the time was recorded in minutes rather than seconds.</p>",
+        "guide_page_sequence_id": "sequence-1",
+        "axes_id": "axes-maria",
+        "title": "5",
+        "guid": "/rails/guide_pages/5",
+        "sensorAppletShouldBeEnabled": false,
+        "dataSeries_id": "series-maria",
+        "shoulDdShowImage": false,
+        "index": 1,
+        "firstDialogTurn_id": "turn-5-start"
+    },
+    {
+        "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
+        "guide_page_sequence_id": "sequence-1",
+        "axes_id": "axes-maria",
+        "title": "6",
+        "guid": "/rails/guide_pages/6",
+        "sensorAppletShouldBeEnabled": false,
+        "dataSeries_id": "series-maria",
+        "shoulDdShowImage": false,
+        "index": 1,
+        "firstDialogTurn_id": "turn-6-start"
+    },
+    {
+        "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
+        "guide_page_sequence_id": "sequence-1",
+        "axes_id": "axes-maria",
+        "title": "7",
+        "guid": "/rails/guide_pages/7",
+        "sensorAppletShouldBeEnabled": false,
+        "dataSeries_id": "series-maria",
+        "shoulDdShowImage": false,
+        "index": 1,
+        "firstDialogTurn_id": "turn-7-start"
+    },
+    {
+        "introText": "",
+        "guide_page_sequence_id": "sequence-1",
+        "axes_id": "axes-maria",
+        "title": "8",
+        "guid": "/rails/guide_pages/8",
+        "sensorAppletShouldBeEnabled": false,
+        "dataSeries_id": "series-maria",
+        "shoulDdShowImage": false,
+        "index": 1,
+        "firstDialogTurn_id": "turn-8-start"
+    }]
+}
