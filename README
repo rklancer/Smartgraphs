@@ -16,10 +16,6 @@ rvm gemset import
 git submodule update --init
 cd abbot
 rake init
-cd frameworks/sproutcore
-git remote add rklancer git://github.com/rklancer/sproutcore.git
-git checkout --track -b rklancer/buildfile-fix
-cd ../../../
 abbot/bin/sc-server -v
 
 ...then visit localhost:4020/smartgraphs
