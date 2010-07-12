@@ -4080,3 +4080,162 @@ Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-11 22:39:42) [GE
 Rendering template within layouts/guide_pages
 Rendering guide_pages/index
 Completed in 115ms (View: 91, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-11 23:01:34) [GET]
+  [4;36;1mGuidePage Load (1.4ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 201ms (View: 113, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-11 23:03:01) [GET]
+  [4;35;1mGuidePage Load (1.2ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 27ms (View: 4, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-11 23:03:01) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 14ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-11 23:03:02) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 54ms (View: 9, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-11 23:03:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDialogTurn Load (0.3ms)[0m   [0;1mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:28:in `send'
+  app/controllers/application_controller.rb:28:in `sproutcore_json'
+  app/controllers/application_controller.rb:25:in `each'
+  app/controllers/application_controller.rb:25:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (43.9ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-11 23:03:03) [GET]
+  [4;35;1mGuidePage Load (1.2ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 15ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 08:14:19) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 193ms (View: 22, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 08:15:04) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 32ms (View: 4, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 08:15:04) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 16ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 08:15:04) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 123ms (View: 39, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-12 08:15:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mDialogTurn Load (0.3ms)[0m   [0;1mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:28:in `send'
+  app/controllers/application_controller.rb:28:in `sproutcore_json'
+  app/controllers/application_controller.rb:25:in `each'
+  app/controllers/application_controller.rb:25:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (257.2ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 08:15:07) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 16ms (View: 5, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 15:18:33) [GET]
+  [4;36;1mGuidePage Load (30.3ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 106ms (View: 3, DB: 30) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 15:26:25) [GET]
+  [4;35;1mGuidePage Load (2.1ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 97ms (View: 4, DB: 2) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 15:27:55) [GET]
+  [4;36;1mGuidePage Load (3.1ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 26ms (View: 3, DB: 3) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 15:41:57) [GET]
+  [4;35;1mGuidePage Load (4.2ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 411ms (View: 3, DB: 4) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 15:51:02) [GET]
+  [4;36;1mGuidePage Load (3.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 22ms (View: 7, DB: 3) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 15:54:44) [GET]
+  [4;35;1mGuidePage Load (0.9ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 18ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 15:56:32) [GET]
+  [4;36;1mGuidePage Load (62.4ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 78ms (View: 4, DB: 62) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 15:58:15) [GET]
+  [4;35;1mGuidePage Load (46.0ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 180ms (View: 83, DB: 46) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 16:03:20) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 19ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 16:05:07) [GET]
+  [4;35;1mGuidePage Load (20.1ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 33ms (View: 3, DB: 20) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 16:14:03) [GET]
+  [4;36;1mGuidePage Load (34.5ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 50ms (View: 3, DB: 35) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 16:17:55) [GET]
+  [4;35;1mGuidePage Load (0.9ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 19ms (View: 8, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 16:20:49) [GET]
+  [4;36;1mGuidePage Load (0.9ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 16ms (View: 4, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 16:26:46) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 66ms (View: 55, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-12 16:29:10) [GET]
+  [4;36;1mGuidePage Load (0.9ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 138ms (View: 127, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
