@@ -10,7 +10,7 @@
   
   @extends SC.Object
 */
-console.log("Loading Smartgraphs = SC.Application.create(...");
+console.log('Loading Smartgraphs = SC.Application.create');
 Smartgraphs = SC.Application.create(
 /** @scope Smartgraphs.prototype */
 {
@@ -23,7 +23,7 @@ Smartgraphs = SC.Application.create(
     // connect to a backend server.  The default setup below connects the store
     // to any fixtures you define.
     //store: SC.Store.create().from(SC.Record.fixtures)
-    store: SC.Store.create().from('SmartGraphs.RailsDataSource'),
+    store: SC.Store.create().from('SmartGraphs.RailsDataSource')
 
     // TODO: Add global constants or singleton objects needed by your app here.
 });

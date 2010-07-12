@@ -2726,3 +2726,1357 @@ Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 02:34:23) [GE
 Rendering template within layouts/guide_pages
 Rendering guide_pages/index
 Completed in 38ms (View: 25, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 07:37:06) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 34ms (View: 19, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 07:37:27) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 72ms (View: 66, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 07:37:31) [GET]
+  [4;36;1mGuidePage Load (0.9ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 178ms (View: 164, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 07:44:26) [GET]
+  [4;35;1mGuidePage Load (23.1ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 101ms (View: 33, DB: 23) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 07:45:31) [GET]
+  [4;36;1mGuidePage Load (735.0ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 812ms (View: 3, DB: 735) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing DialogTurnsController#show to json (for 127.0.0.1 at 2010-07-06 07:45:32) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mDialogTurn Load (31.6ms)[0m   [0mSELECT * FROM "dialog_turns" WHERE ("dialog_turns"."id" = 1) [0m
+
+NameError (uninitialized constant DialogTurn::StaticAnnotation):
+  app/controllers/application_controller.rb:28:in `send'
+  app/controllers/application_controller.rb:28:in `sproutcore_json'
+  app/controllers/application_controller.rb:25:in `each'
+  app/controllers/application_controller.rb:25:in `sproutcore_json'
+  app/controllers/dialog_turns_controller.rb:23:in `show'
+  app/controllers/dialog_turns_controller.rb:20:in `show'
+
+Rendered rescues/_trace (1288.6ms)
+Rendered rescues/_request_and_response (98.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 07:45:38) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 16ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 07:50:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (17.7ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 219ms (View: 195, DB: 18) | 200 OK [http://localhost/rails/guide_pages/1/edit]
+
+
+Processing GuidePagesController#update (for 127.0.0.1 at 2010-07-06 07:50:27) [PUT]
+  Parameters: {"guide_page"=>{"axes_id"=>"", "introText"=>"<b>Hello</b><p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"new", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-1"}, "commit"=>"Update", "authenticity_token"=>"31ILwC1t0Dj9GvMwaTepTLRHu72qOOLns7Shof64E9E=", "id"=>"1"}
+  [4;36;1mGuidePage Load (0.3ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+  [4;35;1mGuidePage Update (41.3ms)[0m   [0mUPDATE "guide_pages" SET "updated_at" = '2010-07-06 14:50:27', "title" = 'new', "introText" = '<b>Hello</b><p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/rails/guide_pages/1
+Completed in 69ms (DB: 42) | 302 Found [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 07:50:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.3ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 13ms (View: 4, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 07:51:08) [GET]
+  [4;35;1mGuidePage Load (22.5ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 45ms (View: 5, DB: 22) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 08:04:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 20ms (View: 14, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1/edit]
+
+
+Processing GuidePagesController#update (for 127.0.0.1 at 2010-07-06 08:05:10) [PUT]
+  Parameters: {"guide_page"=>{"axes_id"=>"", "introText"=>"<b>New text</b><p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"new title", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-1"}, "commit"=>"Update", "authenticity_token"=>"31ILwC1t0Dj9GvMwaTepTLRHu72qOOLns7Shof64E9E=", "id"=>"1"}
+  [4;35;1mGuidePage Load (0.3ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+  [4;36;1mGuidePage Update (0.3ms)[0m   [0;1mUPDATE "guide_pages" SET "updated_at" = '2010-07-06 15:05:10', "title" = 'new title', "introText" = '<b>New text</b><p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/rails/guide_pages/1
+Completed in 14ms (DB: 1) | 302 Found [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 08:05:10) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 10ms (View: 3, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 08:05:35) [GET]
+  [4;36;1mGuidePage Load (1.2ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 35ms (View: 23, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 09:08:41) [GET]
+  [4;35;1mGuidePage Load (41.9ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 59ms (View: 3, DB: 42) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 09:10:19) [GET]
+  [4;36;1mGuidePage Load (17.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 219ms (View: 169, DB: 18) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-06 11:04:34) [GET]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 98ms (View: 14, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:04:46) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:04:46) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:04:46) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:04:46) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:04:46) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:04:46) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-06 11:06:00) [GET]
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 9ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:09) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:09) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:09) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:09) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:09) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:09) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:09) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:06:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-06 11:07:53) [GET]
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 12ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:08:12) [GET]
+
+ActionController::RoutingError (No route matches "/static" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 11:09:33) [GET]
+  [4;36;1mGuidePage Load (1.4ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 240ms (View: 145, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 11:11:46) [GET]
+  [4;35;1mGuidePage Load (0.9ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 71ms (View: 54, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#edit (for 127.0.0.1 at 2010-07-06 11:11:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.6ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/edit
+Completed in 52ms (View: 43, DB: 1) | 200 OK [http://localhost/rails/guide_pages/1/edit]
+
+
+Processing GuidePagesController#update (for 127.0.0.1 at 2010-07-06 11:12:13) [PUT]
+  Parameters: {"guide_page"=>{"axes_id"=>"", "introText"=>"<b>New text!</b><p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>", "guide_page_sequence_id"=>"sequence-1", "title"=>"newTitle", "sensorAppletShouldBeEnabled"=>"0", "dataSeries_id"=>"", "shoulDdShowImage"=>"0", "index"=>"1", "firstDialogTurn_id"=>"turn-1"}, "commit"=>"Update", "authenticity_token"=>"JIAyYUa2mty46SNaLfDsTrOmoiHIikkIG15P/XzFnAU=", "id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+  [4;36;1mGuidePage Update (0.4ms)[0m   [0;1mUPDATE "guide_pages" SET "updated_at" = '2010-07-06 18:12:13', "title" = 'newTitle', "introText" = '<b>New text!</b><p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/rails/guide_pages/1
+Completed in 64ms (DB: 1) | 302 Found [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 11:12:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 17ms (View: 10, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 11:12:19) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 32ms (View: 21, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 11:12:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGuidePage Load (0.2ms)[0m   [0mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 14ms (View: 4, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 11:12:37) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 16ms (View: 4, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:12:59) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/META-INF/services/javax.xml.parsers.SAXParserFactory" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:13:00) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/org/concord/otrunk/OTOtrunkPackage.class" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:13:00) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/org/concord/otrunk/view/OTOtrunkViewPackage.class" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:14:51) [GET]
+
+ActionController::RoutingError (No route matches "/smartgraphs" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:15:01) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 11:15:39) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 17ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:16:19) [GET]
+
+ActionController::RoutingError (No route matches "/smartgraph-demos/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/META-INF/services/javax.xml.parsers.SAXParserFactory" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:16:19) [GET]
+
+ActionController::RoutingError (No route matches "/smartgraph-demos/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/org/concord/otrunk/OTOtrunkPackage.class" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:16:19) [GET]
+
+ActionController::RoutingError (No route matches "/smartgraph-demos/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/org/concord/otrunk/view/OTOtrunkViewPackage.class" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:18:39) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:18:39) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:18:39) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:18:39) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:18:39) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:18:40) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:18:40) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:19:05) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:19:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:19:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:19:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:19:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:19:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:19:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:29) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:29) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:29) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:29) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:29) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:29) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:58) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:58) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:58) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:58) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:58) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:59) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:21:59) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:03) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:03) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:03) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:03) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:03) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:05) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:05) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:05) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:05) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:05) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:05) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:05) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:26) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/6c77f36e096aac33c7ff6d88c6070ad487cae1ad/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:26) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:26) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/f2af5f554c07bdb8209163209571439655ffd8fe/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:26) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/6c77f36e096aac33c7ff6d88c6070ad487cae1ad/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:26) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/f2af5f554c07bdb8209163209571439655ffd8fe/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:26) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/6c77f36e096aac33c7ff6d88c6070ad487cae1ad/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:26) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/f2af5f554c07bdb8209163209571439655ffd8fe/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:49) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:49) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:49) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:49) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:49) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:22:49) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-06 11:23:22) [GET]
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 16ms (View: 2, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:23:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:23:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:23:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:23:27) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:23:28) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:23:28) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:24:47) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:24:47) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:24:47) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:24:47) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:24:47) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:24:47) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:24:47) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/6c77f36e096aac33c7ff6d88c6070ad487cae1ad/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/df9ce43c7fea43c67e8d4dc5db014258c5caf7d7/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/6c77f36e096aac33c7ff6d88c6070ad487cae1ad/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:06) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/df9ce43c7fea43c67e8d4dc5db014258c5caf7d7/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:07) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/6c77f36e096aac33c7ff6d88c6070ad487cae1ad/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:07) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/df9ce43c7fea43c67e8d4dc5db014258c5caf7d7/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:40) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/6c77f36e096aac33c7ff6d88c6070ad487cae1ad/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:40) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:40) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/df9ce43c7fea43c67e8d4dc5db014258c5caf7d7/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:40) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/6c77f36e096aac33c7ff6d88c6070ad487cae1ad/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:40) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/df9ce43c7fea43c67e8d4dc5db014258c5caf7d7/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:40) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/df9ce43c7fea43c67e8d4dc5db014258c5caf7d7/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:51) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:51) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:51) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:51) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:51) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:25:57) [GET]
+
+ActionController::RoutingError (No route matches "/smartgraph-demos/static/smartgraphs/en/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:26:12) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/stylesheet-packed.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:26:12) [GET]
+
+ActionController::RoutingError (No route matches "/static/sproutcore/standard_theme/en/ae78e682efa8d92ab1f23de86e1e7855014416c6/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:26:12) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/stylesheet.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:26:12) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:26:12) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:26:12) [GET]
+
+ActionController::RoutingError (No route matches "/static/raphael/en/8fef9419c1a8145184c17d74b89f7c336ceb2e2a/javascript-packed.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:26:12) [GET]
+
+ActionController::RoutingError (No route matches "/static/smartgraphs/en/8113132463d022ce89297372dcc80d890623e04d/javascript.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 11:27:28) [GET]
+  [4;36;1mGuidePage Load (1.3ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 118ms (View: 73, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-06 11:27:53) [GET]
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Completed in 17ms (View: 2, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:28:17) [GET]
+
+ActionController::RoutingError (No route matches "/smartgraph-domos" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:28:21) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:28:28) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:29:05) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:29:35) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:33:11) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-06 11:33:11) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-06 11:33:27) [GET]
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 13ms (View: 2, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 11:33:35) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 86ms (View: 7, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-07-06 11:36:00) [GET]
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Completed in 11ms (View: 1, DB: 1) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 11:36:11) [GET]
+  [4;35;1mGuidePage Load (2.1ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Completed in 24ms (View: 9, DB: 2) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-06 11:36:31) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Completed in 22ms (View: 3, DB: 1) | 200 OK [http://localhost/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-06 11:37:04) [GET]
+  [4;35;1mGuidePage Load (0.8ms)[0m   [0mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 104ms (View: 93, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
+
+
+Processing GuidePagesController#show (for 127.0.0.1 at 2010-07-06 11:37:10) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGuidePage Load (0.2ms)[0m   [0;1mSELECT * FROM "guide_pages" WHERE ("guide_pages"."id" = 1) [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/show
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://localhost/rails/guide_pages/1]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-11 22:39:42) [GET]
+  [4;36;1mGuidePage Load (0.8ms)[0m   [0;1mSELECT * FROM "guide_pages" [0m
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 115ms (View: 91, DB: 1) | 200 OK [http://localhost/rails/guide_pages]
