@@ -25,7 +25,7 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
     },
 
     sequenceDidChange: function() {
-        //console.log('Smartgraphs.guidePageSequenceController observed sequence');
+        console.log('***! Smartgraphs.guidePageSequenceController observed sequence change');
         var sequence = this.get('sequence');
         if (sequence) {
             console.log("sequence", sequence);
@@ -41,7 +41,7 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
                     console.error("firstPage:", firstPage);
                 }
             } else {
-                console.log("Not using usual Guide Page Sequence structure because sequence is missing pages:", pages);
+                console.log("Not using old Guide Page Sequence structure because sequence is missing the attribute pages:", pages);
                 if (sequence.isSCArray) {
                     pages = sequence;
                     this.set('content', pages);

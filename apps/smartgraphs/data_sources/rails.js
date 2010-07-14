@@ -82,7 +82,10 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             console.log("store.dataSourceDidFetchQuery(query)");
             store.dataSourceDidFetchQuery(query);
             console.log("group end");
-        } else store.dataSourceDidErrorQuery(query, response);
+        }
+        else {
+            store.dataSourceDidErrorQuery(query, response);
+        }
 
         console.log("group end");
     },
@@ -109,15 +112,19 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
             console.log("store.dataSourceDidFetchQuery(query)");
             store.dataSourceDidFetchQuery(query);
+            console.log("store.dataSourceDidFetchQuery(query) is done");
+			// Setting the guide_pages array to guidePageSequenceController.sequence 
             var guide_pages = store.find(Smartgraphs.GuidePage);
             console.log('guide_pages:', guide_pages);
             console.log('guide_pages.objectAt(0):', guide_pages.objectAt(0));
             console.log('guide_pages.objectAt(0).title:', guide_pages.objectAt(0).title);
             console.log('guide_pages.objectAt(0).title.toString():', guide_pages.objectAt(0).title.toString());
             Smartgraphs.guidePageSequenceController.set('sequence', guide_pages);
-
             console.log("group end");
-        } else store.dataSourceDidErrorQuery(query, response);
+        }
+        else {
+            store.dataSourceDidErrorQuery(query, response);
+        }
 
         console.log("group end");
     },
@@ -149,7 +156,10 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             console.log('store.dataSourceDidComplete(storeKey, content)');
             store.dataSourceDidComplete(storeKey, content);
             console.log("group end");
-        } else store.dataSourceDidError(storeKey);
+        }
+        else {
+            store.dataSourceDidError(storeKey);
+        }
 
         console.log("group end");
     },
@@ -178,7 +188,10 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             var parser = /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
             var url = parser.exec(response.header('Location'))[8];
             store.dataSourceDidComplete(storeKey, null, url); // update url
-        } else store.dataSourceDidError(storeKey, response);
+        }
+        else {
+            store.dataSourceDidError(storeKey, response);
+        }
     },
 
     updateRecord: function(store, storeKey) {
