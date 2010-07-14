@@ -1,9 +1,12 @@
-[submodule "abbot"]
-	path = abbot
-	url = git://github.com/sproutit/sproutcore-abbot.git
 [submodule "frameworks/cc"]
 	path = frameworks/cc
 	url = git://github.com/sfentress/CC-SproutCore.git
 [submodule "capybara-testrunner"]
 	path = capybara-testrunner
 	url = git://github.com/rklancer/capybara-testrunner.git
+[submodule "frameworks/raphael_views"]
+	path = frameworks/raphael_views
+	url = git@github.com:rklancer/RaphaelViews.git
+[submodule "frameworks/sproutcore"]
+	path = frameworks/sproutcore
+	url = http://github.com/sproutit/sproutcore.git
