@@ -17,7 +17,8 @@ class GuidePageSequencesController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @guide_page_sequences }
       format.json { 
-        guide_page_sequences = @guide_page_sequences.map {|guide_page_sequence| sproutcore_json(guide_page_sequence) }
+#                                  guide_pages = @guide_pages.map {|guide_page| sproutcore_json(guide_page)["guide_page"] }
+        guide_page_sequences = @guide_page_sequences.map {|guide_page_sequence| sproutcore_json(guide_page_sequence)["guide_page_sequence"] }
         render :json => { :content => guide_page_sequences } 
       }
     end
