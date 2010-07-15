@@ -7,7 +7,6 @@ describe DialogTurn do
       :beforeText => "value for beforeText",
       :responseTemplate_id => "value for responseTemplate_id",
       :responseVerifier_id => "value for responseVerifier_id",
-      :staticAnnotations_id => 1,
       :nextTurnButtonTitle => "value for nextTurnButtonTitle",
       :nextTurnForNominalResponse_id => "value for nextTurnForNominalResponse_id",
       :nextTurnForIncorrectResponse_id => "value for nextTurnForIncorrectResponse_id",
@@ -20,3 +19,22 @@ describe DialogTurn do
     DialogTurn.create!(@valid_attributes)
   end
 end
+
+# == Schema Information
+#
+# Table name: dialog_turns
+#
+#  id                              :integer         not null, primary key
+#  guid                            :string(255)
+#  beforeText                      :text
+#  responseTemplate_id             :string(255)
+#  responseVerifier_id             :string(255)
+#  nextTurnButtonTitle             :string(255)
+#  nextTurnForNominalResponse_id   :string(255)
+#  nextTurnForIncorrectResponse_id :string(255)
+#  isLastTurn                      :boolean
+#  shouldAutoAdvance               :boolean
+#  created_at                      :datetime
+#  updated_at                      :datetime
+#
+

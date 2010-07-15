@@ -8,8 +8,10 @@ class GuidePagesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @guide_pages }
-      guide_pages = @guide_pages.map {|guide_page| sproutcore_json(guide_page)["guide_page"] }
-      format.json { render :json => { :content => guide_pages } }
+      format.json { 
+        guide_pages = @guide_pages.map {|guide_page| sproutcore_json(guide_page)["guide_page"] }
+        render :json => { :content => guide_pages } 
+      }
     end
   end
 

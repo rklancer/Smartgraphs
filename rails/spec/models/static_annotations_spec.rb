@@ -13,3 +13,16 @@ describe StaticAnnotations do
     StaticAnnotations.create!(@valid_attributes)
   end
 end
+
+# == Schema Information
+#
+# Table name: static_annotations
+#
+#  id         :integer         not null, primary key
+#  guid       :string(255)
+#  type       :string(255)
+#  points_id  :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

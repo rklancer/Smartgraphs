@@ -8,7 +8,6 @@ describe "/dialog_turns/show.html.erb" do
       :beforeText => "value for beforeText",
       :responseTemplate_id => "value for responseTemplate_id",
       :responseVerifier_id => "value for responseVerifier_id",
-      :staticAnnotations_id => 1,
       :nextTurnButtonTitle => "value for nextTurnButtonTitle",
       :nextTurnForNominalResponse_id => "value for nextTurnForNominalResponse_id",
       :nextTurnForIncorrectResponse_id => "value for nextTurnForIncorrectResponse_id",
@@ -23,7 +22,6 @@ describe "/dialog_turns/show.html.erb" do
     response.should have_text(/value\ for\ beforeText/)
     response.should have_text(/value\ for\ responseTemplate_id/)
     response.should have_text(/value\ for\ responseVerifier_id/)
-    response.should have_text(/1/)
     response.should have_text(/value\ for\ nextTurnButtonTitle/)
     response.should have_text(/value\ for\ nextTurnForNominalResponse_id/)
     response.should have_text(/value\ for\ nextTurnForIncorrectResponse_id/)

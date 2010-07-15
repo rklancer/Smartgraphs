@@ -5,7 +5,6 @@ class CreateDialogTurns < ActiveRecord::Migration
       t.text :beforeText
       t.string :responseTemplate_id
       t.string :responseVerifier_id
-      t.integer :staticAnnotations_id
       t.string :nextTurnButtonTitle
       t.string :nextTurnForNominalResponse_id
       t.string :nextTurnForIncorrectResponse_id

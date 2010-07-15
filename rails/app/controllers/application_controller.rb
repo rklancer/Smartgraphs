@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
     record[:guid] = polymorphic_path(record)
     hash = record.as_json(:except => [:id, :created_at, :updated_at])
     
+    # TODO: Uncomment this line as it is in Raclette?
     # hash[:guid] = polymorphic_path(record)
     
     associations = record.class.reflect_on_all_associations

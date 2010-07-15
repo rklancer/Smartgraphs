@@ -10,7 +10,6 @@ describe "/dialog_turns/index.html.erb" do
         :beforeText => "value for beforeText",
         :responseTemplate_id => "value for responseTemplate_id",
         :responseVerifier_id => "value for responseVerifier_id",
-        :staticAnnotations_id => 1,
         :nextTurnButtonTitle => "value for nextTurnButtonTitle",
         :nextTurnForNominalResponse_id => "value for nextTurnForNominalResponse_id",
         :nextTurnForIncorrectResponse_id => "value for nextTurnForIncorrectResponse_id",
@@ -22,7 +21,6 @@ describe "/dialog_turns/index.html.erb" do
         :beforeText => "value for beforeText",
         :responseTemplate_id => "value for responseTemplate_id",
         :responseVerifier_id => "value for responseVerifier_id",
-        :staticAnnotations_id => 1,
         :nextTurnButtonTitle => "value for nextTurnButtonTitle",
         :nextTurnForNominalResponse_id => "value for nextTurnForNominalResponse_id",
         :nextTurnForIncorrectResponse_id => "value for nextTurnForIncorrectResponse_id",
@@ -38,7 +36,6 @@ describe "/dialog_turns/index.html.erb" do
     response.should have_tag("tr>td", "value for beforeText".to_s, 2)
     response.should have_tag("tr>td", "value for responseTemplate_id".to_s, 2)
     response.should have_tag("tr>td", "value for responseVerifier_id".to_s, 2)
-    response.should have_tag("tr>td", 1.to_s, 2)
     response.should have_tag("tr>td", "value for nextTurnButtonTitle".to_s, 2)
     response.should have_tag("tr>td", "value for nextTurnForNominalResponse_id".to_s, 2)
     response.should have_tag("tr>td", "value for nextTurnForIncorrectResponse_id".to_s, 2)

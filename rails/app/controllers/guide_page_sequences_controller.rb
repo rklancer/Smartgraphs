@@ -1,14 +1,25 @@
 class GuidePageSequencesController < ApplicationController
   # GET /guide_page_sequences
   # GET /guide_page_sequences.xml
+  # TODO: correct json formatting which is including guide_pages like this:
+  # {
+  #     "content": [{
+  #         "guide_pages": [], //THIS LINE SHOULD NOT BE HERE
+  #         "guide_page_sequence": {
+  #             "guid": "/rails/guide_page_sequences/1"
+  #         }
+  #     }]
+  # }
   def index
     @guide_page_sequences = GuidePageSequence.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @guide_page_sequences }
-      guide_page_sequences = @guide_page_sequences.map {|guide_page_sequence| sproutcore_json(guide_page_sequence) }
-      format.json { render :json => { :content => guide_page_sequences } }
+      format.json { 
+        guide_page_sequences = @guide_page_sequences.map {|guide_page_sequence| sproutcore_json(guide_page_sequence) }
+        render :json => { :content => guide_page_sequences } 
+      }
     end
   end
 

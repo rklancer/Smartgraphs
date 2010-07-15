@@ -15,3 +15,5 @@ thin -v1.2.7
 thor -v0.13.7
 rails -v2.3.8
 sqlite3-ruby -v1.3.0
+rspec-rails -v1.3.2
+annotate -2.4.0

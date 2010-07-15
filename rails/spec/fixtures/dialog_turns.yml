@@ -5,7 +5,6 @@ one:
   beforeText: MyText
   responseTemplate_id: MyString
   responseVerifier_id: MyString
-  staticAnnotations_id: 1
   nextTurnButtonTitle: MyString
   nextTurnForNominalResponse_id: MyString
   nextTurnForIncorrectResponse_id: MyString
@@ -17,9 +16,27 @@ two:
   beforeText: MyText
   responseTemplate_id: MyString
   responseVerifier_id: MyString
-  staticAnnotations_id: 1
   nextTurnButtonTitle: MyString
   nextTurnForNominalResponse_id: MyString
   nextTurnForIncorrectResponse_id: MyString
   isLastTurn: false
   shouldAutoAdvance: false
+
+# == Schema Information
+#
+# Table name: dialog_turns
+#
+#  id                              :integer         not null, primary key
+#  guid                            :string(255)
+#  beforeText                      :text
+#  responseTemplate_id             :string(255)
+#  responseVerifier_id             :string(255)
+#  nextTurnButtonTitle             :string(255)
+#  nextTurnForNominalResponse_id   :string(255)
+#  nextTurnForIncorrectResponse_id :string(255)
+#  isLastTurn                      :boolean
+#  shouldAutoAdvance               :boolean
+#  created_at                      :datetime
+#  updated_at                      :datetime
+#
+
