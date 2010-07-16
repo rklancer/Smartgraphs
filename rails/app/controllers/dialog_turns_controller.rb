@@ -41,6 +41,7 @@ class DialogTurnsController < ApplicationController
   # GET /dialog_turns/1/edit
   def edit
     @dialog_turn = DialogTurn.find(params[:id])
+    @static_annotations = StaticAnnotation.find(:all)
   end
 
   # POST /dialog_turns
@@ -63,6 +64,10 @@ class DialogTurnsController < ApplicationController
   # PUT /dialog_turns/1.xml
   def update
     @dialog_turn = DialogTurn.find(params[:id])
+    # if the multiple select list is empty,
+    # make sure the role_ids array exists
+    params[:dialog_turn][:static_annotation_ids] ||= []
+    
 
     respond_to do |format|
       if @dialog_turn.update_attributes(params[:dialog_turn])

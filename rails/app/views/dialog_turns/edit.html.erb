@@ -40,6 +40,12 @@
     <%= f.check_box :shouldAutoAdvance %>
   </p>
   <p>
+  <%= f.label :static_annotations %><br />
+	<%= collection_select(:dialog_turn, :static_annotation_ids, @static_annotations, :id, :guid,
+		{ :selected => @dialog_turn.static_annotation_ids },
+		{:multiple => true, :static_annotations => 'dialog_turn[static_annotation_ids][]' }) %>
+  </p>
+  <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>

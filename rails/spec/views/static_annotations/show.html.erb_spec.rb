@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "/static_annotations/show.html.erb" do
   include StaticAnnotationsHelper
   before(:each) do
-    assigns[:static_annotations] = @static_annotations = stub_model(StaticAnnotations,
+    assigns[:static_annotation] = @static_annotation = stub_model(StaticAnnotation,
       :guid => "value for guid",
       :type => "value for type",
       :points_id => "value for points_id"

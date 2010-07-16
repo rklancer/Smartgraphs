@@ -1,18 +1,18 @@
 <p>
   <b>Guid:</b>
-  <%=h @static_annotations.guid %>
+  <%=h @static_annotation.guid %>
 </p>
 
 <p>
   <b>Type:</b>
-  <%=h @static_annotations.type %>
+  <%=h @static_annotation.type %>
 </p>
 
 <p>
   <b>Points:</b>
-  <%=h @static_annotations.points_id %>
+  <%=h @static_annotation.points_id %>
 </p>
 
 
-<%= link_to 'Edit', edit_static_annotations_path(@static_annotations) %> |
+<%= link_to 'Edit', edit_static_annotation_path(@static_annotation) %> |
 <%= link_to 'Back', static_annotations_path %>

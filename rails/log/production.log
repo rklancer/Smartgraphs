@@ -1,0 +1,201 @@
+
+
+Processing HomeController#index (for 127.0.0.1 at 2010-07-15 15:42:01) [GET]
+Rendering home/index
+Completed in 4ms (View: 2, DB: 0) | 200 OK [http://smartgraphs-rails-demos/]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-15 15:42:16) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: guide_pages: SELECT * FROM "guide_pages" ):
+  app/controllers/guide_pages_controller.rb:6:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-15 15:42:33) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: guide_pages: SELECT * FROM "guide_pages" ):
+  app/controllers/guide_pages_controller.rb:6:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-15 15:42:52) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: guide_pages: SELECT * FROM "guide_pages" ):
+  app/controllers/guide_pages_controller.rb:6:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-15 15:43:17) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: guide_pages: SELECT * FROM "guide_pages" ):
+  app/controllers/guide_pages_controller.rb:6:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-15 15:45:34) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: guide_pages: SELECT * FROM "guide_pages" ):
+  app/controllers/guide_pages_controller.rb:6:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-15 15:47:29) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: guide_pages: SELECT * FROM "guide_pages" ):
+  app/controllers/guide_pages_controller.rb:6:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GuidePagesController#index to json (for 127.0.0.1 at 2010-07-15 15:48:02) [GET]
+Completed in 17ms (View: 4, DB: 1) | 200 OK [http://smartgraphs-rails-demos/rails/guide_pages.json]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-15 15:48:28) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 86ms (View: 83, DB: 1) | 200 OK [http://smartgraphs-rails-demos/rails/guide_pages]
+
+
+Processing GuidePagesController#index (for 127.0.0.1 at 2010-07-15 15:50:37) [GET]
+Rendering template within layouts/guide_pages
+Rendering guide_pages/index
+Completed in 32ms (View: 30, DB: 1) | 200 OK [http://smartgraphs-rails-demos/rails/guide_pages]

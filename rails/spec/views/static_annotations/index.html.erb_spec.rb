@@ -5,12 +5,12 @@ describe "/static_annotations/index.html.erb" do
 
   before(:each) do
     assigns[:static_annotations] = [
-      stub_model(StaticAnnotations,
+      stub_model(StaticAnnotation,
         :guid => "value for guid",
         :type => "value for type",
         :points_id => "value for points_id"
       ),
-      stub_model(StaticAnnotations,
+      stub_model(StaticAnnotation,
         :guid => "value for guid",
         :type => "value for type",
         :points_id => "value for points_id"

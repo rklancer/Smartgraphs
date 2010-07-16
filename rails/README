@@ -13,6 +13,9 @@ script/generate rspec_scaffold DialogTurn guid:string beforeText:text responseTe
 rake db:migrate
 script/generate rspec_scaffold StaticAnnotations guid:string type:string points_id:string
 rake db:migrate
+script/destroy rspec_scaffold StaticAnnotations guid:string type:string points_id:string
+script/generate rspec_scaffold StaticAnnotation guid:string type:string points_id:string
+rake db:migrate
 
 == Welcome to Rails
 

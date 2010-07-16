@@ -8,15 +8,15 @@ ActionController::Routing::Routes.draw do |map|
     sc_map.resources :guide_pages
     
     sc_map.resources :guide_page_sequences
-  end
-  map.resources :static_annotations
-  
+  end  
   map.resources :dialog_turns
   
   map.resources :guide_pages
   
   map.resources :guide_page_sequences
   
+  map.resources :static_annotations
+
   # The priority is based upon order of creation: first created -> highest priority.
   
   # Sample of regular route:

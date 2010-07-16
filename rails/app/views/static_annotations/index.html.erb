@@ -7,18 +7,18 @@
     <th>Points</th>
   </tr>
 
-<% @static_annotations.each do |static_annotations| %>
+<% @static_annotations.each do |static_annotation| %>
   <tr>
-    <td><%=h static_annotations.guid %></td>
-    <td><%=h static_annotations.type %></td>
-    <td><%=h static_annotations.points_id %></td>
-    <td><%= link_to 'Show', static_annotations %></td>
-    <td><%= link_to 'Edit', edit_static_annotations_path(static_annotations) %></td>
-    <td><%= link_to 'Destroy', static_annotations, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h static_annotation.guid %></td>
+    <td><%=h static_annotation.type %></td>
+    <td><%=h static_annotation.points_id %></td>
+    <td><%= link_to 'Show', static_annotation %></td>
+    <td><%= link_to 'Edit', edit_static_annotation_path(static_annotation) %></td>
+    <td><%= link_to 'Destroy', static_annotation, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New static_annotations', new_static_annotations_path %>
+<%= link_to 'New static_annotation', new_static_annotation_path %>
