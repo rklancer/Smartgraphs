@@ -1,3 +1,170 @@
+move fixtures-prod to fixtures and add use-fixtures
+
+change guidepagesequence to guide & give Guide model a title
+
+make a mainController that controls app state
+
+put sensor controls, applet controls in a pickerpane
+
+remove cc framework
+
+make a panes/ directory
+
+create 1x1 applet pane with explicit, local jar list. 
+Don't mess with visibility but use a *pane* so the applet tag isn't created & appended to doc until needed. Logically a (1x1) applet should be a pane because it doesn't make sense to consider it part of a view hierarchy.
+
+create GuidePane and have it contain dynamic view logic for top, right, or combined view.
+
+make mainPane have a container view with content bound to mainController
+
+
+
+
+
+
+command/action model:
+
+  *** this is very murky. Don't architect too much in advance, right?
+
+  things we'd want to record:
+  
+    create new slide
+    add axes to slide
+    add data series to graph on slide
+    add annotation to slide/series on slide/axes on slide (etc)
+    update graph on slide with new, edited version.
+    
+    
+  note we're likely to want to use a "freeze and copy" model to get stuff in the slide.
+
+  also note that these are commands for editing the slide.
+  
+  How to handle commands for editing stuff "live" that doesn't go to a slide? 
+  
+  And how do we use the responder chain to handle this?
+  
+  command history; intersperse "copy to slide" commands in command history.
+  
+
+  
+  
+  
+annotation models:
+  
+  okay, you can have annotations that are added to a slide
+  you can have annotations that persist from dialog turn to dialog turn
+  you can have annotations that are displayed only during the dialog turn
+  you can have annotations that need to be sequenced and can be replayed
+  
+  what is the essential difference between these?
+  
+  
+  
+a "duh" moment: use JSON to persist arguments to verifiers and to to commands.
+
+Alternate duh moment: create models for each type of command
+string (or json) config for verifiers & commands is sort of a cheat anyway, right?
+
+Nah, dialogTurns should:
+
+* have a verifier
+* have a commandList property which references commands
+
+
+
+commands before
+commands after
+
+
+believe it or not, I think a stack model is the best way to do references
+
+  compare ___the series created in this step___ to ___the series created 2 steps ago___. They should __match over 50% of lengthx__   (__xxxxxx__ represents an option in a pulldown or the like)
+  
+    if they don't:
+  
+    if they do:
+
+  (green/red highlighting in UI for choosing this.)
+
+
+
+  __field 2__ should ___contain the words___ 
+  
+  ___make a new slide___
+  
+  copy ___the new table___ to the slide
+  
+  
+okay, given all that, how do we do what we need to do for Thursday?
+
+
+Remember to make the *model* general. We can use a Guide to let authors write Guides! (guide == wizard)
+
+
+
+
+
+series and axis controllers:
+
+  dataSeriesController can model a "current data series"
+
+  but note that each series on a graph needs to be displayed!
+
+  graphController might plausibly have an array of series objects
+  
+  ps. what is transient and what is permanent?
+  
+  don't model an axis as having a set of features
+  
+
+
+  createAxesCommand(predefine axes or popup a menu to fill out info. Give axes a name)
+  
+  AddAxes
+  
+  References (ie, how does a later dialog turn point to the axes it wants to modify) could be an issue.
+
+  You have models for "premade" stuff like premade axes and data series
+  
+  'verifier' vs. 'inspector'
+  
+
+  ... and what you need to be able to say is, 'connect (the student's answer on field 2) to (the title of the annotation)
+  
+  
+
+
+7/14/10:
+
+major "modes"
+
+  use the guide
+  edit the guide
+  edit the lab book
+  lab book slideshow
+
+
+screen configuration in Guide mode
+
+  left pane
+
+  right pane
+
+    split into top & bottom?
+
+    right top
+    right bottom
+
+
+(use sc.formview for answers?)
+
+how to handle enabling input -- either prediction graphs or sensor applet input?
+
+
+
+
+
+
 6/16/10:
 
 Refactoring RaphaelViews to work better and to support prediction graphs/higher sampling rates, etc.
