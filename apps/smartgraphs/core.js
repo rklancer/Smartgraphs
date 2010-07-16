@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -24,4 +24,4 @@ Smartgraphs = SC.Application.create(
   
   // TODO: Add global constants or singleton objects needed by your app here.
 
-});
+}) ;
