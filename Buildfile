@@ -5,5 +5,5 @@
 
 config :all, :required => [:sproutcore]
 config :smartgraphs, 
-  :required => ['raphael_views/raphael', 'raphael_views/g_raphael', :cc],
+  :required => ['raphael_views/raphael', 'raphael_views/g_raphael'],
   :theme => 'sproutcore/ace'
