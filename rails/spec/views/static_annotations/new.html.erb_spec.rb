@@ -7,7 +7,7 @@ describe "/static_annotations/new.html.erb" do
     assigns[:static_annotation] = stub_model(StaticAnnotation,
       :new_record? => true,
       :guid => "value for guid",
-      :type => "value for type",
+      :annotation_type => "value for annotation_type",
       :points_id => "value for points_id"
     )
   end
@@ -17,7 +17,7 @@ describe "/static_annotations/new.html.erb" do
 
     response.should have_tag("form[action=?][method=post]", static_annotations_path) do
       with_tag("input#static_annotation_guid[name=?]", "static_annotation[guid]")
-      with_tag("input#static_annotation_type[name=?]", "static_annotation[type]")
+      with_tag("input#static_annotation_annotation_type[name=?]", "static_annotation[annotation_type]")
       with_tag("input#static_annotation_points_id[name=?]", "static_annotation[points_id]")
     end
   end

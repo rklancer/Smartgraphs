@@ -7,6 +7,7 @@ describe DialogTurn do
       :beforeText => "value for beforeText",
       :responseTemplate_id => "value for responseTemplate_id",
       :responseVerifier_id => "value for responseVerifier_id",
+      :afterText => "value for afterText",
       :nextTurnButtonTitle => "value for nextTurnButtonTitle",
       :nextTurnForNominalResponse_id => "value for nextTurnForNominalResponse_id",
       :nextTurnForIncorrectResponse_id => "value for nextTurnForIncorrectResponse_id",
@@ -29,6 +30,7 @@ end
 #  beforeText                      :text
 #  responseTemplate_id             :string(255)
 #  responseVerifier_id             :string(255)
+#  afterText                       :text
 #  nextTurnButtonTitle             :string(255)
 #  nextTurnForNominalResponse_id   :string(255)
 #  nextTurnForIncorrectResponse_id :string(255)

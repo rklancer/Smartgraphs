@@ -2,10 +2,23 @@
 
 one:
   guid: MyString
-  type: MyString
+  annotation_type: MyString
   points_id: MyString
 
 two:
   guid: MyString
-  type: MyString
+  annotation_type: MyString
   points_id: MyString
+
+# == Schema Information
+#
+# Table name: static_annotations
+#
+#  id              :integer         not null, primary key
+#  guid            :string(255)
+#  annotation_type :string(255)
+#  points_id       :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+

@@ -6,11 +6,7 @@ class DialogTurnsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @dialog_turns }      
-      format.json { 
-        dialog_turns = @dialog_turns.map {|dialog_turn| sproutcore_json(dialog_turn) }
-        render :json => { :content => dialog_turns } 
-      }
+      format.xml  { render :xml => @dialog_turns }
     end
   end
 
@@ -22,8 +18,6 @@ class DialogTurnsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @dialog_turn }
-      dialog_turn = sproutcore_json(@dialog_turn)
-      format.json { render :json => { :content => dialog_turn } }
     end
   end
 
@@ -31,6 +25,7 @@ class DialogTurnsController < ApplicationController
   # GET /dialog_turns/new.xml
   def new
     @dialog_turn = DialogTurn.new
+    @static_annotations = StaticAnnotation.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +43,9 @@ class DialogTurnsController < ApplicationController
   # POST /dialog_turns.xml
   def create
     @dialog_turn = DialogTurn.new(params[:dialog_turn])
+    # if the multiple select list is empty,
+    # make sure the static_annotation_ids array exists
+    params[:dialog_turn][:static_annotation_ids] ||= []
 
     respond_to do |format|
       if @dialog_turn.save
@@ -65,9 +63,8 @@ class DialogTurnsController < ApplicationController
   def update
     @dialog_turn = DialogTurn.find(params[:id])
     # if the multiple select list is empty,
-    # make sure the role_ids array exists
+    # make sure the static_annotation_ids array exists
     params[:dialog_turn][:static_annotation_ids] ||= []
-    
 
     respond_to do |format|
       if @dialog_turn.update_attributes(params[:dialog_turn])

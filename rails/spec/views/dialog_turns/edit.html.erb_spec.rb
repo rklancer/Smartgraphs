@@ -10,6 +10,7 @@ describe "/dialog_turns/edit.html.erb" do
       :beforeText => "value for beforeText",
       :responseTemplate_id => "value for responseTemplate_id",
       :responseVerifier_id => "value for responseVerifier_id",
+      :afterText => "value for afterText",
       :nextTurnButtonTitle => "value for nextTurnButtonTitle",
       :nextTurnForNominalResponse_id => "value for nextTurnForNominalResponse_id",
       :nextTurnForIncorrectResponse_id => "value for nextTurnForIncorrectResponse_id",
@@ -26,6 +27,7 @@ describe "/dialog_turns/edit.html.erb" do
       with_tag('textarea#dialog_turn_beforeText[name=?]', "dialog_turn[beforeText]")
       with_tag('input#dialog_turn_responseTemplate_id[name=?]', "dialog_turn[responseTemplate_id]")
       with_tag('input#dialog_turn_responseVerifier_id[name=?]', "dialog_turn[responseVerifier_id]")
+      with_tag('textarea#dialog_turn_afterText[name=?]', "dialog_turn[afterText]")
       with_tag('input#dialog_turn_nextTurnButtonTitle[name=?]', "dialog_turn[nextTurnButtonTitle]")
       with_tag('input#dialog_turn_nextTurnForNominalResponse_id[name=?]', "dialog_turn[nextTurnForNominalResponse_id]")
       with_tag('input#dialog_turn_nextTurnForIncorrectResponse_id[name=?]', "dialog_turn[nextTurnForIncorrectResponse_id]")

@@ -1,4 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :static_annotations
+
+  map.resources :dialog_turns
+  
+  map.resources :guide_pages
+  
+  map.resources :guide_page_sequences
+  
   # TODO: stop using the 'rails' path prefix so scaffolded routes will automatically work
   map.with_options :path_prefix => 'rails' do |sc_map|
     sc_map.resources :static_annotations
@@ -9,13 +17,6 @@ ActionController::Routing::Routes.draw do |map|
     
     sc_map.resources :guide_page_sequences
   end  
-  map.resources :dialog_turns
-  
-  map.resources :guide_pages
-  
-  map.resources :guide_page_sequences
-  
-  map.resources :static_annotations
 
   # The priority is based upon order of creation: first created -> highest priority.
   

@@ -5,6 +5,7 @@ one:
   beforeText: MyText
   responseTemplate_id: MyString
   responseVerifier_id: MyString
+  afterText: MyText
   nextTurnButtonTitle: MyString
   nextTurnForNominalResponse_id: MyString
   nextTurnForIncorrectResponse_id: MyString
@@ -16,6 +17,7 @@ two:
   beforeText: MyText
   responseTemplate_id: MyString
   responseVerifier_id: MyString
+  afterText: MyText
   nextTurnButtonTitle: MyString
   nextTurnForNominalResponse_id: MyString
   nextTurnForIncorrectResponse_id: MyString
@@ -31,6 +33,7 @@ two:
 #  beforeText                      :text
 #  responseTemplate_id             :string(255)
 #  responseVerifier_id             :string(255)
+#  afterText                       :text
 #  nextTurnButtonTitle             :string(255)
 #  nextTurnForNominalResponse_id   :string(255)
 #  nextTurnForIncorrectResponse_id :string(255)

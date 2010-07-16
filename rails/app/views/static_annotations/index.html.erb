@@ -3,14 +3,14 @@
 <table>
   <tr>
     <th>Guid</th>
-    <th>Type</th>
+    <th>Annotation type</th>
     <th>Points</th>
   </tr>
 
 <% @static_annotations.each do |static_annotation| %>
   <tr>
     <td><%=h static_annotation.guid %></td>
-    <td><%=h static_annotation.type %></td>
+    <td><%=h static_annotation.annotation_type %></td>
     <td><%=h static_annotation.points_id %></td>
     <td><%= link_to 'Show', static_annotation %></td>
     <td><%= link_to 'Edit', edit_static_annotation_path(static_annotation) %></td>
