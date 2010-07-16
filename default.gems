@@ -1,15 +1,25 @@
 # default.gems generated gem export file. Note that any env variable settings will be missing. Append these after using a ';' field separator
 abstract -v1.0.0
+capybara -v0.3.9
+columnize -v0.3.1
+culerity -v0.2.10
 daemons -v1.1.0
 erubis -v2.6.6
 eventmachine -v0.12.10
 extlib -v0.9.15
+ffi -v0.6.3
 gemcutter -v0.5.0
+gist -v1.2.1
 git -v1.2.5
 jeweler -v1.4.0
 json_pure -v1.4.3
+mime-types -v1.16
+nokogiri -v1.4.2
 rack -v1.2.1
+rack-test -v0.5.4
 rspec -v1.3.0
 rubyforge -v2.0.4
+selenium-webdriver -v0.0.24
+sinatra -v1.0
 thin -v1.2.7
 thor -v0.13.7
