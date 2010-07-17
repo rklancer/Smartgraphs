@@ -9,13 +9,29 @@
 
 Smartgraphs.guidePage = SC.Page.design({
 
-  guidePane: SC.Pane.design({
-    childViews: 'instructionsView dataView'.w(),
+  guideView: SC.View.design({
+    childViews: 'instructionsWrapper dataWrapper'.w(),
     
-    instructionsView: SC.StaticContentView.design({}),
+    instructionsWrapper: SC.View.design({
+      layout: { left: 0, width: 0.5 },       // need to specify 0.5 rather than '50%'
+      childViews: 'instructionsView'.w(),
+      
+      instructionsView: SC.View.design({
+        layout: { right: 5, top: 0, bottom: 0 },
+        classNames: 'smartgraph-pane'
+      })
+    }),
     
-    dataView: SC.ContainerView.design({
-      // set 'nowShowing' to singleFrameDataView or splitFrameDataView
+    dataWrapper: SC.View.design({
+      layout: { right: 0, width: 0.5 },
+      
+      childViews: 'dataView'.w(),
+      
+      dataView: SC.ContainerView.design({
+        layout: { left: 5 },
+        classNames: 'smartgraph-pane'        
+        // set 'nowShowing' to singleFrameDataView or splitFrameDataView
+      })
     })
   }),
   

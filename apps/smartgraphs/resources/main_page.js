@@ -4,20 +4,17 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-// This page describes the main user interface for your application.  
+// This page describes the main user interface  
 Smartgraphs.mainPage = SC.Page.design({
 
-  // The main pane is made visible on screen as soon as your app is loaded.
-  // Add childViews to this pane for views to display immediately on page 
-  // load.
   mainPane: SC.MainPane.design({
-    childViews: 'labelView'.w(),
+    // use this constricted layout while developing, to make sure content doesn't overflow 1024x768 screen in IE
+    // layout: { width: 960, height: 600 },
     
-    labelView: SC.LabelView.design({
-      layout: { centerX: 0, centerY: 0, width: 200, height: 18 },
-      textAlign: SC.ALIGN_CENTER,
-      tagName: "h1", 
-      value: "Welcome to SproutCore!"
+    childViews: 'container'.w(),
+    
+    container: SC.ContainerView.design({
+      layout: { top: 10, right: 20, bottom: 10, left: 20 }
     })
   })
 
