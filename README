@@ -14,7 +14,8 @@ rvm gemset import
 # Now you can easily use rvm to switch to a version of ruby and the specific 
 # gems needed for raclette with a command like 1his:
 rvm use 1.9.1@Smartgraphs
-# If you are using a branch, this is a good time to check it out
+# If you are using a branch, this is a good time to check it out like this:
+git checkout -b randolph-rails --track origin/randolph-rails
 # Then run these commands:
 git submodule update --init
 cd abbot
@@ -42,3 +43,6 @@ abbot/bin/sc-server -v
 #
 # to open TestRunner visit http://localhost:4020/sproutcore/tests
 # to see all Sproutcore tests visit  http://localhost:4020/static/smartgraphs/en/current/tests.html
+#
+# Build to the rails/public directory with:
+abbot/bin/sc-build -c --buildroot="rails/public"
