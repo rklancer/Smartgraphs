@@ -1,18 +1,18 @@
 // ==========================================================================
-// Project:   Smartgraphs.GUIDE_RESPONSE_READY
+// Project:   Smartgraphs.GUIDE_END_OF_PAGE
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  State representing that the user can check their response in order to progress to the next guide step.
+  State representing a finished guide page. The user should be able to proceed to the next guide page from here.
 
   @extends SC.Responder
   @version 0.1
 */
-Smartgraphs.GUIDE_RESPONSE_READY = SC.Responder.create(
-/** @scope Smartgraphs.GUIDE_RESPONSE_READY.prototype */ {
+Smartgraphs.GUIDE_END_OF_PAGE = SC.Responder.create(
+/** @scope Smartgraphs.GUIDE_END_OF_PAGE.prototype */ {
 
   /**
     The next state to check if this state does not implement the action.

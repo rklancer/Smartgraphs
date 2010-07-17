@@ -6,9 +6,9 @@
 
 /** @class
 
-  State representing that the guide page is waiting for the user's response. Transitions to GUIDE_RESPONSE_READY when
-  the response is in some acceptable form for checking progress.
-
+  State representing that the guide page is waiting for the user's response. Transitions to GUIDE_SUBMIT when
+  the response is in some acceptable form for submitting (e.g., checking the answer)
+  
   @extends SC.Responder
   @version 0.1
 */
@@ -21,7 +21,7 @@ Smartgraphs.GUIDE_READY = SC.Responder.create(
   nextResponder: null,
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+    
   },
   
   willLoseFirstResponder: function() {

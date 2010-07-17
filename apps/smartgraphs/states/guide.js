@@ -1,18 +1,20 @@
 // ==========================================================================
-// Project:   Smartgraphs.GUIDE_RESPONSE_READY
+// Project:   Smartgraphs.GUIDE
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  State representing that the user can check their response in order to progress to the next guide step.
+  Superstate representing that the application is running a LearnerGuide or AuthorGuide.
+  
+  Substates are GUIDE_READY, GUIDE_SUBMIT, GUIDE_END_OF_PAGE, GUIDE_FINISHED, (and SENSOR and PREDICTING?)
 
   @extends SC.Responder
   @version 0.1
 */
-Smartgraphs.GUIDE_RESPONSE_READY = SC.Responder.create(
-/** @scope Smartgraphs.GUIDE_RESPONSE_READY.prototype */ {
+Smartgraphs.GUIDE = SC.Responder.create(SC.ResponderContext,
+/** @scope Smartgraphs.GUIDE.prototype */ {
 
   /**
     The next state to check if this state does not implement the action.
@@ -20,7 +22,8 @@ Smartgraphs.GUIDE_RESPONSE_READY = SC.Responder.create(
   nextResponder: null,
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+    // Called when that application's firstResponder is set to this (Smartgraphs.GUIDE).
+    // should switch to correct substate by setting its own firstResponder to GUIDE_READY, GUIDE_ACCEPT, GUIDE
   },
   
   willLoseFirstResponder: function() {

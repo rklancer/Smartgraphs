@@ -1,20 +1,20 @@
 // ==========================================================================
-// Project:   Smartgraphs.SENSOR_START
+// Project:   Smartgraphs.SENSOR
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  State representing that the sensor applet is being loaded up and controls should be shown
+  Superstate representing that the sensor applet is being loaded up and controls should be shown
   
-  Transitions to SENSOR_READY when the sensor applet 
+  Substates include SENSOR_READY, SENSOR_RECORDING, SENSOR_ERROR.
 
   @extends SC.Responder
   @version 0.1
 */
-Smartgraphs.SENSOR_START = SC.Responder.create(
-/** @scope Smartgraphs.SENSOR_START.prototype */ {
+Smartgraphs.SENSOR = SC.Responder.create(SC.ResponderContext,
+/** @scope Smartgraphs.SENSOR.prototype */ {
 
   /**
     The next state to check if this state does not implement the action.
