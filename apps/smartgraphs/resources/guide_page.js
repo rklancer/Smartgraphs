@@ -4,14 +4,15 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-// This is a place to hold the guidePane until it's appended to the document when the mainPage's containerView
-// is set to `Smartgraphs.guidePage.get('guidePane')`
+// This is a place to hold the guideView until it's appended to the document (which happens automatically in the 
+// GUIDE_READY rising-edge state transition, when the the mainPage's containerView 
 
 Smartgraphs.guidePage = SC.Page.design({
 
   guideView: SC.View.design({
     childViews: 'instructionsWrapper dataWrapper'.w(),
     
+    // the left pane, which shows the guide page intro and the instructions for the currently selected guide step
     instructionsWrapper: SC.View.design({
       layout: { left: 0, width: 0.5 },       // need to specify 0.5 rather than '50%'
       childViews: 'instructionsView'.w(),
@@ -22,6 +23,7 @@ Smartgraphs.guidePage = SC.Page.design({
       })
     }),
     
+    // the right pane, which shows the data the student is manipulating
     dataWrapper: SC.View.design({
       layout: { right: 0, width: 0.5 },
       

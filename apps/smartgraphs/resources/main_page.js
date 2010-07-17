@@ -8,13 +8,14 @@
 Smartgraphs.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
-    // use this constricted layout while developing, to make sure content doesn't overflow 1024x768 screen in IE
-    // layout: { width: 960, height: 600 },
-    
+    // this minimum width & height should not overflow on a 1024x768 screen even in a browsing setup with lots of 
+    // extraneous on-screen chrome (say, in FF or IE running in Windows XP)
+    layout: { minWidth: 960, minHeight: 600 },
+
     childViews: 'container'.w(),
     
     container: SC.ContainerView.design({
-      layout: { top: 10, right: 20, bottom: 10, left: 20 }
+      layout: { top: 15, right: 20, bottom: 15, left: 20 }
     })
   })
 
