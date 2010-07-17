@@ -6,7 +6,10 @@
 
 /** @class
 
-  (Document your Model here)
+  A guide, or wizard, that steps a user through a learning activity. The point of Smartgraphs.
+  
+  The guide should help the learner incrementally fill in a lab book, slide show, or answer sheet during the activity, 
+  but anything that helps with learning is fair game.
 
   @extends SC.Record
   @version 0.1

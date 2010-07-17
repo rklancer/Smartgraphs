@@ -6,7 +6,7 @@
 
 /** @class
 
-  (Document your Model here)
+  A guide (or wizard) that steps an an author through the process of creating a new learner guide.
 
   @extends SC.Record
   @version 0.1

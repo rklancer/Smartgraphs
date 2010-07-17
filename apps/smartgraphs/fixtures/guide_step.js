@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.DialogTurn Fixtures
+// Project:   Smartgraphs.GuideStep Fixtures
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/dialog_turn');
+sc_require('models/guide_step');
 
-Smartgraphs.DialogTurn.FIXTURES = [
+Smartgraphs.GuideStep.FIXTURES = [
 
   // TODO: Add your data fixtures here.
   // All fixture records must have a unique primary key (default 'guid').  See 

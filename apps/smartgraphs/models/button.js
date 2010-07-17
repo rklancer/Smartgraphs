@@ -6,7 +6,8 @@
 
 /** @class
 
-  (Document your Model here)
+  Describes an instance of a button that the user can click during a guide step. Includes the commands to be executed
+  on click.
 
   @extends SC.Record
   @version 0.1
