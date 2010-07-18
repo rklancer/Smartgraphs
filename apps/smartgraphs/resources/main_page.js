@@ -14,8 +14,11 @@ Smartgraphs.mainPage = SC.Page.design({
 
     childViews: 'container'.w(),
     
+    defaultResponder: 'Smartgraphs',
+    
     container: SC.ContainerView.design({
-      layout: { top: 15, right: 20, bottom: 15, left: 20 }
+      layout: { top: 15, right: 20, bottom: 15, left: 20 },
+      nowShowingBinding: 'Smartgraphs.appController.nowShowing'
     })
   })
 

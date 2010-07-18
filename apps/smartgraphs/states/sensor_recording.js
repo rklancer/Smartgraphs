@@ -17,7 +17,7 @@ Smartgraphs.SENSOR_RECORDING = SC.Responder.create(
   /**
     The next state to check if this state does not implement the action.
   */
-  nextResponder: null,
+  nextResponder: Smartgraphs.SENSOR,
   
   didBecomeFirstResponder: function() {
     // Called when this state becomes first responder

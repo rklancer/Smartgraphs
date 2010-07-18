@@ -13,7 +13,7 @@
   @extends SC.Responder
   @version 0.1
 */
-Smartgraphs.GUIDE = SC.Responder.create(SC.ResponderContext,
+Smartgraphs.GUIDE = SC.Responder.create(
 /** @scope Smartgraphs.GUIDE.prototype */ {
 
   /**
@@ -23,11 +23,15 @@ Smartgraphs.GUIDE = SC.Responder.create(SC.ResponderContext,
   
   didBecomeFirstResponder: function() {
     // Called when that application's firstResponder is set to this (Smartgraphs.GUIDE).
-    // should switch to correct substate by setting its own firstResponder to GUIDE_READY, GUIDE_ACCEPT, GUIDE
+    // Opens the guide view and immediately switches to the appropriate substate
+    console.log('GUIDE.didBecomeFirstResponder');
+    
+    Smartgraphs.appController.openGuideView();      // does it make any sense to make this an action?
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_READY);
   },
   
   willLoseFirstResponder: function() {
-    // Called when this state loses first responder
+    console.log('GUIDE.willLoseFirstResponder');
   },
   
   // ..........................................................
@@ -36,7 +40,6 @@ Smartgraphs.GUIDE = SC.Responder.create(SC.ResponderContext,
   
   // add event handlers here
   someAction: function() {
-    
   }
   
 }) ;

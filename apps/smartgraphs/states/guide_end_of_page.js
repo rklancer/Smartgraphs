@@ -17,7 +17,7 @@ Smartgraphs.GUIDE_END_OF_PAGE = SC.Responder.create(
   /**
     The next state to check if this state does not implement the action.
   */
-  nextResponder: null,
+  nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
     // Called when this state becomes first responder

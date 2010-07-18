@@ -13,7 +13,7 @@
   @extends SC.Responder
   @version 0.1
 */
-Smartgraphs.SENSOR = SC.Responder.create(SC.ResponderContext,
+Smartgraphs.SENSOR = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR.prototype */ {
 
   /**

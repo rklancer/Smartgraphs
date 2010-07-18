@@ -18,14 +18,14 @@ Smartgraphs.GUIDE_READY = SC.Responder.create(
   /**
     The next state to check if this state does not implement the action.
   */
-  nextResponder: null,
+  nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    
+    console.log('GUIDE_READY.didBecomeFirstResponder');
   },
   
   willLoseFirstResponder: function() {
-    // Called when this state loses first responder
+    console.log('GUIDE_READY.willLoseFirstResponder');
   },
   
   // ..........................................................
