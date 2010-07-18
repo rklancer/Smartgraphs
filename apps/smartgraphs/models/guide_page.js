@@ -16,6 +16,7 @@
 Smartgraphs.GuidePage = SC.Record.extend(
 /** @scope Smartgraphs.GuidePage.prototype */ {
 
-  // TODO: Add your own code here.
+  // let's see if this polymorphism works
+  guide: SC.Record.toOne('SC.Record',  { inverse: 'pages' })
 
 }) ;

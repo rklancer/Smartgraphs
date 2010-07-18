@@ -18,7 +18,7 @@ Smartgraphs.mainPage = SC.Page.design({
     
     container: SC.ContainerView.design({
       layout: { top: 15, right: 20, bottom: 15, left: 20 },
-      nowShowingBinding: 'Smartgraphs.appController.nowShowing'
+      nowShowingBinding: 'Smartgraphs.appWindowController.nowShowing'
     })
   })
 

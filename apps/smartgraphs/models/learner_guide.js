@@ -17,6 +17,7 @@
 Smartgraphs.LearnerGuide = SC.Record.extend(
 /** @scope Smartgraphs.LearnerGuide.prototype */ {
 
-  // TODO: Add your own code here.
+  title: SC.Record.attr(String),
+  pages: SC.Record.toMany('Smartgraphs.GuidePage', { inverse: 'guide' })
 
 }) ;

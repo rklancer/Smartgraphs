@@ -19,14 +19,15 @@ Smartgraphs.GUIDE = SC.Responder.create(
   /**
     The next state to check if this state does not implement the action.
   */
-  nextResponder: null,
+  nextResponder: Smartgraphs.START,       // the default; if some other app state implements openGuide() in its own
+                                          // special way, presumably that state should set itself as our nextResponder
   
   didBecomeFirstResponder: function() {
     // Called when that application's firstResponder is set to this (Smartgraphs.GUIDE).
     // Opens the guide view and immediately switches to the appropriate substate
     console.log('GUIDE.didBecomeFirstResponder');
     
-    Smartgraphs.appController.openGuideView();      // does it make any sense to make this an action?
+    Smartgraphs.appWindowController.showGuideView();
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_READY);
   },
   

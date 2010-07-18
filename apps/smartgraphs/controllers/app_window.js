@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.appController
+// Project:   Smartgraphs.appWindowController
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
@@ -10,12 +10,12 @@
 
   @extends SC.Object
 */
-Smartgraphs.appController = SC.ObjectController.create(
-/** @scope Smartgraphs.appController.prototype */ {
+Smartgraphs.appWindowController = SC.ObjectController.create(
+/** @scope Smartgraphs.appWindowController.prototype */ {
 
   nowShowing: null,
   
-  openGuideView: function () {
+  showGuideView: function () {
     this.set('nowShowing', 'Smartgraphs.guidePage.guideView');
   }
 
