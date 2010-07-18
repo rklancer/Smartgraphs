@@ -4,7 +4,7 @@
 // ==========================================================================
 /*globals Smartgraphs CC*/
 
-sc_require('main');
+// sc_require('main');
 
 // This page describes the main user interface for your application.
 Smartgraphs.mainPage = SC.Page.design({

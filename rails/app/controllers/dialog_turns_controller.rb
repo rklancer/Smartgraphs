@@ -7,6 +7,11 @@ class DialogTurnsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @dialog_turns }
+      # TODO: write a general method for putting sproutcore_json content in a content element so I don't have to remember to do that in controllers like this:
+      format.json { 
+        dialog_turns = @dialog_turns.map {|dialog_turn| sproutcore_json(dialog_turn) }
+        render :json => { :content => dialog_turns } 
+      }
     end
   end
 
@@ -18,6 +23,10 @@ class DialogTurnsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @dialog_turn }
+      format.json { 
+        dialog_turn = sproutcore_json(@dialog_turn)
+        render :json => { :content => dialog_turn }
+        }
     end
   end
 

@@ -43,6 +43,12 @@ abbot/bin/sc-server -v
 #
 # to open TestRunner visit http://localhost:4020/sproutcore/tests
 # to see all Sproutcore tests visit  http://localhost:4020/static/smartgraphs/en/current/tests.html
-#
+
 # Build to the rails/public directory with:
 abbot/bin/sc-build -c --buildroot="rails/public"
+# Get the latest build number like this:
+abbot/bin/sc-build-number smartgraphs
+# Then make the symbolic link to the English version of latest build like this:
+cd rails/public
+ln -s static/smartgraphs/[ the sc-build-number ]/index.html sc.html
+

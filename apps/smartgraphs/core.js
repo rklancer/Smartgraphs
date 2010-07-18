@@ -24,7 +24,7 @@ Smartgraphs = SC.Application.create(
     // to any fixtures you define.
     //store: SC.Store.create().from(SC.Record.fixtures)
 
-    store: SC.Store.create().from('SmartGraphs.RailsDataSource')
+    store: SC.Store.create().from('Smartgraphs.RailsDataSource')
 
     // TODO: Add global constants or singleton objects needed by your app here.
 });

@@ -10,7 +10,12 @@
 
 module("Smartgraphs.RailsDataSource_fetch_and_retrieve", { 
   setup: function() {
+    // console.log("Calling sc_require('data_sources/rails');");
+    // used to call sc re quire('data_sources/rails');
+    console.log('Loading this.store = SC.Application.create');
     this.store = SC.Store.create().from('Smartgraphs.RailsDataSource');
+    console.log('this.store:', this.store);
+    console.log("Smartgraphs.set('store', this.store); ");
     Smartgraphs.set('store', this.store); 
   }
 });
@@ -20,17 +25,18 @@ test("does the source that core.js associates with Smartgraphs store exists", fu
   // setup a spy
   var fetchCalled = false;
   var railsDataSource = this.store._getDataSource();
+  ok(railsDataSource, 'Should have succeeded getting railsDataSource from store.');
   // reassign fetch prop to new function
   railsDataSource.fetch = function() {
     fetchCalled = true;
   };
-  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGE_QUERY);
+  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGESEQUENCE_QUERY);
   ok(guide_page_sequences instanceof SC.RecordArray, 'guide_page_sequences should be a SC.RecordArray');
   ok(fetchCalled, 'the fetch method was called which means our Rails datasource is being called');
 });
 
 test("do we get guide_page_sequences back from rails", function() {
-  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGE_QUERY);
+  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGESEQUENCE_QUERY);
   statusEquals(guide_page_sequences, SC.Record.BUSY_LOADING, 'guide_page_sequences should be loading');
   
   statusQueue([
@@ -44,7 +50,7 @@ test("do we get guide_page_sequences back from rails", function() {
 });
 
 test("does the first guide_page_sequence returned have dialogTurns", function() {
-  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGE_QUERY);
+  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGESEQUENCE_QUERY);
   
   statusQueue([
     { target: guide_page_sequences,
@@ -66,7 +72,7 @@ test("verify retrieveRecord is called when first related object is requested", f
      retrieveCalledFor = store.recordTypeFor(storeKey);
    };
   
-  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGE_QUERY);
+  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGESEQUENCE_QUERY);
   
   statusQueue([
     { target: guide_page_sequences,
@@ -105,7 +111,7 @@ test("does retrieveRecord work for dialogTurns", function() {
 
 test("does the first guide_page_sequence returned have a valid firstDialogTurn with beforeText", function () {
 
-  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGE_QUERY);
+  var guide_page_sequences = Smartgraphs.store.find(Smartgraphs.GUIDEPAGESEQUENCE_QUERY);
   var firstQuestion;
   
   testAfterPropertyChange(guide_page_sequences, 'status', function () {        
