@@ -36,11 +36,15 @@ Smartgraphs.GUIDE = SC.Responder.create(
   },
   
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
+
+  showSinglePane: function () {
+    return Smartgraphs.guideViewController.showSinglePane();
+  },
   
-  // add event handlers here
-  someAction: function() {
+  showImage: function (context, args) {
+    return Smartgraphs.guideViewController.showImage(args.pane, args.path);
   }
   
 }) ;

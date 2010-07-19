@@ -31,41 +31,41 @@ Smartgraphs.guidePage = SC.Page.design({
       
       dataView: SC.ContainerView.design({
         layout: { left: 5 },
-        classNames: 'smartgraph-pane'        
-        // set 'nowShowing' to singleFrameDataView or splitFrameDataView
+        nowShowing: 'Smartgraphs.guideViewController.dataViewNowShowing'
       })
     })
   }),
   
-  singleFrameDataView: SC.ContainerView.design({
-    // set 'nowShowing' to show a graph, table, or image
+  singlePaneDataView: SC.ContainerView.design({
+    nowShowingBinding: 'Smartgraphs.guideViewController.firstPaneNowShowing'
   }),
   
-  splitFrameDataView: SC.View.design({
-    childViews: 'topFrame bottomFrame'.w(),
+  splitPaneDataView: SC.View.design({
+    childViews: 'topPane bottomPane'.w(),
     
-    topFrame: SC.ContainerView.design({
-      // nowShowing will be one of { null, firstImage, firstGraph, firstTable }
+    topPane: SC.ContainerView.design({
+      nowShowingBinding: 'Smartgraphs.guideViewController.firstPaneNowShowing'
     }),
     
-    bottomFrame: SC.ContainerView.design({
-      // nowShowing will be one of { null, secondImage, secondGraph, secondTable }
+    bottomPane: SC.ContainerView.design({
+      nowShowingBinding: 'Smartgraphs.guideViewController.secondPaneNowShowing'
     })
   }),
   
-  firstImage: Smartgraphs.ImageView.design({
-    // the one image shown if dataView is set to singleFrameDataView; otherwise, the top image
-    // (note don't set layout here; this should fill the parent container view)
+  firstImageView: SC.ImageView.design({
+    valueBinding: 'Smartgraphs.guideViewController.firstImageValue'
   }),
   
-  secondImage: Smartgraphs.ImageView.design({}),
+  secondImageView: SC.ImageView.design({
+    valueBinding: 'Smartgraphs.guideViewController.secondImageValue'
+  }),
   
-  firstGraph: Smartgraphs.GraphView.design({}),
+  firstGraphView: Smartgraphs.GraphView.design({}),
   
-  secondGraph: Smartgraphs.GraphView.design({}),
+  secondGraphView: Smartgraphs.GraphView.design({}),
   
-  firstTable: Smartgraphs.TableView.design({}),
+  firstTableView: Smartgraphs.TableView.design({}),
   
-  secondTable: Smartgraphs.TableView.design({}) 
+  secondTableView: Smartgraphs.TableView.design({}) 
 
 });
