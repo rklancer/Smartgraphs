@@ -113,7 +113,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             console.log("store.dataSourceDidFetchQuery(query)");
             store.dataSourceDidFetchQuery(query);
             console.log("store.dataSourceDidFetchQuery(query) is done");
-			// Setting the guide_pages array to guidePageSequenceController.sequence 
+            // Setting the guide_pages array to guidePageSequenceController.sequence 
             var guide_pages = store.find(Smartgraphs.GuidePage);
             console.log('guide_pages:', guide_pages);
             console.log('guide_pages.objectAt(0):', guide_pages.objectAt(0));
@@ -137,13 +137,15 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
         // guid will be rails url e.g. /rails/dialog_turns/1
         var guid = store.idFor(storeKey);
 
-        this._jsonGet(guid, 'didRetrieveRecord', store, storeKey);
+        this._jsonGet('rails' + guid, 'didRetrieveRecord', store, storeKey);
 
         return YES; // return YES if you handled the storeKey
     },
 
     didRetrieveRecord: function(response, store, storeKey) {
-        console.log('Smartgraphs.RailsDataSource.didRetrieveRecord()');
+        console.log('Smartgraphs.RailsDataSource.didRetrieveRecord(response, store, storeKey) called');
+        console.log('store:', store);
+        console.log("storeKey: ", storeKey);
 
         console.log('response.status = %d', response.get('status'));
         console.log("response: ", response);
@@ -155,6 +157,26 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
             console.log('store.dataSourceDidComplete(storeKey, content)');
             store.dataSourceDidComplete(storeKey, content);
+            var guid = content.guid;
+            if (guid) {
+                console.log('guid: ', guid);
+                // Have the proper controller handle the SC.Record based on its type
+                if (guid.indexOf('guide_page_sequences') == 1) {
+                    console.log("var guidePageSequence = store.find(Smartgraphs.GuidePageSequence, %s);", guid);
+                    var guidePageSequence = store.find(Smartgraphs.GuidePageSequence, guid);
+                    console.log("guidePageSequence:", guidePageSequence);
+                    console.log("guidePageSequence.statusString():", guidePageSequence.statusString());
+                    // Allow time for the SC.Record to load
+                    SC.RunLoop.begin();
+                    SC.RunLoop.end();
+            
+                    console.log("guidePageSequence:", guidePageSequence);
+                    console.log("guidePageSequence.statusString():", guidePageSequence.statusString());
+                    Smartgraphs.guidePageSequenceController.set('sequence', guidePageSequence);
+            
+                    // Smartgraphs.guidePageSequenceController.set('sequence', content);
+                }
+            }
             console.log("group end");
         }
         else {

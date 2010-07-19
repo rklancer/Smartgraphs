@@ -35,7 +35,7 @@ class GuidePageSequencesController < ApplicationController
       format.xml  { render :xml => @guide_page_sequence }
       format.json do
         render :json => {
-          :content => sproutcore_json(@guide_page_sequence),
+          :content => sproutcore_json(@guide_page_sequence)["guide_page_sequence"],
           :location => guide_page_sequence_path(@guide_page_sequence)
         }
       end

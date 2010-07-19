@@ -24,11 +24,33 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
         SC.RunLoop.end();
     },
 
+    useNewGuidePageSequenceStructure: function(sequence) {
+        if (sequence.isSCArray) {
+            var pages = sequence;
+            this.set('content', pages);
+
+            var page1 = pages.objectAt(0);
+            if (page1) {
+                console.log("page1", page1);
+                console.log("page1.get('title')", page1.get('title'));
+                page1.set('isSelectable', true);
+                this.set('selectedPage', page1);
+            } else {
+                console.error("page1:", page1);
+            }
+        } else {
+            console.error("sequence.isSCArray:", sequence.isSCArray);
+        }
+    },
+
     sequenceDidChange: function() {
         console.log('***! Smartgraphs.guidePageSequenceController observed sequence change');
         var sequence = this.get('sequence');
         if (sequence) {
             console.log("sequence", sequence);
+            if (sequence.status) {
+                console.log("sequence.statusString():", sequence.statusString());
+            }
             var pages = sequence.get('pages');
             if (pages) {
                 this.set('content', pages);
@@ -39,28 +61,31 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
                     this.set('selectedPage', firstPage);
                 } else {
                     console.error("firstPage:", firstPage);
+                    console.log("Not using old Guide Page Sequence structure because sequence is missing the attribute firstPage.");
+                    this.useNewGuidePageSequenceStructure(sequence);
                 }
             } else {
                 console.log("Not using old Guide Page Sequence structure because sequence is missing the attribute pages:", pages);
-                if (sequence.isSCArray) {
-                    pages = sequence;
-                    this.set('content', pages);
-
-                    var page1 = pages.objectAt(0);
-                    if (page1) {
-                        console.log("page1", page1);
-                        console.log("page1.get('title')", page1.get('title'));
-                        page1.set('isSelectable', true);
-                        this.set('selectedPage', page1);
-                    } else {
-                        console.error("page1:", page1);
-                    }
-                }
+                this.useNewGuidePageSequenceStructure(sequence);
             }
         } else {
             console.error("sequence:", sequence);
         }
     }.observes('sequence'),
+
+    sequenceStatusDidChange: function() {
+        console.log('***! Smartgraphs.guidePageSequenceController observed sequence.status change');
+        if (this.sequence) {
+            if (this.sequence.statusString()) {
+                var newStatus = this.sequence.statusString();
+                if (newStatus === undefined) newStatus = "";
+                console.log('newStatus:', newStatus);
+                if (newStatus.indexOf('READY') > 0) {
+                    this.sequenceDidChange();
+                }
+            }
+        }
+    }.observes('sequence.status'),
 
     selectedPage: function(key, value) {
         if (value !== undefined && value.get('isSelectable')) {
