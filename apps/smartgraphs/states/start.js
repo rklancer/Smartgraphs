@@ -35,8 +35,9 @@ Smartgraphs.START = SC.Responder.create(
     // the default action, unless overridden in some later state, is just to set the current guide in the guide
     // controller and go into the GUIDE state
     
-    Smartgraphs.guideController.set('content', Smartgraphs.store.find(Smartgraphs.Guide, 1));
+    Smartgraphs.guideController.set('content', Smartgraphs.store.find(Smartgraphs.Guide, args.id));
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE);
+    return YES;
   }
   
   // consider this: lEARNER_HOME might override the openAuthorGuide action, either to disallow it (because a learner
