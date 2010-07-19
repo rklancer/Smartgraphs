@@ -1,3 +1,167 @@
+7/19/10
+-------
+
+design issue: sequencing commands, laying out buttons, referring to next steps, and referring to context variables
+
+(wouldn't some degree of polymorphism be nice here...)
+
+CommandInvocation (could be referenced by a Button or a GuideStep)
+  index
+  command
+  args
+
+LaidOutButton
+  step
+  layout
+  button
+  
+NO!: NextStepReference
+  step
+  key     (for reference by a 'gotoStep' action; this allows us to define 'gotoNextHint' or 'gotoDone' *commands*
+           that don't require arguments that specify the guid of the next step specifically)
+  nextStep
+  
+  ***NO. Let's try to stick to the principle that the authoring system defines conveniences, and the runtime is simple.
+  So don't introduce an unnecessary layer of indirection to the runtime.
+  
+  
+** how should 'args' reference context variables?
+  
+  
+  args looks like { arg1: val1, arg2: val2 }
+  
+  but ... what about referencing context variables in there. Think
+  
+  
+  storeCurrentlySelectedPoint(dataSeries: '...', contextVar: '...')
+
+  addAnnotation( {text: (a string), dataPoint: (a Smartgraphs.DataPoint model object)})
+  
+  startAnnotation(...)
+  editAnnotation(...)
+  finishAnnotation(...)
+  
+  
+  think about what happens in different states
+  
+    * data series are collectionViews with 'actsOnSelect' set such that 'pointSelected' action occurs on selection
+    * the app state might be set such that the first responder chain responds to 'pointSelected' by adding a label
+    * in the GUIDE state, the label (might) inherit some properties from previous responses 
+    * in one of the LAB_BOOK states, we'd want to pop up a (modal or non-modal?) pane that lets the learner customize
+      the label's property
+    * in any state, we want to let the user drag the label around to a different point, or cancel and try again.
+    
+  Think about how this would happen from a Guide:
+    
+    A GuideStep might execute a Command 'openLabelTool' or something like that (not 'addLabel', which would imply the 
+    label is being added in one fell swoop, from code.)
+  
+    This makes that LABEL_TOOL state firstResponder. GUIDE_READY remains in the responder chain, but further down.
+  
+    the LABEL_TOOL state implements the 'pointSelected' action by telling some controller to add a label icon at the
+    just-selected point.
+  
+    the pointSelected action in LABEL_TOOL finishes by calling the 'requestLabelData' action
+    
+    the GUIDE_READY state implements the 'requestLabelData' action. If the 'setPendingLabelTitle' command has been
+    called, previously in this GuidePage, then the pending information is passed via the 'addLabelData' action.
+    Otherwise, the handler returns NO (possibly), allowing some default action to take place, like popping up a panel
+    requesting more info.
+    
+    (there might be commands to set the GuidePage state such that it disables the panel that would fill in the label,
+     and intead issues some blank or default value that will be updated by a later command, even if no *previous*
+     command has yet established the values to be filled in.)
+
+    
+  Alternatively, think about how this would happen in Lab Book mode:
+  
+    The Label Tool button (icon) would have 'openLabelTool' as its action.
+    
+    This makes LABEL_TOOL firstResponder, via the same code that is called when the Guide issues 'openLabelTool'
+    
+    Again, the LABEL_TOOL state implements the 'pointSelected' action to add a label.
+    
+    Again, the 'pointSelected' action in LABEL_TOOL issues the 'requestLabelData' action.
+    
+    Now, however, the LAB_BOOK state implements 'requestLabelData'. It opens up some kind of label filling-in tool,
+    probably by popping up a panel that requests more info. (& probably using a nested store, a la the Sproutcore
+    'Signup' demo, to store the data in a cancelable way.) The panel's "OK" button could issue an action which 
+    could check the data and commit the records.  
+    
+  Moreover: the label view's mouseDown & mouseMoved code implement code that visualizes drag and implement the
+    'moveLabel' action if dropped (the LABEL_TOOL state would implement this action)
+
+  See how the 'openLabelTool' action and the LABEL_TOOL state don't have to worry about these differing behaviors
+  in Guide and Lab Book modes? These behaviors come 'for free' from states farther down the responder chain.
+    
+  
+  So, anyway, what does this mean for context variables in a GuidePage and/or GuideStep?
+  
+  Thinking about the 'setPendingLabelTitle' action tells us something about this.
+  
+  First, notice that the label tool should somehow return a reference to the newly created label. (Not via the
+  return value of the method that implements pointSelected, of course; this has to return 'YES' or 'NO').
+  
+  But we probably want to give the new label a name that an author can understand *and* that is guaranteed to be
+  unique...
+  
+  okay probably you just want one code path for modifying a label.. so, not 'setPendingLabelTitle' but
+  'setLabelTitle('labelX', newTitle)' *after* label tool is run.
+  
+  so:
+  
+    the authoring system might generate a sequence of commands like this:
+    
+    (newLabelName is a name provided by the author; @learnersTitle is the learners' response taken from this or a 
+    previous GuideStep.)
+    
+      pushLabelToolPopupState
+      disableLabelToolPopup
+      openLabelTool({labelName: newLabelName})
+      setLabelTitle({label: newLabelName, title: @learnersTitle}) 
+      popLabelToolPopupState
+      
+    
+   pushLabelToolPopupState would tell GUIDE to push a state variable indicating whether to allow a popup pane
+   to show when openLabelTool is called
+   
+   disableLabelToolPopup disables the popup action (sets a flag that GUIDE uses to know whether to 'override' the
+   requestLabelData action by returning YES for the requestLabelData action)
+   
+   openLabelTool operates as above ... switches to (really, *pushes*) LABEL_TOOL state which implements 'pointSelected'
+   NOTE however that it assignes the new label a name (value of newLabelName)
+   
+   (now, when the label tool issues the 'requestLabelData' action, nothing will happen)
+   
+   setLabelTitle will modify the new label with the user's preferred title
+   
+   popLabelToolPopupState restores the previous setting of 'shouldShowLabelToolPopup' (probable name for the flag)
+      
+   Notice that the 'pushFlag/disableFlag/enableFlag/popFlag' pattern is likely to be reused in several places, so we
+   may want to implement a generic mechanism for that sort of thing... but not right away.
+   
+  
+  Okay, so: how to implement references to context variables, again?
+  
+    1. every responseTemplate should specify names for each field; these get put in the current context
+       
+       *** (it might actually be useful to scope some things to the current step, page, or guide!)
+    
+    2. there could be 'set' command to put something to the context
+    
+    3. Most importantly, you need a way to tell commands to reference not a literal value but a context variable.
+       Is that the right way to think about it?
+       
+    Well, the key point is the Command and CommandInvocation models; they need to 
+      (1) tell the Guide to substitute context variables into the argument hash passed via Smartgraphs.sendAction()
+      (2) *represent* the variable substitution in a transparent way, for the benefit of authors
+    
+    
+  
+  
+
+---
+
 move fixtures-prod to fixtures and add use-fixtures
 
 change guidepagesequence to guide & give Guide model a title
