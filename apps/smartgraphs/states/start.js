@@ -35,7 +35,7 @@ Smartgraphs.START = SC.Responder.create(
     // the default action, unless overridden in some later state, is just to set the current guide in the guide
     // controller and go into the GUIDE state
     
-    Smartgraphs.guideController.set('content', content);
+    Smartgraphs.guideController.set('content', Smartgraphs.store.find(Smartgraphs.Guide, 1));
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE);
   }
   

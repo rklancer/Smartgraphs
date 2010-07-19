@@ -13,7 +13,7 @@ Smartgraphs.main = function main() {
   Smartgraphs.makeFirstResponder(Smartgraphs.START);
   
   // and open the first learner guide (should go into GUIDE state, open up learner guide window, and set guideController
-  // to point to the first LearnerGuide.
+  // to point to the first Guide.
   Smartgraphs.sendAction('openLearnerGuide', this, { id: 1 });
 } ;
 

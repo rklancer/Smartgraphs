@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.LearnerGuide Unit Test
+// Project:   Smartgraphs.Guide Unit Test
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.LearnerGuide");
+module("Smartgraphs.Guide");
 
-// TODO: Replace with real unit test for LearnerGuide
+// TODO: Replace with real unit test for Guide
 test("test description", function() {
   var expected = "test";
   var result   = "test";

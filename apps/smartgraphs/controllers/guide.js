@@ -6,7 +6,7 @@
 
 /** @class
 
-  (Document Your Controller Here)
+  The Guide controller represents the currently open Guide.
 
   @extends SC.Object
 */

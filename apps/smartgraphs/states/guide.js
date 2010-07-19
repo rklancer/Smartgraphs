@@ -6,7 +6,7 @@
 
 /** @class
 
-  Superstate representing that the application is running a LearnerGuide or AuthorGuide.
+  Superstate representing that the application is running a Guide or AuthorGuide.
   
   Substates are GUIDE_READY, GUIDE_SUBMIT, GUIDE_END_OF_PAGE, GUIDE_FINISHED, (and SENSOR and PREDICTING?)
 

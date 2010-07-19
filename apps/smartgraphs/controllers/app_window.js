@@ -6,7 +6,7 @@
 
 /** @class
 
-  (Document Your Controller Here)
+  The appWindow controller controls what high-level views are visible on the main screen.
 
   @extends SC.Object
 */
