@@ -19,6 +19,9 @@
 Smartgraphs.GuidePage = SC.Record.extend(
 /** @scope Smartgraphs.GuidePage.prototype */ {
 
-  guide: SC.Record.toOne('SC.Guide',  { inverse: 'pages' })
+  guide: SC.Record.toOne('SC.Guide',  { inverse: 'pages' }),
+  index: SC.Record.attr(Number),
+  introText: SC.Record.attr(String),
+  commands: SC.Record.attr(Array)
 
 }) ;

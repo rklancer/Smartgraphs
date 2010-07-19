@@ -8,28 +8,32 @@ sc_require('models/guide_page');
 
 Smartgraphs.GuidePage.FIXTURES = [
 
-  // TODO: Add your data fixtures here.
-  // All fixture records must have a unique primary key (default 'guid').  See 
-  // the example below.
+  { guid: 
+      'page-1',
 
-  // { guid: 1,
-  //   firstName: "Michael",
-  //   lastName: "Scott" },
-  //
-  // { guid: 2,
-  //   firstName: "Dwight",
-  //   lastName: "Schrute" },
-  //
-  // { guid: 3,
-  //   firstName: "Jim",
-  //   lastName: "Halpert" },
-  //
-  // { guid: 4,
-  //   firstName: "Pam",
-  //   lastName: "Beesly" },
-  //
-  // { guid: 5,
-  //   firstName: "Ryan",
-  //   lastName: "Howard" }
+    guide: 
+      1,
+
+    index: 
+      1,
+    
+    introText: 
+      '<b>How can you tell a story about motion without using words?</b><p>The picture at right communicates '+
+      'direction of traffic using recognizable symbols. In this activity, you will explore how motions in two '+
+      'opposite directions appear on a position-time graph. By doing so, you will learn conventional methods of '+
+      'motion storytelling and analysis.</p>',
+
+    commands: [
+      { name: 'singlePane',
+        actionName: 'showSinglePane',
+        args: ''
+      },
+      
+      { name: 'showArrow',
+        actionName: 'showImage',
+        args: { pane: 'first', path: sc_static('resources/arrow.jpg') }
+      }
+    ]
+  }
 
 ];
