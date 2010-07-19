@@ -13,11 +13,6 @@ Smartgraphs.GuideStep.FIXTURES = [
 
     guidePage:
       'page-1',
-
-    commands: [
-      'step-1-single-pane', 
-      'step-1-show-image'
-    ],
     
     beforeText: 
       '',
@@ -25,7 +20,17 @@ Smartgraphs.GuideStep.FIXTURES = [
     responseTemplate: 
       null,
     
-    afterText: 
-      ''
+    afterText:
+      '',
+      
+    buttons: 
+      [],
+      
+    triggers:
+      [],
+      
+    eventResponses: [
+      'step-1-begin'
+    ]
   }
 ];
