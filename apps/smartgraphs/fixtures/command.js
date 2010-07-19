@@ -7,29 +7,43 @@
 sc_require('models/command');
 
 Smartgraphs.Command.FIXTURES = [
-
-  // TODO: Add your data fixtures here.
-  // All fixture records must have a unique primary key (default 'guid').  See 
-  // the example below.
-
-  // { guid: 1,
-  //   firstName: "Michael",
-  //   lastName: "Scott" },
-  //
-  // { guid: 2,
-  //   firstName: "Dwight",
-  //   lastName: "Schrute" },
-  //
-  // { guid: 3,
-  //   firstName: "Jim",
-  //   lastName: "Halpert" },
-  //
-  // { guid: 4,
-  //   firstName: "Pam",
-  //   lastName: "Beesly" },
-  //
-  // { guid: 5,
-  //   firstName: "Ryan",
-  //   lastName: "Howard" }
-
+  
+  { guid: 
+      'show-single-pane',
+    
+    name: 
+      'showSinglePane',
+    
+    description:
+      'Set the right-side display to show a single pane.',
+    
+    actionName:
+      'showSinglePane',
+      
+    literalArgs:
+      {},
+      
+    substitutedArgs:
+      {}
+  },
+  
+  { guid: 
+      'show-image',
+    
+    name: 
+      'showFirstPaneImage',
+    
+    description:
+      'Set the right-side display to show an image in the first (or top) pane.',
+    
+    actionName:
+      'showImage',
+      
+    literalArgs: {
+      pane: 'first'
+    },
+      
+    substitutedArgs:
+      {}
+  }
 ];

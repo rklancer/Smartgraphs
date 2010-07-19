@@ -11,9 +11,12 @@ Smartgraphs.GuidePage.FIXTURES = [
   { guid: 
       'page-1',
 
-    guide: 
-      1,
+    guide:
+      'learner-guide-1',
 
+    name: 
+      'Introductory Page',
+      
     index: 
       1,
     
@@ -23,17 +26,11 @@ Smartgraphs.GuidePage.FIXTURES = [
       'opposite directions appear on a position-time graph. By doing so, you will learn conventional methods of '+
       'motion storytelling and analysis.</p>',
 
-    commands: [
-      { name: 'singlePane',
-        actionName: 'showSinglePane',
-        args: ''
-      },
-      
-      { name: 'showArrow',
-        actionName: 'showImage',
-        args: { pane: 'first', path: sc_static('resources/arrow.jpg') }
-      }
-    ]
+    steps: 
+      ['page-1-step-1'],
+    
+    firstStep:
+      'page-1-step-1'
   }
 
 ];

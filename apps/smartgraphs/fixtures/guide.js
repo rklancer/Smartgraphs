@@ -8,9 +8,14 @@ sc_require('models/guide');
 
 Smartgraphs.Guide.FIXTURES = [
 
-  { guid: 1, 
-    title: 'First Learner Guide',
-    pages: []
+  { guid: 
+      'learner-guide-1', 
+
+    title: 
+      'First Learner Guide',
+
+    pages: 
+      ['page-1']
   }
 
 ];
