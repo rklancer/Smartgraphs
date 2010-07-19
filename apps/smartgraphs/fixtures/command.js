@@ -26,7 +26,8 @@ Smartgraphs.Command.FIXTURES = [
     substitutedArgs:
       {}
   },
-  
+
+
   { guid: 
       'show-image',
     
