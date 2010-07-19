@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100716183136) do
+ActiveRecord::Schema.define(:version => 20100719172043) do
 
   create_table "dialog_turns", :force => true do |t|
     t.string   "guid"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20100716183136) do
     t.string   "guid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "guide_pages", :force => true do |t|

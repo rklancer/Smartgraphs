@@ -25,6 +25,9 @@ annotate
 script/generate rspec_scaffold DialogTurn guid:string beforeText:text responseTemplate_id:string responseVerifier_id:string afterText:text nextTurnButtonTitle:string nextTurnForNominalResponse_id:string nextTurnForIncorrectResponse_id:string isLastTurn:boolean shouldAutoAdvance:boolean
 rake db:migrate
 annotate
+script/generate migration AddNameToGuidePageSequence name:string
+rake db:migrate
+annotate
 
 == Welcome to Rails
 

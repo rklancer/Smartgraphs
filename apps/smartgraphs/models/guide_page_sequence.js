@@ -14,6 +14,7 @@
 Smartgraphs.GuidePageSequence = SC.Record.extend(
 /** @scope Smartgraphs.GuidePageSequence.prototype */ {
 
+  name: SC.Record.attr(String),
   pages: SC.Record.toMany('Smartgraphs.GuidePage', {
     inverse: 'sequence',
     orderBy: ['index']

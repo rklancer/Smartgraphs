@@ -2,6 +2,7 @@ class GuidePageSequence < ActiveRecord::Base
   has_many :guide_pages
 end
 
+
 # == Schema Information
 #
 # Table name: guide_page_sequences
@@ -10,5 +11,6 @@ end
 #  guid       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  name       :string(255)
 #
 

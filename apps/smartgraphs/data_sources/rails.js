@@ -119,7 +119,9 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             console.log('guide_pages.objectAt(0):', guide_pages.objectAt(0));
             console.log('guide_pages.objectAt(0).title:', guide_pages.objectAt(0).title);
             console.log('guide_pages.objectAt(0).title.toString():', guide_pages.objectAt(0).title.toString());
-            Smartgraphs.guidePageSequenceController.set('sequence', guide_pages);
+            var sequence = Smartgraphs.guidePageSequenceController.get('sequence');
+            console.log("Smartgraphs.guidePageSequenceController.get('sequence'):", sequence);
+            sequence.set('pages', guide_pages);
             console.log("group end");
         }
         else {

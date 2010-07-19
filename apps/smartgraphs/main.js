@@ -18,12 +18,13 @@ Smartgraphs.main = function main() {
     // This will make your app come alive!
     // console.log("var theSequence = Smartgraphs.store.find(Smartgraphs.GuidePageSequence, 'sequence-1');");
     // var theSequence = Smartgraphs.store.find(Smartgraphs.GuidePageSequence, 'sequence-1');
-	// SC.RunLoop.begin();
+    // SC.RunLoop.begin();
     console.log("var theSequence = Smartgraphs.store.find(Smartgraphs.GuidePageSequence, '/guide_page_sequences/1');");
     var theSequence = Smartgraphs.store.find(Smartgraphs.GuidePageSequence, '/guide_page_sequences/1');
-	// SC.RunLoop.end();
+    // SC.RunLoop.end();
     console.log("theSequence:", theSequence);
     console.log("theSequence.statusString():", theSequence.statusString());
+    console.log("theSequence.get('name'):", theSequence.get('name'));
     // 
     // the following works as desired because the guide_page_sequences RecordArray is updated by the data store when the 
     // data source calls Smartgraphs.store.loadRecords() in the XMLHttpRequest callback. The guide_page_sequencesController observes
@@ -31,7 +32,6 @@ Smartgraphs.main = function main() {
     // Smartgraphs.guidePageSequenceController.set('sequence', theSequence);
     //
     // TODO: Register with the proper listener in Smartgraphs.guidePageSequenceController
-
     console.log("group end");
     // main()
 };
