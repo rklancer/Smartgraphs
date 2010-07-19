@@ -27,6 +27,10 @@
 Smartgraphs.Inspector = SC.Record.extend(
 /** @scope Smartgraphs.Inspector.prototype */ {
 
-  // TODO: Add your own code here.
+  // name:
+  // 
+  // description:
+  // 
+  // className: 
 
 }) ;

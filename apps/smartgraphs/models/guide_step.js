@@ -30,28 +30,43 @@ Smartgraphs.GuideStep = SC.Record.extend(
   */
   guidePage: SC.Record.toOne('Smartgraphs.GuidePage', { inverse: 'steps' }),
   
-  /** 
-    The list of commands (and their arguments) to be run when this GuideStep is loaded.
-    CommandInvocations represent the specific invocations of commands, to be executed in the order specified by 
-    the 'index' property.
-  */
-  commands: SC.Record.toMany('Smartgraphs.CommandInvocation'),
+  // /** 
+  //   The list of commands (and their arguments) to be run when this GuideStep is loaded.
+  //   CommandInvocations represent the specific invocations of commands, to be executed in the order specified by 
+  //   the 'index' property.
+  // */
+  // commands: SC.Record.toMany('Smartgraphs.CommandInvocation'),
   
   /**
-    text to display *before* the response template
+    Text to display *before* the response template
   */
   beforeText: SC.Record.attr(String),                                           
   
   /** 
-    the responseTemplate. If null, none is shown. If set to a ResponseTemplate, it displays an 'input form' between
+    The responseTemplate. If null, none is shown. If set to a ResponseTemplate, it displays an 'input form' between
     the beforeText and the afterText
   */
   responseTemplate: SC.Record.toOne('Smartgraphs.ResponseTemplate'),
   
+  /** 
+    The list of Buttons to be shown on this page.
+  */  
+  buttons: SC.Record.toMany('Smartgraphs.Button', { inverse: 'step' }),
+  
   /**
-    text to display *after* the response template
+    Text to display *after* the response template
   */
   afterText: SC.Record.attr(String),
+
+  /** 
+    The set of trigger instances that may fire events in this page.
+  */
+  triggers: SC.Record.toMany('Smartgraphs.TriggerInstance', { inverse: 'step' }),
+  
+  /**
+    The list of event-response blocks that this GuideStep implements
+  */
+  eventResponses: SC.Record.toMany('Smartgraphs.EventResponse', { inverse: 'step' }),
   
   /**
     @private
@@ -59,7 +74,6 @@ Smartgraphs.GuideStep = SC.Record.extend(
     copied to the page context after being examined by the 'check answer' code.
   */
   context: {}
-
 
   // stuff from DialogTurn that might be usefully translated to the new models:
     

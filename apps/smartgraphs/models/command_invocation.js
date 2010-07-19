@@ -21,14 +21,9 @@ Smartgraphs.CommandInvocation = SC.Record.extend(
   command: SC.Record.toOne('Smartgraphs.Command'),
   
   /** 
-    The GuideStep that owns this particular invocation (not set if the invocation is owned by a Button)
+    The EventResponse block that owns this particular invocation
   */
-  step: SC.Record.toOne('Smartgraphs.GuideStep', { inverse: 'commands' }),
-
-  /**
-    The Button that owns this particular invocation (not set if the invocation is owned by a GuideStep)
-  */
-  button: SC.Record.toOne('Smartgraphs.Button', { inverse: 'commands' }),
+  eventResponse: SC.Record.toOne('Smartgraphs.EventResponse', { inverse: 'commands' }),
   
   /**
     The order of this invocation, relative to the other CommandInvocations with the same 'owner' Button or GuideStep
