@@ -25,6 +25,52 @@
 Smartgraphs.GuideStep = SC.Record.extend(
 /** @scope Smartgraphs.GuideStep.prototype */ {
 
-  // TODO: Add your own code here.
+  /** 
+    The GuidePage this GuideStep is a part of.
+  */
+  guidePage: SC.Record.toOne('Smartgraphs.GuidePage', { inverse: 'steps' }),
+  
+  /** 
+    The list of commands (and their arguments) to be run when this GuideStep is loaded.
+    CommandInvocations represent the specific invocations of commands, to be executed in the order specified by 
+    the 'index' property.
+  */
+  commands: SC.Record.toMany('Smartgraphs.CommandInvocation'),
+  
+  /**
+    text to display *before* the response template
+  */
+  beforeText: SC.Record.attr(String),                                           
+  
+  /** 
+    the responseTemplate. If null, none is shown. If set to a ResponseTemplate, it displays an 'input form' between
+    the beforeText and the afterText
+  */
+  responseTemplate: SC.Record.toOne('Smartgraphs.ResponseTemplate'),
+  
+  /**
+    text to display *after* the response template
+  */
+  afterText: SC.Record.attr(String),
+  
+  /**
+    @private
+    variables local to this GuideStep. This would include the values from the responseTemplate. These can be
+    copied to the page context after being examined by the 'check answer' code.
+  */
+  context: {}
+
+
+  // stuff from DialogTurn that might be usefully translated to the new models:
+    
+  // // if YES, the Guide should move into the GUIDE_END_OF_PAGE state when we conclude this step.
+  // isLastStep: SC.Record.attr(Boolean),
+  // 
+  // // if YES and isLastTurn is YES, immediately go to the next page on reaching this dialog turn.
+  // // (the text of this dialog turn will be visible if the user hits 'back', however!)
+  // 
+  // shouldAutoAdvance: SC.Record.attr(Boolean),
+  // 
+  // wasVisited: NO,
 
 }) ;

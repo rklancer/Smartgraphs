@@ -12,8 +12,8 @@
   and these actions may vary based on the learner response, or may take elements of the users' response as
   'parameters'. (
   
-  The command to be executed is specified by a class string and a JSON string of arguments to the command. (The
-  arguments may reference context variables specified by the author.)
+  The command to be executed is specified by a class string and a hash of arguments to that command. (The
+  hash is split into two; one for literal argument values, and ones for values substituted from the Guide context.)
   
   Note that we expect that we don't expect to expose commands to authors except in some kind of 'expert mode'.
   Most commands will be too 'low level' and require too much computational-mindedness for naive authors. Therefore,
@@ -27,6 +27,35 @@
 Smartgraphs.Command = SC.Record.extend(
 /** @scope Smartgraphs.Command.prototype */ {
 
-  // TODO: Add your own code here.
+  /**
+   name of this command (to be shown to authors)
+  */
+  name: SC.Record.attr(String),
+
+  /**
+    a longer description of this command for authors
+  */
+  description: SC.Record.attr(String),
+
+  /** 
+    the app-level action to be performed (via Smartgraphs.sendAction())
+  */
+  actionName: SC.Record.attr(String),
+
+  // these hashes define default arguments that will be passed to the action 'actionName' 
+  // (the values provided in this record can be overridden in a given CommandInvocation)
+  // (that authoring templates might define several commands with the same actionName but different defaultArgs)
+
+  /**
+    Argument keys and values that will be passed as-is to the action. Values set here represent defaults that can
+    be overridden in particular CommandInvocations.
+  */
+  literalArgs: SC.Record.attr(Object),
+  
+  /**
+    Argument keys and values of arguments that will be substituted before being passed to the action. Values set here
+    represent defaults that can be overridden in particular CommandInvocations.
+  */
+  substitutedArgs: SC.Record.attr(Object)
 
 }) ;

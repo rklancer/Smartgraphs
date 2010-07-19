@@ -21,7 +21,21 @@
 Smartgraphs.Guide = SC.Record.extend(
 /** @scope Smartgraphs.Guide.prototype */ {
 
+  /** 
+    The title of this Guide.
+  */
   title: SC.Record.attr(String),
-  pages: SC.Record.toMany('Smartgraphs.GuidePage', { inverse: 'guide' })
+  
+  /**
+    The GuidePages that make up this Guide.
+  */
+  pages: SC.Record.toMany('Smartgraphs.GuidePage', { inverse: 'guide' }),
+  
+  /**
+    @private
+    a list of 'global' variables in a given Guide. These would be, for example, names of 'globally available' things
+    like the labels created by the openLabelTool command.
+  */
+  context: {}
 
 }) ;
