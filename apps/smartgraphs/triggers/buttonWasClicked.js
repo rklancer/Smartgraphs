@@ -11,4 +11,4 @@ Smartgraphs.ButtonWasClicked = SC.Object.create({
 
   triggerActionWasObserved: function () {
   }
-}
+});

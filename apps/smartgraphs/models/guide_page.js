@@ -57,6 +57,12 @@ Smartgraphs.GuidePage = SC.Record.extend(
     of the last GuideStep, and therefore promoted to the GuidePage context so that they can be referenced by subsequent
     GuideSteps
   */
-  context: {}
+  context: {},
+  
+  /**
+    @private
+    Whether the GuidePage is selectable or not
+  */
+  isSelectable: NO
 
 }) ;
