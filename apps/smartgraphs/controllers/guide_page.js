@@ -16,10 +16,9 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
   contentBinding: 'Smartgraphs.guidePagesController.selection',
   
   contentDidChange: function () {
-    if (this.get('wasVisited') === NO) {
+    if (this.get('currentStep') === null) {
       this.invokeOnce(this._openFirstStepIfUnvisited);
-      this.set('wasVisited', YES);
-    }    
+    }
   }.observes('.content'),
   
   _openFirstStepIfUnvisited: function () {

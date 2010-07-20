@@ -13,6 +13,6 @@
 Smartgraphs.guideStepController = SC.ObjectController.create(
 /** @scope Smartgraphs.guideStepController.prototype */ {
 
-  // TODO: Add your own code here.
+  contentBinding: 'Smartgraphs.guidePageController.currentStep'
 
 }) ;

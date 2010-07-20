@@ -67,8 +67,8 @@ Smartgraphs.GuidePage = SC.Record.extend(
   
   /**
     @private
-    Whether the GuidePage has been visited before or not
+    The current GuideStep associated with this GuidePage
   */
-  wasVisited: NO
+  currentStep: null
 
 }) ;

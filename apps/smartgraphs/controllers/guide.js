@@ -19,7 +19,6 @@ Smartgraphs.guideController = SC.ObjectController.create(
     this.invokeLast(this._gotoFirstPageAfterOpening);
   }.observes('.content'),
   
-  
   // TODO *could* implement this as an action in GUIDE_START
   _gotoFirstPageAfterOpening: function () {
     var firstPage = Smartgraphs.guidePagesController.objectAt(0);
