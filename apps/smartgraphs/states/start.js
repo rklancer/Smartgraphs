@@ -6,7 +6,7 @@
 
 /** @class
 
-  The start state of the Smartgraphs application.
+  The transient start state of the Smartgraphs application.
 
   @extends SC.Responder
   @version 0.1
@@ -20,28 +20,18 @@ Smartgraphs.START = SC.Responder.create(
   nextResponder: null,
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+    console.log('START.didBecomeFirstResponder');
+    // with a fixtures-based, single-activity demo, we can just immediately transition to READY.
+    // But eventually we will need to have LOADING, LOGIN, etc.
+    Smartgraphs.makeFirstResponder(Smartgraphs.READY);
   },
   
   willLoseFirstResponder: function() {
-    // Called when this state loses first responder
-  },
+    console.log('START.willLoseFirstResponder');
+  }
   
   // ..........................................................
   // ACTIONS
   //
-  
-  openGuide: function (context, args) {
-    // the default action, unless overridden in some later state, is just to set the current guide in the guide
-    // controller and go into the GUIDE state
-    
-    Smartgraphs.guideController.set('content', Smartgraphs.store.find(Smartgraphs.Guide, args.id));
-    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_START);
-    return YES;
-  }
-  
-  // consider this: lEARNER_HOME might override the openAuthorGuide action, either to disallow it (because a learner
-  // is not an author), or to require verification as an author, or to open a special author guide mode designed
-  // for 'peer learning' type situations where learners write guides for other learners.
-  
+
 }) ;

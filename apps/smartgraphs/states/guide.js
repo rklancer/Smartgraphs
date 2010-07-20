@@ -21,9 +21,8 @@ Smartgraphs.GUIDE = SC.Responder.create(
     The next state to check if this state does not implement the action.
   */
   
-  // TODO make this something like 'Smartgraphs.LOADED'
-  nextResponder: Smartgraphs.START,       // the default; if some other app state implements openGuide() in its own
-                                          // special way, presumably that state should set itself as our nextResponder
+  nextResponder: Smartgraphs.READY,       // the default; if some other app state implements the openGuide action in 
+                                          // some way, presumably that state should set itself as our nextResponder
   
   didBecomeFirstResponder: function() {
     // Called when that application's firstResponder is set to this (Smartgraphs.GUIDE).
