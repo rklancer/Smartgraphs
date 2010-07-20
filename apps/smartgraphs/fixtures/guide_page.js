@@ -21,7 +21,7 @@ Smartgraphs.GuidePage.FIXTURES = [
       1,
     
     introText: 
-      '<b>How can you tell a story about motion without using words?</b>'+
+      '<h1>How can you tell a story about motion without using words?</h1>'+
       '<p>The picture at right communicates direction of traffic using recognizable symbols. In this activity, you '+
       'will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will '+
       'learn conventional methods of motion storytelling and analysis.</p>',
