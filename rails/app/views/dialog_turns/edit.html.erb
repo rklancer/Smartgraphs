@@ -4,8 +4,8 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :guid %><br />
-    <%= f.text_field :guid %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </p>
   <p>
     <%= f.label :beforeText %><br />
@@ -25,7 +25,7 @@
   </p>
   <p>
   <%= f.label :static_annotations %><br />
-	<%= collection_select(:dialog_turn, :static_annotation_ids, @static_annotations, :id, :guid,
+	<%= collection_select(:dialog_turn, :static_annotation_ids, @static_annotations, :id, :name,
 		{ :selected => @dialog_turn.static_annotation_ids },
 		{:multiple => true, :static_annotations => 'dialog_turn[static_annotation_ids][]' }) %>
   </p>

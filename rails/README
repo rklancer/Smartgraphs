@@ -31,6 +31,12 @@ annotate
 script/generate migration RemoveGuidFromGuidePageSequence guid:string
 rake db:migrate
 annotate
+script/generate migration RenameGuidFromDialogTurnToName
+rake db:migrate
+annotate
+script/generate migration RenameGuidFromStaticAnnotationsToName
+rake db:migrate
+annotate
 
 == Welcome to Rails
 

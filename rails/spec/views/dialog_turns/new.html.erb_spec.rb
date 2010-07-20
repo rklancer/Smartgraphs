@@ -6,7 +6,7 @@ describe "/dialog_turns/new.html.erb" do
   before(:each) do
     assigns[:dialog_turn] = stub_model(DialogTurn,
       :new_record? => true,
-      :guid => "value for guid",
+      :name => "value for name",
       :beforeText => "value for beforeText",
       :responseTemplate_id => "value for responseTemplate_id",
       :responseVerifier_id => "value for responseVerifier_id",
@@ -23,7 +23,7 @@ describe "/dialog_turns/new.html.erb" do
     render
 
     response.should have_tag("form[action=?][method=post]", dialog_turns_path) do
-      with_tag("input#dialog_turn_guid[name=?]", "dialog_turn[guid]")
+      with_tag("input#dialog_turn_name[name=?]", "dialog_turn[name]")
       with_tag("textarea#dialog_turn_beforeText[name=?]", "dialog_turn[beforeText]")
       with_tag("input#dialog_turn_responseTemplate_id[name=?]", "dialog_turn[responseTemplate_id]")
       with_tag("input#dialog_turn_responseVerifier_id[name=?]", "dialog_turn[responseVerifier_id]")

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DialogTurn do
   before(:each) do
     @valid_attributes = {
-      :guid => "value for guid",
+      :name => "value for name",
       :beforeText => "value for beforeText",
       :responseTemplate_id => "value for responseTemplate_id",
       :responseVerifier_id => "value for responseVerifier_id",
@@ -21,12 +21,13 @@ describe DialogTurn do
   end
 end
 
+
 # == Schema Information
 #
 # Table name: dialog_turns
 #
 #  id                              :integer         not null, primary key
-#  guid                            :string(255)
+#  name                            :string(255)
 #  beforeText                      :text
 #  responseTemplate_id             :string(255)
 #  responseVerifier_id             :string(255)

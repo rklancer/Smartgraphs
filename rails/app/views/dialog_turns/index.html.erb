@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Guid</th>
+    <th>Name</th>
     <th>Beforetext</th>
     <th>Responsetemplate</th>
     <th>Responseverifier</th>
@@ -16,7 +16,7 @@
 
 <% @dialog_turns.each do |dialog_turn| %>
   <tr>
-    <td><%=h dialog_turn.guid %></td>
+    <td><%=h dialog_turn.name %></td>
     <td><%=h dialog_turn.beforeText %></td>
     <td><%=h dialog_turn.responseTemplate_id %></td>
     <td><%=h dialog_turn.responseVerifier_id %></td>

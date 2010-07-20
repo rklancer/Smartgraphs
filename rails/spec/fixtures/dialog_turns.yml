@@ -24,12 +24,13 @@ two:
   isLastTurn: false
   shouldAutoAdvance: false
 
+
 # == Schema Information
 #
 # Table name: dialog_turns
 #
 #  id                              :integer         not null, primary key
-#  guid                            :string(255)
+#  name                            :string(255)
 #  beforeText                      :text
 #  responseTemplate_id             :string(255)
 #  responseVerifier_id             :string(255)

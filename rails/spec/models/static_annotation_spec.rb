@@ -14,12 +14,13 @@ describe StaticAnnotation do
   end
 end
 
+
 # == Schema Information
 #
 # Table name: static_annotations
 #
 #  id              :integer         not null, primary key
-#  guid            :string(255)
+#  name            :string(255)
 #  annotation_type :string(255)
 #  points_id       :string(255)
 #  created_at      :datetime

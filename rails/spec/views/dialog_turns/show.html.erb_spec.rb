@@ -4,7 +4,7 @@ describe "/dialog_turns/show.html.erb" do
   include DialogTurnsHelper
   before(:each) do
     assigns[:dialog_turn] = @dialog_turn = stub_model(DialogTurn,
-      :guid => "value for guid",
+      :name => "value for name",
       :beforeText => "value for beforeText",
       :responseTemplate_id => "value for responseTemplate_id",
       :responseVerifier_id => "value for responseVerifier_id",
@@ -19,7 +19,7 @@ describe "/dialog_turns/show.html.erb" do
 
   it "renders attributes in <p>" do
     render
-    response.should have_text(/value\ for\ guid/)
+    response.should have_text(/value\ for\ name/)
     response.should have_text(/value\ for\ beforeText/)
     response.should have_text(/value\ for\ responseTemplate_id/)
     response.should have_text(/value\ for\ responseVerifier_id/)

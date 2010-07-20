@@ -6,7 +6,7 @@ describe "/dialog_turns/index.html.erb" do
   before(:each) do
     assigns[:dialog_turns] = [
       stub_model(DialogTurn,
-        :guid => "value for guid",
+        :name => "value for name",
         :beforeText => "value for beforeText",
         :responseTemplate_id => "value for responseTemplate_id",
         :responseVerifier_id => "value for responseVerifier_id",
@@ -18,7 +18,7 @@ describe "/dialog_turns/index.html.erb" do
         :shouldAutoAdvance => false
       ),
       stub_model(DialogTurn,
-        :guid => "value for guid",
+        :name => "value for name",
         :beforeText => "value for beforeText",
         :responseTemplate_id => "value for responseTemplate_id",
         :responseVerifier_id => "value for responseVerifier_id",
@@ -34,7 +34,7 @@ describe "/dialog_turns/index.html.erb" do
 
   it "renders a list of dialog_turns" do
     render
-    response.should have_tag("tr>td", "value for guid".to_s, 2)
+    response.should have_tag("tr>td", "value for name".to_s, 2)
     response.should have_tag("tr>td", "value for beforeText".to_s, 2)
     response.should have_tag("tr>td", "value for responseTemplate_id".to_s, 2)
     response.should have_tag("tr>td", "value for responseVerifier_id".to_s, 2)
