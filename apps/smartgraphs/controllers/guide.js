@@ -14,12 +14,11 @@
 Smartgraphs.guideController = SC.ObjectController.create(
 /** @scope Smartgraphs.guideController.prototype */ {
   
+  // automatically open the first page when the content is set to a new Guide
   contentDidChange: function () {
-    // automatically open the first page when the content is set to a new Guide
-    this.invokeLast(this._gotoFirstPageAfterOpening);     //invokeLast to let bindings sync.
+    this.invokeLast(this._gotoFirstPageAfterOpening);     // use invokeLast to let guidePagesController's binding sync.
   }.observes('.content'),
   
-  // TODO *could* implement this as an action in GUIDE_START
   _gotoFirstPageAfterOpening: function () {
     Smartgraphs.sendAction('openFirstGuidePage');
   }
