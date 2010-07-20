@@ -45,8 +45,7 @@ Smartgraphs.guidePage = SC.Page.design({
           }),
 
           guideStepDialog: SC.View.design({          
-            useStaticLayout: YES,            
-            hasStaticLayout: YES,   // also needed, due to some kind of bug in quilmes                   
+            useStaticLayout: YES,                
             childViews: 'beforeText afterText'.w(),
             classNames: 'dialog-text'.w(),
 
