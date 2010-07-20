@@ -49,24 +49,29 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
         if (sequence) {
             console.log("sequence", sequence);
             if (sequence.status) {
-                console.log("sequence.statusString():", sequence.statusString());
+                try {
+                    console.log("sequence.statusString():", sequence.statusString());
+                } catch(e) {
+                    console.log(e);
+                }
             }
             var name = sequence.get('name');
             if (name) {
                 console.log('sequence.name:', name);
                 // Retrieve the related Guide Pages based on name (which eventually sets sequence.pages)
-                var relatedGuidePagesQuery = SC.Query.local(Smartgraphs.GuidePage);
-                var conditions = "guide_page_sequence_id = '" + name + "'";
-                console.log('conditions:', conditions);
-                relatedGuidePagesQuery.set('conditions', conditions);
+                var relatedGuidePagesQueryConditions = "guide_page_sequence_id = '" + name + "'";
+                console.log('relatedGuidePagesQueryConditions:', relatedGuidePagesQueryConditions);
+                var relatedGuidePagesQuery = SC.Query.local(Smartgraphs.GuidePage, relatedGuidePagesQueryConditions);
                 console.log('relatedGuidePagesQuery:', relatedGuidePagesQuery);
-                var relatedGuidePages = Smartgraphs.dataSource.fetch(Smartgraphs.store, relatedGuidePagesQuery);
-                console.log('relatedGuidePages:', relatedGuidePages);
+                var fetchGuidePagesSuccess = Smartgraphs.dataSource.fetch(Smartgraphs.store, relatedGuidePagesQuery);
+                console.log('fetchGuidePagesSuccess:', fetchGuidePagesSuccess);
             } else {
                 console.error('sequence.name:', name);
             }
             var pages = sequence.get('pages');
             if (pages) {
+                // The sequence.pages Array might not have elements yet, put sequence.pages may be set later by the data source,
+                // so set this controller's content to sequence.pages and this controller with notice changes to sequence.pages
                 this.set('content', pages);
 
                 var firstPage = pages.objectAt(0);
@@ -74,12 +79,12 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
                     firstPage.set('isSelectable', true);
                     this.set('selectedPage', firstPage);
                 } else {
-                    console.error("firstPage:", firstPage);
+                    console.log("firstPage:", firstPage);
                     // console.log("Not using old Guide Page Sequence structure because sequence is missing the attribute firstPage.");
                     // this.useNewGuidePageSequenceStructure(sequence);
                 }
             } else {
-                console.error("pages:", pages);
+                console.log("pages:", pages);
                 // console.log("Not using old Guide Page Sequence structure because sequence is missing the attribute pages.");
                 // this.useNewGuidePageSequenceStructure(sequence);
             }

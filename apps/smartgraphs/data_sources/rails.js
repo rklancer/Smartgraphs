@@ -39,21 +39,50 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
         request.send();
     },
 
+    handleRetrievedContent: function(store, content) {
+        var guid = content.guid;
+        if (guid) {
+            console.log('guid: ', guid);
+            // Have the proper controller handle the SC.Record based on its type
+            if (guid.indexOf('guide_page_sequences') == 1) {
+                console.log("var guidePageSequence = store.find(Smartgraphs.GuidePageSequence, %s);", guid);
+                var guidePageSequence = store.find(Smartgraphs.GuidePageSequence, guid);
+                console.log("guidePageSequence:", guidePageSequence);
+                console.log("guidePageSequence.statusString():", guidePageSequence.statusString());
+                // Allow time for the SC.Record to load
+                SC.RunLoop.begin();
+                SC.RunLoop.end();
+
+                console.log("guidePageSequence:", guidePageSequence);
+                console.log("guidePageSequence.statusString():", guidePageSequence.statusString());
+                Smartgraphs.guidePageSequenceController.set('sequence', guidePageSequence);
+
+                // Smartgraphs.guidePageSequenceController.set('sequence', content);
+            }
+        }
+    },
+
     // ..........................................................
     // QUERY SUPPORT
     //
     fetch: function(store, query) {
         console.log('Smartgraphs.RailsDataSource.fetch()');
         console.log('query:', query);
+        var guidePageSequenceSet = SC.Set.create([Smartgraphs.GuidePageSequence]);
+        console.log('guidePageSequenceSet:', guidePageSequenceSet);
+        var guidePageSet = SC.Set.create([Smartgraphs.GuidePage]);
+        console.log('guidePageSet:', guidePageSet);
 
-        if (query === Smartgraphs.GUIDEPAGESEQUENCE_QUERY) {
-            console.log('query === Smartgraphs.GUIDEPAGESEQUENCE_QUERY', query);
+        // if (query === Smartgraphs.GUIDEPAGESEQUENCE_QUERY) {
+        if (query.containsRecordTypes(guidePageSequenceSet)) {
+            console.log('query.containsRecordTypes(guidePageSequenceSet) == true');
             this._jsonGet('/rails/guide_page_sequences', 'didFetchGuidePageSequences', store, query);
             console.log("group end");
 
             return YES; // return YES since you handled the query
-        } else if (query === Smartgraphs.GUIDEPAGE_QUERY) {
-            console.log('query === Smartgraphs.GUIDEPAGE_QUERY', query);
+            // } else if (query === Smartgraphs.GUIDEPAGESEQUENCE_QUERY) {
+        } else if (query.containsRecordTypes(guidePageSet)) {
+            console.log('query.containsRecordTypes(guidePageSet) == true');
             this._jsonGet('/rails/guide_pages', 'didFetchGuidePages', store, query);
             console.log("group end");
 
@@ -79,8 +108,19 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             store.loadRecords(Smartgraphs.GuidePageSequence, content);
             console.log("group end");
 
-            console.log("store.dataSourceDidFetchQuery(query)");
+            console.log("didFetchGuidePageSequences: calling store.dataSourceDidFetchQuery(query)");
             store.dataSourceDidFetchQuery(query);
+            console.log("group end");
+            // Setting a fetched sequence to guidePageSequenceController.sequence
+            var guidePageSequences = store.find(query);
+            try {
+                console.log('guidePageSequences:', guidePageSequences);
+                var firstSequence = guidePageSequences.objectAt(0);
+                console.log('firstSequence:', firstSequence);
+                Smartgraphs.guidePageSequenceController.set('sequence', firstSequence);
+            } catch(e) {
+                console.error("Failed at setting a fetched sequence to guidePageSequenceController.sequence:", e);
+            }
             console.log("group end");
         }
         else {
@@ -110,17 +150,27 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             console.log('resultingStoreKeysArray:', resultingStoreKeysArray);
             console.log("group end");
 
-            console.log("store.dataSourceDidFetchQuery(query)");
+            console.log("didFetchGuidePages: calling store.dataSourceDidFetchQuery(query)");
             store.dataSourceDidFetchQuery(query);
             console.log("store.dataSourceDidFetchQuery(query) is done");
             // Setting the guide_pages array to guidePageSequenceController.sequence 
-            var guide_pages = store.find(Smartgraphs.GuidePage);
-            console.log('guide_pages:', guide_pages);
-            console.log('guide_pages.objectAt(0):', guide_pages.objectAt(0));
-            console.log('guide_pages.objectAt(0).title:', guide_pages.objectAt(0).title);
-            console.log('guide_pages.objectAt(0).title.toString():', guide_pages.objectAt(0).title.toString());
+            var guide_pages = store.find(query);
+            try {
+                console.log('guide_pages:', guide_pages);
+                console.log('guide_pages.objectAt(0):', guide_pages.objectAt(0));
+                console.log('guide_pages.objectAt(0).title:', guide_pages.objectAt(0).title);
+                console.log('guide_pages.objectAt(0).title.toString():', guide_pages.objectAt(0).title.toString());
+            } catch(e) {
+                console.warn(e);
+            }
             var sequence = Smartgraphs.guidePageSequenceController.get('sequence');
             console.log("Smartgraphs.guidePageSequenceController.get('sequence'):", sequence);
+            if (!sequence) {
+                sequence = Smartgraphs.GuidePageSequence.create();
+                sequence.set('name', "");
+                Smartgraphs.guidePageSequenceController.set('sequence');
+                console.warn("Had to create Smartgraphs.GuidePageSequence sequence:", sequence);
+            }
             sequence.set('pages', guide_pages);
             console.log("group end");
         }
@@ -138,6 +188,8 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
         console.log('Smartgraphs.RailsDataSource.retrieveRecord');
         // guid will be rails url e.g. /rails/dialog_turns/1
         var guid = store.idFor(storeKey);
+        console.log("guid:", guid);
+        console.log("guid.toString():", guid.toString());
 
         this._jsonGet('rails' + guid, 'didRetrieveRecord', store, storeKey);
 
@@ -159,26 +211,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
             console.log('store.dataSourceDidComplete(storeKey, content)');
             store.dataSourceDidComplete(storeKey, content);
-            var guid = content.guid;
-            if (guid) {
-                console.log('guid: ', guid);
-                // Have the proper controller handle the SC.Record based on its type
-                if (guid.indexOf('guide_page_sequences') == 1) {
-                    console.log("var guidePageSequence = store.find(Smartgraphs.GuidePageSequence, %s);", guid);
-                    var guidePageSequence = store.find(Smartgraphs.GuidePageSequence, guid);
-                    console.log("guidePageSequence:", guidePageSequence);
-                    console.log("guidePageSequence.statusString():", guidePageSequence.statusString());
-                    // Allow time for the SC.Record to load
-                    SC.RunLoop.begin();
-                    SC.RunLoop.end();
-            
-                    console.log("guidePageSequence:", guidePageSequence);
-                    console.log("guidePageSequence.statusString():", guidePageSequence.statusString());
-                    Smartgraphs.guidePageSequenceController.set('sequence', guidePageSequence);
-            
-                    // Smartgraphs.guidePageSequenceController.set('sequence', content);
-                }
-            }
+            this.handleRetrievedContent(store, content);
             console.log("group end");
         }
         else {

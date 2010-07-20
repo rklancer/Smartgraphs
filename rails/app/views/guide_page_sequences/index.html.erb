@@ -2,12 +2,11 @@
 
 <table>
   <tr>
-    <th>Guid</th>
+    <th>Name</th>
   </tr>
 
 <% @guide_page_sequences.each do |guide_page_sequence| %>
   <tr>
-    <td><%=h guide_page_sequence.guid %></td>
     <td><%=h guide_page_sequence.name %></td>
     <td><%= link_to 'Show', guide_page_sequence %></td>
     <td><%= link_to 'Edit', edit_guide_page_sequence_path(guide_page_sequence) %></td>
