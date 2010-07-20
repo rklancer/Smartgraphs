@@ -16,9 +16,6 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     
     triggerResponse:
       'page-1-step-1',
-     
-    button:
-      null,
     
     index:
       1,
@@ -40,9 +37,6 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     triggerResponse:
       'page-1-step-1',
     
-    button:
-      null,
-    
     index:
       2,
     
@@ -52,5 +46,26 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     
     substitutedArgs: 
       {}
+  },
+  
+  
+  { guid: 
+      'step-1-finish-page',
+  
+    command:
+      'finish-page',
+    
+    triggerResponse:
+      'page-1-step-1',
+    
+    index:
+      3,
+    
+    literalArgs: 
+      {},
+    
+    substitutedArgs: 
+      {}
   }
+  
 ];

@@ -46,5 +46,46 @@ Smartgraphs.Command.FIXTURES = [
       
     substitutedArgs:
       {}
+  },
+  
+  
+  { guid: 
+      'enable-submission',
+    
+    name: 
+      'enableSubmission',
+    
+    description:
+      'Allows the user to submit his or her work on this step',
+    
+    actionName:
+      'enableSubmission',
+      
+    literalArgs: 
+      {},
+      
+    substitutedArgs:
+      {}
+  },
+  
+  { guid: 
+      'finish-page',
+    
+    name: 
+      'finishGuidePage',
+    
+    description:
+      'Marks this Guide page as finished.',
+    
+    actionName:
+      'finishGuidePage',
+      
+    literalArgs: 
+      {},
+      
+    substitutedArgs:
+      {}
   }
+  
+  
 ];
