@@ -63,6 +63,12 @@ Smartgraphs.GuidePage = SC.Record.extend(
     @private
     Whether the GuidePage is selectable or not
   */
-  isSelectable: NO
+  isSelectable: NO,
+  
+  /**
+    @private
+    Whether the GuidePage has been visited before or not
+  */
+  wasVisited: NO
 
 }) ;

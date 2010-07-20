@@ -17,7 +17,7 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   /**
     The next state to check if this state does not implement the action.
   */
-  nextResponder: Smartgraphs.GUIDE_START,
+  nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
     console.log('GUIDE_STEP_START.didBecomeFirstResponder');
