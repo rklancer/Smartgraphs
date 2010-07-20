@@ -44,8 +44,8 @@ Smartgraphs.TriggerResponse = SC.Record.extend(
   args: SC.Record.attr(Object),
   
   /**
-    The commands to be executed when the trigger fires.
+    The commands to be executed when the trigger fires, ordered by theiir 'index' property.
   */
-  commands: SC.Record.toMany('Smartgraphs.CommandInvocation', { inverse: 'triggerResponse' })
+  commands: SC.Record.toMany('Smartgraphs.CommandInvocation', { inverse: 'triggerResponse', orderBy: 'index' })
   
 }) ;
