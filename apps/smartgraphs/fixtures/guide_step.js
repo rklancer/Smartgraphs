@@ -15,7 +15,7 @@ Smartgraphs.GuideStep.FIXTURES = [
       'page-1',
     
     beforeText: 
-      '',
+      '<p>This is some before text</p>',
 
     responseTemplate: 
       null,

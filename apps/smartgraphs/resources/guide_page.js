@@ -37,14 +37,29 @@ Smartgraphs.guidePage = SC.Page.design({
 
           classNames: 'text-wrapper'.w(),
 
-          childViews: 'introText'.w(),
+          childViews: 'introText guideStepDialog'.w(),
 
           introText: SC.StaticContentView.design({
             contentBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.introText'),
             isVisibleBinding: SC.Binding.bool('Smartgraphs.guidePageController.introText')
-          })
+          }),
 
-          //guideStepDialog: Smartgraphs.DialogTurnView.design({})
+          guideStepDialog: SC.View.design({          
+            useStaticLayout: YES,            
+            hasStaticLayout: YES,   // also needed, due to some kind of bug in quilmes                   
+            childViews: 'beforeText afterText'.w(),
+            classNames: 'dialog-text'.w(),
+
+            beforeText: SC.StaticContentView.design({
+              contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.beforeText'),
+              isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.beforeText')
+            }),
+            
+            afterText: SC.StaticContentView.design({
+              contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.afterText'),
+              isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.afterText')
+            })
+          })
         }),
 
         nextButton: SC.ButtonView.design({
