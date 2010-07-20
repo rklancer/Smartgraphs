@@ -14,7 +14,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'show-single-pane',
     
-    eventResponse:
+    triggerResponse:
       'page-1-step-1',
     
     button:
@@ -37,7 +37,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'show-image',
     
-    eventResponse:
+    triggerResponse:
       'page-1-step-1',
     
     button:

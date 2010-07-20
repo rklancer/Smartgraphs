@@ -45,7 +45,7 @@ Smartgraphs.guidePage = SC.Page.design({
           }),
 
           guideStepDialog: SC.View.design({          
-            useStaticLayout: YES,                
+            useStaticLayout: YES,
             childViews: 'beforeText afterText'.w(),
             classNames: 'dialog-text'.w(),
 

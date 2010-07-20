@@ -59,14 +59,9 @@ Smartgraphs.GuideStep = SC.Record.extend(
   afterText: SC.Record.attr(String),
 
   /** 
-    The set of trigger instances that may fire events in this page.
+    The set of trigger response blocks registered for this step.
   */
-  triggers: SC.Record.toMany('Smartgraphs.TriggerInstance', { inverse: 'step' }),
-  
-  /**
-    The list of event-response blocks that this GuideStep implements
-  */
-  eventResponses: SC.Record.toMany('Smartgraphs.EventResponse', { inverse: 'step' }),
+  triggerResponses: SC.Record.toMany('Smartgraphs.TriggerResponse', { inverse: 'step' }),
   
   /**
     @private

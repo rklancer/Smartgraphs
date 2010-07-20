@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.EventResponse
+// Project:   Smartgraphs.TriggerResponse
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  Every GuideStep can define a set of EventResponse 'blocks'. These define what happens when verious events 
+  Every GuideStep can define a set of TriggerResponse 'blocks'. These define what happens when verious events 
   occur, such as:
    * the beginning of a guide step
    * receiving a correct learner response
@@ -24,13 +24,28 @@
   @extends SC.Record
   @version 0.1
 */
-Smartgraphs.EventResponse = SC.Record.extend(
-/** @scope Smartgraphs.EventResponse.prototype */ {
-
-  step: SC.Record.toOne('Smartgraphs.GuideStep', { inverse: 'eventResponses' }),
+Smartgraphs.TriggerResponse = SC.Record.extend(
+/** @scope Smartgraphs.TriggerResponse.prototype */ {
   
-  eventName: SC.Record.attr(String),
+  /**
+    The Trigger to register for this particular GuideStep
+  */
+  trigger: SC.Record.toOne('Smartgraphs.Trigger'),
   
-  commands: SC.Record.toMany('Smartgraphs.CommandInvocation', { inverse: 'eventResponse' })
+  /**
+    The GuideStep registering this TriggerResponse.
+  */
+  step: SC.Record.toOne('Smartgraphs.GuideStep', { inverse: 'triggerResponses' }),
+  
+  /**
+    A hash of arguments to be passed when registering this trigger. Each key overrides any key of the same name
+    set in the 'args' property of the Trigger record.
+  */
+  args: SC.Record.attr(Object),
+  
+  /**
+    The commands to be executed when the trigger fires.
+  */
+  commands: SC.Record.toMany('Smartgraphs.CommandInvocation', { inverse: 'triggerResponse' })
   
 }) ;
