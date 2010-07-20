@@ -1,19 +1,20 @@
 // ==========================================================================
-// Project:   Smartgraphs.GUIDE_FINISHED
+// Project:   Smartgraphs.GUIDE_STEP_WAITING
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  State representing that the activity guide is finished. User may want to proceed to another activity, or may want to
-  view the lab book/answer sheet/student activity they they have created with the help of this Guide.
+  State representing that the guide step is waiting for the user's response. Transitions to GUIDE_STEP_SUBMIT when
+  the response is in some acceptable form for submitting (e.g., checking the answer). GUIDE_STEP_SUBMIT may transition
+  back here if the response changes back.
   
   @extends SC.Responder
   @version 0.1
 */
-Smartgraphs.GUIDE_FINISHED = SC.Responder.create(
-/** @scope Smartgraphs.GUIDE_FINISHED.prototype */ {
+Smartgraphs.GUIDE_STEP_WAITING = SC.Responder.create(
+/** @scope Smartgraphs.GUIDE_STEP_WAITING.prototype */ {
 
   /**
     The next state to check if this state does not implement the action.
@@ -21,11 +22,11 @@ Smartgraphs.GUIDE_FINISHED = SC.Responder.create(
   nextResponder: Smartgraphs.GUIDE_START,
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+    console.log('GUIDE_STEP_WAITING.didBecomeFirstResponder');
   },
   
   willLoseFirstResponder: function() {
-    // Called when this state loses first responder
+    console.log('GUIDE_STEP_WAITING.willLoseFirstResponder');
   },
   
   // ..........................................................

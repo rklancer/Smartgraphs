@@ -1,31 +1,30 @@
 // ==========================================================================
-// Project:   Smartgraphs.GUIDE_READY
+// Project:   Smartgraphs.GUIDE_PAGE_FINISHED
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  State representing that the guide page is waiting for the user's response. Transitions to GUIDE_SUBMIT when
-  the response is in some acceptable form for submitting (e.g., checking the answer)
-  
+  State representing a finished guide page. The user should be able to proceed to the next guide page from here.
+
   @extends SC.Responder
   @version 0.1
 */
-Smartgraphs.GUIDE_READY = SC.Responder.create(
-/** @scope Smartgraphs.GUIDE_READY.prototype */ {
+Smartgraphs.GUIDE_PAGE_FINISHED = SC.Responder.create(
+/** @scope Smartgraphs.GUIDE_PAGE_FINISHED.prototype */ {
 
   /**
     The next state to check if this state does not implement the action.
   */
-  nextResponder: Smartgraphs.GUIDE,
+  nextResponder: Smartgraphs.GUIDE_START,
   
   didBecomeFirstResponder: function() {
-    console.log('GUIDE_READY.didBecomeFirstResponder');
+    // Called when this state becomes first responder
   },
   
   willLoseFirstResponder: function() {
-    console.log('GUIDE_READY.willLoseFirstResponder');
+    // Called when this state loses first responder
   },
   
   // ..........................................................

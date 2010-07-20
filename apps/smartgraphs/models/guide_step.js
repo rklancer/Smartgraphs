@@ -77,8 +77,9 @@ Smartgraphs.GuideStep = SC.Record.extend(
 
   // stuff from DialogTurn that might be usefully translated to the new models:
     
-  // // if YES, the Guide should move into the GUIDE_END_OF_PAGE state when we conclude this step.
-  // isLastStep: SC.Record.attr(Boolean),
+  // if YES, the Guide should move into the GUIDE_PAGE_FINISHED state when we conclude this step.
+  isLastStep: SC.Record.attr(Boolean),
+  
   // 
   // // if YES and isLastTurn is YES, immediately go to the next page on reaching this dialog turn.
   // // (the text of this dialog turn will be visible if the user hits 'back', however!)
