@@ -16,7 +16,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     
     triggerResponse:
       'page-1-step-1',
-    
+     
     button:
       null,
     
@@ -47,7 +47,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       2,
     
     literalArgs: { 
-      image: sc_static('resources/arrow.jpg')
+      path: sc_static('resources/arrow.jpg')
     },
     
     substitutedArgs: 

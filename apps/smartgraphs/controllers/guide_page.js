@@ -19,6 +19,11 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
     if (this.get('currentStep') === null) {
       Smartgraphs.sendAction('openFirstGuideStep');
     }
-  }.observes('.content')
-
+  }.observes('.content'),
+  
+  // return the context variable's value from the guidePage or guide context
+  lookup: function (key) {
+    var context = this.get('context');
+    return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.guideController.lookup(key));
+  }
 }) ;

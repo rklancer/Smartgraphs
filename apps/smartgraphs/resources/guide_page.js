@@ -101,7 +101,7 @@ Smartgraphs.guidePage = SC.Page.design({
       
       dataView: SC.ContainerView.design({
         layout: { left: 5 },
-        nowShowing: 'Smartgraphs.guideViewController.dataViewNowShowing'
+        nowShowingBinding: 'Smartgraphs.guideViewController.dataViewNowShowing'
       })
     })
   }),
@@ -123,11 +123,28 @@ Smartgraphs.guidePage = SC.Page.design({
   }),
   
   firstImageView: SC.ImageView.design({
-    valueBinding: 'Smartgraphs.guideViewController.firstImageValue'
+    useStaticLayout: YES,
+    valueBinding: 'Smartgraphs.guideViewController.firstImageValue',
+    
+    // This is a hack.  At the moment SC.View.layoutStyle doesn't know how to set width or height to '100%',
+    // which is required for an image to resize automatically (left:0, right:0 does not do the trick.)
+    // Therefore, override the width and height styles (viewDidResize gets called, I believe, whenever the layer's 
+    // layout style is updated)
+    viewDidResize: function () {
+      this.$().width('100%');
+      this.$().height('100%');
+    }
   }),
   
   secondImageView: SC.ImageView.design({
-    valueBinding: 'Smartgraphs.guideViewController.secondImageValue'
+    useStaticLayout: YES,
+    valueBinding: 'Smartgraphs.guideViewController.secondImageValue',
+
+    // same hack described in firstImageView:
+    viewDidResize: function () {
+      this.$().width('100%');
+      this.$().height('100%');
+    }
   }),
   
   firstGraphView: Smartgraphs.GraphView.design({}),

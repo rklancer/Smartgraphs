@@ -22,8 +22,6 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
     Initializes the GuideStep. Called when we enter GUIDE_STEP_START state.
   */
   initStep: function () {
-    console.log('guideStepController.initStep()');
-    
     this.unregisterOldTriggers();
     this.registerTriggerResponses();
     Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'beginStep' });
@@ -59,9 +57,36 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
     }
   },
   
-  executeCommands: function (commands) {
-    console.log('executing commands!');
-    console.log(commands);
+  executeCommands: function (invocations) {
+    var invocation, commandRecord, literalArgs, substitutedArgs, args, key;
+
+    for (var i = 0, ii = invocations.get('length'); i < ii; i++) {
+      invocation = invocations.objectAt(i);
+      commandRecord = invocation.get('command');
+      
+      // mixin the literal args first -- args from the specific invocation record override defaults defined in the 
+      // commandRecord (which is the 'generic' definition of the command)
+      args = SC.mixin(SC.copy(commandRecord.get('literalArgs')), invocation.get('literalArgs'));
+      
+      // mixin the substituted args the same. Need to substitute the actual values of the keys though
+      substitutedArgs = SC.mixin(SC.copy(commandRecord.get('substitutedArgs')), invocation.get('substitutedArgs'));
+
+      // get the values from the context
+      for (key in substitutedArgs) {
+        if (substitutedArgs.hasOwnProperty(key)) {
+          args[key] = this.lookup(substitutedArgs[key]);
+        }
+      }
+
+      // ... and do the action
+      Smartgraphs.sendAction(commandRecord.get('actionName'), this, args);
+    }
+  },
+  
+  // return they context variable's value from the guideStep, guidePage, or guide context
+  lookup: function (key) {
+    var context = this.get('context');
+    return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.guidePageController.lookup(key));
   }
   
 }) ;

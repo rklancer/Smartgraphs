@@ -53,10 +53,12 @@ Smartgraphs.GUIDE = SC.Responder.create(
   },
   
   showSinglePane: function () {
+    console.log('showSinglePane()');
     return Smartgraphs.guideViewController.showSinglePane();
   },
   
   showImage: function (context, args) {
+    console.log('showSinglePane(pane: %s, path: %s)', args.pane, args.path);
     return Smartgraphs.guideViewController.showImage(args.pane, args.path);
   }
   

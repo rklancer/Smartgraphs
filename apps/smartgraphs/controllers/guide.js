@@ -21,6 +21,12 @@ Smartgraphs.guideController = SC.ObjectController.create(
   
   _gotoFirstPageAfterOpening: function () {
     Smartgraphs.sendAction('openFirstGuidePage');
+  },
+  
+  // return the context variable's value from the guide context
+  lookup: function (key) {
+    var context = this.get('context');
+    return (context.hasOwnProperty(key) ? context[key] : undefined);
   }
   
 }) ;
