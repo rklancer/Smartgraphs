@@ -20,11 +20,11 @@ Smartgraphs.GUIDE_PAGE_FINISHED = SC.Responder.create(
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+    console.log('GUIDE_PAGE_FINISHED.didBecomeFirstResponder');
   },
   
   willLoseFirstResponder: function() {
-    // Called when this state loses first responder
+    console.log('GUIDE_PAGE_FINISHED.willLoseFirstResponder');
   },
   
   // ..........................................................

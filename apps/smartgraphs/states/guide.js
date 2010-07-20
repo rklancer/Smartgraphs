@@ -44,6 +44,11 @@ Smartgraphs.GUIDE = SC.Responder.create(
     return YES;
   },
   
+  finishGuidePage: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_PAGE_FINISHED);
+    return YES;
+  },
+  
   fireGuideEvent: function (context, args) {
     if (args.eventName) {
       var trigger = Smartgraphs.triggers[args.eventName];

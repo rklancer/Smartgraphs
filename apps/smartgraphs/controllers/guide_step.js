@@ -25,7 +25,7 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
     this.unregisterOldTriggers();
     this.registerTriggerResponses();
     Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'beginStep' });
-    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_WAITING);
+    Smartgraphs.sendAction('waitForInput');
   },
   
   unregisterOldTriggers: function () {

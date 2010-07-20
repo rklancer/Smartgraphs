@@ -33,9 +33,9 @@ Smartgraphs.GUIDE_STEP_WAITING = SC.Responder.create(
   // EVENTS
   //
   
-  // add event handlers here
-  someAction: function() {
-    
+  enableSubmission: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_SUBMIT);
+    return YES;
   }
   
 }) ;

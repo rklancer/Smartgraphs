@@ -32,9 +32,18 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   // EVENTS
   //
   
-  // add event handlers here
-  someAction: function() {
-    
+  enableSubmission: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_SUBMIT);
+    return YES;
+  },
+  
+  /** 
+    Transition into the GUIDE_STEP_WAITING state at the start of a GuideStep (this action is not available when 
+    the GuideStep is already transitioned to GUIDE_STEP_SUBMIT)
+  */
+  waitForInput: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_WAITING);
+    return YES;
   }
   
 }) ;

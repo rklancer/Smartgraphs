@@ -22,20 +22,16 @@ Smartgraphs.GUIDE_STEP_SUBMIT = SC.Responder.create(
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+    console.log('GUIDE_STEP_SUBMIT.didBecomeFirstResponder');
   },
   
   willLoseFirstResponder: function() {
-    // Called when this state loses first responder
+    console.log('GUIDE_STEP_SUBMIT.willLoseFirstResponder');
   },
   
   // ..........................................................
   // EVENTS
   //
   
-  // add event handlers here
-  someAction: function() {
-    
-  }
   
 }) ;
