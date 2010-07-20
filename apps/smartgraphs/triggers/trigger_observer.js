@@ -22,6 +22,7 @@ Smartgraphs.TriggerObserver = SC.Object.extend({
   unregister: function () {
     this.set('isRegistered', NO);
     this.set('commands', null);
+    if (this.unregisterObservers) this.unregisterObservers();    
   },
   
   eventWasObserved: function () {
