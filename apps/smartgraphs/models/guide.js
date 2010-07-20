@@ -29,7 +29,7 @@ Smartgraphs.Guide = SC.Record.extend(
   /**
     The GuidePages that make up this Guide.
   */
-  pages: SC.Record.toMany('Smartgraphs.GuidePage', { inverse: 'guide' }),
+  pages: SC.Record.toMany('Smartgraphs.GuidePage', { inverse: 'guide', orderBy: 'index' }),
   
   /**
     @private
