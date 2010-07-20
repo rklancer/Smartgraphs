@@ -22,7 +22,7 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
   }.observes('.content'),
   
   _openFirstStepIfUnvisited: function () {
-    Smartgraphs.sendAction('openFirstGuideStep', this);
+    Smartgraphs.sendAction('openFirstGuideStep');
   }
 
 }) ;

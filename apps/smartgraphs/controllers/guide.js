@@ -16,16 +16,12 @@ Smartgraphs.guideController = SC.ObjectController.create(
   
   contentDidChange: function () {
     // automatically open the first page when the content is set to a new Guide
-    this.invokeLast(this._gotoFirstPageAfterOpening);
+    this.invokeLast(this._gotoFirstPageAfterOpening);     //invokeLast to let bindings sync.
   }.observes('.content'),
   
   // TODO *could* implement this as an action in GUIDE_START
   _gotoFirstPageAfterOpening: function () {
-    var firstPage = Smartgraphs.guidePagesController.objectAt(0);
-    if (firstPage) {
-      firstPage.set('isSelectable', YES);
-      Smartgraphs.sendAction('openGuidePage', this, { index: 0 });
-    }
+    Smartgraphs.sendAction('openFirstGuidePage');
   }
   
 }) ;

@@ -14,7 +14,7 @@ Smartgraphs.guidePagesController = SC.ArrayController.create(
 /** @scope Smartgraphs.guidePagesController.prototype */ {
 
   contentBinding: 'Smartgraphs.guideController.pages',
-  allowsEmptySelection: NO,
+  allowsEmptySelection: YES,
   allowsMultipleSelection: NO,
 
   selectPageAtIndex: function (idx) {

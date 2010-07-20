@@ -32,9 +32,19 @@ Smartgraphs.GUIDE_START = SC.Responder.create(
   // ACTIONS
   //
   
+  openFirstGuidePage: function () {
+    var firstPage = Smartgraphs.guidePagesController.objectAt(0);
+    if (firstPage) {
+      firstPage.set('isSelectable', YES);
+      Smartgraphs.sendAction('openGuidePage', this, { index: 0 });
+    }
+    return YES;
+  },
+  
   openFirstGuideStep: function () {
     Smartgraphs.guidePageController.set('currentStep', Smartgraphs.guidePageController.get('firstStep'));
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_START);
+    return YES;
   }
   
 }) ;
