@@ -18,6 +18,6 @@ Smartgraphs.Trigger.FIXTURES = [
       'This is the list of commands that run when the guide step begins.',
 
     args:
-      ''
+      {}
   }
 ];

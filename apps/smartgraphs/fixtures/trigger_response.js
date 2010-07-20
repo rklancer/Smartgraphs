@@ -11,7 +11,7 @@ Smartgraphs.TriggerResponse.FIXTURES = [
   { guid: 'step-1-begin',
     trigger: 'begin-step',
     step: 'page-1-step-1',  
-    args: '',
+    args: {},
     commands: [
       'step-1-single-pane', 
       'step-1-show-image'

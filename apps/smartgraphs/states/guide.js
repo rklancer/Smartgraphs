@@ -41,6 +41,15 @@ Smartgraphs.GUIDE = SC.Responder.create(
   
   openGuidePage: function (context, args) {
     Smartgraphs.guidePagesController.selectPageAtIndex(args.index);
+    return YES;
+  },
+  
+  fireGuideEvent: function (context, args) {
+    if (args.eventName) {
+      var trigger = Smartgraphs.triggers[args.eventName];
+      if (trigger) trigger.eventWasObserved();
+    }
+    return YES;
   },
   
   showSinglePane: function () {

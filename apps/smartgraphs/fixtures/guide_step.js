@@ -26,9 +26,6 @@ Smartgraphs.GuideStep.FIXTURES = [
     buttons: 
       [],
       
-    triggers:
-      [],
-      
     triggerResponses: [
       'step-1-begin'
     ]
