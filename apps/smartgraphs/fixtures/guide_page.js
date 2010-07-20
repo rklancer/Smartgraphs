@@ -31,6 +31,29 @@ Smartgraphs.GuidePage.FIXTURES = [
     
     firstStep:
       'page-1-step-1'
+  },
+  
+  
+  { guid: 
+      'page-2',
+
+    guide:
+      'learner-guide-1',
+
+    name: 
+      'Second Page',
+      
+    index: 
+      2,
+    
+    introText: 
+      '<h1>Second Page!</h1>',
+
+    steps: 
+      [],
+    
+    firstStep:
+      ''
   }
 
 ];
