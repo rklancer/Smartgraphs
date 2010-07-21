@@ -167,9 +167,13 @@ Smartgraphs.guidePage = SC.Page.design({
     }
   }),
   
-  firstGraphView: Smartgraphs.GraphView.design({}),
+  firstGraphView: Smartgraphs.GraphView.design({
+    graphBinding: 'Smartgraphs.firstGraphController'
+  }),
   
-  secondGraphView: Smartgraphs.GraphView.design({}),
+  secondGraphView: Smartgraphs.GraphView.design({
+    graphBinding: 'Smartgraphs.secondGraphController'    
+  }),
   
   firstTableView: Smartgraphs.TableView.design({}),
   
