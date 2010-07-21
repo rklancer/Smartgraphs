@@ -14,6 +14,8 @@ Smartgraphs.GraphView = SC.View.extend(
 /** @scope Smartgraphs.GraphView.prototype */ {
   
   axesBinding: '*graph.axes',
+  allSeriesBinding: '*graph.allSeries',
+  
   padding: { top: 20, right: 20, bottom: 40, left: 60 },  
   
   childViews: 'graphCanvasView'.w(),
@@ -43,6 +45,53 @@ Smartgraphs.GraphView = SC.View.extend(
       y: padding.top + plotHeight - (y * yScale)
     };
   },
+  
+  _seriesViewsById: {},
+  
+  _allSeriesDidChange: function () {
+    var allSeries = this.get('allSeries');
+    var series, id;
+    var allSeriesById = {};
+    var seriesToAdd = [], viewsToRemove = [];
+    
+    // add views for new series
+    for (var i = 0, ii = allSeries.get('length'); i < ii; i++) {
+      series = allSeries.objectAt(i);
+      id = series.get('id');
+      
+      allSeriesById[id] = series;
+      
+      if (!this._seriesViewsById.hasOwnProperty(id)) {
+        this._addViewForSeries(series);
+      }
+    }
+    
+    // remove views for no-longer-displayed series
+    var oldView;
+
+    for (id in this._seriesViewsById) {
+      if (this._seriesViewsById.hasOwnProperty(id)) {
+        oldView = this._seriesViewsById[id];
+        
+        if (!allSeriesById[id]) {
+          this._removeSeriesView(oldView);
+        }
+      }
+    }
+  }.observes('*allSeries.[]'),
+
+  _addViewForSeries: function (series) {
+    console.log('**** adding view for series %s', series.get('id'));    
+    this._seriesViewsById[series.get('id')] = SC.Object.create({ series: series });
+  },
+  
+  _removeSeriesView: function (view) {
+    var series = view.get('series');
+    var id = view.getPath('series.id');
+    console.log('**** removing view for series %s', series.get('id'));
+    delete this._seriesViewsById[id];
+  },
+  
 
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
     graphBinding: '.parentView*graph',
@@ -64,7 +113,8 @@ Smartgraphs.GraphView = SC.View.extend(
           
           // keep this until (a) we can get Raphael to draw the <text> elements when layer is offscreen
           // and (b) we find a way to find all the <path> and the <texts> that g.axis draws, and convince
-          // RaphaelRenderSupport to group them into our layer.
+          // RaphaelRenderSupport to group them into our layer (or (c) draw the tick marks and labels ourselves
+          // -- it's not hard!)
           
           this.invokeLater(function () {
             this.drawAxes(raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
@@ -117,11 +167,12 @@ Smartgraphs.GraphView = SC.View.extend(
         if (firstTime) {
           context.callback(this, this.renderCallback, shouldDrawAxes, xLeft, yBottom, yTop, plotWidth, 
             plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
-          this.renderChildViews(context, firstTime);      // don't forget to render child views
         }
-        else {
+        else if (shouldDrawAxes) {
           this.drawAxes(this.get('raphaelCanvas'), xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
         }
+        
+        this.renderChildViews(context, firstTime);      // don't forget to render child views        
       }
     })
   })

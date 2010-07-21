@@ -47,15 +47,24 @@ Smartgraphs.GraphController = SC.ObjectController.extend(
   },
   
   selectSeries: function (series) {
-    //TODO
+    // TODO
   },
   
   removeSeries: function (seriesId) {
-    //TODO
+    var allSeries = this.get('allSeries');
+    var series;
+  
+    for (var i = 0, ii = allSeries.get('length'); i < ii; i++) {
+      series = allSeries.objectAt(i);
+      if (series.get('id') === seriesId) {
+        allSeries.removeObject(series);
+        break;
+      }
+    }
   },
   
   removeAllSeries: function () {
-    //TODO
+    // TODO
   }
   
 }) ;
