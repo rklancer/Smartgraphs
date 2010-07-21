@@ -57,7 +57,7 @@ test("does the first guide_page_sequence returned have dialogTurns", function() 
       callback: function(){
         var firstGuidePage = guide_page_sequences.objectAt(0);
         var firstDialogTurn = firstGuidePage.get('firstDialogTurn');
-        ok(firstDialogTurn, 'we have the firstDialogTurn');        
+        ok(firstDialogTurn, 'we should have the firstDialogTurn');        
       }
     }
   ]);  
@@ -121,7 +121,7 @@ test("does the first guide_page_sequence returned have a valid firstDialogTurn w
     ok(firstGuidePage !== null, "We have a first guide_page_sequence");
 
     var firstDialogTurn = firstGuidePage.get('firstDialogTurn');
-    ok(firstDialogTurn, 'we have the firstDialogTurn');        
+    ok(firstDialogTurn, 'we should have the firstDialogTurn');        
 
     testAfterPropertyChange(firstQuestion, 'status', function () {
       statusEquals(firstQuestion, SC.Record.READY_CLEAN, "dialogTurn's status is READY_CLEAN");
