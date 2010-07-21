@@ -50,10 +50,10 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { guid: 
-      'step-1-finish-page',
+      'step-1-finish-step',
   
     command:
-      'finish-page',
+      'finish-step',
     
     triggerResponse:
       'page-1-step-1',

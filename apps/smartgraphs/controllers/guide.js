@@ -16,10 +16,10 @@ Smartgraphs.guideController = SC.ObjectController.create(
   
   // automatically open the first page when the content is set to a new Guide
   contentDidChange: function () {
-    this.invokeLast(this._gotoFirstPageAfterOpening);     // use invokeLast to let guidePagesController's binding sync.
+    this.invokeLast(this._openFirstGuidePage);   // use invokeLast to let guidePagesController's binding sync.
   }.observes('.content'),
   
-  _gotoFirstPageAfterOpening: function () {
+  _openFirstGuidePage: function () {
     Smartgraphs.sendAction('openFirstGuidePage');
   },
   
@@ -27,6 +27,15 @@ Smartgraphs.guideController = SC.ObjectController.create(
   lookup: function (key) {
     var context = this.get('context');
     return (context.hasOwnProperty(key) ? context[key] : undefined);
-  }
+  },
   
+  // let buttons know.
+  canOpenNextPage: NO,
+  
+  // the corresponding action that calls this should only be available in GUIDE_PAGE_DONE state
+  openNextPage: function () {
+    Smartgraphs.guidePagesController.selectNextPage();
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_PAGE_START);
+  }
+    
 }) ;

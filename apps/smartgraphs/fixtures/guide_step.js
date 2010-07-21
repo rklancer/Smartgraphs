@@ -28,6 +28,8 @@ Smartgraphs.GuideStep.FIXTURES = [
       
     triggerResponses: [
       'step-1-begin'
-    ]
+    ],
+    
+    isLastStep: YES
   }
 ];

@@ -68,12 +68,14 @@ Smartgraphs.GuideStep = SC.Record.extend(
     variables local to this GuideStep. This would include the values from the responseTemplate. These can be
     copied to the page context after being examined by the 'check answer' code.
   */
-  context: {}
+  context: {},
 
   // stuff from DialogTurn that might be usefully translated to the new models:
     
-  // if YES, the Guide should move into the GUIDE_PAGE_FINISHED state when we conclude this step.
-  // isLastStep: SC.Record.attr(Boolean),
+  /**
+    if YES, the Guide should move into the GUIDE_PAGE_DONE state when we conclude this step.
+  */
+  isLastStep: SC.Record.attr(Boolean)
   
   // 
   // // if YES and isLastTurn is YES, immediately go to the next page on reaching this dialog turn.

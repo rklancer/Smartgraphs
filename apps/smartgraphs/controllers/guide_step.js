@@ -22,6 +22,11 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
     Initializes the GuideStep. Called when we enter GUIDE_STEP_START state.
   */
   initStep: function () {
+    // wait for contentBinding to sync, if necessary.
+    this.invokeLast(this._initStep);
+  },
+  
+  _initStep: function () {
     this.unregisterOldTriggers();
     this.registerTriggerResponses();
     Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'beginStep' });

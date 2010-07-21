@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.GUIDE_FINISHED
+// Project:   Smartgraphs.GUIDE_DONE
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
@@ -12,29 +12,19 @@
   @extends SC.Responder
   @version 0.1
 */
-Smartgraphs.GUIDE_FINISHED = SC.Responder.create(
-/** @scope Smartgraphs.GUIDE_FINISHED.prototype */ {
-
-  /**
-    The next state to check if this state does not implement the action.
-  */
+Smartgraphs.GUIDE_DONE = SC.Responder.create(
+/** @scope Smartgraphs.GUIDE_DONE.prototype */ {
+  
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
   },
   
   willLoseFirstResponder: function() {
-    // Called when this state loses first responder
   },
   
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
-  
-  // add event handlers here
-  someAction: function() {
-    
-  }
   
 }) ;

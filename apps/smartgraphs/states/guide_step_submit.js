@@ -16,22 +16,26 @@
 Smartgraphs.GUIDE_STEP_SUBMIT = SC.Responder.create(
 /** @scope Smartgraphs.GUIDE_STEP_SUBMIT.prototype */ {
 
-  /**
-    The next state to check if this state does not implement the action.
-  */
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    console.log('GUIDE_STEP_SUBMIT.didBecomeFirstResponder');
   },
   
   willLoseFirstResponder: function() {
-    console.log('GUIDE_STEP_SUBMIT.willLoseFirstResponder');
   },
   
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
   
+  disableSubmission: function () {  
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_WAITING);
+    return YES;
+  },
+  
+  finishGuideStep: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_DONE);
+    return YES;
+  }
   
 }) ;

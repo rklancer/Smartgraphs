@@ -6,7 +6,7 @@
 
 /** @class
 
-  State representing that the guide step is starting. Transitions immediately to GUIDE_STEP_WAITING
+  State representing that the guide step is starting.
   
   @extends SC.Responder
   @version 0.1
@@ -14,22 +14,17 @@
 Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
 /** @scope Smartgraphs.GUIDE_STEP_START.prototype */ {
 
-  /**
-    The next state to check if this state does not implement the action.
-  */
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    console.log('GUIDE_STEP_START.didBecomeFirstResponder');
     Smartgraphs.guideStepController.initStep();
   },
   
   willLoseFirstResponder: function() {
-    console.log('GUIDE_STEP_START.willLoseFirstResponder');
   },
   
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
   
   enableSubmission: function () {
@@ -43,6 +38,11 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   */
   waitForInput: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_WAITING);
+    return YES;
+  },
+  
+  finishGuideStep: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_DONE);
     return YES;
   }
   

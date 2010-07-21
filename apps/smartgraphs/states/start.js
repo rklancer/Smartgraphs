@@ -20,14 +20,12 @@ Smartgraphs.START = SC.Responder.create(
   nextResponder: null,
   
   didBecomeFirstResponder: function() {
-    console.log('START.didBecomeFirstResponder');
     // with a fixtures-based, single-activity demo, we can just immediately transition to READY.
     // But eventually we will need to have LOADING, LOGIN, etc.
     Smartgraphs.makeFirstResponder(Smartgraphs.READY);
   },
   
   willLoseFirstResponder: function() {
-    console.log('START.willLoseFirstResponder');
   }
   
   // ..........................................................

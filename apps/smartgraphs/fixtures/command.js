@@ -68,17 +68,18 @@ Smartgraphs.Command.FIXTURES = [
       {}
   },
   
+  
   { guid: 
-      'finish-page',
+      'finish-step',
     
     name: 
-      'finishGuidePage',
+      'finishGuideStep',
     
     description:
-      'Marks this Guide page as finished.',
+      'Finishes this Guide step.',
     
     actionName:
-      'finishGuidePage',
+      'finishGuideStep',
       
     literalArgs: 
       {},

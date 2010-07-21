@@ -14,18 +14,13 @@
 Smartgraphs.GUIDE_START = SC.Responder.create(
 /** @scope Smartgraphs.GUIDE_START.prototype */ {
 
-  /**
-    The next state to check if this state does not implement the action.
-  */
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    console.log('GUIDE_START.didBecomeFirstResponder');
     Smartgraphs.appWindowController.showGuideView();
   },
   
   willLoseFirstResponder: function() {
-    console.log('GUIDE_START.willLoseFirstResponder');
   },
   
   // ..........................................................
@@ -33,20 +28,11 @@ Smartgraphs.GUIDE_START = SC.Responder.create(
   //
   
   openFirstGuidePage: function () {
-    var firstPage = Smartgraphs.guidePagesController.objectAt(0);
-    if (firstPage) {
-      firstPage.set('isSelectable', YES);
-      Smartgraphs.sendAction('openGuidePage', this, { index: 0 });
+    if (Smartgraphs.guidePagesController.get('length') > 0) {
+      Smartgraphs.guidePagesController.selectFirstPage();
+      Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_PAGE_START);
     }
-    return YES;
-  },
-  
-  openFirstGuideStep: function () {
-    Smartgraphs.guidePageController.set('currentStep', Smartgraphs.guidePageController.get('firstStep'));
-    this.invokeLast(function () {
-      Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_START);
-    });
-    return YES;
+    // TODO could go into some error state here if needed.
   }
   
 }) ;

@@ -20,11 +20,9 @@ Smartgraphs.READY = SC.Responder.create(
   nextResponder: null,
   
   didBecomeFirstResponder: function() {
-    console.log('READY.didBecomeFirstResponder');
   },
   
   willLoseFirstResponder: function() {
-    console.log('READY.willLoseFirstResponder');
   },
   
   // ..........................................................
@@ -34,9 +32,9 @@ Smartgraphs.READY = SC.Responder.create(
   openGuide: function (context, args) {
     // the default action, unless overridden in some later state, is just to set the current guide in the guide
     // controller and go into the GUIDE state
-    
+
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE);
     Smartgraphs.guideController.set('content', Smartgraphs.store.find(Smartgraphs.Guide, args.id));
-    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_START);
     return YES;
   }
   

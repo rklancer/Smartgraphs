@@ -1,3 +1,32 @@
+7/20/10
+-------
+
+state revamp:
+
+GUIDE
+
+  GUIDE_START
+  GUIDE_PAGE_START
+  
+  GUIDE_PAGE_WORKING
+    GUIDE_STEP_START
+    
+    GUIDE_STEP_WORKING
+      visitPageSummary
+      
+      GUIDE_STEP_WAITING
+        enableSubmission
+      
+      GUIDE_STEP_SUBMIT
+        disableSubmission
+        gotoStep
+    
+    
+the key point here is a 'summary' view. 
+
+      
+    
+
 7/19/10
 -------
 

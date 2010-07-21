@@ -15,7 +15,7 @@ Smartgraphs.TriggerResponse.FIXTURES = [
     commands: [
       'step-1-single-pane', 
       'step-1-show-image',
-      'step-1-finish-page'
+      'step-1-finish-step'
     ]
   }
 ];

@@ -24,7 +24,7 @@ Smartgraphs.guidePage = SC.Page.design({
       instructionsView: SC.View.design({
         layout: { right: 5, top: 0, bottom: 0 },
         classNames: 'smartgraph-pane',
-        childViews: 'textWrapper nextButton backButton'.w(),
+        childViews: 'textWrapper nextButton'.w(),
 
         // provide padding and style rules for the intro text and dialog
         textWrapper: SC.View.design({
@@ -70,22 +70,24 @@ Smartgraphs.guidePage = SC.Page.design({
           },
           title: "Next >>",
           action: 'openNextGuidePage',
-          isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePagesController.canSelectNextPage'),
-          isVisibleBinding: SC.Binding.not('Smartgraphs.guidePagesController.isLastPage').oneWay()
-        }),
+          isEnabledBinding: 'Smartgraphs.pageNavController.nextShouldBeEnabled',
+          isVisibleBinding: 'Smartgraphs.pageNavController.nextShouldBeVisible'
+        })//,
+        
+        // TODO disabled for now, until we have page *visitation* working.
 
-        backButton: SC.ButtonView.design({
-          layout: {
-            bottom: 36,
-            left: 30,
-            height: 24,
-            width: 80
-          },
-          title: "<< Back",
-          action: 'openPreviousGuidePage',
-          isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePagesController.canSelectPreviousPage'),
-          isVisibleBinding: SC.Binding.not('Smartgraphs.guidePagesController.isFirstPage').oneWay()
-        })
+        // backButton: SC.ButtonView.design({
+        //   layout: {
+        //     bottom: 36,
+        //     left: 30,
+        //     height: 24,
+        //     width: 80
+        //   },
+        //   title: "<< Back",
+        //   action: 'openPreviousGuidePage',
+        //   isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePagesController.canSelectPreviousPage'),
+        //   isVisibleBinding: SC.Binding.not('Smartgraphs.guidePagesController.isFirstPage').oneWay()
+        // })
       })
     }),
     
