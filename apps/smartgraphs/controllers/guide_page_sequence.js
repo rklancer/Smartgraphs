@@ -100,9 +100,9 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
                 var newStatus = this.sequence.statusString();
                 if (newStatus === undefined) newStatus = "";
                 console.log('newStatus:', newStatus);
-                if (newStatus.indexOf('READY') > 0) {
-                    this.sequenceDidChange();
-                }
+                // if (newStatus.indexOf('READY') > 0) {
+                //     this.sequenceDidChange();
+                // }
             }
         }
     }.observes('sequence.status'),
@@ -164,6 +164,46 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
     selectNextPage: function() {
         if (this.get('canSelectNextPage')) {
             this.selectObject(this.get('nextPage'));
+        }
+    },
+
+    setFirstGuidePageSequenceRecordNow: function(guidePageSequenceRecords) {
+        console.log("setFirstGuidePageSequenceRecordNow called:");
+        try {
+            var length = guidePageSequenceRecords.get('length');
+            console.log("guidePageSequenceRecords.get('length'):", length);
+            if (length > 0) {
+                var firstGuidePageSequence = guidePageSequenceRecords.objectAt(0); // Expecting only one guidePageSequence
+                this.set('sequence', firstGuidePageSequence);
+            }
+        } catch(e) {
+            console.error(" Failed in setFirstGuidePageSequenceRecordNow due to error:", e);
+        }
+    },
+
+    setFirstGuidePageSequenceRecordLater: function(guidePageSequenceRecords) {
+        console.log("setFirstGuidePageSequenceRecordLater called:");
+        try {
+            var status = guidePageSequenceRecords.get('status');
+            console.log(" guidePageSequenceRecords.status", status);
+            if (status === SC.Record.READY_CLEAN) {
+                this.setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords);
+            }
+        } catch(e) {
+            console.error(" Failed in setFirstGuidePageSequenceRecordLater due to error:", e);
+        }
+    },
+
+    setFirstGuidePageSequenceRecord: function(guidePageSequenceRecords) {
+        // If guidePageSequences status is immediately READY_CLEAN, then we are loading from fixtures,
+        // so we can begin immediately. Otherwise, wait for guidePageSequenceRecords to be loaded from
+        // remote data source
+        if (guidePageSequenceRecords.get('status') === SC.Record.READY_CLEAN) {
+            console.log("guidePageSequenceRecords status is immediately READY_CLEAN");
+            this.setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords);
+        } else {
+            // Register an observer of status to set this.sequence when the record is READY_CLEAN
+            guidePageSequenceRecords.addObserver('status', this, this.setFirstGuidePageSequenceRecordLater, guidePageSequenceRecords);
         }
     }
 

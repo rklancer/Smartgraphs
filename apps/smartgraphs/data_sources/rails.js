@@ -111,16 +111,6 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             console.log("didFetchGuidePageSequences: calling store.dataSourceDidFetchQuery(query)");
             store.dataSourceDidFetchQuery(query);
             console.log("group end");
-            // Setting a fetched sequence to guidePageSequenceController.sequence
-            var guidePageSequences = store.find(query);
-            try {
-                console.log('guidePageSequences:', guidePageSequences);
-                var firstSequence = guidePageSequences.objectAt(0);
-                console.log('firstSequence:', firstSequence);
-                Smartgraphs.guidePageSequenceController.set('sequence', firstSequence);
-            } catch(e) {
-                console.error("Failed at setting a fetched sequence to guidePageSequenceController.sequence:", e);
-            }
             console.log("group end");
         }
         else {
