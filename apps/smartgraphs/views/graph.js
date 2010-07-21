@@ -22,14 +22,19 @@ Smartgraphs.GraphView = SC.View.extend(
       graphBinding: '.parentView.parentView.graph',
       displayProperties: 'graph graph.axes graph.allSeries.[]',
       
-      renderCallback: function (raphaelCanvas, x, y, width, height, fill, stroke) {
-        return raphaelCanvas.rect(x, y, width, height).attr({ fill: fill, stroke: stroke });
+      renderCallback: function (raphaelCanvas) {
+        Smartgraphs.raphael = raphaelCanvas;
+
+        // a total hack.
+        this.invokeLater(function () { 
+          raphaelCanvas.g.axis(10, 200, 200, 0, 10, 10, 0); 
+        });
+        return raphaelCanvas.rect(1,1,1,1).attr({opacity: 0});
       },
 
       render: function (context, firstTime) {
         if (firstTime) {
-          // a test.
-          context.callback(this, this.renderCallback, 50, 50, 100, 100, '#cc0000', '#cc0000');
+          context.callback(this, this.renderCallback);
           this.renderChildViews(context, firstTime);      // don't forget to render child views
         }
       },
