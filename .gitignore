@@ -7,3 +7,4 @@ textmate.tmproj
 rails/.DS_Store
 rails/log/development.log
 rails/db/production.sqlite3
+rails/db/development.sqlite3
