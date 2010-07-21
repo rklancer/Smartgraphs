@@ -14,6 +14,6 @@
 Smartgraphs.DataSeries = SC.Record.extend(
 /** @scope Smartgraphs.DataSeries.prototype */ {
 
-  points: SC.Record.toMany('RaphaelDemo.DataPoint', { inverse: 'series' } )
+  points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'series' } )
 
 }) ;
