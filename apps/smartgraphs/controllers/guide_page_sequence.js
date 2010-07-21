@@ -63,8 +63,8 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
                 console.log('relatedGuidePagesQueryConditions:', relatedGuidePagesQueryConditions);
                 var relatedGuidePagesQuery = SC.Query.local(Smartgraphs.GuidePage, relatedGuidePagesQueryConditions);
                 console.log('relatedGuidePagesQuery:', relatedGuidePagesQuery);
-                var fetchGuidePagesSuccess = Smartgraphs.dataSource.fetch(Smartgraphs.store, relatedGuidePagesQuery);
-                console.log('fetchGuidePagesSuccess:', fetchGuidePagesSuccess);
+			    var relatedGuidePageRecords = Smartgraphs.store.find(relatedGuidePagesQuery);
+				Smartgraphs.guidePageController.setGuidePageRecords(relatedGuidePageRecords);
             } else {
                 console.error('sequence.name:', name);
             }
@@ -195,7 +195,7 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
     },
 
     setFirstGuidePageSequenceRecord: function(guidePageSequenceRecords) {
-        // If guidePageSequences status is immediately READY_CLEAN, then we are loading from fixtures,
+        // If guidePageSequenceRecords status is immediately READY_CLEAN, then we are loading from fixtures,
         // so we can begin immediately. Otherwise, wait for guidePageSequenceRecords to be loaded from
         // remote data source
         if (guidePageSequenceRecords.get('status') === SC.Record.READY_CLEAN) {
