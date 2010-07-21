@@ -81,18 +81,34 @@ Smartgraphs.GraphView = SC.View.extend(
   }.observes('*allSeries.[]'),
 
   _addViewForSeries: function (series) {
-    console.log('**** adding view for series %s', series.get('id'));    
-    this._seriesViewsById[series.get('id')] = SC.Object.create({ series: series });
+    console.log('**** adding view for series %s', series.get('id'));
+    
+    var pointsQuery = SC.Query.local(Smartgraphs.DataPoint, { 
+      conditions: 'series = {series}',
+      series: series,
+      orderBy: 'id'
+    });
+    
+    var view = RaphaelViews.RaphaelCollectionView.design({
+      exampleView: Smartgraphs.DataPointView,
+      graphView: this,
+      seriesId: series.get('id'),
+      content: Smartgraphs.store.find(pointsQuery),
+      useFastPath: YES
+    }).create();
+    
+    this.get('graphCanvasView').appendChild(view);
+    this._seriesViewsById[series.get('id')] = view;
   },
   
   _removeSeriesView: function (view) {
-    var series = view.get('series');
-    var id = view.getPath('series.id');
-    console.log('**** removing view for series %s', series.get('id'));
-    delete this._seriesViewsById[id];
+    var seriesId = view.get('seriesId');
+    console.log('**** removing view for series %s', seriesId);
+
+    delete this._seriesViewsById[seriesId];
+    this.get('graphCanvasView').removeChild(view);
   },
   
-
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
     graphBinding: '.parentView*graph',
     axesBinding: '.parentView*axes',
