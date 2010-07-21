@@ -113,14 +113,27 @@ Smartgraphs.guidePage = SC.Page.design({
   }),
   
   splitPaneDataView: SC.View.design({
-    childViews: 'topPane bottomPane'.w(),
+    childViews: 'topPaneWrapper bottomPaneWrapper'.w(),
     
-    topPane: SC.ContainerView.design({
-      nowShowingBinding: 'Smartgraphs.guideViewController.firstPaneNowShowing'
+    topPaneWrapper: SC.View.design({
+      layout: { top: 0, height: 0.5 },
+      childViews: 'topPane'.w(),
+      
+      topPane: SC.ContainerView.design({
+        layout: { bottom: 5 },
+        nowShowingBinding: 'Smartgraphs.guideViewController.firstPaneNowShowing'
+      })
     }),
+
+    bottomPaneWrapper: SC.View.design({
+      layout: { bottom: 0, height: 0.5 },
+      childViews: 'bottomPane'.w(),
     
-    bottomPane: SC.ContainerView.design({
-      nowShowingBinding: 'Smartgraphs.guideViewController.secondPaneNowShowing'
+      bottomPane: SC.ContainerView.design({
+        layout: { top: 5 },
+        classNames: 'smartgraph-pane',//TEMP
+        nowShowingBinding: 'Smartgraphs.guideViewController.secondPaneNowShowing'
+      })
     })
   }),
   
