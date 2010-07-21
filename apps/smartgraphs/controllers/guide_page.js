@@ -53,9 +53,18 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
                 console.warn("Had to create Smartgraphs.GuidePageSequence sequence:", sequence);
             }
             sequence.set('pages', guidePageRecords);
+            // guidePageRecords will be a SC.ManyArray while sequence.pages will be a SC.RecordArray
+            // so their items must be compared to each other
+            var success = guidePageRecords.isEqual(sequence.get('pages'));
+            if (!success) {
+                console.warn("guidePageRecords items are NOT equal to items in sequence.get('pages'):", sequence.get('pages'));
+            }
+            return success; // Let the caller know if setting the sequence.pages succeeded
         } catch(e) {
             console.error(" Failed in setGuidePageRecordsNow due to error:", e);
         }
+        console.warn("Returning NO to let the caller know that setting the sequence.pages failed.");
+        return false; // Let the caller know that setting the guide pages failed
     },
 
     setGuidePageRecordsLater: function(guidePageRecords) {
@@ -64,7 +73,14 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
             var status = guidePageRecords.get('status');
             console.log(" guidePageRecords.status", status);
             if (status === SC.Record.READY_CLEAN) {
-                this.setGuidePageRecordsNow(guidePageRecords);
+                if (this.setGuidePageRecordsNow(guidePageRecords)) {
+                    console.log("Setting the sequence.pages succeeded!");
+                    // Remove the observer so the record won't reset if its status changes again
+                    guidePageRecords.removeObserver('status', this, this.setGuidePageRecordsLater);
+                } else {
+                    console.warn("setGuidePageRecordsNow(guidePageRecords) failed.");
+                    console.log("guidePageRecords:", guidePageRecords);
+                }
             }
         } catch(e) {
             console.error(" Failed in setGuidePageRecordsLater due to error:", e);

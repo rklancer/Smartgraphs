@@ -63,8 +63,8 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
                 console.log('relatedGuidePagesQueryConditions:', relatedGuidePagesQueryConditions);
                 var relatedGuidePagesQuery = SC.Query.local(Smartgraphs.GuidePage, relatedGuidePagesQueryConditions);
                 console.log('relatedGuidePagesQuery:', relatedGuidePagesQuery);
-			    var relatedGuidePageRecords = Smartgraphs.store.find(relatedGuidePagesQuery);
-				Smartgraphs.guidePageController.setGuidePageRecords(relatedGuidePageRecords);
+                var relatedGuidePageRecords = Smartgraphs.store.find(relatedGuidePagesQuery);
+                Smartgraphs.guidePageController.setGuidePageRecords(relatedGuidePageRecords);
             } else {
                 console.error('sequence.name:', name);
             }
@@ -175,10 +175,13 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
             if (length > 0) {
                 var firstGuidePageSequence = guidePageSequenceRecords.objectAt(0); // Expecting only one guidePageSequence
                 this.set('sequence', firstGuidePageSequence);
+                return (firstGuidePageSequence === this.get('sequence')); // Let the caller know if setting the sequence succeeded
             }
         } catch(e) {
             console.error(" Failed in setFirstGuidePageSequenceRecordNow due to error:", e);
         }
+        console.warn("Returning NO to let the caller know that setting the sequence failed.");
+        return false; // Let the caller know that setting the sequence failed
     },
 
     setFirstGuidePageSequenceRecordLater: function(guidePageSequenceRecords) {
@@ -187,7 +190,14 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
             var status = guidePageSequenceRecords.get('status');
             console.log(" guidePageSequenceRecords.status", status);
             if (status === SC.Record.READY_CLEAN) {
-                this.setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords);
+                if (this.setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords)) {
+                    console.log("Setting the sequence succeeded!");
+                    // Remove the observer so the record won't reset if its status changes again
+                    guidePageSequenceRecords.removeObserver('status', this, this.setFirstGuidePageSequenceRecordLater);
+                } else {
+                    console.warn("setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords) failed.");
+                    console.log("guidePageSequenceRecords:", guidePageSequenceRecords);
+                }
             }
         } catch(e) {
             console.error(" Failed in setFirstGuidePageSequenceRecordLater due to error:", e);
