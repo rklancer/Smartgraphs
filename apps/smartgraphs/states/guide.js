@@ -33,12 +33,25 @@ Smartgraphs.GUIDE = SC.Responder.create(
   // ACTIONS
   //
   
+  /**
+    Triggers args.eventName, which results in the corresponding triggerResponse's commands being executed by the Guide
+  */
   fireGuideEvent: function (context, args) {
     if (args.eventName) {
       var trigger = Smartgraphs.triggers[args.eventName];
       if (trigger) trigger.eventWasObserved();
     }
     return YES;
+  },
+  
+  // ..........................................................
+  // actions for Guide step commands
+  //
+  
+  // a helper
+  _graphControllerFor: function (pane) {
+    if (pane === 'first') return Smartgraphs.firstGraphController;
+    if (pane === 'second') return Smartgraphs.secondGraphController;
   },
   
   showSinglePane: function () {
@@ -51,6 +64,31 @@ Smartgraphs.GUIDE = SC.Responder.create(
   
   showImage: function (context, args) {
     return Smartgraphs.guideViewController.showImage(args.pane, args.path);
+  },
+  
+  showGraph: function (context, args) {
+    Smartgraphs.guideViewController.showGraph(args.pane, args.graphId);
+    return YES;
+  },
+  
+  setAxes: function (context, args) {
+    var controller = this._graphControllerFor(args.pane);
+    controller.setAxes(args.axesId);
+  },
+  
+  addSeries: function (context, args) {
+    var controller = this._graphControllerFor(args.pane);
+    controller.addSeries(args.seriesId);
+  },
+  
+  removeSeries: function (context, args) {
+    var controller = this._graphControllerFor(args.pane);
+    controller.removeSeries(args.seriesId);
+  },
+  
+  removeAllSeries: function (context, args) {
+    var controller = this._graphControllerFor(args.pane);
+    controller.removeAllSeries();
   }
   
 }) ;

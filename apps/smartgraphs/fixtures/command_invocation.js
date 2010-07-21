@@ -86,6 +86,28 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     
     substitutedArgs:
       {}
+  },
+  
+  
+  { guid: 
+      'step-2-show-graph',
+  
+    command:
+      'show-graph',
+    
+    triggerResponse:
+      'page-2-begin',
+    
+    index:
+      2,
+    
+    literalArgs: {
+      pane: 'first',
+      graphId: 'prediction-away'
+    },
+    
+    substitutedArgs:
+      {}
   }
   
 ];

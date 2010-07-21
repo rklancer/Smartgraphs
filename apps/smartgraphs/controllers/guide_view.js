@@ -41,6 +41,29 @@ Smartgraphs.guideViewController = SC.ObjectController.create(
     }
     
     return NO;
+  },
+  
+  showGraph: function (pane, graphId) {
+    if (pane === 'first') {
+      Smartgraphs.firstGraphController.openGraph(graphId);
+      this.set('firstPaneNowShowing', 'Smartgraphs.guidePage.firstGraphView');
+      return YES;
+    }
+    
+    if (pane === 'second') {
+      Smartgraphs.secondGraphController.openGraph(graphId);      
+      this.set('secondPaneNowShowing', 'Smartgraphs.guidePage.secondGraphView');
+      return YES;
+    }
+    
+    return NO;
+  },
+  
+  // for graphViewController
+  createSeriesView: function (series) {    
+  },
+  
+  removeSeriesView: function (series) {
   }
 
 }) ;

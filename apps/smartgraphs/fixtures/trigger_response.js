@@ -24,7 +24,8 @@ Smartgraphs.TriggerResponse.FIXTURES = [
     step: 'page-2-step-1',  
     args: {},
     commands: [
-      'step-2-split-pane'
+      'step-2-split-pane',
+      'step-2-show-graph'      
     ]
   }
   

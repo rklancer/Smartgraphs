@@ -70,6 +70,26 @@ Smartgraphs.Command.FIXTURES = [
   
   
   { guid: 
+      'show-graph',
+    
+    name: 
+      'showGraph',
+    
+    description:
+      'Set the right-side display to show a graph.',
+    
+    actionName:
+      'showGraph',
+      
+    literalArgs:
+      {},
+      
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
       'enable-submission',
     
     name: 

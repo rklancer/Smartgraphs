@@ -13,6 +13,11 @@
 Smartgraphs.GraphView = SC.View.extend(
 /** @scope Smartgraphs.GraphView.prototype */ {
 
-  // TODO: Add your own code here.
+  classNames: ['smartgraph-pane'],
+  childViews: 'label'.w(),
+  
+  label: SC.LabelView.design({
+    value: 'Graph Goes Here!'
+  })
 
 });

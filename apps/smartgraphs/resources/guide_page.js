@@ -110,6 +110,7 @@ Smartgraphs.guidePage = SC.Page.design({
   }),
   
   singlePaneDataView: SC.ContainerView.design({
+    classNames: 'smartgraph-pane',
     nowShowingBinding: 'Smartgraphs.guideViewController.firstPaneNowShowing'
   }),
   
@@ -122,6 +123,7 @@ Smartgraphs.guidePage = SC.Page.design({
       
       topPane: SC.ContainerView.design({
         layout: { bottom: 5 },
+        classNames: 'smartgraph-pane',
         nowShowingBinding: 'Smartgraphs.guideViewController.firstPaneNowShowing'
       })
     }),
@@ -171,6 +173,6 @@ Smartgraphs.guidePage = SC.Page.design({
   
   firstTableView: Smartgraphs.TableView.design({}),
   
-  secondTableView: Smartgraphs.TableView.design({}) 
-
+  secondTableView: Smartgraphs.TableView.design({})
+  
 });
