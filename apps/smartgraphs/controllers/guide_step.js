@@ -18,15 +18,22 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
 
   registeredTriggers: [],
   
+  contentDidChange: function () {
+    this.invokeOnce(this._sendInitializeAction);     // darn observers fire twice all the time...
+  }.observes('content'),
+  
+  _sendInitializeAction: function () {
+    // content SHOULD only change simulataneously a transition to GUIDE_STEP_START. Therefore, initialize
+    // the step by sending the 'initializeGuideStep' action which is ONLY available in GUIDE_STEP_START. Failures
+    // or unexpected attempts to call initializeGuideStep will therefore be more obvious (and traceable, if the trace
+    // option is set to YES on the Smartgraphs SC.Application object.)
+    Smartgraphs.sendAction('initializeGuideStep');
+  },
+  
   /**
     Initializes the GuideStep. Called when we enter GUIDE_STEP_START state.
   */
-  initStep: function () {
-    // wait for contentBinding to sync, if necessary.
-    this.invokeLast(this._initStep);
-  },
-  
-  _initStep: function () {
+  initialize: function () {
     this.unregisterOldTriggers();
     this.registerTriggerResponses();
     Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'beginStep' });

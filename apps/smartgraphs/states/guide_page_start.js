@@ -28,10 +28,7 @@ Smartgraphs.GUIDE_PAGE_START = SC.Responder.create(
   
   openFirstGuideStep: function () {
     Smartgraphs.guidePageController.set('currentStep', Smartgraphs.guidePageController.get('firstStep'));
-    // need to let the guidePage.selection -> guideStep binding sync.
-    this.invokeLast(function () {
-      Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_START);
-    });
+    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_START);
     return YES;
   }
   

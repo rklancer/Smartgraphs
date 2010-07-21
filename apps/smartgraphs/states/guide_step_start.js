@@ -17,7 +17,6 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    Smartgraphs.guideStepController.initStep();
   },
   
   willLoseFirstResponder: function() {
@@ -26,6 +25,11 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   // ..........................................................
   // ACTIONS
   //
+  
+  
+  initializeGuideStep: function () {
+    Smartgraphs.guideStepController.initialize();
+  },
   
   enableSubmission: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_SUBMIT);
