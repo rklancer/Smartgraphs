@@ -46,6 +46,7 @@ Smartgraphs.guidePage = SC.Page.design({
 
           guideStepDialog: SC.View.design({          
             useStaticLayout: YES,
+            hasStaticLayout: YES,    
             childViews: 'beforeText afterText'.w(),
             classNames: 'dialog-text'.w(),
 
@@ -139,6 +140,7 @@ Smartgraphs.guidePage = SC.Page.design({
   
   firstImageView: SC.ImageView.design({
     useStaticLayout: YES,
+    hasStaticLayout: YES,
     valueBinding: 'Smartgraphs.guideViewController.firstImageValue',
     
     // This is a hack.  At the moment SC.View.layoutStyle doesn't know how to set width or height to '100%',
@@ -153,6 +155,7 @@ Smartgraphs.guidePage = SC.Page.design({
   
   secondImageView: SC.ImageView.design({
     useStaticLayout: YES,
+    hasStaticLayout: YES,    
     valueBinding: 'Smartgraphs.guideViewController.secondImageValue',
 
     // same hack described in firstImageView:

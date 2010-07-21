@@ -15,7 +15,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       'show-single-pane',
     
     triggerResponse:
-      'page-1-step-1',
+      'page-1-begin',
     
     index:
       1,
@@ -35,7 +35,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       'show-image',
     
     triggerResponse:
-      'page-1-step-1',
+      'page-1-begin',
     
     index:
       2,
@@ -56,7 +56,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       'finish-step',
     
     triggerResponse:
-      'page-1-step-1',
+      'page-1-begin',
     
     index:
       3,
@@ -65,6 +65,26 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       {},
     
     substitutedArgs: 
+      {}
+  },
+  
+  
+  { guid: 
+      'step-2-split-pane',
+  
+    command:
+      'show-split-pane',
+    
+    triggerResponse:
+      'page-2-begin',
+    
+    index:
+      1,
+    
+    literalArgs:
+      {},
+    
+    substitutedArgs:
       {}
   }
   

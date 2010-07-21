@@ -17,5 +17,15 @@ Smartgraphs.TriggerResponse.FIXTURES = [
       'step-1-show-image',
       'step-1-finish-step'
     ]
+  },
+  
+  { guid: 'step-2-begin',
+    trigger: 'begin-step',
+    step: 'page-2-step-1',  
+    args: {},
+    commands: [
+      'step-2-split-pane'
+    ]
   }
+  
 ];

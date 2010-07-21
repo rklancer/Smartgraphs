@@ -27,7 +27,7 @@ body.sc-theme {
   font-size: 16px;
 }
 
-.text-wrapper p, .text-wrapper h1 {
+.text-wrapper p, .text-wrapper h1, .text-wrapper img {
   margin: 10px;
 }
 

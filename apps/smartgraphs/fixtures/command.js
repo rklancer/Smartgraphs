@@ -26,6 +26,26 @@ Smartgraphs.Command.FIXTURES = [
     substitutedArgs:
       {}
   },
+  
+  
+  { guid: 
+      'show-split-pane',
+    
+    name: 
+      'showSplitPane',
+    
+    description:
+      'Set the right-side display to show two panes.',
+    
+    actionName:
+      'showSplitPane',
+      
+    literalArgs:
+      {},
+      
+    substitutedArgs:
+      {}
+  },
 
 
   { guid: 
@@ -87,6 +107,5 @@ Smartgraphs.Command.FIXTURES = [
     substitutedArgs:
       {}
   }
-  
   
 ];

@@ -31,5 +31,32 @@ Smartgraphs.GuideStep.FIXTURES = [
     ],
     
     isLastStep: YES
+  },
+  
+  
+  { guid: 
+      'page-2-step-1',
+
+    guidePage:
+      'page-2',
+    
+    beforeText: 
+      '<p>In the top-right area, draw a graph of someone walking at a slow, steady pace from point A to point B '+
+      'between 0 and 15 seconds.</p>',
+
+    responseTemplate: 
+      null,
+    
+    afterText:
+      '',
+      
+    buttons: 
+      [],
+      
+    triggerResponses: [
+      'step-2-begin'
+    ],
+    
+    isLastStep: NO
   }
 ];

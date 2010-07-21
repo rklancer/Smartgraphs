@@ -47,13 +47,16 @@ Smartgraphs.GuidePage.FIXTURES = [
       2,
     
     introText: 
-      '<h1>Second Page!</h1>',
+      '<p>Let’s start by demonstrating what you already know about representing motion on a graph. Imagine a '+
+      'straight walking path that is 5 meters long. Point A is at the 0-meter mark. Point B is at the 4-meter mark.'+
+      '</p>'+
+      '<img src="'+sc_static('resources/numberline.png')+'">',
 
     steps: 
-      [],
+      ['page-2-step-1'],
     
     firstStep:
-      ''
+      'page-2-step-1'
   }
 
 ];
