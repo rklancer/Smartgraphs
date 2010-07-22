@@ -24,7 +24,9 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
         console.log('_setDialogTurn');
         // display the first 'line' of dialog if user hasn't been to this page before; 
         // otherwise, leave dialog state at whatever state user saw last time they were on this page
+        console.log("this.get('selectedDialogTurn'):", this.get('selectedDialogTurn'));
         if (SC.none(this.get('selectedDialogTurn'))) {
+            console.log("this.get('firstDialogTurn')", this.get('firstDialogTurn'));
             this.set('selectedDialogTurn', this.get('firstDialogTurn'));
         }
     },

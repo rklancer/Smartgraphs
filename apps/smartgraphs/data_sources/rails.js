@@ -45,29 +45,30 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     fetch: function(store, query) {
         console.log('Smartgraphs.RailsDataSource.fetch()');
         console.log('query:', query);
-        // var guidePageSequenceSet = SC.Set.create([Smartgraphs.GuidePageSequence]);
-        // console.log('guidePageSequenceSet:', guidePageSequenceSet);
-        // var guidePageSet = SC.Set.create([Smartgraphs.GuidePage]);
-        // console.log('guidePageSet:', guidePageSet);
-        //
         // if (query === Smartgraphs.GUIDEPAGESEQUENCE_QUERY) {
         if (query.containsRecordTypes(SC.Set.create([Smartgraphs.GuidePageSequence]))) {
-            console.log('query.containsRecordTypes(guidePageSequenceSet) == true');
+            console.log('query.containsRecordTypes(SC.Set.create([Smartgraphs.GuidePageSequence])) == true');
             this._jsonGet('/rails/guide_page_sequences', 'didFetchGuidePageSequences', store, query);
             console.log("group end");
 
             return YES; // return YES since you handled the query
             // } else if (query === Smartgraphs.GUIDEPAGESEQUENCE_QUERY) {
         } else if (query.containsRecordTypes(SC.Set.create([Smartgraphs.GuidePage]))) {
-            console.log('query.containsRecordTypes(guidePageSet) == true');
+            console.log('query.containsRecordTypes(SC.Set.create([Smartgraphs.GuidePage])) == true');
             this._jsonGet('/rails/guide_pages', 'didFetchGuidePages', store, query);
+            console.log("group end");
+
+            return YES; // return YES since you handled the query
+        } else if (query.containsRecordTypes(SC.Set.create([Smartgraphs.DialogTurn]))) {
+            console.log('query.containsRecordTypes(SC.Set.create([Smartgraphs.DialogTurn])) == true');
+            this._jsonGet('/rails/dialog_turns', 'didFetchDialogTurns', store, query);
             console.log("group end");
 
             return YES; // return YES since you handled the query
         } else {
             console.warn("NO HANDLER FOR query FOUND IN Smartgraphs.RailsDataSource.fetch(store, query) !");
             console.log("store:", store);
-            console.log("query.toString():", query.toString());
+            console.log("query:", query);
         }
 
         console.log("Returning NO since I did NOT handle the query");
@@ -127,6 +128,29 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             console.log("store.dataSourceDidFetchQuery(query) is done");
             // Setting the guide_pages array to guidePageSequenceController.sequence 
             console.log("group end");
+        }
+        else {
+            store.dataSourceDidErrorQuery(query, response);
+        }
+
+        console.log("group end");
+    },
+
+    didFetchDialogTurns: function(response, store, query) {
+        console.log('Smartgraphs.RailsDataSource.didFetchDialogTurns()');
+
+        console.log('response.status = %d', response.get('status'));
+        console.log("response: ", response);
+
+        if (SC.ok(response)) {
+            console.log('**************SC.ok(response) is YES; TODO: processing content');
+
+            var content = response.get('body').content;
+            console.log('response.body.content: ', content);
+            console.log('content.isSCArray: ', content.isSCArray);
+            console.log('content.length:', content.length);
+            console.log('content.objectAt(0):', content.objectAt(0));
+            console.log('content.objectAt(0).title:', content.objectAt(0).title);
         }
         else {
             store.dataSourceDidErrorQuery(query, response);
