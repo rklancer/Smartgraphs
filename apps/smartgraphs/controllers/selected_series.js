@@ -10,7 +10,9 @@
 
   @extends SC.Object
 */
-Smartgraphs.selectedSeriesController = SC.ArrayController.create(
+Smartgraphs.selectedSeriesController = SC.ObjectController.create(
 /** @scope Smartgraphs.selectedSeriesController.prototype */ {
 
+  // default # bins for prediction graph
+  nBins: 50
 }) ;

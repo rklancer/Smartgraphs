@@ -113,6 +113,9 @@ Smartgraphs.GUIDE = SC.Responder.create(
     Smartgraphs.sendAction('addSeries', this, { pane: args.pane, seriesId: args.seriesId });
     Smartgraphs.sendAction('selectDataSeries', this, { seriesId: args.seriesId });
     
+    Smartgraphs.selectedSeriesController.set('xMin', args.xMin);
+    Smartgraphs.selectedSeriesController.set('xMax', args.xMax);
+    
     // so... at the moment, you can only focus one graph at a time for input. Design choice or design flaw?
     var controller = this._graphControllerFor(args.pane);
     Smartgraphs.inputGraphController = this._graphControllerFor(args.pane);

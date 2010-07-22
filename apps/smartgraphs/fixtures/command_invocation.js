@@ -125,7 +125,9 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     
     literalArgs: {
       pane: 'first',
-      seriesId: 'prediction-away-series'
+      seriesId: 'prediction-away-series',
+      xMin: 0,
+      xMax: 15
     },
     
     substitutedArgs:

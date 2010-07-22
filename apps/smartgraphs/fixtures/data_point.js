@@ -21,3 +21,5 @@ Smartgraphs.DataPoint.FIXTURES = [
   {x: 12, y: 1, guid: 10, series: 'prediction-toward-series'}
 
 ];
+
+Smartgraphs.DataPoint.nextGuid = 11;

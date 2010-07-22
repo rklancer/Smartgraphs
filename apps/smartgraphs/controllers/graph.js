@@ -78,6 +78,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   inputAreaMouseDown: function (x, y) {
     console.log('recorded click at %f, %f', x, y);
+    Smartgraphs.sendAction('addPredictionPointNear', this, { x: x, y: y });
   }
   
 }) ;

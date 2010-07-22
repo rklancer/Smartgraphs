@@ -40,8 +40,10 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
   // is this a good name?
   endPredictionGraphInput: function () {
     this.resignFirstResponder();
+  },
+  
+  addPredictionPointNear: function (context, args) {
+    Smartgraphs.selectedPointsController.addPredictionPointNear(args.x, args.y);
   }
-  
-  
   
 }) ;
