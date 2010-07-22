@@ -39,28 +39,22 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
   }.property('isSelected', 'selectedStroke', 'notSelectedStroke').cacheable(),
   
   radius: function () {
-    var ret = (this.get('isHovered') ? this.get('hoveredRadius') : this.get('notHoveredRadius'));
-    console.log('returning radius %d', ret);
-    return ret;
+    return (this.get('isHovered') ? this.get('hoveredRadius') : this.get('notHoveredRadius'));
   }.property('isHovered', 'hoveredRadius', 'notHoveredRadius').cacheable(),
   
   mouseEntered: function () {
-    console.log('mouseEntered');
     this.set('isHovered', YES);
   },
   
   mouseExited: function () {
-    console.log('mouseExited');
     this.set('isHovered', NO);
   },
   
   renderCallback: function (raphaelCanvas, x, y, radius, fill, stroke) {
-    console.log('creating point %d, %d', x, y);
     return raphaelCanvas.circle(x, y, radius).attr({ fill: fill, stroke: stroke });
   },
   
   render: function (context, firstTime) {
-    console.log('rendering DataPointView');
     var fill = this.get('fill'),
         stroke = this.get('stroke'),
         radius = this.get('radius');

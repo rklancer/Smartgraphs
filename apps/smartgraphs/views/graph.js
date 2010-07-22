@@ -81,8 +81,6 @@ Smartgraphs.GraphView = SC.View.extend(
   }.observes('*allSeries.[]'),
 
   _addViewForSeries: function (series) {
-    console.log('**** adding view for series %s', series.get('id'));
-    
     var pointsQuery = SC.Query.local(Smartgraphs.DataPoint, { 
       conditions: 'series = {series}',
       series: series,
@@ -103,8 +101,6 @@ Smartgraphs.GraphView = SC.View.extend(
   
   _removeSeriesView: function (view) {
     var seriesId = view.get('seriesId');
-    console.log('**** removing view for series %s', seriesId);
-
     delete this._seriesViewsById[seriesId];
     this.get('graphCanvasView').removeChild(view);
   },
@@ -142,7 +138,6 @@ Smartgraphs.GraphView = SC.View.extend(
       },
 
       drawAxes: function (raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
-        console.log('************* drawAxes ***************');
         // x axis
         if (this._x) this._x.remove();
         this._x = raphaelCanvas.g.axis(xLeft, yBottom, plotWidth, xMin, xMax, xSteps, 0);
