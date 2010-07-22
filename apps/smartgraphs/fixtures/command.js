@@ -146,6 +146,27 @@ Smartgraphs.Command.FIXTURES = [
       
     substitutedArgs:
       {}
+  },
+  
+  
+  { guid: 
+      'goto-step',
+    
+    name: 
+      'openGuideStep',
+    
+    description:
+      'Open a new guide step.',
+    
+    actionName:
+      'openGuideStep',
+      
+    literalArgs: 
+      {},
+      
+    substitutedArgs:
+      {}
   }
+  
   
 ];

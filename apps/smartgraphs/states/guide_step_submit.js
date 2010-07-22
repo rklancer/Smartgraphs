@@ -23,11 +23,15 @@ Smartgraphs.GUIDE_STEP_SUBMIT = SC.Responder.create(
   },
   
   willLoseFirstResponder: function() {
+    Smartgraphs.guideStepController.set('submitButtonShouldBeEnabled', NO);
   },
   
   // ..........................................................
   // ACTIONS
   //
+  
+  // TODO make it swap its position in the responder chain with GUIDE_STEP_WAITING (in case we're the
+  // nextResponder of something like GRAPH_INPUT)
   
   disableSubmission: function () {  
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_WAITING);
@@ -36,6 +40,7 @@ Smartgraphs.GUIDE_STEP_SUBMIT = SC.Responder.create(
   
   finishGuideStep: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_DONE);
+    Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'responseSubmitted' });
     return YES;
   }
   

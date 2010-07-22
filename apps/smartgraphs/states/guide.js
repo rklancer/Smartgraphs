@@ -120,7 +120,7 @@ Smartgraphs.GUIDE = SC.Responder.create(
     var controller = this._graphControllerFor(args.pane);
     Smartgraphs.inputGraphController = this._graphControllerFor(args.pane);
 
-    Smartgraphs.GRAPH_INPUT.set('nextResponder', this);
+    Smartgraphs.GRAPH_INPUT.set('nextResponder', Smartgraphs.get('firstResponder'));
     Smartgraphs.makeFirstResponder(Smartgraphs.GRAPH_INPUT);
     return YES;
   }

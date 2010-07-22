@@ -85,7 +85,7 @@ Smartgraphs.guidePage = SC.Page.design({
                 titleBinding: 'Smartgraphs.guideStepController.submitButtonTitle',
                 isVisibleBinding: 'Smartgraphs.guideStepController.submitButtonShouldBeVisible',
                 isEnabledBinding: 'Smartgraphs.guideStepController.submitButtonShouldBeEnabled',
-                action: 'guideStepSubmit'
+                action: 'finishGuideStep'
               })
             })
           })
@@ -197,11 +197,13 @@ Smartgraphs.guidePage = SC.Page.design({
   }),
   
   firstGraphView: Smartgraphs.GraphView.design({
-    graphBinding: 'Smartgraphs.firstGraphController'
+    graphBinding: 'Smartgraphs.firstGraphController',
+    viewName: 'firstGraphView'
   }),
   
   secondGraphView: Smartgraphs.GraphView.design({
-    graphBinding: 'Smartgraphs.secondGraphController'    
+    graphBinding: 'Smartgraphs.secondGraphController',
+    viewName: 'secondGraphView'  
   }),
   
   firstTableView: Smartgraphs.TableView.design({}),
