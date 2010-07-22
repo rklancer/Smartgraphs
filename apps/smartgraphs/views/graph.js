@@ -146,13 +146,23 @@ Smartgraphs.GraphView = SC.View.extend(
     childViews: 'axesView'.w(),
     
     axesView: RaphaelViews.RaphaelView.design({
-      axesBinding: '.parentView*axes',      
+      axesBinding: '.parentView.parentView*axes',      
+      paddingBinding: '.parentView.parentView*padding',
 
       displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax axes.xLabel axes.yLabel'.w(),      
+
+      pointForEvent: function (e) {
+        var canvasOffset = $(this.get('raphaelCanvas').canvas).offset();
+        var x = e.pageX - canvasOffset.left;
+        var y = e.pageY - canvasOffset.top;
+        var graphView = this.getPath('parentView.parentView');
+        return graphView.pointForCoordinates(x, y);
+      },
       
-      mouseDown: function () {
+      mouseDown: function (e) {
         if (this.get('shouldNotifyController')) {
-          return this.get('controller').inputClick();
+          var point = this.pointForEvent(e);
+          return this.get('controller').inputAreaMouseDown(point.x, point.y);
         }
         return NO;
       },

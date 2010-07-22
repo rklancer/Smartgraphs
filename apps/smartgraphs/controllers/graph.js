@@ -76,8 +76,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     axesView.set('shouldNotifyController', NO);
   },
   
-  inputClick: function () {
-    console.log('mouseDown in axesView!');
+  inputAreaMouseDown: function (x, y) {
+    console.log('recorded click at %f, %f', x, y);
   }
   
 }) ;
