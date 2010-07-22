@@ -20,13 +20,11 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
   xMinBinding: 'Smartgraphs.selectedSeriesController.xMin',
   xMaxBinding: 'Smartgraphs.selectedSeriesController.xMax',
   nBinsBinding: 'Smartgraphs.selectedSeriesController.nBins',
-
-  _points: {},
+  
+  _points: [],
   
   contentDidChange: function () {
-    if (this.get('length') > 0) {
-      this.invokeOnce(this._cleanupData);
-    }
+    this.invokeOnce(this._cleanupData);
   }.observes('content'),
   
   binWidth: function () {
@@ -34,6 +32,7 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
   }.property('xMin', 'xMax', 'nBins').cacheable(),
   
   _cleanupData: function () {
+    this._points = [];
     this.beginPropertyChanges();
     
     var averageY = function (ys) {
@@ -91,13 +90,13 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
         if (that._bins[i].get('length') > 0) {
           x = (i + 0.5) * binWidth;
           y = averageY(that._bins[i]);
-          that.addPoint(x, y, i);
+          that.addPredictionPoint(x, y, i);
         }
       }
     });
   },
   
-  addPoint: function (x, y, binIdx) {
+  addPredictionPoint: function (x, y, binIdx) {
     console.log('adding point (%f, %f) in bin %d', x, y, binIdx);
     var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.DataPoint.nextGuid++ });
     this.pushObject(point);
@@ -120,7 +119,7 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
     x = (binIdx + 0.5)*binWidth;
     this.invokeLast(function () {
       // do this in the next runloop to keep from confusing the collectionview
-      this.addPoint(x, y, binIdx);
+      this.addPredictionPoint(x, y, binIdx);
     });
   },
   
@@ -201,7 +200,7 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
     this.invokeLast( function () {
       for (var i = 0, ii = pointsToAdd.get('length'); i < ii; i++) {
         var toAdd = pointsToAdd[i];
-        this.addPoint(toAdd.x, toAdd.y, toAdd.binIdx);
+        this.addPredictionPoint(toAdd.x, toAdd.y, toAdd.binIdx);
       }
     }); 
     
@@ -225,6 +224,12 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
     
     this.addOrUpdatePredictionPoint(x, y);
     return YES;
+  },
+  
+  addSensorPoint: function (x, y) {
+    var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.DataPoint.nextGuid++ });
+    this.pushObject(point);
+    Smartgraphs.store.commitRecords();
   }
   
 }) ;

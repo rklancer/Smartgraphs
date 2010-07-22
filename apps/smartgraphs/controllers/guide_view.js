@@ -59,6 +59,20 @@ Smartgraphs.guideViewController = SC.ObjectController.create(
     return NO;
   },
   
+  hidePane: function (pane) {
+    if (pane === 'first') {
+      this.set('firstPaneNowShowing', null);
+      return YES;
+    }
+    
+    if (pane === 'second') {  
+      this.set('secondPaneNowShowing', null);
+      return YES;
+    }
+    
+    return NO;
+  },
+  
   // for graphViewController
   createSeriesView: function (series) {    
   },

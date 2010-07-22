@@ -130,16 +130,16 @@ Smartgraphs.Command.FIXTURES = [
   
   
   { guid: 
-      'start-prediction-graph-input',
+      'enable-prediction-graph-input',
     
     name: 
-      'startPredictionGraphInput',
+      'enablePredictionGraphInput',
     
     description:
       'Open up the predition graph.',
     
     actionName:
-      'startPredictionGraphInput',
+      'enablePredictionGraphInput',
       
     literalArgs: 
       {},
@@ -160,6 +160,45 @@ Smartgraphs.Command.FIXTURES = [
     
     actionName:
       'openGuideStep',
+      
+    literalArgs: 
+      {},
+      
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
+      'enable-sensor-input',
+    
+    name: 
+      'enableSensorInput',
+    
+    description:
+      'Open the controls that input data from a usb-connected sensor.',
+    
+    actionName:
+      'enableSensorInput',
+      
+    literalArgs: 
+      {},
+      
+    substitutedArgs:
+      {}
+  },
+  
+  { guid: 
+      'hide-pane',
+    
+    name: 
+      'hidePane',
+    
+    description:
+      'Hide the first or second pane.',
+    
+    actionName:
+      'hidePane',
       
     literalArgs: 
       {},

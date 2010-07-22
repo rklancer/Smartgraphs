@@ -56,8 +56,9 @@ Smartgraphs.TriggerResponse.FIXTURES = [
     step: 'page-3-step-1',  
     args: {},
     commands: [
-      'step-4-show-graph'//,
-      //'step-4-enable-sensor'
+      'step-4-show-graph',
+      'step-4-hide-pane',
+      'step-4-enable-sensor'
     ]
   }
   

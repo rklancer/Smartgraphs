@@ -78,6 +78,12 @@ Smartgraphs.GUIDE = SC.Responder.create(
     return YES;
   },
   
+  hidePane: function (context, args) {
+    Smartgraphs.guideViewController.hidePane(args.pane);
+    return YES;
+  },
+  
+  
   setAxes: function (context, args) {
     var controller = this._graphControllerFor(args.pane);
     controller.setAxes(args.axesId);
@@ -109,7 +115,7 @@ Smartgraphs.GUIDE = SC.Responder.create(
     return YES;
   },
   
-  startPredictionGraphInput: function (context, args) {
+  enablePredictionGraphInput: function (context, args) {
     Smartgraphs.sendAction('addSeries', this, { pane: args.pane, seriesId: args.seriesId });
     Smartgraphs.sendAction('selectDataSeries', this, { seriesId: args.seriesId });
     
@@ -123,6 +129,23 @@ Smartgraphs.GUIDE = SC.Responder.create(
     Smartgraphs.GRAPH_INPUT.set('nextResponder', Smartgraphs.get('firstResponder'));
     Smartgraphs.makeFirstResponder(Smartgraphs.GRAPH_INPUT);
     return YES;
+  },
+  
+  enableSensorInput: function (context, args) {
+    Smartgraphs.sendAction('addSeries', this, { pane: args.pane, seriesId: args.seriesId });
+    Smartgraphs.sendAction('selectDataSeries', this, { seriesId: args.seriesId });
+    
+    Smartgraphs.appletPage.get('appletPane').append();
+    // use this pattern for the SENSOR_* states too
+    // Smartgraphs.GRAPH_INPUT.set('nextResponder', Smartgraphs.get('firstResponder'));
+    // Smartgraphs.makeFirstResponder(Smartgraphs.GRAPH_INPUT);
+    return YES;
+  },
+  
+  // TODO migrate this action into SENSOR_* state
+  
+  sensorDataReceived: function (context, args) {
+    Smartgraphs.selectedPointsController.addSensorPoint(args.x, args.y);
   }
     
   

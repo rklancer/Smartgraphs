@@ -135,7 +135,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       'step-2-start-input',
   
     command:
-      'start-prediction-graph-input',
+      'enable-prediction-graph-input',
     
     triggerResponse:
       'page-2-begin',
@@ -222,7 +222,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       'step-3-start-input',
   
     command:
-      'start-prediction-graph-input',
+      'enable-prediction-graph-input',
     
     triggerResponse:
       'page-3-begin',
@@ -241,6 +241,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       {}
   },
   
+
   { guid: 
       'step-4-show-graph',
   
@@ -256,6 +257,49 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     literalArgs: {
       pane: 'first',
       graphId: 'sensor-1'
+    },
+    
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
+      'step-4-enable-sensor',
+  
+    command:
+      'enable-sensor-input',
+    
+    triggerResponse:
+      'page-4-begin',
+    
+    index:
+      2,
+    
+    literalArgs: {
+      pane: 'first',
+      seriesId: 'sensor-1-series'
+    },
+    
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
+      'step-4-hide-pane',
+  
+    command:
+      'hide-pane',
+    
+    triggerResponse:
+      'page-4-begin',
+    
+    index:
+      3,
+    
+    literalArgs: {
+      pane: 'second'
     },
     
     substitutedArgs:
