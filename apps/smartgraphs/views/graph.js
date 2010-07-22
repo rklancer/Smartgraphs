@@ -20,6 +20,11 @@ Smartgraphs.GraphView = SC.View.extend(
   
   childViews: 'graphCanvasView'.w(),
   
+  init: function () {
+    this._seriesViewsById = {};
+    sc_super();
+  },
+  
   viewDidResize: function () {
     // TODO can reduce flickering by only replacing layer only if existing Raphael canvas is too small
     // (call renderChildViews on graphCanvasView)
@@ -79,8 +84,6 @@ Smartgraphs.GraphView = SC.View.extend(
       y: (padding.top + plotHeight - y) / yScale
     };
   },
-  
-  _seriesViewsById: {},
   
   _allSeriesDidChange: function () {
     var allSeries = this.get('allSeries');
