@@ -159,10 +159,26 @@ Smartgraphs.GraphView = SC.View.extend(
         return graphView.pointForCoordinates(x, y);
       },
       
-      mouseDown: function (e) {
+      mouseDown: function (evt) {
         if (this.get('shouldNotifyController')) {
-          var point = this.pointForEvent(e);
+          var point = this.pointForEvent(evt);
           return this.get('controller').inputAreaMouseDown(point.x, point.y);
+        }
+        return NO;
+      },
+      
+      mouseDragged: function (evt) {
+        if (this.get('shouldNotifyController')) {
+          var point = this.pointForEvent(evt);
+          return this.get('controller').inputAreaMouseDragged(point.x, point.y);
+        }
+        return NO;
+      },
+      
+      mouseUp: function (evt) {
+        if (this.get('shouldNotifyController')) {
+          var point = this.pointForEvent(evt);
+          return this.get('controller').inputAreaMouseUp(point.x, point.y);
         }
         return NO;
       },

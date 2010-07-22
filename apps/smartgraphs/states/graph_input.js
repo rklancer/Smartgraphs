@@ -42,8 +42,19 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
     this.resignFirstResponder();
   },
   
-  addPredictionPointNear: function (context, args) {
-    Smartgraphs.selectedPointsController.addPredictionPointNear(args.x, args.y);
-  }
+  startGraphInputAt: function (context, args) {
+    Smartgraphs.selectedPointsController.startGraphInputAt(args.x, args.y);
+    return YES;
+  },
+  
+  continueGraphInputAt: function (context, args) {
+    Smartgraphs.selectedPointsController.continueGraphInputAt(args.x, args.y);
+    return YES;
+  },
+  
+  endGraphInputAt: function (context, args) {
+    Smartgraphs.selectedPointsController.endGraphInputAt(args.x, args.y);
+    return YES;
+  }  
   
 }) ;
