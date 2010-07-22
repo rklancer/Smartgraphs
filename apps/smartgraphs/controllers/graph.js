@@ -10,7 +10,7 @@
 
   @extends SC.ObjectController
 */
-Smartgraphs.GraphController = SC.ObjectController.extend(
+Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder, 
 /** @scope Smartgraphs.graphController.prototype */ {
   
   // follow the pattern that if object doesn't exist, create it in the db.
@@ -42,11 +42,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend(
 
     this.get('allSeries').pushObject(series);
     Smartgraphs.store.commitRecords();
-    this.selectSeries(series);
-  },
-  
-  selectSeries: function (series) {
-    // TODO
   },
   
   removeSeries: function (seriesId) {
@@ -64,6 +59,25 @@ Smartgraphs.GraphController = SC.ObjectController.extend(
   
   removeAllSeries: function () {
     // TODO
+  },
+  
+  view: function () {
+    return Smartgraphs.getPath(this.get('viewPath'));
+  }.property(),
+  
+  startRoutingInputEvents: function () {
+    var axesView = this.getPath('view.graphCanvasView.axesView');
+    axesView.set('shouldNotifyController', YES);
+    axesView.set('controller', this);
+  },
+  
+  stopRoutingInputEvents: function () {
+    var axesView = this.getPath('view.graphCanvasView.axesView');    
+    axesView.set('shouldNotifyController', NO);
+  },
+  
+  inputClick: function () {
+    console.log('mouseDown in axesView!');
   }
   
 }) ;

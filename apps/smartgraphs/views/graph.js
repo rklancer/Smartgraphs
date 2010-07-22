@@ -149,7 +149,14 @@ Smartgraphs.GraphView = SC.View.extend(
       axesBinding: '.parentView*axes',      
 
       displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax axes.xLabel axes.yLabel'.w(),      
-        
+      
+      mouseDown: function () {
+        if (this.get('shouldNotifyController')) {
+          return this.get('controller').inputClick();
+        }
+        return NO;
+      },
+      
       renderCallback: function (raphaelCanvas, shouldDrawAxes, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
         // TEMP. For command line access
         Smartgraphs.raphael = raphaelCanvas;

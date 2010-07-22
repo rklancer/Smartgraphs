@@ -48,12 +48,19 @@ Smartgraphs.GUIDE = SC.Responder.create(
   // actions for Guide step commands
   //
   
-  // a helper
+  // helpers
   _graphControllerFor: function (pane) {
     if (pane === 'first') return Smartgraphs.firstGraphController;
     if (pane === 'second') return Smartgraphs.secondGraphController;
   },
   
+  _graphViewFor: function (pane) {
+    if (pane === 'first') return Smartgraphs.getPath('guidePage.firstGraphView');
+    if (pane === 'second') return Smartgraphs.getPath('guidePage.firstGraphView');
+  },
+  
+  // TODO: many of these actions could migrate to a superstate like "GUIDE_WORKING" or something; no
+  // need for them to be available when navigating guide pages, or the like.
   showSinglePane: function () {
     return Smartgraphs.guideViewController.showSinglePane();
   },
@@ -74,21 +81,46 @@ Smartgraphs.GUIDE = SC.Responder.create(
   setAxes: function (context, args) {
     var controller = this._graphControllerFor(args.pane);
     controller.setAxes(args.axesId);
+    return YES;
   },
   
+  // TODO rename to addSeriesToGraph
   addSeries: function (context, args) {
     var controller = this._graphControllerFor(args.pane);
     controller.addSeries(args.seriesId);
+    return YES;
   },
   
   removeSeries: function (context, args) {
     var controller = this._graphControllerFor(args.pane);
     controller.removeSeries(args.seriesId);
+    return YES;
   },
   
   removeAllSeries: function (context, args) {
+    return NO;      // not handled yet.
+    // var controller = this._graphControllerFor(args.pane);
+    // controller.removeAllSeries();
+  },
+  
+  selectDataSeries: function (context, args) {
+    var series = Smartgraphs.store.find(Smartgraphs.DataSeries, args.seriesId);
+    Smartgraphs.selectedSeriesController.set('content', series);
+    return YES;
+  },
+  
+  startPredictionGraphInput: function (context, args) {
+    Smartgraphs.sendAction('addSeries', this, { pane: args.pane, seriesId: args.seriesId });
+    Smartgraphs.sendAction('selectDataSeries', this, { seriesId: args.seriesId });
+    
+    // so... at the moment, you can only focus one graph at a time for input. Design choice or design flaw?
     var controller = this._graphControllerFor(args.pane);
-    controller.removeAllSeries();
+    Smartgraphs.inputGraphController = this._graphControllerFor(args.pane);
+
+    Smartgraphs.GRAPH_INPUT.set('nextResponder', this);
+    Smartgraphs.makeFirstResponder(Smartgraphs.GRAPH_INPUT);
+    return YES;
   }
+    
   
 }) ;
