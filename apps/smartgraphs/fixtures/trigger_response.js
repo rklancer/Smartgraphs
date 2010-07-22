@@ -31,24 +31,34 @@ Smartgraphs.TriggerResponse.FIXTURES = [
     ]
   },
     
-    { guid: 'step-2-end',
-      trigger: 'step-finished',
-      step: 'page-2-step-1',  
-      args: {},
-      commands: [
-        'step-2-goto-3'
-      ]
-    },
-    
-    { guid: 'step-3-begin',
-      trigger: 'begin-step',
-      step: 'page-2-step-2',  
-      args: {},
-      commands: [
-        'step-3-show-graph',
-        'step-3-enable-submission',
-         'step-3-start-input'
-      ]
-    }
+  { guid: 'step-2-end',
+    trigger: 'step-finished',
+    step: 'page-2-step-1',  
+    args: {},
+    commands: [
+      'step-2-goto-3'
+    ]
+  },
+  
+  { guid: 'step-3-begin',
+    trigger: 'begin-step',
+    step: 'page-2-step-2',  
+    args: {},
+    commands: [
+      'step-3-show-graph',
+      'step-3-enable-submission',
+      'step-3-start-input'
+    ]
+  },
+  
+  { guid: 'step-4-begin',
+    trigger: 'begin-step',
+    step: 'page-3-step-1',  
+    args: {},
+    commands: [
+      'step-4-show-graph'//,
+      //'step-4-enable-sensor'
+    ]
+  }
   
 ];

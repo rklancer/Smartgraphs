@@ -37,6 +37,22 @@ Smartgraphs.Axes.FIXTURES = [
     ySteps: 10,
     yLabel: 'Position (meters)',
     yLabelAbbreviated: 'Position (m)'
+  },
+  
+  
+  { guid: 'sensor-1-axes',
+
+    xMin: 0,
+    xMax: 15,
+    xSteps: 15,
+    xLabel: 'Time (seconds)',
+    xLabelAbbreviated: 'Time (s)',
+
+    yMin: 0,
+    yMax: 5,
+    ySteps: 10,
+    yLabel: 'Position (meters)',
+    yLabelAbbreviated: 'Position (m)'
   }
 
 ];

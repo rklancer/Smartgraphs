@@ -53,10 +53,33 @@ Smartgraphs.GuidePage.FIXTURES = [
       '<img src="'+sc_static('resources/numberline.png')+'">',
 
     steps: 
-      ['page-2-step-1'],
+      ['page-2-step-1', 'page-2-step-2'],
     
     firstStep:
       'page-2-step-1'
+  },
+  
+  { guid: 
+      'page-3',
+
+    guide:
+      'learner-guide-1',
+
+    name: 
+      'Third Page',
+      
+    index: 
+      3,
+    
+    introText: 
+      '<p>Let’s practice collecting data with the motion sensor so you can see whether your sketches were '+
+      'accurate. You will walk on a 5-meter walking path like the one described earlier.</p>',
+
+    steps: 
+      ['page-3-step-1'],
+    
+    firstStep:
+      'page-3-step-1'
   }
 
 ];

@@ -198,47 +198,68 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
       
       
-      { guid: 
-          'step-3-enable-submission',
-      
-        command:
-          'enable-submission',
-        
-        triggerResponse:
-          'page-3-begin',
-        
-        index:
-          2,
-        
-        literalArgs: 
-          {},
-        
-        substitutedArgs:
-          {}
-      },
-      
-      
-      { guid: 
-          'step-3-start-input',
-      
-        command:
-          'start-prediction-graph-input',
-        
-        triggerResponse:
-          'page-3-begin',
-        
-        index:
-          3,
-        
-        literalArgs: {
-          pane: 'second',
-          seriesId: 'prediction-toward-series',
-          xMin: 0,
-          xMax: 15
-        },
-        
-        substitutedArgs:
-          {}
-      }
+  { guid: 
+      'step-3-enable-submission',
+  
+    command:
+      'enable-submission',
+    
+    triggerResponse:
+      'page-3-begin',
+    
+    index:
+      2,
+    
+    literalArgs: 
+      {},
+    
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
+      'step-3-start-input',
+  
+    command:
+      'start-prediction-graph-input',
+    
+    triggerResponse:
+      'page-3-begin',
+    
+    index:
+      3,
+    
+    literalArgs: {
+      pane: 'second',
+      seriesId: 'prediction-toward-series',
+      xMin: 0,
+      xMax: 15
+    },
+    
+    substitutedArgs:
+      {}
+  },
+  
+  { guid: 
+      'step-4-show-graph',
+  
+    command:
+      'show-graph',
+    
+    triggerResponse:
+      'page-4-begin',
+    
+    index:
+      1,
+    
+    literalArgs: {
+      pane: 'first',
+      graphId: 'sensor-1'
+    },
+    
+    substitutedArgs:
+      {}
+  }
       
 ];

@@ -39,6 +39,23 @@ Smartgraphs.Graph.FIXTURES = [
       
     allSeries: 
       ['prediction-toward-series']
+  },
+  
+  
+  { guid: 
+      'sensor-1',
+    
+    name:
+      'sensor-1',
+
+    description: 
+      'Playing around with the sensor in page 3',
+      
+    axes:
+      'sensor-1-axes',
+      
+    allSeries: 
+      []
   }
   
 ];

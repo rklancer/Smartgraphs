@@ -90,13 +90,79 @@ Smartgraphs.GuideStep.FIXTURES = [
       [],
       
     triggerResponses: [
-      'step-3-begin',
+      'step-3-begin'
     ],
     
     isLastStep: YES,
     
     submitButtonShouldBeVisible: YES,
 
-    submitButtonTitle: "Done"
+    submitButtonTitle: 'Done'
+  },
+  
+  
+  { guid: 
+      'page-3-step-1',
+
+    guidePage:
+      'page-3',
+    
+    beforeText: 
+      '<p>Place the sensor at the 0-meter mark. Stand near the sensor. When you are ready, have your partner click '+
+      'Start to record the position and time data for your movements. Walk on the path for 15 seconds. Experiment '+
+      'with different kinds of motions (walking fast, slow, forward, backward…) Click Stop after 15 seconds is up. '+
+      'Click Reset to try a different movement.</p>',
+      
+    responseTemplate: 
+      null,
+    
+    afterText:
+      '',
+      
+    buttons: 
+      [],
+      
+    triggerResponses: [
+      'step-4-begin'
+    ],
+    
+    isLastStep: NO,
+    
+    submitButtonShouldBeVisible: YES,
+
+    submitButtonTitle: 'Done'
+  },
+  
+  
+  { guid: 
+      'page-3-step-2',
+
+    guidePage:
+      'page-3',
+    
+    beforeText: 
+      '<p>How are different motions represented on a position-time graph? (For example, what does the graph look '+
+      'like when you are standing still, walking forward ...?)</p>'+
+      '<p>Try to use some of the following words: slope, flat, upward, downward, curved, straight, steep, gradual, '+
+      'line, curve.',
+      
+    responseTemplate: 
+      null,
+    
+    afterText:
+      '',
+      
+    buttons: 
+      [],
+      
+    triggerResponses: [
+      'step-5-begin'
+    ],
+    
+    isLastStep: YES,
+    
+    submitButtonShouldBeVisible: YES,
+
+    submitButtonTitle: 'Submit My Answer'
   }
 ];
