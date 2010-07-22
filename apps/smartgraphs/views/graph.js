@@ -25,7 +25,7 @@ Smartgraphs.GraphView = SC.View.extend(
   },
   
   // could move to a graphViewController if we had one.
-  coordinatesFor: function (x, y) {
+  coordinatesForPoint: function (x, y) {
     var axes = this.get('axes');
     var xMin = axes.get('xMin'),
         xMax = axes.get('xMax'),
@@ -47,6 +47,32 @@ Smartgraphs.GraphView = SC.View.extend(
     return { 
       x: padding.left + x * xScale,
       y: padding.top + plotHeight - (y * yScale)
+    };
+  },
+  
+  // inverse of coordinatesForPoint, obviously
+  pointForCoordinates: function (x, y) {
+    var axes = this.get('axes');
+    var xMin = axes.get('xMin'),
+        xMax = axes.get('xMax'),
+        yMin = axes.get('yMin'),
+        yMax = axes.get('yMax');
+
+    var frame = this.get('frame');
+    var height = frame.height,
+        width  = frame.width;
+        
+    var padding = this.get('padding');
+    
+    var plotWidth = width - padding.left - padding.right;
+    var plotHeight = height - padding.top - padding.bottom;
+    
+    var xScale = plotWidth / xMax;
+    var yScale = plotHeight / yMax;
+    
+    return {
+      x: (x - padding.left) / xScale,
+      y: (padding.top + plotHeight - y) / yScale
     };
   },
   
@@ -118,12 +144,12 @@ Smartgraphs.GraphView = SC.View.extend(
     axesView: RaphaelViews.RaphaelView.design({
       axesBinding: '.parentView*axes',      
 
-      displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax axes.xLabel axes.yLabel'.w(),
-      
+      displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax axes.xLabel axes.yLabel'.w(),      
+        
       renderCallback: function (raphaelCanvas, shouldDrawAxes, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
         // TEMP. For command line access
         Smartgraphs.raphael = raphaelCanvas;
-
+        
         if (shouldDrawAxes) {
           // A total hack. Just draw the axes to the screen as a side effect of creating our layer.
           
@@ -137,8 +163,10 @@ Smartgraphs.GraphView = SC.View.extend(
           });
         }
         
-        // prepareCanvas expects us to return a raphael element, so give it something fake
-        return raphaelCanvas.rect(1,1,1,1).attr({opacity: 0});
+        // return a 'sheet' that can capture events. This will become the view's layer
+        var rect = raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
+          fill: '#ffffff', stroke: '#ffffff', opacity: 0.3 });
+        return rect;
       },
 
       drawAxes: function (raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
@@ -166,9 +194,9 @@ Smartgraphs.GraphView = SC.View.extend(
           ySteps = axes.get('ySteps');
             
           var graphView = this.getPath('parentView.parentView');
-          var bottomLeft = graphView.coordinatesFor(0, 0);
-          var bottomRight = graphView.coordinatesFor(xMax, 0);
-          var topLeft = graphView.coordinatesFor(0, yMax);
+          var bottomLeft = graphView.coordinatesForPoint(0, 0);
+          var bottomRight = graphView.coordinatesForPoint(xMax, 0);
+          var topLeft = graphView.coordinatesForPoint(0, yMax);
           
           xLeft = bottomLeft.x;
           xRight = bottomRight.x;
@@ -184,6 +212,8 @@ Smartgraphs.GraphView = SC.View.extend(
             plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
         }
         else if (shouldDrawAxes) {
+          var rect = context.raphael();
+          rect.attr({ x: xLeft, y: yTop, width: plotWidth, height: plotHeight });
           this.drawAxes(this.get('raphaelCanvas'), xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
         }
         
