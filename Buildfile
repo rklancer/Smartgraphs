@@ -6,7 +6,7 @@
 config :all, :required => [:sproutcore]
 
 config :smartgraphs,
-  :required => ['raphael_views/raphael_views', 'raphael_views/g_raphael'],
+  :required => ['raphael_views/raphael_views', 'raphael_views/g_raphael', 'cc/cc'],
   :load_fixtures => true,
   :theme => 'sproutcore/ace'
 
