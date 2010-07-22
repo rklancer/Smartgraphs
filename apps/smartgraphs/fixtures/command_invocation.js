@@ -108,6 +108,28 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     
     substitutedArgs:
       {}
+  },
+  
+  
+  { guid: 
+      'step-2-start-input',
+  
+    command:
+      'start-prediction-graph-input',
+    
+    triggerResponse:
+      'page-2-begin',
+    
+    index:
+      3,
+    
+    literalArgs: {
+      pane: 'first',
+      seriesId: 'prediction-away-series'
+    },
+    
+    substitutedArgs:
+      {}
   }
   
 ];

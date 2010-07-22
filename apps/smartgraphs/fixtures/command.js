@@ -67,7 +67,7 @@ Smartgraphs.Command.FIXTURES = [
     substitutedArgs:
       {}
   },
-  
+
   
   { guid: 
       'show-graph',
@@ -120,6 +120,26 @@ Smartgraphs.Command.FIXTURES = [
     
     actionName:
       'finishGuideStep',
+      
+    literalArgs: 
+      {},
+      
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
+      'start-prediction-graph-input',
+    
+    name: 
+      'startPredictionGraphInput',
+    
+    description:
+      'Open up the predition graph.',
+    
+    actionName:
+      'startPredictionGraphInput',
       
     literalArgs: 
       {},
