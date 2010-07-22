@@ -20,6 +20,10 @@ Smartgraphs.GraphView = SC.View.extend(
   
   childViews: 'graphCanvasView'.w(),
   
+  viewDidResize: function () {
+    // EMPTY. Fixes points jumping around after resize; eventually, we have to implement proper resizing.
+  },
+  
   // could move to a graphViewController if we had one.
   coordinatesFor: function (x, y) {
     var axes = this.get('axes');
