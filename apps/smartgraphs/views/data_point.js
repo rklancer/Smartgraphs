@@ -15,10 +15,10 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
   
   displayProperties: 'content.x content.y isEnabled fill stroke radius'.w(),
   
-  notSelectedFill: '#6AA7EF',
-  notSelectedStroke: '#6AA7EF',
-  selectedFill: '#F35B5E',
-  selectedStroke: '#F35B5E',
+  notSelectedFill: '#1F77B4',
+  notSelectedStroke: '#1F77B4',
+  selectedFill: '#FF7F0E',
+  selectedStroke: '#FF7F0E',
   
   hoveredRadius: 5,
   notHoveredRadius: 3,
