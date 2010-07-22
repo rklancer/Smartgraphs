@@ -99,6 +99,8 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
   lookup: function (key) {
     var context = this.get('context');
     return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.guidePageController.lookup(key));
-  }
+  },
+  
+  submitButtonShouldBeEnabled: NO
   
 }) ;

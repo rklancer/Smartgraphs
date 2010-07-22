@@ -26,7 +26,8 @@ Smartgraphs.TriggerResponse.FIXTURES = [
     commands: [
       'step-2-split-pane',
       'step-2-show-graph',
-      'step-2-start-input'   
+      'step-2-enable-submission',
+      'step-2-start-input'
     ]
   }
   

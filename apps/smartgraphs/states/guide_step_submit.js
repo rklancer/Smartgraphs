@@ -19,6 +19,7 @@ Smartgraphs.GUIDE_STEP_SUBMIT = SC.Responder.create(
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
+    Smartgraphs.guideStepController.set('submitButtonShouldBeEnabled', YES);
   },
   
   willLoseFirstResponder: function() {

@@ -19,6 +19,7 @@ Smartgraphs.GUIDE_STEP_WAITING = SC.Responder.create(
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
+    Smartgraphs.guideStepController.set('submitButtonShouldBeEnabled', NO);
   },
   
   willLoseFirstResponder: function() {

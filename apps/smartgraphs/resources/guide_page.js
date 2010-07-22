@@ -37,27 +37,56 @@ Smartgraphs.guidePage = SC.Page.design({
 
           classNames: 'text-wrapper'.w(),
 
-          childViews: 'introText guideStepDialog'.w(),
+          childViews: 'introText guideStepWrapper'.w(),
 
           introText: SC.StaticContentView.design({
             contentBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.introText'),
             isVisibleBinding: SC.Binding.bool('Smartgraphs.guidePageController.introText')
           }),
-
-          guideStepDialog: SC.View.design({          
+          
+          guideStepWrapper: SC.View.design({
             useStaticLayout: YES,
-            hasStaticLayout: YES,    
-            childViews: 'beforeText afterText'.w(),
-            classNames: 'dialog-text'.w(),
-
-            beforeText: SC.StaticContentView.design({
-              contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.beforeText'),
-              isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.beforeText')
-            }),
+            hasStaticLayout: YES,
             
-            afterText: SC.StaticContentView.design({
-              contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.afterText'),
-              isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.afterText')
+            childViews: 'guideStepDialog buttonsView'.w(),
+            
+            guideStepDialog: SC.View.design({          
+              useStaticLayout: YES,
+              hasStaticLayout: YES,    
+              childViews: 'beforeText afterText'.w(),
+              classNames: 'dialog-text'.w(),
+
+              beforeText: SC.StaticContentView.design({
+                contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.beforeText'),
+                isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.beforeText')
+              }),
+            
+              afterText: SC.StaticContentView.design({
+                contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.afterText'),
+                isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.afterText')
+              })
+            }),
+          
+            buttonsView: SC.View.design({
+              useStaticLayout: YES,
+              hasStaticLayout: YES,
+            
+              layout: {
+                height: 24
+              },
+
+              childViews: 'submitButton'.w(),
+
+              submitButton: SC.ButtonView.design({
+                layout: {
+                  width: 160,
+                  right: 0
+                },
+                titleBinding: 'Smartgraphs.guideStepController.submitButtonTitle',
+                isVisibleBinding: 'Smartgraphs.guideStepController.submitButtonShouldBeVisible',
+                isEnabledBinding: 'Smartgraphs.guideStepController.submitButtonShouldBeEnabled',
+                action: 'guideStepSubmit'
+              })
             })
           })
         }),

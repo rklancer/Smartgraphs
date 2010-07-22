@@ -75,7 +75,11 @@ Smartgraphs.GuideStep = SC.Record.extend(
   /**
     if YES, the Guide should move into the GUIDE_PAGE_DONE state when we conclude this step.
   */
-  isLastStep: SC.Record.attr(Boolean)
+  isLastStep: SC.Record.attr(Boolean),
+  
+  submitButtonShouldBeVisible: SC.Record.attr(Boolean),
+  
+  submitButtonTitle: SC.Record.attr(String)
   
   // 
   // // if YES and isLastTurn is YES, immediately go to the next page on reaching this dialog turn.

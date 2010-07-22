@@ -30,7 +30,11 @@ Smartgraphs.GuideStep.FIXTURES = [
       'step-1-begin'
     ],
     
-    isLastStep: YES
+    isLastStep: YES,
+    
+    submitButtonShouldBeVisible: NO,
+    
+    submitButtonTitle: ''
   },
   
   
@@ -57,6 +61,10 @@ Smartgraphs.GuideStep.FIXTURES = [
       'step-2-begin'
     ],
     
-    isLastStep: NO
+    isLastStep: NO,
+    
+    submitButtonShouldBeVisible: YES,
+
+    submitButtonTitle: "Done"
   }
 ];

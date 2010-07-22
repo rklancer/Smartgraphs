@@ -112,6 +112,26 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { guid: 
+      'step-2-enable-submission',
+  
+    command:
+      'enable-submission',
+    
+    triggerResponse:
+      'page-2-begin',
+    
+    index:
+      3,
+    
+    literalArgs: 
+      {},
+    
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
       'step-2-start-input',
   
     command:
@@ -121,7 +141,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       'page-2-begin',
     
     index:
-      3,
+      4,
     
     literalArgs: {
       pane: 'first',
@@ -132,6 +152,6 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     
     substitutedArgs:
       {}
-  }
+  } 
   
 ];
