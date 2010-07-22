@@ -21,7 +21,7 @@ Smartgraphs.Graph.FIXTURES = [
       'prediction-away-axes',
       
     allSeries: 
-      []
+      ['prediction-away-series']
   },
   
   
@@ -38,7 +38,7 @@ Smartgraphs.Graph.FIXTURES = [
       'prediction-toward-axes',
       
     allSeries: 
-      []
+      ['prediction-toward-series']
   }
   
 ];
