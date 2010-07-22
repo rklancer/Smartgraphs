@@ -21,7 +21,11 @@ Smartgraphs.GraphView = SC.View.extend(
   childViews: 'graphCanvasView'.w(),
   
   viewDidResize: function () {
-    // EMPTY. Fixes points jumping around after resize; eventually, we have to implement proper resizing.
+    // TODO can reduce flickering by only replacing layer only if existing Raphael canvas is too small
+    // (call renderChildViews on graphCanvasView)
+    sc_super();
+    this.replaceLayer();
+    //this.get('graphCanvasView').renderChildViews(null, NO);  // works unless Raphael canvas needs to grow
   },
   
   // could move to a graphViewController if we had one.
@@ -165,7 +169,7 @@ Smartgraphs.GraphView = SC.View.extend(
         
         // return a 'sheet' that can capture events. This will become the view's layer
         var rect = raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-          fill: '#ffffff', stroke: '#ffffff', opacity: 0.3 });
+          fill: '#ffffff', stroke: '#ffffff', opacity: 0.7 });
         return rect;
       },
 
