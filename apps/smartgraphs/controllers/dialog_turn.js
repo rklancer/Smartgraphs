@@ -69,23 +69,23 @@ Smartgraphs.dialogTurnController = SC.ObjectController.create(
   },
   
   didReceiveCorrectResponse: function () {
-    //console.log('didReceiveCorrectResponse');
+    //SC.Logger.log('didReceiveCorrectResponse');
     var nextTurn = this.get('nextTurnForNominalResponse');
     Smartgraphs.guidePageController.set('selectedDialogTurn', nextTurn);
   },
   
   didReceiveIncorrectResponse: function () {
-    //console.log('didReceiveIncorrectResponse');
+    //SC.Logger.log('didReceiveIncorrectResponse');
     var nextTurn = this.get('nextTurnForIncorrectResponse');
     Smartgraphs.guidePageController.set('selectedDialogTurn', nextTurn);
   },
   
   didReceiveIncompleteResponse: function () {
-    //console.log('didReceiveIncompleteResponse');
+    //SC.Logger.log('didReceiveIncompleteResponse');
   },
   
   didReceiveMalformedResponse: function () {
-    //console.log('didReceiveMalformedResponse');
+    //SC.Logger.log('didReceiveMalformedResponse');
   },
   
   // TODO: let content dictate what buttons are available (including 'ok', 'show me again', 'i dont know'...)

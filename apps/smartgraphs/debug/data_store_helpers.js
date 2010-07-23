@@ -26,7 +26,7 @@ statusEquals = function(obj, status, message){
 // it will call func immediately if the status matches
 statusNotify = function(obj, status, func){
   if(obj.get('status') & status){
-    console.log('statusNotify firing synchronously');
+    SC.Logger.log('statusNotify firing synchronously');
     func.call();
     
     // resume property change notifications
@@ -64,9 +64,9 @@ statusQueue = function(statusArray){
           iterate(statusArray);
         } 
       } catch(e) {
-        console.error("statusNotify died, exception and callback follows");
-        console.error(e);
-        console.warn(item.callback.toString());
+        SC.Logger.error("statusNotify died, exception and callback follows");
+        SC.Logger.error(e);
+        SC.Logger.warn(item.callback.toString());
 
         ok(false, "statusNotify died: " + e.message);
         failed = true;
@@ -117,8 +117,8 @@ function testAfterPropertyChange(target, property, testFn) {
       testFn();
     }
     catch (e) {
-      CoreTest.plan.error('Error during testAfterPropertyChange! See console log for details.', e);
-      console.error(e);
+      CoreTest.plan.error('Error during testAfterPropertyChange! See SC.Logger log for details.', e);
+      SC.Logger.error(e);
       popStart();
       // it is better not to throw the exception here
       // exceptions thrown in observers cause hard to find problems, the observed object won't send out

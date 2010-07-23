@@ -7,12 +7,12 @@
 module("Smartgraphs.authoringController", {
     setup: function() {
         // ... perform setup code here
-        console.log("setup complete for Smartgraphs.authoringController test module");
+        SC.Logger.log("setup complete for Smartgraphs.authoringController test module");
     },
 
     teardown: function() {
         // ... perform teardown code here
-        console.log("teardown complete for Smartgraphs.authoringController test module");
+        SC.Logger.log("teardown complete for Smartgraphs.authoringController test module");
     }
 });
 

@@ -42,17 +42,17 @@ Smartgraphs.DialogTurnView = SC.View.extend(
       isVisibleBinding: SC.Binding.bool('Smartgraphs.responseTemplateController.content'),
           
       fieldsTypesDidChange: function () {
-        //console.log('fieldTypesDidChange');
+        //SC.Logger.log('fieldTypesDidChange');
         this.invokeOnce(this._updateChildViews);
       }.observes('fieldTypes'),
     
       fieldValuesDidChange: function () {
-        //console.log('fieldValuesDidChange');      
+        //SC.Logger.log('fieldValuesDidChange');      
         this.invokeOnce(this._updateChildViews);
       }.observes('fieldValues'),
     
       _updateChildViews: function () {
-        //console.log('_updateChildViews');   
+        //SC.Logger.log('_updateChildViews');   
         this.removeAllChildren();
         this.contentLayoutDidChange();
 
@@ -103,7 +103,7 @@ Smartgraphs.DialogTurnView = SC.View.extend(
               // but maybe this could be refactored to bind to a model object.
               
               valueDidChange: function () {
-                //console.log("responseFieldsView's child textFieldView observed value");
+                //SC.Logger.log("responseFieldsView's child textFieldView observed value");
                 var index = this.get('index');
                 Smartgraphs.dialogTurnController.updateResponse(index, this.get('value'));
               }.observes('value')

@@ -81,14 +81,14 @@ Smartgraphs.authoringController = SC.ObjectController.create(
                 }),
 
                 closingOperations: function() {
-                    console.log('closingOperations called');
+                    SC.Logger.log('closingOperations called');
                     Smartgraphs.authoringController.enterredPassword = this.passwordView.get('value');
-                    console.log('checking Smartgraphs.authoringController.enterredPassword:', Smartgraphs.authoringController.enterredPassword);
+                    SC.Logger.log('checking Smartgraphs.authoringController.enterredPassword:', Smartgraphs.authoringController.enterredPassword);
                     if (! (Smartgraphs.authoringController.enterredPassword === "")) {
-                        console.log('calling Smartgraphs.authoringController.toggleAuthoring()');
+                        SC.Logger.log('calling Smartgraphs.authoringController.toggleAuthoring()');
                         Smartgraphs.authoringController.toggleAuthoring();
                     }
-                    console.log('calling remove()');
+                    SC.Logger.log('calling remove()');
                     Smartgraphs.authoringController.pane.remove();
                 }
             })
@@ -98,22 +98,22 @@ Smartgraphs.authoringController = SC.ObjectController.create(
     },
 
     checkEnterredPassword: function() {
-        console.log('checkEnterredPassword called');
+        SC.Logger.log('checkEnterredPassword called');
         if (this.enterredPassword && this.authoringPassword) {
             var result = (this.enterredPassword === this.authoringPassword);
             if (!result) {
 				// Clear enterredPassword so the user can try again later
                 this.enterredPassword = "";
             }
-            console.log('checkEnterredPassword is returning result:', result);
+            SC.Logger.log('checkEnterredPassword is returning result:', result);
             return result;
         }
-        console.log('checkEnterredPassword is returning false');
+        SC.Logger.log('checkEnterredPassword is returning false');
         return false;
     },
 
     isAuthorized: function() {
-        console.log('this.enterredPassword:', this.enterredPassword);
+        SC.Logger.log('this.enterredPassword:', this.enterredPassword);
         if (this.enterredPassword === "") {
             // Don't toggle athoring mode yet, 
             // just show the modal panel to get a password from the user

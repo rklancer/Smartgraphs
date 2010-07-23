@@ -31,42 +31,42 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
     // 
     //         var page1 = pages.objectAt(0);
     //         if (page1) {
-    //             console.log("page1", page1);
-    //             console.log("page1.get('title')", page1.get('title'));
+    //             SC.Logger.log("page1", page1);
+    //             SC.Logger.log("page1.get('title')", page1.get('title'));
     //             page1.set('isSelectable', true);
     //             this.set('selectedPage', page1);
     //         } else {
-    //             console.error("page1:", page1);
+    //             SC.Logger.error("page1:", page1);
     //         }
     //     } else {
-    //         console.error("sequence.isSCArray:", sequence.isSCArray);
+    //         SC.Logger.error("sequence.isSCArray:", sequence.isSCArray);
     //     }
     // },
     // 
     sequenceDidChange: function() {
-        console.log('***! Smartgraphs.guidePageSequenceController observed sequence change');
+        SC.Logger.log('***! Smartgraphs.guidePageSequenceController observed sequence change');
         var sequence = this.get('sequence');
         if (sequence) {
-            console.log("sequence", sequence);
+            SC.Logger.log("sequence", sequence);
             if (sequence.status) {
                 try {
-                    console.log("sequence.statusString():", sequence.statusString());
+                    SC.Logger.log("sequence.statusString():", sequence.statusString());
                 } catch(e) {
-                    console.log(e);
+                    SC.Logger.log(e);
                 }
             }
             var name = sequence.get('name');
             if (name) {
-                console.log('sequence.name:', name);
+                SC.Logger.log('sequence.name:', name);
                 // Retrieve the related Guide Pages based on name (which eventually sets sequence.pages)
                 var relatedGuidePagesQueryConditions = "guide_page_sequence_id = '" + name + "'";
-                console.log('relatedGuidePagesQueryConditions:', relatedGuidePagesQueryConditions);
+                SC.Logger.log('relatedGuidePagesQueryConditions:', relatedGuidePagesQueryConditions);
                 var relatedGuidePagesQuery = SC.Query.local(Smartgraphs.GuidePage, relatedGuidePagesQueryConditions);
-                console.log('relatedGuidePagesQuery:', relatedGuidePagesQuery);
+                SC.Logger.log('relatedGuidePagesQuery:', relatedGuidePagesQuery);
                 var relatedGuidePageRecords = Smartgraphs.store.find(relatedGuidePagesQuery);
                 Smartgraphs.guidePageController.setGuidePageRecords(relatedGuidePageRecords);
             } else {
-                console.error('sequence.name:', name);
+                SC.Logger.error('sequence.name:', name);
             }
             var pages = sequence.get('pages');
             if (pages) {
@@ -79,27 +79,27 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
                     firstPage.set('isSelectable', true);
                     this.set('selectedPage', firstPage);
                 } else {
-                    console.log("firstPage:", firstPage);
-                    // console.log("Not using old Guide Page Sequence structure because sequence is missing the attribute firstPage.");
+                    SC.Logger.log("firstPage:", firstPage);
+                    // SC.Logger.log("Not using old Guide Page Sequence structure because sequence is missing the attribute firstPage.");
                     // this.useNewGuidePageSequenceStructure(sequence);
                 }
             } else {
-                console.log("pages:", pages);
-                // console.log("Not using old Guide Page Sequence structure because sequence is missing the attribute pages.");
+                SC.Logger.log("pages:", pages);
+                // SC.Logger.log("Not using old Guide Page Sequence structure because sequence is missing the attribute pages.");
                 // this.useNewGuidePageSequenceStructure(sequence);
             }
         } else {
-            console.error("sequence:", sequence);
+            SC.Logger.error("sequence:", sequence);
         }
     }.observes('sequence'),
 
     _sequenceStatusDidChange: function() {
-        console.log('***! Smartgraphs.guidePageSequenceController observed sequence.status change');
+        SC.Logger.log('***! Smartgraphs.guidePageSequenceController observed sequence.status change');
         if (this.sequence) {
             if (this.sequence.statusString()) {
                 var newStatus = this.sequence.statusString();
                 if (newStatus === undefined) newStatus = "";
-                console.log('newStatus:', newStatus);
+                SC.Logger.log('newStatus:', newStatus);
                 // if (newStatus.indexOf('READY') > 0) {
                 //     this.sequenceDidChange();
                 // }
@@ -108,8 +108,8 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
     }.observes('sequence.status'),
 
     _contentDidChange: function() {
-        console.log('***! Smartgraphs.guidePageSequenceController observed a change in content:');
-        console.log(this.get('content'));
+        SC.Logger.log('***! Smartgraphs.guidePageSequenceController observed a change in content:');
+        SC.Logger.log(this.get('content'));
     }.observes('content'),
 
     selectedPage: function(key, value) {
@@ -168,39 +168,39 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
     },
 
     setFirstGuidePageSequenceRecordNow: function(guidePageSequenceRecords) {
-        console.log("setFirstGuidePageSequenceRecordNow called:");
+        SC.Logger.log("setFirstGuidePageSequenceRecordNow called:");
         try {
             var length = guidePageSequenceRecords.get('length');
-            console.log("guidePageSequenceRecords.get('length'):", length);
+            SC.Logger.log("guidePageSequenceRecords.get('length'):", length);
             if (length > 0) {
                 var firstGuidePageSequence = guidePageSequenceRecords.objectAt(0); // Expecting only one guidePageSequence
                 this.set('sequence', firstGuidePageSequence);
                 return (firstGuidePageSequence === this.get('sequence')); // Let the caller know if setting the sequence succeeded
             }
         } catch(e) {
-            console.error(" Failed in setFirstGuidePageSequenceRecordNow due to error:", e);
+            SC.Logger.error(" Failed in setFirstGuidePageSequenceRecordNow due to error:", e);
         }
-        console.warn("Returning NO to let the caller know that setting the sequence failed.");
+        SC.Logger.warn("Returning NO to let the caller know that setting the sequence failed.");
         return false; // Let the caller know that setting the sequence failed
     },
 
     setFirstGuidePageSequenceRecordLater: function(guidePageSequenceRecords) {
-        console.log("setFirstGuidePageSequenceRecordLater called:");
+        SC.Logger.log("setFirstGuidePageSequenceRecordLater called:");
         try {
             var status = guidePageSequenceRecords.get('status');
-            console.log(" guidePageSequenceRecords.status", status);
+            SC.Logger.log(" guidePageSequenceRecords.status", status);
             if (status === SC.Record.READY_CLEAN) {
                 if (this.setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords)) {
-                    console.log("Setting the sequence succeeded!");
+                    SC.Logger.log("Setting the sequence succeeded!");
                     // Remove the observer so the record won't reset if its status changes again
                     guidePageSequenceRecords.removeObserver('status', this, this.setFirstGuidePageSequenceRecordLater);
                 } else {
-                    console.warn("setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords) failed.");
-                    console.log("guidePageSequenceRecords:", guidePageSequenceRecords);
+                    SC.Logger.warn("setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords) failed.");
+                    SC.Logger.log("guidePageSequenceRecords:", guidePageSequenceRecords);
                 }
             }
         } catch(e) {
-            console.error(" Failed in setFirstGuidePageSequenceRecordLater due to error:", e);
+            SC.Logger.error(" Failed in setFirstGuidePageSequenceRecordLater due to error:", e);
         }
     },
 
@@ -209,7 +209,7 @@ Smartgraphs.guidePageSequenceController = SC.ArrayController.create(
         // so we can begin immediately. Otherwise, wait for guidePageSequenceRecords to be loaded from
         // remote data source
         if (guidePageSequenceRecords.get('status') === SC.Record.READY_CLEAN) {
-            console.log("guidePageSequenceRecords status is immediately READY_CLEAN");
+            SC.Logger.log("guidePageSequenceRecords status is immediately READY_CLEAN");
             this.setFirstGuidePageSequenceRecordNow(guidePageSequenceRecords);
         } else {
             // Register an observer of status to set this.sequence when the record is READY_CLEAN

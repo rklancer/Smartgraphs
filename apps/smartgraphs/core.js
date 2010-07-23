@@ -10,7 +10,7 @@
   
   @extends SC.Object
 */
-console.log('Loading Smartgraphs = SC.Application.create');
+SC.Logger.log('Loading Smartgraphs = SC.Application.create');
 Smartgraphs = SC.Application.create(
 /** @scope Smartgraphs.prototype */
 {
@@ -28,5 +28,5 @@ Smartgraphs = SC.Application.create(
 
     // TODO: Add global constants or singleton objects needed by your app here.
 });
-console.log("Smartgraphs:", Smartgraphs);
-console.log("Smartgraphs.store:", Smartgraphs.store);
+SC.Logger.log("Smartgraphs:", Smartgraphs);
+SC.Logger.log("Smartgraphs.store:", Smartgraphs.store);

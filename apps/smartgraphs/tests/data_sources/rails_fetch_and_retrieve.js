@@ -10,12 +10,12 @@
 
 module("Smartgraphs.RailsDataSource_fetch_and_retrieve", { 
   setup: function() {
-    // console.log("Calling sc_require('data_sources/rails');");
+    // SC.Logger.log("Calling sc_require('data_sources/rails');");
     // used to call sc re quire('data_sources/rails');
-    console.log('Loading this.store = SC.Application.create');
+    SC.Logger.log('Loading this.store = SC.Application.create');
     this.store = SC.Store.create().from('Smartgraphs.RailsDataSource');
-    console.log('this.store:', this.store);
-    console.log("Smartgraphs.set('store', this.store); ");
+    SC.Logger.log('this.store:', this.store);
+    SC.Logger.log("Smartgraphs.set('store', this.store); ");
     Smartgraphs.set('store', this.store); 
   }
 });

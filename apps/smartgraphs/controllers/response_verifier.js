@@ -20,7 +20,7 @@ Smartgraphs.responseVerifierController = SC.ObjectController.create(
   
   contentDidChange: function () {
     var content = this.get('content');
-    //console.log('Smartgraphs.responseVerifierController observed content');
+    //SC.Logger.log('Smartgraphs.responseVerifierController observed content');
 
     if (!content) {
       // nothing to do
