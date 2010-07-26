@@ -16,18 +16,35 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
     contentBinding: 'Smartgraphs.guidePageSequenceController.selectedPage',
 
     contentDidChange: function() {
-        //SC.Logger.log('Smartgraphs.guidePageController observed content');
+        SC.Logger.log('Smartgraphs.guidePageController observed content change');
         this.invokeOnce(this._setDialogTurn);
     }.observes('content'),
 
     _setDialogTurn: function() {
-        SC.Logger.log('_setDialogTurn');
+        SC.Logger.log('_setDialogTurn called');
         // display the first 'line' of dialog if user hasn't been to this page before; 
         // otherwise, leave dialog state at whatever state user saw last time they were on this page
         SC.Logger.log("this.get('selectedDialogTurn'):", this.get('selectedDialogTurn'));
         if (SC.none(this.get('selectedDialogTurn'))) {
             SC.Logger.log("this.get('firstDialogTurn')", this.get('firstDialogTurn'));
-            this.set('selectedDialogTurn', this.get('firstDialogTurn'));
+            if (SC.none(this.get('firstDialogTurn'))) {
+                // Find the firstDialogTurn in the store
+                var firstDialogTurn_id = this.get('firstDialogTurn_id');
+                if (firstDialogTurn_id) {
+                    SC.Logger.log("this.get('firstDialogTurn_id')", firstDialogTurn_id);
+                    var queryConditions = "name = '" + firstDialogTurn_id + "'";
+                    SC.Logger.log('queryConditions:', queryConditions);
+                    var query = SC.Query.local(Smartgraphs.DialogTurn, queryConditions);
+                    SC.Logger.log('query:', query);
+                    var dialogTurnRecords = Smartgraphs.store.find(query);
+                    SC.Logger.log("dialogTurnRecords:", dialogTurnRecords);
+                    Smartgraphs.dialogTurnController.setSelectedAndFirstDialogTurnRecord(dialogTurnRecords);
+                } else {
+                    SC.Logger.error("this.get('firstDialogTurn_id')", firstDialogTurn_id);
+                }
+            } else {
+                this.set('selectedDialogTurn', this.get('firstDialogTurn'));
+            }
         }
     },
 

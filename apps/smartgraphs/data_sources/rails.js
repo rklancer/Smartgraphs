@@ -34,8 +34,8 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
         }).json();
         request.notify.apply(request, params);
 
-        SC.Logger.log('request.address: %s', request.address);
-        SC.Logger.log('request: ', request);
+        SC.Logger.log('request.address:', request.address);
+        SC.Logger.log('request:', request);
         request.send();
     },
 
@@ -126,7 +126,6 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
             SC.Logger.log("didFetchGuidePages: calling store.dataSourceDidFetchQuery(query)");
             store.dataSourceDidFetchQuery(query);
             SC.Logger.log("store.dataSourceDidFetchQuery(query) is done");
-            // Setting the guide_pages array to guidePageSequenceController.sequence 
             SC.Logger.log("group end");
         }
         else {
@@ -139,18 +138,28 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     didFetchDialogTurns: function(response, store, query) {
         SC.Logger.log('Smartgraphs.RailsDataSource.didFetchDialogTurns()');
 
-        SC.Logger.log('response.status = %d', response.get('status'));
+        SC.Logger.log('response.status:', response.get('status'));
         SC.Logger.log("response: ", response);
 
         if (SC.ok(response)) {
-            SC.Logger.log('**************SC.ok(response) is YES; TODO: processing content');
+            SC.Logger.log('SC.ok(response) is YES;');
 
             var content = response.get('body').content;
             SC.Logger.log('response.body.content: ', content);
             SC.Logger.log('content.isSCArray: ', content.isSCArray);
             SC.Logger.log('content.length:', content.length);
             SC.Logger.log('content.objectAt(0):', content.objectAt(0));
-            SC.Logger.log('content.objectAt(0).title:', content.objectAt(0).title);
+            SC.Logger.log('content.objectAt(0).beforeText:', content.objectAt(0).beforeText);
+
+            SC.Logger.log('store.loadRecords(Smartgraphs.DialogTurn, content)');
+            var resultingStoreKeysArray = store.loadRecords(Smartgraphs.DialogTurn, content);
+            SC.Logger.log('resultingStoreKeysArray:', resultingStoreKeysArray);
+            SC.Logger.log("group end");
+
+            SC.Logger.log("didFetchDialogTurns: calling store.dataSourceDidFetchQuery(query)");
+            store.dataSourceDidFetchQuery(query);
+            SC.Logger.log("store.dataSourceDidFetchQuery(query) is done");
+            SC.Logger.log("group end");
         }
         else {
             store.dataSourceDidErrorQuery(query, response);
