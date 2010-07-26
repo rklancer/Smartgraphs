@@ -1,9 +1,0 @@
-.sc-theme .sc-pane.sc-main{background:#B4C0D7;}.sc-theme #loading{background:#B4C0D7;}
-body.sc-theme{background-color:#B4C0D7;}.sc-view.smartgraph-pane{background-color:#E5E8EF;color:#333;border:1px solid #A2B5D7;}
-.sc-view.text-view .sc-view{font-size:16px;}.text-view p{margin:10px;}.text-view .text-field-view-wrapper{margin:10px;}
-.sc-view.dialog-text{background-color:white;margin:10px 0 10px 0;border:1px solid #ccc;background-color:#EFEDDD;}
-.sc-view.dialog-text .sc-view{color:black;font-size:14px;}.sc-view.dialog-text textarea{padding:5px;}
-.sc-theme .sc-segmented-view .sc-segment{padding-left:1px;}.sc-theme .sc-segmented-view .sc-segment.sc-first-segment{padding-left:6px;}
-.sc-theme .sc-segmented-view .sc-segment.sc-last-segment{padding-right:1px;}.sc-theme .sc-segmented-view .sc-segment .sc-button-inner{padding-right:1px;}
-.sc-theme .sc-segmented-view .sc-segment.sc-last-segment .sc-button-inner{padding-right:5px;margin-right:0;}
-.sc-theme .sc-segmented-view .sc-segment.sc-first-segment .sc-button-inner{margin-left:-1px;}

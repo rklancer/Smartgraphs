@@ -1,1 +1,0 @@
-SC.stringsFor("English",{});
