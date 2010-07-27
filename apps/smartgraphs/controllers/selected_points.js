@@ -162,7 +162,6 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
     var pointsToAdd = [];
     
     if (newIdx < oldIdx) {
-      
       startIdx = newIdx;
       endIdx = oldIdx;
       yStart = y;

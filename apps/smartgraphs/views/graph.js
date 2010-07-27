@@ -124,11 +124,13 @@ Smartgraphs.GraphView = SC.View.extend(
       orderBy: 'id'
     });
     
+    // TODO make this a view class
     var view = RaphaelViews.RaphaelCollectionView.design({
       exampleView: Smartgraphs.DataPointView,
       graphView: this,
       seriesId: series.get('id'),
       content: Smartgraphs.store.find(pointsQuery),
+      // keep this set to YES prevents the collection view from redrawing all the points when re-rendering
       useFastPath: YES
     }).create();
     
