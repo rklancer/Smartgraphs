@@ -15,6 +15,9 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
   
   displayProperties: 'content.x content.y isEnabled fill stroke radius'.w(),
   
+  graphViewBinding: '*parentView.graphView',
+  
+  // TODO should inherit these colors (and possibly other properties) from parent view
   notSelectedFill: '#1F77B4',
   notSelectedStroke: '#1F77B4',
   selectedFill: '#FF7F0E',
@@ -62,7 +65,7 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
     // get the x and y values, and translate to our coordinate system
     var x = this.getPath('content.x'),
         y = this.getPath('content.y');
-    var coords = this.getPath('parentView.graphView').coordinatesForPoint(x, y);
+    var coords = this.get('graphView').coordinatesForPoint(x, y);
     
     if (firstTime) {
       context.callback(this, this.renderCallback, coords.x, coords.y, radius, fill, stroke);
