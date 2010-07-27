@@ -10,26 +10,21 @@ Smartgraphs.Trigger.FIXTURES = [
 
   { guid:
       'begin-step',
-    
     name:
       'beginStep',
-    
     description:
       'This is the list of commands that run when the guide step begins.',
-
     args:
       {}
   },
   
+  
   { guid:
       'response-submitted',
-    
     name:
       'responseSubmitted',
-    
     description:
       'This is the list of commands that check the answer.',
-
     args:
       {}
   },
@@ -37,13 +32,10 @@ Smartgraphs.Trigger.FIXTURES = [
   
   { guid:
       'step-finished',
-    
     name:
       'stepFinished',
-    
     description:
       'This is the list of commands that run when the guide step finishes.',
-
     args:
       {}
   }

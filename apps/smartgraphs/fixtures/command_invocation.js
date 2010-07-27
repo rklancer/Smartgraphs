@@ -9,299 +9,229 @@ sc_require('models/command_invocation');
 Smartgraphs.CommandInvocation.FIXTURES = [
 
   { guid: 
-      'step-1-single-pane',
-  
+      'p1s1-single-pane',
     command:
       'show-single-pane',
-    
     triggerResponse:
-      'page-1-begin',
-    
+      'p1s1-do-begin-step',
     index:
       1,
-    
     literalArgs:
       {},
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-1-show-image',
-  
+      'p1s1-show-image',
     command:
       'show-image',
-    
     triggerResponse:
-      'page-1-begin',
-    
+      'p1s1-do-begin-step',
     index:
       2,
-    
     literalArgs: { 
       path: sc_static('resources/arrow.jpg')
     },
-    
     substitutedArgs: 
       {}
   },
   
   
   { guid: 
-      'step-1-finish-step',
-  
+      'p1s1-finish-step',
     command:
       'finish-step',
-    
     triggerResponse:
-      'page-1-begin',
-    
+      'p1s1-do-begin-step',
     index:
       3,
-    
     literalArgs: 
       {},
-    
     substitutedArgs: 
       {}
   },
   
   
   { guid: 
-      'step-2-split-pane',
-  
+      'p2s1-split-pane',
     command:
       'show-split-pane',
-    
     triggerResponse:
-      'page-2-begin',
-    
+      'p2s1-do-begin-step',
     index:
       1,
-    
     literalArgs:
       {},
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-2-show-graph',
-  
+      'p2s1-show-graph',
     command:
       'show-graph',
-    
     triggerResponse:
-      'page-2-begin',
-    
+      'p2s1-do-begin-step',
     index:
       2,
-    
     literalArgs: {
       pane: 'first',
       graphId: 'prediction-away'
     },
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-2-enable-submission',
-  
+      'p2s1-enable-submission',
     command:
       'enable-submission',
-    
     triggerResponse:
-      'page-2-begin',
-    
+      'p2s1-do-begin-step',
     index:
       3,
-    
     literalArgs: 
       {},
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-2-start-input',
-  
+      'p2s1-start-input',
     command:
       'enable-prediction-graph-input',
-    
     triggerResponse:
-      'page-2-begin',
-    
+      'p2s1-do-begin-step',
     index:
       4,
-    
     literalArgs: {
       pane: 'first',
       seriesId: 'prediction-away-series',
       xMin: 0,
       xMax: 15
     },
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-2-goto-3',
-  
+      'p2s1-goto-p2s2',
     command:
       'goto-step',
-    
     triggerResponse:
-      'page-2-end',
-    
+      'p2s1-do-step-finished',
     index:
       1,
-    
     literalArgs: {
       stepId: 'page-2-step-2'
     },
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-3-show-graph',
-  
+      'p2s2-show-graph',
     command:
       'show-graph',
-    
     triggerResponse:
-      'step-3-begin',
-    
+      'p2s2-do-begin-step',
     index:
       1,
-    
     literalArgs: {
       pane: 'second',
       graphId: 'prediction-toward'
     },
-    
     substitutedArgs:
       {}
   },
       
       
   { guid: 
-      'step-3-enable-submission',
-  
+      'p2s2-enable-submission',
     command:
       'enable-submission',
-    
     triggerResponse:
-      'page-3-begin',
-    
+      'p2s2-do-begin-step',
     index:
       2,
-    
     literalArgs: 
       {},
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-3-start-input',
-  
+      'p2s2-start-input',
     command:
       'enable-prediction-graph-input',
-    
     triggerResponse:
-      'page-3-begin',
-    
+      'p2s2-do-begin-step',
     index:
       3,
-    
     literalArgs: {
       pane: 'second',
       seriesId: 'prediction-toward-series',
       xMin: 0,
       xMax: 15
     },
-    
     substitutedArgs:
       {}
   },
   
 
   { guid: 
-      'step-4-show-graph',
-  
+      'p3s1-show-graph',
     command:
       'show-graph',
-    
     triggerResponse:
-      'page-4-begin',
-    
+      'p3s1-do-begin-step',
     index:
       1,
-    
     literalArgs: {
       pane: 'first',
       graphId: 'sensor-1'
     },
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-4-enable-sensor',
-  
+      'p3s1-enable-sensor',
     command:
       'enable-sensor-input',
-    
     triggerResponse:
-      'page-4-begin',
-    
+      'p3s1-do-begin-step',
     index:
       2,
-    
     literalArgs: {
       pane: 'first',
       seriesId: 'sensor-1-series'
     },
-    
     substitutedArgs:
       {}
   },
   
   
   { guid: 
-      'step-4-hide-pane',
-  
+      'p3s1-hide-pane',
     command:
       'hide-pane',
-    
     triggerResponse:
-      'page-4-begin',
-    
+      'p3s1-do-begin-step',
     index:
       3,
-    
     literalArgs: {
       pane: 'second'
     },
-    
     substitutedArgs:
       {}
   }

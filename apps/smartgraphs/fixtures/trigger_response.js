@@ -8,57 +8,61 @@ sc_require('models/trigger_response');
 
 Smartgraphs.TriggerResponse.FIXTURES = [
 
-  { guid: 'step-1-begin',
+  { guid: 'p1s1-do-begin-step',
     trigger: 'begin-step',
     step: 'page-1-step-1',  
     args: {},
     commands: [
-      'step-1-single-pane', 
-      'step-1-show-image',
-      'step-1-finish-step'
+      'p1s1-single-pane', 
+      'p1s1-show-image',
+      'p1s1-finish-step'
     ]
   },
   
-  { guid: 'step-2-begin',
+  
+  { guid: 'p2s1-do-begin-step',
     trigger: 'begin-step',
     step: 'page-2-step-1',  
     args: {},
     commands: [
-      'step-2-split-pane',
-      'step-2-show-graph',
-      'step-2-enable-submission',
-      'step-2-start-input'
+      'p2s1-split-pane',
+      'p2s1-show-graph',
+      'p2s1-enable-submission',
+      'p2s1-start-input'
     ]
   },
+  
     
-  { guid: 'step-2-end',
+  { guid: 'p2s1-do-step-finished',
     trigger: 'step-finished',
     step: 'page-2-step-1',  
     args: {},
     commands: [
-      'step-2-goto-3'
+      'p2s1-goto-p2s2'
     ]
   },
   
-  { guid: 'step-3-begin',
+  
+  { guid: 'p2s2-do-begin-step',
     trigger: 'begin-step',
     step: 'page-2-step-2',  
     args: {},
     commands: [
-      'step-3-show-graph',
-      'step-3-enable-submission',
-      'step-3-start-input'
+      'p2s2-show-graph',
+      'p2s2-enable-submission',
+      'p2s2-start-input'
     ]
   },
   
-  { guid: 'step-4-begin',
+  
+  { guid: 'p3s1-do-begin-step',
     trigger: 'begin-step',
     step: 'page-3-step-1',  
     args: {},
     commands: [
-      'step-4-show-graph',
-      'step-4-hide-pane',
-      'step-4-enable-sensor'
+      'p3s1-show-graph',
+      'p3s1-hide-pane',
+      'p3s1-enable-sensor'
     ]
   }
   
