@@ -64,7 +64,8 @@ Smartgraphs.guidePage = SC.Page.design({
               responseTemplate: Smartgraphs.ResponseTemplateView.design({
                 fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
                 fieldChoiceListsBinding: 'Smartgraphs.responseTemplateController.fieldChoiceLists',
-                valuesBinding: 'Smartgraphs.responseTemplateController.values'
+                valuesBinding: 'Smartgraphs.responseTemplateController.values',
+                editingShouldBeEnabledBinding: 'Smartgraphs.responseTemplateController.editingShouldBeEnabled'
               }),
               
               afterText: SC.StaticContentView.design({

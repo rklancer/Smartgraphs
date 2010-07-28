@@ -6,7 +6,7 @@
 
 /** @class
 
-  State representing that the guide step is starting. Transitions immediately to GUIDE_STEP_WAITING
+  State representing that the guide step is starting.
   
   @extends SC.Responder
   @version 0.1

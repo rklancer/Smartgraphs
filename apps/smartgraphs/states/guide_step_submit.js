@@ -40,6 +40,7 @@ Smartgraphs.GUIDE_STEP_SUBMIT = SC.Responder.create(
   
   finishGuideStep: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_DONE);
+    Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', NO);    
     Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'responseSubmitted' });
     return YES;
   }

@@ -17,6 +17,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
   fieldTypes: null,
   fieldChoiceLists: null,
   values: null,
+  editingShouldBeEnabled: null,
 
   // hide if there is no response template; especially important because IE7 doesn't its height as 0 when empty.
   isVisibleBinding: SC.Binding.bool('.fieldTypes'),
@@ -73,6 +74,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
           hint: hint,
           index: i,
           value: value,
+          isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
           
           valueDidChange: function () {
             var values = this.getPath('parentView.parentView.values');

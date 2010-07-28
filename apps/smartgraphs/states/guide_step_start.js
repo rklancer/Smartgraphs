@@ -57,6 +57,7 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
     }
 
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_WAITING);
+    Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
     return YES;
   },
   
