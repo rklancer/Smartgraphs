@@ -24,10 +24,28 @@ Smartgraphs.GUIDE_START = SC.Responder.create(
   },
   
   // ..........................................................
+  // GUIDE INITIALIZATION
+  //
+  
+  // Any code that transitions to GUIDE_START *should* simultaneously update the guideController's content. The code 
+  // below observes the guideController's content and performs the 'beginGuide' action when the content changes.
+  
+  guideContentBinding: 'Smartgraphs.guideController.content',
+  _guideContentDidChange: function () {
+    if (this.get('guideContent')) {
+      this.invokeOnce(this._beginGuide);
+    }
+  }.observes('guideContent'),
+  
+  _beginGuide: function () {
+    Smartgraphs.sendAction('beginGuide');
+  },
+  
+  // ..........................................................
   // ACTIONS
   //
   
-  openFirstGuidePage: function () {
+  beginGuide: function () {
     if (Smartgraphs.guidePagesController.get('length') > 0) {
       Smartgraphs.guidePagesController.selectFirstPage();
       Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_PAGE_START);

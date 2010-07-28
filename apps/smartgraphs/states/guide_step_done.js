@@ -36,8 +36,8 @@ Smartgraphs.GUIDE_STEP_DONE = SC.Responder.create(
   
   openGuideStep: function (context, args) {
     var step = Smartgraphs.store.find(Smartgraphs.GuideStep, args.stepId);
-    Smartgraphs.guidePageController.set('currentStep', step);
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_START);
+    Smartgraphs.guidePageController.set('currentStep', step);
     return YES;
   }
   

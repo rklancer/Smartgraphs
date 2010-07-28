@@ -26,7 +26,9 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   // GUIDE STEP INITIALIZATION
   //
   
-  // do 'beginGuideStep' action, once, when guideStepController's content is updated to a new guideStep
+  // Any code that transitions to GUIDE_STEP_START *should* simultaneously update the guideStepController's content.
+  // The code below observes the guideStepController's content and performs the 'beginGuideStep' action
+  // when the content changes.
   
   stepContentBinding: 'Smartgraphs.guideStepController.content',
   _stepContentDidChange: function () {

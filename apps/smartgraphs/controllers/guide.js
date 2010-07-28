@@ -14,15 +14,6 @@
 Smartgraphs.guideController = SC.ObjectController.create(
 /** @scope Smartgraphs.guideController.prototype */ {
   
-  // automatically open the first page when the content is set to a new Guide
-  contentDidChange: function () {
-    this.invokeLast(this._openFirstGuidePage);   // use invokeLast to let guidePagesController's binding sync.
-  }.observes('.content'),
-  
-  _openFirstGuidePage: function () {
-    Smartgraphs.sendAction('openFirstGuidePage');
-  },
-  
   // return the context variable's value from the guide context
   lookup: function (key) {
     var context = this.get('context');

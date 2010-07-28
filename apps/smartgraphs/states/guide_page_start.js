@@ -26,19 +26,21 @@ Smartgraphs.GUIDE_PAGE_START = SC.Responder.create(
   // GUIDE PAGE INITIALIZATION
   //
   
-  // do 'beginFirstGuideStep' action, once, when guidePageController's content is updated to a new guidePage
+  // Any code that transitions to GUIDE_PAGE_START *should* simultaneously update the guidePageController's content.
+  // The code below observes the guidePageController's content and performs the 'beginGuidePage' action when the
+  // content changes.
 
   pageContentBinding: 'Smartgraphs.guidePageController.content',
   _pageContentDidChange: function () {
     var pageContent = this.get('pageContent');
     if (pageContent && pageContent.get('length') > 0) {      
-      this.invokeOnce(this._beginFirstGuideStep);
+      this.invokeOnce(this._beginGuidePage);
     }
   }.observes('pageContent'),
   
-  _beginFirstGuideStep: function () {
+  _beginGuidePage: function () {
     // this action will only happen if we're in GUIDE_PAGE_START state.
-    Smartgraphs.sendAction('beginFirstGuideStep');
+    Smartgraphs.sendAction('beginGuidePage');
   },
 
   // ..........................................................
@@ -48,9 +50,9 @@ Smartgraphs.GUIDE_PAGE_START = SC.Responder.create(
   /**
     Called when guidePageController's content changes
   */
-  beginFirstGuideStep: function () {
-    Smartgraphs.guidePageController.set('currentStep', Smartgraphs.guidePageController.get('firstStep'));
+  beginGuidePage: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_START);
+    Smartgraphs.guidePageController.set('currentStep', Smartgraphs.guidePageController.get('firstStep'));
     return YES;
   }
   
