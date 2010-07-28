@@ -17,6 +17,12 @@
 Smartgraphs.ResponseTemplate = SC.Record.extend(
 /** @scope Smartgraphs.ResponseTemplate.prototype */ {
 
-  // TODO: Add your own code here.
+  templateString: SC.Record.attr(String),
+  fieldTypes: SC.Record.attr(Array),
+  fieldChoiceLists: SC.Record.attr(Array),            // for multiple choice
+  intialValues: SC.Record.attr(Array),
+  
+  // cache the actual values entered
+  values: []
 
 }) ;

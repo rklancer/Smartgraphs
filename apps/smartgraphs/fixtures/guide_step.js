@@ -121,7 +121,7 @@ Smartgraphs.GuideStep.FIXTURES = [
       '<p>Try to use some of the following words: slope, flat, upward, downward, curved, straight, steep, gradual, '+
       'line, curve.',
     responseTemplate: 
-      null,
+      'template-open-1',
     afterText:
       '',
     buttons: 

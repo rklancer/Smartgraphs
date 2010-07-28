@@ -53,14 +53,20 @@ Smartgraphs.guidePage = SC.Page.design({
             guideStepDialog: SC.View.design({          
               useStaticLayout: YES,
               hasStaticLayout: YES,    
-              childViews: 'beforeText afterText'.w(),
+              childViews: 'beforeText responseTemplate afterText'.w(),
               classNames: 'dialog-text'.w(),
 
               beforeText: SC.StaticContentView.design({
                 contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.beforeText'),
                 isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.beforeText')
               }),
-            
+              
+              responseTemplate: Smartgraphs.ResponseTemplateView.design({
+                fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
+                fieldChoiceListsBinding: 'Smartgraphs.responseTemplateController.fieldChoiceLists',
+                valuesBinding: 'Smartgraphs.responseTemplateController.values'
+              }),
+              
               afterText: SC.StaticContentView.design({
                 contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.afterText'),
                 isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.afterText')
