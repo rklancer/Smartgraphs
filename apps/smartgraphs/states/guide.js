@@ -134,19 +134,11 @@ Smartgraphs.GUIDE = SC.Responder.create(
   enableSensorInput: function (context, args) {
     Smartgraphs.sendAction('addSeries', this, { pane: args.pane, seriesId: args.seriesId });
     Smartgraphs.sendAction('selectDataSeries', this, { seriesId: args.seriesId });
-    
-    Smartgraphs.appletPage.get('appletPane').append();
+  
     // use this pattern for the SENSOR_* states too
-    // Smartgraphs.GRAPH_INPUT.set('nextResponder', Smartgraphs.get('firstResponder'));
-    // Smartgraphs.makeFirstResponder(Smartgraphs.GRAPH_INPUT);
+    Smartgraphs.SENSOR.set('nextResponder', Smartgraphs.get('firstResponder'));
+    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
     return YES;
-  },
-  
-  // TODO migrate this action into SENSOR_* state
-  
-  sensorDataReceived: function (context, args) {
-    Smartgraphs.selectedPointsController.addSensorPoint(args.x, args.y);
-  }
-    
+  }    
   
 }) ;

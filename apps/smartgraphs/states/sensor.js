@@ -16,26 +16,38 @@
 Smartgraphs.SENSOR = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR.prototype */ {
 
-  /**
-    The next state to check if this state does not implement the action.
-  */
-  nextResponder: null,
+  nextResponder: null,        // will generally be set 
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+    // TODO: differentiate the pane containing the applet, which might as well stay resident in the DOM once it
+    // loads, and the pane containing the applet controls, which we can append and remove at will.
+    Smartgraphs.appletPage.get('appletPane').append();
   },
   
   willLoseFirstResponder: function() {
-    // Called when this state loses first responder
+    Smartgraphs.appletPage.get('appletPane').remove();
+  },
+  
+  // This state is intended to be 'pushed'. resignFirstResponder to get the old firstResponder back
+  resignFirstResponder: function (evt) {
+    if (Smartgraphs.get('firstResponder') === this) {
+      Smartgraphs.makeFirstResponder(this.get('nextResponder'), evt);
+    }
+    return YES;
   },
   
   // ..........................................................
   // EVENTS
   //
   
-  // add event handlers here
-  someAction: function() {
-    
+  // TODO migrate this into SENSOR_RECORDING state
+  sensorDataReceived: function (context, args) {
+    Smartgraphs.selectedPointsController.addSensorPoint(args.x, args.y);
+  },
+  
+  // NOTE normally you end sensor input by virtue of finishing the guide step, thus change firstResponder
+  endSensorInput: function (context, args) {
+    this.resignFirstResponder();
   }
   
 }) ;
