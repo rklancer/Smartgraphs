@@ -62,7 +62,27 @@ Smartgraphs.TriggerResponse.FIXTURES = [
     commands: [
       'p3s1-show-graph',
       'p3s1-hide-pane',
-      'p3s1-enable-sensor'
+      'p3s1-enable-submission',
+      'p3s1-start-input'
+    ]
+  },
+  
+  
+  { guid: 'p3s1-do-step-finished',
+    trigger: 'step-finished',
+    step: 'page-3-step-1',
+    args: {},
+    commands: [
+      'p3s1-goto-p3s2'
+    ]
+  },
+  
+  
+  { guid: 'p3s2-do-begin-step',
+    trigger: 'begin-step',
+    step: 'page-3-step-2',  
+    args: {},
+    commands: [
     ]
   }
   

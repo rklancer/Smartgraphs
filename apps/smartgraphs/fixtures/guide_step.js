@@ -99,7 +99,8 @@ Smartgraphs.GuideStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      'p3s1-do-begin-step'
+      'p3s1-do-begin-step',
+      'p3s1-do-step-finished'
     ],
     submitButtonShouldBeVisible: 
       YES,
@@ -126,7 +127,7 @@ Smartgraphs.GuideStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      'step-5-begin'
+      'p3s2-do-begin-step'
     ],
     submitButtonShouldBeVisible: 
       YES,

@@ -205,13 +205,44 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { guid: 
-      'p3s1-enable-sensor',
+      'p3s1-hide-pane',
+    command:
+      'hide-pane',
+    triggerResponse:
+      'p3s1-do-begin-step',
+    index:
+      2,
+    literalArgs: {
+      pane: 'second'
+    },
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
+      'p3s1-enable-submission',
+    command:
+      'enable-submission',
+    triggerResponse:
+      'p3s1-do-begin-step',
+    index:
+      3,
+    literalArgs: 
+      {},
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
+      'p3s1-start-input',
     command:
       'enable-sensor-input',
     triggerResponse:
       'p3s1-do-begin-step',
     index:
-      2,
+      4,
     literalArgs: {
       pane: 'first',
       seriesId: 'sensor-1-series'
@@ -222,15 +253,15 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { guid: 
-      'p3s1-hide-pane',
+      'p3s1-goto-p3s2',
     command:
-      'hide-pane',
+      'goto-step',
     triggerResponse:
-      'p3s1-do-begin-step',
+      'p3s1-do-step-finished',
     index:
-      3,
+      1,
     literalArgs: {
-      pane: 'second'
+      stepId: 'page-3-step-2'
     },
     substitutedArgs:
       {}
