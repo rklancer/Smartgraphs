@@ -25,8 +25,8 @@ Smartgraphs.guideController = SC.ObjectController.create(
   
   // the corresponding action that calls this should only be available in GUIDE_PAGE_DONE state
   openNextPage: function () {
-    Smartgraphs.guidePagesController.selectNextPage();
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_PAGE_START);
+    Smartgraphs.guidePagesController.selectNextPage();
   }
     
 }) ;

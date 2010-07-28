@@ -26,20 +26,26 @@ Smartgraphs.GUIDE_PAGE_START = SC.Responder.create(
   // GUIDE PAGE INITIALIZATION
   //
   
-  // Any code that transitions to GUIDE_PAGE_START *should* simultaneously update the guidePageController's content.
+  // Any code that transitions to GUIDE_PAGE_START *should* subsequently update the guidePageController's content.
   // The code below observes the guidePageController's content and performs the 'beginGuidePage' action when the
   // content changes.
 
+  // (Why we use this pattern: in general, code that switches to GUIDE_PAGE_START state might set the content of 
+  // the guidePageController via some mechanism involving bindings. Therefore, if we tried to start acting on the 
+  // guidePageController content during the didBecomeFirstResponder callback, we would be acting on stale content.)
+  
   pageContentBinding: 'Smartgraphs.guidePageController.content',
   _pageContentDidChange: function () {
     var pageContent = this.get('pageContent');
     if (pageContent && pageContent.get('length') > 0) {      
-      this.invokeOnce(this._beginGuidePage);
+      this.invokeOnce(this._tryToBeginGuidePage);
     }
   }.observes('pageContent'),
   
-  _beginGuidePage: function () {
-    // this action will only happen if we're in GUIDE_PAGE_START state.
+  _tryToBeginGuidePage: function () {
+    // the action will only be performed if we're in GUIDE_PAGE_START, protecting us from accidentally starting 
+    // a guide page if we've switched the guidePageController's content for some valid reason that happens
+    // in some mode of operation other than "we're trying to run a new guide page"
     Smartgraphs.sendAction('beginGuidePage');
   },
 

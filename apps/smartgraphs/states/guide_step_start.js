@@ -26,19 +26,25 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   // GUIDE STEP INITIALIZATION
   //
   
-  // Any code that transitions to GUIDE_STEP_START *should* simultaneously update the guideStepController's content.
+  // Any code that transitions to GUIDE_STEP_START *should* subsequently update the guideStepController's content.
   // The code below observes the guideStepController's content and performs the 'beginGuideStep' action
   // when the content changes.
+  
+  // (Why we use this pattern: in general, code that switches to GUIDE_STEP_START state might set the content of 
+  // the guideStepController via some mechanism involving bindings. Therefore, if we tried to start acting on the 
+  // guideStepController content during the didBecomeFirstResponder callback, we would be acting on stale content.)
   
   stepContentBinding: 'Smartgraphs.guideStepController.content',
   _stepContentDidChange: function () {
     if (this.get('stepContent')) {
-      this.invokeOnce(this._beginGuideStep);     // darn observers fire twice all the time...
+      this.invokeOnce(this._tryToBeginGuideStep);     // darn observers fire twice all the time...
     }
   }.observes('stepContent'),
   
-  _beginGuideStep: function () {
-    // the action will only be performed if we're in GUIDE_STEP_START
+  _tryToBeginGuideStep: function () {
+    // the action will only be performed if we're in GUIDE_STEP_START, protecting us from accidentally starting 
+    // a guide step if we've switched the guideStepController's content for some valid reason that happens
+    // in some mode of operation other than "we're trying to run a new guide step"
     Smartgraphs.sendAction('beginGuideStep');
   },
   
