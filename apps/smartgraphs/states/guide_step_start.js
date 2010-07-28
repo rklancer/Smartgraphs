@@ -26,9 +26,8 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   // ACTIONS
   //
   
-  
-  initializeGuideStep: function () {
-    Smartgraphs.guideStepController.initialize();
+  beginGuideStep: function () {
+    Smartgraphs.guideStepController.begin();
   },
   
   enableSubmission: function () {
@@ -40,7 +39,23 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
     Transition into the GUIDE_STEP_WAITING state at the start of a GuideStep (this action is not available when 
     the GuideStep is already transitioned to GUIDE_STEP_SUBMIT)
   */
-  waitForInput: function () {
+  waitForValidResponse: function (context, args) {    
+
+    // TODO we're poking into guideStepController's business here; make this more general
+    var registered = Smartgraphs.guideStepController.get('registeredTriggers');
+    var trigger;
+    
+    if (registered.lastIndexOf('responseBecameValid') < 0) {
+      trigger = Smartgraphs.triggers['responseBecameValid'];
+      trigger.register(args, []);
+      registered.pushObject(trigger);
+    }
+    if (registered.lastIndexOf('responseBecameInvalid') < 0) {
+      trigger = Smartgraphs.triggers['responseBecameInvalid'];
+      trigger.register({}, []);
+      registered.pushObject(trigger);
+    }
+
     Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_STEP_WAITING);
     return YES;
   },

@@ -17,7 +17,7 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
   
   contentDidChange: function () {
     if (this.get('currentStep') === null) {
-      Smartgraphs.sendAction('openFirstGuideStep');
+      Smartgraphs.sendAction('beginFirstGuideStep');
     }
   }.observes('.content'),
   

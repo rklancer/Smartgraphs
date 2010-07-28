@@ -19,25 +19,31 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
   registeredTriggers: [],
   
   contentDidChange: function () {
-    this.invokeOnce(this._sendInitializeAction);     // darn observers fire twice all the time...
+    this.invokeOnce(this._beginGuideStep);     // darn observers fire twice all the time...
   }.observes('content'),
   
-  _sendInitializeAction: function () {
+  _beginGuideStep: function () {
     // content SHOULD only change simulataneously a transition to GUIDE_STEP_START. Therefore, initialize
-    // the step by sending the 'initializeGuideStep' action which is ONLY available in GUIDE_STEP_START. Failures
-    // or unexpected attempts to call initializeGuideStep will therefore be more obvious (and traceable, if the trace
+    // the step by sending the 'beginGuideStep' action which is ONLY available in GUIDE_STEP_START. Failures
+    // or unexpected attempts to call beginGuideStep will therefore be more obvious (and traceable, if the trace
     // option is set to YES on the Smartgraphs SC.Application object.)
-    Smartgraphs.sendAction('initializeGuideStep');
+    Smartgraphs.sendAction('beginGuideStep');
   },
   
   /**
     Initializes the GuideStep. Called when we enter GUIDE_STEP_START state.
   */
-  initialize: function () {
-    this.unregisterOldTriggers();
+  begin: function () {
     this.registerTriggerResponses();
-    Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'beginStep' });
-    Smartgraphs.sendAction('waitForInput');
+    Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'stepBeginning' });
+  },
+  
+  /**
+    Cleans up the GuideStep. Called when we enter GUIDE_STEP_DONE state.
+  */
+  finish: function () {
+    Smartgraphs.sendAction('fireGuideEvent', this, {eventName: 'stepFinished'});
+    this.unregisterOldTriggers();
   },
   
   unregisterOldTriggers: function () {
@@ -68,6 +74,7 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
       }
     }
   },
+  
   
   executeCommands: function (invocations) {
     var invocation, commandRecord, literalArgs, substitutedArgs, args, key;

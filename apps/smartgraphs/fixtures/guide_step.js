@@ -21,7 +21,7 @@ Smartgraphs.GuideStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      'p1s1-do-begin-step'
+      'p1s1-do-step-beginning'
     ],
     submitButtonShouldBeVisible: 
       NO,
@@ -46,7 +46,7 @@ Smartgraphs.GuideStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      'p2s1-do-begin-step',
+      'p2s1-do-step-beginning',
       'p2s1-do-step-finished'
     ],
     submitButtonShouldBeVisible: 
@@ -72,7 +72,7 @@ Smartgraphs.GuideStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      'p2s2-do-begin-step'
+      'p2s2-do-step-beginning'
     ],
     submitButtonShouldBeVisible: 
       YES,
@@ -99,7 +99,7 @@ Smartgraphs.GuideStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      'p3s1-do-begin-step',
+      'p3s1-do-step-beginning',
       'p3s1-do-step-finished'
     ],
     submitButtonShouldBeVisible: 
@@ -127,7 +127,7 @@ Smartgraphs.GuideStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      'p3s2-do-begin-step'
+      'p3s2-do-step-beginning'
     ],
     submitButtonShouldBeVisible: 
       YES,

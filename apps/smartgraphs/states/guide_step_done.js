@@ -20,7 +20,8 @@ Smartgraphs.GUIDE_STEP_DONE = SC.Responder.create(
   nextResponder: Smartgraphs.GUIDE,
   
   didBecomeFirstResponder: function() {
-    Smartgraphs.sendAction('fireGuideEvent', this, {eventName: 'stepFinished'});
+    Smartgraphs.guideStepController.finish();
+    
     if (Smartgraphs.guideStepController.get('isLastStep')) {
       Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_PAGE_DONE);
     }

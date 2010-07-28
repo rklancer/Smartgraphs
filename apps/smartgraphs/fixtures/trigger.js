@@ -9,9 +9,9 @@ sc_require('models/trigger');
 Smartgraphs.Trigger.FIXTURES = [
 
   { guid:
-      'begin-step',
+      'step-beginning',
     name:
-      'beginStep',
+      'stepBeginning',
     description:
       'This is the list of commands that run when the guide step begins.',
     args:

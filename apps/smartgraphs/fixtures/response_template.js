@@ -34,7 +34,7 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
       null
     ],
     initialValues: [
-      'my initial value'
+      ''
     ]
   }
 ];

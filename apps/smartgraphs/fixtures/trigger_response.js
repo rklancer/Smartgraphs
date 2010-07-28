@@ -8,8 +8,8 @@ sc_require('models/trigger_response');
 
 Smartgraphs.TriggerResponse.FIXTURES = [
 
-  { guid: 'p1s1-do-begin-step',
-    trigger: 'begin-step',
+  { guid: 'p1s1-do-step-beginning',
+    trigger: 'step-beginning',
     step: 'page-1-step-1',  
     args: {},
     commands: [
@@ -20,8 +20,8 @@ Smartgraphs.TriggerResponse.FIXTURES = [
   },
   
   
-  { guid: 'p2s1-do-begin-step',
-    trigger: 'begin-step',
+  { guid: 'p2s1-do-step-beginning',
+    trigger: 'step-beginning',
     step: 'page-2-step-1',  
     args: {},
     commands: [
@@ -43,8 +43,8 @@ Smartgraphs.TriggerResponse.FIXTURES = [
   },
   
   
-  { guid: 'p2s2-do-begin-step',
-    trigger: 'begin-step',
+  { guid: 'p2s2-do-step-beginning',
+    trigger: 'step-beginning',
     step: 'page-2-step-2',  
     args: {},
     commands: [
@@ -55,8 +55,8 @@ Smartgraphs.TriggerResponse.FIXTURES = [
   },
   
   
-  { guid: 'p3s1-do-begin-step',
-    trigger: 'begin-step',
+  { guid: 'p3s1-do-step-beginning',
+    trigger: 'step-beginning',
     step: 'page-3-step-1',  
     args: {},
     commands: [
@@ -78,11 +78,12 @@ Smartgraphs.TriggerResponse.FIXTURES = [
   },
   
   
-  { guid: 'p3s2-do-begin-step',
-    trigger: 'begin-step',
+  { guid: 'p3s2-do-step-beginning',
+    trigger: 'step-beginning',
     step: 'page-3-step-2',  
     args: {},
     commands: [
+      'p3s2-wait-for-valid-response'
     ]
   }
   

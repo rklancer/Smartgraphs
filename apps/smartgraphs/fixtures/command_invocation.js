@@ -13,7 +13,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'show-single-pane',
     triggerResponse:
-      'p1s1-do-begin-step',
+      'p1s1-do-step-beginning',
     index:
       1,
     literalArgs:
@@ -28,7 +28,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'show-image',
     triggerResponse:
-      'p1s1-do-begin-step',
+      'p1s1-do-step-beginning',
     index:
       2,
     literalArgs: { 
@@ -44,7 +44,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'finish-step',
     triggerResponse:
-      'p1s1-do-begin-step',
+      'p1s1-do-step-beginning',
     index:
       3,
     literalArgs: 
@@ -59,7 +59,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'show-split-pane',
     triggerResponse:
-      'p2s1-do-begin-step',
+      'p2s1-do-step-beginning',
     index:
       1,
     literalArgs:
@@ -74,7 +74,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'show-graph',
     triggerResponse:
-      'p2s1-do-begin-step',
+      'p2s1-do-step-beginning',
     index:
       2,
     literalArgs: {
@@ -91,7 +91,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'enable-submission',
     triggerResponse:
-      'p2s1-do-begin-step',
+      'p2s1-do-step-beginning',
     index:
       3,
     literalArgs: 
@@ -106,7 +106,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'enable-prediction-graph-input',
     triggerResponse:
-      'p2s1-do-begin-step',
+      'p2s1-do-step-beginning',
     index:
       4,
     literalArgs: {
@@ -141,7 +141,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'show-graph',
     triggerResponse:
-      'p2s2-do-begin-step',
+      'p2s2-do-step-beginning',
     index:
       1,
     literalArgs: {
@@ -158,7 +158,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'enable-submission',
     triggerResponse:
-      'p2s2-do-begin-step',
+      'p2s2-do-step-beginning',
     index:
       2,
     literalArgs: 
@@ -173,7 +173,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'enable-prediction-graph-input',
     triggerResponse:
-      'p2s2-do-begin-step',
+      'p2s2-do-step-beginning',
     index:
       3,
     literalArgs: {
@@ -192,7 +192,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'show-graph',
     triggerResponse:
-      'p3s1-do-begin-step',
+      'p3s1-do-step-beginning',
     index:
       1,
     literalArgs: {
@@ -209,7 +209,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'hide-pane',
     triggerResponse:
-      'p3s1-do-begin-step',
+      'p3s1-do-step-beginning',
     index:
       2,
     literalArgs: {
@@ -225,7 +225,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'enable-submission',
     triggerResponse:
-      'p3s1-do-begin-step',
+      'p3s1-do-step-beginning',
     index:
       3,
     literalArgs: 
@@ -240,7 +240,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       'enable-sensor-input',
     triggerResponse:
-      'p3s1-do-begin-step',
+      'p3s1-do-step-beginning',
     index:
       4,
     literalArgs: {
@@ -263,6 +263,21 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     literalArgs: {
       stepId: 'page-3-step-2'
     },
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { guid: 
+      'p3s2-wait-for-valid-response',
+    command:
+      'wait-for-valid-response',
+    triggerResponse:
+      'p3s2-do-step-begin',
+    index:
+      1,
+    literalArgs: 
+      {},
     substitutedArgs:
       {}
   }

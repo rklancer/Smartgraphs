@@ -156,6 +156,22 @@ Smartgraphs.Command.FIXTURES = [
       {},
     substitutedArgs:
       {}
+  },
+  
+  
+  { guid: 
+      'wait-for-valid-response',
+    name: 
+      'waitForValidResponse',
+    description:
+      'Wait for a valid response before allowing submission.',
+    actionName:
+      'waitForValidResponse',
+    literalArgs: 
+      {},
+    substitutedArgs:
+      {}
   }
+  
   
 ];
