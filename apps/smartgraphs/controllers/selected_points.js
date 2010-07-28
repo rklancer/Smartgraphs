@@ -11,7 +11,8 @@
   @extends SC.Object
 */
 
-// TODO change the name of this? This is more like 'predictionPointsController'
+// TODO!!!! Separate out 'prediction graph' functionality like _cleanupData and other functionality like
+// addSensorPoint()
 
 Smartgraphs.selectedPointsController = SC.ArrayController.create(
 /** @scope Smartgraphs.selectedPointsController.prototype */ {

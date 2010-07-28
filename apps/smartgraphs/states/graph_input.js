@@ -37,11 +37,6 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
   
   // these should be produced by the inputGraphController
   
-  // is this a good name?
-  endPredictionGraphInput: function () {
-    this.resignFirstResponder();
-  },
-  
   startGraphInputAt: function (context, args) {
     Smartgraphs.selectedPointsController.startGraphInputAt(args.x, args.y);
     return YES;
@@ -55,6 +50,12 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
   endGraphInputAt: function (context, args) {
     Smartgraphs.selectedPointsController.endGraphInputAt(args.x, args.y);
     return YES;
-  }  
+  },
+  
+  // NOTE normally you end prediction graph input by virtue of moving onto the next step
+  // (thus switching first responder)
+  endPredictionGraphInput: function () {
+    this.resignFirstResponder();
+  }
   
 }) ;
