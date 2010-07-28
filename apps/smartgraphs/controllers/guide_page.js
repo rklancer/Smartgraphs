@@ -15,12 +15,6 @@ Smartgraphs.guidePageController = SC.ObjectController.create(
 
   contentBinding: 'Smartgraphs.guidePagesController.selection',
   
-  contentDidChange: function () {
-    if (this.get('currentStep') === null) {
-      Smartgraphs.sendAction('beginFirstGuideStep');
-    }
-  }.observes('.content'),
-  
   // return the context variable's value from the guidePage or guide context
   lookup: function (key) {
     var context = this.get('context');

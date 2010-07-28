@@ -23,6 +23,24 @@ Smartgraphs.GUIDE_STEP_START = SC.Responder.create(
   },
   
   // ..........................................................
+  // GUIDE STEP INITIALIZATION
+  //
+  
+  // do 'beginGuideStep' action, once, when guideStepController's content is updated to a new guideStep
+  
+  stepContentBinding: 'Smartgraphs.guideStepController.content',
+  _stepContentDidChange: function () {
+    if (this.get('stepContent')) {
+      this.invokeOnce(this._beginGuideStep);     // darn observers fire twice all the time...
+    }
+  }.observes('stepContent'),
+  
+  _beginGuideStep: function () {
+    // the action will only be performed if we're in GUIDE_STEP_START
+    Smartgraphs.sendAction('beginGuideStep');
+  },
+  
+  // ..........................................................
   // ACTIONS
   //
   
