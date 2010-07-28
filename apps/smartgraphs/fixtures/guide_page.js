@@ -63,7 +63,8 @@ Smartgraphs.GuidePage.FIXTURES = [
       '<p>Let’s practice collecting data with the motion sensor so you can see whether your sketches were '+
       'accurate. You will walk on a 5-meter walking path like the one described earlier.</p>',
     steps: [
-      'page-3-step-1', 'page-3-step-2'
+      'page-3-step-1', 
+      'page-3-step-2'
     ],
     firstStep:
       'page-3-step-1'
