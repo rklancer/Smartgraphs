@@ -1,6 +1,7 @@
 # ===========================================================================
 # Project:   Smartgraphs
 # Copyright: ©2010 Concord Consortium
+# Author:    Richard Klancer <rpk@pobox.com>
 # ===========================================================================
 
 config :all, :required => [:sproutcore]

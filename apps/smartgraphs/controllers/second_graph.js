@@ -1,6 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.secondGraphController
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
+// @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
