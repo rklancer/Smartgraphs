@@ -26,7 +26,7 @@ git checkout --track -b rklancer/buildfile-fix
 cd ../../../
 
 # First get the Ruby on Rails backend running in another terminal window
-cd Smartgraphs
+cd ../smartgraphs-rails
 rvm use 1.9.1@Smartgraphs
 cd rails
 script/server
@@ -45,10 +45,11 @@ abbot/bin/sc-server -v
 # to see all Sproutcore tests visit  http://localhost:4020/static/smartgraphs/en/current/tests.html
 
 # Build to the rails/public directory with:
-abbot/bin/sc-build -c --buildroot="rails/public"
+abbot/bin/sc-build -c --buildroot="../smartgraphs-rails/public"
 # Get the latest build number like this:
 abbot/bin/sc-build-number smartgraphs
 # Then make the symbolic link to the English version of latest build like this:
-cd rails/public
-ln -s static/smartgraphs/[ the sc-build-number ]/index.html sc.html
+cd ../smartgraphs-rails/public
+rm sc.html
+ln -s static/smartgraphs/en/[ the sc-build-number ]/index.html sc.html
 
