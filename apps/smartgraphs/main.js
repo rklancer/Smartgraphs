@@ -6,7 +6,20 @@
 /*globals Smartgraphs */
 
 Smartgraphs.main = function main() {
-
+  
+  Smartgraphs.dataSource = SC.CascadeDataSource.create({
+    dataSources: "rails fixtures".w(),
+    
+    rails: Smartgraphs.RailsDataSource.create(),
+    
+    fixtures: SC.FixturesDataSource.create({
+      simulateRemoteResponse: YES,
+      latency: 500
+    })
+  });
+  
+  Smartgraphs.store = SC.Store.create().from(Smartgraphs.dataSource);
+  
   // The code here will make the mainPane visible on screen.
   Smartgraphs.getPath('mainPage.mainPane').append() ;
   
