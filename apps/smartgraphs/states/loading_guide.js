@@ -29,9 +29,9 @@ Smartgraphs.LOADING_GUIDE = SC.Responder.create(
     SC.RunLoop.end();
     SC.RunLoop.begin();
     
-    if (this.handleLoadCompletion() === NO) {
+    if (this.handlePossibleLoadCompletion() === NO) {
       Smartgraphs.appWindowController.showGuideLoadingView();
-      // _handleLoadCompletion will handle guide after its status changes.
+      // _handlePossibleLoadCompletion will handle guide after its status changes.
     }
   },
   
@@ -44,10 +44,10 @@ Smartgraphs.LOADING_GUIDE = SC.Responder.create(
   //
 
   _guideStatusDidChange: function () {
-    this.invokeOnce(this.handleLoadCompletion);
+    this.invokeOnce(this.handlePossibleLoadCompletion);
   }.observes('guideStatus'),
   
-  handleLoadCompletion: function () {
+  handlePossibleLoadCompletion: function () {
     var guideStatus = this.get('guideStatus');
     
     if (guideStatus === SC.Record.READY_CLEAN) {
