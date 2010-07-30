@@ -22,9 +22,7 @@ Smartgraphs.GUIDE = SC.Responder.create(
                                           // some way, presumably that state should set itself as our nextResponder
   
   didBecomeFirstResponder: function() {
-    // Called when that application's firstResponder is set to this (Smartgraphs.GUIDE).
-    // Opens the guide view and immediately switches to the appropriate substate
-    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_START);
+    Smartgraphs.appWindowController.showGuideView();
   },
   
   willLoseFirstResponder: function() {

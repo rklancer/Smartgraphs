@@ -18,6 +18,10 @@ Smartgraphs.appWindowController = SC.ObjectController.create(
   
   showGuideView: function () {
     this.set('nowShowing', 'Smartgraphs.guidePage.guideView');
+  },
+  
+  showGuideLoadingIndicator: function () {
+    //TODO
   }
 
 }) ;
