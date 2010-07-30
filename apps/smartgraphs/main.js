@@ -26,10 +26,10 @@ Smartgraphs.main = function main() {
   // go to the START state
   Smartgraphs.makeFirstResponder(Smartgraphs.START);
 
+  // Instead of opening a particular Guide, we'll let SC.route handle it.
+  // (uncomment the below, and optionally remove the SC.route code in READY state, to open a particular guide instead)
   
-  // and open the first learner guide (should go into GUIDE_START state, open up guide window, and set guideController
-  // to point to the Guide 'learner-guide-1')
-  //Smartgraphs.sendAction('openGuide', this, { id: 'learner-guide-1' });
+  // Smartgraphs.sendAction('openGuide', this, { id: 'learner-guide-1' });
 } ;
 
 function main() { Smartgraphs.main(); }
