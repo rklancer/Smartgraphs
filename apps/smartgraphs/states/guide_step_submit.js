@@ -14,6 +14,9 @@
   @extends SC.Responder
   @version 0.1
 */
+
+sc_require('states/guide');
+
 Smartgraphs.GUIDE_STEP_SUBMIT = SC.Responder.create(
 /** @scope Smartgraphs.GUIDE_STEP_SUBMIT.prototype */ {
 

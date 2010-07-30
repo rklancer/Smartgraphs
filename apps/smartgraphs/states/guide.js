@@ -15,6 +15,9 @@
   @extends SC.Responder
   @version 0.1
 */
+
+sc_require('states/ready');
+
 Smartgraphs.GUIDE = SC.Responder.create(
 /** @scope Smartgraphs.GUIDE_START.prototype */ {
   

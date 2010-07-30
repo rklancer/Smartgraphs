@@ -12,6 +12,9 @@
   @extends SC.Responder
   @version 0.1
 */
+
+sc_require('states/guide');
+
 Smartgraphs.GUIDE_PAGE_DONE = SC.Responder.create(
 /** @scope Smartgraphs.GUIDE_PAGE_DONE.prototype */ {
 

@@ -12,6 +12,9 @@
   @extends SC.Responder
   @version 0.1
 */
+
+sc_require('states/sensor');
+
 Smartgraphs.SENSOR_RECORDING = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR_RECORDING.prototype */ {
 

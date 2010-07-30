@@ -13,6 +13,9 @@
   @extends SC.Responder
   @version 0.1
 */
+
+sc_require('states/guide');
+
 Smartgraphs.GUIDE_DONE = SC.Responder.create(
 /** @scope Smartgraphs.GUIDE_DONE.prototype */ {
   
@@ -22,7 +25,7 @@ Smartgraphs.GUIDE_DONE = SC.Responder.create(
   },
   
   willLoseFirstResponder: function() {
-  },
+  }
   
   // ..........................................................
   // ACTIONS
