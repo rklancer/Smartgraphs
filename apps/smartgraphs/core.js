@@ -17,7 +17,10 @@ Smartgraphs = SC.Application.create(
   NAMESPACE: 'Smartgraphs',
   VERSION: '0.1.0',
 
-  store: SC.Store.create().from(SC.Record.fixtures),
+  store: SC.Store.create().from(SC.FixturesDataSource.create({
+    simulateRemoteResponse: YES,
+    latency: 500
+  })),
   
   // Add global constants or singleton objects here
   triggers: [],
