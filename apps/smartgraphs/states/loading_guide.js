@@ -22,9 +22,7 @@ Smartgraphs.LOADING_GUIDE = SC.Responder.create(
   idBeingLoaded: null,
   guideStatusBinding: 'Smartgraphs.guideController*content.status', 
 
-  didBecomeFirstResponder: function() {
-    console.log('LOADING_GUIDE didBecomeFirstResponder');
-    
+  didBecomeFirstResponder: function() {    
     // let guideController content sync (in case it is ever updated via a binding) and let guideStatusBinding sync
     SC.RunLoop.end();
     SC.RunLoop.begin();
