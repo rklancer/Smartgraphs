@@ -19,50 +19,46 @@ Smartgraphs.LOADING_GUIDE = SC.Responder.create(
 /** @scope Smartgraphs.LOADING_GUIDE.prototype */ {
 
   nextResponder: Smartgraphs.READY,
+  idBeingLoaded: null,
   guideStatusBinding: 'Smartgraphs.guideController*content.status', 
 
   didBecomeFirstResponder: function() {
+    console.log('LOADING_GUIDE didBecomeFirstResponder');
+    
     // let guideController content sync (in case it is ever updated via a binding) and let guideStatusBinding sync
     SC.RunLoop.end();
     SC.RunLoop.begin();
     
-    if (this.get('guideStatus') === SC.Record.READY_CLEAN) {
-      // prefer to this.beginGuide() because the sendAction is traced for debugging
-      Smartgraphs.sendAction('beginGuide');
-    }
-    else {
+    if (this.handleLoadCompletion() === NO) {
       Smartgraphs.appWindowController.showGuideLoadingView();
-      // _guideStatusDidChange will handle responding to the guide status change.
+      // _handleLoadCompletion will handle guide after its status changes.
     }
   },
   
   willLoseFirstResponder: function() {
   },
   
-  idBeingLoaded: null,
-  
-  
+
   // ..........................................................
   // GUIDE CONTENT UPDATE
   //
-  
-  guideStatusBinding: 'Smartgraphs.guideController.content.status',
+
   _guideStatusDidChange: function () {
-    var guideStatus = this.get('guideStatus');
-  
-    if (guideStatus === SC.Record.READY_CLEAN) {
-      this.invokeOnce(this._tryToBeginGuide);
-    }
-    else if (guideStatus === SC.Record.ERROR) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_GUIDE);
-    }
+    this.invokeOnce(this.handleLoadCompletion);
   }.observes('guideStatus'),
   
-  _tryToBeginGuide: function () {
-    // the observer that calls '_tryToBeginGuide' might fire (and thus this method might execute) while we're in 
-    // some state other than LOADING_GUIDE. By sending the 'beginGuide' action, we protect against actually
-    // executing beginGuide *unless* we are in the LOADING_GUIDE state
-    Smartgraphs.sendAction('beginGuide');
+  handleLoadCompletion: function () {
+    var guideStatus = this.get('guideStatus');
+    
+    if (guideStatus === SC.Record.READY_CLEAN) {
+      Smartgraphs.sendAction('beginGuide');
+      return YES;    // load completed
+    }
+    else if (guideStatus === SC.Record.ERROR) {
+      Smartgraphs.sendAction('handleGuideLoadError');
+      return YES;   // load completed
+    }
+    return NO;      // load did NOT complete
   },
   
   
@@ -82,12 +78,18 @@ Smartgraphs.LOADING_GUIDE = SC.Responder.create(
     return NO;
   },
   
+  
   beginGuide: function () {
     if (Smartgraphs.guidePagesController.get('length') > 0) {
       Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_PAGE_START);
       Smartgraphs.guidePagesController.selectFirstPage();
     }
     // TODO could go into some error state here if needed.
+  },
+  
+  
+  handleGuideLoadError: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_GUIDE);
   }
   
 }) ;
