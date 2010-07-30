@@ -58,6 +58,7 @@ Smartgraphs.READY = SC.Responder.create(
     }
     
     Smartgraphs.guideController.set('content', Smartgraphs.store.find(Smartgraphs.Guide, args.id));
+    Smartgraphs.LOADING_GUIDE.set('idBeingLoaded', args.id);
     Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_GUIDE);
     return YES;
   }
