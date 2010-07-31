@@ -1,3 +1,36 @@
+7/31/10
+-------
+
+url-ifying ids
+
+1. slug field can go after id. reference: http://stackoverflow.com/questions/427102/in-django-what-is-a-slug
+  (note url is itself slugified and could be referenced as http://stackoverflow.com/questions/427102/
+
+
+2. some urls:
+
+backend/guide/<nnn>/<slug>/
+backend/guide/<nnn>/page/<nnn>/
+backend/guide/<nnn>/page/<nnn>/step/<nnn>/
+backend/guide/<nnn>/page/<nnn>/step/<nnn>/response/<nnn>/
+backend/guide/<nnn>/page/<nnn>/step/<nnn>/response/<nnn>/command/<nnn>
+
+backend/axes/<nnn>/<slug>
+backend/graph/<nnn>/<slug>
+backend/series/<nnn>/<slug>
+backend/command/<nnn>/<slug>
+backend/trigger/<nnn>/<slug>
+backend/response-template/<nnn>/<slug>
+
+3. how to implement?
+
+some records will have slugs, others won't; server could redirect to slugified url if it exists
+
+locally stored records will have local ids until the server gets back to us.
+
+
+
+
 7/20/10
 -------
 
