@@ -9,7 +9,7 @@ sc_require('models/axes');
 
 Smartgraphs.Axes.FIXTURES = [
 
-  { guid: 'prediction-away-axes',
+  { url: 'backend/axes/1/prediction-away',
 
     xMin: 0,
     xMax: 15,
@@ -25,7 +25,7 @@ Smartgraphs.Axes.FIXTURES = [
   },
 
 
-  { guid: 'prediction-toward-axes',
+  { url: 'backend/axes/2/prediction-toward',
 
     xMin: 0,
     xMax: 15,
@@ -41,7 +41,7 @@ Smartgraphs.Axes.FIXTURES = [
   },
   
   
-  { guid: 'sensor-1-axes',
+  { url: 'backend/axes/3/sensor-5m-15s',
 
     xMin: 0,
     xMax: 15,
