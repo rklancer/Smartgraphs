@@ -15,6 +15,9 @@
 Smartgraphs.CommandInvocation = SC.Record.extend(
 /** @scope Smartgraphs.CommandInvocation.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /** 
     The Command to execute. Commands are general and reusable; this CommandInvocation represents a particular
     invocation of a command, with particular arguments, in a particular GuideStep or Button

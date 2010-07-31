@@ -26,6 +26,9 @@
 Smartgraphs.GuideStep = SC.Record.extend(
 /** @scope Smartgraphs.GuideStep.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /** 
     The GuidePage this GuideStep is a part of.
   */

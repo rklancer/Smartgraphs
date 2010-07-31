@@ -20,6 +20,9 @@
 Smartgraphs.GuidePage = SC.Record.extend(
 /** @scope Smartgraphs.GuidePage.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /**
     The Guide this GuidePage belongs to.
   */

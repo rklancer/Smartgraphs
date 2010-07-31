@@ -28,6 +28,9 @@
 Smartgraphs.Command = SC.Record.extend(
 /** @scope Smartgraphs.Command.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /**
    name of this command (to be shown to authors)
   */

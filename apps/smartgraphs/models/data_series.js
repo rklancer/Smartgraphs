@@ -15,6 +15,9 @@
 Smartgraphs.DataSeries = SC.Record.extend(
 /** @scope Smartgraphs.DataSeries.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'series' } )
 
 }) ;

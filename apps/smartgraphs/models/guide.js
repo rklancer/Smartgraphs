@@ -22,6 +22,9 @@
 Smartgraphs.Guide = SC.Record.extend(
 /** @scope Smartgraphs.Guide.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /** 
     The title of this Guide.
   */

@@ -18,6 +18,9 @@
 Smartgraphs.ResponseTemplate = SC.Record.extend(
 /** @scope Smartgraphs.ResponseTemplate.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   templateString: SC.Record.attr(String),
   fieldTypes: SC.Record.attr(Array),
   fieldChoiceLists: SC.Record.attr(Array),            // for multiple choice

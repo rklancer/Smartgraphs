@@ -28,6 +28,9 @@
 Smartgraphs.TriggerResponse = SC.Record.extend(
 /** @scope Smartgraphs.TriggerResponse.prototype */ {
   
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /**
     The Trigger to register for this particular GuideStep
   */
