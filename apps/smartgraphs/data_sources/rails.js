@@ -1,6 +1,8 @@
 // ==========================================================================
 // Project:   Smartgraphs.RailsDataSource
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
+// @author    Richard Klancer <rpk@pobox.com>
+// @author    Kofi Weusijana <kweusijana@concord.org>
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -87,26 +89,17 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   //
   
   retrieveGuideRecord: function (store, storeKey) {
-    // replace this with a real SC.Request that notifies didRetrieveGuideRecord
-    this.invokeLater(this._retrieveGuideRecord, this.get('latency'), store, storeKey);
+    // i.e., after this.latency millisec, pretend the SC.Request called back.
+    // when we're happy with the format of the response, we can replace this with a real SC.Request that 
+    // notifies didRetrieveGuideRecord
+    this.invokeLater(this._mockGuideRequestCompletion, this.get('latency'), store, storeKey);
   },
   
-  _retrieveGuideRecord: function (store, storeKey) {
-    var id = store.idFor(storeKey);
-    var fixtures = Smartgraphs.Guide.FIXTURES;
-    var hash, response;
-    
-    for (var i = 0, ii = fixtures.get('length'); i < ii; i++) {
-      hash = fixtures.objectAt(i);
-      if (hash.url === id) {
-        response = hash;
-        this.didRetrieveGuideRecord(hash, store, storeKey);
-        return;
-      }
-    }
-    
-    // not found
-    this.didRetrieveGuideRecord(SC.Error.create(), store, storeKey);
+  _mockGuideRequestCompletion: function (store, storeKey) {
+    var url = store.idFor(storeKey);
+    var response = 
+      Smartgraphs.mockResponses.hasOwnProperty(url) ? Smartgraphs.mockResponses[url] : SC.Error.create();
+    this.didRetrieveGuideRecord(response, store, storeKey);
   },
   
   didRetrieveGuideRecord: function (response, store, storeKey) {
@@ -118,6 +111,5 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
       store.dataSourceDidError(storeKey);
     }
   }
-  
   
 }) ;
