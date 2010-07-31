@@ -98,7 +98,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     
     for (var i = 0, ii = fixtures.get('length'); i < ii; i++) {
       hash = fixtures.objectAt(i);
-      if (hash.guid === id) {
+      if (hash.url === id) {
         response = hash;
         this.didRetrieveGuideRecord(hash, store, storeKey);
         return;
