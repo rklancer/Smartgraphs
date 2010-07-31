@@ -9,8 +9,8 @@ sc_require('models/trigger');
 
 Smartgraphs.Trigger.FIXTURES = [
 
-  { guid:
-      'step-beginning',
+  { url:
+      '/backend/trigger/1/step-beginning/',
     name:
       'stepBeginning',
     description:
@@ -20,8 +20,8 @@ Smartgraphs.Trigger.FIXTURES = [
   },
   
   
-  { guid:
-      'response-submitted',
+  { url:
+      '/backend/trigger/2/response-submitted/',
     name:
       'responseSubmitted',
     description:
@@ -31,8 +31,8 @@ Smartgraphs.Trigger.FIXTURES = [
   },
   
   
-  { guid:
-      'step-finished',
+  { url:
+      '/backend/trigger/3/step-finished/',
     name:
       'stepFinished',
     description:

@@ -10,10 +10,10 @@ sc_require('models/guide_page');
 
 Smartgraphs.GuidePage.FIXTURES = [
 
-  { guid: 
-      'page-1',
+  { url: 
+      '/backend/guide/1/page/1/',
     guide:
-      'learner-guide-1',
+      '/backend/guide/1/motion-without-words/',
     name: 
       'Introductory Page',
     index: 
@@ -24,17 +24,17 @@ Smartgraphs.GuidePage.FIXTURES = [
       'will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will '+
       'learn conventional methods of motion storytelling and analysis.</p>',
     steps: [
-      'page-1-step-1'
+      '/backend/guide/1/page/1/step/1/'
     ],
     firstStep:
-      'page-1-step-1'
+      '/backend/guide/1/page/1/step/1/'
   },
   
   
-  { guid: 
-      'page-2',
+  { url: 
+      '/backend/guide/1/page/2/',
     guide:
-      'learner-guide-1',
+      '/backend/guide/1/motion-without-words/',
     name: 
       'Second Page',
     index: 
@@ -45,18 +45,18 @@ Smartgraphs.GuidePage.FIXTURES = [
       '</p>'+
       '<img src="'+sc_static('resources/numberline.png')+'">',
     steps: [
-      'page-2-step-1', 
-      'page-2-step-2'
+      '/backend/guide/1/page/2/step/1/', 
+      '/backend/guide/1/page/2/step/2/'
     ],
     firstStep:
-      'page-2-step-1'
+      '/backend/guide/1/page/2/step/1/'
   },
   
   
-  { guid: 
-      'page-3',
+  { url: 
+      '/backend/guide/1/page/3/',
     guide:
-      'learner-guide-1',
+      '/backend/guide/1/motion-without-words/',
     name: 
       'Third Page',
     index: 
@@ -65,11 +65,11 @@ Smartgraphs.GuidePage.FIXTURES = [
       '<p>Let’s practice collecting data with the motion sensor so you can see whether your sketches were '+
       'accurate. You will walk on a 5-meter walking path like the one described earlier.</p>',
     steps: [
-      'page-3-step-1', 
-      'page-3-step-2'
+      '/backend/guide/1/page/3/step/1/', 
+      '/backend/guide/1/page/3/step/2/'
     ],
     firstStep:
-      'page-3-step-1'
+      '/backend/guide/1/page/3/step/1/'
   }
 
 ];

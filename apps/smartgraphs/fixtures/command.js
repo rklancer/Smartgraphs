@@ -9,8 +9,8 @@ sc_require('models/command');
 
 Smartgraphs.Command.FIXTURES = [
   
-  { guid: 
-      'show-single-pane',
+  { url: 
+      '/backend/command/1/show-single-pane/',
     name: 
       'showSinglePane',
     description:
@@ -24,8 +24,8 @@ Smartgraphs.Command.FIXTURES = [
   },
   
   
-  { guid: 
-      'show-split-pane',
+  { url: 
+      '/backend/command/2/show-split-pane/',
     name: 
       'showSplitPane',
     description:
@@ -39,8 +39,8 @@ Smartgraphs.Command.FIXTURES = [
   },
 
 
-  { guid: 
-      'show-image',
+  { url: 
+      '/backend/command/3/show-image/',
     name: 
       'showFirstPaneImage',
     description:
@@ -55,8 +55,8 @@ Smartgraphs.Command.FIXTURES = [
   },
 
   
-  { guid: 
-      'show-graph',
+  { url: 
+      '/backend/command/4/show-graph/',
     name: 
       'showGraph',
     description:
@@ -70,8 +70,8 @@ Smartgraphs.Command.FIXTURES = [
   },
   
   
-  { guid: 
-      'enable-submission',
+  { url: 
+      '/backend/command/5/enable-submission/',
     name: 
       'enableSubmission',
     description:
@@ -85,8 +85,8 @@ Smartgraphs.Command.FIXTURES = [
   },
   
   
-  { guid: 
-      'finish-step',
+  { url: 
+      '/backend/command/6/finish-step/',
     name: 
       'finishGuideStep',
     description:
@@ -100,8 +100,8 @@ Smartgraphs.Command.FIXTURES = [
   },
   
   
-  { guid: 
-      'enable-prediction-graph-input',
+  { url: 
+      '/backend/command/7/enable-prediction-graph-input/',
     name: 
       'enablePredictionGraphInput',
     description:
@@ -115,8 +115,8 @@ Smartgraphs.Command.FIXTURES = [
   },
   
   
-  { guid: 
-      'goto-step',
+  { url: 
+      '/backend/command/8/goto-step/',
     name: 
       'openGuideStep',
     description:
@@ -130,8 +130,8 @@ Smartgraphs.Command.FIXTURES = [
   },
   
   
-  { guid: 
-      'enable-sensor-input',
+  { url: 
+      '/backend/command/9/enable-sensor-input/',
     name: 
       'enableSensorInput',
     description:
@@ -145,8 +145,8 @@ Smartgraphs.Command.FIXTURES = [
   },
   
   
-  { guid: 
-      'hide-pane',
+  { url: 
+      '/backend/command/10/hide-pane/',
     name: 
       'hidePane',
     description:
@@ -160,8 +160,8 @@ Smartgraphs.Command.FIXTURES = [
   },
   
   
-  { guid: 
-      'wait-for-valid-response',
+  { url: 
+      '/backend/command/11/wait-for-valid-response/',
     name: 
       'waitForValidResponse',
     description:

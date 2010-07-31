@@ -9,12 +9,12 @@ sc_require('models/command_invocation');
 
 Smartgraphs.CommandInvocation.FIXTURES = [
 
-  { guid: 
-      'p1s1-single-pane',
+  { url: 
+      '/backend/guide/1/page/1/step/1/response/1/command/1/single-pane/',
     command:
-      'show-single-pane',
+      '/backend/command/1/show-single-pane/',
     triggerResponse:
-      'p1s1-do-step-beginning',
+      '/backend/guide/1/page/1/step/1/response/1/step-beginning/',
     index:
       1,
     literalArgs:
@@ -24,12 +24,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p1s1-show-image',
+  { url: 
+      '/backend/guide/1/page/1/step/1/response/1/command/2/show-image/',
     command:
-      'show-image',
+      '/backend/command/3/show-image/',
     triggerResponse:
-      'p1s1-do-step-beginning',
+      '/backend/guide/1/page/1/step/1/response/1/step-beginning/',
     index:
       2,
     literalArgs: { 
@@ -40,12 +40,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p1s1-finish-step',
+  { url: 
+      '/backend/guide/1/page/1/step/1/response/1/command/3/finish-step/',
     command:
-      'finish-step',
+      '/backend/command/6/finish-step/',
     triggerResponse:
-      'p1s1-do-step-beginning',
+      '/backend/guide/1/page/1/step/1/response/1/step-beginning/',
     index:
       3,
     literalArgs: 
@@ -55,12 +55,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p2s1-split-pane',
+  { url: 
+      '/backend/guide/1/page/2/step/1/response/1/command/1/split-pane/',
     command:
-      'show-split-pane',
+      '/backend/command/2/show-split-pane/',
     triggerResponse:
-      'p2s1-do-step-beginning',
+      '/backend/guide/1/page/2/step/1/response/1/step-beginning/',
     index:
       1,
     literalArgs:
@@ -70,12 +70,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p2s1-show-graph',
+  { url: 
+      '/backend/guide/1/page/2/step/1/response/1/command/2/show-graph/',
     command:
-      'show-graph',
+      '/backend/command/4/show-graph/',
     triggerResponse:
-      'p2s1-do-step-beginning',
+      '/backend/guide/1/page/2/step/1/response/1/step-beginning/',
     index:
       2,
     literalArgs: {
@@ -87,12 +87,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p2s1-enable-submission',
+  { url: 
+      '/backend/guide/1/page/2/step/1/response/1/command/3/enable-submission/',
     command:
-      'enable-submission',
+      '/backend/command/5/enable-submission/',
     triggerResponse:
-      'p2s1-do-step-beginning',
+      '/backend/guide/1/page/2/step/1/response/1/step-beginning/',
     index:
       3,
     literalArgs: 
@@ -102,17 +102,17 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p2s1-start-input',
+  { url: 
+      '/backend/guide/1/page/2/step/1/response/1/command/4/start-input/',
     command:
-      'enable-prediction-graph-input',
+      '/backend/command/7/enable-prediction-graph-input/',
     triggerResponse:
-      'p2s1-do-step-beginning',
+      '/backend/guide/1/page/2/step/1/response/1/step-beginning/',
     index:
       4,
     literalArgs: {
       pane: 'first',
-      seriesId: 'prediction-away-series',
+      seriesId: '/backend/series/1/prediction-away/',
       xMin: 0,
       xMax: 15
     },
@@ -121,28 +121,28 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p2s1-goto-p2s2',
+  { url: 
+      '/backend/guide/1/page/2/step/1/response/2/command/1/goto-step-2/',
     command:
-      'goto-step',
+      '/backend/command/8/goto-step/',
     triggerResponse:
-      'p2s1-do-step-finished',
+      '/backend/guide/1/page/2/step/1/response/2/step-finished/',
     index:
       1,
     literalArgs: {
-      stepId: 'page-2-step-2'
+      stepId: '/backend/guide/1/page/2/step/2/'
     },
     substitutedArgs:
       {}
   },
   
   
-  { guid: 
-      'p2s2-show-graph',
+  { url: 
+      '/backend/guide/1/page/2/step/2/response/1/command/1/show-graph/',
     command:
-      'show-graph',
+      '/backend/command/4/show-graph/',
     triggerResponse:
-      'p2s2-do-step-beginning',
+      '/backend/guide/1/page/2/step/2/response/1/step-beginning/',
     index:
       1,
     literalArgs: {
@@ -154,12 +154,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
       
       
-  { guid: 
-      'p2s2-enable-submission',
+  { url: 
+      '/backend/guide/1/page/2/step/2/response/1/command/2/enable-submission/',
     command:
-      'enable-submission',
+      '/backend/command/5/enable-submission/',
     triggerResponse:
-      'p2s2-do-step-beginning',
+      '/backend/guide/1/page/2/step/2/response/1/step-beginning/',
     index:
       2,
     literalArgs: 
@@ -169,17 +169,17 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p2s2-start-input',
+  { url: 
+      '/backend/guide/1/page/2/step/2/response/1/command/3/predict/',
     command:
-      'enable-prediction-graph-input',
+      '/backend/command/7/enable-prediction-graph-input/',
     triggerResponse:
-      'p2s2-do-step-beginning',
+      '/backend/guide/1/page/2/step/2/response/1/step-beginning/',
     index:
       3,
     literalArgs: {
       pane: 'second',
-      seriesId: 'prediction-toward-series',
+      seriesId: '/backend/series/2/prediction-toward/',
       xMin: 0,
       xMax: 15
     },
@@ -188,12 +188,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
 
-  { guid: 
-      'p3s1-show-graph',
+  { url: 
+      '/backend/guide/1/page/3/step/1/response/1/command/1/show-graph/',
     command:
-      'show-graph',
+      '/backend/command/4/show-graph/',
     triggerResponse:
-      'p3s1-do-step-beginning',
+      '/backend/guide/1/page/3/step/1/response/1/step-beginning/',
     index:
       1,
     literalArgs: {
@@ -205,12 +205,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p3s1-hide-pane',
+  { url: 
+      '/backend/guide/1/page/3/step/1/response/1/command/2/hide-pane/',
     command:
-      'hide-pane',
+      '/backend/command/10/hide-pane/',
     triggerResponse:
-      'p3s1-do-step-beginning',
+      '/backend/guide/1/page/3/step/1/response/1/step-beginning/',
     index:
       2,
     literalArgs: {
@@ -221,12 +221,12 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p3s1-enable-submission',
+  { url: 
+      '/backend/guide/1/page/3/step/1/response/1/command/3/enable-submission/',
     command:
-      'enable-submission',
+      '/backend/command/5/enable-submission/',
     triggerResponse:
-      'p3s1-do-step-beginning',
+      '/backend/guide/1/page/3/step/1/response/1/step-beginning/',
     index:
       3,
     literalArgs: 
@@ -236,43 +236,43 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   },
   
   
-  { guid: 
-      'p3s1-start-input',
+  { url: 
+      '/backend/guide/1/page/3/step/1/response/1/command/4/start-sensor/',
     command:
-      'enable-sensor-input',
+      '/backend/command/9/enable-sensor-input/',
     triggerResponse:
-      'p3s1-do-step-beginning',
+      '/backend/guide/1/page/3/step/1/response/1/step-beginning/',
     index:
       4,
     literalArgs: {
       pane: 'first',
-      seriesId: 'sensor-1-series'
+      seriesId: '/backend/series/3/sensor/'
     },
     substitutedArgs:
       {}
   },
   
   
-  { guid: 
-      'p3s1-goto-p3s2',
+  { url: 
+      '/backend/guide/1/page/3/step/1/response/2/command/1/goto-step-2/',
     command:
-      'goto-step',
+      '/backend/command/8/goto-step/',
     triggerResponse:
-      'p3s1-do-step-finished',
+      '/backend/guide/1/page/3/step/1/response/2/step-finished/',
     index:
       1,
     literalArgs: {
-      stepId: 'page-3-step-2'
+      stepId: '/backend/guide/1/page/3/step/2/'
     },
     substitutedArgs:
       {}
   },
   
   
-  { guid: 
-      'p3s2-wait-for-valid-response',
+  { url: 
+      '/backend/guide/1/page/3/step/2/response/1/command/1/wait-for-valid-response/',
     command:
-      'wait-for-valid-response',
+      '/backend/command/11/wait-for-valid-response/',
     triggerResponse:
       'p3s2-do-step-begin',
     index:

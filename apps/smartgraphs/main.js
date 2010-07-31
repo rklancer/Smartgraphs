@@ -29,7 +29,7 @@ Smartgraphs.main = function main() {
   // Instead of opening a particular Guide, we'll let SC.route handle it.
   // (uncomment the below, and optionally remove the SC.route code in READY state, to open a particular guide instead)
   
-  // Smartgraphs.sendAction('openGuide', this, { id: 'learner-guide-1' });
+  // Smartgraphs.sendAction('openGuide', this, { id: '/backend/guide/1/motion-without-words/' });
 } ;
 
 function main() { Smartgraphs.main(); }

@@ -9,8 +9,8 @@ sc_require('models/data_series');
 
 Smartgraphs.DataSeries.FIXTURES = [
 
-  { guid: 'prediction-away-series',   points: [] },
-  { guid: 'prediction-toward-series', points: [] },
-  { guid: 'sensor-1-series', points: [] }
+  { url: '/backend/series/1/prediction-away/',   points: [] },
+  { url: '/backend/series/2/prediction-toward/', points: [] },
+  { url: '/backend/series/3/sensor/', points: [] }
 
 ];
