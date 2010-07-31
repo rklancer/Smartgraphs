@@ -13,7 +13,7 @@ Smartgraphs.main = function main() {
     rails: Smartgraphs.RailsDataSource.create(),
     
     fixtures: SC.FixturesDataSource.create({
-      simulateRemoteResponse: YES,
+      simulateRemoteResponse: NO,
       latency: 500
     })
   });
