@@ -92,7 +92,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   },
   
   _retrieveGuideRecord: function (store, storeKey) {
-    var id = Smartgraphs.store.idFor(storeKey);
+    var id = store.idFor(storeKey);
     var fixtures = Smartgraphs.Guide.FIXTURES;
     var hash, response;
     
