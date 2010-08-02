@@ -7,7 +7,7 @@
 
 /** @class
 
-  Loading state for Guide view
+  Loading state for Guide view. (Don't call it GUIDE_LOADING because it is not a GUIDE substate)
 
   @extends SC.Responder
   @version 0.1
@@ -29,7 +29,7 @@ Smartgraphs.LOADING_GUIDE = SC.Responder.create(
     
     if (this.handlePossibleLoadCompletion() === NO) {
       Smartgraphs.appWindowController.showGuideLoadingView();
-      // _handlePossibleLoadCompletion will handle guide after its status changes.
+      // handlePossibleLoadCompletion will handle starting up the guide after the Guide record's status changes.
     }
   },
   
@@ -56,7 +56,7 @@ Smartgraphs.LOADING_GUIDE = SC.Responder.create(
       Smartgraphs.sendAction('handleGuideLoadError');
       return YES;   // load completed
     }
-    return NO;      // load did NOT complete
+    return NO;      // load has NOT completed yet
   },
   
   

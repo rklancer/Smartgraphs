@@ -25,6 +25,8 @@ Smartgraphs.triggers.responseBecameValid = Smartgraphs.TriggerObserver.create({
   
   valuesObserver: function () {
     var values = Smartgraphs.responseTemplateController.get('values');
+    if (!values) return;
+
     var value = values.objectAt(0);
     var valueIsValid = !!(value && value.strip().length > 0);
     

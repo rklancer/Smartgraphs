@@ -21,7 +21,8 @@ Smartgraphs.responseTemplateController = SC.ObjectController.create(
   }.observes('content'),
   
   _initializeValues: function () {
-    this.set('values', this.get('initialValues').copy());
+    var initialValues = this.get('initialValues');
+    if (initialValues) this.set('values', initialValues.copy());
   },
   
   editingShouldBeEnabled: false

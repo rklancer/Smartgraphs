@@ -218,6 +218,18 @@ Smartgraphs.guidePage = SC.Page.design({
   
   firstTableView: Smartgraphs.TableView.design({}),
   
-  secondTableView: Smartgraphs.TableView.design({})
+  secondTableView: Smartgraphs.TableView.design({}),
+  
+  errorLoadingGuideView: SC.View.design({
+    classNames: 'smartgraph-pane',
+    childViews: 'errorMessage'.w(),
+    
+    errorMessage: SC.LabelView.design({
+      layout: { height: 32, width: 500, centerX: 0, centerY: 0 },
+      classNames: 'error',
+      textAlign: SC.ALIGN_CENTER,
+      value: 'There was an error loading that Guide.'
+    })
+  })
   
 });

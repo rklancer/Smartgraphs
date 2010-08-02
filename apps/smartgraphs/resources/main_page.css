@@ -42,10 +42,19 @@ body.sc-theme {
   background: #B4C0D7;
 }
 
+/* container loading */
 .sc-theme .sc-label-view.loading {
   font-size: 18px;
   line-height: 1.0;
   color: #666666;
+  font-style: bold;
+}
+
+/* guide view loading error */
+.sc-theme .sc-label-view.error {
+  color: #333333;
+  font-size: 24px;
+  line-height: 1.0;
   font-style: bold;
 }
 
@@ -84,4 +93,4 @@ body.sc-theme {
 
 .sc-view.dialog-text textarea {
   padding: 5px;
-} 
+}

@@ -23,6 +23,7 @@ Smartgraphs.mainPage = SC.Page.design({
     })
   }),
   
+  // a generic loading view for whatever is loading into mainPane.container
   loadingView: SC.View.design({
     classNames: 'smartgraph-pane'.w(),
     childViews: 'loadingIconView loadingMessageView'.w(),

@@ -24,14 +24,14 @@ Smartgraphs.main = function main() {
   // make the mainPane visible on screen.
   Smartgraphs.getPath('mainPage.mainPane').append() ;
 
-  // go to the START state to kick things off
-  Smartgraphs.makeFirstResponder(Smartgraphs.START);
-  
-  // Instead of opening a particular Guide, we'll let SC.route handle it.
-  
-  if (!SC.routes.get('location')) {
-    SC.routes.set('location', '/backend/guide/1/motion-without-words/');      // default activity for now
+  // We're letting SC.route handle navigating to a particular Guide. It needs a runloop to sync up, so 
+  // just reach in and set default window.location.hash for now.
+  if (!window.location.hash) {
+    window.location.hash = '/backend/guide/1/motion-without-words/';      // default activity for now
   }
+  
+  // ... then the START state will kick things off
+  Smartgraphs.makeFirstResponder(Smartgraphs.START);
   
 } ;
 
