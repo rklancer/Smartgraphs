@@ -25,18 +25,18 @@ Smartgraphs.mainPage = SC.Page.design({
   
   loadingView: SC.View.design({
     classNames: 'smartgraph-pane'.w(),
-    childViews: 'loadingIcon loadingText'.w(),
+    childViews: 'loadingIconView loadingMessageView'.w(),
     
-    loadingIcon: SC.ImageView.design({
+    loadingIconView: SC.ImageView.design({
       layout: { width: 48, height: 48, centerX: 0, centerY: -39 },
       value: sc_static('resources/pane_loading.gif')
     }),
     
-    loadingText: SC.LabelView.design({
+    loadingMessageView: SC.LabelView.design({
       classNames: 'loading'.w(),
       layout: { width: 200, height: 24, centerX: 0, centerY: 15 },
       textAlign: SC.ALIGN_CENTER,
-      value: 'Loading Guide...'
+      valueBinding: 'Smartgraphs.appWindowController.loadingMessage'
     })
   })
 

@@ -13,6 +13,8 @@ Smartgraphs.guidePage = SC.Page.design({
   guideView: SC.View.design({
     childViews: 'instructionsWrapper dataWrapper'.w(),
     
+    loadingMessage: 'Loading Guide...',
+    
     // ..........................................................
     // LEFT PANE
     //

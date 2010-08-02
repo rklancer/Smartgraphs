@@ -15,6 +15,7 @@ Smartgraphs.appWindowController = SC.ObjectController.create(
 /** @scope Smartgraphs.appWindowController.prototype */ {
 
   nowShowing: null,
+  loadingMessage: null,
   
   showGuideView: function () {
     this.set('nowShowing', 'Smartgraphs.guidePage.guideView');
@@ -22,6 +23,7 @@ Smartgraphs.appWindowController = SC.ObjectController.create(
   
   showGuideLoadingView: function () {
     this.set('nowShowing', 'Smartgraphs.mainPage.loadingView');
+    this.set('loadingMessage', Smartgraphs.guidePage.getPath('guideView.loadingMessage'));
   },
   
   showGuideLoadingErrorView: function () {
