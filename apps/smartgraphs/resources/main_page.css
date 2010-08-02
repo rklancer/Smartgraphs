@@ -1,21 +1,52 @@
 /* ==========================================================================
    Project:   Smartgraphs
-   Copyright: ©2010 My Company, Inc.
+   Copyright: ©2010 Concord Consortium
    Author:    Richard KLancer <rpk@pobox.com>
    ==========================================================================
 */
+
+/*** loading ***/
+
+body.sc-theme {
+  background-color: #B4C0D7;
+  overflow: hidden;
+}
+
+.sc-theme .app-loading {
+  background-color: #B4C0D7;  
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.app-loading img, .app-loading p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.app-loading p {
+  height: 24px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.0;
+  color: #666666;
+  font-style: bold;
+}
+
+/*** after loading ***/
 
 .sc-theme .sc-pane.sc-main {
   background: #B4C0D7;
 }
 
-.sc-theme #loading {
-  background: #B4C0D7;
-}
-
-body.sc-theme {
-  background-color: #B4C0D7;
-  overflow: hidden;
+.sc-theme .sc-label-view.loading {
+  font-size: 18px;
+  line-height: 1.0;
+  color: #666666;
+  font-style: bold;
 }
 
 .sc-view.smartgraph-pane {
