@@ -2,7 +2,6 @@
 // Project:   Smartgraphs.Guide mock server responses
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
-// @author    Kofi Weusijana <kweusijana@concord.org>
 // ==========================================================================
 /*globals Smartgraphs */
 
