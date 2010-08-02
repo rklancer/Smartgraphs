@@ -41,7 +41,9 @@ Smartgraphs.READY = SC.Responder.create(
   // SC.routes callback (not really an action; SC.routes calls this method directly)
   route: function (route) {
     var guideId = route.guideId;
-    Smartgraphs.sendAction('openGuide', this, { id: guideId });
+    if (guideId) {
+      Smartgraphs.sendAction('openGuide', this, { id: guideId });
+    }
   },
 
   // ..........................................................
