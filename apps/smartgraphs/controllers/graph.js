@@ -78,17 +78,14 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   inputAreaMouseDown: function (x, y) {
-    console.log('recorded mouseDown at %f, %f', x, y);
     Smartgraphs.sendAction('startGraphInputAt', this, { x: x, y: y });
   },
   
   inputAreaMouseDragged: function (x, y) {
-    console.log('recorded mouseDragged at %f, %f', x, y);
     Smartgraphs.sendAction('continueGraphInputAt', this, { x: x, y: y });
   },
   
   inputAreaMouseUp: function (x, y) {
-    console.log('recorded mouseUp at %f, %f', x, y);
     Smartgraphs.sendAction('endGraphInputAt', this, { x: x, y: y });
   }
   

@@ -15,14 +15,12 @@ Smartgraphs.TriggerObserver = SC.Object.extend({
   commands: null,
   
   register: function (args, commands) {
-    console.log('registering...'); 
     this.set('isRegistered', YES);
     this.set('commands', commands);
     if (this.registerObservers) this.registerObservers(args);
   },
 
   unregister: function () {
-    console.log('UNregistering...');
     this.set('isRegistered', NO);
     this.set('commands', null);
     if (this.unregisterObservers) this.unregisterObservers();    
@@ -30,7 +28,6 @@ Smartgraphs.TriggerObserver = SC.Object.extend({
   
   eventWasObserved: function () {
     if (this.get('isRegistered')) {
-      console.log('EVENT WAS OBSERVED');
       Smartgraphs.activityStepController.executeCommands(this.get('commands'));
     }
   }

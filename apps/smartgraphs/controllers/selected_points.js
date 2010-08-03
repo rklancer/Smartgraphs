@@ -99,7 +99,6 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
   },
   
   addPredictionPoint: function (x, y, binIdx) {
-    console.log('adding point (%f, %f) in bin %d', x, y, binIdx);
     var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.DataPoint.nextGuid++ });
     this.pushObject(point);
     Smartgraphs.store.commitRecords();
