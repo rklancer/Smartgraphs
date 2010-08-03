@@ -15,7 +15,7 @@ Smartgraphs.GuideStep.FIXTURES = [
     guidePage:
       '/backend/guide/1/page/1/',
     beforeText: 
-      '<p>This is some before text</p>',
+      '',
     responseTemplate: 
       null,
     afterText:
