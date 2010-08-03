@@ -86,6 +86,16 @@ Smartgraphs.TriggerResponse.FIXTURES = [
     commands: [
       '/backend/activity/1/page/3/step/2/response/1/command/1/wait-for-valid-response/'
     ]
+  },
+  
+  { url: '/backend/activity/1/page/4/step/1/response/1/step-beginning/',
+    trigger: '/backend/trigger/1/step-beginning/',
+    step: '/backend/activity/1/page/4/step/1/',  
+    args: {},
+    commands: [
+      '/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane/',
+      '/backend/activity/1/page/4/step/1/response/1/command/2/show-graph/'      
+    ]
   }
   
 ];

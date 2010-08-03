@@ -137,5 +137,29 @@ Smartgraphs.ActivityStep.FIXTURES = [
       'Submit My Answer',
     isLastStep: 
       YES
+  },
+  
+  
+  { url: 
+      '/backend/activity/1/page/4/step/1/',
+    activityPage:
+      '/backend/activity/1/page/3/',
+    beforeText: 
+      '<p>At right is your prediction and your actual motion, together</p>',
+    responseTemplate: 
+      null,
+    afterText:
+      '',
+    buttons: 
+      [],
+    triggerResponses: [
+      '/backend/activity/1/page/4/step/1/response/1/step-beginning/'
+    ],
+    submitButtonShouldBeVisible: 
+      NO,
+    submitButtonTitle: 
+      '',
+    isLastStep: 
+      YES
   }
 ];

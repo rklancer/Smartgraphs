@@ -80,7 +80,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       2,
     literalArgs: {
       pane: 'first',
-      graphId: 'prediction-away'
+      graphId: '/backend/activity/1/graph/1/prediction-away/'
     },
     substitutedArgs:
       {}
@@ -147,7 +147,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       1,
     literalArgs: {
       pane: 'second',
-      graphId: 'prediction-toward'
+      graphId: '/backend/activity/1/graph/2/prediction-toward/'
     },
     substitutedArgs:
       {}
@@ -198,7 +198,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       1,
     literalArgs: {
       pane: 'first',
-      graphId: 'sensor-1'
+      graphId: '/backend/activity/1/graph/3/sensor-playing/'
     },
     substitutedArgs:
       {}
@@ -279,6 +279,39 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       1,
     literalArgs: 
       {},
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { url: 
+      '/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane/',
+    command:
+      '/backend/command/10/hide-pane/',
+    triggerResponse:
+      '/backend/activity/1/page/4/step/1/response/1/step-beginning/',
+    index:
+      1,
+    literalArgs: {
+      pane: 'second'
+    },
+    substitutedArgs:
+      {}
+  },
+  
+  
+  { url: 
+      '/backend/activity/1/page/4/step/1/response/1/command/2/show-graph/',
+    command:
+      '/backend/command/4/show-graph/',
+    triggerResponse:
+      '/backend/activity/1/page/4/step/1/response/1/step-beginning/',
+    index:
+      2,
+    literalArgs: {
+      pane: 'first',
+      graphId: '/backend/activity/1/graph/4/combined/'
+    },
     substitutedArgs:
       {}
   }

@@ -70,6 +70,23 @@ Smartgraphs.ActivityPage.FIXTURES = [
     ],
     firstStep:
       '/backend/activity/1/page/3/step/1/'
+  },
+  
+  { url: 
+      '/backend/activity/1/page/4/',
+    activity:
+      '/backend/activity/1/motion-without-words/',
+    name: 
+      'Fourth Page',
+    index: 
+      4,
+    introText:
+      '<p>How did the actual graph of your motion compare to your prediction?<p>',
+    steps: [
+      '/backend/activity/1/page/4/step/1/'
+    ],
+    firstStep:
+      '/backend/activity/1/page/4/step/1/'
   }
 
 ];
