@@ -89,7 +89,7 @@ Smartgraphs.activityPage = SC.Page.design({
 
               submitButton: SC.ButtonView.design({
                 layout: {
-                  width: 160,
+                  width: 200,
                   right: 0
                 },
                 titleBinding: 'Smartgraphs.activityStepController.submitButtonTitle',
