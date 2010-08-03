@@ -10,9 +10,9 @@
   Superstate indicating that the Smartgraphs application is loaded and ready for user interaction.
   
   From here, we might:
-    * show the list of Guides/activities
-    * open a particular Guide based on the route (or based on a directive set by the teacher, if there is one)
-    * allow the user to edit a Guide
+    * show the list of Activities
+    * open a particular Activity based on the route (or based on a directive set by the teacher, if there is one)
+    * allow the user to edit an Activity
     * allow the user to update their personal information
     * allow the user to examine their lab book
     * allow the user to see their previous answer sheets
@@ -29,10 +29,10 @@ Smartgraphs.READY = SC.Responder.create(
   
   didBecomeFirstResponder: function() {
     // Eventually we can use SC.routes to parse a 'query string' for us, as per:
-    // http://smartgraphs.concord.org/app#?mode=edit_guide&guide=/guides/rklancer/my-fancy-guide'
+    // http://smartgraphs.concord.org/app#?mode=edit_activity&activity=/activitys/rklancer/my-fancy-activity'
     
-    // for now, we just take the URL fragment to be the guideId
-    SC.routes.add('*guideId', this, 'route');
+    // for now, we just take the URL fragment to be the activityId
+    SC.routes.add('*activityId', this, 'route');
   },
   
   willLoseFirstResponder: function() {
@@ -40,9 +40,9 @@ Smartgraphs.READY = SC.Responder.create(
   
   // SC.routes callback (not really an action; SC.routes calls this method directly)
   route: function (route) {
-    var guideId = route.guideId;
-    if (guideId) {
-      Smartgraphs.sendAction('openGuide', this, { id: guideId });
+    var activityId = route.activityId;
+    if (activityId) {
+      Smartgraphs.sendAction('openActivity', this, { id: activityId });
     }
   },
 
@@ -50,18 +50,18 @@ Smartgraphs.READY = SC.Responder.create(
   // ACTIONS
   //
   
-  openGuide: function (context, args) {
-    // the default action, unless overridden in some later state, is just to set the current guide in the guide
-    // controller and go into the GUIDE state
+  openActivity: function (context, args) {
+    // the default action, unless overridden in some later state, is just to set the current activity in the  
+    // controller and go into the ACTIVITY state
 
-    var guideContent = Smartgraphs.guideController.get('content');
-    if (guideContent && guideContent.get('id') === args.id) {
+    var activityContent = Smartgraphs.activityController.get('content');
+    if (activityContent && activityContent.get('id') === args.id) {
       return YES; // nothing to do!
     }
     
-    Smartgraphs.guideController.set('content', Smartgraphs.store.find(Smartgraphs.Guide, args.id));
-    Smartgraphs.LOADING_GUIDE.set('idBeingLoaded', args.id);
-    Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_GUIDE);
+    Smartgraphs.activityController.set('content', Smartgraphs.store.find(Smartgraphs.Activity, args.id));
+    Smartgraphs.LOADING_ACTIVITY.set('idBeingLoaded', args.id);
+    Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_ACTIVITY);
     return YES;
   }
   

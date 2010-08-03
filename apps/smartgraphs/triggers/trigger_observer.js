@@ -31,7 +31,7 @@ Smartgraphs.TriggerObserver = SC.Object.extend({
   eventWasObserved: function () {
     if (this.get('isRegistered')) {
       console.log('EVENT WAS OBSERVED');
-      Smartgraphs.guideStepController.executeCommands(this.get('commands'));
+      Smartgraphs.activityStepController.executeCommands(this.get('commands'));
     }
   }
 });

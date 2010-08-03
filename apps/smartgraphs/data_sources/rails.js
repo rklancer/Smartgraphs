@@ -46,8 +46,8 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     console.log('  Record type requested = %s', recordType.toString());
     console.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
     
-    if (recordType === Smartgraphs.Guide) {
-      this.retrieveGuideRecord(store, storeKey);
+    if (recordType === Smartgraphs.Activity) {
+      this.retrieveActivityRecord(store, storeKey);
       console.log('  returning YES from retrieveRecord');
       return YES;
     }
@@ -87,23 +87,23 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   // SPECIFIC RECORD TYPE SUPPORT
   //
   
-  retrieveGuideRecord: function (store, storeKey) {
+  retrieveActivityRecord: function (store, storeKey) {
     // i.e., after this.latency millisec, pretend the SC.Request called back.
     // when we're happy with the format of the response, we can replace this with a real SC.Request that 
-    // notifies didRetrieveGuideRecord
-    this.invokeLater(this._mockGuideRequestCompletion, this.get('latency'), store, storeKey);
+    // notifies didRetrieveActivityRecord
+    this.invokeLater(this._mockActivityRequestCompletion, this.get('latency'), store, storeKey);
   },
   
-  _mockGuideRequestCompletion: function (store, storeKey) {
+  _mockActivityRequestCompletion: function (store, storeKey) {
     var url = store.idFor(storeKey);
     var response = 
       Smartgraphs.mockResponses.hasOwnProperty(url) ? Smartgraphs.mockResponses[url] : SC.Error.create();
-    this.didRetrieveGuideRecord(response, store, storeKey);
+    this.didRetrieveActivityRecord(response, store, storeKey);
   },
   
-  didRetrieveGuideRecord: function (response, store, storeKey) {
+  didRetrieveActivityRecord: function (response, store, storeKey) {
     if (SC.ok(response)) {
-      console.log('didRetrieveGuideRecord successful');
+      console.log('didRetrieveActivityRecord successful');
       store.dataSourceDidComplete(storeKey, response);
     }
     else {

@@ -14,7 +14,7 @@ Smartgraphs.Trigger.FIXTURES = [
     name:
       'stepBeginning',
     description:
-      'This is the list of commands that run when the guide step begins.',
+      'This is the list of commands that run when the activity step begins.',
     args:
       {}
   },
@@ -36,7 +36,7 @@ Smartgraphs.Trigger.FIXTURES = [
     name:
       'stepFinished',
     description:
-      'This is the list of commands that run when the guide step finishes.',
+      'This is the list of commands that run when the activity step finishes.',
     args:
       {}
   }

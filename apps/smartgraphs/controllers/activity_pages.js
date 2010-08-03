@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.guidePagesController
+// Project:   Smartgraphs.activityPagesController
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -11,10 +11,10 @@
 
   @extends SC.ArrayController
 */
-Smartgraphs.guidePagesController = SC.ArrayController.create(
-/** @scope Smartgraphs.guidePagesController.prototype */ {
+Smartgraphs.activityPagesController = SC.ArrayController.create(
+/** @scope Smartgraphs.activityPagesController.prototype */ {
 
-  contentBinding: 'Smartgraphs.guideController.pages',
+  contentBinding: 'Smartgraphs.activityController.pages',
   allowsMultipleSelection: NO,
   
   indexOfSelectedPage : function () {

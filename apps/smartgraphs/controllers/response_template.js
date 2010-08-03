@@ -14,7 +14,7 @@
 Smartgraphs.responseTemplateController = SC.ObjectController.create(
 /** @scope Smartgraphs.responseTemplate.prototype */ {
 
-  contentBinding: 'Smartgraphs.guideStepController.responseTemplate',
+  contentBinding: 'Smartgraphs.activityStepController.responseTemplate',
   
   contentDidChange: function () {
     this.invokeOnce(this._initializeValues);

@@ -46,7 +46,7 @@ Smartgraphs.SENSOR = SC.Responder.create(
     Smartgraphs.selectedPointsController.addSensorPoint(args.x, args.y);
   },
   
-  // NOTE normally you end sensor input by virtue of finishing the guide step, thus change firstResponder
+  // NOTE normally you end sensor input by virtue of finishing the activity step, thus change firstResponder
   endSensorInput: function (context, args) {
     this.resignFirstResponder();
   }

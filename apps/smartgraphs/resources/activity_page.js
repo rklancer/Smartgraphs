@@ -1,24 +1,24 @@
 // ==========================================================================
-// Project:   Smartgraphs.guidePage
+// Project:   Smartgraphs.activityPage
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
-// This is a place to hold the guideView until it's appended to the document (which happens automatically when we
-// enter the GUIDE_START state.
+// This is a place to hold the activityView until it's appended to the document (which happens automatically when we
+// enter the ACTIVITY_START state.
 
-Smartgraphs.guidePage = SC.Page.design({
+Smartgraphs.activityPage = SC.Page.design({
 
-  guideView: SC.View.design({
+  activityView: SC.View.design({
     childViews: 'instructionsWrapper dataWrapper'.w(),
     
-    loadingMessage: 'Loading Guide...',
+    loadingMessage: 'Loading Activity...',
     
     // ..........................................................
     // LEFT PANE
     //
-    // the left pane shows the guide page intro and the instructions for the currently selected guide step
+    // the left pane shows the activity page intro and the instructions for the currently selected activity step
     
     instructionsWrapper: SC.View.design({
       layout: { left: 0, width: 0.5 },       // need to specify 0.5 rather than '50%'
@@ -40,28 +40,28 @@ Smartgraphs.guidePage = SC.Page.design({
 
           classNames: 'text-wrapper'.w(),
 
-          childViews: 'introText guideStepWrapper'.w(),
+          childViews: 'introText activityStepWrapper'.w(),
 
           introText: SC.StaticContentView.design({
-            contentBinding: SC.Binding.oneWay('Smartgraphs.guidePageController.introText'),
-            isVisibleBinding: SC.Binding.bool('Smartgraphs.guidePageController.introText')
+            contentBinding: SC.Binding.oneWay('Smartgraphs.activityPageController.introText'),
+            isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText')
           }),
           
-          guideStepWrapper: SC.View.design({
+          activityStepWrapper: SC.View.design({
             useStaticLayout: YES,
             hasStaticLayout: YES,
             
-            childViews: 'guideStepDialog buttonsView'.w(),
+            childViews: 'activityStepDialog buttonsView'.w(),
             
-            guideStepDialog: SC.View.design({          
+            activityStepDialog: SC.View.design({          
               useStaticLayout: YES,
               hasStaticLayout: YES,    
               childViews: 'beforeText responseTemplate afterText'.w(),
               classNames: 'dialog-text'.w(),
 
               beforeText: SC.StaticContentView.design({
-                contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.beforeText'),
-                isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.beforeText')
+                contentBinding: SC.Binding.oneWay('Smartgraphs.activityStepController.beforeText'),
+                isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.beforeText')
               }),
               
               responseTemplate: Smartgraphs.ResponseTemplateView.design({
@@ -72,8 +72,8 @@ Smartgraphs.guidePage = SC.Page.design({
               }),
               
               afterText: SC.StaticContentView.design({
-                contentBinding: SC.Binding.oneWay('Smartgraphs.guideStepController.afterText'),
-                isVisibleBinding: SC.Binding.bool('Smartgraphs.guideStepController.afterText')
+                contentBinding: SC.Binding.oneWay('Smartgraphs.activityStepController.afterText'),
+                isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.afterText')
               })
             }),
           
@@ -92,10 +92,10 @@ Smartgraphs.guidePage = SC.Page.design({
                   width: 160,
                   right: 0
                 },
-                titleBinding: 'Smartgraphs.guideStepController.submitButtonTitle',
-                isVisibleBinding: 'Smartgraphs.guideStepController.submitButtonShouldBeVisible',
-                isEnabledBinding: 'Smartgraphs.guideStepController.submitButtonShouldBeEnabled',
-                action: 'finishGuideStep'
+                titleBinding: 'Smartgraphs.activityStepController.submitButtonTitle',
+                isVisibleBinding: 'Smartgraphs.activityStepController.submitButtonShouldBeVisible',
+                isEnabledBinding: 'Smartgraphs.activityStepController.submitButtonShouldBeEnabled',
+                action: 'finishActivityStep'
               })
             })
           })
@@ -109,7 +109,7 @@ Smartgraphs.guidePage = SC.Page.design({
             width: 80
           },
           title: "Next >>",
-          action: 'openNextGuidePage',
+          action: 'openNextActivityPage',
           isEnabledBinding: 'Smartgraphs.pageNavController.nextShouldBeEnabled',
           isVisibleBinding: 'Smartgraphs.pageNavController.nextShouldBeVisible'
         })//,
@@ -124,9 +124,9 @@ Smartgraphs.guidePage = SC.Page.design({
         //     width: 80
         //   },
         //   title: "<< Back",
-        //   action: 'openPreviousGuidePage',
-        //   isEnabledBinding: SC.Binding.oneWay('Smartgraphs.guidePagesController.canSelectPreviousPage'),
-        //   isVisibleBinding: SC.Binding.not('Smartgraphs.guidePagesController.isFirstPage').oneWay()
+        //   action: 'openPreviousActivityPage',
+        //   isEnabledBinding: SC.Binding.oneWay('Smartgraphs.activityPagesController.canSelectPreviousPage'),
+        //   isVisibleBinding: SC.Binding.not('Smartgraphs.activityPagesController.isFirstPage').oneWay()
         // })
       })
     }),
@@ -143,14 +143,14 @@ Smartgraphs.guidePage = SC.Page.design({
       
       dataView: SC.ContainerView.design({
         layout: { left: 5 },
-        nowShowingBinding: 'Smartgraphs.guideViewController.dataViewNowShowing'
+        nowShowingBinding: 'Smartgraphs.activityViewController.dataViewNowShowing'
       })
     })
   }),
   
   singlePaneDataView: SC.ContainerView.design({
     classNames: 'smartgraph-pane',
-    nowShowingBinding: 'Smartgraphs.guideViewController.firstPaneNowShowing'
+    nowShowingBinding: 'Smartgraphs.activityViewController.firstPaneNowShowing'
   }),
   
   splitPaneDataView: SC.View.design({
@@ -163,7 +163,7 @@ Smartgraphs.guidePage = SC.Page.design({
       topPane: SC.ContainerView.design({
         layout: { bottom: 5 },
         classNames: 'smartgraph-pane',
-        nowShowingBinding: 'Smartgraphs.guideViewController.firstPaneNowShowing'
+        nowShowingBinding: 'Smartgraphs.activityViewController.firstPaneNowShowing'
       })
     }),
 
@@ -174,7 +174,7 @@ Smartgraphs.guidePage = SC.Page.design({
       bottomPane: SC.ContainerView.design({
         layout: { top: 5 },
         classNames: 'smartgraph-pane',//TEMP
-        nowShowingBinding: 'Smartgraphs.guideViewController.secondPaneNowShowing'
+        nowShowingBinding: 'Smartgraphs.activityViewController.secondPaneNowShowing'
       })
     })
   }),
@@ -182,7 +182,7 @@ Smartgraphs.guidePage = SC.Page.design({
   firstImageView: SC.ImageView.design({
     useStaticLayout: YES,
     hasStaticLayout: YES,
-    valueBinding: 'Smartgraphs.guideViewController.firstImageValue',
+    valueBinding: 'Smartgraphs.activityViewController.firstImageValue',
     
     // This is a hack.  At the moment SC.View.layoutStyle doesn't know how to set width or height to '100%',
     // which is required for an image to resize automatically (left:0, right:0 does not do the trick.)
@@ -197,7 +197,7 @@ Smartgraphs.guidePage = SC.Page.design({
   secondImageView: SC.ImageView.design({
     useStaticLayout: YES,
     hasStaticLayout: YES,    
-    valueBinding: 'Smartgraphs.guideViewController.secondImageValue',
+    valueBinding: 'Smartgraphs.activityViewController.secondImageValue',
 
     // same hack described in firstImageView:
     viewDidResize: function () {
@@ -220,7 +220,7 @@ Smartgraphs.guidePage = SC.Page.design({
   
   secondTableView: Smartgraphs.TableView.design({}),
   
-  errorLoadingGuideView: SC.View.design({
+  errorLoadingActivityView: SC.View.design({
     classNames: 'smartgraph-pane',
     childViews: 'errorMessage'.w(),
     
@@ -228,7 +228,7 @@ Smartgraphs.guidePage = SC.Page.design({
       layout: { height: 32, width: 500, centerX: 0, centerY: 0 },
       classNames: 'error',
       textAlign: SC.ALIGN_CENTER,
-      value: 'There was an error loading that Guide.'
+      value: 'There was an error loading that Activity.'
     })
   })
   

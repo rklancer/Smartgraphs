@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.guideStepController
+// Project:   Smartgraphs.activityStepController
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -12,26 +12,26 @@
   @extends SC.Object
 */
 
-Smartgraphs.guideStepController = SC.ObjectController.create(
-/** @scope Smartgraphs.guideStepController.prototype */ {
+Smartgraphs.activityStepController = SC.ObjectController.create(
+/** @scope Smartgraphs.activityStepController.prototype */ {
 
-  contentBinding: 'Smartgraphs.guidePageController.currentStep',
+  contentBinding: 'Smartgraphs.activityPageController.currentStep',
 
   registeredTriggers: [],
   
   /**
-    Initializes the GuideStep. Called when we enter GUIDE_STEP_START state.
+    Initializes the ActivityStep. Called when we enter ACTIVITY_STEP_START state.
   */
   begin: function () {
     this.registerTriggerResponses();
-    Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'stepBeginning' });
+    Smartgraphs.sendAction('fireActivityEvent', this, { eventName: 'stepBeginning' });
   },
   
   /**
-    Cleans up the GuideStep. Called when we enter GUIDE_STEP_DONE state.
+    Cleans up the ActivityStep. Called when we enter ACTIVITY_STEP_DONE state.
   */
   finish: function () {
-    Smartgraphs.sendAction('fireGuideEvent', this, {eventName: 'stepFinished'});
+    Smartgraphs.sendAction('fireActivityEvent', this, {eventName: 'stepFinished'});
     this.unregisterOldTriggers();
   },
   
@@ -91,10 +91,10 @@ Smartgraphs.guideStepController = SC.ObjectController.create(
     }
   },
   
-  // return they context variable's value from the guideStep, guidePage, or guide context
+  // return they context variable's value from the activityStep, activityPage, or activity context
   lookup: function (key) {
     var context = this.get('context');
-    return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.guidePageController.lookup(key));
+    return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.activityPageController.lookup(key));
   },
   
   submitButtonShouldBeEnabled: NO

@@ -24,10 +24,10 @@ Smartgraphs.main = function main() {
   // make the mainPane visible on screen.
   Smartgraphs.getPath('mainPage.mainPane').append() ;
 
-  // We're letting SC.route handle navigating to a particular Guide. It needs a runloop to sync up, so 
+  // We're letting SC.route handle navigating to a particular Activity. It needs a runloop to sync up, so 
   // just reach in and set default window.location.hash for now.
   if (!window.location.hash) {
-    window.location.hash = '/backend/guide/1/motion-without-words/';      // default activity for now
+    window.location.hash = '/backend/activity/1/motion-without-words/';      // default activity for now
   }
   
   // ... then the START state will kick things off

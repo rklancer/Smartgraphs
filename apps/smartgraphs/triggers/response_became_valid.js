@@ -37,7 +37,7 @@ Smartgraphs.triggers.responseBecameValid = Smartgraphs.TriggerObserver.create({
       this.eventWasObserved();
     }
     else if (this._valueWasValid && !valueIsValid) {
-      Smartgraphs.sendAction('fireGuideEvent', this, { eventName: 'responseBecameInvalid' });
+      Smartgraphs.sendAction('fireActivityEvent', this, { eventName: 'responseBecameInvalid' });
     }
 
     console.groupEnd();

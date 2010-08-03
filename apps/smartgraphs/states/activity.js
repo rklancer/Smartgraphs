@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.GUIDE
+// Project:   Smartgraphs.ACTIVITY
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -7,10 +7,10 @@
 
 /** @class
 
-  Superstate representing that the application is running a Guide.
+  Superstate representing that the application is running a Activity.
   
-  Substates are GUIDE_START, GUIDE_STEP_START, GUIDE_STEP_WAITING, GUIDE_STEP_SUBMIT, GUIDE_PAGE_FINISHED, 
-  GUIDE_FINISHED, (and SENSOR and PREDICTING?)
+  Substates are ACTIVITY_START, ACTIVITY_STEP_START, ACTIVITY_STEP_WAITING, ACTIVITY_STEP_SUBMIT, ACTIVITY_PAGE_FINISHED, 
+  ACTIVITY_FINISHED, (and SENSOR and PREDICTING?)
 
   @extends SC.Responder
   @version 0.1
@@ -18,14 +18,14 @@
 
 sc_require('states/ready');
 
-Smartgraphs.GUIDE = SC.Responder.create(
-/** @scope Smartgraphs.GUIDE_START.prototype */ {
+Smartgraphs.ACTIVITY = SC.Responder.create(
+/** @scope Smartgraphs.ACTIVITY_START.prototype */ {
   
-  nextResponder: Smartgraphs.READY,       // the default; if some other app state implements the openGuide action in 
+  nextResponder: Smartgraphs.READY,       // the default; if some other app state implements the openActivity action in 
                                           // some way, presumably that state should set itself as our nextResponder
   
   didBecomeFirstResponder: function() {
-    Smartgraphs.appWindowController.showGuideView();
+    Smartgraphs.appWindowController.showActivityView();
   },
   
   willLoseFirstResponder: function() {
@@ -36,9 +36,9 @@ Smartgraphs.GUIDE = SC.Responder.create(
   //
   
   /**
-    Triggers args.eventName, which results in the corresponding triggerResponse's commands being executed by the Guide
+    Triggers args.eventName, which results in the corresponding triggerResponse's commands being executed by the Activity
   */
-  fireGuideEvent: function (context, args) {
+  fireActivityEvent: function (context, args) {
     if (args.eventName) {
       var trigger = Smartgraphs.triggers[args.eventName];
       if (trigger) trigger.eventWasObserved();
@@ -47,7 +47,7 @@ Smartgraphs.GUIDE = SC.Responder.create(
   },
   
   // ..........................................................
-  // actions for Guide step commands
+  // actions for Activity step commands
   //
   
   // helpers
@@ -57,31 +57,31 @@ Smartgraphs.GUIDE = SC.Responder.create(
   },
   
   _graphViewFor: function (pane) {
-    if (pane === 'first') return Smartgraphs.getPath('guidePage.firstGraphView');
-    if (pane === 'second') return Smartgraphs.getPath('guidePage.firstGraphView');
+    if (pane === 'first') return Smartgraphs.getPath('activityPage.firstGraphView');
+    if (pane === 'second') return Smartgraphs.getPath('activityPage.firstGraphView');
   },
   
-  // TODO: many of these actions could migrate to a superstate like "GUIDE_WORKING" or something; no
-  // need for them to be available when navigating guide pages, or the like.
+  // TODO: many of these actions could migrate to a superstate like "ACTIVITY_WORKING" or something; no
+  // need for them to be available when navigating activity pages, or the like.
   showSinglePane: function () {
-    return Smartgraphs.guideViewController.showSinglePane();
+    return Smartgraphs.activityViewController.showSinglePane();
   },
   
   showSplitPane: function () {
-    return Smartgraphs.guideViewController.showSplitPane();
+    return Smartgraphs.activityViewController.showSplitPane();
   },
   
   showImage: function (context, args) {
-    return Smartgraphs.guideViewController.showImage(args.pane, args.path);
+    return Smartgraphs.activityViewController.showImage(args.pane, args.path);
   },
   
   showGraph: function (context, args) {
-    Smartgraphs.guideViewController.showGraph(args.pane, args.graphId);
+    Smartgraphs.activityViewController.showGraph(args.pane, args.graphId);
     return YES;
   },
   
   hidePane: function (context, args) {
-    Smartgraphs.guideViewController.hidePane(args.pane);
+    Smartgraphs.activityViewController.hidePane(args.pane);
     return YES;
   },
   

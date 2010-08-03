@@ -8,7 +8,7 @@
 /** @class
 
   Specifies a string interspersed with text fields or other input types, to be displayed in a 'form-like' manner
-  in a given GuideStep.
+  in a given ActivityStep.
   
   This allows learners or authors to respond to questions.
 

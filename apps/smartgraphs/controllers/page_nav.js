@@ -21,6 +21,6 @@ Smartgraphs.pageNavController = SC.ArrayController.create(
   visitableIndices: null,
   
   // for now...
-  nextShouldBeEnabledBinding: 'Smartgraphs.guideController.canOpenNextPage'
+  nextShouldBeEnabledBinding: 'Smartgraphs.activityController.canOpenNextPage'
   
 }) ;

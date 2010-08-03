@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.guideController
+// Project:   Smartgraphs.activityController
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -7,15 +7,14 @@
 
 /** @class
 
-  The Guide controller represents the currently open Guide.
+  The Activity controller represents the currently open Activity.
 
   @extends SC.Object
 */
-
-Smartgraphs.guideController = SC.ObjectController.create(
-/** @scope Smartgraphs.guideController.prototype */ {
+Smartgraphs.activityController = SC.ObjectController.create(
+/** @scope Smartgraphs.activityController.prototype */ {
   
-  // return the context variable's value from the guide context
+  // return the context variable's value from the activity context
   lookup: function (key) {
     var context = this.get('context');
     return (context.hasOwnProperty(key) ? context[key] : undefined);
@@ -24,10 +23,10 @@ Smartgraphs.guideController = SC.ObjectController.create(
   // let buttons know.
   canOpenNextPage: NO,
   
-  // the corresponding action that calls this should only be available in GUIDE_PAGE_DONE state
+  // the corresponding action that calls this should only be available in ACTIVITY_PAGE_DONE state
   openNextPage: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.GUIDE_PAGE_START);
-    Smartgraphs.guidePagesController.selectNextPage();
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);
+    Smartgraphs.activityPagesController.selectNextPage();
   }
     
 }) ;

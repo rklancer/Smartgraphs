@@ -88,11 +88,11 @@ Smartgraphs.Command.FIXTURES = [
   { url: 
       '/backend/command/6/finish-step/',
     name: 
-      'finishGuideStep',
+      'finishActivityStep',
     description:
-      'Finishes this Guide step.',
+      'Finishes this Activity step.',
     actionName:
-      'finishGuideStep',
+      'finishActivityStep',
     literalArgs: 
       {},
     substitutedArgs:
@@ -118,11 +118,11 @@ Smartgraphs.Command.FIXTURES = [
   { url: 
       '/backend/command/8/goto-step/',
     name: 
-      'openGuideStep',
+      'openActivityStep',
     description:
-      'Open a new guide step.',
+      'Open a new activity step.',
     actionName:
-      'openGuideStep',
+      'openActivityStep',
     literalArgs: 
       {},
     substitutedArgs:

@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.guideStepController Unit Test
+// Project:   Smartgraphs.activityPagesController Unit Test
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.guideStepController");
+module("Smartgraphs.activityPagesController");
 
-// TODO: Replace with real unit test for Smartgraphs.guideStepController
+// TODO: Replace with real unit test for Smartgraphs.activityPagesController
 test("test description", function() {
   var expected = "test";
   var result   = "test";

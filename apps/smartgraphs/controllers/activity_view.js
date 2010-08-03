@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.guideViewController
+// Project:   Smartgraphs.activityViewController
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -11,8 +11,8 @@
 
   @extends SC.Object
 */
-Smartgraphs.guideViewController = SC.ObjectController.create(
-/** @scope Smartgraphs.guideViewController.prototype */ {
+Smartgraphs.activityViewController = SC.ObjectController.create(
+/** @scope Smartgraphs.activityViewController.prototype */ {
 
   dataViewNowShowing: null,
   firstPaneNowShowing: null,
@@ -21,23 +21,23 @@ Smartgraphs.guideViewController = SC.ObjectController.create(
   secondImageValue: null,
   
   showSinglePane: function () {
-    this.set('dataViewNowShowing', 'Smartgraphs.guidePage.singlePaneDataView');
+    this.set('dataViewNowShowing', 'Smartgraphs.activityPage.singlePaneDataView');
   },
   
   showSplitPane: function () {
-    this.set('dataViewNowShowing', 'Smartgraphs.guidePage.splitPaneDataView');    
+    this.set('dataViewNowShowing', 'Smartgraphs.activityPage.splitPaneDataView');    
   },
   
   showImage: function (pane, path) {
     if (pane === 'first') {
       this.set('firstImageValue', path);
-      this.set('firstPaneNowShowing', 'Smartgraphs.guidePage.firstImageView');
+      this.set('firstPaneNowShowing', 'Smartgraphs.activityPage.firstImageView');
       return YES;
     }
     
     if (pane === 'second') {
       this.set('secondImageValue', path);
-      this.set('secondPaneNowShowing', 'Smartgraphs.guidePage.secondImageView');
+      this.set('secondPaneNowShowing', 'Smartgraphs.activityPage.secondImageView');
       return YES;
     }
     
@@ -47,13 +47,13 @@ Smartgraphs.guideViewController = SC.ObjectController.create(
   showGraph: function (pane, graphId) {
     if (pane === 'first') {
       Smartgraphs.firstGraphController.openGraph(graphId);
-      this.set('firstPaneNowShowing', 'Smartgraphs.guidePage.firstGraphView');
+      this.set('firstPaneNowShowing', 'Smartgraphs.activityPage.firstGraphView');
       return YES;
     }
     
     if (pane === 'second') {
       Smartgraphs.secondGraphController.openGraph(graphId);      
-      this.set('secondPaneNowShowing', 'Smartgraphs.guidePage.secondGraphView');
+      this.set('secondPaneNowShowing', 'Smartgraphs.activityPage.secondGraphView');
       return YES;
     }
     

@@ -17,19 +17,19 @@ Smartgraphs.appWindowController = SC.ObjectController.create(
   nowShowing: null,
   loadingMessage: null,
   
-  showGuideView: function () {
-    this.set('nowShowing', 'Smartgraphs.guidePage.guideView');
+  showActivityView: function () {
+    this.set('nowShowing', 'Smartgraphs.activityPage.activityView');
   },
   
-  showGuideLoadingView: function () {
-    // show the generic loading view, with a custom message for guide loading
+  showActivityLoadingView: function () {
+    // show the generic loading view, with a custom message for activity loading
     this.set('nowShowing', 'Smartgraphs.mainPage.loadingView');
-    this.set('loadingMessage', Smartgraphs.guidePage.getPath('guideView.loadingMessage'));
+    this.set('loadingMessage', Smartgraphs.activityPage.getPath('activityView.loadingMessage'));
   },
   
-  showGuideLoadingErrorView: function () {
-    // show the particular error view associated with a guide-loading error
-    this.set('nowShowing', 'Smartgraphs.guidePage.errorLoadingGuideView');
+  showActivityLoadingErrorView: function () {
+    // show the particular error view associated with a activity-loading error
+    this.set('nowShowing', 'Smartgraphs.activityPage.errorLoadingActivityView');
   }
 
 }) ;

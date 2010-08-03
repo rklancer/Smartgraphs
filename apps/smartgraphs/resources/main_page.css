@@ -50,7 +50,7 @@ body.sc-theme {
   font-style: bold;
 }
 
-/* guide view loading error */
+/* activity view loading error */
 .sc-theme .sc-label-view.error {
   color: #333333;
   font-size: 24px;

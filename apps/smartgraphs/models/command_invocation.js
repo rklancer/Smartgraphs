@@ -20,7 +20,7 @@ Smartgraphs.CommandInvocation = SC.Record.extend(
   
   /** 
     The Command to execute. Commands are general and reusable; this CommandInvocation represents a particular
-    invocation of a command, with particular arguments, in a particular GuideStep or Button
+    invocation of a command, with particular arguments, in a particular ActivityStep or Button
   */
   command: SC.Record.toOne('Smartgraphs.Command'),
   
@@ -30,7 +30,7 @@ Smartgraphs.CommandInvocation = SC.Record.extend(
   triggerResponse: SC.Record.toOne('Smartgraphs.TriggerResponse', { inverse: 'commands' }),
   
   /**
-    The order of this invocation, relative to the other CommandInvocations with the same 'owner' Button or GuideStep
+    The order of this invocation, relative to the other CommandInvocations with the same 'owner' Button or ActivityStep
   */
   index: SC.Record.attr(Number),
 

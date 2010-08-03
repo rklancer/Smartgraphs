@@ -7,7 +7,7 @@
 
 /** @class
 
-  In this state, (possibly) let learners select which activity they go to and whether they go to a guide, lab book, or
+  In this state, (possibly) let learners select which activity they go to and whether they go to a activity, lab book, or
   answer sheet for that activity (or something else?)
 
   @extends SC.Responder

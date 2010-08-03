@@ -1,19 +1,19 @@
 // ==========================================================================
-// Project:   Smartgraphs.GuidePage Fixtures
+// Project:   Smartgraphs.ActivityPage Fixtures
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // @author    Dewi Win <dwin@concord.org> (activity text)
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/guide_page');
+sc_require('models/activity_page');
 
-Smartgraphs.GuidePage.FIXTURES = [
+Smartgraphs.ActivityPage.FIXTURES = [
 
   { url: 
-      '/backend/guide/1/page/1/',
-    guide:
-      '/backend/guide/1/motion-without-words/',
+      '/backend/activity/1/page/1/',
+    activity:
+      '/backend/activity/1/motion-without-words/',
     name: 
       'Introductory Page',
     index: 
@@ -24,17 +24,17 @@ Smartgraphs.GuidePage.FIXTURES = [
       'will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will '+
       'learn conventional methods of motion storytelling and analysis.</p>',
     steps: [
-      '/backend/guide/1/page/1/step/1/'
+      '/backend/activity/1/page/1/step/1/'
     ],
     firstStep:
-      '/backend/guide/1/page/1/step/1/'
+      '/backend/activity/1/page/1/step/1/'
   },
   
   
   { url: 
-      '/backend/guide/1/page/2/',
-    guide:
-      '/backend/guide/1/motion-without-words/',
+      '/backend/activity/1/page/2/',
+    activity:
+      '/backend/activity/1/motion-without-words/',
     name: 
       'Second Page',
     index: 
@@ -45,18 +45,18 @@ Smartgraphs.GuidePage.FIXTURES = [
       '</p>'+
       '<img src="'+sc_static('resources/numberline.png')+'">',
     steps: [
-      '/backend/guide/1/page/2/step/1/', 
-      '/backend/guide/1/page/2/step/2/'
+      '/backend/activity/1/page/2/step/1/', 
+      '/backend/activity/1/page/2/step/2/'
     ],
     firstStep:
-      '/backend/guide/1/page/2/step/1/'
+      '/backend/activity/1/page/2/step/1/'
   },
   
   
   { url: 
-      '/backend/guide/1/page/3/',
-    guide:
-      '/backend/guide/1/motion-without-words/',
+      '/backend/activity/1/page/3/',
+    activity:
+      '/backend/activity/1/motion-without-words/',
     name: 
       'Third Page',
     index: 
@@ -65,11 +65,11 @@ Smartgraphs.GuidePage.FIXTURES = [
       '<p>Let’s practice collecting data with the motion sensor so you can see whether your sketches were '+
       'accurate. You will walk on a 5-meter walking path like the one described earlier.</p>',
     steps: [
-      '/backend/guide/1/page/3/step/1/', 
-      '/backend/guide/1/page/3/step/2/'
+      '/backend/activity/1/page/3/step/1/', 
+      '/backend/activity/1/page/3/step/2/'
     ],
     firstStep:
-      '/backend/guide/1/page/3/step/1/'
+      '/backend/activity/1/page/3/step/1/'
   }
 
 ];
