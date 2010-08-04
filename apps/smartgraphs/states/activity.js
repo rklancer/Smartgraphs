@@ -26,7 +26,6 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   
   didBecomeFirstResponder: function() {
     Smartgraphs.appWindowController.showActivityView();
-    Smartgraphs.sessionController.newSession();
   },
   
   willLoseFirstResponder: function() {
