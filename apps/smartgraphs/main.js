@@ -7,6 +7,11 @@
 
 Smartgraphs.main = function main() {
   
+  // Queries.
+  Smartgraphs.ALL_COMMANDS_QUERY = SC.Query.local(Smartgraphs.Command);
+  Smartgraphs.ALL_TRIGGERS_QUERY = SC.Query.local(Smartgraphs.Trigger);
+  
+  
   // cascade the Rails data source in front of the fixtures data source until everything is transferred to Rails
   Smartgraphs.dataSource = SC.CascadeDataSource.create({
     dataSources: "rails fixtures".w(),
