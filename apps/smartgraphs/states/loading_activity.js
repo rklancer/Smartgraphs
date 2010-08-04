@@ -22,7 +22,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   idBeingLoaded: null,
   activityStatusBinding: 'Smartgraphs.activityController*content.status', 
 
-  didBecomeFirstResponder: function() {    
+  didBecomeFirstResponder: function() {
     // let activityController content sync (in case it is ever updated via a binding) and let activityStatusBinding sync
     SC.RunLoop.end();
     SC.RunLoop.begin();

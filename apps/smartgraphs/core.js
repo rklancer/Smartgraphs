@@ -19,9 +19,16 @@ Smartgraphs = SC.Application.create(
   
   // Add global constants or singleton objects here
   triggers: [],
+
+  _nextGuid: 1,
+  getNextGuid: function () {
+    return this._nextGuid++;
+  },
+  
+  // queries.
+  ALL_ACTIVITIES_QUERY: null,
   
   // DEBUG SETTING: traces firstResponder changes and app actions
-  trace: YES,
-
-  nextGuid: 1
+  trace: YES
+  
 }) ;

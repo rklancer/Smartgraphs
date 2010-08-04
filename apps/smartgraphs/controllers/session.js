@@ -17,7 +17,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   newSession: function () {
     var session = Smartgraphs.store.createRecord(Smartgraphs.Session, { steps: [] });
     session.set('user', Smartgraphs.userController.get('content'));
-    session.set('id', Smartgraphs.nextGuid++);
+    session.set('id', Smartgraphs.getNextGuid());
     this.set('content', session);
     Smartgraphs.store.commitRecords();
   },
@@ -29,7 +29,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
       points: []
     });
     newSeries.set('session', this.get('content'));
-    newSeries.set('id', Smartgraphs.nextGuid++);
+    newSeries.set('id', Smartgraphs.getNextGuid());
     Smartgraphs.store.commitRecords();
     
     return newSeries;
@@ -65,7 +65,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     for (var i = 0, ii = examplePoints.get('length'); i < ii; i++) {
       point = examplePoints[i];
       newPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: point.get('x'), y: point.get('y') });
-      newPoint.set('id', Smartgraphs.nextGuid++);
+      newPoint.set('id', Smartgraphs.getNextGuid());
       newPoint.set('series', targetSeries);
     }
     Smartgraphs.store.commitRecords();
