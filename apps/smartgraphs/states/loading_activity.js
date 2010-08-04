@@ -53,7 +53,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
       return YES;    // load completed
     }
     else if (activityStatus === SC.Record.ERROR) {
-      Smartgraphs.sendAction('handleactivityLoadError');
+      Smartgraphs.sendAction('handleActivityLoadError');
       return YES;   // load completed
     }
     return NO;      // load has NOT completed yet
@@ -86,7 +86,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   },
   
   
-  handleactivityLoadError: function () {
+  handleActivityLoadError: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
   }
   
