@@ -19,11 +19,9 @@ Smartgraphs.ACTIVITY_STEP_DONE = SC.Responder.create(
   nextResponder: Smartgraphs.ACTIVITY,
   
   didBecomeFirstResponder: function() {
-    Smartgraphs.activityStepController.finish();
-    
-    if (Smartgraphs.activityStepController.get('isLastStep')) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_DONE);
-    }
+    var isLastStep = Smartgraphs.activityStepController.get('isLastStep');
+    Smartgraphs.activityStepController.finish();    // finish() may change activityStepController's content
+    if (isLastStep) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_DONE);
   },
   
   // ..........................................................
@@ -32,8 +30,8 @@ Smartgraphs.ACTIVITY_STEP_DONE = SC.Responder.create(
   
   openActivityStep: function (context, args) {
     var step = Smartgraphs.store.find(Smartgraphs.ActivityStep, args.stepId);
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_START);
     Smartgraphs.activityPageController.set('currentStep', step);
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_START);    
     return YES;
   }
   

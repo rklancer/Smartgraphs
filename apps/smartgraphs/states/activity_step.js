@@ -23,7 +23,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   didBecomeFirstResponder: function() {
     // enable progress unless we go to ACTIVITY_STEP_WAITING state
     Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', YES);
-    Smartgraphs.activityStepController.begin();
+    Smartgraphs.activityStepController.invokeLater(Smartgraphs.activityStepController.begin);
   },
   
   // action helpers
