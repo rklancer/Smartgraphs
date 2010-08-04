@@ -34,6 +34,7 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   */
   fireActivityEvent: function (context, args) {
     if (args.eventName) {
+      console.log('Firing Activity Event %s', args.eventName);
       var trigger = Smartgraphs.triggers[args.eventName];
       if (trigger) trigger.eventWasObserved();
     }

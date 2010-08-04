@@ -22,11 +22,7 @@ Smartgraphs.ACTIVITY_START = SC.Responder.create(
     Smartgraphs.sessionController.newSession();
 
     var pages = Smartgraphs.activityController.get('pages');
-    console.log('pages.length: ', pages.get('length'));
-    console.log('activityPagesController.length: ', Smartgraphs.activityPagesController.get('length'));
-    
     Smartgraphs.activityPagesController.set('content', pages);
-    console.log('activityPagesController.length (after): ', Smartgraphs.activityPagesController.get('length'));
 
     if (pages.get('length') > 0) {
       Smartgraphs.activityPagesController.selectFirstPage();
