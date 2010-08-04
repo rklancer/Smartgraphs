@@ -23,5 +23,5 @@ Smartgraphs = SC.Application.create(
   // DEBUG SETTING: traces firstResponder changes and app actions
   trace: YES,
 
-  nextGuid: 0
+  nextGuid: 1
 }) ;
