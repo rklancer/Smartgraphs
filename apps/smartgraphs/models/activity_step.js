@@ -32,7 +32,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   /** 
     The ActivityPage this ActivityStep is a part of.
   */
-  activityPage: SC.Record.toOne('Smartgraphs.ActivityPage', { inverse: 'steps' }),
+  activityPage: SC.Record.toOne('Smartgraphs.ActivityPage', { inverse: 'steps', isMaster: YES }),
   
   // /** 
   //   The list of commands (and their arguments) to be run when this ActivityStep is loaded.
@@ -52,11 +52,6 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   responseTemplate: SC.Record.toOne('Smartgraphs.ResponseTemplate'),
   
-  /** 
-    The list of Buttons to be shown on this page.
-  */  
-  buttons: SC.Record.toMany('Smartgraphs.Button', { inverse: 'step' }),
-  
   /**
     Text to display *after* the response template
   */
@@ -67,6 +62,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   triggerResponses: SC.Record.toMany('Smartgraphs.TriggerResponse', { inverse: 'step' }),
   
+  // TODO this needs to migrate to session
   /**
     @private
     variables local to this ActivityStep. This would include the values from the responseTemplate. These can be

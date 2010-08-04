@@ -21,5 +21,3 @@ Smartgraphs.DataPoint.FIXTURES = [
   // {x: 10, y: 5,   guid: 10, series: '/backend/series/3/sensor/'}
 
 ];
-
-Smartgraphs.DataPoint.nextGuid = 11;

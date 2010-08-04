@@ -22,7 +22,7 @@ Smartgraphs.ActivityPage = SC.Record.extend(
   /**
     The Activity this ActivityPage belongs to.
   */
-  activity: SC.Record.toOne('Smartgraphs.Activity',  { inverse: 'pages' }),
+  activity: SC.Record.toOne('Smartgraphs.Activity',  { inverse: 'pages', isMaster: YES }),
 
   /**
     A name for this ActivityPage; to be exposed to authors and, possibly, to learners as the heading of the page.
@@ -51,6 +51,7 @@ Smartgraphs.ActivityPage = SC.Record.extend(
   */
   firstStep: SC.Record.toOne('Smartgraphs.ActivityStep'),
   
+  // TODO!! This needs to migrate to session
   /**
     @private
     The ActivityPage context (variables). This would include things like responses that were deemed acceptable at the end

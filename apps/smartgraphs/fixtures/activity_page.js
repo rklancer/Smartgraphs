@@ -87,6 +87,23 @@ Smartgraphs.ActivityPage.FIXTURES = [
     ],
     firstStep:
       '/backend/activity/1/page/4/step/1/'
+  },
+  
+  { url: 
+      '/backend/activity/2/page/1/',
+    activity:
+      '/backend/activity/2/second-activity/',
+    name: 
+      'First Page',
+    index: 
+      1,
+    introText:
+      '<h1>This is a second activity</h1>',
+    steps: [
+      '/backend/activity/2/page/1/step/1/'
+    ],
+    firstStep:
+      '/backend/activity/2/page/1/step/1/'
   }
 
 ];

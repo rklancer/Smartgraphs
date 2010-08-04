@@ -27,6 +27,7 @@ Smartgraphs.SENSOR = SC.Responder.create(
   
   willLoseFirstResponder: function() {
     Smartgraphs.appletPage.get('appletPane').remove();
+    Smartgraphs.selectedSeriesController.set('content', null);
   },
   
   // This state is intended to be 'pushed'. resignFirstResponder to get the old firstResponder back

@@ -26,6 +26,7 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   
   didBecomeFirstResponder: function() {
     Smartgraphs.appWindowController.showActivityView();
+    Smartgraphs.sessionController.newSession();
   },
   
   willLoseFirstResponder: function() {
@@ -85,23 +86,36 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     return YES;
   },
   
-  
   setAxes: function (context, args) {
     var controller = this._graphControllerFor(args.pane);
     controller.setAxes(args.axesId);
     return YES;
   },
   
-  // TODO rename to addSeriesToGraph
-  addSeries: function (context, args) {
+  displaySeriesOnGraph: function (context, args) {
+    var controller = this._graphControllerFor(args.pane);    
+    controller.addSeriesByName(args.seriesName);
+    return YES;
+  },
+  
+  copyExampleSeriesToGraph: function (context, args) {
     var controller = this._graphControllerFor(args.pane);
-    controller.addSeries(args.seriesId);
+    var series = Smartgraphs.sessionController.createSeries(args.seriesName);
+    Smartgraphs.sessionController.copyExampleSeries(args.exampleSeriesName, args.seriesName);
+    controller.addSeries(series);
+    return YES;
+  },
+  
+  createSeriesOnGraph: function (context, args) {
+    var controller = this._graphControllerFor(args.pane);
+    var series = Smartgraphs.sessionController.createSeries(args.seriesName);
+    controller.addSeries(series);
     return YES;
   },
   
   removeSeries: function (context, args) {
     var controller = this._graphControllerFor(args.pane);
-    controller.removeSeries(args.seriesId);
+    controller.removeSeries(args.seriesName);
     return YES;
   },
   
@@ -112,15 +126,21 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   },
   
   selectDataSeries: function (context, args) {
-    var series = Smartgraphs.store.find(Smartgraphs.DataSeries, args.seriesId);
-    Smartgraphs.selectedSeriesController.set('content', series);
+    var controller = this._graphControllerFor(args.pane);
+    var series = controller.findSeries(args.seriesName);
+    if (series.get('isExample') === NO) {
+      Smartgraphs.selectedSeriesController.set('content', series);
+    }
     return YES;
   },
   
-  enablePredictionGraphInput: function (context, args) {
-    Smartgraphs.sendAction('addSeries', this, { pane: args.pane, seriesId: args.seriesId });
-    Smartgraphs.sendAction('selectDataSeries', this, { seriesId: args.seriesId });
-    
+  enablePredictionInput: function (context, args) {
+    Smartgraphs.sendAction('createSeriesOnGraph', this, { 
+      pane: args.pane, 
+      seriesName: args.seriesName
+    });
+    Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
+
     Smartgraphs.selectedSeriesController.set('xMin', args.xMin);
     Smartgraphs.selectedSeriesController.set('xMax', args.xMax);
     
@@ -134,8 +154,11 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   },
   
   enableSensorInput: function (context, args) {
-    Smartgraphs.sendAction('addSeries', this, { pane: args.pane, seriesId: args.seriesId });
-    Smartgraphs.sendAction('selectDataSeries', this, { seriesId: args.seriesId });
+    Smartgraphs.sendAction('createSeriesOnGraph', this, { 
+      pane: args.pane, 
+      seriesName: args.seriesName
+    });
+    Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
   
     // use this pattern for the SENSOR_* states too
     Smartgraphs.SENSOR.set('nextResponder', Smartgraphs.get('firstResponder'));

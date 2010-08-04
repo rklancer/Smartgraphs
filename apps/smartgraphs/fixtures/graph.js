@@ -17,7 +17,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Prediction graph of movement away',
     axes:
       '/backend/axes/1/5m-15s/',
-    allSeries: 
+    initialSeries: 
       []
   },
   
@@ -30,7 +30,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Prediction graph of movement towards',
     axes:
       '/backend/axes/1/5m-15s/',
-    allSeries: 
+    initialSeries: 
       []
   },
   
@@ -43,7 +43,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Playing around with the sensor in page 3',
     axes:
       '/backend/axes/1/5m-15s/',
-    allSeries: 
+    initialSeries: 
       []
   },
   
@@ -55,7 +55,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Combines the prediction graphs and the sensor graph',
     axes:
       '/backend/axes/1/5m-15s/',
-    allSeries: 
-      ['/backend/series/1/prediction-away/', '/backend/series/3/sensor/']
+    initialSeries: 
+      ['prediction-away', 'sensor']
   }
 ];
