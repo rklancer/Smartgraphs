@@ -15,7 +15,7 @@
   @version 0.1
 */
 
-sc_require('states/activity');
+sc_require('states/activity_step');
 
 Smartgraphs.ACTIVITY_STEP_SUBMIT = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_STEP_SUBMIT.prototype */ {
