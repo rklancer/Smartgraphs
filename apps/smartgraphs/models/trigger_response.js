@@ -39,7 +39,7 @@ Smartgraphs.TriggerResponse = SC.Record.extend(
   /**
     The ActivityStep registering this TriggerResponse.
   */
-  step: SC.Record.toOne('Smartgraphs.ActivityStep', { inverse: 'triggerResponses' }),
+  step: SC.Record.toOne('Smartgraphs.ActivityStep', { inverse: 'triggerResponses', isMaster: YES }),
   
   /**
     A hash of arguments to be passed when registering this trigger. Each key overrides any key of the same name
