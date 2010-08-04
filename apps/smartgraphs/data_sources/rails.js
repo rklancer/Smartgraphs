@@ -14,7 +14,7 @@
 Smartgraphs.RailsDataSource = SC.DataSource.extend(
 /** @scope Smartgraphs.RailsDataSource.prototype */ {
 
-  // latency for retrieve
+  // latency for mock retrieval
   
   latency: 500,
   
@@ -28,6 +28,17 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // call store.dataSourceDidFetchQuery(query) when done.
 
     console.log('RailsDataSource.fetch()');
+    
+    if (query.get('isPagesQuery')) {
+      console.log('  Query: pagesQuery for Activity %s', query.get('conditions').activity.get('id'));
+    }
+    else if (query === Smartgraphs.ALL_COMMANDS_QUERY) {
+      console.log('  Query: ALL_COMMANDS_QUERY');
+    }
+    else if (query === Smartgraphs.ALL_TRIGGERS_QUERY) {
+      console.log('  Query: ALL_TRIGGERS_QUERY');
+    }
+    
     return NO ; // return YES if you handled the query
   },
 

@@ -28,11 +28,30 @@ Smartgraphs.Activity = SC.Record.extend(
   */
   pages: SC.Record.toMany('Smartgraphs.ActivityPage', { inverse: 'activity', orderBy: 'index' }),
   
+  // TODO a) this would be broken -- all Activity records would share the same {};
+  //      b) move all state like 'context' to session
+  
   /**
     @private
     a list of 'global' variables in a given Activity. These would be, for example, names of 'globally available' things
     like the labels created by the openLabelTool command.
   */
-  context: {}
+  context: {},
+  
+  /**
+    a local SC.Query that returns all the ActivityPages associated with this activity. Used to signal the data
+    source to fetch those records from the server.
+  */
+  pagesQuery: function () {
+    if (!this._query) {
+      this._query = SC.Query.create({
+        isPagesQuery: YES,                       // so the data source can interpret what query we are
+        recordType: Smartgraphs.ActivityPages,
+        conditions: 'activity = {activity}',
+        parameters: { activity: this }
+      });
+    }
+    return this._query;
+  }
 
 }) ;

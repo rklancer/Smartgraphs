@@ -25,8 +25,9 @@ Smartgraphs = SC.Application.create(
     return this._nextGuid++;
   },
   
-  // queries.
-  ALL_ACTIVITIES_QUERY: null,
+  // Queries.
+  ALL_COMMANDS_QUERY: SC.Query.local(Smartgraphs.Command),
+  ALL_TRIGGERS_QUERY: SC.Query.local(Smartgraphs.Trigger),
   
   // DEBUG SETTING: traces firstResponder changes and app actions
   trace: YES
