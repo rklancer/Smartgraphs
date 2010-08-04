@@ -15,8 +15,6 @@
 Smartgraphs.activityStepController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityStepController.prototype */ {
 
-  contentBinding: 'Smartgraphs.activityPageController.currentStep',
-
   registeredTriggers: [],
   
   /**
