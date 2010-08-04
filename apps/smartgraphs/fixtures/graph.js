@@ -56,6 +56,6 @@ Smartgraphs.Graph.FIXTURES = [
     axes:
       '/backend/axes/1/5m-15s/',
     initialSeries: 
-      ['prediction-away', 'prediction-toward']
+      ['prediction-away', 'sensor']
   }
 ];
