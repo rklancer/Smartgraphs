@@ -22,6 +22,13 @@ Smartgraphs.Graph = SC.Record.extend(
   description: SC.Record.attr(String),
   
   axes: SC.Record.toOne('Smartgraphs.Axes'),
-  allSeries: SC.Record.toMany('Smartgraphs.DataSeries')
-
+  initialSeries: SC.Record.attr(Array),
+  
+  seriesList: null,
+  
+  init: function () {
+    sc_super();
+    this.set('seriesList', []);
+  }
+    
 }) ;

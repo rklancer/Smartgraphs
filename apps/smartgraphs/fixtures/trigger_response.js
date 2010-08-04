@@ -29,7 +29,7 @@ Smartgraphs.TriggerResponse.FIXTURES = [
       '/backend/activity/1/page/2/step/1/response/1/command/1/split-pane/',
       '/backend/activity/1/page/2/step/1/response/1/command/2/show-graph/',
       '/backend/activity/1/page/2/step/1/response/1/command/3/enable-submission/',
-      '/backend/activity/1/page/2/step/1/response/1/command/4/start-input/'
+      '/backend/activity/1/page/2/step/1/response/1/command/4/predict/'
     ]
   },
   

@@ -15,7 +15,7 @@ Smartgraphs.GraphView = SC.View.extend(
 /** @scope Smartgraphs.GraphView.prototype */ {
   
   axesBinding: '*graph.axes',
-  allSeriesBinding: '*graph.allSeries',
+  seriesListBinding: '*graph.seriesList',
   
   padding: { top: 20, right: 20, bottom: 40, left: 60 },  
   
@@ -86,18 +86,18 @@ Smartgraphs.GraphView = SC.View.extend(
     };
   },
   
-  _allSeriesDidChange: function () {
-    var allSeries = this.get('allSeries');
+  _seriesListDidChange: function () {
+    var seriesList = this.get('seriesList');
     var series, id;
-    var allSeriesById = {};
+    var seriesListById = {};
     var seriesToAdd = [], viewsToRemove = [];
     
     // add views for new series
-    for (var i = 0, ii = allSeries.get('length'); i < ii; i++) {
-      series = allSeries.objectAt(i);
+    for (var i = 0, ii = seriesList.get('length'); i < ii; i++) {
+      series = seriesList.objectAt(i);
       id = series.get('id');
       
-      allSeriesById[id] = series;
+      seriesListById[id] = series;
       
       if (!this._seriesViewsById.hasOwnProperty(id)) {
         this._addViewForSeries(series);
@@ -111,12 +111,12 @@ Smartgraphs.GraphView = SC.View.extend(
       if (this._seriesViewsById.hasOwnProperty(id)) {
         oldView = this._seriesViewsById[id];
         
-        if (!allSeriesById[id]) {
+        if (!seriesListById[id]) {
           this._removeSeriesView(oldView);
         }
       }
     }
-  }.observes('*allSeries.[]'),
+  }.observes('*seriesList.[]'),
 
   _addViewForSeries: function (series) {
     var pointsQuery = SC.Query.local(Smartgraphs.DataPoint, { 

@@ -45,3 +45,5 @@ Smartgraphs.DataSeries.FIXTURES = [
       [] 
   }
 ];
+
+Smartgraphs.DataSeries.nextGuid = 1;

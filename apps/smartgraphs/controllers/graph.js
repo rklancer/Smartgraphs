@@ -23,6 +23,12 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
     
     this.set('content', graph);
+    
+    // add the initial series
+    var initial = this.get('initialSeries');
+    for (var i = 0, ii = initial.get('length'); i < ii; i++) {
+      this.addSeriesByName(initial.objectAt(i));
+    }
   },
   
   setAxes: function (axesId) {
@@ -35,25 +41,49 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     Smartgraphs.store.commitRecords();
   },
   
-  addSeries: function (seriesId) {
-    var series = Smartgraphs.store.find(Smartgraphs.DataSeries, seriesId);
-    if (!series) {
-      series = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { guid: seriesId });
+  addSeries: function (series) {
+    if (this.findSeries(series.get('name'))) {
+      return NO;
     }
-
-    this.get('allSeries').pushObject(series);
+    this.get('seriesList').pushObject(series);
     Smartgraphs.store.commitRecords();
+    return YES;
   },
   
-  removeSeries: function (seriesId) {
-    var allSeries = this.get('allSeries');
-    var series;
+  addSeriesByName: function (seriesName) {
+    // first try to get the named series from the current session
+    var query = SC.Query.local(Smartgraphs.DataSeries, 'name={name} AND session={session}', { 
+      name: seriesName,
+      session: Smartgraphs.sessionController.get('content')
+    });
+    var seriesList = Smartgraphs.store.find(query);
+    
+    if (seriesList.get('length') < 1) {
+      // get an example series if that's what has this name
+      query = SC.Query.local(Smartgraphs.DataSeries, 'name={name} AND isExample=YES', { 
+        name: seriesName
+      });
+      seriesList = Smartgraphs.store.find(query);
+      if (seriesList.get('length') < 1) return NO;
+    }
   
-    for (var i = 0, ii = allSeries.get('length'); i < ii; i++) {
-      series = allSeries.objectAt(i);
-      if (series.get('id') === seriesId) {
-        allSeries.removeObject(series);
-        break;
+    this.addSeries(seriesList.objectAt(0));
+  },
+  
+  removeSeries: function (seriesName) {
+    var seriesList = this.get('seriesList');
+    var series = this.findSeries(seriesName);
+    if (series) seriesList.removeObject(series);
+  },
+    
+  findSeries: function (seriesName) {
+    var seriesList = this.get('seriesList');
+    var series;
+
+    for (var i = 0, ii = seriesList.get('length'); i < ii; i++) {
+      series = seriesList.objectAt(i);
+      if (series.get('name') === seriesName) {
+        return series;
       }
     }
   },

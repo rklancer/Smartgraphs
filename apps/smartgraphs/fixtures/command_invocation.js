@@ -103,16 +103,16 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/1/response/1/command/4/start-input/',
+      '/backend/activity/1/page/2/step/1/response/1/command/4/predict/',
     command:
-      '/backend/command/7/enable-prediction-graph-input/',
+      '/backend/command/7/enable-prediction-input/',
     triggerResponse:
       '/backend/activity/1/page/2/step/1/response/1/step-beginning/',
     index:
       4,
     literalArgs: {
       pane: 'first',
-      seriesId: '/backend/series/1/prediction-away/',
+      seriesName: 'prediction-away',
       xMin: 0,
       xMax: 15
     },
@@ -172,14 +172,14 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   { url: 
       '/backend/activity/1/page/2/step/2/response/1/command/3/predict/',
     command:
-      '/backend/command/7/enable-prediction-graph-input/',
+      '/backend/command/7/enable-prediction-input/',
     triggerResponse:
       '/backend/activity/1/page/2/step/2/response/1/step-beginning/',
     index:
       3,
     literalArgs: {
       pane: 'second',
-      seriesId: '/backend/series/2/prediction-toward/',
+      seriesName: 'prediction-toward',
       xMin: 0,
       xMax: 15
     },
@@ -246,7 +246,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
       4,
     literalArgs: {
       pane: 'first',
-      seriesId: '/backend/series/3/sensor/'
+      seriesName: 'sensor'
     },
     substitutedArgs:
       {}
