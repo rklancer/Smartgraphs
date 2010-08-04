@@ -14,7 +14,6 @@
 Smartgraphs.activityPagesController = SC.ArrayController.create(
 /** @scope Smartgraphs.activityPagesController.prototype */ {
 
-  contentBinding: 'Smartgraphs.activityController.pages',
   allowsMultipleSelection: NO,
   
   indexOfSelectedPage : function () {
