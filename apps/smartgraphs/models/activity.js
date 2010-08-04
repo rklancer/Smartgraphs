@@ -43,15 +43,13 @@ Smartgraphs.Activity = SC.Record.extend(
     source to fetch those records from the server.
   */
   pagesQuery: function () {
-    if (!this._query) {
-      this._query = SC.Query.create({
-        isPagesQuery: YES,                       // so the data source can interpret what query we are
-        recordType: Smartgraphs.ActivityPages,
-        conditions: 'activity = {activity}',
-        parameters: { activity: this }
-      });
-    }
-    return this._query;
-  }
+    // cacheable, so DataStore only ever sees one pagesQuery instance per Activity record
+    return SC.Query.create({
+      isPagesQuery: YES,                       // so the data source can interpret what query we are
+      recordType: Smartgraphs.ActivityPage,
+      conditions: 'activity = {activity}',
+      parameters: { activity: this }
+    });
+  }.property().cacheable()
 
 }) ;

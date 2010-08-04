@@ -7,7 +7,7 @@
 
 /** @class
 
-  Loading state for Activity view. (Not called ACTIVITY_LOADING because it is not a ACTIVITY substate)
+  Loading state for Activity view. (Not called ACTIVITY_LOADING because it is not an ACTIVITY substate)
 
   @extends SC.Responder
   @version 0.1
@@ -19,52 +19,91 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
 /** @scope Smartgraphs.LOADING_ACTIVITY.prototype */ {
 
   nextResponder: Smartgraphs.READY,
-  idBeingLoaded: null,
-  activityStatusBinding: 'Smartgraphs.activityController*content.status', 
 
   didBecomeFirstResponder: function() {
-    // let activityController content sync (in case it is ever updated via a binding) and let activityStatusBinding sync
-    SC.RunLoop.end();
-    SC.RunLoop.begin();
     
-    if (this.handlePossibleLoadCompletion() === NO) {
-      Smartgraphs.appWindowController.showActivityLoadingView();
-      // handlePossibleLoadCompletion will handle starting up the activity after the Activity record's status changes.
+    this._recordList = [];
+    
+    // these are cached
+    if (!this._triggers) {
+      this._triggers = Smartgraphs.store.find(Smartgraphs.ALL_TRIGGERS_QUERY);
+      this._recordList.push(this._triggers);
     }
-  },  
+    
+    if (!this._commands) {
+      this._commands = Smartgraphs.store.find(Smartgraphs.ALL_COMMANDS_QUERY);
+      this._recordList.push(this._commands);
+    }
+    
+    this._activity = Smartgraphs.activityController.get('content');
+    this._recordList.push(this._activity);
 
+    // I think pagesQuery ought to work just fine even though this._activity is BUSY_LOADING ... 
+    this._pages = Smartgraphs.store.find(this._activity.get('pagesQuery'));
+    this._recordList.push(this._pages);
+    
+    if (this.checkStatuses()) {
+      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_START);
+      return;
+    }
+
+    Smartgraphs.appWindowController.showActivityLoadingView();
+
+    this._recordList.forEach( function (recordOrRecordArray) {
+      recordOrRecordArray.addObserver('status', this, this.checkStatuses);
+    }, this);
+  },
+  
+  willLoseFirstResponder: function () {
+    this._recordList.forEach( function (recordOrRecordArray) {
+      recordOrRecordArray.removeObserver('status', this, this.statusDidChange);
+    }, this);
+  },
+  
   // ..........................................................
   // ACTIVITY CONTENT UPDATE
   //
 
-  /**
-    TODO:
-      * make a query that loads all ActivityPages for this Activity
-      * make a query that loads all Commands in the system
-      * make a query that loads all Triggers in the system
-      * test that the corresponding recordArrays are READY_CLEAN (*recordArray* status is set to READY_CLEAN
-        when dataSourceDidFetchQuery completes)
-      
-     eventually:
-      * download and push all this data in one request (plus the activity steps, probably)      
-  **/
-       
-  _activityStatusDidChange: function () {
-    this.invokeOnce(this.handlePossibleLoadCompletion);
-  }.observes('activityStatus'),
-  
-  handlePossibleLoadCompletion: function () {
-    var activityStatus = this.get('activityStatus');
+  /** dispatches to appropriate state if statuses of records are recordArrays we are waiting on are all READY
+      Returns YES if they are. */
+  checkStatuses: function () {
+    if (this.statusesAreReady()) {
+      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_START);
+      return YES;       // all done
+    }
     
-    if (activityStatus === SC.Record.READY_CLEAN) {
-      Smartgraphs.sendAction('beginactivity');
-      return YES;    // load completed
+    if (this.statusesHaveErrors()) {
+      Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
+      return YES;       // all done
     }
-    else if (activityStatus === SC.Record.ERROR) {
-      Smartgraphs.sendAction('handleActivityLoadError');
-      return YES;   // load completed
+    return NO;          // need to keep waiting
+  },
+  
+  /** Returns YES if all of the records and recordArrays we are waiting on have READY status.
+     Note that *recordArrays* (not just the individual records) from a query are marked as having status 
+     READY_CLEAN when the data source calls back to the store via dataSourceDidFetchQuery */
+
+  statusesAreReady: function () {
+    var recordOrRecordArray;
+    var ret = YES;
+    
+    for (var i = 0, ii = this._recordList.get('length'); i < ii; i++) {
+      recordOrRecordArray = this._recordList.objectAt(i);
+      ret = ret && !!(recordOrRecordArray.get('status') & SC.Record.READY);
     }
-    return NO;      // load has NOT completed yet
+    return ret;
+  },
+  
+  /** Returns YES if any of the records and recordArrays we are waiting on have ERROR status. */ 
+  statusesHaveErrors: function () {
+    var recordOrRecordArray;
+    var ret = NO;
+    
+    for (var i = 0, ii = this._recordList.get('length'); i < ii; i++) {
+      recordOrRecordArray = this._recordList.objectAt(i);
+      ret = ret || !!(recordOrRecordArray.get('status') & SC.Record.ERROR);
+    }
+    return ret;
   },
   
   // ..........................................................
@@ -73,26 +112,15 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   
   // Handle 're-entrance' (opening a activity while we're still waiting for another activity to load)
   openActivity: function (context, args){
-    if (args.id === this.get('idBeingLoaded')) {
+    if (args.id === Smartgraphs.activityController.getPath('content.id')) {
       // do nothing if it's a repeat request to load the same id
       return YES;
     }
     
-    // otherwise, let READY handle opening the new activity, but make sure to repeat didBecomeFirstResponder
+    //  let READY handle opening the new activity, but we need to resetFirstResponder because the
+    // 'makeFirstResponder' call in READY won't cause our didBecomeFirstResponder method to be called again
     Smartgraphs.invokeLater(Smartgraphs.resetFirstResponder);
     return NO;
-  },
-  
-  beginactivity: function () {
-    if (Smartgraphs.activityPagesController.get('length') > 0) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_START);
-      Smartgraphs.activityPagesController.selectFirstPage();
-    }
-    // TODO could go into some error state here if needed.
-  },
-  
-  handleActivityLoadError: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
   }
   
 }) ;

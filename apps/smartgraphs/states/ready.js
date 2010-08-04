@@ -51,16 +51,12 @@ Smartgraphs.READY = SC.Responder.create(
   //
   
   openActivity: function (context, args) {
-    // the default action, unless overridden in some later state, is just to set the current activity in the  
-    // controller and go into the ACTIVITY state
-
     var activityContent = Smartgraphs.activityController.get('content');
     if (activityContent && activityContent.get('id') === args.id) {
       return YES; // nothing to do!
     }
     
     Smartgraphs.activityController.set('content', Smartgraphs.store.find(Smartgraphs.Activity, args.id));
-    Smartgraphs.LOADING_ACTIVITY.set('idBeingLoaded', args.id);
     Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_ACTIVITY);
     return YES;
   }

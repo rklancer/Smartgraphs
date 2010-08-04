@@ -20,7 +20,13 @@ Smartgraphs.ACTIVITY_START = SC.Responder.create(
   
   didBecomeFirstResponder: function() {
     Smartgraphs.sessionController.newSession();
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_PAGE);
+    
+    
+    if (Smartgraphs.activityPagesController.get('length') > 0) {
+      Smartgraphs.activityPagesController.selectFirstPage();
+    }
+    
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_PAGE);  
   }
   
   // ..........................................................
