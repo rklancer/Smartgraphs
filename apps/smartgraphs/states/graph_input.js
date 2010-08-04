@@ -23,6 +23,7 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
   
   willLoseFirstResponder: function() {
     Smartgraphs.inputGraphController.stopRoutingInputEvents();
+    Smartgraphs.selectedSeriesController.set('content', null);
   },
   
   // This state is intended to be 'pushed'. resignFirstResponder to get the old firstResponder back
