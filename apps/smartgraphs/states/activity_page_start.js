@@ -7,7 +7,7 @@
 
 /** @class
 
-  State representing that the activity page is starting. Transitions to ACTIVITY_STEP_START
+  State representing that the activity page is starting.
   
   @extends SC.Responder
   @version 0.1
@@ -19,12 +19,6 @@ Smartgraphs.ACTIVITY_PAGE_START = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_PAGE_START.prototype */ {
 
   nextResponder: Smartgraphs.ACTIVITY,
-  
-  didBecomeFirstResponder: function() {
-  },
-  
-  willLoseFirstResponder: function() {
-  },
   
   // ..........................................................
   // ACTIVITY PAGE INITIALIZATION

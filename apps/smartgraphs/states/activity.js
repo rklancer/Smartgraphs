@@ -8,9 +8,6 @@
 /** @class
 
   Superstate representing that the application is running a Activity.
-  
-  Substates are ACTIVITY_START, ACTIVITY_STEP_START, ACTIVITY_STEP_WAITING, ACTIVITY_STEP_SUBMIT, ACTIVITY_PAGE_FINISHED, 
-  ACTIVITY_FINISHED, (and SENSOR and PREDICTING?)
 
   @extends SC.Responder
   @version 0.1
@@ -26,9 +23,6 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   
   didBecomeFirstResponder: function() {
     Smartgraphs.appWindowController.showActivityView();
-  },
-  
-  willLoseFirstResponder: function() {
   },
   
   // ..........................................................

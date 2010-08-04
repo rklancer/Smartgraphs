@@ -23,9 +23,6 @@ Smartgraphs.LOGIN = SC.Responder.create(
     // for now we use just a default user and assume the user record loads in synchronously from fixtures
     Smartgraphs.userController.set('content', Smartgraphs.store.find(Smartgraphs.User, 'default'));
     Smartgraphs.makeFirstResponder(Smartgraphs.READY);
-  },
-  
-  willLoseFirstResponder: function() {
   }
   
   // ..........................................................

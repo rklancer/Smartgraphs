@@ -29,15 +29,11 @@ Smartgraphs.SENSOR_READY = SC.Responder.create(
   
   willLoseFirstResponder: function() {
     // Called when this state loses first responder
-  },
+  }
   
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
-  
-  // add event handlers here
-  someAction: function() {
-    
-  }
+
   
 }) ;

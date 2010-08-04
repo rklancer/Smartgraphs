@@ -22,9 +22,6 @@ Smartgraphs.ERROR_LOADING_ACTIVITY = SC.Responder.create(
 
   didBecomeFirstResponder: function() {    
     Smartgraphs.appWindowController.showActivityLoadingErrorView();
-  },
-  
-  willLoseFirstResponder: function() {
   }
   
   // ..........................................................

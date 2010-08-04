@@ -7,8 +7,6 @@
 
 /** @class
 
-  State representing graph is open for input
-
   @extends SC.Responder
   @version 0.1
 */
@@ -33,8 +31,9 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
     }
     return YES;
   },
+  
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
   
   // these should be produced by the inputGraphController

@@ -26,11 +26,8 @@ Smartgraphs.ACTIVITY_STEP_WAITING = SC.Responder.create(
     Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', NO);
   },
   
-  willLoseFirstResponder: function() {
-  },
-  
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
   
   enableSubmission: function () {
@@ -39,7 +36,7 @@ Smartgraphs.ACTIVITY_STEP_WAITING = SC.Responder.create(
   },
   
   finishActivityStep: function () {
-    // do nothing. (TODO this would be an error.)
+    // do nothing. (TODO this likely signals some kind of error.)
     return YES;
   }
   

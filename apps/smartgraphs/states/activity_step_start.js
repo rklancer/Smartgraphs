@@ -20,12 +20,6 @@ Smartgraphs.ACTIVITY_STEP_START = SC.Responder.create(
 
   nextResponder: Smartgraphs.ACTIVITY,
   
-  didBecomeFirstResponder: function() {
-  },
-  
-  willLoseFirstResponder: function() {
-  },
-  
   // ..........................................................
   // ACTIVITY STEP INITIALIZATION
   //

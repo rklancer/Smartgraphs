@@ -7,7 +7,7 @@
 
 /** @class
 
-  Loading state for Activity view. (Don't call it ACTIVITY_LOADING because it is not a ACTIVITY substate)
+  Loading state for Activity view. (Not called ACTIVITY_LOADING because it is not a ACTIVITY substate)
 
   @extends SC.Responder
   @version 0.1
@@ -31,11 +31,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
       Smartgraphs.appWindowController.showActivityLoadingView();
       // handlePossibleLoadCompletion will handle starting up the activity after the Activity record's status changes.
     }
-  },
-  
-  willLoseFirstResponder: function() {
-  },
-  
+  },  
 
   // ..........................................................
   // ACTIVITY CONTENT UPDATE

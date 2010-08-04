@@ -23,9 +23,6 @@ Smartgraphs.ACTIVITY_LOADING_STEP = SC.Responder.create(
     // are loaded. Also make sure all the CommandInvocations associated with the TriggerResponses for this step
     // are loaded.
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_START);
-  },
-  
-  willLoseFirstResponder: function() {
   }
   
   // ..........................................................

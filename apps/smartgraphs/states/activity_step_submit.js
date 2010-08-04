@@ -8,7 +8,7 @@
 /** @class
 
   State representing that the Activity step considers the user input to be acceptable for submission. May transition back
-  to ACTIVITY_STEP_WAITING if input becomes no longer submittable; or to ACTIVITY_STEP_START or ACTIVITY_PAGE_FINISHED after 
+  to ACTIVITY_STEP_WAITING if input becomes no longer submittable or to ACTIVITY_STEP_DONE if finishActivityStep is called.
   submission.
 
   @extends SC.Responder
@@ -36,12 +36,12 @@ Smartgraphs.ACTIVITY_STEP_SUBMIT = SC.Responder.create(
   
   // TODO make it swap its position in the responder chain with ACTIVITY_STEP_WAITING (in case we're the
   // nextResponder of something like GRAPH_INPUT)
-  
   disableSubmission: function () {  
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_WAITING);
     return YES;
   },
   
+  // TODO this should be 'submit' or the like
   finishActivityStep: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_DONE);
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', NO);    

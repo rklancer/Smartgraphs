@@ -7,8 +7,7 @@
 
 /** @class
 
-  State representing that the activity activity is finished. User may want to proceed to another activity, or may want to
-  view the lab book/answer sheet/student activity they they have created with the help of this Activity.
+  Superstate when we are inside an activity step.
   
   @extends SC.Responder
   @version 0.1
@@ -26,19 +25,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', YES);
   },
   
-  willLoseFirstResponder: function() {
-  },
-  
-  // ..........................................................
-  // ACTIONS
-  //
-  
-  
-  // ..........................................................
-  // actions for Activity step commands
-  //
-  
-  // helpers
+  // action helpers
   _graphControllerFor: function (pane) {
     if (pane === 'first') return Smartgraphs.firstGraphController;
     if (pane === 'second') return Smartgraphs.secondGraphController;
@@ -49,6 +36,15 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     if (pane === 'second') return Smartgraphs.getPath('activityPage.firstGraphView');
   },
   
+  // ..........................................................
+  // ACTIONS
+  // 
+  
+  finishActivityStep: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_DONE);
+    return YES;
+  },
+
   /** 
     Transition into the ACTIVITY_STEP_WAITING state at the start of a ActivityStep (this action is not available when 
     the ActivityStep is already transitioned to ACTIVITY_STEP_SUBMIT)
@@ -74,7 +70,6 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
     return YES;
   },
-  
   
   showSinglePane: function () {
     return Smartgraphs.activityViewController.showSinglePane();
@@ -175,12 +170,6 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     // use this pattern for the SENSOR_* states too
     Smartgraphs.SENSOR.set('nextResponder', Smartgraphs.get('firstResponder'));
     Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
-    return YES;
-  },
-  
-  
-  finishActivityStep: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_DONE);
     return YES;
   }
   

@@ -21,9 +21,6 @@ Smartgraphs.ACTIVITY_LOADING_PAGE = SC.Responder.create(
   didBecomeFirstResponder: function() {
     // TODO. Make sure all the ActivitySteps associated with the current ActivityPage are loaded.
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);
-  },
-  
-  willLoseFirstResponder: function() {
   }
   
   // ..........................................................
