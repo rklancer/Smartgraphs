@@ -13,8 +13,6 @@
 */
 Smartgraphs.activityPageController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityPageController.prototype */ {
-
-  contentBinding: 'Smartgraphs.activityPagesController.selection',
   
   // return the context variable's value from the activityPage or activity context
   lookup: function (key) {
