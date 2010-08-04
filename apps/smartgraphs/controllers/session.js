@@ -13,21 +13,22 @@
 Smartgraphs.sessionController = SC.ObjectController.create(
 /** @scope Smartgraphs.sessionController.prototype */ {
 
-  createSession: function () {
-    var session = Smartgraphs.createRecord(Smartgraphs.Session);
+  newSession: function () {
+    var session = Smartgraphs.store.createRecord(Smartgraphs.Session, { steps: [] });
     session.set('user', Smartgraphs.userController.get('content'));
-    session.set('steps', []);
+    session.set('id', Smartgraphs.nextGuid++);
     this.set('content', session);
+    Smartgraphs.store.commitRecords();
   },
   
   createSeries: function (seriesName) {
     var newSeries = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { 
       isExample: NO,
       name: seriesName,
-      session: this.get('content'),
       points: []
     });
-    newSeries.set('id', Smartgraphs.DataSeries.nextGuid++);
+    newSeries.set('session', this.get('content'));
+    newSeries.set('id', Smartgraphs.nextGuid++);
     Smartgraphs.store.commitRecords();
     
     return newSeries;
@@ -63,7 +64,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     for (var i = 0, ii = examplePoints.get('length'); i < ii; i++) {
       point = examplePoints[i];
       newPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: point.get('x'), y: point.get('y') });
-      newPoint.set('id', Smartgraphs.DataPoint.nextGuid++);
+      newPoint.set('id', Smartgraphs.nextGuid++);
       newPoint.set('series', targetSeries);
     }
     Smartgraphs.store.commitRecords();

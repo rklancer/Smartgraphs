@@ -99,7 +99,7 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
   },
   
   addPredictionPoint: function (x, y, binIdx) {
-    var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.DataPoint.nextGuid++ });
+    var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.nextGuid++ });
     this.pushObject(point);
     Smartgraphs.store.commitRecords();
     this._points[binIdx] = point;
@@ -227,7 +227,7 @@ Smartgraphs.selectedPointsController = SC.ArrayController.create(
   },
   
   addSensorPoint: function (x, y) {
-    var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.DataPoint.nextGuid++ });
+    var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.nextGuid++ });
     this.pushObject(point);
     Smartgraphs.store.commitRecords();
   }

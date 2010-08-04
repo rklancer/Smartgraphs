@@ -15,5 +15,7 @@ Smartgraphs.selectedSeriesController = SC.ObjectController.create(
 /** @scope Smartgraphs.selectedSeriesController.prototype */ {
 
   // default # bins for prediction graph
-  nBins: 50
+  nBins: 50,
+  xMin: null,
+  xMax: null
 }) ;

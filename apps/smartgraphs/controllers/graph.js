@@ -54,7 +54,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     // first try to get the named series from the current session
     var query = SC.Query.local(Smartgraphs.DataSeries, 'name={name} AND session={session}', { 
       name: seriesName,
-      session: Smartgraphs.sessionController.get('content')
+      session: Smartgraphs.sessionController.getPath('content')
     });
     var seriesList = Smartgraphs.store.find(query);
     

@@ -8,42 +8,12 @@
 sc_require('models/data_series');
 
 Smartgraphs.DataSeries.FIXTURES = [
-
-  { url: 
-      '/backend/series/1/prediction-away/',   
-    name: 
-      'prediction-away',
-    session:
-      null,
-    isExample: 
-      YES,
-    points: 
-      [] 
-  },
-    
-  { url: 
-      '/backend/series/2/prediction-toward/', 
-    name:
-      'prediction-toward',
-    session:
-      null,
-    isExample:
-      YES,
-    points: 
-      [] 
-  },
-      
-  { url: 
-      '/backend/series/3/sensor/',
-    name:
-      'sensor',
-    session:
-      null,
-    isExample:
-      YES,
-    points: 
-      [] 
+  // need to have some fixtures or fixturesDataSource's updateRecords() thinks it can't handle the record.
+  { url: '/backend/activity/1/series/example-1/',
+    name: 'example-1',
+    isExample: YES,
+    points: [],
+    session: null
   }
 ];
 
-Smartgraphs.DataSeries.nextGuid = 1;
