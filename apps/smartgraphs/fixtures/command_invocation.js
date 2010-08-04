@@ -77,7 +77,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     triggerResponse:
       '/backend/activity/1/page/2/step/1/response/1/step-beginning/',
     index:
-      2,
+      3,
     literalArgs: {
       pane: 'first',
       graphId: '/backend/activity/1/graph/1/prediction-away/'
@@ -88,28 +88,13 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/1/response/1/command/3/enable-submission/',
-    command:
-      '/backend/command/5/enable-submission/',
-    triggerResponse:
-      '/backend/activity/1/page/2/step/1/response/1/step-beginning/',
-    index:
-      3,
-    literalArgs: 
-      {},
-    substitutedArgs:
-      {}
-  },
-  
-  
-  { url: 
-      '/backend/activity/1/page/2/step/1/response/1/command/4/predict/',
+      '/backend/activity/1/page/2/step/1/response/1/command/3/predict/',
     command:
       '/backend/command/7/enable-prediction-input/',
     triggerResponse:
       '/backend/activity/1/page/2/step/1/response/1/step-beginning/',
     index:
-      4,
+      3,
     literalArgs: {
       pane: 'first',
       seriesName: 'prediction-away',
@@ -152,31 +137,16 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     substitutedArgs:
       {}
   },
-      
-      
-  { url: 
-      '/backend/activity/1/page/2/step/2/response/1/command/2/enable-submission/',
-    command:
-      '/backend/command/5/enable-submission/',
-    triggerResponse:
-      '/backend/activity/1/page/2/step/2/response/1/step-beginning/',
-    index:
-      2,
-    literalArgs: 
-      {},
-    substitutedArgs:
-      {}
-  },
   
   
   { url: 
-      '/backend/activity/1/page/2/step/2/response/1/command/3/predict/',
+      '/backend/activity/1/page/2/step/2/response/1/command/2/predict/',
     command:
       '/backend/command/7/enable-prediction-input/',
     triggerResponse:
       '/backend/activity/1/page/2/step/2/response/1/step-beginning/',
     index:
-      3,
+      2,
     literalArgs: {
       pane: 'second',
       seriesName: 'prediction-toward',
