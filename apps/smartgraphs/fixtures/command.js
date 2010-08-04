@@ -101,13 +101,13 @@ Smartgraphs.Command.FIXTURES = [
   
   
   { url: 
-      '/backend/command/7/enable-prediction-graph-input/',
+      '/backend/command/7/enable-prediction-input/',
     name: 
-      'enablePredictionGraphInput',
+      'enablePredictionInput',
     description:
       'Open up the prediction graph.',
     actionName:
-      'enablePredictionGraphInput',
+      'enablePredictionInput',
     literalArgs: 
       {},
     substitutedArgs:
@@ -173,6 +173,5 @@ Smartgraphs.Command.FIXTURES = [
     substitutedArgs:
       {}
   }
-  
   
 ];
