@@ -14,6 +14,8 @@
 Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder, 
 /** @scope Smartgraphs.graphController.prototype */ {
   
+  seriesList: null,  
+  
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function (graphId) {
     var graph = Smartgraphs.store.find(Smartgraphs.Graph, graphId);
@@ -23,6 +25,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
     
     this.set('content', graph);
+    this.set('seriesList', []);
     
     // add the initial series
     var initial = this.get('initialSeries');
