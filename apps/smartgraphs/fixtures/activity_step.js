@@ -161,5 +161,28 @@ Smartgraphs.ActivityStep.FIXTURES = [
       '',
     isLastStep: 
       YES
+  },
+  
+  { url: 
+      '/backend/activity/2/page/1/step/1/',
+    activityPage:
+      '/backend/activity/2/page/1/',
+    beforeText: 
+      '<p>See? A new activity</p>',
+    responseTemplate: 
+      null,
+    afterText:
+      '',
+    buttons: 
+      [],
+    triggerResponses: [
+    ],
+    submitButtonShouldBeVisible: 
+      NO,
+    submitButtonTitle: 
+      '',
+    isLastStep: 
+      YES
   }
+  
 ];

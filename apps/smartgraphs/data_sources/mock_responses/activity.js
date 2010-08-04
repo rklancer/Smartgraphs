@@ -19,3 +19,13 @@ Smartgraphs.mockResponses['/backend/activity/1/motion-without-words/'] = {
     '/backend/activity/1/page/4/'
   ]
 };
+  
+Smartgraphs.mockResponses['/backend/activity/2/second-activity/'] = { 
+  url: 
+    '/backend/activity/2/second-activity/', 
+  title: 
+    'Example of Second Activity',
+  pages: [
+    '/backend/activity/2/page/1/'
+  ]
+};
