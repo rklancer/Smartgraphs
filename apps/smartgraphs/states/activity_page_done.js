@@ -38,7 +38,8 @@ Smartgraphs.ACTIVITY_PAGE_DONE = SC.Responder.create(
   //
 
   openNextActivityPage: function () {
-    Smartgraphs.activityController.openNextPage();
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);
+    Smartgraphs.activityPagesController.selectNextPage();
   }
   
 }) ;
