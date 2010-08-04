@@ -41,6 +41,18 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   // ACTIVITY CONTENT UPDATE
   //
 
+  /**
+    TODO:
+      * make a query that loads all ActivityPages for this Activity
+      * make a query that loads all Commands in the system
+      * make a query that loads all Triggers in the system
+      * test that the corresponding recordArrays are READY_CLEAN (*recordArray* status is set to READY_CLEAN
+        when dataSourceDidFetchQuery completes)
+      
+     eventually:
+      * download and push all this data in one request (plus the activity steps, probably)      
+  **/
+       
   _activityStatusDidChange: function () {
     this.invokeOnce(this.handlePossibleLoadCompletion);
   }.observes('activityStatus'),
@@ -59,7 +71,6 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
     return NO;      // load has NOT completed yet
   },
   
-  
   // ..........................................................
   // ACTIONS
   //
@@ -76,7 +87,6 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
     return NO;
   },
   
-  
   beginactivity: function () {
     if (Smartgraphs.activityPagesController.get('length') > 0) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);
@@ -84,7 +94,6 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
     }
     // TODO could go into some error state here if needed.
   },
-  
   
   handleActivityLoadError: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
