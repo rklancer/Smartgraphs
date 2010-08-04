@@ -89,7 +89,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   
   beginactivity: function () {
     if (Smartgraphs.activityPagesController.get('length') > 0) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);
+      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_START);
       Smartgraphs.activityPagesController.selectFirstPage();
     }
     // TODO could go into some error state here if needed.

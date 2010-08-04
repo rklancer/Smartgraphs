@@ -20,7 +20,7 @@ sc_require('states/activity');
 Smartgraphs.ACTIVITY_STEP_WAITING = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_STEP_WAITING.prototype */ {
 
-  nextResponder: Smartgraphs.ACTIVITY,
+  nextResponder: Smartgraphs.ACTIVITY_STEP,
   
   didBecomeFirstResponder: function() {
     Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', NO);
@@ -35,6 +35,11 @@ Smartgraphs.ACTIVITY_STEP_WAITING = SC.Responder.create(
   
   enableSubmission: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_SUBMIT);
+    return YES;
+  },
+  
+  finishActivityStep: function () {
+    // do nothing.
     return YES;
   }
   

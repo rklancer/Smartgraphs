@@ -61,7 +61,7 @@ Smartgraphs.ACTIVITY_PAGE_START = SC.Responder.create(
     Called when activityPageController's content changes
   */
   beginActivityPage: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_START);
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_STEP);
     Smartgraphs.activityPageController.set('currentStep', Smartgraphs.activityPageController.get('firstStep'));
     return YES;
   }

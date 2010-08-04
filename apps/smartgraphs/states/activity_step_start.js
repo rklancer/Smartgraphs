@@ -57,43 +57,9 @@ Smartgraphs.ACTIVITY_STEP_START = SC.Responder.create(
   //
   
   beginActivityStep: function () {
-    Smartgraphs.activityStepController.begin();
-  },
-  
-  enableSubmission: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_SUBMIT);
-    return YES;
-  },
-  
-  /** 
-    Transition into the ACTIVITY_STEP_WAITING state at the start of a ActivityStep (this action is not available when 
-    the ActivityStep is already transitioned to ACTIVITY_STEP_SUBMIT)
-  */
-  waitForValidResponse: function (context, args) {    
-
-    // TODO we're poking into activityStepController's business here; make this more general
-    var registered = Smartgraphs.activityStepController.get('registeredTriggers');
-    var trigger;
-    
-    if (registered.lastIndexOf('responseBecameValid') < 0) {
-      trigger = Smartgraphs.triggers['responseBecameValid'];
-      trigger.register(args, []);
-      registered.pushObject(trigger);
-    }
-    if (registered.lastIndexOf('responseBecameInvalid') < 0) {
-      trigger = Smartgraphs.triggers['responseBecameInvalid'];
-      trigger.register({}, []);
-      registered.pushObject(trigger);
-    }
-
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_WAITING);
-    Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
-    return YES;
-  },
-  
-  finishActivityStep: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_DONE);
-    return YES;
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    // try this
+    Smartgraphs.activityStepController.invokeLater(Smartgraphs.activityStepController.begin);
   }
   
 }) ;

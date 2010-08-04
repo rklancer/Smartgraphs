@@ -20,7 +20,7 @@ sc_require('states/activity');
 Smartgraphs.ACTIVITY_STEP_SUBMIT = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_STEP_SUBMIT.prototype */ {
 
-  nextResponder: Smartgraphs.ACTIVITY,
+  nextResponder: Smartgraphs.ACTIVITY_STEP,
   
   didBecomeFirstResponder: function() {
     Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', YES);
