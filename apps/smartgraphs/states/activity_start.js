@@ -28,6 +28,7 @@ Smartgraphs.ACTIVITY_START = SC.Responder.create(
       Smartgraphs.activityPagesController.selectFirstPage();
     }
     
+    Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection'));    
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_PAGE);
   }
   
