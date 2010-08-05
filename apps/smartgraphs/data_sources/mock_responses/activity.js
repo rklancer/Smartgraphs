@@ -17,7 +17,8 @@ Smartgraphs.mockResponses['/backend/activity/1/motion-without-words/'] = {
     '/backend/activity/1/page/2/', 
     '/backend/activity/1/page/3/',
     '/backend/activity/1/page/4/'
-  ]
+  ],
+  pagesIndexUrl: '/backend/activity/1/pages/'
 };
   
 Smartgraphs.mockResponses['/backend/activity/2/second-activity/'] = { 

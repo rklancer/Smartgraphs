@@ -30,7 +30,9 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     console.log('RailsDataSource.fetch()');
     
     if (query.get('isPagesQuery')) {
-      console.log('  Query: pagesQuery for Activity %s', query.get('parameters').activity.get('id'));
+      var activity = query.get('parameters').activity;
+      console.log('  Query: pagesQuery for Activity %s', activity.get('id'));
+      console.log('  URL endpoint for query: %s', activity.get('pagesIndexUrl'));
     }
     else if (query.get('isStepsQuery')) {
       console.log('  Query: stepsQuery for ActivityPage %s', query.get('parameters').page.get('id'));

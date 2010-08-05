@@ -28,6 +28,11 @@ Smartgraphs.Activity = SC.Record.extend(
   */
   pages: SC.Record.toMany('Smartgraphs.ActivityPage', { inverse: 'activity', orderBy: 'index' }),
   
+  /**
+    Server endpoint for getting the page records. 
+  */
+  pagesIndexUrl: SC.Record.attr(String),
+  
   // TODO a) this would be broken -- all Activity records would share the same {};
   //      b) move all state like 'context' to session
   
@@ -37,9 +42,9 @@ Smartgraphs.Activity = SC.Record.extend(
     like the labels created by the openLabelTool command.
   */
   context: {},
-  
+
   /**
-    a local SC.Query that returns all the ActivityPages associated with this activity. Used to signal the data
+    A local SC.Query that returns all the ActivityPages associated with this activity. Used to signal the data
     source to fetch those records from the server.
   */
   pagesQuery: function () {

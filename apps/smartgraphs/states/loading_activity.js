@@ -23,6 +23,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   didBecomeFirstResponder: function() {
     
     this._recordList = [];
+    this._pages = null;
     
     // these are cached
     if (!this._triggers) {
@@ -37,10 +38,6 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
     
     this._activity = Smartgraphs.activityController.get('content');
     this._recordList.push(this._activity);
-
-    // I think pagesQuery ought to work just fine even though this._activity is BUSY_LOADING ... 
-    this._pages = Smartgraphs.store.find(this._activity.get('pagesQuery'));
-    this._recordList.push(this._pages);
     
     if (this.checkStatuses()) {
       return;
@@ -63,18 +60,40 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   // ACTIVITY CONTENT UPDATE
   //
 
-  /** dispatches to appropriate state if statuses of records are recordArrays we are waiting on are all READY
-      Returns YES if they are. */
+  /** Dispatches to appropriate state if statuses of records are recordArrays we are waiting on are all READY
+      Adds pagesQuery's recordArray to the list of recordArrays we are waiting on if Activity has loaded */
+      
   checkStatuses: function () {
+    
+    // If Activity has loaded and pagesQuery has not been requested, add pagesQuery to the list of things we're 
+    // waiting on
+
+    if ((this._activity.get('status') & SC.Record.READY) && (this._pages === null)) {
+      this._pages = Smartgraphs.store.find(this._activity.get('pagesQuery'));   
+      if (!(this._pages.get('status') & SC.Record.READY)) {
+        // pagesQuery are not ready; need to wait for them.
+        this._recordList.push(this._pages);
+        this._pages.addObserver('status', this, this.checkStatus);
+        return NO;
+      }
+      // post-condition: (activity is READY && pages have been requested && pages are not READY)
+    }
+    
+    // post-condition:
+    // (activity is not READY || pages have been requested with status unknown) 
+    // || 
+    // (activity is READY && pages have been requested && pages are not READY)
+    
     if (this.statusesAreReady()) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_START);
-      return YES;       // all done
+      return YES;
     }
     
     if (this.statusesHaveErrors()) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
-      return YES;       // all done
+      return YES;       // handled...
     }
+    
     return NO;          // need to keep waiting
   },
   
