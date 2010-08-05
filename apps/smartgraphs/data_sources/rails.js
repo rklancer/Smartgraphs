@@ -32,6 +32,15 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     if (query.get('isPagesQuery')) {
       console.log('  Query: pagesQuery for Activity %s', query.get('parameters').activity.get('id'));
     }
+    else if (query.get('isStepsQuery')) {
+      console.log('  Query: stepsQuery for ActivityPage %s', query.get('parameters').page.get('id'));
+    }
+    else if (query.get('isTriggerResponsesQuery')) {
+      console.log('  Query: triggerResponsesQuery for ActivityStep %s', query.get('parameters').step.get('id'));
+    }
+    else if (query.get('isCommandInvocationsQuery')) {
+      console.log('  Query: commandInvocationsQuery for ActivityStep %s', query.get('activityStep').get('id'));
+    }
     else if (query === Smartgraphs.ALL_COMMANDS_QUERY) {
       console.log('  Query: ALL_COMMANDS_QUERY');
     }
@@ -42,6 +51,15 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     return NO ; // return YES if you handled the query
   },
 
+  // ..........................................................
+  // BULK RECORD SUPPORT
+  //
+  
+  retrieveRecords: function(store, storeKeys, ids) {
+    console.log('RailsDataSource.retrieveRecords(storeKeys=%s)', storeKeys.toString());
+    sc_super();
+  },
+  
   // ..........................................................
   // RECORD SUPPORT
   // 

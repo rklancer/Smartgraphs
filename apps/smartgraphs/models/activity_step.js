@@ -79,7 +79,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   
   submitButtonShouldBeVisible: SC.Record.attr(Boolean),
   
-  submitButtonTitle: SC.Record.attr(String)
+  submitButtonTitle: SC.Record.attr(String),
   
   // 
   // // if YES and isLastTurn is YES, immediately go to the next page on reaching this dialog turn.
@@ -88,5 +88,39 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   // shouldAutoAdvance: SC.Record.attr(Boolean),
   // 
   // wasVisited: NO,
+  
+  /**
+    Query that finds in the data store all TriggerResponses associated with this step.
+  */
+  triggerResponsesQuery: function () {
+    return SC.Query.create({
+      isTriggerResponsesQuery: YES,
+      recordType: Smartgraphs.TriggerResponse,
+      conditions: 'step = {step}',
+      parameters: { step: this }
+    });
+  }.property().cacheable(),
+  
+  /**
+    Query that finds in the data store all CommandInvocations associated with this step. (This means finding
+    all CommandInvocations associated with TriggerResponses associated with this step.)
+  */
+  commandInvocationsQuery: function () {    
+    if (SC.none(this._commandInvocationsQuery) || this._commandInvocationsQueryIsStale) {
+      this._commandInvocationsQuery = SC.Query.create({
+        isCommandInvocationsQuery: YES,
+        activityStep: this,
+        recordType: Smartgraphs.CommandInvocations,
+        conditions: '{triggerResponseIds} contains id',
+        parameters: { triggerResponseIds: this.get('triggerResponses').getEach('id') }
+      });
+      this._commandInvocationsQueryIsStale = NO;
+    }
+    return this._commandInvocationsQuery;
+  }.property(),
 
+  triggerResponsesDidChange: function () {
+    this._commandInvocationsQueryIsStale = YES;
+  }.observes('.triggerResponses.[]')
+  
 }) ;
