@@ -18,9 +18,26 @@ Smartgraphs.ACTIVITY_LOADING_PAGE = SC.Responder.create(
   
   nextResponder: Smartgraphs.ACTIVITY,
   
-  didBecomeFirstResponder: function() {
-    // TODO. Make sure all the ActivitySteps associated with the current ActivityPage are loaded.
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);
+  didBecomeFirstResponder: function () {
+    // Make sure all the ActivitySteps associated with the current ActivityPage are loaded before proceeding
+    // to ACTIVITY_PAGE_START
+
+    this._steps = Smartgraphs.store.find(Smartgraphs.activityPageController.get('stepsQuery'));
+    
+    if (this.checkStatus()) {
+      return;
+    }
+    this._steps.addObserver('status', this, this.checkStatus);
+  },
+  
+  willLoseFirstResponder: function () {
+    this._steps.removeObserver('status', this, this.checkStatus);
+  },
+  
+  checkStatus: function () {
+    if (this._steps.get('status') & SC.Record.READY) {
+      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);      
+    }
   }
   
   // ..........................................................

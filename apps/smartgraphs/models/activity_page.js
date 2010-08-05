@@ -70,6 +70,20 @@ Smartgraphs.ActivityPage = SC.Record.extend(
     @private
     The current ActivityStep associated with this ActivityPage
   */
-  currentStep: null
+  currentStep: null,
+  
+  /**
+    a local SC.Query that returns all the ActivitySteps associated with this page. Used to signal the data
+    source to fetch these records from the server.
+  */
+  stepsQuery: function () {
+    // cacheable, so DataStore only ever sees one stepsQuery instance per ActivityPage record
+    return SC.Query.create({
+      isStepsQuery: YES,                       // so the data source can interpret what query we are
+      recordType: Smartgraphs.ActivityStep,
+      conditions: 'page = {page}',
+      parameters: { page: this }
+    });
+  }.property().cacheable()
 
 }) ;
