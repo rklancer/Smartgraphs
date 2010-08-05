@@ -43,7 +43,6 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
     this._recordList.push(this._pages);
     
     if (this.checkStatuses()) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_START);
       return;
     }
 
@@ -56,7 +55,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   
   willLoseFirstResponder: function () {
     this._recordList.forEach( function (recordOrRecordArray) {
-      recordOrRecordArray.removeObserver('status', this, this.statusDidChange);
+      recordOrRecordArray.removeObserver('status', this, this.checkStatuses);
     }, this);
   },
   
