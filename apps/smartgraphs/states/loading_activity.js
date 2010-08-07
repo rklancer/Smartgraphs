@@ -73,7 +73,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
       if (!(this._pages.get('status') & SC.Record.READY)) {
         // pagesQuery are not ready; need to wait for them.
         this._recordList.push(this._pages);
-        this._pages.addObserver('status', this, this.checkStatus);
+        this._pages.addObserver('status', this, this.checkStatuses);
         return NO;
       }
       // post-condition: (activity is READY && pages have been requested && pages are not READY)

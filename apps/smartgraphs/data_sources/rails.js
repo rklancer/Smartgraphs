@@ -31,8 +31,14 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     
     if (query.get('isPagesQuery')) {
       var activity = query.get('parameters').activity;
+      var indexUrl = activity.get('pagesIndexUrl');
+      
       console.log('  Query: pagesQuery for Activity %s', activity.get('id'));
-      console.log('  URL endpoint for query: %s', activity.get('pagesIndexUrl'));
+      console.log('  URL endpoint for query: %s', indexUrl);
+      
+      this.requestIndexFromServer(store, query, indexUrl);   
+      console.log('  returning YES from fetch');
+      return YES;
     }
     else if (query.get('isStepsQuery')) {
       console.log('  Query: stepsQuery for ActivityPage %s', query.get('parameters').page.get('id'));
@@ -77,8 +83,8 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     console.log('  Record type requested = %s', recordType.toString());
     console.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
     
-    if (recordType === Smartgraphs.Activity) {
-      this.retrieveActivityRecord(store, storeKey);
+    if ((recordType === Smartgraphs.Activity) || recordType === Smartgraphs.ActivityPage) {
+      this.requestRecordFromServer(store, storeKey);
       console.log('  returning YES from retrieveRecord');
       return YES;
     }
@@ -115,15 +121,15 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   
   
   // ..........................................................
-  // SPECIFIC RECORD TYPE SUPPORT
+  // REQUEST AND RESPONSE - SINGLE RECORDS
   //
   
-  retrieveActivityRecord: function (store, storeKey) {
+  requestRecordFromServer: function (store, storeKey) {
     // The url IS the id. As it should be
     var url = store.idFor(storeKey);
     
     SC.Request.getUrl(url)
-       .notify(this, this.didRetrieveActivityRecord, { store: store, storeKey: storeKey })
+       .notify(this, this.didRetrieveRecordFromServer, { store: store, storeKey: storeKey })
        .header('Accept', 'application/json')
        .json()
        .send();
@@ -131,10 +137,10 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // i.e., after this.latency millisec, pretend the SC.Request called back.
     // when we're happy with the format of the response, we can replace this with a real SC.Request that 
     // notifies didRetrieveActivityRecord
-    //this.invokeLater(this._mockActivityRequestCompletion, this.get('latency'), store, storeKey);
+    //this.invokeLater(this._mockRequestRecordFromServer, this.get('latency'), store, storeKey);
   },
   
-  _mockActivityRequestCompletion: function (store, storeKey) {
+  _mockRequestRecordFromServer: function (store, storeKey) {
     var url = store.idFor(storeKey);
     var response = 
       Smartgraphs.mockResponses.hasOwnProperty(url) ? 
@@ -143,18 +149,66 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     this.didRetrieveActivityRecord(response, { store: store, storeKey: storeKey });
   },
   
-  didRetrieveActivityRecord: function (response, params) {
+  didRetrieveRecordFromServer: function (response, params) {
     var store = params.store;
     var storeKey = params.storeKey;
     
+    // debug
+    var recordType = Smartgraphs.store.recordTypeFor(storeKey);
+    
+    console.log('RailsDataSource.didRetrieveRecordFromServer()');
+    console.log('  Record type requested = %s', recordType.toString());
+    console.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
+    // end debug
+    
     if (SC.ok(response)) {
-      console.log('didRetrieveActivityRecord successful');
+      console.log('  ...SUCCESS');
       store.dataSourceDidComplete(storeKey, this.camelizeKeys(response.get('body')));
     }
     else {
+      console.error('  ...FAILURE');      
       store.dataSourceDidError(storeKey);
     }
   },
+  
+  // ..........................................................
+  // REQUEST AND RESPONSE - MULTIPLE RECORDS
+  //
+  
+  /** request multiple records from indexUrl in order to satisfy query */
+  
+  requestIndexFromServer: function (store, query, indexUrl) {
+    SC.Request.getUrl(indexUrl)
+       .notify(this, this.didRetrieveIndexFromServer, { store: store, query: query })
+       .header('Accept', 'application/json')
+       .json()
+       .send();
+  },
+  
+  didRetrieveIndexFromServer: function (response, params) {
+    var store = params.store;
+    var query = params.query;
+    
+    var recordType = query.get('recordType');
+    console.log('RailsDataSource.didRetrieveIndexFromServer()');
+    console.log('  Record type requested = %s', recordType.toString());
+    
+    if (SC.ok(response)) {
+      console.log('  ...SUCCESS');
+      var dataHashes = response.get('body').map(function (hash) { return this.camelizeKeys(hash); }, this);
+      store.loadRecords(recordType, dataHashes);
+      store.dataSourceDidFetchQuery(query);
+    }
+    else {
+      console.error('  ...FAILURE');      
+      store.dataSourceDidErrorQuery(query);
+    }
+  },
+  
+  
+  // ..........................................................
+  // SUPPORT
+  //
   
   /** turn snake_cased_fields from server into JS-friendly camelCasedPropertyNames */
   camelizeKeys: function (hash) {
