@@ -31,7 +31,7 @@ Smartgraphs.Activity = SC.Record.extend(
   /**
     Server endpoint for getting the page records. 
   */
-  pagesIndexUrl: SC.Record.attr(String),
+  pageListUrl: SC.Record.attr(String),
   
   // TODO a) this would be broken -- all Activity records would share the same {};
   //      b) move all state like 'context' to session

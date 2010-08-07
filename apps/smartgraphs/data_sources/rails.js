@@ -31,12 +31,12 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     
     if (query.get('isPagesQuery')) {
       var activity = query.get('parameters').activity;
-      var indexUrl = activity.get('pagesIndexUrl');
+      var listUrl = activity.get('pageListUrl');
       
       console.log('  Query: pagesQuery for Activity %s', activity.get('id'));
-      console.log('  URL endpoint for query: %s', indexUrl);
+      console.log('  URL endpoint for query: %s', listUrl);
       
-      this.requestIndexFromServer(store, query, indexUrl);   
+      this.requestListFromServer(store, query, listUrl);   
       console.log('  returning YES from fetch');
       return YES;
     }
@@ -175,22 +175,22 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   // REQUEST AND RESPONSE - MULTIPLE RECORDS
   //
   
-  /** request multiple records from indexUrl in order to satisfy query */
+  /** request multiple records from listUrl in order to satisfy query */
   
-  requestIndexFromServer: function (store, query, indexUrl) {
-    SC.Request.getUrl(indexUrl)
-       .notify(this, this.didRetrieveIndexFromServer, { store: store, query: query })
+  requestListFromServer: function (store, query, listUrl) {
+    SC.Request.getUrl(listUrl)
+       .notify(this, this.didRetrieveListFromServer, { store: store, query: query })
        .header('Accept', 'application/json')
        .json()
        .send();
   },
   
-  didRetrieveIndexFromServer: function (response, params) {
+  didRetrieveListFromServer: function (response, params) {
     var store = params.store;
     var query = params.query;
     
     var recordType = query.get('recordType');
-    console.log('RailsDataSource.didRetrieveIndexFromServer()');
+    console.log('RailsDataSource.didRetrieveListFromServer()');
     console.log('  Record type requested = %s', recordType.toString());
     
     if (SC.ok(response)) {
