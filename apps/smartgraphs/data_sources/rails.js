@@ -119,27 +119,52 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   //
   
   retrieveActivityRecord: function (store, storeKey) {
+    // The url IS the id. As it should be
+    var url = store.idFor(storeKey);
+    
+    SC.Request.getUrl(url)
+       .notify(this, this.didRetrieveActivityRecord, { store: store, storeKey: storeKey })
+       .header('Accept', 'application/json')
+       .json()
+       .send();
+
     // i.e., after this.latency millisec, pretend the SC.Request called back.
     // when we're happy with the format of the response, we can replace this with a real SC.Request that 
     // notifies didRetrieveActivityRecord
-    this.invokeLater(this._mockActivityRequestCompletion, this.get('latency'), store, storeKey);
+    //this.invokeLater(this._mockActivityRequestCompletion, this.get('latency'), store, storeKey);
   },
   
   _mockActivityRequestCompletion: function (store, storeKey) {
     var url = store.idFor(storeKey);
     var response = 
-      Smartgraphs.mockResponses.hasOwnProperty(url) ? Smartgraphs.mockResponses[url] : SC.Error.create();
-    this.didRetrieveActivityRecord(response, store, storeKey);
+      Smartgraphs.mockResponses.hasOwnProperty(url) ? 
+        SC.Object.create({ body: Smartgraphs.mockResponses[url] }) : 
+        SC.Error.create();
+    this.didRetrieveActivityRecord(response, { store: store, storeKey: storeKey });
   },
   
-  didRetrieveActivityRecord: function (response, store, storeKey) {
+  didRetrieveActivityRecord: function (response, params) {
+    var store = params.store;
+    var storeKey = params.storeKey;
+    
     if (SC.ok(response)) {
       console.log('didRetrieveActivityRecord successful');
-      store.dataSourceDidComplete(storeKey, response);
+      store.dataSourceDidComplete(storeKey, this.camelizeKeys(response.get('body')));
     }
     else {
       store.dataSourceDidError(storeKey);
     }
+  },
+  
+  /** turn snake_cased_fields from server into JS-friendly camelCasedPropertyNames */
+  camelizeKeys: function (hash) {
+    var ret = {};
+    for (var key in hash) {
+      if (hash.hasOwnProperty(key)) {
+        ret[key.camelize()] = hash[key];
+      }
+    }
+    return ret;
   }
   
 });
