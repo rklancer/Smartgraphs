@@ -13,7 +13,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   { url: 
       '/backend/activity/1/page/1/step/1/',
     activityPage:
-      '/backend/activity/1/page/1/',
+      '/backend/activity/1/page/1',
     beforeText: 
       '',
     responseTemplate: 
@@ -37,7 +37,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   { url: 
       '/backend/activity/1/page/2/step/1/',
     activityPage:
-      '/backend/activity/1/page/2/',
+      '/backend/activity/1/page/2',
     beforeText: 
       '<p>In the top-right area, draw a graph of someone walking at a slow, steady pace from point A to point B '+
       'between 0 and 15 seconds.</p>',
@@ -63,7 +63,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   { url: 
       '/backend/activity/1/page/2/step/2/',
     activityPage:
-      '/backend/activity/1/page/2/',
+      '/backend/activity/1/page/2',
     beforeText: 
       '<p>In the bottom-right area, draw a graph of someone walking at a slow, steady pace from point B to point A '+
       'between 0 and 15 seconds. Click Next when you are ready.</p>',
@@ -88,7 +88,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   { url: 
       '/backend/activity/1/page/3/step/1/',
     activityPage:
-      '/backend/activity/1/page/3/',
+      '/backend/activity/1/page/3',
     beforeText: 
       '<p>Place the sensor at the 0-meter mark. Stand near the sensor. When you are ready, have your partner click '+
       'Start to record the position and time data for your movements. Walk on the path for 15 seconds. Experiment '+
@@ -116,7 +116,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   { url: 
       '/backend/activity/1/page/3/step/2/',
     activityPage:
-      '/backend/activity/1/page/3/',
+      '/backend/activity/1/page/3',
     beforeText: 
       '<p>How are different motions represented on a position-time graph? (For example, what does the graph look '+
       'like when you are standing still, walking forward ...?)</p>'+
@@ -143,7 +143,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   { url: 
       '/backend/activity/1/page/4/step/1/',
     activityPage:
-      '/backend/activity/1/page/3/',
+      '/backend/activity/1/page/3',
     beforeText: 
       '<p>At right is your prediction and your actual motion, together</p>',
     responseTemplate: 

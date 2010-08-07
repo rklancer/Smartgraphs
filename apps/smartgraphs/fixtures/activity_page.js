@@ -11,7 +11,7 @@ sc_require('models/activity_page');
 Smartgraphs.ActivityPage.FIXTURES = [
 
   { url: 
-      '/backend/activity/1/page/1/',
+      '/backend/activity/1/page/1',
     activity:
       '/backend/activity/1/motion-without-words/',
     name: 
@@ -32,7 +32,7 @@ Smartgraphs.ActivityPage.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/',
+      '/backend/activity/1/page/2',
     activity:
       '/backend/activity/1/motion-without-words/',
     name: 
@@ -54,7 +54,7 @@ Smartgraphs.ActivityPage.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/3/',
+      '/backend/activity/1/page/3',
     activity:
       '/backend/activity/1/motion-without-words/',
     name: 
@@ -73,7 +73,7 @@ Smartgraphs.ActivityPage.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/page/4/',
+      '/backend/activity/1/page/4',
     activity:
       '/backend/activity/1/motion-without-words/',
     name: 
