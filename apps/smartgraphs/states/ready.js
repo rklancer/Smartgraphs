@@ -29,7 +29,7 @@ Smartgraphs.READY = SC.Responder.create(
   
   didBecomeFirstResponder: function() {
     // Eventually we can use SC.routes to parse a 'query string' for us, as per:
-    // http://smartgraphs.concord.org/app#?mode=edit_activity&activity=/activitys/rklancer/my-fancy-activity'
+    // http://smartgraphs.concord.org/app#?mode=edit_activity&activity=/activities/rklancer/my-fancy-activity'
     
     // for now, we just take the URL fragment to be the activityId
     SC.routes.add('*activityId', this, 'route');
