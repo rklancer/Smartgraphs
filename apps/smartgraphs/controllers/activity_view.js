@@ -15,29 +15,43 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityViewController.prototype */ {
 
   dataViewNowShowing: null,
-  firstPaneNowShowing: null,
-  secondPaneNowShowing: null,
+  topPaneNowShowing: null,
+  bottomPaneNowShowing: null,
+  singlePaneNowShowing: null,
+
   firstImageValue: null,
   secondImageValue: null,
   
+  paneIsSplit: null,
+  
   showSinglePane: function () {
+    this.set('paneIsSplit', false);
     this.set('dataViewNowShowing', 'Smartgraphs.activityPage.singlePaneDataView');
   },
   
   showSplitPane: function () {
+    this.set('paneIsSplit', true);
     this.set('dataViewNowShowing', 'Smartgraphs.activityPage.splitPaneDataView');    
   },
-  
+
   showImage: function (pane, path) {
-    if (pane === 'first') {
-      this.set('firstImageValue', path);
-      this.set('firstPaneNowShowing', 'Smartgraphs.activityPage.firstImageView');
-      return YES;
-    }
+    // tolerate a bit of redundancy to make clear what we're doing here
+    if (this.get('paneIsSplit')) {
+      if (pane === 'top') {
+        this.set('firstImageValue', path);
+        this.set('topPaneNowShowing', 'Smartgraphs.activityPage.firstImageView');
+        return YES;
+      }
     
-    if (pane === 'second') {
-      this.set('secondImageValue', path);
-      this.set('secondPaneNowShowing', 'Smartgraphs.activityPage.secondImageView');
+      if (pane === 'bottom') {
+        this.set('secondImageValue', path);
+        this.set('bottomPaneNowShowing', 'Smartgraphs.activityPage.secondImageView');
+        return YES;
+      }
+    }
+    else {
+      this.set('firstImageValue', path);
+      this.set('singlePaneNowShowing', 'Smartgraphs.activityPage.firstImageView');
       return YES;
     }
     
@@ -45,15 +59,22 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   },
   
   showGraph: function (pane, graphId) {
-    if (pane === 'first') {
-      Smartgraphs.firstGraphController.openGraph(graphId);
-      this.set('firstPaneNowShowing', 'Smartgraphs.activityPage.firstGraphView');
-      return YES;
-    }
+    if (this.get('paneIsSplit')) { 
+      if (pane === 'top') {
+        Smartgraphs.firstGraphController.openGraph(graphId);
+        this.set('topPaneNowShowing', 'Smartgraphs.activityPage.firstGraphView');
+        return YES;
+      }
     
-    if (pane === 'second') {
-      Smartgraphs.secondGraphController.openGraph(graphId);      
-      this.set('secondPaneNowShowing', 'Smartgraphs.activityPage.secondGraphView');
+      if (pane === 'bottom') {
+        Smartgraphs.secondGraphController.openGraph(graphId);      
+        this.set('bottomPaneNowShowing', 'Smartgraphs.activityPage.secondGraphView');
+        return YES;
+      }
+    }
+    else {
+      Smartgraphs.firstGraphController.openGraph(graphId);
+      this.set('singlePaneNowShowing', 'Smartgraphs.activityPage.firstGraphView');
       return YES;
     }
     
@@ -61,16 +82,21 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   },
   
   hidePane: function (pane) {
-    if (pane === 'first') {
-      this.set('firstPaneNowShowing', null);
+    if (this.get('paneIsSplit')) { 
+      if (pane === 'top') {
+        this.set('topPaneNowShowing', null);
+        return YES;
+      }
+    
+      if (pane === 'bottom') {  
+        this.set('bottomPaneNowShowing', null);
+        return YES;
+      }
+    }
+    else {
+      this.set('singlePaneNowShowing', null);
       return YES;
     }
-    
-    if (pane === 'second') {  
-      this.set('secondPaneNowShowing', null);
-      return YES;
-    }
-    
     return NO;
   },
   
@@ -79,6 +105,10 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   },
   
   removeSeriesView: function (series) {
+  },
+  
+  testViewSwap: function () {
+    this.set('topPaneNowShowing', 'Smartgraphs.activityPage.errorLoadingActivityView');
   }
 
 }) ;

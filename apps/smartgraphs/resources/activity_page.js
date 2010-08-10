@@ -150,7 +150,7 @@ Smartgraphs.activityPage = SC.Page.design({
   
   singlePaneDataView: SC.ContainerView.design({
     classNames: 'smartgraph-pane',
-    nowShowingBinding: 'Smartgraphs.activityViewController.firstPaneNowShowing'
+    nowShowingBinding: 'Smartgraphs.activityViewController.singlePaneNowShowing'
   }),
   
   splitPaneDataView: SC.View.design({
@@ -163,7 +163,7 @@ Smartgraphs.activityPage = SC.Page.design({
       topPane: SC.ContainerView.design({
         layout: { bottom: 5 },
         classNames: 'smartgraph-pane',
-        nowShowingBinding: 'Smartgraphs.activityViewController.firstPaneNowShowing'
+        nowShowingBinding: 'Smartgraphs.activityViewController.topPaneNowShowing'
       })
     }),
 
@@ -174,7 +174,7 @@ Smartgraphs.activityPage = SC.Page.design({
       bottomPane: SC.ContainerView.design({
         layout: { top: 5 },
         classNames: 'smartgraph-pane',//TEMP
-        nowShowingBinding: 'Smartgraphs.activityViewController.secondPaneNowShowing'
+        nowShowingBinding: 'Smartgraphs.activityViewController.bottomPaneNowShowing'
       })
     })
   }),

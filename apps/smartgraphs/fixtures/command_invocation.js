@@ -79,7 +79,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       3,
     literalArgs: {
-      pane: 'first',
+      pane: 'top',
       graphId: '/backend/activity/1/graph/1/prediction-away/'
     },
     substitutedArgs:
@@ -96,7 +96,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       3,
     literalArgs: {
-      pane: 'first',
+      pane: 'top',
       seriesName: 'prediction-away',
       xMin: 0,
       xMax: 15
@@ -131,7 +131,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       1,
     literalArgs: {
-      pane: 'second',
+      pane: 'bottom',
       graphId: '/backend/activity/1/graph/2/prediction-toward/'
     },
     substitutedArgs:
@@ -148,7 +148,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       2,
     literalArgs: {
-      pane: 'second',
+      pane: 'bottom',
       seriesName: 'prediction-toward',
       xMin: 0,
       xMax: 15
@@ -167,7 +167,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       1,
     literalArgs: {
-      pane: 'first',
+      pane: 'top',
       graphId: '/backend/activity/1/graph/3/sensor-playing/'
     },
     substitutedArgs:
@@ -184,7 +184,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       2,
     literalArgs: {
-      pane: 'second'
+      pane: 'bottom'
     },
     substitutedArgs:
       {}
@@ -215,7 +215,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       4,
     literalArgs: {
-      pane: 'first',
+      pane: 'top',
       seriesName: 'sensor'
     },
     substitutedArgs:
@@ -263,7 +263,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       1,
     literalArgs: {
-      pane: 'second'
+      pane: 'bottom'
     },
     substitutedArgs:
       {}
@@ -279,7 +279,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     index:
       2,
     literalArgs: {
-      pane: 'first',
+      pane: 'top',
       graphId: '/backend/activity/1/graph/4/combined/'
     },
     substitutedArgs:

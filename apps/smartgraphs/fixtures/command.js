@@ -48,7 +48,7 @@ Smartgraphs.Command.FIXTURES = [
     actionName:
       'showImage',
     literalArgs: {
-      pane: 'first'
+      pane: 'single'
     },
     substitutedArgs:
       {}

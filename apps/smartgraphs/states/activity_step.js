@@ -28,13 +28,15 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   
   // action helpers
   _graphControllerFor: function (pane) {
-    if (pane === 'first') return Smartgraphs.firstGraphController;
-    if (pane === 'second') return Smartgraphs.secondGraphController;
+    if ( !Smartgraphs.activityViewController.get('paneIsSplit') || pane === 'top' ) {
+      return Smartgraphs.firstGraphController;
+    }
+    if (pane === 'bottom') return Smartgraphs.secondGraphController;
   },
   
   _graphViewFor: function (pane) {
-    if (pane === 'first') return Smartgraphs.getPath('activityPage.firstGraphView');
-    if (pane === 'second') return Smartgraphs.getPath('activityPage.firstGraphView');
+    if (pane === 'top' || pane === 'single') return Smartgraphs.getPath('activityPage.firstGraphView');
+    if (pane === 'bottom') return Smartgraphs.getPath('activityPage.firstGraphView');
   },
   
   // ..........................................................
