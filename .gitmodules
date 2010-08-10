@@ -3,7 +3,7 @@
 	url = http://github.com/sfentress/CC-SproutCore.git
 [submodule "capybara-testrunner"]
 	path = capybara-testrunner
-	url = http://github.com/rklancer/capybara-testrunner.git
+	url = http://github.com/concord-consortium/capybara-testrunner.git
 [submodule "frameworks/raphael_views"]
 	path = frameworks/raphael_views
 	url = http://github.com/rklancer/RaphaelViews.git
