@@ -27,33 +27,33 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // TODO: Add handlers to fetch data for specific queries.  
     // call store.dataSourceDidFetchQuery(query) when done.
 
-    console.log('RailsDataSource.fetch()');
+    this.log('RailsDataSourcetaSource.fetch()');
     
     if (query.get('isPagesQuery')) {
       var activity = query.get('parameters').activity;
       var listUrl = activity.get('pageListUrl');
       
-      console.log('  Query: pagesQuery for Activity %s', activity.get('id'));
-      console.log('  URL endpoint for query: %s', listUrl);
+      this.log('  Query: pagesQuery for Activity %s', activity.get('id'));
+      this.log('  URL endpoint for query: %s', listUrl);
       
       this.requestListFromServer(store, query, listUrl);   
-      console.log('  returning YES from fetch');
+      this.log('  returning YES from fetch');
       return YES;
     }
     else if (query.get('isStepsQuery')) {
-      console.log('  Query: stepsQuery for ActivityPage %s', query.get('parameters').page.get('id'));
+      this.log('  Query: stepsQuery for ActivityPage %s', query.get('parameters').page.get('id'));
     }
     else if (query.get('isTriggerResponsesQuery')) {
-      console.log('  Query: triggerResponsesQuery for ActivityStep %s', query.get('parameters').step.get('id'));
+      this.log('  Query: triggerResponsesQuery for ActivityStep %s', query.get('parameters').step.get('id'));
     }
     else if (query.get('isCommandInvocationsQuery')) {
-      console.log('  Query: commandInvocationsQuery for ActivityStep %s', query.get('activityStep').get('id'));
+      this.log('  Query: commandInvocationsQuery for ActivityStep %s', query.get('activityStep').get('id'));
     }
     else if (query === Smartgraphs.ALL_COMMANDS_QUERY) {
-      console.log('  Query: ALL_COMMANDS_QUERY');
+      this.log('  Query: ALL_COMMANDS_QUERY');
     }
     else if (query === Smartgraphs.ALL_TRIGGERS_QUERY) {
-      console.log('  Query: ALL_TRIGGERS_QUERY');
+      this.log('  Query: ALL_TRIGGERS_QUERY');
     }
     
     return NO ; // return YES if you handled the query
@@ -64,7 +64,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   //
   
   retrieveRecords: function(store, storeKeys, ids) {
-    console.log('RailsDataSource.retrieveRecords(storeKeys=%s)', storeKeys.toString());
+    this.log('RailsDataSource.retrieveRecords(storeKeys=%s)', storeKeys.toString());
     sc_super();
   },
   
@@ -79,13 +79,13 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
     var recordType = Smartgraphs.store.recordTypeFor(storeKey);
     
-    console.log('RailsDataSource.retrieveRecord()');
-    console.log('  Record type requested = %s', recordType.toString());
-    console.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
+    this.log('RailsDataSource.retrieveRecord()');
+    this.log('  Record type requested = %s', recordType.toString());
+    this.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
     
     if ((recordType === Smartgraphs.Activity) || recordType === Smartgraphs.ActivityPage) {
       this.requestRecordFromServer(store, storeKey);
-      console.log('  returning YES from retrieveRecord');
+      this.log('  returning YES from retrieveRecord');
       return YES;
     }
 
@@ -97,7 +97,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // TODO: Add handlers to submit new records to the data source.
     // call store.dataSourceDidComplete(storeKey) when done.
 
-    console.log('RailsDataSource.createRecord()');  
+    this.log('RailsDataSource.createRecord()');  
     return NO ; // return YES if you handled the storeKey
   },
   
@@ -106,7 +106,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // TODO: Add handlers to submit modified record to the data source
     // call store.dataSourceDidComplete(storeKey) when done.
 
-    console.log('RailsDataSource.updateRecord()');  
+    this.log('RailsDataSource.updateRecord()');  
     return NO ; // return YES if you handled the storeKey
   },
   
@@ -115,7 +115,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // TODO: Add handlers to destroy records on the data source.
     // call store.dataSourceDidDestroy(storeKey) when done
 
-    console.log('RailsDataSource.destroyRecord()');  
+    this.log('RailsDataSource.destroyRecord()');  
     return NO ; // return YES if you handled the storeKey
   },
   
@@ -154,20 +154,18 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     var store = params.store;
     var storeKey = params.storeKey;
     
-    // debug
     var recordType = Smartgraphs.store.recordTypeFor(storeKey);
     
-    console.log('RailsDataSource.didRetrieveRecordFromServer()');
-    console.log('  Record type requested = %s', recordType.toString());
-    console.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
-    // end debug
+    this.log('RailsDataSource.didRetrieveRecordFromServer()');
+    this.log('  Record type requested = %s', recordType.toString());
+    this.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
     
     if (SC.ok(response)) {
-      console.log('  ...SUCCESS');
+      this.log('  ...SUCCESS');
       store.dataSourceDidComplete(storeKey, this.camelizeKeys(response.get('body')));
     }
     else {
-      console.error('  ...FAILURE');      
+      this.log('  ...FAILURE');      
       store.dataSourceDidError(storeKey);
     }
   },
@@ -204,17 +202,17 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     var query = params.query;
     
     var recordType = query.get('recordType');
-    console.log('RailsDataSource.didRetrieveListFromServer()');
-    console.log('  Record type requested = %s', recordType.toString());
+    this.log('RailsDataSource.didRetrieveListFromServer()');
+    this.log('  Record type requested = %s', recordType.toString());
     
     if (SC.ok(response)) {
-      console.log('  ...SUCCESS');
+      this.log('  ...SUCCESS');
       var dataHashes = response.get('body').map(function (hash) { return this.camelizeKeys(hash); }, this);
       store.loadRecords(recordType, dataHashes);
       store.dataSourceDidFetchQuery(query);
     }
     else {
-      console.error('  ...FAILURE');      
+      this.log('  ...FAILURE');      
       store.dataSourceDidErrorQuery(query);
     }
   },
@@ -233,6 +231,12 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
       }
     }
     return ret;
+  },
+  
+  log: function () {
+    if (Smartgraphs.get('logDataSource')) {
+      console.log.apply(console, arguments);
+    }
   }
   
 });
