@@ -26,6 +26,8 @@ Smartgraphs = SC.Application.create(
   },
   
   // DEBUG SETTING: traces firstResponder changes and app actions
-  trace: YES
+  trace: YES,
+  
+  useMockResponses: NO
   
 }) ;

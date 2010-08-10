@@ -125,19 +125,19 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   //
   
   requestRecordFromServer: function (store, storeKey) {
-    // The url IS the id. As it should be
+    // The url IS the id. As it should be.
     var url = store.idFor(storeKey);
     
-    // SC.Request.getUrl(url)
-    //    .notify(this, this.didRetrieveRecordFromServer, { store: store, storeKey: storeKey })
-    //    .header('Accept', 'application/json')
-    //    .json()
-    //    .send();
-
-    // i.e., after this.latency millisec, pretend the SC.Request called back.
-    // when we're happy with the format of the response, we can replace this with a real SC.Request that 
-    // notifies didRetrieveActivityRecord
-    this.invokeLater(this._mockRequestRecordFromServer, this.get('latency'), store, storeKey);
+    if (Smartgraphs.get('useMockResponses')) {
+      this.invokeLater(this._mockRequestRecordFromServer, this.get('latency'), store, storeKey);
+    }
+    else {
+    SC.Request.getUrl(url)
+       .notify(this, this.didRetrieveRecordFromServer, { store: store, storeKey: storeKey })
+       .header('Accept', 'application/json')
+       .json()
+       .send();
+    }
   },
   
   _mockRequestRecordFromServer: function (store, storeKey) {
@@ -146,6 +146,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
       Smartgraphs.mockResponses.hasOwnProperty(url) ? 
         SC.Object.create({ body: Smartgraphs.mockResponses[url] }) : 
         SC.Error.create();
+
     this.didRetrieveRecordFromServer(response, { store: store, storeKey: storeKey });
   },
   
@@ -178,12 +179,16 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   /** request multiple records from listUrl in order to satisfy query */
   
   requestListFromServer: function (store, query, listUrl) {
-    // SC.Request.getUrl(listUrl)
-    //    .notify(this, this.didRetrieveListFromServer, { store: store, query: query })
-    //    .header('Accept', 'application/json')
-    //    .json()
-    //    .send();
-    this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
+    if (Smartgraphs.get('useMockResponses')) {
+      this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
+    }
+    else { 
+      SC.Request.getUrl(listUrl)
+       .notify(this, this.didRetrieveListFromServer, { store: store, query: query })
+       .header('Accept', 'application/json')
+       .json()
+       .send();
+    }
   },
   
   _mockRequestListFromServer: function (store, query, listUrl) {
