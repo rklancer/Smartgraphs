@@ -19,9 +19,10 @@ Smartgraphs.ACTIVITY_STEP_DONE = SC.Responder.create(
   nextResponder: Smartgraphs.ACTIVITY,
   
   didBecomeFirstResponder: function() {
-    var isLastStep = Smartgraphs.activityStepController.get('isLastStep');
+    var wasLastStep = Smartgraphs.activityStepController.get('isLastStep');
     Smartgraphs.activityStepController.finish();    // finish() may change activityStepController's content
-    if (isLastStep) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_DONE);
+    Smartgraphs.activityStepController.cleanup();
+    if (wasLastStep) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_DONE);
   },
   
   // ..........................................................

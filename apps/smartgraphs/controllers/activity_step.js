@@ -30,6 +30,9 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   */
   finish: function () {
     Smartgraphs.sendAction('fireActivityEvent', this, {eventName: 'stepFinished'});
+  },
+  
+  cleanup: function () {
     this.unregisterOldTriggers();
   },
   

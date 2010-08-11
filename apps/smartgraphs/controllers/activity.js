@@ -20,6 +20,11 @@ Smartgraphs.activityController = SC.ObjectController.create(
     return (context.hasOwnProperty(key) ? context[key] : undefined);
   },
   
+  /** Whatever needs to be done to clean up state when leaving an activity */
+  cleanup: function () {
+    Smartgraphs.activityStepController.cleanup();     // for now, just this
+  },
+  
   // let buttons know.
   canOpenNextPage: NO
     

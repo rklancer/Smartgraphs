@@ -25,6 +25,10 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     Smartgraphs.appWindowController.showActivityView();
   },
   
+  willLoseFirstResponder: function () {
+    Smartgraphs.activityController.cleanup();
+  },
+  
   // ..........................................................
   // ACTIONS
   //
