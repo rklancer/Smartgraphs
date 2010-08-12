@@ -2,6 +2,7 @@
 // Project:   Smartgraphs.appletPage
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
+// @author    Aaron Unger <aunger@concord.org>
 // ==========================================================================
 /*globals Smartgraphs CC */
 
