@@ -244,7 +244,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
     command:
       '/backend/command/11/wait-for-valid-response',
     triggerResponse:
-      'p3s2-do-step-begin',
+      '/backend/activity/1/page/3/step/2/response/1/step-beginning',
     index:
       1,
     literalArgs: 

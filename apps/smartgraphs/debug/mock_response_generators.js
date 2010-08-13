@@ -57,7 +57,7 @@ Smartgraphs.generateStepListMockResponses = function () {
 
 Smartgraphs.addStepListUrlsToPages = function () {
   var pages = Smartgraphs.activityController.get('pages');
-  var page, listUrl, steps, strings = [];
+  var page;
   
   for (var i = 0, ii = pages.get('length'); i<ii; i++) {
     page = pages.objectAt(i);
@@ -65,6 +65,67 @@ Smartgraphs.addStepListUrlsToPages = function () {
   }
 };
 
+
+Smartgraphs.addListUrlsToSteps = function () {
+  Smartgraphs.loadSteps();
+
+  var step, steps = Smartgraphs.store.find(Smartgraphs.ActivityStep);
   
+  for (var i = 0, ii = steps.get('length'); i < ii; i++) {
+    step = steps.objectAt(i);
+    console.log('setting triggerResponseListUrl and commandListUrl for step %s', step.get('id'));
+    step.set('triggerResponseListUrl', step.get('url')+'/trigger_responses');
+    step.set('commandListUrl', step.get('url')+'/commands');
+  }
+};
+
+
+Smartgraphs.loadSteps = function () {
+  var page, pages = Smartgraphs.activityController.get('pages');
+
+  for (var i = 0, ii = pages.get('length'); i<ii; i++) {
+    page = pages.objectAt(i);
+    Smartgraphs.store.loadRecords(Smartgraphs.ActivityStep, Smartgraphs.mockResponses[page.get('url')+'/steps']);
+    console.log('loaded steps for %s', page.get('url'));
+  }
+};
+
   
+Smartgraphs.generateCommandInvocationMockResponses = function () {
+  Smartgraphs.loadSteps();
+  
+  var step, steps = Smartgraphs.store.find(Smartgraphs.ActivityStep);
+  var commands;
+  var strings = [];
+  var listUrl;
+  
+  for (var i = 0, ii = steps.get('length'); i < ii; i++) {
+    step = steps.objectAt(i);
+    listUrl = step.get('commandListUrl');
+    commands = Smartgraphs.store.find(step.get('commandsQuery'));
+    
+    strings.push(Smartgraphs.mockResponseForRecordArray(commands, listUrl));
+  }
+  
+  return strings.join('');
+};
+
+Smartgraphs.generateTriggerResponseMockResponses = function () {
+  Smartgraphs.loadSteps();
+  
+  var step, steps = Smartgraphs.store.find(Smartgraphs.ActivityStep);
+  var triggerResponses;
+  var strings = [];
+  var listUrl;
+  
+  for (var i = 0, ii = steps.get('length'); i < ii; i++) {
+    step = steps.objectAt(i);
+    listUrl = step.get('triggerResponseListUrl');
+    triggerResponses = Smartgraphs.store.find(step.get('triggerResponsesQuery'));
+    
+    strings.push(Smartgraphs.mockResponseForRecordArray(triggerResponses, listUrl));
+  }
+  
+  return strings.join('');
+};
   
