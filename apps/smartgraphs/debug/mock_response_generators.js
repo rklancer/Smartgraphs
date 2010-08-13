@@ -38,4 +38,33 @@ Smartgraphs.mockResponseForRecordArray = function (recordArray, url) {
 };
 
 
+/** specific helpers for augmenting data models */
+
+Smartgraphs.generateStepListMockResponses = function () {
+  var pages = Smartgraphs.activityController.get('pages');
+  var page, listUrl, steps, strings = [];
+  
+  for (var i = 0, ii = pages.get('length'); i<ii; i++) {
+    page = pages.objectAt(i);
+    listUrl = page.get('stepListUrl');
+    steps = page.get('steps');
+    strings.push(Smartgraphs.mockResponseForRecordArray(steps, listUrl));
+  }
+  
+  return strings.join('');
+};
+
+
+Smartgraphs.addStepListUrlsToPages = function () {
+  var pages = Smartgraphs.activityController.get('pages');
+  var page, listUrl, steps, strings = [];
+  
+  for (var i = 0, ii = pages.get('length'); i<ii; i++) {
+    page = pages.objectAt(i);
+    page.set('stepListUrl', page.get('url')+'/steps');
+  }
+};
+
+  
+  
   
