@@ -21,38 +21,23 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   nextResponder: Smartgraphs.READY,
 
   didBecomeFirstResponder: function() {
-    
-    this._recordList = [];
-    this._pages = null;
-    
-    // these are cached
-    if (!this._triggers) {
-      this._triggers = Smartgraphs.store.find(Smartgraphs.ALL_TRIGGERS_QUERY);
-      this._recordList.push(this._triggers);
-    }
-    
-    if (!this._commands) {
-      this._commands = Smartgraphs.store.find(Smartgraphs.ALL_COMMANDS_QUERY);
-      this._recordList.push(this._commands);
-    }
-    
+    this._watchedRecords = [];
+    this.clearSubordinateResources();
+        
     this._activity = Smartgraphs.activityController.get('content');
-    this._recordList.push(this._activity);
-    
-    if (this.checkStatuses()) {
+    this.watch(this._activity);
+
+    if (this.checkActivityStatus()) {
+      // if everything is loaded (or there's an error loading the activity), nothing to do
       return;
     }
 
     Smartgraphs.appWindowController.showActivityLoadingView();
-
-    this._recordList.forEach( function (recordOrRecordArray) {
-      recordOrRecordArray.addObserver('status', this, this.checkStatuses);
-    }, this);
   },
   
   willLoseFirstResponder: function () {
-    this._recordList.forEach( function (recordOrRecordArray) {
-      recordOrRecordArray.removeObserver('status', this, this.checkStatuses);
+    this._watchedRecords.forEach( function (recordOrRecordArray) {
+      recordOrRecordArray.removeObserver('status', this, this.checkActivityStatus);
     }, this);
   },
   
@@ -60,68 +45,75 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
   // ACTIVITY CONTENT UPDATE
   //
 
-  /** Dispatches to appropriate state if statuses of records are recordArrays we are waiting on are all READY
-      Adds pagesQuery's recordArray to the list of recordArrays we are waiting on if Activity has loaded */
-      
-  checkStatuses: function () {
-    
-    // If Activity has loaded and pagesQuery has not been requested, add pagesQuery to the list of things we're 
-    // waiting on
-
-    if ((this._activity.get('status') & SC.Record.READY) && (this._pages === null)) {
-      this._pages = Smartgraphs.store.find(this._activity.get('pagesQuery'));   
-      if (!(this._pages.get('status') & SC.Record.READY)) {
-        // pagesQuery are not ready; need to wait for them.
-        this._recordList.push(this._pages);
-        this._pages.addObserver('status', this, this.checkStatuses);
-        return NO;
+  clearSubordinateResources: function () {
+    this._pages = null;
+    this._triggers = null;
+    this._commands = null;
+  },
+  
+  checkActivityStatus: function () {
+    if (this._activity.get('status') & SC.Record.READY) {
+      return this.checkSubordinateResources();
+    }
+    else {
+      if (this._activity.get('status') & SC.Record.ERROR) {
+        Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
+        return YES;
       }
-      // post-condition in this block: (activity is READY && pages have been requested && pages are not READY)
+    }
+    return NO;  // not ready and not in error -> need to keep checking
+  },
+  
+  checkSubordinateResources: function () {
+    if (!this._pages) {     // s/b cleared every time
+      this._pages = Smartgraphs.store.find(this._activity.get('pagesQuery'));
+      this.watch(this._pages);
     }
     
-    // pre-condition:
-    // (activity is not READY || pages have been requested with status unknown) 
-    // || 
-    // (activity is READY && pages have been requested && pages are not READY)
+    if (!this._triggers) {
+      this._triggers = Smartgraphs.store.find(Smartgraphs.ALL_TRIGGERS_QUERY);
+      this.watch(this._triggers);
+    }
     
-    if (this.statusesAreReady()) {
+    if (!this._commands) {
+      this._commands = Smartgraphs.store.find(Smartgraphs.ALL_COMMANDS_QUERY);
+      this.watch(this._commands);
+    }
+    
+    if (this.allAreReady(this._pages, this._triggers, this._commands)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_START);
       return YES;
     }
     
-    if (this.statusesHaveErrors()) {
+    if (this.someHaveErrors(this._pages, this._triggers, this._commands)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
-      return YES;       // handled...
+      return YES;
     }
-    
-    return NO;          // need to keep waiting
+    return NO;
   },
   
-  /** Returns YES if all of the records and recordArrays we are waiting on have READY status.
-     Note that *recordArrays* (not just the individual records) from a query are marked as having status 
-     READY_CLEAN when the data source calls back to the store via dataSourceDidFetchQuery */
-
-  statusesAreReady: function () {
-    var recordOrRecordArray;
-    var ret = YES;
-    
-    for (var i = 0, ii = this._recordList.get('length'); i < ii; i++) {
-      recordOrRecordArray = this._recordList.objectAt(i);
-      ret = ret && !!(recordOrRecordArray.get('status') & SC.Record.READY);
-    }
-    return ret;
+  watch: function (recordOrRecordArray) {
+    this._watchedRecords.push(recordOrRecordArray);
+    recordOrRecordArray.addObserver('status', this, this.checkActivityStatus);
   },
   
-  /** Returns YES if any of the records and recordArrays we are waiting on have ERROR status. */ 
-  statusesHaveErrors: function () {
-    var recordOrRecordArray;
-    var ret = NO;
-    
-    for (var i = 0, ii = this._recordList.get('length'); i < ii; i++) {
-      recordOrRecordArray = this._recordList.objectAt(i);
-      ret = ret || !!(recordOrRecordArray.get('status') & SC.Record.ERROR);
+  
+  allAreReady: function () {
+    for (var i = 0, ii = arguments.length; i < ii; i++) {
+      if (!(arguments[i].get('status') & SC.Record.READY)) {
+        return NO;
+      }
     }
-    return ret;
+    return YES;
+  }, 
+  
+  someHaveErrors: function () {
+    for (var i = 0, ii = arguments.length; i < ii; i++) {
+      if ((arguments[i].get('status') & SC.Record.ERROR)) {
+        return YES;
+      }
+    }
+    return NO;
   },
   
   // ..........................................................
