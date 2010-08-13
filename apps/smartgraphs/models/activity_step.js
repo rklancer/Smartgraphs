@@ -89,6 +89,16 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   // 
   // wasVisited: NO,
   
+  /** 
+    server endpoint for finding triggerResponses associated with this step
+  */
+  triggerResponseListUrl: SC.Record.attr(String),
+  
+  /**
+    server endpoint for finding commandInvocations associated with this step.
+  */
+  commandListUrl: SC.Record.attr(String),
+
   /**
     Query that finds in the data store all TriggerResponses associated with this step.
   */
@@ -105,22 +115,19 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     Query that finds in the data store all CommandInvocations associated with this step. (This means finding
     all CommandInvocations associated with TriggerResponses associated with this step.)
   */
-  commandInvocationsQuery: function () {    
-    if (SC.none(this._commandInvocationsQuery) || this._commandInvocationsQueryIsStale) {
-      this._commandInvocationsQuery = SC.Query.create({
-        isCommandInvocationsQuery: YES,
-        activityStep: this,
-        recordType: Smartgraphs.CommandInvocations,
-        conditions: '{triggerResponseIds} contains id',
-        parameters: { triggerResponseIds: this.get('triggerResponses').getEach('id') }
-      });
-      this._commandInvocationsQueryIsStale = NO;
-    }
-    return this._commandInvocationsQuery;
-  }.property(),
+  commandsQuery: function () {
+    return SC.Query.create({
+      isCommandInvocationsQuery: YES,     // fully qualify here so datasource doesn't confuse it with query for Smartgraphs.Command objects
+      activityStep: this,
+      recordType: Smartgraphs.CommandInvocation,
+      conditions: '{triggerResponses} CONTAINS triggerResponse',
+      // SC Bug? CONTAINS queries don't recognize ManyArrays, only true Arrays. Therefore turn triggerResponses into a 'real' Array.
+      parameters: { triggerResponses: this.get('triggerResponses').map( function (x) { return x; }) }
+    });
+  }.property().cacheable(),
 
   triggerResponsesDidChange: function () {
-    this._commandInvocationsQueryIsStale = YES;
-  }.observes('.triggerResponses.[]')
+    this.notifyPropertyChange('commandsQuery');
+  }.observes('*triggerResponses.[]')
   
 }) ;
