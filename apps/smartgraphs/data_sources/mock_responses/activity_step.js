@@ -5,6 +5,7 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('data_sources/mock_responses/mock_responses');
 
 // ActivityStep list urls for the ActivityPages in first Activity
 // generated on the console by running:

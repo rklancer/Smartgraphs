@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('data_sources/mock_responses/mock_responses');
+
 
 // ActivityPage list url for first Activity
 // generated on the console by running:

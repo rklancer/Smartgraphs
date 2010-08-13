@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('data_sources/mock_responses/mock_responses');
+
 // generated on the console by running:
 //   Smartgraphs.mockResponseForRecordArray(Smartgraphs.store.find(Smartgraphs.Command), Smartgraphs.activityController.get('commandListUrl'))
 
