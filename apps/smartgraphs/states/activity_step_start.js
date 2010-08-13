@@ -21,7 +21,6 @@ Smartgraphs.ACTIVITY_STEP_START = SC.Responder.create(
   nextResponder: Smartgraphs.ACTIVITY,
   
   didBecomeFirstResponder: function () {
-    Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('currentStep'));
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   }
   

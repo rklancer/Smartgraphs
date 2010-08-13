@@ -24,9 +24,11 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
   fetch: function (store, query) {
 
-    var activity, listUrl, page;
+    var activity, listUrl, page, step;
 
     this.log('RailsDataSourcetaSource.fetch()');
+    
+    // this all suggests an obvious pattern for handling queries whose contents are fetched at listUrls
     
     if (query.get('isPagesQuery')) {
       activity = query.get('parameters').activity;
@@ -61,10 +63,18 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
       return YES;
     }
     else if (query.get('isTriggerResponsesQuery')) {
-      this.log('  Query: triggerResponsesQuery for ActivityStep %s', query.get('parameters').step.get('id'));
+      step = query.get('parameters').step;
+      this.log('  Query: triggerResponsesQuery for ActivityStep %s', step.get('id'));
+      listUrl = step.get('triggerResponseListUrl');
+      this.requestListFromServer(store, query, listUrl);
+      return YES;      
     }
     else if (query.get('isCommandInvocationsQuery')) {
-      this.log('  Query: commandInvocationsQuery for ActivityStep %s', query.get('activityStep').get('id'));
+      step = query.get('activityStep');
+      this.log('  Query: commandInvocationsQuery for ActivityStep %s', step.get('id'));
+      listUrl = step.get('commandListUrl');
+      this.requestListFromServer(store, query, listUrl);
+      return YES;
     }
     
     return NO ; // return YES if you handled the query
