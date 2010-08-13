@@ -10,11 +10,11 @@ sc_require('models/command_invocation');
 Smartgraphs.CommandInvocation.FIXTURES = [
 
   { url: 
-      '/backend/activity/1/page/1/step/1/response/1/command/1/single-pane/',
+      '/backend/activity/1/page/1/step/1/response/1/command/1/single-pane',
     command:
-      '/backend/command/1/show-single-pane/',
+      '/backend/command/1/show-single-pane',
     triggerResponse:
-      '/backend/activity/1/page/1/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/1/step/1/response/1/step-beginning',
     index:
       1,
     literalArgs:
@@ -25,11 +25,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/1/step/1/response/1/command/2/show-image/',
+      '/backend/activity/1/page/1/step/1/response/1/command/2/show-image',
     command:
-      '/backend/command/3/show-image/',
+      '/backend/command/3/show-image',
     triggerResponse:
-      '/backend/activity/1/page/1/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/1/step/1/response/1/step-beginning',
     index:
       2,
     literalArgs: { 
@@ -41,11 +41,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/1/step/1/response/1/command/3/finish-step/',
+      '/backend/activity/1/page/1/step/1/response/1/command/3/finish-step',
     command:
-      '/backend/command/6/finish-step/',
+      '/backend/command/6/finish-step',
     triggerResponse:
-      '/backend/activity/1/page/1/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/1/step/1/response/1/step-beginning',
     index:
       3,
     literalArgs: 
@@ -56,11 +56,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/1/response/1/command/1/split-pane/',
+      '/backend/activity/1/page/2/step/1/response/1/command/1/split-pane',
     command:
-      '/backend/command/2/show-split-pane/',
+      '/backend/command/2/show-split-pane',
     triggerResponse:
-      '/backend/activity/1/page/2/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/2/step/1/response/1/step-beginning',
     index:
       1,
     literalArgs:
@@ -71,16 +71,16 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/1/response/1/command/2/show-graph/',
+      '/backend/activity/1/page/2/step/1/response/1/command/2/show-graph',
     command:
-      '/backend/command/4/show-graph/',
+      '/backend/command/4/show-graph',
     triggerResponse:
-      '/backend/activity/1/page/2/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/2/step/1/response/1/step-beginning',
     index:
       3,
     literalArgs: {
       pane: 'top',
-      graphId: '/backend/activity/1/graph/1/prediction-away/'
+      graphId: '/backend/activity/1/graph/1/prediction-away'
     },
     substitutedArgs:
       {}
@@ -88,11 +88,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/1/response/1/command/3/predict/',
+      '/backend/activity/1/page/2/step/1/response/1/command/3/predict',
     command:
-      '/backend/command/7/enable-prediction-input/',
+      '/backend/command/7/enable-prediction-input',
     triggerResponse:
-      '/backend/activity/1/page/2/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/2/step/1/response/1/step-beginning',
     index:
       3,
     literalArgs: {
@@ -107,15 +107,15 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/1/response/2/command/1/goto-step-2/',
+      '/backend/activity/1/page/2/step/1/response/2/command/1/goto-step-2',
     command:
-      '/backend/command/8/goto-step/',
+      '/backend/command/8/goto-step',
     triggerResponse:
-      '/backend/activity/1/page/2/step/1/response/2/step-finished/',
+      '/backend/activity/1/page/2/step/1/response/2/step-finished',
     index:
       1,
     literalArgs: {
-      stepId: '/backend/activity/1/page/2/step/2/'
+      stepId: '/backend/activity/1/page/2/step/2'
     },
     substitutedArgs:
       {}
@@ -123,16 +123,16 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/2/response/1/command/1/show-graph/',
+      '/backend/activity/1/page/2/step/2/response/1/command/1/show-graph',
     command:
-      '/backend/command/4/show-graph/',
+      '/backend/command/4/show-graph',
     triggerResponse:
-      '/backend/activity/1/page/2/step/2/response/1/step-beginning/',
+      '/backend/activity/1/page/2/step/2/response/1/step-beginning',
     index:
       1,
     literalArgs: {
       pane: 'bottom',
-      graphId: '/backend/activity/1/graph/2/prediction-toward/'
+      graphId: '/backend/activity/1/graph/2/prediction-toward'
     },
     substitutedArgs:
       {}
@@ -140,11 +140,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/2/response/1/command/2/predict/',
+      '/backend/activity/1/page/2/step/2/response/1/command/2/predict',
     command:
-      '/backend/command/7/enable-prediction-input/',
+      '/backend/command/7/enable-prediction-input',
     triggerResponse:
-      '/backend/activity/1/page/2/step/2/response/1/step-beginning/',
+      '/backend/activity/1/page/2/step/2/response/1/step-beginning',
     index:
       2,
     literalArgs: {
@@ -159,16 +159,16 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
 
   { url: 
-      '/backend/activity/1/page/3/step/1/response/1/command/1/show-graph/',
+      '/backend/activity/1/page/3/step/1/response/1/command/1/show-graph',
     command:
-      '/backend/command/4/show-graph/',
+      '/backend/command/4/show-graph',
     triggerResponse:
-      '/backend/activity/1/page/3/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/3/step/1/response/1/step-beginning',
     index:
       1,
     literalArgs: {
       pane: 'top',
-      graphId: '/backend/activity/1/graph/3/sensor-playing/'
+      graphId: '/backend/activity/1/graph/3/sensor-playing'
     },
     substitutedArgs:
       {}
@@ -176,11 +176,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/3/step/1/response/1/command/2/hide-pane/',
+      '/backend/activity/1/page/3/step/1/response/1/command/2/hide-pane',
     command:
-      '/backend/command/10/hide-pane/',
+      '/backend/command/10/hide-pane',
     triggerResponse:
-      '/backend/activity/1/page/3/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/3/step/1/response/1/step-beginning',
     index:
       2,
     literalArgs: {
@@ -192,11 +192,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/3/step/1/response/1/command/3/enable-submission/',
+      '/backend/activity/1/page/3/step/1/response/1/command/3/enable-submission',
     command:
-      '/backend/command/5/enable-submission/',
+      '/backend/command/5/enable-submission',
     triggerResponse:
-      '/backend/activity/1/page/3/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/3/step/1/response/1/step-beginning',
     index:
       3,
     literalArgs: 
@@ -207,11 +207,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/3/step/1/response/1/command/4/start-sensor/',
+      '/backend/activity/1/page/3/step/1/response/1/command/4/start-sensor',
     command:
-      '/backend/command/9/enable-sensor-input/',
+      '/backend/command/9/enable-sensor-input',
     triggerResponse:
-      '/backend/activity/1/page/3/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/3/step/1/response/1/step-beginning',
     index:
       4,
     literalArgs: {
@@ -224,15 +224,15 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/3/step/1/response/2/command/1/goto-step-2/',
+      '/backend/activity/1/page/3/step/1/response/2/command/1/goto-step-2',
     command:
-      '/backend/command/8/goto-step/',
+      '/backend/command/8/goto-step',
     triggerResponse:
-      '/backend/activity/1/page/3/step/1/response/2/step-finished/',
+      '/backend/activity/1/page/3/step/1/response/2/step-finished',
     index:
       1,
     literalArgs: {
-      stepId: '/backend/activity/1/page/3/step/2/'
+      stepId: '/backend/activity/1/page/3/step/2'
     },
     substitutedArgs:
       {}
@@ -240,9 +240,9 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/3/step/2/response/1/command/1/wait-for-valid-response/',
+      '/backend/activity/1/page/3/step/2/response/1/command/1/wait-for-valid-response',
     command:
-      '/backend/command/11/wait-for-valid-response/',
+      '/backend/command/11/wait-for-valid-response',
     triggerResponse:
       'p3s2-do-step-begin',
     index:
@@ -255,11 +255,11 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane/',
+      '/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane',
     command:
-      '/backend/command/10/hide-pane/',
+      '/backend/command/10/hide-pane',
     triggerResponse:
-      '/backend/activity/1/page/4/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/4/step/1/response/1/step-beginning',
     index:
       1,
     literalArgs: {
@@ -271,16 +271,16 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/4/step/1/response/1/command/2/show-graph/',
+      '/backend/activity/1/page/4/step/1/response/1/command/2/show-graph',
     command:
-      '/backend/command/4/show-graph/',
+      '/backend/command/4/show-graph',
     triggerResponse:
-      '/backend/activity/1/page/4/step/1/response/1/step-beginning/',
+      '/backend/activity/1/page/4/step/1/response/1/step-beginning',
     index:
       2,
     literalArgs: {
       pane: 'top',
-      graphId: '/backend/activity/1/graph/4/combined/'
+      graphId: '/backend/activity/1/graph/4/combined'
     },
     substitutedArgs:
       {}

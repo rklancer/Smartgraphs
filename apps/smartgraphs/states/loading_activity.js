@@ -76,10 +76,10 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(
         this._pages.addObserver('status', this, this.checkStatuses);
         return NO;
       }
-      // post-condition: (activity is READY && pages have been requested && pages are not READY)
+      // post-condition in this block: (activity is READY && pages have been requested && pages are not READY)
     }
     
-    // post-condition:
+    // pre-condition:
     // (activity is not READY || pages have been requested with status unknown) 
     // || 
     // (activity is READY && pages have been requested && pages are not READY)

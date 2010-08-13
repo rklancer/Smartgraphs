@@ -11,7 +11,7 @@ sc_require('models/activity_step');
 Smartgraphs.ActivityStep.FIXTURES = [
 
   { url: 
-      '/backend/activity/1/page/1/step/1/',
+      '/backend/activity/1/page/1/step/1',
     activityPage:
       '/backend/activity/1/page/1',
     beforeText: 
@@ -23,7 +23,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      '/backend/activity/1/page/1/step/1/response/1/step-beginning/'
+      '/backend/activity/1/page/1/step/1/response/1/step-beginning'
     ],
     submitButtonShouldBeVisible: 
       NO,
@@ -35,7 +35,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/1/',
+      '/backend/activity/1/page/2/step/1',
     activityPage:
       '/backend/activity/1/page/2',
     beforeText: 
@@ -48,8 +48,8 @@ Smartgraphs.ActivityStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      '/backend/activity/1/page/2/step/1/response/1/step-beginning/',
-      '/backend/activity/1/page/2/step/1/response/2/step-finished/'
+      '/backend/activity/1/page/2/step/1/response/1/step-beginning',
+      '/backend/activity/1/page/2/step/1/response/2/step-finished'
     ],
     submitButtonShouldBeVisible: 
       YES,
@@ -61,7 +61,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/2/step/2/',
+      '/backend/activity/1/page/2/step/2',
     activityPage:
       '/backend/activity/1/page/2',
     beforeText: 
@@ -74,7 +74,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      '/backend/activity/1/page/2/step/2/response/1/step-beginning/'
+      '/backend/activity/1/page/2/step/2/response/1/step-beginning'
     ],
     submitButtonShouldBeVisible: 
       YES,
@@ -86,7 +86,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/3/step/1/',
+      '/backend/activity/1/page/3/step/1',
     activityPage:
       '/backend/activity/1/page/3',
     beforeText: 
@@ -101,8 +101,8 @@ Smartgraphs.ActivityStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      '/backend/activity/1/page/3/step/1/response/1/step-beginning/',
-      '/backend/activity/1/page/3/step/1/response/2/step-finished/'
+      '/backend/activity/1/page/3/step/1/response/1/step-beginning',
+      '/backend/activity/1/page/3/step/1/response/2/step-finished'
     ],
     submitButtonShouldBeVisible: 
       YES,
@@ -114,7 +114,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/3/step/2/',
+      '/backend/activity/1/page/3/step/2',
     activityPage:
       '/backend/activity/1/page/3',
     beforeText: 
@@ -123,13 +123,13 @@ Smartgraphs.ActivityStep.FIXTURES = [
       '<p>Try to use some of the following words: slope, flat, upward, downward, curved, straight, steep, gradual, '+
       'line, curve.',
     responseTemplate: 
-      '/backend/response-template/2/open/',
+      '/backend/response-template/2/open',
     afterText:
       '',
     buttons: 
       [],
     triggerResponses: [
-      '/backend/activity/1/page/3/step/2/response/1/step-beginning/'
+      '/backend/activity/1/page/3/step/2/response/1/step-beginning'
     ],
     submitButtonShouldBeVisible: 
       YES,
@@ -141,7 +141,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/page/4/step/1/',
+      '/backend/activity/1/page/4/step/1',
     activityPage:
       '/backend/activity/1/page/3',
     beforeText: 
@@ -153,7 +153,7 @@ Smartgraphs.ActivityStep.FIXTURES = [
     buttons: 
       [],
     triggerResponses: [
-      '/backend/activity/1/page/4/step/1/response/1/step-beginning/'
+      '/backend/activity/1/page/4/step/1/response/1/step-beginning'
     ],
     submitButtonShouldBeVisible: 
       NO,
@@ -164,9 +164,9 @@ Smartgraphs.ActivityStep.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/2/page/1/step/1/',
+      '/backend/activity/2/page/1/step/1',
     activityPage:
-      '/backend/activity/2/page/1/',
+      '/backend/activity/2/page/1',
     beforeText: 
       '<p>See? A new activity</p>',
     responseTemplate: 

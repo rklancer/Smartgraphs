@@ -10,7 +10,7 @@ sc_require('models/response_template');
 Smartgraphs.ResponseTemplate.FIXTURES = [
 
   { url: 
-      '/backend/response-template/1/numeric/',
+      '/backend/response-template/1/numeric',
     templateString: 
       '',
     fieldTypes: [
@@ -25,7 +25,7 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
   },
 
   { url: 
-      '/backend/response-template/2/open/',
+      '/backend/response-template/2/open',
     templateString:
       '',
     fieldTypes: [

@@ -13,7 +13,7 @@ Smartgraphs.ActivityPage.FIXTURES = [
   // { url: 
   //     '/backend/activity/1/page/1',
   //   activity:
-  //     '/backend/activity/1/motion-without-words/',
+  //     '/backend/activity/1/motion-without-words',
   //   name: 
   //     'Introductory Page',
   //   index: 
@@ -24,17 +24,17 @@ Smartgraphs.ActivityPage.FIXTURES = [
   //     'will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will '+
   //     'learn conventional methods of motion storytelling and analysis.</p>',
   //   steps: [
-  //     '/backend/activity/1/page/1/step/1/'
+  //     '/backend/activity/1/page/1/step/1'
   //   ],
   //   firstStep:
-  //     '/backend/activity/1/page/1/step/1/'
+  //     '/backend/activity/1/page/1/step/1'
   // },
   // 
   // 
   // { url: 
   //     '/backend/activity/1/page/2',
   //   activity:
-  //     '/backend/activity/1/motion-without-words/',
+  //     '/backend/activity/1/motion-without-words',
   //   name: 
   //     'Second Page',
   //   index: 
@@ -45,18 +45,18 @@ Smartgraphs.ActivityPage.FIXTURES = [
   //     '</p>'+
   //     '<img src="'+sc_static('resources/numberline.png')+'">',
   //   steps: [
-  //     '/backend/activity/1/page/2/step/1/', 
-  //     '/backend/activity/1/page/2/step/2/'
+  //     '/backend/activity/1/page/2/step/1', 
+  //     '/backend/activity/1/page/2/step/2'
   //   ],
   //   firstStep:
-  //     '/backend/activity/1/page/2/step/1/'
+  //     '/backend/activity/1/page/2/step/1'
   // },
   // 
   // 
   // { url: 
   //     '/backend/activity/1/page/3',
   //   activity:
-  //     '/backend/activity/1/motion-without-words/',
+  //     '/backend/activity/1/motion-without-words',
   //   name: 
   //     'Third Page',
   //   index: 
@@ -65,17 +65,17 @@ Smartgraphs.ActivityPage.FIXTURES = [
   //     '<p>Let’s practice collecting data with the motion sensor so you can see whether your sketches were '+
   //     'accurate. You will walk on a 5-meter walking path like the one described earlier.</p>',
   //   steps: [
-  //     '/backend/activity/1/page/3/step/1/', 
-  //     '/backend/activity/1/page/3/step/2/'
+  //     '/backend/activity/1/page/3/step/1', 
+  //     '/backend/activity/1/page/3/step/2'
   //   ],
   //   firstStep:
-  //     '/backend/activity/1/page/3/step/1/'
+  //     '/backend/activity/1/page/3/step/1'
   // },
   // 
   // { url: 
   //     '/backend/activity/1/page/4',
   //   activity:
-  //     '/backend/activity/1/motion-without-words/',
+  //     '/backend/activity/1/motion-without-words',
   //   name: 
   //     'Fourth Page',
   //   index: 
@@ -83,16 +83,16 @@ Smartgraphs.ActivityPage.FIXTURES = [
   //   introText:
   //     '<p>How did the actual graph of your motion compare to your prediction?<p>',
   //   steps: [
-  //     '/backend/activity/1/page/4/step/1/'
+  //     '/backend/activity/1/page/4/step/1'
   //   ],
   //   firstStep:
-  //     '/backend/activity/1/page/4/step/1/'
+  //     '/backend/activity/1/page/4/step/1'
   // },
   
   { url: 
-      '/backend/activity/2/page/1/',
+      '/backend/activity/2/page/1',
     activity:
-      '/backend/activity/2/second-activity/',
+      '/backend/activity/2/second-activity',
     name: 
       'First Page',
     index: 
@@ -100,10 +100,10 @@ Smartgraphs.ActivityPage.FIXTURES = [
     introText:
       '<h1>This is a second activity</h1>',
     steps: [
-      '/backend/activity/2/page/1/step/1/'
+      '/backend/activity/2/page/1/step/1'
     ],
     firstStep:
-      '/backend/activity/2/page/1/step/1/'
+      '/backend/activity/2/page/1/step/1'
   }
 
 ];

@@ -9,7 +9,7 @@ sc_require('models/axes');
 
 Smartgraphs.Axes.FIXTURES = [
   
-  { url: '/backend/axes/1/5m-15s/',
+  { url: '/backend/axes/1/5m-15s',
 
     xMin: 0,
     xMax: 15,
