@@ -24,7 +24,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
   fetch: function (store, query) {
 
-    var activity, listUrl;
+    var activity, listUrl, page;
 
     this.log('RailsDataSourcetaSource.fetch()');
     
@@ -43,16 +43,22 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
       this.log('  Query: ALL_COMMANDS_QUERY');
       listUrl = Smartgraphs.activityController.get('commandListUrl');
       this.log('  URL endpoint for query: %s', listUrl);
-      this.requestListFromServer(store, query, listUrl);  
+      this.requestListFromServer(store, query, listUrl);
+      return YES;
     }
     else if (query === Smartgraphs.ALL_TRIGGERS_QUERY) {
       this.log('  Query: ALL_TRIGGERS_QUERY');
       listUrl = Smartgraphs.activityController.get('triggerListUrl');
       this.log('  URL endpoint for query: %s', listUrl);
       this.requestListFromServer(store, query, listUrl);
+      return YES;
     }
     else if (query.get('isStepsQuery')) {
-      this.log('  Query: stepsQuery for ActivityPage %s', query.get('parameters').page.get('id'));
+      page = query.get('parameters').page;
+      this.log('  Query: stepsQuery for ActivityPage %s', page.get('id'));
+      listUrl = page.get('stepListUrl');
+      this.requestListFromServer(store, query, listUrl);
+      return YES;
     }
     else if (query.get('isTriggerResponsesQuery')) {
       this.log('  Query: triggerResponsesQuery for ActivityStep %s', query.get('parameters').step.get('id'));

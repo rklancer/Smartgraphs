@@ -73,6 +73,11 @@ Smartgraphs.ActivityPage = SC.Record.extend(
   currentStep: null,
   
   /**
+    server endpoint for finding associated steps
+  */
+  stepListUrl: SC.Record.attr(String),
+  
+  /**
     a local SC.Query that returns all the ActivitySteps associated with this page. Used to signal the data
     source to fetch these records from the server.
   */
