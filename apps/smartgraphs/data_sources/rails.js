@@ -28,10 +28,10 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // call store.dataSourceDidFetchQuery(query) when done.
 
     this.log('RailsDataSourcetaSource.fetch()');
-    
+    var activity, listUrl;
     if (query.get('isPagesQuery')) {
-      var activity = query.get('parameters').activity;
-      var listUrl = activity.get('pageListUrl');
+      activity = query.get('parameters').activity;
+      listUrl = activity.get('pageListUrl');
       
       this.log('  Query: pagesQuery for Activity %s', activity.get('id'));
       this.log('  URL endpoint for query: %s', listUrl);
@@ -54,6 +54,9 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     }
     else if (query === Smartgraphs.ALL_TRIGGERS_QUERY) {
       this.log('  Query: ALL_TRIGGERS_QUERY');
+      listUrl = Smartgraphs.activityController.get('triggerListUrl');
+      this.log('  URL endpoint for query: %s', listUrl);
+      this.requestListFromServer(store, query, listUrl);
     }
     
     return NO ; // return YES if you handled the query
