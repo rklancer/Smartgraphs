@@ -24,11 +24,10 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
   fetch: function (store, query) {
 
-    // TODO: Add handlers to fetch data for specific queries.  
-    // call store.dataSourceDidFetchQuery(query) when done.
+    var activity, listUrl;
 
     this.log('RailsDataSourcetaSource.fetch()');
-    var activity, listUrl;
+    
     if (query.get('isPagesQuery')) {
       activity = query.get('parameters').activity;
       listUrl = activity.get('pageListUrl');
@@ -40,6 +39,18 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
       this.log('  returning YES from fetch');
       return YES;
     }
+    else if (query === Smartgraphs.ALL_COMMANDS_QUERY) {
+      this.log('  Query: ALL_COMMANDS_QUERY');
+      listUrl = Smartgraphs.activityController.get('commandListUrl');
+      this.log('  URL endpoint for query: %s', listUrl);
+      this.requestListFromServer(store, query, listUrl);  
+    }
+    else if (query === Smartgraphs.ALL_TRIGGERS_QUERY) {
+      this.log('  Query: ALL_TRIGGERS_QUERY');
+      listUrl = Smartgraphs.activityController.get('triggerListUrl');
+      this.log('  URL endpoint for query: %s', listUrl);
+      this.requestListFromServer(store, query, listUrl);
+    }
     else if (query.get('isStepsQuery')) {
       this.log('  Query: stepsQuery for ActivityPage %s', query.get('parameters').page.get('id'));
     }
@@ -48,15 +59,6 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     }
     else if (query.get('isCommandInvocationsQuery')) {
       this.log('  Query: commandInvocationsQuery for ActivityStep %s', query.get('activityStep').get('id'));
-    }
-    else if (query === Smartgraphs.ALL_COMMANDS_QUERY) {
-      this.log('  Query: ALL_COMMANDS_QUERY');
-    }
-    else if (query === Smartgraphs.ALL_TRIGGERS_QUERY) {
-      this.log('  Query: ALL_TRIGGERS_QUERY');
-      listUrl = Smartgraphs.activityController.get('triggerListUrl');
-      this.log('  URL endpoint for query: %s', listUrl);
-      this.requestListFromServer(store, query, listUrl);
     }
     
     return NO ; // return YES if you handled the query
