@@ -16,7 +16,7 @@ Smartgraphs.main = function main() {
   Smartgraphs.dataSource = SC.CascadeDataSource.create({
     dataSources: "rails fixtures".w(),
     
-    rails: Smartgraphs.RestDataSource.create(),
+    rails: Smartgraphs.RailsDataSource.create(),
     
     fixtures: SC.FixturesDataSource.create({
       simulateRemoteResponse: NO,
