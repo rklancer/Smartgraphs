@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.RailsDataSource
+// Project:   Smartgraphs.RestDataSource
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -11,8 +11,8 @@
 
   @extends SC.DataSource
 */
-Smartgraphs.RailsDataSource = SC.DataSource.extend(
-/** @scope Smartgraphs.RailsDataSource.prototype */ {
+Smartgraphs.RestDataSource = SC.DataSource.extend(
+/** @scope Smartgraphs.RestDataSource.prototype */ {
 
   // latency for mock retrieval
   
@@ -26,7 +26,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
     var activity, listUrl, page, step;
 
-    this.log('RailsDataSourcetaSource.fetch()');
+    this.log('RestDataSource.fetch()');
     
     // this all suggests an obvious pattern for handling queries whose contents are fetched at listUrls
     
@@ -85,7 +85,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
   //
   
   retrieveRecords: function(store, storeKeys, ids) {
-    this.log('RailsDataSource.retrieveRecords(storeKeys=%s)', storeKeys.toString());
+    this.log('RestDataSource.retrieveRecords(storeKeys=%s)', storeKeys.toString());
     sc_super();
   },
   
@@ -100,7 +100,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
 
     var recordType = Smartgraphs.store.recordTypeFor(storeKey);
     
-    this.log('RailsDataSource.retrieveRecord()');
+    this.log('RestDataSource.retrieveRecord()');
     this.log('  Record type requested = %s', recordType.toString());
     this.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
     
@@ -118,7 +118,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // TODO: Add handlers to submit new records to the data source.
     // call store.dataSourceDidComplete(storeKey) when done.
 
-    this.log('RailsDataSource.createRecord()');  
+    this.log('RestDataSource.createRecord()');  
     return NO ; // return YES if you handled the storeKey
   },
   
@@ -127,7 +127,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // TODO: Add handlers to submit modified record to the data source
     // call store.dataSourceDidComplete(storeKey) when done.
 
-    this.log('RailsDataSource.updateRecord()');  
+    this.log('RestDataSource.updateRecord()');  
     return NO ; // return YES if you handled the storeKey
   },
   
@@ -136,7 +136,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     // TODO: Add handlers to destroy records on the data source.
     // call store.dataSourceDidDestroy(storeKey) when done
 
-    this.log('RailsDataSource.destroyRecord()');  
+    this.log('RestDataSource.destroyRecord()');  
     return NO ; // return YES if you handled the storeKey
   },
   
@@ -177,7 +177,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     
     var recordType = Smartgraphs.store.recordTypeFor(storeKey);
     
-    this.log('RailsDataSource.didRetrieveRecordFromServer()');
+    this.log('RestDataSource.didRetrieveRecordFromServer()');
     this.log('  Record type requested = %s', recordType.toString());
     this.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
     
@@ -223,7 +223,7 @@ Smartgraphs.RailsDataSource = SC.DataSource.extend(
     var query = params.query;
     
     var recordType = query.get('recordType');
-    this.log('RailsDataSource.didRetrieveListFromServer()');
+    this.log('RestDataSource.didRetrieveListFromServer()');
     this.log('  Record type requested = %s', recordType.toString());
     
     if (SC.ok(response)) {
