@@ -12,32 +12,31 @@
 */
 
 sc_require('states/activity');
+sc_require('states/mixins/resource_loader');
 
-Smartgraphs.ACTIVITY_LOADING_PAGE = SC.Responder.create(
+Smartgraphs.ACTIVITY_LOADING_PAGE = SC.Responder.create(Smartgraphs.ResourceLoader,
 /** @scope Smartgraphs.ACTIVITY_LOADING_PAGE.prototype */ {
   
   nextResponder: Smartgraphs.ACTIVITY,
   
-  didBecomeFirstResponder: function () {
-    // Make sure all the ActivitySteps associated with the current ActivityPage are loaded before proceeding
-    // to ACTIVITY_PAGE_START
-
-    this._steps = Smartgraphs.store.find(Smartgraphs.activityPageController.get('stepsQuery'));
-    
-    if (this.checkStatus()) {
-      return;
-    }
-    this._steps.addObserver('status', this, this.checkStatus);
+  masterResource: {
+    load: function () { return Smartgraphs.activityPageController.get('content').toArray().objectAt(0); }
+  },
+  
+  subordinateResources: [
+    { load: function () { return Smartgraphs.store.find(Smartgraphs.activityPageController.get('stepsQuery')); } }
+  ],
+  
+  didBecomeFirstResponder: function () {  
+    this.loadResources();
   },
   
   willLoseFirstResponder: function () {
-    this._steps.removeObserver('status', this, this.checkStatus);
+    this.cleanupLoading();
   },
   
-  checkStatus: function () {
-    if (this._steps.get('status') & SC.Record.READY) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);      
-    }
+  resourcesDidLoad: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);
   }
   
   // ..........................................................
