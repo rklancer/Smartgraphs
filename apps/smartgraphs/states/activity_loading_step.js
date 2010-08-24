@@ -12,6 +12,7 @@
 */
 
 sc_require('states/activity');
+sc_require('states/mixins/resource_loader');
 
 Smartgraphs.ACTIVITY_LOADING_STEP = SC.Responder.create(Smartgraphs.ResourceLoader,
 /** @scope Smartgraphs.ACTIVITY_LOADING_STEP.prototype */ {
@@ -33,7 +34,7 @@ Smartgraphs.ACTIVITY_LOADING_STEP = SC.Responder.create(Smartgraphs.ResourceLoad
   },
   
   willLoseFirstResponder: function () {
-    this.cleanupLoading();
+    this.cancelLoading();
   },
   
   resourcesDidLoad: function () {

@@ -39,6 +39,7 @@ Smartgraphs.ResourceLoader = {
     else {
       if (masterStatus & SC.Record.ERROR) {
         if (this.resourceLoadingError) this.resourceLoadingError();
+        this.cleanupLoading();
         return YES;
       }
       return NO; // not ready and not in error -> need to keep checking
@@ -58,11 +59,13 @@ Smartgraphs.ResourceLoader = {
     
     if (this.subordinateResourcesAreReady()) {
       this.resourcesDidLoad();
+      this.cleanupLoading();
       return YES;
     }
     
     if (this.subordinateResourcesHaveErrors()) {
       if (this.resourceLoadingError) this.resourceLoadingError();
+      this.cleanupLoading();
       return YES;
     }
     
@@ -85,7 +88,7 @@ Smartgraphs.ResourceLoader = {
       }
     }
     return YES;
-  }, 
+  },
   
   subordinateResourcesHaveErrors: function () {
     var resources = this.get('subordinateResources');
@@ -96,6 +99,9 @@ Smartgraphs.ResourceLoader = {
       }
     }
     return NO;
-  }
+  },
   
+  cancelLoading: function () {
+    this.cleanupLoading(); 
+  }
 };

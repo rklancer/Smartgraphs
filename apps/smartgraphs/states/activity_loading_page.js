@@ -32,7 +32,7 @@ Smartgraphs.ACTIVITY_LOADING_PAGE = SC.Responder.create(Smartgraphs.ResourceLoad
   },
   
   willLoseFirstResponder: function () {
-    this.cleanupLoading();
+    this.cancelLoading();
   },
   
   resourcesDidLoad: function () {

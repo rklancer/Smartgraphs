@@ -27,7 +27,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   },
   
   subordinateResources: [
-    { load: function (state) { return Smartgraphs.store.find(state.get('masterResource').record.get('pagesQuery')); } },
+    { load: function () { return Smartgraphs.store.find(Smartgraphs.activityController.get('pagesQuery')); } },
     { load: function () { return Smartgraphs.store.find(Smartgraphs.ALL_TRIGGERS_QUERY); } },
     { load: function () { return Smartgraphs.store.find(Smartgraphs.ALL_COMMANDS_QUERY); } }    
   ],
@@ -40,7 +40,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   },
   
   willLoseFirstResponder: function () {
-    this.cleanupLoading();
+    this.cancelLoading();
   },
   
   resourcesDidLoad: function () {
