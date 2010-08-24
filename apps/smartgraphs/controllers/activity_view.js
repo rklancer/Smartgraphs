@@ -107,8 +107,11 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   removeSeriesView: function (series) {
   },
   
-  testViewSwap: function () {
-    this.set('topPaneNowShowing', 'Smartgraphs.activityPage.errorLoadingActivityView');
+  clear: function () {
+    if (!this.hidePane()) {
+      this.hidePane('top');
+      this.hidePane('bottom');
+    }
   }
 
 }) ;

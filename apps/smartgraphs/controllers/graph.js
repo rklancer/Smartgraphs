@@ -120,7 +120,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   inputAreaMouseUp: function (x, y) {
     Smartgraphs.sendAction('endGraphInputAt', this, { x: x, y: y });
+  },
+  
+  clear: function () {
+    this.set('seriesList', []);
+    this.set('content', []);
   }
-  
-  
 }) ;

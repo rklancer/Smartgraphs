@@ -20,7 +20,7 @@ Smartgraphs.ACTIVITY_PAGE_DONE = SC.Responder.create(
 
   nextResponder: Smartgraphs.ACTIVITY,
   
-  didBecomeFirstResponder: function() {
+  didBecomeFirstResponder: function() {    
     if (Smartgraphs.activityController.get('isLastPage')) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_DONE);
     }
@@ -31,6 +31,7 @@ Smartgraphs.ACTIVITY_PAGE_DONE = SC.Responder.create(
   
   willLoseFirstResponder: function() {
     Smartgraphs.activityController.set('canOpenNextPage', NO);
+    Smartgraphs.activityPageController.cleanup();
   },
   
   // ..........................................................

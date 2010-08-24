@@ -18,5 +18,13 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
   lookup: function (key) {
     var context = this.get('context');
     return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.activityController.lookup(key));
+  },
+  
+  cleanup: function () {
+    Smartgraphs.firstGraphController.clear();
+    Smartgraphs.secondGraphController.clear();
+    Smartgraphs.activityViewController.clear();
+    
+    Smartgraphs.activityStepController.cleanup();
   }
 }) ;
