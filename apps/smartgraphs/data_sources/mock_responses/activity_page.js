@@ -32,3 +32,20 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3"] =
 
 Smartgraphs.mockResponses["/backend/activity/1/page/4"] = 
 {"steps":["/backend/activity/1/page/4/step/1"],"name":"Replay Page","firstStep":"/backend/activity/1/page/4/step/1","introText":"<p>How did the actual graph of your motion compare to your prediction?<p>","url":"/backend/activity/1/page/4","activity":"/backend/activity/1","index":4,"stepListUrl":"/backend/activity/1/page/4/steps"};
+
+
+// hand generated demo of second page
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1"] = 
+{
+  "steps":        ["/backend/activity/2/page/1/step/1"],
+  "name":         "First Page of Second Activity",
+  "firstStep":    "/backend/activity/2/page/1/step/1",
+  "introText":    "<h1>A Second Activity</h1>",
+  "url":          "/backend/activity/2/page/1",
+  "activity":     "/backend/activity/2",
+  "index":        1,
+  "stepListUrl":  "/backend/activity/2/page/1/steps"
+};
+
+Smartgraphs.mockResponses["/backend/activity/2/pages"] = [Smartgraphs.mockResponses["/backend/activity/2/page/1"]];

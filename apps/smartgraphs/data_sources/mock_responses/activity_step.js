@@ -29,3 +29,24 @@ Smartgraphs.mockResponses["/backend/activity/1/page/4/steps"] =
 [{"url":"/backend/activity/1/page/4/step/1","activityPage":"/backend/activity/1/page/3","beforeText":"<p>At right is your prediction and your actual motion, together</p>","responseTemplate":null,"afterText":"","buttons":[],"triggerResponses":["/backend/activity/1/page/4/step/1/response/1/step-beginning"],"submitButtonShouldBeVisible":false,"submitButtonTitle":"","isLastStep":true,"triggerResponseListUrl":"/backend/activity/1/page/4/step/1/trigger_responses","commandListUrl":"/backend/activity/1/page/4/step/1/commands"}];
 
 // we can add individual step urls later if needed.
+
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] = {
+  "url":                          "/backend/activity/2/page/1/step/1",
+  "activityPage":                 "/backend/activity/2/page/1",
+  "beforeText":                  "<p>Try visiting the first activity by changing just the last digit of the URL from '2' to '1' and hitting Enter.<p>",
+  "responseTemplate":             null,
+  "afterText":                    "",
+  "buttons":                      [],
+  "triggerResponses":             ["/backend/activity/2/page/1/step/1/response/1/step-beginning"],
+  "submitButtonShouldBeVisible":  false,
+  "submitButtonTitle":            "",
+  "isLastStep":                   true,
+  "triggerResponseListUrl":       "/backend/activity/2/page/1/step/1/trigger_responses",
+  "commandListUrl":               "/backend/activity/2/page/1/step/1/commands"
+};
+
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/steps"] = [
+  Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"]
+];

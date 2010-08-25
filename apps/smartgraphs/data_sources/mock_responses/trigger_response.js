@@ -28,3 +28,24 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/step/2/trigger_responses"]
 
 Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1/trigger_responses"] = 
 [{"url":"/backend/activity/1/page/4/step/1/response/1/step-beginning","trigger":"/backend/trigger/1/step-beginning","step":"/backend/activity/1/page/4/step/1","args":{},"commands":["/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane","/backend/activity/1/page/4/step/1/response/1/command/2/show-graph"]}];
+
+
+// hand-generated for second activity
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1/response/1/step-beginning"] = 
+{
+  "url":       "/backend/activity/2/page/1/step/1/response/1/step-beginning",
+  "trigger":   "/backend/trigger/1/step-beginning",
+  "step":      "/backend/activity/2/page/1/step/1",
+  "args":      {},
+  "commands":  [
+    "/backend/activity/2/page/1/step/1/response/1/command/1/single-pane",
+    "/backend/activity/2/page/1/step/1/response/1/command/2/show-graph",
+    "/backend/activity/2/page/1/step/1/response/1/command/3/predict"
+  ]
+};
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1/trigger_responses"] = [
+  Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1/response/1/step-beginning"]
+];
+

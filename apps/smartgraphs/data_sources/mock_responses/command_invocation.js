@@ -28,3 +28,46 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/step/2/commands"] =
 
 Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1/commands"] = 
 [{"url":"/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane","command":"/backend/command/10/hide-pane","triggerResponse":"/backend/activity/1/page/4/step/1/response/1/step-beginning","index":1,"literalArgs":{"pane":"bottom"},"substitutedArgs":{}},{"url":"/backend/activity/1/page/4/step/1/response/1/command/2/show-graph","command":"/backend/command/4/show-graph","triggerResponse":"/backend/activity/1/page/4/step/1/response/1/step-beginning","index":2,"literalArgs":{"pane":"top","graphId":"/backend/activity/1/graph/4/combined"},"substitutedArgs":{}}];
+
+
+
+// hand-generated for second activity
+
+var commandList = [];
+var command = {
+  "url":              "/backend/activity/2/page/1/step/1/response/1/command/1/single-pane",
+  "command":          "/backend/command/1/show-single-pane",
+  "triggerResponse":  "/backend/activity/2/page/1/step/1/response/1/step-beginning",
+  "index":            1,
+  "literalArgs":      {},
+  "substitutedArgs":  {}
+};
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1/response/1/command/1/single-pane"] = command;
+commandList.push(command);
+
+command = {
+  "url":              "/backend/activity/2/page/1/step/1/response/1/command/2/show-graph",
+  "command":          "/backend/command/4/show-graph",
+  "triggerResponse":  "/backend/activity/2/page/1/step/1/response/1/step-beginning",
+  "index":            2,
+  "literalArgs":      {"pane": "single", "graphId": "/backend/activity/1/graph/1/prediction-away"},
+  "substitutedArgs":{}
+};
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1/response/1/command/2/show-graph"] = command;
+commandList.push(command);
+
+command = {
+  "url":              "/backend/activity/2/page/1/step/1/response/1/command/3/predict",
+  "command":          "/backend/command/7/enable-prediction-input",
+  "triggerResponse":  "/backend/activity/2/page/1/step/1/response/1/step-beginning",
+  "index":            3,
+  "literalArgs":      {"pane":"single", "seriesName":"prediction-away", "xMin":0, "xMax":15},
+  "substitutedArgs":  {}
+};
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1/response/1/command/3/predict"]  = command;
+commandList.push(command);
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1/commands"] = commandList;
