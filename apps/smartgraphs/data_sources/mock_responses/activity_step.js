@@ -34,7 +34,8 @@ Smartgraphs.mockResponses["/backend/activity/1/page/4/steps"] =
 Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] = {
   "url":                          "/backend/activity/2/page/1/step/1",
   "activityPage":                 "/backend/activity/2/page/1",
-  "beforeText":                  "<p>Try visiting the first activity by changing just the last digit of the URL from '2' to '1' and hitting Enter.<p>",
+  "beforeText":                   "<p>Try visiting the first activity by changing just the last digit of the URL from '2' to '1' and hitting Enter.<p>" +
+                                  "<p>Also, observe that you can resize the browser window without scrambling the prediction graph on the right.</p>",
   "responseTemplate":             null,
   "afterText":                    "",
   "buttons":                      [],
