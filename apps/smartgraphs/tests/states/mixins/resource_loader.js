@@ -5,13 +5,22 @@
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start afterPropertyChange */
 
+var loader;
+var cleanupWasCalled;
+var didLoadWasCalled;
+var loadingErrorWasCalled;
+var thisArgPassed;
+
 function newObjWithStatus(status) {
   return SC.Object.create({ status: status });
 }
 
 function newResource(obj) {
   return {
-    load: function () { return obj; }
+    load: function (thisArg) {
+      thisArgPassed = thisArg;
+      return obj; 
+    }
   };
 }
 
@@ -19,17 +28,22 @@ function newResourceWithStatus(status) {
   return newResource(newObjWithStatus(status)); 
 }
 
-var loader;
-var didLoadWasCalled;
-var loadingErrorWasCalled;
-
 module("Smartgraphs.ResourceLoader.loadResources() READY tests", {
   setup: function () {
     didLoadWasCalled = NO;
+    cleanupWasCalled = NO;
+    thisArgPassed = null;
     
     loader = SC.Object.create(Smartgraphs.ResourceLoader, {
       resourcesDidLoad: function () {
+        if (!cleanupWasCalled) {
+          ok(false, 'resourcesDidLoad was called without cleanupLoading having been called first!');
+        }
         didLoadWasCalled = YES;
+      },
+      
+      cleanupLoading: function () {  
+        cleanupWasCalled = YES;
       },
       
       resourceLoadingError: function () {
@@ -43,10 +57,10 @@ module("Smartgraphs.ResourceLoader.loadResources() READY tests", {
 test('loadResources should return YES and should call resourcesDidLoad if master resource is READY and there are no subordinate resources', function () {
   loader.masterResource = newResourceWithStatus(SC.Record.READY);
   loader.subordinateResources = [];
-  
-  equals(didLoadWasCalled, NO, 'didLoadWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), YES, 'loadResources returned YES');
-  equals(didLoadWasCalled, YES, 'resourcesDidLoad was called.');
+
+  ok(didLoadWasCalled === NO, 'didLoadWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === YES, 'loadResources returned YES');
+  ok(didLoadWasCalled === YES, 'resourcesDidLoad was called.');
 });
 
 
@@ -56,10 +70,10 @@ test('loadResources should return YES and should call resourcesDidLoad if master
     newResourceWithStatus(SC.Record.READY), 
     newResourceWithStatus(SC.Record.READY)
   ];
-  
-  equals(didLoadWasCalled, NO, 'didLoadWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), YES, 'loadResources returned YES');
-  equals(didLoadWasCalled, YES, 'resourcesDidLoad was called.');
+
+  ok(didLoadWasCalled === NO, 'didLoadWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === YES, 'loadResources returned YES');
+  ok(didLoadWasCalled === YES, 'resourcesDidLoad was called.');
 });
 
 
@@ -69,20 +83,19 @@ test('loadResources should return YES and should call resourcesDidLoad if master
     newResourceWithStatus(SC.Record.READY_CLEAN),
     newResourceWithStatus(SC.Record.READY_NEW)
   ];
-  
-  equals(didLoadWasCalled, NO, 'didLoadWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), YES, 'loadResources returned YES');
-  equals(didLoadWasCalled, YES, 'resourcesDidLoad was called.');
+
+  ok(didLoadWasCalled === NO, 'didLoadWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === YES, 'loadResources returned YES');
+  ok(didLoadWasCalled === YES, 'resourcesDidLoad was called.');
 });
 
 
 test('loadResources should return NO and should not call resourcesDidLoad if master resource is not READY', function () {
   loader.masterResource = newResourceWithStatus(SC.Record.BUSY);
   loader.subordinateResources = [];
-  
-  equals(didLoadWasCalled, NO, 'didLoadWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), NO, 'loadResources returned NO');
-  equals(didLoadWasCalled, NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO).');
+
+  ok(loader.loadResources() === NO, 'loadResources returned NO');
+  ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO).');
 });
 
 
@@ -92,108 +105,152 @@ test('loadResources should return NO and should not call resourcesDidLoad and if
     newResourceWithStatus(SC.Record.BUSY),
     newResourceWithStatus(SC.Record.READY)
   ];
-  
-  equals(didLoadWasCalled, NO, 'didLoadWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), NO, 'loadResources returned NO');
-  equals(didLoadWasCalled, NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO).');
+
+  ok(didLoadWasCalled === NO, 'didLoadWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === NO, 'loadResources returned NO');
+  ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO).');
 });
 
 
-test('resourcesDidLoad should be called after master resource transitions to READY state', function () {
+test('resourcesDidLoad should be called after master resource transitions to READY state and there are no subordinate resources', function () {
+  expect(4);
   var master = newObjWithStatus(SC.Record.EMPTY);
   loader.masterResource = newResource(master);
   loader.subordinateResources = [];
-  
-  equals(didLoadWasCalled, NO, 'didLoadWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), NO, 'loadResources returned NO');
-  equals(didLoadWasCalled, NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO) after loadResources was called.');
-  
+
+  ok(didLoadWasCalled === NO, 'didLoadWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === NO, 'loadResources returned NO');
+  ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO).');
+
   setTimeout(function () {
     master.set('status', SC.Record.READY);
     master.set('readyToTest', YES);
   }, 10);
-  
+
   afterPropertyChange(master, 'readyToTest', YES, function () {
-    equals(didLoadWasCalled, YES, 'resourcesDidLoad was called after record transitioned to READY');
+    ok(didLoadWasCalled === YES, 'resourcesDidLoad was called after record transitioned to READY');
   });
 });
 
 
-test('resourcesDidLoad should be called after master transitions to READY if subordinate resources are READY', function () {
+test('resourcesDidLoad and cleanupLoading should be called after master transitions to READY if subordinate resources are READY', function () {
+  expect(4);
   var master = newObjWithStatus(SC.Record.EMPTY);
   loader.masterResource = newResource(master);
   loader.subordinateResources = [
     newResourceWithStatus(SC.Record.READY), 
     newResourceWithStatus(SC.Record.READY)
   ];
-  
-  equals(didLoadWasCalled, NO, 'didLoadWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), NO, 'loadResources returned NO');
-  equals(didLoadWasCalled, NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO) after loadResources was called.');
-  
+
+  ok(didLoadWasCalled === NO, 'didLoadWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === NO, 'loadResources returned NO');
+  ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO).');
+
   setTimeout(function () {
     master.set('status', SC.Record.READY);
     master.set('readyToTest', YES);
   }, 10);
-  
+
   afterPropertyChange(master, 'readyToTest', YES, function () {
-    equals(didLoadWasCalled, YES, 'resourcesDidLoad was called after record transitioned to READY');
+    ok(didLoadWasCalled === YES, 'resourcesDidLoad was called after record transitioned to READY');
   });
 });
 
 
 test('resourcesDidLoad should be called after master transitions to READY and subordinate resources transition to READY', function () {
+  expect(6);
   var master = newObjWithStatus(SC.Record.EMPTY);
   loader.masterResource = newResource(master);
 
   var sub1 = newObjWithStatus(SC.Record.EMPTY);
   var sub2 = newObjWithStatus(SC.Record.EMPTY);
-  
+
   loader.subordinateResources = [
     newResource(sub1), 
     newResource(sub2)
   ];
-  
-  equals(didLoadWasCalled, NO, 'didLoadWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), NO, 'loadResources returned NO');
-  equals(didLoadWasCalled, NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO) after loadResources was called.');
-  
+
+  ok(didLoadWasCalled === NO, 'didLoadWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === NO, 'loadResources returned NO');
+  ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called (didLoadWasCalled = NO).');
+
   setTimeout(function () {
     master.set('status', SC.Record.READY);
     master.set('readyToTest', YES);
   }, 10);
-  
+
   afterPropertyChange(master, 'readyToTest', YES, function () {
-    equals(didLoadWasCalled, NO, 'resourcesDidLoad was not called after master record transitioned to READY');
-    
+    ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called after master record transitioned to READY');
+
     setTimeout(function () {
       sub1.set('status', SC.Record.READY);
       sub1.set('readyToTest', YES);
     }, 10);
-    
+
     afterPropertyChange(sub1, 'readyToTest', YES, function () {
-      equals(didLoadWasCalled, NO, 'resourcesDidLoad was not called after first subordinate record transitioned to READY');
-    
+      ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called after first subordinate record transitioned to READY');
+
       setTimeout(function () {
         sub2.set('status', SC.Record.READY);
         sub2.set('readyToTest', YES);
       }, 100);
-      
+
       afterPropertyChange(sub2, 'readyToTest', YES, function () {
-        equals(didLoadWasCalled, YES, 'resourcesDidLoad was called after second subordinate resource transitioned to READY');
+        ok(didLoadWasCalled === YES, 'resourcesDidLoad was called after second subordinate resource transitioned to READY');
       });
     });
   });
 });
 
 
-module("Smartgraphs.ResourceLoader.loadResources() ERROR tests", {
+test("load() method of master resource should have ResourceLoader instance as first argument", function () {
+  loader.masterResource = newResourceWithStatus(SC.Record.READY);
+  loader.subordinateResources = [];
+  loader.loadResources();
+  equals(thisArgPassed, loader, 'load() method was passed loader as first argument when loading master resource');
+});
+
+
+test("load() method of subordinate resources should have ResourceLoader instance as first argument", function () {
+  expect(1);
+  var master = newObjWithStatus(SC.Record.EMPTY);
+
+  loader.masterResource = newResource(master);
+  loader.subordinateResources = [newResourceWithStatus(SC.Record.READY)];
+
+  loader.loadResources();
+
+  setTimeout(function () {
+    master.set('status', SC.Record.READY);
+    master.set('readyToTest', YES);
+  }, 10);
+
+  thisArgPassed = null;
+  console.log('set thisArgPassed to null');
+  afterPropertyChange(master, 'readyToTest', YES, function () {
+    equals(thisArgPassed, loader, 'load() method passed loader as first argment when loading subordinate resource after master');
+  });
+});
+  
+
+
+var currentMaster;
+var currentSub;
+
+module("Smartgraphs.ResourceLoader.loadResources after partial or cancelled load", {
   setup: function () {
+    didLoadWasCalled = NO;
     loadingErrorWasCalled = NO;
     
     loader = SC.Object.create(Smartgraphs.ResourceLoader, {
+      masterResource: { load: function () { return currentMaster; } },
+
+      subordinateResources: [
+        { load: function () { return currentSub; } }
+      ],
+
       resourcesDidLoad: function () {
-        ok(false, "resourcesDidLoad was called when it shouldn't have been.");
+        didLoadWasCalled = YES;
       },
       
       resourceLoadingError: function () {
@@ -204,13 +261,189 @@ module("Smartgraphs.ResourceLoader.loadResources() ERROR tests", {
 });
 
 
+test('after successful load, loading of a new resource correctly waits for all new resources to be READY', function () {
+  expect(3);
+  currentMaster = newObjWithStatus(SC.Record.READY);
+  currentSub = newObjWithStatus(SC.Record.EMPTY);
+  loader.loadResources();
+
+  setTimeout(function () {
+    currentSub.set('status', SC.Record.READY);
+    currentSub.set('readyToTest', YES);
+  }, 10);
+  
+  afterPropertyChange(currentSub, 'readyToTest', YES, function () {
+    ok(didLoadWasCalled === YES, 'resourcesDidLoad was called after successful load of subordinate resource');
+  
+    didLoadWasCalled = NO;
+
+    currentMaster = newObjWithStatus(SC.Record.READY);
+    currentSub = newObjWithStatus(SC.Record.EMPTY);
+    ok(loader.loadResources() === NO, 'loadResources returned NO after a new, not-READY subordinate was set');
+      
+    setTimeout(function () {
+      currentSub.set('status', SC.Record.READY);
+      currentSub.set('readyToTest', YES);
+    }, 10);
+      
+    afterPropertyChange(currentSub, 'readyToTest', YES, function () {
+      ok(didLoadWasCalled === YES, 'resourcesDidLoad was called after new subordinate resource became READY');
+    }); 
+  });
+});
+
+
+test('after failed load, loading of a new resource correctly waits for all new resources to be READY', function () {
+  expect(5);
+  currentMaster = newObjWithStatus(SC.Record.EMPTY);
+  currentSub = newObjWithStatus(SC.Record.EMPTY);
+  loader.loadResources();
+
+  setTimeout(function () {
+    currentMaster.set('status', SC.Record.READY);
+    currentMaster.set('readyToTest', YES);
+  }, 10);
+  
+  afterPropertyChange(currentMaster, 'readyToTest', YES, function () {
+    setTimeout(function () {
+      currentSub.set('status', SC.Record.ERROR);
+      currentSub.set('readyToTest', YES);
+    }, 10);
+    
+    afterPropertyChange(currentSub, 'readyToTest', YES, function () {
+      ok(loadingErrorWasCalled === YES, 'resourceLoadingError was called after subordinate resource ERROR');
+      ok(didLoadWasCalled === NO, 'didLoadWasCalled was NO after subordinate resource ERROR');
+
+      loadingErrorWasCalled = NO;
+      currentMaster = newObjWithStatus(SC.Record.READY);
+      currentSub = newObjWithStatus(SC.Record.EMPTY);
+      ok(loader.loadResources() === NO, 'loadResources returned NO after a new, not-READY master was set');
+      
+      setTimeout(function () {
+        currentSub.set('status', SC.Record.READY);
+        currentSub.set('readyToTest', YES);
+      }, 10);
+      
+      afterPropertyChange(currentSub, 'readyToTest', YES, function () {
+        ok(didLoadWasCalled === YES, 'resourcesDidLoad was called after new subordinate resource became READY');
+        ok(loadingErrorWasCalled === NO, 'resourceLoadingError was not called after new subordinate resource became READY');
+      });
+    });  
+  });
+});
+
+
+test('completion of a canceled load should not notify loader', function () {
+  expect(1);
+  currentMaster = newObjWithStatus(SC.Record.READY);
+  currentSub = newObjWithStatus(SC.Record.EMPTY);
+  
+  loader.loadResources();
+
+  setTimeout(function () {
+    loader.cancelLoading();
+    setTimeout(function () {
+      currentSub.set('status', SC.Record.READY);
+      currentSub.set('readyToTest', YES);
+    }, 10);
+  }, 10);
+  
+  afterPropertyChange(currentSub, 'readyToTest', YES, function () {
+    ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called after cancelled resource became READY');
+  });
+});
+
+
+test('failure of a canceled load should not notify loader', function () {
+  expect(1);
+  currentMaster = newObjWithStatus(SC.Record.READY);
+  currentSub = newObjWithStatus(SC.Record.EMPTY);
+  
+  loader.loadResources();
+
+  setTimeout(function () {
+    loader.cancelLoading();
+    setTimeout(function () {
+      currentSub.set('status', SC.Record.ERROR);
+      currentSub.set('readyToTest', YES);
+    }, 10);
+  }, 10);
+  
+  afterPropertyChange(currentSub, 'readyToTest', YES, function () {
+    ok(loadingErrorWasCalled === NO, 'resourceLoadingError was not called after cancelled resource went into ERROR state');
+  });
+});
+
+
+test('completion of a canceled load should not interfere with subsequent load', function () {
+  expect(2);
+  currentMaster = newObjWithStatus(SC.Record.READY);
+  currentSub = newObjWithStatus(SC.Record.EMPTY);
+  var oldSub = currentSub;
+  
+  loader.loadResources();
+
+  setTimeout(function () {
+    loader.cancelLoading();
+    
+    currentMaster = newObjWithStatus(SC.Record.READY);
+    currentSub = newObjWithStatus(SC.Record.EMPTY);
+    
+    loader.loadResources();
+
+    setTimeout(function () {
+      oldSub.set('status', SC.Record.READY);
+      oldSub.set('readyToTest', YES);
+    }, 10);
+  }, 10);
+  
+  afterPropertyChange(oldSub, 'readyToTest', YES, function () {
+    ok(didLoadWasCalled === NO, 'resourcesDidLoad was not called after old resource became READY');
+    
+    setTimeout( function () {
+      currentSub.set('status', SC.Record.READY);
+      currentSub.set('readyToTest', YES);
+    }, 10);
+    
+    afterPropertyChange(currentSub, 'readyToTest', YES, function () {
+      ok(didLoadWasCalled === YES, 'resourcesDidLoad was called after new resource became READY');
+    });
+  });
+});
+
+
+module("Smartgraphs.ResourceLoader.loadResources() ERROR tests", {
+  setup: function () {
+    loadingErrorWasCalled = NO;
+    cleanupWasCalled = NO;
+    
+    loader = SC.Object.create(Smartgraphs.ResourceLoader, {
+      resourcesDidLoad: function () {
+        ok(false, "resourcesDidLoad was called when it shouldn't have been.");
+      },
+      
+      resourceLoadingError: function () {
+        if (!cleanupWasCalled) {
+          ok(false, 'resourceLoadingError was called without cleanupLoading having been called first.');
+        }
+        loadingErrorWasCalled = YES;
+      },
+      
+      cleanupLoading: function () {
+        cleanupWasCalled = YES;
+      }
+    });
+  }
+});
+
+
 test('loadResources should return YES and should call resourceLoadingError if the master resource is in the ERROR state', function () {
   loader.masterResource = newResourceWithStatus(SC.Record.ERROR);
   loader.subordinateResources = [];
-  
-  equals(loadingErrorWasCalled, NO, 'loadingErrorWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), YES, 'loadResources returned YES');
-  equals(loadingErrorWasCalled, YES, 'resourceLoadingError was called');
+
+  ok(loadingErrorWasCalled === NO, 'loadingErrorWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === YES, 'loadResources returned YES');
+  ok(loadingErrorWasCalled === YES, 'resourceLoadingError was called');
 });
 
 
@@ -220,89 +453,59 @@ test('loadResources should return YES and should call resourceLoadingError if th
     newResourceWithStatus(SC.Record.READY_CLEAN),
     newResourceWithStatus(SC.Record.ERROR)
   ];
-  
-  equals(loadingErrorWasCalled, NO, 'loadingErrorWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), YES, 'loadResources returned YES');
-  equals(loadingErrorWasCalled, YES, 'resourceLoadingError was called');
+
+  ok(loadingErrorWasCalled === NO, 'loadingErrorWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === YES, 'loadResources returned YES');
+  ok(loadingErrorWasCalled === YES, 'resourceLoadingError was called');
 });
 
 
 test('resourceLoadingError should be be called if the master resource transitions to an ERROR state while loading', function () {
+  expect(3);
   var master = newObjWithStatus(SC.Record.EMPTY);
   loader.masterResource = newResource(master);
   loader.subordinateResources = [];
-  
-  equals(loadingErrorWasCalled, NO, 'loadingErrorWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), NO, 'loadResources returned NO');
-  
+
+  ok(loadingErrorWasCalled === NO, 'loadingErrorWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === NO, 'loadResources returned NO');
+
   setTimeout(function () {
     master.set('status', SC.Record.ERROR);
     master.set('readyToTest', YES);
   }, 10);
-  
+
   afterPropertyChange(master, 'readyToTest', YES, function () {
-    equals(loadingErrorWasCalled, YES, 'resourceLoadingError was called.');
+    ok(loadingErrorWasCalled === YES, 'resourceLoadingError was called after master resource transitioned to ERROR.');
   });
 });
 
 
 test('resourceLoadingError should be be called if a subordinate resource transitions to an ERROR state while loading', function () {
+  expect(4);
   var sub1 = newObjWithStatus(SC.Record.EMPTY);
   var sub2 = newObjWithStatus(SC.Record.EMPTY);
-  
+
   loader.masterResource = newResourceWithStatus(SC.Record.READY);
   loader.subordinateResources = [newResource(sub1), newResource(sub2)];
-  
-  equals(loadingErrorWasCalled, NO, 'loadingErrorWasCalled was NO before loadResources was called.');
-  equals(loader.loadResources(), NO, 'loadResources returned NO');
-  
+
+  ok(loadingErrorWasCalled === NO, 'loadingErrorWasCalled was NO before loadResources was called.');
+  ok(loader.loadResources() === NO, 'loadResources returned NO');
+
   setTimeout(function () {
     sub1.set('status', SC.Record.READY);
     sub1.set('readyToTest', YES);        // make sure to run the afterPropertyChange test *after* status observers finish firing
   }, 10);
-  
+
   afterPropertyChange(sub1, 'readyToTest', YES, function () {
-    equals(loadingErrorWasCalled, NO, 'resourceLoadingError was not called after the first subordinate resource transitioned to READY');
-    
+    ok(loadingErrorWasCalled === NO, 'resourceLoadingError was not called after the first subordinate resource transitioned to READY');
+
     setTimeout(function () {
       sub2.set('status', SC.Record.ERROR);
       sub2.set('readyToTest', YES);
     }, 10);
-    
+
     afterPropertyChange(sub2, 'readyToTest', YES, function () {
-      equals(loadingErrorWasCalled, YES, 'resourceLoadingError was called after the second subordinate resource transitioned to ERROR.');
+      ok(loadingErrorWasCalled === YES, 'resourceLoadingError was called after the second subordinate resource transitioned to ERROR.');
     });
   });
 });
-
-
-// checkResourceStatuses should return YES if resourceLoadingError or resourcedidLoadWasCalled is called
-// checkResourceStatuses should return NO if neither resourceLoadingError nor resourcedidLoadWasCalled is called
-
-// load method of resource hashes should be passed the correct 'this' value
-// when cleanupLoading is called, removeObserver should be called once for every addObserver that was called
-
-// cleanupLoading is called whenever checkResourceStatuses returns YES
-
-// (note offer cancelLoading for use by willLoseFirstResponder.)
-
-// after cleanupLoading is called, 'record' value of masterResource is null
-// after cleanupLoading is called, 'record' value of subordinateResources is null
-
-// after one masterResource is laoded and results in success:
-//   calling loadResources after setting a new masterResource returns NO
-//   the new masterResource can error on load (calling resourceLoadingError);
-
-// after one masterResource is loaded and results in an error:
-//   calling loadResources after setting a new masterResource returns NO
-//   the new masterResource can result in success (calling resourcedidLoadWasCalled);
-
-// after one masterResource is loaded and cancelLoading is called while it is still BUSY:
-//   no callbacks are called!
-//   while the record is still BUSY: 
-//     calling loadResources after setting a new masterResource that is already loaded returns YES and resourcedidLoadWasCalled is called
-//  while the record is still BUSY:
-//     calling loadResources after setting a new masterResource that is already in ERROR returns YES and resourceLoadingError is called
-//  after the record has loaded:
-//    calling loadResources after setting a new masterResource that isn't loaded returns NO
-//    the new record can successfully load after a time (calling resourcedidLoadWasCalled)

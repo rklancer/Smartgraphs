@@ -38,8 +38,8 @@ Smartgraphs.ResourceLoader = {
     }
     else {
       if (masterStatus & SC.Record.ERROR) {
-        if (this.resourceLoadingError) this.resourceLoadingError();
         this.cleanupLoading();
+        if (this.resourceLoadingError) this.resourceLoadingError();
         return YES;
       }
       return NO; // not ready and not in error -> need to keep checking
@@ -58,14 +58,14 @@ Smartgraphs.ResourceLoader = {
     }
     
     if (this.subordinateResourcesAreReady()) {
-      this.resourcesDidLoad();
       this.cleanupLoading();
+      this.resourcesDidLoad();
       return YES;
     }
     
     if (this.subordinateResourcesHaveErrors()) {
-      if (this.resourceLoadingError) this.resourceLoadingError();
       this.cleanupLoading();
+      if (this.resourceLoadingError) this.resourceLoadingError();
       return YES;
     }
     
