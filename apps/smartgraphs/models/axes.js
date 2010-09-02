@@ -15,6 +15,9 @@
 Smartgraphs.Axes = SC.Record.extend(
 /** @scope Smartgraphs.Axes.prototype */ {
   
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   xMin: SC.Record.attr(Number),
   xMax: SC.Record.attr(Number),
   xSteps: SC.Record.attr(Number),

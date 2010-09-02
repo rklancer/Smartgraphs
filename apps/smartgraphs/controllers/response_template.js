@@ -14,14 +14,16 @@
 Smartgraphs.responseTemplateController = SC.ObjectController.create(
 /** @scope Smartgraphs.responseTemplate.prototype */ {
 
-  contentBinding: 'Smartgraphs.guideStepController.responseTemplate',
+  // TODO bind values to SessionStep model
+  contentBinding: 'Smartgraphs.activityStepController.responseTemplate',
   
   contentDidChange: function () {
     this.invokeOnce(this._initializeValues);
   }.observes('content'),
   
   _initializeValues: function () {
-    this.set('values', this.get('initialValues').copy());
+    var initialValues = this.get('initialValues');
+    if (initialValues) this.set('values', initialValues.copy());
   },
   
   editingShouldBeEnabled: false

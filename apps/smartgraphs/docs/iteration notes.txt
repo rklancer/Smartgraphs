@@ -1,3 +1,36 @@
+7/31/10
+-------
+
+url-ifying ids
+
+1. slug field can go after id. reference: http://stackoverflow.com/questions/427102/in-django-what-is-a-slug
+  (note url is itself slugified and could be referenced as http://stackoverflow.com/questions/427102/
+
+
+2. some urls:
+
+backend/guide/<nnn>/<slug>/
+backend/guide/<nnn>/page/<nnn>/
+backend/guide/<nnn>/page/<nnn>/step/<nnn>/
+backend/guide/<nnn>/page/<nnn>/step/<nnn>/response/<nnn>/
+backend/guide/<nnn>/page/<nnn>/step/<nnn>/response/<nnn>/command/<nnn>
+
+backend/axes/<nnn>/<slug>
+backend/graph/<nnn>/<slug>
+backend/series/<nnn>/<slug>
+backend/command/<nnn>/<slug>
+backend/trigger/<nnn>/<slug>
+backend/response-template/<nnn>/<slug>
+
+3. how to implement?
+
+some records will have slugs, others won't; server could redirect to slugified url if it exists
+
+locally stored records will have local ids until the server gets back to us.
+
+
+
+
 7/20/10
 -------
 
@@ -34,7 +67,7 @@ design issue: sequencing commands, laying out buttons, referring to next steps, 
 
 (wouldn't some degree of polymorphism be nice here...)
 
-CommandInvocation (could be referenced by a Button or a GuideStep)
+CommandInvocation (could be referenced by a Button or a ActivityStep)
   index
   command
   args
@@ -82,7 +115,7 @@ NO!: NextStepReference
     
   Think about how this would happen from a Guide:
     
-    A GuideStep might execute a Command 'openLabelTool' or something like that (not 'addLabel', which would imply the 
+    A ActivityStep might execute a Command 'openLabelTool' or something like that (not 'addLabel', which would imply the 
     label is being added in one fell swoop, from code.)
   
     This makes that LABEL_TOOL state firstResponder. GUIDE_READY remains in the responder chain, but further down.
@@ -106,7 +139,7 @@ NO!: NextStepReference
   
     The Label Tool button (icon) would have 'openLabelTool' as its action.
     
-    This makes LABEL_TOOL firstResponder, via the same code that is called when the Guide issues 'openLabelTool'
+    This makes LABEL_TOOL firstResponder, via the same code that is called when the Activity issues 'openLabelTool'
     
     Again, the LABEL_TOOL state implements the 'pointSelected' action to add a label.
     
@@ -121,10 +154,10 @@ NO!: NextStepReference
     'moveLabel' action if dropped (the LABEL_TOOL state would implement this action)
 
   See how the 'openLabelTool' action and the LABEL_TOOL state don't have to worry about these differing behaviors
-  in Guide and Lab Book modes? These behaviors come 'for free' from states farther down the responder chain.
+  in Activity and Lab Book modes? These behaviors come 'for free' from states farther down the responder chain.
     
   
-  So, anyway, what does this mean for context variables in a GuidePage and/or GuideStep?
+  So, anyway, what does this mean for context variables in a GuidePage and/or ActivityStep?
   
   Thinking about the 'setPendingLabelTitle' action tells us something about this.
   
@@ -142,7 +175,7 @@ NO!: NextStepReference
     the authoring system might generate a sequence of commands like this:
     
     (newLabelName is a name provided by the author; @learnersTitle is the learners' response taken from this or a 
-    previous GuideStep.)
+    previous ActivityStep.)
     
       pushLabelToolPopupState
       disableLabelToolPopup
@@ -182,7 +215,7 @@ NO!: NextStepReference
        Is that the right way to think about it?
        
     Well, the key point is the Command and CommandInvocation models; they need to 
-      (1) tell the Guide to substitute context variables into the argument hash passed via Smartgraphs.sendAction()
+      (1) tell the Activity to substitute context variables into the argument hash passed via Smartgraphs.sendAction()
       (2) *represent* the variable substitution in a transparent way, for the benefit of authors
     
     
@@ -193,7 +226,7 @@ NO!: NextStepReference
 
 move fixtures-prod to fixtures and add use-fixtures
 
-change guidepagesequence to guide & give Guide model a title
+change guidepagesequence to guide & give Activity model a title
 
 make a mainController that controls app state
 
@@ -291,7 +324,7 @@ believe it or not, I think a stack model is the best way to do references
 okay, given all that, how do we do what we need to do for Thursday?
 
 
-Remember to make the *model* general. We can use a Guide to let authors write Guides! (guide == wizard)
+Remember to make the *model* general. We can use a Activity to let authors write Guides! (guide == wizard)
 
 
 
@@ -337,7 +370,7 @@ major "modes"
   lab book slideshow
 
 
-screen configuration in Guide mode
+screen configuration in Activity mode
 
   left pane
 

@@ -9,83 +9,91 @@ sc_require('models/trigger_response');
 
 Smartgraphs.TriggerResponse.FIXTURES = [
 
-  { guid: 'p1s1-do-step-beginning',
-    trigger: 'step-beginning',
-    step: 'page-1-step-1',  
-    args: {},
-    commands: [
-      'p1s1-single-pane', 
-      'p1s1-show-image',
-      'p1s1-finish-step'
-    ]
-  },
-  
-  
-  { guid: 'p2s1-do-step-beginning',
-    trigger: 'step-beginning',
-    step: 'page-2-step-1',  
-    args: {},
-    commands: [
-      'p2s1-split-pane',
-      'p2s1-show-graph',
-      'p2s1-enable-submission',
-      'p2s1-start-input'
-    ]
-  },
-  
-    
-  { guid: 'p2s1-do-step-finished',
-    trigger: 'step-finished',
-    step: 'page-2-step-1',  
-    args: {},
-    commands: [
-      'p2s1-goto-p2s2'
-    ]
-  },
-  
-  
-  { guid: 'p2s2-do-step-beginning',
-    trigger: 'step-beginning',
-    step: 'page-2-step-2',  
-    args: {},
-    commands: [
-      'p2s2-show-graph',
-      'p2s2-enable-submission',
-      'p2s2-start-input'
-    ]
-  },
-  
-  
-  { guid: 'p3s1-do-step-beginning',
-    trigger: 'step-beginning',
-    step: 'page-3-step-1',  
-    args: {},
-    commands: [
-      'p3s1-show-graph',
-      'p3s1-hide-pane',
-      'p3s1-enable-submission',
-      'p3s1-start-input'
-    ]
-  },
-  
-  
-  { guid: 'p3s1-do-step-finished',
-    trigger: 'step-finished',
-    step: 'page-3-step-1',
-    args: {},
-    commands: [
-      'p3s1-goto-p3s2'
-    ]
-  },
-  
-  
-  { guid: 'p3s2-do-step-beginning',
-    trigger: 'step-beginning',
-    step: 'page-3-step-2',  
-    args: {},
-    commands: [
-      'p3s2-wait-for-valid-response'
-    ]
-  }
+  // { url: '/backend/activity/1/page/1/step/1/response/1/step-beginning',
+  //   trigger: '/backend/trigger/1/step-beginning',
+  //   step: '/backend/activity/1/page/1/step/1',  
+  //   args: {},
+  //   commands: [
+  //     '/backend/activity/1/page/1/step/1/response/1/command/1/single-pane', 
+  //     '/backend/activity/1/page/1/step/1/response/1/command/2/show-image',
+  //     '/backend/activity/1/page/1/step/1/response/1/command/3/finish-step'
+  //   ]
+  // },
+  // 
+  // 
+  // { url: '/backend/activity/1/page/2/step/1/response/1/step-beginning',
+  //   trigger: '/backend/trigger/1/step-beginning',
+  //   step: '/backend/activity/1/page/2/step/1',  
+  //   args: {},
+  //   commands: [
+  //     '/backend/activity/1/page/2/step/1/response/1/command/1/split-pane',
+  //     '/backend/activity/1/page/2/step/1/response/1/command/2/show-graph',
+  //     '/backend/activity/1/page/2/step/1/response/1/command/3/predict'
+  //   ]
+  // },
+  // 
+  //   
+  // { url: '/backend/activity/1/page/2/step/1/response/2/step-finished',
+  //   trigger: '/backend/trigger/3/step-finished',
+  //   step: '/backend/activity/1/page/2/step/1',  
+  //   args: {},
+  //   commands: [
+  //     '/backend/activity/1/page/2/step/1/response/2/command/1/goto-step-2'
+  //   ]
+  // },
+  // 
+  // 
+  // { url: '/backend/activity/1/page/2/step/2/response/1/step-beginning',
+  //   trigger: '/backend/trigger/1/step-beginning',
+  //   step: '/backend/activity/1/page/2/step/2',  
+  //   args: {},
+  //   commands: [
+  //     '/backend/activity/1/page/2/step/2/response/1/command/1/show-graph',
+  //     '/backend/activity/1/page/2/step/2/response/1/command/2/predict'
+  //   ]
+  // },
+  // 
+  // 
+  // { url: '/backend/activity/1/page/3/step/1/response/1/step-beginning',
+  //   trigger: '/backend/trigger/1/step-beginning',
+  //   step: '/backend/activity/1/page/3/step/1',  
+  //   args: {},
+  //   commands: [
+  //     '/backend/activity/1/page/3/step/1/response/1/command/1/show-graph',
+  //     '/backend/activity/1/page/3/step/1/response/1/command/2/hide-pane',
+  //     '/backend/activity/1/page/3/step/1/response/1/command/3/enable-submission',
+  //     '/backend/activity/1/page/3/step/1/response/1/command/4/start-sensor'
+  //   ]
+  // },
+  // 
+  // 
+  // { url: '/backend/activity/1/page/3/step/1/response/2/step-finished',
+  //   trigger: '/backend/trigger/3/step-finished',
+  //   step: '/backend/activity/1/page/3/step/1',
+  //   args: {},
+  //   commands: [
+  //     '/backend/activity/1/page/3/step/1/response/2/command/1/goto-step-2'
+  //   ]
+  // },
+  // 
+  // 
+  // { url: '/backend/activity/1/page/3/step/2/response/1/step-beginning',
+  //   trigger: '/backend/trigger/1/step-beginning',
+  //   step: '/backend/activity/1/page/3/step/2',  
+  //   args: {},
+  //   commands: [
+  //     '/backend/activity/1/page/3/step/2/response/1/command/1/wait-for-valid-response'
+  //   ]
+  // },
+  // 
+  // { url: '/backend/activity/1/page/4/step/1/response/1/step-beginning',
+  //   trigger: '/backend/trigger/1/step-beginning',
+  //   step: '/backend/activity/1/page/4/step/1',  
+  //   args: {},
+  //   commands: [
+  //     '/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane',
+  //     '/backend/activity/1/page/4/step/1/response/1/command/2/show-graph'      
+  //   ]
+  // }
   
 ];

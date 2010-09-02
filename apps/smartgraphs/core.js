@@ -16,12 +16,18 @@ Smartgraphs = SC.Application.create(
 
   NAMESPACE: 'Smartgraphs',
   VERSION: '0.1.0',
-
-  store: SC.Store.create().from(SC.Record.fixtures),
   
   // Add global constants or singleton objects here
   triggers: [],
+
+  _nextGuid: 1,
+  getNextGuid: function () {
+    return this._nextGuid++;
+  },
   
-  // DEBUG SETTING: traces firstResponder changes and app actions
-  trace: YES
+  // DEBUG SETTINGS
+  trace: NO,                    // whether to trace firstResponder changes and app actions
+  useMockResponses: YES,        // whether the data source should use mock responses or real XHR        
+  logDataSource: NO             // whether the data source should log   
+  
 }) ;

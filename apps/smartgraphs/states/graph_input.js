@@ -7,8 +7,6 @@
 
 /** @class
 
-  State representing graph is open for input
-
   @extends SC.Responder
   @version 0.1
 */
@@ -23,6 +21,7 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
   
   willLoseFirstResponder: function() {
     Smartgraphs.inputGraphController.stopRoutingInputEvents();
+    Smartgraphs.selectedSeriesController.set('content', null);
   },
   
   // This state is intended to be 'pushed'. resignFirstResponder to get the old firstResponder back
@@ -32,8 +31,9 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
     }
     return YES;
   },
+  
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
   
   // these should be produced by the inputGraphController

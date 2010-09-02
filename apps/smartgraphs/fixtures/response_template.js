@@ -9,8 +9,8 @@ sc_require('models/response_template');
 
 Smartgraphs.ResponseTemplate.FIXTURES = [
 
-  { guid: 
-      'template-numeric-1',
+  { url: 
+      '/backend/response-template/1/numeric',
     templateString: 
       '',
     fieldTypes: [
@@ -24,8 +24,8 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
     ]
   },
 
-  { guid: 
-      'template-open-1',
+  { url: 
+      '/backend/response-template/2/open',
     templateString:
       '',
     fieldTypes: [

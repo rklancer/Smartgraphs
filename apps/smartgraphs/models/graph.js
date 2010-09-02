@@ -15,10 +15,13 @@
 Smartgraphs.Graph = SC.Record.extend(
 /** @scope Smartgraphs.Graph.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   name: SC.Record.attr(String),
   description: SC.Record.attr(String),
   
   axes: SC.Record.toOne('Smartgraphs.Axes'),
-  allSeries: SC.Record.toMany('Smartgraphs.DataSeries')
-
+  initialSeries: SC.Record.attr(Array)
+    
 }) ;

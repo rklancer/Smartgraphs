@@ -12,12 +12,12 @@
   @extends SC.Responder
   @version 0.1
 */
+
+sc_require('states/sensor');
+
 Smartgraphs.SENSOR_ERROR = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR_ERROR.prototype */ {
 
-  /**
-    The next state to check if this state does not implement the action.
-  */
   nextResponder: Smartgraphs.SENSOR,
   
   didBecomeFirstResponder: function() {
@@ -26,15 +26,11 @@ Smartgraphs.SENSOR_ERROR = SC.Responder.create(
   
   willLoseFirstResponder: function() {
     // Called when this state loses first responder
-  },
+  }
   
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
-  
-  // add event handlers here
-  someAction: function() {
-    
-  }
+
   
 }) ;

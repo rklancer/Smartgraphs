@@ -12,6 +12,9 @@
   @extends SC.Responder
   @version 0.1
 */
+
+sc_require('states/sensor');
+
 Smartgraphs.SENSOR_READY = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR_READY.prototype */ {
 
@@ -26,15 +29,11 @@ Smartgraphs.SENSOR_READY = SC.Responder.create(
   
   willLoseFirstResponder: function() {
     // Called when this state loses first responder
-  },
+  }
   
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
-  
-  // add event handlers here
-  someAction: function() {
-    
-  }
+
   
 }) ;

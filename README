@@ -8,18 +8,28 @@ To install:
 git clone git://github.com/rklancer/Smartgraphs.git
 cd Smartgraphs
 rvm gemset create Smartgraphs
-rvm gemset use Smartgraphs
-# import gems listed in the default.gems file
+rvm use 1.9.1-p378@Smartgraphs
+# Import gems listed in the default.gems file
 rvm gemset import
-# Now you can easily use rvm to switch to a version of ruby and the specific gems needed for raclette with this command:
-#  rvm use <Ruby version number>@Smartgraphs
-git submodule update --init
-cd abbot
-rake init
-abbot/bin/sc-server -v
+cd frameworks
+rm -rf *
+cd ..
+git submodule update --init --recursive
+
+# Install sproutcore-abbot (branch quilmes) to a location of your choice and put abbot/bin in your PATH. Then return to the Smartgraphs directory and run
+sc-server -v
 
 ...then visit localhost:4020/smartgraphs
 
 to open TestRunner visit http://localhost:4020/sproutcore/tests
 to see all tests visit http://localhost:4020/static/smartgraphs/en/current/tests.html
+
+# Build to the rails/public directory with:
+sc-build -c --buildroot="[FULL_PATH_BECAUSE_RELATIVE_PATHS_DO_NOT_WORK_IN_ABBOT_YET]/smartgraphs-rails/public"
+# Get the latest build number like this:
+sc-build-number smartgraphs
+# Then make the symbolic link to the English version of latest build like this:
+cd ../smartgraphs-rails/public
+rm sc.html
+ln -s static/smartgraphs/en/[ the sc-build-number ]/index.html sc.html
   

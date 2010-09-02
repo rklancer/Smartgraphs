@@ -14,6 +14,8 @@
 Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder, 
 /** @scope Smartgraphs.graphController.prototype */ {
   
+  seriesList: null,  
+  
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function (graphId) {
     var graph = Smartgraphs.store.find(Smartgraphs.Graph, graphId);
@@ -23,6 +25,13 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
     
     this.set('content', graph);
+    this.set('seriesList', []);
+    
+    // add the initial series
+    var initial = this.get('initialSeries');
+    for (var i = 0, ii = initial.get('length'); i < ii; i++) {
+      this.addSeriesByName(initial.objectAt(i));
+    }
   },
   
   setAxes: function (axesId) {
@@ -35,25 +44,49 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     Smartgraphs.store.commitRecords();
   },
   
-  addSeries: function (seriesId) {
-    var series = Smartgraphs.store.find(Smartgraphs.DataSeries, seriesId);
-    if (!series) {
-      series = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { guid: seriesId });
+  addSeries: function (series) {
+    if (this.findSeries(series.get('name'))) {
+      return NO;
     }
-
-    this.get('allSeries').pushObject(series);
+    this.get('seriesList').pushObject(series);
     Smartgraphs.store.commitRecords();
+    return YES;
   },
   
-  removeSeries: function (seriesId) {
-    var allSeries = this.get('allSeries');
-    var series;
+  addSeriesByName: function (seriesName) {
+    // first try to get the named series from the current session
+    var query = SC.Query.local(Smartgraphs.DataSeries, 'name={name} AND session={session}', { 
+      name: seriesName,
+      session: Smartgraphs.sessionController.getPath('content')
+    });
+    var seriesList = Smartgraphs.store.find(query);
+    
+    if (seriesList.get('length') < 1) {
+      // get an example series if that's what has this name
+      query = SC.Query.local(Smartgraphs.DataSeries, 'name={name} AND isExample=YES', { 
+        name: seriesName
+      });
+      seriesList = Smartgraphs.store.find(query);
+      if (seriesList.get('length') < 1) return NO;
+    }
   
-    for (var i = 0, ii = allSeries.get('length'); i < ii; i++) {
-      series = allSeries.objectAt(i);
-      if (series.get('id') === seriesId) {
-        allSeries.removeObject(series);
-        break;
+    this.addSeries(seriesList.objectAt(0));
+  },
+  
+  removeSeries: function (seriesName) {
+    var seriesList = this.get('seriesList');
+    var series = this.findSeries(seriesName);
+    if (series) seriesList.removeObject(series);
+  },
+    
+  findSeries: function (seriesName) {
+    var seriesList = this.get('seriesList');
+    var series;
+
+    for (var i = 0, ii = seriesList.get('length'); i < ii; i++) {
+      series = seriesList.objectAt(i);
+      if (series.get('name') === seriesName) {
+        return series;
       }
     }
   },
@@ -78,19 +111,19 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   inputAreaMouseDown: function (x, y) {
-    console.log('recorded mouseDown at %f, %f', x, y);
     Smartgraphs.sendAction('startGraphInputAt', this, { x: x, y: y });
   },
   
   inputAreaMouseDragged: function (x, y) {
-    console.log('recorded mouseDragged at %f, %f', x, y);
     Smartgraphs.sendAction('continueGraphInputAt', this, { x: x, y: y });
   },
   
   inputAreaMouseUp: function (x, y) {
-    console.log('recorded mouseUp at %f, %f', x, y);
     Smartgraphs.sendAction('endGraphInputAt', this, { x: x, y: y });
+  },
+  
+  clear: function () {
+    this.set('seriesList', []);
+    this.set('content', []);
   }
-  
-  
 }) ;

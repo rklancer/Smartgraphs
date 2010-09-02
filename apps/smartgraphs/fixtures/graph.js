@@ -9,41 +9,53 @@ sc_require('models/graph');
 
 Smartgraphs.Graph.FIXTURES = [
 
-  { guid: 
-      'prediction-away',
+  { url: 
+      '/backend/activity/1/graph/1/prediction-away',
     name:
-      'prediction-away',
+      'Prediction-Away',
     description: 
       'Prediction graph of movement away',
     axes:
-      'prediction-away-axes',
-    allSeries: 
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
       []
   },
   
   
-  { guid: 
-      'prediction-toward',
+  { url: 
+      '/backend/activity/1/graph/2/prediction-toward',
     name:
-      'prediction-toward',
+      'Prediction-Toward',
     description: 
       'Prediction graph of movement towards',
     axes:
-      'prediction-toward-axes',
-    allSeries: 
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
       []
   },
   
   
-  { guid: 
-      'sensor-1',
+  { url: 
+      '/backend/activity/1/graph/3/sensor-playing',
     name:
-      'sensor-1',
+      'Sensor-Playing',
     description: 
       'Playing around with the sensor in page 3',
     axes:
-      'sensor-1-axes',
-    allSeries: 
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
       []
+  },
+  
+  { url: 
+      '/backend/activity/1/graph/4/combined',
+    name:
+      'Combined',
+    description: 
+      'Combines the prediction graphs and the sensor graph',
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      ['prediction-away', 'sensor']
   }
 ];

@@ -15,6 +15,9 @@
 Smartgraphs.Trigger = SC.Record.extend(
 /** @scope Smartgraphs.Trigger.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /**
     The name of the event produced by this trigger. Also the name of the trigger object that implements the trigger.
   */

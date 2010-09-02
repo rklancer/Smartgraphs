@@ -6,16 +6,38 @@
 /*globals Smartgraphs */
 
 Smartgraphs.main = function main() {
-
-  // The code here will make the mainPane visible on screen.
-  Smartgraphs.getPath('mainPage.mainPane').append() ;
   
-  // go to the START state
+  // Queries.
+  Smartgraphs.ALL_COMMANDS_QUERY = SC.Query.local(Smartgraphs.Command);
+  Smartgraphs.ALL_TRIGGERS_QUERY = SC.Query.local(Smartgraphs.Trigger);
+  
+  
+  // cascade the Rails data source in front of the fixtures data source until everything is transferred to Rails
+  Smartgraphs.dataSource = SC.CascadeDataSource.create({
+    dataSources: "rails fixtures".w(),
+    
+    rails: Smartgraphs.RestDataSource.create(),
+    
+    fixtures: SC.FixturesDataSource.create({
+      simulateRemoteResponse: NO,
+      latency: 500
+    })
+  });
+  
+  Smartgraphs.store = SC.Store.create().from(Smartgraphs.dataSource);
+  
+  // make the mainPane visible on screen.
+  Smartgraphs.getPath('mainPage.mainPane').append() ;
+
+  // We're letting SC.route handle navigating to a particular Activity. It needs a runloop to sync up, so 
+  // just reach in and set default window.location.hash for now.
+  if (!window.location.hash) {
+    window.location.hash = '/backend/activity/1';      // default activity for now
+  }
+  
+  // ... then the START state will kick things off
   Smartgraphs.makeFirstResponder(Smartgraphs.START);
   
-  // and open the first learner guide (should go into GUIDE_START state, open up guide window, and set guideController
-  // to point to the Guide 'learner-guide-1')
-  Smartgraphs.sendAction('openGuide', this, { id: 'learner-guide-1' });
 } ;
 
 function main() { Smartgraphs.main(); }

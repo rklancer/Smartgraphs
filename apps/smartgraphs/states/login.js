@@ -17,26 +17,16 @@
 Smartgraphs.LOGIN = SC.Responder.create(
 /** @scope Smartgraphs.LOGIN.prototype */ {
 
-  /**
-    The next state to check if this state does not implement the action.
-  */
   nextResponder: null,
   
   didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
-  },
-  
-  willLoseFirstResponder: function() {
-    // Called when this state loses first responder
-  },
+    // for now we use just a default user and assume the user record loads in synchronously from fixtures
+    Smartgraphs.userController.set('content', Smartgraphs.store.find(Smartgraphs.User, 'default'));
+    Smartgraphs.makeFirstResponder(Smartgraphs.READY);
+  }
   
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
-  
-  // add event handlers here
-  someAction: function() {
-    
-  }
   
 }) ;

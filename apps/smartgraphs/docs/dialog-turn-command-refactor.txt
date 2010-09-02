@@ -44,7 +44,7 @@ the @annotation lives in the page context ('stack frame'), see?
 
 models to flesh out:
 
-Guide 
+Activity 
 GuidePage
 DialogTurn
 ResponseTemplate
@@ -131,7 +131,7 @@ ResponseTemplate:
 inspector and command classes:
 
   (note that it's wise to have sensible "combined" behaviors like "create a graph and add it to a frame"
-  These commands are likely to be exposed in an "expert view" in the guide editing environment.)
+  These commands are likely to be exposed in an "expert view" in the activity editing environment.)
   
   set display to split or combined
 

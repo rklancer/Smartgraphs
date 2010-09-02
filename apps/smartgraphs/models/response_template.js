@@ -8,7 +8,7 @@
 /** @class
 
   Specifies a string interspersed with text fields or other input types, to be displayed in a 'form-like' manner
-  in a given GuideStep.
+  in a given ActivityStep.
   
   This allows learners or authors to respond to questions.
 
@@ -18,6 +18,9 @@
 Smartgraphs.ResponseTemplate = SC.Record.extend(
 /** @scope Smartgraphs.ResponseTemplate.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   templateString: SC.Record.attr(String),
   fieldTypes: SC.Record.attr(Array),
   fieldChoiceLists: SC.Record.attr(Array),            // for multiple choice

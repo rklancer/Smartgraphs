@@ -7,17 +7,17 @@
 
 /** @class
 
-  Every GuideStep can define a set of TriggerResponse 'blocks'. These define what happens when verious events 
+  Every ActivityStep can define a set of TriggerResponse 'blocks'. These define what happens when verious events 
   occur, such as:
-   * the beginning of a guide step
+   * the beginning of a activity step
    * receiving a correct learner response
    * some graph property reaching a critical threshold
    * etc.
    
-  GuideSteps can define 'triggers' which configure various Observer classes defined in triggers/<trigger_name>.js
+  ActivitySteps can define 'triggers' which configure various Observer classes defined in triggers/<trigger_name>.js
   in order to receive notification when a particular property meets some threshold value.
   
-  Alternatively, various Guide commands (sendGuideEvent, compareAndSendEvent?) can be used to trigger events which 
+  Alternatively, various Activity commands (sendActivityEvent, compareAndSendEvent?) can be used to trigger events which 
   run code. (For example, the standard template for a 'check answer' type scenario would define event responses
   that listen for the 'check answer' button to be clicked, then would run an inspector method to check the answer,
   and then would compareAndSendEvent to either send 'correctAnswerReceived' or 'incorrectAnswerReceived') 
@@ -28,15 +28,18 @@
 Smartgraphs.TriggerResponse = SC.Record.extend(
 /** @scope Smartgraphs.TriggerResponse.prototype */ {
   
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /**
-    The Trigger to register for this particular GuideStep
+    The Trigger to register for this particular ActivityStep
   */
   trigger: SC.Record.toOne('Smartgraphs.Trigger'),
   
   /**
-    The GuideStep registering this TriggerResponse.
+    The ActivityStep registering this TriggerResponse.
   */
-  step: SC.Record.toOne('Smartgraphs.GuideStep', { inverse: 'triggerResponses' }),
+  step: SC.Record.toOne('Smartgraphs.ActivityStep', { inverse: 'triggerResponses', isMaster: YES }),
   
   /**
     A hash of arguments to be passed when registering this trigger. Each key overrides any key of the same name
