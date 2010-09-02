@@ -3,3 +3,6 @@ abbot/
 tmp/
 sc-docs/
 apps/old-smartgraphs
+.DS_Store
+.project
+*/.DS_Store
