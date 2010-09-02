@@ -180,15 +180,13 @@ Smartgraphs.activityPage = SC.Page.design({
   firstImageView: SC.ImageView.design({
     useStaticLayout: YES,
     valueBinding: 'Smartgraphs.activityViewController.firstImageValue',
-    
+
     // This is a hack.  At the moment SC.View.layoutStyle doesn't know how to set width or height to '100%',
-    // which is required for an image to resize automatically (left:0, right:0 does not do the trick.)
-    // Therefore, override the width and height styles (viewDidResize gets called, I believe, whenever the layer's 
-    // layout style is updated)
-    viewDidResize: function () {
-      this.$().width('100%');
-      this.$().height('100%');
-    }
+    // but it does recognize numbers between 0 and 1, non-inclusive, as percentages; 0.9999999 appears to be about
+    // the smallest number that gets recognized as a percentage and gets rounded up to 'height=100%' (rather than
+    // 'height=99.9999%')
+    
+    layout: { width: 0.9999999, height: 0.9999999 }
   }),
   
   secondImageView: SC.ImageView.design({
@@ -196,10 +194,7 @@ Smartgraphs.activityPage = SC.Page.design({
     valueBinding: 'Smartgraphs.activityViewController.secondImageValue',
 
     // same hack described in firstImageView:
-    viewDidResize: function () {
-      this.$().width('100%');
-      this.$().height('100%');
-    }
+    layout: { width: 0.9999999, height: 0.9999999 }
   }),
   
   firstGraphView: Smartgraphs.GraphView.design({
