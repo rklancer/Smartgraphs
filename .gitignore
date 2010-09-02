@@ -5,4 +5,4 @@ sc-docs/
 apps/old-smartgraphs
 .DS_Store
 .project
-frameworks/.DS_Store
+*/.DS_Store
