@@ -49,13 +49,12 @@ Smartgraphs.activityPage = SC.Page.design({
           
           activityStepWrapper: SC.View.design({
             useStaticLayout: YES,
-            hasStaticLayout: YES,
             
             childViews: 'activityStepDialog buttonsView'.w(),
             
             activityStepDialog: SC.View.design({          
               useStaticLayout: YES,
-              hasStaticLayout: YES,    
+              
               childViews: 'beforeText responseTemplate afterText'.w(),
               classNames: 'dialog-text'.w(),
 
@@ -79,7 +78,6 @@ Smartgraphs.activityPage = SC.Page.design({
           
             buttonsView: SC.View.design({
               useStaticLayout: YES,
-              hasStaticLayout: YES,
             
               layout: {
                 height: 24
@@ -181,7 +179,6 @@ Smartgraphs.activityPage = SC.Page.design({
   
   firstImageView: SC.ImageView.design({
     useStaticLayout: YES,
-    hasStaticLayout: YES,
     valueBinding: 'Smartgraphs.activityViewController.firstImageValue',
     
     // This is a hack.  At the moment SC.View.layoutStyle doesn't know how to set width or height to '100%',
@@ -196,7 +193,6 @@ Smartgraphs.activityPage = SC.Page.design({
   
   secondImageView: SC.ImageView.design({
     useStaticLayout: YES,
-    hasStaticLayout: YES,    
     valueBinding: 'Smartgraphs.activityViewController.secondImageValue',
 
     // same hack described in firstImageView:

@@ -66,7 +66,6 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       // note that SC.TextFieldViews don't display properly at all if they have useStaticLayout: YES
       inputFieldWrapperDesign = SC.View.design({
         useStaticLayout: YES,
-        hasStaticLayout: YES,
         layout: layout,
         classNames: 'text-field-view-wrapper'.w(),
     
