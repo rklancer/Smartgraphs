@@ -17,7 +17,7 @@ Smartgraphs.GraphView = SC.View.extend(
   axesBinding: '*graph.axes',
   seriesListBinding: '*graph.seriesList',
   
-  padding: { top: 20, right: 20, bottom: 40, left: 60 },  
+  padding: { top: 20, right: 20, bottom: 45, left: 55 },  
   
   childViews: 'graphCanvasView'.w(),
   
@@ -27,14 +27,10 @@ Smartgraphs.GraphView = SC.View.extend(
   },
   
   viewDidResize: function () {
-    // TODO can reduce flickering by only replacing layer only if existing Raphael canvas is too small
-    // (call renderChildViews on graphCanvasView)
     sc_super();
     this.replaceLayer();
-    //this.get('graphCanvasView').renderChildViews(null, NO);  // works unless Raphael canvas needs to grow
   },
   
-  // could move to a graphViewController if we had one.
   coordinatesForPoint: function (x, y) {
     var axes = this.get('axes');
     var xMin = axes.get('xMin'),
@@ -51,16 +47,15 @@ Smartgraphs.GraphView = SC.View.extend(
     var plotWidth = width - padding.left - padding.right;
     var plotHeight = height - padding.top - padding.bottom;
     
-    var xScale = plotWidth / xMax;
-    var yScale = plotHeight / yMax;
+    var xScale = plotWidth / (xMax - xMin);
+    var yScale = plotHeight / (yMax - yMin);
     
     return { 
-      x: padding.left + x * xScale,
-      y: padding.top + plotHeight - (y * yScale)
+      x: padding.left + (x - xMin) * xScale,
+      y: padding.top + plotHeight - (y - yMin) * yScale
     };
   },
   
-  // inverse of coordinatesForPoint, obviously
   pointForCoordinates: function (x, y) {
     var axes = this.get('axes');
     var xMin = axes.get('xMin'),
@@ -77,12 +72,12 @@ Smartgraphs.GraphView = SC.View.extend(
     var plotWidth = width - padding.left - padding.right;
     var plotHeight = height - padding.top - padding.bottom;
     
-    var xScale = plotWidth / xMax;
-    var yScale = plotHeight / yMax;
+    var xScale = plotWidth / (xMax - xMin);
+    var yScale = plotHeight / (yMax - yMin);
     
     return {
-      x: (x - padding.left) / xScale,
-      y: (padding.top + plotHeight - y) / yScale
+      x: xMin + (x - padding.left) / xScale,
+      y: yMin + (padding.top + plotHeight - y) / yScale
     };
   },
   
@@ -125,7 +120,7 @@ Smartgraphs.GraphView = SC.View.extend(
       orderBy: 'id'
     });
     
-    // TODO make this a view class
+    // TODO make this a view class?
     var view = RaphaelViews.RaphaelCollectionView.design({
       exampleView: Smartgraphs.DataPointView,
       graphView: this,
@@ -146,17 +141,23 @@ Smartgraphs.GraphView = SC.View.extend(
   },
   
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
-    graphBinding: '.parentView*graph',
+    axesBinding: '.parentView.axes',
+    
+    displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax'.w(),
     
     childViews: 'axesView'.w(),
     
-    axesView: RaphaelViews.RaphaelView.design({
-      axesBinding: '.parentView.parentView*axes',      
-      paddingBinding: '.parentView.parentView*padding',
-
-      displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax axes.xSteps axes.ySteps'.w(),
+    // render: function (context, firstTime) {
+    //   console.log('rendering graphCanvasView, firstTime = ', firstTime);
+    //   sc_super();
+    //   //this.renderChildViews(context, firstTime);
+    // },
       
-      childViews: 'xLabelView yLabelView eventSurface'.w(),
+    axesView: RaphaelViews.RaphaelView.design({
+      axesBinding: '.parentView.parentView.axes',      
+      paddingBinding: '.parentView.parentView.padding',
+      
+      childViews: 'xLabelView yLabelView xAxisView yAxisView eventSurface'.w(),
       
       eventSurface: RaphaelViews.RaphaelView.design({
         axesBinding: '.parentView.parentView.parentView*axes',      
@@ -221,70 +222,60 @@ Smartgraphs.GraphView = SC.View.extend(
       }),
       
       xLabelView: RaphaelViews.RaphaelView.design({
-      }),
-      
-      yLabelView: RaphaelViews.RaphaelView.design({
-      }),
-
-
-      renderCallback: function (raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
-        // A total hack. Just draw the axes to the screen as a side effect of creating our layer.
+        axesBinding: '.parentView.parentView.parentView.axes',
+        displayProperties: 'axes.xLabel'.w(),
         
-        // keep this until (a) we can get Raphael to draw the <text> elements when layer is offscreen
-        // and (b) we find a way to find all the <path> and the <texts> that g.axis draws, and convince
-        // RaphaelRenderSupport to group them into our layer (or (c) draw the tick marks and labels ourselves
-        // -- it's not hard!)
+        render: function (context, firstTime) {
+          if (!firstTime) this.drawLabel();
+        },
         
-        this.invokeLater(function () {
-          this.drawAxes(raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
-        });
-      },
-
-      drawAxes: function (raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
-        // x axis
-        if (this._x) this._x.remove();
-        this._x = raphaelCanvas.g.axis(xLeft, yBottom, plotWidth, xMin, xMax, xSteps, 0);
-        window.xaxis = this._x;
-        // y axis
-        if (this._y) this._y.remove();          
-        this._y = raphaelCanvas.g.axis(xLeft, yBottom, plotHeight, yMin, yMax, ySteps, 1);
-      },
-      
-      render: function (context, firstTime) {
-        var axes = this.getPath('parentView.parentView.axes');
+        didCreateLayer: function () {
+          this.invokeLater(this.drawLabel);
+        },
         
-        if (axes) {          
-          var xMin = axes.get('xMin');
-          var xMax = axes.get('xMax');
-          var xSteps = axes.get('xSteps');
-          var yMin = axes.get('yMin');
-          var yMax = axes.get('yMax');       
-          var ySteps = axes.get('ySteps');
-            
-          var graphView = this.getPath('parentView.parentView');
+        drawLabel: function () {
+          if (this._label) this._label.remove();
           
-          var bottomLeft = graphView.coordinatesForPoint(0, 0);
-          var bottomRight = graphView.coordinatesForPoint(xMax, 0);
-          var topLeft = graphView.coordinatesForPoint(0, yMax);
-          
-          var xLeft = bottomLeft.x;
-          var xRight = bottomRight.x;
-          var yBottom = bottomLeft.y;
-          var yTop = topLeft.y;
-            
-          var plotWidth = xRight - xLeft;
-          var plotHeight = yBottom - yTop;
+          var xLabelText = this.getPath('axes.xLabel');
+          var padding = this.getPath('parentView.parentView.parentView.padding');
+          var frame = this.getPath('parentView.parentView.parentView.frame');
 
-          if (firstTime) {
-            context.callback(this, this.renderCallback, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
-          }
-          else {
-            this.drawAxes(this.get('raphaelCanvas'), xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
-          }
+          this._label = this.get('raphaelCanvas').text( (padding.left + frame.width - padding.right) / 2, frame.height - 15, xLabelText).attr({font: "14px Arial, sans-serif"});
         }
+      }),
+
+      yLabelView: RaphaelViews.RaphaelView.design({
+        axesBinding: '.parentView.parentView.parentView.axes',
+        displayProperties: 'axes.yLabel'.w(),
         
-        this.renderChildViews(context, firstTime);      // don't forget to render child views        
-      }
+        render: function (context, firstTime) {
+          if (!firstTime) this.drawLabel();
+        },
+        
+        didCreateLayer: function () {
+          this.invokeLater(this.drawLabel);
+        },
+        
+        drawLabel: function () {
+          if (this._label) this._label.remove();
+          
+          var yLabelText = this.getPath('axes.yLabel');
+          var padding = this.getPath('parentView.parentView.parentView.padding');
+          var frame = this.getPath('parentView.parentView.parentView.frame');
+
+          this._label = this.get('raphaelCanvas').text( 15, (padding.top + frame.height - padding.bottom) / 2, yLabelText).attr({font: "14px Arial, sans-serif"}).rotate(270);
+        }
+      }),
+      
+      xAxisView: Smartgraphs.AxisView.design({
+        axesBinding: '.parentView.parentView.parentView.axes',
+        type: 'x'
+      }),
+      
+      yAxisView: Smartgraphs.AxisView.design({
+        axesBinding: '.parentView.parentView.parentView.axes',
+        type: 'y'
+      })
     })
   })
 });

@@ -47,15 +47,15 @@ function setupFixtures() {
   Smartgraphs.Axes.FIXTURES = [
     { url: 'test-axes',
 
-      xMin: 0,
+      xMin: -5,
       xMax: 10,
-      xSteps: 15,
+      xSteps: 5,
       xLabel: 'xLabel (long)',
       xLabelAbbreviated: 'xLabel (abbrev)',
 
-      yMin: 0,
-      yMax: 10,
-      ySteps: 25,
+      yMin: 2,
+      yMax: 8,
+      ySteps: 6,
       yLabel: 'yLabel (long)',
       yLabelAbbreviated: 'yLabel (abbrev)'
     }
@@ -263,27 +263,35 @@ test('coordinatesForPoint should return sensible values for points on the graph'
       right = frame.x + frame.width - padding.right,
       midY = (top+bottom) / 2,
       midX = (left+right) / 2;
-  
+      
   var expectedX = {
-    0:  left,
-    5:  midX,
-    10: right
+    '-5':  left,
+    '2.5': midX,
+    '10':   right
   };
+  
   
   var expectedY = {
-    0:  bottom,
-    5:  midY,
-    10: top
+    '2':  bottom,
+    '5':  midY,
+    '8':  top
   };
   
-  var coords, point;
+  var coords, point, x, y;
   
-  for (var x = 0; x <= 10; x+=5) {
-    for (var y = 0; y <= 10; y+=5) {
-      coords = view.coordinatesForPoint(x, y);
+  for (var xKey in expectedX) {
+    if (expectedX.hasOwnProperty(xKey)) {
+      for (var yKey in expectedY) {
+        if (expectedY.hasOwnProperty(yKey)) {
+           x = parseFloat(xKey);
+           y = parseFloat(yKey);
+           
+           coords = view.coordinatesForPoint(x, y);
       
-      equals(coords.x, expectedX[x], 'x coordinate for point (' + x + ', ' + y + ') should be ' + expectedX[x]);
-      equals(coords.y, expectedY[y], 'y coordinate for point (' + x + ', ' + y + ') should be ' + expectedY[y]);
+           equals(coords.x, expectedX[xKey], 'x coordinate for point (' + x + ', ' + y + ') should be ' + expectedX[xKey]);
+           equals(coords.y, expectedY[yKey], 'y coordinate for point (' + x + ', ' + y + ') should be ' + expectedY[yKey]);
+        }
+      }
     }
   }
 });
@@ -292,8 +300,8 @@ test('coordinatesForPoint should return sensible values for points on the graph'
 test('pointForCoordinates should be the inverse function of coordinatesForPoint', function () {
   var coords, point;
   
-  for (var x = 0; x <= 10; x+=5) {
-    for (var y = 0; y <= 10; y+=5) {
+  for (var x = -5; x <= 10; x+=7.5) {
+    for (var y = 2; y <= 8; y+=3) {
       coords = view.coordinatesForPoint(x, y);
       point = view.pointForCoordinates(coords.x, coords.y);
   
