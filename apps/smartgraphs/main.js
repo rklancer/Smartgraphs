@@ -14,9 +14,9 @@ Smartgraphs.main = function main() {
   
   // cascade the Rails data source in front of the fixtures data source until everything is transferred to Rails
   Smartgraphs.dataSource = SC.CascadeDataSource.create({
-    dataSources: "rails fixtures".w(),
+    dataSources: "rest fixtures".w(),
     
-    rails: Smartgraphs.RestDataSource.create(),
+    rest: Smartgraphs.RestDataSource.create(),
     
     fixtures: SC.FixturesDataSource.create({
       simulateRemoteResponse: NO,
