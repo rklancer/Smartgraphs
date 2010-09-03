@@ -100,14 +100,13 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   }.property(),
   
   startRoutingInputEvents: function () {
-    var axesView = this.getPath('view.graphCanvasView.axesView');
-    axesView.set('shouldNotifyController', YES);
-    axesView.set('controller', this);
+    var view = this.get('view');
+    view.set('shouldNotifyController', YES);
+    view.set('controller', this);
   },
   
   stopRoutingInputEvents: function () {
-    var axesView = this.getPath('view.graphCanvasView.axesView');    
-    axesView.set('shouldNotifyController', NO);
+    this.get('view').set('shouldNotifyController', NO);
   },
   
   inputAreaMouseDown: function (x, y) {

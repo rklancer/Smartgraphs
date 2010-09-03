@@ -147,7 +147,6 @@ Smartgraphs.GraphView = SC.View.extend(
   
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
     graphBinding: '.parentView*graph',
-    axesBinding: '.parentView*axes',
     
     childViews: 'axesView'.w(),
     
@@ -155,44 +154,80 @@ Smartgraphs.GraphView = SC.View.extend(
       axesBinding: '.parentView.parentView*axes',      
       paddingBinding: '.parentView.parentView*padding',
 
-      displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax axes.xLabel axes.yLabel'.w(),      
-
-      pointForEvent: function (e) {
-        var canvasOffset = $(this.get('raphaelCanvas').canvas).offset();
-        var x = e.pageX - canvasOffset.left;
-        var y = e.pageY - canvasOffset.top;
-        var graphView = this.getPath('parentView.parentView');
-        return graphView.pointForCoordinates(x, y);
-      },
+      displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax axes.xSteps axes.ySteps'.w(),
       
-      mouseDown: function (evt) {
-        if (this.get('shouldNotifyController')) {
-          var point = this.pointForEvent(evt);
-          return this.get('controller').inputAreaMouseDown(point.x, point.y);
-        }
-        return NO;
-      },
+      childViews: 'xLabelView yLabelView eventSurface'.w(),
       
-      mouseDragged: function (evt) {
-        if (this.get('shouldNotifyController')) {
-          var point = this.pointForEvent(evt);
-          return this.get('controller').inputAreaMouseDragged(point.x, point.y);
-        }
-        return NO;
-      },
-      
-      mouseUp: function (evt) {
-        if (this.get('shouldNotifyController')) {
-          var point = this.pointForEvent(evt);
-          return this.get('controller').inputAreaMouseUp(point.x, point.y);
-        }
-        return NO;
-      },
-      
-      renderCallback: function (raphaelCanvas, shouldDrawAxes, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
-        // TEMP. For command line access
-        Smartgraphs.raphael = raphaelCanvas;
+      eventSurface: RaphaelViews.RaphaelView.design({
+        axesBinding: '.parentView.parentView.parentView*axes',      
+        shouldNotifyControllerBinding: '.parentView.parentView.parentView.shouldNotifyController',
+        controllerBinding: '.parentView.parentView.parentView.controller',
         
+        renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {          
+          return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
+            fill: '#ffffff', stroke: '#ffffff', opacity: 0.7 
+          });
+        },
+        
+        render: function (context, firstTime) {
+          var frame = this.getPath('parentView.parentView.frame');
+          var padding = this.getPath('parentView.parentView.parentView.padding');
+
+          var xLeft = frame.x + padding.left;
+          var yTop = frame.y + padding.top;
+          var plotWidth = frame.width - padding.left - padding.right;
+          var plotHeight = frame.height - padding.top - padding.bottom;
+          
+          if (firstTime) {
+            context.callback(this, this.renderCallback, xLeft, yTop, plotWidth, plotHeight);
+          }
+          else {       
+            var rect = context.raphael();
+            rect.attr({x: xLeft, y: yTop, width: plotWidth, height: plotHeight});
+          }
+        },
+        
+        pointForEvent: function (e) {
+          var canvasOffset = $(this.get('raphaelCanvas').canvas).offset();
+          var x = e.pageX - canvasOffset.left;
+          var y = e.pageY - canvasOffset.top;
+          var graphView = this.getPath('parentView.parentView.parentView');
+          return graphView.pointForCoordinates(x, y);
+        },
+
+        mouseDown: function (evt) {
+          if (this.get('shouldNotifyController')) {
+            var point = this.pointForEvent(evt);
+            return this.get('controller').inputAreaMouseDown(point.x, point.y);
+          }
+          return YES;
+        },
+
+        mouseDragged: function (evt) {
+          if (this.get('shouldNotifyController')) {
+            var point = this.pointForEvent(evt);
+            return this.get('controller').inputAreaMouseDragged(point.x, point.y);
+          }
+          return YES;
+        },
+
+        mouseUp: function (evt) {
+          if (this.get('shouldNotifyController')) {
+            var point = this.pointForEvent(evt);
+            return this.get('controller').inputAreaMouseUp(point.x, point.y);
+          }
+          return YES;
+        }       
+      }),
+      
+      xLabelView: RaphaelViews.RaphaelView.design({
+      }),
+      
+      yLabelView: RaphaelViews.RaphaelView.design({
+      }),
+
+
+      renderCallback: function (raphaelCanvas, shouldDrawAxes, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
         if (shouldDrawAxes) {
           // A total hack. Just draw the axes to the screen as a side effect of creating our layer.
           
@@ -205,11 +240,6 @@ Smartgraphs.GraphView = SC.View.extend(
             this.drawAxes(raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
           });
         }
-        
-        // return a 'sheet' that can capture events. This will become the view's layer
-        var rect = raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-          fill: '#ffffff', stroke: '#ffffff', opacity: 0.7 });
-        return rect;
       },
 
       drawAxes: function (raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
@@ -255,8 +285,6 @@ Smartgraphs.GraphView = SC.View.extend(
             plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
         }
         else if (shouldDrawAxes) {
-          var rect = context.raphael();
-          rect.attr({ x: xLeft, y: yTop, width: plotWidth, height: plotHeight });
           this.drawAxes(this.get('raphaelCanvas'), xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
         }
         
