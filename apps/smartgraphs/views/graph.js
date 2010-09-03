@@ -227,65 +227,60 @@ Smartgraphs.GraphView = SC.View.extend(
       }),
 
 
-      renderCallback: function (raphaelCanvas, shouldDrawAxes, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
-        if (shouldDrawAxes) {
-          // A total hack. Just draw the axes to the screen as a side effect of creating our layer.
-          
-          // keep this until (a) we can get Raphael to draw the <text> elements when layer is offscreen
-          // and (b) we find a way to find all the <path> and the <texts> that g.axis draws, and convince
-          // RaphaelRenderSupport to group them into our layer (or (c) draw the tick marks and labels ourselves
-          // -- it's not hard!)
-          
-          this.invokeLater(function () {
-            this.drawAxes(raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
-          });
-        }
+      renderCallback: function (raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
+        // A total hack. Just draw the axes to the screen as a side effect of creating our layer.
+        
+        // keep this until (a) we can get Raphael to draw the <text> elements when layer is offscreen
+        // and (b) we find a way to find all the <path> and the <texts> that g.axis draws, and convince
+        // RaphaelRenderSupport to group them into our layer (or (c) draw the tick marks and labels ourselves
+        // -- it's not hard!)
+        
+        this.invokeLater(function () {
+          this.drawAxes(raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
+        });
       },
 
       drawAxes: function (raphaelCanvas, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps) {
         // x axis
         if (this._x) this._x.remove();
         this._x = raphaelCanvas.g.axis(xLeft, yBottom, plotWidth, xMin, xMax, xSteps, 0);
+        window.xaxis = this._x;
         // y axis
         if (this._y) this._y.remove();          
         this._y = raphaelCanvas.g.axis(xLeft, yBottom, plotHeight, yMin, yMax, ySteps, 1);
       },
       
       render: function (context, firstTime) {
-        var shouldDrawAxes = NO;
-        var xLeft, xRight, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps;
-        var axes = this.get('axes');
-
-        if (axes) {
-          shouldDrawAxes = YES;
-          
-          xMin = axes.get('xMin');
-          xMax = axes.get('xMax');
-          xSteps = axes.get('xSteps');
-          yMin = axes.get('yMin');
-          yMax = axes.get('yMax');       
-          ySteps = axes.get('ySteps');
+        var axes = this.getPath('parentView.parentView.axes');
+        
+        if (axes) {          
+          var xMin = axes.get('xMin');
+          var xMax = axes.get('xMax');
+          var xSteps = axes.get('xSteps');
+          var yMin = axes.get('yMin');
+          var yMax = axes.get('yMax');       
+          var ySteps = axes.get('ySteps');
             
           var graphView = this.getPath('parentView.parentView');
+          
           var bottomLeft = graphView.coordinatesForPoint(0, 0);
           var bottomRight = graphView.coordinatesForPoint(xMax, 0);
           var topLeft = graphView.coordinatesForPoint(0, yMax);
           
-          xLeft = bottomLeft.x;
-          xRight = bottomRight.x;
-          yBottom = bottomLeft.y;
-          yTop = topLeft.y;
-              
-          plotWidth = xRight - xLeft;
-          plotHeight = yBottom - yTop;
-        }
+          var xLeft = bottomLeft.x;
+          var xRight = bottomRight.x;
+          var yBottom = bottomLeft.y;
+          var yTop = topLeft.y;
+            
+          var plotWidth = xRight - xLeft;
+          var plotHeight = yBottom - yTop;
 
-        if (firstTime) {
-          context.callback(this, this.renderCallback, shouldDrawAxes, xLeft, yBottom, yTop, plotWidth, 
-            plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
-        }
-        else if (shouldDrawAxes) {
-          this.drawAxes(this.get('raphaelCanvas'), xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
+          if (firstTime) {
+            context.callback(this, this.renderCallback, xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
+          }
+          else {
+            this.drawAxes(this.get('raphaelCanvas'), xLeft, yBottom, yTop, plotWidth, plotHeight, xMax, xMin, xSteps, yMax, yMin, ySteps);
+          }
         }
         
         this.renderChildViews(context, firstTime);      // don't forget to render child views        
