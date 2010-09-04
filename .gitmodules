@@ -9,4 +9,4 @@
 	url = http://github.com/rklancer/RaphaelViews.git
 [submodule "frameworks/sproutcore"]
 	path = frameworks/sproutcore
-	url = http://github.com/sproutit/sproutcore.git
+	url = http://github.com/rklancer/sproutcore.git
