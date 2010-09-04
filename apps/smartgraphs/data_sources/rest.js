@@ -2,6 +2,7 @@
 // Project:   Smartgraphs.RestDataSource
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
+// @author    Kofi Weusijana <babakofi@gmail.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
