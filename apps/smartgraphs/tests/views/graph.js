@@ -10,6 +10,13 @@ var view;
 var canvasView;
 var oldStore;
 
+
+// round to the nearest 0.001
+function rnd(x) {
+  return (Math.round(x*1000)/1000);
+}
+
+
 function addPoint(series, x, y) {    
   SC.RunLoop.begin();
   var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
@@ -284,8 +291,8 @@ test('coordinatesForPoint should return sensible values for points on the graph'
        y = expectedY[j].point;
        coords = view.coordinatesForPoint(x, y);
 
-       equals(coords.x, expectedX[i].coord, 'x coordinate for point (' + x + ', ' + y + ') should be the ' + expectedX[i].type + ' coordinate');
-       equals(coords.y, expectedY[j].coord, 'y coordinate for point (' + x + ', ' + y + ') should be the ' + expectedY[j].type + ' coordinate');
+       equals(rnd(coords.x), rnd(expectedX[i].coord), 'x coordinate for point (' + x + ', ' + y + ') should be the ' + expectedX[i].type + ' coordinate');
+       equals(rnd(coords.y), rnd(expectedY[j].coord), 'y coordinate for point (' + x + ', ' + y + ') should be the ' + expectedY[j].type + ' coordinate');
     }
   }
 });
@@ -299,8 +306,8 @@ test('pointForCoordinates should be the inverse function of coordinatesForPoint'
       coords = view.coordinatesForPoint(x, y);
       point = view.pointForCoordinates(coords.x, coords.y);
   
-      equals(point.x, x, 'pointForCoordinates of x coordinate derived from point (' + x + ', ' + y + ') should be ' + x);
-      equals(point.y, y, 'pointForCoordinates of y coordinate derived from point (' + x + ', ' + y + ') should be ' + y);
+      equals(rnd(point.x), rnd(x), 'pointForCoordinates of x coordinate derived from point (' + x + ', ' + y + ') should be ' + x);
+      equals(rnd(point.y), rnd(y), 'pointForCoordinates of y coordinate derived from point (' + x + ', ' + y + ') should be ' + y);
     }
   }
 });
