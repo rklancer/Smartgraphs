@@ -10,10 +10,13 @@
   @extends SC.Responder
   @version 0.1
 */
+
+sc_require('states/activity_step');
+
 Smartgraphs.GRAPH_INPUT = SC.Responder.create(
 /** @scope Smartgraphs.GRAPH_INPUT.prototype */ {
 
-  nextResponder: null,        // will generally be set 
+  nextResponder: Smartgraphs.ACTIVITY_STEP,
   
   didBecomeFirstResponder: function() {
     Smartgraphs.inputGraphController.startRoutingInputEvents();
@@ -22,14 +25,6 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
   willLoseFirstResponder: function() {
     Smartgraphs.inputGraphController.stopRoutingInputEvents();
     Smartgraphs.selectedSeriesController.set('content', null);
-  },
-  
-  // This state is intended to be 'pushed'. resignFirstResponder to get the old firstResponder back
-  resignFirstResponder: function (evt) {
-    if (Smartgraphs.get('firstResponder') === this) {
-      Smartgraphs.makeFirstResponder(this.get('nextResponder'), evt);
-    }
-    return YES;
   },
   
   // ..........................................................
@@ -51,12 +46,6 @@ Smartgraphs.GRAPH_INPUT = SC.Responder.create(
   endGraphInputAt: function (context, args) {
     Smartgraphs.selectedPointsController.endGraphInputAt(args.x, args.y);
     return YES;
-  },
-  
-  // NOTE normally you end prediction graph input by virtue of moving onto the next step
-  // (thus switching first responder)
-  endPredictionGraphInput: function () {
-    this.resignFirstResponder();
   }
   
 }) ;

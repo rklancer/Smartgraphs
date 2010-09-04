@@ -14,10 +14,12 @@
   @extends SC.Responder
   @version 0.1
 */
+sc_require('states/activity_step');
+
 Smartgraphs.SENSOR = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR.prototype */ {
 
-  nextResponder: null,        // will generally be set 
+  nextResponder: Smartgraphs.ACTIVITY_STEP,
   
   didBecomeFirstResponder: function() {
     // TODO: differentiate the pane containing the applet, which might as well stay resident in the DOM once it
@@ -30,26 +32,13 @@ Smartgraphs.SENSOR = SC.Responder.create(
     Smartgraphs.selectedSeriesController.set('content', null);
   },
   
-  // This state is intended to be 'pushed'. resignFirstResponder to get the old firstResponder back
-  resignFirstResponder: function (evt) {
-    if (Smartgraphs.get('firstResponder') === this) {
-      Smartgraphs.makeFirstResponder(this.get('nextResponder'), evt);
-    }
-    return YES;
-  },
-  
   // ..........................................................
-  // EVENTS
+  // ACTIONS
   //
   
   // TODO migrate this into SENSOR_RECORDING state
   sensorDataReceived: function (context, args) {
     Smartgraphs.selectedPointsController.addSensorPoint(args.x, args.y);
-  },
-  
-  // NOTE normally you end sensor input by virtue of finishing the activity step, thus change firstResponder
-  endSensorInput: function (context, args) {
-    this.resignFirstResponder();
   }
   
 }) ;

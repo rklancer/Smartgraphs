@@ -160,7 +160,6 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     var controller = this._graphControllerFor(args.pane);
     Smartgraphs.inputGraphController = this._graphControllerFor(args.pane);
 
-    Smartgraphs.GRAPH_INPUT.set('nextResponder', Smartgraphs.get('firstResponder'));
     Smartgraphs.makeFirstResponder(Smartgraphs.GRAPH_INPUT);
     return YES;
   },
@@ -172,8 +171,6 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     });
     Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
   
-    // use this pattern for the SENSOR_* states too
-    Smartgraphs.SENSOR.set('nextResponder', Smartgraphs.get('firstResponder'));
     Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
     return YES;
   }
