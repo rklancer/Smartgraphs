@@ -7,7 +7,8 @@
 
 /** @class
 
-  Superstate when we are inside an activity step.
+  State representing that an ActivityStep is currently active. Defines most of the commands available to an activity
+  step.
   
   @extends SC.Responder
   @version 0.1
@@ -19,7 +20,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_STEP.prototype */ {
   
   nextResponder: Smartgraphs.ACTIVITY,
-  progressIsEnabled: YES,
+  submissionIsEnabled: YES,
   
   didBecomeFirstResponder: function() {
     this.enableSubmission();        // enabled by default until we receive disableSubmssion or waitForInput
@@ -49,22 +50,22 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // 
   
   finishActivityStep: function () {
-    if (this.get('progressIsEnabled')) {
+    if (this.get('submissionIsEnabled')) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_DONE);
     }
     else {
-      console.error('ACTIVITY_STEP received finishActivityStep action when progressIsEnabled was NO');
+      console.error('ACTIVITY_STEP received finishActivityStep action when submissionIsEnabled was NO');
     }
     return YES;
   },
   
   enableSubmission: function () {
-    this.set('progressIsEnabled', YES);
+    this.set('submissionIsEnabled', YES);
     Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', YES);    
   },
   
   disableSubmission: function () {
-    this.set('progressIsEnabled', NO);
+    this.set('submissionIsEnabled', NO);
     Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', NO);    
   },
 
