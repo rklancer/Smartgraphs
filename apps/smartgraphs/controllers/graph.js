@@ -14,8 +14,9 @@
 Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder, 
 /** @scope Smartgraphs.graphController.prototype */ {
   
-  seriesList: null, 
-  shouldNotify: NO,
+  seriesList: null,
+  selectedSeries: null,
+  _routeEvents: NO,
   
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function (graphId) {
@@ -92,32 +93,37 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
   },
   
+  selectSeries: function (seriesName) {
+    var series = this.findSeries(seriesName);
+    if (series) this.set('selectedSeries', series);
+  },
+  
   removeAllSeries: function () {
     // TODO
-  },
-  
-  startRoutingInputEvents: function () {
-    this.set('shouldNotify', YES);
-  },
-  
-  stopRoutingInputEvents: function () {
-    this.set('shouldNotify', NO);
-  },
-  
-  inputAreaMouseDown: function (x, y) {
-    if(this.get('shouldNotify')) Smartgraphs.sendAction('startGraphInputAt', this, { x: x, y: y });
-  },
-  
-  inputAreaMouseDragged: function (x, y) {
-    if(this.get('shouldNotify')) Smartgraphs.sendAction('continueGraphInputAt', this, { x: x, y: y });
-  },
-  
-  inputAreaMouseUp: function (x, y) {
-    if(this.get('shouldNotify')) Smartgraphs.sendAction('endGraphInputAt', this, { x: x, y: y });
   },
   
   clear: function () {
     this.set('seriesList', []);
     this.set('content', []);
+  },
+  
+  inputAreaMouseDown: function (x, y) {
+    if (this._routeEvents) Smartgraphs.freehandInputController.startAt(x, y);
+  },
+  
+  inputAreaMouseDragged: function (x, y) {
+    if (this._routeEvents) Smartgraphs.freehandInputController.continueAt(x, y);
+  },
+  
+  inputAreaMouseUp: function (x, y) {
+    if (this._routeEvents) Smartgraphs.freehandInputController.endAt(x, y);
+  },
+  
+  startFreehandInput: function () {
+    this._routeEvents = YES;
+  },
+  
+  endFreehandInput: function () {
+    this._routeEvents = NO;
   }
 }) ;

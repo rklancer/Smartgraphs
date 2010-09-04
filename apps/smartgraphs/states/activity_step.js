@@ -139,45 +139,27 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   
   selectDataSeries: function (context, args) {
     var controller = this._graphControllerFor(args.pane);
-    var series = controller.findSeries(args.seriesName);
-    if (series.get('isExample') === NO) {
-      Smartgraphs.selectedSeriesController.set('content', series);
-    }
+    controller.selectSeries(args.seriesName);
     return YES;
   },
   
-  // startFreehandInput: function () {
-  //   // if seriesName is provided, the source of this action may be from an activityStep command. However, a
-  //   // 'draw graph' button might implicitly mean to use the selected series, without specifying the series name
-  // 
-  //   if (args.seriesName) {
-  //     Smartgraphs.sendAction('createSeriesOnGraph', this, { 
-  //       pane: args.pane, 
-  //       seriesName: args.seriesName
-  //     });
-  //     Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
-  //   }
-  //   
-  //     
-  //   
-  // },
-  
   startFreehandInput: function (context, args) {
-    Smartgraphs.sendAction('createSeriesOnGraph', this, { 
-      pane: args.pane, 
-      seriesName: args.seriesName
-    });
-    Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
+    // if seriesName is provided, the source of this action may be from an activityStep command. However, a
+    // 'draw graph' button might implicitly mean to use the selected series, without specifying the series name
+  
+    if (args.seriesName) {
+      Smartgraphs.sendAction('createSeriesOnGraph', this, { 
+        pane: args.pane, 
+        seriesName: args.seriesName
+      });
+      Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
+    }
 
-    Smartgraphs.selectedSeriesController.set('xMin', args.xMin);
-    Smartgraphs.selectedSeriesController.set('xMax', args.xMax);
-    
-    // so... at the moment, you can only focus one graph at a time for input. Design choice or design flaw?
     var controller = this._graphControllerFor(args.pane);
-    Smartgraphs.inputGraphController = this._graphControllerFor(args.pane);
-
-    Smartgraphs.makeFirstResponder(Smartgraphs.GRAPH_INPUT);
-    return YES;
+    if (Smartgraphs.freehandInputController.register(controller)) {
+      Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT);
+      return YES;
+    }
   },
   
   startSensorInput: function (context, args) {
