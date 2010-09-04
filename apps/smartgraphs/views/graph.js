@@ -146,12 +146,6 @@ Smartgraphs.GraphView = SC.View.extend(
     displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax'.w(),
     
     childViews: 'axesView'.w(),
-    
-    // render: function (context, firstTime) {
-    //   console.log('rendering graphCanvasView, firstTime = ', firstTime);
-    //   sc_super();
-    //   //this.renderChildViews(context, firstTime);
-    // },
       
     axesView: RaphaelViews.RaphaelView.design({
       axesBinding: '.parentView.parentView.axes',      
@@ -189,9 +183,9 @@ Smartgraphs.GraphView = SC.View.extend(
         },
         
         pointForEvent: function (e) {
-          var canvasOffset = $(this.get('raphaelCanvas').canvas).offset();
-          var x = e.pageX - canvasOffset.left;
-          var y = e.pageY - canvasOffset.top;
+          var graphOffset = this.getPath('parentView.parentView').$().offset();
+          var x = e.pageX - graphOffset.left;
+          var y = e.pageY - graphOffset.top;
           var graphView = this.getPath('parentView.parentView.parentView');
           return graphView.pointForCoordinates(x, y);
         },
