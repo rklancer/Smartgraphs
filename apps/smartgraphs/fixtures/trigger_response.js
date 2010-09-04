@@ -82,7 +82,7 @@ Smartgraphs.TriggerResponse.FIXTURES = [
   //   step: '/backend/activity/1/page/3/step/2',  
   //   args: {},
   //   commands: [
-  //     '/backend/activity/1/page/3/step/2/response/1/command/1/wait-for-valid-response'
+  //     '/backend/activity/1/page/3/step/2/response/1/command/1/wait-for-response'
   //   ]
   // },
   // 

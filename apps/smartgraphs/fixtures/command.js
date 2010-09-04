@@ -101,13 +101,13 @@ Smartgraphs.Command.FIXTURES = [
   // 
   // 
   // { url: 
-  //     '/backend/command/7/enable-prediction-input',
+  //     '/backend/command/7/start-freehand-input',
   //   name: 
-  //     'enablePredictionInput',
+  //     'startFreehandInput',
   //   description:
   //     'Open up the prediction graph.',
   //   actionName:
-  //     'enablePredictionInput',
+  //     'startFreehandInput',
   //   literalArgs: 
   //     {},
   //   substitutedArgs:
@@ -131,13 +131,13 @@ Smartgraphs.Command.FIXTURES = [
   // 
   // 
   // { url: 
-  //     '/backend/command/9/enable-sensor-input',
+  //     '/backend/command/9/start-sensor-input',
   //   name: 
-  //     'enableSensorInput',
+  //     'startSensorInput',
   //   description:
   //     'Open the controls that input data from a usb-connected sensor.',
   //   actionName:
-  //     'enableSensorInput',
+  //     'startSensorInput',
   //   literalArgs: 
   //     {},
   //   substitutedArgs:
@@ -161,13 +161,13 @@ Smartgraphs.Command.FIXTURES = [
   // 
   // 
   // { url: 
-  //     '/backend/command/11/wait-for-valid-response',
+  //     '/backend/command/11/wait-for-response',
   //   name: 
-  //     'waitForInput',
+  //     'waitForResponse',
   //   description:
   //     'Wait for a valid response before allowing submission.',
   //   actionName:
-  //     'waitForInput',
+  //     'waitForResponse',
   //   literalArgs: 
   //     {},
   //   substitutedArgs:

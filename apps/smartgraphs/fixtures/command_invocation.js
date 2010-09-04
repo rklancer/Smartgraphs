@@ -90,7 +90,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   // { url: 
   //     '/backend/activity/1/page/2/step/1/response/1/command/3/predict',
   //   command:
-  //     '/backend/command/7/enable-prediction-input',
+  //     '/backend/command/7/start-freehand-input',
   //   triggerResponse:
   //     '/backend/activity/1/page/2/step/1/response/1/step-beginning',
   //   index:
@@ -142,7 +142,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   // { url: 
   //     '/backend/activity/1/page/2/step/2/response/1/command/2/predict',
   //   command:
-  //     '/backend/command/7/enable-prediction-input',
+  //     '/backend/command/7/start-freehand-input',
   //   triggerResponse:
   //     '/backend/activity/1/page/2/step/2/response/1/step-beginning',
   //   index:
@@ -209,7 +209,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   // { url: 
   //     '/backend/activity/1/page/3/step/1/response/1/command/4/start-sensor',
   //   command:
-  //     '/backend/command/9/enable-sensor-input',
+  //     '/backend/command/9/start-sensor-input',
   //   triggerResponse:
   //     '/backend/activity/1/page/3/step/1/response/1/step-beginning',
   //   index:
@@ -240,9 +240,9 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   // 
   // 
   // { url: 
-  //     '/backend/activity/1/page/3/step/2/response/1/command/1/wait-for-valid-response',
+  //     '/backend/activity/1/page/3/step/2/response/1/command/1/wait-for-response',
   //   command:
-  //     '/backend/command/11/wait-for-valid-response',
+  //     '/backend/command/11/wait-for-response',
   //   triggerResponse:
   //     '/backend/activity/1/page/3/step/2/response/1/step-beginning',
   //   index:

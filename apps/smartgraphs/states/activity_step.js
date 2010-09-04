@@ -23,7 +23,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   submissionIsEnabled: YES,
   
   didBecomeFirstResponder: function() {
-    this.enableSubmission();        // enabled by default until we receive disableSubmssion or waitForInput
+    this.enableSubmission();        // enabled by default until we receive disableSubmssion or waitForResponse
     Smartgraphs.activityStepController.invokeLater(Smartgraphs.activityStepController.begin);
   },
   
@@ -69,7 +69,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', NO);    
   },
 
-  waitForInput: function (context, args) {
+  waitForResponse: function (context, args) {
     Smartgraphs.activityStepController.configureInputValidator(args);
     this.disableSubmission();         // allow submission again when the response becomes valid
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
@@ -146,7 +146,23 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     return YES;
   },
   
-  enablePredictionInput: function (context, args) {
+  // startFreehandInput: function () {
+  //   // if seriesName is provided, the source of this action may be from an activityStep command. However, a
+  //   // 'draw graph' button might implicitly mean to use the selected series, without specifying the series name
+  // 
+  //   if (args.seriesName) {
+  //     Smartgraphs.sendAction('createSeriesOnGraph', this, { 
+  //       pane: args.pane, 
+  //       seriesName: args.seriesName
+  //     });
+  //     Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
+  //   }
+  //   
+  //     
+  //   
+  // },
+  
+  startFreehandInput: function (context, args) {
     Smartgraphs.sendAction('createSeriesOnGraph', this, { 
       pane: args.pane, 
       seriesName: args.seriesName
@@ -164,7 +180,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     return YES;
   },
   
-  enableSensorInput: function (context, args) {
+  startSensorInput: function (context, args) {
     Smartgraphs.sendAction('createSeriesOnGraph', this, { 
       pane: args.pane, 
       seriesName: args.seriesName
