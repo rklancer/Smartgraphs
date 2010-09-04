@@ -16,6 +16,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityStepController.prototype */ {
 
   registeredTriggers: [],
+  submitButtonShouldBeEnabled: NO,
   
   /**
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP_START state.
@@ -65,6 +66,24 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
+  /**
+    register observers on responseTemplate input, configure them with 'args'
+  */
+  configureInputValidator: function (args) {
+    var registered = Smartgraphs.activityStepController.get('registeredTriggers');
+    var trigger;
+    
+    if (registered.lastIndexOf('responseBecameValid') < 0) {
+      trigger = Smartgraphs.triggers['responseBecameValid'];
+      trigger.register(args, []);
+      registered.pushObject(trigger);
+    }
+    if (registered.lastIndexOf('responseBecameInvalid') < 0) {
+      trigger = Smartgraphs.triggers['responseBecameInvalid'];
+      trigger.register({}, []);
+      registered.pushObject(trigger);
+    }
+  },
   
   executeCommands: function (invocations) {
     var invocation, commandRecord, literalArgs, substitutedArgs, args, key;
@@ -96,8 +115,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   lookup: function (key) {
     var context = this.get('context');
     return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.activityPageController.lookup(key));
-  },
-  
-  submitButtonShouldBeEnabled: NO
+  }
   
 }) ;

@@ -69,21 +69,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
 
   waitForInput: function (context, args) {
-    // TODO we're poking into activityStepController's business here; make this more general
-    var registered = Smartgraphs.activityStepController.get('registeredTriggers');
-    var trigger;
-    
-    if (registered.lastIndexOf('responseBecameValid') < 0) {
-      trigger = Smartgraphs.triggers['responseBecameValid'];
-      trigger.register(args, []);
-      registered.pushObject(trigger);
-    }
-    if (registered.lastIndexOf('responseBecameInvalid') < 0) {
-      trigger = Smartgraphs.triggers['responseBecameInvalid'];
-      trigger.register({}, []);
-      registered.pushObject(trigger);
-    }
-    
+    Smartgraphs.activityStepController.configureInputValidator(args);
     this.disableSubmission();         // allow submission again when the response becomes valid
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
     return YES;
