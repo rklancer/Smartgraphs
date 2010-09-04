@@ -264,34 +264,28 @@ test('coordinatesForPoint should return sensible values for points on the graph'
       midY = (top+bottom) / 2,
       midX = (left+right) / 2;
       
-  var expectedX = {
-    '-5':  left,
-    '2.5': midX,
-    '10':   right
-  };
+  var expectedX = [
+    { coord: left,  point: -5,  type: 'leftmost' },
+    { coord: midX,  point: 2.5, type: 'middle' },
+    { coord: right, point: 10,  type: 'rightmost' }
+  ];
   
+  var expectedY = [
+    { coord: bottom, point: 2, type: 'bottom' },
+    { coord: midY,   point: 5, type: 'middle' },
+    { coord: top,    point: 8, type: 'top' }
+  ];
+
+  var coords, x, y;
   
-  var expectedY = {
-    '2':  bottom,
-    '5':  midY,
-    '8':  top
-  };
-  
-  var coords, point, x, y;
-  
-  for (var xKey in expectedX) {
-    if (expectedX.hasOwnProperty(xKey)) {
-      for (var yKey in expectedY) {
-        if (expectedY.hasOwnProperty(yKey)) {
-           x = parseFloat(xKey);
-           y = parseFloat(yKey);
-           
-           coords = view.coordinatesForPoint(x, y);
-      
-           equals(coords.x, expectedX[xKey], 'x coordinate for point (' + x + ', ' + y + ') should be ' + expectedX[xKey]);
-           equals(coords.y, expectedY[yKey], 'y coordinate for point (' + x + ', ' + y + ') should be ' + expectedY[yKey]);
-        }
-      }
+  for (var i = 0, ii = expectedX.length; i < ii; i++) {
+    x = expectedX[i].point;
+    for (var j = 0, jj = expectedY.length; j < jj; j++) {       
+       y = expectedY[j].point;
+       coords = view.coordinatesForPoint(x, y);
+
+       equals(coords.x, expectedX[i].coord, 'x coordinate for point (' + x + ', ' + y + ') should be the ' + expectedX[i].type + ' coordinate');
+       equals(coords.y, expectedY[j].coord, 'y coordinate for point (' + x + ', ' + y + ') should be the ' + expectedY[j].type + ' coordinate');
     }
   }
 });
