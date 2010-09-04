@@ -94,7 +94,7 @@ module("Smartgraphs.GraphView", {
     pane = SC.MainPane.create({
       childViews: [
         Smartgraphs.GraphView.design({
-          graphBinding: 'Smartgraphs.firstGraphController',
+          graphControllerBinding: 'Smartgraphs.firstGraphController',
           viewName: 'testGraphView'
         })]
     });

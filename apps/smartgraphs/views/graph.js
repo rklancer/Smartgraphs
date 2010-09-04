@@ -14,8 +14,8 @@
 Smartgraphs.GraphView = SC.View.extend(
 /** @scope Smartgraphs.GraphView.prototype */ {
   
-  axesBinding: '*graph.axes',
-  seriesListBinding: '*graph.seriesList',
+  axesBinding: '*graphController.axes',
+  seriesListBinding: '*graphController.seriesList',
   
   padding: { top: 20, right: 20, bottom: 45, left: 55 },  
   
@@ -151,12 +151,16 @@ Smartgraphs.GraphView = SC.View.extend(
       axesBinding: '.parentView.parentView.axes',      
       paddingBinding: '.parentView.parentView.padding',
       
-      childViews: 'xLabelView yLabelView xAxisView yAxisView eventSurface'.w(),
+      childViews: 'xLabelView yLabelView xAxisView yAxisView inputArea'.w(),
       
-      eventSurface: RaphaelViews.RaphaelView.design({
-        axesBinding: '.parentView.parentView.parentView*axes',      
-        shouldNotifyControllerBinding: '.parentView.parentView.parentView.shouldNotifyController',
-        controllerBinding: '.parentView.parentView.parentView.controller',
+      inputArea: RaphaelViews.RaphaelView.design({
+        axesBinding: '.parentView.parentView.parentView*axes',
+        
+        didCreateLayer: function () {
+          // cache these rather than lookup the jquery object (graphView.$()) per mouse event
+          this._graphView = this.getPath('parentView.parentView.parentView');
+          this._$graphView = this._graphView.$();
+        },
         
         renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {          
           return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
@@ -183,36 +187,26 @@ Smartgraphs.GraphView = SC.View.extend(
         },
         
         pointForEvent: function (e) {
-          var graphOffset = this.getPath('parentView.parentView').$().offset();
+          var graphOffset = this._$graphView.offset();
           var x = e.pageX - graphOffset.left;
           var y = e.pageY - graphOffset.top;
-          var graphView = this.getPath('parentView.parentView.parentView');
-          return graphView.pointForCoordinates(x, y);
+          return this._graphView.pointForCoordinates(x, y);
         },
 
         mouseDown: function (evt) {
-          if (this.get('shouldNotifyController')) {
-            var point = this.pointForEvent(evt);
-            return this.get('controller').inputAreaMouseDown(point.x, point.y);
-          }
-          return YES;
+          var point = this.pointForEvent(evt);
+          return this._graphView.get('graphController').inputAreaMouseDown(point.x, point.y);
         },
 
         mouseDragged: function (evt) {
-          if (this.get('shouldNotifyController')) {
-            var point = this.pointForEvent(evt);
-            return this.get('controller').inputAreaMouseDragged(point.x, point.y);
-          }
-          return YES;
+          var point = this.pointForEvent(evt);
+          return this._graphView.get('graphController').inputAreaMouseDragged(point.x, point.y);
         },
 
         mouseUp: function (evt) {
-          if (this.get('shouldNotifyController')) {
-            var point = this.pointForEvent(evt);
-            return this.get('controller').inputAreaMouseUp(point.x, point.y);
-          }
-          return YES;
-        }       
+          var point = this.pointForEvent(evt);
+          return this._graphView.get('graphController').inputAreaMouseUp(point.x, point.y);
+        }
       }),
       
       xLabelView: RaphaelViews.RaphaelView.design({

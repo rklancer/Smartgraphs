@@ -14,7 +14,8 @@
 Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder, 
 /** @scope Smartgraphs.graphController.prototype */ {
   
-  seriesList: null,  
+  seriesList: null, 
+  shouldNotify: NO,
   
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function (graphId) {
@@ -95,30 +96,24 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     // TODO
   },
   
-  view: function () {
-    return Smartgraphs.getPath(this.get('viewPath'));
-  }.property(),
-  
   startRoutingInputEvents: function () {
-    var view = this.get('view');
-    view.set('shouldNotifyController', YES);
-    view.set('controller', this);
+    this.set('shouldNotify', YES);
   },
   
   stopRoutingInputEvents: function () {
-    this.get('view').set('shouldNotifyController', NO);
+    this.set('shouldNotify', NO);
   },
   
   inputAreaMouseDown: function (x, y) {
-    Smartgraphs.sendAction('startGraphInputAt', this, { x: x, y: y });
+    if(this.get('shouldNotify')) Smartgraphs.sendAction('startGraphInputAt', this, { x: x, y: y });
   },
   
   inputAreaMouseDragged: function (x, y) {
-    Smartgraphs.sendAction('continueGraphInputAt', this, { x: x, y: y });
+    if(this.get('shouldNotify')) Smartgraphs.sendAction('continueGraphInputAt', this, { x: x, y: y });
   },
   
   inputAreaMouseUp: function (x, y) {
-    Smartgraphs.sendAction('endGraphInputAt', this, { x: x, y: y });
+    if(this.get('shouldNotify')) Smartgraphs.sendAction('endGraphInputAt', this, { x: x, y: y });
   },
   
   clear: function () {

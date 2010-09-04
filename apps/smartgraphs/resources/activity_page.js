@@ -198,12 +198,12 @@ Smartgraphs.activityPage = SC.Page.design({
   }),
   
   firstGraphView: Smartgraphs.GraphView.design({
-    graphBinding: 'Smartgraphs.firstGraphController',
+    graphControllerBinding: 'Smartgraphs.firstGraphController',
     viewName: 'firstGraphView'
   }),
   
   secondGraphView: Smartgraphs.GraphView.design({
-    graphBinding: 'Smartgraphs.secondGraphController',
+    graphControllerBinding: 'Smartgraphs.secondGraphController',
     viewName: 'secondGraphView'  
   }),
   
