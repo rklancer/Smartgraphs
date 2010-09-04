@@ -19,11 +19,16 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_STEP.prototype */ {
   
   nextResponder: Smartgraphs.ACTIVITY,
+  progressIsEnabled: YES,
   
   didBecomeFirstResponder: function() {
-    // enable progress unless we go to ACTIVITY_STEP_WAITING state
-    Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', YES);
+    this.enableSubmission();        // enabled by default until we receive disableSubmssion or waitForInput
     Smartgraphs.activityStepController.invokeLater(Smartgraphs.activityStepController.begin);
+  },
+  
+  willLoseFirstResponder: function () {
+    Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', NO);
+    Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', NO);
   },
   
   // action helpers
@@ -44,16 +49,26 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // 
   
   finishActivityStep: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_DONE);
+    if (this.get('progressIsEnabled')) {
+      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_DONE);
+    }
+    else {
+      console.error('ACTIVITY_STEP received finishActivityStep action when progressIsEnabled was NO');
+    }
     return YES;
   },
+  
+  enableSubmission: function () {
+    this.set('progressIsEnabled', YES);
+    Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', YES);    
+  },
+  
+  disableSubmission: function () {
+    this.set('progressIsEnabled', NO);
+    Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', NO);    
+  },
 
-  /** 
-    Transition into the ACTIVITY_STEP_WAITING state at the start of a ActivityStep (this action is not available when 
-    the ActivityStep is already transitioned to ACTIVITY_STEP_SUBMIT)
-  */
-  waitForValidResponse: function (context, args) {    
-
+  waitForInput: function (context, args) {
     // TODO we're poking into activityStepController's business here; make this more general
     var registered = Smartgraphs.activityStepController.get('registeredTriggers');
     var trigger;
@@ -68,8 +83,8 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       trigger.register({}, []);
       registered.pushObject(trigger);
     }
-
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_WAITING);
+    
+    this.disableSubmission();         // allow submission again when the response becomes valid
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
     return YES;
   },

@@ -37,7 +37,7 @@ Smartgraphs.Button = SC.Record.extend(
   width: SC.Record.attr(Number),
 
   /**
-    When this property is YES, the button will only be enabled in the ACTIVITY_STEP_SUBMIT state (i.e., when some inspector
+    When this property is YES, the button will only be enabled in the submission is enabled (i.e., when some inspector
     or other command has instructed the system that a response is ready.)
   */
   isSubmitButton: SC.Record.attr(Boolean)

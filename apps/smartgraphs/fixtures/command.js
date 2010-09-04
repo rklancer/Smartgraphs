@@ -163,11 +163,11 @@ Smartgraphs.Command.FIXTURES = [
   // { url: 
   //     '/backend/command/11/wait-for-valid-response',
   //   name: 
-  //     'waitForValidResponse',
+  //     'waitForInput',
   //   description:
   //     'Wait for a valid response before allowing submission.',
   //   actionName:
-  //     'waitForValidResponse',
+  //     'waitForInput',
   //   literalArgs: 
   //     {},
   //   substitutedArgs:
