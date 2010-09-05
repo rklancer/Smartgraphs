@@ -15,7 +15,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
 /** @scope Smartgraphs.freehandInputController.prototype */ {
   
   _inputStarted: NO,
-  
+
   register: function (controller) {
     // guard against accidentally swapping the input controller during freehand input. Guarantee that a controller
     // will always receive endFreehandInput after receiving startFreehandInput
@@ -31,29 +31,38 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   
   startInput: function () {
     var series = this._graphController ? this._graphController.get('selectedSeries') : NO;
-    
-    if (series) {
-      this._inputStarted = YES;
-      this._series = series;
-      this._graphController.startFreehandInput();
+    if (!series) return NO;
 
-      // setup controller...
-      this.set('xMin', this._graphController.getPath('axes.xMin'));
-      this.set('xMax', this._graphController.getPath('axes.xMax'));
-      
-      this._cleanupData();
+    this._inputStarted = YES;
+    this._series = series;
+    this._graphController.startFreehandInput();
 
-      return YES;
-    }
-    return NO;
+    // setup controller the 'old' way
+    this.set('xMin', this._graphController.getPath('axes.xMin'));
+    this.set('xMax', this._graphController.getPath('axes.xMax'));      
+    this._cleanupData();
+
+    this._graphController.get('inputQueue').addObserver('[]', this, this.inputObserver);
+    return YES;
   },
   
   endInput: function () {
-    if (this._graphController) {
-      this._graphController.endFreehandInput();
-      this._graphController = null;
-      this._series = null;
-      this._inputStarted = NO;
+    this.inputObserver();
+    this._graphController.get('inputQueue').removeObserver('[]', this, this.inputObserver);
+    this._graphController.endFreehandInput();
+    this._graphController = null;
+    this._series = null;
+    this._inputStarted = NO;
+  },
+  
+  inputObserver: function () {
+    var input, 
+        queue = this._graphController.get('inputQueue');
+
+    while ((input = queue.shiftObject())) {
+      if (input.type === this.START) this.startAt(input.x, input.y);
+      else if (input.type === this.CONTINUE) this.continueAt(input.x, input.y);
+      else if (input.type === this.END) this.endAt(input.x, input.y);
     }
   },
   
@@ -147,7 +156,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     this._points[binIdx] = point;
   },
   
-  _inputStarted: NO,
+  _strokeStarted: NO,
   _lastX: null,
   _lastY: null,
   
@@ -177,14 +186,14 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     
     this._lastX = x;
     this._lastY = y;
-    this._inputStarted = YES;
+    this._strokeStarted = YES;
     
     this.addOrUpdatePredictionPoint(x, y);
     return YES;
   },
   
   continueAt: function (x, y) {
-    if (!this._inputStarted) {
+    if (!this._strokeStarted) {
       this.startAt(x, y);
       return YES;
     }
@@ -252,7 +261,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   },
   
   endAt: function (x, y) {
-    this._inputStarted = NO;
+    this._strokeStarted = NO;
     this._lastX = null;
     this._lastY = null;
     
@@ -269,3 +278,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   } 
 
 }) ;
+
+Smartgraphs.freehandInputController.START = 1;
+Smartgraphs.freehandInputController.CONTINUE = 2;
+Smartgraphs.freehandInputController.END = 3;
