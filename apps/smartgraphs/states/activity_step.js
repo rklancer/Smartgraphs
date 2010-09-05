@@ -167,7 +167,12 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       pane: args.pane, 
       seriesName: args.seriesName
     });
-    Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
+
+    var controller = this._graphControllerFor(args.pane);        
+    var series = controller.findSeries(args.seriesName);
+    if (series.get('isExample') === NO) {
+      Smartgraphs.selectedSeriesController.set('content', series);
+    }
   
     Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
     return YES;
