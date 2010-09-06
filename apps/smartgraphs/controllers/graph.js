@@ -17,7 +17,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   seriesList: null,
   selectedSeries: null,
   _routeEvents: NO,
-  inputQueue: [],
+  eventQueue: [],
   
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function (graphId) {
@@ -110,7 +110,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   inputAreaMouseDown: function (x, y) {
     if (this._routeEvents) {
-      this._inputQueue.pushObject({
+      this._eventQueue.pushObject({
         x: x,
         y: y,
         type: Smartgraphs.freehandInputController.START
@@ -120,7 +120,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   inputAreaMouseDragged: function (x, y) {
     if (this._routeEvents) {
-      this._inputQueue.pushObject({
+      this._eventQueue.pushObject({
         x: x,
         y: y,
         type: Smartgraphs.freehandInputController.CONTINUE
@@ -130,7 +130,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   inputAreaMouseUp: function (x, y) {
     if (this._routeEvents) {
-      this._inputQueue.pushObject({
+      this._eventQueue.pushObject({
         x: x,
         y: y,
         type: Smartgraphs.freehandInputController.END
@@ -140,7 +140,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   startFreehandInput: function () {
     this._routeEvents = YES;
-    this._inputQueue = this.get('inputQueue');
+    this._eventQueue = this.get('eventQueue');
   },
   
   endFreehandInput: function () {

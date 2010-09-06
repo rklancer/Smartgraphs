@@ -194,18 +194,19 @@ Smartgraphs.GraphView = SC.View.extend(
         },
 
         mouseDown: function (evt) {
+          this._graphController = this._graphView.get('graphController');
           var point = this.pointForEvent(evt);
-          return this._graphView.get('graphController').inputAreaMouseDown(point.x, point.y);
+          return this._graphController.inputAreaMouseDown(point.x, point.y);
         },
 
         mouseDragged: function (evt) {
           var point = this.pointForEvent(evt);
-          return this._graphView.get('graphController').inputAreaMouseDragged(point.x, point.y);
+          return this._graphController.inputAreaMouseDragged(point.x, point.y);
         },
 
         mouseUp: function (evt) {
           var point = this.pointForEvent(evt);
-          return this._graphView.get('graphController').inputAreaMouseUp(point.x, point.y);
+          return this._graphController.inputAreaMouseUp(point.x, point.y);
         }
       }),
       

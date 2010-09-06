@@ -42,27 +42,35 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     this.set('xMax', this._graphController.getPath('axes.xMax'));      
     this._cleanupData();
 
-    this._graphController.get('inputQueue').addObserver('[]', this, this.inputObserver);
+    this._graphController.get('eventQueue').addObserver('[]', this, this.graphObserver);
     return YES;
   },
   
   endInput: function () {
-    this.inputObserver();
-    this._graphController.get('inputQueue').removeObserver('[]', this, this.inputObserver);
+    this.graphObserver();
+    this._graphController.get('eventQueue').removeObserver('[]', this, this.graphObserver);
     this._graphController.endFreehandInput();
     this._graphController = null;
     this._series = null;
     this._inputStarted = NO;
   },
   
-  inputObserver: function () {
-    var input, 
-        queue = this._graphController.get('inputQueue');
+  graphObserver: function () {
+    var strokeEvt, 
+        queue = this._graphController.get('eventQueue');
 
-    while ((input = queue.shiftObject())) {
-      if (input.type === this.START) this.startAt(input.x, input.y);
-      else if (input.type === this.CONTINUE) this.continueAt(input.x, input.y);
-      else if (input.type === this.END) this.endAt(input.x, input.y);
+    while ((strokeEvt = queue.shiftObject())) {
+      switch (strokeEvt.type) {
+        case this.CONTINUE:
+          this.continueAt(strokeEvt.x, strokeEvt.y);
+          break;
+        case this.START:
+          this.startAt(strokeEvt.x, strokeEvt.y);
+          break;
+        case this.END:
+          this.endAt(strokeEvt.x, strokeEvt.y);
+          break;
+      }
     }
   },
   
