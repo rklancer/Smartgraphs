@@ -62,13 +62,13 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     while ((strokeEvt = queue.shiftObject())) {
       switch (strokeEvt.type) {
         case this.CONTINUE:
-          this.continueAt(strokeEvt.x, strokeEvt.y);
+          //this.continueAt(strokeEvt.x, strokeEvt.y);
           break;
         case this.START:
-          this.startAt(strokeEvt.x, strokeEvt.y);
+          //this.startAt(strokeEvt.x, strokeEvt.y);
           break;
         case this.END:
-          this.endAt(strokeEvt.x, strokeEvt.y);
+          //this.endAt(strokeEvt.x, strokeEvt.y);
           break;
       }
     }

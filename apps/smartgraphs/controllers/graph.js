@@ -18,6 +18,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   selectedSeries: null,
   _routeEvents: NO,
   eventQueue: [],
+  freehandIsOn: NO,
   
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function (graphId) {
@@ -141,9 +142,11 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   startFreehandInput: function () {
     this._routeEvents = YES;
     this._eventQueue = this.get('eventQueue');
+    this.set('freehandIsOn', YES);
   },
   
   endFreehandInput: function () {
+    this.set('freehandIsOn', NO);    
     this._routeEvents = NO;
   }
 }) ;
