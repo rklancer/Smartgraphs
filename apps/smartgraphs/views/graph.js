@@ -114,20 +114,9 @@ Smartgraphs.GraphView = SC.View.extend(
   }.observes('*seriesList.[]'),
 
   _addViewForSeries: function (series) {
-    var pointsQuery = SC.Query.local(Smartgraphs.DataPoint, { 
-      conditions: 'series = {series}',
-      series: series,
-      orderBy: 'id'
-    });
-    
-    // TODO make this a view class?
-    var view = RaphaelViews.RaphaelCollectionView.design({
-      exampleView: Smartgraphs.DataPointView,
+    var view = Smartgraphs.DataSeriesView.design({
       graphView: this,
-      seriesId: series.get('id'),
-      content: Smartgraphs.store.find(pointsQuery),
-      // keep this set to YES prevents the collection view from redrawing all the points when re-rendering
-      useFastPath: YES
+      series: series
     }).create();
     
     this.get('graphCanvasView').appendChild(view);
