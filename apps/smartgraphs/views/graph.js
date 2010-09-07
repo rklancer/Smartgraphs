@@ -198,7 +198,6 @@ Smartgraphs.GraphView = SC.View.extend(
           
           if (this._graphController.get('freehandIsOn')) {
             this._traceStr = 'M' + coords.x + ' ' + coords.y;
-            this._trace.attr({path: this._traceStr});
           }
           var point = this._graphView.pointForCoordinates(coords.x, coords.y);
           return this._graphController.inputAreaMouseDown(point.x, point.y);
