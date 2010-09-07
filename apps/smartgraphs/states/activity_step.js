@@ -143,20 +143,22 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     return YES;
   },
   
-  startFreehandInput: function (context, args) {
-    // if seriesName is provided, the source of this action may be from an activityStep command. However, a
-    // 'draw graph' button might implicitly mean to use the selected series, without specifying the series name
+  createAnnotation: function (context, args) {
+    var controller = this._graphControllerFor(args.pane);
+    var annotation = Smartgraphs.sessionController.createAnnotation(args.annotationName, args.annotationType);
+    controller.addAnnotation(annotation);
+    return YES;
+  },
   
-    if (args.seriesName) {
-      Smartgraphs.sendAction('createSeriesOnGraph', this, { 
-        pane: args.pane, 
-        seriesName: args.seriesName
-      });
-      Smartgraphs.sendAction('selectDataSeries', this, { pane: args.pane, seriesName: args.seriesName });
-    }
+  startFreehandInput: function (context, args) {
+    Smartgraphs.sendAction('createAnnotation', this, { 
+      pane: args.pane, 
+      annotationName: args.annotationName,
+      annotationType: Smartgraphs.TraceAnnotation
+    });
 
     var controller = this._graphControllerFor(args.pane);
-    if (Smartgraphs.freehandInputController.register(controller)) {
+    if (Smartgraphs.freehandInputController.register(controller, args.annotationName)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT);
       return YES;
     }

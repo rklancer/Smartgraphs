@@ -16,6 +16,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   seriesList: null,
   selectedSeries: null,
+  annotationList: null,
   _routeEvents: NO,
   eventQueue: [],
   freehandIsOn: NO,
@@ -30,12 +31,15 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     
     this.set('content', graph);
     this.set('seriesList', []);
+    this.set('annotationList', []);
     
     // add the initial series
     var initial = this.get('initialSeries');
     for (var i = 0, ii = initial.get('length'); i < ii; i++) {
       this.addSeriesByName(initial.objectAt(i));
     }
+    
+    // TODO modify for initialAnnotations as well.
   },
   
   setAxes: function (axesId) {
@@ -82,7 +86,9 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     var series = this.findSeries(seriesName);
     if (series) seriesList.removeObject(series);
   },
-    
+  
+  
+  // TODO DRY up vs. findAnnotationByName
   findSeries: function (seriesName) {
     var seriesList = this.get('seriesList');
     var series;
@@ -95,6 +101,18 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
   },
   
+  findAnnotationByName: function (annotationName) {
+    var annotationList = this.get('annotationList');
+    var annotation;
+    for (var i = 0, ii = annotationList.get('length'); i < ii; i++) {
+      annotation = annotationList.objectAt(i);
+      if (annotation.get('name') === annotationName) {
+        return annotation;
+      }
+    }
+    return null;
+  },
+  
   selectSeries: function (seriesName) {
     var series = this.findSeries(seriesName);
     if (series) this.set('selectedSeries', series);
@@ -104,9 +122,18 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     // TODO
   },
   
+  addAnnotation: function (annotation) {
+    if (this.findAnnotationByName(annotation.get('name'))) {
+      return NO;
+    }
+    this.get('annotationList').pushObject(annotation);
+    return YES;
+  },
+  
   clear: function () {
     this.set('seriesList', []);
-    this.set('content', []);
+    this.set('annotationList', []);
+    this.set('content', null);
   },
   
   inputAreaMouseDown: function (x, y) {

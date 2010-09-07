@@ -43,7 +43,7 @@ Smartgraphs.TraceAnnotation = SC.Record.extend(
     Whether this is an 'example' annotation (part of the authored content of the activity) or a session-scoped,
     student-drawn annotation
   */
-  isExample: SC.Record.attr(Boolean),    // might make sense as a transient property  
+  isExample: SC.Record.attr(Boolean),
   
   /**
     ordered array of {x, y} pairs that make up the trace.

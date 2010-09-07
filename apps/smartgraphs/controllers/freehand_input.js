@@ -16,31 +16,26 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   
   _inputStarted: NO,
 
-  register: function (controller) {
+  register: function (controller, traceName) {
     // guard against accidentally swapping the input controller during freehand input. Guarantee that a controller
     // will always receive endFreehandInput after receiving startFreehandInput
   
     if (this._inputStarted) return NO;
     
-    if (controller && controller.get('selectedSeries')) {      
+    var trace = controller ? controller.findAnnotationByName(traceName) : NO;
+    if (trace && SC.kindOf(trace, Smartgraphs.TraceAnnotation)) {      
       this._graphController = controller;
+      this._trace = trace;
       return YES;
     }
     return NO;
   },
   
   startInput: function () {
-    var series = this._graphController ? this._graphController.get('selectedSeries') : NO;
-    if (!series) return NO;
+    if (!this._trace) return NO;
 
     this._inputStarted = YES;
-    this._series = series;
     this._graphController.startFreehandInput();
-
-    // setup controller the 'old' way
-    this.set('xMin', this._graphController.getPath('axes.xMin'));
-    this.set('xMax', this._graphController.getPath('axes.xMax'));      
-    this._cleanupData();
 
     this._graphController.get('eventQueue').addObserver('[]', this, this.graphObserver);
     return YES;
@@ -51,7 +46,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     this._graphController.get('eventQueue').removeObserver('[]', this, this.graphObserver);
     this._graphController.endFreehandInput();
     this._graphController = null;
-    this._series = null;
+    this._trace = null;
     this._inputStarted = NO;
   },
   

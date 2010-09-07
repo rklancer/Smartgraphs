@@ -35,6 +35,19 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     return newSeries;
   },
   
+  createAnnotation: function (annotationName, annotationType) {
+    var newAnnotation = Smartgraphs.store.createRecord(annotationType, {
+      isExample: NO,
+      name: annotationName
+    });
+    newAnnotation.set('session', this.get('content'));
+    newAnnotation.set('id', Smartgraphs.getNextGuid());
+    
+    return newAnnotation;
+  },
+  
+  // TODO: change to 'copy example object to session' or the like. (but only if we really need that functionality)
+  
   copyExampleSeries: function (exampleSeriesName, targetSeriesName) {
     // get the example series
     var query = SC.Query.local(
