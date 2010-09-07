@@ -22,6 +22,7 @@ Smartgraphs.Graph = SC.Record.extend(
   description: SC.Record.attr(String),
   
   axes: SC.Record.toOne('Smartgraphs.Axes'),
-  initialSeries: SC.Record.attr(Array)
+  initialSeries: SC.Record.attr(Array),
+  initialAnnotations: SC.Record.attr(Array)
     
 }) ;

@@ -33,13 +33,20 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     this.set('seriesList', []);
     this.set('annotationList', []);
     
-    // add the initial series
-    var initial = this.get('initialSeries');
+    // add the initial data series and annotations
+    var initial = this.get('initialSeries') || [];
     for (var i = 0, ii = initial.get('length'); i < ii; i++) {
-      this.addSeriesByName(initial.objectAt(i));
+      this.addObjectByName(Smartgraphs.DataSeries, initial.objectAt(i));
     }
     
-    // TODO modify for initialAnnotations as well.
+    initial = this.get('initialAnnotations') || [];
+    var annotation;
+    for (i = 0, ii = initial.get('length'); i < ii; i++) {
+      annotation = initial.objectAt(i);
+      // FIXME we probably just want to have a session-scoped list of all annotation names mapped to types
+      // so the type can be assumed from the name
+      this.addObjectByName(SC.objectForPropertyPath(annotation.type), annotation.name);
+    }
   },
   
   setAxes: function (axesId) {
@@ -53,7 +60,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   addSeries: function (series) {
-    if (this.findSeries(series.get('name'))) {
+    if (this.findSeriesByName(series.get('name'))) {
       return NO;
     }
     this.get('seriesList').pushObject(series);
@@ -61,35 +68,42 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     return YES;
   },
   
-  addSeriesByName: function (seriesName) {
+  addObjectByName: function (objectType, objectName) {
     // first try to get the named series from the current session
-    var query = SC.Query.local(Smartgraphs.DataSeries, 'name={name} AND session={session}', { 
-      name: seriesName,
+    var query = SC.Query.local(objectType, 'name={name} AND session={session}', { 
+      name: objectName,
       session: Smartgraphs.sessionController.getPath('content')
     });
-    var seriesList = Smartgraphs.store.find(query);
+    var objectList = Smartgraphs.store.find(query);
     
-    if (seriesList.get('length') < 1) {
+    if (objectList.get('length') < 1) {
       // get an example series if that's what has this name
-      query = SC.Query.local(Smartgraphs.DataSeries, 'name={name} AND isExample=YES', { 
-        name: seriesName
+      query = SC.Query.local(objectType, 'name={name} AND isExample=YES', { 
+        name: objectName
       });
-      seriesList = Smartgraphs.store.find(query);
-      if (seriesList.get('length') < 1) return NO;
+      objectList = Smartgraphs.store.find(query);
+      if (objectList.get('length') < 1) return NO;
     }
   
-    this.addSeries(seriesList.objectAt(0));
+    var object = objectList.objectAt(0);
+    if (objectType === Smartgraphs.DataSeries) {
+      this.addSeries(object);
+      return YES;
+    }
+    if (object.get('isAnnotation')) {
+      this.addAnnotation(object);
+    }
   },
   
   removeSeries: function (seriesName) {
     var seriesList = this.get('seriesList');
-    var series = this.findSeries(seriesName);
+    var series = this.findSeriesByName(seriesName);
     if (series) seriesList.removeObject(series);
   },
   
   
   // TODO DRY up vs. findAnnotationByName
-  findSeries: function (seriesName) {
+  findSeriesByName: function (seriesName) {
     var seriesList = this.get('seriesList');
     var series;
 
@@ -114,7 +128,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   selectSeries: function (seriesName) {
-    var series = this.findSeries(seriesName);
+    var series = this.findSeriesByName(seriesName);
     if (series) this.set('selectedSeries', series);
   },
   

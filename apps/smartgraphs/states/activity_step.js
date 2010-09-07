@@ -106,7 +106,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   
   displaySeriesOnGraph: function (context, args) {
     var controller = this._graphControllerFor(args.pane);    
-    controller.addSeriesByName(args.seriesName);
+    controller.addObjectByName(Smartgraphs.DataSeries, args.seriesName);
     return YES;
   },
   
@@ -171,7 +171,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     });
 
     var controller = this._graphControllerFor(args.pane);        
-    var series = controller.findSeries(args.seriesName);
+    var series = controller.findSeriesByName(args.seriesName);
     if (series.get('isExample') === NO) {
       Smartgraphs.selectedSeriesController.set('content', series);
     }

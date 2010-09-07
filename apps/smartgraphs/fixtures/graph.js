@@ -18,6 +18,8 @@ Smartgraphs.Graph.FIXTURES = [
     axes:
       '/backend/axes/1/5m-15s',
     initialSeries: 
+      [],
+    initialAnnotations:
       []
   },
   
@@ -31,6 +33,8 @@ Smartgraphs.Graph.FIXTURES = [
     axes:
       '/backend/axes/1/5m-15s',
     initialSeries: 
+      [],
+    initialAnnotations:
       []
   },
   
@@ -44,6 +48,8 @@ Smartgraphs.Graph.FIXTURES = [
     axes:
       '/backend/axes/1/5m-15s',
     initialSeries: 
+      [],
+    initialAnnotations:
       []
   },
   
@@ -56,6 +62,9 @@ Smartgraphs.Graph.FIXTURES = [
     axes:
       '/backend/axes/1/5m-15s',
     initialSeries: 
-      ['prediction-away', 'sensor']
+      ['sensor'],
+    initialAnnotations: [
+      { type: 'Smartgraphs.TraceAnnotation', name: 'prediction-away' }
+    ]
   }
 ];
