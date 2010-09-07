@@ -20,7 +20,11 @@ Smartgraphs.DataSeries = SC.Record.extend(
   
   name: SC.Record.attr(String),
   session: SC.Record.toOne('Smartgraphs.Session'),
-  isExample: SC.Record.attr(Boolean),    // might make sense as a transient property
-  points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'series' } )
+  isExample: SC.Record.attr(Boolean),    // might make sense as a transient property  
+  points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'series' } ),
+  defaultDisplayType: SC.Record.attr(Number)   // LINE_GRAPH or SCATTER_PLOT
 
 }) ;
+
+Smartgraphs.DataSeries.LINE_GRAPH = 1;
+Smartgraphs.DataSeries.SCATTER_PLOT = 2;

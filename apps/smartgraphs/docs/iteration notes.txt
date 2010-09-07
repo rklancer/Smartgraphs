@@ -1,3 +1,54 @@
+9/7/10
+----
+
+freehandInputController:
+
+  tells appropriate graph controller when FREEHAND_INPUT state starts and stops
+  listens to eventQueue of chosen graph controller
+  turns events into start, continue, end events
+  
+  
+
+add 'annotation' data type; freehandTrace is one such
+(freehandTrace = the 'trace'; freehandInput = the act of entering the trace; keep these names separate)
+freehandTrace contains an *ordered* list of x, y pairs (as distinct from a DataSeries, whose x,y pairs are undordered)
+
+other annotation types include labels, bounding boxes/circles, etc (see Randolph activity)
+
+GraphView needs to keep a list of annotations.
+
+
+*In addition* you might want to display a line connecting data points in a DataSeries
+(possibly with some additional representation at each data point--dots, error bars, etc.)
+
+Furthermore keep in mind Bob's ideas regarding showing some data, 'ghosting' other data, etc.
+
+DataPointsView   -> a collectionView of DataPointViews
+LineView         -> a raphael path, shown for any reason
+
+a DataSeriesView can represent itself as a DataPointsView, a LineView, or both at the same time.
+
+Q: where to store 'line' vs. 'scatter' option for DataSeries? Right in the model? (Sure; we can consider this the 
+'default' display type)
+
+okay, then.
+
+ * a DataSeries can display itself as a line or scatter graph (or both, eventually). TODO: make this happen.
+ 
+ * the graphView can add a set of annotations.
+
+ * create a freehandTrace model and freehandTrace view
+ * add an 'annotationsList' to the graphController
+ * let the graphView determine from the viewType of the annotation object what to display
+ 
+ 
+
+ 
+ 
+ 
+
+
+
 7/31/10
 -------
 
