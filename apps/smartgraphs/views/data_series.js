@@ -18,7 +18,7 @@ Smartgraphs.DataSeriesView = RaphaelViews.RaphaelCollectionView.extend({
   useFastPath: YES,
   
   content: function () {
-    var series = this.get('series');
+    var series = this.get('item');
     if (!series) return null;
     
     return Smartgraphs.store.find(SC.Query.local(Smartgraphs.DataPoint, { 
@@ -26,11 +26,6 @@ Smartgraphs.DataSeriesView = RaphaelViews.RaphaelCollectionView.extend({
       series: series,
       orderBy: 'id'
     }));
-  }.property('series').cacheable(),
-  
-  seriesId: function () {
-    var series = this.get('series');
-    return series ? series.get('id') : null;
   }.property('series').cacheable()
   
 });

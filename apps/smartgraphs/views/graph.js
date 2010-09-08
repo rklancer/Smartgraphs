@@ -16,13 +16,14 @@ Smartgraphs.GraphView = SC.View.extend(
   
   axesBinding: '*graphController.axes',
   seriesListBinding: '*graphController.seriesList',
+  annotationListBinding: '*graphController.annotationList',
   
   padding: { top: 20, right: 20, bottom: 45, left: 55 },  
   
   childViews: 'graphCanvasView'.w(),
   
   init: function () {
-    this._seriesViewsById = {};
+    this._viewsByClassAndId = {};
     sc_super();
   },
   
@@ -30,9 +31,80 @@ Smartgraphs.GraphView = SC.View.extend(
     sc_super();
     this.replaceLayer();
   },
+
+  _itemListsDidChange: function () {
+    var list = this.get('seriesList').concat(this.get('annotationList'));
+    var item, className, id;
+    var desiredViewsByClassAndId = {};
+    
+    // add views for items (series or annotations) not currently in the list of child views
+    for (var i = 0, ii = list.get('length'); i < ii; i++) {
+      item = list.objectAt(i);
+      className = item.constructor.toString();
+      id = item.get('id');
+      
+      if (desiredViewsByClassAndId[className] === undefined) {
+        desiredViewsByClassAndId[className] = {};
+      }
+      
+      desiredViewsByClassAndId[className][id] = item;     // for our reference when we remove views
+      
+      if (!this._viewsByClassAndId[className] || !this._viewsByClassAndId[className][id]) {
+        this._addViewForItem(item);
+      }
+    }
+    
+    // remove views for no-longer-to-be-displayed items
+    var oldView;
+    
+    for (className in this._viewsByClassAndId) {
+      if (this._viewsByClassAndId.hasOwnProperty(className)) {
+        for (id in this._viewsByClassAndId[className]) {
+          if (this._viewsByClassAndId[className].hasOwnProperty(id)) {
+            oldView = this._viewsByClassAndId[className][id];
+            
+            if (!desiredViewsByClassAndId[className] || !desiredViewsByClassAndId[className][id]) {
+              this._removeView(oldView);
+            }
+          }
+        }
+      }
+    }
+  }.observes('*annotationList.[]').observes('*seriesList.[]'),
+  
+  
+  _addViewForItem: function (item) {
+    var className = item.constructor.toString();
+
+    var view = item.constructor.viewClass.design({
+        graphView: this,
+        item: item
+    }).create();
+    
+    this.get('graphCanvasView').appendChild(view);
+    
+    if (this._viewsByClassAndId[className] === undefined) {
+      this._viewsByClassAndId[className] = {};
+    }    
+    this._viewsByClassAndId[className][item.get('id')] = view;
+  },
+  
+  
+  _removeView: function (view) {
+    var item = view.get('item');
+    var className = item.constructor.toString();
+    var id = item.get('id');
+    
+    delete this._viewsByClassAndId[className][id];
+    this.get('graphCanvasView').removeChild(view);
+  },  
+  
   
   coordinatesForPoint: function (x, y) {
     var axes = this.get('axes');
+
+    if (!axes) return undefined;
+
     var xMin = axes.get('xMin'),
         xMax = axes.get('xMax'),
         yMin = axes.get('yMin'),
@@ -56,8 +128,12 @@ Smartgraphs.GraphView = SC.View.extend(
     };
   },
   
+  
   pointForCoordinates: function (x, y) {
     var axes = this.get('axes');
+
+    if (!axes) return undefined;
+    
     var xMin = axes.get('xMin'),
         xMax = axes.get('xMax'),
         yMin = axes.get('yMin'),
@@ -81,53 +157,6 @@ Smartgraphs.GraphView = SC.View.extend(
     };
   },
   
-  _seriesListDidChange: function () {
-    var seriesList = this.get('seriesList');
-    var series, id;
-    var seriesListById = {};
-    var seriesToAdd = [], viewsToRemove = [];
-    
-    // add views for new series
-    for (var i = 0, ii = seriesList.get('length'); i < ii; i++) {
-      series = seriesList.objectAt(i);
-      id = series.get('id');
-      
-      seriesListById[id] = series;
-      
-      if (!this._seriesViewsById.hasOwnProperty(id)) {
-        this._addViewForSeries(series);
-      }
-    }
-    
-    // remove views for no-longer-displayed series
-    var oldView;
-
-    for (id in this._seriesViewsById) {
-      if (this._seriesViewsById.hasOwnProperty(id)) {
-        oldView = this._seriesViewsById[id];
-        
-        if (!seriesListById[id]) {
-          this._removeSeriesView(oldView);
-        }
-      }
-    }
-  }.observes('*seriesList.[]'),
-
-  _addViewForSeries: function (series) {
-    var view = Smartgraphs.DataSeriesView.design({
-      graphView: this,
-      series: series
-    }).create();
-    
-    this.get('graphCanvasView').appendChild(view);
-    this._seriesViewsById[series.get('id')] = view;
-  },
-  
-  _removeSeriesView: function (view) {
-    var seriesId = view.get('seriesId');
-    delete this._seriesViewsById[seriesId];
-    this.get('graphCanvasView').removeChild(view);
-  },
   
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
     axesBinding: '.parentView.axes',

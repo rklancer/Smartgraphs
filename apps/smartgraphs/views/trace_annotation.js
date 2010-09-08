@@ -19,20 +19,31 @@ Smartgraphs.TraceAnnotationView = RaphaelViews.RaphaelView.extend(
   
   // TODO: make stroke, strokeWidth displayProperties
   
+  init: function () {
+    sc_super();
+    
+    var item = this.get('item');
+    var name = item ? item.get('name') : '<null>';
+    
+    console.log('traceAnnotationView created for annotation name = %s', name);
+  },
+  
   renderCallback: function (raphaelCanvas, pathStr, stroke, strokeWidth) {
+    console.log('initial path: %s', pathStr);
     return raphaelCanvas.path(pathStr).attr({stroke: stroke, 'stroke-width': strokeWidth});
   },
 
   render: function (context, firstTime) {
     var graphView = this.getPath('parentView.parentView');
-    var content = this.get('content');
-    var points = content ? content.get('points') : [{x: 0, y: 0}];
+    var trace = this.get('item');
+    var points = (trace ? trace.get('points') : null) || [{x: 0, y: 0}];
     
-    var str = [];    
-    var coords;
+    var str = [];
+    var point, coords;
     
     for (var i = 0, ii = points.get('length'); i < ii; i++) {
-      coords = graphView.coordinatesForPoint(points.objectAt(i));
+      point = points.objectAt(i);
+      coords = graphView.coordinatesForPoint(point.x, point.y) || {x: 0, y: 0};
       str.push(i === 0 ? 'M' : 'L');
       str.push(coords.x);
       str.push(' ');
@@ -41,7 +52,7 @@ Smartgraphs.TraceAnnotationView = RaphaelViews.RaphaelView.extend(
     var pathStr = str.join('');
     
     if (firstTime) {
-      context.callback(pathStr, this.get('stroke'), this.get('strokeWidth'));
+      context.callback(this, this.renderCallback, pathStr, this.get('stroke'), this.get('strokeWidth'));
     }
     else {
       var path = context.raphael();

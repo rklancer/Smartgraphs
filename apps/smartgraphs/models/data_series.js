@@ -12,6 +12,8 @@
   @extends SC.Record
   @version 0.1
 */
+sc_require('views/data_series');
+
 Smartgraphs.DataSeries = SC.Record.extend(
 /** @scope Smartgraphs.DataSeries.prototype */ {
 
@@ -28,3 +30,4 @@ Smartgraphs.DataSeries = SC.Record.extend(
 
 Smartgraphs.DataSeries.LINE_GRAPH = 1;
 Smartgraphs.DataSeries.SCATTER_PLOT = 2;
+Smartgraphs.DataSeries.viewClass = Smartgraphs.DataSeriesView;
