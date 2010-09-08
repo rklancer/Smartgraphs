@@ -18,9 +18,9 @@ Smartgraphs.GraphView = SC.View.extend(
   seriesListBinding: '*graphController.seriesList',
   annotationListBinding: '*graphController.annotationList',
   
-  padding: { top: 20, right: 20, bottom: 45, left: 55 },  
+  padding: { top: 35, right: 20, bottom: 45, left: 55 },  
   
-  childViews: 'graphCanvasView'.w(),
+  childViews: 'titleView graphCanvasView'.w(),
   
   init: function () {
     this._viewsByClassAndId = {};
@@ -157,6 +157,12 @@ Smartgraphs.GraphView = SC.View.extend(
     };
   },
   
+  titleView: SC.LabelView.design({
+    valueBinding: '.parentView*graphController.title',
+    classNames: 'pane-label',
+    layout: { width: 400, centerX: 0, height: 20, top: 10 },
+    textAlign: SC.ALIGN_CENTER
+  }),
   
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
     axesBinding: '.parentView.axes',
@@ -253,6 +259,7 @@ Smartgraphs.GraphView = SC.View.extend(
         },
         
         didCreateLayer: function () {
+          this._label = null;          
           this.invokeLater(this.drawLabel);
         },
         
@@ -267,7 +274,7 @@ Smartgraphs.GraphView = SC.View.extend(
             this._label.attr({text: xLabelText, x: x, y: y});
           }
           else {
-            this._label = this.get('raphaelCanvas').text(x, y, xLabelText).attr({font: "14px Arial, sans-serif"});
+            this._label = this.get('raphaelCanvas').text(x, y, xLabelText).attr({font: "14px Arial, sans-serif", fill: '#333333'});
           }
         }
       }),
@@ -281,6 +288,7 @@ Smartgraphs.GraphView = SC.View.extend(
         },
         
         didCreateLayer: function () {
+          this._label = null;
           this.invokeLater(this.drawLabel);
         },
         
@@ -296,7 +304,7 @@ Smartgraphs.GraphView = SC.View.extend(
             this._label.attr({text: yLabelText, x: x, y: y});
           }
           else {
-            this._label = this.get('raphaelCanvas').text(x, y, yLabelText).attr({font: "14px Arial, sans-serif"}).rotate(270);
+            this._label = this.get('raphaelCanvas').text(x, y, yLabelText).attr({font: "14px Arial, sans-serif", fill: '#333333'}).rotate(270);
           }
           
         }

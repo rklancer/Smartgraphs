@@ -46,6 +46,7 @@ function setupFixtures() {
   Smartgraphs.Graph.FIXTURES = [
     { url: 'test',
       axes: 'test-axes',
+      title: 'Test Graph',
       initialSeries: []
     }
   ];

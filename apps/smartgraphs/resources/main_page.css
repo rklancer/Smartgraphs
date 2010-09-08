@@ -94,3 +94,10 @@ body.sc-theme {
 .sc-view.dialog-text textarea {
   padding: 5px;
 }
+
+/* graph labels and more */
+.sc-theme .sc-label-view.pane-label {
+  font-size: 18px;
+  line-height: 1.0;
+  color: #666666;
+}

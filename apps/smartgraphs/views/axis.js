@@ -63,6 +63,8 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
         
         this._axis = this.get('raphaelCanvas').g.axis(xLeft, yBottom, plotWidth, xMin, xMax, xSteps, 0);
       }
+      
+      this._axis.attr({fill: '#666666', stroke: '#666666'});
     }
   }
 });
