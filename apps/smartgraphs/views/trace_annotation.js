@@ -17,19 +17,9 @@ Smartgraphs.TraceAnnotationView = RaphaelViews.RaphaelView.extend(
   stroke: '#000000',
   strokeWidth: 2,
   
-  // TODO: make stroke, strokeWidth displayProperties
-  
-  init: function () {
-    sc_super();
-    
-    var item = this.get('item');
-    var name = item ? item.get('name') : '<null>';
-    
-    console.log('traceAnnotationView created for annotation name = %s', name);
-  },
+  displayProperties: 'item.points.[]'.w(),
   
   renderCallback: function (raphaelCanvas, pathStr, stroke, strokeWidth) {
-    console.log('initial path: %s', pathStr);
     return raphaelCanvas.path(pathStr).attr({stroke: stroke, 'stroke-width': strokeWidth});
   },
 

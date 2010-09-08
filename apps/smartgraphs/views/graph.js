@@ -178,7 +178,7 @@ Smartgraphs.GraphView = SC.View.extend(
           // cache these rather than lookup the jquery object (graphView.$()) per mouse event
           this._graphView = this.getPath('parentView.parentView.parentView');
           this._$graphView = this._graphView.$();
-          this._trace = this.get('raphaelCanvas').path('M0 0').attr({ stroke: '#000000', 'stroke-width': 2 });
+          //this._trace = this.get('raphaelCanvas').path('M0 0').attr({ stroke: '#000000', 'stroke-width': 2 });
         },
         
         renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {          
@@ -214,29 +214,29 @@ Smartgraphs.GraphView = SC.View.extend(
           this._graphController = this._graphView.get('graphController');
           var coords = this.coordsForEvent(evt);
           
-          if (this._graphController.get('freehandIsOn')) {
-            this._traceStr = 'M' + coords.x + ' ' + coords.y;
-          }
+          // if (this._graphController.get('freehandIsOn')) {
+          //   this._traceStr = 'M' + coords.x + ' ' + coords.y;
+          // }
           var point = this._graphView.pointForCoordinates(coords.x, coords.y);
           return this._graphController.inputAreaMouseDown(point.x, point.y);
         },
 
         mouseDragged: function (evt) {
           var coords = this.coordsForEvent(evt);  
-          if (this._graphController.get('freehandIsOn')) {
-            this._traceStr = this._traceStr + ' L' + coords.x + ' ' + coords.y;
-            this._trace.attr({path: this._traceStr});
-          }
+          // if (this._graphController.get('freehandIsOn')) {
+          //   this._traceStr = this._traceStr + ' L' + coords.x + ' ' + coords.y;
+          //   this._trace.attr({path: this._traceStr});
+          // }
           var point = this._graphView.pointForCoordinates(coords.x, coords.y);
           return this._graphController.inputAreaMouseDragged(point.x, point.y);
         },
 
         mouseUp: function (evt) {
           var coords = this.coordsForEvent(evt);
-          if (this._graphController.get('freehandIsOn')) {
-            this._traceStr = this._traceStr + ' L' + coords.x + ' ' + coords.y;
-            this._trace.attr({path: this._traceStr});
-          }
+          // if (this._graphController.get('freehandIsOn')) {
+          //   this._traceStr = this._traceStr + ' L' + coords.x + ' ' + coords.y;
+          //   this._trace.attr({path: this._traceStr});
+          // }
           var point = this._graphView.pointForCoordinates(coords.x, coords.y);
           return this._graphController.inputAreaMouseUp(point.x, point.y);
         }
