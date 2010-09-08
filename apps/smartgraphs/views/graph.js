@@ -18,7 +18,7 @@ Smartgraphs.GraphView = SC.View.extend(
   seriesListBinding: '*graphController.seriesList',
   annotationListBinding: '*graphController.annotationList',
   
-  padding: { top: 35, right: 20, bottom: 45, left: 55 },  
+  padding: { top: 40, right: 20, bottom: 45, left: 55 },  
   
   childViews: 'titleView graphCanvasView'.w(),
   
@@ -175,7 +175,7 @@ Smartgraphs.GraphView = SC.View.extend(
       axesBinding: '.parentView.parentView.axes',      
       paddingBinding: '.parentView.parentView.padding',
       
-      childViews: 'xLabelView yLabelView xAxisView yAxisView inputArea'.w(),
+      childViews: 'inputArea xAxisView yAxisView'.w(),
       
       inputArea: RaphaelViews.RaphaelView.design({
         axesBinding: '.parentView.parentView.parentView*axes',
@@ -248,67 +248,6 @@ Smartgraphs.GraphView = SC.View.extend(
         }
       }),
       
-      
-      // TODO DRY up xlabelView/yLabelView 
-      xLabelView: RaphaelViews.RaphaelView.design({
-        axesBinding: '.parentView.parentView.parentView.axes',
-        displayProperties: 'axes.xLabel'.w(),
-        
-        render: function (context, firstTime) {
-          if (!firstTime) this.drawLabel();
-        },
-        
-        didCreateLayer: function () {
-          this._label = null;          
-          this.invokeLater(this.drawLabel);
-        },
-        
-        drawLabel: function () {          
-          var xLabelText = this.getPath('axes.xLabel');
-          var padding = this.getPath('parentView.parentView.parentView.padding');
-          var frame = this.getPath('parentView.parentView.parentView.frame');
-          
-          var x = (padding.left + frame.width - padding.right) / 2;
-          var y = frame.height - 15;
-          if (this._label) {
-            this._label.attr({text: xLabelText, x: x, y: y});
-          }
-          else {
-            this._label = this.get('raphaelCanvas').text(x, y, xLabelText).attr({font: "14px Arial, sans-serif", fill: '#333333'});
-          }
-        }
-      }),
-
-      yLabelView: RaphaelViews.RaphaelView.design({
-        axesBinding: '.parentView.parentView.parentView.axes',
-        displayProperties: 'axes.yLabel'.w(),
-        
-        render: function (context, firstTime) {
-          if (!firstTime) this.drawLabel();
-        },
-        
-        didCreateLayer: function () {
-          this._label = null;
-          this.invokeLater(this.drawLabel);
-        },
-        
-        drawLabel: function () {
-          var yLabelText = this.getPath('axes.yLabel');
-          var padding = this.getPath('parentView.parentView.parentView.padding');
-          var frame = this.getPath('parentView.parentView.parentView.frame');
-          
-          var x = 15;
-          var y = (padding.top + frame.height - padding.bottom) / 2;
-          
-          if (this._label) {
-            this._label.attr({text: yLabelText, x: x, y: y});
-          }
-          else {
-            this._label = this.get('raphaelCanvas').text(x, y, yLabelText).attr({font: "14px Arial, sans-serif", fill: '#333333'}).rotate(270);
-          }
-          
-        }
-      }),
       
       xAxisView: Smartgraphs.AxisView.design({
         axesBinding: '.parentView.parentView.parentView.axes',

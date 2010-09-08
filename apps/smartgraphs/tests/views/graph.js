@@ -395,10 +395,10 @@ test('updating the coordinates of a DataPoint should result in a call to render(
 
 test('the x and y label text should be visible in the dom and should update when the label is updated', function () {
 
-  var xLabelView = canvasView.getPath('axesView.xLabelView');
-  var yLabelView = canvasView.getPath('axesView.yLabelView');
-  var xLabel = xLabelView._label;    // alternatively to checking the private property '_label' we could spy on Raphael somehow...
-  var yLabel = yLabelView._label;
+  var xAxisView = canvasView.getPath('axesView.xAxisView');
+  var yAxisView = canvasView.getPath('axesView.yAxisView');
+  var xLabel = xAxisView._label;    // alternatively to checking the private property '_label' we could spy on Raphael somehow...
+  var yLabel = yAxisView._label;
   var xNode = xLabel.node;
   var yNode = yLabel.node;
   
@@ -417,7 +417,7 @@ test('the x and y label text should be visible in the dom and should update when
   axes.set('xLabel', 'updated xLabel');
   SC.RunLoop.end();
   
-  var newXNode = xLabelView._label.node;
+  var newXNode = xAxisView._label.node;
   equals(newXNode, xNode, "changing the axis label should not have changed the x label's DOM node");
   ok($.contains(document.body, newXNode), "the x label's node should still be contained within document.body (not offscreen)");
   equals(xLabel.attr('text'), 'updated xLabel', "after updating the x label's text, the x label's text attr should be 'updated xLabel'");
@@ -427,18 +427,18 @@ test('the x and y label text should be visible in the dom and should update when
   axes.set('yLabel', 'updated yLabel');
   SC.RunLoop.end();
   
-  var newYNode = yLabelView._label.node;
+  var newYNode = yAxisView._label.node;
   equals(newYNode, yNode, 'changing the axis label should not have changed the y label node');
   ok($.contains(document.body, newYNode), "the y label's node should still be contained within document.body (not offscreen)");  
   equals(yLabel.attr('text'), 'updated yLabel', "after updating the y label's text, the y label's text attr should be 'updated yLabel'");
 });
 
 
-test('the y label should be rotated', function () {
-  var xLabelView = canvasView.getPath('axesView.xLabelView');
-  var yLabelView = canvasView.getPath('axesView.yLabelView');
-  var xLabel = xLabelView._label;
-  var yLabel = yLabelView._label;
+test('the y label should be rotated correctly and the x axis label should not be rotated', function () {
+  var xAxisView = canvasView.getPath('axesView.xAxisView');
+  var yAxisView = canvasView.getPath('axesView.yAxisView');
+  var xLabel = xAxisView._label;
+  var yLabel = yAxisView._label;
   
   equals(xLabel.attr('rotation'), 0, "the x label's node should not be rotated (rotation of 0 degrees)");
   equals(yLabel.attr('rotation'), 270, "the y label's node should be rotated at 270 degrees");
@@ -455,7 +455,7 @@ test('the y label should be rotated', function () {
 });
 
 
-test('the x and y labels are in approximately the right position', function () {
+test('the x and y labels should be in approximately the right position', function () {
   var padding = view.get('padding');
   var frame = view.get('frame');
       
@@ -466,10 +466,10 @@ test('the x and y labels are in approximately the right position', function () {
       width = right - left,
       height = bottom - top;
 
-  var xLabelView = canvasView.getPath('axesView.xLabelView');
-  var yLabelView = canvasView.getPath('axesView.yLabelView');
-  var xLabel = xLabelView._label;
-  var yLabel = yLabelView._label;
+  var xAxisView = canvasView.getPath('axesView.xAxisView');
+  var yAxisView = canvasView.getPath('axesView.yAxisView');
+  var xLabel = xAxisView._label;
+  var yLabel = yAxisView._label;
   
   // test x label position...
 
@@ -501,5 +501,4 @@ test('the x and y labels are in approximately the right position', function () {
   hibound = bottom - height / 3;
   lobound = top + height / 3;
   ok (lobound < y && y < hibound, 'y position of y label should be in middle third (between ' + lobound + ' and ' + hibound + ')');
-  
 });
