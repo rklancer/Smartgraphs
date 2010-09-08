@@ -391,3 +391,114 @@ test('updating the coordinates of a DataPoint should result in a call to render(
   equals(attrArguments[0].cy, view.coordinatesForPoint(4,6).y, 'cy value of raphaelCircle was correct y-coordinate for (4,6)');
 });
 
+
+test('the x and y label text should be visible in the dom and should update when the label is updated', function () {
+
+  var xLabelView = canvasView.getPath('axesView.xLabelView');
+  var yLabelView = canvasView.getPath('axesView.yLabelView');
+  var xLabel = xLabelView._label;    // alternatively to checking the private property '_label' we could spy on Raphael somehow...
+  var yLabel = yLabelView._label;
+  var xNode = xLabel.node;
+  var yNode = yLabel.node;
+  
+  // xLabel's .node property is the DOM node corresponding to the label
+  ok($.contains(document.body, xNode), "the x label's node should be contained within document.body (not offscreen)");
+  equals(xLabel.attr('text'), 'xLabel (long)', "the x label's text attr should be 'xLabel (long)'");
+
+  ok($.contains(document.body, yNode), "the y label's node should be contained within document.body (not offscreen)");
+  equals(yLabel.attr('text'), 'yLabel (long)', "the y label's text attr should be 'yLabel (long)");
+
+  // test that axis labels correctly update when label properties are changed
+  var axes = Smartgraphs.firstGraphController.get('axes');
+
+  // x label...
+  SC.RunLoop.begin();
+  axes.set('xLabel', 'updated xLabel');
+  SC.RunLoop.end();
+  
+  var newXNode = xLabelView._label.node;
+  equals(newXNode, xNode, "changing the axis label should not have changed the x label's DOM node");
+  ok($.contains(document.body, newXNode), "the x label's node should still be contained within document.body (not offscreen)");
+  equals(xLabel.attr('text'), 'updated xLabel', "after updating the x label's text, the x label's text attr should be 'updated xLabel'");
+  
+  // y label...
+  SC.RunLoop.begin();
+  axes.set('yLabel', 'updated yLabel');
+  SC.RunLoop.end();
+  
+  var newYNode = yLabelView._label.node;
+  equals(newYNode, yNode, 'changing the axis label should not have changed the y label node');
+  ok($.contains(document.body, newYNode), "the y label's node should still be contained within document.body (not offscreen)");  
+  equals(yLabel.attr('text'), 'updated yLabel', "after updating the y label's text, the y label's text attr should be 'updated yLabel'");
+});
+
+
+test('the y label should be rotated', function () {
+  var xLabelView = canvasView.getPath('axesView.xLabelView');
+  var yLabelView = canvasView.getPath('axesView.yLabelView');
+  var xLabel = xLabelView._label;
+  var yLabel = yLabelView._label;
+  
+  equals(xLabel.attr('rotation'), 0, "the x label's node should not be rotated (rotation of 0 degrees)");
+  equals(yLabel.attr('rotation'), 270, "the y label's node should be rotated at 270 degrees");
+  
+  // guard against re-rotating the axis labels every time they are updated...
+  var axes = Smartgraphs.firstGraphController.get('axes');
+  SC.RunLoop.begin();
+  axes.set('xLabel', 'updated xLabel');
+  axes.set('yLabel', 'updated yLabel');
+  SC.RunLoop.end();
+
+  equals(xLabel.attr('rotation'), 0, "after updating the x label's text, the x label should still not be rotated (rotation of 0 degrees)");
+  equals(yLabel.attr('rotation'), 270, "the updating the y label's text, the y label should still be rotated at 270 degrees");
+});
+
+
+test('the x and y labels are in approximately the right position', function () {
+  var padding = view.get('padding');
+  var frame = view.get('frame');
+      
+  var top = frame.y,
+      bottom = frame.y + frame.height,
+      left = frame.x,
+      right = frame.x + frame.width,
+      width = right - left,
+      height = bottom - top;
+
+  var xLabelView = canvasView.getPath('axesView.xLabelView');
+  var yLabelView = canvasView.getPath('axesView.yLabelView');
+  var xLabel = xLabelView._label;
+  var yLabel = yLabelView._label;
+  
+  // test x label position...
+
+  var x = xLabel.attr('x');
+  var y = xLabel.attr('y');
+  
+  // x position should be in the middle third
+  var lbound = left + width / 3;
+  var rbound = right - width / 3;
+  ok(lbound < x && x < rbound, 'x position of x label should be in middle third (between ' + lbound + ' and ' + rbound + ')');
+  
+  // y position should be in the top third
+  var hibound = bottom;
+  var lobound = bottom - height / 3;
+  ok (lobound < y && y < hibound, 'y position of x label should be in bottom third (between ' + lobound + ' and ' + hibound + ')');
+  
+
+  // test y label position...
+  
+  x = yLabel.attr('x');
+  y = yLabel.attr('y');
+  
+  // x position should be in left third
+  lbound = left;
+  rbound = left + width / 3;
+  ok(lbound < x && x < rbound, 'x position of y label should be in left third (between ' + lbound + ' and ' + rbound + ')');
+
+  // y position should be in middle third
+  hibound = bottom - height / 3;
+  lobound = top + height / 3;
+  ok (lobound < y && y < hibound, 'y position of y label should be in middle third (between ' + lobound + ' and ' + hibound + ')');
+  
+});
