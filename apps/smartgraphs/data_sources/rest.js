@@ -17,7 +17,7 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
 {
 
   // latency for mock retrieval
-  latency: 500,
+  latency: 10,
 
   // ..........................................................
   // QUERY SUPPORT
