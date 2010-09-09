@@ -18,11 +18,14 @@ Smartgraphs.ACTIVITY_STEP_DONE = SC.Responder.create(
 
   nextResponder: Smartgraphs.ACTIVITY,
   
-  didBecomeFirstResponder: function() {
+  didBecomeFirstResponder: function () {
     var wasLastStep = Smartgraphs.activityStepController.get('isLastStep');
     Smartgraphs.activityStepController.finish();    // finish() may change activityStepController's content
-    Smartgraphs.activityStepController.cleanup();
     if (wasLastStep) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_DONE);
+  },
+   
+  willLoseFirstResponder: function () {
+    Smartgraphs.activityStepController.cleanup();
   },
   
   // ..........................................................
