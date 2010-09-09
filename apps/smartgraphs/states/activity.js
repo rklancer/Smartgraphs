@@ -16,7 +16,7 @@
 sc_require('states/ready');
 
 Smartgraphs.ACTIVITY = SC.Responder.create(
-/** @scope Smartgraphs.ACTIVITY_START.prototype */ {
+/** @scope Smartgraphs.ACTIVITY.prototype */ {
   
   nextResponder: Smartgraphs.READY,       // the default; if some other app state implements the openActivity action in 
                                           // some way, presumably that state should set itself as our nextResponder

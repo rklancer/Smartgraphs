@@ -38,9 +38,9 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   unregisterOldTriggers: function () {
-    var registered = this.get('registeredTriggers');
-    for (var i = 0, ii = registered.get('length'); i < ii; i++) {
-      registered[i].unregister();
+    var triggers = this.get('registeredTriggers');
+    for (var i = 0, ii = triggers.get('length'); i < ii; i++) {
+      triggers[i].unregister();
     }
     this.set('registeredTriggers', []);
   },
