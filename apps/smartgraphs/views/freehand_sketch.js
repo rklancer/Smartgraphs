@@ -35,9 +35,9 @@ Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
       point = points.objectAt(i);
       coords = graphView.coordinatesForPoint(point.x, point.y) || {x: 0, y: 0};
       str.push(i === 0 ? 'M' : 'L');
-      str.push(coords.x);
+      str.push(Math.round(coords.x));
       str.push(' ');
-      str.push(coords.y);
+      str.push(Math.round(coords.y));
     } 
     var pathStr = str.join('');
     

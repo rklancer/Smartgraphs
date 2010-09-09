@@ -281,9 +281,9 @@ test('mouse events should result in a path string that reflects the location of 
   var inputArea = canvasView.getPath('axesView.inputArea.layer');
   var offset = graphView.$().offset();
   
-  var eventAt = function (eventName, x, y) {
-    var evt = SC.Event.simulateEvent(inputArea, eventName, { pageX: offset.left + x, pageY: offset.top + y });
-    SC.Event.trigger(inputArea, eventName, evt);
+  var fireEvent = function (el, eventName, x, y) {
+    var evt = SC.Event.simulateEvent(el, eventName, { pageX: offset.left + x, pageY: offset.top + y });
+    SC.Event.trigger(el, eventName, evt);
   };
   
   // add the annotation and get the sketch view...
@@ -314,30 +314,24 @@ test('mouse events should result in a path string that reflects the location of 
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
 
   // input some events
-  eventAt('mousedown', 0, 10);
-  eventAt('mousemove', 20, 30);
-  eventAt('mouseup', 40, 50);
+  fireEvent(inputArea, 'mousedown', 0, 10);
+  
+  // IE doesn't like: 
+  // fireEvent(document.body, 'mousemove', 20, 30);
+  // therefore we have to fake this one
+  var evt = SC.Event.simulateEvent(inputArea, 'mousemove', { pageX: offset.left + 20, pageY: offset.top + 30 });
+  SC.RunLoop.begin();
+  canvasView.getPath('axesView.inputArea').mouseDragged(evt);
+  SC.RunLoop.end();
+
+  fireEvent(inputArea, 'mouseup', 40, 50);
 
   // everything is synced because SC wraps events in a runloop!
   
   equals(points.get('length'), 3, 'There should be 3 points in the data being rendered by FreehandSketchView');
-  var path = raphael.attr('path');
-  equals(path.length, 3, 'There should be 3 elements to the path string returned by Raphael');
+  var pathStr = raphael.attr('path').toString().split(' ').join(',');   // .split.join normalizes path string for IE
   
-  var el = path[0];
-  equals(el[0], 'M', 'the path string should start with an M');
-  equals(rnd(el[1]), 0, 'x coord of the first path element should be 0');
-  equals(rnd(el[2]), 10, 'y coord of the first path element should be 10');
-  
-  el = path[1];
-  equals(el[0], 'L', 'the path string should continue with an L');
-  equals(rnd(el[1]), 20, 'x coord of the first path element should be 20');
-  equals(rnd(el[2]), 30, 'y coord of the first path element should be 30');
-
-  el = path[2];
-  equals(el[0], 'L', 'the path string should continue with an L');
-  equals(rnd(el[1]), 40, 'x coord of the first path element should be 40');
-  equals(rnd(el[2]), 50, 'y coord of the first path element should be 50');
+  equals(pathStr, "M0,10L20,30L40,50", 'path string should represent the points clicked');
   
   // and don't forget to clean up.
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
