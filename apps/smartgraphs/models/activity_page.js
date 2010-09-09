@@ -65,13 +65,7 @@ Smartgraphs.ActivityPage = SC.Record.extend(
     Whether the ActivityPage is selectable or not
   */
   isSelectable: NO,
-  
-  /**
-    @private
-    The current ActivityStep associated with this ActivityPage
-  */
-  currentStep: null,
-  
+
   /**
     server endpoint for finding associated steps
   */

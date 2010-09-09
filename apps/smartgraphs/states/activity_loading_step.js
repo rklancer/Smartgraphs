@@ -29,7 +29,6 @@ Smartgraphs.ACTIVITY_LOADING_STEP = SC.Responder.create(Smartgraphs.ResourceLoad
   ],    
   
   didBecomeFirstResponder: function() {
-    Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('currentStep'));
     this.loadResources();
   },
   
