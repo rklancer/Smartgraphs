@@ -31,8 +31,16 @@ Smartgraphs.GraphView = SC.View.extend(
     sc_super();
     this.replaceLayer();
   },
-
-  _itemListsDidChange: function () {
+  
+  annotationListDidChange: function () {
+    this._itemListsDidChange();
+  }.observes('*annotationList.[]'),
+  
+  seriesListDidChange: function () {
+    this._itemListsDidChange();
+  }.observes('*seriesList.[]'),
+  
+  _itemListsDidChange: function () {  
     var list = this.get('seriesList').concat(this.get('annotationList'));
     var item, className, id;
     var desiredViewsByClassAndId = {};
@@ -70,7 +78,7 @@ Smartgraphs.GraphView = SC.View.extend(
         }
       }
     }
-  }.observes('*annotationList.[]').observes('*seriesList.[]'),
+  },
   
   
   _addViewForItem: function (item) {
