@@ -23,8 +23,8 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   submissionIsEnabled: YES,
   
   didBecomeFirstResponder: function() {
-    this.enableSubmission();        // enabled by default until we receive disableSubmssion or waitForResponse
-    Smartgraphs.activityStepController.invokeLater(Smartgraphs.activityStepController.begin);
+    this.enableSubmission();   // enabled by default until we receive disableSubmssion or waitForResponse
+    Smartgraphs.activityStepController.begin();
   },
   
   willLoseFirstResponder: function () {
