@@ -107,7 +107,7 @@ Smartgraphs.activityPage = SC.Page.design({
             width: 80
           },
           title: "Next >>",
-          action: 'openNextActivityPage',
+          action: 'gotoNextPage',
           isEnabledBinding: 'Smartgraphs.pageNavController.nextShouldBeEnabled',
           isVisibleBinding: 'Smartgraphs.pageNavController.nextShouldBeVisible'
         })//,

@@ -122,9 +122,9 @@ Smartgraphs.mockResponses["/backend/commands"] =
   },
   {
     "url": "/backend/command/8/goto-step",
-    "name": "openActivityStep",
+    "name": "gotoStep",
     "description": "Open a new activity step.",
-    "actionName": "openActivityStep",
+    "actionName": "gotoStep",
     "literalArgs": {
       
     },

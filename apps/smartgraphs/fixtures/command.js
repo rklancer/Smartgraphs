@@ -118,11 +118,11 @@ Smartgraphs.Command.FIXTURES = [
   // { url: 
   //     '/backend/command/8/goto-step',
   //   name: 
-  //     'openActivityStep',
+  //     'gotoStep',
   //   description:
   //     'Open a new activity step.',
   //   actionName:
-  //     'openActivityStep',
+  //     'gotoStep',
   //   literalArgs: 
   //     {},
   //   substitutedArgs:
