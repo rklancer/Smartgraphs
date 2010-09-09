@@ -154,7 +154,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     Smartgraphs.sendAction('createAnnotation', this, { 
       pane: args.pane, 
       annotationName: args.annotationName,
-      annotationType: Smartgraphs.TraceAnnotation
+      annotationType: Smartgraphs.FreehandSketch
     });
 
     var controller = this._graphControllerFor(args.pane);

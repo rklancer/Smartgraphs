@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.TraceAnnotationView
+// Project:   Smartgraphs.FreehandSketchView
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -11,8 +11,8 @@
 
   @extends SC.View
 */
-Smartgraphs.TraceAnnotationView = RaphaelViews.RaphaelView.extend(
-/** @scope Smartgraphs.TraceAnnotationView.prototype */ {
+Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
+/** @scope Smartgraphs.FreehandSketchView.prototype */ {
   
   stroke: '#000000',
   strokeWidth: 2,
@@ -25,8 +25,8 @@ Smartgraphs.TraceAnnotationView = RaphaelViews.RaphaelView.extend(
 
   render: function (context, firstTime) {
     var graphView = this.getPath('parentView.parentView');
-    var trace = this.get('item');
-    var points = (trace ? trace.get('points') : null) || [{x: 0, y: 0}];
+    var sketch = this.get('item');
+    var points = (sketch ? sketch.get('points') : null) || [{x: 0, y: 0}];
     
     var str = [];
     var point, coords;

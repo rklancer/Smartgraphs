@@ -72,7 +72,7 @@ Smartgraphs.Graph.FIXTURES = [
     initialSeries: 
       ['sensor'],
     initialAnnotations: [
-      { type: 'Smartgraphs.TraceAnnotation', name: 'prediction-away' }
+      { type: 'Smartgraphs.FreehandSketch', name: 'prediction-away' }
     ]
   }
 ];
