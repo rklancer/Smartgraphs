@@ -28,7 +28,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
         this.invokeOnce(this._updateChildViews);
     }.observes('fieldTypes'),
 
-	// TODO: DRY/refactor this function and also address how fieldChoiceLists should really be collected
+    // TODO: DRY/refactor this function
     _updateChildViews: function() {
         this.get('childViews').invoke('destroy');
         var fieldTypes = this.get('fieldTypes');
@@ -44,10 +44,11 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
         fieldTypesLength = fieldTypes.get('length'); i < fieldTypesLength; i++) {
             fieldType = fieldTypes.objectAt(i);
             value = values.objectAt(i);
+            fieldChoiceList = fieldChoiceLists.objectAt(i);
 
             if (fieldType === 'textarea') {
                 isTextArea = YES;
-                hint = 'Enter you answer here...';
+                hint = 'Enter your answer here...';
                 layout = {
                     height: 97
                 };
@@ -60,10 +61,10 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
             } else if (fieldType === 'multiplechoice') {
                 isTextArea = NO;
                 layout = {
-                    height: 200,
+                    height: 100,
                     width: 400
                 };
-				prompt = this.get('prompt');
+                prompt = this.get('prompt');
             } else {
                 throw "ResponseTemplateView received unexpected field type string '" + fieldType + "'.";
             }
@@ -78,11 +79,10 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
                     childViews: [Smartgraphs.MultipleChoiceQuestionView.design({
                         classNames: 'question2View',
                         prompt: prompt,
-                        choices: fieldChoiceLists,
-						index: i,
+                        choices: fieldChoiceList,
+                        index: i,
                         // value: value,
                         // isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
-
                         valueDidChange: function() {
                             var values = this.getPath('parentView.parentView.values');
                             values.replace(this.get('index'), 1, this.get('value'));
