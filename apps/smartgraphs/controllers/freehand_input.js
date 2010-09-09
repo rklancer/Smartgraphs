@@ -70,7 +70,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   },
   
   startAt: function (x, y) {
-    this._sketch.set('points', []);
+    this._sketch.set('points', [{x: x, y: y}]);
   },
   
   continueAt: function (x, y) {
