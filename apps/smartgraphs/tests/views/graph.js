@@ -3,19 +3,13 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd */
 
 var pane;
 var view;
 var canvasView;
 var oldStore;
 var origHeight;
-
-// round to the nearest 0.001
-function rnd(x) {
-  return (Math.round(x*1000)/1000);
-}
-
 
 function addPoint(series, x, y) {    
   SC.RunLoop.begin();
