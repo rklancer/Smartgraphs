@@ -2,7 +2,7 @@
 // Project:   Cc.QuestionView
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
-/*globals CC */
+/*globals Smartgraphs */
 
 /** @class
 

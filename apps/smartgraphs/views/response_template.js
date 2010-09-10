@@ -77,22 +77,21 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
                     classNames: 'text-field-view-wrapper'.w(),
 
                     childViews: [Smartgraphs.MultipleChoiceQuestionView.design({
-                        classNames: 'question2View',
+                        classNames: 'question2View'.w(),
                         prompt: prompt,
                         choices: fieldChoiceList,
                         index: i,
-                        // value: value,
-                        // isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
+                        value: value,
                         valueDidChange: function() {
                             var values = this.getPath('parentView.parentView.values');
+                            console.log("old values:", values);
                             values.replace(this.get('index'), 1, this.get('value'));
+                            console.log("NEW values:", values);
                         }.observes('value')
                     })]
                 });
                 view = multipleChoiceQuestionWrapperDesign.create();
-                if (i === 0) {
-                    this._firstInputFieldView = view.get('childViews').objectAt(0);
-                }
+                view.childViews[0].inputView.set('value', value); // Make sure initial value is rendered
                 this.appendChild(view);
             } else {
                 // note that SC.TextFieldViews don't display properly at all if they have useStaticLayout: YES
