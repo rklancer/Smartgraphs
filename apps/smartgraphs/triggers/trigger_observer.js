@@ -6,9 +6,9 @@
 /*globals Smartgraphs */
 
 // Base TriggerObserver class. Subclasses can implement custom trigger behavior by implementing registerObservers.
-// registerObservers should either just add eventWasObserved as an observer to the property they are interested in,
+// registerObservers should either just add fire() as an observer to the property they are interested in,
 // or, if the custom trigger needs to examine the observed properties before firing, registerObservers should
-// register some custom method or methods as observer(s), and call eventWasObserved if the trigger criteria are met.
+// register some custom method or methods as observer(s), and call fire() if the trigger criteria are met.
 
 Smartgraphs.TriggerObserver = SC.Object.extend({
   isRegistered: NO,
@@ -26,7 +26,7 @@ Smartgraphs.TriggerObserver = SC.Object.extend({
     if (this.unregisterObservers) this.unregisterObservers();    
   },
   
-  eventWasObserved: function () {
+  fire: function () {
     if (this.get('isRegistered')) {
       Smartgraphs.activityStepController.executeCommands(this.get('commands'));
     }

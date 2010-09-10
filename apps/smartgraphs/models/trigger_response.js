@@ -17,10 +17,7 @@
   ActivitySteps can define 'triggers' which configure various Observer classes defined in triggers/<trigger_name>.js
   in order to receive notification when a particular property meets some threshold value.
   
-  Alternatively, various Activity commands (sendActivityEvent, compareAndSendEvent?) can be used to trigger events which 
-  run code. (For example, the standard template for a 'check answer' type scenario would define event responses
-  that listen for the 'check answer' button to be clicked, then would run an inspector method to check the answer,
-  and then would compareAndSendEvent to either send 'correctAnswerReceived' or 'incorrectAnswerReceived') 
+  Alternatively, various Activity commands (e.g., 'fireTrigger') can be used to trigger events which then run code.
 
   @extends SC.Record
   @version 0.1

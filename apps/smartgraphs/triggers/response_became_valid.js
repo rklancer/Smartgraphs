@@ -28,16 +28,16 @@ Smartgraphs.triggers.responseBecameValid = Smartgraphs.TriggerObserver.create({
     var valueIsValid = !!(value && value.strip().length > 0);
 
     if (valueIsValid && !this._valueWasValid) {
-      Smartgraphs.sendAction('fireActivityEvent', this, { eventName: 'responseBecameValid' });
+      Smartgraphs.sendAction('fireTrigger', this, { triggerName: 'responseBecameValid' });
     }
     else if (this._valueWasValid && !valueIsValid) {
-      Smartgraphs.sendAction('fireActivityEvent', this, { eventName: 'responseBecameInvalid' });
+      Smartgraphs.sendAction('fireTrigger', this, { triggerName: 'responseBecameInvalid' });
     }
     
     this._valueWasValid = valueIsValid;
   },
   
-  eventWasObserved: function () {
+  fire: function () {
     Smartgraphs.sendAction('enableSubmission');
     sc_super(); 
   }
