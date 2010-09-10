@@ -5,8 +5,7 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-// This is a place to hold the activityView until it's appended to the document (which happens automatically when we
-// enter the ACTIVITY_START state.
+// This is a place to hold the activityView until it's appended to the document
 
 Smartgraphs.activityPage = SC.Page.design({
 

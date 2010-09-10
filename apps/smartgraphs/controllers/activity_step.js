@@ -19,7 +19,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   submitButtonShouldBeEnabled: NO,
   
   /**
-    Initializes the ActivityStep. Called when we enter ACTIVITY_STEP_START state.
+    Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.
   */
   begin: function () {
     this.registerTriggerResponses();
@@ -27,7 +27,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   /**
-    Cleans up the ActivityStep. Called when we enter ACTIVITY_STEP_DONE state.
+    Cleans up the ActivityStep. Called when we leave the ACTIVITY_STEP_DONE state.
   */
   finish: function () {
     Smartgraphs.sendAction('fireActivityEvent', this, {eventName: 'stepFinished'});

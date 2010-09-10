@@ -36,7 +36,8 @@ Smartgraphs.ACTIVITY_LOADING_PAGE = SC.Responder.create(Smartgraphs.ResourceLoad
   },
   
   resourcesDidLoad: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_START);
+    Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_STEP);
   }
   
   // ..........................................................

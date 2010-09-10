@@ -44,7 +44,17 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   },
   
   resourcesDidLoad: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_START);
+    Smartgraphs.sessionController.newSession();
+
+    var pages = Smartgraphs.activityController.get('pages');
+    Smartgraphs.activityPagesController.set('content', pages);
+
+    if (pages.get('length') > 0) {
+      Smartgraphs.activityPagesController.selectFirstPage();
+    }
+    
+    Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection'));    
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_PAGE);
   },
 
   resourceLoadingError: function () {

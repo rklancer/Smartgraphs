@@ -37,7 +37,7 @@ Smartgraphs.ACTIVITY_LOADING_STEP = SC.Responder.create(Smartgraphs.ResourceLoad
   },
   
   resourcesDidLoad: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_START);
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   },
   
   resourceLoadingError: function () {
