@@ -40,7 +40,7 @@ Smartgraphs.ACTIVITY_STEP_DONE = SC.Responder.create(
   gotoStep: function (context, args) {
     var step = Smartgraphs.store.find(Smartgraphs.ActivityStep, args.stepId);
     Smartgraphs.activityStepController.set('content', step);
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_STEP);    
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_LOADING);    
     return YES;
   }
   

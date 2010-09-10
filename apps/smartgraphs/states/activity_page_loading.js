@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.ACTIVITY_LOADING_PAGE
+// Project:   Smartgraphs.ACTIVITY_PAGE_LOADING
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -14,8 +14,8 @@
 sc_require('states/activity');
 sc_require('states/mixins/resource_loader');
 
-Smartgraphs.ACTIVITY_LOADING_PAGE = SC.Responder.create(Smartgraphs.ResourceLoader,
-/** @scope Smartgraphs.ACTIVITY_LOADING_PAGE.prototype */ {
+Smartgraphs.ACTIVITY_PAGE_LOADING = SC.Responder.create(Smartgraphs.ResourceLoader,
+/** @scope Smartgraphs.ACTIVITY_PAGE_LOADING.prototype */ {
   
   nextResponder: Smartgraphs.ACTIVITY,
   
@@ -37,7 +37,7 @@ Smartgraphs.ACTIVITY_LOADING_PAGE = SC.Responder.create(Smartgraphs.ResourceLoad
   
   resourcesDidLoad: function () {
     Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_STEP);
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_LOADING);
   }
   
   // ..........................................................

@@ -41,7 +41,7 @@ Smartgraphs.ACTIVITY_PAGE_DONE = SC.Responder.create(
   gotoNextPage: function () {
     Smartgraphs.activityPagesController.selectNextPage();
     Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection'));
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_LOADING_PAGE);
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
   }
   
 }) ;

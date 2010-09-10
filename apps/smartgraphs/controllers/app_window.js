@@ -27,7 +27,7 @@ Smartgraphs.appWindowController = SC.ObjectController.create(
     this.set('loadingMessage', Smartgraphs.activityPage.getPath('activityView.loadingMessage'));
   },
   
-  showActivityLoadingErrorView: function () {
+  showErrorLoadingActivityView: function () {
     // show the particular error view associated with a activity-loading error
     this.set('nowShowing', 'Smartgraphs.activityPage.errorLoadingActivityView');
   }

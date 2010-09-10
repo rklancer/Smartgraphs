@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.ACTIVITY_LOADING_STEP
+// Project:   Smartgraphs.ACTIVITY_STEP_LOADING
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -14,8 +14,8 @@
 sc_require('states/activity');
 sc_require('states/mixins/resource_loader');
 
-Smartgraphs.ACTIVITY_LOADING_STEP = SC.Responder.create(Smartgraphs.ResourceLoader,
-/** @scope Smartgraphs.ACTIVITY_LOADING_STEP.prototype */ {
+Smartgraphs.ACTIVITY_STEP_LOADING = SC.Responder.create(Smartgraphs.ResourceLoader,
+/** @scope Smartgraphs.ACTIVITY_STEP_LOADING.prototype */ {
   
   nextResponder: Smartgraphs.ACTIVITY,
   

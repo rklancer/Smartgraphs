@@ -16,12 +16,12 @@
 sc_require('states/ready');
 
 Smartgraphs.ERROR_LOADING_ACTIVITY = SC.Responder.create(
-/** @scope Smartgraphs.LOADING_ACTIVITY.prototype */ {
+/** @scope Smartgraphs.ERROR_LOADING_ACTIVITY.prototype */ {
 
   nextResponder: Smartgraphs.READY,
 
   didBecomeFirstResponder: function() {    
-    Smartgraphs.appWindowController.showActivityLoadingErrorView();
+    Smartgraphs.appWindowController.showErrorLoadingActivityView();
   }
   
   // ..........................................................
