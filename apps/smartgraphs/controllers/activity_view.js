@@ -100,13 +100,6 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return NO;
   },
   
-  // for graphViewController
-  createSeriesView: function (series) {    
-  },
-  
-  removeSeriesView: function (series) {
-  },
-  
   clear: function () {
     if (!this.hidePane()) {
       this.hidePane('top');
