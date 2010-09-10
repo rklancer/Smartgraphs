@@ -181,7 +181,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   startFreehandInput: function () {
     this._routeEvents = YES;
-    this._eventQueue = this.get('eventQueue');
+    this._eventQueue = [];
+    this.set('eventQueue', this._eventQueue);
   },
   
   endFreehandInput: function () {   
