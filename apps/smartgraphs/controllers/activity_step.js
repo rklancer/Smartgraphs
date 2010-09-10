@@ -98,7 +98,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   configureInputValidator: function (args) {
     var registered = Smartgraphs.activityStepController.get('registeredTriggers');
     var trigger;
-
+    
+    // FIXME this ain't gonna work! (registeredTriggers = list of Trigger objects)
     if (registered.lastIndexOf('responseBecameValid') < 0) {
       trigger = Smartgraphs.triggers['responseBecameValid'];
       trigger.register(args, []);
