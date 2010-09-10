@@ -32,7 +32,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/1/steps"] =
     ],
     "submitButtonShouldBeVisible": false,
     "submitButtonTitle": "",
-    "isLastStep": true,
     "triggerResponseListUrl": "/backend/activity/1/page/1/step/1/trigger_responses",
     "commandListUrl": "/backend/activity/1/page/1/step/1/commands"
   }
@@ -55,7 +54,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/2/steps"] =
     ],
     "submitButtonShouldBeVisible": true,
     "submitButtonTitle": "Done",
-    "isLastStep": false,
     "triggerResponseListUrl": "/backend/activity/1/page/2/step/1/trigger_responses",
     "commandListUrl": "/backend/activity/1/page/2/step/1/commands"
   },
@@ -73,7 +71,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/2/steps"] =
     ],
     "submitButtonShouldBeVisible": true,
     "submitButtonTitle": "Done",
-    "isLastStep": true,
     "triggerResponseListUrl": "/backend/activity/1/page/2/step/2/trigger_responses",
     "commandListUrl": "/backend/activity/1/page/2/step/2/commands"
   }
@@ -96,7 +93,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/steps"] =
     ],
     "submitButtonShouldBeVisible": true,
     "submitButtonTitle": "Done",
-    "isLastStep": false,
     "triggerResponseListUrl": "/backend/activity/1/page/3/step/1/trigger_responses",
     "commandListUrl": "/backend/activity/1/page/3/step/1/commands"
   },
@@ -114,7 +110,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/steps"] =
     ],
     "submitButtonShouldBeVisible": true,
     "submitButtonTitle": "Submit My Answer",
-    "isLastStep": true,
     "triggerResponseListUrl": "/backend/activity/1/page/3/step/2/trigger_responses",
     "commandListUrl": "/backend/activity/1/page/3/step/2/commands"
   }
@@ -136,7 +131,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/4/steps"] =
     ],
     "submitButtonShouldBeVisible": false,
     "submitButtonTitle": "",
-    "isLastStep": true,
     "triggerResponseListUrl": "/backend/activity/1/page/4/step/1/trigger_responses",
     "commandListUrl": "/backend/activity/1/page/4/step/1/commands"
   }
@@ -160,7 +154,6 @@ Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
   ],
   "submitButtonShouldBeVisible": false,
   "submitButtonTitle": "",
-  "isLastStep": true,
   "triggerResponseListUrl": "/backend/activity/2/page/1/step/1/trigger_responses",
   "commandListUrl": "/backend/activity/2/page/1/step/1/commands"
 };

@@ -72,11 +72,6 @@ Smartgraphs.ActivityStep = SC.Record.extend(
 
   // stuff from DialogTurn that might be usefully translated to the new models:
     
-  /**
-    if YES, the Activity should move into the ACTIVITY_PAGE_DONE state when we conclude this step.
-  */
-  isLastStep: SC.Record.attr(Boolean),
-  
   submitButtonShouldBeVisible: SC.Record.attr(Boolean),
   
   submitButtonTitle: SC.Record.attr(String),
