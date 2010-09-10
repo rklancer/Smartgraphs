@@ -16,7 +16,7 @@ Smartgraphs.TriggerResponse.FIXTURES = [
   //   commands: [
   //     '/backend/activity/1/page/1/step/1/response/1/command/1/single-pane', 
   //     '/backend/activity/1/page/1/step/1/response/1/command/2/show-image',
-  //     '/backend/activity/1/page/1/step/1/response/1/command/3/finish-step'
+  //     '/backend/activity/1/page/1/step/1/response/1/command/3/submit-step'
   //   ]
   // },
   // 

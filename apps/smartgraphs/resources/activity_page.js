@@ -92,7 +92,7 @@ Smartgraphs.activityPage = SC.Page.design({
                 titleBinding: 'Smartgraphs.activityStepController.submitButtonTitle',
                 isVisibleBinding: 'Smartgraphs.activityStepController.submitButtonShouldBeVisible',
                 isEnabledBinding: 'Smartgraphs.activityStepController.submitButtonShouldBeEnabled',
-                action: 'finishActivityStep'
+                action: 'submitStep'
               })
             })
           })

@@ -86,13 +86,13 @@ Smartgraphs.Command.FIXTURES = [
   // 
   // 
   // { url: 
-  //     '/backend/command/6/finish-step',
+  //     '/backend/command/6/submit-step',
   //   name: 
-  //     'finishActivityStep',
+  //     'submitStep',
   //   description:
   //     'Finishes this Activity step.',
   //   actionName:
-  //     'finishActivityStep',
+  //     'submitStep',
   //   literalArgs: 
   //     {},
   //   substitutedArgs:

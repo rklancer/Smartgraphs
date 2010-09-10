@@ -41,9 +41,9 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   // 
   // 
   // { url: 
-  //     '/backend/activity/1/page/1/step/1/response/1/command/3/finish-step',
+  //     '/backend/activity/1/page/1/step/1/response/1/command/3/submit-step',
   //   command:
-  //     '/backend/command/6/finish-step',
+  //     '/backend/command/6/submit-step',
   //   triggerResponse:
   //     '/backend/activity/1/page/1/step/1/response/1/step-beginning',
   //   index:

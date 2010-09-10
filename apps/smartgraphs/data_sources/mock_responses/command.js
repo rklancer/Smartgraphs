@@ -97,10 +97,10 @@ Smartgraphs.mockResponses["/backend/commands"] =
     }
   },
   {
-    "url": "/backend/command/6/finish-step",
-    "name": "finishActivityStep",
+    "url": "/backend/command/6/submit-step",
+    "name": "submitStep",
     "description": "Finishes this Activity step.",
-    "actionName": "finishActivityStep",
+    "actionName": "submitStep",
     "literalArgs": {
       
     },
