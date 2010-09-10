@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.ACTIVITY_STEP_DONE
+// Project:   Smartgraphs.ACTIVITY_STEP_SUBMITTED
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -13,17 +13,18 @@
 
 sc_require('states/activity');
 
-Smartgraphs.ACTIVITY_STEP_DONE = SC.Responder.create(
-/** @scope Smartgraphs.ACTIVITY_STEP_DONE.prototype */ {
+Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
+/** @scope Smartgraphs.ACTIVITY_STEP_SUBMITTED.prototype */ {
 
   nextResponder: Smartgraphs.ACTIVITY,
   
   didBecomeFirstResponder: function () {
     var oldStep = Smartgraphs.activityStepController.get('content');
 
-    Smartgraphs.activityStepController.finish();
+    Smartgraphs.activityStepController.handleSubmission();
 
     var newStep = Smartgraphs.activityStepController.get('content');
+    // if we didn't change steps after submission completed, then there must be no more steps for this page.
     if (newStep === oldStep) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_DONE);
     }

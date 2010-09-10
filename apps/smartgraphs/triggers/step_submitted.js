@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.stepFinished
+// Project:   Smartgraphs.stepSubmitted
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -7,6 +7,6 @@
 
 sc_require('triggers/trigger_observer');
 
-Smartgraphs.triggers.stepFinished = Smartgraphs.TriggerObserver.create({
+Smartgraphs.triggers.stepSubmitted = Smartgraphs.TriggerObserver.create({
 
 });

@@ -111,7 +111,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   //   command:
   //     '/backend/command/8/goto-step',
   //   triggerResponse:
-  //     '/backend/activity/1/page/2/step/1/response/2/step-finished',
+  //     '/backend/activity/1/page/2/step/1/response/2/step-submitted',
   //   index:
   //     1,
   //   literalArgs: {
@@ -228,7 +228,7 @@ Smartgraphs.CommandInvocation.FIXTURES = [
   //   command:
   //     '/backend/command/8/goto-step',
   //   triggerResponse:
-  //     '/backend/activity/1/page/3/step/1/response/2/step-finished',
+  //     '/backend/activity/1/page/3/step/1/response/2/step-submitted',
   //   index:
   //     1,
   //   literalArgs: {

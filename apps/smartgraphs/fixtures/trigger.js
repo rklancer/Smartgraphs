@@ -20,21 +20,11 @@ Smartgraphs.Trigger.FIXTURES = [
   // },
   // 
   // 
-  // { url:
-  //     '/backend/trigger/2/response-submitted',
-  //   name:
-  //     'responseSubmitted',
-  //   description:
-  //     'This is the list of commands that check the answer.',
-  //   args:
-  //     {}
-  // },
-  // 
   // 
   // { url:
-  //     '/backend/trigger/3/step-finished',
+  //     '/backend/trigger/2/step-submitted',
   //   name:
-  //     'stepFinished',
+  //     'stepSubmitted',
   //   description:
   //     'This is the list of commands that run when the activity step finishes.',
   //   args:

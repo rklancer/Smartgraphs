@@ -44,8 +44,8 @@ Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1/trigger_responses"]
     ]
   },
   {
-    "url": "/backend/activity/1/page/2/step/1/response/2/step-finished",
-    "trigger": "/backend/trigger/3/step-finished",
+    "url": "/backend/activity/1/page/2/step/1/response/2/step-submitted",
+    "trigger": "/backend/trigger/2/step-submitted",
     "step": "/backend/activity/1/page/2/step/1",
     "args": {
 
@@ -89,8 +89,8 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1/trigger_responses"]
     ]
   },
   {
-    "url": "/backend/activity/1/page/3/step/1/response/2/step-finished",
-    "trigger": "/backend/trigger/3/step-finished",
+    "url": "/backend/activity/1/page/3/step/1/response/2/step-submitted",
+    "trigger": "/backend/trigger/2/step-submitted",
     "step": "/backend/activity/1/page/3/step/1",
     "args": {
 

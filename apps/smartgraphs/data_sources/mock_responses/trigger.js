@@ -21,16 +21,8 @@ Smartgraphs.mockResponses["/backend/triggers"] =
     }
   },
   {
-    "url": "/backend/trigger/2/response-submitted",
-    "name": "responseSubmitted",
-    "description": "This is the list of commands that check the answer.",
-    "args": {
-
-    }
-  },
-  {
-    "url": "/backend/trigger/3/step-finished",
-    "name": "stepFinished",
+    "url": "/backend/trigger/2/step-submitted",
+    "name": "stepSubmitted",
     "description": "This is the list of commands that run when the activity step finishes.",
     "args": {
 

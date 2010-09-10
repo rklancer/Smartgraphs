@@ -96,7 +96,7 @@ Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1/commands"] =
   {
     "url": "/backend/activity/1/page/2/step/1/response/2/command/1/goto-step-2",
     "command": "/backend/command/8/goto-step",
-    "triggerResponse": "/backend/activity/1/page/2/step/1/response/2/step-finished",
+    "triggerResponse": "/backend/activity/1/page/2/step/1/response/2/step-submitted",
     "index": 1,
     "literalArgs": {
       "stepId": "/backend/activity/1/page/2/step/2"
@@ -194,7 +194,7 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1/commands"] =
   {
     "url": "/backend/activity/1/page/3/step/1/response/2/command/1/goto-step-2",
     "command": "/backend/command/8/goto-step",
-    "triggerResponse": "/backend/activity/1/page/3/step/1/response/2/step-finished",
+    "triggerResponse": "/backend/activity/1/page/3/step/1/response/2/step-submitted",
     "index": 1,
     "literalArgs": {
       "stepId": "/backend/activity/1/page/3/step/2"

@@ -29,18 +29,18 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   /**
     Called when the user clicks the 'done' or 'submit' button associated with this step.
 
-    When this method is called, the commands in the 'stepFinished' triggerResponse (if there is one) are executed.
+    When this method is called, the commands in the 'stepSubmitted' triggerResponse (if there is one) are executed.
         
-    Generally this happens in concert with a transition to ACTIVITY_STEP_DONE. Any 'goto (next) step' commands,
+    Generally this happens in concert with a transition to ACTIVITY_STEP_SUBMITTED. Any 'goto (next) step' commands,
     or any branching to other steps based on the user-submitted response ('answer checking') should be done 
-    here, which is to say, in the stepFinished block. Step transitions are only allowed during ACTIVITY_STEP_DONE.
+    here, which is to say, in the stepSubmitted block. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
   */
-  finish: function () {
-    Smartgraphs.sendAction('fireTrigger', this, { triggerName: 'stepFinished' });
+  handleSubmission: function () {
+    Smartgraphs.sendAction('fireTrigger', this, { triggerName: 'stepSubmitted' });
   },
   
   /**
-    Clean up any stale controller state. Called when we leave ACTIVITY_STEP_DONE and/or ACTIVITY itself
+    Clean up any stale controller state. Called when we leave ACTIVITY_STEP_SUBMITTED and/or ACTIVITY itself
   */  
   cleanup: function () {
     this.unregisterOldTriggers();

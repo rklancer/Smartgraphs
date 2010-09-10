@@ -50,7 +50,7 @@ Smartgraphs.mockResponses["/backend/activity/1/page/2/steps"] =
     ],
     "triggerResponses": [
       "/backend/activity/1/page/2/step/1/response/1/step-beginning",
-      "/backend/activity/1/page/2/step/1/response/2/step-finished"
+      "/backend/activity/1/page/2/step/1/response/2/step-submitted"
     ],
     "submitButtonShouldBeVisible": true,
     "submitButtonTitle": "Done",
@@ -89,7 +89,7 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/steps"] =
     ],
     "triggerResponses": [
       "/backend/activity/1/page/3/step/1/response/1/step-beginning",
-      "/backend/activity/1/page/3/step/1/response/2/step-finished"
+      "/backend/activity/1/page/3/step/1/response/2/step-submitted"
     ],
     "submitButtonShouldBeVisible": true,
     "submitButtonTitle": "Done",

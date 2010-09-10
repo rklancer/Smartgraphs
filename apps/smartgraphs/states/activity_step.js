@@ -51,7 +51,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   
   finishActivityStep: function () {
     if (this.get('submissionIsEnabled')) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_DONE);
+      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_SUBMITTED);
     }
     else {
       console.error('ACTIVITY_STEP received finishActivityStep action when submissionIsEnabled was NO');
