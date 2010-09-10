@@ -22,7 +22,8 @@ Smartgraphs.activityController = SC.ObjectController.create(
   
   /** Whatever needs to be done to clean up state when leaving an activity */
   cleanup: function () {
-    Smartgraphs.activityPageController.cleanup();     // for now, just this
+    Smartgraphs.activityPageController.cleanup();
+    Smartgraphs.activityStepController.cleanup();
   },
   
   // let buttons know.

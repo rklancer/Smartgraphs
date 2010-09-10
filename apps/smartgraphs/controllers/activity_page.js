@@ -24,7 +24,5 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
     Smartgraphs.firstGraphController.clear();
     Smartgraphs.secondGraphController.clear();
     Smartgraphs.activityViewController.clear();
-    
-    Smartgraphs.activityStepController.cleanup();
   }
 }) ;
