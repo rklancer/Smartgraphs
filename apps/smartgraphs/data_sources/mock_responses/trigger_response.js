@@ -83,7 +83,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1/trigger_responses"]
     },
     "commands": [
       "/backend/activity/1/page/3/step/1/response/1/command/1/show-graph",
-      "/backend/activity/1/page/3/step/1/response/1/command/2/hide-pane",
       "/backend/activity/1/page/3/step/1/response/1/command/3/enable-submission",
       "/backend/activity/1/page/3/step/1/response/1/command/4/start-sensor"
     ]
@@ -126,7 +125,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1/trigger_responses"]
 
     },
     "commands": [
-      "/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane",
       "/backend/activity/1/page/4/step/1/response/1/command/2/show-graph"
     ]
   }

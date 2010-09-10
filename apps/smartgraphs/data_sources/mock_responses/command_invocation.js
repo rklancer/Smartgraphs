@@ -155,18 +155,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1/commands"] =
     }
   },
   {
-    "url": "/backend/activity/1/page/3/step/1/response/1/command/2/hide-pane",
-    "command": "/backend/command/10/hide-pane",
-    "triggerResponse": "/backend/activity/1/page/3/step/1/response/1/step-beginning",
-    "index": 2,
-    "literalArgs": {
-      "pane": "bottom"
-    },
-    "substitutedArgs": {
-
-    }
-  },
-  {
     "url": "/backend/activity/1/page/3/step/1/response/1/command/3/enable-submission",
     "command": "/backend/command/5/enable-submission",
     "triggerResponse": "/backend/activity/1/page/3/step/1/response/1/step-beginning",
@@ -223,18 +211,6 @@ Smartgraphs.mockResponses["/backend/activity/1/page/3/step/2/commands"] =
 
 Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1/commands"] =
 [
-  {
-    "url": "/backend/activity/1/page/4/step/1/response/1/command/1/hide-pane",
-    "command": "/backend/command/10/hide-pane",
-    "triggerResponse": "/backend/activity/1/page/4/step/1/response/1/step-beginning",
-    "index": 1,
-    "literalArgs": {
-      "pane": "bottom"
-    },
-    "substitutedArgs": {
-
-    }
-  },
   {
     "url": "/backend/activity/1/page/4/step/1/response/1/command/2/show-graph",
     "command": "/backend/command/4/show-graph",
