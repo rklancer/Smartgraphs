@@ -85,7 +85,24 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     here. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
   */
   handleSubmission: function () {
+    var inspector = this.makeInspector('submissibilityInspector');
+    var value = inspector.inspect();
     
+    var step, steps = this.get('nextSteps');
+    
+    for (var i = 0, ii = steps.get('length'); i < ii; i++) {
+      step = steps.objectAt(i);
+      if (Smartgraphs.evaluate(step.get('responseCriterion'))) {
+        Smartgraphs.sendAction('gotoStep', this, { step: step.get('step') });
+        return;
+      }
+    }
+    
+    var defaultNextStep = this.get('defaultNextStep');
+    
+    if (defaultNextStep) {
+      Smartgraphs.sendAction('gotoStep', this, { step: defaultNextStep });
+    }
   },
   
   /**
@@ -99,7 +116,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     this.set('submissibilityInspectorInstance', null);
     inspector.destroy();
   },
-  
   
   makeInspector: function (inspectorProperty) {
     var inspectorInfo = this.get(inspectorProperty);
