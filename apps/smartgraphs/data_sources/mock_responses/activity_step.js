@@ -14,10 +14,10 @@ var step, steps = [];
 step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] = 
 {
   "url": "/backend/activity/new-step/page/1/step/1",
-  "activityPage": "/backend/activity/new-step/pages",
+  "activityPage": "/backend/activity/new-step/page/1",
   "initialPaneConfig": 'single',
   "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/1/prediction-away",
+  "topGraph": null,
   "bottomGraph": null,
   "singleImage": sc_static("resources/arrow.jpg"),
   "topImage": null,
@@ -41,8 +41,15 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
   },
   "triggeredCommands": [
   ],
-  "responseInspector": null,
+  "responseInspector": {
+    "type": "Smartgraphs.ResponseFieldsInspector",
+    "config": {
+      "fieldIndex": 0
+    }
+  },
   "nextSteps": [
+    "/backend/activity/new-step/page/1/step/1/next/1", 
+    "/backend/activity/new-step/page/1/step/1/next/2"
   ],
   "defaultNextStep": null,
   "isFinalStep": false,
@@ -52,6 +59,73 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
 };
 steps.push(step);
 
+
+step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/2"] = 
+{
+  "url": "/backend/activity/new-step/page/1/step/2",
+  "activityPage": "/backend/activity/new-step/page/1",
+  "initialPaneConfig": 'single',
+  "singleGraph": "/backend/activity/1/graph/1/prediction-away",
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": "<p>Enjoy the single pane on the right!<p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "nextSteps": [
+  ],
+  "defaultNextStep": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "I saw it!"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/3"] = 
+{
+  "url": "/backend/activity/new-step/page/1/step/3",
+  "activityPage": "/backend/activity/new-step/page/1",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/1/graph/1/prediction-away",
+  "bottomGraph": "/backend/activity/1/graph/1/prediction-toward",
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": "<p>Enjoy the split pane on the right!<p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "nextSteps": [
+  ],
+  "defaultNextStep": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "I saw it!"
+};
+steps.push(step);
 
 Smartgraphs.mockResponses["/backend/activity/new-step/page/1/steps"] = steps;
 

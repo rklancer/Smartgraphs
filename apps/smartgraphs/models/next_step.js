@@ -15,6 +15,9 @@
 Smartgraphs.NextStep = SC.Record.extend(
 /** @scope Smartgraphs.NextStep.prototype */ {
 
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
   /**
     The parent step whose response we are evaluating
   */

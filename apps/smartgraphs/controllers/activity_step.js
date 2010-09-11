@@ -85,16 +85,19 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     here. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
   */
   handleSubmission: function () {
-    var inspector = this.makeInspector('submissibilityInspector');
-    var value = inspector.inspect();
+    var inspector = this.makeInspector('responseInspector');
+
+    if (inspector) {
+      var value = inspector.inspect();
     
-    var step, steps = this.get('nextSteps');
+      var step, steps = this.get('nextSteps');
     
-    for (var i = 0, ii = steps.get('length'); i < ii; i++) {
-      step = steps.objectAt(i);
-      if (Smartgraphs.evaluate(step.get('responseCriterion'))) {
-        Smartgraphs.sendAction('gotoStep', this, { step: step.get('step') });
-        return;
+      for (var i = 0, ii = steps.get('length'); i < ii; i++) {
+        step = steps.objectAt(i);
+        if (Smartgraphs.evaluate(step.get('responseCriterion'), value)) {
+          Smartgraphs.sendAction('gotoStep', this, { stepId: step.getPath('step.id') });
+          return;
+        }
       }
     }
     
@@ -111,29 +114,27 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   cleanup: function () {
     console.log('cleaning up');
     var inspector = this.get('submissibilityInspectorInstance');
-    if (inspector) inspector.stopWatching();
-    
+    if (inspector) {
+      inspector.stopWatching();
+      inspector.destroy();
+    }
     this.set('submissibilityInspectorInstance', null);
-    inspector.destroy();
   },
   
   makeInspector: function (inspectorProperty) {
     var inspectorInfo = this.get(inspectorProperty);
     
     if (!inspectorInfo) {
-      console.error('makeInspector: no + "' + inspectorProperty +'" record.');
       return NO;
     }
     
     if (!inspectorInfo.type) {
-      console.error('makeInspector: no type given');
       return NO;
     }
     
     var klass = SC.objectForPropertyPath(inspectorInfo.type);
     
     if (!klass || klass.toString() !== inspectorInfo.type) {
-      console.error('makeInspector: type did not resolve to a class');
       return NO;
     }
     
@@ -146,6 +147,11 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   */
   setupSubmissibilityInspector: function (args) {
     var inspector = this.makeInspector('submissibilityInspector');
+    
+    if (!inspector) {
+      console.error('setupSubmissibilityInspector was called, but makeInspector could not make an inspector instance.');
+      return;
+    }
     
     this.set('submissibilityInspectorInstance', inspector);
     inspector.addObserver('value', this, this.checkSubmissibility);
