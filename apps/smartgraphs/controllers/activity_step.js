@@ -78,8 +78,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   
   /**
     Called when the user clicks the 'done' or 'submit' button associated with this step.
-
-    When this method is called, the commands in the 'stepSubmitted' triggerResponse (if there is one) are executed.
         
     Generally this happens in concert with a transition to ACTIVITY_STEP_SUBMITTED. Any 'goto (next) step' commands,
     or any branching to other steps based on the user-submitted response ('answer checking') should be done 
@@ -93,30 +91,41 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Clean up any stale controller state. Called when we leave ACTIVITY_STEP_SUBMITTED and/or ACTIVITY itself
   */  
   cleanup: function () {
-    this.unregisterOldTriggers();
+    var checker = this.get('submissibilityChecker');
+    if (checker) checker.stopWatching();
   },
-  
-  /** 
-    'Turns off' any triggers associated with this step, and tells them to remove any observers they may have placed on
-    objects in memory.
-  */
-  unregisterOldTriggers: function () {
-  },
-  
-  
-  /**
-    Registers observers on responseTemplate input, configure them with 'args'. Called by 'waitForResponse' command.
     
-    Note that if the activity already specifies a triggerResponse block for the responseBecameValid and/or
-    responseBecameInvalid triggers, any setup args for that trigger passed to this method will be ignored. In that
-    case the setup args will be taken from the triggerResponse record.
+  /**
   */
   setupSubmissibilityChecker: function (args) {
+    var checkerInfo = this.get('submissibilityChecker');
+    
+    if (!checkerInfo) {
+      console.error('setupSubmissibilityChecker: no submissibilityChecker record.');
+      return NO;
+    }
+    
+    if (!checkerInfo.inspectorClass) {
+      console.error('setupSubmissibilityChecker: no inspectorClass');
+      return NO;
+    }
+    
+    var klass = SC.objectForPropertyPath(checkerInfo.inspectorClass);
+    
+    if (!klass || klass.toString() !== checkerInfo.inspectorClass) {
+      console.error('setupSubmissibilityChecker: inspectorClass did not resolve to a class');
+      return NO;
+    }
+    
+    var checker = klass.create({
+      configuration: checkerInfo.configuration
+    });
+    
+    this.set('submissibilityChecker', checker);
+    checker.watch();
   },
   
   /**
-    Actually executes the list of commandInvocations in a triggerResponse block. This method is called by the
-    TriggerObserver of the corresponding trigger, when the trigger 'fires'.
   */
   executeCommands: function (invocations) {
     // var invocation, commandRecord, literalArgs, substitutedArgs, args, key;
@@ -142,15 +151,13 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     //   // ... and do the action
     //   Smartgraphs.sendAction(commandRecord.get('actionName'), this, args);
     // }
-  },
+  }
   
 
-  
-  
-  // return they context variable's value from the activityStep, activityPage, or activity context
-  lookup: function (key) {
-    var context = this.get('context');
-    return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.activityPageController.lookup(key));
-  }
+  // // return they context variable's value from the activityStep, activityPage, or activity context
+  // lookup: function (key) {
+  //   var context = this.get('context');
+  //   return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.activityPageController.lookup(key));
+  // }
   
 }) ;

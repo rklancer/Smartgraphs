@@ -30,9 +30,9 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityChecker": {
-    "inspectorClass": "ResponseFieldsInspector",
+    "inspectorClass": "Smartgraphs.ResponseFieldsInspector",
     "configuration": {
-      "fieldIndex": 1
+      "fieldIndex": 0
     }
   },
   "submissibilityCriterion": {
