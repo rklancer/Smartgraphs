@@ -1,25 +1,14 @@
 // ==========================================================================
-// Project:   Smartgraphs.ActivityStep
+// Project:   Smartgraphs.AltActivityStep
 // Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer <rpk@pobox.com>
+// @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  A ActivityStep represents a single step in a given activity page. Each Activity Page represents a recognizable 'chunk' of 
-  work to be done, or one general question a user is being asked. Actually doing the work, or answering the question, 
-  may take or may not take several steps.
-  
-  The point of breaking ActivityPages down into ActivitySteps is to allow ActivitySteps to provide progressively more hints to 
-  a learner, if they are needed, or to activity a user (author or learner) through several steps in a chunk of work, one
-  at a time.
-  
-  (This hierarchical structure -- one Activity contains many Activity Pages, each of which contains several Activity Steps -- 
-  seems to be generally useful.)
-  
-  I called these DialogTurns in an earlier version of Smartgraphs, but did not find that nomenclature congenial.
-  
+  (Document your Model here)
+
   @extends SC.Record
   @version 0.1
 */
@@ -34,12 +23,16 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   activityPage: SC.Record.toOne('Smartgraphs.ActivityPage', { inverse: 'steps', isMaster: YES }),
   
-  // /** 
-  //   The list of commands (and their arguments) to be run when this ActivityStep is loaded.
-  //   CommandInvocations represent the specific invocations of commands, to be executed in the order specified by 
-  //   the 'index' property.
-  // */
-  // commands: SC.Record.toMany('Smartgraphs.CommandInvocation'),
+  /**
+    Whether to show a split pane or single pane
+  */  
+  initialPaneConfig: SC.Record.toOne(String),
+  
+  firstGraph: SC.Record.toOne('Smartgraphs.Graph'),
+  secondGraph: SC.Record.toOne('Smartgraphs.Graph'),
+  
+  firstImage: SC.Record.attr(String),
+  secondImage: SC.Record.attr(String),
   
   /**
     Text to display *before* the response template
@@ -58,71 +51,94 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   afterText: SC.Record.attr(String),
 
   /** 
-    The set of trigger response blocks registered for this step.
+    The list of commands (and their arguments) to be run when this ActivityStep is loaded.
+    CommandInvocations represent the specific invocations of commands, to be executed in the order specified by 
+    the 'index' property.
   */
-  triggerResponses: SC.Record.toMany('Smartgraphs.TriggerResponse', { inverse: 'step' }),
+  startCommands: SC.Record.toMany('Smartgraphs.CommandInvocation', { orderBy: 'index' }),
   
-  // TODO this needs to migrate to session
+  
   /**
-    @private
-    variables local to this ActivityStep. This would include the values from the responseTemplate. These can be
-    copied to the page context after being examined by the 'check answer' code.
+    Whether to 'submit' (aka finish) automatically as soon as the startCommands execute, or whether to wait for
+    the user to click 'submit'/'done' button
   */
-  context: {},
+  shouldFinishImmediately: SC.Record.attr(Boolean),
+  
+  /**
+    Whether to turn submissibility off at the beginning of the step and wait for submissibility to become true
+    before allowing the user to click submit/done.
+    (The alternative is that the user can click 'done' without taking any prior step, as we might want if the step is
+    purely informative or if the users' action is optional.)
+  */
+  shouldWaitForSubmissibleResponse: SC.Record.attr(Boolean),
+  
+  /**
+    a hash that contains:
+      the class name of the Inspector that checks system state for submissibility
+      a config hash to be passed to the inspector when created
+  */
+  submissibilityChecker: SC.Record.attr(Object),
 
-  // stuff from DialogTurn that might be usefully translated to the new models:
+  /** 
+    JSON expression tree to be used to convert the Inspector's output to a YES or NO answer.
+  */
+  submissibilityCriterion: SC.Record.attr(Object),
+  
+  /**
+    A list of (systemInspector, triggerCriterion, onCommands, offCommands) sets
+      * the systemInspector is registered to observe the system state while the step is waiting and produce a
+        value whenever the relevant state changes
+      * the triggerCriterion turns the value into a boolean
+      * when the boolean goes from NO to YES, the onCommands are run
+      * when the boolean goes from YES to NO, the offCommands are run
+      
+      (Possible improvement: each systemInspector gets a *list* of (triggerCriterion, onCommand, offCommand) sets
+      
+      These can do things like run commands immediately when the student's graph acquires certain features
+  */
+  triggeredCommands: SC.Record.toMany('Smartgraphs.TriggeredCommands'),  
+  
+  /**
+    a hash that contains:
+      the class name of the Inspector that checks the user's submitted response, if any.
+      a config hash to be passed to the inspector when created
+  */
+  responseInspector: SC.Record.attr(Object),
+  
+  /**
+    An ordered list of responseCriterion -> ActivityStep pairs ('SmartgraphResponses')
     
-  submitButtonShouldBeVisible: SC.Record.attr(Boolean),
+    After response is submitted, each responseCriterion is evaluated in order. The system jumps to the
+    ActivityStep associated
+    
+    Think of an if-else chain.
+    
+    If no responseCriterion evaluates to YES, the defaultNextStep is jumped to, if it exists
+  */
+  nextSteps: SC.Record.toMany('Smartgraphs.NextStep', { orderBy: 'index' }),
   
-  submitButtonTitle: SC.Record.attr(String),
-  
-  // 
-  // // if YES and isLastTurn is YES, immediately go to the next page on reaching this dialog turn.
-  // // (the text of this dialog turn will be visible if the user hits 'back', however!)
-  // 
-  // shouldAutoAdvance: SC.Record.attr(Boolean),
-  // 
-  // wasVisited: NO,
+  defaultNextStep: SC.Record.toOne('Smartgraphs.ActivityStep'),
   
   /** 
-    server endpoint for finding triggerResponses associated with this step
+    If, after the step is finished/submitted, we don't jump to any new step *AND* isFinalStep === NO for this step,
+    we know there was an error.
   */
-  triggerResponseListUrl: SC.Record.attr(String),
+  isFinalStep: SC.Record.attr(Boolean),
   
   /**
-    server endpoint for finding commandInvocations associated with this step.
+    if we are the last step, whether to automatically skip to the next page when this step finishes.
   */
-  commandListUrl: SC.Record.attr(String),
+  shouldAutoAdvancePage: SC.Record.attr(Boolean),
+  
+  /**
+     Whether a submit/done button needs to be shown or not
+     Might be NO for steps that submit automatically when the student's responses acquires certain characteristics
+  */
+  submitButtonShouldBeVisible: SC.Record.attr(Boolean),
 
   /**
-    Query that finds in the data store all TriggerResponses associated with this step.
+    The title of the submit/done button
   */
-  triggerResponsesQuery: function () {
-    return SC.Query.create({
-      isTriggerResponsesQuery: YES,
-      recordType: Smartgraphs.TriggerResponse,
-      conditions: 'step = {step}',
-      parameters: { step: this }
-    });
-  }.property().cacheable(),
-  
-  /**
-    Query that finds in the data store all CommandInvocations associated with this step. (This means finding
-    all CommandInvocations associated with TriggerResponses associated with this step.)
-  */
-  commandsQuery: function () {
-    return SC.Query.create({
-      isCommandInvocationsQuery: YES,     // fully qualify here so datasource doesn't confuse it with query for Smartgraphs.Command objects
-      activityStep: this,
-      recordType: Smartgraphs.CommandInvocation,
-      conditions: '{triggerResponses} CONTAINS triggerResponse',
-      // SC Bug? CONTAINS queries don't recognize ManyArrays, only true Arrays. Therefore turn triggerResponses into a 'real' Array.
-      parameters: { triggerResponses: this.get('triggerResponses').map( function (x) { return x; }) }
-    });
-  }.property().cacheable(),
+  submitButtonTitle: SC.Record.attr(String)
 
-  triggerResponsesDidChange: function () {
-    this.notifyPropertyChange('commandsQuery');
-  }.observes('*triggerResponses.[]')
-  
 }) ;

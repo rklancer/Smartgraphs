@@ -17,34 +17,25 @@ Smartgraphs.CommandInvocation = SC.Record.extend(
 
   url: SC.Record.attr(String),
   primaryKey: 'url',
-  
-  /** 
-    The Command to execute. Commands are general and reusable; this CommandInvocation represents a particular
-    invocation of a command, with particular arguments, in a particular ActivityStep or Button
-  */
-  command: SC.Record.toOne('Smartgraphs.Command'),
-  
-  /** 
-    The TriggerResponse block that owns this particular invocation
-  */
-  triggerResponse: SC.Record.toOne('Smartgraphs.TriggerResponse', { inverse: 'commands', isMaster: YES }),
-  
+
   /**
-    The order of this invocation, relative to the other CommandInvocations with the same 'owner' Button or ActivityStep
+    The order of this invocation, relative to the other CommandInvocations with the same 'owner'
   */
   index: SC.Record.attr(Number),
 
-  // These hashes override the defaults set in the Command record
+  /**
+    The name of the action to call via Smartgraphs.performAction()
+  */
+  actionName: SC.Record.attr(String),
 
   /**
     Argument keys and values that will be passed as-is to the action.
-    Any keys in this hash override keys with the same name (from literalArgs or subsitutedArgs) in the Command record
   */
   literalArgs: SC.Record.attr(Object),
   
   /**
     Argument keys and values of arguments that will be substituted before being passed to the action.
-    Any keys in this hash override keys with the same name (from literalArgs or subsitutedArgs) in the Command record    
+    Any keys in this hash override keys with the same name in the literalArgs hash
   */
   substitutedArgs: SC.Record.attr(Object)
   
