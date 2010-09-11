@@ -16,7 +16,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityStepController.prototype */ {
 
   submitButtonShouldBeEnabled: NO,
-  
+  submissibilityInspectorInstance: null,
+    
   /**
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.
   */
@@ -81,10 +82,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         
     Generally this happens in concert with a transition to ACTIVITY_STEP_SUBMITTED. Any 'goto (next) step' commands,
     or any branching to other steps based on the user-submitted response ('answer checking') should be done 
-    here, which is to say, in the stepSubmitted block. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
+    here. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
   */
   handleSubmission: function () {
-    // TODO
+    
   },
   
   /**
@@ -92,46 +93,51 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   */  
   cleanup: function () {
     console.log('cleaning up');
-    var inspector = this.get('submissibilityInspector');
+    var inspector = this.get('submissibilityInspectorInstance');
     if (inspector) inspector.stopWatching();
     
-    this.set('submissibilityInspector', null);
+    this.set('submissibilityInspectorInstance', null);
     inspector.destroy();
   },
-    
-  /**
-  */
-  setupSubmissibilityInspector: function (args) {
-    var inspectorInfo = this.get('submissibilityInspector');
+  
+  
+  makeInspector: function (inspectorProperty) {
+    var inspectorInfo = this.get(inspectorProperty);
     
     if (!inspectorInfo) {
-      console.error('setupSubmissibilityInspector: no submissibilityInspector record.');
+      console.error('makeInspector: no + "' + inspectorProperty +'" record.');
       return NO;
     }
     
     if (!inspectorInfo.type) {
-      console.error('setupSubmissibilityInspector: no type given');
+      console.error('makeInspector: no type given');
       return NO;
     }
     
     var klass = SC.objectForPropertyPath(inspectorInfo.type);
     
     if (!klass || klass.toString() !== inspectorInfo.type) {
-      console.error('setupSubmissibilityInspector: type did not resolve to a class');
+      console.error('makeInspector: type did not resolve to a class');
       return NO;
     }
-
-    var inspector = klass.create({
+    
+    return klass.create({
       config: inspectorInfo.config
     });
+  },
+  
+  /**
+  */
+  setupSubmissibilityInspector: function (args) {
+    var inspector = this.makeInspector('submissibilityInspector');
     
-    this.set('submissibilityInspector', inspector);
+    this.set('submissibilityInspectorInstance', inspector);
     inspector.addObserver('value', this, this.checkSubmissibility);
     inspector.watch();
   },
   
   checkSubmissibility: function () {
-    var inspector = this.get('submissibilityInspector');
+    var inspector = this.get('submissibilityInspectorInstance');
     var value = inspector.get('value');
 
     var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
