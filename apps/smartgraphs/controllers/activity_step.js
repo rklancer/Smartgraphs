@@ -27,8 +27,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     // do the commands
     this.executeCommands(this.get('startCommands'));
-    
-    // 
+ 
     this.setupTriggers();
   
     // then, finish the step, or wait
@@ -73,6 +72,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
 
   setupTriggers: function () {
+      // TODO!!
   },
   
   
@@ -121,16 +121,16 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       return NO;
     }
 
-    var checker = klass.create({
+    var inspector = klass.create({
       config: inspectorInfo.config
     });
     
-    this.set('submissibilityInspector', checker);
-    checker.addObserver('value', this, this.evaluateSubmissibility);
-    checker.watch();
+    this.set('submissibilityInspector', inspector);
+    inspector.addObserver('value', this, this.checkSubmissibility);
+    inspector.watch();
   },
   
-  evaluateSubmissibility: function () {
+  checkSubmissibility: function () {
     var inspector = this.get('submissibilityInspector');
     var value = inspector.get('value');
 
