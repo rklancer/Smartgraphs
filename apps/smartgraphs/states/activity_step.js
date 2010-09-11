@@ -70,7 +70,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
 
   waitForResponse: function (context, args) {
-    Smartgraphs.activityStepController.configureInputValidator(args);
+    Smartgraphs.activityStepController.setupSubmissibilityChecker(args);
     this.disableSubmission();         // allow submission again when the response becomes valid
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
     return YES;

@@ -28,11 +28,13 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */  
   initialPaneConfig: SC.Record.toOne(String),
   
-  firstGraph: SC.Record.toOne('Smartgraphs.Graph'),
-  secondGraph: SC.Record.toOne('Smartgraphs.Graph'),
+  singleGraph: SC.Record.toOne('Smartgraphs.Graph'),
+  topGraph: SC.Record.toOne('Smartgraphs.Graph'),
+  bottomGraph: SC.Record.toOne('Smartgraphs.Graph'),
   
-  firstImage: SC.Record.attr(String),
-  secondImage: SC.Record.attr(String),
+  singleImage: SC.Record.attr(String),
+  topImage: SC.Record.attr(String),
+  bottomImage: SC.Record.attr(String),
   
   /**
     Text to display *before* the response template

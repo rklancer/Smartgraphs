@@ -24,7 +24,7 @@ Smartgraphs.CommandInvocation = SC.Record.extend(
   index: SC.Record.attr(Number),
 
   /**
-    The name of the action to call via Smartgraphs.performAction()
+    The name of the action to call via Smartgraphs.sendAction()
   */
   actionName: SC.Record.attr(String),
 

@@ -21,8 +21,61 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.
   */
   begin: function () {
+
+    // setup window pane
+    this.setupPanes();
+    
+    // do the commands
+    this.executeCommands(this.get('startCommands'));
+    
+    // 
+    this.setupTriggers();
+  
+    // then, finish the step, or wait
+    if (this.get('shouldWaitForSubmissibleResponse')) {
+      Smartgraphs.sendAction('waitForResponse');
+    }
+    else if (this.get('shouldFinishImmediately')) {
+      Smartgraphs.sendAction('submitStep');
+    }
+  },
+  
+  setupPanes: function () {
+    var initialPaneConfig = this.get('initialPaneConfig');
+    if (initialPaneConfig === 'single') {
+      Smartgraphs.sendAction('showSinglePane');
+      this.setupPane('single');
+    }
+    else if (initialPaneConfig === 'split') {
+      Smartgraphs.sendAction('showSplitPane');
+      this.setupPane('top');
+      this.setupPane('bottom');
+    }
+  },
+  
+  setupPane: function (pane) {
+    if (pane !== 'single' && pane !== 'top' && pane !== 'bottom') {
+      console.error('setupPane: invalid pane "' + pane + '"');
+      return;
+    }
+    
+    var graph = this.get(pane + 'Graph');
+
+    if (graph) {
+      Smartgraphs.sendAction('showGraph', this, { pane: pane, graphId: graph.get('id') });
+    }
+    else {
+      var imagePath = this.get(pane + 'Image');
+      if (imagePath) {
+        Smartgraphs.sendAction('showImage', this, { pane: pane, path: imagePath });
+      } 
+    }
   },
 
+  setupTriggers: function () {
+  },
+  
+  
   /**
     Called when the user clicks the 'done' or 'submit' button associated with this step.
 
@@ -58,7 +111,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     responseBecameInvalid triggers, any setup args for that trigger passed to this method will be ignored. In that
     case the setup args will be taken from the triggerResponse record.
   */
-  configureInputValidator: function (args) {
+  setupSubmissibilityChecker: function (args) {
   },
   
   /**
@@ -66,30 +119,33 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     TriggerObserver of the corresponding trigger, when the trigger 'fires'.
   */
   executeCommands: function (invocations) {
-    var invocation, commandRecord, literalArgs, substitutedArgs, args, key;
-
-    for (var i = 0, ii = invocations.get('length'); i < ii; i++) {
-      invocation = invocations.objectAt(i);
-      commandRecord = invocation.get('command');
-      
-      // mixin the literal args first -- args from the specific invocation record override defaults defined in the 
-      // commandRecord (which is the 'generic' definition of the command)
-      args = SC.mixin(SC.copy(commandRecord.get('literalArgs')), invocation.get('literalArgs'));
-      
-      // mixin the substituted args the same. Need to substitute the actual values of the keys though
-      substitutedArgs = SC.mixin(SC.copy(commandRecord.get('substitutedArgs')), invocation.get('substitutedArgs'));
-
-      // get the values from the context
-      for (key in substitutedArgs) {
-        if (substitutedArgs.hasOwnProperty(key)) {
-          args[key] = this.lookup(substitutedArgs[key]);
-        }
-      }
-
-      // ... and do the action
-      Smartgraphs.sendAction(commandRecord.get('actionName'), this, args);
-    }
+    // var invocation, commandRecord, literalArgs, substitutedArgs, args, key;
+    // 
+    // for (var i = 0, ii = invocations.get('length'); i < ii; i++) {
+    //   invocation = invocations.objectAt(i);
+    //   commandRecord = invocation.get('command');
+    //   
+    //   // mixin the literal args first -- args from the specific invocation record override defaults defined in the 
+    //   // commandRecord (which is the 'generic' definition of the command)
+    //   args = SC.mixin(SC.copy(commandRecord.get('literalArgs')), invocation.get('literalArgs'));
+    //   
+    //   // mixin the substituted args the same. Need to substitute the actual values of the keys though
+    //   substitutedArgs = SC.mixin(SC.copy(commandRecord.get('substitutedArgs')), invocation.get('substitutedArgs'));
+    // 
+    //   // get the values from the context
+    //   for (key in substitutedArgs) {
+    //     if (substitutedArgs.hasOwnProperty(key)) {
+    //       args[key] = this.lookup(substitutedArgs[key]);
+    //     }
+    //   }
+    // 
+    //   // ... and do the action
+    //   Smartgraphs.sendAction(commandRecord.get('actionName'), this, args);
+    // }
   },
+  
+
+  
   
   // return they context variable's value from the activityStep, activityPage, or activity context
   lookup: function (key) {
