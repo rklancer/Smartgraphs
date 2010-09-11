@@ -78,7 +78,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
       the class name of the Inspector that checks system state for submissibility
       a config hash to be passed to the inspector when created
   */
-  submissibilityChecker: SC.Record.attr(Object),
+  submissibilityInspector: SC.Record.attr(Object),
 
   /** 
     JSON expression tree to be used to convert the Inspector's output to a YES or NO answer.

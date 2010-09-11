@@ -92,47 +92,47 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   */  
   cleanup: function () {
     console.log('cleaning up');
-    var checker = this.get('submissibilityChecker');
-    if (checker) checker.stopWatching();
+    var inspector = this.get('submissibilityInspector');
+    if (inspector) inspector.stopWatching();
     
-    this.set('submissibilityChecker', null);
-    checker.destroy();
+    this.set('submissibilityInspector', null);
+    inspector.destroy();
   },
     
   /**
   */
-  setupSubmissibilityChecker: function (args) {
-    var checkerInfo = this.get('submissibilityChecker');
+  setupSubmissibilityInspector: function (args) {
+    var inspectorInfo = this.get('submissibilityInspector');
     
-    if (!checkerInfo) {
-      console.error('setupSubmissibilityChecker: no submissibilityChecker record.');
+    if (!inspectorInfo) {
+      console.error('setupSubmissibilityInspector: no submissibilityInspector record.');
       return NO;
     }
     
-    if (!checkerInfo.type) {
-      console.error('setupSubmissibilityChecker: no type given');
+    if (!inspectorInfo.type) {
+      console.error('setupSubmissibilityInspector: no type given');
       return NO;
     }
     
-    var klass = SC.objectForPropertyPath(checkerInfo.type);
+    var klass = SC.objectForPropertyPath(inspectorInfo.type);
     
-    if (!klass || klass.toString() !== checkerInfo.type) {
-      console.error('setupSubmissibilityChecker: type did not resolve to a class');
+    if (!klass || klass.toString() !== inspectorInfo.type) {
+      console.error('setupSubmissibilityInspector: type did not resolve to a class');
       return NO;
     }
 
     var checker = klass.create({
-      config: checkerInfo.config
+      config: inspectorInfo.config
     });
     
-    this.set('submissibilityChecker', checker);
+    this.set('submissibilityInspector', checker);
     checker.addObserver('value', this, this.evaluateSubmissibility);
     checker.watch();
   },
   
   evaluateSubmissibility: function () {
-    var checker = this.get('submissibilityChecker');
-    var value = checker.get('value');
+    var inspector = this.get('submissibilityInspector');
+    var value = inspector.get('value');
 
     var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
     
