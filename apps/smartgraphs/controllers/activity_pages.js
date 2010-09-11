@@ -33,6 +33,9 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
     if (index+1 < this.get('length')) {
       this.selectObject(this.objectAt(index+1));
     }
-  }
+  },
   
+  isLastPage: function () {
+    return (this.get('indexOfSelectedPage') >= (this.get('length') - 1));
+  }.property('indexOfSelectedPage', 'length').cacheable()
 }) ;

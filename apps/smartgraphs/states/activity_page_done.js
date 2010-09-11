@@ -21,7 +21,7 @@ Smartgraphs.ACTIVITY_PAGE_DONE = SC.Responder.create(
   nextResponder: Smartgraphs.ACTIVITY,
   
   didBecomeFirstResponder: function() {    
-    if (Smartgraphs.activityController.get('isLastPage')) {
+    if (Smartgraphs.activityPagesController.get('isLastPage')) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_DONE);
     }
     else {
