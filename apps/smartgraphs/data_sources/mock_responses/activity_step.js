@@ -30,13 +30,14 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityChecker": {
-    "inspectorClass": "Smartgraphs.ResponseFieldsInspector",
-    "configuration": {
+    "type": "Smartgraphs.ResponseFieldsInspector",
+    "config": {
       "fieldIndex": 0
     }
   },
   "submissibilityCriterion": {
-    "or": [{ "equals": [[ "value", { "literal": "one" }], ["value", { "literal" : "two" }]]}]
+    "or": [{ "equals": [ "value", { "literal": "one" } ] }, 
+           { "equals": [ "value", { "literal": "two" } ] }]
   },
   "triggeredCommands": [
   ],

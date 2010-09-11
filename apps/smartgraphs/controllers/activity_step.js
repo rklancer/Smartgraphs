@@ -68,7 +68,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       var imagePath = this.get(pane + 'Image');
       if (imagePath) {
         Smartgraphs.sendAction('showImage', this, { pane: pane, path: imagePath });
-      } 
+      }
     }
   },
 
@@ -91,8 +91,12 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Clean up any stale controller state. Called when we leave ACTIVITY_STEP_SUBMITTED and/or ACTIVITY itself
   */  
   cleanup: function () {
+    console.log('cleaning up');
     var checker = this.get('submissibilityChecker');
     if (checker) checker.stopWatching();
+    
+    this.set('submissibilityChecker', null);
+    checker.destroy();
   },
     
   /**
@@ -105,24 +109,43 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       return NO;
     }
     
-    if (!checkerInfo.inspectorClass) {
-      console.error('setupSubmissibilityChecker: no inspectorClass');
+    if (!checkerInfo.type) {
+      console.error('setupSubmissibilityChecker: no type given');
       return NO;
     }
     
-    var klass = SC.objectForPropertyPath(checkerInfo.inspectorClass);
+    var klass = SC.objectForPropertyPath(checkerInfo.type);
     
-    if (!klass || klass.toString() !== checkerInfo.inspectorClass) {
-      console.error('setupSubmissibilityChecker: inspectorClass did not resolve to a class');
+    if (!klass || klass.toString() !== checkerInfo.type) {
+      console.error('setupSubmissibilityChecker: type did not resolve to a class');
       return NO;
     }
-    
+
     var checker = klass.create({
-      configuration: checkerInfo.configuration
+      config: checkerInfo.config
     });
     
     this.set('submissibilityChecker', checker);
+    checker.addObserver('value', this, this.evaluateSubmissibility);
     checker.watch();
+  },
+  
+  evaluateSubmissibility: function () {
+    var checker = this.get('submissibilityChecker');
+    var value = checker.get('value');
+
+    var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
+    
+    console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
+    
+    if (valueIsValid && !this._valueWasValid) {
+      Smartgraphs.sendAction('enableSubmission');
+    }
+    else if (this._valueWasValid && !valueIsValid) {
+      Smartgraphs.sendAction('disableSubmission');
+    }
+    
+    this._valueWasValid = valueIsValid;
   },
   
   /**
