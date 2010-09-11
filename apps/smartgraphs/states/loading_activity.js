@@ -27,9 +27,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   },
   
   subordinateResources: [
-    { load: function () { return Smartgraphs.store.find(Smartgraphs.activityController.get('pagesQuery')); } },
-    { load: function () { return Smartgraphs.store.find(Smartgraphs.ALL_TRIGGERS_QUERY); } },
-    { load: function () { return Smartgraphs.store.find(Smartgraphs.ALL_COMMANDS_QUERY); } }    
+    { load: function () { return Smartgraphs.store.find(Smartgraphs.activityController.get('pagesQuery')); } }
   ],
   
   didBecomeFirstResponder: function () {

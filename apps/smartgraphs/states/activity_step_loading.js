@@ -23,10 +23,7 @@ Smartgraphs.ACTIVITY_STEP_LOADING = SC.Responder.create(Smartgraphs.ResourceLoad
     load: function () { return Smartgraphs.activityStepController.get('content'); }
   },
   
-  subordinateResources: [
-    { load: function () { return Smartgraphs.store.find(Smartgraphs.activityStepController.get('triggerResponsesQuery')); } },
-    { load: function () { return Smartgraphs.store.find(Smartgraphs.activityStepController.get('commandsQuery')); } }
-  ],    
+  subordinateResources: [],    
   
   didBecomeFirstResponder: function() {
     this.loadResources();

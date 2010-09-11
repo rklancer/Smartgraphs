@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.AltActivityStep
+// Project:   Smartgraphs.ActivityStep
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -56,7 +56,6 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     the 'index' property.
   */
   startCommands: SC.Record.toMany('Smartgraphs.CommandInvocation', { orderBy: 'index' }),
-  
   
   /**
     Whether to 'submit' (aka finish) automatically as soon as the startCommands execute, or whether to wait for

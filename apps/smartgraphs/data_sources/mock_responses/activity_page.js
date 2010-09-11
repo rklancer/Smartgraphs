@@ -7,6 +7,27 @@
 
 sc_require('data_sources/mock_responses/mock_responses');
 
+// for activity with new activity-step structure
+
+Smartgraphs.mockResponses["/backend/activity/new-step/pages"] = 
+[
+  {
+    "steps": [
+      "/backend/activity/new-step/page/1/step/1",
+      "/backend/activity/new-step/page/1/step/2",
+      "/backend/activity/new-step/page/1/step/3"
+    ],
+    "name": "Only Page",
+    "firstStep": "/backend/activity/new-step/page/1/step/1",
+    "introText": "<h1>Watch the system respond!</h1>",
+    "url": "/backend/activity/new-step/page/1",
+    "activity": "/backend/activity/new-step",
+    "index": 1,
+    "stepListUrl": "/backend/activity/new-step/page/1/steps"
+  }
+];
+
+
 
 // ActivityPage list url for first Activity
 // generated on the console by running:

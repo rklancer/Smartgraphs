@@ -7,6 +7,53 @@
 
 sc_require('data_sources/mock_responses/mock_responses');
 
+// for activity with new activity-step structure
+
+var step, steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] = 
+{
+  "url": "/backend/activity/new-step/page/1/step/1",
+  "activityPage": "/backend/activity/new-step/pages",
+  "initialPaneConfig": 'single',
+  "firstGraph": null,
+  "secondGraph": null,
+  "firstImage": sc_static("resources/arrow.jpg"),
+  "secondImage": null,
+  "beforeText": "<p>How many panes would you like to see on the next page? Enter 'one' or 'two': ",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityChecker": {
+    "inspectorClass": "ResponseFieldsInspector",
+    "configuration": {
+      "fieldIndex": 1
+    }
+  },
+  "submissibilityCriterion": {
+    "or": [{ "equals": [[ "value", { "literal": "one" }], ["value", { "literal" : "two" }]]}]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "nextSteps": [
+  ],
+  "defaultNextStep": null,
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Show me!"
+};
+steps.push(step);
+
+
+Smartgraphs.mockResponses["/backend/activity/new-step/page/1/steps"] = steps;
+
+
+
 // ActivityStep list urls for the ActivityPages in first Activity
 // generated on the console by running:
 //   Smartgraphs.addStepListUrlsToPages()

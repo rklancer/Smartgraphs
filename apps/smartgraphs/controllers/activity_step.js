@@ -15,15 +15,12 @@
 Smartgraphs.activityStepController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityStepController.prototype */ {
 
-  registeredTriggers: [],
   submitButtonShouldBeEnabled: NO,
   
   /**
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.
   */
   begin: function () {
-    this.registerTriggerResponses();
-    Smartgraphs.sendAction('fireTrigger', this, { triggerName: 'stepBeginning' });
   },
 
   /**
@@ -36,7 +33,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     here, which is to say, in the stepSubmitted block. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
   */
   handleSubmission: function () {
-    Smartgraphs.sendAction('fireTrigger', this, { triggerName: 'stepSubmitted' });
+    // TODO
   },
   
   /**
@@ -51,42 +48,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     objects in memory.
   */
   unregisterOldTriggers: function () {
-    var triggers = this.get('registeredTriggers');
-    for (var i = 0, ii = triggers.get('length'); i < ii; i++) {
-      triggers[i].unregister();
-    }
-    this.set('registeredTriggers', []);
   },
   
-  /**
-    Finds the TriggerResponse blocks associated with this step, and tells the associated trigger objects to 'turn on'
-    and to set up their observers (which observe changes in the state of the system, in order to 'fire' the trigger
-    they deem that the desired criteria are met.)
-    
-    Passes setup args from the TriggerResponse object to the observer (so the observer's exact behavior can be
-    customized to the author's liking); also passes the  ordered list of CommandInvocations that should be executed 
-    when the trigger fires.
-  */
-  registerTriggerResponses: function () {
-    var responses = this.get('triggerResponses');
-    var registered = this.get('registeredTriggers');
-    var response, triggerRecord, name, trigger, args, commands;
-    
-    for (var i = 0, ii = responses.get('length'); i < ii; i++) {
-      response = responses.objectAt(i);
-      triggerRecord = response.get('trigger');
-
-      name = triggerRecord.get('name');
-      trigger = Smartgraphs.triggers[name];
-
-      if (trigger) {
-        args = SC.mixin(SC.copy(triggerRecord.get('args')), response.get('args'));
-        commands = response.get('commands');
-        trigger.register(args, commands);
-        registered.pushObject(trigger);
-      }
-    }
-  },
   
   /**
     Registers observers on responseTemplate input, configure them with 'args'. Called by 'waitForResponse' command.
@@ -96,20 +59,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     case the setup args will be taken from the triggerResponse record.
   */
   configureInputValidator: function (args) {
-    var registered = Smartgraphs.activityStepController.get('registeredTriggers');
-    var trigger;
-    
-    // FIXME this ain't gonna work! (registeredTriggers = list of Trigger objects)
-    if (registered.lastIndexOf('responseBecameValid') < 0) {
-      trigger = Smartgraphs.triggers['responseBecameValid'];
-      trigger.register(args, []);
-      registered.pushObject(trigger);
-    }
-    if (registered.lastIndexOf('responseBecameInvalid') < 0) {
-      trigger = Smartgraphs.triggers['responseBecameInvalid'];
-      trigger.register({}, []);
-      registered.pushObject(trigger);
-    }
   },
   
   /**
