@@ -47,9 +47,9 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
       "fieldIndex": 0
     }
   },
-  "nextSteps": [
-    "/backend/activity/new-step/page/1/step/1/next/1", 
-    "/backend/activity/new-step/page/1/step/1/next/2"
+  "reactions": [
+    "/backend/activity/new-step/page/1/step/1/reaction/1", 
+    "/backend/activity/new-step/page/1/step/1/reaction/2"
   ],
   "defaultNextStep": null,
   "isFinalStep": false,
@@ -83,7 +83,7 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/2"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "nextSteps": [
+  "reactions": [
   ],
   "defaultNextStep": null,
   "isFinalStep": true,
@@ -117,7 +117,7 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/3"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "nextSteps": [
+  "reactions": [
   ],
   "defaultNextStep": null,
   "isFinalStep": true,

@@ -1,29 +1,29 @@
 // ==========================================================================
-// Project:   Smartgraphs.NextStep Fixtures
+// Project:   Smartgraphs.Reaction Fixtures
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/next_step');
+sc_require('models/reaction');
 
-Smartgraphs.NextStep.FIXTURES = [
+Smartgraphs.Reaction.FIXTURES = [
 
-  { url: "/backend/activity/new-step/page/1/step/1/next/1",
+  { url: "/backend/activity/new-step/page/1/step/1/reaction/1",
     parentStep: "/backend/activity/new-step/page/1/step/1",
     index: 1,
-    responseCriterion: { 
+    reactionCriterion: { 
       "equals": [ "value", { "literal": "one" } ] 
     },
-    step: "/backend/activity/new-step/page/1/step/2"
+    nextStep: "/backend/activity/new-step/page/1/step/2"
   },
   
-  { url: "/backend/activity/new-step/page/1/step/1/next/2",
+  { url: "/backend/activity/new-step/page/1/step/1/reaction/2",
     parentStep: "/backend/activity/new-step/page/1/step/1",
     index: 2,
-    responseCriterion: { 
+    reactionCriterion: { 
       "equals": [ "value", { "literal": "two" } ] 
     },
-    step: "/backend/activity/new-step/page/1/step/3"
+    nextStep: "/backend/activity/new-step/page/1/step/3"
   }
   
 ];

@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.NextStep
+// Project:   Smartgraphs.Reaction
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -12,8 +12,8 @@
   @extends SC.Record
   @version 0.1
 */
-Smartgraphs.NextStep = SC.Record.extend(
-/** @scope Smartgraphs.NextStep.prototype */ {
+Smartgraphs.Reaction = SC.Record.extend(
+/** @scope Smartgraphs.Reaction.prototype */ {
 
   url: SC.Record.attr(String),
   primaryKey: 'url',
@@ -31,12 +31,12 @@ Smartgraphs.NextStep = SC.Record.extend(
   /**
     JSON expression tree that converts the parent step's response Inspector value into YES or NO
   */
-  responseCriterion: SC.Record.attr(Object),
+  reactionCriterion: SC.Record.attr(Object),
   
   /**
-    The step to jump to if the responseCriterion evaluates to YES
+    The step to jump to if the reactionCriterion evaluates to YES
     (if the step evaluates to NO, the next criterion-step pair will be tested)
   */
-  step: SC.Record.toOne('Smartgraphs.ActivityStep')
+  nextStep: SC.Record.toOne('Smartgraphs.ActivityStep')
 
 }) ;

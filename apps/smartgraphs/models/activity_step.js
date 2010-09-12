@@ -107,16 +107,16 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   responseInspector: SC.Record.attr(Object),
   
   /**
-    An ordered list of responseCriterion -> ActivityStep pairs ('SmartgraphResponses')
+    An ordered list of reactionCriterion -> ActivityStep pairs
     
-    After response is submitted, each responseCriterion is evaluated in order. The system jumps to the
+    After response is submitted, each reactionCriterion is evaluated in order. The system jumps to the
     ActivityStep associated
     
     Think of an if-else chain.
     
-    If no responseCriterion evaluates to YES, the defaultNextStep is jumped to, if it exists
+    If no reactionCriterion evaluates to YES, the defaultNextStep is jumped to, if it exists
   */
-  nextSteps: SC.Record.toMany('Smartgraphs.NextStep', { orderBy: 'index' }),
+  reactions: SC.Record.toMany('Smartgraphs.Reaction', { orderBy: 'index' }),
   
   defaultNextStep: SC.Record.toOne('Smartgraphs.ActivityStep'),
   

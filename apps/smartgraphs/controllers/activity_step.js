@@ -83,6 +83,14 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Generally this happens in concert with a transition to ACTIVITY_STEP_SUBMITTED. Any 'goto (next) step' commands,
     or any branching to other steps based on the user-submitted response ('answer checking') should be done 
     here. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
+    
+    Loops in order through the Reactions associated with this step, evaluates each in turn, and jumps to the step
+    associated with the first Reaction to evaluate to YES.
+    
+    If there are no Reactions or none evaluate to YES, jumps to the defaultNextStep
+    
+    Does nothing if no Reactions evaluate to YES and there is no defaultNextStep. In this case, it is considered
+    an error if the 'isFinalStep' property is NO.
   */
   handleSubmission: function () {
     var inspector = this.makeInspector('responseInspector');
@@ -90,12 +98,12 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (inspector) {
       var value = inspector.inspect();
     
-      var step, steps = this.get('nextSteps');
+      var reaction, reactions = this.get('reactions');
     
-      for (var i = 0, ii = steps.get('length'); i < ii; i++) {
-        step = steps.objectAt(i);
-        if (Smartgraphs.evaluate(step.get('responseCriterion'), value)) {
-          Smartgraphs.sendAction('gotoStep', this, { stepId: step.getPath('step.id') });
+      for (var i = 0, ii = reactions.get('length'); i < ii; i++) {
+        reaction = reactions.objectAt(i);
+        if (Smartgraphs.evaluate(reaction.get('reactionCriterion'), value)) {
+          Smartgraphs.sendAction('gotoStep', this, { stepId: reaction.getPath('nextStep.id') });
           return;
         }
       }
