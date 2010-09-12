@@ -112,7 +112,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     var defaultNextStep = this.get('defaultNextStep');
     
     if (defaultNextStep) {
-      Smartgraphs.sendAction('gotoStep', this, { step: defaultNextStep });
+      Smartgraphs.sendAction('gotoStep', this, { stepId: defaultNextStep.get('id') });
     }
   },
   
@@ -128,6 +128,34 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       inspector.destroy();
     }
     this.set('submissibilityInspectorInstance', null);
+  },
+  
+  waitForResponse: function () {
+    if (!this.get('submissibilityInspector')) {
+      Smartgraphs.sendAction('enableSubmission');
+    }
+    else {
+      Smartgraphs.sendAction('disableSubmission');
+      this.setupSubmissibilityInspector();
+    }
+  },
+  
+  setupSubmissibilityInspector: function () {
+    if (!this.get('submissibilityInspector')) {
+      Smartgraphs.sendAction('enableSubmission');
+      return;
+    }
+    
+    var inspector = this.makeInspector('submissibilityInspector');
+    
+    if (!inspector) {
+      console.error('setupSubmissibilityInspector was called, but makeInspector could not make an inspector instance.');
+      return;
+    }
+    
+    this.set('submissibilityInspectorInstance', inspector);
+    inspector.addObserver('value', this, this.checkSubmissibility);
+    inspector.watch();
   },
   
   makeInspector: function (inspectorProperty) {
@@ -150,21 +178,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     return klass.create({
       config: inspectorInfo.config
     });
-  },
-  
-  /**
-  */
-  setupSubmissibilityInspector: function (args) {
-    var inspector = this.makeInspector('submissibilityInspector');
-    
-    if (!inspector) {
-      console.error('setupSubmissibilityInspector was called, but makeInspector could not make an inspector instance.');
-      return;
-    }
-    
-    this.set('submissibilityInspectorInstance', inspector);
-    inspector.addObserver('value', this, this.checkSubmissibility);
-    inspector.watch();
   },
   
   checkSubmissibility: function () {

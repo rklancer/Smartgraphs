@@ -7,17 +7,6 @@
 
 sc_require('data_sources/mock_responses/mock_responses');
 
-// activity with new activity-step structure
-
-Smartgraphs.mockResponses["/backend/activity/new-step"] = 
-{
-  "title":            "Activity Demonstrating New ActivityStep Structure",
-  "url":              "/backend/activity/new-step",
-  "pages":            ["/backend/activity/new-step/page/1"],
-  "pageListUrl":      "/backend/activity/new-step/pages"
-};
-
-
 // starting Activity url
 // generated on the console by running: 
 //   Smartgraphs.mockResponsesForRecordType(Smartgraphs.Activity)
@@ -45,4 +34,14 @@ Smartgraphs.mockResponses["/backend/activity/2"] =
   "url":              "/backend/activity/2",
   "pages":            ["/backend/activity/2/page/1"],
   "pageListUrl":      "/backend/activity/2/pages"
+};
+
+// activity with new activity-step structure
+
+Smartgraphs.mockResponses["/backend/activity/new-step"] = 
+{
+  "title":            "Activity Demonstrating New ActivityStep Structure",
+  "url":              "/backend/activity/new-step",
+  "pages":            ["/backend/activity/new-step/page/1"],
+  "pageListUrl":      "/backend/activity/new-step/pages"
 };
