@@ -32,7 +32,7 @@ Smartgraphs.main = function main() {
   // We're letting SC.route handle navigating to a particular Activity. It needs a runloop to sync up, so 
   // just reach in and set default window.location.hash for now.
   if (!window.location.hash) {
-    window.location.hash = '/backend/activity/new-step';      // default activity for now
+    window.location.hash = '/backend/activity/1';      // default activity for now
   }
   
   // ... then the START state will kick things off
