@@ -35,6 +35,7 @@ Smartgraphs.MultipleChoiceQuestionView = CC.QuestionView.extend(
         itemsChanged: function() {
             this.replaceLayer();
         }.observes('items'),
+
         valueDidChange: function() {
             this.getPath('parentView').set('value', this.get('value'));
         }.observes('value')
