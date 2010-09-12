@@ -101,7 +101,7 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/3"] =
   "initialPaneConfig": 'split',
   "singleGraph": null,
   "topGraph": "/backend/activity/1/graph/1/prediction-away",
-  "bottomGraph": "/backend/activity/1/graph/1/prediction-toward",
+  "bottomGraph": "/backend/activity/1/graph/2/prediction-toward",
   "singleImage": null,
   "topImage": null,
   "bottomImage": null,
