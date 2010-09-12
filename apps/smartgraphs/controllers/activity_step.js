@@ -116,6 +116,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     var inspector = this.get('submissibilityInspectorInstance');
     if (inspector) {
       inspector.stopWatching();
+      inspector.removeObserver('value', this, this.checkSubmissibility);      
       inspector.destroy();
     }
     this.set('submissibilityInspectorInstance', null);
