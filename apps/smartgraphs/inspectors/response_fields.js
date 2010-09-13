@@ -12,8 +12,8 @@ Smartgraphs.ResponseFieldsInspector = Smartgraphs.Inspector.extend({
   value: null,
   fieldIndex: null,
   
-  configure: function (args) {
-    this.set('fieldIndex', args.fieldIndex);
+  configure: function (config) {
+    this.set('fieldIndex', config.fieldIndex);
   },
   
   inspect: function () {

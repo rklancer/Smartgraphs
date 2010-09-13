@@ -198,10 +198,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/2"] =
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
-    "type": "Smartgraphs.ResponseFieldsInspector",
-    "config": {
-      "fieldIndex": 0
-    }
+    "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
     "gt": [{ "length" : { "strip":  "value" }}, 0]
@@ -339,10 +336,7 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
-    "type": "Smartgraphs.ResponseFieldsInspector",
-    "config": {
-      "fieldIndex": 0
-    }
+    "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
     "in": [{ "strip":  "value" }, ["one", "two"]] 

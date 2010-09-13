@@ -1,15 +1,17 @@
 // ==========================================================================
-// Project:   Smartgraphs.Inspector
+// Project:   Smartgraphs.FirstResponseFieldInspector
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
-Smartgraphs.Inspector = SC.Object.extend({
+sc_require('inspectors/response_fields');
+
+Smartgraphs.FirstResponseFieldInspector = Smartgraphs.ResponseFieldsInspector.extend({
   
-  init: function () {
-    var config = this.get('config'); 
-    this.configure(config || {});
+  configure: function (config) {
+    config.fieldIndex = 0;
     sc_super();
   }
+  
 });
