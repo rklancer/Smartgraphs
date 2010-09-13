@@ -2,6 +2,7 @@
 // Project:   Smartgraphs.ActivityPage mock server responses
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
+// @author    Dewi Win <dwin@concord.org> (activity text)
 // ==========================================================================
 /*globals Smartgraphs */
 

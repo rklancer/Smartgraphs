@@ -27,23 +27,10 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   
   willLoseFirstResponder: function () {
     Smartgraphs.activityController.cleanup();
-  },
+  }
   
   // ..........................................................
   // ACTIONS
   //
-  
-  /**
-    Fires the trigger specified by args.eventName. This results in the corresponding triggerResponse's commands 
-    being executed by the Activity
-  */
-  fireTrigger: function (context, args) {
-    if (args.triggerName) {
-      console.log('Firing trigger %s', args.triggerName);
-      var trigger = Smartgraphs.triggers[args.triggerName];
-      if (trigger) trigger.fire();
-    }
-    return YES;
-  }
   
 }) ;
