@@ -249,15 +249,15 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
 {
   "url": "/backend/activity/1/page/4/step/1",
   "activityPage": "/backend/activity/1/page/4",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/4/combined",
+  "initialPaneConfig": 'single',
+  "singleGraph": '/backend/activity/1/graph/5/walking-example-1',
+  "topGraph": '',
   "bottomGraph": null,
   "singleImage": null,
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>At right is your prediction and your actual motion, together</p>",
+    "<p>At right is example data from a real walk together with one of your predictions.</p>",
   "responseTemplate": "",
   "afterText": "",
   "startCommands": [
@@ -280,6 +280,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
 steps.push(step);
 
 Smartgraphs.mockResponses["/backend/activity/1/page/4/steps"] = steps;
+
+
 
 
 /****************************************************************************

@@ -20,7 +20,7 @@ Smartgraphs = SC.Application.create(
   // Add global constants or singleton objects here
   triggers: [],
 
-  _nextGuid: 1,
+  _nextGuid: 100,
   getNextGuid: function () {
     return this._nextGuid++;
   },

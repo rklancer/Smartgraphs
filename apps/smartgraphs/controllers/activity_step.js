@@ -22,14 +22,13 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.
   */
   begin: function () {
-
     // setup window pane
     this.setupPanes();
     
+    this.setupTriggers();
+
     // do the commands
     this.executeCommands(this.get('startCommands'));
- 
-    this.setupTriggers();
   
     // then, finish the step, or wait
     if (this.get('shouldWaitForSubmissibleResponse')) {
@@ -84,10 +83,11 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     or any branching to other steps based on the user-submitted response ('answer checking') should be done 
     here. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
     
-    Loops in order through the Reactions associated with this step, evaluates each in turn, and jumps to the step
-    associated with the first Reaction to evaluate to YES.
+    Loops in order through the responseBranches associated with this step, evaluates the 'criterion' property of each 
+    in turn (passing in the return value of the responseInspector) and jumps to the step associated with the first 
+    branch whose 'criterion' evaluates to YES.
     
-    If there are no Reactions or none evaluate to YES, jumps to the defaultBranch
+    If there are no Reactions or none evaluate to YES, jumps to the defaultBranch, if any.
     
     Does nothing if no Reactions evaluate to YES and there is no defaultBranch. In this case, it is considered
     an error if the 'isFinalStep' property is NO.
@@ -205,8 +205,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     var command;
     for (var i = 0, ii = commands.length; i < ii; i++) {
       command = commands[i];
-      // TODO command 'whitelist'?
-      // TODO deal with command subsitution, maybe?
+      // TODO action 'whitelist'?
+      // TODO deal with argument substitution?
       Smartgraphs.sendAction(command.action, this, command.literalArgs);
     }
   }

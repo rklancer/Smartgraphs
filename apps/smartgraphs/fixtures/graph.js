@@ -74,5 +74,22 @@ Smartgraphs.Graph.FIXTURES = [
     initialAnnotations: [
       { type: 'Smartgraphs.FreehandSketch', name: 'prediction-away' }
     ]
+  },
+  
+  { url: 
+      '/backend/activity/1/graph/5/walking-example-1',
+    name:
+      'Walking',
+    description: 
+      'For asking students which direction the walk happened',
+    title:
+      "An Example Walk",
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      ['walking-example-1'],
+    initialAnnotations: [
+      { type: 'Smartgraphs.FreehandSketch', name: 'prediction-toward' }    
+    ]
   }
 ];
