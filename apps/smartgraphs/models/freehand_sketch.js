@@ -16,34 +16,11 @@
   @version 0.1
 */
 
+sc_require('models/annotation');
 sc_require('views/freehand_sketch');
 
-Smartgraphs.FreehandSketch = SC.Record.extend(
+Smartgraphs.FreehandSketch = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.FreehandSketch.prototype */ {
-
-  url: SC.Record.attr(String),
-  primaryKey: 'url',
-  
-  /**
-    tell the system that we are an annotation.
-  */
-  isAnnotation: YES,
-  
-  /**
-    name of the annotation
-  */
-  name: SC.Record.attr(String),
-  
-  /**
-    the session this annotation is associated with, if any.
-  */
-  session: SC.Record.toOne('Smartgraphs.Session'),
-  
-  /**
-    Whether this is an 'example' annotation (part of the authored content of the activity) or a session-scoped,
-    student-drawn annotation
-  */
-  isExample: SC.Record.attr(Boolean),
   
   /**
     ordered array of {x, y} pairs that make up the sketch.
