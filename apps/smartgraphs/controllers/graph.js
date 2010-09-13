@@ -85,6 +85,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
       });
       objectList = Smartgraphs.store.find(query);
       if (objectList.get('length') < 1) return NO;
+      
+      // FIXME copy the object to the session before using it!
     }
   
     var object = objectList.objectAt(0);
