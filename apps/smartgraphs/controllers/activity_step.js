@@ -87,9 +87,9 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Loops in order through the Reactions associated with this step, evaluates each in turn, and jumps to the step
     associated with the first Reaction to evaluate to YES.
     
-    If there are no Reactions or none evaluate to YES, jumps to the defaultNextStep
+    If there are no Reactions or none evaluate to YES, jumps to the defaultBranch
     
-    Does nothing if no Reactions evaluate to YES and there is no defaultNextStep. In this case, it is considered
+    Does nothing if no Reactions evaluate to YES and there is no defaultBranch. In this case, it is considered
     an error if the 'isFinalStep' property is NO.
   */
   handleSubmission: function () {
@@ -98,21 +98,21 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (inspector) {
       var value = inspector.inspect();
     
-      var reaction, reactions = this.get('reactions');
+      var branch, branches = this.get('responseBranches');
     
-      for (var i = 0, ii = reactions.get('length'); i < ii; i++) {
-        reaction = reactions.objectAt(i);
-        if (Smartgraphs.evaluate(reaction.get('reactionCriterion'), value)) {
-          Smartgraphs.sendAction('gotoStep', this, { stepId: reaction.getPath('nextStep.id') });
+      for (var i = 0, ii = branches.get('length'); i < ii; i++) {
+        branch = branches.objectAt(i);
+        if (Smartgraphs.evaluate(branch.criterion, value)) {
+          Smartgraphs.sendAction('gotoStep', this, { stepId: branch.step });
           return;
         }
       }
     }
     
-    var defaultNextStep = this.get('defaultNextStep');
+    var defaultBranch = this.get('defaultBranch');
     
-    if (defaultNextStep) {
-      Smartgraphs.sendAction('gotoStep', this, { stepId: defaultNextStep.get('id') });
+    if (defaultBranch) {
+      Smartgraphs.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
     }
   },
   

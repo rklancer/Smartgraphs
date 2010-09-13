@@ -39,9 +39,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/1/step/1"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": null,
+  "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": false,
@@ -90,9 +90,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": "/backend/activity/1/page/2/step/2",
+  "defaultBranch": "/backend/activity/1/page/2/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
@@ -131,9 +131,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": null,
+  "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
@@ -184,9 +184,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": "/backend/activity/1/page/3/step/2",
+  "defaultBranch": "/backend/activity/1/page/3/step/2",
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
@@ -225,9 +225,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/2"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": null,
+  "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
@@ -269,9 +269,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": null,
+  "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": false,
@@ -322,9 +322,9 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": null,
+  "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": false,
@@ -374,11 +374,19 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
       "fieldIndex": 0
     }
   },
-  "reactions": [
-    "/backend/activity/new-step/page/1/step/1/reaction/1", 
-    "/backend/activity/new-step/page/1/step/1/reaction/2"
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [ {"strip" : "value" }, "one" ] 
+      },
+      "step": "/backend/activity/new-step/page/1/step/2"
+    },
+    { "criterion": { 
+        "equals": [ {"strip" : "value" }, "two" ] 
+      },
+      "step": "/backend/activity/new-step/page/1/step/3"
+    }
   ],
-  "defaultNextStep": null,
+  "defaultBranch": null,
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
@@ -409,9 +417,9 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/2"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": null,
+  "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
@@ -442,9 +450,9 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/3"] =
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "reactions": [
+  "responseBranches": [
   ],
-  "defaultNextStep": null,
+  "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
