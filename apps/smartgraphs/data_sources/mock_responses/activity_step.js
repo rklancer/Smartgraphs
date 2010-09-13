@@ -75,6 +75,12 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
+    { "action": "startFreehandInput",
+      "literalArgs": {
+        "pane": "top",
+        "annotationName": "prediction-away"
+      }
+    }
   ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": false,
@@ -110,6 +116,12 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
+    { "action": "startFreehandInput",
+      "literalArgs": {
+        "pane": "bottom",
+        "annotationName": "prediction-toward"
+      }
+    }
   ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": false,
@@ -157,6 +169,12 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
+    { "action": "startSensorInput",  
+      "literalArgs": {
+        "pane": "top",
+        "seriesName": "sensor"
+      }
+    }
   ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": false,
@@ -289,6 +307,12 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
   "responseTemplate": "",
   "afterText": "",
   "startCommands": [
+    { "action": "startFreehandInput",
+      "literalArgs": {
+        "pane": "top",
+        "annotationName": "prediction-away"
+      }
+    }
   ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": false,

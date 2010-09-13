@@ -54,10 +54,8 @@ Smartgraphs.ActivityStep = SC.Record.extend(
 
   /** 
     The list of commands (and their arguments) to be run when this ActivityStep is loaded.
-    CommandInvocations represent the specific invocations of commands, to be executed in the order specified by 
-    the 'index' property.
   */
-  startCommands: SC.Record.toMany('Smartgraphs.CommandInvocation', { orderBy: 'index' }),
+  startCommands: SC.Record.attr(Array),
   
   /**
     Whether to 'submit' (aka finish) automatically as soon as the startCommands execute, or whether to wait for

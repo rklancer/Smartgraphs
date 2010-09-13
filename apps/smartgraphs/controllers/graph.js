@@ -22,7 +22,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function (graphId) {
+    if (this.get('id') === graphId) return;    // nothing to do!
+
     var graph = Smartgraphs.store.find(Smartgraphs.Graph, graphId);
+
     if (!graph) {
       graph = Smartgraphs.store.createRecord(Smartgraphs.Graph, { id: graphId });
       Smartgraphs.store.commitRecords();

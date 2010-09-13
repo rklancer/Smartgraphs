@@ -200,37 +200,15 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   
   /**
   */
-  executeCommands: function (invocations) {
-    // var invocation, commandRecord, literalArgs, substitutedArgs, args, key;
-    // 
-    // for (var i = 0, ii = invocations.get('length'); i < ii; i++) {
-    //   invocation = invocations.objectAt(i);
-    //   commandRecord = invocation.get('command');
-    //   
-    //   // mixin the literal args first -- args from the specific invocation record override defaults defined in the 
-    //   // commandRecord (which is the 'generic' definition of the command)
-    //   args = SC.mixin(SC.copy(commandRecord.get('literalArgs')), invocation.get('literalArgs'));
-    //   
-    //   // mixin the substituted args the same. Need to substitute the actual values of the keys though
-    //   substitutedArgs = SC.mixin(SC.copy(commandRecord.get('substitutedArgs')), invocation.get('substitutedArgs'));
-    // 
-    //   // get the values from the context
-    //   for (key in substitutedArgs) {
-    //     if (substitutedArgs.hasOwnProperty(key)) {
-    //       args[key] = this.lookup(substitutedArgs[key]);
-    //     }
-    //   }
-    // 
-    //   // ... and do the action
-    //   Smartgraphs.sendAction(commandRecord.get('actionName'), this, args);
-    // }
+  executeCommands: function (commands) {
+    // 'commands' is a hash, not an SC.Object
+    var command;
+    for (var i = 0, ii = commands.length; i < ii; i++) {
+      command = commands[i];
+      // TODO command 'whitelist'?
+      // TODO deal with command subsitution, maybe?
+      Smartgraphs.sendAction(command.action, this, command.literalArgs);
+    }
   }
-  
-
-  // // return they context variable's value from the activityStep, activityPage, or activity context
-  // lookup: function (key) {
-  //   var context = this.get('context');
-  //   return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.activityPageController.lookup(key));
-  // }
   
 }) ;
