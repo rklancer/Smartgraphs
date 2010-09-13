@@ -16,9 +16,9 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
 {
 
     // Bind these properties
-    fieldTypes: null,
-    fieldChoiceLists: null,
-    values: null,
+    fieldTypes: [],
+    fieldChoiceLists: [],
+    values: [],
     editingShouldBeEnabled: null,
 
     // hide if there is no response template; especially important because IE7 doesn't its height as 0 when empty.
