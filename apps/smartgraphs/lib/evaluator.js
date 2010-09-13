@@ -28,12 +28,38 @@
     return true;
   }
   
+  function gt(terms, value) {
+    return (evaluate(terms[0], value) > evaluate(terms[1], value));
+  }
+  
   function equals(terms, value) {
     return evaluate(terms[0], value) === evaluate(terms[1], value);
   }
   
+  function strip(terms, value) {
+    return (evaluate(terms, value) || '').strip();
+  }
+  
+  function isIn(terms, value) {
+    var item = evaluate(terms[0], value);
+    var list = evaluate(terms[1], value);
+    
+    for (var i = 0, ii = list.length; i < ii; i++) {
+      if (item === list[i]) return true;
+    }
+    return false;
+  }
+  
+  function length(terms,value) {
+    return (evaluate(terms, value) || []).length;
+  }
+  
   evaluate = function (exp, value) {
     if (exp === 'value') return value;
+
+    if (typeof(exp) === 'string' || typeof(exp) === 'number' || exp.splice === [].splice || exp === undefined || exp === null) { 
+      return exp;
+    }
     
     for (var op in exp) {   // iterates only to the first 'own property', then returns
       if (exp.hasOwnProperty(op)) {
@@ -48,6 +74,14 @@
             return and(terms, value);
           case 'equals':
             return equals(terms, value);
+          case 'strip':
+            return strip(terms, value);
+          case 'in':
+            return isIn(terms, value);
+          case 'length':
+            return length(terms, value);
+          case 'gt':
+            return gt(terms, value);
         }
         console.error('invalid expression operator: "' + op + '"');
         return;

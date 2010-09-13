@@ -12,7 +12,7 @@ Smartgraphs.Reaction.FIXTURES = [
     parentStep: "/backend/activity/new-step/page/1/step/1",
     index: 1,
     reactionCriterion: { 
-      "equals": [ "value", { "literal": "one" } ] 
+      "equals": [ {"strip" : "value" }, "one" ] 
     },
     nextStep: "/backend/activity/new-step/page/1/step/2"
   },
@@ -21,7 +21,7 @@ Smartgraphs.Reaction.FIXTURES = [
     parentStep: "/backend/activity/new-step/page/1/step/1",
     index: 2,
     reactionCriterion: { 
-      "equals": [ "value", { "literal": "two" } ] 
+      "equals": [ {"strip" : "value" }, "two" ] 
     },
     nextStep: "/backend/activity/new-step/page/1/step/3"
   }
