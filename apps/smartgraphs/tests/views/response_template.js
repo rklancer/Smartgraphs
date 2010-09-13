@@ -93,6 +93,7 @@ function() {
     });
     pane.append();
     console.log("pane:", pane);
+    console.log("pane.$('body'):", pane.$('body'));
     SC.RunLoop.end();
 
     responseTemplateViewRendered = pane.childViews[0];
@@ -114,6 +115,11 @@ function() {
     console.log("multipleChoiceQuestionView.get('childViews').objectAt(1):", multipleChoiceQuestionView.get('childViews').objectAt(1));
     console.log("Don't know why responseTemplateViewRendered.$('.question-input') is not the rendered inputView div but is:", 
 		responseTemplateViewRendered.$('.question-input'));
+    console.log("multipleChoiceQuestionView.get('layerId'):", multipleChoiceQuestionView.get('layerId'));
+    console.log("pane.$('*'):", pane.$('*'));
+    console.log("pane.$('body'):", pane.$('body'));
+    console.log("pane.$('.question-input'):", pane.$('.question-input'));
+    console.log("pane.$(multipleChoiceQuestionView.get('layerId').toString()):", pane.$(multipleChoiceQuestionView.get('layerId').toString()));
     var input = responseTemplateViewRendered.$('.question-input');
     console.log("input:", input);
 
