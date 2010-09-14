@@ -9,10 +9,12 @@ sc_require('models/freehand_sketch');
 
 Smartgraphs.FreehandSketch.FIXTURES = [
   // need to have some fixtures or fixturesDataSource's updateRecords() thinks it can't handle the record.
-  { url: '/backend/activity/1/annotations/sketch-1',
-    name: 'sketch-1',
+  
+  { url: '/backend/activity/1/annotations/sketch-to-match',
+    name: 'sketch-to-match',
     isExample: YES,
-    points: [],
+    points: [ {x: 0, y: 3}, {x: 3, y: 1}, {x: 9, y: 2}, {x: 15, y:0} ],
     session: null
   }
+  
 ];

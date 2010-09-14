@@ -60,7 +60,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/4/match-away-with-sensor',
+      '/backend/activity/1/graph/4/graph-with-away-prediction',
     name:
       'Match-Away-With-Sensor',
     description: 
@@ -77,7 +77,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/5/match-toward-with-sensor',
+      '/backend/activity/1/graph/5/graph-with-toward-prediction',
     name:
       'Match-Toward-With-Sensor',
     description: 
@@ -140,5 +140,39 @@ Smartgraphs.Graph.FIXTURES = [
     initialAnnotations: [
       { type: 'Smartgraphs.HighlightedPoint', name: 'walking-first-point' }
     ]
+  },
+  
+  { url: 
+      '/backend/activity/1/graph/9/two-walkers',
+    name:
+      'Two walkers',
+    description: 
+      'Graph for multiple choice question in page 6',
+    title:
+      "A Motion Scenario",
+    axes:
+      '/backend/axes/2/5m-25s',
+    initialSeries: 
+      [],
+    initialAnnotations: [
+    ]
+  },
+  
+  { url: 
+      '/backend/activity/1/graph/10/graph-to-match',
+    name:
+      'Graph to match',
+    description: 
+      'Graph to match with sensor data',
+    title:
+      "A Challenge For You",
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      [],
+    initialAnnotations: [
+      { type: 'Smartgraphs.FreehandSketch', name: 'sketch-to-match' }
+    ]
   }
+  
 ];

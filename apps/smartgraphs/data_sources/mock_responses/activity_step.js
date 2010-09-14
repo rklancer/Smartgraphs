@@ -100,6 +100,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
 };
 steps.push(step);
 
+
 step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
 {
   "url": "/backend/activity/1/page/2/step/2",
@@ -251,8 +252,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
   "activityPage": "/backend/activity/1/page/4",
   "initialPaneConfig": 'split',
   "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/4/match-away-with-sensor',
-  "bottomGraph": '/backend/activity/1/graph/5/match-toward-with-sensor',
+  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
+  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
   "singleImage": null,
   "topImage": null,
   "bottomImage": null,
@@ -294,8 +295,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/2"] =
   "activityPage": "/backend/activity/1/page/4",
   "initialPaneConfig": 'split',
   "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/4/match-away-with-sensor',
-  "bottomGraph": '/backend/activity/1/graph/5/match-toward-with-sensor',
+  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
+  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
   "singleImage": null,
   "topImage": null,
   "bottomImage": null,
@@ -337,8 +338,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/3"] =
   "activityPage": "/backend/activity/1/page/4",
   "initialPaneConfig": 'split',
   "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/4/match-away-with-sensor',
-  "bottomGraph": '/backend/activity/1/graph/5/match-toward-with-sensor',
+  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
+  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
   "singleImage": null,
   "topImage": null,
   "bottomImage": null,
@@ -474,7 +475,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
   "bottomImage": null,
   "beforeText": 
     "<p>What happened at the red point?</p>"+
-    "<ul style=\"list-style-type='upper-alpha'\">"+
+    "<ul style=\"list-style-type: 'upper-alpha'\">"+
     "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
     "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
@@ -526,7 +527,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
   "beforeText":
     "<p>Incorrect. Look at the walker's distance and figure out his location on the path.</p>"+
     "<p>What happened at the red point?</p>"+
-    "<ul style=\"list-style-type='upper-alpha'\">"+
+    "<ul style=\"list-style-type: 'upper-alpha'\">"+
     "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
     "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
@@ -579,7 +580,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
   "beforeText":
     "<p>Incorrect. Figure out <b>when</b> this data was collected.</p>"+
     "<p>What happened at the red point?</p>"+
-    "<ul style=\"list-style-type='upper-alpha'\">"+
+    "<ul style=\"list-style-type: 'upper-alpha'\">"+
     "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
     "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
@@ -632,7 +633,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
   "beforeText":
     "<p>Incorrect. Think about which direction the walker moved after this point.</p>"+
     "<p>What happened at the red point?</p>"+
-    "<ul style=\"list-style-type='upper-alpha'\">"+
+    "<ul style=\"list-style-type: 'upper-alpha'\">"+
     "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
     "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
@@ -795,9 +796,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/1"] =
 {
   "url": "/backend/activity/1/page/7/step/1",
   "activityPage": "/backend/activity/1/page/7",
-  "initialPaneConfig": 'single',
-  "singleGraph": "/backend/activity/1/graph/3/sensor-playing",
-  "topGraph": null,
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
   "bottomGraph": null,
   "singleImage": null,
   "topImage": null,
@@ -955,13 +956,537 @@ Smartgraphs.mockResponses["/backend/activity/1/page/7/steps"] = steps;
 
 
 /****************************************************************************
+*    Activity 1 (Moving Away and Toward)
+*    Page 8
+****************************************************************************/
+
+steps = [];
+step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] = 
+{
+  "url": "/backend/activity/1/page/8/step/1",
+  "activityPage": "/backend/activity/1/page/8",
+  "initialPaneConfig": 'single',
+  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
+    "<ul style=\"list-style-type: 'upper-alpha'\">"+
+    "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
+    "      sensor for 10 seconds.</li>"+
+    "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
+    "      20 seconds. I walked toward the sensor for 20 seconds.</li>"+
+    "  <li>C. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+    "      from the sensor and walked away from the sensor for 20 seconds."+
+    "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+    "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
+    "</ul>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["b", "B"]]
+      },
+      "step": "/backend/activity/1/page/8/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/1/page/8/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] = 
+{
+  "url": "/backend/activity/1/page/8/step/2",
+  "activityPage": "/backend/activity/1/page/8",
+  "initialPaneConfig": 'single',
+  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
+    "<ul style=\"list-style-type: 'upper-alpha'\">"+
+    "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
+    "      sensor for 10 seconds.</li>"+
+    "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
+    "      20 seconds. I walked toward the sensor for 20 seconds.</li>"+
+    "  <li>C. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+    "      from the sensor and walked away from the sensor for 20 seconds."+
+    "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+    "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
+    "</ul>"+
+    "<p>Incorrect. Two data sets are represented on one graph. Analyze each set of data.</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["b", "B"]]
+      },
+      "step": "/backend/activity/1/page/8/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/1/page/8/step/3",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] = 
+{
+  "url": "/backend/activity/1/page/8/step/3",
+  "activityPage": "/backend/activity/1/page/8",
+  "initialPaneConfig": 'single',
+  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
+    "<ul style=\"list-style-type: 'upper-alpha'\">"+
+    "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
+    "      sensor for 10 seconds.</li>"+
+    "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
+    "      20 seconds. I walked toward the sensor for 20 seconds.</li>"+
+    "  <li>C. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+    "      from the sensor and walked away from the sensor for 20 seconds."+
+    "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+    "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
+    "</ul>"+
+    "<p>Incorrect. Figure out where each person started and ended.</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["b", "B"]]
+      },
+      "step": "/backend/activity/1/page/8/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/1/page/8/step/4",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] = 
+{
+  "url": "/backend/activity/1/page/8/step/4",
+  "activityPage": "/backend/activity/1/page/8",
+  "initialPaneConfig": 'single',
+  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
+    "<ul style=\"list-style-type: 'upper-alpha'\">"+
+    "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
+    "      sensor for 10 seconds.</li>"+
+    "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
+    "      20 seconds. I walked toward the sensor for 20 seconds.</li>"+
+    "  <li>C. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+    "      from the sensor and walked away from the sensor for 20 seconds."+
+    "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+    "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
+    "</ul>"+
+    "<p>Incorrect. Think about the direction each walker moved from the starting point.</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["b", "B"]]
+      },
+      "step": "/backend/activity/1/page/8/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/1/page/8/step/5",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/5"] = 
+{
+  "url": "/backend/activity/1/page/8/step/5",
+  "activityPage": "/backend/activity/1/page/8",
+  "initialPaneConfig": 'single',
+  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Still incorrect. Both walkers started 2 meters away. Then, one walked forward during the first 20 seconds, "+
+    "while the other walked backwards.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": {
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+  },
+  "responseBranches": [
+  ],
+  "defaultBranch": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "OK"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/6"] = 
+{
+  "url": "/backend/activity/1/page/8/step/6",
+  "activityPage": "/backend/activity/1/page/8",
+  "initialPaneConfig": 'single',
+  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Correct! Both walkers started 2 meters away. Then, one walked forward during the first 20 seconds, "+
+    "while the other walked backwards.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": {
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+  },
+  "responseBranches": [
+  ],
+  "defaultBranch": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "OK"
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/1/page/8/steps"] = steps;
+
+steps = [];
+
+/****************************************************************************
+*    Activity 1 (Moving Away and Toward)
+*    Page 9
+****************************************************************************/
+
+steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/1"] = 
+{
+  "url": "/backend/activity/1/page/9/step/1",
+  "activityPage": "/backend/activity/1/page/9",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/1/graph/10/graph-to-match",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+     "<p><b>Move</b> to your starting point and, when you are ready, have your partner click <b>Start</b> to record "+
+     "the data for your movements. <b>Walk</b> on the path for 15 seconds while trying to match the given graph. "+
+     "Click <b>stop</b> after 15 seconds are up.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [
+    { "action": "startSensorInput",  
+      "literalArgs": {
+        "pane": "top",
+        "seriesName": "sensor-match"
+      }
+    }
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "/backend/activity/1/page/9/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Done"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/2"] = 
+{
+  "url": "/backend/activity/1/page/9/step/2",
+  "activityPage": "/backend/activity/1/page/9",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/1/graph/10/graph-to-match",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+     "<p>How closely does your graph match the given graph? What could you have done to match the given graph "+
+     "more closely?",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/1/page/9/steps"] = steps;
+
+
+/****************************************************************************
+*    Activity 1 (Moving Away and Toward)
+*    Page 10
+****************************************************************************/
+
+steps = [];
+step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/1"] = 
+{
+  "url": "/backend/activity/1/page/10/step/1",
+  "activityPage": "/backend/activity/1/page/10",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
+  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Write down <b>3</b> things you have learned about motion since you started this activity.</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "/backend/activity/1/page/10/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/2"] = 
+{
+  "url": "/backend/activity/1/page/10/step/2",
+  "activityPage": "/backend/activity/1/page/10",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
+  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Describe <b>2</b> segments of the graphs and describe what is happening in each.</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "/backend/activity/1/page/10/step/3",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/3"] = 
+{
+  "url": "/backend/activity/1/page/10/step/3",
+  "activityPage": "/backend/activity/1/page/10",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
+  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Describe <b>1</b> type of motion you would like to try with the motion sensor.</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+Smartgraphs.mockResponses["/backend/activity/1/page/10/steps"] = steps;
+
+/****************************************************************************
 *    Activity 2 (Demo of Activity Switching)
 *    Page 1
 ****************************************************************************/
 
 
 steps = [];
-
 step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] = 
 {
   "url": "/backend/activity/2/page/1/step/1",

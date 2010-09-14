@@ -85,8 +85,6 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/4"] =
   "stepListUrl": "/backend/activity/1/page/4/steps"
 };
 pages.push(page);
-Smartgraphs.mockResponses["/backend/activity/1/pages"] = pages;
-
 
 page = Smartgraphs.mockResponses["/backend/activity/1/page/5"] = 
 {
@@ -148,6 +146,64 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/7"] =
 };
 pages.push(page);
 
+page = Smartgraphs.mockResponses["/backend/activity/1/page/8"] = 
+{
+  "steps": [
+    "/backend/activity/1/page/8/step/1",
+    "/backend/activity/1/page/8/step/2",
+    "/backend/activity/1/page/8/step/3",
+    "/backend/activity/1/page/8/step/4",
+    "/backend/activity/1/page/8/step/5",
+    "/backend/activity/1/page/8/step/6"
+  ],
+  "name": "Replay Page",
+  "firstStep": "/backend/activity/1/page/8/step/1",
+  "introText": 
+    "<p>Look at the position-time graph to the right.</p>",
+  "url": "/backend/activity/1/page/8",
+  "activity": "/backend/activity/1",
+  "index": 8,
+  "stepListUrl": "/backend/activity/1/page/8/steps"
+};
+pages.push(page);
+
+
+page = Smartgraphs.mockResponses["/backend/activity/1/page/9"] = 
+{
+  "steps": [
+    "/backend/activity/1/page/9/step/1",
+    "/backend/activity/1/page/9/step/2"    
+  ],
+  "name": "Replay Page",
+  "firstStep": "/backend/activity/1/page/9/step/1",
+  "introText": 
+    "<p><b>Look at the position-time graph to the right. You are going to recreate this graph as closely as "+
+    "possible by walking in front of the motion sensor to collect distance and time data.</p>",
+  "url": "/backend/activity/1/page/9",
+  "activity": "/backend/activity/1",
+  "index": 9,
+  "stepListUrl": "/backend/activity/1/page/9/steps"
+};
+pages.push(page);
+
+
+page = Smartgraphs.mockResponses["/backend/activity/1/page/10"] = 
+{
+  "steps": [
+    "/backend/activity/1/page/10/step/1",
+    "/backend/activity/1/page/10/step/2",
+    "/backend/activity/1/page/10/step/3"
+  ],
+  "name": "Replay Page",
+  "firstStep": "/backend/activity/1/page/10/step/1",
+  "introText": 
+    "<p>To the right are the sketches you drew at the beginning of this activity.</p>",
+  "url": "/backend/activity/1/page/10",
+  "activity": "/backend/activity/1",
+  "index": 10,
+  "stepListUrl": "/backend/activity/1/page/10/steps"
+};
+pages.push(page);
 Smartgraphs.mockResponses["/backend/activity/1/pages"] = pages;
 
 

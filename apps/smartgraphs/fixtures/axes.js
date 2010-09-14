@@ -22,6 +22,21 @@ Smartgraphs.Axes.FIXTURES = [
     ySteps: 10,
     yLabel: 'Position (meters)',
     yLabelAbbreviated: 'Position (m)'
+  },
+  
+  { url: '/backend/axes/2/5m-25s',
+  
+    xMin: 0,
+    xMax: 25,
+    xSteps: 25,
+    xLabel: 'Time (seconds)',
+    xLabelAbbreviated: 'Time (s)',
+
+    yMin: 0,
+    yMax: 5,
+    ySteps: 10,
+    yLabel: 'Position (meters)',
+    yLabelAbbreviated: 'Position (m)'
   }
 
 ];
