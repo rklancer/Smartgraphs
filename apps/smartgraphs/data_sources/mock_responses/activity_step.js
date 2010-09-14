@@ -187,7 +187,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
   "responseBranches": [
   ],
   "defaultBranch": "/backend/activity/1/page/3/step/2",
-  "isFinalStep": true,
+  "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
   "submitButtonTitle": "Done"
@@ -777,11 +777,182 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/7"] =
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "OK"
+  "submitButtonTitle": "Submit My Answer"
 };
 steps.push(step);
 
 Smartgraphs.mockResponses["/backend/activity/1/page/6/steps"] = steps;
+
+
+/****************************************************************************
+*    Activity 1 (Moving Away and Toward)
+*    Page 7
+****************************************************************************/
+
+steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/1"] = 
+{
+  "url": "/backend/activity/1/page/7/step/1",
+  "activityPage": "/backend/activity/1/page/7",
+  "initialPaneConfig": 'single',
+  "singleGraph": "/backend/activity/1/graph/3/sensor-playing",
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p><b>Stand</b> at a starting point <b>other</b> than the 0-meter mark. When you are ready, have your "+
+    "partner click <b>Start</b> to record the position and time data for your movements. <b>Walk</b> on the path "+
+    "15 seconds, experimenting with different directions and speeds. Click <b>Stop</b> after 15 seconds are up.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [
+    { "action": "startSensorInput",  
+      "literalArgs": {
+        "pane": "top",
+        "seriesName": "sensor-play-2"
+      }
+    }
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "/backend/activity/1/page/7/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Done"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/2"] = 
+{
+  "url": "/backend/activity/1/page/7/step/2",
+  "activityPage": "/backend/activity/1/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+     "<p>What is the significance of the y-intercept (the y-value of the point where the graph crosses the "+
+     "y-axis) of the position-time graph?</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "/backend/activity/1/page/7/step/3",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/3"] = 
+{
+  "url": "/backend/activity/1/page/7/step/3",
+  "activityPage": "/backend/activity/1/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+     "<p>How is speed represented on the graph?</p>", 
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "/backend/activity/1/page/7/step/4",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+
+step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/4"] = 
+{
+  "url": "/backend/activity/1/page/7/step/4",
+  "activityPage": "/backend/activity/1/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+     "<p>How is direction represented on the graph?</p>", 
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/1/page/7/steps"] = steps;
+
 
 /****************************************************************************
 *    Activity 2 (Demo of Activity Switching)

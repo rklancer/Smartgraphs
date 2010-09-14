@@ -129,6 +129,25 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/6"] =
 };
 pages.push(page);
 
+page = Smartgraphs.mockResponses["/backend/activity/1/page/7"] = 
+{
+  "steps": [
+    "/backend/activity/1/page/7/step/1",
+    "/backend/activity/1/page/7/step/2",
+    "/backend/activity/1/page/7/step/3",
+    "/backend/activity/1/page/7/step/4" 
+  ],
+  "name": "Replay Page",
+  "firstStep": "/backend/activity/1/page/7/step/1",
+  "introText": 
+    "<p>Now you will collect and analyze your own data once again.</p>",
+  "url": "/backend/activity/1/page/7",
+  "activity": "/backend/activity/1",
+  "index": 7,
+  "stepListUrl": "/backend/activity/1/page/7/steps"
+};
+pages.push(page);
+
 Smartgraphs.mockResponses["/backend/activity/1/pages"] = pages;
 
 

@@ -138,7 +138,6 @@ Smartgraphs.Graph.FIXTURES = [
     initialSeries: 
       ['walking-example-1'],
     initialAnnotations: [
-      { type: 'Smartgraphs.FreehandSketch', name: 'prediction-toward' },
       { type: 'Smartgraphs.HighlightedPoint', name: 'walking-first-point' }
     ]
   }
