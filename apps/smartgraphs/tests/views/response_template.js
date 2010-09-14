@@ -2,108 +2,111 @@
 // Project:   Smartgraphs.ResponseTemplate Unit Test
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start */
+/*globals Smartgraphs module test ok equals same stop start afterPropertyChange */
 
-var mwChoiceView, responseTemplateViewRendered;
-var pane = SC.MainPane.create({});
-var CHOICES = "one two three four five".w();
-var oldStore, view;
+var pane, responseTemplateView;
+var oldActivityStepController, oldStore;
 
 function setupFixtures() {
-    Smartgraphs.ResponseTemplate.oldFixtures = Smartgraphs.ResponseTemplate.FIXTURES;
-    Smartgraphs.ResponseTemplate.FIXTURES = [{
-        url: '/backend/response-template/1/multiplechoice',
-        templateString: '',
-        fieldTypes: ['multiplechoice', 'multiplechoice', 'numeric', 'textarea'],
-        prompt: 'Choose <b>one</b>.',
-        fieldChoiceLists: [["a", "b", "c"], ["a2", "b2", "c2"], [], []],
-        initialValues: ['', 'b2', '000', ''],
-        values: []
-    }];
+  Smartgraphs.ResponseTemplate.oldFixtures = Smartgraphs.ResponseTemplate.FIXTURES;
+  Smartgraphs.ResponseTemplate.FIXTURES = [{
+    url: 'test-template',
+    templateString: '',
+    fieldTypes: ['multiplechoice', 'multiplechoice', 'numeric', 'textarea'],
+    prompt: 'Choose <b>one</b>.',
+    fieldChoiceLists: [["a", "b", "c"], ["a2", "b2", "c2"], [], []],
+    initialValues: ['', 'b2', '000', ''],
+    values: []
+  }];
 
-    oldStore = Smartgraphs.store;
+  oldStore = Smartgraphs.store;
 
-    // REMINDER: 'SC.Record.fixtures' is a singleton object; using it below would result in pollution of the data store
-    // with data from prior tests.
-    Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
+  // REMINDER: 'SC.Record.fixtures' is a singleton object; using it below would result in pollution of the data store
+  // with data from prior tests.
+  Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
 }
 
 function restoreFixtures() {
-    Smartgraphs.ResponseTemplate.FIXTURES = Smartgraphs.ResponseTemplate.oldFixtures;
-    Smartgraphs.set('store', oldStore);
+  Smartgraphs.ResponseTemplate.FIXTURES = Smartgraphs.ResponseTemplate.oldFixtures;
+  Smartgraphs.set('store', oldStore);
 }
 
 module("Smartgraphs.ResponseTemplate", {
+  setup: function () {
+    oldActivityStepController = Smartgraphs.activityStepController;
+    Smartgraphs.activityStepController = SC.Object.create({
+      responseTemplate: null
+    });
+    setupFixtures();
+  },
 
-    setup: function() {
-        setupFixtures();
-    },
-
-    teardown: function() {
-        restoreFixtures();
-        pane.remove();
-        pane = mwChoiceView = responseTemplateViewRendered = responseTemplateViewRendered = null;
-    }
-
+  teardown: function () {
+    restoreFixtures();
+    pane.remove();
+    pane = responseTemplateView = null;
+    Smartgraphs.activityStepController = oldActivityStepController;
+  }
 });
 
-test("multiple choice question should contain choice radio buttons ",
-function() {
+test("multiple choice question should contain choice radio buttons", function () {
+  var responseTemplate = Smartgraphs.store.find(Smartgraphs.ResponseTemplate, 'test-template');
+  
+  Smartgraphs.responseTemplateController.set('content', responseTemplate);
 
-    var responseTemplates = Smartgraphs.store.find(Smartgraphs.ResponseTemplate);
-    var responseTemplate = responseTemplates.objectAt(0);
+  SC.RunLoop.begin();
+  pane = SC.MainPane.create({
+    childViews: [Smartgraphs.ResponseTemplateView.design({
+      fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
+      fieldChoiceListsBinding: 'Smartgraphs.responseTemplateController.fieldChoiceLists',
+      valuesBinding: 'Smartgraphs.responseTemplateController.values',
+      editingShouldBeEnabled: NO
+    })]
+  });
+  pane.append();  
+  SC.RunLoop.end();
+    
+  responseTemplateView = pane.get('childViews').objectAt(0);
+  
+  ok(SC.kindOf(responseTemplateView, Smartgraphs.ResponseTemplateView), "first child of the pane should be a responseTemplateView");
+  ok(responseTemplateView.get('childViews').objectAt(0), "responseTemplateView should have a childView");
+  ok(responseTemplateView.get('isVisible') === YES, 'responseTemplateView should be visible');
 
-    equals(responseTemplate.get('attributes'), Smartgraphs.ResponseTemplate.FIXTURES[0], 
-		"responseTemplate.get('attributes') should equal Smartgraphs.ResponseTemplate.FIXTURES[0]");
+  var multipleChoiceQuestionView = responseTemplateView.get('childViews').objectAt(0).get('childViews').objectAt(0);
+  var $input = responseTemplateView.$('.question-input');
 
-    Smartgraphs.responseTemplateController.set('content', responseTemplate);
+  equals($input.find('.sc-button-label').size(), 3, "There should be 3 choices");
 
-    var responseTemplateDesign = Smartgraphs.ResponseTemplateView.design({
-        fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
-        fieldChoiceListsBinding: 'Smartgraphs.responseTemplateController.fieldChoiceLists',
-        valuesBinding: 'Smartgraphs.responseTemplateController.values',
-        editingShouldBeEnabledBinding: 'Smartgraphs.responseTemplateController.editingShouldBeEnabled'
-    });
+  var firstChoice = $input.find('.sc-button-label').first().html().strip();
+  equals(firstChoice, "a2", "first choice should be 'a2'");
 
-    SC.RunLoop.begin();
-    pane = SC.MainPane.create({
-        // childViews arrays should contain classes (i.e., the result of [viewClass].design() or [viewClass].extend())
-        // NOT view instances; if you do *create* a view, you need to use [parentView].appendChild() to give the 
-        // created view a parent.
-        childViews: [responseTemplateDesign]
-    });
-    pane.append();
-    // console.log("pane:", pane);
-    SC.RunLoop.end();
+  var lastChoice = $input.find('.sc-button-label').last().html().strip();
+  equals(lastChoice, "c2", "last choice should be 'c2'");
+});
 
-    // after pane.append(), you can get the view this way:
-    responseTemplateViewRendered = pane.get('childViews').objectAt(0);
 
-    ok(SC.kindOf(responseTemplateViewRendered, Smartgraphs.ResponseTemplateView), "responseTemplateView should have been rendered");
-    ok(responseTemplateViewRendered.get('childViews').objectAt(0), "responseTemplateView should have a childView");
+test("show the view", function () {
+  var responseTemplate = Smartgraphs.store.find(Smartgraphs.ResponseTemplate, 'test-template');
+  
+  Smartgraphs.responseTemplateController.set('content', responseTemplate);
 
-    var multipleChoiceQuestionView = responseTemplateViewRendered.get('childViews').objectAt(0).get('childViews').objectAt(0);
-
-    // console.log("multipleChoiceQuestionView:", multipleChoiceQuestionView);
-    // console.log("multipleChoiceQuestionView.get('childViews'):", multipleChoiceQuestionView.get('childViews'));
-    // console.log("multipleChoiceQuestionView.get('childViews').objectAt(1):", multipleChoiceQuestionView.get('childViews').objectAt(1));
-    // console.log("responseTemplateViewRendered.$('.question-input'):", responseTemplateViewRendered.$('.question-input'));
-    //
-	// '$input' below is a jQuery object wrapping the selected DOM elements (those with class 'question-input');
-    // I like the convention of prefixing jQuery objects with '$'
-    var $input = responseTemplateViewRendered.$('.question-input');
-    // to get the DOM element selected by $() (which is more amenable to console.log than is the jQuery object)
-    // use array notation:    
-    console.log("$input[0]: ", $input[0]);
-
-    // equals will tell you the actual value
-    equals($input.find('.sc-button-label').size(), 3, "There should be 3 choices");
-
-    var firstChoice = $input.find('.sc-button-label').first().html().strip();
-    console.log("firstChoice: ", firstChoice);
-    equals(firstChoice, "a2", "first choice should be 'a2'");
-
-    var lastChoice = $input.find('.sc-button-label').last().html().strip();
-    console.log("lastChoice: ", lastChoice);
-    equals(lastChoice, "c2", "last choice should be 'c2'");
+  SC.RunLoop.begin();
+  pane = SC.MainPane.create({
+    childViews: [Smartgraphs.ResponseTemplateView.design({
+      fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
+      fieldChoiceListsBinding: 'Smartgraphs.responseTemplateController.fieldChoiceLists',
+      valuesBinding: 'Smartgraphs.responseTemplateController.values',
+      editingShouldBeEnabled: NO
+    })]
+  });
+  pane.append();  
+  SC.RunLoop.end();
+  
+  var responseTemplateView = pane.get('childViews').objectAt(0);
+  
+  setTimeout(function () {
+    responseTemplateView.set('doneShowing', YES);
+  }, 5000);
+  
+  afterPropertyChange(responseTemplateView, 'doneShowing', YES, function () {
+  });
 });
