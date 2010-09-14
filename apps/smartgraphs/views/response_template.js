@@ -30,7 +30,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
   // TODO: DRY/refactor this function
   // TODO: Extend view classes from CC framework instead of just copying the code
   _updateChildViews: function() {
-    console.log("_updateChildViews called");
+    // console.log("_updateChildViews called");
     this.get('childViews').invoke('destroy');
     var fieldTypes = this.get('fieldTypes');
     if (!fieldTypes) return;
@@ -43,10 +43,10 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
 
     for (var i = 0,
     fieldTypesLength = fieldTypes.get('length'); i < fieldTypesLength; i++) {
-      console.log("fieldTypesLength:",fieldTypesLength);
-      console.log("i:",i);
+      // console.log("fieldTypesLength:",fieldTypesLength);
+      // console.log("i:",i);
       fieldType = fieldTypes.objectAt(i);
-      console.log("fieldType:",fieldType);
+      // console.log("fieldType:",fieldType);
       value = values.objectAt(i);
       fieldChoiceList = fieldChoiceLists.objectAt(i);
 
@@ -95,8 +95,8 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
         view = multipleChoiceQuestionWrapperDesign.create();
         view.childViews[0].inputView.set('value', value); // Make sure initial value is rendered
         this.appendChild(view);
-        console.log(view);
-        console.log(view.childViews[0]);
+        // console.log(view);
+        // console.log(view.childViews[0]);
       } else {
         // note that SC.TextFieldViews don't display properly at all if they have useStaticLayout: YES
         var inputFieldWrapperDesign = SC.View.design({
