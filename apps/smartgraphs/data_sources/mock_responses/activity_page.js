@@ -85,6 +85,49 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/4"] =
   "stepListUrl": "/backend/activity/1/page/4/steps"
 };
 pages.push(page);
+Smartgraphs.mockResponses["/backend/activity/1/pages"] = pages;
+
+
+page = Smartgraphs.mockResponses["/backend/activity/1/page/5"] = 
+{
+  "steps": [
+    "/backend/activity/1/page/5/step/1",
+    "/backend/activity/1/page/5/step/2"
+  ],
+  "name": "Replay Page",
+  "firstStep": "/backend/activity/1/page/5/step/1",
+  "introText": 
+    "<p>At right is the data you just collected with the motion sensor.</p>",
+  "url": "/backend/activity/1/page/5",
+  "activity": "/backend/activity/1",
+  "index": 5,
+  "stepListUrl": "/backend/activity/1/page/5/steps"
+};
+pages.push(page);
+Smartgraphs.mockResponses["/backend/activity/1/pages"] = pages;
+
+
+page = Smartgraphs.mockResponses["/backend/activity/1/page/6"] = 
+{
+  "steps": [
+    "/backend/activity/1/page/6/step/1",
+    "/backend/activity/1/page/6/step/2",
+    "/backend/activity/1/page/6/step/3",
+    "/backend/activity/1/page/6/step/4",
+    "/backend/activity/1/page/6/step/5",
+    "/backend/activity/1/page/6/step/6",
+    "/backend/activity/1/page/6/step/7"        
+  ],
+  "name": "Replay Page",
+  "firstStep": "/backend/activity/1/page/6/step/1",
+  "introText": 
+    "<p>At right is a distance-time graph created by someone walking in front of a motion sensor.</p>",
+  "url": "/backend/activity/1/page/6",
+  "activity": "/backend/activity/1",
+  "index": 6,
+  "stepListUrl": "/backend/activity/1/page/6/steps"
+};
+pages.push(page);
 
 Smartgraphs.mockResponses["/backend/activity/1/pages"] = pages;
 

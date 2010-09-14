@@ -60,9 +60,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/4/sensor-away',
+      '/backend/activity/1/graph/4/match-away-with-sensor',
     name:
-      'Sensor-Away',
+      'Match-Away-With-Sensor',
     description: 
       "Graph with 'away' prediction for adding 'away' sensor data in page 4",
     title:
@@ -77,9 +77,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/5/sensor-toward',
+      '/backend/activity/1/graph/5/match-toward-with-sensor',
     name:
-      'Sensor-Toward',
+      'Match-Toward-With-Sensor',
     description: 
       "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
     title:
@@ -94,11 +94,43 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/6/walking-example-1',
+      '/backend/activity/1/graph/6/sensor-away',
+    name:
+      'Sensor-Away',
+    description: 
+      "Graph with'away' sensor data from page 4",
+    title:
+      'Away',
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      ['sensor-away'],
+    initialAnnotations: [
+    ]
+  },
+  
+  { url: 
+      '/backend/activity/1/graph/7/sensor-toward',
+    name:
+      'Match-Toward-With-Sensor',
+    description: 
+      "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
+    title:
+      'Toward',
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      ['sensor-toward'],
+    initialAnnotations: [
+    ]
+  },
+  
+  { url: 
+      '/backend/activity/1/graph/8/walking-example-1',
     name:
       'Walking',
     description: 
-      'For asking students which direction the walk happened',
+      'Graph for multiple choice question in page 6',
     title:
       "An Example Walk",
     axes:

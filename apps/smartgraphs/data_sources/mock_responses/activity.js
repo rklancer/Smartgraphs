@@ -22,7 +22,10 @@ Smartgraphs.mockResponses["/backend/activity/1"] =
     "/backend/activity/1/page/1",
     "/backend/activity/1/page/2",
     "/backend/activity/1/page/3",
-    "/backend/activity/1/page/4"],
+    "/backend/activity/1/page/4",
+    "/backend/activity/1/page/5",
+    "/backend/activity/1/page/6"
+  ],
   "pageListUrl":      "/backend/activity/1/pages"
 };
 
