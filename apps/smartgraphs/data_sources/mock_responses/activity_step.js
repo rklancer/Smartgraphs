@@ -173,7 +173,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
     { "action": "startSensorInput",  
       "literalArgs": {
         "pane": "top",
-        "seriesName": "sensor"
+        "seriesName": "sensor-play"
       }
     }
   ],
@@ -249,18 +249,27 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
 {
   "url": "/backend/activity/1/page/4/step/1",
   "activityPage": "/backend/activity/1/page/4",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/5/walking-example-1',
-  "topGraph": '',
-  "bottomGraph": null,
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": '/backend/activity/1/graph/4/sensor-away',
+  "bottomGraph": '/backend/activity/1/graph/5/sensor-toward',
   "singleImage": null,
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>At right is example data from a real walk together with one of your predictions.</p>",
+    "<p>First, <b>stand</b> close to the sensor, near the 0-meter mark.</p>"+
+    "<p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your "+
+    "movements. <b>Walk</b> on the path at a slow, steady pace, away from the sensor, for 15 seconds. Click "+
+    "<b>Stop</b> after 15 seconds are up.",
   "responseTemplate": "",
   "afterText": "",
   "startCommands": [
+    { "action": "startSensorInput",  
+      "literalArgs": {
+        "pane": "top",
+        "seriesName": "sensor-away"
+      }
+    }
   ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": false,
@@ -271,16 +280,95 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
   "responseInspector": null,
   "responseBranches": [
   ],
-  "defaultBranch": null,
-  "isFinalStep": true,
+  "defaultBranch": "/backend/activity/1/page/4/step/2",
+  "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": false,
-  "submitButtonTitle": ""
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Done"
 };
 steps.push(step);
 
-Smartgraphs.mockResponses["/backend/activity/1/page/4/steps"] = steps;
+step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/2"] = 
+{
+  "url": "/backend/activity/1/page/4/step/2",
+  "activityPage": "/backend/activity/1/page/4",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": '/backend/activity/1/graph/4/sensor-away',
+  "bottomGraph": '/backend/activity/1/graph/5/sensor-toward',
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>To make the second graph, <b>stand</b> approximately 4 meters away from the sensor on the path. When you "+
+    "are ready, have your partner click <b>Start</b> to record the position and time data for your movements. "+
+    "<b>Walk</b> on the path at the same slow, steady pace, toward the sensor, for 15 seconds. Click <b>Stop</b> "+
+    "after 15 seconds are up.",
+  "responseTemplate": "",
+  "afterText": "",
+  "startCommands": [
+    { "action": "startSensorInput",  
+      "literalArgs": {
+        "pane": "bottom",
+        "seriesName": "sensor-toward"
+      }
+    }
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "/backend/activity/1/page/4/step/3",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Done"
+};
+steps.push(step);
 
+step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/3"] = 
+{
+  "url": "/backend/activity/1/page/4/step/3",
+  "activityPage": "/backend/activity/1/page/4",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": '/backend/activity/1/graph/4/sensor-away',
+  "bottomGraph": '/backend/activity/1/graph/5/sensor-toward',
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>How closely does the graph of your data match your original sketches?</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": true,
+  "submitButtonTitle": "Submit My Answer"
+};
+steps.push(step);
+Smartgraphs.mockResponses["/backend/activity/1/page/4/steps"] = steps;
 
 
 

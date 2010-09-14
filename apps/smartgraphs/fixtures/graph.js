@@ -60,24 +60,41 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/4/combined',
+      '/backend/activity/1/graph/4/sensor-away',
     name:
-      'Combined',
+      'Sensor-Away',
     description: 
-      'Combines the prediction graphs and the sensor graph',
+      "Graph with 'away' prediction for adding 'away' sensor data in page 4",
     title:
-      "Combined 'Away' Graph",
+      'Away',
     axes:
       '/backend/axes/1/5m-15s',
     initialSeries: 
-      ['sensor'],
+      [],
     initialAnnotations: [
       { type: 'Smartgraphs.FreehandSketch', name: 'prediction-away' }
     ]
   },
   
   { url: 
-      '/backend/activity/1/graph/5/walking-example-1',
+      '/backend/activity/1/graph/5/sensor-toward',
+    name:
+      'Sensor-Toward',
+    description: 
+      "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
+    title:
+      'Toward',
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      [],
+    initialAnnotations: [
+      { type: 'Smartgraphs.FreehandSketch', name: 'prediction-toward' }
+    ]
+  },
+  
+  { url: 
+      '/backend/activity/1/graph/6/walking-example-1',
     name:
       'Walking',
     description: 

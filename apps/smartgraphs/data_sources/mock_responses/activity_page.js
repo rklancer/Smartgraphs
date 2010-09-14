@@ -70,11 +70,15 @@ pages.push(page);
 page = Smartgraphs.mockResponses["/backend/activity/1/page/4"] = 
 {
   "steps": [
-    "/backend/activity/1/page/4/step/1"
+    "/backend/activity/1/page/4/step/1",
+    "/backend/activity/1/page/4/step/2",
+    "/backend/activity/1/page/4/step/3"
   ],
   "name": "Replay Page",
   "firstStep": "/backend/activity/1/page/4/step/1",
-  "introText": "<p>How did the actual graph of your motion compare to your prediction?<p>",
+  "introText": 
+    "<p>To the right are your drawings from page 2. Now that you &quot;have the hang of it&quot;, you will walk "+
+    "with the sensor to see if your sketches of forward and backward motion are correct.</p>",
   "url": "/backend/activity/1/page/4",
   "activity": "/backend/activity/1",
   "index": 4,
