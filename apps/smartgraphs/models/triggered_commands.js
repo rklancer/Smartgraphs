@@ -30,11 +30,11 @@ Smartgraphs.TriggeredCommands = SC.Record.extend(
   /**
     series of commands to run when the triggerCriterion switches from NO to YES
   */
-  onCommands: SC.Record.toMany('Smartgraphs.CommandInvocation', { orderBy: 'index' }),
+  onCommands: SC.Record.attr(Object),
   
   /**
     series of commands to run when the triggerCriterion switches from YES to NO
   */
-  offCommands: SC.Record.toMany('Smartgraphs.CommandInvocation', { orderBy: 'index' })
+  offCommands: SC.Record.attr(Object)
 
 }) ;

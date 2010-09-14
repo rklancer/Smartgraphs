@@ -44,16 +44,6 @@ Smartgraphs.Activity = SC.Record.extend(
     Server endpoint for getting the page records. 
   */
   pageListUrl: SC.Record.attr(String),
-  
-  /**
-    Server endpoint for finding the triggers definitions. TODO migrate this to server root.
-  */
-  triggerListUrl: SC.Record.attr(String),
-
-  /**
-    Server endpoint for finding the command definitions
-  */
-  commandListUrl: SC.Record.attr(String),
 
   /**
     A local SC.Query that returns all the ActivityPages associated with this activity. Used to signal the data
