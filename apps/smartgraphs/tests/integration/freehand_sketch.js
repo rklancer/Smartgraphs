@@ -63,12 +63,13 @@ module('Freehand input controllers and states', {
     session = Smartgraphs.sessionController.get('content');
     sketch = Smartgraphs.sessionController.createAnnotation('test-sketch', Smartgraphs.FreehandSketch);
     
-    // TODO this might make sense in a debug helper
     Smartgraphs.firstGraphController.openGraph('test');
     Smartgraphs.secondGraphController.openGraph('test');
   },
   
   teardown: function () {
+    Smartgraphs.firstGraphController.clear();
+    Smartgraphs.secondGraphController.clear();
     restoreFixtures();
   }
 });
@@ -256,6 +257,7 @@ module('Freehand sketch input', {
   },
   
   teardown: function () {
+    Smartgraphs.firstGraphController.clear();
     pane.remove();
     pane = graphView = canvasView = null;
     restoreFixtures();
