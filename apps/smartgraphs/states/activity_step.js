@@ -20,15 +20,13 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_STEP.prototype */ {
   
   nextResponder: Smartgraphs.ACTIVITY,
-  submissionIsEnabled: YES,
   
   didBecomeFirstResponder: function() {
-    this.enableSubmission();   // enabled by default until we receive disableSubmssion or waitForResponse
     Smartgraphs.activityStepController.begin();
   },
   
   willLoseFirstResponder: function () {
-    Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', NO);
+    Smartgraphs.activityStepController.disableSubmission();
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', NO);
   },
   
@@ -50,23 +48,10 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // 
   
   submitStep: function () {
-    if (this.get('submissionIsEnabled')) {
+    if (Smartgraphs.activityStepController.get('submissionIsEnabled')) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_SUBMITTED);
     }
-    else {
-      console.error('ACTIVITY_STEP received submitStep action when submissionIsEnabled was NO');
-    }
     return YES;
-  },
-  
-  enableSubmission: function () {
-    this.set('submissionIsEnabled', YES);
-    Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', YES);    
-  },
-  
-  disableSubmission: function () {
-    this.set('submissionIsEnabled', NO);
-    Smartgraphs.activityStepController.set('submitButtonShouldBeEnabled', NO);    
   },
 
   waitForResponse: function (context, args) {

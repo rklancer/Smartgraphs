@@ -15,13 +15,16 @@
 Smartgraphs.activityStepController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityStepController.prototype */ {
 
-  submitButtonShouldBeEnabled: NO,
+  submissionIsEnabled: NO,
   submissibilityInspectorInstance: null,
   
   /**
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.
   */
   begin: function () {
+    
+    this.enableSubmission();
+    
     // FIXME: this is a hack
     SC.RunLoop.begin();
     Smartgraphs.responseTemplateController.set('content', null);
@@ -138,17 +141,17 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   
   waitForResponse: function () {
     if (!this.get('submissibilityInspector')) {
-      Smartgraphs.sendAction('enableSubmission');
+      this.enableSubmission();
     }
     else {
-      Smartgraphs.sendAction('disableSubmission');
+      this.disableSubmission();
       this.setupSubmissibilityInspector();
     }
   },
   
   setupSubmissibilityInspector: function () {
     if (!this.get('submissibilityInspector')) {
-      Smartgraphs.sendAction('enableSubmission');
+      this.enableSubmission();
       return;
     }
     
@@ -195,10 +198,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
     
     if (valueIsValid && !this._valueWasValid) {
-      Smartgraphs.sendAction('enableSubmission');
+      this.enableSubmission();
     }
     else if (this._valueWasValid && !valueIsValid) {
-      Smartgraphs.sendAction('disableSubmission');
+      this.disableSubmission();
     }
     
     this._valueWasValid = valueIsValid;
@@ -215,6 +218,14 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       // TODO deal with argument substitution?
       Smartgraphs.sendAction(command.action, this, command.literalArgs);
     }
+  },
+  
+  enableSubmission: function () {
+    this.set('submissionIsEnabled', YES);
+  },
+  
+  disableSubmission: function () {
+    this.set('submissionIsEnabled', NO);    
   }
   
 }) ;
