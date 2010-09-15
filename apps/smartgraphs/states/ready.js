@@ -26,6 +26,7 @@ Smartgraphs.READY = SC.Responder.create(
 /** @scope Smartgraphs.READY.prototype */ {
 
   nextResponder: null,
+  fencedActivityId: null,
   
   didBecomeFirstResponder: function() {
     // Eventually we can use SC.routes to parse a 'query string' for us, as per:
@@ -41,8 +42,30 @@ Smartgraphs.READY = SC.Responder.create(
   // SC.routes callback (not really an action; SC.routes calls this method directly)
   route: function (route) {
     var activityId = route.activityId;
-    if (activityId) {
-      Smartgraphs.sendAction('openActivity', this, { id: activityId });
+
+    // as a quickfix, put a 'fence' around the back button
+    // URL Fragment #1: user visits '#/backend/activity/1":
+    //    a. Smartgraphs saves activity id "/backend/activity/1" as this.fencedActivityId
+    //    b. Smartgraphs visits fragment #fence
+    // URL Fragment # 2: Smartgraphs visits #fence
+    //    a. Smartgraphs visits the URL fragment at this.fencedActivityId; in this case, '#/backend/activity/1'
+    // URL Fragment #3: Smartgraphs visits '#/backend/activity/1'
+    //    a. Since this.fencedActivityId, Smartgraphs issues openActivity Command instead of revisiting the steps
+    //       above (those starting with Fragment #1)
+    
+    if (activityId === 'fence') {
+      if (this.fencedActivityId) {
+        SC.routes.set('location', this.fencedActivityId);
+      }
+    }
+    else if (activityId) {
+      if (activityId === this.fencedActivityId) {
+        Smartgraphs.sendAction('openActivity', this, { id: this.fencedActivityId });
+      }
+      else  {
+        this.fencedActivityId = activityId;
+        SC.routes.set('location', 'fence');
+      }
     }
   },
 
