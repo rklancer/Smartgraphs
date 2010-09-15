@@ -107,8 +107,8 @@ Smartgraphs.activityPage = SC.Page.design({
           },
           title: "Next >>",
           action: 'gotoNextPage',
-          isEnabledBinding: 'Smartgraphs.pageNavController.nextShouldBeEnabled',
-          isVisibleBinding: 'Smartgraphs.pageNavController.nextShouldBeVisible'
+          isEnabledBinding: 'Smartgraphs.activityController.canGotoNextPage',
+          isVisibleBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage')
         })//,
         
         // TODO disabled for now, until we have page *visitation* working.

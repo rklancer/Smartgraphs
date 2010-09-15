@@ -25,12 +25,12 @@ Smartgraphs.ACTIVITY_PAGE_DONE = SC.Responder.create(
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_DONE);
     }
     else {
-      Smartgraphs.activityController.set('canOpenNextPage', YES);
+      Smartgraphs.activityController.set('canGotoNextPage', YES);
     }
   },
   
   willLoseFirstResponder: function() {
-    Smartgraphs.activityController.set('canOpenNextPage', NO);
+    Smartgraphs.activityController.set('canGotoNextPage', NO);
     Smartgraphs.activityPageController.cleanup();
   },
   

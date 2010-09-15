@@ -27,6 +27,6 @@ Smartgraphs.activityController = SC.ObjectController.create(
   },
   
   // let buttons know.
-  canOpenNextPage: NO
+  canGotoNextPage: NO
     
 }) ;
