@@ -96,7 +96,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Done"
+  "submitButtonTitle": "OK"
 };
 steps.push(step);
 
@@ -114,7 +114,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
   "bottomImage": null,
   "beforeText": 
      "<p>In the bottom-right area, draw a graph of someone walking at a slow, steady pace from point B to point A "+
-     "between 0 and 15 seconds. Click Next when you are ready.</p>",
+     "between 0 and 15 seconds. Click Next when you are done.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -138,7 +138,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Done"
+  "submitButtonTitle": ""
 };
 steps.push(step);
 
@@ -164,10 +164,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-     "<p>Place the sensor at the 0-meter mark. Stand near the sensor. When you are ready, have your partner click "+
-     "Start to record the position and time data for your movements. Walk on the path for 15 seconds. Experiment "+
-     "with different kinds of motions (walking fast, slow, forward, backward\u2026) Click Stop after 15 seconds is "+
-     "up. Click Reset to try a different movement.</p>",
+     "<p><b>Place</b> the sensor at the 0-meter mark. <b>Stand</b> near the sensor. When you are ready, have your partner <b>click "+
+     "Start</b> to record the position and time data for your movements. </p>"+
+     "<p><b>Walk</b> on the path for 15 seconds. <b>Try</b> "+
+     "different kinds of motions (walking fast, slow, forward, backward\u2026) <b>Click Stop</b> after 15 seconds are "+
+     "up. <b>Click Reset</b> if you want to try again.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -258,10 +259,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>First, <b>stand</b> close to the sensor, near the 0-meter mark.</p>"+
-    "<p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your "+
-    "movements. <b>Walk</b> on the path at a slow, steady pace, away from the sensor, for 15 seconds. Click "+
-    "<b>Stop</b> after 15 seconds are up.",
+    "<p>First, <b>stand</b> close to the sensor, near the 0-meter mark. "+
+    "When you are ready, have your partner <b>click Start</b> to record the position and time data for your "+
+    "movements. "+
+    "<p><b>Walk</b> on the path at a slow, steady pace, away from the sensor, for 15 seconds. <b>Click "+
+    "Stop</b> after 15 seconds are up.",
   "responseTemplate": "",
   "afterText": "",
   "startCommands": [
@@ -302,8 +304,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/2"] =
   "bottomImage": null,
   "beforeText": 
     "<p>To make the second graph, <b>stand</b> approximately 4 meters away from the sensor on the path. When you "+
-    "are ready, have your partner click <b>Start</b> to record the position and time data for your movements. "+
-    "<b>Walk</b> on the path at the same slow, steady pace, toward the sensor, for 15 seconds. Click <b>Stop</b> "+
+    "are ready, have your partner <b>click Start</b> to record the position and time data for your movements. "+
+    "<p><b>Walk</b> on the path at the same slow, steady pace, toward the sensor, for 15 seconds. <b>Click Stop</b> "+
     "after 15 seconds are up.",
   "responseTemplate": "",
   "afterText": "",
@@ -344,7 +346,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/3"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>How closely does the graph of your data match your original sketches?</p>",
+    "<p>How closely do the graphs of your data match your original sketches?</p>",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -509,7 +511,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "submitButtonTitle": "Check Answer"
 };
 steps.push(step);
 
@@ -525,14 +527,14 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-    "<p>Incorrect. Look at the walker's distance and figure out his location on the path.</p>"+
     "<p>What happened at the red point?</p>"+
     "<ul style=\"list-style-type: 'upper-alpha'\">"+
     "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
     "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
     "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "</ul>",
+    "</ul>"+
+    "<p><b>Incorrect.</b> Look at the walker's position and figure out his location on the path.</p>",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -561,7 +563,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "submitButtonTitle": "Check Answer"
 };
 steps.push(step);
 
@@ -578,14 +580,14 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-    "<p>Incorrect. Figure out <b>when</b> this data was collected.</p>"+
     "<p>What happened at the red point?</p>"+
     "<ul style=\"list-style-type: 'upper-alpha'\">"+
     "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
     "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
     "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "</ul>",
+    "</ul>"+
+    "<p><b>Incorrect.</b> Figure out <b>when</b> this data was collected.</p>",    
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -614,7 +616,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "submitButtonTitle": "Check Answer"
 };
 steps.push(step);
 
@@ -631,14 +633,14 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-    "<p>Incorrect. Think about which direction the walker moved after this point.</p>"+
     "<p>What happened at the red point?</p>"+
     "<ul style=\"list-style-type: 'upper-alpha'\">"+
     "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
     "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
     "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "</ul>",
+    "</ul>"+
+    "<p><b>Incorrect.</b> Think about which direction the walker moved after this point.</p>",    
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -667,7 +669,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "submitButtonTitle": "Check Answer"
 };
 steps.push(step);
 
@@ -684,7 +686,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/5"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-    "<p>Still incorrect. At this point, the walker was 4 meters away, getting ready to walk toward the sensor.</p>",
+    "<p><b>Still incorrect.</b> At this point, the walker was 4 meters away, getting ready to walk toward the sensor.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -720,7 +722,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/6"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-    "<p>Correct! At this point, the walker was 4 meters away, getting ready to walk toward the sensor.</p>",
+    "<p><b>Correct!</b> At this point, the walker was 4 meters away, getting ready to walk toward the sensor.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -756,7 +758,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/7"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-  "<p>How do you know?</p>",
+  "<p>What is a good strategy for finding out what is happening at a given point in a position-time graph?</p>",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -805,8 +807,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/1"] =
   "bottomImage": null,
   "beforeText":
     "<p><b>Stand</b> at a starting point <b>other</b> than the 0-meter mark. When you are ready, have your "+
-    "partner click <b>Start</b> to record the position and time data for your movements. <b>Walk</b> on the path "+
-    "15 seconds, experimenting with different directions and speeds. Click <b>Stop</b> after 15 seconds are up.</p>",
+    "partner <b>click Start</b> to record the position and time data for your movements. </p>"+
+    "<p><b>Walk</b> on the path for 15 seconds, experimenting with different directions and speeds. "+
+    "<b>Click Stop</b> after 15 seconds are up.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -1012,7 +1015,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "submitButtonTitle": "Check Answer"
 };
 steps.push(step);
 
@@ -1039,7 +1042,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
     "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
     "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
     "</ul>"+
-    "<p>Incorrect. Two data sets are represented on one graph. Analyze each set of data.</p>",
+    "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data.</p>",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -1068,7 +1071,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "submitButtonTitle": "Check Answer"
 };
 steps.push(step);
 
@@ -1095,7 +1098,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
     "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
     "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
     "</ul>"+
-    "<p>Incorrect. Figure out where each person started and ended.</p>",
+    "<p><b>Incorrect.</b> Figure out where each person started and ended.</p>",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -1124,7 +1127,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "submitButtonTitle": "Check Answer"
 };
 steps.push(step);
 
@@ -1152,7 +1155,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
     "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
     "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
     "</ul>"+
-    "<p>Incorrect. Think about the direction each walker moved from the starting point.</p>",
+    "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point.</p>",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -1181,7 +1184,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "submitButtonTitle": "Check Answer"
 };
 steps.push(step);
 
@@ -1198,8 +1201,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/5"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>Still incorrect. Both walkers started 2 meters away. Then, one walked forward during the first 20 seconds, "+
-    "while the other walked backwards.</p>",
+    "<p><b>Still incorrect.</b> Both walkers started 2 meters away. Then, one walked toward the sensor for 20 seconds, "+
+    "while the other walked away from the sensor during the same 20 seconds.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -1236,8 +1239,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/6"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>Correct! Both walkers started 2 meters away. Then, one walked forward during the first 20 seconds, "+
-    "while the other walked backwards.</p>",
+    "<p><b>Correct!</b> Both walkers started 2 meters away. Then, one walked toward the sensor for 20 seconds, "+
+    "while the other walked away from the sensor during the same 20 seconds.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -1284,9 +1287,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/1"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-     "<p><b>Move</b> to your starting point and, when you are ready, have your partner click <b>Start</b> to record "+
-     "the data for your movements. <b>Walk</b> on the path for 15 seconds while trying to match the given graph. "+
-     "Click <b>stop</b> after 15 seconds are up.</p>",
+     "<p><b>Move</b> to your starting point and, when you are ready, have your partner <b>click Start</b> to record "+
+     "the data for your movements. "+
+     "<p><b>Walk</b> on the path for 15 seconds while trying to match the given graph. "+
+     "<b>Click stop</b> after 15 seconds are up.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -1479,6 +1483,49 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/3"] =
 };
 steps.push(step);
 Smartgraphs.mockResponses["/backend/activity/1/page/10/steps"] = steps;
+
+
+/****************************************************************************
+*    Activity 1 (Moving Away and Toward)
+*    Page 11 (end page)
+****************************************************************************/
+
+steps = [];
+step = Smartgraphs.mockResponses["/backend/activity/1/page/11/step/1"] = 
+{
+  "url": "/backend/activity/1/page/11/step/1",
+  "activityPage": "/backend/activity/1/page/11",
+  "initialPaneConfig": 'single',
+  "singleGraph": null,
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": sc_static("resources/arrow.jpg"),
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": "",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "submitButtonShouldBeVisible": false,
+  "submitButtonTitle": ""
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/1/page/11/steps"] = steps;
+
 
 /****************************************************************************
 *    Activity 2 (Demo of Activity Switching)
