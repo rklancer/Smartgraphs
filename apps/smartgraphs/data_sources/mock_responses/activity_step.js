@@ -504,7 +504,22 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
     { "criterion": { 
         "in": [{"strip" : "value" }, ["a", "A"]]
       },
-      "step": "/backend/activity/1/page/6/step/6"
+      "step": "/backend/activity/1/page/6/step/5"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["b", "B"]]
+      },
+      "step": "/backend/activity/1/page/6/step/2"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["c", "C"]]
+      },
+      "step": "/backend/activity/1/page/6/step/3"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["d", "D"]]
+      },
+      "step": "/backend/activity/1/page/6/step/4"
     }
   ],
   "defaultBranch": "/backend/activity/1/page/6/step/2",
@@ -534,7 +549,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
     "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
     "</ul>"+
-    "<p><b>Incorrect.</b> Look at the walker's position and figure out his location on the path.</p>",
+    "<p><b>Incorrect.</b> Look at the walker's position at the red point.</p>",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -556,7 +571,22 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
     { "criterion": { 
         "in": [{"strip" : "value" }, ["a", "A"]]
       },
-      "step": "/backend/activity/1/page/6/step/6"
+      "step": "/backend/activity/1/page/6/step/5"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["b", "B"]]
+      },
+      "step": "/backend/activity/1/page/6/step/2"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["c", "C"]]
+      },
+      "step": "/backend/activity/1/page/6/step/3"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["d", "D"]]
+      },
+      "step": "/backend/activity/1/page/6/step/4"
     }
   ],
   "defaultBranch": "/backend/activity/1/page/6/step/3",
@@ -587,7 +617,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
     "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
     "</ul>"+
-    "<p><b>Incorrect.</b> Figure out <b>when</b> this data was collected.</p>",    
+    "<p><b>Incorrect.</b> Was the walker 2 meters away at the red point?</p>",    
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -609,7 +639,22 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
     { "criterion": { 
         "in": [{"strip" : "value" }, ["a", "A"]]
       },
-      "step": "/backend/activity/1/page/6/step/6"
+      "step": "/backend/activity/1/page/6/step/5"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["b", "B"]]
+      },
+      "step": "/backend/activity/1/page/6/step/2"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["c", "C"]]
+      },
+      "step": "/backend/activity/1/page/6/step/3"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["d", "D"]]
+      },
+      "step": "/backend/activity/1/page/6/step/4"
     }
   ],
   "defaultBranch": "/backend/activity/1/page/6/step/4",
@@ -640,7 +685,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
     "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
     "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
     "</ul>"+
-    "<p><b>Incorrect.</b> Think about which direction the walker moved after this point.</p>",    
+    "<p><b>Incorrect.</b> Look at the walker's direction after the red point.</p>",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -662,7 +707,22 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
     { "criterion": { 
         "in": [{"strip" : "value" }, ["a", "A"]]
       },
-      "step": "/backend/activity/1/page/6/step/6"
+      "step": "/backend/activity/1/page/6/step/5"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["b", "B"]]
+      },
+      "step": "/backend/activity/1/page/6/step/2"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["c", "C"]]
+      },
+      "step": "/backend/activity/1/page/6/step/3"
+    },
+    { "criterion": { 
+        "in": [{"strip" : "value" }, ["d", "D"]]
+      },
+      "step": "/backend/activity/1/page/6/step/4"
     }
   ],
   "defaultBranch": "/backend/activity/1/page/6/step/5",
@@ -677,42 +737,6 @@ steps.push(step);
 step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/5"] = 
 {
   "url": "/backend/activity/1/page/6/step/5",
-  "activityPage": "/backend/activity/1/page/6",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/8/walking-example-1',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
-  "beforeText":
-    "<p><b>Still incorrect.</b> At this point, the walker was 4 meters away, getting ready to walk toward the sensor.</p>",
-  "responseTemplate": null,
-  "afterText": "",
-  "startCommands": [
-  ],
-  "shouldFinishImmediately": false,
-  "shouldWaitForSubmissibleResponse": false,
-  "submissibilityInspector": null,
-  "submissibilityCriterion": {
-  },
-  "triggeredCommands": [
-  ],
-  "responseInspector": null,
-  "responseBranches": [
-  ],
-  "defaultBranch": "/backend/activity/1/page/6/step/7",
-  "isFinalStep": false,
-  "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "OK"
-};
-steps.push(step);
-
-
-step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/6"] = 
-{
-  "url": "/backend/activity/1/page/6/step/6",
   "activityPage": "/backend/activity/1/page/6",
   "initialPaneConfig": 'single',
   "singleGraph": '/backend/activity/1/graph/8/walking-example-1',
@@ -737,7 +761,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/6"] =
   "responseInspector": null,
   "responseBranches": [
   ],
-  "defaultBranch": "/backend/activity/1/page/6/step/7",
+  "defaultBranch": "/backend/activity/1/page/6/step/6",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "submitButtonShouldBeVisible": true,
@@ -746,9 +770,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/6"] =
 steps.push(step);
 
 
-step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/7"] = 
+step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/6"] = 
 {
-  "url": "/backend/activity/1/page/6/step/7",
+  "url": "/backend/activity/1/page/6/step/6",
   "activityPage": "/backend/activity/1/page/6",
   "initialPaneConfig": 'single',
   "singleGraph": '/backend/activity/1/graph/8/walking-example-1',

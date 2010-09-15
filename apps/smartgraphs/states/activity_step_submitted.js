@@ -25,10 +25,8 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
 
     var newStep = Smartgraphs.activityStepController.get('content');
     // if we didn't change steps after submission completed, then there must be no more steps for this page.
-    if (newStep === oldStep) {
-      if (!oldStep.get('isFinalStep')) {
-        console.error('activityStepController.isFinalStep is NO but handleSubmission() did not move to a new step');
-      }
+    
+    if (newStep === oldStep && oldStep.get('isFinalStep')) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_DONE);
     }
   },
