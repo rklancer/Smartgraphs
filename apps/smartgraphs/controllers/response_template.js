@@ -13,9 +13,6 @@
 */
 Smartgraphs.responseTemplateController = SC.ObjectController.create(
 /** @scope Smartgraphs.responseTemplate.prototype */ {
-
-  // // TODO bind values to SessionStep model
-  // contentBinding: 'Smartgraphs.activityStepController.responseTemplate',
   
   contentDidChange: function () {
     this.invokeOnce(this._initializeValues);
