@@ -153,7 +153,7 @@ Smartgraphs.Graph.FIXTURES = [
     axes:
       '/backend/axes/2/5m-25s',
     initialSeries: 
-      [],
+      ['walking-away-example', 'walking-toward-example'],
     initialAnnotations: [
     ]
   },
