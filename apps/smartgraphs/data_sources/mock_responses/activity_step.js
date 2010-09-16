@@ -914,7 +914,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/3"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-     "<p>How is speed represented on the graph?</p>", 
+     "<p>Explain how the graph conveys how fast you walked.</p>", 
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
   "startCommands": [
@@ -1001,7 +1001,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] =
   "bottomImage": null,
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
-    "<ul style=\"list-style-type: 'upper-alpha'\">"+
+    "<ul style=\"font-size: 0.8em\">"+
     "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
     "      sensor for 10 seconds.</li>"+
     "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
@@ -1011,7 +1011,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] =
     "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
     "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
     "</ul>",
-  "responseTemplate": "/backend/response-template/2/open",
+  "responseTemplate": "/backend/response-template/1/numeric",
   "afterText": "",
   "startCommands": [
   ],
@@ -1056,7 +1056,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
   "bottomImage": null,
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
-    "<ul style=\"list-style-type: 'upper-alpha'\">"+
+    "<ul style=\"font-size: 0.8em\">"+
     "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
     "      sensor for 10 seconds.</li>"+
     "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
@@ -1067,7 +1067,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
     "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
     "</ul>"+
     "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data.</p>",
-  "responseTemplate": "/backend/response-template/2/open",
+  "responseTemplate": "/backend/response-template/1/numeric",
   "afterText": "",
   "startCommands": [
   ],
@@ -1112,7 +1112,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
   "bottomImage": null,
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
-    "<ul style=\"list-style-type: 'upper-alpha'\">"+
+    "<ul style=\"font-size: 0.8em\">"+
     "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
     "      sensor for 10 seconds.</li>"+
     "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
@@ -1123,7 +1123,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
     "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
     "</ul>"+
     "<p><b>Incorrect.</b> Figure out where each person started and ended.</p>",
-  "responseTemplate": "/backend/response-template/2/open",
+  "responseTemplate": "/backend/response-template/1/numeric",
   "afterText": "",
   "startCommands": [
   ],
@@ -1169,7 +1169,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
   "bottomImage": null,
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
-    "<ul style=\"list-style-type: 'upper-alpha'\">"+
+    "<ul style=\"font-size: 0.8em\">"+
     "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
     "      sensor for 10 seconds.</li>"+
     "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
@@ -1180,7 +1180,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
     "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
     "</ul>"+
     "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point.</p>",
-  "responseTemplate": "/backend/response-template/2/open",
+  "responseTemplate": "/backend/response-template/1/numeric",
   "afterText": "",
   "startCommands": [
   ],
