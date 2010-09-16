@@ -26,7 +26,7 @@ Smartgraphs.activityPage = SC.Page.design({
       instructionsView: SC.View.design({
         layout: { right: 5, top: 0, bottom: 0 },
         classNames: 'smartgraph-pane',
-        childViews: 'textWrapper nextButton'.w(),
+        childViews: 'textWrapper nextButton pageInfo'.w(),
 
         // provide padding and style rules for the intro text and dialog
         textWrapper: SC.View.design({
@@ -109,7 +109,7 @@ Smartgraphs.activityPage = SC.Page.design({
           action: 'gotoNextPage',
           isEnabledBinding: 'Smartgraphs.activityController.canGotoNextPage',
           isVisibleBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage')
-        })//,
+        }),
         
         // TODO disabled for now, until we have page *visitation* working.
 
@@ -124,7 +124,18 @@ Smartgraphs.activityPage = SC.Page.design({
         //   action: 'openPreviousActivityPage',
         //   isEnabledBinding: SC.Binding.oneWay('Smartgraphs.activityPagesController.canSelectPreviousPage'),
         //   isVisibleBinding: SC.Binding.not('Smartgraphs.activityPagesController.isFirstPage').oneWay()
-        // })
+        // }),
+
+        pageInfo: SC.LabelView.design({
+          layout: {
+                 bottom: 0,
+                 left: 30,
+                 height: 24,
+                 width: 80
+          },
+			valueBinding: 'Smartgraphs.activityPagesController.pageInfo',
+          isVisible: YES
+        })
       })
     }),
     
