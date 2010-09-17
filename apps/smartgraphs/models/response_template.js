@@ -23,7 +23,7 @@ Smartgraphs.ResponseTemplate = SC.Record.extend(
   
   templateString: SC.Record.attr(String),
   fieldTypes: SC.Record.attr(Array),
-  fieldChoiceLists: SC.Record.attr(Array),            // for multiple choice
+  fieldChoicesList: SC.Record.attr(Array),            // for multiple choice
   intialValues: SC.Record.attr(Array),
   
   // cache the actual values entered

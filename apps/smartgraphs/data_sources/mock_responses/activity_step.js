@@ -28,7 +28,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/1/step/1"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": "",
-  "responseTemplate": null,
+   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
   ],
@@ -487,14 +487,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>What happened at the red point?</p>"+
-    "<ul style=\"list-style-type: 'upper-alpha'\">"+
-    "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
-    "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
-    "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "</ul>",
-  "responseTemplate": "/backend/response-template/2/open",
+    "<p>What happened at the red point?</p>",
+  "responseTemplate": "/backend/response-template/3/multiplechoice",
   "afterText": "",
   "startCommands": [
   ],
@@ -504,7 +498,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
     "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
-    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+    "in": ["value", [1, 2, 3, 4]]
   },
   "triggeredCommands": [
   ],
@@ -513,22 +507,22 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
   },
   "responseBranches": [
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["a", "A"]]
+        "equals": ["value", 1]
       },
       "step": "/backend/activity/1/page/6/step/5"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["b", "B"]]
+        "equals": ["value", 2]
       },
       "step": "/backend/activity/1/page/6/step/2"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["c", "C"]]
+        "equals": ["value", 3]
       },
       "step": "/backend/activity/1/page/6/step/3"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["d", "D"]]
+        "equals": ["value", 4]
       },
       "step": "/backend/activity/1/page/6/step/4"
     }
@@ -542,6 +536,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
 };
 steps.push(step);
 
+
 step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] = 
 {
   "url": "/backend/activity/1/page/6/step/2",
@@ -554,16 +549,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-    "<p>What happened at the red point?</p>"+
-    "<ul style=\"list-style-type: 'upper-alpha'\">"+
-    "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
-    "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
-    "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "</ul>"+
-    "<p><b>Incorrect.</b> Look at the walker's position at the red point.</p>",
-  "responseTemplate": "/backend/response-template/2/open",
-  "afterText": "",
+    "<p>What happened at the red point?</p>",
+  "responseTemplate": "/backend/response-template/3/multiplechoice",
+  "afterText":  "<p><b>Incorrect.</b> Look at the walker's position at the red point.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -572,7 +560,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
     "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
-    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+    "in": ["value", [1, 2, 3, 4]]
   },
   "triggeredCommands": [
   ],
@@ -581,22 +569,22 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
   },
   "responseBranches": [
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["a", "A"]]
+        "equals": ["value", 1]
       },
       "step": "/backend/activity/1/page/6/step/5"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["b", "B"]]
+        "equals": ["value", 2]
       },
       "step": "/backend/activity/1/page/6/step/2"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["c", "C"]]
+        "equals": ["value", 3]
       },
       "step": "/backend/activity/1/page/6/step/3"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["d", "D"]]
+        "equals": ["value", 4]
       },
       "step": "/backend/activity/1/page/6/step/4"
     }
@@ -623,16 +611,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-    "<p>What happened at the red point?</p>"+
-    "<ul style=\"list-style-type: 'upper-alpha'\">"+
-    "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
-    "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
-    "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "</ul>"+
-    "<p><b>Incorrect.</b> Was the walker 2 meters away at the red point?</p>",    
-  "responseTemplate": "/backend/response-template/2/open",
-  "afterText": "",
+    "<p>What happened at the red point?</p>",
+  "responseTemplate": "/backend/response-template/3/multiplechoice",
+  "afterText": "<p><b>Incorrect.</b> Was the walker 2 meters away at the red point?</p>", 
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -641,7 +622,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
     "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
-    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+    "in": ["value", [1, 2, 3, 4]]
   },
   "triggeredCommands": [
   ],
@@ -650,22 +631,22 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
   },
   "responseBranches": [
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["a", "A"]]
+        "equals": ["value", 1]
       },
       "step": "/backend/activity/1/page/6/step/5"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["b", "B"]]
+        "equals": ["value", 2]
       },
       "step": "/backend/activity/1/page/6/step/2"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["c", "C"]]
+        "equals": ["value", 3]
       },
       "step": "/backend/activity/1/page/6/step/3"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["d", "D"]]
+        "equals": ["value", 4]
       },
       "step": "/backend/activity/1/page/6/step/4"
     }
@@ -692,16 +673,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText":
-    "<p>What happened at the red point?</p>"+
-    "<ul style=\"list-style-type: 'upper-alpha'\">"+
-    "  <li>A. The walker was 4 meters away, getting ready to walk toward the sensor.</li>"+
-    "  <li>B. The walker was closest to the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "  <li>C. The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.</li>"+
-    "  <li>D. The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.</li>"+
-    "</ul>"+
-    "<p><b>Incorrect.</b> Look at the walker's direction after the red point.</p>",
-  "responseTemplate": "/backend/response-template/2/open",
-  "afterText": "",
+    "<p>What happened at the red point?</p>",
+  "responseTemplate": "/backend/response-template/3/multiplechoice",
+  "afterText": "<p><b>Incorrect.</b> Look at the walker's direction after the red point.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -710,7 +684,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
     "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
-    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+    "in": ["value", [1, 2, 3, 4]]
   },
   "triggeredCommands": [
   ],
@@ -719,22 +693,22 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
   },
   "responseBranches": [
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["a", "A"]]
+        "equals": ["value", 1]
       },
       "step": "/backend/activity/1/page/6/step/5"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["b", "B"]]
+        "equals": ["value", 2]
       },
       "step": "/backend/activity/1/page/6/step/2"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["c", "C"]]
+        "equals": ["value", 3]
       },
       "step": "/backend/activity/1/page/6/step/3"
     },
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["d", "D"]]
+        "equals": ["value", 4]
       },
       "step": "/backend/activity/1/page/6/step/4"
     }

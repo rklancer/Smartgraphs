@@ -2,6 +2,7 @@
 // Project:   Smartgraphs.ResponseTemplateView
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
+// @author    Dr. Baba Kofi Weusijana <kofi@edutek.net>
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -15,117 +16,151 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
 /** @scope Smartgraphs.ResponseTemplateView.prototype */
 {
 
-    // Bind these properties
-    fieldTypes: [],
-    fieldChoiceLists: [],
-    values: [],
-    editingShouldBeEnabled: null,
+  // Bind these properties
+  fieldTypes: [],
+  fieldChoicesList: [],
+  values: [],
+  editingShouldBeEnabled: null,
 
-    // hide if there is no response template; especially important because IE7 doesn't its height as 0 when empty.
-    isVisibleBinding: SC.Binding.bool('.fieldTypes'),
+  // hide if there is no response template; especially important because IE7 doesn't its height as 0 when empty.
+  isVisibleBinding: SC.Binding.bool('.fieldTypes'),
 
-    fieldsTypesDidChange: function() {
-        this.invokeOnce(this._updateChildViews);
-    }.observes('fieldTypes'),
+  fieldsTypesDidChange: function () {
+    this.clearChildViews();
+    this.invokeOnce(this.addChildViews);
+  }.observes('fieldTypes'),
 
-    // TODO: Extend view classes from CC framework instead of just copying the code
-    _updateChildViews: function() {
-        this.get('childViews').invoke('destroy');
-        var fieldTypes = this.get('fieldTypes');
-        if (!fieldTypes) return;
+  clearChildViews: function () {
+    this._firstInputFieldView = null;
+    this.get('childViews').invoke('destroy');
+  },
 
-        var fieldChoiceLists = this.get('fieldChoiceLists');
-        var values = this.get('values');
+  addChildViews: function () {
+    var fieldTypes = this.get('fieldTypes');
+    if (!fieldTypes) return;
 
-        var fieldType, fieldChoiceList, value, prompt;
-        var isTextArea, layout, hint;
+    var fieldChoicesList = this.get('fieldChoicesList');
+    var values = this.get('values');
+    
+    var fieldType;
 
-        for (var i = 0,
-        fieldTypesLength = fieldTypes.get('length'); i < fieldTypesLength; i++) {
-            fieldType = fieldTypes.objectAt(i);
-            value = values.objectAt(i);
-            fieldChoiceList = fieldChoiceLists.objectAt(i);
-
-            if (fieldType === 'textarea') {
-                isTextArea = YES;
-                hint = 'Enter your answer here...';
-                layout = {
-                    height: 97
-                };
-            } else if (fieldType === 'numeric') {
-                isTextArea = NO;
-                layout = {
-                    height: 22,
-                    width: 100
-                };
-            } else if (fieldType === 'multiplechoice') {
-                isTextArea = NO;
-                layout = {
-                    left: 0,
-                    height: 200,
-                    width: 350
-                };
-                prompt = this.get('prompt');
-            } else {
-                throw "ResponseTemplateView received unexpected field type string '" + fieldType + "'.";
-            }
-
-            var view;
-            var subViewDesign;
-            if (fieldType === 'multiplechoice') {
-                subViewDesign = Smartgraphs.MultipleChoiceQuestionView.design({
-                    classNames: 'question2View'.w(),
-                    prompt: prompt,
-                    choices: fieldChoiceList,
-                    index: i,
-                    value: value,
-                    valueDidChange: function() {
-                        var values = this.getPath('parentView.parentView.values');
-                        values.replace(this.get('index'), 1, this.get('value'));
-                    }.observes('value')
-                });
-            } else {
-                subViewDesign = SC.TextFieldView.design({
-                    isTextArea: isTextArea,
-                    hint: hint,
-                    index: i,
-                    value: value,
-                    isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
-
-                    valueDidChange: function() {
-                        var values = this.getPath('parentView.parentView.values');
-                        values.replace(this.get('index'), 1, this.get('value'));
-                    }.observes('value')
-                });
-            }
-
-            var wrapperDesign = SC.View.design({
-                useStaticLayout: YES,
-                layout: layout,
-                classNames: 'text-field-view-wrapper'.w(),
-
-                childViews: [subViewDesign]
-            });
-            view = wrapperDesign.create();
-
-            if (fieldType === 'multiplechoice') {
-                // Make sure initial value is rendered
-                view.childViews[0].inputView.set('value', value);
-                this.appendChild(view);
-            } else {
-                // note that SC.TextFieldViews don't display properly at all if they have useStaticLayout: YES
-                if (i === 0) {
-                    this._firstInputFieldView = view.get('childViews').objectAt(0);
-                }
-                this.appendChild(view);
-                this.invokeLater(this._beginEditingFirstView);
-            }
-        }
-    },
-
-    _beginEditingFirstView: function() {
-        if (this._firstInputFieldView) {
-            this._firstInputFieldView.beginEditing();
-        }
+    for (var i = 0, ii = fieldTypes.get('length'); i < ii; i++) {
+      fieldType = fieldTypes.objectAt(i);
+      this.addChildView(fieldType, fieldChoicesList.objectAt(i), values.objectAt(i), i);
+      
+      if (i === 0 && (fieldType === 'numeric' || fieldType === 'textarea')) {
+        this._firstInputFieldView = this.get('childViews').objectAt(0).get('childViews').objectAt(0);
+        this.invokeLater(this._beginEditingFirstView);
+      }
     }
+  },
+  
+  addChildView: function (fieldType, fieldChoices, initialValue, fieldIndex) {
+    var view;
+    
+    switch (fieldType) {
+      case 'textarea':
+        view = this.wrap(this.makeTextAreaDesign(initialValue, fieldIndex), {
+          height: 97
+        });
+        break;
+      case 'numeric': 
+        view = this.wrap(this.makeNumericFieldDesign(initialValue, fieldIndex), {
+          height: 22,
+          width: 100
+        });
+        break;
+      case 'multiplechoice':
+        view = this.makeMultipleChoiceView(fieldChoices, initialValue, fieldIndex);
+        break;
+      default:
+        throw "ResponseTemplateView received unexpected field type string '" + fieldType + "'.";
+    }
+    
+    this.appendChild(view);
+  },
+  
+  wrap: function (subViewDesign, layout) {
+    return SC.View.design({
+      useStaticLayout: YES,
+      layout: layout,
+      classNames: 'text-field-view-wrapper'.w(),
+
+      childViews: [subViewDesign]
+    }).create();
+  },
+  
+  makeTextAreaDesign: function (initialValue, fieldIndex) {
+    return SC.TextFieldView.design({
+      isTextArea: YES,
+      hint:  'Enter your answer here...',
+      fieldIndex: fieldIndex,
+      value: initialValue,
+      isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
+
+      valueDidChange: function () {
+        var values = this.getPath('parentView.parentView.values');
+        values.replace(this.get('fieldIndex'), 1, this.get('value'));
+      }.observes('value')
+    });
+  },
+  
+  makeNumericFieldDesign: function (initialValue, fieldIndex) {
+    return SC.TextFieldView.design({
+      isTextArea: NO,
+      fieldIndex: fieldIndex,
+      value: initialValue,
+      isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
+
+      valueDidChange: function () {
+        var values = this.getPath('parentView.parentView.values');
+        values.replace(this.get('fieldIndex'), 1, this.get('value'));
+      }.observes('value')
+    });
+  },
+  
+  makeMultipleChoiceView: function (fieldChoices, initialValue, fieldIndex) {
+    var items = [];
+    
+    // transform ['Choice 1', 'Choice 2'] -> [ {title: 'Choice 1', index: 1}, {title: 'Choice 2', index: 2} ]
+    items = fieldChoices.reduce(function (prev, item, index) {
+      return prev.concat({ title: item, index: index+1 });
+    }, []);
+    
+    return SC.RadioView.design({
+      items: items,
+      itemTitleKey: 'title', 
+      itemValueKey: 'index',
+      
+      fieldIndex: fieldIndex,
+      value: initialValue,
+      isEnabledBinding: '.parentView.editingShouldBeEnabled',
+      useStaticLayout: YES,     
+      
+      valueDidChange: function () {
+        var values = this.getPath('parentView.values');
+        values.replace(this.get('fieldIndex'), 1, this.get('value'));
+      }.observes('value'),
+      
+      didAppendToDocument: function () {
+        this.invokeLater(this.adjustItemHeights);
+      },
+      
+      adjustItemHeights: function () {
+        this.$('.sc-radio-button').each( function () {
+          var labelHeight = $(this).find('.sc-button-label').outerHeight();
+          $(this).css({height: labelHeight});
+
+          var $button = $(this).find('.button');
+          $button.css({marginTop: Math.max( (labelHeight - $button.height()) / 2 - 3, 0) });
+        });
+      }
+    }).create();
+  },
+
+  _beginEditingFirstView: function () {
+    if (this._firstInputFieldView) {
+      this._firstInputFieldView.beginEditing();
+    }
+  }
 });

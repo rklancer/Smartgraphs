@@ -76,7 +76,7 @@ body.sc-theme {
   font-size: 18px;
 }
 
-.text-wrapper .text-field-view-wrapper {
+.text-wrapper .text-field-view-wrapper, .sc-view.dialog-text .sc-radio-view {
   margin: 10px;
 }
 
@@ -101,17 +101,3 @@ body.sc-theme {
   line-height: 1.0;
   color: #666666;
 }
-
-/* multiple-choice and question-input views */
-.sc-radio-button  {
-	border-top-style: outset;
-	border-right-style: outset;
-	border-bottom-style: outset;
-	border-left-style: outset;
-	font-size: xx-small;
-	overflow: auto;
-}
-
-/*.sc-button-label{
-	position: relative;
-}*/
