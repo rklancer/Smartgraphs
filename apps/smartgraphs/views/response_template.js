@@ -74,8 +74,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
         break;
       case 'multiplechoice':
         layout = {
-          width: 300,
-          height: 200
+          width: 300
         };
         subViewDesign = this.makeMultipleChoice(fieldChoices, initialValue, fieldIndex);
         break;
@@ -138,12 +137,23 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       
       fieldIndex: fieldIndex,
       value: initialValue,
-      isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',      
+      isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
+      useStaticLayout: YES,     
       
       valueDidChange: function () {
         var values = this.getPath('parentView.parentView.values');
         values.replace(this.get('fieldIndex'), 1, this.get('value'));
-      }.observes('value')
+      }.observes('value'),
+      
+      didAppendToDocument: function () {
+        this.invokeLater(this.adjustItemHeights);
+      },
+      
+      adjustItemHeights: function () {
+        this.$('.sc-radio-button').each(function () {                
+          $(this).css({height: $(this).find('.sc-button-label').outerHeight()});
+        });
+      }
     });
   },
 
