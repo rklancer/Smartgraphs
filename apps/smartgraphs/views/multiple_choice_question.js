@@ -23,7 +23,7 @@ Smartgraphs.MultipleChoiceQuestionView = CC.QuestionView.extend(
         layout: {
             left: 0,
             top: 0,
-            width: 350,
+            width: 400,
             height: 200
         },
         useStaticLayout: YES,
