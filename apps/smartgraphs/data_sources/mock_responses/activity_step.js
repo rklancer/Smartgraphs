@@ -44,8 +44,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/1/step/1"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": false,
-  "submitButtonTitle": ""
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -95,9 +96,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
   "defaultBranch": "/backend/activity/1/page/2/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "OK"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
+
 steps.push(step);
 
 
@@ -137,8 +140,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": ""
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 
@@ -191,8 +195,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
   "defaultBranch": "/backend/activity/1/page/3/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Done"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -232,8 +237,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/2"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 
@@ -286,8 +292,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
   "defaultBranch": "/backend/activity/1/page/4/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Done"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -329,8 +336,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/2"] =
   "defaultBranch": "/backend/activity/1/page/4/step/3",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Done"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -367,8 +375,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/3"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 Smartgraphs.mockResponses["/backend/activity/1/page/4/steps"] = steps;
@@ -413,8 +422,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/5/step/1"] =
   "defaultBranch": "/backend/activity/1/page/5/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -452,8 +462,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/5/step/2"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 
@@ -525,8 +536,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
   "defaultBranch": "/backend/activity/1/page/6/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Check Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -592,8 +604,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
   "defaultBranch": "/backend/activity/1/page/6/step/3",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Check Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -660,8 +673,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
   "defaultBranch": "/backend/activity/1/page/6/step/4",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Check Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -728,8 +742,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
   "defaultBranch": "/backend/activity/1/page/6/step/5",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Check Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -764,8 +779,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/5"] =
   "defaultBranch": "/backend/activity/1/page/6/step/6",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "OK"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -803,8 +819,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/6"] =
   "defaultBranch": "",
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 
@@ -856,8 +873,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/1"] =
   "defaultBranch": "/backend/activity/1/page/7/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Done"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -896,8 +914,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/2"] =
   "defaultBranch": "/backend/activity/1/page/7/step/3",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -935,8 +954,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/3"] =
   "defaultBranch": "/backend/activity/1/page/7/step/4",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -974,8 +994,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/4"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 
@@ -1038,8 +1059,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] =
   "defaultBranch": "/backend/activity/1/page/8/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Check Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1094,8 +1116,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
   "defaultBranch": "/backend/activity/1/page/8/step/3",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Check Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1150,8 +1173,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
   "defaultBranch": "/backend/activity/1/page/8/step/4",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Check Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1207,8 +1231,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
   "defaultBranch": "/backend/activity/1/page/8/step/5",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Check Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1245,8 +1270,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/5"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "OK"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1283,8 +1309,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/6"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "OK"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 
@@ -1337,8 +1364,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/1"] =
   "defaultBranch": "/backend/activity/1/page/9/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Done"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1377,8 +1405,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/2"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 
@@ -1424,8 +1453,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/1"] =
   "defaultBranch": "/backend/activity/1/page/10/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1463,8 +1493,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/2"] =
   "defaultBranch": "/backend/activity/1/page/10/step/3",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1502,8 +1533,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/3"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Submit My Answer"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 Smartgraphs.mockResponses["/backend/activity/1/page/10/steps"] = steps;
@@ -1543,8 +1575,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/11/step/1"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": false,
-  "submitButtonTitle": ""
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1595,8 +1628,9 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": false,
-  "submitButtonTitle": ""
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1657,8 +1691,9 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
   "defaultBranch": null,
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "Show me!"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "Show me!",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1690,8 +1725,9 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/2"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "I saw it!"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "I saw it!",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 
@@ -1723,8 +1759,9 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/3"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "submitButtonShouldBeVisible": true,
-  "submitButtonTitle": "I saw it!"
+  "hideSubmitButton": false,
+  "submitButtonTitle": "I saw it!",
+  "nextButtonShouldSubmit": false
 };
 steps.push(step);
 

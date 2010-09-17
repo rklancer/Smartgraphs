@@ -15,7 +15,9 @@
 Smartgraphs.activityStepController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityStepController.prototype */ {
 
-  submissionIsEnabled: NO,
+  canSubmit: NO,
+  showSubmitButton: NO,
+  
   submissibilityInspectorInstance: null,
   
   /**
@@ -221,11 +223,11 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   enableSubmission: function () {
-    this.set('submissionIsEnabled', YES);
+    this.set('canSubmit', YES);
   },
   
   disableSubmission: function () {
-    this.set('submissionIsEnabled', NO);    
+    this.set('canSubmit', NO);    
   }
   
 }) ;

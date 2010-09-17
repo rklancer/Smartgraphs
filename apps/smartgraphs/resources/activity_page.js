@@ -86,12 +86,13 @@ Smartgraphs.activityPage = SC.Page.design({
 
               submitButton: SC.ButtonView.design({
                 layout: {
-                  width: 200,
+                  width: 80,
                   right: 0
                 },
                 titleBinding: 'Smartgraphs.activityStepController.submitButtonTitle',
-                isVisibleBinding: 'Smartgraphs.activityStepController.submitButtonShouldBeVisible',
-                isEnabledBinding: 'Smartgraphs.activityStepController.submissionIsEnabled',
+                isVisibleBinding: 'Smartgraphs.activityViewController.showSubmitButton',
+                isEnabledBinding: 'Smartgraphs.activityViewController.enableSubmitButton',
+                isDefaultBinding: 'Smartgraphs.activityViewController.enableSubmitButton',                
                 action: 'submitStep'
               })
             })
@@ -103,12 +104,13 @@ Smartgraphs.activityPage = SC.Page.design({
             right: 30,            
             bottom: 36,
             height: 24,
-            width: 80
+            width: 110
           },
-          title: "Next >>",
+          title: "Next Page >>",
           action: 'gotoNextPage',
-          isEnabledBinding: 'Smartgraphs.activityController.canGotoNextPage',
-          isVisibleBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage')
+          isVisibleBinding: 'Smartgraphs.activityViewController.showNextPageButton',
+          isEnabledBinding: 'Smartgraphs.activityViewController.enableNextPageButton',
+          isDefaultBinding: 'Smartgraphs.activityViewController.enableNextPageButton'
         }),
         
         // TODO disabled for now, until we have page *visitation* working.
@@ -127,13 +129,14 @@ Smartgraphs.activityPage = SC.Page.design({
         // }),
 
         pageInfo: SC.LabelView.design({
+          classNames: 'pane-label',
           layout: {
-                 bottom: 0,
-                 left: 30,
-                 height: 24,
-                 width: 80
+            bottom: 36,
+            left: 30,
+            height: 24,
+            width: 200
           },
-			valueBinding: 'Smartgraphs.activityPagesController.pageInfo',
+          valueBinding: 'Smartgraphs.activityPagesController.pageInfo',
           isVisible: YES
         })
       })

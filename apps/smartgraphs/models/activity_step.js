@@ -126,18 +126,26 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   
   /**
     if we are the last step, whether to automatically skip to the next page when this step finishes.
+    FIXME. Different from nextButtonShouldSubmit because (nominally) it leaves the submit button visible and the next
+    button hidden; unsure if we want to implement both this and nextButtonShouldSubmit
   */
   shouldAutoAdvancePage: SC.Record.attr(Boolean),
   
   /**
-     Whether a submit/done button needs to be shown or not
-     Might be NO for steps that submit automatically when the student's responses acquires certain characteristics
+     Whether the submit/done button needs to be hidden or not
+     Might be YES for steps that submit automatically when the student's responses acquires certain characteristics
   */
-  submitButtonShouldBeVisible: SC.Record.attr(Boolean),
+  hideSubmitButton: SC.Record.attr(Boolean),
 
   /**
     The title of the submit/done button
   */
-  submitButtonTitle: SC.Record.attr(String)
+  submitButtonTitle: SC.Record.attr(String),
+  
+  /**
+    Whether the 'next page' button should do double duty and also submit the step. If YES, the submit button
+    will not be shown, and the 'next' button will be enabled or not depending on whether submission is enabled.
+  */
+  nextButtonShouldSubmit: SC.Record.attr(Boolean)
 
 }) ;

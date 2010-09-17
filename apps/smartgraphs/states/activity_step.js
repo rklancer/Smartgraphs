@@ -47,8 +47,15 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // ACTIONS
   // 
   
+  gotoNextPage: function () {
+    this.submitStep();
+    this.invokeLast(function () {
+      Smartgraphs.sendAction('gotoNextPage');
+    });
+  },
+  
   submitStep: function () {
-    if (Smartgraphs.activityStepController.get('submissionIsEnabled')) {
+    if (Smartgraphs.activityStepController.get('canSubmit')) {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_SUBMITTED);
     }
     return YES;

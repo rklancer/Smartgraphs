@@ -24,6 +24,40 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   
   paneIsSplit: null,
   
+  // ..........................................................
+  // ACTIVITY VIEW BUTTON STATE
+  //
+  
+  canGotoNextPage: null,
+  canGotoNextPageBinding: 'Smartgraphs.activityController.canGotoNextPage',
+  canSubmit: null,
+  canSubmitBinding: 'Smartgraphs.activityStepController.canSubmit',
+  isFinalStep: null,
+  isFinalStepBinding: 'Smartgraphs.activityStepController.isFinalStep',
+  hideSubmitButton: null,
+  hideSubmitButtonBinding: 'Smartgraphs.activityStepController.hideSubmitButton',
+  nextButtonShouldSubmit: null,
+  nextButtonShouldSubmitBinding: 'Smartgraphs.activityStepController.nextButtonShouldSubmit',
+  
+  showSubmitButton: function () {
+    return !(this.get('hideSubmitButton') || this.get('nextButtonShouldSubmit'));
+  }.property('hideSubmitButton', 'nextButtonShouldSubmit').cacheable(),
+    
+  enableSubmitButton: null,
+  enableSubmitButtonBinding: 'Smartgraphs.activityStepController.canSubmit',
+    
+  showNextPageButton: null,
+  showNextPageButtonBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage'),
+    
+  enableNextPageButton: function () {
+    return this.get('canGotoNextPage') || (this.get('isFinalStep') && this.get('nextButtonShouldSubmit') && this.get('canSubmit'));
+  }.property('canGotoNextPage', 'isFinalStep', 'nextButtonShouldSubmit', 'canSubmit').cacheable(),
+  
+  
+  // ..........................................................
+  // ACTIVITY VIEW COMMANDS
+  //
+  
   showSinglePane: function () {
     this.set('paneIsSplit', false);
     this.set('dataViewNowShowing', 'Smartgraphs.activityPage.singlePaneDataView');
