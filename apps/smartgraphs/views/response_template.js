@@ -63,7 +63,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
                 layout = {
                     left: 0,
                     height: 200,
-                    width: 400
+                    width: 350
                 };
                 prompt = this.get('prompt');
             } else {
