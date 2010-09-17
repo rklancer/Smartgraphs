@@ -21,10 +21,10 @@ Smartgraphs.MultipleChoiceQuestionView = CC.QuestionView.extend(
 
     inputView: SC.RadioView.design(SC.StaticLayout, {
         layout: {
-            left: 20,
-            top: 5,
-            width: 600,
-            height: 95
+            left: 0,
+            top: 0,
+            width: 350,
+            height: 200
         },
         useStaticLayout: YES,
         classNames: 'question-input',

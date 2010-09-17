@@ -61,8 +61,9 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
             } else if (fieldType === 'multiplechoice') {
                 isTextArea = NO;
                 layout = {
-                    height: 100,
-                    width: 400
+                    left: 0,
+                    height: 200,
+                    width: 350
                 };
                 prompt = this.get('prompt');
             } else {

@@ -28,8 +28,13 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
 {
     url: '/backend/response-template/3/multiplechoice',
     templateString: '',
-    fieldTypes: ['multiplechoice','multiplechoice','numeric','textarea'],
+    fieldTypes: ['multiplechoice'],
     prompt: 'Choose <b>one</b>.',
-    fieldChoiceLists: [["a", "b", "c"],["a2", "b2", "c2"],[],[]],
-    initialValues: ['','b2','000','']
+    fieldChoiceLists: [[
+        "The walker was 4 meters away, getting ready to walk toward the sensor.",
+         "The walker was closest to the motion sensor, getting ready to walk away from the sensor.",
+         "The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.",
+         "The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor."
+     ]],
+    initialValues: [""]
 }];
