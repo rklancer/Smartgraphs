@@ -31,3 +31,5 @@ Smartgraphs = SC.Application.create(
   logDataSource: NO             // whether the data source should log   
   
 }) ;
+
+SC.CONTEXT_MENU_ENABLED = YES;
