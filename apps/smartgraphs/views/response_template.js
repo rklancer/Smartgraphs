@@ -147,8 +147,12 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       },
       
       adjustItemHeights: function () {
-        this.$('.sc-radio-button').each(function () {                
-          $(this).css({height: $(this).find('.sc-button-label').outerHeight()});
+        this.$('.sc-radio-button').each( function () {
+          var labelHeight = $(this).find('.sc-button-label').outerHeight();
+          $(this).css({height: labelHeight});
+
+          var $button = $(this).find('.button');
+          $button.css({marginTop: Math.max( (labelHeight - $button.height()) / 2 - 3, 0) });
         });
       }
     }).create();
