@@ -14,7 +14,7 @@ function setupFixtures() {
         templateString: '',
         fieldTypes: ['multiplechoice', 'multiplechoice', 'numeric', 'textarea'],
         prompt: 'Choose <b>one</b>.',
-        fieldChoiceLists: [["a", "b", "c"], ["a2", "b2", "c2"], [], []],
+        fieldChoicesList: [["a", "b", "c"], ["a2", "b2", "c2"], [], []],
         initialValues: ['', 'b2', '000', ''],
         values: []
     }];
@@ -58,7 +58,7 @@ function() {
     pane = SC.MainPane.create({
         childViews: [Smartgraphs.ResponseTemplateView.design({
             fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
-            fieldChoiceListsBinding: 'Smartgraphs.responseTemplateController.fieldChoiceLists',
+            fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
             valuesBinding: 'Smartgraphs.responseTemplateController.values',
             editingShouldBeEnabled: NO
         })]
@@ -98,7 +98,7 @@ function() {
     pane = SC.MainPane.create({
         childViews: [Smartgraphs.ResponseTemplateView.design({
             fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
-            fieldChoiceListsBinding: 'Smartgraphs.responseTemplateController.fieldChoiceLists',
+            fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
             valuesBinding: 'Smartgraphs.responseTemplateController.values',
             editingShouldBeEnabled: NO
         })]

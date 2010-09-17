@@ -64,7 +64,7 @@ Smartgraphs.activityPage = SC.Page.design({
               
               responseTemplate: Smartgraphs.ResponseTemplateView.design({
                 fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
-                fieldChoiceListsBinding: 'Smartgraphs.responseTemplateController.fieldChoiceLists',
+                fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
                 valuesBinding: 'Smartgraphs.responseTemplateController.values',
                 editingShouldBeEnabledBinding: 'Smartgraphs.responseTemplateController.editingShouldBeEnabled'
               }),
