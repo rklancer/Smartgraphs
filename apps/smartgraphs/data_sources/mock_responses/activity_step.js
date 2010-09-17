@@ -488,7 +488,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
   "bottomImage": null,
   "beforeText": 
     "<p>What happened at the red point?</p>",
-  "responseTemplate": "/backend/response-template/3/multiplechoice",
+  "responseTemplate": "/backend/response-template/3/walking-example-1",
   "afterText": "",
   "startCommands": [
   ],
@@ -550,7 +550,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
   "bottomImage": null,
   "beforeText":
     "<p>What happened at the red point?</p>",
-  "responseTemplate": "/backend/response-template/3/multiplechoice",
+  "responseTemplate": "/backend/response-template/3/walking-example-1",
   "afterText":  "<p><b>Incorrect.</b> Look at the walker's position at the red point.</p>",
   "startCommands": [
   ],
@@ -612,7 +612,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
   "bottomImage": null,
   "beforeText":
     "<p>What happened at the red point?</p>",
-  "responseTemplate": "/backend/response-template/3/multiplechoice",
+  "responseTemplate": "/backend/response-template/3/walking-example-1",
   "afterText": "<p><b>Incorrect.</b> Was the walker 2 meters away at the red point?</p>", 
   "startCommands": [
   ],
@@ -674,7 +674,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
   "bottomImage": null,
   "beforeText":
     "<p>What happened at the red point?</p>",
-  "responseTemplate": "/backend/response-template/3/multiplechoice",
+  "responseTemplate": "/backend/response-template/3/walking-example-1",
   "afterText": "<p><b>Incorrect.</b> Look at the walker's direction after the red point.</p>",
   "startCommands": [
   ],
@@ -995,18 +995,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
-    "<ul style=\"font-size: 0.8em\">"+
-    "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
-    "      sensor for 10 seconds.</li>"+
-    "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
-    "      20 seconds. I walked toward the sensor for 20 seconds.</li>"+
-    "  <li>C. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
-    "      from the sensor and walked away from the sensor for 20 seconds."+
-    "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
-    "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
-    "</ul>",
-  "responseTemplate": "/backend/response-template/1/numeric",
+    "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
+  "responseTemplate": "/backend/response-template/4/two-walkers",
   "afterText": "",
   "startCommands": [
   ],
@@ -1016,7 +1006,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] =
     "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
-    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+    "in": ["value", [1, 2, 3, 4]]
   },
   "triggeredCommands": [
   ],
@@ -1025,7 +1015,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] =
   },
   "responseBranches": [
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["b", "B"]]
+        "equals" : ["value", 2]
       },
       "step": "/backend/activity/1/page/8/step/6"
     }
@@ -1051,20 +1041,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
-    "<ul style=\"font-size: 0.8em\">"+
-    "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
-    "      sensor for 10 seconds.</li>"+
-    "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
-    "      20 seconds. I walked toward the sensor for 20 seconds.</li>"+
-    "  <li>C. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
-    "      from the sensor and walked away from the sensor for 20 seconds."+
-    "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
-    "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
-    "</ul>"+
-    "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data.</p>",
-  "responseTemplate": "/backend/response-template/1/numeric",
-  "afterText": "",
+    "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
+  "responseTemplate": "/backend/response-template/4/two-walkers",
+  "afterText": "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -1073,7 +1052,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
     "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
-    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+    "in": ["value", [1, 2, 3, 4]]
   },
   "triggeredCommands": [
   ],
@@ -1082,7 +1061,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
   },
   "responseBranches": [
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["b", "B"]]
+        "equals" : ["value", 2]
       },
       "step": "/backend/activity/1/page/8/step/6"
     }
@@ -1108,20 +1087,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
-    "<ul style=\"font-size: 0.8em\">"+
-    "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
-    "      sensor for 10 seconds.</li>"+
-    "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
-    "      20 seconds. I walked toward the sensor for 20 seconds.</li>"+
-    "  <li>C. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
-    "      from the sensor and walked away from the sensor for 20 seconds."+
-    "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
-    "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
-    "</ul>"+
-    "<p><b>Incorrect.</b> Figure out where each person started and ended.</p>",
-  "responseTemplate": "/backend/response-template/1/numeric",
-  "afterText": "",
+    "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
+  "responseTemplate": "/backend/response-template/4/two-walkers",
+  "afterText": "<p><b>Incorrect.</b> Figure out where each person started and ended.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -1130,7 +1098,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
     "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
-    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+    "in": ["value", [1, 2, 3, 4]]
   },
   "triggeredCommands": [
   ],
@@ -1139,7 +1107,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
   },
   "responseBranches": [
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["b", "B"]]
+        "equals" : ["value", 2]
       },
       "step": "/backend/activity/1/page/8/step/6"
     }
@@ -1166,20 +1134,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
   "topImage": null,
   "bottomImage": null,
   "beforeText": 
-    "<p>Which of the following motion scenarios could have resulted in this graph?</p>"+
-    "<ul style=\"font-size: 0.8em\">"+
-    "  <li>A. I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
-    "      sensor for 10 seconds.</li>"+
-    "  <li>B. My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
-    "      20 seconds. I walked toward the sensor for 20 seconds.</li>"+
-    "  <li>C. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
-    "      from the sensor and walked away from the sensor for 20 seconds."+
-    "  <li>D. I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
-    "      from the sensor and walked toward the sensor for 20 seconds.</li>"+
-    "</ul>"+
-    "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point.</p>",
-  "responseTemplate": "/backend/response-template/1/numeric",
-  "afterText": "",
+    "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
+  "responseTemplate": "/backend/response-template/4/two-walkers",
+  "afterText": "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -1188,7 +1145,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
     "type": "Smartgraphs.FirstResponseFieldInspector"
   },
   "submissibilityCriterion": {
-    "in": [{ "strip":  "value" }, ["a", "b", "c", "d", "A", "B", "C", "D"]]
+    "in": ["value", [1, 2, 3, 4]]
   },
   "triggeredCommands": [
   ],
@@ -1197,7 +1154,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
   },
   "responseBranches": [
     { "criterion": { 
-        "in": [{"strip" : "value" }, ["b", "B"]]
+        "equals" : ["value", 2]
       },
       "step": "/backend/activity/1/page/8/step/6"
     }
@@ -1246,7 +1203,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/5"] =
   "shouldAutoAdvancePage": false,
   "hideSubmitButton": false,
   "submitButtonTitle": "OK",
-  "nextButtonShouldSubmit": false
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
 

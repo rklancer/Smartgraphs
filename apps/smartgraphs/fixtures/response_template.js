@@ -23,15 +23,33 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
   	initialValues: ['']
   },
 
-  { url: '/backend/response-template/3/multiplechoice',
+  { url: '/backend/response-template/3/walking-example-1',
   	templateString: '',
   	fieldTypes: ['multiplechoice'],
-  	prompt: 'Choose <b>one</b>.',
   	fieldChoicesList: [[
-  		"The walker was 4 meters away, getting ready to walk toward the sensor.",
-  		"The walker was closest to the motion sensor, getting ready to walk away from the sensor.",
-  		"The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.",
-  		"The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor."
+  		'The walker was 4 meters away, getting ready to walk toward the sensor.',
+  		'The walker was closest to the motion sensor, getting ready to walk away from the sensor.',
+  		'The walker was 2 meters away from the motion sensor, getting ready to walk toward the sensor.',
+  		'The walker was 2 meters away from the motion sensor, getting ready to walk away from the sensor.'
+  	 ]],
+  	initialValues: [""]
+  },
+  
+  { url: '/backend/response-template/4/two-walkers',
+  	templateString: '',
+  	fieldTypes: ['multiplechoice'],
+  	fieldChoicesList: [[
+      "I started at the motion sensor and walked away from the sensor for 10 seconds. Then I walked toward the "+
+      "sensor for 10 seconds.",
+      
+      "My friend and I both started 2 meters away from the sensor. He walked away from the motion sensor for "+
+      "20 seconds. I walked toward the sensor for 20 seconds.",
+      
+      "I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+      "from the sensor and walked away from the sensor for 20 seconds.",
+      
+      "I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away "+
+      "from the sensor and walked toward the sensor for 20 seconds."
   	 ]],
   	initialValues: [""]
   }

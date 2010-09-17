@@ -33,7 +33,7 @@ Smartgraphs.activityPage = SC.Page.design({
           layout: {
             top: 20,
             right: 20,
-            bottom: 80,
+            bottom: 70,
             left: 20
           },
 
