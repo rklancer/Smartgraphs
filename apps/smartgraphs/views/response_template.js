@@ -56,44 +56,41 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
   },
   
   addChildView: function (fieldType, fieldChoices, initialValue, fieldIndex) {
-    var layout, subViewDesign;
+    var view;
     
     switch (fieldType) {
       case 'textarea':
-        layout = {
+        view = this.wrap(this.makeTextAreaDesign(initialValue, fieldIndex), {
           height: 97
-        };
-        subViewDesign = this.makeTextArea(initialValue, fieldIndex);
+        });
         break;
       case 'numeric': 
-        layout = {
+        view = this.wrap(this.makeNumericFieldDesign(initialValue, fieldIndex), {
           height: 22,
           width: 100
-        };
-        subViewDesign = this.makeNumericField(initialValue, fieldIndex);
+        });
         break;
       case 'multiplechoice':
-        layout = {
-          width: 300
-        };
-        subViewDesign = this.makeMultipleChoice(fieldChoices, initialValue, fieldIndex);
+        view = this.makeMultipleChoiceView(fieldChoices, initialValue, fieldIndex);
         break;
       default:
         throw "ResponseTemplateView received unexpected field type string '" + fieldType + "'.";
     }
-
-    var view = SC.View.design({
+    
+    this.appendChild(view);
+  },
+  
+  wrap: function (subViewDesign, layout) {
+    return SC.View.design({
       useStaticLayout: YES,
       layout: layout,
       classNames: 'text-field-view-wrapper'.w(),
 
       childViews: [subViewDesign]
     }).create();
-    
-    this.appendChild(view);
   },
   
-  makeTextArea: function (initialValue, fieldIndex) {
+  makeTextAreaDesign: function (initialValue, fieldIndex) {
     return SC.TextFieldView.design({
       isTextArea: YES,
       hint:  'Enter your answer here...',
@@ -108,7 +105,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
     });
   },
   
-  makeNumericField: function (initialValue, fieldIndex) {
+  makeNumericFieldDesign: function (initialValue, fieldIndex) {
     return SC.TextFieldView.design({
       isTextArea: NO,
       fieldIndex: fieldIndex,
@@ -122,7 +119,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
     });
   },
   
-  makeMultipleChoice: function (fieldChoices, initialValue, fieldIndex) {
+  makeMultipleChoiceView: function (fieldChoices, initialValue, fieldIndex) {
     var items = [];
     
     // transform ['Choice 1', 'Choice 2'] -> [ {title: 'Choice 1', index: 1}, {title: 'Choice 2', index: 2} ]
@@ -137,11 +134,11 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       
       fieldIndex: fieldIndex,
       value: initialValue,
-      isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
+      isEnabledBinding: '.parentView.editingShouldBeEnabled',
       useStaticLayout: YES,     
       
       valueDidChange: function () {
-        var values = this.getPath('parentView.parentView.values');
+        var values = this.getPath('parentView.values');
         values.replace(this.get('fieldIndex'), 1, this.get('value'));
       }.observes('value'),
       
@@ -154,7 +151,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
           $(this).css({height: $(this).find('.sc-button-label').outerHeight()});
         });
       }
-    });
+    }).create();
   },
 
   _beginEditingFirstView: function () {
