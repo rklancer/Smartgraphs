@@ -182,7 +182,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     var klass = SC.objectForPropertyPath(inspectorInfo.type);
     
-    if (!klass || klass.toString() !== inspectorInfo.type) {
+    if (!klass || !klass.isClass) {
       return NO;
     }
     
