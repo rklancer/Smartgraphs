@@ -6,10 +6,17 @@
 
 module("Smartgraphs.activityStepController");
 
-// TODO: Replace with real unit test for Smartgraphs.activityStepController
-test("test description", function() {
-  var expected = "test";
-  var result   = "test";
-  equals(result, expected, "test should equal test");
+test("makeInspector method should return an inspector instance corresponding to the classname in the inspector info", function () {
+
+  var step = SC.Object.create({
+    submissibilityInspector: {
+      type: 'Smartgraphs.FirstResponseFieldInspector'
+    }
+  });
+  Smartgraphs.activityStepController.set('content', step);
+  
+  var inspector = Smartgraphs.activityStepController.makeInspector('submissibilityInspector');
+  ok(SC.kindOf(inspector, Smartgraphs.FirstResponseFieldInspector), 'makeInspector should return a valid FirstResponseFieldInspector instance');
+  
 });
 
