@@ -20,7 +20,7 @@ Smartgraphs.GraphView = SC.View.extend(
   
   padding: { top: 40, right: 20, bottom: 45, left: 55 },  
   
-  childViews: 'titleView graphCanvasView'.w(),
+  childViews: 'titleView graphCanvasView controlsView'.w(),
   
   init: function () {
     this._viewsByClassAndId = {};
@@ -165,6 +165,10 @@ Smartgraphs.GraphView = SC.View.extend(
     };
   },
   
+  controlsView: SC.View.design({
+    layout: { height: 0, bottom: 0 }
+  }),
+  
   titleView: SC.LabelView.design({
     valueBinding: '.parentView*graphController.title',
     classNames: 'pane-label',
@@ -173,6 +177,8 @@ Smartgraphs.GraphView = SC.View.extend(
   }),
   
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
+    layout: { bottom: 0 },
+    
     axesBinding: '.parentView.axes',
     
     displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax'.w(),
@@ -242,7 +248,6 @@ Smartgraphs.GraphView = SC.View.extend(
           return this._graphController.inputAreaMouseUp(point.x, point.y);
         }
       }),
-      
       
       xAxisView: Smartgraphs.AxisView.design({
         axesBinding: '.parentView.parentView.parentView.axes',
