@@ -210,30 +210,12 @@ Smartgraphs.activityPage = SC.Page.design({
     layout: { width: 0.9999999, height: 0.9999999 }
   }),
   
-  firstGraphView: SC.View.design({
-    childViews: 'graphView controlsContainer'.w(),
-    
-    graphView: Smartgraphs.GraphView.design({
-      graphControllerBinding: 'Smartgraphs.firstGraphController',
-      viewName: 'firstGraphView'
-    }),
-    
-    controlsContainer: SC.ContainerView.design({
-      layout: { bottom: 0, height: 0 }
-    })
+  firstGraphView: Smartgraphs.GraphPane.design({
+    graphControllerBinding: 'Smartgraphs.firstGraphController'
   }),
   
-  secondGraphView: SC.View.design({
-    childViews: 'graphView controlsContainer'.w(),
-    
-    graphView: Smartgraphs.GraphView.design({
-      graphControllerBinding: 'Smartgraphs.secondGraphController',
-      viewName: 'secondGraphView'
-    }),
-  
-    controlsContainer: SC.ContainerView.design({
-      layout: { bottom: 0, height: 0 }
-    })
+  secondGraphView: Smartgraphs.GraphPane.design({
+    graphControllerBinding: 'Smartgraphs.secondGraphController'
   }),
   
   firstTableView: Smartgraphs.TableView.design({}),
