@@ -22,6 +22,9 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   firstImageValue: null,
   secondImageValue: null,
   
+  firstGraphPaneControls: null,
+  secondGraphPaneControls: null,
+  
   paneIsSplit: null,
   
   // ..........................................................
@@ -138,33 +141,20 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     
     if ( !which ) return NO;
     
-    var graphPane = Smartgraphs.activityPage.get(which+'GraphPane');
-    
-    graphPane.graphView.adjust('bottom', 35);
-    graphPane.controlsContainer.adjust('height', 35);
-    
-    var otherPane = this.otherPaneFor(pane);
-    if (otherPane) this.hideControls(otherPane);
-    
-    graphPane.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
+    this.hideControls();
+    this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.graphControlsView');
 
     return YES;
   },
   
-  hideControls: function (pane) {
-    pane = this.validPaneFor(pane);
-    var which = this.firstOrSecondFor(pane);
-    
-    if ( !which ) return NO;
-    
-    var graphPane = Smartgraphs.activityPage.get(which+'GraphPane');
-    
-    graphPane.controlsContainer.set('nowShowing', null);
-    graphPane.controlsContainer.adjust('height', 0);
-    graphPane.graphView.adjust('bottom', 0);
+  hideControls: function () {
+    this.set('firstGraphPaneControls', null);
+    this.set('secondGraphPaneControls', null);
   },
   
   clear: function () {
+    this.hideControls();
+    
     if (this.get('paneIsSplit')) {
       this.hidePane('top');
       this.hidePane('bottom');

@@ -211,11 +211,13 @@ Smartgraphs.activityPage = SC.Page.design({
   }),
   
   firstGraphPane: Smartgraphs.GraphPane.design({
-    graphControllerBinding: 'Smartgraphs.firstGraphController'
+    graphControllerBinding: 'Smartgraphs.firstGraphController',
+    controlsNowShowingBinding: 'Smartgraphs.activityViewController.firstGraphPaneControls'
   }),
   
   secondGraphPane: Smartgraphs.GraphPane.design({
-    graphControllerBinding: 'Smartgraphs.secondGraphController'
+    graphControllerBinding: 'Smartgraphs.secondGraphController',
+    controlsNowShowingBinding: 'Smartgraphs.activityViewController.secondGraphPaneControls'
   }),
   
   firstTableView: Smartgraphs.TableView.design({}),
