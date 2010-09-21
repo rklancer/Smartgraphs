@@ -16,5 +16,5 @@ sc_require('controllers/graph');
 Smartgraphs.secondGraphController = Smartgraphs.GraphController.create(
 /** @scope Smartgraphs.secondGraphController.prototype */ {
   
-  viewPath: 'activityPage.secondGraphView'
+  viewPath: 'activityPage.secondGraphPane.graphView'
 }) ;
