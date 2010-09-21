@@ -36,6 +36,10 @@ Smartgraphs.SENSOR_READY = SC.Responder.create(
   //
   
   startControlWasClicked: function () {
+    return this.startSensor();
+  },
+  
+  startSensor: function () {
     Smartgraphs.sensorController.startRecording();
     Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_RECORDING);
     return YES;

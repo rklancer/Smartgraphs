@@ -27,10 +27,15 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   */
   downsampleRatio: 2,
   
+  /* the rate at which samples are received */
+  
+  dt: 0.1,
+  
   sensorIsReady: NO,
 
   _appletView: null,
   _inputStarted: NO,
+  _recording: NO,
   _pane: null,
   _series: null,
   
@@ -76,19 +81,31 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   
   disableInput: function () {
     this._inputStarted = NO;
+    this._recording = NO;
     this._series = null;
     this._pane = null;
   },
   
   startRecording: function () {
+    this._recording = YES;
+    this._nsamples = 0;
+    this._appletView.start();
   },
   
   stopRecording: function () {
+    this._recording = NO;
+    this._appletView.stop();
   },
   
   clearRecordedData: function () {
+    SC.RunLoop.begin();
+    this._series.get('points').invoke('destroy');
+    SC.RunLoop.end();
   },
 
+  /**
+    applet callback
+  */
   sensorsReady: function () {
     SC.RunLoop.begin();
     this.set('sensorIsReady', YES);
@@ -97,8 +114,45 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     }
     SC.RunLoop.end();
   },
+
+  /**
+    applet callback
+  */
+  dataReceived: function (type, numPoints, data) {
+    
+    if ( !(this._inputStarted && this._recording) ) {
+      return;
+    }
+    
+    var dt = this.get('dt');
+    var downsampleRatio = this.get('downsampleRatio');
+    var x, y;
+    var point;
+    
+    for (var i = 0; i < numPoints; i++) {
+      x = this._nsamples * dt;
+      y = data[i];
+      
+      if (x > this.get('xMax')) {
+        Smartgraphs.sendAction('stopSensor');
+        return;
+      }
+      
+      if ( this._nsamples % downsampleRatio === 0 ) {
+        SC.RunLoop.begin();
+        point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
+        this._series.get('points').pushObject(point);
+        Smartgraphs.store.commitRecords();
+        SC.RunLoop.end();
+      }
+      this._nsamples++;
+    }
+  },
   
-  sensorDataReceived: function (type, numPoints, data) {
+  /**
+    applet callback (applet doesn't send useful information with this callback yet)
+  */
+  dataStreamEvent: function () {
   }
 
 }) ;

@@ -25,6 +25,7 @@ Smartgraphs.SENSOR_RECORDING = SC.Responder.create(
   },
   
   willLoseFirstResponder: function () {
+    Smartgraphs.sensorController.stopRecording();
   },
   
   // ..........................................................
@@ -32,6 +33,10 @@ Smartgraphs.SENSOR_RECORDING = SC.Responder.create(
   //
   
   stopControlWasClicked: function () {
+    return this.stopSensor();
+  },
+  
+  stopSensor: function () {
     Smartgraphs.sensorController.stopRecording();
     Smartgraphs.activityViewController.highlightControlsForReadyState();
     Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_READY);
@@ -39,6 +44,11 @@ Smartgraphs.SENSOR_RECORDING = SC.Responder.create(
   },
   
   clearControlWasClicked: function () {
+    return this.clearSensor();
+  },
+  
+  clearSensor: function () {
+    Smartgraphs.sensorController.stopRecording();    
     Smartgraphs.sensorController.clearRecordedData();
     Smartgraphs.activityViewController.highlightControlsForReadyState();
     Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_READY);
