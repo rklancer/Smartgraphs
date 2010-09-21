@@ -23,6 +23,7 @@ Smartgraphs.FREEHAND_INPUT = SC.Responder.create(
     // if freehandInputController says NO, don't accept first responder
     if (enableSucceeded) {
       Smartgraphs.activityViewController.showControls(Smartgraphs.freehandInputController.get('pane'));
+      Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT_READY);
     }
     else {
       Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
@@ -41,10 +42,6 @@ Smartgraphs.FREEHAND_INPUT = SC.Responder.create(
   startFreehandInput: function () {
     console.error('Attempted to startFreehandInput when in FREEHAND_INPUT state');
     return YES;       // do nothing and consider that handling it!
-  },
-  
-  freehandStrokeCompleted: function () {
-    Smartgraphs.activityViewController.highlightClearControl();
   },
   
   clearControlWasClicked: function () {

@@ -15,6 +15,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
 /** @scope Smartgraphs.freehandInputController.prototype */ {
   
   _inputStarted: NO,
+  _recording: NO,
   _pane: null,
   
   pane: function () {
@@ -46,7 +47,6 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     this._graphController.startFreehandInput();
 
     this._graphController.get('eventQueue').addObserver('[]', this, this.graphObserver);
-    this._strokeEntered = NO;
     return YES;
   },
   
@@ -58,6 +58,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     this._sketch = null;
     this._inputStarted = NO;
     this._pane = null;
+    this._recording = NO;
   },
   
   graphObserver: function () {
@@ -80,25 +81,37 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   },
   
   startAt: function (x, y) {
-    if ( !this._strokeEntered ) {
+    if (this._recording && this._inputStarted) {
       this._sketch.set('points', [{x: x, y: y}]);
       this._strokeEntered = YES;
     }
   },
   
   continueAt: function (x, y) {
-    this._sketch.get('points').pushObject({x: x, y: y});
+    if (this._recording && this._inputStarted) {    
+      this._sketch.get('points').pushObject({x: x, y: y});
+    }
   },
   
   endAt: function (x, y) {
-    this._sketch.get('points').pushObject({x: x, y: y});
-
-    Smartgraphs.sendAction('freehandStrokeCompleted');
+    if (this._recording && this._inputStarted) {
+      this._sketch.get('points').pushObject({x: x, y: y});
+      Smartgraphs.sendAction('freehandSketchCompleted');
+    }
   },
   
-  clearStroke: function () {
-    this._strokeEntered = NO;
-    this._sketch.set('points', []);
+  startRecording: function () {
+    this._recording = YES;
+  },
+  
+  stopRecording: function () {
+    this._recording = NO;
+  },
+  
+  clearSketch: function () {
+    if ( !this._recording && this._inputStarted ) {
+      this._sketch.set('points', []);
+    }
   }
 
 }) ;
