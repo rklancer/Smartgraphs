@@ -14,18 +14,35 @@
 Smartgraphs.sensorController = SC.ObjectController.create(
 /** @scope Smartgraphs.sensorController.prototype */ {
 
+  
+  xMin: null,
+  xMax: null,
+
+  /**
+    A downsample ratio of 1 = 1:1 = sample every point
+    a downsample ration of 2 = 2:1 = sample every other point
+    etc.
+    
+    TODO: make downsample ratio settable from startSensorInput action?
+  */
+  downsampleRatio: 2,
+  
   sensorIsReady: NO,
   appletIsAppended: NO,
   _inputStarted: NO,
   _pane: null,
   _series: null,
   
-  register: function (pane, series) {
+  register: function (pane, series, xMin, xMax) {
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
     if (pane && series && series.get('isExample') === NO) {
       this._pane = pane;
       this._series = series;
+      
+      if (xMin) this.set('xMin', xMin);
+      if (xMax) this.set('xMax', xMax);
+      
       return YES;
     }
     return NO;

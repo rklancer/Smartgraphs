@@ -166,7 +166,11 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     
     if ( !series ) return YES;        // handled, but invalid pane or series...
     
-    if (Smartgraphs.sensorController.register(args.pane, series)) {
+    // TODO let 'args' override these settings if desired
+    var xMin = controller.getPath('axes.xMin');
+    var xMax = controller.getPath('axes.xMax');
+
+    if (Smartgraphs.sensorController.register(args.pane, series, xMin, xMax)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
       return YES;
     }
