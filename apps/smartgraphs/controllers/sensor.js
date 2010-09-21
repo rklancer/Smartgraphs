@@ -33,6 +33,10 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   _pane: null,
   _series: null,
   
+  pane: function () {
+    return this._pane;
+  }.property(),
+  
   register: function (pane, series, xMin, xMax) {
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
@@ -60,11 +64,18 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     }
 
     if (this.get('sensorIsReady')) {
-      Smartgraphs.activityViewController.showControls(this._pane);
+      Smartgraphs.sendAction('sensorIsReadyToRecord');
     }
     else {
-      Smartgraphs.activityViewController.showSensorLoadingView(this._pane);
+      Smartgraphs.sendAction('waitForSensorToLoad');
     }
+      
+    //   
+    //   Smartgraphs.activityViewController.showControls(this._pane);
+    // }
+    // else {
+    //   Smartgraphs.activityViewController.showSensorLoadingView(this._pane);
+    // }
     
     return YES;
   },
@@ -76,12 +87,22 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     this._pane = null;
   },
   
+  startRecording: function () {
+  },
+  
+  stopRecording: function () {
+  },
+  
+  reset: function () {
+  },
+
   sensorsReady: function () {
     SC.RunLoop.begin();
     this.set('sensorIsReady', YES);
 
     if (this._inputStarted) {
-      Smartgraphs.activityViewController.showControls(this._pane) ;
+      Smartgraphs.sendAction('indicateSensorIsReady');
+      //Smartgraphs.activityViewController.showControls(this._pane) ;
     }
     SC.RunLoop.end();
   },

@@ -243,17 +243,20 @@ Smartgraphs.activityPage = SC.Page.design({
     
     start: SC.ButtonView.design({
       layout: { centerX: -110, bottom: 10, width: 80, height: 24 },
-      title: 'Start'
+      title: 'Start',
+      action: 'startControlWasClicked'
     }),
     
     stop: SC.ButtonView.design({
       layout: { centerX: 0, bottom: 10, width: 80, height: 24 },
-      title: 'Stop'
+      title: 'Stop',
+      action: 'stopControlWasClicked'
     }),
     
     clear: SC.ButtonView.design({
       layout: { centerX: 110, bottom: 10, width: 80, height: 24 },
-      title: 'Clear'
+      title: 'Clear',
+      action: 'clearControlWasClicked'
     })
   }),
   

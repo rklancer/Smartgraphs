@@ -7,9 +7,7 @@
 
 /** @class
 
-  Superstate representing that the sensor applet is being loaded up and controls should be shown
-  
-  Substates include SENSOR_READY, SENSOR_RECORDING, SENSOR_ERROR.
+  State representing that the sensor applet is being loaded up and controls should be shown
 
   @extends SC.Responder
   @version 0.1
@@ -21,17 +19,25 @@ Smartgraphs.SENSOR = SC.Responder.create(
 
   nextResponder: Smartgraphs.ACTIVITY_STEP,
   
-  didBecomeFirstResponder: function() {
+  didBecomeFirstResponder: function () {
     var enableSucceeded = Smartgraphs.sensorController.enableInput();
     if ( !enableSucceeded ) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   },
   
-  willLoseFirstResponder: function() {
-    Smartgraphs.sensorController.disableInput();    
-  }
+  willLoseFirstResponder: function () {
+    Smartgraphs.sensorController.disableInput();
+  },
   
   // ..........................................................
   // ACTIONS
   //
+  
+  sensorIsReadyToRecord: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_READY);
+  },
+  
+  waitForSensorToLoad: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_LOADING);
+  }
   
 }) ;

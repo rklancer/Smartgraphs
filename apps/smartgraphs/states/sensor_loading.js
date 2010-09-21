@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.SENSOR_ERROR
+// Project:   Smartgraphs.SENSOR_LOADING
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -15,17 +15,15 @@
 
 sc_require('states/sensor');
 
-Smartgraphs.SENSOR_ERROR = SC.Responder.create(
-/** @scope Smartgraphs.SENSOR_ERROR.prototype */ {
+Smartgraphs.SENSOR_LOADING = SC.Responder.create(
+/** @scope Smartgraphs.SENSOR_LOADING.prototype */ {
 
   nextResponder: Smartgraphs.SENSOR,
   
-  didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+  didBecomeFirstResponder: function () {
   },
   
-  willLoseFirstResponder: function() {
-    // Called when this state loses first responder
+  willLoseFirstResponder: function () {
   }
   
   // ..........................................................

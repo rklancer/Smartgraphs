@@ -13,24 +13,27 @@
   @version 0.1
 */
 
-sc_require('states/sensor');
+sc_require('states/sensor_ready');
 
 Smartgraphs.SENSOR_RECORDING = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR_RECORDING.prototype */ {
 
-  nextResponder: Smartgraphs.SENSOR,
+  nextResponder: Smartgraphs.SENSOR_READY,
   
-  didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+  didBecomeFirstResponder: function () {
   },
   
-  willLoseFirstResponder: function() {
-    // Called when this state loses first responder
-  }
+  willLoseFirstResponder: function () {
+  },
   
   // ..........................................................
   // ACTIONS
   //
   
+  stopControlWasClicked: function () {
+  },
+  
+  clearControlWasClicked: function () {
+  }
   
 }) ;

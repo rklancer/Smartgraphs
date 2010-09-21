@@ -23,17 +23,17 @@ Smartgraphs.SENSOR_READY = SC.Responder.create(
   */
   nextResponder: Smartgraphs.SENSOR,
   
-  didBecomeFirstResponder: function() {
-    // Called when this state becomes first responder
+  didBecomeFirstResponder: function () {
   },
   
-  willLoseFirstResponder: function() {
-    // Called when this state loses first responder
-  }
+  willLoseFirstResponder: function () {
+  },
   
   // ..........................................................
   // ACTIONS
   //
-
+  
+  startControlWasClicked: function () {
+  }
   
 }) ;
