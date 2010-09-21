@@ -1542,7 +1542,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
   "startCommands": [
     { "action": "startFreehandInput",
       "literalArgs": {
-        "pane": "top",
+        "pane": "single",
         "annotationName": "prediction-away"
       }
     }

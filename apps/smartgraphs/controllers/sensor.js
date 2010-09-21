@@ -44,6 +44,8 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   }.property(),
   
   register: function (pane, series, xMin, xMax) {
+    if (this._inputStarted) return NO;    
+
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
     if (pane && series && series.get('isExample') === NO) {

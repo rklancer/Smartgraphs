@@ -15,17 +15,25 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
 /** @scope Smartgraphs.freehandInputController.prototype */ {
   
   _inputStarted: NO,
+  _pane: null,
+  
+  pane: function () {
+    return this._pane;
+  }.property(),
 
-  register: function (controller, sketchName) {
+  register: function (pane, controller, sketchName) {
     // guard against accidentally swapping the input controller during freehand input. Guarantee that a controller
     // will always receive endFreehandInput after receiving startFreehandInput
   
     if (this._inputStarted) return NO;
     
+    pane = Smartgraphs.activityViewController.validPaneFor(pane);
+    
     var sketch = controller ? controller.findAnnotationByName(sketchName) : NO;
-    if (sketch && SC.kindOf(sketch, Smartgraphs.FreehandSketch)) {      
+    if (pane && sketch && SC.kindOf(sketch, Smartgraphs.FreehandSketch)) {      
       this._graphController = controller;
       this._sketch = sketch;
+      this._pane = pane;
       return YES;
     }
     return NO;
@@ -38,6 +46,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     this._graphController.startFreehandInput();
 
     this._graphController.get('eventQueue').addObserver('[]', this, this.graphObserver);
+    this._strokeEntered = NO;
     return YES;
   },
   
@@ -48,6 +57,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     this._graphController = null;
     this._sketch = null;
     this._inputStarted = NO;
+    this._pane = null;
   },
   
   graphObserver: function () {
@@ -70,7 +80,10 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   },
   
   startAt: function (x, y) {
-    this._sketch.set('points', [{x: x, y: y}]);
+    if ( !this._strokeEntered ) {
+      this._sketch.set('points', [{x: x, y: y}]);
+      this._strokeEntered = YES;
+    }
   },
   
   continueAt: function (x, y) {
@@ -79,6 +92,13 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   
   endAt: function (x, y) {
     this._sketch.get('points').pushObject({x: x, y: y});
+
+    Smartgraphs.sendAction('freehandStrokeCompleted');
+  },
+  
+  clearStroke: function () {
+    this._strokeEntered = NO;
+    this._sketch.set('points', []);
   }
 
 }) ;

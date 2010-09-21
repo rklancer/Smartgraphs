@@ -149,7 +149,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     });
 
     var controller = this._graphControllerFor(args.pane);
-    if (Smartgraphs.freehandInputController.register(controller, args.annotationName)) {
+    if (Smartgraphs.freehandInputController.register(args.pane, controller, args.annotationName)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT);
       return YES;
     }

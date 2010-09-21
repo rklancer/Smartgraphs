@@ -164,17 +164,43 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     
     if ( !which ) return NO;
     
+
     this.hideControls();
+    this.disableAllControls();
     this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.graphControlsView');
 
     return YES;
   },
   
-  hideControls: function () {
-    this.set('firstGraphPaneControls', null);
-    this.set('secondGraphPaneControls', null);
+  hideControls: function (pane) {
+    if (pane) {
+      pane = this.validPaneFor(pane);
+      var which = this.firstOrSecondFor(pane);
+
+      if ( !which ) return NO;
+      
+      this.set(which+'GraphPaneControls', null);
+    }
+    else {  
+      this.set('firstGraphPaneControls', null);
+      this.set('secondGraphPaneControls', null);
+    }
   },
   
+  disableAllControls: function () {
+    this.set('startControlIsVisible',  YES);
+    this.set('startControlIsEnabled',  NO);
+    this.set('startControlIsDefault',  NO);
+
+    this.set('stopControlIsVisible',  YES);
+    this.set('stopControlIsEnabled',  NO);
+    this.set('stopControlIsDefault',  NO);
+
+    this.set('clearControlIsVisible',  YES);
+    this.set('clearControlIsEnabled',  NO);
+    this.set('clearControlIsDefault',  NO);
+  },
+      
   highlightStartControl: function () {
     this.set('startControlIsVisible',  YES);
     this.set('startControlIsEnabled',  YES);

@@ -21,11 +21,17 @@ Smartgraphs.FREEHAND_INPUT = SC.Responder.create(
   didBecomeFirstResponder: function () {
     var enableSucceeded = Smartgraphs.freehandInputController.enableInput();
     // if freehandInputController says NO, don't accept first responder
-    if (!enableSucceeded) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    if (enableSucceeded) {
+      Smartgraphs.activityViewController.showControls(Smartgraphs.freehandInputController.get('pane'));
+    }
+    else {
+      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    }
   },
   
   willLoseFirstResponder: function () {
     Smartgraphs.freehandInputController.disableInput();
+    Smartgraphs.activityViewController.hideControls(Smartgraphs.freehandInputController.get('pane'));   
   },
   
   // ..........................................................
@@ -35,6 +41,18 @@ Smartgraphs.FREEHAND_INPUT = SC.Responder.create(
   startFreehandInput: function () {
     console.error('Attempted to startFreehandInput when in FREEHAND_INPUT state');
     return YES;       // do nothing and consider that handling it!
-  }
+  },
   
+  freehandStrokeCompleted: function () {
+    Smartgraphs.activityViewController.highlightClearControl();
+  },
+  
+  clearControlWasClicked: function () {
+    this.clearSketch();
+  },
+  
+  clearSketch: function () {
+    Smartgraphs.freehandInputController.clearStroke();
+    Smartgraphs.activityViewController.disableAllControls();    
+  }
 }) ;
