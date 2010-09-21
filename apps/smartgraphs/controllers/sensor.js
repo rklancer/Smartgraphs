@@ -70,7 +70,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     }
 
     if (this.get('sensorIsReady')) {
-      Smartgraphs.sendAction('sensorIsReadyToRecord');
+      Smartgraphs.sendAction('sensorHasLoaded');
     }
     else {
       Smartgraphs.sendAction('waitForSensorToLoad');
@@ -110,7 +110,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     SC.RunLoop.begin();
     this.set('sensorIsReady', YES);
     if (this._inputStarted) {
-      Smartgraphs.sendAction('sensorIsReadyToRecord');
+      Smartgraphs.sendAction('sensorHasLoaded');
     }
     SC.RunLoop.end();
   },

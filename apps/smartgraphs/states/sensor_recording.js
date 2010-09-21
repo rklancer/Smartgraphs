@@ -13,15 +13,16 @@
   @version 0.1
 */
 
-sc_require('states/sensor_ready');
+sc_require('states/sensor_loaded');
 
 Smartgraphs.SENSOR_RECORDING = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR_RECORDING.prototype */ {
 
-  nextResponder: Smartgraphs.SENSOR_READY,
+  nextResponder: Smartgraphs.SENSOR_LOADED,
   
   didBecomeFirstResponder: function () {
-    Smartgraphs.activityViewController.highlightControlsForRecordingState();
+    Smartgraphs.sensorController.startRecording();
+    Smartgraphs.activityViewController.highlightStopControl();   
   },
   
   willLoseFirstResponder: function () {
@@ -37,22 +38,8 @@ Smartgraphs.SENSOR_RECORDING = SC.Responder.create(
   },
   
   stopSensor: function () {
-    Smartgraphs.sensorController.stopRecording();
-    Smartgraphs.activityViewController.highlightControlsForReadyState();
-    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_READY);
-    return YES;
-  },
-  
-  clearControlWasClicked: function () {
-    return this.clearSensor();
-  },
-  
-  clearSensor: function () {
-    Smartgraphs.sensorController.stopRecording();    
-    Smartgraphs.sensorController.clearRecordedData();
-    Smartgraphs.activityViewController.highlightControlsForReadyState();
-    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_READY);
+    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_STOPPED);
     return YES;
   }
-  
+
 }) ;

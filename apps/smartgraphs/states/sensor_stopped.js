@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.SENSOR_READY
+// Project:   Smartgraphs.SENSOR_STOPPED
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -7,7 +7,8 @@
 
 /** @class
 
-  State representing that the sensor applet is loaded and ready for the user to click 'start'
+  State representing that the sensor applet has been stopped, ready for data to be cleared or for user to finish
+  working with the sensor.
 
   @extends SC.Responder
   @version 0.1
@@ -15,13 +16,13 @@
 
 sc_require('states/sensor_loaded');
 
-Smartgraphs.SENSOR_READY = SC.Responder.create(
-/** @scope Smartgraphs.SENSOR_READY.prototype */ {
+Smartgraphs.SENSOR_STOPPED = SC.Responder.create(
+/** @scope Smartgraphs.SENSOR_STOPPED.prototype */ {
 
   nextResponder: Smartgraphs.SENSOR_LOADED,
   
   didBecomeFirstResponder: function () {
-    Smartgraphs.activityViewController.highlightStartControl();
+    Smartgraphs.activityViewController.highlightClearControl();
   },
   
   willLoseFirstResponder: function () {
@@ -31,12 +32,13 @@ Smartgraphs.SENSOR_READY = SC.Responder.create(
   // ACTIONS
   //
   
-  startControlWasClicked: function () {
-    return this.startSensor();
+  clearControlWasClicked: function () {
+    return this.clearSensor();
   },
   
-  startSensor: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_RECORDING);
+  clearSensor: function () {
+    Smartgraphs.sensorController.clearRecordedData();
+    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_READY);
     return YES;
   }
 

@@ -175,7 +175,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     this.set('secondGraphPaneControls', null);
   },
   
-  highlightControlsForReadyState: function () {
+  highlightStartControl: function () {
     this.set('startControlIsVisible',  YES);
     this.set('startControlIsEnabled',  YES);
     this.set('startControlIsDefault',  YES);
@@ -189,7 +189,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     this.set('clearControlIsDefault',  NO);
   },
   
-  highlightControlsForRecordingState: function () {
+  highlightStopControl: function () {
     this.set('startControlIsVisible',  YES);
     this.set('startControlIsEnabled',  NO);
     this.set('startControlIsDefault',  NO);
@@ -199,8 +199,22 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     this.set('stopControlIsDefault',  YES);
 
     this.set('clearControlIsVisible',  YES);
-    this.set('clearControlIsEnabled',  YES);
+    this.set('clearControlIsEnabled',  NO);
     this.set('clearControlIsDefault',  NO);
+  },
+  
+  highlightClearControl: function () {
+    this.set('startControlIsVisible',  YES);
+    this.set('startControlIsEnabled',  NO);
+    this.set('startControlIsDefault',  NO);
+
+    this.set('stopControlIsVisible',  YES);
+    this.set('stopControlIsEnabled',  NO);
+    this.set('stopControlIsDefault',  NO);
+
+    this.set('clearControlIsVisible',  YES);
+    this.set('clearControlIsEnabled',  YES);
+    this.set('clearControlIsDefault',  YES);
   },
   
   clear: function () {

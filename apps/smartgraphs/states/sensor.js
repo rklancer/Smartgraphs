@@ -7,7 +7,7 @@
 
 /** @class
 
-  State representing that the sensor applet is being loaded up and controls should be shown
+  Superstate representing that the sensor applet is being loaded up or has been loaded
 
   @extends SC.Responder
   @version 0.1
@@ -28,15 +28,15 @@ Smartgraphs.SENSOR = SC.Responder.create(
   
   willLoseFirstResponder: function () {
     Smartgraphs.sensorController.disableInput();
-    Smartgraphs.activityViewController.hideControls();    
+    Smartgraphs.activityViewController.hideControls();
   },
   
   // ..........................................................
   // ACTIONS
   //
   
-  sensorIsReadyToRecord: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_READY);
+  sensorHasLoaded: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_LOADED);
     return YES;
   },
   
