@@ -149,7 +149,7 @@ Smartgraphs.Graph.FIXTURES = [
     description: 
       'Graph for multiple choice question in page 6',
     title:
-      "",
+      "Position vs. Time",
     axes:
       '/backend/axes/2/5m-25s',
     initialSeries: 
@@ -165,7 +165,7 @@ Smartgraphs.Graph.FIXTURES = [
     description: 
       'Graph to match with sensor data',
     title:
-      "",
+      "Position vs. Time",
     axes:
       '/backend/axes/1/5m-15s',
     initialSeries: 
