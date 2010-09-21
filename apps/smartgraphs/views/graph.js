@@ -18,7 +18,7 @@ Smartgraphs.GraphView = SC.View.extend(
   seriesListBinding: '*graphController.seriesList',
   annotationListBinding: '*graphController.annotationList',
   
-  padding: { top: 10, right: 10, bottom: 45, left: 45 },  
+  padding: { top: 15, right: 15, bottom: 45, left: 45 },  
   
   childViews: 'titleView graphCanvasView controlsView'.w(),
   
@@ -172,12 +172,12 @@ Smartgraphs.GraphView = SC.View.extend(
   titleView: SC.LabelView.design({
     valueBinding: '.parentView*graphController.title',
     classNames: 'pane-label',
-    layout: { width: 400, centerX: 0, height: 20, top: 10 },
+    layout: { width: 400, centerX: 0, height: 20, top: 20, zIndex: 1 },
     textAlign: SC.ALIGN_CENTER
   }),
   
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
-    layout: { bottom: 0 },
+    layout: { bottom: 0, zIndex: 0 },
     
     axesBinding: '.parentView.axes',
     

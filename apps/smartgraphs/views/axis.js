@@ -93,7 +93,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
     }
     else {
       labelText = axes.get('yLabel');
-      x = 15;
+      x = 10;
       y = (padding.top + frame.height - padding.bottom) / 2;
       rotation = 270;
     }
