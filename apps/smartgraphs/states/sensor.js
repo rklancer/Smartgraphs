@@ -21,11 +21,14 @@ Smartgraphs.SENSOR = SC.Responder.create(
   
   didBecomeFirstResponder: function () {
     var enableSucceeded = Smartgraphs.sensorController.enableInput();
-    if ( !enableSucceeded ) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    if ( !enableSucceeded ) {
+      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    }
   },
   
   willLoseFirstResponder: function () {
     Smartgraphs.sensorController.disableInput();
+    Smartgraphs.activityViewController.hideControls();    
   },
   
   // ..........................................................
@@ -34,10 +37,12 @@ Smartgraphs.SENSOR = SC.Responder.create(
   
   sensorIsReadyToRecord: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_READY);
+    return YES;
   },
   
   waitForSensorToLoad: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_LOADING);
+    return YES;
   }
   
 }) ;

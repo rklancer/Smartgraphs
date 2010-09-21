@@ -21,6 +21,7 @@ Smartgraphs.SENSOR_LOADING = SC.Responder.create(
   nextResponder: Smartgraphs.SENSOR,
   
   didBecomeFirstResponder: function () {
+    Smartgraphs.activityViewController.showSensorLoadingView(Smartgraphs.sensorController.get('pane'));
   },
   
   willLoseFirstResponder: function () {

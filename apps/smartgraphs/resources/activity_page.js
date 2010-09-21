@@ -239,22 +239,34 @@ Smartgraphs.activityPage = SC.Page.design({
   graphControlsView: SC.View.design({
     layout: { height: 35 },
     
-    childViews: 'start stop clear'.w(),
+    childViews: 'startControl stopControl clearControl'.w(),
     
-    start: SC.ButtonView.design({
+    startControl: SC.ButtonView.design({
       layout: { centerX: -110, bottom: 10, width: 80, height: 24 },
+      isVisibleBinding: 'Smartgraphs.activityViewController.startControlIsVisible',
+      isEnabledBinding: 'Smartgraphs.activityViewController.startControlIsEnabled',      
+      isDefaultBinding: 'Smartgraphs.activityViewController.startControlIsDefault',
+      
       title: 'Start',
       action: 'startControlWasClicked'
     }),
     
-    stop: SC.ButtonView.design({
+    stopControl: SC.ButtonView.design({
       layout: { centerX: 0, bottom: 10, width: 80, height: 24 },
+      isVisibleBinding: 'Smartgraphs.activityViewController.stopControlIsVisible',
+      isEnabledBinding: 'Smartgraphs.activityViewController.stopControlIsEnabled',      
+      isDefaultBinding: 'Smartgraphs.activityViewController.stopControlIsDefault',
+      
       title: 'Stop',
       action: 'stopControlWasClicked'
     }),
     
-    clear: SC.ButtonView.design({
+    clearControl: SC.ButtonView.design({
       layout: { centerX: 110, bottom: 10, width: 80, height: 24 },
+      isVisibleBinding: 'Smartgraphs.activityViewController.clearControlIsVisible',
+      isEnabledBinding: 'Smartgraphs.activityViewController.clearControlIsEnabled',      
+      isDefaultBinding: 'Smartgraphs.activityViewController.clearControlIsDefault',
+      
       title: 'Clear',
       action: 'clearControlWasClicked'
     })

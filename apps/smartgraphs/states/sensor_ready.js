@@ -24,6 +24,8 @@ Smartgraphs.SENSOR_READY = SC.Responder.create(
   nextResponder: Smartgraphs.SENSOR,
   
   didBecomeFirstResponder: function () {
+    Smartgraphs.activityViewController.showControls(Smartgraphs.sensorController.get('pane'));
+    Smartgraphs.activityViewController.highlightControlsForReadyState();
   },
   
   willLoseFirstResponder: function () {
@@ -34,6 +36,9 @@ Smartgraphs.SENSOR_READY = SC.Responder.create(
   //
   
   startControlWasClicked: function () {
+    Smartgraphs.sensorController.startRecording();
+    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR_RECORDING);
+    return YES;
   }
   
 }) ;

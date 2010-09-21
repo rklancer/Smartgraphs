@@ -25,6 +25,18 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   firstGraphPaneControls: null,
   secondGraphPaneControls: null,
   
+  startControlIsVisible: NO,
+  startControlIsEnabled: NO,
+  startControlIsDefault: NO,
+  
+  stopControlIsVisible: NO,
+  stopControlIsEnabled: NO,
+  stopControlIsDefault: NO,
+
+  clearControlIsVisible: NO,
+  clearControlIsEnabled: NO,
+  clearControlIsDefault: NO,
+  
   paneIsSplit: null,
   
   // ..........................................................
@@ -135,6 +147,17 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     this.set(pane+'PaneNowShowing', null);
   },
   
+  showSensorLoadingView: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+    
+    if ( !which ) return NO;
+    
+    this.hideControls();
+    
+    this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
+  },
+  
   showControls: function (pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
@@ -152,15 +175,32 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     this.set('secondGraphPaneControls', null);
   },
   
-  showSensorLoadingView: function (pane) {
-    pane = this.validPaneFor(pane);
-    var which = this.firstOrSecondFor(pane);
-    
-    if ( !which ) return NO;
-    
-    this.hideControls();
-    
-    this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
+  highlightControlsForReadyState: function () {
+    this.set('startControlIsVisible',  YES);
+    this.set('startControlIsEnabled',  YES);
+    this.set('startControlIsDefault',  YES);
+
+    this.set('stopControlIsVisible',  YES);
+    this.set('stopControlIsEnabled',  NO);
+    this.set('stopControlIsDefault',  NO);
+
+    this.set('clearControlIsVisible',  YES);
+    this.set('clearControlIsEnabled',  NO);
+    this.set('clearControlIsDefault',  NO);
+  },
+  
+  highlightControlsForRecordingState: function () {
+    this.set('startControlIsVisible',  YES);
+    this.set('startControlIsEnabled',  NO);
+    this.set('startControlIsDefault',  NO);
+
+    this.set('stopControlIsVisible',  YES);
+    this.set('stopControlIsEnabled',  YES);
+    this.set('stopControlIsDefault',  YES);
+
+    this.set('clearControlIsVisible',  YES);
+    this.set('clearControlIsEnabled',  YES);
+    this.set('clearControlIsDefault',  NO);
   },
   
   clear: function () {

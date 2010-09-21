@@ -28,7 +28,8 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   downsampleRatio: 2,
   
   sensorIsReady: NO,
-  appletIsAppended: NO,
+
+  _appletView: null,
   _inputStarted: NO,
   _pane: null,
   _series: null,
@@ -58,9 +59,9 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     }
     this._inputStarted = YES;
     
-    if ( !this.get('appletIsAppended') ) {
-      Smartgraphs.mainPage.get('mainPane').appendChild( Smartgraphs.appletPage.sensorAppletView.create() );
-      this.set('appletIsAppended', YES);
+    if ( !this._appletView ) {
+      this._appletView = Smartgraphs.appletPage.sensorAppletView.create();
+      Smartgraphs.mainPage.get('mainPane').appendChild(this._appletView);
     }
 
     if (this.get('sensorIsReady')) {
@@ -69,19 +70,11 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     else {
       Smartgraphs.sendAction('waitForSensorToLoad');
     }
-      
-    //   
-    //   Smartgraphs.activityViewController.showControls(this._pane);
-    // }
-    // else {
-    //   Smartgraphs.activityViewController.showSensorLoadingView(this._pane);
-    // }
-    
+
     return YES;
   },
   
   disableInput: function () {
-    Smartgraphs.activityViewController.hideControls();
     this._inputStarted = NO;
     this._series = null;
     this._pane = null;
@@ -93,16 +86,14 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   stopRecording: function () {
   },
   
-  reset: function () {
+  clearRecordedData: function () {
   },
 
   sensorsReady: function () {
     SC.RunLoop.begin();
     this.set('sensorIsReady', YES);
-
     if (this._inputStarted) {
-      Smartgraphs.sendAction('indicateSensorIsReady');
-      //Smartgraphs.activityViewController.showControls(this._pane) ;
+      Smartgraphs.sendAction('sensorIsReadyToRecord');
     }
     SC.RunLoop.end();
   },
