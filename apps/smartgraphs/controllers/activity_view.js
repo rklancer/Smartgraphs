@@ -57,6 +57,38 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   // ..........................................................
   // ACTIVITY VIEW COMMANDS
   //
+  firstOrSecondFor: function (pane) {
+    var split = this.get('paneIsSplit');
+    
+    if ( (!split && pane === 'single') || (split && pane === 'top') ) {
+      return 'first';
+    }
+    if ( split && pane === 'bottom' ) {
+      return 'second';
+    }
+    return NO;
+  },
+  
+  validPaneFor: function (pane) {
+    var split = this.get('paneIsSplit');
+    
+    if ( (!split && pane === 'single') || (split && (pane === 'top' || pane === 'bottom')) ) {
+      return pane;
+    }
+    else {
+      console.error('invalid pane "' + pane + '"');
+      return NO;
+    }
+  },
+  
+  otherPaneFor: function (pane) {
+    pane = this.validPaneFor(pane);
+    
+    if (pane === 'bottom') return 'top';
+    if (pane === 'top') return 'bottom';
+    
+    return NO;
+  },
   
   showSinglePane: function () {
     this.set('paneIsSplit', false);
@@ -69,106 +101,76 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   },
 
   showImage: function (pane, path) {
-    // tolerate a bit of redundancy to make clear what we're doing here
-    if (this.get('paneIsSplit')) {
-      if (pane === 'top') {
-        this.set('firstImageValue', path);
-        this.set('topPaneNowShowing', 'Smartgraphs.activityPage.firstImageView');
-        return YES;
-      }
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
     
-      if (pane === 'bottom') {
-        this.set('secondImageValue', path);
-        this.set('bottomPaneNowShowing', 'Smartgraphs.activityPage.secondImageView');
-        return YES;
-      }
-    }
-    else {
-      this.set('firstImageValue', path);
-      this.set('singlePaneNowShowing', 'Smartgraphs.activityPage.firstImageView');
-      return YES;
-    }
+    if ( !which ) return NO;
     
-    return NO;
+    this.set(which + 'ImageValue', path);
+    this.set(pane + 'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'ImageView');
+    
+    return YES;
   },
   
   showGraph: function (pane, graphId) {
-    if (this.get('paneIsSplit')) { 
-      if (pane === 'top') {
-        Smartgraphs.firstGraphController.openGraph(graphId);
-        this.set('topPaneNowShowing', 'Smartgraphs.activityPage.firstGraphPane');
-        return YES;
-      }
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
     
-      if (pane === 'bottom') {
-        Smartgraphs.secondGraphController.openGraph(graphId);      
-        this.set('bottomPaneNowShowing', 'Smartgraphs.activityPage.secondGraphPane');
-        return YES;
-      }
-    }
-    else {
-      Smartgraphs.firstGraphController.openGraph(graphId);
-      this.set('singlePaneNowShowing', 'Smartgraphs.activityPage.firstGraphPane');
-      return YES;
-    }
+    if ( !which ) return NO;
     
-    return NO;
+    Smartgraphs.get(which+'GraphController').openGraph(graphId);
+    this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'GraphPane');
+  
+    return YES;
   },
   
   hidePane: function (pane) {
-    if (this.get('paneIsSplit')) { 
-      if (pane === 'top') {
-        this.set('topPaneNowShowing', null);
-        return YES;
-      }
+    pane = this.validPaneFor(pane);
     
-      if (pane === 'bottom') {  
-        this.set('bottomPaneNowShowing', null);
-        return YES;
-      }
-    }
-    else {
-      this.set('singlePaneNowShowing', null);
-      return YES;
-    }
-    return NO;
+    if ( !pane ) return NO;
+    
+    this.set(pane+'PaneNowShowing', null);
   },
   
   showControls: function (pane) {
-    // TODO generify top/bottom/single & first/second usage
-    // TOD bind activityPage to this
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
     
-    if (this.get('paneIsSplit')) { 
-      if (pane === 'top') {
-        Smartgraphs.activityPage.firstGraphPane.graphView.adjust('bottom', 35);
-        Smartgraphs.activityPage.firstGraphPane.controlsContainer.adjust('height', 35);
-        
-        Smartgraphs.activityPage.firstGraphPane.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
-      }
-
-      if (pane === 'bottom') {
-        Smartgraphs.activityPage.secondGraphPane.graphView.adjust('bottom', 35);
-        Smartgraphs.activityPage.secondGraphPane.controlsContainer.adjust('height', 35);
-        
-        Smartgraphs.activityPage.secondGraphPane.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
-      }
-    }
-    else {
-      Smartgraphs.activityPage.firstGraphPane.graphView.adjust('bottom', 35);
-      Smartgraphs.activityPage.firstGraphPane.controlsContainer.adjust('height', 35);
-      
-      Smartgraphs.activityPage.firstGraphPane.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
-    }
+    if ( !which ) return NO;
+    
+    var graphPane = Smartgraphs.activityPage.get(which+'GraphPane');
+    
+    graphPane.graphView.adjust('bottom', 35);
+    graphPane.controlsContainer.adjust('height', 35);
+    
+    var otherPane = this.otherPaneFor(pane);
+    if (otherPane) this.hideControls(otherPane);
+    
+    graphPane.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
 
     return YES;
   },
   
-  
+  hideControls: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+    
+    if ( !which ) return NO;
+    
+    var graphPane = Smartgraphs.activityPage.get(which+'GraphPane');
+    
+    graphPane.controlsContainer.set('nowShowing', null);
+    graphPane.controlsContainer.adjust('height', 0);
+    graphPane.graphView.adjust('bottom', 0);
+  },
   
   clear: function () {
-    if (!this.hidePane()) {
+    if (this.get('paneIsSplit')) {
       this.hidePane('top');
       this.hidePane('bottom');
+    }
+    else {
+      this.hidePane('single');
     }
   }
 
