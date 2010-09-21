@@ -210,11 +210,11 @@ Smartgraphs.activityPage = SC.Page.design({
     layout: { width: 0.9999999, height: 0.9999999 }
   }),
   
-  firstGraphView: Smartgraphs.GraphPane.design({
+  firstGraphPane: Smartgraphs.GraphPane.design({
     graphControllerBinding: 'Smartgraphs.firstGraphController'
   }),
   
-  secondGraphView: Smartgraphs.GraphPane.design({
+  secondGraphPane: Smartgraphs.GraphPane.design({
     graphControllerBinding: 'Smartgraphs.secondGraphController'
   }),
   

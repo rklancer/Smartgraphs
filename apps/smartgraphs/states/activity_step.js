@@ -39,8 +39,8 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   _graphViewFor: function (pane) {
-    if (pane === 'top' || pane === 'single') return Smartgraphs.getPath('activityPage.firstGraphView');
-    if (pane === 'bottom') return Smartgraphs.getPath('activityPage.firstGraphView');
+    if (pane === 'top' || pane === 'single') return Smartgraphs.getPath('activityPage.firstGraphPane');
+    if (pane === 'bottom') return Smartgraphs.getPath('activityPage.firstGraphPane');
   },
   
   // ..........................................................

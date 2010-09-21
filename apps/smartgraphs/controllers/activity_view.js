@@ -96,19 +96,19 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     if (this.get('paneIsSplit')) { 
       if (pane === 'top') {
         Smartgraphs.firstGraphController.openGraph(graphId);
-        this.set('topPaneNowShowing', 'Smartgraphs.activityPage.firstGraphView');
+        this.set('topPaneNowShowing', 'Smartgraphs.activityPage.firstGraphPane');
         return YES;
       }
     
       if (pane === 'bottom') {
         Smartgraphs.secondGraphController.openGraph(graphId);      
-        this.set('bottomPaneNowShowing', 'Smartgraphs.activityPage.secondGraphView');
+        this.set('bottomPaneNowShowing', 'Smartgraphs.activityPage.secondGraphPane');
         return YES;
       }
     }
     else {
       Smartgraphs.firstGraphController.openGraph(graphId);
-      this.set('singlePaneNowShowing', 'Smartgraphs.activityPage.firstGraphView');
+      this.set('singlePaneNowShowing', 'Smartgraphs.activityPage.firstGraphPane');
       return YES;
     }
     
@@ -140,24 +140,24 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     
     if (this.get('paneIsSplit')) { 
       if (pane === 'top') {
-        Smartgraphs.activityPage.firstGraphView.graphView.adjust('bottom', 35);
-        Smartgraphs.activityPage.firstGraphView.controlsContainer.adjust('height', 35);
+        Smartgraphs.activityPage.firstGraphPane.graphView.adjust('bottom', 35);
+        Smartgraphs.activityPage.firstGraphPane.controlsContainer.adjust('height', 35);
         
-        Smartgraphs.activityPage.firstGraphView.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
+        Smartgraphs.activityPage.firstGraphPane.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
       }
 
       if (pane === 'bottom') {
-        Smartgraphs.activityPage.secondGraphView.graphView.adjust('bottom', 35);
-        Smartgraphs.activityPage.secondGraphView.controlsContainer.adjust('height', 35);
+        Smartgraphs.activityPage.secondGraphPane.graphView.adjust('bottom', 35);
+        Smartgraphs.activityPage.secondGraphPane.controlsContainer.adjust('height', 35);
         
-        Smartgraphs.activityPage.secondGraphView.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
+        Smartgraphs.activityPage.secondGraphPane.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
       }
     }
     else {
-      Smartgraphs.activityPage.firstGraphView.graphView.adjust('bottom', 35);
-      Smartgraphs.activityPage.firstGraphView.controlsContainer.adjust('height', 35);
+      Smartgraphs.activityPage.firstGraphPane.graphView.adjust('bottom', 35);
+      Smartgraphs.activityPage.firstGraphPane.controlsContainer.adjust('height', 35);
       
-      Smartgraphs.activityPage.firstGraphView.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
+      Smartgraphs.activityPage.firstGraphPane.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
     }
 
     return YES;
