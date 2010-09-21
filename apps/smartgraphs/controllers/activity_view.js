@@ -134,6 +134,37 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return NO;
   },
   
+  showControls: function (pane) {
+    // TODO generify top/bottom/single & first/second usage
+    // TOD bind activityPage to this
+    
+    if (this.get('paneIsSplit')) { 
+      if (pane === 'top') {
+        Smartgraphs.activityPage.firstGraphView.graphView.adjust('bottom', 35);
+        Smartgraphs.activityPage.firstGraphView.controlsContainer.adjust('height', 35);
+        
+        Smartgraphs.activityPage.firstGraphView.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
+      }
+
+      if (pane === 'bottom') {
+        Smartgraphs.activityPage.secondGraphView.graphView.adjust('bottom', 35);
+        Smartgraphs.activityPage.secondGraphView.controlsContainer.adjust('height', 35);
+        
+        Smartgraphs.activityPage.secondGraphView.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
+      }
+    }
+    else {
+      Smartgraphs.activityPage.firstGraphView.graphView.adjust('bottom', 35);
+      Smartgraphs.activityPage.firstGraphView.controlsContainer.adjust('height', 35);
+      
+      Smartgraphs.activityPage.firstGraphView.controlsContainer.set('nowShowing', 'Smartgraphs.activityPage.graphControlsView');
+    }
+
+    return YES;
+  },
+  
+  
+  
   clear: function () {
     if (!this.hidePane()) {
       this.hidePane('top');

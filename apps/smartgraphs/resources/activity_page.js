@@ -211,27 +211,27 @@ Smartgraphs.activityPage = SC.Page.design({
   }),
   
   firstGraphView: SC.View.design({
-    childViews: 'graphView controlsView'.w(),
+    childViews: 'graphView controlsContainer'.w(),
     
     graphView: Smartgraphs.GraphView.design({
       graphControllerBinding: 'Smartgraphs.firstGraphController',
       viewName: 'firstGraphView'
     }),
     
-    controlsView: SC.ContainerView.design({
+    controlsContainer: SC.ContainerView.design({
       layout: { bottom: 0, height: 0 }
     })
   }),
   
   secondGraphView: SC.View.design({
-    childViews: 'graphView controlsView'.w(),
+    childViews: 'graphView controlsContainer'.w(),
     
     graphView: Smartgraphs.GraphView.design({
       graphControllerBinding: 'Smartgraphs.secondGraphController',
       viewName: 'secondGraphView'
     }),
   
-    controlsView: SC.ContainerView.design({
+    controlsContainer: SC.ContainerView.design({
       layout: { bottom: 0, height: 0 }
     })
   }),
