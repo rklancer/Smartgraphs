@@ -18,7 +18,7 @@ Smartgraphs.GraphView = SC.View.extend(
   seriesListBinding: '*graphController.seriesList',
   annotationListBinding: '*graphController.annotationList',
   
-  padding: { top: 40, right: 20, bottom: 45, left: 55 },  
+  padding: { top: 10, right: 10, bottom: 45, left: 45 },  
   
   childViews: 'titleView graphCanvasView controlsView'.w(),
   

@@ -16,10 +16,10 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
 
   init: function () {
     if (this.get('type') === 'x') {
-      this.set('displayProperties', 'axes.xMin axes.xMax axes.xSteps axes.xLabel'.w());
+      this.set('displayProperties', 'axes.xMin axes.xMax axes.xSteps axes.xLabel parentView.parentView.frame'.w());
     }
     else {
-      this.set('displayProperties', 'axes.yMin axes.yMax axes.ySteps axes.yLabel'.w());
+      this.set('displayProperties', 'axes.yMin axes.yMax axes.ySteps axes.yLabel parentView.parentView.frame'.w());
     }
     sc_super();
   },
@@ -49,7 +49,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
     if (!axes) return;
     
     var padding = this.getPath('parentView.parentView.parentView.padding');
-    var frame = this.getPath('parentView.parentView.parentView.frame');
+    var frame = this.getPath('parentView.parentView.frame');
 
     var xLeft = frame.x + padding.left;
     var yBottom = frame.y + frame.height - padding.bottom;
@@ -78,7 +78,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
   
   drawLabel: function () {
     var padding = this.getPath('parentView.parentView.parentView.padding');
-    var frame = this.getPath('parentView.parentView.parentView.frame');
+    var frame = this.getPath('parentView.parentView.frame');
     
     var axes  = this.get('axes');
     if (!axes) return;
