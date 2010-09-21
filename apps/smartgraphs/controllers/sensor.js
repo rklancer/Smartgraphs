@@ -48,7 +48,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     return NO;
   },
   
-  startInput: function () {
+  enableInput: function () {
     if (this._inputStarted || !this._pane || !this._series) {
       return NO;
     }
@@ -69,7 +69,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     return YES;
   },
   
-  endInput: function () {
+  disableInput: function () {
     Smartgraphs.activityViewController.hideControls();
     this._inputStarted = NO;
     this._series = null;

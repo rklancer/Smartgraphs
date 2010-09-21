@@ -19,13 +19,13 @@ Smartgraphs.FREEHAND_INPUT = SC.Responder.create(
   nextResponder: Smartgraphs.ACTIVITY_STEP,
   
   didBecomeFirstResponder: function () {
-    var inputOk = Smartgraphs.freehandInputController.startInput();
+    var enableSucceeded = Smartgraphs.freehandInputController.enableInput();
     // if freehandInputController says NO, don't accept first responder
-    if (!inputOk) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    if (!enableSucceeded) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   },
   
   willLoseFirstResponder: function () {
-    Smartgraphs.freehandInputController.endInput();
+    Smartgraphs.freehandInputController.disableInput();
   },
   
   // ..........................................................

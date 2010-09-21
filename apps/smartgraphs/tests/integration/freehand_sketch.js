@@ -126,15 +126,15 @@ test('moving into FREEHAND_INPUT state without first registering the controller 
 });
 
 
-test('moving into and out of FREEHAND_INPUT after registering a controller and sketch name should result in a call to graphController.startInput and graphController.endInput', function () {
+test('moving into and out of FREEHAND_INPUT after registering a controller and sketch name should result in a call to graphController.enableInput and graphController.disableInput', function () {
   var startCallCount = 0;
-  var oldStartInput = Smartgraphs.firstGraphController.startFreehandInput;
+  var oldenableInput = Smartgraphs.firstGraphController.startFreehandInput;
   Smartgraphs.firstGraphController.startFreehandInput = function () {
     startCallCount++;
   };
   
   var endCallCount = 0;
-  var oldEndInput = Smartgraphs.firstGraphController.endFreehandInput;
+  var olddisableInput = Smartgraphs.firstGraphController.endFreehandInput;
   Smartgraphs.firstGraphController.endFreehandInput = function () {
     endCallCount++;
   };
@@ -158,30 +158,30 @@ test('moving into and out of FREEHAND_INPUT after registering a controller and s
   equals(endCallCount, 1, 'graphController.endFreehandInput should have been called exactly 1 time after FREEHAND_INPUT state was entered and exited');
   
   // remove spies
-  Smartgraphs.firstGraphController.startFreehandInput = oldStartInput;
-  Smartgraphs.firstGraphController.endFreehandInput = oldEndInput;
+  Smartgraphs.firstGraphController.startFreehandInput = oldenableInput;
+  Smartgraphs.firstGraphController.endFreehandInput = olddisableInput;
 });
 
 
 test('attempts to register a different controller and sketch pair should be rejected while in FREEHAND_SKETCH state but should be allowed after leaving FREEHAND_SKETCH state', function () {
   var firstGraphStarts = 0;
-  var firstStartInput = Smartgraphs.firstGraphController.startFreehandInput;
+  var firstenableInput = Smartgraphs.firstGraphController.startFreehandInput;
   Smartgraphs.firstGraphController.startFreehandInput = function () {
     firstGraphStarts++;
   };
   var firstGraphEnds = 0;
-  var firstEndInput = Smartgraphs.firstGraphController.endFreehandInput;
+  var firstdisableInput = Smartgraphs.firstGraphController.endFreehandInput;
   Smartgraphs.firstGraphController.endFreehandInput = function () {
     firstGraphEnds++;
   };
 
   var secondGraphStarts = 0;
-  var secondStartInput = Smartgraphs.secondGraphController.startFreehandInput;
+  var secondenableInput = Smartgraphs.secondGraphController.startFreehandInput;
   Smartgraphs.secondGraphController.startFreehandInput = function () {
     secondGraphStarts++;
   };
   var secondGraphEnds = 0;
-  var secondEndInput = Smartgraphs.secondGraphController.endFreehandInput;
+  var seconddisableInput = Smartgraphs.secondGraphController.endFreehandInput;
   Smartgraphs.secondGraphController.endFreehandInput = function () {
     secondGraphEnds++;
   };
@@ -224,10 +224,10 @@ test('attempts to register a different controller and sketch pair should be reje
   equals(secondGraphEnds, 1, 'secondGraphController.endFreehandInput should have been called 1 time after secondGraphController was registered.');
   
   // remove spies
-  Smartgraphs.firstGraphController.startFreehandInput = firstStartInput;
-  Smartgraphs.secondGraphController.startFreehandInput = secondStartInput;
-  Smartgraphs.firstGraphController.endFreehandInput = firstEndInput;
-  Smartgraphs.secondGraphController.endFreehandInput = secondEndInput;  
+  Smartgraphs.firstGraphController.startFreehandInput = firstenableInput;
+  Smartgraphs.secondGraphController.startFreehandInput = secondenableInput;
+  Smartgraphs.firstGraphController.endFreehandInput = firstdisableInput;
+  Smartgraphs.secondGraphController.endFreehandInput = seconddisableInput;  
 });
 
 

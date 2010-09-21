@@ -31,7 +31,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     return NO;
   },
   
-  startInput: function () {
+  enableInput: function () {
     if (!this._sketch) return NO;
 
     this._inputStarted = YES;
@@ -41,7 +41,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     return YES;
   },
   
-  endInput: function () {
+  disableInput: function () {
     this.graphObserver();
     this._graphController.get('eventQueue').removeObserver('[]', this, this.graphObserver);
     this._graphController.endFreehandInput();

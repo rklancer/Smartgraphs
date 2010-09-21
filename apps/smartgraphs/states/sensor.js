@@ -22,12 +22,12 @@ Smartgraphs.SENSOR = SC.Responder.create(
   nextResponder: Smartgraphs.ACTIVITY_STEP,
   
   didBecomeFirstResponder: function() {
-    var registeredOk = Smartgraphs.sensorController.startInput();
-    if ( !registeredOk ) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    var enableSucceeded = Smartgraphs.sensorController.enableInput();
+    if ( !enableSucceeded ) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   },
   
   willLoseFirstResponder: function() {
-    Smartgraphs.sensorController.endInput();    
+    Smartgraphs.sensorController.disableInput();    
   }
   
   // ..........................................................
