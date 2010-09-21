@@ -210,14 +210,30 @@ Smartgraphs.activityPage = SC.Page.design({
     layout: { width: 0.9999999, height: 0.9999999 }
   }),
   
-  firstGraphView: Smartgraphs.GraphView.design({
-    graphControllerBinding: 'Smartgraphs.firstGraphController',
-    viewName: 'firstGraphView'
+  firstGraphView: SC.View.design({
+    childViews: 'graphView controlsView'.w(),
+    
+    graphView: Smartgraphs.GraphView.design({
+      graphControllerBinding: 'Smartgraphs.firstGraphController',
+      viewName: 'firstGraphView'
+    }),
+    
+    controlsView: SC.ContainerView.design({
+      layout: { bottom: 0, height: 0 }
+    })
   }),
   
-  secondGraphView: Smartgraphs.GraphView.design({
-    graphControllerBinding: 'Smartgraphs.secondGraphController',
-    viewName: 'secondGraphView'  
+  secondGraphView: SC.View.design({
+    childViews: 'graphView controlsView'.w(),
+    
+    graphView: Smartgraphs.GraphView.design({
+      graphControllerBinding: 'Smartgraphs.secondGraphController',
+      viewName: 'secondGraphView'
+    }),
+  
+    controlsView: SC.ContainerView.design({
+      layout: { bottom: 0, height: 0 }
+    })
   }),
   
   firstTableView: Smartgraphs.TableView.design({}),
@@ -233,6 +249,27 @@ Smartgraphs.activityPage = SC.Page.design({
       classNames: 'error',
       textAlign: SC.ALIGN_CENTER,
       value: 'There was an error loading that Activity.'
+    })
+  }),
+  
+  graphControlsView: SC.View.design({
+    layout: { height: 35 },
+    
+    childViews: 'start stop clear'.w(),
+    
+    start: SC.ButtonView.design({
+      layout: { centerX: -110, bottom: 10, width: 80, height: 24 },
+      title: 'Start'
+    }),
+    
+    stop: SC.ButtonView.design({
+      layout: { centerX: 0, bottom: 10, width: 80, height: 24 },
+      title: 'Stop'
+    }),
+    
+    clear: SC.ButtonView.design({
+      layout: { centerX: 110, bottom: 10, width: 80, height: 24 },
+      title: 'Clear'
     })
   })
   

@@ -11,7 +11,7 @@
 
   @extends SC.View
 */
-Smartgraphs.GraphView = SC.View.extend(
+Smartgraphs.GraphView = SC.View.extend( 
 /** @scope Smartgraphs.GraphView.prototype */ {
   
   axesBinding: '*graphController.axes',
@@ -20,7 +20,7 @@ Smartgraphs.GraphView = SC.View.extend(
   
   padding: { top: 15, right: 15, bottom: 45, left: 45 },  
   
-  childViews: 'titleView graphCanvasView controlsView'.w(),
+  childViews: 'titleView graphCanvasView'.w(),
   
   init: function () {
     this._viewsByClassAndId = {};
@@ -165,10 +165,6 @@ Smartgraphs.GraphView = SC.View.extend(
     };
   },
   
-  controlsView: SC.View.design({
-    layout: { height: 0, bottom: 0 }
-  }),
-  
   titleView: SC.LabelView.design({
     valueBinding: '.parentView*graphController.title',
     classNames: 'pane-label',
@@ -177,7 +173,8 @@ Smartgraphs.GraphView = SC.View.extend(
   }),
   
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
-    layout: { bottom: 0, zIndex: 0 },
+
+    layout: { zIndex: 0 },
     
     axesBinding: '.parentView.axes',
     
