@@ -152,6 +152,17 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     this.set('secondGraphPaneControls', null);
   },
   
+  showSensorLoadingView: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+    
+    if ( !which ) return NO;
+    
+    this.hideControls();
+    
+    this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
+  },
+  
   clear: function () {
     this.hideControls();
     

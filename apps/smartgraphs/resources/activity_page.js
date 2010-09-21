@@ -255,6 +255,13 @@ Smartgraphs.activityPage = SC.Page.design({
       layout: { centerX: 110, bottom: 10, width: 80, height: 24 },
       title: 'Clear'
     })
+  }),
+  
+  sensorLoadingView: SC.LabelView.design({
+    layout: { height: 35 },
+    classNames: 'sensor-message'.w(),
+    textAlign: SC.ALIGN_CENTER,
+    value: 'Please wait, the sensor is loading...'
   })
   
 });

@@ -22,23 +22,16 @@ Smartgraphs.SENSOR = SC.Responder.create(
   nextResponder: Smartgraphs.ACTIVITY_STEP,
   
   didBecomeFirstResponder: function() {
-    // TODO: differentiate the pane containing the applet, which might as well stay resident in the DOM once it
-    // loads, and the pane containing the applet controls, which we can append and remove at will.
-    Smartgraphs.appletPage.get('appletPane').append();
+    var registeredOk = Smartgraphs.sensorController.startInput();
+    if ( !registeredOk ) Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   },
   
   willLoseFirstResponder: function() {
-    Smartgraphs.appletPage.get('appletPane').remove();
-    Smartgraphs.selectedSeriesController.set('content', null);
-  },
+    Smartgraphs.sensorController.endInput();    
+  }
   
   // ..........................................................
   // ACTIONS
   //
-  
-  // TODO migrate this into SENSOR_RECORDING state
-  sensorDataReceived: function (context, args) {
-    Smartgraphs.selectedPointsController.addSensorPoint(args.x, args.y);
-  }
   
 }) ;

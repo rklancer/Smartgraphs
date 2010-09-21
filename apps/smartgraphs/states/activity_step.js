@@ -161,14 +161,15 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       seriesName: args.seriesName
     });
 
-    var controller = this._graphControllerFor(args.pane);        
-    var series = controller.findSeriesByName(args.seriesName);
-    if (series.get('isExample') === NO) {
-      Smartgraphs.selectedSeriesController.set('content', series);
+    var controller = this._graphControllerFor(args.pane);
+    var series = controller && controller.findSeriesByName(args.seriesName);
+    
+    if ( !series ) return YES;        // handled, but invalid pane or series...
+    
+    if (Smartgraphs.sensorController.register(args.pane, series)) {
+      Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
+      return YES;
     }
-  
-    Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
-    return YES;
   }
   
 }) ;

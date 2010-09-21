@@ -101,3 +101,10 @@ body.sc-theme {
   line-height: 1.0;
   color: #666666;
 }
+
+.sc-theme .sc-label-view.sensor-message {
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.0;
+  color: #666666;
+}
