@@ -1,5 +1,5 @@
-# Project:   Smartgraphs
-#### Copyright: ©2010 Concord Consortium
+# Smartgraphs
+### Copyright: ©2010 Concord Consortium
 
 ## To install:
     
