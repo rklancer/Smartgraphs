@@ -44,8 +44,9 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/2"] =
   "name": "Prediction Page",
   "firstStep": "/backend/activity/1/page/2/step/1",
   "introText": "<p>Let\u2019s start by demonstrating what you already know about representing motion on a graph. "+
-               "Imagine a straight walking path that is 4 meters long. Point A is at the 0-meter mark. Point B is at "+
-               "the 4-meter mark.</p>",
+               "Imagine a straight walking path that is 4 meters long.</p>"+
+               "<p>Point A is at the 0-meter mark.</p>"+
+               "<p>Point B is at the 4-meter mark.</p>",
   "url": "/backend/activity/1/page/2",
   "activity": "/backend/activity/1",
   "index": 2,
@@ -80,8 +81,9 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/4"] =
   "name": "Replay Page",
   "firstStep": "/backend/activity/1/page/4/step/1",
   "introText": 
-    "<p>To the right are your predictions. Now that you &quot;have the hang of it,&quot; you will walk "+
-    "with the sensor to see if your sketches of forward and backward motion are correct.</p>",
+    "<p>To the right are your predictions for walking away and toward point B.</p>"+
+    "<p>Now that you &quot;have the hang of it,&quot; you will walk with the sensor to see if your sketches of "+
+    "forward and backward motion are correct.</p>",
   "url": "/backend/activity/1/page/4",
   "activity": "/backend/activity/1",
   "index": 4,
@@ -115,9 +117,7 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/6"] =
     "/backend/activity/1/page/6/step/2",
     "/backend/activity/1/page/6/step/3",
     "/backend/activity/1/page/6/step/4",
-    "/backend/activity/1/page/6/step/5",
-    "/backend/activity/1/page/6/step/6",
-    "/backend/activity/1/page/6/step/7"        
+    "/backend/activity/1/page/6/step/5"     
   ],
   "name": "Replay Page",
   "firstStep": "/backend/activity/1/page/6/step/1",
@@ -162,7 +162,7 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/8"] =
   "name": "Replay Page",
   "firstStep": "/backend/activity/1/page/8/step/1",
   "introText": 
-    "<p>The position-time graph to the right includes two different data sets.</p>",
+    "<p>To the right, two different data sets are plotted on the same graph.</p>",
   "url": "/backend/activity/1/page/8",
   "activity": "/backend/activity/1",
   "index": 8,
@@ -194,8 +194,7 @@ page = Smartgraphs.mockResponses["/backend/activity/1/page/10"] =
 {
   "steps": [
     "/backend/activity/1/page/10/step/1",
-    "/backend/activity/1/page/10/step/2",
-    "/backend/activity/1/page/10/step/3"
+    "/backend/activity/1/page/10/step/2"
   ],
   "name": "Replay Page",
   "firstStep": "/backend/activity/1/page/10/step/1",
