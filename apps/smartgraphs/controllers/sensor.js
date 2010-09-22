@@ -20,12 +20,14 @@ Smartgraphs.sensorController = SC.ObjectController.create(
 
   /**
     A downsample ratio of 1 = 1:1 = sample every point
-    a downsample ration of 2 = 2:1 = sample every other point
+    a downsample ratio of 2 = 2:1 = sample every other point
     etc.
     
     TODO: make downsample ratio settable from startSensorInput action?
   */
-  downsampleRatio: 2,
+  downsampleRatio: function () {
+    return $.browser.msie ? 3 : 2;          // is there feature detection for 'lousy javascript performance'?
+  }(),
   
   /* the rate at which samples are received */
   
