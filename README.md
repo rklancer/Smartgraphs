@@ -13,6 +13,7 @@
 
 ### Create a Smartgraphs gemset and set RVM to use it if you (a) just cloned the repo or (b) updated your Ruby version:
     
+    rvm use 1.9.2
     rvm gemset create Smartgraphs
     rvm gemset import
     echo "rvm use 1.9.2@Smartgraphs" > .rvmrc
