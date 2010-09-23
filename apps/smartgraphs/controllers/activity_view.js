@@ -12,7 +12,8 @@
   @extends SC.Object
 */
 Smartgraphs.activityViewController = SC.ObjectController.create(
-/** @scope Smartgraphs.activityViewController.prototype */ {
+/** @scope Smartgraphs.activityViewController.prototype */
+{
 
   dataViewNowShowing: null,
   topPaneNowShowing: null,
@@ -21,14 +22,14 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
 
   firstImageValue: null,
   secondImageValue: null,
-  
+
   firstGraphPaneControls: null,
   secondGraphPaneControls: null,
-  
+
   startControlIsVisible: NO,
   startControlIsEnabled: NO,
   startControlIsDefault: NO,
-  
+
   stopControlIsVisible: NO,
   stopControlIsEnabled: NO,
   stopControlIsDefault: NO,
@@ -36,13 +37,14 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   clearControlIsVisible: NO,
   clearControlIsEnabled: NO,
   clearControlIsDefault: NO,
-  
+
   paneIsSplit: null,
-  
+
+  isPredictionMode: NO,
+
   // ..........................................................
   // ACTIVITY VIEW BUTTON STATE
   //
-  
   canGotoNextPage: null,
   canGotoNextPageBinding: 'Smartgraphs.activityController.canGotoNextPage',
   canSubmit: null,
@@ -53,41 +55,40 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   hideSubmitButtonBinding: 'Smartgraphs.activityStepController.hideSubmitButton',
   nextButtonShouldSubmit: null,
   nextButtonShouldSubmitBinding: 'Smartgraphs.activityStepController.nextButtonShouldSubmit',
-  
-  showSubmitButton: function () {
-    return !(this.get('hideSubmitButton') || this.get('nextButtonShouldSubmit'));
+
+  showSubmitButton: function() {
+    return ! (this.get('hideSubmitButton') || this.get('nextButtonShouldSubmit'));
   }.property('hideSubmitButton', 'nextButtonShouldSubmit').cacheable(),
-    
+
   enableSubmitButton: null,
   enableSubmitButtonBinding: 'Smartgraphs.activityStepController.canSubmit',
-    
+
   showNextPageButton: null,
   showNextPageButtonBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage'),
-    
-  enableNextPageButton: function () {
+
+  enableNextPageButton: function() {
     return this.get('canGotoNextPage') || (this.get('isFinalStep') && this.get('nextButtonShouldSubmit') && this.get('canSubmit'));
   }.property('canGotoNextPage', 'isFinalStep', 'nextButtonShouldSubmit', 'canSubmit').cacheable(),
-  
-  
+
   // ..........................................................
   // ACTIVITY VIEW COMMANDS
   //
-  firstOrSecondFor: function (pane) {
+  firstOrSecondFor: function(pane) {
     var split = this.get('paneIsSplit');
-    
-    if ( (!split && pane === 'single') || (split && pane === 'top') ) {
+
+    if ((!split && pane === 'single') || (split && pane === 'top')) {
       return 'first';
     }
-    if ( split && pane === 'bottom' ) {
+    if (split && pane === 'bottom') {
       return 'second';
     }
     return NO;
   },
-  
-  validPaneFor: function (pane) {
+
+  validPaneFor: function(pane) {
     var split = this.get('paneIsSplit');
-    
-    if ( (!split && pane === 'single') || (split && (pane === 'top' || pane === 'bottom')) ) {
+
+    if ((!split && pane === 'single') || (split && (pane === 'top' || pane === 'bottom'))) {
       return pane;
     }
     else {
@@ -95,157 +96,195 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
       return NO;
     }
   },
-  
-  otherPaneFor: function (pane) {
+
+  otherPaneFor: function(pane) {
     pane = this.validPaneFor(pane);
-    
+
     if (pane === 'bottom') return 'top';
     if (pane === 'top') return 'bottom';
-    
+
     return NO;
   },
-  
-  showSinglePane: function () {
+
+  showSinglePane: function() {
     this.set('paneIsSplit', false);
     this.set('dataViewNowShowing', 'Smartgraphs.activityPage.singlePaneDataView');
   },
-  
-  showSplitPane: function () {
+
+  showSplitPane: function() {
     this.set('paneIsSplit', true);
-    this.set('dataViewNowShowing', 'Smartgraphs.activityPage.splitPaneDataView');    
+    this.set('dataViewNowShowing', 'Smartgraphs.activityPage.splitPaneDataView');
   },
 
-  showImage: function (pane, path) {
+  showImage: function(pane, path) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
-    
-    if ( !which ) return NO;
-    
+
+    if (!which) return NO;
+
     this.set(which + 'ImageValue', path);
-    this.set(pane + 'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'ImageView');
-    
+    this.set(pane + 'PaneNowShowing', 'Smartgraphs.activityPage.' + which + 'ImageView');
+
     return YES;
   },
-  
-  showGraph: function (pane, graphId) {
+
+  showGraph: function(pane, graphId) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
-    
-    if ( !which ) return NO;
-    
-    Smartgraphs.get(which+'GraphController').openGraph(graphId);
-    this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'GraphPane');
-  
+
+    if (!which) return NO;
+
+    var currentGraphController = Smartgraphs.get(which + 'GraphController');
+    currentGraphController.openGraph(graphId);
+    this.set(pane + 'PaneNowShowing', 'Smartgraphs.activityPage.' + which + 'GraphPane');
+
+    // Hide start and stop button if in prediction graph mode
+    var graph = currentGraphController.get('content');
+    this.set('isPredictionMode', graph.get('isPrediction'));
+    if (this.get('isPredictionMode')) {
+      this.invokeLast(function() {
+        Smartgraphs.activityViewController.hideStartControl();
+        Smartgraphs.activityViewController.hideStopControl();
+      });
+    }
+
     return YES;
   },
-  
-  hidePane: function (pane) {
+
+  hidePane: function(pane) {
     pane = this.validPaneFor(pane);
-    
-    if ( !pane ) return NO;
-    
-    this.set(pane+'PaneNowShowing', null);
+
+    if (!pane) return NO;
+
+    this.set(pane + 'PaneNowShowing', null);
   },
-  
-  showSensorLoadingView: function (pane) {
+
+  showSensorLoadingView: function(pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
-    
-    if ( !which ) return NO;
-    
+
+    if (!which) return NO;
+
     this.hideControls();
-    
-    this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
+
+    this.set(which + 'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
   },
-  
-  showControls: function (pane) {
+
+  showControls: function(pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
-    
-    if ( !which ) return NO;
-    
+
+    if (!which) return NO;
 
     this.hideControls();
     this.disableAllControls();
-    this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.graphControlsView');
+    this.set(which + 'GraphPaneControls', 'Smartgraphs.activityPage.graphControlsView');
 
     return YES;
   },
-  
-  hideControls: function (pane) {
+
+  hideControls: function(pane) {
     if (pane) {
       pane = this.validPaneFor(pane);
       var which = this.firstOrSecondFor(pane);
 
-      if ( !which ) return NO;
-      
-      this.set(which+'GraphPaneControls', null);
+      if (!which) return NO;
+
+      this.set(which + 'GraphPaneControls', null);
     }
-    else {  
+    else {
       this.set('firstGraphPaneControls', null);
       this.set('secondGraphPaneControls', null);
     }
   },
-  
-  disableAllControls: function () {
-    this.set('startControlIsVisible',  YES);
-    this.set('startControlIsEnabled',  NO);
-    this.set('startControlIsDefault',  NO);
 
-    this.set('stopControlIsVisible',  YES);
-    this.set('stopControlIsEnabled',  NO);
-    this.set('stopControlIsDefault',  NO);
+  disableAllControls: function() {
+    if (this.isPredictionMode) {
+      this.hideStartControl();
+      this.hideStopControl();
+    } else {
+      this.set('startControlIsVisible', YES);
+      this.set('startControlIsEnabled', NO);
+      this.set('startControlIsDefault', NO);
 
-    this.set('clearControlIsVisible',  YES);
-    this.set('clearControlIsEnabled',  NO);
-    this.set('clearControlIsDefault',  NO);
+      this.set('stopControlIsVisible', YES);
+      this.set('stopControlIsEnabled', NO);
+      this.set('stopControlIsDefault', NO);
+    }
+
+    this.set('clearControlIsVisible', YES);
+    this.set('clearControlIsEnabled', NO);
+    this.set('clearControlIsDefault', NO);
   },
-      
-  highlightStartControl: function () {
-    this.set('startControlIsVisible',  YES);
-    this.set('startControlIsEnabled',  YES);
-    this.set('startControlIsDefault',  YES);
 
-    this.set('stopControlIsVisible',  YES);
-    this.set('stopControlIsEnabled',  NO);
-    this.set('stopControlIsDefault',  NO);
+  highlightStartControl: function() {
+    this.set('startControlIsVisible', YES);
+    this.set('startControlIsEnabled', YES);
+    this.set('startControlIsDefault', YES);
 
-    this.set('clearControlIsVisible',  YES);
-    this.set('clearControlIsEnabled',  NO);
-    this.set('clearControlIsDefault',  NO);
+    this.set('stopControlIsVisible', YES);
+    this.set('stopControlIsEnabled', NO);
+    this.set('stopControlIsDefault', NO);
+
+    this.set('clearControlIsVisible', YES);
+    this.set('clearControlIsEnabled', NO);
+    this.set('clearControlIsDefault', NO);
   },
-  
-  highlightStopControl: function () {
-    this.set('startControlIsVisible',  YES);
-    this.set('startControlIsEnabled',  NO);
-    this.set('startControlIsDefault',  NO);
 
-    this.set('stopControlIsVisible',  YES);
-    this.set('stopControlIsEnabled',  YES);
-    this.set('stopControlIsDefault',  YES);
+  highlightStopControl: function() {
+    this.set('startControlIsVisible', YES);
+    this.set('startControlIsEnabled', NO);
+    this.set('startControlIsDefault', NO);
 
-    this.set('clearControlIsVisible',  YES);
-    this.set('clearControlIsEnabled',  NO);
-    this.set('clearControlIsDefault',  NO);
+    this.set('stopControlIsVisible', YES);
+    this.set('stopControlIsEnabled', YES);
+    this.set('stopControlIsDefault', YES);
+
+    this.set('clearControlIsVisible', YES);
+    this.set('clearControlIsEnabled', NO);
+    this.set('clearControlIsDefault', NO);
   },
-  
-  highlightClearControl: function () {
-    this.set('startControlIsVisible',  YES);
-    this.set('startControlIsEnabled',  NO);
-    this.set('startControlIsDefault',  NO);
 
-    this.set('stopControlIsVisible',  YES);
-    this.set('stopControlIsEnabled',  NO);
-    this.set('stopControlIsDefault',  NO);
+  highlightClearControl: function() {
+    if (this.isPredictionMode) {
+      this.hideStartControl();
+      this.hideStopControl();
+    } else {
+      this.set('startControlIsVisible', YES);
+      this.set('startControlIsEnabled', NO);
+      this.set('startControlIsDefault', NO);
 
-    this.set('clearControlIsVisible',  YES);
-    this.set('clearControlIsEnabled',  YES);
-    this.set('clearControlIsDefault',  YES);
+      this.set('stopControlIsVisible', YES);
+      this.set('stopControlIsEnabled', NO);
+      this.set('stopControlIsDefault', NO);
+    }
+
+    this.set('clearControlIsVisible', YES);
+    this.set('clearControlIsEnabled', YES);
+    this.set('clearControlIsDefault', YES);
   },
-  
-  clear: function () {
+
+  hideStartControl: function() {
+    this.set('startControlIsVisible', NO);
+    this.set('startControlIsEnabled', NO);
+    this.set('startControlIsDefault', NO);
+  },
+
+  hideStopControl: function() {
+    this.set('stopControlIsVisible', NO);
+    this.set('stopControlIsEnabled', NO);
+    this.set('stopControlIsDefault', NO);
+  },
+
+  hideClearControl: function() {
+    this.set('clearControlIsVisible', NO);
+    this.set('clearControlIsEnabled', NO);
+    this.set('clearControlIsDefault', NO);
+  },
+
+  clear: function() {
     this.hideControls();
-    
+
     if (this.get('paneIsSplit')) {
       this.hidePane('top');
       this.hidePane('bottom');
@@ -255,4 +294,4 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     }
   }
 
-}) ;
+});
