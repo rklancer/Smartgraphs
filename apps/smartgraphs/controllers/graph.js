@@ -21,6 +21,17 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   _routeEvents: NO,
   eventQueue: [],
 
+  hideButtonsIfPrediction: function(graph) {
+    // Hide start and stop button if in prediction graph mode
+    if (graph.get('isPrediction')) {
+      this.invokeLast(function() {
+        console.warn("Hiding start and stop buttons");
+        Smartgraphs.activityViewController.hideStartControl();
+        Smartgraphs.activityViewController.hideStopControl();
+      });
+    }
+  },
+
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function(graphId) {
     if (this.get('id') === graphId) return; // nothing to do!
@@ -52,6 +63,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
       // so the type can be assumed from the name
       this.addObjectByName(SC.objectForPropertyPath(annotation.type), annotation.name);
     }
+
+    this.hideButtonsIfPrediction(graph);
   },
 
   setAxes: function(axesId) {
