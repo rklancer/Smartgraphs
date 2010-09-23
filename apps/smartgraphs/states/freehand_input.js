@@ -22,6 +22,7 @@ Smartgraphs.FREEHAND_INPUT = SC.Responder.create(
     var enableSucceeded = Smartgraphs.freehandInputController.enableInput();
     // if freehandInputController says NO, don't accept first responder
     if (enableSucceeded) {
+      Smartgraphs.activityViewController.revealOnlyClearControl();
       Smartgraphs.activityViewController.showControls(Smartgraphs.freehandInputController.get('pane'));
       Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT_READY);
     }

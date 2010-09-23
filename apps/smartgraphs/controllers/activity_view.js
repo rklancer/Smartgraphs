@@ -187,58 +187,58 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     }
   },
   
+  revealAllControls: function () {
+    this.set('startControlIsVisible',  YES);    
+    this.set('stopControlIsVisible',  YES);
+    this.set('clearControlIsVisible',  YES);    
+  },
+  
+  revealOnlyClearControl: function () {
+    this.set('startControlIsVisible',  NO);    
+    this.set('stopControlIsVisible',  NO);
+    this.set('clearControlIsVisible',  YES);    
+  },
+  
   disableAllControls: function () {
-    this.set('startControlIsVisible',  YES);
     this.set('startControlIsEnabled',  NO);
     this.set('startControlIsDefault',  NO);
 
-    this.set('stopControlIsVisible',  YES);
     this.set('stopControlIsEnabled',  NO);
     this.set('stopControlIsDefault',  NO);
 
-    this.set('clearControlIsVisible',  YES);
     this.set('clearControlIsEnabled',  NO);
     this.set('clearControlIsDefault',  NO);
   },
       
   highlightStartControl: function () {
-    this.set('startControlIsVisible',  YES);
     this.set('startControlIsEnabled',  YES);
     this.set('startControlIsDefault',  YES);
 
-    this.set('stopControlIsVisible',  YES);
     this.set('stopControlIsEnabled',  NO);
     this.set('stopControlIsDefault',  NO);
 
-    this.set('clearControlIsVisible',  YES);
     this.set('clearControlIsEnabled',  NO);
     this.set('clearControlIsDefault',  NO);
   },
   
   highlightStopControl: function () {
-    this.set('startControlIsVisible',  YES);
     this.set('startControlIsEnabled',  NO);
     this.set('startControlIsDefault',  NO);
 
-    this.set('stopControlIsVisible',  YES);
     this.set('stopControlIsEnabled',  YES);
     this.set('stopControlIsDefault',  YES);
 
-    this.set('clearControlIsVisible',  YES);
     this.set('clearControlIsEnabled',  NO);
     this.set('clearControlIsDefault',  NO);
   },
   
   highlightClearControl: function () {
-    this.set('startControlIsVisible',  YES);
     this.set('startControlIsEnabled',  NO);
     this.set('startControlIsDefault',  NO);
 
-    this.set('stopControlIsVisible',  YES);
     this.set('stopControlIsEnabled',  NO);
     this.set('stopControlIsDefault',  NO);
 
-    this.set('clearControlIsVisible',  YES);
     this.set('clearControlIsEnabled',  YES);
     this.set('clearControlIsDefault',  YES);
   },
