@@ -22,7 +22,7 @@ Smartgraphs.DataSeries.FIXTURES = [
     isExample: YES,
     points: (function () { 
         var points = [];
-        for (var i = 100; i <= 200; i++) {
+        for (var i = 100; i <= 200; i+=2) {
           points.push(i);
         }
         return points;
@@ -35,7 +35,7 @@ Smartgraphs.DataSeries.FIXTURES = [
     isExample: YES,
     points: (function () { 
       var points = [];
-      for (var i = 201; i <= 301; i++) {
+      for (var i = 201; i <= 301; i+=2) {
         points.push(i);
       }
       return points;
