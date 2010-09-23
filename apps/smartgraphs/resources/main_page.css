@@ -1,7 +1,7 @@
 /* ==========================================================================
    Project:   Smartgraphs
    Copyright: ©2010 Concord Consortium
-   Author:    Richard KLancer <rpk@pobox.com>
+   Author:    Richard Klancer <rpk@pobox.com>
    ==========================================================================
 */
 
@@ -107,4 +107,21 @@ body.sc-theme {
   font-style: italic;
   line-height: 1.0;
   color: #666666;
+}
+
+
+/* fixes to make sure statically laid out RadioView labels expand to fit wrapped content*/
+.sc-theme .sc-view.ace.sc-radio-view.sc-static-layout .sc-radio-button {
+  height: auto;
+}
+
+.sc-theme .sc-view.ace.sc-radio-view.sc-static-layout .sc-button-label {
+ position: static;
+ margin-left: 5px;
+ display: block;
+}
+
+/* adjust the RadioView button top to match up with wrapped labels */
+.sc-theme .sc-view.dialog-text .sc-view.ace.sc-radio-view span.button {
+  top: 2px;
 }

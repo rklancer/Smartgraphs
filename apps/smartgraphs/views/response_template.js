@@ -140,21 +140,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       valueDidChange: function () {
         var values = this.getPath('parentView.values');
         values.replace(this.get('fieldIndex'), 1, this.get('value'));
-      }.observes('value'),
-      
-      didAppendToDocument: function () {
-        this.invokeLater(this.adjustItemHeights);
-      },
-      
-      adjustItemHeights: function () {
-        this.$('.sc-radio-button').each( function () {
-          var labelHeight = $(this).find('.sc-button-label').outerHeight();
-          $(this).css({height: labelHeight});
-
-          var $button = $(this).find('.button');
-          $button.css({marginTop: Math.max( (labelHeight - $button.height()) / 2 - 3, 0) });
-        });
-      }
+      }.observes('value')
     }).create();
   },
 
