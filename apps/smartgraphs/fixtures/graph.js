@@ -50,7 +50,7 @@ Smartgraphs.Graph.FIXTURES = [
     description: 
       'Playing around with the sensor in page 3',
     title: 
-      'Away',
+      'Position vs. Time',
     axes:
       '/backend/axes/1/5m-15s',
     initialSeries: 

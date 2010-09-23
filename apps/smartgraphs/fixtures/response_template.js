@@ -39,8 +39,7 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
   	templateString: '',
   	fieldTypes: ['multiplechoice'],
   	fieldChoicesList: [[
-      "My friend and I stood 2 meters away from the sensor. I walked away from the sensor for 20 seconds. "+ 
-      "Then, my friend walked toward the sensor for 20 seconds.",
+      "My friend and I stood 2 meters away from the sensor. Together, we walked away from the sensor for 20 seconds.",
       
       "My friend and I stood 2 meters away from the sensor. I walked away from the sensor for 20 seconds "+
       "while my friend walked toward the sensor for 20 seconds.",
