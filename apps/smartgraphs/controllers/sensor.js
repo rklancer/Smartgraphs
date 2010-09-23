@@ -39,8 +39,8 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   sensorIsReady: NO,
 
   _appletView: null,
-  _inputStarted: NO,
-  _recording: NO,
+  _inputIsEnabled: NO,
+  _isRecording: NO,
   _pane: null,
   _series: null,
   
@@ -49,7 +49,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   }.property(),
   
   register: function (pane, series, xMin, xMax) {
-    if (this._inputStarted) return NO;    
+    if (this._inputIsEnabled) return NO;    
 
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
@@ -66,10 +66,10 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   },
   
   enableInput: function () {
-    if (this._inputStarted || !this._pane || !this._series) {
+    if (this._inputIsEnabled || !this._pane || !this._series) {
       return NO;
     }
-    this._inputStarted = YES;
+    this._inputIsEnabled = YES;
     
     if ( !this._appletView ) {
       this._appletView = Smartgraphs.appletPage.sensorAppletView.create();
@@ -87,20 +87,20 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   },
   
   disableInput: function () {
-    this._inputStarted = NO;
-    this._recording = NO;
+    this._inputIsEnabled = NO;
+    this._isRecording = NO;
     this._series = null;
     this._pane = null;
   },
   
   startRecording: function () {
-    this._recording = YES;
+    this._isRecording = YES;
     this._nsamples = 0;
     this._appletView.start();
   },
   
   stopRecording: function () {
-    this._recording = NO;
+    this._isRecording = NO;
     this._appletView.stop();
   },
   
@@ -116,7 +116,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   sensorsReady: function () {
     SC.RunLoop.begin();
     this.set('sensorIsReady', YES);
-    if (this._inputStarted) {
+    if (this._inputIsEnabled) {
       Smartgraphs.sendAction('sensorHasLoaded');
     }
     SC.RunLoop.end();
@@ -127,7 +127,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   */
   dataReceived: function (type, numPoints, data) {
     
-    if ( !(this._inputStarted && this._recording) ) {
+    if ( !(this._inputIsEnabled && this._isRecording) ) {
       return;
     }
     

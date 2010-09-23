@@ -39,7 +39,7 @@ Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
       str.push(' ');
       str.push(Math.round(coords.y));
     } 
-    var pathStr = str.join('');
+    var pathStr = str.join('') || 'M0 0';         // Raphael won't make path go away in IE if path string = ''
     
     if (firstTime) {
       context.callback(this, this.renderCallback, pathStr, this.get('stroke'), this.get('strokeWidth'));

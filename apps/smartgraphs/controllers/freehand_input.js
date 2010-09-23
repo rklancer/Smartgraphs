@@ -14,8 +14,8 @@
 Smartgraphs.freehandInputController = SC.ObjectController.create(
 /** @scope Smartgraphs.freehandInputController.prototype */ {
   
-  _inputStarted: NO,
-  _recording: NO,
+  _inputIsEnabled: NO,
+  _isRecording: NO,
   _pane: null,
   
   pane: function () {
@@ -26,7 +26,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     // guard against accidentally swapping the input controller during freehand input. Guarantee that a controller
     // will always receive endFreehandInput after receiving startFreehandInput
   
-    if (this._inputStarted) return NO;
+    if (this._inputIsEnabled) return NO;
     
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
@@ -43,7 +43,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   enableInput: function () {
     if (!this._sketch) return NO;
 
-    this._inputStarted = YES;
+    this._inputIsEnabled = YES;
     this._graphController.startFreehandInput();
 
     this._graphController.get('eventQueue').addObserver('[]', this, this.graphObserver);
@@ -56,9 +56,9 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     this._graphController.endFreehandInput();
     this._graphController = null;
     this._sketch = null;
-    this._inputStarted = NO;
+    this._inputIsEnabled = NO;
     this._pane = null;
-    this._recording = NO;
+    this._isRecording = NO;
   },
   
   graphObserver: function () {
@@ -81,35 +81,34 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   },
   
   startAt: function (x, y) {
-    if (this._recording && this._inputStarted) {
+    if (this._isRecording && this._inputIsEnabled && !this._sketch.getPath('points.length')) {
       this._sketch.set('points', [{x: x, y: y}]);
-      this._strokeEntered = YES;
     }
   },
   
   continueAt: function (x, y) {
-    if (this._recording && this._inputStarted) {    
+    if (this._isRecording && this._inputIsEnabled) {    
       this._sketch.get('points').pushObject({x: x, y: y});
     }
   },
   
   endAt: function (x, y) {
-    if (this._recording && this._inputStarted) {
+    if (this._isRecording && this._inputIsEnabled) {
       this._sketch.get('points').pushObject({x: x, y: y});
       Smartgraphs.sendAction('freehandSketchCompleted');
     }
   },
   
   startRecording: function () {
-    this._recording = YES;
+    this._isRecording = YES;
   },
   
   stopRecording: function () {
-    this._recording = NO;
+    this._isRecording = NO;
   },
   
   clearSketch: function () {
-    if ( !this._recording && this._inputStarted ) {
+    if ( !this._isRecording && this._inputIsEnabled ) {
       this._sketch.set('points', []);
     }
   }
