@@ -29,7 +29,10 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     return $.browser.msie ? 3 : 2;          // is there feature detection for 'lousy javascript performance'?
   }(),
   
-  /* the rate at which samples are received */
+  /**
+    the time interval between data points returned by the sensor
+    (eventually we will read this from the new applet)
+  */
   
   dt: 0.1,
   
