@@ -20,6 +20,11 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   _routeEvents: NO,
   eventQueue: [],
   
+  // from Protovis 'category10': http://vis.stanford.edu/protovis/docs/color.html
+  colors: [
+    "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
+  ],
+  
   // follow the pattern that if object doesn't exist, create it in the db.
   openGraph: function (graphId) {
     if (this.get('id') === graphId) return;    // nothing to do!
@@ -63,11 +68,37 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   addSeries: function (series) {
     if (this.findSeriesByName(series.get('name'))) {
-      return NO;
+      return NO;      // don't add the series if it is already in the graph!
     }
+    
+    // get a color for the series
+    series.set('color', this.getColorForSeries(series));
+    
     this.get('seriesList').pushObject(series);
     Smartgraphs.store.commitRecords();
     return YES;
+  },
+  
+  /**
+    a simple implementation for now...  Later, we can use color names, handle default colors a little more
+    carefully, maybe cycle through colors if we have > 10 series on a graph (which we would ... why?)
+  */
+  getColorForSeries: function (series) {
+    var defaultColor = series.get('defaultColor');
+    var used = this.get('seriesList').getEach('color');
+  
+    if (defaultColor && !used.contains(defaultColor)) {
+      return defaultColor;
+    }
+    
+    var colors = this.get('colors');
+    
+    for (var i = 0, len = colors.get('length'); i < len; i++) {
+      if ( !used.contains(colors.objectAt(i)) ) return colors.objectAt(i);
+    }
+    
+    // just default to the first color if none available
+    return colors.objectAt(0);
   },
   
   addObjectByName: function (objectType, objectName) {
@@ -104,7 +135,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     var series = this.findSeriesByName(seriesName);
     if (series) seriesList.removeObject(series);
   },
-  
   
   // TODO DRY up vs. findAnnotationByName
   findSeriesByName: function (seriesName) {

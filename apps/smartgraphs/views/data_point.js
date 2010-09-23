@@ -16,13 +16,11 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
   
   displayProperties: 'content.x content.y isEnabled fill stroke radius'.w(),
   
-  //graphViewBinding: '*parentView.graphView',
-  
   // TODO should inherit these colors (and possibly other properties) from parent view
-  notSelectedFill: '#1F77B4',
-  notSelectedStroke: '#1F77B4',
-  selectedFill: '#FF7F0E',
-  selectedStroke: '#FF7F0E',
+  notSelectedFillBinding: '.parentView.color',
+  notSelectedStrokeBinding: '.parentView.color',
+  selectedFill: '#aa0000',
+  selectedStroke: '#aa0000',
   
   hoveredRadius: 5,
   notHoveredRadius: 3,

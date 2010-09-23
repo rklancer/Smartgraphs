@@ -24,7 +24,9 @@ Smartgraphs.DataSeries = SC.Record.extend(
   session: SC.Record.toOne('Smartgraphs.Session'),
   isExample: SC.Record.attr(Boolean),    // might make sense as a transient property  
   points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'series' } ),
-  defaultDisplayType: SC.Record.attr(Number)   // LINE_GRAPH or SCATTER_PLOT
+  defaultColor: SC.Record.attr(String),
+  
+  color: null
 
 }) ;
 
