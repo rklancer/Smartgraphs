@@ -30,6 +30,12 @@ Smartgraphs.main = function main() {
     window.location.hash = '/backend/activity/1';      // default activity for now
   }
   
+  // prevent unintended reload or back button; use 'onbeforeunload' syntax rather than $.bind just to be sure
+  // there's only one handler (and $.bind doesn't really try to normalize this handler anyway)
+  window.onbeforeunload = function () {
+    return "Be careful! You will lose your place in the activity if you select \"Leave this Page\"";
+  };
+  
   // ... then the START state will kick things off
   Smartgraphs.makeFirstResponder(Smartgraphs.START);
   
