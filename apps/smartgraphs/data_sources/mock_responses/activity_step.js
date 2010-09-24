@@ -1474,6 +1474,48 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
     }
   ],
   "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.SketchLengthInspector",
+    "config": {
+      "annotationName": "prediction-away"
+    }
+  },
+  "submissibilityCriterion": {
+    "gt": ["value", 5]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "/backend/activity/2/page/1/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/2"] = 
+{
+  "url": "/backend/activity/2/page/1/step/2",
+  "activityPage": "/backend/activity/2/page/1",
+  "initialPaneConfig": 'single',
+  "singleGraph": "/backend/activity/1/graph/1/prediction-away",
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>Congratulations!</p>",
+  "responseTemplate": "",
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": false,
   "submissibilityInspector": null,
   "submissibilityCriterion": null,
@@ -1485,12 +1527,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
   "defaultBranch": null,
   "isFinalStep": true,
   "shouldAutoAdvancePage": false,
-  "hideSubmitButton": true,
+  "hideSubmitButton": false,
   "submitButtonTitle": "",
-  "nextButtonShouldSubmit": false
+  "nextButtonShouldSubmit": true
 };
 steps.push(step);
-
 Smartgraphs.mockResponses["/backend/activity/2/page/1/steps"] = steps;
 
 
