@@ -551,7 +551,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
   "beforeText":
     "<p>What happened at the red point (the y-intercept for this motion)?</p>",
   "responseTemplate": "/backend/response-template/3/walking-example-1",
-  "afterText":  "<p><b>Incorrect.</b> Look at the walker's position at the red point.</p>",
+  "afterText":  "<p><b>Incorrect.</b> Look at the walker's position at the red point, and select another answer.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -613,7 +613,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
   "beforeText":
     "<p>What happened at the red point (the y-intercept for this motion)?</p>",
   "responseTemplate": "/backend/response-template/3/walking-example-1",
-  "afterText": "<p><b>Incorrect.</b> What happened to the walker's position after this point?</p>", 
+  "afterText": "<p><b>Incorrect.</b> Think about what happened to the walker's position after this point, and "+
+  "select another answer.</p>", 
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -675,7 +676,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
   "beforeText":
     "<p>What happened at the red point (the y-intercept for this motion)?</p>",
   "responseTemplate": "/backend/response-template/3/walking-example-1",
-  "afterText": "<p><b>Incorrect.</b> Look at the walker's direction after the red point.</p>",
+  "afterText": "<p><b>Incorrect.</b> Look at the walker's direction after the red point, and select another answer.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -1004,7 +1005,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
   "responseTemplate": "/backend/response-template/4/two-walkers",
-  "afterText": "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data.</p>",
+  "afterText": 
+    "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data, and "+
+    "select another answer.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -1050,7 +1053,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
   "responseTemplate": "/backend/response-template/4/two-walkers",
-  "afterText": "<p><b>Incorrect.</b> Figure out where each person started and ended.</p>",
+  "afterText": "<p><b>Incorrect.</b> Figure out where each person started and ended, and select another answer.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
@@ -1097,7 +1100,9 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
   "responseTemplate": "/backend/response-template/4/two-walkers",
-  "afterText": "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point.</p>",
+  "afterText": 
+    "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point, and select another "+
+    "answer.</p>",
   "startCommands": [
   ],
   "shouldFinishImmediately": false,
