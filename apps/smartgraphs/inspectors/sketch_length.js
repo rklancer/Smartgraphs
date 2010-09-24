@@ -11,8 +11,11 @@ Smartgraphs.SketchLengthInspector = Smartgraphs.Inspector.extend({
   
   value: null,
   sketch: null,
+  checkContinuosly: null,
   
   configure: function (config) {
+    this.set('checkContinuously', config.check && config.check === 'continuously');
+    
     var controller = Smartgraphs.activityViewController.graphControllerFor(Smartgraphs.freehandInputController.get('pane'));
     if ( !controller ) return;
     
@@ -39,14 +42,36 @@ Smartgraphs.SketchLengthInspector = Smartgraphs.Inspector.extend({
     return value;
   },
   
+  inspectOnStateChange: function () {
+    var resp = Smartgraphs.get('firstResponder');
+    
+    if (resp === Smartgraphs.FREEHAND_INPUT_COMPLETED || resp === Smartgraphs.FREEHAND_INPUT_READY) {
+      this.inspect();
+    }
+  },
+  
   watch: function () {
-    var sketch = this.get('sketch');
-    if (sketch) sketch.addObserver('points.[]', this, this.inspect);
+    var sketch;
+    
+    if (this.get('checkContinuously')) {
+      sketch = this.get('sketch');
+      if (sketch) sketch.addObserver('points.[]', this, this.inspect);
+    }
+    else {
+      Smartgraphs.addObserver('firstResponder', this, this.inspectOnStateChange); 
+    }
   },
   
   stopWatching: function () {
-    var sketch = this.get('sketch');    
-    if (sketch) sketch.removeObserver('points.[]', this, this.inspect);
+    var sketch;
+    
+    if (this.get('checkContinuously')) {
+      sketch = this.get('sketch');
+      if (sketch) sketch.removeObserver('points.[]', this, this.inspect);
+    }
+    else {
+      Smartgraphs.removeObserver('firstResponder', this, this.inspectOnStateChange);
+    }
   }
   
 });
