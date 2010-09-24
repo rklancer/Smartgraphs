@@ -27,7 +27,7 @@ Smartgraphs.SketchLengthInspector = Smartgraphs.Inspector.extend({
     var points = this.getPath('sketch.points');
     
     if ( !points || points.get('length') === 0 ) {
-      value = 0;
+      value = -1;
     }
     else {  
       var xs = points.getEach('x');
