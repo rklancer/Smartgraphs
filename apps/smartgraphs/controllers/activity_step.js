@@ -165,6 +165,9 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
     
     this.set('submissibilityInspectorInstance', inspector);
+
+    this._valueWasValid = null;
+
     inspector.addObserver('value', this, this.checkSubmissibility);
     inspector.watch();
   },
