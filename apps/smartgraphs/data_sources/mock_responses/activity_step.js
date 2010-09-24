@@ -85,9 +85,17 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
     }
   ],
   "shouldFinishImmediately": false,
-  "shouldWaitForSubmissibleResponse": false,
-  "submissibilityInspector": null,
-  "submissibilityCriterion": null,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.SketchLengthInspector",
+    "config": {
+      "annotationName": "prediction-away",
+      "check": "continuously"
+    }
+  },
+  "submissibilityCriterion": {
+    "gt": ["value", -1]
+  },
   "triggeredCommands": [
   ],
   "responseInspector": null,
@@ -129,9 +137,17 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
     }
   ],
   "shouldFinishImmediately": false,
-  "shouldWaitForSubmissibleResponse": false,
-  "submissibilityInspector": null,
-  "submissibilityCriterion": null,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.SketchLengthInspector",
+    "config": {
+      "annotationName": "prediction-toward",
+      "check": "continuously"
+    }
+  },
+  "submissibilityCriterion": {
+    "gt": ["value", -1]
+  },
   "triggeredCommands": [
   ],
   "responseInspector": null,
@@ -1478,7 +1494,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
   "submissibilityInspector": {
     "type": "Smartgraphs.SketchLengthInspector",
     "config": {
-      "annotationName": "prediction-away"
+      "annotationName": "prediction-away",
+      "check": "continuously"
     }
   },
   "submissibilityCriterion": {
