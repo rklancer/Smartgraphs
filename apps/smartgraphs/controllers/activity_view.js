@@ -68,10 +68,10 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return this.get('canGotoNextPage') || (this.get('isFinalStep') && this.get('nextButtonShouldSubmit') && this.get('canSubmit'));
   }.property('canGotoNextPage', 'isFinalStep', 'nextButtonShouldSubmit', 'canSubmit').cacheable(),
   
-  
   // ..........................................................
-  // ACTIVITY VIEW COMMANDS
+  // PANE NAME HANDLING
   //
+
   firstOrSecondFor: function (pane) {
     var split = this.get('paneIsSplit');
     
@@ -104,6 +104,21 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     
     return NO;
   },
+  
+  graphControllerFor: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+    
+    if (which) {
+      return Smartgraphs.get(which + 'GraphController');
+    }
+    
+    return NO;
+  },
+  
+  // ..........................................................
+  // ACTIVITY VIEW COMMANDS
+  //
   
   showSinglePane: function () {
     this.set('paneIsSplit', false);
@@ -145,6 +160,8 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     if ( !pane ) return NO;
     
     this.set(pane+'PaneNowShowing', null);
+    
+    return YES;
   },
   
   showSensorLoadingView: function (pane) {
@@ -154,8 +171,9 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     if ( !which ) return NO;
     
     this.hideControls();
-    
     this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
+    
+    return YES;
   },
   
   showControls: function (pane) {
@@ -185,6 +203,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
       this.set('firstGraphPaneControls', null);
       this.set('secondGraphPaneControls', null);
     }
+    return YES;
   },
   
   revealAllControls: function () {

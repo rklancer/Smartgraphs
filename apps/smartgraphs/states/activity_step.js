@@ -30,19 +30,6 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', NO);
   },
   
-  // action helpers
-  _graphControllerFor: function (pane) {
-    if ( !Smartgraphs.activityViewController.get('paneIsSplit') || pane === 'top' ) {
-      return Smartgraphs.firstGraphController;
-    }
-    if (pane === 'bottom') return Smartgraphs.secondGraphController;
-  },
-  
-  _graphViewFor: function (pane) {
-    if (pane === 'top' || pane === 'single') return Smartgraphs.getPath('activityPage.firstGraphPane');
-    if (pane === 'bottom') return Smartgraphs.getPath('activityPage.firstGraphPane');
-  },
-  
   // ..........................................................
   // ACTIONS
   // 
@@ -90,19 +77,19 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   setAxes: function (context, args) {
-    var controller = this._graphControllerFor(args.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     controller.setAxes(args.axesId);
     return YES;
   },
   
   displaySeriesOnGraph: function (context, args) {
-    var controller = this._graphControllerFor(args.pane);    
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);    
     controller.addObjectByName(Smartgraphs.DataSeries, args.seriesName);
     return YES;
   },
   
   copyExampleSeriesToGraph: function (context, args) {
-    var controller = this._graphControllerFor(args.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     var series = Smartgraphs.sessionController.createSeries(args.seriesName);
     Smartgraphs.sessionController.copyExampleSeries(args.exampleSeriesName, args.seriesName);
     controller.addSeries(series);
@@ -110,32 +97,32 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   createSeriesOnGraph: function (context, args) {
-    var controller = this._graphControllerFor(args.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     var series = Smartgraphs.sessionController.createSeries(args.seriesName);
     controller.addSeries(series);
     return YES;
   },
   
   removeSeries: function (context, args) {
-    var controller = this._graphControllerFor(args.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     controller.removeSeries(args.seriesName);
     return YES;
   },
   
   removeAllSeries: function (context, args) {
     return NO;      // not handled yet.
-    // var controller = this._graphControllerFor(args.pane);
+    // var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     // controller.removeAllSeries();
   },
   
   selectDataSeries: function (context, args) {
-    var controller = this._graphControllerFor(args.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     controller.selectSeries(args.seriesName);
     return YES;
   },
   
   createAnnotation: function (context, args) {
-    var controller = this._graphControllerFor(args.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     var annotation = Smartgraphs.sessionController.createAnnotation(args.annotationName, args.annotationType);
     controller.addAnnotation(annotation);
     return YES;
@@ -148,7 +135,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       annotationType: Smartgraphs.FreehandSketch
     });
 
-    var controller = this._graphControllerFor(args.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     if (Smartgraphs.freehandInputController.register(args.pane, controller, args.annotationName)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT);
       return YES;
@@ -161,7 +148,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       seriesName: args.seriesName
     });
 
-    var controller = this._graphControllerFor(args.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     var series = controller && controller.findSeriesByName(args.seriesName);
     
     if ( !series ) return YES;        // handled, but invalid pane or series...
