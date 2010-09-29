@@ -19,7 +19,7 @@
     rvm 1.9.2@Smartgraphs gemset import
     echo "rvm use 1.9.2@Smartgraphs" > .rvmrc
 
-Trusting the .rvmrc file later means that whenever you cd into the Smartgraphs directory RVM will excecute the .rvmrc script in your shell
+Trusting the .rvmrc file later means that whenever you cd into the Smartgraphs directory RVM will execute the .rvmrc script in your shell
 ### Import/update the project dependencies via `git submodule`
 
     mkdir -p frameworks
