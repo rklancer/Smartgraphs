@@ -11,7 +11,8 @@ var session;
 var pane;
 var graphView;
 var canvasView;
-
+var oldValidPaneFor;
+var oldMakeFirstResponder;
 
 function setupFixtures() {
   setupUserAndSessionFixtures();
@@ -63,13 +64,24 @@ module('Freehand input controllers and states', {
     session = Smartgraphs.sessionController.get('content');
     sketch = Smartgraphs.sessionController.createAnnotation('test-sketch', Smartgraphs.FreehandSketch);
     
+    // disable makeFirstResponder by default - tests can spy on it if they want, though
+    oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
+    Smartgraphs.makeFirstResponder = function (state) { };
+        
     Smartgraphs.firstGraphController.openGraph('test');
     Smartgraphs.secondGraphController.openGraph('test');
-  },
+    
+    // freehandInputController checks validPaneFor...
+    
+    oldValidPaneFor = Smartgraphs.activityViewController.validPaneFor;
+    Smartgraphs.activityViewController.validPaneFor = function (pane) { return pane; };
+  },    
   
   teardown: function () {
     Smartgraphs.firstGraphController.clear();
     Smartgraphs.secondGraphController.clear();
+    Smartgraphs.activityViewController.validPaneFor = oldValidPaneFor;
+    Smartgraphs.makeFirstResponder = oldMakeFirstResponder;    
     restoreFixtures();
   }
 });
@@ -82,15 +94,12 @@ test('sketch should be set up correctly', function () {
 
 
 test('moving into FREEHAND_INPUT state without first registering the controller and sketch name returns us to ACTIVITY_STEP state', function () {
-  var oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
   var newState;
-  var callCount = 0;
   var ret;
   
-  // spy on makeFirstResponder without actually making the state transition
+  // spy on makeFirstResponder without actually making the state transition (makeFirstResponder is restored on teardown)
   Smartgraphs.makeFirstResponder = function (state) {
     newState = state;
-    callCount++;
   };
   
   // do at least add the sketch to the graph before attempting to transition to FREEHAND_INPUT
@@ -101,22 +110,18 @@ test('moving into FREEHAND_INPUT state without first registering the controller 
   equals(newState, Smartgraphs.ACTIVITY_STEP, 'FREEHAND_INPUT should have attempted to transition back to ACTIVITY_STEP after becoming first responder with register() having been called');
   
   // now attempt to register with an sketch name that isn't found on the graph
-  ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'nonexistent-sketch');
+  ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'nonexistent-sketch');
   newState = null;
   
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
   ok(ret === NO, 'freehandInputController.register() should have returned NO when an invalid sketch name was passed');
   equals(newState, Smartgraphs.ACTIVITY_STEP, 'FREEHAND_INPUT should have attempted to transition back to ACTIVITY_STEP after becoming first responder with an invalid sketch name given to register()');
 
-  // now register the correct controller and sketch name
-  ok(callCount > 0, 'callCount should have been correctly incremented by spy in previous tests to a number greater than 0');
-  var oldCallCount = callCount;
-
-  ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
+  ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
 
   ok(ret === YES, 'freehandInputController.register() should have returned YES when a valid controller and sketch name were passed.');
-  equals(callCount, oldCallCount, 'there should not have been any more calls to makeFirstResponder because FREEHAND_INPUT should not have attempted to surrender firstResponder when a freehandInputController.register() was given a valid controller and sketch name.');
+  equals(newState, Smartgraphs.FREEHAND_INPUT_READY, 'because a register() worked, FREEHAND_INPUT should have attempted to transition to FREEHAND_INPUT_READY on becoming firsr responder');
   
   // cleanup state after FREEHAND_INPUT
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
@@ -140,7 +145,7 @@ test('moving into and out of FREEHAND_INPUT after registering a controller and s
   };
   
   Smartgraphs.firstGraphController.addAnnotation(sketch);
-  var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
+  var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
   
   ok(ret === YES, 'freehandInputController.register() should have returned YES');
   
@@ -190,7 +195,7 @@ test('attempts to register a different controller and sketch pair should be reje
   Smartgraphs.firstGraphController.addAnnotation(sketch);  
   Smartgraphs.secondGraphController.addAnnotation(sketch);
 
-  var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
+  var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
   
   ok(ret === YES, 'freehandInputController.register() should have returned YES when firstGraphController test-sketch was opened');
   
@@ -199,7 +204,7 @@ test('attempts to register a different controller and sketch pair should be reje
   equals(firstGraphStarts, 1, 'firstGraphController.startFreehandInput should have been called 1 time after FREEHAND_INPUT state was entered');
   equals(secondGraphStarts, 0, 'secondGraphController.startFreehandInput should have been called 0 times before being registered.');
   
-  ret = Smartgraphs.freehandInputController.register(Smartgraphs.secondGraphController, 'test-sketch');
+  ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.secondGraphController, 'test-sketch');
   
   ok(ret === NO, 'freehandInputController.register() should have retured NO when secondGraphController test-sketch were passed while in FREEHAND_INPUT');
 
@@ -209,7 +214,7 @@ test('attempts to register a different controller and sketch pair should be reje
   equals(secondGraphEnds, 0, 'secondGraphController.endFreehandInput should not have been called despite bogus attempt to register secondGraphController');
   
   // now check that you can in fact register secondGraphController
-  ret = Smartgraphs.freehandInputController.register(Smartgraphs.secondGraphController, 'test-sketch');
+  ret = Smartgraphs.freehandInputController.register('bottom', Smartgraphs.secondGraphController, 'test-sketch');
   
   ok(ret === YES, 'freehandInputController.register() should have retured YES when secondGraphController & test-sketch were passed after we left FREEHAND_INPUT');
 
