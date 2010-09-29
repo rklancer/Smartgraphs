@@ -259,13 +259,29 @@ module('Freehand sketch input', {
     
     graphView = pane.get('childViews').objectAt(0);  
     canvasView = graphView.get('graphCanvasView');
+    
+    // disable makeFirstResponder by default - tests can spy on it if they want, though
+    oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
+    Smartgraphs.makeFirstResponder = function (state) { };
+    
+    // required to make freehandInputController.register() happy
+    oldValidPaneFor = Smartgraphs.activityViewController.validPaneFor;
+    Smartgraphs.activityViewController.validPaneFor = function (pane) { return pane; };
   },
   
   teardown: function () {
     Smartgraphs.firstGraphController.clear();
-    pane.remove();
+
+    // disconnect the graph view's bindings to the graph controller, or else the graph view from old tests will 
+    // try to instantiate new child views when the annotationList or seriesList change
+    graphView.bindings.forEach(function (b) { b.disconnect(); });
+    
+    pane.remove();    
     pane = graphView = canvasView = null;
     restoreFixtures();
+    
+    Smartgraphs.activityViewController.validPaneFor = oldValidPaneFor;
+    Smartgraphs.makeFirstResponder = oldMakeFirstResponder;
   }
 });
 
@@ -284,7 +300,7 @@ test('adding test-sketch annotation via graph controller should result in additi
 
 
 test('mouse events should result in a path string that reflects the location of the events', function () {
-  // untility stuff.
+  // utility stuff.
   var inputArea = canvasView.getPath('axesView.inputArea.layer');
   var offset = graphView.$().offset();
   
@@ -295,8 +311,8 @@ test('mouse events should result in a path string that reflects the location of 
   
   // add the annotation and get the sketch view...
   Smartgraphs.firstGraphController.addAnnotation(sketch);
-
   var childViews = canvasView.get('childViews');
+  
   var sketchView = childViews.objectAt(childViews.get('length')-1);
   ok(SC.kindOf(sketchView, Smartgraphs.FreehandSketchView), 'the sketchView being tested should be a FreehandSketchView');
 
@@ -316,9 +332,11 @@ test('mouse events should result in a path string that reflects the location of 
   };
 
   // open freehand input state
-  var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
+  var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
   ok(ret === YES, 'freehandInputController.register() should return YES when firstGraphController test-sketch was opened');
+
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
+  Smartgraphs.FREEHAND_INPUT_READY.didBecomeFirstResponder();
 
   // input some events
   fireEvent(inputArea, 'mousedown', 0, 10);
@@ -330,16 +348,17 @@ test('mouse events should result in a path string that reflects the location of 
   SC.RunLoop.begin();
   canvasView.getPath('axesView.inputArea').mouseDragged(evt);
   SC.RunLoop.end();
-
+  
   fireEvent(inputArea, 'mouseup', 40, 50);
 
-  // everything is synced because SC wraps events in a runloop!
-  
   equals(points.get('length'), 3, 'There should be 3 points in the data being rendered by FreehandSketchView');
   var pathStr = raphael.attr('path').toString().split(' ').join(',');   // .split.join normalizes path string for IE
   
   equals(pathStr, "M0,10L20,30L40,50", 'path string should represent the points clicked');
   
-  // and don't forget to clean up.
+  // simulate the normal sequence of state transitions in order to clean up.
+  Smartgraphs.FREEHAND_INPUT_COMPLETED.didBecomeFirstResponder();
+  Smartgraphs.FREEHAND_INPUT_COMPLETED.willLoseFirstResponder();  
+  Smartgraphs.FREEHAND_INPUT_READY.willLoseFirstResponder();  
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
 });
