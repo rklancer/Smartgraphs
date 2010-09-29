@@ -497,6 +497,7 @@ module("Smartgraphs.GraphView -- initial instantiation of graph", {
   
   teardown: function () {
     Smartgraphs.firstGraphController.clear();
+    view.bindings.forEach( function (b) { b.disconnect(); } );
     pane.remove();
     pane = view = null;
     restoreFixtures();
@@ -539,6 +540,7 @@ module("Smartgraphs.GraphView -- resized graph", {
   
   teardown: function () {
     Smartgraphs.firstGraphController.clear();
+    view.bindings.forEach( function (b) { b.disconnect(); } );
     pane.remove();
     pane = view = null;
     restoreFixtures();
