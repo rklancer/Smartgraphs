@@ -26,7 +26,7 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
   displayProperties: 'item.point.x item.point.y radius stroke strokeWidth strokeOpacity fill fillOpacity'.w(),
 
   renderCallback: function (raphaelCanvas, attrs) {
-    return raphaelCanvas.circle(attrs.x, attrs.y, attrs.r).attr(attrs);
+    return raphaelCanvas.circle(attrs.x, attrs.y, attrs.r).attr(attrs).toBack();
   },
   
   render: function (context, firstTime) {
@@ -54,7 +54,7 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
     }
     else {
       var circle = context.raphael();
-      circle.attr(attrs);
+      circle.attr(attrs).toBack();
     }
   }
   
