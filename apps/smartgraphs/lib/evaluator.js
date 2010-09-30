@@ -15,14 +15,14 @@
   };
   
   function or(terms, value) {
-    for (var i = 0, ii = terms.length; i < ii; i++) {
+    for (var i = 0; i < terms.length; i++) {
       if (evaluate(terms[i], value)) return true;
     }
     return false;
   }
   
   function and(terms, value) {
-    for (var i = 0, ii = terms.length; i < ii; i++) {
+    for (var i = 0; i < terms.length; i++) {
       if (!evaluate(terms[i], value)) return false;
     }
     return true;
@@ -44,7 +44,7 @@
     var item = evaluate(terms[0], value);
     var list = evaluate(terms[1], value);
     
-    for (var i = 0, ii = list.length; i < ii; i++) {
+    for (var i = 0; i < list.length; i++) {
       if (item === list[i]) return true;
     }
     return false;
