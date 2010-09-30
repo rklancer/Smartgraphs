@@ -131,6 +131,53 @@ test('moving into FREEHAND_INPUT state without first registering the controller 
 });
 
 
+test('hide start and stop buttons happens when in "prediction graph" mode', function () {
+  var newState;
+  var ret;
+
+  // spy on makeFirstResponder without actually making the state transition (makeFirstResponder is restored on teardown)
+  Smartgraphs.makeFirstResponder = function (state) {
+    newState = state;
+  };
+
+  // do at least add the sketch to the graph before attempting to transition to FREEHAND_INPUT
+  Smartgraphs.firstGraphController.addAnnotation(sketch);
+
+  // Set the buttons' states to the wrong visibility settings before registering with the freehandInputController
+  Smartgraphs.activityViewController.startControlIsVisible =  YES;
+  Smartgraphs.activityViewController.stopControlIsVisible = YES;
+  Smartgraphs.activityViewController.clearControlIsVisible = NO;
+  equals(Smartgraphs.activityViewController.startControlIsVisible,  YES,
+    "Before registering with the freehandInputController Smartgraphs.activityViewController.startControlIsVisible should at the wrong visibility setting given to it by this test: YES.");
+  equals(Smartgraphs.activityViewController.stopControlIsVisible,  YES,
+    "Before registering with the freehandInputController Smartgraphs.activityViewController.stopControlIsVisible should at the wrong visibility setting given to it by this test: YES.");
+  equals(Smartgraphs.activityViewController.clearControlIsVisible,  NO,
+    "Before registering with the freehandInputController Smartgraphs.activityViewController.clearControlIsVisible should at the wrong visibility setting given to it by this test: NO.");
+
+  ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
+  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
+
+  equals(ret, YES,
+    'freehandInputController.register() should have returned YES when a valid controller and sketch name were passed.');
+  equals(newState, Smartgraphs.FREEHAND_INPUT_READY,
+    'because a register() worked, FREEHAND_INPUT should have attempted to transition to FREEHAND_INPUT_READY on becoming firsr responder');
+
+  // Did Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder()'s call to Smartgraphs.activityViewController.revealOnlyClearControl() happen and work?
+  equals(Smartgraphs.activityViewController.startControlIsVisible,  NO,
+    "After registering with the freehandInputController Smartgraphs.activityViewController.startControlIsVisible should be NO.");
+  equals(Smartgraphs.activityViewController.stopControlIsVisible,  NO,
+    "After registering with the freehandInputController Smartgraphs.activityViewController.stopControlIsVisible should be NO.");
+  equals(Smartgraphs.activityViewController.clearControlIsVisible,  YES,
+    "After registering with the freehandInputController Smartgraphs.activityViewController.clearControlIsVisible should be YES.");
+
+  // cleanup state after FREEHAND_INPUT
+  Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
+
+  // remove spy.
+  Smartgraphs.makeFirstResponder = oldMakeFirstResponder;
+});
+
+
 test('moving into and out of FREEHAND_INPUT after registering a controller and sketch name should result in a call to graphController.enableInput and graphController.disableInput', function () {
   var startCallCount = 0;
   var oldenableInput = Smartgraphs.firstGraphController.startFreehandInput;
