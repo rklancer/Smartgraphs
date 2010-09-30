@@ -144,14 +144,14 @@ test('hide start and stop buttons happens when in "prediction graph" mode', func
   Smartgraphs.firstGraphController.addAnnotation(sketch);
 
   // Set the buttons' states to the wrong visibility settings before registering with the freehandInputController
-  Smartgraphs.activityViewController.startControlIsVisible =  YES;
-  Smartgraphs.activityViewController.stopControlIsVisible = YES;
-  Smartgraphs.activityViewController.clearControlIsVisible = NO;
-  equals(Smartgraphs.activityViewController.startControlIsVisible,  YES,
+  Smartgraphs.activityViewController.set('startControlIsVisible',  YES);
+  Smartgraphs.activityViewController.set('stopControlIsVisible', YES);
+  Smartgraphs.activityViewController.set('clearControlIsVisible', NO);
+  equals(Smartgraphs.activityViewController.get('startControlIsVisible'),  YES,
     "Before registering with the freehandInputController Smartgraphs.activityViewController.startControlIsVisible should at the wrong visibility setting given to it by this test: YES.");
-  equals(Smartgraphs.activityViewController.stopControlIsVisible,  YES,
+  equals(Smartgraphs.activityViewController.get('stopControlIsVisible'),  YES,
     "Before registering with the freehandInputController Smartgraphs.activityViewController.stopControlIsVisible should at the wrong visibility setting given to it by this test: YES.");
-  equals(Smartgraphs.activityViewController.clearControlIsVisible,  NO,
+  equals(Smartgraphs.activityViewController.get('clearControlIsVisible'),  NO,
     "Before registering with the freehandInputController Smartgraphs.activityViewController.clearControlIsVisible should at the wrong visibility setting given to it by this test: NO.");
 
   ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
@@ -163,11 +163,11 @@ test('hide start and stop buttons happens when in "prediction graph" mode', func
     'because a register() worked, FREEHAND_INPUT should have attempted to transition to FREEHAND_INPUT_READY on becoming firsr responder');
 
   // Did Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder()'s call to Smartgraphs.activityViewController.revealOnlyClearControl() happen and work?
-  equals(Smartgraphs.activityViewController.startControlIsVisible,  NO,
+  equals(Smartgraphs.activityViewController.get('startControlIsVisible'),  NO,
     "After registering with the freehandInputController Smartgraphs.activityViewController.startControlIsVisible should be NO.");
-  equals(Smartgraphs.activityViewController.stopControlIsVisible,  NO,
+  equals(Smartgraphs.activityViewController.get('stopControlIsVisible'),  NO,
     "After registering with the freehandInputController Smartgraphs.activityViewController.stopControlIsVisible should be NO.");
-  equals(Smartgraphs.activityViewController.clearControlIsVisible,  YES,
+  equals(Smartgraphs.activityViewController.get('clearControlIsVisible'),  YES,
     "After registering with the freehandInputController Smartgraphs.activityViewController.clearControlIsVisible should be YES.");
 
   // cleanup state after FREEHAND_INPUT
