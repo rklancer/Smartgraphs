@@ -125,9 +125,6 @@ test('moving into FREEHAND_INPUT state without first registering the controller 
   
   // cleanup state after FREEHAND_INPUT
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
-  
-  // remove spy.
-  Smartgraphs.makeFirstResponder = oldMakeFirstResponder;
 });
 
 
@@ -172,9 +169,6 @@ test('hide start and stop buttons happens when in "prediction graph" mode', func
 
   // cleanup state after FREEHAND_INPUT
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
-
-  // remove spy.
-  Smartgraphs.makeFirstResponder = oldMakeFirstResponder;
 });
 
 
