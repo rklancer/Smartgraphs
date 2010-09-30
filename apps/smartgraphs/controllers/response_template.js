@@ -14,15 +14,15 @@
 Smartgraphs.responseTemplateController = SC.ObjectController.create(
 /** @scope Smartgraphs.responseTemplate.prototype */ {
   
-  contentDidChange: function () {
-    this.invokeOnce(this._initializeValues);
-  }.observes('content'),
-  
-  _initializeValues: function () {
+  editingShouldBeEnabled: NO,
+  viewShouldReset: NO,
+
+  setTemplate: function (newTemplate) {
+    this.set('content', newTemplate);
+    
     var initialValues = this.get('initialValues');
     if (initialValues) this.set('values', initialValues.copy());
-  },
+    this.set('viewShouldReset', YES);   // any bound view will unset this
+  }
   
-  editingShouldBeEnabled: NO
-
 }) ;

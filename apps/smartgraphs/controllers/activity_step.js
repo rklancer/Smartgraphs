@@ -27,15 +27,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     this.enableSubmission();
     
-    // FIXME: this is a hack
-    SC.RunLoop.begin();
-    Smartgraphs.responseTemplateController.set('content', null);
-    SC.RunLoop.end();
-    Smartgraphs.responseTemplateController.set('content', this.get('responseTemplate'));
+    Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
     
     // setup window pane
     this.setupPanes();
-    
     this.setupTriggers();
 
     // do the commands

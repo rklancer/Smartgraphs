@@ -66,7 +66,8 @@ Smartgraphs.activityPageDef = SC.Page.extend({
                 fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
                 fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
                 valuesBinding: 'Smartgraphs.responseTemplateController.values',
-                editingShouldBeEnabledBinding: 'Smartgraphs.responseTemplateController.editingShouldBeEnabled'
+                editingShouldBeEnabledBinding: 'Smartgraphs.responseTemplateController.editingShouldBeEnabled',
+                viewShouldResetBinding: 'Smartgraphs.responseTemplateController.viewShouldReset'
               }),
               
               afterText: SC.StaticContentView.design({
