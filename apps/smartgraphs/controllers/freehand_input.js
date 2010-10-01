@@ -30,10 +30,10 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
     
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
-    var sketch = controller ? controller.findAnnotationByName(sketchName) : NO;
-    if (pane && sketch && SC.kindOf(sketch, Smartgraphs.FreehandSketch)) {      
+    var annotation = controller ? controller.findAnnotationByName(sketchName) : NO;
+    if (pane && annotation && SC.kindOf(annotation, Smartgraphs.FreehandSketch)) {      
       this._graphController = controller;
-      this._sketch = sketch;
+      this._sketch = annotation;
       this._pane = pane;
       return YES;
     }

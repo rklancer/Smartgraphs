@@ -180,8 +180,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
     
-    if ( !which ) return NO;
-    
+    if ( !which ) return NO;    
 
     this.hideControls();
     this.disableAllControls();
