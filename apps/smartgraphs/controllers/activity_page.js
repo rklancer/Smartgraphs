@@ -14,15 +14,10 @@
 Smartgraphs.activityPageController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityPageController.prototype */ {
   
-  // return the context variable's value from the activityPage or activity context
-  lookup: function (key) {
-    var context = this.get('context');
-    return (context.hasOwnProperty(key) ? context[key] : Smartgraphs.activityController.lookup(key));
-  },
-  
   cleanup: function () {
     Smartgraphs.firstGraphController.clear();
     Smartgraphs.secondGraphController.clear();
     Smartgraphs.activityViewController.clear();
   }
-}) ;
+  
+});
