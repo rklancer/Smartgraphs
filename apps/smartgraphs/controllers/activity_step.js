@@ -21,20 +21,27 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   submissibilityInspectorInstance: null,
   
   /**
+    Clean up any stale controller state. Called when we leave ACTIVITY_STEP_SUBMITTED and/or ACTIVITY itself
+  */  
+  cleanup: function () {
+    var inspector = this.get('submissibilityInspectorInstance');
+    if (inspector) {
+      inspector.stopWatching();
+      inspector.removeObserver('value', this, this.checkSubmissibility);
+      inspector.destroy();
+    }
+    this.set('submissibilityInspectorInstance', null);
+  },
+  
+  /**
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.
   */
   begin: function () {
-    
-    this.enableSubmission();
-    
-    Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
-    
-    // setup window pane
     this.setupPanes();
-    this.setupTriggers();
-
-    // do the commands
+    Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
     this.executeCommands(this.get('startCommands'));
+    this.setupTriggers();
+    this.enableSubmission();
   
     // then, finish the step, or wait
     if (this.get('shouldWaitForSubmissibleResponse')) {
@@ -46,26 +53,24 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   setupPanes: function () {
-    var initialPaneConfig = this.get('initialPaneConfig');
-    if (initialPaneConfig === 'single') {
-      Smartgraphs.sendAction('showSinglePane');
-      this.setupPane('single');
-    }
-    else if (initialPaneConfig === 'split') {
-      Smartgraphs.sendAction('showSplitPane');
-      this.setupPane('top');
-      this.setupPane('bottom');
+    switch (this.get('initialPaneConfig')) {
+      case 'single':
+        Smartgraphs.sendAction('showSinglePane');
+        this.setupPane('single');
+        break;
+      case 'split':
+        Smartgraphs.sendAction('showSplitPane');
+        this.setupPane('top');
+        this.setupPane('bottom');
+        break;   
     }
   },
   
   setupPane: function (pane) {
-    if (pane !== 'single' && pane !== 'top' && pane !== 'bottom') {
-      console.error('setupPane: invalid pane "' + pane + '"');
-      return;
-    }
+    pane = Smartgraphs.activityViewController.validPaneFor(pane);
+    if (!pane) return NO;
     
     var graph = this.get(pane + 'Graph');
-
     if (graph) {
       Smartgraphs.sendAction('showGraph', this, { pane: pane, graphId: graph.get('id') });
     }
@@ -77,6 +82,17 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
 
+  executeCommands: function (commands) {
+    // 'commands' is a hash, not an SC.Object
+    var command;
+    for (var i = 0; i < commands.length; i++) {
+      command = commands[i];
+      // TODO action 'whitelist'?
+      // TODO deal with argument substitution?
+      Smartgraphs.sendAction(command.action, this, command.literalArgs);
+    }
+  },
+  
   setupTriggers: function () {
       // TODO!!
   },
@@ -122,20 +138,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
-  /**
-    Clean up any stale controller state. Called when we leave ACTIVITY_STEP_SUBMITTED and/or ACTIVITY itself
-  */  
-  cleanup: function () {
-    console.log('cleaning up');
-    var inspector = this.get('submissibilityInspectorInstance');
-    if (inspector) {
-      inspector.stopWatching();
-      inspector.removeObserver('value', this, this.checkSubmissibility);      
-      inspector.destroy();
-    }
-    this.set('submissibilityInspectorInstance', null);
-  },
-  
   waitForResponse: function () {
     if (!this.get('submissibilityInspector')) {
       this.enableSubmission();
@@ -170,11 +172,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   makeInspector: function (inspectorProperty) {
     var inspectorInfo = this.get(inspectorProperty);
     
-    if (!inspectorInfo) {
-      return NO;
-    }
-    
-    if (!inspectorInfo.type) {
+    if (!inspectorInfo || !inspectorInfo.type) {
       return NO;
     }
     
@@ -205,19 +203,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
     
     this._valueWasValid = valueIsValid;
-  },
-  
-  /**
-  */
-  executeCommands: function (commands) {
-    // 'commands' is a hash, not an SC.Object
-    var command;
-    for (var i = 0, ii = commands.length; i < ii; i++) {
-      command = commands[i];
-      // TODO action 'whitelist'?
-      // TODO deal with argument substitution?
-      Smartgraphs.sendAction(command.action, this, command.literalArgs);
-    }
   },
   
   enableSubmission: function () {
