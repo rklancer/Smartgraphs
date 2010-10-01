@@ -179,9 +179,9 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   showControls: function (pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
-    
-    if ( !which ) return NO;    
 
+    if ( !which ) return NO;
+    
     this.hideControls();
     this.disableAllControls();
     this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.graphControlsView');

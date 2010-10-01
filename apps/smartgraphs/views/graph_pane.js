@@ -16,8 +16,7 @@ Smartgraphs.GraphPane = SC.View.extend(
   childViews: 'graphView controlsContainer'.w(),
   
   graphView: Smartgraphs.GraphView.design({
-    graphControllerBinding: '.parentView.graphController',
-    viewName: 'secondGraphPane'
+    graphControllerBinding: '.parentView.graphController'
   }),
 
   controlsContainer: SC.ContainerView.design({
