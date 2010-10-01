@@ -345,13 +345,12 @@ test('adding test-sketch annotation via graph controller should result in additi
   ok(SC.kindOf(lastView, Smartgraphs.FreehandSketchView), 'a FreehandSketchView was appended to the graphCanvasView after test-sketch was pushed onto the annotationList');
 });
 
-test('does showControl get called on the correct pane when Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder() is called?', function () {
-  // mock Smartgraphs.freehandInputController.enableInput() and makse sure Smartgraphs.activityViewController.showControls is called due to Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder()
-  var old_showControls = Smartgraphs.activityViewController.showControls;
+test('Does showControl get called on the correct pane when Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder() is called?', function () {
+  var oldShowControls = Smartgraphs.activityViewController.showControls;
   Smartgraphs.activityViewController.showControls = function (pane) {
     start(); // prevent the test from timing out
-    ok("Smartgraphs.activityViewController.showControls called",
-      'Smartgraphs.activityViewController.showControls should have been called.');
+    ok("Smartgraphs.activityViewController.showControls() was called",
+      'Smartgraphs.activityViewController.showControls() should have been called.');
     pane = this.validPaneFor(pane);
     equals(pane,'top',
       "Smartgraphs.activityViewController.showControls should have been called for 'top' pane");
@@ -366,6 +365,21 @@ test('does showControl get called on the correct pane when Smartgraphs.FREEHAND_
     return YES;
   };
 
+  var oldEnableInput = Smartgraphs.freehandInputController.enableInput;
+  Smartgraphs.freehandInputController.enableInput = function () {
+    start(); // prevent the test from timing out
+    ok("Smartgraphs.freehandInputController.enableInput() was called first",
+      'Smartgraphs.freehandInputController.enableInput() should have been called before Smartgraphs.activityViewController.showControls().');
+    stop(1000); // Fail this test if start is not called again within the given milliseconds
+    if (!this._sketch) return NO;
+
+    this._inputIsEnabled = YES;
+    this._graphController.startFreehandInput();
+
+    this._graphController.get('eventQueue').addObserver('[]', this, this.graphObserver);
+    return YES;
+  };
+
   var childViews = canvasView.get('childViews');
 
   SC.RunLoop.begin();  
@@ -374,19 +388,19 @@ test('does showControl get called on the correct pane when Smartgraphs.FREEHAND_
   var newLength = childViews.get('length');
   var lastView = childViews.objectAt(newLength-1);
   ok(SC.kindOf(lastView, Smartgraphs.FreehandSketchView), 'a FreehandSketchView was appended to the graphCanvasView after test-sketch was pushed onto the annotationList');
-  
+  stop(1000); // Fail this test if start is not called within the given milliseconds
+
   var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
   SC.RunLoop.end();
   
-  stop(2000); // Fail is start is not called within 2 seconds
-
   // cleanup state after FREEHAND_INPUT
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
 
   // remove spies.
   Smartgraphs.makeFirstResponder = oldMakeFirstResponder;
-  Smartgraphs.activityViewController.showControls = old_showControls;
+  Smartgraphs.activityViewController.showControls = oldShowControls;
+  Smartgraphs.freehandInputController.enableInput = oldEnableInput;
 });
 
 
