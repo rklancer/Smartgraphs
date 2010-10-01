@@ -41,8 +41,8 @@ Smartgraphs.activityPageDef = SC.Page.extend({
 
           childViews: 'introText activityStepWrapper'.w(),
 
-          introText: SC.StaticContentView.design({
-            contentBinding: SC.Binding.oneWay('Smartgraphs.activityPageController.introText'),
+          introText: SC.StaticContentView.design({            
+            contentBinding: 'Smartgraphs.activityPageController.introText',
             isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText')
           }),
           
@@ -58,7 +58,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
               classNames: 'dialog-text'.w(),
 
               beforeText: SC.StaticContentView.design({
-                contentBinding: SC.Binding.oneWay('Smartgraphs.activityStepController.beforeText'),
+                contentBinding: 'Smartgraphs.activityStepController.beforeText',
                 isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.beforeText')
               }),
               
@@ -70,7 +70,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
               }),
               
               afterText: SC.StaticContentView.design({
-                contentBinding: SC.Binding.oneWay('Smartgraphs.activityStepController.afterText'),
+                contentBinding: 'Smartgraphs.activityStepController.afterText',
                 isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.afterText')
               })
             }),
