@@ -7,7 +7,7 @@
 
 // This is a place to hold the activityView until it's appended to the document
 
-Smartgraphs.activityPage = SC.Page.design({
+Smartgraphs.activityPageDef = SC.Page.extend({
 
   activityView: SC.View.design({
     childViews: 'instructionsWrapper dataWrapper'.w(),
@@ -280,3 +280,5 @@ Smartgraphs.activityPage = SC.Page.design({
   })
   
 });
+
+Smartgraphs.activityPage = Smartgraphs.activityPageDef.design();
