@@ -392,7 +392,7 @@ test('Does showControl get called on the correct pane when Smartgraphs.FREEHAND_
 
   var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
-  SC.RunLoop.end();
+  SC.RunLoop.end(); 
   
   // cleanup state after FREEHAND_INPUT
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
@@ -466,49 +466,4 @@ test('mouse events should result in a path string that reflects the location of 
   Smartgraphs.FREEHAND_INPUT_COMPLETED.willLoseFirstResponder();  
   Smartgraphs.FREEHAND_INPUT_READY.willLoseFirstResponder();  
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
-});
-
-
-var newState;
-module('state transition requirements', {
-  setup: function () {
-    oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
-    Smartgraphs.makeFirstResponder = function (state) {
-      newState = state;
-    };
-  },
-  
-  teardown: function () {
-    Smartgraphs.makeFirstResponder = oldMakeFirstResponder;    
-  }
-});
-
-test('activityView.showControls() should be called on appropriate pane when entering FREEHAND_INPUT', function () {
-  // setup some mocks
-  var oldFreehandInputController = Smartgraphs.freehandInputController;
-  var oldShowControls = Smartgraphs.activityViewController.showControls;
-  
-  // state transition checks enableInput, so mock it
-  Smartgraphs.freehandInputController = SC.Object.create({
-    pane: 'thepane',
-    enableInput: function () {
-      return YES;
-    }
-  });
-  
-  // spy on which pane the controls are put into
-  var paneRequested = null;  
-  Smartgraphs.activityViewController.showControls = function (pane) {
-    paneRequested = pane;
-  };
-  
-  newState = null;        // for makeFirstResponder mock
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
-  
-  equals(newState, Smartgraphs.FREEHAND_INPUT_READY, "transition to FREEHAND_INPUT should have succeeded (immediately transitioning to FREEHAND_INPUT_READY)");
-  equals(paneRequested, 'thepane', "activityViewController.showControls should have been called on registered pane");
-  
-  // restore mocks
-  Smartgraphs.freehandInputController = oldFreehandInputController;
-  Smartgraphs.activityViewController.showControls = oldShowControls;
 });
