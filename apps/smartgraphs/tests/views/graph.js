@@ -64,7 +64,7 @@ function setupFixtures() {
   ];
   
   // without some data in a RecordType's FIXTURES, the FixturesDataSource won't allow any records to be committed.
-  Smartgraphs.DataSeries.FIXTURES = Smartgraphs.DataSeries.oldFixtures;
+  Smartgraphs.DataSeries.oldFixtures = Smartgraphs.DataSeries.oldFixtures;
   Smartgraphs.DataSeries.FIXTURES = [{url: 'dummy'}];
   
   Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
@@ -80,8 +80,8 @@ function setupFixtures() {
 function restoreFixtures() {
   Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
   Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
-  Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
-  Smartgraphs.DataSeries.oldFixtures = Smartgraphs.DataSeries.FIXTURES;
+  Smartgraphs.DataSeries.FIXTURES = Smartgraphs.DataSeries.oldFixtures;
+  Smartgraphs.DataPoint.FIXTURES = Smartgraphs.DataPoint.oldFixtures;
   Smartgraphs.set('store', oldStore);
 }
 
@@ -282,9 +282,11 @@ function runTests() {
 
   // TODO move to unit test for DataPointView?
 
-  test('updating the coordinates of a DataPoint should result in a call to render() with the new coordinates', function () {  
+  test('updating the coordinates of a DataPoint should result in a call to render() with the correct color and coordinates', function () {  
     var seriesList = Smartgraphs.firstGraphController.get('seriesList');
     var series = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { url: 'series1' });
+    series.set('color', '#badcaf');
+    
     seriesList.pushObject(series);
 
     var seriesView = canvasView.get('childViews').objectAt(1);
@@ -338,6 +340,10 @@ function runTests() {
     equals(oldAttrs.cx, view.coordinatesForPoint(1,1).x, 'cx value of raphaelCircle before update to (4,1) was correct x-coordinate for (1,1)');
     equals(oldAttrs.cy, view.coordinatesForPoint(1,1).y, 'cy value of raphaelCircle before update to (4,1) was correct y-coordinate for (1,1)');  
 
+    // check colors
+    equals(oldAttrs.fill, '#badcaf', 'raphaelCircle should reflect color of underlying series');
+    equals(oldAttrs.stroke, '#badcaf', 'raphaelCircle should reflect color of underlying series');
+    
     // check newly-rendered centerx and centery of circle after update of point.x
     equals(renderedX, 4, 'x value during render was 4');
     equals(renderedY, 1, 'y value during render was 1');
