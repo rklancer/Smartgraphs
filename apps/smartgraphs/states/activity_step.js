@@ -26,7 +26,6 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   willLoseFirstResponder: function () {
-    Smartgraphs.activityStepController.disableSubmission();
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', NO);
   },
   
