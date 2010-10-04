@@ -41,7 +41,7 @@
   
   function isIn(terms, value) {
     var item = evaluate(terms[0], value);
-    var list = evaluate(terms[1], value);
+    var list = evaluate(terms[1], value) || [];
     
     for (var i = 0; i < list.length; i++) {
       if (item === list[i]) return true;
@@ -56,7 +56,7 @@
   evaluate = function (exp, value) {
     if (exp === 'value') return value;
 
-    if (typeof(exp) === 'string' || typeof(exp) === 'number' || exp.splice === [].splice || exp === undefined || exp === null) { 
+    if (exp === undefined || exp === null || typeof(exp) === 'string' || typeof(exp) === 'number' || typeof(exp) === 'boolean' || exp.splice === [].splice ) { 
       return exp;
     }
     
