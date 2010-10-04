@@ -34,7 +34,6 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
     this.clearChildViews();
     this.addChildViews();
     this.set('viewShouldReset', NO);
-    console.log('resetView(): set viewShouldReset to NO');
   },      
     
   clearChildViews: function () {

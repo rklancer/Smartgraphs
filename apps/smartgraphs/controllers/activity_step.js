@@ -200,7 +200,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
     var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
     
-    console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
+    //console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
     
     if (valueIsValid && !this._valueWasValid) {
       this.enableSubmission();

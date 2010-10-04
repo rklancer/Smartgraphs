@@ -38,7 +38,6 @@ Smartgraphs.SketchLengthInspector = Smartgraphs.Inspector.extend({
     }
     
     this.set('value', value);
-    console.log('inspector value: ', value);
     return value;
   },
   
