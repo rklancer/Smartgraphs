@@ -11,13 +11,15 @@ var newState;
 module('state transition requirements', {
   setup: function () {
     oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
+    newState = null; // for the following Smartgraphs.makeFirstResponder mock
     Smartgraphs.makeFirstResponder = function (state) {
       newState = state;
     };
   },
   
   teardown: function () {
-    Smartgraphs.makeFirstResponder = oldMakeFirstResponder;    
+    newState = null;
+    Smartgraphs.makeFirstResponder = oldMakeFirstResponder;
   }
 });
 
@@ -44,7 +46,6 @@ test("activityViewController.showControls() should be called on the registered p
     }
   });
   
-  newState = null; // for Smartgraphs.makeFirstResponder mock in this.setup()
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
   
   equals(newState, Smartgraphs.FREEHAND_INPUT_READY, "FREEHAND_INPUT should have transitioned to FREEHAND_INPUT_READY");
@@ -75,7 +76,6 @@ test("activityViewController.showControls() should be called on the registered p
     pane: "'top' or 'bottom' String denoting which pane the controls are put into when entering SENSOR_READY state"
   });
   
-  newState = null; // for Smartgraphs.makeFirstResponder mock in this.setup()
   Smartgraphs.SENSOR_LOADED.didBecomeFirstResponder();
   
   equals(newState, Smartgraphs.SENSOR_READY, "SENSOR_LOADED should have transitioned to SENSOR_READY");
