@@ -5,14 +5,13 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-(function () {
+(function (undefined) {
   
   var evaluate;       // defined below; defined here to make jslint happy
   
-  var example = {
-    "or": [{ "equals": [ "value", { "literal": "one" } ] }, 
-           { "equals": [ "value", { "literal": "two" } ] }]
-  };
+  // var example = {
+  //   "or": [{ "isIn": ["value", ["one", "two"]]}]
+  // };
   
   function or(terms, value) {
     for (var i = 0; i < terms.length; i++) {
