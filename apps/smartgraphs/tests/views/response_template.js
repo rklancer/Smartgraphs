@@ -54,21 +54,66 @@ module("Smartgraphs.ResponseTemplate", {
 });
 
 
-test("first child of multiple choice  choice question should contain ", function() {
-  var responseTemplate = Smartgraphs.store.find(Smartgraphs.ResponseTemplate, 'test-template');
 
-  Smartgraphs.responseTemplateController.set('content', responseTemplate);
+/** TODO:
 
+ * test that setting responseTemplateController content to null causes all childViews to be removed from the screen.
+ * test that setting responseTemplateController content to a different value causes appropriate childViews to be
+   created
+ * test that updating the value property of the different fields cause the responseTemplateController's values array
+   to be correctly updated.
+ * test that initial values are correctly set
+ * test that button labels don't overlap
+*/
+
+test("show the view", function () {
   SC.RunLoop.begin();
   pane = SC.MainPane.create({
     childViews: [Smartgraphs.ResponseTemplateView.design({
       fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
       fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
       valuesBinding: 'Smartgraphs.responseTemplateController.values',
-      editingShouldBeEnabled: NO
+      editingShouldBeEnabled: NO,
+      viewShouldResetBinding: 'Smartgraphs.responseTemplateController.viewShouldReset'
     })]
   });
   pane.append();
+  SC.RunLoop.end();
+  
+  SC.RunLoop.begin();
+  var responseTemplate = Smartgraphs.store.find(Smartgraphs.ResponseTemplate, 'test-template');  
+  Smartgraphs.responseTemplateController.setTemplate(responseTemplate);
+  SC.RunLoop.end();
+
+  var responseTemplateView = pane.get('childViews').objectAt(0);
+
+  setTimeout(function () {
+    responseTemplateView.set('doneShowing', YES);
+  },
+  5000);
+
+  afterPropertyChange(responseTemplateView, 'doneShowing', YES,
+  function() {});
+});
+
+
+test("first child of multiple choice question should contain appropriate child views", function() {
+  SC.RunLoop.begin();
+  pane = SC.MainPane.create({
+    childViews: [Smartgraphs.ResponseTemplateView.design({
+      fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
+      fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
+      valuesBinding: 'Smartgraphs.responseTemplateController.values',
+      editingShouldBeEnabled: NO,
+      viewShouldResetBinding: 'Smartgraphs.responseTemplateController.viewShouldReset'
+    })]
+  });
+  pane.append();
+  SC.RunLoop.end();
+  
+  SC.RunLoop.begin();
+  var responseTemplate = Smartgraphs.store.find(Smartgraphs.ResponseTemplate, 'test-template');  
+  Smartgraphs.responseTemplateController.setTemplate(responseTemplate);
   SC.RunLoop.end();
 
   responseTemplateView = pane.get('childViews').objectAt(0);
@@ -87,44 +132,4 @@ test("first child of multiple choice  choice question should contain ", function
 
   var lastChoice = $layer.find('.sc-button-label').last().html().strip();
   equals(lastChoice, 'choice 3', "last choice should be 'choice 3'");
-});
-
-
-/** TODO:
-
- * test that setting responseTemplateController content to null causes all childViews to be removed from the screen.
- * test that setting responseTemplateController content to a different value causes appropriate childViews to be
-   created
- * test that updating the value property of the different fields cause the responseTemplateController's values array
-   to be correctly updated.
- * test that initial values are correctly set
- * test that button labels don't overlap
-*/
-
-test("show the view", function () {
-  var responseTemplate = Smartgraphs.store.find(Smartgraphs.ResponseTemplate, 'test-template');
-
-  Smartgraphs.responseTemplateController.set('content', responseTemplate);
-
-  SC.RunLoop.begin();
-  pane = SC.MainPane.create({
-    childViews: [Smartgraphs.ResponseTemplateView.design({
-      fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
-      fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
-      valuesBinding: 'Smartgraphs.responseTemplateController.values',
-      editingShouldBeEnabled: NO
-    })]
-  });
-  pane.append();
-  SC.RunLoop.end();
-
-  var responseTemplateView = pane.get('childViews').objectAt(0);
-
-  setTimeout(function () {
-    responseTemplateView.set('doneShowing', YES);
-  },
-  5000);
-
-  afterPropertyChange(responseTemplateView, 'doneShowing', YES,
-  function() {});
 });
