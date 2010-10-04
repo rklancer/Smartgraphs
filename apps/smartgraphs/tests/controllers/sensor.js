@@ -11,6 +11,8 @@ var oldVPF;
 var oldStore;
 var oldAppletPage;
 var oldSC;
+var oldSSLV;
+
 var dataset;
 var appletViewStartWasCalled = NO;
 
@@ -34,11 +36,12 @@ module("sensorController <--> SENSOR_* state interactions", {
     
     Smartgraphs.sensorController.oldStartRecording = Smartgraphs.sensorController.startRecording;
     Smartgraphs.sensorController.oldDisableInput = Smartgraphs.sensorController.disableInput;
-          
+        
     oldMFR = Smartgraphs.makeFirstResponder;
     oldSA = Smartgraphs.sendAction;
     oldVPF = Smartgraphs.activityViewController.validPaneFor;
     oldSC = Smartgraphs.activityViewController.showControls;
+    oldSSLV = Smartgraphs.activityViewController.showSensorLoadingView;
   },
   
   teardown: function () {
@@ -53,6 +56,7 @@ module("sensorController <--> SENSOR_* state interactions", {
     Smartgraphs.makeFirstResponder = oldMFR;
     Smartgraphs.sendAction = oldSA;
     Smartgraphs.activityViewController.validPaneFor = oldVPF;
+    Smartgraphs.activityViewController.showSensorLoadingView = oldSSLV;
     Smartgraphs.set('appletPage', oldAppletPage);
     
     Smartgraphs.set('store', oldStore);
@@ -101,7 +105,15 @@ test('sensorController.enableInput() should wait for sensor to load', function (
   Smartgraphs.SENSOR.waitForSensorToLoad();
   equals(newState, Smartgraphs.SENSOR_LOADING, "waitForSensorToLoad action should attempt to transition to SENSOR_LOADING state");
 
-  // pretend the sensor called back
+  // check that we show sensor loading view...
+  var sensorLoadingViewRequestedInPane = null;
+  Smartgraphs.activityViewController.showSensorLoadingView = function (pane) {
+    sensorLoadingViewRequestedInPane = pane;
+  };
+  Smartgraphs.SENSOR_LOADING.didBecomeFirstResponder();
+  equals(sensorLoadingViewRequestedInPane, 'valid-pane',  "after transition to SENSOR_LOADING, sensor-is-loading view should be shown in 'valid-pane'");
+  
+  // now check the callback the sensor uses to indicate that it's ready.
   actionSent = null;
   Smartgraphs.sensorController.sensorsReady();
   equals( actionSent, 'sensorHasLoaded', "enableInput() should have issued action 'sensorHasLoaded' after sensorsReady() callback from applet");
