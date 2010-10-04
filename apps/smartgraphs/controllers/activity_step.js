@@ -97,6 +97,23 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       // TODO!!
   },
   
+  enableSubmission: function () {
+    this.set('canSubmit', YES);
+  },
+  
+  disableSubmission: function () {
+    this.set('canSubmit', NO);    
+  },
+  
+  waitForResponse: function () {
+    if (this.get('submissibilityInspector')) {
+      this.disableSubmission();
+      this.setupSubmissibilityInspector();
+    }
+    else {
+      this.enableSubmission();
+    }
+  },
   
   /**
     Called when the user clicks the 'done' or 'submit' button associated with this step.
@@ -115,14 +132,14 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     an error if the 'isFinalStep' property is NO.
   */
   handleSubmission: function () {
+    if ( !this.get('canSubmit') ) return NO;
+    
     var inspector = this.makeInspector('responseInspector');
-
     if (inspector) {
       var value = inspector.inspect();
-    
       var branch, branches = this.get('responseBranches');
     
-      for (var i = 0, ii = branches.get('length'); i < ii; i++) {
+      for (var i = 0; i < branches.length; i++) {
         branch = branches.objectAt(i);
         if (Smartgraphs.evaluate(branch.criterion, value)) {
           Smartgraphs.sendAction('gotoStep', this, { stepId: branch.step });
@@ -135,16 +152,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     if (defaultBranch) {
       Smartgraphs.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
-    }
-  },
-  
-  waitForResponse: function () {
-    if (!this.get('submissibilityInspector')) {
-      this.enableSubmission();
-    }
-    else {
-      this.disableSubmission();
-      this.setupSubmissibilityInspector();
     }
   },
   
@@ -203,14 +210,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
     
     this._valueWasValid = valueIsValid;
-  },
-  
-  enableSubmission: function () {
-    this.set('canSubmit', YES);
-  },
-  
-  disableSubmission: function () {
-    this.set('canSubmit', NO);    
   }
   
 }) ;

@@ -34,11 +34,10 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // ACTIONS
   // 
   
-  gotoNextPage: function () {
-    this.submitStep();
-    this.invokeLast(function () {
-      Smartgraphs.sendAction('gotoNextPage');
-    });
+  waitForResponse: function (context, args) {
+    Smartgraphs.activityStepController.waitForResponse();
+    Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
+    return YES;
   },
   
   submitStep: function () {
@@ -47,11 +46,12 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     }
     return YES;
   },
-
-  waitForResponse: function (context, args) {
-    Smartgraphs.activityStepController.waitForResponse();
-    Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
-    return YES;
+  
+  gotoNextPage: function () {
+    this.submitStep();
+    this.invokeLast(function () {
+      Smartgraphs.sendAction('gotoNextPage');
+    });
   },
   
   showSinglePane: function () {
