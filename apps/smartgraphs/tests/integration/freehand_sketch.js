@@ -398,7 +398,8 @@ test('Does showControl get called on the correct pane when Smartgraphs.FREEHAND_
 });
 
 
-test('mouse events should result in a path string that reflects the location of the events', function () {
+test("simulated mouse events should result in rendering the appropriate path string, which a simulated 'clear' button click should clear", function () {
+
   // utility stuff.
   var inputArea = canvasView.getPath('axesView.inputArea.layer');
   var offset = graphView.$().offset();
@@ -454,10 +455,20 @@ test('mouse events should result in a path string that reflects the location of 
   var pathStr = raphael.attr('path').toString().split(' ').join(',');   // .split.join normalizes path string for IE
   
   equals(pathStr, "M0,10L20,30L40,50", 'path string should represent the points clicked');
-  
-  // simulate the normal sequence of state transitions in order to clean up.
+
+  // simulate the normal sequence of state transitions corresponding to finishing freehand input
   Smartgraphs.FREEHAND_INPUT_COMPLETED.didBecomeFirstResponder();
-  Smartgraphs.FREEHAND_INPUT_COMPLETED.willLoseFirstResponder();  
+
+  // click 'clear' and test that it renders an empty sketch
+  SC.RunLoop.begin();
+  Smartgraphs.FREEHAND_INPUT_COMPLETED.clearControlWasClicked();
+  SC.RunLoop.end(); 
+  
+  equals(points.get('length'), 0, 'There should be 0 points in the data after the sketch is cleared');
+  pathStr = raphael.attr('path').toString().split(' ').join(',');   // .split.join normalizes path string for IE
+  equals(pathStr, "M0,0", 'path string should be M0,0 after the sketch is cleared');
+
+  Smartgraphs.FREEHAND_INPUT_COMPLETED.willLoseFirstResponder(); 
   Smartgraphs.FREEHAND_INPUT_READY.willLoseFirstResponder();  
   Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
 });
