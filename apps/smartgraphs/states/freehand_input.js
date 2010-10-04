@@ -43,14 +43,6 @@ Smartgraphs.FREEHAND_INPUT = SC.Responder.create(
   startFreehandInput: function () {
     console.error('Attempted to startFreehandInput when in FREEHAND_INPUT state');
     return YES;       // do nothing and consider that handling it!
-  },
-  
-  clearControlWasClicked: function () {
-    this.clearSketch();
-  },
-  
-  clearSketch: function () {
-    Smartgraphs.freehandInputController.clearStroke();
-    Smartgraphs.activityViewController.disableAllControls();    
   }
+  
 }) ;
