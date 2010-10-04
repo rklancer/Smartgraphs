@@ -22,30 +22,35 @@ module('state transition requirements', {
 });
 
 
-test('activityView.showControls() should be called on appropriate pane when entering FREEHAND_INPUT', function () {
+test("activityViewController.showControls() should be called on the registered pane " +
+  "when transitioning from FREEHAND_INPUT state to FREEHAND_INPUT_READY state", function () {
   // setup some mocks/spies
   var oldFreehandInputController = Smartgraphs.freehandInputController;
   var oldShowControls = Smartgraphs.activityViewController.showControls;
   
-  // state transition checks enableInput, so mock it
+  // spy on which pane the controls are put into
+  var paneRequestedInShowControls = null;
+  Smartgraphs.activityViewController.showControls = function (pane) {
+    paneRequestedInShowControls = pane;
+  };
+
   Smartgraphs.freehandInputController = SC.Object.create({
-    pane: 'thepane',
+    // mock the expected registered pane String
+    pane: "'top' or 'bottom' String denoting which pane the controls are put into when entering FREEHAND_INPUT state",
+    // Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder() checks if call to enableInput() returns YES,
+    // so mock enableInput()
     enableInput: function () {
       return YES;
     }
   });
   
-  // spy on which pane the controls are put into
-  var paneRequested = null;  
-  Smartgraphs.activityViewController.showControls = function (pane) {
-    paneRequested = pane;
-  };
-  
-  newState = null;        // for makeFirstResponder mock
+  newState = null; // for Smartgraphs.makeFirstResponder mock in this.setup()
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
   
-  equals(newState, Smartgraphs.FREEHAND_INPUT_READY, "transition to FREEHAND_INPUT should have succeeded (immediately transitioning to FREEHAND_INPUT_READY)");
-  equals(paneRequested, 'thepane', "activityViewController.showControls should have been called on registered pane");
+  equals(newState, Smartgraphs.FREEHAND_INPUT_READY, "FREEHAND_INPUT should have transitioned to FREEHAND_INPUT_READY");
+  equals(paneRequestedInShowControls,
+    "'top' or 'bottom' String denoting which pane the controls are put into when entering FREEHAND_INPUT state",
+    "activityViewController.showControls should have been called on registered pane");
   
   // restore mocks
   Smartgraphs.freehandInputController = oldFreehandInputController;
@@ -53,26 +58,30 @@ test('activityView.showControls() should be called on appropriate pane when ente
 });
 
 
-test('SENSOR_LOADED should show graph controls and transition to SENSOR_READY', function () {
+test("activityViewController.showControls() should be called on the registered pane " +
+  "when transitioning from SENSOR_LOADED state to SENSOR_READY state", function () {
   // setup mocks/spies 
   var oldSensorController = Smartgraphs.sensorController;
   var oldShowControls = Smartgraphs.activityViewController.showControls;
   
   // spy on which pane the controls are put into
-  var paneRequested = null;  
+  var paneRequestedInShowControls = null;
   Smartgraphs.activityViewController.showControls = function (pane) {
-    paneRequested = pane;
+    paneRequestedInShowControls = pane;
   };
   
   Smartgraphs.sensorController = SC.Object.create({
-    pane: 'xyzzy'
+    // mock the expected registered pane String
+    pane: "'top' or 'bottom' String denoting which pane the controls are put into when entering SENSOR_READY state"
   });
   
-  newState = null;
+  newState = null; // for Smartgraphs.makeFirstResponder mock in this.setup()
   Smartgraphs.SENSOR_LOADED.didBecomeFirstResponder();
   
-  equals(newState, Smartgraphs.SENSOR_READY, "SENSOR_LOADED should transition to SENSOR_READY");
-  equals(paneRequested, 'xyzzy', "activityViewController.showControls should have been called on the registered pane");
+  equals(newState, Smartgraphs.SENSOR_READY, "SENSOR_LOADED should have transitioned to SENSOR_READY");
+  equals(paneRequestedInShowControls,
+    "'top' or 'bottom' String denoting which pane the controls are put into when entering SENSOR_READY state",
+    "activityViewController.showControls should have been called on the registered pane");
   
   // restore mocks
   Smartgraphs.sensorController = oldSensorController;
