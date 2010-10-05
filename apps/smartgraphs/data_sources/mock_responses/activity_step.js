@@ -486,7 +486,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/6"] =
   "responseInspector": null,
   "responseBranches": [],
   "defaultBranch": "",
-  "isFinalStep": false,
+  "isFinalStep": true,
   "shouldAutoAdvancePage": false,
   "hideSubmitButton": true,
   "submitButtonTitle": "",
@@ -495,6 +495,271 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/6"] =
 steps.push(step);
 
 Smartgraphs.mockResponses["/backend/activity/2/page/5/steps"] = steps;
+
+
+/****************************************************************************
+*    Activity 2 (Maria's Run)
+*    Page 6
+****************************************************************************/
+
+steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/1"] = 
+{
+  "url": "/backend/activity/2/page/6/step/1",
+  "activityPage": "/backend/activity/2/page/6",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+      "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
+  "responseTemplate": "/backend/response-template/1/numeric",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"int": "value"}, 800]
+      },
+      "step": "/backend/activity/2/page/6/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/6/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/2"] = 
+{
+  "url": "/backend/activity/2/page/6/step/2",
+  "activityPage": "/backend/activity/2/page/6",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Incorrect.</p>" +
+    "<p><b>Hint 1</b>: Look at the data and find how many minutes passed <b>before</b> Maria stopped.</p>" +
+    "<p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
+  "responseTemplate": "/backend/response-template/1/numeric",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"int": "value"}, 800]
+      },
+      "step": "/backend/activity/2/page/6/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/6/step/3",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/3"] = 
+{
+  "url": "/backend/activity/2/page/6/step/3",
+  "activityPage": "/backend/activity/2/page/6",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Incorrect.</p>" +
+    "<p><b>Hint 2</b>: Here is where Maria stopped. Find her position from the start of the track.</p>" +
+    "<p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
+  "responseTemplate": "/backend/response-template/1/numeric",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"int": "value"}, 800]
+      },
+      "step": "/backend/activity/2/page/6/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/6/step/4",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/4"] = 
+{
+  "url": "/backend/activity/2/page/6/step/4",
+  "activityPage": "/backend/activity/2/page/6",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Incorrect.</p>" +    
+    "<p><b>Hint 3</b>: Here is where Maria stopped. Find her position from the start of the track.</p>" +
+    "<p>Try again. Find the y value (position) of this point?</p>",
+  "responseTemplate": "/backend/response-template/1/numeric",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"int": "value"}, 800]
+      },
+      "step": "/backend/activity/2/page/6/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/6/step/5",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/5"] = 
+{
+  "url": "/backend/activity/2/page/6/step/5",
+  "activityPage": "/backend/activity/2/page/6",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Four minutes into her run, Maria stopped. At that point, Maria was 800 meters away from the start line.</p>" +
+    "<p>Click Next Page >> when you are ready.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [],
+  "defaultBranch": "",
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/6"] = 
+{
+  "url": "/backend/activity/2/page/6/step/6",
+  "activityPage": "/backend/activity/2/page/6",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Correct! Four minutes into her run, Maria stopped. At that point, " +
+    "Maria’s was 800 meters away from the start line.</p>" +
+    "<p>Click Next Page >> when you are ready.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [],
+  "defaultBranch": "",
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/2/page/6/steps"] = steps;
 
 
 

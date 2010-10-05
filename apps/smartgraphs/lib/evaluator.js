@@ -63,6 +63,10 @@
     return val.get && val.get('x');
   }
   
+  function intValue(terms, value) {
+    return parseInt(evaluate(terms, value), 10);
+  }
+  
   evaluate = function (exp, value) {
     if (exp === 'value') return value;
 
@@ -95,6 +99,8 @@
             return notempty(terms, value);
           case 'xvalue':
             return xvalue(terms, value);
+          case 'int': 
+            return intValue(terms, value);
         }
         console.error('invalid expression operator: "' + op + '"');
         return;

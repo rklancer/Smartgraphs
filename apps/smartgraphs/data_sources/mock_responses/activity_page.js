@@ -334,6 +334,29 @@ page = Smartgraphs.mockResponses["/backend/activity/2/page/5"] =
 };
 pages.push(page);
 
+
+page = Smartgraphs.mockResponses["/backend/activity/2/page/6"] = 
+{
+  "steps": [
+    "/backend/activity/2/page/6/step/1",
+    "/backend/activity/2/page/6/step/2",
+    "/backend/activity/2/page/6/step/3",
+    "/backend/activity/2/page/6/step/4",
+    "/backend/activity/2/page/6/step/5",
+    "/backend/activity/2/page/6/step/6"                    
+  ],
+  "name": "",
+  "firstStep": "/backend/activity/2/page/6/step/1",
+  "introText": 
+     "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
+  "url": "/backend/activity/2/page/6",
+  "activity": "/backend/activity/2",
+  "index": 5,
+  "stepListUrl": "/backend/activity/2/page/6/steps"
+};
+pages.push(page);
+     
+     
 Smartgraphs.mockResponses["/backend/activity/2/pages"] = pages;
 
 
