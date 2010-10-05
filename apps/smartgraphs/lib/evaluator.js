@@ -53,6 +53,16 @@
     return (evaluate(terms, value) || []).length;
   }
   
+  function notempty(terms, value) {
+    var val = evaluate(terms, value);
+    return (val === 0) || !!val;
+  }
+  
+  function xvalue(terms, value) {
+    var val = evaluate(terms, value);
+    return val.get && val.get('x');
+  }
+  
   evaluate = function (exp, value) {
     if (exp === 'value') return value;
 
@@ -81,6 +91,10 @@
             return length(terms, value);
           case 'gt':
             return gt(terms, value);
+          case 'notempty':
+            return notempty(terms, value);
+          case 'xvalue':
+            return xvalue(terms, value);
         }
         console.error('invalid expression operator: "' + op + '"');
         return;

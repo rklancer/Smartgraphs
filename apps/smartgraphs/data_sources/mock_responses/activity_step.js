@@ -221,8 +221,6 @@ steps.push(step);
 
 Smartgraphs.mockResponses["/backend/activity/2/page/4/steps"] = steps;
 
-
-
 /****************************************************************************
 *    Activity 2 (Maria's Run)
 *    Page 5
@@ -248,20 +246,245 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/1"] =
   "startCommands": [],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
-  "submissibilityInspector": {},
-  // {
-  //   "type": "Smartgraphs.SelectedPointInspector",
-  //   "config": { "series": "maria" }
-  // },
-  "submissibilityCriterion": {},
-  // {
-  //   "gt": [{ "length" : { "strip":  "value" }}, 0]
-  // },
+  "submissibilityInspector": {
+    "type": "Smartgraphs.SelectedPointInspector",
+    "config": { "pane": "top", "series": "maria" }
+  },
+  "submissibilityCriterion": {
+    "notempty": "value"
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.SelectedPointInspector",
+    "config": { "pane": "top", "series": "maria" }
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"xvalue": "value"}, 4]
+      },
+      "step": "/backend/activity/2/page/5/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/5/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/2"] = 
+{
+  "url": "/backend/activity/2/page/5/step/2",
+  "activityPage": "/backend/activity/2/page/5",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Incorrect.</p>" +
+    "<p><b>Hint 1</b>: Look at the graph and table and find where Maria’s position <b>stayed the same.</b></p>" +
+    "<p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk " +
+    "to her coach.</p>",
+  "responseTemplate": "",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.SelectedPointInspector",
+    "config": { "pane": "top", "series": "maria" }
+  },
+  "submissibilityCriterion": {
+    "notempty": "value"
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.SelectedPointInspector",
+    "config": { "pane": "top", "series": "maria" }
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"xvalue": "value"}, 4]
+      },
+      "step": "/backend/activity/2/page/5/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/5/step/3",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/3"] = 
+{
+  "url": "/backend/activity/2/page/5/step/3",
+  "activityPage": "/backend/activity/2/page/5",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Incorrect.</p>" +
+    "<p><b>Hint 2</b>: In these two intervals, Maria’s position <b>changed</b> as time passed.</b></p>" +
+    "<p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk " +
+    "to her coach.</p>",
+  "responseTemplate": "",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.SelectedPointInspector",
+    "config": { "pane": "top", "series": "maria" }
+  },
+  "submissibilityCriterion": {
+    "notempty": "value"
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.SelectedPointInspector",
+    "config": { "pane": "top", "series": "maria" }
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"xvalue": "value"}, 4]
+      },
+      "step": "/backend/activity/2/page/5/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/5/step/4",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/4"] = 
+{
+  "url": "/backend/activity/2/page/5/step/4",
+  "activityPage": "/backend/activity/2/page/5",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p><b>Hint 3</b>: In this interval, Maria’s position <b>stayed the same</b> as time passed.</b></p>" +
+    "<p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk " +
+    "to her coach.</p>",
+  "responseTemplate": "",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.SelectedPointInspector",
+    "config": { "pane": "top", "series": "maria" }
+  },
+  "submissibilityCriterion": {
+    "notempty": "value"
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.SelectedPointInspector",
+    "config": { "pane": "top", "series": "maria" }
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"xvalue": "value"}, 4]
+      },
+      "step": "/backend/activity/2/page/5/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/5/step/5",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/5"] = 
+{
+  "url": "/backend/activity/2/page/5/step/5",
+  "activityPage": "/backend/activity/2/page/5",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>If you look carefully, you’ll see that between four and six minutes, Maria’s position did not change, " +
+    "meaning that she stopped at four minutes.</p>" +
+    "<p>Click Next Page >> when you are ready.</p>",
+  "responseTemplate": "",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
   "triggeredCommands": [
   ],
   "responseInspector": null,
-  "responseBranches": [
+  "responseBranches": [],
+  "defaultBranch": "",
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/6"] = 
+{
+  "url": "/backend/activity/2/page/5/step/6",
+  "activityPage": "/backend/activity/2/page/5",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Correct! Four minutes into her run, Maria’s distance stayed the same compared to the next few minutes, " +
+    "meaning she stopped running.</p>" +
+    "<p>Click Next Page >> when you are ready.</p>",
+  "responseTemplate": "",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
   ],
+  "responseInspector": null,
+  "responseBranches": [],
   "defaultBranch": "",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
@@ -272,6 +495,9 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/1"] =
 steps.push(step);
 
 Smartgraphs.mockResponses["/backend/activity/2/page/5/steps"] = steps;
+
+
+
 
 /****************************************************************************
 *    Activity 1 (Moving Away and Toward)

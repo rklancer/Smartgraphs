@@ -26,7 +26,8 @@ Smartgraphs.DataSeries = SC.Record.extend(
   points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'series' } ),
   defaultColor: SC.Record.attr(String),
   
-  color: null
+  color: null,
+  selection: null
 
 }) ;
 

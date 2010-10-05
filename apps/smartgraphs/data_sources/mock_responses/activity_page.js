@@ -311,7 +311,12 @@ pages.push(page);
 page = Smartgraphs.mockResponses["/backend/activity/2/page/5"] = 
 {
   "steps": [
-    "/backend/activity/2/page/5/step/1"
+    "/backend/activity/2/page/5/step/1",
+    "/backend/activity/2/page/5/step/2",
+    "/backend/activity/2/page/5/step/3",
+    "/backend/activity/2/page/5/step/4",
+    "/backend/activity/2/page/5/step/5",
+    "/backend/activity/2/page/5/step/6"                    
   ],
   "name": "",
   "firstStep": "/backend/activity/2/page/5/step/1",

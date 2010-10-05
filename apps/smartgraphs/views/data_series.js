@@ -17,6 +17,7 @@ Smartgraphs.DataSeriesView = RaphaelViews.RaphaelCollectionView.extend({
   // keep this set to YES prevents the collection view from redrawing all the points when re-rendering
   useFastPath: YES,
   colorBinding: '.item.color',
+  selectionBinding: '.item.selection',
   
   content: function () {
     var series = this.get('item');
