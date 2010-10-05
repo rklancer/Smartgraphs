@@ -762,6 +762,355 @@ steps.push(step);
 Smartgraphs.mockResponses["/backend/activity/2/page/6/steps"] = steps;
 
 
+/****************************************************************************
+*    Activity 2 (Maria's Run)
+*    Page 7
+****************************************************************************/
+
+steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/1"] = 
+{
+  "url": "/backend/activity/2/page/7/step/1",
+  "activityPage": "/backend/activity/2/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+      "<p>For how many minutes did Maria stop to talk to her coach?</p>",
+  "responseTemplate": "/backend/response-template/1/numeric",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"int": "value"}, 2]
+      },
+      "step": "/backend/activity/2/page/7/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/7/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/2"] = 
+{
+  "url": "/backend/activity/2/page/7/step/2",
+  "activityPage": "/backend/activity/2/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Incorrect.</p>" +  
+    "<p><b>Hint 1</b>: Here is the interval when Maria’s distance stayed the same.</p>" +
+    "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
+  "responseTemplate": "/backend/response-template/1/numeric",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"int": "value"}, 2]
+      },
+      "step": "/backend/activity/2/page/7/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/7/step/3",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/3"] = 
+{
+  "url": "/backend/activity/2/page/7/step/3",
+  "activityPage": "/backend/activity/2/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Incorrect.</p>" +    
+    "<p><b>Hint 2</b>: How much time elapsed during this interval?</p>" +    
+    "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
+  "responseTemplate": "/backend/response-template/1/numeric",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"int": "value"}, 2]
+      },
+      "step": "/backend/activity/2/page/7/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/7/step/4",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/4"] = 
+{
+  "url": "/backend/activity/2/page/7/step/4",
+  "activityPage": "/backend/activity/2/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Incorrect.</p>" +
+    "<p><b>Hint 3</b>: After four minutes, Maria stopped and did not start moving again until six minutes. " +
+    "So, how many minutes passed?</p>" +
+    "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
+  "responseTemplate": "/backend/response-template/1/numeric",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "responseBranches": [
+    { "criterion": { 
+        "equals": [{"int": "value"}, 2]
+      },
+      "step": "/backend/activity/2/page/7/step/6"
+    }
+  ],
+  "defaultBranch": "/backend/activity/2/page/7/step/5",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/5"] = 
+{
+  "url": "/backend/activity/2/page/7/step/5",
+  "activityPage": "/backend/activity/2/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Maria stopped during the horizontal segment of the graph. This is when her position did not change. " +
+    "As you can see, this interval lasted 2 minutes.</p>" +
+    "<p>Click Next Page >> when you are ready.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [],
+  "defaultBranch": "",
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/6"] = 
+{
+  "url": "/backend/activity/2/page/7/step/6",
+  "activityPage": "/backend/activity/2/page/7",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Correct! Maria stopped during the horizontal segment of the graph. " +
+    "This is when her position did not change. As you can see, this interval lasted 2 minutes.</p>" +
+    "<p>Click Next Page   >> when you are ready.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [],
+  "defaultBranch": "",
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/2/page/7/steps"] = steps;
+
+
+/****************************************************************************
+*    Activity 2 (Maria's Run)
+*    Page 8
+****************************************************************************/
+
+steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/8/step/1"] = 
+{
+  "url": "/backend/activity/2/page/8/step/1",
+  "activityPage": "/backend/activity/2/page/8",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>Think back on the activities you just did.</p>" +
+    "<p>Now that you have had a chance to create your own position versus time graphs, " +
+    "explain what kind of details this graph can tell about motion on a straight track. " +
+    "Give examples of some details that a position versus time graph cannot tell.</p>" +
+    "<p>What other elements would make the story complete?</p>",
+  "responseTemplate": "/backend/response-template/2/open",
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null, 
+  "responseBranches": null,
+  "defaultBranch": "/backend/activity/2/page/8/step/2",
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": false,
+  "submitButtonTitle": "OK",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/8/step/2"] = 
+{
+  "url": "/backend/activity/2/page/8/step/2",
+  "activityPage": "/backend/activity/2/page/8",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/4/maria",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>This is the end of the activity.</p>",
+  "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null, 
+  "responseBranches": null,
+  "defaultBranch": null,
+  "isFinalStep": false,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+Smartgraphs.mockResponses["/backend/activity/2/page/8/steps"] = steps;
+
 
 
 /****************************************************************************
