@@ -27,7 +27,7 @@ Smartgraphs.main = function main() {
   // We're letting SC.route handle navigating to a particular Activity. It needs a runloop to sync up, so 
   // just reach in and set default window.location.hash for now.
   if (!window.location.hash) {
-    window.location.hash = '/backend/activity/1';      // default activity for now
+    window.location.hash = '/backend/activity/2';      // default activity for now
   }
   
   // prevent unintended reload or back button; use 'onbeforeunload' syntax rather than $.bind just to be sure
