@@ -268,7 +268,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       isEnabledBinding: 'Smartgraphs.activityViewController.clearControlIsEnabled',      
       isDefaultBinding: 'Smartgraphs.activityViewController.clearControlIsDefault',
       
-      title: 'Reset',
+      title: 'Clear',
       action: 'clearControlWasClicked'
     })
   }),

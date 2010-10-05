@@ -11,10 +11,222 @@ sc_require('data_sources/mock_responses/mock_responses');
 var step, steps = [];
 
 
+
+/****************************************************************************
+*    Activity 2 (Maria's Run)
+*    Page 1
+****************************************************************************/
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] = 
+{
+  "url": "/backend/activity/2/page/1/step/1",
+  "activityPage": "/backend/activity/2/page/1",
+  "initialPaneConfig": 'single',
+  "singleGraph": null,
+  "topGraph": null,
+  "bottomGraph": null,
+  "singleImage": sc_static("resources/walking_path.jpg"),
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText": 
+    "<p>In this activity, when you see the 'Next Page >>' button turned on, you can go to the next page.</p>" +
+    "<p>Go ahead and click on the Next Page button now to see the next page.<p>",
+   "responseTemplate": null,
+  "afterText": "",
+  "startCommands": [
+  ],
+  "shouldFinishImmediately": true,
+  "shouldWaitForSubmissibleResponse": false,
+  "submissibilityInspector": null,
+  "submissibilityCriterion": null,
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": null,
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": false
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/2/page/1/steps"] = steps;
+
+
+/****************************************************************************
+*    Activity 2 (Maria's Run)
+*    Page 2
+****************************************************************************/
+
+steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/2/step/1"] = 
+{
+  "url": "/backend/activity/2/page/2/step/1",
+  "activityPage": "/backend/activity/2/page/1",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/1/sensor-playing",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>How are your motions represented in the position versus time graph? " +
+    "(For example, what does the graph look like when you are standing still?)</p>",
+  "responseTemplate": '/backend/response-template/2/open',
+  "afterText": "",
+  "startCommands": [
+    { "action": "startSensorInput",
+      "literalArgs": {
+        "pane": "top",
+        "seriesName": "sensor-play"
+      }
+    }
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "",
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/2/page/2/steps"] = steps;
+
+
+/****************************************************************************
+*    Activity 2 (Maria's Run)
+*    Page 3
+****************************************************************************/
+
+steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/3/step/1"] = 
+{
+  "url": "/backend/activity/2/page/3/step/1",
+  "activityPage": "/backend/activity/2/page/3",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/2/two-speeds",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+    "<p>How are the two different speeds represented in the position versus time graph?</p>",
+  "responseTemplate": '/backend/response-template/2/open',
+  "afterText": "",
+  "startCommands": [
+    { "action": "startSensorInput",
+      "literalArgs": {
+        "pane": "top",
+        "seriesName": "two-speeds"
+      }
+    }
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "",
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/2/page/3/steps"] = steps;
+
+
+/****************************************************************************
+*    Activity 2 (Maria's Run)
+*    Page 4
+****************************************************************************/
+
+steps = [];
+
+step = Smartgraphs.mockResponses["/backend/activity/2/page/4/step/1"] = 
+{
+  "url": "/backend/activity/2/page/4/step/1",
+  "activityPage": "/backend/activity/2/page/4",
+  "initialPaneConfig": 'split',
+  "singleGraph": null,
+  "topGraph": "/backend/activity/2/graph/3/start-stop-start",
+  "bottomGraph": null,
+  "singleImage": null,
+  "topImage": null,
+  "bottomImage": null,
+  "beforeText":
+      "<p>What do you notice about the <b>steepness</b> of the three different segments during each of the motions?</p>",
+  "responseTemplate": '/backend/response-template/2/open',
+  "afterText": "",
+  "startCommands": [
+    { "action": "startSensorInput",
+      "literalArgs": {
+        "pane": "top",
+        "seriesName": "start-stop-start"
+      }
+    }
+  ],
+  "shouldFinishImmediately": false,
+  "shouldWaitForSubmissibleResponse": true,
+  "submissibilityInspector": {
+    "type": "Smartgraphs.FirstResponseFieldInspector"
+  },
+  "submissibilityCriterion": {
+    "gt": [{ "length" : { "strip":  "value" }}, 0]
+  },
+  "triggeredCommands": [
+  ],
+  "responseInspector": null,
+  "responseBranches": [
+  ],
+  "defaultBranch": "",
+  "isFinalStep": true,
+  "shouldAutoAdvancePage": false,
+  "hideSubmitButton": true,
+  "submitButtonTitle": "",
+  "nextButtonShouldSubmit": true
+};
+steps.push(step);
+
+Smartgraphs.mockResponses["/backend/activity/2/page/4/steps"] = steps;
+
 /****************************************************************************
 *    Activity 1 (Moving Away and Toward)
 *    Page 1
 ****************************************************************************/
+
+steps = [];
 
 step = Smartgraphs.mockResponses["/backend/activity/1/page/1/step/1"] = 
 {
@@ -73,7 +285,8 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
   "bottomImage": null,
   "beforeText": 
     "<p>In the top-right area, draw a graph of someone walking at a <b>slow</b>, <b>steady pace</b> from point A to "+
-    "point B between 0 and 15 seconds.</p>",
+    "point B between 0 and 15 seconds.</p>"+
+    "<p>Click the <b>Clear</b> button if you want to try again</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -189,7 +402,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
      "position and time data for your movements.</p>"+
      "<p><b>Walk</b> on the path for 15 seconds. <b>Try</b> different kinds of motions (walking fast, slow, "+
      "forward, backward\u2026)</p>"+
-     "<p><b>Click Reset</b> if you want to try again.</p>",
+     "<p><b>Click Clear</b> if you want to try again.</p>",
   "responseTemplate": null,
   "afterText": "",
   "startCommands": [
@@ -1464,10 +1677,10 @@ Smartgraphs.mockResponses["/backend/activity/1/page/11/steps"] = steps;
 
 
 steps = [];
-step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] = 
+step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/1"] = 
 {
-  "url": "/backend/activity/2/page/1/step/1",
-  "activityPage": "/backend/activity/2/page/1",
+  "url": "/backend/activity/3/page/1/step/1",
+  "activityPage": "/backend/activity/3/page/1",
   "initialPaneConfig": 'single',
   "singleGraph": "/backend/activity/1/graph/1/prediction-away",
   "topGraph": null,
@@ -1506,7 +1719,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
   "responseInspector": null,
   "responseBranches": [
   ],
-  "defaultBranch": "/backend/activity/2/page/1/step/2",
+  "defaultBranch": "/backend/activity/3/page/1/step/2",
   "isFinalStep": false,
   "shouldAutoAdvancePage": false,
   "hideSubmitButton": false,
@@ -1515,10 +1728,10 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
 };
 steps.push(step);
 
-step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/2"] = 
+step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/2"] = 
 {
-  "url": "/backend/activity/2/page/1/step/2",
-  "activityPage": "/backend/activity/2/page/1",
+  "url": "/backend/activity/3/page/1/step/2",
+  "activityPage": "/backend/activity/3/page/1",
   "initialPaneConfig": 'single',
   "singleGraph": "/backend/activity/1/graph/1/prediction-away",
   "topGraph": null,
@@ -1549,7 +1762,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/2"] =
   "nextButtonShouldSubmit": true
 };
 steps.push(step);
-Smartgraphs.mockResponses["/backend/activity/2/page/1/steps"] = steps;
+Smartgraphs.mockResponses["/backend/activity/3/page/1/steps"] = steps;
 
 
 /****************************************************************************

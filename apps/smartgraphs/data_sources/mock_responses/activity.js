@@ -32,14 +32,30 @@ Smartgraphs.mockResponses["/backend/activity/1"] =
   "pageListUrl": "/backend/activity/1/pages"
 };
 
-// demo of a second activity
+
 Smartgraphs.mockResponses["/backend/activity/2"] = 
 {
-  "title":            "Second Activity",
+  "title":            "Maria's Run",
   "url":              "/backend/activity/2",
-  "pages":            ["/backend/activity/2/page/1"],
-  "pageListUrl":      "/backend/activity/2/pages"
+  "pages":            [
+    "/backend/activity/2/page/1",
+    "/backend/activity/2/page/2",
+    "/backend/activity/2/page/3",
+    "/backend/activity/2/page/4"    
+  ],
+  "pageListUrl": "/backend/activity/2/pages"
 };
+
+
+// demo of a second activity
+Smartgraphs.mockResponses["/backend/activity/3"] = 
+{
+  "title":            "Second Activity",
+  "url":              "/backend/activity/3",
+  "pages":            ["/backend/activity/3/page/1"],
+  "pageListUrl":      "/backend/activity/3/pages"
+};
+
 
 // activity with new activity-step structure
 

@@ -227,18 +227,23 @@ pages.push(page);
 Smartgraphs.mockResponses["/backend/activity/1/pages"] = pages;
 
 
-// hand generated demo of second page
+/********* ACTIVITY 2 (Maria's Run) *****************/
+
 pages = [];
 
 page = Smartgraphs.mockResponses["/backend/activity/2/page/1"] = 
 {
   "steps": [
-    "/backend/activity/2/page/1/step/1",
-    "/backend/activity/2/page/1/step/2"    
+    "/backend/activity/2/page/1/step/1"
   ],
-  "name": "First Page of Second Activity",
+  "name": "",
   "firstStep": "/backend/activity/2/page/1/step/1",
-  "introText": "<h1>A Second Activity</h1>",
+  "introText": 
+    "<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words "+
+    "and pictures. In this activity, you will tell stories that convey information about motion during a specific "+
+    "type of journey.</p>"+
+    "<p>You will learn that the motion of an object can be described by its position, direction of motion, and "+
+    "speed. Motion can be measured and represented on a graph.</p>",
   "url": "/backend/activity/2/page/1",
   "activity": "/backend/activity/2",
   "index": 1,
@@ -246,7 +251,86 @@ page = Smartgraphs.mockResponses["/backend/activity/2/page/1"] =
 };
 pages.push(page);
 
+page = Smartgraphs.mockResponses["/backend/activity/2/page/2"] = 
+{
+  "steps": [
+    "/backend/activity/2/page/2/step/1"
+  ],
+  "name": "",
+  "firstStep": "/backend/activity/2/page/2/step/1",
+  "introText": 
+    "<p>You are going to try moving in different ways on a straight path while collecting data with a motion "+
+    "sensor.</p>"+
+    "<p>When you are ready, click Start to record the position and time data for your movements. Walk on the path "+
+    "for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward…).</p>"+
+    "<p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
+  "url": "/backend/activity/2/page/2",
+  "activity": "/backend/activity/2",
+  "index": 2,
+  "stepListUrl": "/backend/activity/2/page/2/steps"
+};
+pages.push(page);
+
+page = Smartgraphs.mockResponses["/backend/activity/2/page/3"] = 
+{
+  "steps": [
+    "/backend/activity/2/page/3/step/1"
+  ],
+  "name": "",
+  "firstStep": "/backend/activity/2/page/3/step/1",
+  "introText": 
+    "<p>Next you will try moving at two different speeds.</p>" +
+    "<p>Start close to the motion sensor. When you are ready, click Start and walk away from the "+
+    "sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. " +
+    "Click Stop when the time is up.</p>",
+  "url": "/backend/activity/2/page/3",
+  "activity": "/backend/activity/2",
+  "index": 3,
+  "stepListUrl": "/backend/activity/2/page/3/steps"
+};
+pages.push(page);
+
+page = Smartgraphs.mockResponses["/backend/activity/2/page/4"] = 
+{
+  "steps": [
+    "/backend/activity/2/page/4/step/1"
+  ],
+  "name": "",
+  "firstStep": "/backend/activity/2/page/4/step/1",
+  "introText": 
+    "<p>This time, you are going to record your position and time during three different tasks.</p>" +
+    "<p>Start close to the motion sensor and click Start. " +
+    "Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds.</p>",
+  "url": "/backend/activity/2/page/4",
+  "activity": "/backend/activity/2",
+  "index": 4,
+  "stepListUrl": "/backend/activity/2/page/4/steps"
+};
+pages.push(page);
+
 Smartgraphs.mockResponses["/backend/activity/2/pages"] = pages;
+
+
+// hand generated demo of second page
+pages = [];
+
+page = Smartgraphs.mockResponses["/backend/activity/3/page/1"] = 
+{
+  "steps": [
+    "/backend/activity/3/page/1/step/1",
+    "/backend/activity/3/page/1/step/2"    
+  ],
+  "name": "First Page of Second Activity",
+  "firstStep": "/backend/activity/3/page/1/step/1",
+  "introText": "<h1>A Second Activity</h1>",
+  "url": "/backend/activity/3/page/1",
+  "activity": "/backend/activity/2",
+  "index": 1,
+  "stepListUrl": "/backend/activity/3/page/1/steps"
+};
+pages.push(page);
+
+Smartgraphs.mockResponses["/backend/activity/3/pages"] = pages;
 
 
 // for activity with new activity-step structure

@@ -173,6 +173,54 @@ Smartgraphs.Graph.FIXTURES = [
     initialAnnotations: [
       { type: 'Smartgraphs.FreehandSketch', name: 'sketch-to-match' }
     ]
+  },
+  
+  { url: 
+      '/backend/activity/2/graph/1/sensor-playing',
+    name:
+      'Sensor-Playing',
+    description: 
+      'Playing around with the sensor in page 2',
+    title: 
+      'Position vs. Time',
+    axes:
+      '/backend/axes/3/5m-30s',
+    initialSeries: 
+      [],
+    initialAnnotations:
+      []
+  },
+  
+  { url: 
+      '/backend/activity/2/graph/2/two-speeds',
+    name:
+      'Sensor-Playing',
+    description: 
+      'Walking at two speeds in page 3',
+    title: 
+      'Position vs. Time',
+    axes:
+      '/backend/axes/3/5m-30s',
+    initialSeries: 
+      [],
+    initialAnnotations:
+      []
+  },
+  
+  { url: 
+      '/backend/activity/2/graph/3/start-stop-start',
+    name:
+      'Sensor-Playing',
+    description: 
+      'Starting, stopping, and starting again in page 4',
+    title: 
+      'Position vs. Time',
+    axes:
+      '/backend/axes/3/5m-30s',
+    initialSeries: 
+      [],
+    initialAnnotations:
+      []
   }
   
 ];
