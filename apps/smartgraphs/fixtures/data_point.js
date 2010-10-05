@@ -188,6 +188,17 @@ Smartgraphs.DataPoint.FIXTURES = [
   {x: 18.800, y: 0.249, guid: 295, series: '/backend/activity/1/series/walking-toward-example'},
   {x: 19.200, y: 0.200, guid: 297, series: '/backend/activity/1/series/walking-toward-example'},
   {x: 19.600, y: 0.134, guid: 299, series: '/backend/activity/1/series/walking-toward-example'},
-  {x: 20.000, y: 0.133, guid: 301, series: '/backend/activity/1/series/walking-toward-example'}
+  {x: 20.000, y: 0.133, guid: 301, series: '/backend/activity/1/series/walking-toward-example'},
+  
+  {x: 1, y: 200, guid: 400, series: '/backend/activity/2/series/maria'},
+  {x: 2, y: 400, guid: 401, series: '/backend/activity/2/series/maria'},
+  {x: 3, y: 600, guid: 402, series: '/backend/activity/2/series/maria'},
+  {x: 4, y: 800, guid: 403, series: '/backend/activity/2/series/maria'},
+  {x: 5, y: 800, guid: 404, series: '/backend/activity/2/series/maria'},
+  {x: 6, y: 800, guid: 405, series: '/backend/activity/2/series/maria'},
+  {x: 7, y: 1050, guid: 406, series: '/backend/activity/2/series/maria'},
+  {x: 8, y: 1300, guid: 407, series: '/backend/activity/2/series/maria'},
+  {x: 9, y: 1550, guid: 408, series: '/backend/activity/2/series/maria'},
+  {x: 10, y: 1800, guid: 409, series: '/backend/activity/2/series/maria'}
   
 ];

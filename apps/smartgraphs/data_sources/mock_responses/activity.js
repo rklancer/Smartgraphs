@@ -38,10 +38,11 @@ Smartgraphs.mockResponses["/backend/activity/2"] =
   "title":            "Maria's Run",
   "url":              "/backend/activity/2",
   "pages":            [
-    "/backend/activity/2/page/1",
-    "/backend/activity/2/page/2",
-    "/backend/activity/2/page/3",
-    "/backend/activity/2/page/4"    
+    // "/backend/activity/2/page/1",
+    // "/backend/activity/2/page/2",
+    // "/backend/activity/2/page/3",
+    // "/backend/activity/2/page/4",
+    "/backend/activity/2/page/5"
   ],
   "pageListUrl": "/backend/activity/2/pages"
 };

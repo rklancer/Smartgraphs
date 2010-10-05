@@ -221,6 +221,22 @@ Smartgraphs.Graph.FIXTURES = [
       [],
     initialAnnotations:
       []
+  },
+  
+  { url: 
+      '/backend/activity/2/graph/4/maria',
+    name:
+      'Sensor-Playing',
+    description: 
+      "Graph of Maria's run",
+    title: 
+      'Position vs. Time',
+    axes:
+      '/backend/axes/4/2000m-10min',
+    initialSeries: 
+      ['maria'],
+    initialAnnotations:
+      []
   }
   
 ];

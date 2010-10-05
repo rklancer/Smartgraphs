@@ -308,6 +308,27 @@ page = Smartgraphs.mockResponses["/backend/activity/2/page/4"] =
 };
 pages.push(page);
 
+page = Smartgraphs.mockResponses["/backend/activity/2/page/5"] = 
+{
+  "steps": [
+    "/backend/activity/2/page/5/step/1"
+  ],
+  "name": "",
+  "firstStep": "/backend/activity/2/page/5/step/1",
+  "introText": 
+    "<p>Now you that you’ve had a chance to create position versus time graphs from your own motions, " +
+    "let’s look at some graphs that were created by someone running.</p>" +
+    "<p>Maria ran practice laps around the school track. " +
+    "Her coach recorded the distances she ran after each minute. " +
+    "These data are shown in the graph and the table at right. " +
+    "Remember that the time was recorded in minutes rather than seconds.</p>",
+  "url": "/backend/activity/2/page/5",
+  "activity": "/backend/activity/2",
+  "index": 5,
+  "stepListUrl": "/backend/activity/2/page/5/steps"
+};
+pages.push(page);
+
 Smartgraphs.mockResponses["/backend/activity/2/pages"] = pages;
 
 

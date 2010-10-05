@@ -44,6 +44,14 @@ Smartgraphs.DataSeries.FIXTURES = [
     }()),
     session: null,
     defaultColor: null
+  },
+  
+  { url: '/backend/activity/2/series/maria',
+    name: 'maria',
+    isExample: YES,
+    points: [400, 401, 402, 403, 404, 405, 406, 407, 408, 409],
+    session: null,
+    defaultColor: null
   }
   
 ];
