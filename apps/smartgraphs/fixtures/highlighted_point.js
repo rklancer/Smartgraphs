@@ -21,7 +21,7 @@ Smartgraphs.HighlightedPoint.FIXTURES = [
     name: 'where-maria-stopped',
     isExample: YES,
     session: null,
-    point: 4
+    point: 403
   }
 
 ];

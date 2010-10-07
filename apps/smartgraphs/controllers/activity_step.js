@@ -86,8 +86,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     var graph = this.get(pane + 'Graph');
     if (graph) {
-      this.setupStaticAnnotations(pane);
       Smartgraphs.sendAction('showGraph', this, { pane: pane, graphId: graph.get('id') });
+      this.setupStaticAnnotations(pane);
     }
     else {
       var imagePath = this.get(pane + 'Image');
