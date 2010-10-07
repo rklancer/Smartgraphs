@@ -25,7 +25,17 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
   ],
   
-  // follow the pattern that if object doesn't exist, create it in the db.
+  addAnnotations:function (annotations) {
+    var annotation;
+    for (var i = 0, arrayLength = annotations.get('length'); i < arrayLength; i++) {
+      annotation = annotations.objectAt(i);
+      // FIXME we probably just want to have a session-scoped list of all annotation names mapped to types
+      // so the type can be assumed from the name
+      this.addObjectByName(SC.objectForPropertyPath(annotation.type), annotation.name);
+    }
+  },
+
+  /** follow the pattern that if object doesn't exist, create it in the db. */
   openGraph: function (graphId) {
     if (this.get('id') === graphId) return;    // nothing to do!
 
@@ -41,19 +51,14 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     this.set('annotationList', []);
     
     // add the initial data series and annotations
-    var initial = this.get('initialSeries') || [];
-    for (var i = 0, ii = initial.get('length'); i < ii; i++) {
-      this.addObjectByName(Smartgraphs.DataSeries, initial.objectAt(i));
+    var initialSeries = this.get('initialSeries') || [];
+    for (var i = 0, arrayLength = initialSeries.get('length'); i < arrayLength; i++) {
+      var dataSeries = initialSeries.objectAt(i);
+      this.addObjectByName(Smartgraphs.DataSeries, dataSeries);
     }
     
-    initial = this.get('initialAnnotations') || [];
-    var annotation;
-    for (i = 0, ii = initial.get('length'); i < ii; i++) {
-      annotation = initial.objectAt(i);
-      // FIXME we probably just want to have a session-scoped list of all annotation names mapped to types
-      // so the type can be assumed from the name
-      this.addObjectByName(SC.objectForPropertyPath(annotation.type), annotation.name);
-    }
+    var initialAnnotations = this.get('initialAnnotations') || [];
+    this.addAnnotations(initialAnnotations);
   },
   
   setAxes: function (axesId) {
@@ -102,7 +107,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   addObjectByName: function (objectType, objectName) {
-    // first try to get the named series from the current session
+    // first try to get the named series or annotation from the current session
     var query = SC.Query.local(objectType, 'name={name} AND session={session}', { 
       name: objectName,
       session: Smartgraphs.sessionController.getPath('content')
@@ -110,14 +115,18 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     var objectList = Smartgraphs.store.find(query);
     
     if (objectList.get('length') < 1) {
-      // get an example series if that's what has this name
+      // couldn't find the series or annotation,
+      // so get an example series or annotation if that's what has this name
       query = SC.Query.local(objectType, 'name={name} AND isExample=YES', { 
         name: objectName
       });
       objectList = Smartgraphs.store.find(query);
-      if (objectList.get('length') < 1) return NO;
+      if (objectList.get('length') < 1) {
+        console.warn("Failed to find a data series or annotation with objectName:",objectName);
+        return NO;
+      }
       
-      // FIXME copy the object to the session before using it!
+      // TODO: FIXME copy the object to the session before using it!
     }
   
     var object = objectList.objectAt(0);
@@ -171,6 +180,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   addAnnotation: function (annotation) {
+    // TODO: change from a warning or remove this logger call
+    console.warn("addAnnotation called with annotation:",annotation);
     if (this.findAnnotationByName(annotation.get('name'))) {
       return NO;
     }

@@ -46,7 +46,13 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     the beforeText and the afterText
   */
   responseTemplate: SC.Record.toOne('Smartgraphs.ResponseTemplate'),
-  
+
+  /**
+   Array of "static" annotations: they do not require 'play again' buttons.
+   e.g., instructions to highlight portions of the graph.   
+   */
+  staticAnnotations: SC.Record.attr(Array), // TODO why not SC.Record.toMany('Smartgraphs.StaticAnnotation'), ?
+
   /**
     Text to display *after* the response template
   */

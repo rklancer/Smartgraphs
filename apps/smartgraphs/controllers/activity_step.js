@@ -42,7 +42,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     this.executeCommands(this.get('startCommands'));
     this.setupTriggers();
     this.enableSubmission();
-  
     // then, finish the step, or wait
     if (this.get('shouldWaitForSubmissibleResponse')) {
       Smartgraphs.sendAction('waitForResponse');
@@ -51,7 +50,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       Smartgraphs.sendAction('submitStep');
     }
   },
-  
+
   setupPanes: function () {
     switch (this.get('initialPaneConfig')) {
       case 'single':
@@ -65,13 +64,29 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         break;   
     }
   },
-  
+
+  /**
+   Adds any static annotations to the graph controller for the pane
+   */
+  setupStaticAnnotations:function (pane) {
+    var staticAnnotations = this.get('staticAnnotations');
+    if (staticAnnotations) {
+      var controller = Smartgraphs.activityViewController.graphControllerFor(pane);
+      if (!controller) {
+        console.warn("Couldn't get the graphControllerFor pane:", pane);
+        return;
+      }
+      controller.addAnnotations(staticAnnotations);
+    }
+  },
+
   setupPane: function (pane) {
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     if (!pane) return NO;
     
     var graph = this.get(pane + 'Graph');
     if (graph) {
+      this.setupStaticAnnotations(pane);
       Smartgraphs.sendAction('showGraph', this, { pane: pane, graphId: graph.get('id') });
     }
     else {

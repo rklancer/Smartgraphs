@@ -82,6 +82,7 @@ Smartgraphs.GraphView = SC.View.extend(
   
   
   _addViewForItem: function (item) {
+    // things later in the SVG DOM are above it on the HTML page
     var className = item.constructor.toString();
 
     var view = item.constructor.viewClass.design({
