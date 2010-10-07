@@ -99,12 +99,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
   executeCommands: function (commands) {
     // 'commands' is a hash, not an SC.Object
-    var command;
     for (var i = 0; i < commands.length; i++) {
-      command = commands[i];
       // TODO action 'whitelist'?
       // TODO deal with argument substitution?
-      Smartgraphs.sendAction(command.action, this, command.literalArgs);
+      Smartgraphs.sendAction(commands[i].action, this, commands[i].literalArgs);
     }
   },
   
