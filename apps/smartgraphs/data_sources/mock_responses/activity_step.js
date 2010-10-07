@@ -613,7 +613,15 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/3"] =
     "<p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
   "responseTemplate": "/backend/response-template/1/numeric",
   "afterText": "",
-  "startCommands": [],
+  "startCommands": [
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "pane": "top",
+        "type": "Smartgraphs.HighlightedPoint",
+        "name": "where-maria-stopped"
+      }
+    }
+  ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
