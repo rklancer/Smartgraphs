@@ -127,6 +127,18 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     return YES;
   },
   
+  addAnnotation: function (context, args) {
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+    controller.addObjectByName(args.type, args.name);
+    return YES;
+  },
+  
+  removeAnnotation: function (context, args) {
+    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+    controller.removeAnnotation(args.name);
+    return YES;
+  },
+  
   startFreehandInput: function (context, args) {
     Smartgraphs.sendAction('createAnnotation', this, { 
       pane: args.pane, 

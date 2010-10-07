@@ -101,6 +101,21 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     return colors.objectAt(0);
   },
   
+  /**
+    Tries to find the object (dataset or annotation, based on 'objectType') with name 'objectName' in the current
+    session and adds that object to the list of datasets or annotations associated with this graph. (This will
+    cause the dataset or annotation to be show in the corresponding graph view.)
+    
+    If the object is not found in the current session, then tries to find and add an example dataset/annotation with 
+    the given name. (TODO: should copy the example to the session so further manipulation doesn't affect the example
+    object.)
+    
+    ("Example" datasets and annotations are canonical data or annotations created by the author of the activity
+    rather than the user of the activity.)
+    
+    This is the canonical way to add an object given its name. (Once it finds the object, it adds it using
+    the addSeries/addAnnotation methods.)
+  */
   addObjectByName: function (objectType, objectName) {
     // first try to get the named series from the current session
     var query = SC.Query.local(objectType, 'name={name} AND session={session}', { 
@@ -130,10 +145,22 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
   },
   
+  /**
+    Remove the named dataset from the graph.
+  */
   removeSeries: function (seriesName) {
     var seriesList = this.get('seriesList');
     var series = this.findSeriesByName(seriesName);
     if (series) seriesList.removeObject(series);
+  },
+  
+  /**
+    Remove the named annotation from the graph.
+  */
+  removeAnnotation: function (annotationName) {
+    var annotationList = this.get('annotationList');
+    var annotation = this.findAnnotationByName(annotationName);
+    if (annotation) annotationList.removeObject(annotation);
   },
   
   // TODO DRY up vs. findAnnotationByName
@@ -141,7 +168,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     var seriesList = this.get('seriesList');
     var series;
 
-    for (var i = 0, ii = seriesList.get('length'); i < ii; i++) {
+    for (var i = 0, len = seriesList.get('length'); i < len; i++) {
       series = seriesList.objectAt(i);
       if (series.get('name') === seriesName) {
         return series;
@@ -152,7 +179,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   findAnnotationByName: function (annotationName) {
     var annotationList = this.get('annotationList');
     var annotation;
-    for (var i = 0, ii = annotationList.get('length'); i < ii; i++) {
+    for (var i = 0, len = annotationList.get('length'); i < len; i++) {
       annotation = annotationList.objectAt(i);
       if (annotation.get('name') === annotationName) {
         return annotation;
