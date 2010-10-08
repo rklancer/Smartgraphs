@@ -18,11 +18,12 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
 
   // TODO: update these defaults (and also displayProperties)
   radius: 8,
-  stroke: '#cc0000',
-  strokeWidth: 2,
-  strokeOpacity: 1.0,
+  defaultStroke: '#aa0000',
+  defaultStrokeWidth: 2,
+  defaultStrokeOpacity: 0.7,
   fill: '#ffffff',
   fillOpacity: 0,
+  defaultLeftPadding: 40,
 
   /**
    SC will call render(context, firstTime) if these properties change
@@ -33,23 +34,22 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
 
   /**
    We are using renderCallback in views to call non-SC render methods like
-   RaphaelCanvas.path (a line) with the correct attributes.
+   RaphaelCanvas.path (which we use to draw a Raphael line) with the correct attributes.
    This is done this way because Raphael methods shouldn't be called unless
    its tags are already in the DOM.
    */
   renderCallback: function(raphaelCanvas, attrs) {
     console.log("renderCallback called with raphaelCanvas:", raphaelCanvas);
     console.log("                               and attrs:", attrs);
-    //return raphaelCanvas.circle(attrs.x, attrs.y, attrs.r).attr(attrs);//.toBack();
-    var pathString = 'M ' + attrs.x + ' ' + attrs.y + ' L ' + attrs.left + ' ' + attrs.y;
-    console.log("pathString:", pathString);
-    var path = raphaelCanvas.path(pathString).attr({
-      'stroke-width': 2,
-      'stroke': '#aa0000',
-      'stroke-opacity': 0.7
+    var linePathString = 'M ' + attrs.x + ' ' + attrs.y + ' L ' + attrs.left + ' ' + attrs.y;
+    console.log("linePathString:", linePathString);
+    var linePath = raphaelCanvas.path(linePathString).attr({
+      'stroke-width': this.defaultStrokeWidth,
+      'stroke': this.defaultStroke,
+      'stroke-opacity': this.defaultStrokeOpacity
     }); //.toBack();
-    console.log("renderCallback returning path:", path);
-    return path;
+    console.log("renderCallback returning linePath:", linePath);
+    return linePath;
   },
 
   /**
@@ -59,18 +59,21 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
     var graphView = this.getPath('parentView.parentView');
     var annotation = this.get('item');
 
+    /** Collect Raphael attributes for the linePath into attrs */
+    // TODO: Handle points not in the 1st quadrant and handle lines to the x-axis
     var point = annotation.get('point');
-    var x = point ? point.get('x') : 0;
-    var y = point ? point.get('y') : 0;
-    var coords = graphView.coordinatesForPoint(x, y);
-    console.log("coords:", coords);
-
-    /** Raphael attributes for a circle */
-    // TODO: Compute the left attribute from the axis padding
+    if (!point) return; // There is no point in rendering a linePath if you can't get the starting point :)
+    var coords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
+    if (!coords) return; // There is no point in rendering a linePath if you can't get the starting Raphael point :)
+    var axes = graphView.get("axes");
+    var padding = axes.get('padding');
+    console.log("padding:", padding);
+    var leftPadding = padding ? padding.left: this.defaultLeftPadding; // TODO: get padding from axesView instead?
+    console.log("leftPadding:", leftPadding);
     var attrs = {
       x: coords.x,
       y: coords.y,
-      left: x - 1
+      left: leftPadding
     };
 
     /**
@@ -78,28 +81,23 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
      in a context object
      or does it just needs to update properties of a context object?
      */
-    console.log("firstTime:", firstTime);
     if (firstTime) {
       /**
-       Create the line(path) in Raphael
+       Create the linePath in Raphael
        context is not a SC object but SC expects it (it was created by SC.Pane.append() )
        This call creates a tag and CSS and stores it in the context.
        for rendering later (by by SC.Pane.append() using innerHTML() )
        */
-      console.log("Creating the line(path) in Raphael");
       context.callback(this, this.renderCallback, attrs);
     }
     else {
-      /** Get the line(path) from Raphael */
-      console.log("Getting the line(path) from Raphael");
-      var path = context.raphael();
-      console.log("path:", path);
+      /** Get the linePath from Raphael */
+      var linePath = context.raphael();
       /**
-       Calling toBack() on the updated circle puts the circle earliest in the
+       Calling toBack() on the updated linePath puts the linePath earliest in the
        SVG DOM and thus in the back layer on the HTML page
        */
-      path.attr(attrs); //.toBack();
-      console.log("updated path:", path);
+      linePath.attr(attrs); //.toBack();
     }
   }
 
