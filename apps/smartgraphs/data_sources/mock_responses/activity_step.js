@@ -668,7 +668,22 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/4"] =
     "<p>Try again. Find the y value (position) of this point?</p>",
   "responseTemplate": "/backend/response-template/1/numeric",
   "afterText": "",
-  "startCommands": [],
+  "startCommands": [
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "pane": "top",
+        "type": "Smartgraphs.HighlightedPoint",
+        "name": "where-maria-stopped"
+      }
+    },
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "pane": "top",
+        "type": "Smartgraphs.LineToAxis",
+        "name": "where-maria-stopped-to-y-axis"
+      }
+    }
+  ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
