@@ -7,7 +7,7 @@
 
 (function (undefined) {
   
-  var evaluate;       // defined below; defined here to make jslint happy
+  var evaluate;       // defined below; declared here to make jslint happy
   
   // var example = {
   //   "or": [{ "isIn": ["value", ["one", "two"]]}]
