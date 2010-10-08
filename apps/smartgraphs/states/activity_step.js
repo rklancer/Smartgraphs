@@ -33,6 +33,28 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // ACTIONS
   // 
   
+  showSinglePane: function () {
+    return Smartgraphs.activityViewController.showSinglePane();
+  },
+  
+  showSplitPane: function () {
+    return Smartgraphs.activityViewController.showSplitPane();
+  },
+    
+  hidePane: function (context, args) {
+    Smartgraphs.activityViewController.hidePane(args.pane);
+    return YES;
+  },
+
+  showImage: function (context, args) {
+    return Smartgraphs.activityViewController.showImage(args.pane, args.path);
+  },
+  
+  showGraph: function (context, args) {
+    Smartgraphs.activityViewController.showGraph(args.pane, args.graphId);
+    return YES;
+  },
+  
   waitForResponse: function (context, args) {
     Smartgraphs.activityStepController.waitForResponse();
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
@@ -52,49 +74,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       Smartgraphs.sendAction('gotoNextPage');
     });
   },
-  
-  showSinglePane: function () {
-    return Smartgraphs.activityViewController.showSinglePane();
-  },
-  
-  showSplitPane: function () {
-    return Smartgraphs.activityViewController.showSplitPane();
-  },
-  
-  showImage: function (context, args) {
-    return Smartgraphs.activityViewController.showImage(args.pane, args.path);
-  },
-  
-  showGraph: function (context, args) {
-    Smartgraphs.activityViewController.showGraph(args.pane, args.graphId);
-    return YES;
-  },
-  
-  hidePane: function (context, args) {
-    Smartgraphs.activityViewController.hidePane(args.pane);
-    return YES;
-  },
-  
-  setAxes: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
-    controller.setAxes(args.axesId);
-    return YES;
-  },
-  
-  displaySeriesOnGraph: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);    
-    controller.addObjectByName(Smartgraphs.DataSeries, args.seriesName);
-    return YES;
-  },
-  
-  copyExampleSeriesToGraph: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
-    var series = Smartgraphs.sessionController.createSeries(args.seriesName);
-    Smartgraphs.sessionController.copyExampleSeries(args.exampleSeriesName, args.seriesName);
-    controller.addSeries(series);
-    return YES;
-  },
-  
+
   createSeriesOnGraph: function (context, args) {
     var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     var series = Smartgraphs.sessionController.createSeries(args.seriesName);
@@ -107,19 +87,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     controller.removeSeries(args.seriesName);
     return YES;
   },
-  
-  removeAllSeries: function (context, args) {
-    return NO;      // not handled yet.
-    // var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
-    // controller.removeAllSeries();
-  },
-  
-  selectDataSeries: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
-    controller.selectSeries(args.seriesName);
-    return YES;
-  },
-  
+
   createAnnotation: function (context, args) {
     var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
     var annotation = Smartgraphs.sessionController.createAnnotation(args.annotationName, args.annotationType);
@@ -173,5 +141,39 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       return YES;
     }
   }
+  
+  // NOT CURRENTLY USED
+  
+  // setAxes: function (context, args) {
+  //   var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  //   controller.setAxes(args.axesId);
+  //   return YES;
+  // },
+  // 
+  // displaySeriesOnGraph: function (context, args) {
+  //   var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);    
+  //   controller.addObjectByName(Smartgraphs.DataSeries, args.seriesName);
+  //   return YES;
+  // },
+  // 
+  // copyExampleSeriesToGraph: function (context, args) {
+  //   var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  //   var series = Smartgraphs.sessionController.createSeries(args.seriesName);
+  //   Smartgraphs.sessionController.copyExampleSeries(args.exampleSeriesName, args.seriesName);
+  //   controller.addSeries(series);
+  //   return YES;
+  // },
+  // 
+  // removeAllSeries: function (context, args) {
+  //   return NO;      // not handled yet.
+  //   // var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  //   // controller.removeAllSeries();
+  // },
+  // 
+  // selectDataSeries: function (context, args) {
+  //   var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  //   controller.selectSeries(args.seriesName);
+  //   return YES;
+  // }
   
 }) ;
