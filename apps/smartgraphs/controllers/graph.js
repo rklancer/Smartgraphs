@@ -47,28 +47,23 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   openGraph: function (graphId) {
-    if (this.get('id') === graphId) return;    // nothing to do!
+    if (this.get('id') === graphId) return YES;    // nothing to do!
 
     var graph = Smartgraphs.store.find(Smartgraphs.Graph, graphId);
-
-    if (!graph) {
-      graph = Smartgraphs.store.createRecord(Smartgraphs.Graph, { id: graphId });
-      Smartgraphs.store.commitRecords();
-    }
+    if (!graph) return NO;
     
+    this.clear();
     this.set('content', graph);
-    this.set('seriesList', []);
-    this.set('annotationList', []);
     
     // add the initial data series and annotations
     var initial = this.get('initialSeries') || [];
-    for (var i = 0, ii = initial.get('length'); i < ii; i++) {
+    for (var i = 0, len = initial.get('length'); i < len; i++) {
       this.addObjectByName(Smartgraphs.DataSeries, initial.objectAt(i));
     }
     
     initial = this.get('initialAnnotations') || [];
     var annotation;
-    for (i = 0, ii = initial.get('length'); i < ii; i++) {
+    for (i = 0, len = initial.get('length'); i < len; i++) {
       annotation = initial.objectAt(i);
       // FIXME we probably just want to have a session-scoped list of all annotation names mapped to types
       // so the type can be assumed from the name
@@ -122,7 +117,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
 
   addSeries: function (series) {
     if (this.findSeriesByName(series.get('name'))) {
-      return NO;      // don't add the series if it is already in the graph!
+      return;      // don't add the series if it is already in the graph!
     }
     
     // get a color for the series
@@ -130,7 +125,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     
     this.get('seriesList').pushObject(series);
     Smartgraphs.store.commitRecords();
-    return YES;
   },
 
   /**
@@ -144,11 +138,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   addAnnotation: function (annotation) {
     if (this.findAnnotationByName(annotation.get('name'))) {
-      return NO;
+      return;
     }
     this.get('annotationList').pushObject(annotation);
-    Smartgraphs.store.commitRecords();    
-    return YES;
+    Smartgraphs.store.commitRecords();
   },
   
   /**
