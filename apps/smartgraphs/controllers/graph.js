@@ -14,18 +14,38 @@
 Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder, 
 /** @scope Smartgraphs.graphController.prototype */ {
   
+  /**
+    The datasets being shown on this graph.
+  */
   seriesList: null,
-  selectedSeries: null,
+  
+  /**
+    The (static) annotations being shown on this graph.
+  */
   annotationList: null,
-  _routeEvents: NO,
+
+  /**
+    Mouse events are pushed onto this array when we are in freehand input mode.
+  */
   eventQueue: [],
   
-  // from Protovis 'category10': http://vis.stanford.edu/protovis/docs/color.html
+  // private: whether to route mouse events to the eventQueue
+  _routeEvents: NO,
+  
+  /**
+    The set of dataset mark colors.
+    Taken from Protovis 'category10': http://vis.stanford.edu/protovis/docs/color.html
+  */
   colors: [
     "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
   ],
   
-  // follow the pattern that if object doesn't exist, create it in the db.
+  clear: function () {
+    this.set('seriesList', []);
+    this.set('annotationList', []);
+    this.set('content', null);
+  },
+  
   openGraph: function (graphId) {
     if (this.get('id') === graphId) return;    // nothing to do!
 
@@ -54,51 +74,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
       // so the type can be assumed from the name
       this.addObjectByName(SC.objectForPropertyPath(annotation.type), annotation.name);
     }
-  },
-  
-  setAxes: function (axesId) {
-    var axes = Smartgraphs.store.find(Smartgraphs.Axes, axesId);
-    if (!axes) {
-      axes = Smartgraphs.store.createRecord(Smartgraphs.Axes, { guid: axesId });
-    }
-    
-    this.set('axes', axes);
-    Smartgraphs.store.commitRecords();
-  },
-  
-  addSeries: function (series) {
-    if (this.findSeriesByName(series.get('name'))) {
-      return NO;      // don't add the series if it is already in the graph!
-    }
-    
-    // get a color for the series
-    series.set('color', this.getColorForSeries(series));
-    
-    this.get('seriesList').pushObject(series);
-    Smartgraphs.store.commitRecords();
-    return YES;
-  },
-  
-  /**
-    a simple implementation for now...  Later, we can use color names, handle default colors a little more
-    carefully, maybe cycle through colors if we have > 10 series on a graph (which we would ... why?)
-  */
-  getColorForSeries: function (series) {
-    var defaultColor = series.get('defaultColor');
-    var used = this.get('seriesList').getEach('color');
-  
-    if (defaultColor && !used.contains(defaultColor)) {
-      return defaultColor;
-    }
-    
-    var colors = this.get('colors');
-    
-    for (var i = 0, len = colors.get('length'); i < len; i++) {
-      if ( !used.contains(colors.objectAt(i)) ) return colors.objectAt(i);
-    }
-    
-    // just default to the first color if none available
-    return colors.objectAt(0);
   },
   
   /**
@@ -144,57 +119,27 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
       this.addAnnotation(object);
     }
   },
-  
+
+  addSeries: function (series) {
+    if (this.findSeriesByName(series.get('name'))) {
+      return NO;      // don't add the series if it is already in the graph!
+    }
+    
+    // get a color for the series
+    series.set('color', this.getColorForSeries(series));
+    
+    this.get('seriesList').pushObject(series);
+    Smartgraphs.store.commitRecords();
+    return YES;
+  },
+
   /**
     Remove the named dataset from the graph.
   */
-  removeSeries: function (seriesName) {
+  removeSeries: function (name) {
     var seriesList = this.get('seriesList');
-    var series = this.findSeriesByName(seriesName);
+    var series = this.findSeriesByName(name);
     if (series) seriesList.removeObject(series);
-  },
-  
-  /**
-    Remove the named annotation from the graph.
-  */
-  removeAnnotation: function (annotationName) {
-    var annotationList = this.get('annotationList');
-    var annotation = this.findAnnotationByName(annotationName);
-    if (annotation) annotationList.removeObject(annotation);
-  },
-  
-  // TODO DRY up vs. findAnnotationByName
-  findSeriesByName: function (seriesName) {
-    var seriesList = this.get('seriesList');
-    var series;
-
-    for (var i = 0, len = seriesList.get('length'); i < len; i++) {
-      series = seriesList.objectAt(i);
-      if (series.get('name') === seriesName) {
-        return series;
-      }
-    }
-  },
-  
-  findAnnotationByName: function (annotationName) {
-    var annotationList = this.get('annotationList');
-    var annotation;
-    for (var i = 0, len = annotationList.get('length'); i < len; i++) {
-      annotation = annotationList.objectAt(i);
-      if (annotation.get('name') === annotationName) {
-        return annotation;
-      }
-    }
-    return null;
-  },
-  
-  selectSeries: function (seriesName) {
-    var series = this.findSeriesByName(seriesName);
-    if (series) this.set('selectedSeries', series);
-  },
-  
-  removeAllSeries: function () {
-    // TODO
   },
   
   addAnnotation: function (annotation) {
@@ -202,15 +147,55 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
       return NO;
     }
     this.get('annotationList').pushObject(annotation);
+    Smartgraphs.store.commitRecords();    
     return YES;
   },
   
-  clear: function () {
-    this.set('seriesList', []);
-    this.set('annotationList', []);
-    this.set('content', null);
+  /**
+    Remove the named annotation from the graph.
+  */
+  removeAnnotation: function (name) {
+    var annotationList = this.get('annotationList');
+    var annotation = this.findAnnotationByName(name);
+    if (annotation) annotationList.removeObject(annotation);
   },
   
+  findSeriesByName: function (name) {
+    return this.findObjectByNameIn(name, this.get('seriesList'));
+  },
+  
+  findAnnotationByName: function (name) {
+    return this.findObjectByNameIn(name, this.get('annotationList'));
+  },
+  
+  findObjectByNameIn: function (name, list) {
+    var names = list.getEach('name');
+    var idx = names.indexOf(name);
+    return (idx >= 0) ? list.objectAt(idx) : null;
+  },
+  
+  /**
+    a simple implementation for now...  Later, we can use color names, handle default colors a little more
+    carefully, maybe cycle through colors if we have > 10 series on a graph (which we would ... why?)
+  */
+  getColorForSeries: function (series) {
+    var defaultColor = series.get('defaultColor');
+    var used = this.get('seriesList').getEach('color');
+  
+    if (defaultColor && !used.contains(defaultColor)) {
+      return defaultColor;
+    }
+    
+    var colors = this.get('colors');
+    
+    for (var i = 0, len = colors.get('length'); i < len; i++) {
+      if ( !used.contains(colors.objectAt(i)) ) return colors.objectAt(i);
+    }
+    
+    // just default to the first color if none available
+    return colors.objectAt(0);
+  },
+
   inputAreaMouseDown: function (x, y) {
     if (this._routeEvents) {
       this._eventQueue.pushObject({
@@ -250,4 +235,22 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   endFreehandInput: function () {   
     this._routeEvents = NO;
   }
+
+  // NOT CURRENTLY USED:
+  
+  // setAxes: function (axesId) {
+  //   var axes = Smartgraphs.store.find(Smartgraphs.Axes, axesId);
+  //   if (!axes) {
+  //     axes = Smartgraphs.store.createRecord(Smartgraphs.Axes, { guid: axesId });
+  //   }
+  //   
+  //   this.set('axes', axes);
+  //   Smartgraphs.store.commitRecords();
+  // },
+  // 
+  // selectSeries: function (seriesName) {
+  //   var series = this.findSeriesByName(seriesName);
+  //   if (series) this.set('selectedSeries', series);
+  // }
+  
 }) ;

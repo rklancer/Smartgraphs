@@ -1,0 +1,18 @@
+GraphController methods not used:
+
+setAxes
+removeSeries
+selectSeries
+
+
+ACTIVITY_STEP commands not used:
+
+setAxes
+displaySeriesOnGraph
+copyExampleSeriesToGraph
+removeSeries
+removeAllSeries
+selectDataSeries
+
+removeAnnotation (** BUT note this *should* be used!)
+
