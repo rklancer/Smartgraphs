@@ -18,8 +18,8 @@ sc_require('models/highlighted_point');
 sc_require('views/line_to_axis');
 
 Smartgraphs.LineToAxis = Smartgraphs.HighlightedPoint.extend(
-/** @scope Smartgraphs.LineToAxis.prototype */ {
-  
+/** @scope Smartgraphs.LineToAxis.prototype */
+{
 
 });
 

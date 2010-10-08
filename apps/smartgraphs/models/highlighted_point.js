@@ -20,8 +20,9 @@ sc_require('models/annotation');
 sc_require('views/highlighted_point');
 
 Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
-/** @scope Smartgraphs.HighlightedPoint.prototype */ {
-  
+/** @scope Smartgraphs.HighlightedPoint.prototype */
+{
+
   point: SC.Record.toOne('Smartgraphs.DataPoint')
 
 });

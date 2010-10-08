@@ -13,7 +13,8 @@
 */
 
 Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
-/** @scope Smartgraphs.FreehandSketchView.prototype */ {
+/** @scope Smartgraphs.FreehandSketchView.prototype */
+{
 
   // defaults
   radius: 8,
@@ -36,17 +37,17 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
    This is done this way because Raphael methods shouldn't be called unless
    its tags are already in the DOM.
    */
-  renderCallback: function (raphaelCanvas, attrs) {
-    return raphaelCanvas.circle(attrs.x, attrs.y, attrs.r).attr(attrs);//.toBack();
+  renderCallback: function(raphaelCanvas, attrs) {
+    return raphaelCanvas.circle(attrs.x, attrs.y, attrs.r).attr(attrs); //.toBack();
   },
 
   /**
    Called by SC (by the parent view)
    */
-  render: function (context, firstTime) {
+  render: function(context, firstTime) {
     var graphView = this.getPath('parentView.parentView');
     var annotation = this.get('item');
-    
+
     var point = annotation.get('point');
     var x = point ? point.get('x') : 0;
     var y = point ? point.get('y') : 0;
@@ -85,8 +86,8 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
        Calling toBack() on the updated circle puts the circle earliest in the
        SVG DOM and thus in the back layer on the HTML page
        */
-      circle.attr(attrs);//.toBack();
+      circle.attr(attrs); //.toBack();
     }
   }
-  
+
 });

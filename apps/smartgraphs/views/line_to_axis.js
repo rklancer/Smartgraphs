@@ -13,7 +13,8 @@
 */
 
 Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
-/** @scope Smartgraphs.LineToAxisView.prototype */ {
+/** @scope Smartgraphs.LineToAxisView.prototype */
+{
 
   // TODO: update these defaults (and also displayProperties)
   radius: 8,
@@ -36,7 +37,7 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
    This is done this way because Raphael methods shouldn't be called unless
    its tags are already in the DOM.
    */
-  renderCallback: function (raphaelCanvas, attrs) {
+  renderCallback: function(raphaelCanvas, attrs) {
     console.log("renderCallback called with raphaelCanvas:", raphaelCanvas);
     console.log("                               and attrs:", attrs);
     //return raphaelCanvas.circle(attrs.x, attrs.y, attrs.r).attr(attrs);//.toBack();
@@ -46,7 +47,7 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
       'stroke-width': 2,
       'stroke': '#aa0000',
       'stroke-opacity': 0.7
-    });//.toBack();
+    }); //.toBack();
     console.log("renderCallback returning path:", path);
     return path;
   },
@@ -54,15 +55,15 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
   /**
    Called by SC (by the parent view)
    */
-  render: function (context, firstTime) {
+  render: function(context, firstTime) {
     var graphView = this.getPath('parentView.parentView');
     var annotation = this.get('item');
-    
+
     var point = annotation.get('point');
     var x = point ? point.get('x') : 0;
     var y = point ? point.get('y') : 0;
     var coords = graphView.coordinatesForPoint(x, y);
-    console.log("coords:",coords);
+    console.log("coords:", coords);
 
     /** Raphael attributes for a circle */
     // TODO: Compute the left attribute from the axis padding
@@ -77,7 +78,7 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
      in a context object
      or does it just needs to update properties of a context object?
      */
-    console.log("firstTime:",firstTime);
+    console.log("firstTime:", firstTime);
     if (firstTime) {
       /**
        Create the line(path) in Raphael
@@ -92,14 +93,14 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
       /** Get the line(path) from Raphael */
       console.log("Getting the line(path) from Raphael");
       var path = context.raphael();
-      console.log("path:",path);
+      console.log("path:", path);
       /**
        Calling toBack() on the updated circle puts the circle earliest in the
        SVG DOM and thus in the back layer on the HTML page
        */
-      path.attr(attrs);//.toBack();
-      console.log("updated path:",path);
+      path.attr(attrs); //.toBack();
+      console.log("updated path:", path);
     }
   }
-  
+
 });
