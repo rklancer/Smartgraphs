@@ -119,7 +119,7 @@ module("Smartgraphs Annotation View instantiation", {
 
 
 test('HighlightedPoint location should track the point it highlights', function () {  
-  var highlight = Smartgraphs.sessionController.createAnnotation('test-highlight', Smartgraphs.HighlightedPoint);
+  var highlight = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'test-highlight');
   var point = addPoint(dataset, 1, 5);
   highlight.set('point', point);
   Smartgraphs.firstGraphController.addAnnotation(highlight);

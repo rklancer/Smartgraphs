@@ -90,7 +90,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
 
   createAnnotation: function (context, args) {
     var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
-    var annotation = Smartgraphs.sessionController.createAnnotation(args.annotationName, args.annotationType);
+    var annotation = Smartgraphs.sessionController.createAnnotation(args.type, args.name);
     controller.addAnnotation(annotation);
     return YES;
   },
@@ -110,8 +110,8 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   startFreehandInput: function (context, args) {
     Smartgraphs.sendAction('createAnnotation', this, { 
       pane: args.pane, 
-      annotationName: args.annotationName,
-      annotationType: Smartgraphs.FreehandSketch
+      type: Smartgraphs.FreehandSketch,
+      name: args.annotationName
     });
 
     var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);

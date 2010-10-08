@@ -62,7 +62,7 @@ module('Freehand input controllers and states', {
     setupFixtures();
     newSession();
     session = Smartgraphs.sessionController.get('content');
-    sketch = Smartgraphs.sessionController.createAnnotation('test-sketch', Smartgraphs.FreehandSketch);
+    sketch = Smartgraphs.sessionController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
     
     // disable makeFirstResponder by default - tests can spy on it if they want, though
     oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
@@ -282,7 +282,7 @@ module('Freehand sketch input', {
     setupFixtures();
     newSession();
     session = Smartgraphs.sessionController.get('content');
-    sketch = Smartgraphs.sessionController.createAnnotation('test-sketch', Smartgraphs.FreehandSketch);
+    sketch = Smartgraphs.sessionController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
     
     // TODO this might make sense in a debug helper
     Smartgraphs.firstGraphController.openGraph('test');
