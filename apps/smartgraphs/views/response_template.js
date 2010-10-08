@@ -106,7 +106,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
 
       valueDidChange: function () {
         var values = this.getPath('parentView.parentView.values');
-        values.replace(this.get('fieldIndex'), 1, this.get('value'));
+        if (values) values.replace(this.get('fieldIndex'), 1, this.get('value'));
       }.observes('value')
     });
   },
@@ -120,7 +120,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
 
       valueDidChange: function () {
         var values = this.getPath('parentView.parentView.values');
-        values.replace(this.get('fieldIndex'), 1, this.get('value'));
+        if (values) values.replace(this.get('fieldIndex'), 1, this.get('value'));
       }.observes('value')
     });
   },
@@ -145,7 +145,7 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       
       valueDidChange: function () {
         var values = this.getPath('parentView.values');
-        values.replace(this.get('fieldIndex'), 1, this.get('value'));
+        if (values) values.replace(this.get('fieldIndex'), 1, this.get('value'));
       }.observes('value')
     }).create();
   },
