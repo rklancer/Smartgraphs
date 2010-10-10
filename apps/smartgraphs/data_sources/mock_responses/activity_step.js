@@ -2476,7 +2476,7 @@ step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/1"] =
   "activityPage": "/backend/activity/3/page/1",
   "paneConfig": "single",
   "panes": {
-    "single": { "type": "graph", "name": "prediction-away" }
+    "single": { "type": "graph", "name": "test-graph" }
   },
   "beforeText": 
     "<p>Try visiting the first activity by changing just the last digit of the URL from '2' to '1' and hitting "+
@@ -2488,7 +2488,7 @@ step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/1"] =
     { "action": "startFreehandInput",
       "literalArgs": {
         "pane": "single",
-        "annotationName": "prediction-away"
+        "annotationName": "prediction"
       }
     }
   ],
@@ -2497,7 +2497,7 @@ step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/1"] =
   "submissibilityInspector": {
     "type": "Smartgraphs.SketchLengthInspector",
     "config": {
-      "annotationName": "prediction-away",
+      "annotationName": "prediction",
       "check": "continuously"
     }
   },
@@ -2524,7 +2524,7 @@ step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/2"] =
   "activityPage": "/backend/activity/3/page/1",
   "paneConfig": "single",
   "panes": {
-    "single": { "type": "graph", "name": "prediction-away" }
+    "single": { "type": "graph", "name": "test-graph" }
   },
   "beforeText": 
     "<p>Congratulations!</p>",

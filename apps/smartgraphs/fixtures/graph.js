@@ -265,6 +265,60 @@ Smartgraphs.Graph.FIXTURES = [
       ['maria'],
     initialAnnotations:
       []
+  },
+  
+  { url: 
+      '/backend/activity/3/graph/1/test-graph',
+    activity:
+      '/backend/activity/3',
+    name:
+      'test-graph',
+    description: 
+      'Prediction graph for "test" activity #3',
+    title:
+      'Away',
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      [],
+    initialAnnotations:
+      []
+  },
+  
+  { url: 
+      '/backend/activity/new-step/graph/1/prediction-away',
+    activity:
+      '/backend/activity/new-step',
+    name:
+      'prediction-away',
+    description: 
+      'Prediction graph of movement away',
+    title:
+      'Away',
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      [],
+    initialAnnotations:
+      []
+  },
+  
+  { url: 
+      '/backend/activity/new-step/graph/2/prediction-toward',
+    activity:
+      '/backend/activity/new-step',      
+    name:
+      'prediction-toward',
+    title:
+      'Toward',
+    description: 
+      'Prediction graph of movement towards',
+    axes:
+      '/backend/axes/1/5m-15s',
+    initialSeries: 
+      [],
+    initialAnnotations:
+      []
   }
   
 ];
