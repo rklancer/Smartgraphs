@@ -33,16 +33,13 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // ACTIONS
   // 
   
-  showSinglePane: function () {
-    return Smartgraphs.activityViewController.showSinglePane();
-  },
-  
-  showSplitPane: function () {
-    return Smartgraphs.activityViewController.showSplitPane();
+  setPaneConfig: function (context, args) {
+    Smartgraphs.activityViewController.setPaneConfig(args);
+    return YES;
   },
     
   hidePane: function (context, args) {
-    Smartgraphs.activityViewController.hidePane(args.pane);
+    Smartgraphs.activityViewController.hidePane(args);
     return YES;
   },
 

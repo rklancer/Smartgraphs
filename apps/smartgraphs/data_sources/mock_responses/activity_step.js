@@ -21,13 +21,10 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] =
 {
   "url": "/backend/activity/2/page/1/step/1",
   "activityPage": "/backend/activity/2/page/1",
-  "initialPaneConfig": 'single',
-  "singleGraph": null,
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": sc_static("resources/walking_path.jpg"),
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes" : {
+    "single": { type: "image", path: sc_static("resources/walking_path.jpg") }
+  },
   "beforeText": 
     "<p>In this activity, when you see the 'Next Page >>' button turned on, you can go to the next page.</p>" +
     "<p>Go ahead and click on the Next Page button now to see the next page.<p>",
@@ -67,13 +64,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/2/step/1"] =
 {
   "url": "/backend/activity/2/page/2/step/1",
   "activityPage": "/backend/activity/2/page/1",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/1/sensor-playing",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/2/graph/1/sensor-playing" },
+    "bottom": null 
+  },
   "beforeText":
     "<p>How are your motions represented in the position versus time graph? " +
     "(For example, what does the graph look like when you are standing still?)</p>",
@@ -123,13 +118,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/3/step/1"] =
 {
   "url": "/backend/activity/2/page/3/step/1",
   "activityPage": "/backend/activity/2/page/3",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/2/two-speeds",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/2/two-speeds" },
+    "bottom": null
+  },
   "beforeText":
     "<p>How are the two different speeds represented in the position versus time graph?</p>",
   "responseTemplate": '/backend/response-template/2/open',
@@ -178,13 +171,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/4/step/1"] =
 {
   "url": "/backend/activity/2/page/4/step/1",
   "activityPage": "/backend/activity/2/page/4",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/3/start-stop-start",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/3/start-stop-start" },
+    "bottom": null
+  },
   "beforeText":
       "<p>What do you notice about the <b>steepness</b> of the three different segments during each of the motions?</p>",
   "responseTemplate": '/backend/response-template/2/open',
@@ -232,13 +223,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/1"] =
 {
   "url": "/backend/activity/2/page/5/step/1",
   "activityPage": "/backend/activity/2/page/5",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
       "<p>Click the point in the graph that shows when and where Maria might have first stopped to talk to her coach.</p>",
   "responseTemplate": "",
@@ -279,13 +268,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/2"] =
 {
   "url": "/backend/activity/2/page/5/step/2",
   "activityPage": "/backend/activity/2/page/5",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Incorrect.</p>" +
     "<p><b>Hint 1</b>: Look at the graph and table and find where Maria’s position <b>stayed the same.</b></p>" +
@@ -329,13 +316,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/3"] =
 {
   "url": "/backend/activity/2/page/5/step/3",
   "activityPage": "/backend/activity/2/page/5",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Incorrect.</p>" +
     "<p><b>Hint 2</b>: In these two intervals, Maria’s position <b>changed</b> as time passed.</b></p>" +
@@ -379,13 +364,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/4"] =
 {
   "url": "/backend/activity/2/page/5/step/4",
   "activityPage": "/backend/activity/2/page/5",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p><b>Hint 3</b>: In this interval, Maria’s position <b>stayed the same</b> as time passed.</b></p>" +
     "<p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk " +
@@ -428,13 +411,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/5"] =
 {
   "url": "/backend/activity/2/page/5/step/5",
   "activityPage": "/backend/activity/2/page/5",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>If you look carefully, you’ll see that between four and six minutes, Maria’s position did not change, " +
     "meaning that she stopped at four minutes.</p>" +
@@ -463,13 +444,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/6"] =
 {
   "url": "/backend/activity/2/page/5/step/6",
   "activityPage": "/backend/activity/2/page/5",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Correct! Four minutes into her run, Maria’s distance stayed the same compared to the next few minutes, " +
     "meaning she stopped running.</p>" +
@@ -508,13 +487,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/1"] =
 {
   "url": "/backend/activity/2/page/6/step/1",
   "activityPage": "/backend/activity/2/page/6",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
       "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
   "responseTemplate": "/backend/response-template/1/numeric",
@@ -553,13 +530,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/2"] =
 {
   "url": "/backend/activity/2/page/6/step/2",
   "activityPage": "/backend/activity/2/page/6",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Incorrect.</p>" +
     "<p><b>Hint 1</b>: Look at the data and find how many minutes passed <b>before</b> Maria stopped.</p>" +
@@ -600,13 +575,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/3"] =
 {
   "url": "/backend/activity/2/page/6/step/3",
   "activityPage": "/backend/activity/2/page/6",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Incorrect.</p>" +
     "<p><b>Hint 2</b>: Here is where Maria stopped. Find her position from the start of the track.</p>" +
@@ -655,13 +628,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/4"] =
 {
   "url": "/backend/activity/2/page/6/step/4",
   "activityPage": "/backend/activity/2/page/6",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Incorrect.</p>" +    
     "<p><b>Hint 3</b>: Here is where Maria stopped. Find her position from the start of the track.</p>" +
@@ -717,13 +688,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/5"] =
 {
   "url": "/backend/activity/2/page/6/step/5",
   "activityPage": "/backend/activity/2/page/6",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Four minutes into her run, Maria stopped. At that point, Maria was 800 meters away from the start line.</p>" +
     "<p>Click Next Page >> when you are ready.</p>",
@@ -751,13 +720,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/6"] =
 {
   "url": "/backend/activity/2/page/6/step/6",
   "activityPage": "/backend/activity/2/page/6",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Correct! Four minutes into her run, Maria stopped. At that point, " +
     "Maria’s was 800 meters away from the start line.</p>" +
@@ -796,13 +763,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/1"] =
 {
   "url": "/backend/activity/2/page/7/step/1",
   "activityPage": "/backend/activity/2/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
       "<p>For how many minutes did Maria stop to talk to her coach?</p>",
   "responseTemplate": "/backend/response-template/1/numeric",
@@ -841,13 +806,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/2"] =
 {
   "url": "/backend/activity/2/page/7/step/2",
   "activityPage": "/backend/activity/2/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Incorrect.</p>" +  
     "<p><b>Hint 1</b>: Here is the interval when Maria’s distance stayed the same.</p>" +
@@ -888,13 +851,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/3"] =
 {
   "url": "/backend/activity/2/page/7/step/3",
   "activityPage": "/backend/activity/2/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Incorrect.</p>" +    
     "<p><b>Hint 2</b>: How much time elapsed during this interval?</p>" +    
@@ -935,13 +896,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/4"] =
 {
   "url": "/backend/activity/2/page/7/step/4",
   "activityPage": "/backend/activity/2/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Incorrect.</p>" +
     "<p><b>Hint 3</b>: After four minutes, Maria stopped and did not start moving again until six minutes. " +
@@ -983,13 +942,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/5"] =
 {
   "url": "/backend/activity/2/page/7/step/5",
   "activityPage": "/backend/activity/2/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Maria stopped during the horizontal segment of the graph. This is when her position did not change. " +
     "As you can see, this interval lasted 2 minutes.</p>" +
@@ -1018,13 +975,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/6"] =
 {
   "url": "/backend/activity/2/page/7/step/6",
   "activityPage": "/backend/activity/2/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Correct! Maria stopped during the horizontal segment of the graph. " +
     "This is when her position did not change. As you can see, this interval lasted 2 minutes.</p>" +
@@ -1063,13 +1018,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/8/step/1"] =
 {
   "url": "/backend/activity/2/page/8/step/1",
   "activityPage": "/backend/activity/2/page/8",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>Think back on the activities you just did.</p>" +
     "<p>Now that you have had a chance to create your own position versus time graphs, " +
@@ -1104,13 +1057,11 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/8/step/2"] =
 {
   "url": "/backend/activity/2/page/8/step/2",
   "activityPage": "/backend/activity/2/page/8",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/2/graph/4/maria",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/2/graph/4/maria" },
+    "bottom": null
+  },
   "beforeText":
     "<p>This is the end of the activity.</p>",
   "responseTemplate": null,
@@ -1147,13 +1098,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/1/step/1"] =
 {
   "url": "/backend/activity/1/page/1/step/1",
   "activityPage": "/backend/activity/1/page/1",
-  "initialPaneConfig": 'single',
-  "singleGraph": null,
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": sc_static("resources/arrow.jpg"),
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "image", "path": sc_static("resources/arrow.jpg") }
+  },
   "beforeText": "",
    "responseTemplate": null,
   "afterText": "",
@@ -1191,13 +1139,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
 {
   "url": "/backend/activity/1/page/2/step/1",
   "activityPage": "/backend/activity/1/page/2",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/1/prediction-away",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/1/prediction-away" },
+    "bottom": null
+  },
   "beforeText": 
     "<p>In the top-right area, draw a graph of someone walking at a <b>slow</b>, <b>steady pace</b> from point A to "+
     "point B between 0 and 15 seconds.</p>"+
@@ -1244,13 +1190,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
 {
   "url": "/backend/activity/1/page/2/step/2",
   "activityPage": "/backend/activity/1/page/2",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/1/prediction-away",
-  "bottomGraph": "/backend/activity/1/graph/2/prediction-toward",
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/1/prediction-away" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/2/prediction-toward" }
+  },
   "beforeText": 
      "<p>In the bottom-right area, draw a graph of someone walking at a <b>slow</b>, <b>steady pace</b> from point B "+
      "to point A between 0 and 15 seconds. Click Next when you are done.</p>",
@@ -1304,13 +1248,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
 {
   "url": "/backend/activity/1/page/3/step/1",
   "activityPage": "/backend/activity/1/page/3",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/3/sensor-playing" },
+    "bottom": null
+  },
   "beforeText":
      "<p><b>Place</b> the sensor at the 0-meter mark.</p>"+
      "<p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the "+
@@ -1350,13 +1292,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/2"] =
 {
   "url": "/backend/activity/1/page/3/step/2",
   "activityPage": "/backend/activity/1/page/3",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/3/sensor-playing" },
+    "bottom": null
+  },
   "beforeText": 
      "<p>How are different motions represented on a position-time graph? (For example, what does the graph look "+
      "like when you are standing still, walking forward ...?)</p>"+
@@ -1402,13 +1342,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
 {
   "url": "/backend/activity/1/page/4/step/1",
   "activityPage": "/backend/activity/1/page/4",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
-  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/4/graph-with-away-prediction" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/5/graph-with-toward-prediction" }
+  },
   "beforeText": 
     "<p>First, <b>stand</b> close to the sensor, near the 0-meter mark.</p>"+
     "<p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your "+
@@ -1446,13 +1384,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/2"] =
 {
   "url": "/backend/activity/1/page/4/step/2",
   "activityPage": "/backend/activity/1/page/4",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
-  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/4/graph-with-away-prediction" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/5/graph-with-toward-prediction" }
+  },
   "beforeText": 
     "<p>To make the second graph, <b>stand</b> approximately 4 meters away from the sensor on the path.</p>"+
     "<p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your "+
@@ -1490,13 +1426,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/3"] =
 {
   "url": "/backend/activity/1/page/4/step/3",
   "activityPage": "/backend/activity/1/page/4",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
-  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/4/graph-with-away-prediction" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/5/graph-with-toward-prediction" }
+  },
   "beforeText": 
     "<p>How closely do the graphs of your data match your original predictions?</p>",
   "responseTemplate": "/backend/response-template/2/open",
@@ -1537,13 +1471,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/5/step/1"] =
 {
   "url": "/backend/activity/1/page/5/step/1",
   "activityPage": "/backend/activity/1/page/5",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/6/sensor-away',
-  "bottomGraph": '/backend/activity/1/graph/7/sensor-toward',
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/6/sensor-away" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/7/sensor-toward" }
+  },
   "beforeText": 
     "<p>How are the two position-time graphs <b>similar</b> to each other?</p>",
   "responseTemplate": "/backend/response-template/2/open",
@@ -1576,13 +1508,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/5/step/2"] =
 {
   "url": "/backend/activity/1/page/5/step/2",
   "activityPage": "/backend/activity/1/page/5",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/6/sensor-away',
-  "bottomGraph": '/backend/activity/1/graph/7/sensor-toward',
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/6/sensor-away" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/7/sensor-toward" }
+  },
   "beforeText": 
     "<p>How does motion away from the sensor <b>differ</b> from motion toward the sensor on a position-time "+
     "graph?</b>",
@@ -1623,13 +1553,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] =
 {
   "url": "/backend/activity/1/page/6/step/1",
   "activityPage": "/backend/activity/1/page/6",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/8/walking-example-1',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/8/walking-example-1" }
+  },
   "beforeText": 
     "<p>What happened at the red point (the y-intercept for this motion)?</p>",
   "responseTemplate": "/backend/response-template/3/walking-example-1",
@@ -1685,13 +1612,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] =
 {
   "url": "/backend/activity/1/page/6/step/2",
   "activityPage": "/backend/activity/1/page/6",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/8/walking-example-1',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/8/walking-example-1" }
+  },
   "beforeText":
     "<p>What happened at the red point (the y-intercept for this motion)?</p>",
   "responseTemplate": "/backend/response-template/3/walking-example-1",
@@ -1747,13 +1671,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] =
 {
   "url": "/backend/activity/1/page/6/step/3",
   "activityPage": "/backend/activity/1/page/6",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/8/walking-example-1',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/8/walking-example-1" }
+  },
   "beforeText":
     "<p>What happened at the red point (the y-intercept for this motion)?</p>",
   "responseTemplate": "/backend/response-template/3/walking-example-1",
@@ -1810,13 +1731,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] =
 {
   "url": "/backend/activity/1/page/6/step/4",
   "activityPage": "/backend/activity/1/page/6",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/8/walking-example-1',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/8/walking-example-1" }
+  },
   "beforeText":
     "<p>What happened at the red point (the y-intercept for this motion)?</p>",
   "responseTemplate": "/backend/response-template/3/walking-example-1",
@@ -1872,13 +1790,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/5"] =
 {
   "url": "/backend/activity/1/page/6/step/5",
   "activityPage": "/backend/activity/1/page/6",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/8/walking-example-1',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/8/walking-example-1" }
+  },
   "beforeText":
     "<p><b>Correct!</b> At this point, the walker was 4 meters away, getting ready to walk toward the sensor.</p>",
   "responseTemplate": null,
@@ -1919,13 +1834,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/1"] =
 {
   "url": "/backend/activity/1/page/7/step/1",
   "activityPage": "/backend/activity/1/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/3/sensor-playing" },
+    "bottom": null
+  },
   "beforeText":
     "<p><b>Stand</b> at a starting point <i><b>other</b></i> than the 0-meter mark.</p>"+
     "<p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your "+
@@ -1964,13 +1877,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/2"] =
 {
   "url": "/backend/activity/1/page/7/step/2",
   "activityPage": "/backend/activity/1/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/3/sensor-playing" },
+    "bottom": null
+  },
   "beforeText": 
      "<p>What is the significance of the y-intercept (the y-value of the point where the graph crosses the "+
      "y-axis) of the position-time graph?</p>",
@@ -2005,13 +1916,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/3"] =
 {
   "url": "/backend/activity/1/page/7/step/3",
   "activityPage": "/backend/activity/1/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/3/sensor-playing" },
+    "bottom": null
+  },
   "beforeText": 
      "<p>Explain how the graph conveys how fast you walked.</p>", 
   "responseTemplate": "/backend/response-template/2/open",
@@ -2045,13 +1954,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/4"] =
 {
   "url": "/backend/activity/1/page/7/step/4",
   "activityPage": "/backend/activity/1/page/7",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/3/sensor-playing",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/3/sensor-playing" },
+    "bottom": null
+  },
   "beforeText": 
      "<p>How is direction represented on the graph?</p>", 
   "responseTemplate": "/backend/response-template/2/open",
@@ -2093,13 +2000,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] =
 {
   "url": "/backend/activity/1/page/8/step/1",
   "activityPage": "/backend/activity/1/page/8",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/9/two-walkers" }
+  },
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
   "responseTemplate": "/backend/response-template/4/two-walkers",
@@ -2139,13 +2043,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] =
 {
   "url": "/backend/activity/1/page/8/step/2",
   "activityPage": "/backend/activity/1/page/8",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/9/two-walkers" }
+  },
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
   "responseTemplate": "/backend/response-template/4/two-walkers",
@@ -2187,13 +2088,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] =
 {
   "url": "/backend/activity/1/page/8/step/3",
   "activityPage": "/backend/activity/1/page/8",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/9/two-walkers" }
+  },
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
   "responseTemplate": "/backend/response-template/4/two-walkers",
@@ -2234,13 +2132,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] =
 {
   "url": "/backend/activity/1/page/8/step/4",
   "activityPage": "/backend/activity/1/page/8",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/9/two-walkers" }
+  },
   "beforeText": 
     "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
   "responseTemplate": "/backend/response-template/4/two-walkers",
@@ -2283,13 +2178,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/5"] =
 {
   "url": "/backend/activity/1/page/8/step/5",
   "activityPage": "/backend/activity/1/page/8",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/9/two-walkers" }
+  },
   "beforeText": 
     "<p><b>Still incorrect.</b> Both walkers started 2 meters away. Then, one walked toward the sensor for 20 seconds, "+
     "while the other walked away from the sensor during the same 20 seconds.</p>",
@@ -2322,13 +2214,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/6"] =
 {
   "url": "/backend/activity/1/page/8/step/6",
   "activityPage": "/backend/activity/1/page/8",
-  "initialPaneConfig": 'single',
-  "singleGraph": '/backend/activity/1/graph/9/two-walkers',
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/9/two-walkers" }
+  },
   "beforeText": 
     "<p><b>Correct!</b> Both walkers started 2 meters away. Then, one walked toward the sensor for 20 seconds, "+
     "while the other walked away from the sensor during the same 20 seconds.</p>",
@@ -2371,13 +2260,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/1"] =
 {
   "url": "/backend/activity/1/page/9/step/1",
   "activityPage": "/backend/activity/1/page/9",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/10/graph-to-match",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/10/graph-to-match" },
+    "bottom": null
+  },
   "beforeText":
      "<p><b>Move</b> to your starting point and, when you are ready, have your partner <b>click Start</b> to record "+
      "the data for your movements. "+
@@ -2415,13 +2302,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/2"] =
 {
   "url": "/backend/activity/1/page/9/step/2",
   "activityPage": "/backend/activity/1/page/9",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/10/graph-to-match",
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top": { "type": "graph", "graphId": "/backend/activity/1/graph/10/graph-to-match" },
+    "bottom": null
+  },
   "beforeText": 
      "<p>How closely does your graph match the given graph? What could you have done to match the given graph "+
      "more closely?</p>"+
@@ -2465,13 +2350,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/1"] =
 {
   "url": "/backend/activity/1/page/10/step/1",
   "activityPage": "/backend/activity/1/page/10",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
-  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/4/graph-with-away-prediction" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/5/graph-with-toward-prediction" }
+  },
   "beforeText": 
     "<p>Write down <b>3</b> things you have learned about motion since you started this activity.</p>",
   "responseTemplate": "/backend/response-template/2/open",
@@ -2505,13 +2388,11 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/2"] =
 {
   "url": "/backend/activity/1/page/10/step/2",
   "activityPage": "/backend/activity/1/page/10",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": '/backend/activity/1/graph/4/graph-with-away-prediction',
-  "bottomGraph": '/backend/activity/1/graph/5/graph-with-toward-prediction',
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/4/graph-with-away-prediction" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/5/graph-with-toward-prediction" }
+  },
   "beforeText": 
     "<p>Describe <b>1</b> type of motion you would like to try with the motion sensor.</p>",
   "responseTemplate": "/backend/response-template/2/open",
@@ -2552,13 +2433,10 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/11/step/1"] =
 {
   "url": "/backend/activity/1/page/11/step/1",
   "activityPage": "/backend/activity/1/page/11",
-  "initialPaneConfig": 'single',
-  "singleGraph": null,
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": sc_static("resources/arrow.jpg"),
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "image", "path": sc_static("resources/arrow.jpg") }
+  },
   "beforeText": "",
   "responseTemplate": null,
   "afterText": "",
@@ -2596,13 +2474,10 @@ step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/1"] =
 {
   "url": "/backend/activity/3/page/1/step/1",
   "activityPage": "/backend/activity/3/page/1",
-  "initialPaneConfig": 'single',
-  "singleGraph": "/backend/activity/1/graph/1/prediction-away",
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/1/prediction-away" }
+  },
   "beforeText": 
     "<p>Try visiting the first activity by changing just the last digit of the URL from '2' to '1' and hitting "+
     "Enter.<p>"+
@@ -2647,13 +2522,10 @@ step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/2"] =
 {
   "url": "/backend/activity/3/page/1/step/2",
   "activityPage": "/backend/activity/3/page/1",
-  "initialPaneConfig": 'single',
-  "singleGraph": "/backend/activity/1/graph/1/prediction-away",
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/1/prediction-away" }
+  },
   "beforeText": 
     "<p>Congratulations!</p>",
   "responseTemplate": "",
@@ -2691,13 +2563,10 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/1"] =
 {
   "url": "/backend/activity/new-step/page/1/step/1",
   "activityPage": "/backend/activity/new-step/page/1",
-  "initialPaneConfig": 'single',
-  "singleGraph": null,
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": sc_static("resources/arrow.jpg"),
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "image", "path": sc_static("resources/arrow.jpg") }
+  },
   "beforeText": "<p>How many panes would you like to see on the next page? Enter 'one' or 'two': ",
   "responseTemplate": "/backend/response-template/2/open",
   "afterText": "",
@@ -2744,13 +2613,10 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/2"] =
 {
   "url": "/backend/activity/new-step/page/1/step/2",
   "activityPage": "/backend/activity/new-step/page/1",
-  "initialPaneConfig": 'single',
-  "singleGraph": "/backend/activity/1/graph/1/prediction-away",
-  "topGraph": null,
-  "bottomGraph": null,
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "single",
+  "panes": {
+    "single": { "type": "graph", "graphId": "/backend/activity/1/graph/1/prediction-away" }
+  },
   "beforeText": "<p>Enjoy the single pane on the right!<p>",
   "responseTemplate": null,
   "afterText": "",
@@ -2778,13 +2644,11 @@ step = Smartgraphs.mockResponses["/backend/activity/new-step/page/1/step/3"] =
 {
   "url": "/backend/activity/new-step/page/1/step/3",
   "activityPage": "/backend/activity/new-step/page/1",
-  "initialPaneConfig": 'split',
-  "singleGraph": null,
-  "topGraph": "/backend/activity/1/graph/1/prediction-away",
-  "bottomGraph": "/backend/activity/1/graph/2/prediction-toward",
-  "singleImage": null,
-  "topImage": null,
-  "bottomImage": null,
+  "paneConfig": "split",
+  "panes": {
+    "top":    { "type": "graph", "graphId": "/backend/activity/1/graph/1/prediction-away" },
+    "bottom": { "type": "graph", "graphId": "/backend/activity/1/graph/2/prediction-toward" }
+  },
   "beforeText": "<p>Enjoy the split pane on the right!<p>",
   "responseTemplate": null,
   "afterText": "",

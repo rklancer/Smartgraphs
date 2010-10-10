@@ -89,12 +89,7 @@ function showEmptyGraphInPane(pane) {
   Smartgraphs.firstGraphController.clear();
   Smartgraphs.secondGraphController.clear();
   
-  if (pane === 'single') {
-    Smartgraphs.activityViewController.showSinglePane();
-  }
-  else {
-    Smartgraphs.activityViewController.showSplitPane();
-  }
+  Smartgraphs.activityViewController.setPaneConfig(pane === 'single' ? 'single' : 'split');
   
   Smartgraphs.activityViewController.set(pane+'PaneNowShowing', graphPanePath(pane));
   SC.RunLoop.end();

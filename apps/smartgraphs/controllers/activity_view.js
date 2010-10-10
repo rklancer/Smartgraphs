@@ -120,14 +120,15 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   // ACTIVITY VIEW COMMANDS
   //
   
-  showSinglePane: function () {
-    this.set('paneIsSplit', false);
-    this.set('dataViewNowShowing', 'Smartgraphs.activityPage.singlePaneDataView');
-  },
-  
-  showSplitPane: function () {
-    this.set('paneIsSplit', true);
-    this.set('dataViewNowShowing', 'Smartgraphs.activityPage.splitPaneDataView');    
+  setPaneConfig: function (paneConfig) {
+    if (paneConfig === 'single') {
+      this.set('paneIsSplit', false);
+      this.set('dataViewNowShowing', 'Smartgraphs.activityPage.singlePaneDataView');
+    }
+    else if (paneConfig === 'split') {
+      this.set('paneIsSplit', true);
+      this.set('dataViewNowShowing', 'Smartgraphs.activityPage.splitPaneDataView');
+    }
   },
 
   showImage: function (pane, path) {

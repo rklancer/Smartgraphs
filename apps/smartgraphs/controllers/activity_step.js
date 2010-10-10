@@ -53,32 +53,33 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   setupPanes: function () {
-    switch (this.get('initialPaneConfig')) {
-      case 'single':
-        Smartgraphs.sendAction('showSinglePane');
-        this.setupPane('single');
-        break;
-      case 'split':
-        Smartgraphs.sendAction('showSplitPane');
-        this.setupPane('top');
-        this.setupPane('bottom');
-        break;   
+    Smartgraphs.sendAction('setPaneConfig', this, this.get('paneConfig'));
+    
+    var panes = this.get('panes');
+    for (var key in panes) {
+      if ( !panes.hasOwnProperty(key) ) continue;
+      this.setupPane(key, panes[key]);
     }
   },
   
-  setupPane: function (pane) {
+  setupPane: function (pane, config) {
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
-    if (!pane) return NO;
+    if (!pane) return;
     
-    var graph = this.get(pane + 'Graph');
-    if (graph) {
-      Smartgraphs.sendAction('showGraph', this, { pane: pane, graphId: graph.get('id') });
+    if (config === null) {
+      Smartgraphs.sendAction('hidePane', this, pane);
+      return;
     }
-    else {
-      var imagePath = this.get(pane + 'Image');
-      if (imagePath) {
-        Smartgraphs.sendAction('showImage', this, { pane: pane, path: imagePath });
-      }
+    
+    switch (config.type) {
+      case 'graph': 
+        Smartgraphs.sendAction('showGraph', this, { pane: pane, graphId: config.graphId });
+        return;        
+      case 'table':
+        return;
+      case 'image':
+        Smartgraphs.sendAction('showImage', this, { pane: pane, path: config.path });
+        return;
     }
   },
 
