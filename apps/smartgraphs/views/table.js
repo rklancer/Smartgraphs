@@ -96,7 +96,7 @@ Smartgraphs.TableView = SC.View.extend(
         },
         rowHeightBinding: '.parentView.rowHeight',
         canEditContent: NO,
-        contentValueKey: 'x',
+        contentValueKey: 'xRounded',
         contentBinding: '.parentView.content',
         selectionBinding: '.parentView.selection'
       }),
@@ -109,7 +109,7 @@ Smartgraphs.TableView = SC.View.extend(
         },
         rowHeightBinding: '.parentView.rowHeight',
         canEditContent: NO,
-        contentValueKey: 'y',
+        contentValueKey: 'yRounded',
         contentBinding: '.parentView.content',
         selectionBinding: '.parentView.selection',
         rowHeight: 18

@@ -17,6 +17,14 @@ Smartgraphs.DataPoint = SC.Record.extend(
 
   x: SC.Record.attr(Number),
   y: SC.Record.attr(Number),
-  series: SC.Record.toOne('Smartgraphs.DataSeries', { inverse: 'points' } )
+  series: SC.Record.toOne('Smartgraphs.DataSeries', { inverse: 'points' } ),
+  
+  xRounded: function () {
+    return Math.round(this.get('x') * 100) / 100;
+  }.property('x').cacheable(),
+  
+  yRounded: function () {
+    return Math.round(this.get('y') * 100) / 100;
+  }.property('y').cacheable()
 
 }) ;
