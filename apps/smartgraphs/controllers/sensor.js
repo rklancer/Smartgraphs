@@ -106,7 +106,21 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   
   clearRecordedData: function () {
     SC.RunLoop.begin();
-    this._series.get('points').invoke('destroy');
+    var points = this._series.get('points');
+
+    // need to cache the items in the 'points' ManyArray as forEach doesn't deal well with points being removed while
+    // it is iterating over them
+    var toDestroy = [];
+    points.forEach( function (point) {
+      toDestroy.push(point);
+    });
+    
+    // set 'series' to null or else destroyed points hang around in our 'points' ManyArray, just with DESTROYED status
+    toDestroy.forEach( function (point) {
+      point.set('series', null);
+      point.destroy();
+    });
+    Smartgraphs.store.commitRecords();
     SC.RunLoop.end();
   },
 
