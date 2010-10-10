@@ -120,8 +120,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/3/step/1"] =
   "activityPage": "/backend/activity/2/page/3",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "two-speeds" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "two-speeds" },
+    "bottom": { "type": "table", "graphName": "two-speeds", "seriesName": "two-speeds" } 
   },
   "beforeText":
     "<p>How are the two different speeds represented in the position versus time graph?</p>",
@@ -173,8 +173,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/4/step/1"] =
   "activityPage": "/backend/activity/2/page/4",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "start-stop-start" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "start-stop-start" },
+    "bottom": { "type": "table", "graphName": "start-stop-start", "seriesName": "start-stop-start" } 
   },
   "beforeText":
       "<p>What do you notice about the <b>steepness</b> of the three different segments during each of the motions?</p>",
@@ -225,8 +225,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/1"] =
   "activityPage": "/backend/activity/2/page/5",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
       "<p>Click the point in the graph that shows when and where Maria might have first stopped to talk to her coach.</p>",
@@ -270,8 +270,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/2"] =
   "activityPage": "/backend/activity/2/page/5",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Incorrect.</p>" +
@@ -318,8 +318,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/3"] =
   "activityPage": "/backend/activity/2/page/5",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Incorrect.</p>" +
@@ -366,8 +366,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/4"] =
   "activityPage": "/backend/activity/2/page/5",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p><b>Hint 3</b>: In this interval, Maria’s position <b>stayed the same</b> as time passed.</b></p>" +
@@ -413,8 +413,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/5"] =
   "activityPage": "/backend/activity/2/page/5",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>If you look carefully, you’ll see that between four and six minutes, Maria’s position did not change, " +
@@ -446,8 +446,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/6"] =
   "activityPage": "/backend/activity/2/page/5",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Correct! Four minutes into her run, Maria’s distance stayed the same compared to the next few minutes, " +
@@ -489,8 +489,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/1"] =
   "activityPage": "/backend/activity/2/page/6",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
       "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
@@ -532,8 +532,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/2"] =
   "activityPage": "/backend/activity/2/page/6",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Incorrect.</p>" +
@@ -577,8 +577,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/3"] =
   "activityPage": "/backend/activity/2/page/6",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Incorrect.</p>" +
@@ -630,8 +630,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/4"] =
   "activityPage": "/backend/activity/2/page/6",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Incorrect.</p>" +    
@@ -690,8 +690,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/5"] =
   "activityPage": "/backend/activity/2/page/6",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Four minutes into her run, Maria stopped. At that point, Maria was 800 meters away from the start line.</p>" +
@@ -722,8 +722,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/6"] =
   "activityPage": "/backend/activity/2/page/6",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Correct! Four minutes into her run, Maria stopped. At that point, " +
@@ -765,8 +765,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/1"] =
   "activityPage": "/backend/activity/2/page/7",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
       "<p>For how many minutes did Maria stop to talk to her coach?</p>",
@@ -808,8 +808,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/2"] =
   "activityPage": "/backend/activity/2/page/7",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Incorrect.</p>" +  
@@ -853,8 +853,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/3"] =
   "activityPage": "/backend/activity/2/page/7",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Incorrect.</p>" +    
@@ -898,8 +898,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/4"] =
   "activityPage": "/backend/activity/2/page/7",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Incorrect.</p>" +
@@ -944,8 +944,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/5"] =
   "activityPage": "/backend/activity/2/page/7",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Maria stopped during the horizontal segment of the graph. This is when her position did not change. " +
@@ -977,8 +977,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/6"] =
   "activityPage": "/backend/activity/2/page/7",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Correct! Maria stopped during the horizontal segment of the graph. " +
@@ -1020,8 +1020,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/8/step/1"] =
   "activityPage": "/backend/activity/2/page/8",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>Think back on the activities you just did.</p>" +
@@ -1059,8 +1059,8 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/8/step/2"] =
   "activityPage": "/backend/activity/2/page/8",
   "paneConfig": "split",
   "panes": {
-    "top": { "type": "graph", "name": "maria" },
-    "bottom": null
+    "top":    { "type": "graph", "name": "maria" },
+    "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
   },
   "beforeText":
     "<p>This is the end of the activity.</p>",
