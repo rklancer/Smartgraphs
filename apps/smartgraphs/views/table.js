@@ -66,21 +66,20 @@ Smartgraphs.TableView = SC.View.extend(
     contentView: SC.View.design({
       childViews: ['xsView', 'ysView'],
 
+      rowHeight: 18,
       contentObjectBinding: '.parentView.parentView.parentView*tableController.content',
       contentBinding: '.parentView.parentView.parentView*tableController.arrangedObjects',
       selectionBinding: '.parentView.parentView.parentView*tableController.selection',
-      contentLengthBinding: SC.Binding.from('.content.length').oneWay(),
-      contentHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
-
-      _contentHeightDidChange: function () {
-        this.adjust('height', this.get('contentHeight'));
-      }.observes('contentHeight'),
+      contentLengthBinding: '.content.length',
       
       _contentLengthDidChange: function () {
-        // scroll to bottom when content length increases, unless this is the initial loading of content
+        // adjust height when content length increases
         var contentLength = this.get('contentLength');
+        this.adjust('height', contentLength * this.get('rowHeight'));
+
+        // then scroll to bottom when content length increases, unless this is the initial loading of content
         if (this._oldContentLength > 0 && contentLength > this._oldContentLength) {
-          this.scrollTo(this.get('maximumVerticalScrollOffset'));
+          this.getPath('parentView.parentView').scrollTo(this.get('maximumVerticalScrollOffset'));
         }
         this._oldContentLength = contentLength;
       }.observes('contentLength'),
@@ -89,37 +88,26 @@ Smartgraphs.TableView = SC.View.extend(
         this._oldContentLength = 0;
       }.observes('contentObject'),
 
-      xsView: SC.ListView.design({        
-        height: function () {
-          var layout = this.get('layout');
-          return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-        }.property('calculatedHeight', 'layout').cacheable(),
-          
+      xsView: SC.ListView.design({
         layout: {
           left: 100,
           top: 0,
           width: 70
         },
-
+        rowHeightBinding: '.parentView.rowHeight',
         canEditContent: NO,
         contentValueKey: 'x',
         contentBinding: '.parentView.content',
-        selectionBinding: '.parentView.selection',
-        rowHeight: 18
+        selectionBinding: '.parentView.selection'
       }),
 
       ysView: SC.ListView.design({
-        height: function(){
-          var layout = this.get('layout');
-          return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
-        }.property('calculatedHeight', 'layout').cacheable(),
-
         layout: {
           left: 10,
           top: 0,
           width: 70
         },
-
+        rowHeightBinding: '.parentView.rowHeight',
         canEditContent: NO,
         contentValueKey: 'y',
         contentBinding: '.parentView.content',
