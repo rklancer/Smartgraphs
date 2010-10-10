@@ -79,33 +79,33 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   createSeries: function (context, args) {
     var series = Smartgraphs.sessionController.createSeries(args.seriesName);
     if (args.graphName) {
-      var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+      var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
       controller.addSeries(series);
     }
     return YES;
   },
   
   removeSeries: function (context, args) {
-    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     controller.removeSeries(args.seriesName);
     return YES;
   },
 
   createAnnotation: function (context, args) {
-    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     var annotation = Smartgraphs.sessionController.createAnnotation(args.type, args.name);
     controller.addAnnotation(annotation);
     return YES;
   },
   
   addAnnotation: function (context, args) {
-    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     controller.addObjectByName(args.type, args.name);
     return YES;
   },
   
   removeAnnotation: function (context, args) {
-    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     controller.removeAnnotation(args.name);
     return YES;
   },
@@ -117,7 +117,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       name: args.annotationName
     });
 
-    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     if (Smartgraphs.freehandInputController.register(controller, args.annotationName)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT);
       return YES;
@@ -130,7 +130,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       seriesName: args.seriesName
     });
 
-    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     var series = controller && controller.findSeriesByName(args.seriesName);
     
     if ( !series ) return YES;        // handled, but invalid pane or series...

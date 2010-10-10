@@ -47,7 +47,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   openGraph: function (name) {
-    if (this.get('name') === name) return YES;    // nothing to do!
+    var currentGraphName = this.get('name');
+    if (name === currentGraphName) return YES;    // nothing to do!
 
     var activity = Smartgraphs.activityController.get('content');
     var query = activity ?
@@ -64,7 +65,12 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     if (graphs.get('length') < 1) return NO;
     
     this.clear();
+    
+    if (currentGraphName) {
+      Smartgraphs.GraphController.controllerForName.set(currentGraphName, null);
+    }
     this.set('content', graphs.objectAt(0));      // it would be strange if there are >1
+    Smartgraphs.GraphController.controllerForName.set(name, this);
     
     // add the initial data series and annotations
     var initial = this.get('initialSeries') || [];
@@ -259,10 +265,4 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
 }) ;
 
-Smartgraphs.GraphController.forGraphName = function (graphName) {
-  var controllers = [Smartgraphs.firstGraphController, Smartgraphs.secondGraphController];
-  
-  for (var i = 0; i < controllers.length; i++) {
-    if (controllers[i].get('name') === graphName) return controllers[i];
-  } 
-};
+Smartgraphs.GraphController.controllerForName = SC.Object.create({});

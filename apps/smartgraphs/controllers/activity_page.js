@@ -17,6 +17,8 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
   cleanup: function () {
     Smartgraphs.firstGraphController.clear();
     Smartgraphs.secondGraphController.clear();
+    Smartgraphs.firstTableController.clear();
+    Smartgraphs.secondTableController.clear();
     Smartgraphs.activityViewController.clear();
   }
   
