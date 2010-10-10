@@ -73,7 +73,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     switch (config.type) {
       case 'graph': 
-        Smartgraphs.sendAction('showGraph', this, { pane: pane, graphId: config.graphId });
+        Smartgraphs.sendAction('showGraph', this, { pane: pane, name: config.name });
         return;        
       case 'table':
         return;

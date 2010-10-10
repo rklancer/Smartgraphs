@@ -46,14 +46,18 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     this.set('content', null);
   },
   
-  openGraph: function (graphId) {
-    if (this.get('id') === graphId) return YES;    // nothing to do!
-
-    var graph = Smartgraphs.store.find(Smartgraphs.Graph, graphId);
-    if (!graph) return NO;
+  openGraph: function (name) {
+    if (this.get('name') === name) return YES;    // nothing to do!
+    
+    var query = SC.Query.local(Smartgraphs.Graph, 'name={name} AND activity={activity}', { 
+      name: name,
+      activity: Smartgraphs.activityController.get('content')
+    });
+    var graphs = Smartgraphs.store.find(query);
+    if (graphs.get('length') < 1) return NO;
     
     this.clear();
-    this.set('content', graph);
+    this.set('content', graphs.objectAt(0));      // it would be strange if there are >1
     
     // add the initial data series and annotations
     var initial = this.get('initialSeries') || [];

@@ -48,7 +48,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   showGraph: function (context, args) {
-    Smartgraphs.activityViewController.showGraph(args.pane, args.graphId);
+    Smartgraphs.activityViewController.showGraph(args.pane, args.name);
     return YES;
   },
   
