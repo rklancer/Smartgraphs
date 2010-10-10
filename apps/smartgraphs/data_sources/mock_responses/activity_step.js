@@ -77,7 +77,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/2/step/1"] =
   "startCommands": [
     { "action": "startSensorInput",
       "literalArgs": {
-        "pane": "top",
+        "graphName": "sensor-playing",
         "seriesName": "sensor-play"
       }
     }
@@ -130,7 +130,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/3/step/1"] =
   "startCommands": [
     { "action": "startSensorInput",
       "literalArgs": {
-        "pane": "top",
+        "graphName": "two-speeds",
         "seriesName": "two-speeds"
       }
     }
@@ -183,7 +183,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/4/step/1"] =
   "startCommands": [
     { "action": "startSensorInput",
       "literalArgs": {
-        "pane": "top",
+        "graphName": "start-stop-start",
         "seriesName": "start-stop-start"
       }
     }
@@ -1153,7 +1153,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
   "startCommands": [
     { "action": "startFreehandInput",
       "literalArgs": {
-        "pane": "top",
+        "graphName": "prediction-away",
         "annotationName": "prediction-away"
       }
     }
@@ -1203,7 +1203,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
   "startCommands": [
     { "action": "startFreehandInput",
       "literalArgs": {
-        "pane": "bottom",
+        "graphName": "prediction-toward",
         "annotationName": "prediction-toward"
       }
     }
@@ -1265,7 +1265,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] =
   "startCommands": [
     { "action": "startSensorInput",  
       "literalArgs": {
-        "pane": "top",
+        "graphName": "sensor-playing",
         "seriesName": "sensor-play"
       }
     }
@@ -1357,7 +1357,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] =
   "startCommands": [
     { "action": "startSensorInput",  
       "literalArgs": {
-        "pane": "top",
+        "graphName": "graph-with-away-prediction",
         "seriesName": "sensor-away"
       }
     }
@@ -1399,7 +1399,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/2"] =
   "startCommands": [
     { "action": "startSensorInput",  
       "literalArgs": {
-        "pane": "bottom",
+        "graphName": "graph-with-toward-prediction",
         "seriesName": "sensor-toward"
       }
     }
@@ -1849,7 +1849,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/1"] =
   "startCommands": [
     { "action": "startSensorInput",  
       "literalArgs": {
-        "pane": "top",
+        "graphName": "sensor-playing",
         "seriesName": "sensor-play-2"
       }
     }
@@ -2274,7 +2274,7 @@ step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/1"] =
   "startCommands": [
     { "action": "startSensorInput",  
       "literalArgs": {
-        "pane": "top",
+        "graphName": "graph-to-match",
         "seriesName": "sensor-match"
       }
     }
@@ -2464,7 +2464,7 @@ Smartgraphs.mockResponses["/backend/activity/1/page/11/steps"] = steps;
 
 
 /****************************************************************************
-*    Activity 2 (Demo of Activity Switching)
+*    Activity 3 (Demo of Activity Switching)
 *    Page 1
 ****************************************************************************/
 
@@ -2487,7 +2487,7 @@ step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/1"] =
   "startCommands": [
     { "action": "startFreehandInput",
       "literalArgs": {
-        "pane": "single",
+        "graphName": "test-graph",
         "annotationName": "prediction"
       }
     }

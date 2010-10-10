@@ -258,3 +258,11 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   // }
   
 }) ;
+
+Smartgraphs.GraphController.forGraphName = function (graphName) {
+  var controllers = [Smartgraphs.firstGraphController, Smartgraphs.secondGraphController];
+  
+  for (var i = 0; i < controllers.length; i++) {
+    if (controllers[i].get('name') === graphName) return controllers[i];
+  } 
+};

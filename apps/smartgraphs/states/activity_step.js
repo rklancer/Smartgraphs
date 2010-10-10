@@ -72,59 +72,61 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     });
   },
 
-  createSeriesOnGraph: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  createSeries: function (context, args) {
     var series = Smartgraphs.sessionController.createSeries(args.seriesName);
-    controller.addSeries(series);
+    if (args.graphName) {
+      var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+      controller.addSeries(series);
+    }
     return YES;
   },
   
   removeSeries: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
     controller.removeSeries(args.seriesName);
     return YES;
   },
 
   createAnnotation: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
     var annotation = Smartgraphs.sessionController.createAnnotation(args.type, args.name);
     controller.addAnnotation(annotation);
     return YES;
   },
   
   addAnnotation: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
     controller.addObjectByName(args.type, args.name);
     return YES;
   },
   
   removeAnnotation: function (context, args) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
     controller.removeAnnotation(args.name);
     return YES;
   },
   
   startFreehandInput: function (context, args) {
     Smartgraphs.sendAction('createAnnotation', this, { 
-      pane: args.pane, 
+      graphName: args.graphName,
       type: Smartgraphs.FreehandSketch,
       name: args.annotationName
     });
 
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
-    if (Smartgraphs.freehandInputController.register(args.pane, controller, args.annotationName)) {
+    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
+    if (Smartgraphs.freehandInputController.register(controller, args.annotationName)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT);
       return YES;
     }
   },
   
   startSensorInput: function (context, args) {
-    Smartgraphs.sendAction('createSeriesOnGraph', this, { 
-      pane: args.pane, 
+    Smartgraphs.sendAction('createSeries', this, { 
+      graphName: args.graphName, 
       seriesName: args.seriesName
     });
 
-    var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+    var controller = Smartgraphs.GraphController.forGraphName(args.graphName);
     var series = controller && controller.findSeriesByName(args.seriesName);
     
     if ( !series ) return YES;        // handled, but invalid pane or series...
@@ -132,8 +134,9 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     // TODO let 'args' override these settings if desired
     var xMin = controller.getPath('axes.xMin');
     var xMax = controller.getPath('axes.xMax');
-
-    if (Smartgraphs.sensorController.register(args.pane, series, xMin, xMax)) {
+    var pane = Smartgraphs.activityViewController.paneForController(controller);
+    
+    if (Smartgraphs.sensorController.register(pane, series, xMin, xMax)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
       return YES;
     }
@@ -142,19 +145,19 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // NOT CURRENTLY USED
   
   // setAxes: function (context, args) {
-  //   var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
   //   controller.setAxes(args.axesId);
   //   return YES;
   // },
   // 
   // displaySeriesOnGraph: function (context, args) {
-  //   var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);    
+  //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);    
   //   controller.addObjectByName(Smartgraphs.DataSeries, args.seriesName);
   //   return YES;
   // },
   // 
   // copyExampleSeriesToGraph: function (context, args) {
-  //   var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
   //   var series = Smartgraphs.sessionController.createSeries(args.seriesName);
   //   Smartgraphs.sessionController.copyExampleSeries(args.exampleSeriesName, args.seriesName);
   //   controller.addSeries(series);
@@ -163,12 +166,12 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // 
   // removeAllSeries: function (context, args) {
   //   return NO;      // not handled yet.
-  //   // var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  //   // var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
   //   // controller.removeAllSeries();
   // },
   // 
   // selectDataSeries: function (context, args) {
-  //   var controller = Smartgraphs.activityViewController.graphControllerFor(args.pane);
+  //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
   //   controller.selectSeries(args.seriesName);
   //   return YES;
   // }

@@ -105,7 +105,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return NO;
   },
   
-  graphControllerFor: function (pane) {
+  graphControllerForPane: function (pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
     
@@ -165,6 +165,23 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return YES;
   },
   
+  paneForController: function (controller) {
+    if (this.get('paneIsSplit')) {
+      if (controller === Smartgraphs.firstGraphController) {
+        return 'top';
+      }
+      else if (controller === Smartgraphs.secondGraphController) {
+        return 'bottom';
+      }
+    }
+    else {
+      if (controller === Smartgraphs.firstGraphController) {
+        return 'single';
+      }
+    }
+    return NO;
+  },
+
   showSensorLoadingView: function (pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);

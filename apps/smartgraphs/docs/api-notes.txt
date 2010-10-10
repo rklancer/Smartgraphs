@@ -55,7 +55,7 @@ new commands:
 commands to modify:
 
   showSinglePane/showSplitPane (--> setPaneConfig)
-  createSeriesOnGraph (change name to 'createSeris', modify 'pane' to baseTable & make optional)
+  createSeriesOnGraph (change name to 'createSeries', modify 'pane' to baseTable & make optional)
   removeSeries
   createAnnotation
   addAnnotation

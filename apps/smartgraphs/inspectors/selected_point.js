@@ -13,7 +13,7 @@ Smartgraphs.SelectedPointInspector = Smartgraphs.Inspector.extend({
   dataset: null, 
   
   configure: function (config) {
-    var controller = Smartgraphs.activityViewController.graphControllerFor(config.pane);
+    var controller = Smartgraphs.activityViewController.graphControllerForPane(config.pane);
     if (!controller) return;
     
     this.set('dataset', controller.findSeriesByName(config.series));

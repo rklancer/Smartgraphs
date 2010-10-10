@@ -16,7 +16,7 @@ Smartgraphs.SketchLengthInspector = Smartgraphs.Inspector.extend({
   configure: function (config) {
     this.set('checkContinuously', config.check && config.check === 'continuously');
     
-    var controller = Smartgraphs.activityViewController.graphControllerFor(Smartgraphs.freehandInputController.get('pane'));
+    var controller = Smartgraphs.activityViewController.graphControllerForPane(Smartgraphs.freehandInputController.get('pane'));
     if ( !controller ) return;
     
     this.set('sketch', controller.findAnnotationByName(config.annotationName));

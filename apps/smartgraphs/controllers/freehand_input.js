@@ -16,25 +16,21 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   
   _inputIsEnabled: NO,
   _isRecording: NO,
-  _pane: null,
   
   pane: function () {
-    return this._pane;
+    return Smartgraphs.activityViewController.paneForController(this._graphController);
   }.property(),
 
-  register: function (pane, controller, sketchName) {
+  register: function (controller, sketchName) {
     // guard against accidentally swapping the input controller during freehand input. Guarantee that a controller
     // will always receive endFreehandInput after receiving startFreehandInput
   
     if (this._inputIsEnabled) return NO;
     
-    pane = Smartgraphs.activityViewController.validPaneFor(pane);
-    
     var annotation = controller ? controller.findAnnotationByName(sketchName) : NO;
-    if (pane && annotation && SC.kindOf(annotation, Smartgraphs.FreehandSketch)) {      
+    if (annotation && SC.kindOf(annotation, Smartgraphs.FreehandSketch)) {      
       this._graphController = controller;
       this._sketch = annotation;
-      this._pane = pane;
       return YES;
     }
     return NO;
