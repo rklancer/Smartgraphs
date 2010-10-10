@@ -33,7 +33,7 @@ Smartgraphs.TableView = SC.View.extend(
 
     xsLabel: SC.LabelView.design({    
       layout: {
-        right: 10,
+        left: 10,
         width: 80,
         top: 7,
         height: 20
@@ -44,7 +44,7 @@ Smartgraphs.TableView = SC.View.extend(
 
     ysLabel: SC.LabelView.design({
       layout: {
-        left: 10,
+        right: 10,
         width: 80,
         top: 7,
         height: 20
@@ -90,7 +90,7 @@ Smartgraphs.TableView = SC.View.extend(
 
       xsView: SC.ListView.design({
         layout: {
-          left: 100,
+          left: 10,
           top: 0,
           width: 70
         },
@@ -103,7 +103,7 @@ Smartgraphs.TableView = SC.View.extend(
 
       ysView: SC.ListView.design({
         layout: {
-          left: 10,
+          left: 100,
           top: 0,
           width: 70
         },
