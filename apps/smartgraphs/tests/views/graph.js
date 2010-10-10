@@ -39,6 +39,7 @@ function setupFixtures() {
   Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
   Smartgraphs.Graph.FIXTURES = [
     { url: 'test',
+      name: 'test',
       axes: 'test-axes',
       title: 'Test Graph',
       initialSeries: []

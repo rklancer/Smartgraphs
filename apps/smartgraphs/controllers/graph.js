@@ -48,11 +48,18 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   openGraph: function (name) {
     if (this.get('name') === name) return YES;    // nothing to do!
+
+    var activity = Smartgraphs.activityController.get('content');
+    var query = activity ?
+      SC.Query.local(Smartgraphs.Graph, 'name={name} AND activity={activity}', { 
+        name: name,
+        activity: Smartgraphs.activityController.get('content')
+      }) 
+      :
+      SC.Query.local(Smartgraphs.Graph, 'name={name}', {      // e.g., in testing mode
+        name: name
+      });
     
-    var query = SC.Query.local(Smartgraphs.Graph, 'name={name} AND activity={activity}', { 
-      name: name,
-      activity: Smartgraphs.activityController.get('content')
-    });
     var graphs = Smartgraphs.store.find(query);
     if (graphs.get('length') < 1) return NO;
     
