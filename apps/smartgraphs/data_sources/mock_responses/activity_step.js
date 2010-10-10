@@ -589,7 +589,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/3"] =
   "startCommands": [
     { "action": "addAnnotation",
       "literalArgs": {
-        "pane": "top",
+        "graphName": "maria",
         "type": "Smartgraphs.HighlightedPoint",
         "name": "where-maria-stopped"
       }
@@ -642,14 +642,14 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/4"] =
   "startCommands": [
     { "action": "addAnnotation",
       "literalArgs": {
-        "pane": "top",
+        "graphName": "maria",
         "type": "Smartgraphs.HighlightedPoint",
         "name": "where-maria-stopped"
       }
     },
     { "action": "addAnnotation",
       "literalArgs": {
-        "pane": "top",
+        "graphName": "maria",
         "type": "Smartgraphs.LineToAxis",
         "name": "where-maria-stopped-to-y-axis"
       }
