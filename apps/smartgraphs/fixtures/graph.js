@@ -11,8 +11,10 @@ Smartgraphs.Graph.FIXTURES = [
 
   { url: 
       '/backend/activity/1/graph/1/prediction-away',
+    activity:
+      '/backend/activity/1',
     name:
-      'Prediction-Away',
+      'prediction-away',
     description: 
       'Prediction graph of movement away',
     title:
@@ -28,8 +30,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/2/prediction-toward',
+    activity:
+      '/backend/activity/1',      
     name:
-      'Prediction-Toward',
+      'prediction-toward',
     title:
       'Toward',
     description: 
@@ -45,8 +49,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/3/sensor-playing',
+    activity:
+      '/backend/activity/1',
     name:
-      'Sensor-Playing',
+      'sensor-playing',
     description: 
       'Playing around with the sensor in page 3',
     title: 
@@ -61,8 +67,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/4/graph-with-away-prediction',
+    activity:
+      '/backend/activity/1',
     name:
-      'Match-Away-With-Sensor',
+      'graph-with-away-prediction',
     description: 
       "Graph with 'away' prediction for adding 'away' sensor data in page 4",
     title:
@@ -78,8 +86,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/5/graph-with-toward-prediction',
+    activity:
+      '/backend/activity/1',
     name:
-      'Match-Toward-With-Sensor',
+      'graph-with-toward-prediction',
     description: 
       "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
     title:
@@ -95,8 +105,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/6/sensor-away',
+    activity:
+      '/backend/activity/1',
     name:
-      'Sensor-Away',
+      'sensor-away',
     description: 
       "Graph with'away' sensor data from page 4",
     title:
@@ -111,8 +123,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/7/sensor-toward',
+    activity:
+      '/backend/activity/1',
     name:
-      'Match-Toward-With-Sensor',
+      'sensor-toward',
     description: 
       "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
     title:
@@ -127,8 +141,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/8/walking-example-1',
+    activity:
+      '/backend/activity/1',
     name:
-      'Walking',
+      'walking-example-1',
     description: 
       'Graph for multiple choice question in page 6',
     title:
@@ -144,8 +160,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/9/two-walkers',
+    activity:
+      '/backend/activity/1',
     name:
-      'Two walkers',
+      'two-walkers',
     description: 
       'Graph for multiple choice question in page 6',
     title:
@@ -160,8 +178,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/1/graph/10/graph-to-match',
+    activity:
+      '/backend/activity/1',
     name:
-      'Graph to match',
+      'graph-to-match',
     description: 
       'Graph to match with sensor data',
     title:
@@ -177,8 +197,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/2/graph/1/sensor-playing',
+    activity:
+      '/backend/activity/2',
     name:
-      'Sensor-Playing',
+      'sensor-playing',
     description: 
       'Playing around with the sensor in page 2',
     title: 
@@ -193,8 +215,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/2/graph/2/two-speeds',
+    activity:
+      '/backend/activity/2',
     name:
-      'Sensor-Playing',
+      'two-speeds',
     description: 
       'Walking at two speeds in page 3',
     title: 
@@ -209,8 +233,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/2/graph/3/start-stop-start',
+    activity:
+      '/backend/activity/2',
     name:
-      'Sensor-Playing',
+      'start-stop-start',
     description: 
       'Starting, stopping, and starting again in page 4',
     title: 
@@ -225,8 +251,10 @@ Smartgraphs.Graph.FIXTURES = [
   
   { url: 
       '/backend/activity/2/graph/4/maria',
+    activity:
+      '/backend/activity/2',
     name:
-      'Sensor-Playing',
+      'maria',
     description: 
       "Graph of Maria's run",
     title: 

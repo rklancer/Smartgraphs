@@ -19,10 +19,15 @@ Smartgraphs.Graph = Smartgraphs.Annotation.extend(
   primaryKey: 'url',
   
   /**
+    The Activity this graph is part of. Required for scoping names!
+  */
+  activity: SC.Record.toOne('Smartgraphs.Activity'),
+  
+  /**
     The name the author will use to reference this graph while building the activity.
   */
   name: SC.Record.attr(String),
-
+  
   /**
     Description of the graph for authors' reference.
   */
