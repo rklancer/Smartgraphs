@@ -10,7 +10,7 @@
 
   @extends SC.Object
 */
-Smartgraphs.TableController = SC.ObjectController.extend(
+Smartgraphs.TableController = SC.ArrayController.extend(
 /** @scope Smartgraphs.tableController.prototype */ {
   
   graphController: null,
@@ -60,7 +60,9 @@ Smartgraphs.TableController = SC.ObjectController.extend(
         return;
       }
       console.log('setting content of table controller to %s', seriesName);
-      this.set('content', series);
+      this.set('content', series.get('points'));
+      if (this._selectionBinding) this._selectionBinding.disconnect();
+      this._selectionBinding = this.bind('selection', series, 'selection');
     }
     else {
       graphController.get('seriesList').addObserver('[]', this, this.waitForSeries);

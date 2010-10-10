@@ -13,11 +13,6 @@
 */
 Smartgraphs.TableView = SC.View.extend(
 /** @scope Smartgraphs.TableView.prototype */ {
- 
-  // TODO update this stuff that was copied from the old smartgraphs app.
-  // important properties of the current table view:
-  // tableController (content is a DataSeries atm)
-  // tableController.graphController (for getting axes)
   
   layout: {
     left: 20,
@@ -71,24 +66,35 @@ Smartgraphs.TableView = SC.View.extend(
     contentView: SC.View.design({
       childViews: ['xsView', 'ysView'],
 
-      // look at SC.ContentDisplay for this too
-      xHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
-      yHeightBinding: SC.Binding.from('.ysView.height').oneWay(),
+      contentObjectBinding: '.parentView.parentView.parentView*tableController.content',
+      contentBinding: '.parentView.parentView.parentView*tableController.arrangedObjects',
+      selectionBinding: '.parentView.parentView.parentView*tableController.selection',
+      contentLengthBinding: SC.Binding.from('.content.length').oneWay(),
+      contentHeightBinding: SC.Binding.from('.xsView.height').oneWay(),
 
-      height: function(){
-        return Math.max(this.get('xHeight'), this.get('yHeight'));
-      }.property('xHeight', 'yHeight').cacheable(),
-
-      _heightDidChange: function(){
-        this.adjust('height', this.get('height'));
-      }.observes('height'),
+      _contentHeightDidChange: function () {
+        this.adjust('height', this.get('contentHeight'));
+      }.observes('contentHeight'),
+      
+      _contentLengthDidChange: function () {
+        // scroll to bottom when content length increases, unless this is the initial loading of content
+        var contentLength = this.get('contentLength');
+        if (this._oldContentLength > 0 && contentLength > this._oldContentLength) {
+          this.scrollTo(this.get('maximumVerticalScrollOffset'));
+        }
+        this._oldContentLength = contentLength;
+      }.observes('contentLength'),
+      
+      _contentObjectDidChange: function () {
+        this._oldContentLength = 0;
+      }.observes('contentObject'),
 
       xsView: SC.ListView.design({        
         height: function () {
           var layout = this.get('layout');
           return this.get('calculatedHeight') + (layout.top || 0) + (layout.bottom || 0);
         }.property('calculatedHeight', 'layout').cacheable(),
-
+          
         layout: {
           left: 100,
           top: 0,
@@ -97,8 +103,8 @@ Smartgraphs.TableView = SC.View.extend(
 
         canEditContent: NO,
         contentValueKey: 'x',
-        contentBinding: '.parentView.parentView.parentView.parentView*tableController.points',
-        selectionBinding: '.parentView.parentView*tableController.selection',
+        contentBinding: '.parentView.content',
+        selectionBinding: '.parentView.selection',
         rowHeight: 18
       }),
 
@@ -116,8 +122,8 @@ Smartgraphs.TableView = SC.View.extend(
 
         canEditContent: NO,
         contentValueKey: 'y',
-        contentBinding: '.parentView.parentView.parentView.parentView*tableController.points',
-        selectionBinding: '.parentView.parentView*tableController.selection',
+        contentBinding: '.parentView.content',
+        selectionBinding: '.parentView.selection',
         rowHeight: 18
       })
     })
