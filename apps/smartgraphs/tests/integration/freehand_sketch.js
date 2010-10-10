@@ -111,14 +111,14 @@ test('moving into FREEHAND_INPUT state without first registering the controller 
   equals(newState, Smartgraphs.ACTIVITY_STEP, 'FREEHAND_INPUT should have attempted to transition back to ACTIVITY_STEP after becoming first responder with register() having been called');
   
   // now attempt to register with an sketch name that isn't found on the graph
-  ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'nonexistent-sketch');
+  ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'nonexistent-sketch');
   newState = null;
   
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
   ok(ret === NO, 'freehandInputController.register() should have returned NO when an invalid sketch name was passed');
   equals(newState, Smartgraphs.ACTIVITY_STEP, 'FREEHAND_INPUT should have attempted to transition back to ACTIVITY_STEP after becoming first responder with an invalid sketch name given to register()');
 
-  ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
+  ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
 
   ok(ret === YES, 'freehandInputController.register() should have returned YES when a valid controller and sketch name were passed.');
@@ -152,7 +152,7 @@ test('hide start and stop buttons happens when in "prediction graph" mode', func
   equals(Smartgraphs.activityViewController.get('clearControlIsVisible'),  NO,
     "Before registering with the freehandInputController Smartgraphs.activityViewController.clearControlIsVisible should at the wrong visibility setting given to it by this test: NO.");
 
-  ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
+  ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
 
   equals(ret, YES,
@@ -187,7 +187,7 @@ test('moving into and out of FREEHAND_INPUT after registering a controller and s
   };
   
   Smartgraphs.firstGraphController.addAnnotation(sketch);
-  var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
+  var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
   
   ok(ret === YES, 'freehandInputController.register() should have returned YES');
   
@@ -237,7 +237,7 @@ test('attempts to register a different controller and sketch pair should be reje
   Smartgraphs.firstGraphController.addAnnotation(sketch);  
   Smartgraphs.secondGraphController.addAnnotation(sketch);
 
-  var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
+  var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
   
   ok(ret === YES, 'freehandInputController.register() should have returned YES when firstGraphController test-sketch was opened');
   
@@ -246,7 +246,7 @@ test('attempts to register a different controller and sketch pair should be reje
   equals(firstGraphStarts, 1, 'firstGraphController.startFreehandInput should have been called 1 time after FREEHAND_INPUT state was entered');
   equals(secondGraphStarts, 0, 'secondGraphController.startFreehandInput should have been called 0 times before being registered.');
   
-  ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.secondGraphController, 'test-sketch');
+  ret = Smartgraphs.freehandInputController.register(Smartgraphs.secondGraphController, 'test-sketch');
   
   ok(ret === NO, 'freehandInputController.register() should have retured NO when secondGraphController test-sketch were passed while in FREEHAND_INPUT');
 
@@ -256,7 +256,7 @@ test('attempts to register a different controller and sketch pair should be reje
   equals(secondGraphEnds, 0, 'secondGraphController.endFreehandInput should not have been called despite bogus attempt to register secondGraphController');
   
   // now check that you can in fact register secondGraphController
-  ret = Smartgraphs.freehandInputController.register('bottom', Smartgraphs.secondGraphController, 'test-sketch');
+  ret = Smartgraphs.freehandInputController.register(Smartgraphs.secondGraphController, 'test-sketch');
   
   ok(ret === YES, 'freehandInputController.register() should have retured YES when secondGraphController & test-sketch were passed after we left FREEHAND_INPUT');
 
@@ -385,7 +385,7 @@ test('Does showControl get called on the correct pane when Smartgraphs.FREEHAND_
   ok(SC.kindOf(lastView, Smartgraphs.FreehandSketchView), 'a FreehandSketchView was appended to the graphCanvasView after test-sketch was pushed onto the annotationList');
   stop(1000); // Fail this test if start is not called within the given milliseconds
 
-  var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
+  var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
   SC.RunLoop.end(); 
   
@@ -433,7 +433,7 @@ test("simulated mouse events should result in rendering the appropriate path str
   };
 
   // open freehand input state
-  var ret = Smartgraphs.freehandInputController.register('top', Smartgraphs.firstGraphController, 'test-sketch');
+  var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
   ok(ret === YES, 'freehandInputController.register() should return YES when firstGraphController test-sketch was opened');
 
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
