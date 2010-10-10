@@ -221,9 +221,13 @@ Smartgraphs.activityPageDef = SC.Page.extend({
     controlsNowShowingBinding: 'Smartgraphs.activityViewController.secondGraphPaneControls'
   }),
   
-  firstTableView: Smartgraphs.TableView.design({}),
+  firstTableView: Smartgraphs.TableView.design({
+    tableControllerBinding: 'Smartgraphs.firstTableController'
+  }),
   
-  secondTableView: Smartgraphs.TableView.design({}),
+  secondTableView: Smartgraphs.TableView.design({
+    tableControllerBinding: 'Smartgraphs.secondTableController'
+  }),
   
   errorLoadingActivityView: SC.View.design({
     classNames: 'smartgraph-pane',

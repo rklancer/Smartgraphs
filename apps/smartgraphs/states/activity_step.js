@@ -52,6 +52,10 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     return YES;
   },
   
+  showTable: function (context, args) {
+    Smartgraphs.activityViewController.showTable(args.pane, args.graphName, args.seriesName);  
+  },
+  
   waitForResponse: function (context, args) {
     Smartgraphs.activityStepController.waitForResponse();
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);

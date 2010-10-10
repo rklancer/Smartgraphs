@@ -14,6 +14,4 @@
 Smartgraphs.TableView = SC.View.extend(
 /** @scope Smartgraphs.TableView.prototype */ {
 
-  // TODO: Add your own code here.
-
 });

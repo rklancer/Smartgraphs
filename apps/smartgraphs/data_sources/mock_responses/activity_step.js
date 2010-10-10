@@ -67,7 +67,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/2/step/1"] =
   "paneConfig": "split",
   "panes": {
     "top":    { "type": "graph", "name": "sensor-playing" },
-    "bottom": null 
+    "bottom": { "type": "table", "graphName": "sensor-playing", "seriesName": "sensor-play" } 
   },
   "beforeText":
     "<p>How are your motions represented in the position versus time graph? " +
