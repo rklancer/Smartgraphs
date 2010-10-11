@@ -41,9 +41,18 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
   renderCallback: function(raphaelCanvas, attrs) {
     console.log("renderCallback called with raphaelCanvas:", raphaelCanvas);
     console.log("                               and attrs:", attrs);
-    var linePathString = 'M ' + attrs.x + ' ' + attrs.y + ' L ' + attrs.left + ' ' + attrs.y;
-    console.log("linePathString:", linePathString);
-    var linePath = raphaelCanvas.path(linePathString).attr({
+    var linePath;
+    if (attrs.shouldHideLinePath) {
+      console.log("attrs.shouldHideLinePath:", attrs.shouldHideLinePath);
+      linePath = raphaelCanvas.path("M 0 0 L 0 0");
+      console.log("hiding linePath:", linePath);
+      linePath.hide();
+    } else {
+      var linePathString = 'M ' + attrs.x + ' ' + attrs.y + ' L ' + attrs.left + ' ' + attrs.y;
+      console.log("linePathString:", linePathString);
+      linePath = raphaelCanvas.path(linePathString);
+    }
+    linePath.attr({
       'stroke-width': this.defaultStrokeWidth,
       'stroke': this.defaultStroke,
       'stroke-opacity': this.defaultStrokeOpacity
@@ -60,21 +69,30 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
     var annotation = this.get('item');
 
     /** Collect Raphael attributes for the linePath into attrs */
+    var attrs;
     // TODO: Handle points not in the 1st quadrant and handle lines to the x-axis
-    var point = annotation.get('point');
-    if (!point) return; // There is no point in rendering a linePath if you can't get the starting point :)
-    var coords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
-    if (!coords) return; // There is no point in rendering a linePath if you can't get the starting Raphael point :)
-    var axes = graphView.get("axes");
-    var padding = axes.get('padding');
-    console.log("padding:", padding);
-    var leftPadding = padding ? padding.left: this.defaultLeftPadding; // TODO: get padding from axesView instead?
-    console.log("leftPadding:", leftPadding);
-    var attrs = {
-      x: coords.x,
-      y: coords.y,
-      left: leftPadding
-    };
+    var startingPoint = annotation.get('point');
+    if (startingPoint) {
+      var linePathStartingCoords = graphView.coordinatesForPoint(startingPoint.get('x'), startingPoint.get('y'));
+      if (linePathStartingCoords) {
+        var linePathEndingCoords = graphView.coordinatesForPoint(0, startingPoint.get('y'));
+        console.log("linePathEndingCoords:", linePathEndingCoords);
+        var linePathEndingXCoord = linePathEndingCoords ? linePathEndingCoords.x: this.defaultLeftPadding;
+        console.log("linePathEndingXCoord:", linePathEndingXCoord);
+        attrs = {
+          x: linePathStartingCoords.x,
+          y: linePathStartingCoords.y,
+          left: linePathEndingXCoord
+        };
+      }
+    }
+    if (!attrs) {
+      // There was some error in getting the needed coordinates
+      // Render a hidden linePath so the object can reused if this render method is called again
+      attrs = {
+        shouldHideLinePath: YES
+      };
+    }
 
     /**
      boolean firstTime: Does this view start from scratch and created HTML
