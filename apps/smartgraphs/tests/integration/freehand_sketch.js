@@ -340,6 +340,8 @@ test('adding test-sketch annotation via graph controller should result in additi
   ok(SC.kindOf(lastView, Smartgraphs.FreehandSketchView), 'a FreehandSketchView was appended to the graphCanvasView after test-sketch was pushed onto the annotationList');
 });
 
+
+// FIXME the functionality of this test is basically duplicated in tests/integration/activity_view.js
 test('Does showControl get called on the correct pane when Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder() is called?', function () {
   var oldShowControls = Smartgraphs.activityViewController.showControls;
   Smartgraphs.activityViewController.showControls = function (pane) {
@@ -347,7 +349,7 @@ test('Does showControl get called on the correct pane when Smartgraphs.FREEHAND_
     ok("Smartgraphs.activityViewController.showControls() was called",
       'Smartgraphs.activityViewController.showControls() should have been called.');
     pane = this.validPaneFor(pane);
-    equals(pane,'top',
+    equals(pane, 'single',
       "Smartgraphs.activityViewController.showControls should have been called for 'top' pane");
     var which = this.firstOrSecondFor(pane);
 
@@ -377,7 +379,7 @@ test('Does showControl get called on the correct pane when Smartgraphs.FREEHAND_
 
   var childViews = canvasView.get('childViews');
 
-  SC.RunLoop.begin();  
+  SC.RunLoop.begin();
   Smartgraphs.firstGraphController.addAnnotation(sketch);
   
   var newLength = childViews.get('length');
@@ -385,6 +387,8 @@ test('Does showControl get called on the correct pane when Smartgraphs.FREEHAND_
   ok(SC.kindOf(lastView, Smartgraphs.FreehandSketchView), 'a FreehandSketchView was appended to the graphCanvasView after test-sketch was pushed onto the annotationList');
   stop(1000); // Fail this test if start is not called within the given milliseconds
 
+  // set the activity view 
+  Smartgraphs.activityViewController.setPaneConfig('single');
   var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
   Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
   SC.RunLoop.end(); 
