@@ -6,3 +6,6 @@ apps/old-smartgraphs
 .DS_Store
 .project
 */.DS_Store
+results/
+server.log
+server.pid.lock
