@@ -280,7 +280,22 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/2"] =
     "to her coach.</p>",
   "responseTemplate": "",
   "afterText": "",
-  "startCommands": [],
+  "startCommands": [
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "graphName": "maria",
+        "type": "Smartgraphs.HighlightedSegment",
+        "name": "maria-running-interval-1"
+      }
+    },
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "graphName": "maria",
+        "type": "Smartgraphs.HighlightedSegment",
+        "name": "maria-running-interval-2"
+      }
+    }
+  ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {

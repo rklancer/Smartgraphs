@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.HighlightedPointView
+// Project:   Smartgraphs.HighlightedSegmentView
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -12,8 +12,8 @@
   @extends SC.View
 */
 
-Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
-/** @scope Smartgraphs.HighlightedPointView.prototype */
+Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
+/** @scope Smartgraphs.HighlightedSegmentView.prototype */
 {
 
   // defaults
@@ -38,6 +38,8 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
    its tags are already in the DOM.
    */
   renderCallback: function(raphaelCanvas, attrs) {
+    console.warn("HighlightedSegmentView.renderCallback() called with raphaelCanvas:",raphaelCanvas);
+    console.log("attrs:",attrs);
     return raphaelCanvas.circle(attrs.x, attrs.y, attrs.r).attr(attrs); //.toBack();
   },
 
@@ -45,10 +47,14 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
    Called by SC (by the parent view)
    */
   render: function(context, firstTime) {
+    console.warn('HighlightedSegmentView');
     var graphView = this.getPath('parentView.parentView');
     var annotation = this.get('item');
 
-    var point = annotation.get('point');
+    var points = annotation.get('points');
+    console.warn("points:",points);
+    var point = points[0];
+    console.log("first point:",point);
     var x = point ? point.get('x') : 0;
     var y = point ? point.get('y') : 0;
     var coords = graphView.coordinatesForPoint(x, y);
