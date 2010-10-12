@@ -43,6 +43,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
   drawAxis: function () {
     // the g.raphael axis this._axis has a lot of 'moving parts' so, unlike label, recreate the axis object every time
     // instead of updating it via .attr()
+
     if (this._axis) this._axis.remove();
     
     var axes = this.get('axes');
@@ -54,13 +55,17 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
     var xLeft = frame.x + padding.left;
     var yBottom = frame.y + frame.height - padding.bottom;
     
+    // for some reason can be display: none, which screws up label drawing
+    var raphaelCanvas = this.get('raphaelCanvas');
+    if (raphaelCanvas.canvas.style.display !== 'block') raphaelCanvas.canvas.style.display = 'block';       
+    
     if (this.get('type') === 'y') {
       var yMin = axes.get('yMin');
       var yMax = axes.get('yMax');
       var ySteps = axes.get('ySteps');
       var plotHeight = frame.height - padding.top - padding.bottom;
     
-      this._axis = this.get('raphaelCanvas').g.axis(xLeft, yBottom, plotHeight, yMin, yMax, ySteps, 1);
+      this._axis = raphaelCanvas.g.axis(xLeft, yBottom, plotHeight, yMin, yMax, ySteps, 1);
     }
     else if (this.get('type') === 'x') {
       var xMin = axes.get('xMin');
@@ -69,7 +74,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
       
       var plotWidth = frame.width - padding.left - padding.right;
       
-      this._axis = this.get('raphaelCanvas').g.axis(xLeft, yBottom, plotWidth, xMin, xMax, xSteps, 0);
+      this._axis = raphaelCanvas.g.axis(xLeft, yBottom, plotWidth, xMin, xMax, xSteps, 0);
     }
     
     this._axis.all[0].attr({stroke: '#333333'});          // path
@@ -102,7 +107,9 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
       this._label.attr({text: labelText, x: x, y: y});
     }
     else {
-      this._label = this.get('raphaelCanvas').text(x, y, labelText).attr({font: "14px Arial, sans-serif", fill: '#333333'}).rotate(rotation);
+      var raphaelCanvas = this.get('raphaelCanvas');
+      if (raphaelCanvas.canvas.style.display !== 'block') raphaelCanvas.canvas.style.display = 'block';
+      this._label = raphaelCanvas.text(x, y, labelText).attr({font: "14px Arial, sans-serif", fill: '#333333'}).rotate(rotation);
     }
   }
 });
