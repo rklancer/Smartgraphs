@@ -24,7 +24,7 @@ Smartgraphs.HighlightedSegment = Smartgraphs.Annotation.extend(
   /**
     ordered array of {x, y} pairs that make up the segment to be highlighted.
   */
-  points: SC.Record.toMany('Smartgraphs.DataPoint')
+  points: SC.Record.toMany('Smartgraphs.DataPoint',{orderBy: 'x'})
 
 });
 
