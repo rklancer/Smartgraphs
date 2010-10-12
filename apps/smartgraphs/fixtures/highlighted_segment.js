@@ -22,6 +22,13 @@ Smartgraphs.HighlightedSegment.FIXTURES = [
     isExample: YES,
     session: null,
     points: [405, 406, 407, 408, 409]
+  },
+  
+  { url: '/backend/activity/2/annotations/maria-stationary-interval',
+    name: 'maria-stationary-interval',
+    isExample: YES,
+    session: null,
+    points: [403, 404, 405]
   }
 
 ];

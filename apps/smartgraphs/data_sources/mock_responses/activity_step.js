@@ -281,20 +281,6 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/2"] =
   "responseTemplate": "",
   "afterText": "",
   "startCommands": [
-    { "action": "addAnnotation",
-      "literalArgs": {
-        "graphName": "maria",
-        "type": "Smartgraphs.HighlightedSegment",
-        "name": "maria-running-interval-1"
-      }
-    },
-    { "action": "addAnnotation",
-      "literalArgs": {
-        "graphName": "maria",
-        "type": "Smartgraphs.HighlightedSegment",
-        "name": "maria-running-interval-2"
-      }
-    }
   ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
@@ -343,7 +329,22 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/3"] =
     "to her coach.</p>",
   "responseTemplate": "",
   "afterText": "",
-  "startCommands": [],
+  "startCommands": [
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "graphName": "maria",
+        "type": "Smartgraphs.HighlightedSegment",
+        "name": "maria-running-interval-1"
+      }
+    },
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "graphName": "maria",
+        "type": "Smartgraphs.HighlightedSegment",
+        "name": "maria-running-interval-2"
+      }
+    }
+  ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
@@ -390,7 +391,27 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/4"] =
     "to her coach.</p>",
   "responseTemplate": "",
   "afterText": "",
-  "startCommands": [],
+  "startCommands": [
+    { "action": "removeAnnotation",
+      "literalArgs": {
+        "graphName": "maria",
+        "name": "maria-running-interval-1"
+      }
+    },
+    { "action": "removeAnnotation",
+      "literalArgs": {
+        "graphName": "maria",
+        "name": "maria-running-interval-2"
+      }
+    },
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "graphName": "maria",
+        "type": "Smartgraphs.HighlightedSegment",        
+        "name": "maria-stationary-interval"
+      }
+    }
+  ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
@@ -832,7 +853,15 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/2"] =
     "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
   "responseTemplate": "/backend/response-template/1/numeric",
   "afterText": "",
-  "startCommands": [],
+  "startCommands": [
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "graphName": "maria",
+        "type": "Smartgraphs.HighlightedSegment",        
+        "name": "maria-stationary-interval"
+      }
+    }
+  ],
   "shouldFinishImmediately": false,
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
