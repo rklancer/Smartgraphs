@@ -186,8 +186,7 @@ test('sensorController.enableInput() should wait for sensor to load', function (
   newState = null;
   Smartgraphs.SENSOR_STOPPED.clearControlWasClicked();
   equals(newState, Smartgraphs.SENSOR_READY, "clicking 'clear' control should result in transition to SENSOR_READY state");
-  ok(dataset.get('points').objectAt(0).get('status') & SC.Record.DESTROYED, "point's status should be DESTROYED after clear control was clicked");
-  
+  equals(dataset.getPath('points.length'), 0, "points should be removed from dataset after clear control is clicked");  
   
   var disableInputWasCalled = NO;
   Smartgraphs.sensorController.disableInput = function () {
