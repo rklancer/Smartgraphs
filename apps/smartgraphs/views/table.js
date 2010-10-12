@@ -67,21 +67,23 @@ Smartgraphs.TableView = SC.View.extend(
       childViews: ['xsView', 'ysView'],
 
       rowHeight: 18,
-      contentObjectBinding: '.parentView.parentView.parentView*tableController.content',
       contentBinding: '.parentView.parentView.parentView*tableController.arrangedObjects',
-      selectionBinding: '.parentView.parentView.parentView*tableController.selection',
       contentLengthBinding: '.content.length',
+      selectionBinding: '.parentView.parentView.parentView*tableController.selection',
       seriesBinding: '.parentView.parentView.parentView*tableController.series',
 
-      // creates a binding loop, for unclear reasons:
+      // this creates a binding loop, for unclear reasons:
       // expectedLengthBinding: '.parentView.parentView.parentView*tableController.series.expectedLength',
       
       _contentLengthDidChange: function () {
-        // adjust height when content length increases; if expectedLength is set, use that so we don't keep adjusting height.
+        // adjust height when content length increases; 
+        //  * if expectedLength is set, use that so we don't keep adjusting height.
+        //  * if content length is 0, set height to 0 so that the excess height is not distracting when list is empty
+        
         var expectedLength = this.getPath('series.expectedLength');
         var contentLength = this.get('contentLength');
         var rowHeight = this.get('rowHeight');
-        var newHeight = (expectedLength || contentLength) * rowHeight;
+        var newHeight = (contentLength === 0) ? 0 : (expectedLength || contentLength) * rowHeight;
         
         if (this.get('frame').height !== newHeight) {
           this.adjust('height', newHeight);
@@ -91,10 +93,6 @@ Smartgraphs.TableView = SC.View.extend(
         var y = (contentLength - 1) * rowHeight - (this.getPath('parentView.frame').height - rowHeight);
         this.getPath('parentView.parentView').scrollTo(0, y);
       }.observes('contentLength'),
-      
-      _contentObjectDidChange: function () {
-        this._oldContentLength = 0;
-      }.observes('contentObject'),
 
       xsView: SC.ListView.design({
         layout: {
