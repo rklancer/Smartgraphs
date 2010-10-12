@@ -35,7 +35,7 @@ Trusting the .rvmrc file later means that whenever you cd into the Smartgraphs d
 
 to use TestRunner, open <http://localhost:4020/sproutcore/tests>
 
-to visit all tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests.html>
+to visit all tests directly (in English), open <http://localhost:4020/static/smartgraphs/en/current/tests.html>
 
 
 ## Miscellaneous reference:

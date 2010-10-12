@@ -13,7 +13,7 @@
 */
 
 Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
-/** @scope Smartgraphs.FreehandSketchView.prototype */
+/** @scope Smartgraphs.HighlightedPointView.prototype */
 {
 
   // defaults
