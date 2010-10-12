@@ -22,10 +22,7 @@ Smartgraphs.SelectedPointInspector = Smartgraphs.Inspector.extend({
   inspect: function () {
     var dataset = this.get('dataset');
     var selection = dataset && dataset.get('selection');
-    
     var value = selection ? selection.toArray().objectAt(0) : undefined;
-    console.log('setting inspector value to: ', value);
-    
     this.set('value', value);
     return value;
   },
