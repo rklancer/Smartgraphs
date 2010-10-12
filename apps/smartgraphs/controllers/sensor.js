@@ -97,6 +97,11 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     this._isRecording = YES;
     this._nsamples = 0;
     this._appletView.start();
+    
+    // inform the data set record how many points we expect to add, so the display can make room.
+    var startLength = this._series.getPath('points.length');
+    var expectedLength = startLength + Math.floor(this.get('xMax') / (this.get('downsampleRatio') * this.get('dt')));
+    this._series.set('expectedLength', expectedLength);
   },
   
   stopRecording: function () {

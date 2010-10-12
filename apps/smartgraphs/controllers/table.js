@@ -16,6 +16,7 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   graphController: null,
   graphName: null,
   seriesName: null,
+  series: null,
   
   clear: function () {
     this.set('content', null);
@@ -25,7 +26,6 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   },
   
   setLinkedSeries: function (graphName, seriesName) {
-    console.log('linking table view to graph %@ and series %@'.fmt(graphName, seriesName));
     this.removeObservers();
 
     this.set('graphName', graphName);
@@ -59,8 +59,9 @@ Smartgraphs.TableController = SC.ArrayController.extend(
         this.waitForController();
         return;
       }
-      console.log('setting content of table controller to %s', seriesName);
       this.set('content', series.get('points'));
+      this.set('series', series);
+      
       if (this._selectionBinding) this._selectionBinding.disconnect();
       this._selectionBinding = this.bind('selection', series, 'selection');
     }

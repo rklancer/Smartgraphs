@@ -27,7 +27,8 @@ Smartgraphs.DataSeries = SC.Record.extend(
   defaultColor: SC.Record.attr(String),
   
   color: null,
-  selection: null
+  selection: null,
+  expectedLength: null
 
 }) ;
 

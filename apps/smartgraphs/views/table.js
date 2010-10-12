@@ -71,17 +71,25 @@ Smartgraphs.TableView = SC.View.extend(
       contentBinding: '.parentView.parentView.parentView*tableController.arrangedObjects',
       selectionBinding: '.parentView.parentView.parentView*tableController.selection',
       contentLengthBinding: '.content.length',
+      seriesBinding: '.parentView.parentView.parentView*tableController.series',
+
+      // creates a binding loop, for unclear reasons:
+      // expectedLengthBinding: '.parentView.parentView.parentView*tableController.series.expectedLength',
       
       _contentLengthDidChange: function () {
-        // adjust height when content length increases
+        // adjust height when content length increases; if expectedLength is set, use that so we don't keep adjusting height.
+        var expectedLength = this.getPath('series.expectedLength');
         var contentLength = this.get('contentLength');
-        this.adjust('height', contentLength * this.get('rowHeight'));
-
-        // then scroll to bottom when content length increases, unless this is the initial loading of content
-        if (this._oldContentLength > 0 && contentLength > this._oldContentLength) {
-          this.getPath('parentView.parentView').scrollTo(this.get('maximumVerticalScrollOffset'));
+        var rowHeight = this.get('rowHeight');
+        var newHeight = (expectedLength || contentLength) * rowHeight;
+        
+        if (this.get('frame').height !== newHeight) {
+          this.adjust('height', newHeight);
         }
-        this._oldContentLength = contentLength;
+
+        // attempt to scroll the current item (whose top is at length-1*height) to the bottom of the frame
+        var y = (contentLength - 1) * rowHeight - (this.getPath('parentView.frame').height - rowHeight);
+        this.getPath('parentView.parentView').scrollTo(0, y);
       }.observes('contentLength'),
       
       _contentObjectDidChange: function () {
