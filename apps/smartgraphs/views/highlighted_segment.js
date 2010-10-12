@@ -34,7 +34,7 @@ Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
    later in the SC framework)
    */
   // TODO: Update this displayProperties list
-  displayProperties: 'points'.w(),
+  displayProperties: 'points.[]'.w(),
 
   /**
    We are using renderCallback in views to call non-SC render methods like
@@ -50,7 +50,7 @@ Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
       'stroke-opacity': 0.10,
       'stroke-linecap': 'round',
       'stroke-linejoin': 'round'
-    }).toBack();
+    });  
     return segmentPath;
   },
 
@@ -102,12 +102,8 @@ Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
        SVG DOM and thus in the back layer on the HTML page
        */
       segmentPath.attr({
-        'stroke-width': 14,
-        'stroke': '#aa0000',
-        'stroke-opacity': 0.10,
-        'stroke-linecap': 'round',
-        'stroke-linejoin': 'round'
-      }).toBack();
+        'path': pathString
+      });
     }
   }
 
