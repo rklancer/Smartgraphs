@@ -21,10 +21,6 @@ Smartgraphs.TableView = SC.View.extend(
   latestXBinding: '*tableController.latestX',
   latestYBinding: '*tableController.latestY',
   
-  displayedSeries: null,
-  tableView: null,
-  numericView: null,
-  
   layout: { width: 250, centerX: 0, top: 10, bottom: 10 },
 
   childViews: ['labelsView', 'numericView', 'scrollerView'],
@@ -65,69 +61,7 @@ Smartgraphs.TableView = SC.View.extend(
   scrollerView: SC.ScrollView.design({
     layout: { left: 0, top: 30, width: 250 },
     borderStyle: SC.BORDER_NONE,
-    contentView: null
-  }),
-  
-  seriesDidChange: function () {
-    this.invokeOnce('adjustViews');
-  }.observes('series'),
-  
-  showTableDidChange: function () {
-    this.invokeOnce('adjustViews');    
-  }.observes('showTable'),
-  
-  adjustViews: function () {
-    var tableView = this.get('tableView');
-    var numericView = this.get('numericView');
-    var showTable = this.get('showTable');
-    var series = this.get('series');
-    var displayedSeries = this.get('displayedSeries');
-    
-    if (showTable) {
-      numericView.set('isVisible', NO);
-      
-      if (tableView && (series !== displayedSeries)) {
-        this.removeTableView();
-        this.addTableView();
-      }
-      else if (!tableView) {
-        this.addTableView();
-      }
-    }
-    else {
-      numericView.set('isVisible', YES);
-      if (tableView) this.removeTableView();
-    }
-  },
-  
-  removeTableView: function () {
-    var scrollerView = this.get('scrollerView');
-    var tableView = this.get('tableView');
-    
-    scrollerView.set('contentView', null);
-    scrollerView.set('isVisible', NO);        
-    tableView.bindings.forEach(function (b) { b.disconnect(); });        
-    this.set('tableView', null);
-  },
-  
-  addTableView: function () {
-    var scrollerView = this.get('scrollerView');
-    var tableView = this.get('tableView');
-    
-    tableView = this.makeTableView();
-    scrollerView.set('isVisible', YES);
-    scrollerView.set('contentView', tableView);
-    this.set('tableView', tableView);
-            
-    // tableView's content depends on parentView, which isn't set until the end of the runloop. Without the 
-    // line below, the scroll view believes it's contentView's height is 0
-    this.invokeLast(function () {
-      tableView.adjust('height', tableView.getPath('content.length') * tableView.get('rowHeight'));
-    });
-  },
-  
-  makeTableView: function () {
-    return SC.View.design({
+    contentView: SC.View.design({
       childViews: ['xsView', 'ysView'],
 
       classNames: ['smartgraph-table'],
@@ -154,10 +88,40 @@ Smartgraphs.TableView = SC.View.extend(
         canEditContent: NO,
         contentValueKey: 'yRounded',
         contentBinding: '.parentView.content',
-        selectionBinding: '.parentView.selection',
-        rowHeight: 18
+        selectionBinding: '.parentView.selection'
       })
-    }).create();
+    })
+  }),
+  
+  seriesDidChange: function () {
+    this.invokeOnce('adjustViews');
+  }.observes('series'),
+  
+  showTableDidChange: function () {
+    this.invokeOnce('adjustViews');    
+  }.observes('showTable'),
+  
+  adjustViews: function () {
+    var scrollerView = this.get('scrollerView');
+    var tableView = scrollerView.get('contentView');
+    var numericView = this.get('numericView');
+    
+    if (this.get('showTable')) {
+      numericView.set('isVisible', NO);
+      tableView.bindings.forEach( function (b) { b.connect(); } );
+      scrollerView.set('isVisible', YES);
+      
+      // tableView's content depends on parentView, which isn't set until the end of the runloop. Without the 
+      // line below, the scroll view believes it's contentView's height is 0
+      this.invokeLast(function () {
+        tableView.adjust('height', tableView.getPath('content.length') * tableView.get('rowHeight'));
+      });
+    }
+    else {
+      numericView.set('isVisible', YES);
+      tableView.bindings.forEach( function (b) { b.disconnect(); } );
+      scrollerView.set('isVisible', NO);          
+    }
   }
   
 });
