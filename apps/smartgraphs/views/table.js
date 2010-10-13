@@ -20,16 +20,16 @@ Smartgraphs.TableView = SC.View.extend(
     width: 188
   },
 
-  childViews: ['labelsView', 'scrollerView'],
+  childViews: ['labelsView'],
 
   labelsView: SC.View.design({
     layout: {
       left: 0,
       top: 0,
       width: 190,
-      height: 30
+      height: 50
     },
-    childViews: ['xsLabel', 'ysLabel'],
+    childViews: ['latestX', 'latestY'],
 
     xsLabel: SC.LabelView.design({    
       layout: {
@@ -39,7 +39,7 @@ Smartgraphs.TableView = SC.View.extend(
         height: 20
       },
 
-      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.graphController.axes.xLabelAbbreviated')
+      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.axes.xLabelAbbreviated')
     }),
 
     ysLabel: SC.LabelView.design({
@@ -49,14 +49,35 @@ Smartgraphs.TableView = SC.View.extend(
         top: 7,
         height: 20
       },
-      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.graphController.axes.yLabelAbbreviated')
+      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.axes.yLabelAbbreviated')
+    }),
+    
+    latestX: SC.LabelView.design({    
+      layout: {
+        left: 10,
+        width: 80,
+        top: 30,
+        height: 20
+      },
+
+      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.latestX')
+    }),
+
+    latestY: SC.LabelView.design({
+      layout: {
+        right: 10,
+        width: 80,
+        top: 30,
+        height: 20
+      },
+      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.latestY')
     })
   }),
-
+  
   scrollerView: SC.ScrollView.design({
     layout: {
       left: 0,
-      top: 30,
+      top: 50,
       width: 190,
       bottom: 15
     },

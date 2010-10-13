@@ -161,12 +161,11 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     
     if ( !which ) return NO;
     
-    Smartgraphs.get(which+'TableController').setLinkedSeries(graphName, seriesName);
+    Smartgraphs.get(which+'TableController').openDataset(graphName, seriesName);
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'TableView');
   
     return YES;
   },
-  
   
   hidePane: function (pane) {
     pane = this.validPaneFor(pane);

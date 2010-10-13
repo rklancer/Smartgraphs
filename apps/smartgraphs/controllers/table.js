@@ -1,31 +1,71 @@
 // ==========================================================================
 // Project:   Smartgraphs.tableController
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
+// @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  (Document Your Controller Here)
-
+  Initial implementation of table controller. Currently only allows displaying a single dataset, which must be open
+  in a graph controller.
+  
   @extends SC.Object
 */
 Smartgraphs.TableController = SC.ArrayController.extend(
 /** @scope Smartgraphs.tableController.prototype */ {
   
+  /**
+    The graph controller that has this dataset open. (Currently we require a dataset to be opened in a graph view
+    before it can be viewed in a table, but this will change.)
+  */
   graphController: null,
+  
+  /**
+    The name of the graph opened by the graphController. We find the graph controller by name.
+  */
   graphName: null,
+  
+  /**
+    The name of the dataset being displayed. We find the dataset by name.
+  */
   seriesName: null,
+
+  /**
+    The dataset being displayed, if any.
+  */
   series: null,
   
+  axesBinding: '*graphController.axes',
+  selectionBinding: '*series.selection',
+
+  // These properties will be used to communicate to the table view. (These will change as the view becomes more
+  // sophisticated.)
+  
+  /**
+    Whether to display the table at all and latest datapoint to display
+  */
+  showTable: YES,
+  latestXBinding: '*series.latestPoint.xRounded',
+  latestYBinding: '*series.latestPoint.yRounded',
+  
+  
   clear: function () {
+    this.removeObservers();
     this.set('content', null);
+    this.set('series', null);
     this.set('graphController', null);
     this.set('graphName', null);
     this.set('seriesName', null);
   },
   
-  setLinkedSeries: function (graphName, seriesName) {
+  /**
+    Causes the table to display dataset `seriesName`, which must be opened on graph `graphName`.
+    
+    Waits for the specified graph to be opened by one of the graph controllers and waits for the dataset to be opened
+    by that graph controller before setting our content to the set of points in the dataset.
+  */
+  openDataset: function (graphName, seriesName) {
     this.removeObservers();
 
     this.set('graphName', graphName);
@@ -61,9 +101,6 @@ Smartgraphs.TableController = SC.ArrayController.extend(
       }
       this.set('content', series.get('points'));
       this.set('series', series);
-      
-      if (this._selectionBinding) this._selectionBinding.disconnect();
-      this._selectionBinding = this.bind('selection', series, 'selection');
     }
     else {
       graphController.get('seriesList').addObserver('[]', this, this.waitForSeries);

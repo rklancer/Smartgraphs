@@ -75,6 +75,11 @@ Smartgraphs.DataSeries = SC.Record.extend(
   */
   streamSouce: null,
   
+  /**
+    The most recently added data point, if streaming
+  */
+  latestPoint: SC.Record.toOne('Smartgraphs.DataPoint'),
+  
   /*
     if nonnull, and isStreaming is YES, then this represents the expected length of the array after the currently
     streaming data is finished streaming.

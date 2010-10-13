@@ -181,6 +181,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
       if ( this._nsamples % downsampleRatio === 0 ) {
         SC.RunLoop.begin();
         point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
+        this._series.set('latestPoint', point);
         this._series.get('points').pushObject(point);
         Smartgraphs.store.commitRecords();
         SC.RunLoop.end();
