@@ -61,14 +61,20 @@ Smartgraphs.TableView = SC.View.extend(
   scrollerView: SC.ScrollView.design({
     layout: { left: 0, top: 30, width: 250 },
     borderStyle: SC.BORDER_NONE,
-    contentView: SC.View.design({
-      childViews: ['xsView', 'ysView'],
-
-      classNames: ['smartgraph-table'],
     
+    contentView: SC.View.design({
+      classNames: ['smartgraph-table'],
+
       rowHeight: 18,
       contentBinding: '.parentView.parentView.parentView*tableController.arrangedObjects',
       selectionBinding: '.parentView.parentView.parentView*tableController.selection',
+      contentLengthBinding: '.content.length',
+      
+      contentLengthDidChange: function () {
+        this.adjust('height', this.get('contentLength') * this.get('rowHeight'));
+      }.observes('contentLength'),
+      
+      childViews: ['xsView', 'ysView'],
 
       xsView: SC.ListView.design({
         layout: { left: 0, top: 0, width: 120 },
@@ -120,7 +126,7 @@ Smartgraphs.TableView = SC.View.extend(
     else {
       numericView.set('isVisible', YES);
       tableView.bindings.forEach( function (b) { b.disconnect(); } );
-      scrollerView.set('isVisible', NO);          
+      scrollerView.set('isVisible', NO);       
     }
   }
   
