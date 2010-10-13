@@ -109,6 +109,13 @@ body.sc-theme {
   color: #666666;
 }
 
+.smartgraph-table .sc-list-item-view.sc-regular-size {
+  font-size: 14px;
+}
+
+.smartgraph-table .sc-label-view.sc-regular-size {
+  font-size: 18px;
+}
 
 /* fixes to make sure statically laid out RadioView labels expand to fit wrapped content*/
 .sc-theme .sc-view.ace.sc-radio-view.sc-static-layout .sc-radio-button {

@@ -14,84 +14,47 @@
 Smartgraphs.TableView = SC.View.extend(
 /** @scope Smartgraphs.TableView.prototype */ {
   
-  layout: {
-    left: 20,
-    bottom: 10,
-    width: 188
-  },
+  showTableBinding: '*tableController.showTable',
+  xLabelBinding: '*tableController.axes.xLabelAbbreviated',
+  yLabelBinding: '*tableController.axes.yLabelAbbreviated',
+  latestXBinding: '*tableController.latestX',
+  latestYBinding: '*tableController.latestY',
+  
+  layout: { width: 250, centerX: 0, top: 10, bottom: 10 },
 
-  childViews: ['labelsView'],
+  childViews: ['labelsView', 'scrollerView'],
 
   labelsView: SC.View.design({
-    layout: {
-      left: 0,
-      top: 0,
-      width: 190,
-      height: 50
-    },
-    childViews: ['latestX', 'latestY'],
+    layout: { left: 0, top: 0, width: 250, height: 30 },
+    classNames: ['smartgraph-table'],
+    childViews: ['xsLabel', 'ysLabel'],
 
     xsLabel: SC.LabelView.design({    
-      layout: {
-        left: 10,
-        width: 80,
-        top: 7,
-        height: 20
-      },
-
-      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.axes.xLabelAbbreviated')
+      layout: { left: 0, top: 0, width: 120, height: 25 },
+      valueBinding: '.parentView.parentView.xLabel'
     }),
 
     ysLabel: SC.LabelView.design({
-      layout: {
-        right: 10,
-        width: 80,
-        top: 7,
-        height: 20
-      },
-      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.axes.yLabelAbbreviated')
-    }),
-    
-    latestX: SC.LabelView.design({    
-      layout: {
-        left: 10,
-        width: 80,
-        top: 30,
-        height: 20
-      },
-
-      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.latestX')
-    }),
-
-    latestY: SC.LabelView.design({
-      layout: {
-        right: 10,
-        width: 80,
-        top: 30,
-        height: 20
-      },
-      valueBinding: SC.Binding.oneWay('.parentView.parentView*tableController.latestY')
+      layout: { right: 0, top: 0, width: 120, height: 25 },
+      valueBinding: '.parentView.parentView.yLabel'
     })
   }),
   
   scrollerView: SC.ScrollView.design({
-    layout: {
-      left: 0,
-      top: 50,
-      width: 190,
-      bottom: 15
-    },
+    layout: { left: 0, width: 250, top: 30, bottom: 0 },
 
     borderStyle: SC.BORDER_NONE,
 
     contentView: SC.View.design({
       childViews: ['xsView', 'ysView'],
 
+      classNames: ['smartgraph-table'],
+      
       rowHeight: 18,
       contentBinding: '.parentView.parentView.parentView*tableController.arrangedObjects',
       contentLengthBinding: '.content.length',
-      selectionBinding: '.parentView.parentView.parentView*tableController.selection',
       seriesBinding: '.parentView.parentView.parentView*tableController.series',
+      selectionBinding: '.parentView.parentView.parentView*tableController.selection',
 
       // this creates a binding loop, for unclear reasons:
       // expectedLengthBinding: '.parentView.parentView.parentView*tableController.series.expectedLength',
@@ -116,11 +79,8 @@ Smartgraphs.TableView = SC.View.extend(
       }.observes('contentLength'),
 
       xsView: SC.ListView.design({
-        layout: {
-          left: 10,
-          top: 0,
-          width: 70
-        },
+        layout: { left: 0, top: 0, width: 120 },
+
         rowHeightBinding: '.parentView.rowHeight',
         canEditContent: NO,
         contentValueKey: 'xRounded',
@@ -129,11 +89,9 @@ Smartgraphs.TableView = SC.View.extend(
       }),
 
       ysView: SC.ListView.design({
-        layout: {
-          left: 100,
-          top: 0,
-          width: 70
-        },
+        // using left: rather than right: keeps the ysView from being pushed to the left when the scroll bar appears
+        layout: { left: 130, top: 0, width: 120 }, 
+        
         rowHeightBinding: '.parentView.rowHeight',
         canEditContent: NO,
         contentValueKey: 'yRounded',
