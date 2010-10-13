@@ -13,7 +13,6 @@
 */
 Smartgraphs.sensorController = SC.ObjectController.create(
 /** @scope Smartgraphs.sensorController.prototype */ {
-
   
   xMin: null,
   xMax: null,
@@ -30,10 +29,9 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   }(),
   
   /**
-    the time interval between data points returned by the sensor
-    (eventually we will read this from the new applet)
+    The time interval between data points returned by the sensor
+    (Eventually we will read this from the new applet)
   */
-  
   dt: 0.1,
   
   sensorIsReady: NO,
@@ -65,6 +63,10 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     return NO;
   },
   
+  /** 
+    Called on entry to SENSOR state (i.e., the parent state of the various SENSOR_* states).
+    register() must be called prior to calling this method
+  */
   enableInput: function () {
     if (this._inputIsEnabled || !this._pane || !this._series) {
       return NO;
@@ -85,27 +87,39 @@ Smartgraphs.sensorController = SC.ObjectController.create(
 
     return YES;
   },
-  
+
+  /** 
+    Called on exit from SENSOR state (i.e., the parent state of the various SENSOR_* states).
+  */
   disableInput: function () {
     this._inputIsEnabled = NO;
-    this._isRecording = NO;
     this._series = null;
     this._pane = null;
   },
   
+  /**
+    Called on entry to SENSOR_RECORDING state.
+  */
   startRecording: function () {
     this._isRecording = YES;
+    this._series.set('isStreaming', YES);
+    this._series.set('streamSource', this);
+    
     this._nsamples = 0;
     this._appletView.start();
     
     // inform the data set record how many points we expect to add, so the display can make room.
     var startLength = this._series.getPath('points.length');
-    var expectedLength = startLength + Math.floor(this.get('xMax') / (this.get('downsampleRatio') * this.get('dt')));
+    var expectedLength = startLength + Math.floor(1 + this.get('xMax') / (this.get('downsampleRatio') * this.get('dt')));
     this._series.set('expectedLength', expectedLength);
   },
   
+  /**
+    Called on exit from SENSOR_RECORDING state.
+  */
   stopRecording: function () {
     this._isRecording = NO;
+    this._series.set('isStreaming', NO);
     this._appletView.stop();
   },
   
