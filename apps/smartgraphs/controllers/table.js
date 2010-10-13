@@ -45,7 +45,7 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   /**
     Whether to display the table at all and latest datapoint to display
   */
-  showTable: SC.Binding.not('*series.isStreaming'),
+  showTableBinding: SC.Binding.not('*series.isStreaming'),
   latestXBinding: '*series.latestPoint.xRounded',
   latestYBinding: '*series.latestPoint.yRounded',
   
