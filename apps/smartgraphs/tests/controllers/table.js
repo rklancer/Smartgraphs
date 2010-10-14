@@ -1,12 +1,11 @@
 // ==========================================================================
-// Project:   Smartgraphs.tableController Unit Test
+// Project:   Smartgraphs.TableController Unit Test
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures*/
 
 var oldStore;
-var sketch;
 var session;
 var dataset;
 
