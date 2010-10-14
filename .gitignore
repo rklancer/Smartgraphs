@@ -9,3 +9,4 @@ apps/old-smartgraphs
 results/
 server.log
 server.pid.lock
+.idea
