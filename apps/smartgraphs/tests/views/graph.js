@@ -3,23 +3,13 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd addPoint */
 
 var pane;
 var view;
 var canvasView;
 var oldStore;
 var origHeight;
-
-function addPoint(series, x, y) {    
-  SC.RunLoop.begin();
-  var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
-  point.set('series', series);
-  Smartgraphs.store.commitRecords();
-  SC.RunLoop.end();
-  
-  return point;
-}
 
 
 function numVisibleChildren($el) {

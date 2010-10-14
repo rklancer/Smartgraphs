@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd setupUserAndSessionFixtures restoreUserAndSessionFixtures newSession */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd setupUserAndSessionFixtures restoreUserAndSessionFixtures newSession addPoint */
 
 var pane;
 var graphView;
@@ -69,17 +69,6 @@ function restoreFixtures() {
   Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
   Smartgraphs.DataSeries.oldFixtures = Smartgraphs.DataSeries.FIXTURES;
   Smartgraphs.set('store', oldStore);
-}
-
-
-function addPoint(dataset, x, y) {
-  SC.RunLoop.begin();
-  var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
-  point.set('series', dataset);
-  Smartgraphs.store.commitRecords();
-  SC.RunLoop.end();
-
-  return point;
 }
 
 
