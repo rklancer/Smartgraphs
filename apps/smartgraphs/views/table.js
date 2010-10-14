@@ -15,7 +15,7 @@ Smartgraphs.TableView = SC.View.extend(
 /** @scope Smartgraphs.TableView.prototype */ {
   
   showTableBinding: '*tableController.showTable',
-  seriesBinding: '.parentView.parentView.parentView*tableController.series',
+  seriesBinding: '*tableController.series',
   xLabelBinding: '*tableController.axes.xLabelAbbreviated',
   yLabelBinding: '*tableController.axes.yLabelAbbreviated',
   latestXBinding: '*tableController.latestX',
@@ -23,7 +23,7 @@ Smartgraphs.TableView = SC.View.extend(
   
   layout: { width: 250, centerX: 0, top: 10, bottom: 10 },
 
-  childViews: ['labelsView', 'numericView', 'scrollerView'],
+  childViews: ['labelsView', 'numericView', 'scrollView'],
 
   labelsView: SC.View.design({
     layout: { left: 0, top: 0, width: 250, height: 30 },
@@ -58,7 +58,7 @@ Smartgraphs.TableView = SC.View.extend(
     })
   }),
   
-  scrollerView: SC.ScrollView.design({
+  scrollView: SC.ScrollView.design({
     layout: { left: 0, top: 30, width: 250 },
     borderStyle: SC.BORDER_NONE,
     
@@ -108,25 +108,25 @@ Smartgraphs.TableView = SC.View.extend(
   }.observes('showTable'),
   
   adjustViews: function () {
-    var scrollerView = this.get('scrollerView');
-    var tableView = scrollerView.get('contentView');
+    var scrollView = this.get('scrollView');
+    var innerView = scrollView.get('contentView');
     var numericView = this.get('numericView');
     
     if (this.get('showTable')) {
       numericView.set('isVisible', NO);
-      tableView.bindings.forEach( function (b) { b.connect(); } );
-      scrollerView.set('isVisible', YES);
+      innerView.bindings.forEach( function (b) { b.connect(); } );
+      scrollView.set('isVisible', YES);
       
-      // tableView's content depends on parentView, which isn't set until the end of the runloop. Without the 
+      // innerView's content depends on parentView, which isn't set until the end of the runloop. Without the 
       // line below, the scroll view believes it's contentView's height is 0
       this.invokeLast(function () {
-        tableView.adjust('height', tableView.getPath('content.length') * tableView.get('rowHeight'));
+        innerView.adjust('height', innerView.getPath('content.length') * innerView.get('rowHeight'));
       });
     }
     else {
       numericView.set('isVisible', YES);
-      tableView.bindings.forEach( function (b) { b.disconnect(); } );
-      scrollerView.set('isVisible', NO);       
+      innerView.bindings.forEach( function (b) { b.disconnect(); } );
+      scrollView.set('isVisible', NO);       
     }
   }
   
