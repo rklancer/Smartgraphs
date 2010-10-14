@@ -42,10 +42,16 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   // These properties will be used to communicate to the table view. (These will change as the view becomes more
   // sophisticated.)
   
+  isStreamingBinding: '*series.isStreaming',
+    
   /**
     Whether to display the table at all and latest datapoint to display
   */
-  showTableBinding: SC.Binding.not('*series.isStreaming'),
+  showTable: function () {
+    // SC.Binding.not() creates a single Binding object that ends up being shared by all TableConrtroller instances
+    return !this.get('isStreaming');
+  }.property('isStreaming').cacheable(),
+  
   latestXBinding: '*series.latestPoint.xRounded',
   latestYBinding: '*series.latestPoint.yRounded',
   

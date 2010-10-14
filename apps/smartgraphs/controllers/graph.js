@@ -41,6 +41,12 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   ],
   
   clear: function () {
+    // remove this controller from the controllerForName hash
+    var currentGraphName = this.get('name');
+    if (currentGraphName) {
+      Smartgraphs.GraphController.controllerForName.set(currentGraphName, null);
+    }
+    
     this.set('seriesList', []);
     this.set('annotationList', []);
     this.set('content', null);
