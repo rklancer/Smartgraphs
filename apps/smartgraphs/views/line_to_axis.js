@@ -9,11 +9,11 @@
 
   // TODO (Document Your View Here)
 
-  @extends RaphaelViews.RaphaelView
-*/
+ @extends RaphaelViews.RaphaelView
+ */
 
 Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
-/** @scope Smartgraphs.LineToAxisView.prototype */
+  /** @scope Smartgraphs.LineToAxisView.prototype */
 {
 
   // TODO: update these defaults (and also displayProperties)
@@ -23,7 +23,6 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
   defaultStrokeOpacity: 0.7,
   fill: '#ffffff',
   fillOpacity: 0,
-  defaultLeftPadding: 40,
 
   /**
    SC will call render(context, firstTime) if these properties change
@@ -39,17 +38,14 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
    its tags are already in the DOM.
    */
   renderCallback: function(raphaelCanvas, attrs) {
-    console.log("renderCallback called with raphaelCanvas:", raphaelCanvas);
-    console.log("                               and attrs:", attrs);
     var linePath;
     if (attrs.shouldHideLinePath) {
-      console.log("attrs.shouldHideLinePath:", attrs.shouldHideLinePath);
       linePath = raphaelCanvas.path("M 0 0 L 0 0");
-      console.log("hiding linePath:", linePath);
       linePath.hide();
     } else {
-      var linePathString = 'M ' + attrs.x + ' ' + attrs.y + ' L ' + attrs.left + ' ' + attrs.y;
-      console.log("linePathString:", linePathString);
+      var linePathString = 'M ' + attrs.linePathStartingCoords.x + ' ' + attrs.linePathStartingCoords.y +
+        ' L ' + attrs.linePathEndingCoords.x + ' ' + attrs.linePathEndingCoords.y;
+      //      console.log("linePathString:", linePathString);
       linePath = raphaelCanvas.path(linePathString);
     }
     linePath.attr({
@@ -57,7 +53,7 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
       'stroke': this.defaultStroke,
       'stroke-opacity': this.defaultStrokeOpacity
     }); //.toBack();
-    console.log("renderCallback returning linePath:", linePath);
+    //    console.log("renderCallback returning linePath:", linePath);
     return linePath;
   },
 
@@ -75,15 +71,23 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
     if (startingPoint) {
       var linePathStartingCoords = graphView.coordinatesForPoint(startingPoint.get('x'), startingPoint.get('y'));
       if (linePathStartingCoords) {
-        var linePathEndingCoords = graphView.coordinatesForPoint(0, startingPoint.get('y'));
-        console.log("linePathEndingCoords:", linePathEndingCoords);
-        var linePathEndingXCoord = linePathEndingCoords ? linePathEndingCoords.x: this.defaultLeftPadding;
-        console.log("linePathEndingXCoord:", linePathEndingXCoord);
-        attrs = {
-          x: linePathStartingCoords.x,
-          y: linePathStartingCoords.y,
-          left: linePathEndingXCoord
-        };
+        var linePathEndingCoords;
+        var axis = annotation.get('axis');
+        if (axis == "x") {
+          // Make a linePathEndingCoords that matches point on the x-axis
+          linePathEndingCoords = graphView.coordinatesForPoint(startingPoint.get('x'), 0);
+        } else {
+          // By default, make a linePathEndingCoords that matches point on the y-axis
+          linePathEndingCoords = graphView.coordinatesForPoint(0, startingPoint.get('y'));
+        }
+
+        if (linePathEndingCoords) {
+          attrs = {
+            linePathStartingCoords: linePathStartingCoords,
+            linePathEndingCoords: linePathEndingCoords,
+            shouldHideLinePath: annotation.get('shouldHideLinePath')
+          };
+        }
       }
     }
     if (!attrs) {

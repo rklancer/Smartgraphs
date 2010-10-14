@@ -16,10 +16,10 @@ var dataset;
 
 // TODO copied straight from GraphView -- should probably be moved to debug folder? How are they different/the same?
 function setupFixtures() {
-  
+
   setupUserAndSessionFixtures();
-  
-  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
+
+  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;
   Smartgraphs.Graph.FIXTURES = [
     { url: 'test',
       name: 'test',
@@ -28,7 +28,7 @@ function setupFixtures() {
       initialSeries: []
     }
   ];
-  
+
   Smartgraphs.Axes.oldFixtures = Smartgraphs.Axes.FIXTURES;
   Smartgraphs.Axes.FIXTURES = [
     { url: 'test-axes',
@@ -46,16 +46,16 @@ function setupFixtures() {
       yLabelAbbreviated: 'yLabel (abbrev)'
     }
   ];
-  
+
   // without some data in a RecordType's FIXTURES, the FixturesDataSource won't allow any records to be committed.
   Smartgraphs.DataSeries.FIXTURES = Smartgraphs.DataSeries.oldFixtures;
   Smartgraphs.DataSeries.FIXTURES = [{url: 'dummy'}];
-  
+
   Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
   Smartgraphs.DataPoint.FIXTURES = [{url: 'dummy'}];
-  
+
   oldStore = Smartgraphs.store;
-  
+
   // REMINDER: 'SC.Record.fixtures' is a singleton object; using it below would result in pollution of the data store
   // with data from prior tests.
   Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
@@ -63,7 +63,7 @@ function setupFixtures() {
 
 function restoreFixtures() {
   restoreUserAndSessionFixtures();
-  
+
   Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
   Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
   Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
@@ -72,13 +72,13 @@ function restoreFixtures() {
 }
 
 
-function addPoint(dataset, x, y) {    
+function addPoint(dataset, x, y) {
   SC.RunLoop.begin();
   var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
   point.set('series', dataset);
   Smartgraphs.store.commitRecords();
   SC.RunLoop.end();
-  
+
   return point;
 }
 
@@ -86,9 +86,9 @@ function addPoint(dataset, x, y) {
 module("Smartgraphs Annotation View instantiation", {
   setup: function() {
     setupFixtures();
-    
+
     Smartgraphs.firstGraphController.openGraph('test');
-    
+
     SC.RunLoop.begin();
     pane = SC.MainPane.create({
       childViews: [
@@ -99,17 +99,17 @@ module("Smartgraphs Annotation View instantiation", {
     });
     pane.append();
     SC.RunLoop.end();
-    
-    graphView = pane.get('childViews').objectAt(0);  
+
+    graphView = pane.get('childViews').objectAt(0);
     canvasView = graphView.get('graphCanvasView');
     childViews = canvasView.get('childViews');
-    
+
     newSession();
     session = Smartgraphs.sessionController.get('content');
     dataset = Smartgraphs.sessionController.createSeries();
     Smartgraphs.firstGraphController.addSeries(dataset);
-  }, 
-  
+  },
+
   teardown: function () {
     Smartgraphs.firstGraphController.clear();
     graphView.bindings.forEach( function (b) { b.disconnect(); } );
@@ -159,11 +159,41 @@ test('HighlightedPoint location should track the point it highlights', function 
 
 });
 
-test('LineToAxis location should have the expected path with the starting point it highlights', function () {
-  var lineToAxis = Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
+test('LineToAxis location should have the expected path to the x-axis with the starting point it highlights', function () {
+  var lineToXAxis = Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
+  var point = addPoint(dataset, -1, -5);
+  lineToXAxis.set('point', point);
+  lineToXAxis.set('axis', "x");
+  console.log("lineToXAxis:", lineToXAxis);
+  Smartgraphs.firstGraphController.addAnnotation(lineToXAxis);
+
+  var lineToAxisView = childViews.objectAt(childViews.get('length') - 1);
+  ok(SC.kindOf(lineToAxisView, Smartgraphs.LineToAxisView),
+    'a lineToAxisView should have been added to the graph canvas');
+
+  // let the view render
+  SC.RunLoop.begin();
+  SC.RunLoop.end();
+
+  var raphaelObject = lineToAxisView.get('raphaelObject');
+  var attr = raphaelObject.attr();
+  var startingCoords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
+  var endingCoords = graphView.coordinatesForPoint(point.get('x'), 0);
+
+  ok(!attr.shouldHideLinePath, "lineToAxis's shouldHideLinePath should be NO or undefined");
+  equals(attr.path[0][1], startingCoords.x, "lineToAxis's starting-x should be " + startingCoords.x.toString() +
+    " for point:" + point.toString());
+  equals(attr.path[0][2], startingCoords.y, "lineToAxis's starting-y should be " + startingCoords.y.toString());
+  equals(attr.path[1][1], endingCoords.x, "lineToAxis's ending-x should be " + endingCoords.x.toString());
+  equals(attr.path[1][2], endingCoords.y, "lineToAxis's ending-y should be " + endingCoords.y.toString());
+});
+
+test('LineToAxis location should have the expected path to the y-axis with the starting point it highlights', function () {
+  var lineToYAxis = Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
   var point = addPoint(dataset, 1, 5);
-  lineToAxis.set('point', point);
-  Smartgraphs.firstGraphController.addAnnotation(lineToAxis);
+  lineToYAxis.set('point', point);
+  console.warn("lineToYAxis:", lineToYAxis);
+  Smartgraphs.firstGraphController.addAnnotation(lineToYAxis);
 
   var lineToAxisView = childViews.objectAt(childViews.get('length') - 1);
   ok(SC.kindOf(lineToAxisView, Smartgraphs.LineToAxisView),

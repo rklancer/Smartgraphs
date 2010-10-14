@@ -14,7 +14,8 @@ Smartgraphs.LineToAxis.FIXTURES = [
     name: 'where-maria-stopped-to-y-axis',
     isExample: YES,
     session: null,
-    point: 403
+    point: 403,
+    axis: 'y'
   }
 
 ];
