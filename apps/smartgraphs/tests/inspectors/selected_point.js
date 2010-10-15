@@ -69,7 +69,7 @@ module('selectedPointInspector', {
 });
 
 
-test('selectedPointInspector should return the selected point on the specified graph', function () {
+test('SelectedPointInspector should return the selected point on the specified graph', function () {
   var selection = SC.SelectionSet.create();
   dataset.set('selection', selection);
   
@@ -90,14 +90,14 @@ test('selectedPointInspector should return the selected point on the specified g
   // check that we understand the removal of objects from the selection set
   selection.removeObject(p1);
   inspector.inspect();
-  equals(inspector.get('value'), p2, "inspector value should be p2 when p1 is removed from the selection");
+  equals(inspector.get('value'), p2, "inspector value should be p2 when p1 is removed from the selection {p1, p2}");
   
   // check that the inspector does the right thing when the dataset's SelectionSet object is swapped out entirely
   selection = SC.SelectionSet.create();
   selection.addObject(p3);
   dataset.set('selection', selection);
-  inspector.inspect();  
-  equals(inspector.get('value'), p3, "inspector value should be p2 when selection is set to a new SelectionSet containing only p3");
+  inspector.inspect();
+  equals(inspector.get('value'), p3, "inspector value should be p3 when selection is set to a new SelectionSet containing only p3");
 });
 
 
