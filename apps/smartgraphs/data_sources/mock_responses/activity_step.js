@@ -237,7 +237,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/1"] =
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
     "type": "Smartgraphs.SelectedPointInspector",
-    "config": { "pane": "top", "series": "maria" }
+    "config": { "graphName": "maria", "seriesName": "maria" }
   },
   "submissibilityCriterion": {
     "notempty": "value"
@@ -246,7 +246,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/1"] =
   ],
   "responseInspector": {
     "type": "Smartgraphs.SelectedPointInspector",
-    "config": { "pane": "top", "series": "maria" }
+    "config": { "graphName": "maria", "seriesName": "maria" }
   },
   "responseBranches": [
     { "criterion": { 
@@ -286,7 +286,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/2"] =
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
     "type": "Smartgraphs.SelectedPointInspector",
-    "config": { "pane": "top", "series": "maria" }
+    "config": { "graphName": "maria", "seriesName": "maria" }
   },
   "submissibilityCriterion": {
     "notempty": "value"
@@ -295,7 +295,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/2"] =
   ],
   "responseInspector": {
     "type": "Smartgraphs.SelectedPointInspector",
-    "config": { "pane": "top", "series": "maria" }
+    "config": { "graphName": "maria", "seriesName": "maria" }
   },
   "responseBranches": [
     { "criterion": { 
@@ -349,7 +349,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/3"] =
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
     "type": "Smartgraphs.SelectedPointInspector",
-    "config": { "pane": "top", "series": "maria" }
+    "config": { "graphName": "maria", "seriesName": "maria" }
   },
   "submissibilityCriterion": {
     "notempty": "value"
@@ -358,7 +358,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/3"] =
   ],
   "responseInspector": {
     "type": "Smartgraphs.SelectedPointInspector",
-    "config": { "pane": "top", "series": "maria" }
+    "config": { "graphName": "maria", "seriesName": "maria" }
   },
   "responseBranches": [
     { "criterion": { 
@@ -416,7 +416,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/4"] =
   "shouldWaitForSubmissibleResponse": true,
   "submissibilityInspector": {
     "type": "Smartgraphs.SelectedPointInspector",
-    "config": { "pane": "top", "series": "maria" }
+    "config": { "graphName": "maria", "seriesName": "maria" }
   },
   "submissibilityCriterion": {
     "notempty": "value"
@@ -425,7 +425,7 @@ step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/4"] =
   ],
   "responseInspector": {
     "type": "Smartgraphs.SelectedPointInspector",
-    "config": { "pane": "top", "series": "maria" }
+    "config": { "graphName": "maria", "seriesName": "maria" }
   },
   "responseBranches": [
     { "criterion": { 
