@@ -24,7 +24,7 @@ Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
   },
 
   render: function (context, firstTime) {
-    var graphView = this.getPath('parentView.parentView');
+    var graphView = this.get('graphView');
     var sketch = this.get('item');
     var points = (sketch ? sketch.get('points') : null) || [{x: 0, y: 0}];
     

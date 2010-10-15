@@ -58,7 +58,7 @@ Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
    Called by SC (by the parent view)
    */
   render: function(context, firstTime) {
-    var graphView = this.getPath('parentView.parentView');
+    var graphView = this.get('graphView');
     var annotation = this.get('item');
 
     var points = annotation.get('points');

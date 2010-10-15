@@ -61,7 +61,7 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
    Called by SC (by the parent view)
    */
   render: function(context, firstTime) {
-    var graphView = this.getPath('parentView.parentView');
+    var graphView = this.get('graphView');
     var annotation = this.get('item');
 
     /** Collect Raphael attributes for the linePath into attrs */
