@@ -92,6 +92,11 @@ Smartgraphs.GraphView = SC.View.extend(
     
     this.get('graphCanvasView').appendChild(view);
 
+    if (this._viewsByClassAndId[className] === undefined) {
+      this._viewsByClassAndId[className] = {};
+    }    
+    this._viewsByClassAndId[className][item.get('id')] = view;
+    
     // THIS IS A WORKAROUND FOR A CHROME REDRAW BUG
     var svg = this.get('graphCanvasView').$('svg')[0];
     if (svg) {
@@ -100,11 +105,6 @@ Smartgraphs.GraphView = SC.View.extend(
         svg.style.display = "block";
       });
     }
-    
-    if (this._viewsByClassAndId[className] === undefined) {
-      this._viewsByClassAndId[className] = {};
-    }    
-    this._viewsByClassAndId[className][item.get('id')] = view;
   },
   
   
@@ -190,8 +190,8 @@ Smartgraphs.GraphView = SC.View.extend(
     
     displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax'.w(),
     
-    childViews: 'axesView'.w(),
-      
+    childViews: 'axesView annotationsHolder dataHolder'.w(),
+    
     axesView: RaphaelViews.RaphaelView.design({
       axesBinding: '.parentView.parentView.axes',      
       paddingBinding: '.parentView.parentView.padding',
@@ -265,6 +265,14 @@ Smartgraphs.GraphView = SC.View.extend(
         axesBinding: '.parentView.parentView.parentView.axes',
         type: 'y'
       })
+    }),
+    
+    // Holds the annotation views. Should be earlier in the DOM (and thus "behind") the dataset views
+    annotationsHolder: RaphaelViews.RaphaelView.design({
+    }),
+
+    // Holds the dataset views. Should be later in the DOM (and thus "in front of") the annotation views.
+    dataHolder: RaphaelViews.RaphaelView.design({
     })
   })
 });

@@ -3,11 +3,13 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd addPoint */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd addPoint setupDatapointFixtures restoreDatapointFixtures */
 
 var pane;
 var view;
 var canvasView;
+var annotationsHolder;
+var dataHolder;
 var oldStore;
 var origHeight;
 
@@ -54,12 +56,7 @@ function setupFixtures() {
     }
   ];
   
-  // without some data in a RecordType's FIXTURES, the FixturesDataSource won't allow any records to be committed.
-  Smartgraphs.DataSeries.oldFixtures = Smartgraphs.DataSeries.oldFixtures;
-  Smartgraphs.DataSeries.FIXTURES = [{url: 'dummy'}];
-  
-  Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
-  Smartgraphs.DataPoint.FIXTURES = [{url: 'dummy'}];
+  setupDatapointFixtures();
   
   oldStore = Smartgraphs.store;
   
@@ -71,8 +68,8 @@ function setupFixtures() {
 function restoreFixtures() {
   Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
   Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
-  Smartgraphs.DataSeries.FIXTURES = Smartgraphs.DataSeries.oldFixtures;
-  Smartgraphs.DataPoint.FIXTURES = Smartgraphs.DataPoint.oldFixtures;
+  restoreDatapointFixtures();
+  
   Smartgraphs.set('store', oldStore);
 }
 
@@ -89,11 +86,31 @@ function runTests() {
   });
 
 
-  test('GraphView should contain a child view that is RaphaelCanvasView', function () {
+  test("GraphView should contain a child view that is RaphaelCanvasView", function () {
     ok(SC.kindOf(canvasView, RaphaelViews.RaphaelCanvasView), 'GraphView.graphCanvasView is a RaphaelCanvasView');
   });
 
 
+  test("the annotations view holder and dataset view holder should be children of the canvasView", function () {
+    var ahLayer = annotationsHolder.get('layer');
+    var dLayer = dataHolder.get('layer');
+    
+    // check that ahLayer and dLayer are children of the canvas view
+    
+    ok($.contains(canvasView.get('layer'), ahLayer), "The annotations view holder should be a child of the graph canvas view");
+    ok($.contains(canvasView.get('layer'), dLayer), "The dataset view holder should be a child of the graph canvas view");  
+  });
+  
+
+  test("the annotations holder view should appear in the DOM before the dataset holder", function () {
+    var ahLayer = annotationsHolder.get('layer');
+    var dLayer = dataHolder.get('layer');
+    
+    // Use the jquery 'next siblings' selector "~" to select the dLayer if and only if it is a sibling of the ahLayer and appears after the ahLayer
+    ok( $('#' + ahLayer.id + ' ~ #' + dLayer.id)[0] === dLayer, "The data view holder's layer should be a later sibling of the annotation view holder's layer");
+  });
+  
+  
   test('adding and removing DataSeries from the graph controller should result in calls to appendChild and removeChild', function () {
     var seriesList = Smartgraphs.firstGraphController.get('seriesList');
     var series1 = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { url: 'series1' });
@@ -489,6 +506,8 @@ module("Smartgraphs.GraphView -- initial instantiation of graph", {
     
     view = pane.get('childViews').objectAt(0);  
     canvasView = view.get('graphCanvasView');
+    annotationsHolder = canvasView.get('annotationsHolder');
+    dataHolder = canvasView.get('dataHolder');   
     origHeight = view.get('frame').height;
   }, 
   
@@ -533,6 +552,8 @@ module("Smartgraphs.GraphView -- resized graph", {
     SC.RunLoop.end();
     
     canvasView = view.get('graphCanvasView');
+    annotationsHolder = canvasView.get('annotationsHolder');
+    dataHolder = canvasView.get('dataHolder');
   }, 
   
   teardown: function () {
