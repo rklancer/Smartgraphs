@@ -15,86 +15,136 @@ Smartgraphs.TableView = SC.View.extend(
 /** @scope Smartgraphs.TableView.prototype */ {
   
   showTableBinding: '*tableController.showTable',
+  showLabelsBinding: '*tableController.showLabels',
   seriesBinding: '*tableController.series',
   xLabelBinding: '*tableController.axes.xLabelAbbreviated',
   yLabelBinding: '*tableController.axes.yLabelAbbreviated',
   latestXBinding: '*tableController.latestX',
   latestYBinding: '*tableController.latestY',
   
-  layout: { width: 250, centerX: 0, top: 10, bottom: 10 },
+  fix: function (val, n) {
+    return (val === undefined || val === null) ? null : val.toFixed(n);
+  },
+  
+  numericX: function () {
+    return this.fix(this.get('latestX'), 1);
+  }.property('latestX').cacheable(),
+  
+  numericY: function () {
+    return this.fix(this.get('latestY'), 2);    
+  }.property('latestY').cacheable(), 
+  
+  layout: { top: 10, bottom: 10 },
 
-  childViews: ['labelsView', 'numericView', 'scrollView'],
-
-  labelsView: SC.View.design({
-    layout: { left: 0, top: 0, width: 250, height: 30 },
-    classNames: ['smartgraph-table'],
-    childViews: ['xsLabel', 'ysLabel'],
-
-    xsLabel: SC.LabelView.design({    
-      layout: { left: 0, top: 0, width: 120, height: 25 },
-      valueBinding: '.parentView.parentView.xLabel'
-    }),
-
-    ysLabel: SC.LabelView.design({
-      layout: { right: 0, top: 0, width: 120, height: 25 },
-      valueBinding: '.parentView.parentView.yLabel'
-    })
-  }),
+  childViews: ['numericView', 'tableColumnView'],
   
   numericView: SC.View.design({
-    layout: { left: 0, top: 70, width: 250, height: 200 },
-    classNames: ['smartgraph-numeric-view'],
+    layout: { width: 300, centerX: -10, height: 90, centerY: -10 },
     
-    childViews: ['xView', 'yView'],
+    childViews: ['xs', 'ys'],
     
-    xView: SC.LabelView.design({
-      layout: { left: 0, height: 100, width: 120 },
-      valueBinding: '.parentView.parentView.latestX'
+    xs: SC.View.design({
+      layout: { left: 0, width: 100 },
+      childViews: ['xLabel', 'xValue'],
+      
+      xLabel: SC.LabelView.design({
+        classNames: ['smartgraph-numeric-view-label'],
+        layout: { top: 0, height: 25 },
+        textAlign: SC.ALIGN_RIGHT,
+        valueBinding: '.parentView.parentView.parentView.xLabel'
+      }),
+      
+      xValue: SC.LabelView.design({
+        classNames: ['smartgraph-numeric-view-value'],        
+        layout: { top: 40 },
+        // make the decimals (approximately) line up
+        textAlign: SC.ALIGN_RIGHT,
+        valueBinding: '.parentView.parentView.parentView.numericX'
+      })
     }),
     
-    yView: SC.LabelView.design({
-      layout: { left: 130, height: 100, width: 120 },
-      valueBinding: '.parentView.parentView.latestY'
+    ys: SC.View.design({
+      layout: { right: 0, width: 120 },
+      
+      childViews: ['yLabel', 'yValue'],
+      
+      yLabel: SC.LabelView.design({
+        classNames: ['smartgraph-numeric-view-label'],        
+        layout: { top: 0, height: 25 },
+        textAlign: SC.ALIGN_RIGHT,
+        valueBinding: '.parentView.parentView.parentView.yLabel'
+      }),
+      
+      yValue: SC.LabelView.design({
+        classNames: ['smartgraph-numeric-view-value'],          
+        layout: { top: 40 },
+        textAlign: SC.ALIGN_RIGHT,
+        valueBinding: '.parentView.parentView.parentView.numericY'
+      })
     })
   }),
   
-  scrollView: SC.ScrollView.design({
-    layout: { left: 0, top: 30, width: 250 },
-    borderStyle: SC.BORDER_NONE,
+  tableColumnView: SC.View.design({
+    layout: { width: 250, centerX: 0 },
     
-    contentView: SC.View.design({
+    childViews: ['labelsView', 'scrollView'],
+    
+    labelsView: SC.View.design({
+      isVisibleBinding: '.parentView.parentView.showLabels',
+      
+      layout: { left: 0, top: 0, width: 250, height: 30 },
       classNames: ['smartgraph-table'],
+      childViews: ['xsLabel', 'ysLabel'],
 
-      rowHeight: 18,
-      contentBinding: '.parentView.parentView.parentView*tableController.arrangedObjects',
-      selectionBinding: '.parentView.parentView.parentView*tableController.selection',
-      contentLengthBinding: '.content.length',
-      
-      contentLengthDidChange: function () {
-        this.adjust('height', this.get('contentLength') * this.get('rowHeight'));
-      }.observes('contentLength'),
-      
-      childViews: ['xsView', 'ysView'],
-
-      xsView: SC.ListView.design({
-        layout: { left: 0, top: 0, width: 120 },
-
-        rowHeightBinding: '.parentView.rowHeight',
-        canEditContent: NO,
-        contentValueKey: 'xRounded',
-        contentBinding: '.parentView.content',
-        selectionBinding: '.parentView.selection'
+      xsLabel: SC.LabelView.design({    
+        layout: { left: 0, top: 0, width: 120, height: 25 },
+        valueBinding: '.parentView.parentView.parentView.xLabel'
       }),
 
-      ysView: SC.ListView.design({
-        // using left: rather than right: keeps the ysView from being pushed to the left when the scroll bar appears
-        layout: { left: 130, top: 0, width: 120 }, 
+      ysLabel: SC.LabelView.design({
+        layout: { right: 0, top: 0, width: 120, height: 25 },
+        valueBinding: '.parentView.parentView.parentView.yLabel'
+      })
+    }),
+  
+    scrollView: SC.ScrollView.design({
+      layout: { left: 0, top: 35, width: 250 },
+      borderStyle: SC.BORDER_NONE,
+    
+      contentView: SC.View.design({
+        classNames: ['smartgraph-table'],
+
+        rowHeight: 20,
+        contentBinding: '.parentView.parentView.parentView.parentView*tableController.arrangedObjects',
+        selectionBinding: '.parentView.parentView.parentView.parentView*tableController.selection',
+        contentLengthBinding: '.content.length',
       
-        rowHeightBinding: '.parentView.rowHeight',
-        canEditContent: NO,
-        contentValueKey: 'yRounded',
-        contentBinding: '.parentView.content',
-        selectionBinding: '.parentView.selection'
+        contentLengthDidChange: function () {
+          this.adjust('height', this.get('contentLength') * this.get('rowHeight'));
+        }.observes('contentLength'),
+      
+        childViews: ['xsView', 'ysView'],
+
+        xsView: SC.ListView.design({
+          layout: { left: 0, top: 0, width: 120 },
+
+          rowHeightBinding: '.parentView.rowHeight',
+          canEditContent: NO,
+          contentValueKey: 'xRounded',
+          contentBinding: '.parentView.content',
+          selectionBinding: '.parentView.selection'
+        }),
+
+        ysView: SC.ListView.design({
+          // using left: rather than right: keeps the ysView from being pushed to the left when the scroll bar appears
+          layout: { left: 130, top: 0, width: 120 }, 
+      
+          rowHeightBinding: '.parentView.rowHeight',
+          canEditContent: NO,
+          contentValueKey: 'yRounded',
+          contentBinding: '.parentView.content',
+          selectionBinding: '.parentView.selection'
+        })
       })
     })
   }),
@@ -108,14 +158,15 @@ Smartgraphs.TableView = SC.View.extend(
   }.observes('showTable'),
   
   adjustViews: function () {
-    var scrollView = this.get('scrollView');
+    var tableColumnView = this.get('tableColumnView');
+    var scrollView = tableColumnView.get('scrollView');
     var innerView = scrollView.get('contentView');
     var numericView = this.get('numericView');
     
     if (this.get('showTable')) {
       numericView.set('isVisible', NO);
       innerView.bindings.forEach( function (b) { b.connect(); } );
-      scrollView.set('isVisible', YES);
+      tableColumnView.set('isVisible', YES);
       
       // innerView's content depends on parentView, which isn't set until the end of the runloop. Without the 
       // line below, the scroll view believes it's contentView's height is 0
@@ -126,7 +177,7 @@ Smartgraphs.TableView = SC.View.extend(
     else {
       numericView.set('isVisible', YES);
       innerView.bindings.forEach( function (b) { b.disconnect(); } );
-      scrollView.set('isVisible', NO);       
+      tableColumnView.set('isVisible', NO);       
     }
   }
   

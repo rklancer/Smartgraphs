@@ -43,7 +43,11 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   // sophisticated.)
   
   isStreamingBinding: '*series.isStreaming',
-    
+  
+  showLabels: function () {
+    return this.get('length') > 0;
+  }.property('length').cacheable(),
+  
   /**
     Whether to display the table at all and latest datapoint to display
   */
@@ -54,7 +58,6 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   
   latestXBinding: '*series.latestPoint.xRounded',
   latestYBinding: '*series.latestPoint.yRounded',
-  
   
   clear: function () {
     this.removeObservers();

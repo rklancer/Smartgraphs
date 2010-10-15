@@ -110,16 +110,21 @@ body.sc-theme {
 }
 
 .smartgraph-table .sc-list-item-view.sc-regular-size {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .smartgraph-table .sc-label-view.sc-regular-size {
   font-size: 18px;
 }
 
-.smartgraph-numeric-view .sc-label-view.sc-regular-size {
+.smartgraph-numeric-view-label.sc-label-view.sc-regular-size {
+  font-size: 18px;
+}
+
+.smartgraph-numeric-view-value.sc-label-view.sc-regular-size {
   font-size: 48px;
   line-height: 1.2;
+  color: #666666;
 }
 
 /* fixes to make sure statically laid out RadioView labels expand to fit wrapped content*/

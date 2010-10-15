@@ -7,10 +7,12 @@
 
 var oldStore;
 var session;
-var view;
-var pane;
 var dataset;
 var oldShowTable;
+var pane;
+var view;
+var tableColumnView;
+
 
 function setupFixtures() {
   setupUserAndSessionFixtures();
@@ -79,6 +81,7 @@ module('Table view', {
     SC.RunLoop.end();
     
     view = pane.get('tableView');
+    tableColumnView = view.get('tableColumnView');
     
     Smartgraphs.firstGraphController.openGraph('test-graph');
     Smartgraphs.firstGraphController.addSeries(dataset); 
@@ -102,7 +105,8 @@ module('Table view', {
 
 
 test("inner view's height adjusts as points are added and removed", function () {
-  var scrollView = view.get('scrollView');
+  var tableColumnView = view.get('tableColumnView');
+  var scrollView = tableColumnView.get('scrollView');
   var innerView = scrollView.get('contentView');
   var rowHeight = innerView.get('rowHeight');
   var p1, p2;
@@ -128,29 +132,28 @@ test("inner view's height adjusts as points are added and removed", function () 
 
 test("numeric view is shown, and table view is hidden, when tableController says not to", function () {
   var numericView = view.get('numericView');
-  var tableView = view.get('scrollView');
   
   equals(numericView.get('isVisible'), NO, "numeric view's isVisible property should be NO when tableController.showTable is YES");
-  equals(tableView.get('isVisible'), YES, "table view's isVisible property should be YES when tableController.showTable is YES");
+  equals(tableColumnView.get('isVisible'), YES, "table view's isVisible property should be YES when tableController.showTable is YES");
   
   SC.RunLoop.begin();
   Smartgraphs.firstTableController.set('showTable', NO);
   SC.RunLoop.end();
     
   equals(numericView.get('isVisible'), YES, "numeric view's isVisible property should be YES when tableConroller.showTable is NO");
-  equals(tableView.get('isVisible'), NO, "table view's isVisible property should be NO when tableConroller.showTable is NO");
+  equals(tableColumnView.get('isVisible'), NO, "table view's isVisible property should be NO when tableConroller.showTable is NO");
   
   SC.RunLoop.begin();
   Smartgraphs.firstTableController.set('showTable', YES);
   SC.RunLoop.end();
     
   equals(numericView.get('isVisible'), NO, "numeric view's isVisible property should be NO when tableController.showTable is YES");
-  equals(tableView.get('isVisible'), YES, "table view's isVisible property should be YES when tableController.showTable is YES");
+  equals(tableColumnView.get('isVisible'), YES, "table view's isVisible property should be YES when tableController.showTable is YES");
 });
 
 
 test("table does not update for new data when showTable is false", function () {
-  var scrollView = view.get('scrollView');
+  var scrollView = tableColumnView.get('scrollView');
   var innerView = scrollView.get('contentView');
   var rowHeight = innerView.get('rowHeight');
   var p1, p2;
