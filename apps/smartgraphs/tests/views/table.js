@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings */
+/*globals Smartgraphs module test ok equals same stop start newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings setupDatapointFixtures restoreDatapointFixtures */
 
 var oldStore;
 var session;
@@ -14,6 +14,8 @@ var oldShowTable;
 
 function setupFixtures() {
   setupUserAndSessionFixtures();
+  setupDatapointFixtures();
+  
   Smartgraphs.Axes.oldFixtures = Smartgraphs.Axes.FIXTURES;
   Smartgraphs.Axes.FIXTURES = [
     { url: 'test-axes',
@@ -48,6 +50,7 @@ function setupFixtures() {
 
 function restoreFixtures() {
   restoreUserAndSessionFixtures();
+  restoreDatapointFixtures();
   
   Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
   Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
