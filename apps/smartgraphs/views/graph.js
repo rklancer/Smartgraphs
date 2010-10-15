@@ -45,32 +45,40 @@ Smartgraphs.GraphView = SC.View.extend(
     var item, className, id;
     var desiredViewsByClassAndId = {};
     
-    // add views for items (series or annotations) not currently in the list of child views
-    for (var i = 0, ii = list.get('length'); i < ii; i++) {
-      item = list.objectAt(i);
-      className = item.constructor.toString();
-      id = item.get('id');
+    var itemType, itemTypes = ['data', 'annotation'];
+    
+    for (var j = 0; j < itemTypes.length; j++ ) {
+      itemType = itemTypes[j];
+      list = this.get(itemType === 'data' ? 'seriesList' : 'annotationList');
       
-      if (desiredViewsByClassAndId[className] === undefined) {
-        desiredViewsByClassAndId[className] = {};
-      }
+      // add views for items (series or annotations) not currently in the list of child views
+      for (var i = 0, ii = list.get('length'); i < ii; i++) {
+        item = list.objectAt(i);
+        className = item.constructor.toString();
+        id = item.get('id');
       
-      desiredViewsByClassAndId[className][id] = item;     // for our reference when we remove views
+        if (desiredViewsByClassAndId[className] === undefined) {
+          desiredViewsByClassAndId[className] = {};
+        }
       
-      if (!this._viewsByClassAndId[className] || !this._viewsByClassAndId[className][id]) {
-        this._addViewForItem(item);
+        desiredViewsByClassAndId[className][id] = item;     // for our reference when we remove views
+      
+        if (!this._viewsByClassAndId[className] || !this._viewsByClassAndId[className][id]) {
+          this._addViewForItem(item, itemType);
+        }
       }
     }
     
+    
     // remove views for no-longer-to-be-displayed items
     var oldView;
-    
+  
     for (className in this._viewsByClassAndId) {
       if (this._viewsByClassAndId.hasOwnProperty(className)) {
         for (id in this._viewsByClassAndId[className]) {
           if (this._viewsByClassAndId[className].hasOwnProperty(id)) {
             oldView = this._viewsByClassAndId[className][id];
-            
+          
             if (!desiredViewsByClassAndId[className] || !desiredViewsByClassAndId[className][id]) {
               this._removeView(oldView);
             }
@@ -81,16 +89,22 @@ Smartgraphs.GraphView = SC.View.extend(
   },
   
   
-  _addViewForItem: function (item) {
-    // things later in the SVG DOM are above it on the HTML page
+  _addViewForItem: function (item, itemType) {
     var className = item.constructor.toString();
 
     var view = item.constructor.viewClass.design({
         graphView: this,
-        item: item
+        item: item,
+        itemType: itemType
     }).create();
     
-    this.get('graphCanvasView').appendChild(view);
+    // append data and annotations 
+    if (itemType === 'data') {
+      this.getPath('graphCanvasView.dataHolder').appendChild(view);
+    }
+    else if (itemType === 'annotation') {
+      this.getPath('graphCanvasView.annotationsHolder').appendChild(view);
+    }
 
     if (this._viewsByClassAndId[className] === undefined) {
       this._viewsByClassAndId[className] = {};
@@ -110,11 +124,18 @@ Smartgraphs.GraphView = SC.View.extend(
   
   _removeView: function (view) {
     var item = view.get('item');
+    var itemType = view.get('itemType');
     var className = item.constructor.toString();
     var id = item.get('id');
     
     delete this._viewsByClassAndId[className][id];
-    this.get('graphCanvasView').removeChild(view);
+    
+    if (itemType === 'data') {
+      this.getPath('graphCanvasView.dataHolder').removeChild(view);
+    }
+    else if (itemType === 'annotation') {
+      this.getPath('graphCanvasView.annotationsHolder').removeChild(view);
+    }
   },  
   
   

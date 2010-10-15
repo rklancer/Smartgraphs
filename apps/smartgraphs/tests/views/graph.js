@@ -122,53 +122,53 @@ function runTests() {
     var appendCallCount = 0;
     var removeCallCount = 0;
 
-    canvasView.oldAppendChild = canvasView.appendChild;
-    canvasView.appendChild = function (v) {
+    dataHolder.oldAppendChild = dataHolder.appendChild;
+    dataHolder.appendChild = function (v) {
       viewAppended = v;
       appendCallCount++;
       this.oldAppendChild(v);
     };
 
-    canvasView.oldRemoveChild = canvasView.removeChild;
-    canvasView.removeChild = function (v) {
+    dataHolder.oldRemoveChild = dataHolder.removeChild;
+    dataHolder.removeChild = function (v) {
       viewRemoved = v;
       removeCallCount++;
       this.oldRemoveChild(v);
     };
 
-    var childViews = canvasView.get('childViews');
+    var childViews = dataHolder.get('childViews');
     var startLength = childViews.get('length');
 
     seriesList.pushObject(series1);
     ok(SC.kindOf(viewAppended, RaphaelViews.RaphaelCollectionView), 'a RaphaelCollectionView was appended after series1 was pushed onto seriesList');
-    equals(childViews.get('length'), startLength+1, 'canvasView has one more childView than it did before series1 was pushed onto seriesList');
+    equals(childViews.get('length'), startLength+1, 'dataHolder has one more childView than it did before series1 was pushed onto seriesList');
 
     series1View = viewAppended;
 
     seriesList.pushObject(series2);
     ok(SC.kindOf(viewAppended, RaphaelViews.RaphaelCollectionView), 'a RaphaelCollectionView was appended after series2 was pushed onto seriesList');
-    equals(childViews.get('length'), startLength+2, 'canvasView has two more childViews than it did before series1 and series2 were pushed onto seriesList');
+    equals(childViews.get('length'), startLength+2, 'dataHolder has two more childViews than it did before series1 and series2 were pushed onto seriesList');
 
     series2View = viewAppended;
 
     equals(appendCallCount, 2, 'there were two calls to appendChild() for two push()es to seriesList');
     equals(removeCallCount, 0, 'no views were removed when series were added');
-
+    
     seriesList.removeObject(series1);
     equals(viewRemoved, series1View, 'The view for series1 was removed when series1 was removed from the seriesList');
-    equals(childViews.get('length'), startLength+1, 'canvasView has one fewer childView than it did before series1 was removed from the seriesList');
+    equals(childViews.get('length'), startLength+1, 'dataHolder has one fewer childView than it did before series1 was removed from the seriesList');
 
     seriesList.removeObject(series2);
     equals(viewRemoved, series2View, 'The view for series2 was removed when series2 was removed from the seriesList');
-    equals(childViews.get('length'), startLength, 'canvasView has the same number of childViews that it did before series1 and series2 were added and then removed from seriesList');
-
+    equals(childViews.get('length'), startLength, 'dataHolder has the same number of childViews that it did before series1 and series2 were added and then removed from seriesList');
+    
     equals(appendCallCount, 2, 'no views were added when series were removed');
     equals(removeCallCount, 2, 'there were two calls to removeChild() for two removeObject()s from seriesList');
 
-    canvasView.appendChild = canvasView.oldAppendChild;
-    delete canvasView.oldAppendChild;
-    canvasView.removeChild = canvasView.oldRemoveChild;
-    delete canvasView.oldRemoveChild;
+    dataHolder.appendChild = dataHolder.oldAppendChild;
+    delete dataHolder.oldAppendChild;
+    dataHolder.removeChild = dataHolder.oldRemoveChild;
+    delete dataHolder.oldRemoveChild;
   });
 
 
@@ -176,10 +176,10 @@ function runTests() {
     var seriesList = Smartgraphs.firstGraphController.get('seriesList');
     var series = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { url: 'series1' });
 
-    equals(canvasView.getPath('childViews.length'), 1, 'canvasView has only one child view (the axes view) before series is pushed to seriesList');
+    equals(dataHolder.getPath('childViews.length'), 0, 'dataHolder has no child views before series is pushed to seriesList');
 
     seriesList.pushObject(series);
-    var seriesView = canvasView.get('childViews').objectAt(1);
+    var seriesView = dataHolder.get('childViews').objectAt(0);
 
     ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to seriesList, seriesView exists and is a RaphaelCollectionView');
 
@@ -216,13 +216,13 @@ function runTests() {
     var point1 = addPoint(series, 1, 6);
     var point2 = addPoint(series, 6, 1);
 
-    equals(canvasView.getPath('childViews.length'), 1, 'canvasView has only one child view (the axes view) before series is pushed to seriesList');
+    equals(dataHolder.getPath('childViews.length'), 0, 'dataHolder has no child views before the dataset is pushed to seriesList');
 
     SC.RunLoop.begin();
     seriesList.pushObject(series);
     SC.RunLoop.end();
 
-    var seriesView = canvasView.get('childViews').objectAt(1);
+    var seriesView = dataHolder.get('childViews').objectAt(0);
     ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to seriesList, seriesView exists and is a RaphaelCollectionView');
 
     var layerId = seriesView.get('layerId');
@@ -297,7 +297,7 @@ function runTests() {
     
     seriesList.pushObject(series);
 
-    var seriesView = canvasView.get('childViews').objectAt(1);
+    var seriesView = dataHolder.get('childViews').objectAt(0);
     ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to seriesList, seriesView exists and is a RaphaelCollectionView');
 
     var point = addPoint(series, 1, 1);  

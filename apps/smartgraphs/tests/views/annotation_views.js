@@ -3,12 +3,12 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd setupUserAndSessionFixtures restoreUserAndSessionFixtures newSession addPoint */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd setupUserAndSessionFixtures restoreUserAndSessionFixtures setupDatapointFixtures restoreDatapointFixtures newSession addPoint */
 
 var pane;
 var graphView;
 var canvasView;
-var childViews;
+var annotationViews;
 var oldStore;
 var session;
 var dataset;
@@ -16,10 +16,7 @@ var dataset;
 
 // TODO copied straight from GraphView -- should probably be moved to debug folder? How are they different/the same?
 function setupFixtures() {
-
-  setupUserAndSessionFixtures();
-
-  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;
+  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
   Smartgraphs.Graph.FIXTURES = [
     { url: 'test',
       name: 'test',
@@ -28,7 +25,7 @@ function setupFixtures() {
       initialSeries: []
     }
   ];
-
+  
   Smartgraphs.Axes.oldFixtures = Smartgraphs.Axes.FIXTURES;
   Smartgraphs.Axes.FIXTURES = [
     { url: 'test-axes',
@@ -46,28 +43,21 @@ function setupFixtures() {
       yLabelAbbreviated: 'yLabel (abbrev)'
     }
   ];
-
-  // without some data in a RecordType's FIXTURES, the FixturesDataSource won't allow any records to be committed.
-  Smartgraphs.DataSeries.FIXTURES = Smartgraphs.DataSeries.oldFixtures;
-  Smartgraphs.DataSeries.FIXTURES = [{url: 'dummy'}];
-
-  Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
-  Smartgraphs.DataPoint.FIXTURES = [{url: 'dummy'}];
-
+  
+  setupDatapointFixtures();
+  
   oldStore = Smartgraphs.store;
-
+  
   // REMINDER: 'SC.Record.fixtures' is a singleton object; using it below would result in pollution of the data store
   // with data from prior tests.
   Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
 }
 
 function restoreFixtures() {
-  restoreUserAndSessionFixtures();
-
   Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
   Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
-  Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
-  Smartgraphs.DataSeries.oldFixtures = Smartgraphs.DataSeries.FIXTURES;
+  restoreDatapointFixtures();
+  
   Smartgraphs.set('store', oldStore);
 }
 
@@ -91,7 +81,7 @@ module("Smartgraphs Annotation View instantiation", {
 
     graphView = pane.get('childViews').objectAt(0);
     canvasView = graphView.get('graphCanvasView');
-    childViews = canvasView.get('childViews');
+    annotationViews = canvasView.getPath('annotationsHolder.childViews');
 
     newSession();
     session = Smartgraphs.sessionController.get('content');
@@ -114,7 +104,7 @@ test('HighlightedPoint location should track the point it highlights', function 
   highlightedPoint.set('point', point);
   Smartgraphs.firstGraphController.addAnnotation(highlightedPoint);
 
-  var highlightedPointView = childViews.objectAt(childViews.get('length') - 1);
+  var highlightedPointView = annotationViews.objectAt(annotationViews.get('length') - 1);
   ok(SC.kindOf(highlightedPointView, Smartgraphs.HighlightedPointView), 'a highlightedPointView should have been added to the graph canvas');
 
   // let the view render
@@ -148,6 +138,7 @@ test('HighlightedPoint location should track the point it highlights', function 
 
 });
 
+
 test('LineToAxis location should have the expected path to the x-axis with the starting point it highlights', function () {
   var lineToXAxis = Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
   var point = addPoint(dataset, -1, -5);
@@ -156,7 +147,7 @@ test('LineToAxis location should have the expected path to the x-axis with the s
   console.log("lineToXAxis:", lineToXAxis);
   Smartgraphs.firstGraphController.addAnnotation(lineToXAxis);
 
-  var lineToAxisView = childViews.objectAt(childViews.get('length') - 1);
+  var lineToAxisView = annotationViews.objectAt(annotationViews.get('length') - 1);
   ok(SC.kindOf(lineToAxisView, Smartgraphs.LineToAxisView),
     'a lineToAxisView should have been added to the graph canvas');
 
@@ -177,6 +168,7 @@ test('LineToAxis location should have the expected path to the x-axis with the s
   equals(attr.path[1][2], endingCoords.y, "lineToAxis's ending-y should be " + endingCoords.y.toString());
 });
 
+
 test('LineToAxis location should have the expected path to the y-axis with the starting point it highlights', function () {
   var lineToYAxis = Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
   var point = addPoint(dataset, 1, 5);
@@ -184,7 +176,7 @@ test('LineToAxis location should have the expected path to the y-axis with the s
   console.warn("lineToYAxis:", lineToYAxis);
   Smartgraphs.firstGraphController.addAnnotation(lineToYAxis);
 
-  var lineToAxisView = childViews.objectAt(childViews.get('length') - 1);
+  var lineToAxisView = annotationViews.objectAt(annotationViews.get('length') - 1);
   ok(SC.kindOf(lineToAxisView, Smartgraphs.LineToAxisView),
     'a lineToAxisView should have been added to the graph canvas');
 
@@ -205,6 +197,7 @@ test('LineToAxis location should have the expected path to the y-axis with the s
   equals(attr.path[1][2], endingCoords.y, "lineToAxis's ending-y should be " + endingCoords.y.toString());
 });
 
+
 test('HighlightedSegment location should have the expected path with the points it highlights', function () {
   var highlightedSegment = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedSegment, 'test-highlightedSegment');
   var pointA = addPoint(dataset, 1, 5);
@@ -212,7 +205,7 @@ test('HighlightedSegment location should have the expected path with the points 
   highlightedSegment.set('points', [pointA, pointB]);
   Smartgraphs.firstGraphController.addAnnotation(highlightedSegment);
 
-  var highlightedSegmentView = childViews.objectAt(childViews.get('length') - 1);
+  var highlightedSegmentView = annotationViews.objectAt(annotationViews.get('length') - 1);
   ok(SC.kindOf(highlightedSegmentView, Smartgraphs.HighlightedSegmentView),
     'a highlightedSegmentView should have been added to the graph canvas');
 
