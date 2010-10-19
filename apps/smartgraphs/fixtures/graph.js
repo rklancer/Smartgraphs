@@ -278,7 +278,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/axes/5/4quads',
     initialSeries: 
       [],
     initialAnnotations:
