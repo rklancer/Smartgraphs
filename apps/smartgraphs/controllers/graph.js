@@ -147,7 +147,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     series.set('color', this.getColorForSeries(series));
     
     this.get('seriesList').pushObject(series);
-    Smartgraphs.store.commitRecords();
   },
 
   /**
@@ -164,7 +163,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
       return;
     }
     this.get('annotationList').pushObject(annotation);
-    Smartgraphs.store.commitRecords();
   },
   
   /**
@@ -261,7 +259,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   //   }
   //   
   //   this.set('axes', axes);
-  //   Smartgraphs.store.commitRecords();
   // },
   // 
   // selectSeries: function (seriesName) {

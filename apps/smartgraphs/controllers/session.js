@@ -19,7 +19,6 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     session.set('user', Smartgraphs.userController.get('content'));
     session.set('id', Smartgraphs.getNextGuid());
     this.set('content', session);
-    Smartgraphs.store.commitRecords();
   },
   
   createSeries: function (name) {
@@ -30,7 +29,6 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     });
     newSeries.set('session', this.get('content'));
     newSeries.set('id', Smartgraphs.getNextGuid());
-    Smartgraphs.store.commitRecords();
     
     return newSeries;
   },
@@ -42,7 +40,6 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     });
     newAnnotation.set('session', this.get('content'));
     newAnnotation.set('id', Smartgraphs.getNextGuid());
-    Smartgraphs.store.commitRecords();
         
     return newAnnotation;
   }
@@ -83,7 +80,6 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   //     newPoint.set('id', Smartgraphs.getNextGuid());
   //     newPoint.set('series', targetSeries);
   //   }
-  //   Smartgraphs.store.commitRecords();
   //   
   //   return YES;
   // }
