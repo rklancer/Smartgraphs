@@ -16,6 +16,14 @@ Smartgraphs.LineToAxis.FIXTURES = [
     session: null,
     point: 403,
     axis: 'y'
+  },
+
+  { url: '/backend/activity/2/annotations/test-line-to-x-axis',
+    name: 'test-line-to-x-axis',
+    isExample: YES,
+    session: null,
+    point: 410,
+    axis: 'x'
   }
 
 ];

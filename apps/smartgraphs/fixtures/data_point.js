@@ -199,6 +199,8 @@ Smartgraphs.DataPoint.FIXTURES = [
   {x: 7, y: 1050, guid: 406, series: '/backend/activity/2/series/maria'},
   {x: 8, y: 1300, guid: 407, series: '/backend/activity/2/series/maria'},
   {x: 9, y: 1550, guid: 408, series: '/backend/activity/2/series/maria'},
-  {x: 10, y: 1800, guid: 409, series: '/backend/activity/2/series/maria'}
+  {x: 10, y: 1800, guid: 409, series: '/backend/activity/2/series/maria'},
+
+  {x: -2, y: -2, guid: 410, series: '/backend/activity/3/series/test'}
   
 ];

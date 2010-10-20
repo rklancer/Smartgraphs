@@ -2534,6 +2534,20 @@ step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/1"] =
         "graphName": "test-graph",
         "annotationName": "prediction"
       }
+    },
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "graphName": "test-graph",
+        "type": "Smartgraphs.HighlightedPoint",
+        "name": "test-highlighted-point"
+      }
+    },
+    { "action": "addAnnotation",
+      "literalArgs": {
+        "graphName": "test-graph",
+        "type": "Smartgraphs.LineToAxis",
+        "name": "test-line-to-x-axis"
+      }
     }
   ],
   "shouldFinishImmediately": false,

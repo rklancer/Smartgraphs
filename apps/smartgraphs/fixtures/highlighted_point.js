@@ -22,6 +22,13 @@ Smartgraphs.HighlightedPoint.FIXTURES = [
     isExample: YES,
     session: null,
     point: 403
+  },
+
+  { url: '/backend/activity/3/test-highlighted-point',
+    name: 'test-highlighted-point',
+    isExample: YES,
+    session: null,
+    point: 410
   }
 
 ];
