@@ -18,7 +18,6 @@ function addPoint(dataset, x, y) {
   SC.RunLoop.begin();
   var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
   point.set('series', dataset);
-  Smartgraphs.store.commitRecords();
   SC.RunLoop.end();
   
   return point;

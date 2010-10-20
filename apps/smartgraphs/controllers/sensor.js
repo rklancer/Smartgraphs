@@ -139,7 +139,6 @@ Smartgraphs.sensorController = SC.ObjectController.create(
       point.set('series', null);
       point.destroy();
     });
-    Smartgraphs.store.commitRecords();
     SC.RunLoop.end();
   },
 
@@ -183,7 +182,6 @@ Smartgraphs.sensorController = SC.ObjectController.create(
         point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
         this._series.set('latestPoint', point);
         this._series.get('points').pushObject(point);
-        Smartgraphs.store.commitRecords();
         SC.RunLoop.end();
       }
       this._nsamples++;
