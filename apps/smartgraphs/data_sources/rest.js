@@ -37,94 +37,25 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
     
     if (query.get('isPagesQuery')) {
       activity = query.get('parameters').activity;
-      listUrl = activity.get('pageListUrl');
+      var activityUrl = activity.get('url');
+      listUrl = activity.get('pageListUrl') || activityUrl + "/pages";
 
-      var pagesQueryUrl = activity.get('id');
-      this.log('  Query: pagesQuery for Activity %s', pagesQueryUrl);
+      this.log('  Query: pagesQuery for Activity %s', activityUrl);
       this.log('  URL endpoint for query: %s', listUrl);
 
-      if (listUrl === null) {
-        // guess what listUrl should be based on the query and make a mock request
-        listUrl = pagesQueryUrl + "/pages";
-        this.log('  Mock URL endpoint for query: %s', listUrl);
-        this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
-      } 
-      else {
-        this.requestListFromServer(store, query, listUrl);
-      }
-      this.log('  returning YES from fetch');
-      return YES;
-    }
-    else if (query === Smartgraphs.ALL_COMMANDS_QUERY) {
-      this.log('  Query: ALL_COMMANDS_QUERY');
-      listUrl = Smartgraphs.activityController.get('commandListUrl');
-      this.log('  URL endpoint for query: %s', listUrl);
-      if (listUrl === null) {
-        // guess what listUrl should be based on the query and make a mock request
-        listUrl = "/backend/commands";
-        this.log('  Mock URL endpoint for query: %s', listUrl);
-        this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
-      } else {
-        this.requestListFromServer(store, query, listUrl);
-      }
-      return YES;
-    }
-    else if (query === Smartgraphs.ALL_TRIGGERS_QUERY) {
-      this.log('  Query: ALL_TRIGGERS_QUERY');
-      listUrl = Smartgraphs.activityController.get('triggerListUrl');
-      this.log('  URL endpoint for query: %s', listUrl);
-      if (listUrl === null) {
-        // guess what listUrl should be based on the query and make a mock request
-        listUrl = "/backend/triggers";
-        this.log('  Mock URL endpoint for query: %s', listUrl);
-        this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
-      } else {
-        this.requestListFromServer(store, query, listUrl);
-      }
+      this.requestListFromServer(store, query, listUrl);
       return YES;
     }
     else if (query.get('isStepsQuery')) {
       page = query.get('parameters').page;
-      var stepsQueryUrl = page.get('id');
-      this.log('  Query: stepsQuery for ActivityPage %s', stepsQueryUrl);
-      listUrl = page.get('stepListUrl');
+      var pageUrl = page.get('url');
+      
+      listUrl = page.get('stepListUrl') || pageUrl + "/steps";
+      
+      this.log('  Query: stepsQuery for ActivityPage %s', pageUrl);
       this.log('  URL endpoint for query: %s', listUrl);
-      if (listUrl === null) {
-        // guess what listUrl should be based on the query and make a mock request
-        listUrl = stepsQueryUrl + "/steps";
-        this.log('  Mock URL endpoint for query: %s', listUrl);
-        this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
-      } else {
-        this.requestListFromServer(store, query, listUrl);
-      }
-      return YES;
-    }
-    else if (query.get('isTriggerResponsesQuery')) {
-      step = query.get('parameters').step;
-      this.log('  Query: triggerResponsesQuery for ActivityStep %s', step.get('id'));
-      listUrl = step.get('triggerResponseListUrl');
-      this.log('  URL endpoint for query: %s', listUrl);
-      // Check to see if Triggers are implemented on the backend yet
-      if (this.get('isTriggerResponsesOnBackend') ){
-        this.requestListFromServer(store, query, listUrl);
-      } else {
-        this.log('  Mock URL endpoint for query: %s', listUrl);
-        this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
-      }
-      return YES;
-    }
-    else if (query.get('isCommandInvocationsQuery')) {
-      step = query.get('activityStep');
-      this.log('  Query: commandInvocationsQuery for ActivityStep %s', step.get('id'));
-      listUrl = step.get('commandListUrl');
-      this.log('  URL endpoint for query: %s', listUrl);
-      // Check to see if CommandInvocations are implemented on the backend yet
-      if (this.get('isCommandInvocationsOnBackend') ){
-        this.requestListFromServer(store, query, listUrl);
-      } else {
-        this.log('  Mock URL endpoint for query: %s', listUrl);
-        this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
-      }
+
+      this.requestListFromServer(store, query, listUrl);
       return YES;
     }
 
@@ -194,7 +125,8 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
 
     if (Smartgraphs.get('useMockResponses')) {
       //this.invokeLater(this._mockRequestRecordFromServer, this.get('latency'), store, storeKey);
-      this._mockRequestRecordFromServer(store, storeKey);     
+      this.invokeLater(this._mockRequestRecordFromServer, 0, store, storeKey);
+      //this._mockRequestRecordFromServer(store, storeKey);     
     }
     else {
       SC.Request.getUrl(url).notify(this, this.didRetrieveRecordFromServer, {
@@ -244,7 +176,8 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
   requestListFromServer: function(store, query, listUrl) {
     if (Smartgraphs.get('useMockResponses')) {
       //this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
-      this._mockRequestListFromServer(store, query, listUrl);
+      this.invokeLater(this._mockRequestListFromServer, 0, store, query, listUrl);
+      //this._mockRequestListFromServer(store, query, listUrl);
     }
     else {
       SC.Request.getUrl(listUrl).notify(this, this.didRetrieveListFromServer, {
