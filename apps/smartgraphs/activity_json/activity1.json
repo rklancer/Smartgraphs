@@ -1,0 +1,3256 @@
+{
+  "activity": {
+    "title": "Away and Toward",
+    "url": "/backend/activity/1",
+    "pages": [
+      "/backend/activity/1/page/1",
+      "/backend/activity/1/page/2",
+      "/backend/activity/1/page/3",
+      "/backend/activity/1/page/4",
+      "/backend/activity/1/page/5",
+      "/backend/activity/1/page/6",
+      "/backend/activity/1/page/7",
+      "/backend/activity/1/page/8",
+      "/backend/activity/1/page/9",
+      "/backend/activity/1/page/10",
+      "/backend/activity/1/page/11"
+    ],
+    "pageListUrl": "/backend/activity/1/pages"
+  },
+  "pages": [
+    {
+      "steps": [
+        "/backend/activity/1/page/1/step/1"
+      ],
+      "name": "Introductory Page",
+      "firstStep": "/backend/activity/1/page/1/step/1",
+      "introText": "<h1>How can you tell a story about motion without using words?</h1>\n\n<p>The picture at right communicates direction of traffic using recognizable symbols. In this activity, you will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will learn conventional methods of motion storytelling and analysis.</p>",
+      "url": "/backend/activity/1/page/1",
+      "activity": "/backend/activity/1",
+      "index": 1,
+      "stepListUrl": "/backend/activity/1/page/1/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/2/step/1",
+        "/backend/activity/1/page/2/step/2"
+      ],
+      "name": "Prediction Page",
+      "firstStep": "/backend/activity/1/page/2/step/1",
+      "introText": "<p>Let\u2019s start by demonstrating what you already know about representing motion on a graph. Imagine a straight walking path that is 4 meters long.</p><p>Point A is at the 0-meter mark.</p><p>Point B is at the 4-meter mark.</p>",
+      "url": "/backend/activity/1/page/2",
+      "activity": "/backend/activity/1",
+      "index": 2,
+      "stepListUrl": "/backend/activity/1/page/2/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/3/step/1",
+        "/backend/activity/1/page/3/step/2"
+      ],
+      "name": "Motion Sensor Page",
+      "firstStep": "/backend/activity/1/page/3/step/1",
+      "introText": "<p>Let\u2019s practice collecting data with the motion sensor so you can see whether your sketches were accurate. You will walk on a 4-meter walking path like the one described earlier.</p>",
+      "url": "/backend/activity/1/page/3",
+      "activity": "/backend/activity/1",
+      "index": 3,
+      "stepListUrl": "/backend/activity/1/page/3/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/4/step/1",
+        "/backend/activity/1/page/4/step/2",
+        "/backend/activity/1/page/4/step/3"
+      ],
+      "name": "Replay Page",
+      "firstStep": "/backend/activity/1/page/4/step/1",
+      "introText": "<p>To the right are your predictions for walking away and toward point B.</p><p>Now that you &quot;have the hang of it,&quot; you will walk with the sensor to see if your sketches of forward and backward motion are correct.</p>",
+      "url": "/backend/activity/1/page/4",
+      "activity": "/backend/activity/1",
+      "index": 4,
+      "stepListUrl": "/backend/activity/1/page/4/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/5/step/1",
+        "/backend/activity/1/page/5/step/2"
+      ],
+      "name": "Replay Page",
+      "firstStep": "/backend/activity/1/page/5/step/1",
+      "introText": "<p>At right is the data you just collected with the motion sensor.</p>",
+      "url": "/backend/activity/1/page/5",
+      "activity": "/backend/activity/1",
+      "index": 5,
+      "stepListUrl": "/backend/activity/1/page/5/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/6/step/1",
+        "/backend/activity/1/page/6/step/2",
+        "/backend/activity/1/page/6/step/3",
+        "/backend/activity/1/page/6/step/4",
+        "/backend/activity/1/page/6/step/5"
+      ],
+      "name": "Replay Page",
+      "firstStep": "/backend/activity/1/page/6/step/1",
+      "introText": "<p>At right is a position-time graph created by someone walking in front of a motion sensor.</p>",
+      "url": "/backend/activity/1/page/6",
+      "activity": "/backend/activity/1",
+      "index": 6,
+      "stepListUrl": "/backend/activity/1/page/6/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/7/step/1",
+        "/backend/activity/1/page/7/step/2",
+        "/backend/activity/1/page/7/step/3",
+        "/backend/activity/1/page/7/step/4"
+      ],
+      "name": "Replay Page",
+      "firstStep": "/backend/activity/1/page/7/step/1",
+      "introText": "<p>Now you will collect and analyze your own data once again.</p>",
+      "url": "/backend/activity/1/page/7",
+      "activity": "/backend/activity/1",
+      "index": 7,
+      "stepListUrl": "/backend/activity/1/page/7/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/8/step/1",
+        "/backend/activity/1/page/8/step/2",
+        "/backend/activity/1/page/8/step/3",
+        "/backend/activity/1/page/8/step/4",
+        "/backend/activity/1/page/8/step/5",
+        "/backend/activity/1/page/8/step/6"
+      ],
+      "name": "Replay Page",
+      "firstStep": "/backend/activity/1/page/8/step/1",
+      "introText": "<p>To the right, two different data sets are plotted on the same graph.</p>",
+      "url": "/backend/activity/1/page/8",
+      "activity": "/backend/activity/1",
+      "index": 8,
+      "stepListUrl": "/backend/activity/1/page/8/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/9/step/1",
+        "/backend/activity/1/page/9/step/2"
+      ],
+      "name": "Replay Page",
+      "firstStep": "/backend/activity/1/page/9/step/1",
+      "introText": "<p>Look at the position-time graph to the right. You are going to recreate this graph as closely as possible by walking in front of the motion sensor to collect position and time data.</p>",
+      "url": "/backend/activity/1/page/9",
+      "activity": "/backend/activity/1",
+      "index": 9,
+      "stepListUrl": "/backend/activity/1/page/9/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/10/step/1",
+        "/backend/activity/1/page/10/step/2"
+      ],
+      "name": "Replay Page",
+      "firstStep": "/backend/activity/1/page/10/step/1",
+      "introText": "<p>To the right are the sketches you drew at the beginning of this activity.</p>",
+      "url": "/backend/activity/1/page/10",
+      "activity": "/backend/activity/1",
+      "index": 10,
+      "stepListUrl": "/backend/activity/1/page/10/steps"
+    },
+    {
+      "steps": [
+        "/backend/activity/1/page/11/step/1"
+      ],
+      "name": "Replay Page",
+      "firstStep": "/backend/activity/1/page/11/step/1",
+      "introText": "<p>Congratulations! You have finished the activity.</p>",
+      "url": "/backend/activity/1/page/11",
+      "activity": "/backend/activity/1",
+      "index": 10,
+      "stepListUrl": "/backend/activity/1/page/11/steps"
+    }
+  ],
+  "steps": [
+    {
+      "url": "/backend/activity/1/page/1/step/1",
+      "activityPage": "/backend/activity/1/page/1",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/arrow.jpg?1286295505"
+        }
+      },
+      "beforeText": "",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": true,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/2/step/1",
+      "activityPage": "/backend/activity/1/page/2",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "prediction-away"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p>In the top-right area, draw a graph of someone walking at a <b>slow</b>, <b>steady pace</b> from point A to point B between 0 and 15 seconds.</p><p>Click the <b>Clear</b> button if you want to try again</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startFreehandInput",
+          "literalArgs": {
+            "graphName": "prediction-away",
+            "annotationName": "prediction-away"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.SketchLengthInspector",
+        "config": {
+          "annotationName": "prediction-away",
+          "check": "continuously"
+        }
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          "value",
+          -1
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/2/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/2/step/2",
+      "activityPage": "/backend/activity/1/page/2",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "prediction-away"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "prediction-toward"
+        }
+      },
+      "beforeText": "<p>In the bottom-right area, draw a graph of someone walking at a <b>slow</b>, <b>steady pace</b> from point B to point A between 0 and 15 seconds. Click Next when you are done.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startFreehandInput",
+          "literalArgs": {
+            "graphName": "prediction-toward",
+            "annotationName": "prediction-toward"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.SketchLengthInspector",
+        "config": {
+          "annotationName": "prediction-toward",
+          "check": "continuously"
+        }
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          "value",
+          -1
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/3/step/1",
+      "activityPage": "/backend/activity/1/page/3",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-playing"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the position and time data for your movements.</p><p><b>Walk</b> on the path for 15 seconds. <b>Try</b> different kinds of motions (walking fast, slow, forward, backward\u2026)</p><p><b>Click Clear</b> if you want to try again.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startSensorInput",
+          "literalArgs": {
+            "graphName": "sensor-playing",
+            "seriesName": "sensor-play"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/3/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/3/step/2",
+      "activityPage": "/backend/activity/1/page/3",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-playing"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p>How are different motions represented on a position-time graph? (For example, what does the graph look like when you are standing still, walking forward ...?)</p><p>Try to use some of the following words: slope, flat, upward, downward, curved, straight, steep, gradual, line, curve.",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/4/step/1",
+      "activityPage": "/backend/activity/1/page/4",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-with-away-prediction"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "graph-with-toward-prediction"
+        }
+      },
+      "beforeText": "<p>First, <b>stand</b> close to the sensor, near the 0-meter mark.</p><p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your movements.</p><p><b>Walk</b> on the path at a slow, steady pace, away from the sensor, for 15 seconds.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startSensorInput",
+          "literalArgs": {
+            "graphName": "graph-with-away-prediction",
+            "seriesName": "sensor-away"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/4/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/4/step/2",
+      "activityPage": "/backend/activity/1/page/4",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-with-away-prediction"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "graph-with-toward-prediction"
+        }
+      },
+      "beforeText": "<p>To make the second graph, <b>stand</b> approximately 4 meters away from the sensor on the path.</p><p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your movements.</p><p><b>Walk</b> on the path at the same slow, steady pace, toward the sensor, for 15 seconds.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startSensorInput",
+          "literalArgs": {
+            "graphName": "graph-with-toward-prediction",
+            "seriesName": "sensor-toward"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/4/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/4/step/3",
+      "activityPage": "/backend/activity/1/page/4",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-with-away-prediction"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "graph-with-toward-prediction"
+        }
+      },
+      "beforeText": "<p>How closely do the graphs of your data match your original predictions?</p>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/5/step/1",
+      "activityPage": "/backend/activity/1/page/5",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-away"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "sensor-toward"
+        }
+      },
+      "beforeText": "<p>How are the two position-time graphs <b>similar</b> to each other?</p>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/5/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/5/step/2",
+      "activityPage": "/backend/activity/1/page/5",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-away"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "sensor-toward"
+        }
+      },
+      "beforeText": "<p>How does motion away from the sensor <b>differ</b> from motion toward the sensor on a position-time graph?</b>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/6/step/1",
+      "activityPage": "/backend/activity/1/page/6",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "walking-example-1"
+        }
+      },
+      "beforeText": "<p>What happened at the red point (the y-intercept for this motion)?</p>",
+      "responseTemplate": "/backend/response-template/3/walking-example-1",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              1
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/5"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              3
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/3"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              4
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/4"
+        }
+      ],
+      "defaultBranch": "/backend/activity/1/page/6/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/6/step/2",
+      "activityPage": "/backend/activity/1/page/6",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "walking-example-1"
+        }
+      },
+      "beforeText": "<p>What happened at the red point (the y-intercept for this motion)?</p>",
+      "responseTemplate": "/backend/response-template/3/walking-example-1",
+      "afterText": "<p><b>Incorrect.</b> Look at the walker's position at the red point, and select another answer.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              1
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/5"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              3
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/3"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              4
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/4"
+        }
+      ],
+      "defaultBranch": "/backend/activity/1/page/6/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/6/step/3",
+      "activityPage": "/backend/activity/1/page/6",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "walking-example-1"
+        }
+      },
+      "beforeText": "<p>What happened at the red point (the y-intercept for this motion)?</p>",
+      "responseTemplate": "/backend/response-template/3/walking-example-1",
+      "afterText": "<p><b>Incorrect.</b> Think about what happened to the walker's position after this point, and select another answer.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              1
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/5"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              3
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/3"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              4
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/4"
+        }
+      ],
+      "defaultBranch": "/backend/activity/1/page/6/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/6/step/4",
+      "activityPage": "/backend/activity/1/page/6",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "walking-example-1"
+        }
+      },
+      "beforeText": "<p>What happened at the red point (the y-intercept for this motion)?</p>",
+      "responseTemplate": "/backend/response-template/3/walking-example-1",
+      "afterText": "<p><b>Incorrect.</b> Look at the walker's direction after the red point, and select another answer.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              1
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/5"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              3
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/3"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              4
+            ]
+          },
+          "step": "/backend/activity/1/page/6/step/4"
+        }
+      ],
+      "defaultBranch": "/backend/activity/1/page/6/step/5",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/6/step/5",
+      "activityPage": "/backend/activity/1/page/6",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "walking-example-1"
+        }
+      },
+      "beforeText": "<p><b>Correct!</b> At this point, the walker was 4 meters away, getting ready to walk toward the sensor.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/7/step/1",
+      "activityPage": "/backend/activity/1/page/7",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-playing"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p><b>Stand</b> at a starting point <i><b>other</b></i> than the 0-meter mark.</p><p>When you are ready, have your partner <b>click Start</b> to record the position and time data for your movements.</p><p><b>Walk</b> on the path for 15 seconds, experimenting with different directions and speeds.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startSensorInput",
+          "literalArgs": {
+            "graphName": "sensor-playing",
+            "seriesName": "sensor-play-2"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/7/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/7/step/2",
+      "activityPage": "/backend/activity/1/page/7",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-playing"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p>What is the significance of the y-intercept (the y-value of the point where the graph crosses the y-axis) of the position-time graph?</p>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/7/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/7/step/3",
+      "activityPage": "/backend/activity/1/page/7",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-playing"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p>Explain how the graph conveys how fast you walked.</p>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/7/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/7/step/4",
+      "activityPage": "/backend/activity/1/page/7",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-playing"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p>How is direction represented on the graph?</p>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/8/step/1",
+      "activityPage": "/backend/activity/1/page/8",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "two-walkers"
+        }
+      },
+      "beforeText": "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
+      "responseTemplate": "/backend/response-template/4/two-walkers",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/backend/activity/1/page/8/step/6"
+        }
+      ],
+      "defaultBranch": "/backend/activity/1/page/8/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/8/step/2",
+      "activityPage": "/backend/activity/1/page/8",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "two-walkers"
+        }
+      },
+      "beforeText": "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
+      "responseTemplate": "/backend/response-template/4/two-walkers",
+      "afterText": "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data, and select another answer.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/backend/activity/1/page/8/step/6"
+        }
+      ],
+      "defaultBranch": "/backend/activity/1/page/8/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/8/step/3",
+      "activityPage": "/backend/activity/1/page/8",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "two-walkers"
+        }
+      },
+      "beforeText": "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
+      "responseTemplate": "/backend/response-template/4/two-walkers",
+      "afterText": "<p><b>Incorrect.</b> Figure out where each person started and ended, and select another answer.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/backend/activity/1/page/8/step/6"
+        }
+      ],
+      "defaultBranch": "/backend/activity/1/page/8/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/8/step/4",
+      "activityPage": "/backend/activity/1/page/8",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "two-walkers"
+        }
+      },
+      "beforeText": "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
+      "responseTemplate": "/backend/response-template/4/two-walkers",
+      "afterText": "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point, and select another answer.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/backend/activity/1/page/8/step/6"
+        }
+      ],
+      "defaultBranch": "/backend/activity/1/page/8/step/5",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/8/step/5",
+      "activityPage": "/backend/activity/1/page/8",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "two-walkers"
+        }
+      },
+      "beforeText": "<p><b>Still incorrect.</b> Both walkers started 2 meters away. Then, one walked toward the sensor for 20 seconds, while the other walked away from the sensor during the same 20 seconds.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+
+      },
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/8/step/6",
+      "activityPage": "/backend/activity/1/page/8",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "two-walkers"
+        }
+      },
+      "beforeText": "<p><b>Correct!</b> Both walkers started 2 meters away. Then, one walked toward the sensor for 20 seconds, while the other walked away from the sensor during the same 20 seconds.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": {
+
+      },
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/9/step/1",
+      "activityPage": "/backend/activity/1/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-to-match"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p><b>Move</b> to your starting point and, when you are ready, have your partner <b>click Start</b> to record the data for your movements. <p><b>Walk</b> on the path for 15 seconds while trying to match the given graph.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startSensorInput",
+          "literalArgs": {
+            "graphName": "graph-to-match",
+            "seriesName": "sensor-match"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/9/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/9/step/2",
+      "activityPage": "/backend/activity/1/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-to-match"
+        },
+        "bottom": null
+      },
+      "beforeText": "<p>How closely does your graph match the given graph? What could you have done to match the given graph more closely?</p><p>Try to use some of the following words: fast, slow, toward, away.</p>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/10/step/1",
+      "activityPage": "/backend/activity/1/page/10",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-with-away-prediction"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "graph-with-toward-prediction"
+        }
+      },
+      "beforeText": "<p>Write down <b>3</b> things you have learned about motion since you started this activity.</p>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/backend/activity/1/page/10/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/backend/activity/1/page/10/step/2",
+      "activityPage": "/backend/activity/1/page/10",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "graph-with-away-prediction"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "graph-with-toward-prediction"
+        }
+      },
+      "beforeText": "<p>Describe <b>1</b> type of motion you would like to try with the motion sensor.</p>",
+      "responseTemplate": "/backend/response-template/2/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/backend/activity/1/page/11/step/1",
+      "activityPage": "/backend/activity/1/page/11",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/arrow.jpg?1286295505"
+        }
+      },
+      "beforeText": "",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": false
+    }
+  ],
+  "responseTemplates": [
+    {
+      "url": "/backend/response-template/2/open",
+      "templateString": "",
+      "fieldTypes": [
+        "textarea"
+      ],
+      "fieldChoicesList": [
+        null
+      ],
+      "initialValues": [
+        ""
+      ]
+    },
+    {
+      "url": "/backend/response-template/3/walking-example-1",
+      "templateString": "",
+      "fieldTypes": [
+        "multiplechoice"
+      ],
+      "fieldChoicesList": [
+        [
+          "The walker was 4 meters away, getting ready to walk toward the sensor.",
+          "The walker was closest to the motion sensor, getting ready to walk away from the sensor.",
+          "The walker was 4 meters away from the motion sensor and did not move.",
+          "The walker was 4 meters away from the motion sensor, getting ready to walk away from the sensor."
+        ]
+      ],
+      "initialValues": [
+        ""
+      ]
+    },
+    {
+      "url": "/backend/response-template/4/two-walkers",
+      "templateString": "",
+      "fieldTypes": [
+        "multiplechoice"
+      ],
+      "fieldChoicesList": [
+        [
+          "My friend and I stood 2 meters away from the sensor. Together, we walked away from the sensor for 20 seconds.",
+          "My friend and I stood 2 meters away from the sensor. I walked away from the sensor for 20 seconds while my friend walked toward the sensor for 20 seconds.",
+          "I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away from the sensor and walked away from the sensor for 20 seconds.",
+          "I started at the sensor and walked away from the sensor for 20 seconds. My friend started 2 meters away from the sensor and walked toward the sensor for 20 seconds."
+        ]
+      ],
+      "initialValues": [
+        ""
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "url": "/backend/activity/1/series/walking-away-example",
+      "name": "walking-away-example",
+      "isExample": true,
+      "points": [
+        100,
+        102,
+        104,
+        106,
+        108,
+        110,
+        112,
+        114,
+        116,
+        118,
+        120,
+        122,
+        124,
+        126,
+        128,
+        130,
+        132,
+        134,
+        136,
+        138,
+        140,
+        142,
+        144,
+        146,
+        148,
+        150,
+        152,
+        154,
+        156,
+        158,
+        160,
+        162,
+        164,
+        166,
+        168,
+        170,
+        172,
+        174,
+        176,
+        178,
+        180,
+        182,
+        184,
+        186,
+        188,
+        190,
+        192,
+        194,
+        196,
+        198,
+        200
+      ],
+      "session": null,
+      "defaultColor": null
+    },
+    {
+      "url": "/backend/activity/1/series/walking-example-1",
+      "name": "walking-example-1",
+      "isExample": true,
+      "points": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76
+      ],
+      "session": null,
+      "defaultColor": null
+    },
+    {
+      "url": "/backend/activity/1/series/walking-toward-example",
+      "name": "walking-toward-example",
+      "isExample": true,
+      "points": [
+        201,
+        203,
+        205,
+        207,
+        209,
+        211,
+        213,
+        215,
+        217,
+        219,
+        221,
+        223,
+        225,
+        227,
+        229,
+        231,
+        233,
+        235,
+        237,
+        239,
+        241,
+        243,
+        245,
+        247,
+        249,
+        251,
+        253,
+        255,
+        257,
+        259,
+        261,
+        263,
+        265,
+        267,
+        269,
+        271,
+        273,
+        275,
+        277,
+        279,
+        281,
+        283,
+        285,
+        287,
+        289,
+        291,
+        293,
+        295,
+        297,
+        299,
+        301
+      ],
+      "session": null,
+      "defaultColor": null
+    }
+  ],
+  "datapoints": [
+    {
+      "x": 0,
+      "y": 2,
+      "guid": 100,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 0.4,
+      "y": 2.039,
+      "guid": 102,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 0.8,
+      "y": 2.175,
+      "guid": 104,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 1.2,
+      "y": 2.262,
+      "guid": 106,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 1.6,
+      "y": 2.352,
+      "guid": 108,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 2,
+      "y": 2.377,
+      "guid": 110,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 2.4,
+      "y": 2.378,
+      "guid": 112,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 2.8,
+      "y": 2.415,
+      "guid": 114,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 3.2,
+      "y": 2.473,
+      "guid": 116,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 3.6,
+      "y": 2.495,
+      "guid": 118,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 4,
+      "y": 2.53,
+      "guid": 120,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 4.4,
+      "y": 2.558,
+      "guid": 122,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 4.8,
+      "y": 2.601,
+      "guid": 124,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 5.2,
+      "y": 2.641,
+      "guid": 126,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 5.6,
+      "y": 2.661,
+      "guid": 128,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 6,
+      "y": 2.676,
+      "guid": 130,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 6.4,
+      "y": 2.695,
+      "guid": 132,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 6.8,
+      "y": 2.754,
+      "guid": 134,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 7.2,
+      "y": 2.799,
+      "guid": 136,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 7.6,
+      "y": 2.829,
+      "guid": 138,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 8,
+      "y": 2.881,
+      "guid": 140,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 8.4,
+      "y": 2.892,
+      "guid": 142,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 8.8,
+      "y": 2.939,
+      "guid": 144,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 9.2,
+      "y": 2.956,
+      "guid": 146,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 9.6,
+      "y": 2.989,
+      "guid": 148,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 10,
+      "y": 3.012,
+      "guid": 150,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 10.4,
+      "y": 3.049,
+      "guid": 152,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 10.8,
+      "y": 3.072,
+      "guid": 154,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 11.2,
+      "y": 3.119,
+      "guid": 156,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 11.6,
+      "y": 3.161,
+      "guid": 158,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 12,
+      "y": 3.212,
+      "guid": 160,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 12.4,
+      "y": 3.246,
+      "guid": 162,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 12.8,
+      "y": 3.293,
+      "guid": 164,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 13.2,
+      "y": 3.322,
+      "guid": 166,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 13.6,
+      "y": 3.359,
+      "guid": 168,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 14,
+      "y": 3.397,
+      "guid": 170,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 14.4,
+      "y": 3.415,
+      "guid": 172,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 14.8,
+      "y": 3.45,
+      "guid": 174,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 15.2,
+      "y": 3.481,
+      "guid": 176,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 15.6,
+      "y": 3.517,
+      "guid": 178,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 16,
+      "y": 3.53,
+      "guid": 180,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 16.4,
+      "y": 3.57,
+      "guid": 182,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 16.8,
+      "y": 3.595,
+      "guid": 184,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 17.2,
+      "y": 3.618,
+      "guid": 186,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 17.6,
+      "y": 3.668,
+      "guid": 188,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 18,
+      "y": 3.677,
+      "guid": 190,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 18.4,
+      "y": 3.71,
+      "guid": 192,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 18.8,
+      "y": 3.74,
+      "guid": 194,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 19.2,
+      "y": 3.839,
+      "guid": 196,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 19.6,
+      "y": 3.901,
+      "guid": 198,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 20,
+      "y": 4,
+      "guid": 200,
+      "series": "/backend/activity/1/series/walking-away-example"
+    },
+    {
+      "x": 0,
+      "y": 4.016,
+      "guid": 1,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 0.2,
+      "y": 3.965,
+      "guid": 2,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 0.4,
+      "y": 3.899,
+      "guid": 3,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 0.6,
+      "y": 3.826,
+      "guid": 4,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 0.8,
+      "y": 3.795,
+      "guid": 5,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 1,
+      "y": 3.793,
+      "guid": 6,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 1.2,
+      "y": 3.768,
+      "guid": 7,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 1.4,
+      "y": 3.695,
+      "guid": 8,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 1.6,
+      "y": 3.612,
+      "guid": 9,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 1.8,
+      "y": 3.535,
+      "guid": 10,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 2,
+      "y": 3.453,
+      "guid": 11,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 2.2,
+      "y": 3.418,
+      "guid": 12,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 2.4,
+      "y": 3.393,
+      "guid": 13,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 2.6,
+      "y": 3.321,
+      "guid": 14,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 2.8,
+      "y": 3.249,
+      "guid": 15,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 3,
+      "y": 3.175,
+      "guid": 16,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 3.2,
+      "y": 3.12,
+      "guid": 17,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 3.4,
+      "y": 3.056,
+      "guid": 18,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 3.6,
+      "y": 2.992,
+      "guid": 19,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 3.8,
+      "y": 2.925,
+      "guid": 20,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 4,
+      "y": 2.868,
+      "guid": 21,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 4.2,
+      "y": 2.829,
+      "guid": 22,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 4.4,
+      "y": 2.791,
+      "guid": 23,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 4.6,
+      "y": 2.794,
+      "guid": 24,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 4.8,
+      "y": 2.669,
+      "guid": 25,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 5,
+      "y": 2.596,
+      "guid": 26,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 5.2,
+      "y": 2.559,
+      "guid": 27,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 5.4,
+      "y": 2.503,
+      "guid": 28,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 5.6,
+      "y": 2.441,
+      "guid": 29,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 5.8,
+      "y": 2.398,
+      "guid": 30,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 6,
+      "y": 2.339,
+      "guid": 31,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 6.2,
+      "y": 2.331,
+      "guid": 32,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 6.4,
+      "y": 2.268,
+      "guid": 33,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 6.6,
+      "y": 2.178,
+      "guid": 34,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 6.8,
+      "y": 2.124,
+      "guid": 35,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 7,
+      "y": 2.062,
+      "guid": 36,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 7.2,
+      "y": 2.001,
+      "guid": 37,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 7.4,
+      "y": 1.971,
+      "guid": 38,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 7.6,
+      "y": 1.935,
+      "guid": 39,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 7.8,
+      "y": 1.883,
+      "guid": 40,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 8,
+      "y": 1.824,
+      "guid": 41,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 8.2,
+      "y": 1.763,
+      "guid": 42,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 8.4,
+      "y": 1.706,
+      "guid": 43,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 8.6,
+      "y": 1.644,
+      "guid": 44,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 8.8,
+      "y": 1.604,
+      "guid": 45,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 9,
+      "y": 1.557,
+      "guid": 46,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 9.2,
+      "y": 1.54,
+      "guid": 47,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 9.4,
+      "y": 1.478,
+      "guid": 48,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 9.6,
+      "y": 1.424,
+      "guid": 49,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 9.8,
+      "y": 1.344,
+      "guid": 50,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 10,
+      "y": 1.28,
+      "guid": 51,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 10.2,
+      "y": 1.244,
+      "guid": 52,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 10.4,
+      "y": 1.189,
+      "guid": 53,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 10.6,
+      "y": 1.132,
+      "guid": 54,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 10.8,
+      "y": 1.082,
+      "guid": 55,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 11,
+      "y": 1.036,
+      "guid": 56,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 11.2,
+      "y": 0.984,
+      "guid": 57,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 11.4,
+      "y": 0.926,
+      "guid": 58,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 11.6,
+      "y": 0.873,
+      "guid": 59,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 11.8,
+      "y": 0.835,
+      "guid": 60,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 12,
+      "y": 0.778,
+      "guid": 61,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 12.2,
+      "y": 0.72,
+      "guid": 62,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 12.4,
+      "y": 0.694,
+      "guid": 63,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 12.6,
+      "y": 0.651,
+      "guid": 64,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 12.8,
+      "y": 0.623,
+      "guid": 65,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 13,
+      "y": 0.554,
+      "guid": 66,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 13.2,
+      "y": 0.493,
+      "guid": 67,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 13.4,
+      "y": 0.446,
+      "guid": 68,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 13.6,
+      "y": 0.393,
+      "guid": 69,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 13.8,
+      "y": 0.351,
+      "guid": 70,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 14,
+      "y": 0.314,
+      "guid": 71,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 14.2,
+      "y": 0.287,
+      "guid": 72,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 14.4,
+      "y": 0.266,
+      "guid": 73,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 14.6,
+      "y": 0.239,
+      "guid": 74,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 14.8,
+      "y": 0.191,
+      "guid": 75,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 15,
+      "y": 0.133,
+      "guid": 76,
+      "series": "/backend/activity/1/series/walking-example-1"
+    },
+    {
+      "x": 0,
+      "y": 2.04,
+      "guid": 201,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 0.4,
+      "y": 2.006,
+      "guid": 203,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 0.8,
+      "y": 1.994,
+      "guid": 205,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 1.2,
+      "y": 1.959,
+      "guid": 207,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 1.6,
+      "y": 1.928,
+      "guid": 209,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 2,
+      "y": 1.891,
+      "guid": 211,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 2.4,
+      "y": 1.853,
+      "guid": 213,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 2.8,
+      "y": 1.827,
+      "guid": 215,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 3.2,
+      "y": 1.783,
+      "guid": 217,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 3.6,
+      "y": 1.748,
+      "guid": 219,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 4,
+      "y": 1.708,
+      "guid": 221,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 4.4,
+      "y": 1.679,
+      "guid": 223,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 4.8,
+      "y": 1.641,
+      "guid": 225,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 5.2,
+      "y": 1.622,
+      "guid": 227,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 5.6,
+      "y": 1.621,
+      "guid": 229,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 6,
+      "y": 1.602,
+      "guid": 231,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 6.4,
+      "y": 1.554,
+      "guid": 233,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 6.8,
+      "y": 1.488,
+      "guid": 235,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 7.2,
+      "y": 1.45,
+      "guid": 237,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 7.6,
+      "y": 1.428,
+      "guid": 239,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 8,
+      "y": 1.393,
+      "guid": 241,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 8.4,
+      "y": 1.354,
+      "guid": 243,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 8.8,
+      "y": 1.293,
+      "guid": 245,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 9.2,
+      "y": 1.258,
+      "guid": 247,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 9.6,
+      "y": 1.221,
+      "guid": 249,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 10,
+      "y": 1.197,
+      "guid": 251,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 10.4,
+      "y": 1.156,
+      "guid": 253,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 10.8,
+      "y": 1.124,
+      "guid": 255,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 11.2,
+      "y": 1.089,
+      "guid": 257,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 11.6,
+      "y": 1.052,
+      "guid": 259,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 12,
+      "y": 1.002,
+      "guid": 261,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 12.4,
+      "y": 0.951,
+      "guid": 263,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 12.8,
+      "y": 0.913,
+      "guid": 265,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 13.2,
+      "y": 0.879,
+      "guid": 267,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 13.6,
+      "y": 0.837,
+      "guid": 269,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 14,
+      "y": 0.801,
+      "guid": 271,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 14.4,
+      "y": 0.772,
+      "guid": 273,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 14.8,
+      "y": 0.729,
+      "guid": 275,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 15.2,
+      "y": 0.656,
+      "guid": 277,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 15.6,
+      "y": 0.621,
+      "guid": 279,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 16,
+      "y": 0.602,
+      "guid": 281,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 16.4,
+      "y": 0.55,
+      "guid": 283,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 16.8,
+      "y": 0.517,
+      "guid": 285,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 17.2,
+      "y": 0.473,
+      "guid": 287,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 17.6,
+      "y": 0.427,
+      "guid": 289,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 18,
+      "y": 0.353,
+      "guid": 291,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 18.4,
+      "y": 0.297,
+      "guid": 293,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 18.8,
+      "y": 0.249,
+      "guid": 295,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 19.2,
+      "y": 0.2,
+      "guid": 297,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 19.6,
+      "y": 0.134,
+      "guid": 299,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    },
+    {
+      "x": 20,
+      "y": 0.133,
+      "guid": 301,
+      "series": "/backend/activity/1/series/walking-toward-example"
+    }
+  ],
+  "graphs": [
+    {
+      "url": "/backend/activity/1/graph/1/prediction-away",
+      "activity": "/backend/activity/1",
+      "name": "prediction-away",
+      "description": "Prediction graph of movement away",
+      "title": "Away",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/10/graph-to-match",
+      "activity": "/backend/activity/1",
+      "name": "graph-to-match",
+      "description": "Graph to match with sensor data",
+      "title": "Position vs. Time",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "sketch-to-match"
+        }
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/2/prediction-toward",
+      "activity": "/backend/activity/1",
+      "name": "prediction-toward",
+      "title": "Toward",
+      "description": "Prediction graph of movement towards",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/3/sensor-playing",
+      "activity": "/backend/activity/1",
+      "name": "sensor-playing",
+      "description": "Playing around with the sensor in page 3",
+      "title": "Position vs. Time",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/4/graph-with-away-prediction",
+      "activity": "/backend/activity/1",
+      "name": "graph-with-away-prediction",
+      "description": "Graph with 'away' prediction for adding 'away' sensor data in page 4",
+      "title": "Away",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "prediction-away"
+        }
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/5/graph-with-toward-prediction",
+      "activity": "/backend/activity/1",
+      "name": "graph-with-toward-prediction",
+      "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
+      "title": "Toward",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "prediction-toward"
+        }
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/6/sensor-away",
+      "activity": "/backend/activity/1",
+      "name": "sensor-away",
+      "description": "Graph with'away' sensor data from page 4",
+      "title": "Away",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+        "sensor-away"
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/7/sensor-toward",
+      "activity": "/backend/activity/1",
+      "name": "sensor-toward",
+      "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
+      "title": "Toward",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+        "sensor-toward"
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/8/walking-example-1",
+      "activity": "/backend/activity/1",
+      "name": "walking-example-1",
+      "description": "Graph for multiple choice question in page 6",
+      "title": "An Example Walk",
+      "axes": "/backend/axes/1/5m-15s",
+      "initialSeries": [
+        "walking-example-1"
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.HighlightedPoint",
+          "name": "walking-first-point"
+        }
+      ]
+    },
+    {
+      "url": "/backend/activity/1/graph/9/two-walkers",
+      "activity": "/backend/activity/1",
+      "name": "two-walkers",
+      "description": "Graph for multiple choice question in page 6",
+      "title": "Position vs. Time",
+      "axes": "/backend/axes/2/5m-25s",
+      "initialSeries": [
+        "walking-away-example",
+        "walking-toward-example"
+      ],
+      "initialAnnotations": [
+
+      ]
+    }
+  ],
+  "axes": [
+    {
+      "url": "/backend/axes/1/5m-15s",
+      "xMin": 0,
+      "xMax": 15,
+      "xSteps": 15,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 5,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Position (m)"
+    },
+    {
+      "url": "/backend/axes/2/5m-25s",
+      "xMin": 0,
+      "xMax": 25,
+      "xSteps": 25,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 5,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Position (m)"
+    }
+  ],
+  "freehandSketches": [
+    {
+      "url": "/backend/activity/1/annotations/sketch-to-match",
+      "name": "sketch-to-match",
+      "isExample": true,
+      "points": [
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 3,
+          "y": 1
+        },
+        {
+          "x": 9,
+          "y": 2
+        },
+        {
+          "x": 15,
+          "y": 0
+        }
+      ],
+      "session": null
+    }
+  ],
+  "highlightedPoints": [
+    {
+      "url": "/backend/activity/1/annotations/walking-first-point",
+      "name": "walking-first-point",
+      "isExample": true,
+      "session": null,
+      "point": 1
+    }
+  ],
+  "highlightedSegments": [
+
+  ],
+  "linesToAxis": [
+
+  ]
+}
