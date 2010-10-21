@@ -193,7 +193,8 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
     var url = store.idFor(storeKey);
 
     if (Smartgraphs.get('useMockResponses')) {
-      this.invokeLater(this._mockRequestRecordFromServer, this.get('latency'), store, storeKey);
+      //this.invokeLater(this._mockRequestRecordFromServer, this.get('latency'), store, storeKey);
+      this._mockRequestRecordFromServer(store, storeKey);     
     }
     else {
       SC.Request.getUrl(url).notify(this, this.didRetrieveRecordFromServer, {
@@ -242,7 +243,8 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
 
   requestListFromServer: function(store, query, listUrl) {
     if (Smartgraphs.get('useMockResponses')) {
-      this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
+      //this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
+      this._mockRequestListFromServer(store, query, listUrl);
     }
     else {
       SC.Request.getUrl(listUrl).notify(this, this.didRetrieveListFromServer, {
