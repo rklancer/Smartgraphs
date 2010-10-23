@@ -174,7 +174,6 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
   requestListFromServer: function(store, query, listUrl) {
     if (Smartgraphs.get('useMockResponses')) {
       this.invokeLater(this._mockRequestListFromServer, this.get('latency'), store, query, listUrl);
-      this.invokeLater(this._mockRequestListFromServer, 0, store, query, listUrl);
     }
     else {
       SC.Request.getUrl(listUrl).notify(this, this.didRetrieveListFromServer, {
