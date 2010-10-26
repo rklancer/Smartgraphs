@@ -6,19 +6,23 @@
 /*globals Smartgraphs */
 
 Smartgraphs.main = function main() {
-  
-  // cascade the Rails data source in front of the fixtures data source until everything is transferred to Rails
-  Smartgraphs.dataSource = SC.CascadeDataSource.create({
-    dataSources: "rest fixtures".w(),
-    
-    rest: Smartgraphs.RestDataSource.create(),
-    
-    fixtures: SC.FixturesDataSource.create({
-      simulateRemoteResponse: NO,
-      latency: 500
-    })
-  });
-  
+  // TODO: (1) Replace cascading data source with a CouchDB one like in todos example project
+  if (Smartgraphs.useJsonDS) {
+    Smartgraphs.dataSource = Smartgraphs.Json.create();
+  } else {
+    // cascade the Rails data source in front of the fixtures data source until everything is transferred to Rails
+    Smartgraphs.dataSource = SC.CascadeDataSource.create({
+      dataSources: "rest fixtures".w(),
+
+      rest: Smartgraphs.RestDataSource.create(),
+
+      fixtures: SC.FixturesDataSource.create({
+        simulateRemoteResponse: NO,
+        latency: 500
+      })
+    });
+  }
+
   Smartgraphs.store = SC.Store.create().from(Smartgraphs.dataSource);
   
   // make the mainPane visible on screen.
@@ -27,9 +31,13 @@ Smartgraphs.main = function main() {
   // We're letting SC.route handle navigating to a particular Activity. It needs a runloop to sync up, so 
   // just reach in and set default window.location.hash for now.
   if (!window.location.hash) {
-    window.location.hash = '/backend/activity/2';      // default activity for now
+    if (Smartgraphs.useJsonDS) {
+      window.location.hash = "/backend/1";
+    } else {
+      window.location.hash = '/backend/activity/2';      // default activity for now
+    }
   }
-  
+
   // prevent unintended reload or back button; use 'onbeforeunload' syntax rather than $.bind just to be sure
   // there's only one handler (and $.bind doesn't really try to normalize this handler anyway)
   window.onbeforeunload = function () {

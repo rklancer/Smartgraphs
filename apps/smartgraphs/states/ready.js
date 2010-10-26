@@ -76,9 +76,15 @@ Smartgraphs.READY = SC.Responder.create(
   openActivity: function (context, args) {
     var activityContent = Smartgraphs.activityController.get('content');
     if (activityContent && activityContent.get('id') === args.id) {
+      if (Smartgraphs.logDataSource) {
+        console.warn("nothing to do with args.id:", args.id);
+      }
       return YES; // nothing to do!
     }
     
+    if (Smartgraphs.logDataSource) {
+      console.log("trying to load activity with args.id:",args.id);
+    }
     Smartgraphs.activityController.set('content', Smartgraphs.store.find(Smartgraphs.Activity, args.id));
     Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_ACTIVITY);
     return YES;

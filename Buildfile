@@ -17,5 +17,6 @@ config 'raphael_views/g_raphael',
   :required => 'raphael_views/g_raphael_base'
 config 'raphael_views/g_raphael_base', 
   :required => 'raphael_views/raphael'
-  
+
+# use port 5984 for CouchDB
 proxy "/backend", :to => "localhost:3000"
