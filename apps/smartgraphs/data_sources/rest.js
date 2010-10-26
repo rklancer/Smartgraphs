@@ -37,11 +37,14 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
     
     if (query.get('isPagesQuery')) {
       activity = query.get('parameters').activity;
+      this.log('  Query: pagesQuery for Activity:%s', activity);
       var activityUrl = activity.get('url');
-      listUrl = activity.get('pageListUrl') || activityUrl + "/pages";
+      this.log('  Query: pagesQuery for Activity with activityUrl:%s', activityUrl);
+      var pageListUrl = activity.get('pageListUrl');
+      this.log('  Query: pagesQuery for Activity with pageListUrl:%s', pageListUrl);
+      listUrl = pageListUrl || activityUrl + "/pages";
 
-      this.log('  Query: pagesQuery for Activity %s', activityUrl);
-      this.log('  URL endpoint for query: %s', listUrl);
+      this.log('  URL endpoint for query: listUrl:%s', listUrl);
 
       this.requestListFromServer(store, query, listUrl);
       return YES;
@@ -157,8 +160,10 @@ Smartgraphs.RestDataSource = SC.DataSource.extend(
     this.log('  id requested = %s', Smartgraphs.store.idFor(storeKey));
 
     if (SC.ok(response)) {
-      this.log('  ...SUCCESS');
-      store.dataSourceDidComplete(storeKey, this.camelizeKeys(response.get('body')));
+      this.log("  ...SUCCESS, response.get('body'):");
+      var responseBody = response.get("body");
+      this.log(responseBody);
+      store.dataSourceDidComplete(storeKey, this.camelizeKeys(responseBody));
     }
     else {
       this.log('  ...FAILURE');
