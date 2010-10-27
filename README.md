@@ -40,16 +40,18 @@ to visit all tests directly (in English), open <http://localhost:4020/static/sma
 
 ## Miscellaneous reference:
 
-### Build to the rails/public directory with:
+#### How to install CouchDB on OS X
 
-    sc-build -c --buildroot="[FULL_PATH_BECAUSE_RELATIVE_PATHS_DO_NOT_WORK_IN_ABBOT_YET]/smartgraphs-rails/public"
+    $ sudo port install couchdb
+    $ sudo dscl localhost
+    /Local/Default/Users > change couchdb dsAttrTypeNative:home /dev/null /opt/local/var/lib/couchdb
+    /Local/Default/Users > change couchdb dsAttrTypeNative:shell /dev/null /bin/bash
+
+    $ sudo chown -R couchdb:couchdb /opt/local/var/lib/couchdb
+    $ sudo chown -R couchdb:couchdb /opt/local/var/log/couchdb
+    $ sudo launchctl load -w /Library/LaunchDaemons/org.apache.couchdb.plist
+    
 
 ### Get the latest build number like this:
 
     sc-build-number smartgraphs
-
-### Then make the symbolic link to the English version of latest build like this:
-    
-    cd ../smartgraphs-rails/public
-    rm sc.html
-    ln -s static/smartgraphs/en/[ the sc-build-number ]/index.html sc.html
