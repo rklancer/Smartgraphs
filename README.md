@@ -44,11 +44,13 @@ to visit all tests directly (in English), open <http://localhost:4020/static/sma
 
     $ sudo port install couchdb
     $ sudo dscl localhost
+     > cd /Local/Default/Users
     /Local/Default/Users > change couchdb dsAttrTypeNative:home /dev/null /opt/local/var/lib/couchdb
     /Local/Default/Users > change couchdb dsAttrTypeNative:shell /dev/null /bin/bash
 
     $ sudo chown -R couchdb:couchdb /opt/local/var/lib/couchdb
     $ sudo chown -R couchdb:couchdb /opt/local/var/log/couchdb
+    $ sudo chown -R couchdb:couchdb /opt/local/etc/couchdb
     $ sudo launchctl load -w /Library/LaunchDaemons/org.apache.couchdb.plist
     
 
