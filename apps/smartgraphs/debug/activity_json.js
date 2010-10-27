@@ -1,4 +1,3 @@
-//TODO: Move activity properties like url to the top-level of the data hash
 Smartgraphs.hashesForRecordArray = function (recordArray) {
   var keys = recordArray.getEach('storeKey'); 
   var hash, ret = [];
