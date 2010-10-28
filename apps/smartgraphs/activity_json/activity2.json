@@ -1,137 +1,138 @@
 {
   "activity": {
     "title": "Maria's Run",
-    "url": "/backend/activity/2",
+    "url": "/shared/marias-run",
+    "owner": "shared",
     "pages": [
-      "/backend/activity/2/page/1",
-      "/backend/activity/2/page/2",
-      "/backend/activity/2/page/3",
-      "/backend/activity/2/page/4",
-      "/backend/activity/2/page/5",
-      "/backend/activity/2/page/6",
-      "/backend/activity/2/page/7",
-      "/backend/activity/2/page/8"
+      "/shared/marias-run/page/1",
+      "/shared/marias-run/page/2",
+      "/shared/marias-run/page/3",
+      "/shared/marias-run/page/4",
+      "/shared/marias-run/page/5",
+      "/shared/marias-run/page/6",
+      "/shared/marias-run/page/7",
+      "/shared/marias-run/page/8"
     ],
-    "pageListUrl": "/backend/activity/2/pages"
+    "pageListUrl": "/shared/marias-run/pages"
   },
   "pages": [
     {
       "steps": [
-        "/backend/activity/2/page/1/step/1"
+        "/shared/marias-run/page/1/step/1"
       ],
       "name": "",
-      "firstStep": "/backend/activity/2/page/1/step/1",
+      "firstStep": "/shared/marias-run/page/1/step/1",
       "introText": "<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>",
-      "url": "/backend/activity/2/page/1",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/page/1",
+      "activity": "/shared/marias-run",
       "index": 1,
-      "stepListUrl": "/backend/activity/2/page/1/steps"
+      "stepListUrl": "/shared/marias-run/page/1/steps"
     },
     {
       "steps": [
-        "/backend/activity/2/page/2/step/1"
+        "/shared/marias-run/page/2/step/1"
       ],
       "name": "",
-      "firstStep": "/backend/activity/2/page/2/step/1",
+      "firstStep": "/shared/marias-run/page/2/step/1",
       "introText": "<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
-      "url": "/backend/activity/2/page/2",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/page/2",
+      "activity": "/shared/marias-run",
       "index": 2,
-      "stepListUrl": "/backend/activity/2/page/2/steps"
+      "stepListUrl": "/shared/marias-run/page/2/steps"
     },
     {
       "steps": [
-        "/backend/activity/2/page/3/step/1"
+        "/shared/marias-run/page/3/step/1"
       ],
       "name": "",
-      "firstStep": "/backend/activity/2/page/3/step/1",
+      "firstStep": "/shared/marias-run/page/3/step/1",
       "introText": "<p>Next you will try moving at two different speeds.</p><p>Start close to the motion sensor. When you are ready, click Start and walk away from the sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. Click Stop when the time is up.</p>",
-      "url": "/backend/activity/2/page/3",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/page/3",
+      "activity": "/shared/marias-run",
       "index": 3,
-      "stepListUrl": "/backend/activity/2/page/3/steps"
+      "stepListUrl": "/shared/marias-run/page/3/steps"
     },
     {
       "steps": [
-        "/backend/activity/2/page/4/step/1"
+        "/shared/marias-run/page/4/step/1"
       ],
       "name": "",
-      "firstStep": "/backend/activity/2/page/4/step/1",
+      "firstStep": "/shared/marias-run/page/4/step/1",
       "introText": "<p>This time, you are going to record your position and time during three different tasks.</p><p>Start close to the motion sensor and click Start. Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds.</p>",
-      "url": "/backend/activity/2/page/4",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/page/4",
+      "activity": "/shared/marias-run",
       "index": 4,
-      "stepListUrl": "/backend/activity/2/page/4/steps"
+      "stepListUrl": "/shared/marias-run/page/4/steps"
     },
     {
       "steps": [
-        "/backend/activity/2/page/5/step/1",
-        "/backend/activity/2/page/5/step/2",
-        "/backend/activity/2/page/5/step/3",
-        "/backend/activity/2/page/5/step/4",
-        "/backend/activity/2/page/5/step/5",
-        "/backend/activity/2/page/5/step/6"
+        "/shared/marias-run/page/5/step/1",
+        "/shared/marias-run/page/5/step/2",
+        "/shared/marias-run/page/5/step/3",
+        "/shared/marias-run/page/5/step/4",
+        "/shared/marias-run/page/5/step/5",
+        "/shared/marias-run/page/5/step/6"
       ],
       "name": "",
-      "firstStep": "/backend/activity/2/page/5/step/1",
+      "firstStep": "/shared/marias-run/page/5/step/1",
       "introText": "<p>Now you that you\u2019ve had a chance to create position versus time graphs from your own motions, let\u2019s look at some graphs that were created by someone running.</p><p>Maria ran practice laps around the school track. Her coach recorded the distances she ran after each minute. These data are shown in the graph and the table at right. Remember that the time was recorded in minutes rather than seconds.</p>",
-      "url": "/backend/activity/2/page/5",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/page/5",
+      "activity": "/shared/marias-run",
       "index": 5,
-      "stepListUrl": "/backend/activity/2/page/5/steps"
+      "stepListUrl": "/shared/marias-run/page/5/steps"
     },
     {
       "steps": [
-        "/backend/activity/2/page/6/step/1",
-        "/backend/activity/2/page/6/step/2",
-        "/backend/activity/2/page/6/step/3",
-        "/backend/activity/2/page/6/step/4",
-        "/backend/activity/2/page/6/step/5",
-        "/backend/activity/2/page/6/step/6"
+        "/shared/marias-run/page/6/step/1",
+        "/shared/marias-run/page/6/step/2",
+        "/shared/marias-run/page/6/step/3",
+        "/shared/marias-run/page/6/step/4",
+        "/shared/marias-run/page/6/step/5",
+        "/shared/marias-run/page/6/step/6"
       ],
       "name": "",
-      "firstStep": "/backend/activity/2/page/6/step/1",
+      "firstStep": "/shared/marias-run/page/6/step/1",
       "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
-      "url": "/backend/activity/2/page/6",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/page/6",
+      "activity": "/shared/marias-run",
       "index": 5,
-      "stepListUrl": "/backend/activity/2/page/6/steps"
+      "stepListUrl": "/shared/marias-run/page/6/steps"
     },
     {
       "steps": [
-        "/backend/activity/2/page/7/step/1",
-        "/backend/activity/2/page/7/step/2",
-        "/backend/activity/2/page/7/step/3",
-        "/backend/activity/2/page/7/step/4",
-        "/backend/activity/2/page/7/step/5",
-        "/backend/activity/2/page/7/step/6"
+        "/shared/marias-run/page/7/step/1",
+        "/shared/marias-run/page/7/step/2",
+        "/shared/marias-run/page/7/step/3",
+        "/shared/marias-run/page/7/step/4",
+        "/shared/marias-run/page/7/step/5",
+        "/shared/marias-run/page/7/step/6"
       ],
       "name": "",
-      "firstStep": "/backend/activity/2/page/7/step/1",
+      "firstStep": "/shared/marias-run/page/7/step/1",
       "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
-      "url": "/backend/activity/2/page/7",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/page/7",
+      "activity": "/shared/marias-run",
       "index": 5,
-      "stepListUrl": "/backend/activity/2/page/7/steps"
+      "stepListUrl": "/shared/marias-run/page/7/steps"
     },
     {
       "steps": [
-        "/backend/activity/2/page/8/step/1",
-        "/backend/activity/2/page/8/step/2"
+        "/shared/marias-run/page/8/step/1",
+        "/shared/marias-run/page/8/step/2"
       ],
       "name": "",
-      "firstStep": "/backend/activity/2/page/8/step/1",
+      "firstStep": "/shared/marias-run/page/8/step/1",
       "introText": "",
-      "url": "/backend/activity/2/page/8",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/page/8",
+      "activity": "/shared/marias-run",
       "index": 5,
-      "stepListUrl": "/backend/activity/2/page/8/steps"
+      "stepListUrl": "/shared/marias-run/page/8/steps"
     }
   ],
   "steps": [
     {
-      "url": "/backend/activity/2/page/1/step/1",
-      "activityPage": "/backend/activity/2/page/1",
+      "url": "/shared/marias-run/page/1/step/1",
+      "activityPage": "/shared/marias-run/page/1",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -164,8 +165,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/2/step/1",
-      "activityPage": "/backend/activity/2/page/1",
+      "url": "/shared/marias-run/page/2/step/1",
+      "activityPage": "/shared/marias-run/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -179,7 +180,7 @@
         }
       },
       "beforeText": "<p>How are your motions represented in the position versus time graph? (For example, what does the graph look like when you are standing still?)</p>",
-      "responseTemplate": "/backend/response-template/2/open",
+      "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
         {
@@ -220,8 +221,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/3/step/1",
-      "activityPage": "/backend/activity/2/page/3",
+      "url": "/shared/marias-run/page/3/step/1",
+      "activityPage": "/shared/marias-run/page/3",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -235,7 +236,7 @@
         }
       },
       "beforeText": "<p>How are the two different speeds represented in the position versus time graph?</p>",
-      "responseTemplate": "/backend/response-template/2/open",
+      "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
         {
@@ -276,8 +277,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/4/step/1",
-      "activityPage": "/backend/activity/2/page/4",
+      "url": "/shared/marias-run/page/4/step/1",
+      "activityPage": "/shared/marias-run/page/4",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -291,7 +292,7 @@
         }
       },
       "beforeText": "<p>What do you notice about the <b>steepness</b> of the three different segments during each of the motions?</p>",
-      "responseTemplate": "/backend/response-template/2/open",
+      "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
         {
@@ -332,8 +333,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/5/step/1",
-      "activityPage": "/backend/activity/2/page/5",
+      "url": "/shared/marias-run/page/5/step/1",
+      "activityPage": "/shared/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -384,19 +385,19 @@
               4
             ]
           },
-          "step": "/backend/activity/2/page/5/step/6"
+          "step": "/shared/marias-run/page/5/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/5/step/2",
+      "defaultBranch": "/shared/marias-run/page/5/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/5/step/2",
-      "activityPage": "/backend/activity/2/page/5",
+      "url": "/shared/marias-run/page/5/step/2",
+      "activityPage": "/shared/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -447,19 +448,19 @@
               4
             ]
           },
-          "step": "/backend/activity/2/page/5/step/6"
+          "step": "/shared/marias-run/page/5/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/5/step/3",
+      "defaultBranch": "/shared/marias-run/page/5/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/5/step/3",
-      "activityPage": "/backend/activity/2/page/5",
+      "url": "/shared/marias-run/page/5/step/3",
+      "activityPage": "/shared/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -525,19 +526,19 @@
               4
             ]
           },
-          "step": "/backend/activity/2/page/5/step/6"
+          "step": "/shared/marias-run/page/5/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/5/step/4",
+      "defaultBranch": "/shared/marias-run/page/5/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/5/step/4",
-      "activityPage": "/backend/activity/2/page/5",
+      "url": "/shared/marias-run/page/5/step/4",
+      "activityPage": "/shared/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -609,19 +610,19 @@
               4
             ]
           },
-          "step": "/backend/activity/2/page/5/step/6"
+          "step": "/shared/marias-run/page/5/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/5/step/5",
+      "defaultBranch": "/shared/marias-run/page/5/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/5/step/5",
-      "activityPage": "/backend/activity/2/page/5",
+      "url": "/shared/marias-run/page/5/step/5",
+      "activityPage": "/shared/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -659,8 +660,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/5/step/6",
-      "activityPage": "/backend/activity/2/page/5",
+      "url": "/shared/marias-run/page/5/step/6",
+      "activityPage": "/shared/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -698,8 +699,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/6/step/1",
-      "activityPage": "/backend/activity/2/page/6",
+      "url": "/shared/marias-run/page/6/step/1",
+      "activityPage": "/shared/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -713,7 +714,7 @@
         }
       },
       "beforeText": "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-      "responseTemplate": "/backend/response-template/1/numeric",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
 
@@ -749,19 +750,19 @@
               800
             ]
           },
-          "step": "/backend/activity/2/page/6/step/6"
+          "step": "/shared/marias-run/page/6/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/6/step/2",
+      "defaultBranch": "/shared/marias-run/page/6/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/6/step/2",
-      "activityPage": "/backend/activity/2/page/6",
+      "url": "/shared/marias-run/page/6/step/2",
+      "activityPage": "/shared/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -775,7 +776,7 @@
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Look at the data and find how many minutes passed <b>before</b> Maria stopped.</p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
-      "responseTemplate": "/backend/response-template/1/numeric",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
 
@@ -811,19 +812,19 @@
               800
             ]
           },
-          "step": "/backend/activity/2/page/6/step/6"
+          "step": "/shared/marias-run/page/6/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/6/step/3",
+      "defaultBranch": "/shared/marias-run/page/6/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/6/step/3",
-      "activityPage": "/backend/activity/2/page/6",
+      "url": "/shared/marias-run/page/6/step/3",
+      "activityPage": "/shared/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -837,7 +838,7 @@
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 2</b>: Here is where Maria stopped. Find her position from the start of the track.</p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
-      "responseTemplate": "/backend/response-template/1/numeric",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
         {
@@ -880,19 +881,19 @@
               800
             ]
           },
-          "step": "/backend/activity/2/page/6/step/6"
+          "step": "/shared/marias-run/page/6/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/6/step/4",
+      "defaultBranch": "/shared/marias-run/page/6/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/6/step/4",
-      "activityPage": "/backend/activity/2/page/6",
+      "url": "/shared/marias-run/page/6/step/4",
+      "activityPage": "/shared/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -906,7 +907,7 @@
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>: Here is where Maria stopped. Find her position from the start of the track.</p><p>Try again. Find the y value (position) of this point?</p>",
-      "responseTemplate": "/backend/response-template/1/numeric",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
         {
@@ -957,19 +958,19 @@
               800
             ]
           },
-          "step": "/backend/activity/2/page/6/step/6"
+          "step": "/shared/marias-run/page/6/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/6/step/5",
+      "defaultBranch": "/shared/marias-run/page/6/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/6/step/5",
-      "activityPage": "/backend/activity/2/page/6",
+      "url": "/shared/marias-run/page/6/step/5",
+      "activityPage": "/shared/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1007,8 +1008,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/6/step/6",
-      "activityPage": "/backend/activity/2/page/6",
+      "url": "/shared/marias-run/page/6/step/6",
+      "activityPage": "/shared/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1046,8 +1047,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/7/step/1",
-      "activityPage": "/backend/activity/2/page/7",
+      "url": "/shared/marias-run/page/7/step/1",
+      "activityPage": "/shared/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1061,7 +1062,7 @@
         }
       },
       "beforeText": "<p>For how many minutes did Maria stop to talk to her coach?</p>",
-      "responseTemplate": "/backend/response-template/1/numeric",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
 
@@ -1097,19 +1098,19 @@
               2
             ]
           },
-          "step": "/backend/activity/2/page/7/step/6"
+          "step": "/shared/marias-run/page/7/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/7/step/2",
+      "defaultBranch": "/shared/marias-run/page/7/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/7/step/2",
-      "activityPage": "/backend/activity/2/page/7",
+      "url": "/shared/marias-run/page/7/step/2",
+      "activityPage": "/shared/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1123,7 +1124,7 @@
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Here is the interval when Maria\u2019s distance stayed the same.</p><p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
-      "responseTemplate": "/backend/response-template/1/numeric",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
         {
@@ -1166,19 +1167,19 @@
               2
             ]
           },
-          "step": "/backend/activity/2/page/7/step/6"
+          "step": "/shared/marias-run/page/7/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/7/step/3",
+      "defaultBranch": "/shared/marias-run/page/7/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/7/step/3",
-      "activityPage": "/backend/activity/2/page/7",
+      "url": "/shared/marias-run/page/7/step/3",
+      "activityPage": "/shared/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1192,7 +1193,7 @@
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 2</b>: How much time elapsed during this interval?</p><p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
-      "responseTemplate": "/backend/response-template/1/numeric",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
 
@@ -1228,19 +1229,19 @@
               2
             ]
           },
-          "step": "/backend/activity/2/page/7/step/6"
+          "step": "/shared/marias-run/page/7/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/7/step/4",
+      "defaultBranch": "/shared/marias-run/page/7/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/7/step/4",
-      "activityPage": "/backend/activity/2/page/7",
+      "url": "/shared/marias-run/page/7/step/4",
+      "activityPage": "/shared/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1254,7 +1255,7 @@
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>: After four minutes, Maria stopped and did not start moving again until six minutes. So, how many minutes passed?</p><p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
-      "responseTemplate": "/backend/response-template/1/numeric",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
 
@@ -1290,19 +1291,19 @@
               2
             ]
           },
-          "step": "/backend/activity/2/page/7/step/6"
+          "step": "/shared/marias-run/page/7/step/6"
         }
       ],
-      "defaultBranch": "/backend/activity/2/page/7/step/5",
+      "defaultBranch": "/shared/marias-run/page/7/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/7/step/5",
-      "activityPage": "/backend/activity/2/page/7",
+      "url": "/shared/marias-run/page/7/step/5",
+      "activityPage": "/shared/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1340,8 +1341,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/7/step/6",
-      "activityPage": "/backend/activity/2/page/7",
+      "url": "/shared/marias-run/page/7/step/6",
+      "activityPage": "/shared/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1379,8 +1380,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/backend/activity/2/page/8/step/1",
-      "activityPage": "/backend/activity/2/page/8",
+      "url": "/shared/marias-run/page/8/step/1",
+      "activityPage": "/shared/marias-run/page/8",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1394,7 +1395,7 @@
         }
       },
       "beforeText": "<p>Think back on the activities you just did.</p><p>Now that you have had a chance to create your own position versus time graphs, explain what kind of details this graph can tell about motion on a straight track. Give examples of some details that a position versus time graph cannot tell.</p><p>What other elements would make the story complete?</p>",
-      "responseTemplate": "/backend/response-template/2/open",
+      "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
 
@@ -1419,7 +1420,7 @@
       ],
       "responseInspector": null,
       "responseBranches": null,
-      "defaultBranch": "/backend/activity/2/page/8/step/2",
+      "defaultBranch": "/shared/marias-run/page/8/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1427,8 +1428,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/backend/activity/2/page/8/step/2",
-      "activityPage": "/backend/activity/2/page/8",
+      "url": "/shared/marias-run/page/8/step/2",
+      "activityPage": "/shared/marias-run/page/8",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1466,7 +1467,7 @@
   ],
   "responseTemplates": [
     {
-      "url": "/backend/response-template/2/open",
+      "url": "/components/response-template/open",
       "templateString": "",
       "fieldTypes": [
         "textarea"
@@ -1479,7 +1480,7 @@
       ]
     },
     {
-      "url": "/backend/response-template/1/numeric",
+      "url": "/components/response-template/numeric",
       "templateString": "",
       "fieldTypes": [
         "numeric"
@@ -1494,8 +1495,9 @@
   ],
   "datasets": [
     {
-      "url": "/backend/activity/2/series/maria",
+      "url": "/shared/marias-run/series/maria",
       "name": "maria",
+      "activity": "/shared/marias-run",
       "isExample": true,
       "points": [
         400,
@@ -1518,115 +1520,115 @@
       "x": 1,
       "y": 200,
       "guid": 400,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 2,
       "y": 400,
       "guid": 401,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 3,
       "y": 600,
       "guid": 402,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 4,
       "y": 800,
       "guid": 403,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 5,
       "y": 800,
       "guid": 404,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 6,
       "y": 800,
       "guid": 405,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 7,
       "y": 1050,
       "guid": 406,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 8,
       "y": 1300,
       "guid": 407,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 9,
       "y": 1550,
       "guid": 408,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     },
     {
       "x": 10,
       "y": 1800,
       "guid": 409,
-      "series": "/backend/activity/2/series/maria"
+      "series": "/shared/marias-run/series/maria"
     }
   ],
   "graphs": [
     {
-      "url": "/backend/activity/2/graph/1/sensor-playing",
-      "activity": "/backend/activity/2",
-      "name": "sensor-playing",
-      "description": "Playing around with the sensor in page 2",
-      "title": "Position vs. Time",
-      "axes": "/backend/axes/3/5m-30s",
-      "initialSeries": [
-
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/backend/activity/2/graph/2/two-speeds",
-      "activity": "/backend/activity/2",
-      "name": "two-speeds",
-      "description": "Walking at two speeds in page 3",
-      "title": "Position vs. Time",
-      "axes": "/backend/axes/3/5m-30s",
-      "initialSeries": [
-
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/backend/activity/2/graph/3/start-stop-start",
-      "activity": "/backend/activity/2",
-      "name": "start-stop-start",
-      "description": "Starting, stopping, and starting again in page 4",
-      "title": "Position vs. Time",
-      "axes": "/backend/axes/3/5m-30s",
-      "initialSeries": [
-
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/backend/activity/2/graph/4/maria",
-      "activity": "/backend/activity/2",
+      "url": "/shared/marias-run/graph/maria",
+      "activity": "/shared/marias-run",
       "name": "maria",
       "description": "Graph of Maria's run",
       "title": "Position vs. Time",
-      "axes": "/backend/axes/4/2000m-10min",
+      "axes": "/shared/marias-run/axes/2000m-10min",
       "initialSeries": [
         "maria"
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/marias-run/graph/sensor-playing",
+      "activity": "/shared/marias-run",
+      "name": "sensor-playing",
+      "description": "Playing around with the sensor in page 2",
+      "title": "Position vs. Time",
+      "axes": "/shared/marias-run/axes/5m-30s",
+      "initialSeries": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/marias-run/graph/start-stop-start",
+      "activity": "/shared/marias-run",
+      "name": "start-stop-start",
+      "description": "Starting, stopping, and starting again in page 4",
+      "title": "Position vs. Time",
+      "axes": "/shared/marias-run/axes/5m-30s",
+      "initialSeries": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/marias-run/graph/two-speeds",
+      "activity": "/shared/marias-run",
+      "name": "two-speeds",
+      "description": "Walking at two speeds in page 3",
+      "title": "Position vs. Time",
+      "axes": "/shared/marias-run/axes/5m-30s",
+      "initialSeries": [
+
       ],
       "initialAnnotations": [
 
@@ -1635,20 +1637,7 @@
   ],
   "axes": [
     {
-      "url": "/backend/axes/3/5m-30s",
-      "xMin": 0,
-      "xMax": 30,
-      "xSteps": 6,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
-    },
-    {
-      "url": "/backend/axes/4/2000m-10min",
+      "url": "/shared/marias-run/axes/2000m-10min",
       "xMin": 0,
       "xMax": 10,
       "xSteps": 10,
@@ -1659,6 +1648,19 @@
       "ySteps": 10,
       "yLabel": "Position (meters)",
       "yLabelAbbreviated": "Position (m)"
+    },
+    {
+      "url": "/shared/marias-run/axes/5m-30s",
+      "xMin": 0,
+      "xMax": 30,
+      "xSteps": 6,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 5,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Position (m)"
     }
   ],
   "freehandSketches": [
@@ -1666,33 +1668,19 @@
   ],
   "highlightedPoints": [
     {
-      "url": "/backend/activity/2/annotations/test-line-to-x-axis",
-      "name": "test-line-to-x-axis",
-      "isExample": true,
-      "session": null,
-      "point": 410,
-      "axis": "x"
-    },
-    {
-      "url": "/backend/activity/2/annotations/where-maria-stopped",
+      "url": "/shared/marias-run/annotation/where-maria-stopped",
       "name": "where-maria-stopped",
+      "activity": "/shared/marias-run",
       "isExample": true,
       "session": null,
       "point": 403
-    },
-    {
-      "url": "/backend/activity/2/annotations/where-maria-stopped-to-y-axis",
-      "name": "where-maria-stopped-to-y-axis",
-      "isExample": true,
-      "session": null,
-      "point": 403,
-      "axis": "y"
     }
   ],
   "highlightedSegments": [
     {
-      "url": "/backend/activity/2/annotations/maria-running-interval-1",
+      "url": "/shared/marias-run/annotation/maria-running-interval-1",
       "name": "maria-running-interval-1",
+      "activity": "/shared/marias-run",
       "isExample": true,
       "session": null,
       "points": [
@@ -1703,8 +1691,9 @@
       ]
     },
     {
-      "url": "/backend/activity/2/annotations/maria-running-interval-2",
+      "url": "/shared/marias-run/annotation/maria-running-interval-2",
       "name": "maria-running-interval-2",
+      "activity": "/shared/marias-run",
       "isExample": true,
       "session": null,
       "points": [
@@ -1716,8 +1705,9 @@
       ]
     },
     {
-      "url": "/backend/activity/2/annotations/maria-stationary-interval",
+      "url": "/shared/marias-run/annotation/maria-stationary-interval",
       "name": "maria-stationary-interval",
+      "activity": "/shared/marias-run",
       "isExample": true,
       "session": null,
       "points": [
@@ -1729,16 +1719,9 @@
   ],
   "linesToAxis": [
     {
-      "url": "/backend/activity/2/annotations/test-line-to-x-axis",
-      "name": "test-line-to-x-axis",
-      "isExample": true,
-      "session": null,
-      "point": 410,
-      "axis": "x"
-    },
-    {
-      "url": "/backend/activity/2/annotations/where-maria-stopped-to-y-axis",
+      "url": "/shared/marias-run/annotation/where-maria-stopped-to-y-axis",
       "name": "where-maria-stopped-to-y-axis",
+      "activity": "/shared/marias-run",
       "isExample": true,
       "session": null,
       "point": 403,
