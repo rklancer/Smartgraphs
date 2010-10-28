@@ -29,6 +29,11 @@ Smartgraphs.Annotation = SC.Record.extend(
   name: SC.Record.attr(String),
   
   /**
+    The activity this annotation is part of
+  */
+  activity: SC.Record.toOne('Smartgraphs.Activity'),
+  
+  /**
     the session this annotation is associated with, if any.
   */
   session: SC.Record.toOne('Smartgraphs.Session'),

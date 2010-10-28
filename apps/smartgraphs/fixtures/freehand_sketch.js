@@ -12,6 +12,7 @@ Smartgraphs.FreehandSketch.FIXTURES = [
   
   { url: '/backend/activity/1/annotations/sketch-to-match',
     name: 'sketch-to-match',
+    activity: '/backend/activity/1',
     isExample: YES,
     points: [ {x: 0, y: 3}, {x: 3, y: 1}, {x: 9, y: 2}, {x: 15, y:0} ],
     session: null

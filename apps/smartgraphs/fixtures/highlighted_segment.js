@@ -12,6 +12,7 @@ Smartgraphs.HighlightedSegment.FIXTURES = [
   // http://github.com/sproutcore/sproutcore/issues/#issue/36
   { url: '/backend/activity/2/annotations/maria-running-interval-1',
     name: 'maria-running-interval-1',
+    activity: '/backend/activity/2',    
     isExample: YES,
     session: null,
     points: [400, 401, 402, 403]
@@ -19,6 +20,7 @@ Smartgraphs.HighlightedSegment.FIXTURES = [
 
   { url: '/backend/activity/2/annotations/maria-running-interval-2',
     name: 'maria-running-interval-2',
+    activity: '/backend/activity/2',     
     isExample: YES,
     session: null,
     points: [405, 406, 407, 408, 409]
@@ -26,6 +28,7 @@ Smartgraphs.HighlightedSegment.FIXTURES = [
   
   { url: '/backend/activity/2/annotations/maria-stationary-interval',
     name: 'maria-stationary-interval',
+    activity: '/backend/activity/2',     
     isExample: YES,
     session: null,
     points: [403, 404, 405]

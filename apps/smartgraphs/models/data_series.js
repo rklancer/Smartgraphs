@@ -26,6 +26,11 @@ Smartgraphs.DataSeries = SC.Record.extend(
   name: SC.Record.attr(String),
   
   /**
+    The activity this dataset is part of
+  */
+  activity: SC.Record.toOne('Smartgraphs.Activity'),
+  
+  /**
     The session this dataset is associated with, if any. (Datasets with isExample = YES are not associated with a 
     specific session.)
     
