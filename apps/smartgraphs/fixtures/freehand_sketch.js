@@ -10,7 +10,7 @@ sc_require('models/freehand_sketch');
 Smartgraphs.FreehandSketch.FIXTURES = [
   // need to have some fixtures or fixturesDataSource's updateRecords() thinks it can't handle the record.
   
-  { url: '/shared/motion-towards-and-away/annotations/sketch-to-match',
+  { url: '/shared/motion-towards-and-away/annotation/sketch-to-match',
     name: 'sketch-to-match',
     activity: '/shared/motion-towards-and-away',
     isExample: YES,

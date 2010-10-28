@@ -10,7 +10,7 @@ Smartgraphs.HighlightedPoint.FIXTURES = [
 
   // need to have some fixtures or fixturesDataSource's updateRecords() thinks it can't handle the record.
   // http://github.com/sproutcore/sproutcore/issues/#issue/36
-  { url: '/shared/motion-towards-and-away/annotations/walking-first-point',
+  { url: '/shared/motion-towards-and-away/annotation/walking-first-point',
     name: 'walking-first-point',
     activity: '/shared/motion-towards-and-away',
     isExample: YES,
@@ -18,7 +18,7 @@ Smartgraphs.HighlightedPoint.FIXTURES = [
     point: 1
   },
 
-  { url: '/shared/marias-run/annotations/where-maria-stopped',
+  { url: '/shared/marias-run/annotation/where-maria-stopped',
     name: 'where-maria-stopped',
     activity: '/shared/marias-run',
     isExample: YES,
