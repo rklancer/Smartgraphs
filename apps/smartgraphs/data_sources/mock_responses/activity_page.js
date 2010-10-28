@@ -418,26 +418,4 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   Smartgraphs.mockResponses["/shared/example-activity/pages"] = pages;
 
-
-  // for activity with new activity-step structure
-  pages = [];
-  page = Smartgraphs.mockResponses["/backend/activity/new-step/page/1"] = 
-  {
-    "steps": [
-      "/backend/activity/new-step/page/1/step/1",
-      "/backend/activity/new-step/page/1/step/2",
-      "/backend/activity/new-step/page/1/step/3"
-    ],
-    "name": "Only Page",
-    "firstStep": "/backend/activity/new-step/page/1/step/1",
-    "introText": "<h1>Watch the system respond!</h1>",
-    "url": "/backend/activity/new-step/page/1",
-    "activity": "/backend/activity/new-step",
-    "index": 1,
-    "stepListUrl": "/backend/activity/new-step/page/1/steps"
-  };
-  pages.push(page);
-
-  Smartgraphs.mockResponses["/backend/activity/new-step/pages"] = pages;
-
 }());

@@ -53,7 +53,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
 
 
-  // demo of a second activity
+  // demo activity
   Smartgraphs.mockResponses["/shared/example-activity"] = 
   {
     "title":            "Second Activity",
@@ -62,14 +62,4 @@ sc_require('data_sources/mock_responses/mock_responses');
     "pageListUrl":      "/shared/example-activity/pages"
   };
 
-
-  // activity with new activity-step structure
-
-  Smartgraphs.mockResponses["/backend/activity/new-step"] = 
-  {
-    "title":            "Activity Demonstrating New ActivityStep Structure",
-    "url":              "/backend/activity/new-step",
-    "pages":            ["/backend/activity/new-step/page/1"],
-    "pageListUrl":      "/backend/activity/new-step/pages"
-  };
 }());

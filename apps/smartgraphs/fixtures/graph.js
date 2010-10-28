@@ -283,42 +283,6 @@ Smartgraphs.Graph.FIXTURES = [
       [],
     initialAnnotations:
       []
-  },
-  
-  { url: 
-      '/backend/activity/new-step/graph/prediction-away',
-    activity:
-      '/backend/activity/new-step',
-    name:
-      'prediction-away',
-    description: 
-      'Prediction graph of movement away',
-    title:
-      'Away',
-    axes:
-      '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
-      [],
-    initialAnnotations:
-      []
-  },
-  
-  { url: 
-      '/backend/activity/new-step/graph/prediction-toward',
-    activity:
-      '/backend/activity/new-step',      
-    name:
-      'prediction-toward',
-    title:
-      'Toward',
-    description: 
-      'Prediction graph of movement towards',
-    axes:
-      '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
-      [],
-    initialAnnotations:
-      []
   }
   
 ];
