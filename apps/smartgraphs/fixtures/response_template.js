@@ -9,21 +9,21 @@ sc_require('models/response_template');
 
 Smartgraphs.ResponseTemplate.FIXTURES = [
   
-  { url: '/backend/response-template/1/numeric',
+  { url: '/components/response-template/numeric',
   	templateString: '',
   	fieldTypes: ['numeric'],
   	fieldChoicesList: [null],
   	initialValues: ['']
   },
 
-  { url: '/backend/response-template/2/open',
+  { url: '/components/response-template/open',
   	templateString: '',
   	fieldTypes: ['textarea'],
   	fieldChoicesList: [null],
   	initialValues: ['']
   },
 
-  { url: '/backend/response-template/3/walking-example-1',
+  { url: '/backend/activity/1/response-template/walking-example-1',
   	templateString: '',
   	fieldTypes: ['multiplechoice'],
   	fieldChoicesList: [[
@@ -35,7 +35,7 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
   	initialValues: [""]
   },
   
-  { url: '/backend/response-template/4/two-walkers',
+  { url: '/backend/activity/1/response-template/two-walkers',
   	templateString: '',
   	fieldTypes: ['multiplechoice'],
   	fieldChoicesList: [[

@@ -9,7 +9,7 @@ sc_require('models/axes');
 
 Smartgraphs.Axes.FIXTURES = [
   
-  { url: '/backend/axes/1/5m-15s',
+  { url: '/backend/activity/1/axes/5m-15s',
 
     xMin: 0,
     xMax: 15,
@@ -24,7 +24,7 @@ Smartgraphs.Axes.FIXTURES = [
     yLabelAbbreviated: 'Position (m)'
   },
   
-  { url: '/backend/axes/2/5m-25s',
+  { url: '/backend/activity/1/axes/5m-25s',
   
     xMin: 0,
     xMax: 25,
@@ -39,7 +39,7 @@ Smartgraphs.Axes.FIXTURES = [
     yLabelAbbreviated: 'Position (m)'
   },
   
-  { url: '/backend/axes/3/5m-30s',
+  { url: '/backend/activity/2/axes/5m-30s',
 
     xMin: 0,
     xMax: 30,
@@ -54,7 +54,7 @@ Smartgraphs.Axes.FIXTURES = [
     yLabelAbbreviated: 'Position (m)'
   },
   
-  { url: '/backend/axes/4/2000m-10min',
+  { url: '/backend/activity/2/axes/2000m-10min',
 
     xMin: 0,
     xMax: 10,
@@ -69,7 +69,7 @@ Smartgraphs.Axes.FIXTURES = [
     yLabelAbbreviated: 'Position (m)'
   },
   
-  { url: '/backend/axes/5/4quads',
+  { url: '/backend/activity/3/axes/4quads',
 
     xMin: -10,
     xMax: 10,

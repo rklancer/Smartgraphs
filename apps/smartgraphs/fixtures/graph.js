@@ -20,7 +20,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -39,7 +39,7 @@ Smartgraphs.Graph.FIXTURES = [
     description: 
       'Prediction graph of movement towards',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -58,7 +58,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -76,7 +76,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations: [
@@ -95,7 +95,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Toward',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations: [
@@ -114,7 +114,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       ['sensor-away'],
     initialAnnotations: [
@@ -132,7 +132,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Toward',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       ['sensor-toward'],
     initialAnnotations: [
@@ -150,7 +150,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       "An Example Walk",
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       ['walking-example-1'],
     initialAnnotations: [
@@ -169,7 +169,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       "Position vs. Time",
     axes:
-      '/backend/axes/2/5m-25s',
+      '/backend/activity/1/axes/5m-25s',
     initialSeries: 
       ['walking-away-example', 'walking-toward-example'],
     initialAnnotations: [
@@ -187,7 +187,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       "Position vs. Time",
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations: [
@@ -206,7 +206,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/axes/3/5m-30s',
+      '/backend/activity/2/axes/5m-30s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -224,7 +224,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/axes/3/5m-30s',
+      '/backend/activity/2/axes/5m-30s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -242,7 +242,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/axes/3/5m-30s',
+      '/backend/activity/2/axes/5m-30s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -260,7 +260,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/axes/4/2000m-10min',
+      '/backend/activity/2/axes/2000m-10min',
     initialSeries: 
       ['maria'],
     initialAnnotations:
@@ -278,7 +278,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/axes/5/4quads',
+      '/backend/activity/3/axes/4quads',
     initialSeries: 
       [],
     initialAnnotations:
@@ -296,7 +296,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -314,7 +314,7 @@ Smartgraphs.Graph.FIXTURES = [
     description: 
       'Prediction graph of movement towards',
     axes:
-      '/backend/axes/1/5m-15s',
+      '/backend/activity/1/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:

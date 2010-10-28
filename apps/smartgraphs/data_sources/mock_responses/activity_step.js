@@ -74,7 +74,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "beforeText":
       "<p>How are your motions represented in the position versus time graph? " +
       "(For example, what does the graph look like when you are standing still?)</p>",
-    "responseTemplate": '/backend/response-template/2/open',
+    "responseTemplate": '/components/response-template/open',
     "afterText": "",
     "startCommands": [
       { "action": "startSensorInput",
@@ -127,7 +127,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText":
       "<p>How are the two different speeds represented in the position versus time graph?</p>",
-    "responseTemplate": '/backend/response-template/2/open',
+    "responseTemplate": '/components/response-template/open',
     "afterText": "",
     "startCommands": [
       { "action": "startSensorInput",
@@ -180,7 +180,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText":
         "<p>What do you notice about the <b>steepness</b> of the three different segments during each of the motions?</p>",
-    "responseTemplate": '/backend/response-template/2/open',
+    "responseTemplate": '/components/response-template/open',
     "afterText": "",
     "startCommands": [
       { "action": "startSensorInput",
@@ -532,7 +532,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText":
         "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
-    "responseTemplate": "/backend/response-template/1/numeric",
+    "responseTemplate": "/components/response-template/numeric",
     "afterText": "",
     "startCommands": [],
     "shouldFinishImmediately": false,
@@ -577,7 +577,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       "<p>Incorrect.</p>" +
       "<p><b>Hint 1</b>: Look at the data and find how many minutes passed <b>before</b> Maria stopped.</p>" +
       "<p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
-    "responseTemplate": "/backend/response-template/1/numeric",
+    "responseTemplate": "/components/response-template/numeric",
     "afterText": "",
     "startCommands": [],
     "shouldFinishImmediately": false,
@@ -622,7 +622,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       "<p>Incorrect.</p>" +
       "<p><b>Hint 2</b>: Here is where Maria stopped. Find her position from the start of the track.</p>" +
       "<p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
-    "responseTemplate": "/backend/response-template/1/numeric",
+    "responseTemplate": "/components/response-template/numeric",
     "afterText": "",
     "startCommands": [
       { "action": "addAnnotation",
@@ -675,7 +675,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       "<p>Incorrect.</p>" +    
       "<p><b>Hint 3</b>: Here is where Maria stopped. Find her position from the start of the track.</p>" +
       "<p>Try again. Find the y value (position) of this point?</p>",
-    "responseTemplate": "/backend/response-template/1/numeric",
+    "responseTemplate": "/components/response-template/numeric",
     "afterText": "",
     "startCommands": [
       { "action": "addAnnotation",
@@ -808,7 +808,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText":
         "<p>For how many minutes did Maria stop to talk to her coach?</p>",
-    "responseTemplate": "/backend/response-template/1/numeric",
+    "responseTemplate": "/components/response-template/numeric",
     "afterText": "",
     "startCommands": [],
     "shouldFinishImmediately": false,
@@ -853,7 +853,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       "<p>Incorrect.</p>" +  
       "<p><b>Hint 1</b>: Here is the interval when Maria’s distance stayed the same.</p>" +
       "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
-    "responseTemplate": "/backend/response-template/1/numeric",
+    "responseTemplate": "/components/response-template/numeric",
     "afterText": "",
     "startCommands": [
       { "action": "addAnnotation",
@@ -906,7 +906,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       "<p>Incorrect.</p>" +    
       "<p><b>Hint 2</b>: How much time elapsed during this interval?</p>" +    
       "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
-    "responseTemplate": "/backend/response-template/1/numeric",
+    "responseTemplate": "/components/response-template/numeric",
     "afterText": "",
     "startCommands": [],
     "shouldFinishImmediately": false,
@@ -952,7 +952,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       "<p><b>Hint 3</b>: After four minutes, Maria stopped and did not start moving again until six minutes. " +
       "So, how many minutes passed?</p>" +
       "<p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
-    "responseTemplate": "/backend/response-template/1/numeric",
+    "responseTemplate": "/components/response-template/numeric",
     "afterText": "",
     "startCommands": [],
     "shouldFinishImmediately": false,
@@ -1075,7 +1075,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       "explain what kind of details this graph can tell about motion on a straight track. " +
       "Give examples of some details that a position versus time graph cannot tell.</p>" +
       "<p>What other elements would make the story complete?</p>",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [],
     "shouldFinishImmediately": false,
@@ -1348,7 +1348,7 @@ sc_require('data_sources/mock_responses/mock_responses');
        "like when you are standing still, walking forward ...?)</p>"+
        "<p>Try to use some of the following words: slope, flat, upward, downward, curved, straight, steep, gradual, "+
        "line, curve.",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -1479,7 +1479,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>How closely do the graphs of your data match your original predictions?</p>",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -1524,7 +1524,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>How are the two position-time graphs <b>similar</b> to each other?</p>",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -1562,7 +1562,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "beforeText": 
       "<p>How does motion away from the sensor <b>differ</b> from motion toward the sensor on a position-time "+
       "graph?</b>",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -1605,7 +1605,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>What happened at the red point (the y-intercept for this motion)?</p>",
-    "responseTemplate": "/backend/response-template/3/walking-example-1",
+    "responseTemplate": "/backend/activity/1/response-template/walking-example-1",
     "afterText": "",
     "startCommands": [
     ],
@@ -1664,7 +1664,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText":
       "<p>What happened at the red point (the y-intercept for this motion)?</p>",
-    "responseTemplate": "/backend/response-template/3/walking-example-1",
+    "responseTemplate": "/backend/activity/1/response-template/walking-example-1",
     "afterText":  "<p><b>Incorrect.</b> Look at the walker's position at the red point, and select another answer.</p>",
     "startCommands": [
     ],
@@ -1723,7 +1723,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText":
       "<p>What happened at the red point (the y-intercept for this motion)?</p>",
-    "responseTemplate": "/backend/response-template/3/walking-example-1",
+    "responseTemplate": "/backend/activity/1/response-template/walking-example-1",
     "afterText": "<p><b>Incorrect.</b> Think about what happened to the walker's position after this point, and "+
     "select another answer.</p>", 
     "startCommands": [
@@ -1783,7 +1783,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText":
       "<p>What happened at the red point (the y-intercept for this motion)?</p>",
-    "responseTemplate": "/backend/response-template/3/walking-example-1",
+    "responseTemplate": "/backend/activity/1/response-template/walking-example-1",
     "afterText": "<p><b>Incorrect.</b> Look at the walker's direction after the red point, and select another answer.</p>",
     "startCommands": [
     ],
@@ -1931,7 +1931,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "beforeText": 
        "<p>What is the significance of the y-intercept (the y-value of the point where the graph crosses the "+
        "y-axis) of the position-time graph?</p>",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -1969,7 +1969,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
        "<p>Explain how the graph conveys how fast you walked.</p>", 
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -2007,7 +2007,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
        "<p>How is direction represented on the graph?</p>", 
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -2052,7 +2052,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
-    "responseTemplate": "/backend/response-template/4/two-walkers",
+    "responseTemplate": "/backend/activity/1/response-template/two-walkers",
     "afterText": "",
     "startCommands": [
     ],
@@ -2095,7 +2095,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
-    "responseTemplate": "/backend/response-template/4/two-walkers",
+    "responseTemplate": "/backend/activity/1/response-template/two-walkers",
     "afterText": 
       "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data, and "+
       "select another answer.</p>",
@@ -2140,7 +2140,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
-    "responseTemplate": "/backend/response-template/4/two-walkers",
+    "responseTemplate": "/backend/activity/1/response-template/two-walkers",
     "afterText": "<p><b>Incorrect.</b> Figure out where each person started and ended, and select another answer.</p>",
     "startCommands": [
     ],
@@ -2184,7 +2184,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
-    "responseTemplate": "/backend/response-template/4/two-walkers",
+    "responseTemplate": "/backend/activity/1/response-template/two-walkers",
     "afterText": 
       "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point, and select another "+
       "answer.</p>",
@@ -2357,7 +2357,7 @@ sc_require('data_sources/mock_responses/mock_responses');
        "<p>How closely does your graph match the given graph? What could you have done to match the given graph "+
        "more closely?</p>"+
        "<p>Try to use some of the following words: fast, slow, toward, away.</p>",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -2403,7 +2403,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>Write down <b>3</b> things you have learned about motion since you started this activity.</p>",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -2441,7 +2441,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     },
     "beforeText": 
       "<p>Describe <b>1</b> type of motion you would like to try with the motion sensor.</p>",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
@@ -2628,7 +2628,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       "single": { "type": "image", "path": sc_static("resources/arrow.jpg") }
     },
     "beforeText": "<p>How many panes would you like to see on the next page? Enter 'one' or 'two': ",
-    "responseTemplate": "/backend/response-template/2/open",
+    "responseTemplate": "/components/response-template/open",
     "afterText": "",
     "startCommands": [
     ],
