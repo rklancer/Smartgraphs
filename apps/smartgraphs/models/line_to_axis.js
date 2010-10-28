@@ -17,10 +17,15 @@ sc_require('models/annotation');
 sc_require('models/highlighted_point');
 sc_require('views/line_to_axis');
 
-Smartgraphs.LineToAxis = Smartgraphs.HighlightedPoint.extend(
+Smartgraphs.LineToAxis = Smartgraphs.Annotation.extend(
   /** @scope Smartgraphs.LineToAxis.prototype */
 {
 
+  /**
+    The point from which we draw the line
+  */
+  point: SC.Record.toOne('Smartgraphs.DataPoint'),
+  
   /**
    Whether the linePath should be hidden or not
    */
