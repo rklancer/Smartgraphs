@@ -261,7 +261,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -310,7 +310,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -373,7 +373,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -440,7 +440,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -559,7 +559,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -604,7 +604,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -657,7 +657,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -717,7 +717,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -835,7 +835,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -888,7 +888,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -933,7 +933,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
@@ -979,7 +979,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
-    "submitButtonTitle": "OK",
+    "submitButtonTitle": "Check My Answer",
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
