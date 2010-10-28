@@ -10,7 +10,7 @@ sc_require('models/graph');
 Smartgraphs.Graph.FIXTURES = [
 
   { url: 
-      '/shared/motion-towards-and-away/graph/1/prediction-away',
+      '/shared/motion-towards-and-away/graph/prediction-away',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -29,7 +29,7 @@ Smartgraphs.Graph.FIXTURES = [
   
   
   { url: 
-      '/shared/motion-towards-and-away/graph/2/prediction-toward',
+      '/shared/motion-towards-and-away/graph/prediction-toward',
     activity:
       '/shared/motion-towards-and-away',      
     name:
@@ -48,7 +48,7 @@ Smartgraphs.Graph.FIXTURES = [
   
   
   { url: 
-      '/shared/motion-towards-and-away/graph/3/sensor-playing',
+      '/shared/motion-towards-and-away/graph/sensor-playing',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -66,7 +66,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/motion-towards-and-away/graph/4/graph-with-away-prediction',
+      '/shared/motion-towards-and-away/graph/graph-with-away-prediction',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -85,7 +85,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/motion-towards-and-away/graph/5/graph-with-toward-prediction',
+      '/shared/motion-towards-and-away/graph/graph-with-toward-prediction',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -104,7 +104,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/motion-towards-and-away/graph/6/sensor-away',
+      '/shared/motion-towards-and-away/graph/sensor-away',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -122,7 +122,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/motion-towards-and-away/graph/7/sensor-toward',
+      '/shared/motion-towards-and-away/graph/sensor-toward',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -140,7 +140,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/motion-towards-and-away/graph/8/walking-example-1',
+      '/shared/motion-towards-and-away/graph/walking-example-1',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -159,7 +159,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/motion-towards-and-away/graph/9/two-walkers',
+      '/shared/motion-towards-and-away/graph/two-walkers',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -177,7 +177,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/motion-towards-and-away/graph/10/graph-to-match',
+      '/shared/motion-towards-and-away/graph/graph-to-match',
     activity:
       '/shared/motion-towards-and-away',
     name:
@@ -196,7 +196,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/marias-run/graph/1/sensor-playing',
+      '/shared/marias-run/graph/sensor-playing',
     activity:
       '/shared/marias-run',
     name:
@@ -214,7 +214,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/marias-run/graph/2/two-speeds',
+      '/shared/marias-run/graph/two-speeds',
     activity:
       '/shared/marias-run',
     name:
@@ -232,7 +232,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/marias-run/graph/3/start-stop-start',
+      '/shared/marias-run/graph/start-stop-start',
     activity:
       '/shared/marias-run',
     name:
@@ -250,7 +250,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/marias-run/graph/4/maria',
+      '/shared/marias-run/graph/maria',
     activity:
       '/shared/marias-run',
     name:
@@ -268,7 +268,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/shared/example-activity/graph/1/test-graph',
+      '/shared/example-activity/graph/test-graph',
     activity:
       '/shared/example-activity',
     name:
@@ -286,7 +286,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/new-step/graph/1/prediction-away',
+      '/backend/activity/new-step/graph/prediction-away',
     activity:
       '/backend/activity/new-step',
     name:
@@ -304,7 +304,7 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/new-step/graph/2/prediction-toward',
+      '/backend/activity/new-step/graph/prediction-toward',
     activity:
       '/backend/activity/new-step',      
     name:
