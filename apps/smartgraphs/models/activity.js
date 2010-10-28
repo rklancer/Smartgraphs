@@ -23,6 +23,11 @@ Smartgraphs.Activity = SC.Record.extend(
   */
   title: SC.Record.attr(String),
   
+  /** 
+    The username of the user who 'owns' this Activity.
+  */
+  owner: SC.Record.attr(String),
+  
   /**
     The ActivityPages that make up this Activity.
   */

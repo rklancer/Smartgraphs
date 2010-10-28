@@ -16,8 +16,9 @@ sc_require('data_sources/mock_responses/mock_responses');
   
   Smartgraphs.mockResponses["/shared/motion-towards-and-away"] = 
   {
-    "title":            "Away and Toward",
+    "title":            "Motion Towards And Away",
     "url":              "/shared/motion-towards-and-away",
+    "owner":            "shared",
     "pages":            [
       "/shared/motion-towards-and-away/page/1",
       "/shared/motion-towards-and-away/page/2",
@@ -34,11 +35,11 @@ sc_require('data_sources/mock_responses/mock_responses');
     "pageListUrl": "/shared/motion-towards-and-away/pages"
   };
 
-
   Smartgraphs.mockResponses["/shared/marias-run"] = 
   {
     "title":            "Maria's Run",
     "url":              "/shared/marias-run",
+    "owner":            "shared",    
     "pages":            [
       "/shared/marias-run/page/1",
       "/shared/marias-run/page/2",
@@ -52,12 +53,11 @@ sc_require('data_sources/mock_responses/mock_responses');
     "pageListUrl": "/shared/marias-run/pages"
   };
 
-
-  // demo activity
   Smartgraphs.mockResponses["/shared/example-activity"] = 
   {
-    "title":            "Second Activity",
+    "title":            "Example Activity",
     "url":              "/shared/example-activity",
+    "owner":            "shared",    
     "pages":            ["/shared/example-activity/page/1"],
     "pageListUrl":      "/shared/example-activity/pages"
   };
