@@ -10,9 +10,9 @@ sc_require('models/graph');
 Smartgraphs.Graph.FIXTURES = [
 
   { url: 
-      '/backend/activity/1/graph/1/prediction-away',
+      '/shared/motion-towards-and-away/graph/1/prediction-away',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'prediction-away',
     description: 
@@ -20,7 +20,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -29,9 +29,9 @@ Smartgraphs.Graph.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/graph/2/prediction-toward',
+      '/shared/motion-towards-and-away/graph/2/prediction-toward',
     activity:
-      '/backend/activity/1',      
+      '/shared/motion-towards-and-away',      
     name:
       'prediction-toward',
     title:
@@ -39,7 +39,7 @@ Smartgraphs.Graph.FIXTURES = [
     description: 
       'Prediction graph of movement towards',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -48,9 +48,9 @@ Smartgraphs.Graph.FIXTURES = [
   
   
   { url: 
-      '/backend/activity/1/graph/3/sensor-playing',
+      '/shared/motion-towards-and-away/graph/3/sensor-playing',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'sensor-playing',
     description: 
@@ -58,7 +58,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -66,9 +66,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/4/graph-with-away-prediction',
+      '/shared/motion-towards-and-away/graph/4/graph-with-away-prediction',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'graph-with-away-prediction',
     description: 
@@ -76,7 +76,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations: [
@@ -85,9 +85,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/5/graph-with-toward-prediction',
+      '/shared/motion-towards-and-away/graph/5/graph-with-toward-prediction',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'graph-with-toward-prediction',
     description: 
@@ -95,7 +95,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Toward',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations: [
@@ -104,9 +104,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/6/sensor-away',
+      '/shared/motion-towards-and-away/graph/6/sensor-away',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'sensor-away',
     description: 
@@ -114,7 +114,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       ['sensor-away'],
     initialAnnotations: [
@@ -122,9 +122,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/7/sensor-toward',
+      '/shared/motion-towards-and-away/graph/7/sensor-toward',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'sensor-toward',
     description: 
@@ -132,7 +132,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Toward',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       ['sensor-toward'],
     initialAnnotations: [
@@ -140,9 +140,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/8/walking-example-1',
+      '/shared/motion-towards-and-away/graph/8/walking-example-1',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'walking-example-1',
     description: 
@@ -150,7 +150,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       "An Example Walk",
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       ['walking-example-1'],
     initialAnnotations: [
@@ -159,9 +159,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/9/two-walkers',
+      '/shared/motion-towards-and-away/graph/9/two-walkers',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'two-walkers',
     description: 
@@ -169,7 +169,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       "Position vs. Time",
     axes:
-      '/backend/activity/1/axes/5m-25s',
+      '/shared/motion-towards-and-away/axes/5m-25s',
     initialSeries: 
       ['walking-away-example', 'walking-toward-example'],
     initialAnnotations: [
@@ -177,9 +177,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/1/graph/10/graph-to-match',
+      '/shared/motion-towards-and-away/graph/10/graph-to-match',
     activity:
-      '/backend/activity/1',
+      '/shared/motion-towards-and-away',
     name:
       'graph-to-match',
     description: 
@@ -187,7 +187,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       "Position vs. Time",
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations: [
@@ -196,9 +196,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/2/graph/1/sensor-playing',
+      '/shared/marias-run/graph/1/sensor-playing',
     activity:
-      '/backend/activity/2',
+      '/shared/marias-run',
     name:
       'sensor-playing',
     description: 
@@ -206,7 +206,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/activity/2/axes/5m-30s',
+      '/shared/marias-run/axes/5m-30s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -214,9 +214,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/2/graph/2/two-speeds',
+      '/shared/marias-run/graph/2/two-speeds',
     activity:
-      '/backend/activity/2',
+      '/shared/marias-run',
     name:
       'two-speeds',
     description: 
@@ -224,7 +224,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/activity/2/axes/5m-30s',
+      '/shared/marias-run/axes/5m-30s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -232,9 +232,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/2/graph/3/start-stop-start',
+      '/shared/marias-run/graph/3/start-stop-start',
     activity:
-      '/backend/activity/2',
+      '/shared/marias-run',
     name:
       'start-stop-start',
     description: 
@@ -242,7 +242,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/activity/2/axes/5m-30s',
+      '/shared/marias-run/axes/5m-30s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -250,9 +250,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/2/graph/4/maria',
+      '/shared/marias-run/graph/4/maria',
     activity:
-      '/backend/activity/2',
+      '/shared/marias-run',
     name:
       'maria',
     description: 
@@ -260,7 +260,7 @@ Smartgraphs.Graph.FIXTURES = [
     title: 
       'Position vs. Time',
     axes:
-      '/backend/activity/2/axes/2000m-10min',
+      '/shared/marias-run/axes/2000m-10min',
     initialSeries: 
       ['maria'],
     initialAnnotations:
@@ -268,9 +268,9 @@ Smartgraphs.Graph.FIXTURES = [
   },
   
   { url: 
-      '/backend/activity/3/graph/1/test-graph',
+      '/shared/example-activity/graph/1/test-graph',
     activity:
-      '/backend/activity/3',
+      '/shared/example-activity',
     name:
       'test-graph',
     description: 
@@ -278,7 +278,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/activity/3/axes/4quads',
+      '/shared/example-activity/axes/4quads',
     initialSeries: 
       [],
     initialAnnotations:
@@ -296,7 +296,7 @@ Smartgraphs.Graph.FIXTURES = [
     title:
       'Away',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:
@@ -314,7 +314,7 @@ Smartgraphs.Graph.FIXTURES = [
     description: 
       'Prediction graph of movement towards',
     axes:
-      '/backend/activity/1/axes/5m-15s',
+      '/shared/motion-towards-and-away/axes/5m-15s',
     initialSeries: 
       [],
     initialAnnotations:

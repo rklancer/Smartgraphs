@@ -23,7 +23,7 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
   	initialValues: ['']
   },
 
-  { url: '/backend/activity/1/response-template/walking-example-1',
+  { url: '/shared/motion-towards-and-away/response-template/walking-example-1',
   	templateString: '',
   	fieldTypes: ['multiplechoice'],
   	fieldChoicesList: [[
@@ -35,7 +35,7 @@ Smartgraphs.ResponseTemplate.FIXTURES = [
   	initialValues: [""]
   },
   
-  { url: '/backend/activity/1/response-template/two-walkers',
+  { url: '/shared/motion-towards-and-away/response-template/two-walkers',
   	templateString: '',
   	fieldTypes: ['multiplechoice'],
   	fieldChoicesList: [[

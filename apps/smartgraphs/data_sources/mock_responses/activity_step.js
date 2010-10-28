@@ -19,10 +19,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   *    Page 1
   ****************************************************************************/
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/1/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/1/step/1"] = 
   {
-    "url": "/backend/activity/2/page/1/step/1",
-    "activityPage": "/backend/activity/2/page/1",
+    "url": "/shared/marias-run/page/1/step/1",
+    "activityPage": "/shared/marias-run/page/1",
     "paneConfig": "single",
     "panes" : {
       "single": { type: "image", path: sc_static("resources/walking_path.jpg") }
@@ -52,7 +52,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/2/page/1/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/marias-run/page/1/steps"] = steps;
 
 
   /****************************************************************************
@@ -62,10 +62,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/2/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/2/step/1"] = 
   {
-    "url": "/backend/activity/2/page/2/step/1",
-    "activityPage": "/backend/activity/2/page/1",
+    "url": "/shared/marias-run/page/2/step/1",
+    "activityPage": "/shared/marias-run/page/1",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "sensor-playing" },
@@ -106,7 +106,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/2/page/2/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/marias-run/page/2/steps"] = steps;
 
 
   /****************************************************************************
@@ -116,10 +116,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/3/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/3/step/1"] = 
   {
-    "url": "/backend/activity/2/page/3/step/1",
-    "activityPage": "/backend/activity/2/page/3",
+    "url": "/shared/marias-run/page/3/step/1",
+    "activityPage": "/shared/marias-run/page/3",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "two-speeds" },
@@ -159,7 +159,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/2/page/3/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/marias-run/page/3/steps"] = steps;
 
 
   /****************************************************************************
@@ -169,10 +169,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/4/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/4/step/1"] = 
   {
-    "url": "/backend/activity/2/page/4/step/1",
-    "activityPage": "/backend/activity/2/page/4",
+    "url": "/shared/marias-run/page/4/step/1",
+    "activityPage": "/shared/marias-run/page/4",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "start-stop-start" },
@@ -212,7 +212,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/2/page/4/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/marias-run/page/4/steps"] = steps;
 
   /****************************************************************************
   *    Activity 2 (Maria's Run)
@@ -221,10 +221,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/5/step/1"] = 
   {
-    "url": "/backend/activity/2/page/5/step/1",
-    "activityPage": "/backend/activity/2/page/5",
+    "url": "/shared/marias-run/page/5/step/1",
+    "activityPage": "/shared/marias-run/page/5",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -254,10 +254,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"xvalue": "value"}, 4]
         },
-        "step": "/backend/activity/2/page/5/step/6"
+        "step": "/shared/marias-run/page/5/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/5/step/2",
+    "defaultBranch": "/shared/marias-run/page/5/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -266,10 +266,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/5/step/2"] = 
   {
-    "url": "/backend/activity/2/page/5/step/2",
-    "activityPage": "/backend/activity/2/page/5",
+    "url": "/shared/marias-run/page/5/step/2",
+    "activityPage": "/shared/marias-run/page/5",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -303,10 +303,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"xvalue": "value"}, 4]
         },
-        "step": "/backend/activity/2/page/5/step/6"
+        "step": "/shared/marias-run/page/5/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/5/step/3",
+    "defaultBranch": "/shared/marias-run/page/5/step/3",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -315,10 +315,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/3"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/5/step/3"] = 
   {
-    "url": "/backend/activity/2/page/5/step/3",
-    "activityPage": "/backend/activity/2/page/5",
+    "url": "/shared/marias-run/page/5/step/3",
+    "activityPage": "/shared/marias-run/page/5",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -366,10 +366,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"xvalue": "value"}, 4]
         },
-        "step": "/backend/activity/2/page/5/step/6"
+        "step": "/shared/marias-run/page/5/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/5/step/4",
+    "defaultBranch": "/shared/marias-run/page/5/step/4",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -378,10 +378,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/4"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/5/step/4"] = 
   {
-    "url": "/backend/activity/2/page/5/step/4",
-    "activityPage": "/backend/activity/2/page/5",
+    "url": "/shared/marias-run/page/5/step/4",
+    "activityPage": "/shared/marias-run/page/5",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -433,10 +433,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"xvalue": "value"}, 4]
         },
-        "step": "/backend/activity/2/page/5/step/6"
+        "step": "/shared/marias-run/page/5/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/5/step/5",
+    "defaultBranch": "/shared/marias-run/page/5/step/5",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -445,10 +445,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/5"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/5/step/5"] = 
   {
-    "url": "/backend/activity/2/page/5/step/5",
-    "activityPage": "/backend/activity/2/page/5",
+    "url": "/shared/marias-run/page/5/step/5",
+    "activityPage": "/shared/marias-run/page/5",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -478,10 +478,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/5/step/6"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/5/step/6"] = 
   {
-    "url": "/backend/activity/2/page/5/step/6",
-    "activityPage": "/backend/activity/2/page/5",
+    "url": "/shared/marias-run/page/5/step/6",
+    "activityPage": "/shared/marias-run/page/5",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -511,7 +511,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/2/page/5/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/marias-run/page/5/steps"] = steps;
 
 
   /****************************************************************************
@@ -521,10 +521,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/6/step/1"] = 
   {
-    "url": "/backend/activity/2/page/6/step/1",
-    "activityPage": "/backend/activity/2/page/6",
+    "url": "/shared/marias-run/page/6/step/1",
+    "activityPage": "/shared/marias-run/page/6",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -552,10 +552,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"int": "value"}, 800]
         },
-        "step": "/backend/activity/2/page/6/step/6"
+        "step": "/shared/marias-run/page/6/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/6/step/2",
+    "defaultBranch": "/shared/marias-run/page/6/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -564,10 +564,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/6/step/2"] = 
   {
-    "url": "/backend/activity/2/page/6/step/2",
-    "activityPage": "/backend/activity/2/page/6",
+    "url": "/shared/marias-run/page/6/step/2",
+    "activityPage": "/shared/marias-run/page/6",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -597,10 +597,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"int": "value"}, 800]
         },
-        "step": "/backend/activity/2/page/6/step/6"
+        "step": "/shared/marias-run/page/6/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/6/step/3",
+    "defaultBranch": "/shared/marias-run/page/6/step/3",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -609,10 +609,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/3"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/6/step/3"] = 
   {
-    "url": "/backend/activity/2/page/6/step/3",
-    "activityPage": "/backend/activity/2/page/6",
+    "url": "/shared/marias-run/page/6/step/3",
+    "activityPage": "/shared/marias-run/page/6",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -650,10 +650,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"int": "value"}, 800]
         },
-        "step": "/backend/activity/2/page/6/step/6"
+        "step": "/shared/marias-run/page/6/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/6/step/4",
+    "defaultBranch": "/shared/marias-run/page/6/step/4",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -662,10 +662,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/4"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/6/step/4"] = 
   {
-    "url": "/backend/activity/2/page/6/step/4",
-    "activityPage": "/backend/activity/2/page/6",
+    "url": "/shared/marias-run/page/6/step/4",
+    "activityPage": "/shared/marias-run/page/6",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -710,10 +710,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"int": "value"}, 800]
         },
-        "step": "/backend/activity/2/page/6/step/6"
+        "step": "/shared/marias-run/page/6/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/6/step/5",
+    "defaultBranch": "/shared/marias-run/page/6/step/5",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -722,10 +722,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/5"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/6/step/5"] = 
   {
-    "url": "/backend/activity/2/page/6/step/5",
-    "activityPage": "/backend/activity/2/page/6",
+    "url": "/shared/marias-run/page/6/step/5",
+    "activityPage": "/shared/marias-run/page/6",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -754,10 +754,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/6/step/6"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/6/step/6"] = 
   {
-    "url": "/backend/activity/2/page/6/step/6",
-    "activityPage": "/backend/activity/2/page/6",
+    "url": "/shared/marias-run/page/6/step/6",
+    "activityPage": "/shared/marias-run/page/6",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -787,7 +787,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/2/page/6/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/marias-run/page/6/steps"] = steps;
 
 
   /****************************************************************************
@@ -797,10 +797,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/7/step/1"] = 
   {
-    "url": "/backend/activity/2/page/7/step/1",
-    "activityPage": "/backend/activity/2/page/7",
+    "url": "/shared/marias-run/page/7/step/1",
+    "activityPage": "/shared/marias-run/page/7",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -828,10 +828,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"int": "value"}, 2]
         },
-        "step": "/backend/activity/2/page/7/step/6"
+        "step": "/shared/marias-run/page/7/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/7/step/2",
+    "defaultBranch": "/shared/marias-run/page/7/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -840,10 +840,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/7/step/2"] = 
   {
-    "url": "/backend/activity/2/page/7/step/2",
-    "activityPage": "/backend/activity/2/page/7",
+    "url": "/shared/marias-run/page/7/step/2",
+    "activityPage": "/shared/marias-run/page/7",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -881,10 +881,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"int": "value"}, 2]
         },
-        "step": "/backend/activity/2/page/7/step/6"
+        "step": "/shared/marias-run/page/7/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/7/step/3",
+    "defaultBranch": "/shared/marias-run/page/7/step/3",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -893,10 +893,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/3"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/7/step/3"] = 
   {
-    "url": "/backend/activity/2/page/7/step/3",
-    "activityPage": "/backend/activity/2/page/7",
+    "url": "/shared/marias-run/page/7/step/3",
+    "activityPage": "/shared/marias-run/page/7",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -926,10 +926,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"int": "value"}, 2]
         },
-        "step": "/backend/activity/2/page/7/step/6"
+        "step": "/shared/marias-run/page/7/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/7/step/4",
+    "defaultBranch": "/shared/marias-run/page/7/step/4",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -938,10 +938,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/4"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/7/step/4"] = 
   {
-    "url": "/backend/activity/2/page/7/step/4",
-    "activityPage": "/backend/activity/2/page/7",
+    "url": "/shared/marias-run/page/7/step/4",
+    "activityPage": "/shared/marias-run/page/7",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -972,10 +972,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": [{"int": "value"}, 2]
         },
-        "step": "/backend/activity/2/page/7/step/6"
+        "step": "/shared/marias-run/page/7/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/2/page/7/step/5",
+    "defaultBranch": "/shared/marias-run/page/7/step/5",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -984,10 +984,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/5"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/7/step/5"] = 
   {
-    "url": "/backend/activity/2/page/7/step/5",
-    "activityPage": "/backend/activity/2/page/7",
+    "url": "/shared/marias-run/page/7/step/5",
+    "activityPage": "/shared/marias-run/page/7",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -1017,10 +1017,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/7/step/6"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/7/step/6"] = 
   {
-    "url": "/backend/activity/2/page/7/step/6",
-    "activityPage": "/backend/activity/2/page/7",
+    "url": "/shared/marias-run/page/7/step/6",
+    "activityPage": "/shared/marias-run/page/7",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -1050,7 +1050,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/2/page/7/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/marias-run/page/7/steps"] = steps;
 
 
   /****************************************************************************
@@ -1060,10 +1060,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/8/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/8/step/1"] = 
   {
-    "url": "/backend/activity/2/page/8/step/1",
-    "activityPage": "/backend/activity/2/page/8",
+    "url": "/shared/marias-run/page/8/step/1",
+    "activityPage": "/shared/marias-run/page/8",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -1090,7 +1090,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     ],
     "responseInspector": null, 
     "responseBranches": null,
-    "defaultBranch": "/backend/activity/2/page/8/step/2",
+    "defaultBranch": "/shared/marias-run/page/8/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1099,10 +1099,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/2/page/8/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/marias-run/page/8/step/2"] = 
   {
-    "url": "/backend/activity/2/page/8/step/2",
-    "activityPage": "/backend/activity/2/page/8",
+    "url": "/shared/marias-run/page/8/step/2",
+    "activityPage": "/shared/marias-run/page/8",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
@@ -1129,7 +1129,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "nextButtonShouldSubmit": false
   };
   steps.push(step);
-  Smartgraphs.mockResponses["/backend/activity/2/page/8/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/marias-run/page/8/steps"] = steps;
 
 
 
@@ -1140,10 +1140,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/1/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/1/step/1"] = 
   {
-    "url": "/backend/activity/1/page/1/step/1",
-    "activityPage": "/backend/activity/1/page/1",
+    "url": "/shared/motion-towards-and-away/page/1/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/1",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "image", "path": sc_static("resources/arrow.jpg") }
@@ -1171,7 +1171,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/1/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/1/steps"] = steps;
 
 
   /****************************************************************************
@@ -1181,10 +1181,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/1"] =
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/2/step/1"] =
   {
-    "url": "/backend/activity/1/page/2/step/1",
-    "activityPage": "/backend/activity/1/page/2",
+    "url": "/shared/motion-towards-and-away/page/2/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/2",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "prediction-away" },
@@ -1221,7 +1221,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/2/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/2/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1232,10 +1232,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/2/step/2"] =
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/2/step/2"] =
   {
-    "url": "/backend/activity/1/page/2/step/2",
-    "activityPage": "/backend/activity/1/page/2",
+    "url": "/shared/motion-towards-and-away/page/2/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/2",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "prediction-away" },
@@ -1280,7 +1280,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/2/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/2/steps"] = steps;
 
 
   /****************************************************************************
@@ -1290,10 +1290,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/3/step/1"] = 
   {
-    "url": "/backend/activity/1/page/3/step/1",
-    "activityPage": "/backend/activity/1/page/3",
+    "url": "/shared/motion-towards-and-away/page/3/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/3",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "sensor-playing" },
@@ -1325,7 +1325,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/3/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/3/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1334,10 +1334,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/3/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/3/step/2"] = 
   {
-    "url": "/backend/activity/1/page/3/step/2",
-    "activityPage": "/backend/activity/1/page/3",
+    "url": "/shared/motion-towards-and-away/page/3/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/3",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "sensor-playing" },
@@ -1374,7 +1374,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/3/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/3/steps"] = steps;
 
 
   /****************************************************************************
@@ -1384,10 +1384,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/4/step/1"] = 
   {
-    "url": "/backend/activity/1/page/4/step/1",
-    "activityPage": "/backend/activity/1/page/4",
+    "url": "/shared/motion-towards-and-away/page/4/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/4",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "graph-with-away-prediction" },
@@ -1417,7 +1417,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/4/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/4/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1426,10 +1426,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/4/step/2"] = 
   {
-    "url": "/backend/activity/1/page/4/step/2",
-    "activityPage": "/backend/activity/1/page/4",
+    "url": "/shared/motion-towards-and-away/page/4/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/4",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "graph-with-away-prediction" },
@@ -1459,7 +1459,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/4/step/3",
+    "defaultBranch": "/shared/motion-towards-and-away/page/4/step/3",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1468,10 +1468,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/4/step/3"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/4/step/3"] = 
   {
-    "url": "/backend/activity/1/page/4/step/3",
-    "activityPage": "/backend/activity/1/page/4",
+    "url": "/shared/motion-towards-and-away/page/4/step/3",
+    "activityPage": "/shared/motion-towards-and-away/page/4",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "graph-with-away-prediction" },
@@ -1504,7 +1504,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "nextButtonShouldSubmit": true
   };
   steps.push(step);
-  Smartgraphs.mockResponses["/backend/activity/1/page/4/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/4/steps"] = steps;
 
 
   /****************************************************************************
@@ -1513,10 +1513,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   ****************************************************************************/
 
   steps = [];
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/5/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/5/step/1"] = 
   {
-    "url": "/backend/activity/1/page/5/step/1",
-    "activityPage": "/backend/activity/1/page/5",
+    "url": "/shared/motion-towards-and-away/page/5/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/5",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "sensor-away" },
@@ -1541,7 +1541,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/5/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/5/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1550,10 +1550,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/5/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/5/step/2"] = 
   {
-    "url": "/backend/activity/1/page/5/step/2",
-    "activityPage": "/backend/activity/1/page/5",
+    "url": "/shared/motion-towards-and-away/page/5/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/5",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "sensor-away" },
@@ -1588,24 +1588,24 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/5/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/5/steps"] = steps;
 
   /****************************************************************************
   *    Activity 1 (Moving Away and Toward)
   *    Page 6
   ****************************************************************************/
   steps = [];
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/6/step/1"] = 
   {
-    "url": "/backend/activity/1/page/6/step/1",
-    "activityPage": "/backend/activity/1/page/6",
+    "url": "/shared/motion-towards-and-away/page/6/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/6",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "walking-example-1" }
     },
     "beforeText": 
       "<p>What happened at the red point (the y-intercept for this motion)?</p>",
-    "responseTemplate": "/backend/activity/1/response-template/walking-example-1",
+    "responseTemplate": "/shared/motion-towards-and-away/response-template/walking-example-1",
     "afterText": "",
     "startCommands": [
     ],
@@ -1626,25 +1626,25 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": ["value", 1]
         },
-        "step": "/backend/activity/1/page/6/step/5"
+        "step": "/shared/motion-towards-and-away/page/6/step/5"
       },
       { "criterion": { 
           "equals": ["value", 2]
         },
-        "step": "/backend/activity/1/page/6/step/2"
+        "step": "/shared/motion-towards-and-away/page/6/step/2"
       },
       { "criterion": { 
           "equals": ["value", 3]
         },
-        "step": "/backend/activity/1/page/6/step/3"
+        "step": "/shared/motion-towards-and-away/page/6/step/3"
       },
       { "criterion": { 
           "equals": ["value", 4]
         },
-        "step": "/backend/activity/1/page/6/step/4"
+        "step": "/shared/motion-towards-and-away/page/6/step/4"
       }
     ],
-    "defaultBranch": "/backend/activity/1/page/6/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/6/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1654,17 +1654,17 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/6/step/2"] = 
   {
-    "url": "/backend/activity/1/page/6/step/2",
-    "activityPage": "/backend/activity/1/page/6",
+    "url": "/shared/motion-towards-and-away/page/6/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/6",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "walking-example-1" }
     },
     "beforeText":
       "<p>What happened at the red point (the y-intercept for this motion)?</p>",
-    "responseTemplate": "/backend/activity/1/response-template/walking-example-1",
+    "responseTemplate": "/shared/motion-towards-and-away/response-template/walking-example-1",
     "afterText":  "<p><b>Incorrect.</b> Look at the walker's position at the red point, and select another answer.</p>",
     "startCommands": [
     ],
@@ -1685,25 +1685,25 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": ["value", 1]
         },
-        "step": "/backend/activity/1/page/6/step/5"
+        "step": "/shared/motion-towards-and-away/page/6/step/5"
       },
       { "criterion": { 
           "equals": ["value", 2]
         },
-        "step": "/backend/activity/1/page/6/step/2"
+        "step": "/shared/motion-towards-and-away/page/6/step/2"
       },
       { "criterion": { 
           "equals": ["value", 3]
         },
-        "step": "/backend/activity/1/page/6/step/3"
+        "step": "/shared/motion-towards-and-away/page/6/step/3"
       },
       { "criterion": { 
           "equals": ["value", 4]
         },
-        "step": "/backend/activity/1/page/6/step/4"
+        "step": "/shared/motion-towards-and-away/page/6/step/4"
       }
     ],
-    "defaultBranch": "/backend/activity/1/page/6/step/3",
+    "defaultBranch": "/shared/motion-towards-and-away/page/6/step/3",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1713,17 +1713,17 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/3"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/6/step/3"] = 
   {
-    "url": "/backend/activity/1/page/6/step/3",
-    "activityPage": "/backend/activity/1/page/6",
+    "url": "/shared/motion-towards-and-away/page/6/step/3",
+    "activityPage": "/shared/motion-towards-and-away/page/6",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "walking-example-1" }
     },
     "beforeText":
       "<p>What happened at the red point (the y-intercept for this motion)?</p>",
-    "responseTemplate": "/backend/activity/1/response-template/walking-example-1",
+    "responseTemplate": "/shared/motion-towards-and-away/response-template/walking-example-1",
     "afterText": "<p><b>Incorrect.</b> Think about what happened to the walker's position after this point, and "+
     "select another answer.</p>", 
     "startCommands": [
@@ -1745,25 +1745,25 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": ["value", 1]
         },
-        "step": "/backend/activity/1/page/6/step/5"
+        "step": "/shared/motion-towards-and-away/page/6/step/5"
       },
       { "criterion": { 
           "equals": ["value", 2]
         },
-        "step": "/backend/activity/1/page/6/step/2"
+        "step": "/shared/motion-towards-and-away/page/6/step/2"
       },
       { "criterion": { 
           "equals": ["value", 3]
         },
-        "step": "/backend/activity/1/page/6/step/3"
+        "step": "/shared/motion-towards-and-away/page/6/step/3"
       },
       { "criterion": { 
           "equals": ["value", 4]
         },
-        "step": "/backend/activity/1/page/6/step/4"
+        "step": "/shared/motion-towards-and-away/page/6/step/4"
       }
     ],
-    "defaultBranch": "/backend/activity/1/page/6/step/4",
+    "defaultBranch": "/shared/motion-towards-and-away/page/6/step/4",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1773,17 +1773,17 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/4"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/6/step/4"] = 
   {
-    "url": "/backend/activity/1/page/6/step/4",
-    "activityPage": "/backend/activity/1/page/6",
+    "url": "/shared/motion-towards-and-away/page/6/step/4",
+    "activityPage": "/shared/motion-towards-and-away/page/6",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "walking-example-1" }
     },
     "beforeText":
       "<p>What happened at the red point (the y-intercept for this motion)?</p>",
-    "responseTemplate": "/backend/activity/1/response-template/walking-example-1",
+    "responseTemplate": "/shared/motion-towards-and-away/response-template/walking-example-1",
     "afterText": "<p><b>Incorrect.</b> Look at the walker's direction after the red point, and select another answer.</p>",
     "startCommands": [
     ],
@@ -1804,25 +1804,25 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals": ["value", 1]
         },
-        "step": "/backend/activity/1/page/6/step/5"
+        "step": "/shared/motion-towards-and-away/page/6/step/5"
       },
       { "criterion": { 
           "equals": ["value", 2]
         },
-        "step": "/backend/activity/1/page/6/step/2"
+        "step": "/shared/motion-towards-and-away/page/6/step/2"
       },
       { "criterion": { 
           "equals": ["value", 3]
         },
-        "step": "/backend/activity/1/page/6/step/3"
+        "step": "/shared/motion-towards-and-away/page/6/step/3"
       },
       { "criterion": { 
           "equals": ["value", 4]
         },
-        "step": "/backend/activity/1/page/6/step/4"
+        "step": "/shared/motion-towards-and-away/page/6/step/4"
       }
     ],
-    "defaultBranch": "/backend/activity/1/page/6/step/5",
+    "defaultBranch": "/shared/motion-towards-and-away/page/6/step/5",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1832,10 +1832,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/6/step/5"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/6/step/5"] = 
   {
-    "url": "/backend/activity/1/page/6/step/5",
-    "activityPage": "/backend/activity/1/page/6",
+    "url": "/shared/motion-towards-and-away/page/6/step/5",
+    "activityPage": "/shared/motion-towards-and-away/page/6",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "walking-example-1" }
@@ -1866,7 +1866,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/6/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/6/steps"] = steps;
 
 
   /****************************************************************************
@@ -1876,10 +1876,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/7/step/1"] = 
   {
-    "url": "/backend/activity/1/page/7/step/1",
-    "activityPage": "/backend/activity/1/page/7",
+    "url": "/shared/motion-towards-and-away/page/7/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/7",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "sensor-playing" },
@@ -1909,7 +1909,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/7/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/7/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1919,10 +1919,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/7/step/2"] = 
   {
-    "url": "/backend/activity/1/page/7/step/2",
-    "activityPage": "/backend/activity/1/page/7",
+    "url": "/shared/motion-towards-and-away/page/7/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/7",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "sensor-playing" },
@@ -1948,7 +1948,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/7/step/3",
+    "defaultBranch": "/shared/motion-towards-and-away/page/7/step/3",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1958,10 +1958,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/3"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/7/step/3"] = 
   {
-    "url": "/backend/activity/1/page/7/step/3",
-    "activityPage": "/backend/activity/1/page/7",
+    "url": "/shared/motion-towards-and-away/page/7/step/3",
+    "activityPage": "/shared/motion-towards-and-away/page/7",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "sensor-playing" },
@@ -1986,7 +1986,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/7/step/4",
+    "defaultBranch": "/shared/motion-towards-and-away/page/7/step/4",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -1996,10 +1996,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/7/step/4"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/7/step/4"] = 
   {
-    "url": "/backend/activity/1/page/7/step/4",
-    "activityPage": "/backend/activity/1/page/7",
+    "url": "/shared/motion-towards-and-away/page/7/step/4",
+    "activityPage": "/shared/motion-towards-and-away/page/7",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "sensor-playing" },
@@ -2033,7 +2033,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/7/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/7/steps"] = steps;
 
 
   /****************************************************************************
@@ -2042,17 +2042,17 @@ sc_require('data_sources/mock_responses/mock_responses');
   ****************************************************************************/
 
   steps = [];
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/8/step/1"] = 
   {
-    "url": "/backend/activity/1/page/8/step/1",
-    "activityPage": "/backend/activity/1/page/8",
+    "url": "/shared/motion-towards-and-away/page/8/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/8",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "two-walkers" }
     },
     "beforeText": 
       "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
-    "responseTemplate": "/backend/activity/1/response-template/two-walkers",
+    "responseTemplate": "/shared/motion-towards-and-away/response-template/two-walkers",
     "afterText": "",
     "startCommands": [
     ],
@@ -2073,10 +2073,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals" : ["value", 2]
         },
-        "step": "/backend/activity/1/page/8/step/6"
+        "step": "/shared/motion-towards-and-away/page/8/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/1/page/8/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/8/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -2085,17 +2085,17 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/8/step/2"] = 
   {
-    "url": "/backend/activity/1/page/8/step/2",
-    "activityPage": "/backend/activity/1/page/8",
+    "url": "/shared/motion-towards-and-away/page/8/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/8",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "two-walkers" }
     },
     "beforeText": 
       "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
-    "responseTemplate": "/backend/activity/1/response-template/two-walkers",
+    "responseTemplate": "/shared/motion-towards-and-away/response-template/two-walkers",
     "afterText": 
       "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data, and "+
       "select another answer.</p>",
@@ -2118,10 +2118,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals" : ["value", 2]
         },
-        "step": "/backend/activity/1/page/8/step/6"
+        "step": "/shared/motion-towards-and-away/page/8/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/1/page/8/step/3",
+    "defaultBranch": "/shared/motion-towards-and-away/page/8/step/3",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -2130,17 +2130,17 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/3"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/8/step/3"] = 
   {
-    "url": "/backend/activity/1/page/8/step/3",
-    "activityPage": "/backend/activity/1/page/8",
+    "url": "/shared/motion-towards-and-away/page/8/step/3",
+    "activityPage": "/shared/motion-towards-and-away/page/8",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "two-walkers" }
     },
     "beforeText": 
       "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
-    "responseTemplate": "/backend/activity/1/response-template/two-walkers",
+    "responseTemplate": "/shared/motion-towards-and-away/response-template/two-walkers",
     "afterText": "<p><b>Incorrect.</b> Figure out where each person started and ended, and select another answer.</p>",
     "startCommands": [
     ],
@@ -2161,10 +2161,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals" : ["value", 2]
         },
-        "step": "/backend/activity/1/page/8/step/6"
+        "step": "/shared/motion-towards-and-away/page/8/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/1/page/8/step/4",
+    "defaultBranch": "/shared/motion-towards-and-away/page/8/step/4",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -2174,17 +2174,17 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/4"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/8/step/4"] = 
   {
-    "url": "/backend/activity/1/page/8/step/4",
-    "activityPage": "/backend/activity/1/page/8",
+    "url": "/shared/motion-towards-and-away/page/8/step/4",
+    "activityPage": "/shared/motion-towards-and-away/page/8",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "two-walkers" }
     },
     "beforeText": 
       "<p>Which of the following motion scenarios could have resulted in this graph?</p>",
-    "responseTemplate": "/backend/activity/1/response-template/two-walkers",
+    "responseTemplate": "/shared/motion-towards-and-away/response-template/two-walkers",
     "afterText": 
       "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point, and select another "+
       "answer.</p>",
@@ -2207,10 +2207,10 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "criterion": { 
           "equals" : ["value", 2]
         },
-        "step": "/backend/activity/1/page/8/step/6"
+        "step": "/shared/motion-towards-and-away/page/8/step/6"
       }
     ],
-    "defaultBranch": "/backend/activity/1/page/8/step/5",
+    "defaultBranch": "/shared/motion-towards-and-away/page/8/step/5",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -2220,10 +2220,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/5"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/8/step/5"] = 
   {
-    "url": "/backend/activity/1/page/8/step/5",
-    "activityPage": "/backend/activity/1/page/8",
+    "url": "/shared/motion-towards-and-away/page/8/step/5",
+    "activityPage": "/shared/motion-towards-and-away/page/8",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "two-walkers" }
@@ -2256,10 +2256,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/8/step/6"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/8/step/6"] = 
   {
-    "url": "/backend/activity/1/page/8/step/6",
-    "activityPage": "/backend/activity/1/page/8",
+    "url": "/shared/motion-towards-and-away/page/8/step/6",
+    "activityPage": "/shared/motion-towards-and-away/page/8",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "two-walkers" }
@@ -2291,7 +2291,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/8/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/8/steps"] = steps;
 
   steps = [];
 
@@ -2302,10 +2302,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
   steps = [];
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/9/step/1"] = 
   {
-    "url": "/backend/activity/1/page/9/step/1",
-    "activityPage": "/backend/activity/1/page/9",
+    "url": "/shared/motion-towards-and-away/page/9/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/9",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "graph-to-match" },
@@ -2334,7 +2334,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/9/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/9/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -2344,10 +2344,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/9/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/9/step/2"] = 
   {
-    "url": "/backend/activity/1/page/9/step/2",
-    "activityPage": "/backend/activity/1/page/9",
+    "url": "/shared/motion-towards-and-away/page/9/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/9",
     "paneConfig": "split",
     "panes": {
       "top": { "type": "graph", "name": "graph-to-match" },
@@ -2383,7 +2383,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/9/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/9/steps"] = steps;
 
 
   /****************************************************************************
@@ -2392,10 +2392,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   ****************************************************************************/
 
   steps = [];
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/10/step/1"] = 
   {
-    "url": "/backend/activity/1/page/10/step/1",
-    "activityPage": "/backend/activity/1/page/10",
+    "url": "/shared/motion-towards-and-away/page/10/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/10",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "graph-with-away-prediction" },
@@ -2420,7 +2420,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/1/page/10/step/2",
+    "defaultBranch": "/shared/motion-towards-and-away/page/10/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -2430,10 +2430,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   steps.push(step);
 
 
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/10/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/10/step/2"] = 
   {
-    "url": "/backend/activity/1/page/10/step/2",
-    "activityPage": "/backend/activity/1/page/10",
+    "url": "/shared/motion-towards-and-away/page/10/step/2",
+    "activityPage": "/shared/motion-towards-and-away/page/10",
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "graph-with-away-prediction" },
@@ -2466,7 +2466,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "nextButtonShouldSubmit": true
   };
   steps.push(step);
-  Smartgraphs.mockResponses["/backend/activity/1/page/10/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/10/steps"] = steps;
 
 
   /****************************************************************************
@@ -2475,10 +2475,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   ****************************************************************************/
 
   steps = [];
-  step = Smartgraphs.mockResponses["/backend/activity/1/page/11/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/11/step/1"] = 
   {
-    "url": "/backend/activity/1/page/11/step/1",
-    "activityPage": "/backend/activity/1/page/11",
+    "url": "/shared/motion-towards-and-away/page/11/step/1",
+    "activityPage": "/shared/motion-towards-and-away/page/11",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "image", "path": sc_static("resources/arrow.jpg") }
@@ -2506,7 +2506,7 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  Smartgraphs.mockResponses["/backend/activity/1/page/11/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/11/steps"] = steps;
 
 
   /****************************************************************************
@@ -2516,10 +2516,10 @@ sc_require('data_sources/mock_responses/mock_responses');
 
 
   steps = [];
-  step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/1"] = 
+  step = Smartgraphs.mockResponses["/shared/example-activity/page/1/step/1"] = 
   {
-    "url": "/backend/activity/3/page/1/step/1",
-    "activityPage": "/backend/activity/3/page/1",
+    "url": "/shared/example-activity/page/1/step/1",
+    "activityPage": "/shared/example-activity/page/1",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "test-graph" }
@@ -2569,7 +2569,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "responseInspector": null,
     "responseBranches": [
     ],
-    "defaultBranch": "/backend/activity/3/page/1/step/2",
+    "defaultBranch": "/shared/example-activity/page/1/step/2",
     "isFinalStep": false,
     "shouldAutoAdvancePage": false,
     "hideSubmitButton": false,
@@ -2578,10 +2578,10 @@ sc_require('data_sources/mock_responses/mock_responses');
   };
   steps.push(step);
 
-  step = Smartgraphs.mockResponses["/backend/activity/3/page/1/step/2"] = 
+  step = Smartgraphs.mockResponses["/shared/example-activity/page/1/step/2"] = 
   {
-    "url": "/backend/activity/3/page/1/step/2",
-    "activityPage": "/backend/activity/3/page/1",
+    "url": "/shared/example-activity/page/1/step/2",
+    "activityPage": "/shared/example-activity/page/1",
     "paneConfig": "single",
     "panes": {
       "single": { "type": "graph", "name": "test-graph" }
@@ -2609,7 +2609,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "nextButtonShouldSubmit": true
   };
   steps.push(step);
-  Smartgraphs.mockResponses["/backend/activity/3/page/1/steps"] = steps;
+  Smartgraphs.mockResponses["/shared/example-activity/page/1/steps"] = steps;
 
 
   /****************************************************************************

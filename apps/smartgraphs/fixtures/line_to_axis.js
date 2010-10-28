@@ -10,18 +10,18 @@ Smartgraphs.LineToAxis.FIXTURES = [
 
   // need to have some fixtures or fixturesDataSource's updateRecords() thinks it can't handle the record.
   // http://github.com/sproutcore/sproutcore/issues/#issue/36
-  { url: '/backend/activity/2/annotations/where-maria-stopped-to-y-axis',
+  { url: '/shared/marias-run/annotations/where-maria-stopped-to-y-axis',
     name: 'where-maria-stopped-to-y-axis',
-    activity: '/backend/activity/2',     
+    activity: '/shared/marias-run',     
     isExample: YES,
     session: null,
     point: 403,
     axis: 'y'
   },
 
-  { url: '/backend/activity/3/annotations/test-line-to-x-axis',
+  { url: '/shared/example-activity/annotations/test-line-to-x-axis',
     name: 'test-line-to-x-axis',
-    activity: '/backend/activity/3',     
+    activity: '/shared/example-activity',     
     isExample: YES,
     session: null,
     point: 410,

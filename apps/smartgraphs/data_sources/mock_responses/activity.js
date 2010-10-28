@@ -14,52 +14,52 @@ sc_require('data_sources/mock_responses/mock_responses');
 
 (function () {
   
-  Smartgraphs.mockResponses["/backend/activity/1"] = 
+  Smartgraphs.mockResponses["/shared/motion-towards-and-away"] = 
   {
     "title":            "Away and Toward",
-    "url":              "/backend/activity/1",
+    "url":              "/shared/motion-towards-and-away",
     "pages":            [
-      "/backend/activity/1/page/1",
-      "/backend/activity/1/page/2",
-      "/backend/activity/1/page/3",
-      "/backend/activity/1/page/4",
-      "/backend/activity/1/page/5",
-      "/backend/activity/1/page/6",
-      "/backend/activity/1/page/7",
-      "/backend/activity/1/page/8",
-      "/backend/activity/1/page/9",
-      "/backend/activity/1/page/10",
-      "/backend/activity/1/page/11"    
+      "/shared/motion-towards-and-away/page/1",
+      "/shared/motion-towards-and-away/page/2",
+      "/shared/motion-towards-and-away/page/3",
+      "/shared/motion-towards-and-away/page/4",
+      "/shared/motion-towards-and-away/page/5",
+      "/shared/motion-towards-and-away/page/6",
+      "/shared/motion-towards-and-away/page/7",
+      "/shared/motion-towards-and-away/page/8",
+      "/shared/motion-towards-and-away/page/9",
+      "/shared/motion-towards-and-away/page/10",
+      "/shared/motion-towards-and-away/page/11"    
     ],
-    "pageListUrl": "/backend/activity/1/pages"
+    "pageListUrl": "/shared/motion-towards-and-away/pages"
   };
 
 
-  Smartgraphs.mockResponses["/backend/activity/2"] = 
+  Smartgraphs.mockResponses["/shared/marias-run"] = 
   {
     "title":            "Maria's Run",
-    "url":              "/backend/activity/2",
+    "url":              "/shared/marias-run",
     "pages":            [
-      "/backend/activity/2/page/1",
-      "/backend/activity/2/page/2",
-      "/backend/activity/2/page/3",
-      "/backend/activity/2/page/4",
-      "/backend/activity/2/page/5",
-      "/backend/activity/2/page/6",
-      "/backend/activity/2/page/7",
-      "/backend/activity/2/page/8"    
+      "/shared/marias-run/page/1",
+      "/shared/marias-run/page/2",
+      "/shared/marias-run/page/3",
+      "/shared/marias-run/page/4",
+      "/shared/marias-run/page/5",
+      "/shared/marias-run/page/6",
+      "/shared/marias-run/page/7",
+      "/shared/marias-run/page/8"    
     ],
-    "pageListUrl": "/backend/activity/2/pages"
+    "pageListUrl": "/shared/marias-run/pages"
   };
 
 
   // demo of a second activity
-  Smartgraphs.mockResponses["/backend/activity/3"] = 
+  Smartgraphs.mockResponses["/shared/example-activity"] = 
   {
     "title":            "Second Activity",
-    "url":              "/backend/activity/3",
-    "pages":            ["/backend/activity/3/page/1"],
-    "pageListUrl":      "/backend/activity/3/pages"
+    "url":              "/shared/example-activity",
+    "pages":            ["/shared/example-activity/page/1"],
+    "pageListUrl":      "/shared/example-activity/pages"
   };
 
 

@@ -36,7 +36,7 @@ Smartgraphs.hashesForTypeAndActivity = function (recordType, activityId) {
 // generate JSON representation of all data for activity 'activityId'
 // suitable for storing in CouchDB and loading in a single request
 
-// Smartgraphs.generateJsonForActivity("/backend/activity/1") ==> (a json string)
+// Smartgraphs.generateJsonForActivity("/shared/motion-towards-and-away") ==> (a json string)
 
 Smartgraphs.preloadActivity = function (activityId) {
   var activity = Smartgraphs.store.find(Smartgraphs.Activity, activityId);

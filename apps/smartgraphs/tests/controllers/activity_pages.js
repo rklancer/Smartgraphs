@@ -12,27 +12,27 @@ function() {
     var activityPageView, pane;
     var page, pages = [];
 
-    page = Smartgraphs.mockResponses["/backend/activity/1/page/1"] = {
-        "steps": ["/backend/activity/1/page/1/step/1"],
+    page = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/1"] = {
+        "steps": ["/shared/motion-towards-and-away/page/1/step/1"],
         "name": "Introductory Page",
-        "firstStep": "/backend/activity/1/page/1/step/1",
+        "firstStep": "/shared/motion-towards-and-away/page/1/step/1",
         "introText": "<h1>How can you tell a story about motion without using words?</h1>\n\n<p>The picture at right communicates direction of traffic using recognizable symbols. In this activity, you will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will learn conventional methods of motion storytelling and analysis.</p>",
-        "url": "/backend/activity/1/page/1",
-        "activity": "/backend/activity/1",
+        "url": "/shared/motion-towards-and-away/page/1",
+        "activity": "/shared/motion-towards-and-away",
         "index": 1,
-        "stepListUrl": "/backend/activity/1/page/1/steps"
+        "stepListUrl": "/shared/motion-towards-and-away/page/1/steps"
     };
     pages.push(page);
 
-    page = Smartgraphs.mockResponses["/backend/activity/1/page/2"] = {
-        "steps": ["/backend/activity/1/page/2/step/1", "/backend/activity/1/page/2/step/2"],
+    page = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/2"] = {
+        "steps": ["/shared/motion-towards-and-away/page/2/step/1", "/shared/motion-towards-and-away/page/2/step/2"],
         "name": "Prediction Page",
-        "firstStep": "/backend/activity/1/page/2/step/1",
+        "firstStep": "/shared/motion-towards-and-away/page/2/step/1",
         "introText": "<p>Let\u2019s start by demonstrating what you already know about representing motion on a graph. " + "Imagine a straight walking path that is 4 meters long. Point A is at the 0-meter mark. Point B is at " + "the 4-meter mark.</p>",
-        "url": "/backend/activity/1/page/2",
-        "activity": "/backend/activity/1",
+        "url": "/shared/motion-towards-and-away/page/2",
+        "activity": "/shared/motion-towards-and-away",
         "index": 2,
-        "stepListUrl": "/backend/activity/1/page/2/steps"
+        "stepListUrl": "/shared/motion-towards-and-away/page/2/steps"
     };
     pages.push(page);
 
