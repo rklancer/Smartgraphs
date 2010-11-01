@@ -51,8 +51,8 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   //   // get the example series
   //   var query = SC.Query.local(
   //     Smartgraphs.Dataset, 
-  //     'isExample=YES AND name={seriesName}', 
-  //     { seriesName: exampleSeriesName }
+  //     'isExample=YES AND name={datasetName}', 
+  //     { datasetName: exampleSeriesName }
   //   );
   // 
   //   var exampleSeriesList = Smartgraphs.store.find(query);
@@ -63,7 +63,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   //   // get the series we're copying into
   //   query = SC.Query.local(
   //     Smartgraphs.Dataset,
-  //     'isExample=NO AND session={session} AND name={seriesName}',
+  //     'isExample=NO AND session={session} AND name={datasetName}',
   //     { session: this.get('content'), name: targetSeriesName }
   //   );
   //   var targetSeriesList = Smartgraphs.store.find(query);

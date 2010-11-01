@@ -16,7 +16,7 @@ Smartgraphs.SelectedPointInspector = Smartgraphs.Inspector.extend({
     var controller = Smartgraphs.GraphController.controllerForName[config.graphName];
     if (!controller) return;
     
-    this.set('dataset', controller.findSeriesByName(config.seriesName));
+    this.set('dataset', controller.findSeriesByName(config.datasetName));
   },
   
   inspect: function () {

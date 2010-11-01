@@ -261,8 +261,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   //   this.set('axes', axes);
   // },
   // 
-  // selectSeries: function (seriesName) {
-  //   var series = this.findSeriesByName(seriesName);
+  // selectSeries: function (datasetName) {
+  //   var series = this.findSeriesByName(datasetName);
   //   if (series) this.set('selectedSeries', series);
   // }
   

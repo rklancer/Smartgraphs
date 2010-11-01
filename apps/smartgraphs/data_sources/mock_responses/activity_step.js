@@ -69,7 +69,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "sensor-playing" },
-      "bottom": { "type": "table", "graphName": "sensor-playing", "seriesName": "sensor-play" } 
+      "bottom": { "type": "table", "graphName": "sensor-playing", "datasetName": "sensor-play" } 
     },
     "beforeText":
       "<p>How are your motions represented in the position versus time graph? " +
@@ -80,7 +80,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "action": "startSensorInput",
         "literalArgs": {
           "graphName": "sensor-playing",
-          "seriesName": "sensor-play"
+          "datasetName": "sensor-play"
         }
       }
     ],
@@ -123,7 +123,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "two-speeds" },
-      "bottom": { "type": "table", "graphName": "two-speeds", "seriesName": "two-speeds" } 
+      "bottom": { "type": "table", "graphName": "two-speeds", "datasetName": "two-speeds" } 
     },
     "beforeText":
       "<p>How are the two different speeds represented in the position versus time graph?</p>",
@@ -133,7 +133,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "action": "startSensorInput",
         "literalArgs": {
           "graphName": "two-speeds",
-          "seriesName": "two-speeds"
+          "datasetName": "two-speeds"
         }
       }
     ],
@@ -176,7 +176,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "start-stop-start" },
-      "bottom": { "type": "table", "graphName": "start-stop-start", "seriesName": "start-stop-start" } 
+      "bottom": { "type": "table", "graphName": "start-stop-start", "datasetName": "start-stop-start" } 
     },
     "beforeText":
         "<p>What do you notice about the <b>steepness</b> of the three different segments during each of the motions?</p>",
@@ -186,7 +186,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "action": "startSensorInput",
         "literalArgs": {
           "graphName": "start-stop-start",
-          "seriesName": "start-stop-start"
+          "datasetName": "start-stop-start"
         }
       }
     ],
@@ -228,7 +228,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
         "<p>Click the point in the graph that shows when and where Maria might have first stopped to talk to her coach.</p>",
@@ -239,7 +239,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "shouldWaitForSubmissibleResponse": true,
     "submissibilityInspector": {
       "type": "Smartgraphs.SelectedPointInspector",
-      "config": { "graphName": "maria", "seriesName": "maria" }
+      "config": { "graphName": "maria", "datasetName": "maria" }
     },
     "submissibilityCriterion": {
       "notempty": "value"
@@ -248,7 +248,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     ],
     "responseInspector": {
       "type": "Smartgraphs.SelectedPointInspector",
-      "config": { "graphName": "maria", "seriesName": "maria" }
+      "config": { "graphName": "maria", "datasetName": "maria" }
     },
     "responseBranches": [
       { "criterion": { 
@@ -273,7 +273,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Incorrect.</p>" +
@@ -288,7 +288,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "shouldWaitForSubmissibleResponse": true,
     "submissibilityInspector": {
       "type": "Smartgraphs.SelectedPointInspector",
-      "config": { "graphName": "maria", "seriesName": "maria" }
+      "config": { "graphName": "maria", "datasetName": "maria" }
     },
     "submissibilityCriterion": {
       "notempty": "value"
@@ -297,7 +297,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     ],
     "responseInspector": {
       "type": "Smartgraphs.SelectedPointInspector",
-      "config": { "graphName": "maria", "seriesName": "maria" }
+      "config": { "graphName": "maria", "datasetName": "maria" }
     },
     "responseBranches": [
       { "criterion": { 
@@ -322,7 +322,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Incorrect.</p>" +
@@ -351,7 +351,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "shouldWaitForSubmissibleResponse": true,
     "submissibilityInspector": {
       "type": "Smartgraphs.SelectedPointInspector",
-      "config": { "graphName": "maria", "seriesName": "maria" }
+      "config": { "graphName": "maria", "datasetName": "maria" }
     },
     "submissibilityCriterion": {
       "notempty": "value"
@@ -360,7 +360,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     ],
     "responseInspector": {
       "type": "Smartgraphs.SelectedPointInspector",
-      "config": { "graphName": "maria", "seriesName": "maria" }
+      "config": { "graphName": "maria", "datasetName": "maria" }
     },
     "responseBranches": [
       { "criterion": { 
@@ -385,7 +385,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p><b>Hint 3</b>: In this interval, Maria’s position <b>stayed the same</b> as time passed.</b></p>" +
@@ -418,7 +418,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "shouldWaitForSubmissibleResponse": true,
     "submissibilityInspector": {
       "type": "Smartgraphs.SelectedPointInspector",
-      "config": { "graphName": "maria", "seriesName": "maria" }
+      "config": { "graphName": "maria", "datasetName": "maria" }
     },
     "submissibilityCriterion": {
       "notempty": "value"
@@ -427,7 +427,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     ],
     "responseInspector": {
       "type": "Smartgraphs.SelectedPointInspector",
-      "config": { "graphName": "maria", "seriesName": "maria" }
+      "config": { "graphName": "maria", "datasetName": "maria" }
     },
     "responseBranches": [
       { "criterion": { 
@@ -452,7 +452,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>If you look carefully, you’ll see that between four and six minutes, Maria’s position did not change, " +
@@ -485,7 +485,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Correct! Four minutes into her run, Maria’s distance stayed the same compared to the next few minutes, " +
@@ -528,7 +528,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
         "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
@@ -571,7 +571,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Incorrect.</p>" +
@@ -616,7 +616,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Incorrect.</p>" +
@@ -669,7 +669,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Incorrect.</p>" +    
@@ -729,7 +729,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Four minutes into her run, Maria stopped. At that point, Maria was 800 meters away from the start line.</p>" +
@@ -761,7 +761,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Correct! Four minutes into her run, Maria stopped. At that point, " +
@@ -804,7 +804,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
         "<p>For how many minutes did Maria stop to talk to her coach?</p>",
@@ -847,7 +847,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Incorrect.</p>" +  
@@ -900,7 +900,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Incorrect.</p>" +    
@@ -945,7 +945,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Incorrect.</p>" +
@@ -991,7 +991,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Maria stopped during the horizontal segment of the graph. This is when her position did not change. " +
@@ -1024,7 +1024,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Correct! Maria stopped during the horizontal segment of the graph. " +
@@ -1067,7 +1067,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>Think back on the activities you just did.</p>" +
@@ -1106,7 +1106,7 @@ sc_require('data_sources/mock_responses/mock_responses');
     "paneConfig": "split",
     "panes": {
       "top":    { "type": "graph", "name": "maria" },
-      "bottom": { "type": "table", "graphName": "maria", "seriesName": "maria" }
+      "bottom": { "type": "table", "graphName": "maria", "datasetName": "maria" }
     },
     "beforeText":
       "<p>This is the end of the activity.</p>",
@@ -1312,7 +1312,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "action": "startSensorInput",  
         "literalArgs": {
           "graphName": "sensor-playing",
-          "seriesName": "sensor-play"
+          "datasetName": "sensor-play"
         }
       }
     ],
@@ -1404,7 +1404,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "action": "startSensorInput",  
         "literalArgs": {
           "graphName": "graph-with-away-prediction",
-          "seriesName": "sensor-away"
+          "datasetName": "sensor-away"
         }
       }
     ],
@@ -1446,7 +1446,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "action": "startSensorInput",  
         "literalArgs": {
           "graphName": "graph-with-toward-prediction",
-          "seriesName": "sensor-toward"
+          "datasetName": "sensor-toward"
         }
       }
     ],
@@ -1896,7 +1896,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "action": "startSensorInput",  
         "literalArgs": {
           "graphName": "sensor-playing",
-          "seriesName": "sensor-play-2"
+          "datasetName": "sensor-play-2"
         }
       }
     ],
@@ -2321,7 +2321,7 @@ sc_require('data_sources/mock_responses/mock_responses');
       { "action": "startSensorInput",  
         "literalArgs": {
           "graphName": "graph-to-match",
-          "seriesName": "sensor-match"
+          "datasetName": "sensor-match"
         }
       }
     ],

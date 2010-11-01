@@ -57,7 +57,7 @@ module('selectedPointInspector', {
     inspector = Smartgraphs.SelectedPointInspector.create({
       config: {
         graphName: 'test-graph',
-        seriesName: 'test-dataset'
+        datasetName: 'test-dataset'
       }
     });
   },

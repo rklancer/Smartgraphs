@@ -176,7 +176,7 @@
         "bottom": {
           "type": "table",
           "graphName": "sensor-playing",
-          "seriesName": "sensor-play"
+          "datasetName": "sensor-play"
         }
       },
       "beforeText": "<p>How are your motions represented in the position versus time graph? (For example, what does the graph look like when you are standing still?)</p>",
@@ -187,7 +187,7 @@
           "action": "startSensorInput",
           "literalArgs": {
             "graphName": "sensor-playing",
-            "seriesName": "sensor-play"
+            "datasetName": "sensor-play"
           }
         }
       ],
@@ -232,7 +232,7 @@
         "bottom": {
           "type": "table",
           "graphName": "two-speeds",
-          "seriesName": "two-speeds"
+          "datasetName": "two-speeds"
         }
       },
       "beforeText": "<p>How are the two different speeds represented in the position versus time graph?</p>",
@@ -243,7 +243,7 @@
           "action": "startSensorInput",
           "literalArgs": {
             "graphName": "two-speeds",
-            "seriesName": "two-speeds"
+            "datasetName": "two-speeds"
           }
         }
       ],
@@ -288,7 +288,7 @@
         "bottom": {
           "type": "table",
           "graphName": "start-stop-start",
-          "seriesName": "start-stop-start"
+          "datasetName": "start-stop-start"
         }
       },
       "beforeText": "<p>What do you notice about the <b>steepness</b> of the three different segments during each of the motions?</p>",
@@ -299,7 +299,7 @@
           "action": "startSensorInput",
           "literalArgs": {
             "graphName": "start-stop-start",
-            "seriesName": "start-stop-start"
+            "datasetName": "start-stop-start"
           }
         }
       ],
@@ -344,7 +344,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Click the point in the graph that shows when and where Maria might have first stopped to talk to her coach.</p>",
@@ -359,7 +359,7 @@
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "submissibilityCriterion": {
@@ -372,7 +372,7 @@
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "responseBranches": [
@@ -407,7 +407,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Look at the graph and table and find where Maria\u2019s position <b>stayed the same.</b></p><p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk to her coach.</p>",
@@ -422,7 +422,7 @@
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "submissibilityCriterion": {
@@ -435,7 +435,7 @@
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "responseBranches": [
@@ -470,7 +470,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 2</b>: In these two intervals, Maria\u2019s position <b>changed</b> as time passed.</b></p><p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk to her coach.</p>",
@@ -500,7 +500,7 @@
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "submissibilityCriterion": {
@@ -513,7 +513,7 @@
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "responseBranches": [
@@ -548,7 +548,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p><b>Hint 3</b>: In this interval, Maria\u2019s position <b>stayed the same</b> as time passed.</b></p><p>Try again. Click the first point in the graph that shows when and where Maria might have stopped to talk to her coach.</p>",
@@ -584,7 +584,7 @@
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "submissibilityCriterion": {
@@ -597,7 +597,7 @@
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "responseBranches": [
@@ -632,7 +632,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>If you look carefully, you\u2019ll see that between four and six minutes, Maria\u2019s position did not change, meaning that she stopped at four minutes.</p><p>Click Next Page >> when you are ready.</p>",
@@ -671,7 +671,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Correct! Four minutes into her run, Maria\u2019s distance stayed the same compared to the next few minutes, meaning she stopped running.</p><p>Click Next Page >> when you are ready.</p>",
@@ -710,7 +710,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>How many meters did Maria run before she stopped to talk to her coach?</p>",
@@ -772,7 +772,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Look at the data and find how many minutes passed <b>before</b> Maria stopped.</p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
@@ -834,7 +834,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 2</b>: Here is where Maria stopped. Find her position from the start of the track.</p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
@@ -903,7 +903,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>: Here is where Maria stopped. Find her position from the start of the track.</p><p>Try again. Find the y value (position) of this point?</p>",
@@ -980,7 +980,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Four minutes into her run, Maria stopped. At that point, Maria was 800 meters away from the start line.</p><p>Click Next Page >> when you are ready.</p>",
@@ -1019,7 +1019,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Correct! Four minutes into her run, Maria stopped. At that point, Maria\u2019s was 800 meters away from the start line.</p><p>Click Next Page >> when you are ready.</p>",
@@ -1058,7 +1058,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>For how many minutes did Maria stop to talk to her coach?</p>",
@@ -1120,7 +1120,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Here is the interval when Maria\u2019s distance stayed the same.</p><p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
@@ -1189,7 +1189,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 2</b>: How much time elapsed during this interval?</p><p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
@@ -1251,7 +1251,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>: After four minutes, Maria stopped and did not start moving again until six minutes. So, how many minutes passed?</p><p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
@@ -1313,7 +1313,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Maria stopped during the horizontal segment of the graph. This is when her position did not change. As you can see, this interval lasted 2 minutes.</p><p>Click Next Page >> when you are ready.</p>",
@@ -1352,7 +1352,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Correct! Maria stopped during the horizontal segment of the graph. This is when her position did not change. As you can see, this interval lasted 2 minutes.</p><p>Click Next Page   >> when you are ready.</p>",
@@ -1391,7 +1391,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>Think back on the activities you just did.</p><p>Now that you have had a chance to create your own position versus time graphs, explain what kind of details this graph can tell about motion on a straight track. Give examples of some details that a position versus time graph cannot tell.</p><p>What other elements would make the story complete?</p>",
@@ -1439,7 +1439,7 @@
         "bottom": {
           "type": "table",
           "graphName": "maria",
-          "seriesName": "maria"
+          "datasetName": "maria"
         }
       },
       "beforeText": "<p>This is the end of the activity.</p>",

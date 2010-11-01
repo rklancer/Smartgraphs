@@ -53,7 +53,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   showTable: function (context, args) {
-    Smartgraphs.activityViewController.showTable(args.pane, args.graphName, args.seriesName);  
+    Smartgraphs.activityViewController.showTable(args.pane, args.graphName, args.datasetName);  
   },
   
   waitForResponse: function (context, args) {
@@ -77,7 +77,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
 
   createSeries: function (context, args) {
-    var series = Smartgraphs.sessionController.createSeries(args.seriesName);
+    var series = Smartgraphs.sessionController.createSeries(args.datasetName);
     if (args.graphName) {
       var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
       controller.addSeries(series);
@@ -87,7 +87,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   
   removeSeries: function (context, args) {
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    controller.removeSeries(args.seriesName);
+    controller.removeSeries(args.datasetName);
     return YES;
   },
 
@@ -127,11 +127,11 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   startSensorInput: function (context, args) {
     Smartgraphs.sendAction('createSeries', this, { 
       graphName: args.graphName, 
-      seriesName: args.seriesName
+      datasetName: args.datasetName
     });
 
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    var series = controller && controller.findSeriesByName(args.seriesName);
+    var series = controller && controller.findSeriesByName(args.datasetName);
     
     if ( !series ) return YES;        // handled, but invalid pane or series...
     
@@ -156,14 +156,14 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // 
   // displaySeriesOnGraph: function (context, args) {
   //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);    
-  //   controller.addObjectByName(Smartgraphs.Dataset, args.seriesName);
+  //   controller.addObjectByName(Smartgraphs.Dataset, args.datasetName);
   //   return YES;
   // },
   // 
   // copyExampleSeriesToGraph: function (context, args) {
   //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   var series = Smartgraphs.sessionController.createSeries(args.seriesName);
-  //   Smartgraphs.sessionController.copyExampleSeries(args.exampleSeriesName, args.seriesName);
+  //   var series = Smartgraphs.sessionController.createSeries(args.datasetName);
+  //   Smartgraphs.sessionController.copyExampleSeries(args.exampleSeriesName, args.datasetName);
   //   controller.addSeries(series);
   //   return YES;
   // },
@@ -176,7 +176,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // 
   // selectDataset: function (context, args) {
   //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   controller.selectSeries(args.seriesName);
+  //   controller.selectSeries(args.datasetName);
   //   return YES;
   // }
   

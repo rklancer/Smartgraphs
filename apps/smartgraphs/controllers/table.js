@@ -29,7 +29,7 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   /**
     The name of the dataset being displayed. We find the dataset by name.
   */
-  seriesName: null,
+  datasetName: null,
 
   /**
     The dataset being displayed, if any.
@@ -65,26 +65,26 @@ Smartgraphs.TableController = SC.ArrayController.extend(
     this.set('series', null);
     this.set('graphController', null);
     this.set('graphName', null);
-    this.set('seriesName', null);
+    this.set('datasetName', null);
   },
   
   /**
-    Causes the table to display dataset `seriesName`, which must be opened on graph `graphName`.
+    Causes the table to display dataset `datasetName`, which must be opened on graph `graphName`.
     
     Waits for the specified graph to be opened by one of the graph controllers and waits for the dataset to be opened
     by that graph controller before setting our content to the set of points in the dataset.
   */
-  openDataset: function (graphName, seriesName) {
+  openDataset: function (graphName, datasetName) {
     this.removeObservers();
 
     this.set('graphName', graphName);
-    this.set('seriesName', seriesName);  
+    this.set('datasetName', datasetName);  
     this.waitForController();
   },
 
   waitForController: function () {
     var graphName = this.get('graphName');
-    var seriesName = this.get('seriesName');
+    var datasetName = this.get('datasetName');
     
     var graphController = Smartgraphs.GraphController.controllerForName[graphName];
     if (graphController) {
@@ -99,9 +99,9 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   
   waitForSeries: function () {
     var graphController = this.get('graphController');
-    var seriesName = this.get('seriesName');
+    var datasetName = this.get('datasetName');
     
-    var series = graphController.findSeriesByName(seriesName);
+    var series = graphController.findSeriesByName(datasetName);
     if (series) {
       this.removeObservers();
       if (this.get('graphName') !== graphController.get('name')) {
