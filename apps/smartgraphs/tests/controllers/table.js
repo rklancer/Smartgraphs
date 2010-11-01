@@ -17,13 +17,13 @@ function setupFixtures() {
     { url: 'test',
       name: 'test-graph',
       title: 'Test Graph',
-      initialDataset: []
+      initialDatasets: []
     },
     
     { url: 'test-2',
       name: 'test-graph-2',
       title: 'Test Graph',
-      initialDataset: []
+      initialDatasets: []
     }
   ];
   

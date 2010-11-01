@@ -19,7 +19,7 @@ function setupGraphFixtures() {
     { url: 'test',
       name: 'test',
       title: 'Test Graph',
-      initialDataset: [dataset1.get('name')]
+      initialDatasets: [dataset1.get('name')]
     }
   ];
 }

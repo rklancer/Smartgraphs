@@ -158,7 +158,7 @@
       "description": "Prediction graph for \"test\" activity #3",
       "title": "Away",
       "axes": "/shared/example-activity/axes/4quads",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [

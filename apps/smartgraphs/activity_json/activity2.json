@@ -1585,7 +1585,7 @@
       "description": "Graph of Maria's run",
       "title": "Position vs. Time",
       "axes": "/shared/marias-run/axes/2000m-10min",
-      "initialDataset": [
+      "initialDatasets": [
         "maria"
       ],
       "initialAnnotations": [
@@ -1599,7 +1599,7 @@
       "description": "Playing around with the sensor in page 2",
       "title": "Position vs. Time",
       "axes": "/shared/marias-run/axes/5m-30s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [
@@ -1613,7 +1613,7 @@
       "description": "Starting, stopping, and starting again in page 4",
       "title": "Position vs. Time",
       "axes": "/shared/marias-run/axes/5m-30s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [
@@ -1627,7 +1627,7 @@
       "description": "Walking at two speeds in page 3",
       "title": "Position vs. Time",
       "axes": "/shared/marias-run/axes/5m-30s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [

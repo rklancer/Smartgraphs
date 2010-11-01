@@ -3041,7 +3041,7 @@
       "description": "Graph to match with sensor data",
       "title": "Position vs. Time",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [
@@ -3058,7 +3058,7 @@
       "description": "Graph with 'away' prediction for adding 'away' sensor data in page 4",
       "title": "Away",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [
@@ -3075,7 +3075,7 @@
       "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
       "title": "Toward",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [
@@ -3092,7 +3092,7 @@
       "description": "Prediction graph of movement away",
       "title": "Away",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [
@@ -3106,7 +3106,7 @@
       "title": "Toward",
       "description": "Prediction graph of movement towards",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [
@@ -3120,7 +3120,7 @@
       "description": "Graph with'away' sensor data from page 4",
       "title": "Away",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
         "sensor-away"
       ],
       "initialAnnotations": [
@@ -3134,7 +3134,7 @@
       "description": "Playing around with the sensor in page 3",
       "title": "Position vs. Time",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
 
       ],
       "initialAnnotations": [
@@ -3148,7 +3148,7 @@
       "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
       "title": "Toward",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
         "sensor-toward"
       ],
       "initialAnnotations": [
@@ -3162,7 +3162,7 @@
       "description": "Graph for multiple choice question in page 6",
       "title": "Position vs. Time",
       "axes": "/shared/motion-towards-and-away/axes/5m-25s",
-      "initialDataset": [
+      "initialDatasets": [
         "walking-away-example",
         "walking-toward-example"
       ],
@@ -3177,7 +3177,7 @@
       "description": "Graph for multiple choice question in page 6",
       "title": "An Example Walk",
       "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDataset": [
+      "initialDatasets": [
         "walking-example-1"
       ],
       "initialAnnotations": [

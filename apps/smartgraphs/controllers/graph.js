@@ -79,7 +79,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     Smartgraphs.GraphController.controllerForName.set(name, this);
     
     // add the initial dataset and annotations
-    var initial = this.get('initialDataset') || [];
+    var initial = this.get('initialDatasets') || [];
     for (var i = 0, len = initial.get('length'); i < len; i++) {
       this.addObjectByName(Smartgraphs.Dataset, initial.objectAt(i));
     }

@@ -42,7 +42,7 @@ function setupFixtures() {
       name: 'test-graph',
       axes: 'test-axes',
       title: 'Test Graph',
-      initialDataset: []
+      initialDatasets: []
     }
   ];
   
