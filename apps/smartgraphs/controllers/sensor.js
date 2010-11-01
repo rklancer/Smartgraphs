@@ -40,20 +40,20 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   _inputIsEnabled: NO,
   _isRecording: NO,
   _pane: null,
-  _series: null,
+  _dataset: null,
   
   pane: function () {
     return this._pane;
   }.property(),
   
-  register: function (pane, series, xMin, xMax) {
+  register: function (pane, dataset, xMin, xMax) {
     if (this._inputIsEnabled) return NO;    
 
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
-    if (pane && series && series.get('isExample') === NO) {
+    if (pane && dataset && dataset.get('isExample') === NO) {
       this._pane = pane;
-      this._series = series;
+      this._dataset = dataset;
       
       if (xMin) this.set('xMin', xMin);
       if (xMax) this.set('xMax', xMax);
@@ -68,7 +68,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     register() must be called prior to calling this method
   */
   enableInput: function () {
-    if (this._inputIsEnabled || !this._pane || !this._series) {
+    if (this._inputIsEnabled || !this._pane || !this._dataset) {
       return NO;
     }
     this._inputIsEnabled = YES;
@@ -93,7 +93,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   */
   disableInput: function () {
     this._inputIsEnabled = NO;
-    this._series = null;
+    this._dataset = null;
     this._pane = null;
   },
   
@@ -102,16 +102,16 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   */
   startRecording: function () {
     this._isRecording = YES;
-    this._series.set('isStreaming', YES);
-    this._series.set('streamSource', this);
+    this._dataset.set('isStreaming', YES);
+    this._dataset.set('streamSource', this);
     
     this._nsamples = 0;
     this._appletView.start();
     
     // inform the data set record how many points we expect to add, so the display can make room.
-    var startLength = this._series.getPath('points.length');
+    var startLength = this._dataset.getPath('points.length');
     var expectedLength = startLength + Math.floor(1 + this.get('xMax') / (this.get('downsampleRatio') * this.get('dt')));
-    this._series.set('expectedLength', expectedLength);
+    this._dataset.set('expectedLength', expectedLength);
   },
   
   /**
@@ -119,13 +119,13 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   */
   stopRecording: function () {
     this._isRecording = NO;
-    this._series.set('isStreaming', NO);
+    this._dataset.set('isStreaming', NO);
     this._appletView.stop();
   },
   
   clearRecordedData: function () {
     SC.RunLoop.begin();
-    var points = this._series.get('points');
+    var points = this._dataset.get('points');
 
     // need to cache the items in the 'points' ManyArray as forEach doesn't deal well with points being removed while
     // it is iterating over them
@@ -134,9 +134,9 @@ Smartgraphs.sensorController = SC.ObjectController.create(
       toDestroy.push(point);
     });
     
-    // set 'series' to null or else destroyed points hang around in our 'points' ManyArray, just with DESTROYED status
+    // set 'dataset' to null or else destroyed points hang around in our 'points' ManyArray, just with DESTROYED status
     toDestroy.forEach( function (point) {
-      point.set('series', null);
+      point.set('dataset', null);
       point.destroy();
     });
     SC.RunLoop.end();
@@ -180,8 +180,8 @@ Smartgraphs.sensorController = SC.ObjectController.create(
       if ( this._nsamples % downsampleRatio === 0 ) {
         SC.RunLoop.begin();
         point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
-        this._series.set('latestPoint', point);
-        this._series.get('points').pushObject(point);
+        this._dataset.set('latestPoint', point);
+        this._dataset.get('points').pushObject(point);
         SC.RunLoop.end();
       }
       this._nsamples++;

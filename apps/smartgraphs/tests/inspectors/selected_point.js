@@ -23,7 +23,7 @@ function setupFixtures() {
       name: 'test-graph',
       axes: 'test-axes',
       title: 'Test Graph',
-      initialSeries: []
+      initialDataset: []
     }
   ];
   
@@ -46,13 +46,13 @@ module('selectedPointInspector', {
     setupFixtures();
     newSession();
 
-    dataset = Smartgraphs.sessionController.createSeries('test-dataset');
+    dataset = Smartgraphs.sessionController.createDataset('test-dataset');
     p1 = addPoint(dataset, 1, 1);
     p2 = addPoint(dataset, 2, 2);
     p3 = addPoint(dataset, 3, 3);
     
     Smartgraphs.firstGraphController.openGraph('test-graph');
-    Smartgraphs.firstGraphController.addSeries(dataset); 
+    Smartgraphs.firstGraphController.addDataset(dataset); 
     
     inspector = Smartgraphs.SelectedPointInspector.create({
       config: {

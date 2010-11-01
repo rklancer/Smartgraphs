@@ -21,16 +21,16 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     this.set('content', session);
   },
   
-  createSeries: function (name) {
-    var newSeries = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { 
+  createDataset: function (name) {
+    var newDataset = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { 
       isExample: NO,
       name: name,
       points: []
     });
-    newSeries.set('session', this.get('content'));
-    newSeries.set('id', Smartgraphs.getNextGuid());
+    newDataset.set('session', this.get('content'));
+    newDataset.set('id', Smartgraphs.getNextGuid());
     
-    return newSeries;
+    return newDataset;
   },
   
   createAnnotation: function (type, name) {
@@ -47,38 +47,38 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   // NOT CURRENTLY USED:
   // TODO: change to 'copy example object to session' or the like. (but only if we really need that functionality)
   
-  // copyExampleSeries: function (exampleSeriesName, targetSeriesName) {
-  //   // get the example series
+  // copyExampleDataset: function (exampleDatasetName, targetDatasetName) {
+  //   // get the example dataset
   //   var query = SC.Query.local(
   //     Smartgraphs.Dataset, 
   //     'isExample=YES AND name={datasetName}', 
-  //     { datasetName: exampleSeriesName }
+  //     { datasetName: exampleDatasetName }
   //   );
   // 
-  //   var exampleSeriesList = Smartgraphs.store.find(query);
-  //   if (exampleSeriesList.get('length') < 1) return NO;
+  //   var exampleDatasetList = Smartgraphs.store.find(query);
+  //   if (exampleDatasetList.get('length') < 1) return NO;
   //   
-  //   var exampleSeries = exampleSeriesList.objectAt(0);
+  //   var exampleDataset = exampleDatasetList.objectAt(0);
   //   
-  //   // get the series we're copying into
+  //   // get the dataset we're copying into
   //   query = SC.Query.local(
   //     Smartgraphs.Dataset,
   //     'isExample=NO AND session={session} AND name={datasetName}',
-  //     { session: this.get('content'), name: targetSeriesName }
+  //     { session: this.get('content'), name: targetDatasetName }
   //   );
-  //   var targetSeriesList = Smartgraphs.store.find(query);
+  //   var targetDatasetList = Smartgraphs.store.find(query);
   //   
-  //   if (targetSeriesList.get('length') < 1) return NO;
-  //   var targetSeries = targetSeriesList.objectAt(0);
+  //   if (targetDatasetList.get('length') < 1) return NO;
+  //   var targetDataset = targetDatasetList.objectAt(0);
   //   
   //   // copy all the data points
-  //   var examplePoints = exampleSeries.get('points');
+  //   var examplePoints = exampleDataset.get('points');
   //   var point, newPoint;
   //   for (var i = 0, ii = examplePoints.get('length'); i < ii; i++) {
   //     point = examplePoints[i];
   //     newPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: point.get('x'), y: point.get('y') });
   //     newPoint.set('id', Smartgraphs.getNextGuid());
-  //     newPoint.set('series', targetSeries);
+  //     newPoint.set('dataset', targetDataset);
   //   }
   //   
   //   return YES;

@@ -17,13 +17,13 @@ function setupFixtures() {
     { url: 'test',
       name: 'test-graph',
       title: 'Test Graph',
-      initialSeries: []
+      initialDataset: []
     },
     
     { url: 'test-2',
       name: 'test-graph-2',
       title: 'Test Graph',
-      initialSeries: []
+      initialDataset: []
     }
   ];
   
@@ -43,7 +43,7 @@ module('Table controller', {
     setupFixtures();
     newSession();
     
-    dataset = Smartgraphs.sessionController.createSeries('test-dataset');
+    dataset = Smartgraphs.sessionController.createDataset('test-dataset');
   },    
   
   teardown: function () {
@@ -58,26 +58,26 @@ module('Table controller', {
 
 test("table controller should open the named dataset on the named graph", function () {
   Smartgraphs.firstGraphController.openGraph('test-graph');
-  Smartgraphs.firstGraphController.addSeries(dataset);
+  Smartgraphs.firstGraphController.addDataset(dataset);
   
   ok( !Smartgraphs.firstTableController.get('content'), "table controller content should be empty before opening dataset");
-  ok( !Smartgraphs.firstTableController.get('series'), "table controller dataset should be empty before opening dataset");
+  ok( !Smartgraphs.firstTableController.get('dataset'), "table controller dataset should be empty before opening dataset");
 
   Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
   
   equals( Smartgraphs.firstTableController.get('content'), dataset.get('points'), "table controller content should be dataset points after openDataset()");
-  equals( Smartgraphs.firstTableController.get('series'), dataset, "table controller 'series' property should be dataset after openDataset()");
+  equals( Smartgraphs.firstTableController.get('dataset'), dataset, "table controller 'dataset' property should be dataset after openDataset()");
   equals( Smartgraphs.firstTableController.get('graphController'), Smartgraphs.firstGraphController, "table controller 'graphController' property should be the correct graph controller after openDataset()");
 });
 
 test("table controller should reference the correct graph even when two graphs have the same dataset open", function () {
   Smartgraphs.firstGraphController.openGraph('test-graph');
-  Smartgraphs.firstGraphController.addSeries(dataset);
+  Smartgraphs.firstGraphController.addDataset(dataset);
   Smartgraphs.secondGraphController.openGraph('test-graph-2');
-  Smartgraphs.secondGraphController.addSeries(dataset);
+  Smartgraphs.secondGraphController.addDataset(dataset);
   
   ok( !Smartgraphs.firstTableController.get('content'), "table controller content should be empty before opening dataset");
-  ok( !Smartgraphs.firstTableController.get('series'), "table controller dataset should be empty before opening dataset");
+  ok( !Smartgraphs.firstTableController.get('dataset'), "table controller dataset should be empty before opening dataset");
 
   Smartgraphs.firstTableController.openDataset('test-graph-2', 'test-dataset');
   
@@ -89,13 +89,13 @@ test("table controller should wait for the graph and dataset to be opened", func
   Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
   
   ok( !Smartgraphs.firstTableController.get('content'), "table controller content should be empty before dataset is also opened on the graph");
-  ok( !Smartgraphs.firstTableController.get('series'), "table controller dataset should be empty before dataset is also opened on the graph");
+  ok( !Smartgraphs.firstTableController.get('dataset'), "table controller dataset should be empty before dataset is also opened on the graph");
   
   Smartgraphs.firstGraphController.openGraph('test-graph');
-  Smartgraphs.firstGraphController.addSeries(dataset);
+  Smartgraphs.firstGraphController.addDataset(dataset);
   
-  equals( Smartgraphs.firstTableController.get('content'), dataset.get('points'), "table controller content should be dataset points after graph adds series");
-  equals( Smartgraphs.firstTableController.get('series'), dataset, "table controller 'series' property should be dataset after graph adds series");
+  equals( Smartgraphs.firstTableController.get('content'), dataset.get('points'), "table controller content should be dataset points after graph adds dataset");
+  equals( Smartgraphs.firstTableController.get('dataset'), dataset, "table controller 'dataset' property should be dataset after graph adds dataset");
 });
 
 
@@ -103,29 +103,29 @@ test("table controller should not be confused by opening and closing a graph it 
   Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
   
   ok( !Smartgraphs.firstTableController.get('content'), "table controller content should be empty before dataset is also opened on the graph");
-  ok( !Smartgraphs.firstTableController.get('series'), "table controller dataset should be empty before dataset is also opened on the graph");
+  ok( !Smartgraphs.firstTableController.get('dataset'), "table controller dataset should be empty before dataset is also opened on the graph");
 
   Smartgraphs.firstGraphController.openGraph('test-graph-2');
-  Smartgraphs.firstGraphController.addSeries(dataset);
+  Smartgraphs.firstGraphController.addDataset(dataset);
   
   ok( !Smartgraphs.firstTableController.get('content'), "table controller content should be empty after dataset is opened on the wrong graph");
-  ok( !Smartgraphs.firstTableController.get('series'), "table controller dataset should be empty after dataset is opened on the wrong graph");
+  ok( !Smartgraphs.firstTableController.get('dataset'), "table controller dataset should be empty after dataset is opened on the wrong graph");
   
   Smartgraphs.firstGraphController.openGraph('test-graph');
-  Smartgraphs.firstGraphController.addSeries(dataset);
+  Smartgraphs.firstGraphController.addDataset(dataset);
   
-  equals( Smartgraphs.firstTableController.get('content'), dataset.get('points'), "table controller content should be dataset points after the correct graph adds series");
-  equals( Smartgraphs.firstTableController.get('series'), dataset, "table controller 'series' property should be dataset after the correct graph adds series");
+  equals( Smartgraphs.firstTableController.get('content'), dataset.get('points'), "table controller content should be dataset points after the correct graph adds dataset");
+  equals( Smartgraphs.firstTableController.get('dataset'), dataset, "table controller 'dataset' property should be dataset after the correct graph adds dataset");
 });
 
 
 test("table controller should set the 'showTable' property according to whether data is being streamed or not", function () {
   dataset.set('isStreaming', NO);
   Smartgraphs.firstGraphController.openGraph('test-graph');
-  Smartgraphs.firstGraphController.addSeries(dataset); 
+  Smartgraphs.firstGraphController.addDataset(dataset); 
   Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
   
-  equals( Smartgraphs.firstTableController.get('series'), dataset, "table controller 'series' property should be the opened dataset");
+  equals( Smartgraphs.firstTableController.get('dataset'), dataset, "table controller 'dataset' property should be the opened dataset");
   equals( Smartgraphs.firstTableController.get('showTable'), YES, "table controller's `showTable` property should be YES if data is not being streamed");
   
   SC.RunLoop.begin();

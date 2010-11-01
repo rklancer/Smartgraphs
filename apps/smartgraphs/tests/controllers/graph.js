@@ -19,7 +19,7 @@ function setupGraphFixtures() {
     { url: 'test',
       name: 'test',
       title: 'Test Graph',
-      initialSeries: [dataset1.get('name')]
+      initialDataset: [dataset1.get('name')]
     }
   ];
 }
@@ -38,9 +38,9 @@ module("Smartgraphs.graphController", {
     setupUserAndSessionFixtures();
     newSession();
    
-    dataset1 = Smartgraphs.sessionController.createSeries('test-dataset-1');
-    dataset2 = Smartgraphs.sessionController.createSeries('test-dataset-2');
-    dataset3 = Smartgraphs.sessionController.createSeries('test-dataset-3');
+    dataset1 = Smartgraphs.sessionController.createDataset('test-dataset-1');
+    dataset2 = Smartgraphs.sessionController.createDataset('test-dataset-2');
+    dataset3 = Smartgraphs.sessionController.createDataset('test-dataset-3');
        
     setupGraphFixtures();
   },
@@ -52,7 +52,7 @@ module("Smartgraphs.graphController", {
   }
 });
 
-test("adding series to a graph results in assignment of different colors to 'color' property of each series", function () {
+test("adding dataset to a graph results in assignment of different colors to 'color' property of each dataset", function () {
   var colorRE = /^#[0-9a-fA-F]{6}$/;
   Smartgraphs.firstGraphController.openGraph('test');
   
@@ -63,9 +63,9 @@ test("adding series to a graph results in assignment of different colors to 'col
   var color2 = dataset2.get('color');
   ok( !color2, "dataset2's color should not be defined before it is added to a graph");
   
-  Smartgraphs.firstGraphController.addSeries(dataset2);
+  Smartgraphs.firstGraphController.addDataset(dataset2);
   color2 = dataset2.get('color');
-  ok( colorRE.test(color2), "dataset2 should have a valid color after it is added to the graph (via addSeries)");
+  ok( colorRE.test(color2), "dataset2 should have a valid color after it is added to the graph (via addDataset)");
   ok( color1 !== color2, "dataset1 and dataset2 should have different colors");
   
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Dataset, dataset3.get('name'));

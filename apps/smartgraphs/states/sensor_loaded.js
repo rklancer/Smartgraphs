@@ -7,7 +7,7 @@
 
 /** @class
 
-  State representing that the sensor applet is ready to record data to a data series.
+  State representing that the sensor applet is ready to record data to a dataset
 
   @extends SC.Responder
   @version 0.1

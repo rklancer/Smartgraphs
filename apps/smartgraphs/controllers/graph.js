@@ -78,8 +78,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     this.set('content', graphs.objectAt(0));      // it would be strange if there are >1
     Smartgraphs.GraphController.controllerForName.set(name, this);
     
-    // add the initial data series and annotations
-    var initial = this.get('initialSeries') || [];
+    // add the initial dataset and annotations
+    var initial = this.get('initialDataset') || [];
     for (var i = 0, len = initial.get('length'); i < len; i++) {
       this.addObjectByName(Smartgraphs.Dataset, initial.objectAt(i));
     }
@@ -107,10 +107,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     rather than the user of the activity.)
     
     This is the canonical way to add an object given its name. (Once it finds the object, it adds it using
-    the addSeries/addAnnotation methods.)
+    the addDataset/addAnnotation methods.)
   */
   addObjectByName: function (objectType, objectName) {
-    // first try to get the named series from the current session
+    // first try to get the named dataset from the current session
     var query = SC.Query.local(objectType, 'name={name} AND session={session}', { 
       name: objectName,
       session: Smartgraphs.sessionController.getPath('content')
@@ -118,7 +118,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     var objectList = Smartgraphs.store.find(query);
     
     if (objectList.get('length') < 1) {
-      // get an example series if that's what has this name
+      // get an example dataset if that's what has this name
       query = SC.Query.local(objectType, 'name={name} AND isExample=YES', { 
         name: objectName
       });
@@ -130,7 +130,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
     var object = objectList.objectAt(0);
     if (objectType === Smartgraphs.Dataset) {
-      this.addSeries(object);
+      this.addDataset(object);
       return YES;
     }
     if (object.get('isAnnotation')) {
@@ -138,24 +138,24 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
   },
 
-  addSeries: function (series) {
-    if (this.findSeriesByName(series.get('name'))) {
-      return;      // don't add the series if it is already in the graph!
+  addDataset: function (dataset) {
+    if (this.findDatasetByName(dataset.get('name'))) {
+      return;      // don't add the dataset if it is already in the graph!
     }
     
-    // get a color for the series
-    series.set('color', this.getColorForSeries(series));
+    // get a color for the dataset
+    dataset.set('color', this.getColorForDataset(dataset));
     
-    this.get('datasetList').pushObject(series);
+    this.get('datasetList').pushObject(dataset);
   },
 
   /**
     Remove the named dataset from the graph.
   */
-  removeSeries: function (name) {
+  removeDataset: function (name) {
     var datasetList = this.get('datasetList');
-    var series = this.findSeriesByName(name);
-    if (series) datasetList.removeObject(series);
+    var dataset = this.findDatasetByName(name);
+    if (dataset) datasetList.removeObject(dataset);
   },
   
   addAnnotation: function (annotation) {
@@ -174,7 +174,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     if (annotation) annotationList.removeObject(annotation);
   },
   
-  findSeriesByName: function (name) {
+  findDatasetByName: function (name) {
     return this.findObjectByNameIn(name, this.get('datasetList'));
   },
   
@@ -190,10 +190,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   /**
     a simple implementation for now...  Later, we can use color names, handle default colors a little more
-    carefully, maybe cycle through colors if we have > 10 series on a graph (which we would ... why?)
+    carefully, maybe cycle through colors if we have > 10 datasets on a graph (which we would ... why?)
   */
-  getColorForSeries: function (series) {
-    var defaultColor = series.get('defaultColor');
+  getColorForDataset: function (dataset) {
+    var defaultColor = dataset.get('defaultColor');
     var used = this.get('datasetList').getEach('color');
   
     if (defaultColor && !used.contains(defaultColor)) {
@@ -261,9 +261,9 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   //   this.set('axes', axes);
   // },
   // 
-  // selectSeries: function (datasetName) {
-  //   var series = this.findSeriesByName(datasetName);
-  //   if (series) this.set('selectedSeries', series);
+  // selectDataset: function (datasetName) {
+  //   var dataset = this.findDatasetByName(datasetName);
+  //   if (dataset) this.set('selectedDataset', dataset);
   // }
   
 }) ;

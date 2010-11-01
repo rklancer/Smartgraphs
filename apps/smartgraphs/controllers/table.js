@@ -34,15 +34,15 @@ Smartgraphs.TableController = SC.ArrayController.extend(
   /**
     The dataset being displayed, if any.
   */
-  series: null,
+  dataset: null,
   
   axesBinding: '*graphController.axes',
-  selectionBinding: '*series.selection',
+  selectionBinding: '*dataset.selection',
 
   // These properties will be used to communicate to the table view. (These will change as the view becomes more
   // sophisticated.)
   
-  isStreamingBinding: '*series.isStreaming',
+  isStreamingBinding: '*dataset.isStreaming',
   
   showLabels: function () {
     return this.get('length') > 0;
@@ -56,13 +56,13 @@ Smartgraphs.TableController = SC.ArrayController.extend(
     return !this.get('isStreaming');
   }.property('isStreaming').cacheable(),
   
-  latestXBinding: '*series.latestPoint.xRounded',
-  latestYBinding: '*series.latestPoint.yRounded',
+  latestXBinding: '*dataset.latestPoint.xRounded',
+  latestYBinding: '*dataset.latestPoint.yRounded',
   
   clear: function () {
     this.removeObservers();
     this.set('content', null);
-    this.set('series', null);
+    this.set('dataset', null);
     this.set('graphController', null);
     this.set('graphName', null);
     this.set('datasetName', null);
@@ -90,29 +90,29 @@ Smartgraphs.TableController = SC.ArrayController.extend(
     if (graphController) {
       this.removeObservers();
       this.set('graphController', graphController);
-      this.waitForSeries();
+      this.waitForDataset();
     }
     else {
       Smartgraphs.GraphController.controllerForName.addObserver(graphName, this, this.waitForController);
     }
   },
   
-  waitForSeries: function () {
+  waitForDataset: function () {
     var graphController = this.get('graphController');
     var datasetName = this.get('datasetName');
     
-    var series = graphController.findSeriesByName(datasetName);
-    if (series) {
+    var dataset = graphController.findDatasetByName(datasetName);
+    if (dataset) {
       this.removeObservers();
       if (this.get('graphName') !== graphController.get('name')) {
         this.waitForController();
         return;
       }
-      this.set('content', series.get('points'));
-      this.set('series', series);
+      this.set('content', dataset.get('points'));
+      this.set('dataset', dataset);
     }
     else {
-      graphController.get('datasetList').addObserver('[]', this, this.waitForSeries);
+      graphController.get('datasetList').addObserver('[]', this, this.waitForDataset);
     }
   },
   
@@ -123,7 +123,7 @@ Smartgraphs.TableController = SC.ArrayController.extend(
       Smartgraphs.GraphController.controllerForName.removeObserver(graphName, this, this.waitForController);
       var graphController = this.get('graphController');
       if (graphController) {
-        graphController.get('datasetList').removeObserver('[]', this, this.waitForSeries);
+        graphController.get('datasetList').removeObserver('[]', this, this.waitForDataset);
       }
     }
   }

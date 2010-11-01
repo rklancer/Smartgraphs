@@ -49,7 +49,7 @@ Smartgraphs.Dataset = SC.Record.extend(
   
     The actual datapoints in this dataset.
   */
-  points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'series' } ),
+  points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'dataset' } ),
 
   /**
    The color to use to represent points in this dataset. Will be used when this dataset is graphed, unless another

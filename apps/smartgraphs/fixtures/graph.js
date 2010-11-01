@@ -21,7 +21,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Away',
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations:
       []
@@ -40,7 +40,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Prediction graph of movement towards',
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations:
       []
@@ -59,7 +59,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Position vs. Time',
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations:
       []
@@ -77,7 +77,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Away',
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations: [
       { type: 'Smartgraphs.FreehandSketch', name: 'prediction-away' }
@@ -96,7 +96,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Toward',
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations: [
       { type: 'Smartgraphs.FreehandSketch', name: 'prediction-toward' }
@@ -115,7 +115,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Away',
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       ['sensor-away'],
     initialAnnotations: [
     ]
@@ -133,7 +133,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Toward',
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       ['sensor-toward'],
     initialAnnotations: [
     ]
@@ -151,7 +151,7 @@ Smartgraphs.Graph.FIXTURES = [
       "An Example Walk",
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       ['walking-example-1'],
     initialAnnotations: [
       { type: 'Smartgraphs.HighlightedPoint', name: 'walking-first-point' }
@@ -170,7 +170,7 @@ Smartgraphs.Graph.FIXTURES = [
       "Position vs. Time",
     axes:
       '/shared/motion-towards-and-away/axes/5m-25s',
-    initialSeries: 
+    initialDataset: 
       ['walking-away-example', 'walking-toward-example'],
     initialAnnotations: [
     ]
@@ -188,7 +188,7 @@ Smartgraphs.Graph.FIXTURES = [
       "Position vs. Time",
     axes:
       '/shared/motion-towards-and-away/axes/5m-15s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations: [
       { type: 'Smartgraphs.FreehandSketch', name: 'sketch-to-match' }
@@ -207,7 +207,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Position vs. Time',
     axes:
       '/shared/marias-run/axes/5m-30s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations:
       []
@@ -225,7 +225,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Position vs. Time',
     axes:
       '/shared/marias-run/axes/5m-30s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations:
       []
@@ -243,7 +243,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Position vs. Time',
     axes:
       '/shared/marias-run/axes/5m-30s',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations:
       []
@@ -261,7 +261,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Position vs. Time',
     axes:
       '/shared/marias-run/axes/2000m-10min',
-    initialSeries: 
+    initialDataset: 
       ['maria'],
     initialAnnotations:
       []
@@ -279,7 +279,7 @@ Smartgraphs.Graph.FIXTURES = [
       'Away',
     axes:
       '/shared/example-activity/axes/4quads',
-    initialSeries: 
+    initialDataset: 
       [],
     initialAnnotations:
       []

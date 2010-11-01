@@ -24,7 +24,7 @@ function setupFixtures() {
       name: 'test',
       axes: 'test-axes',
       title: 'Test Graph',
-      initialSeries: []
+      initialDataset: []
     }
   ];
   

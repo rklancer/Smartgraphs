@@ -22,7 +22,7 @@ function setupFixtures() {
       name: 'test',
       axes: 'test-axes',
       title: 'Test Graph',
-      initialSeries: []
+      initialDataset: []
     }
   ];
   
@@ -85,8 +85,8 @@ module("Smartgraphs Annotation View instantiation", {
 
     newSession();
     session = Smartgraphs.sessionController.get('content');
-    dataset = Smartgraphs.sessionController.createSeries();
-    Smartgraphs.firstGraphController.addSeries(dataset);
+    dataset = Smartgraphs.sessionController.createDataset();
+    Smartgraphs.firstGraphController.addDataset(dataset);
   },
 
   teardown: function () {

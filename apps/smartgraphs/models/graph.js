@@ -41,7 +41,7 @@ Smartgraphs.Graph = Smartgraphs.Annotation.extend(
   title: SC.Record.attr(String),
   
   axes: SC.Record.toOne('Smartgraphs.Axes'),
-  initialSeries: SC.Record.attr(Array),
+  initialDataset: SC.Record.attr(Array),
   initialAnnotations: SC.Record.attr(Array)
     
 }) ;

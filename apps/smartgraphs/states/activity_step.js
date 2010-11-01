@@ -76,18 +76,18 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     });
   },
 
-  createSeries: function (context, args) {
-    var series = Smartgraphs.sessionController.createSeries(args.datasetName);
+  createDataset: function (context, args) {
+    var dataset = Smartgraphs.sessionController.createDataset(args.datasetName);
     if (args.graphName) {
       var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-      controller.addSeries(series);
+      controller.addDataset(dataset);
     }
     return YES;
   },
   
-  removeSeries: function (context, args) {
+  removeDataset: function (context, args) {
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    controller.removeSeries(args.datasetName);
+    controller.removeDataset(args.datasetName);
     return YES;
   },
 
@@ -125,22 +125,22 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   startSensorInput: function (context, args) {
-    Smartgraphs.sendAction('createSeries', this, { 
+    Smartgraphs.sendAction('createDataset', this, { 
       graphName: args.graphName, 
       datasetName: args.datasetName
     });
 
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    var series = controller && controller.findSeriesByName(args.datasetName);
+    var dataset = controller && controller.findDatasetByName(args.datasetName);
     
-    if ( !series ) return YES;        // handled, but invalid pane or series...
+    if ( !dataset ) return YES;        // handled, but invalid pane or dataset...
     
     // TODO let 'args' override these settings if desired
     var xMin = controller.getPath('axes.xMin');
     var xMax = controller.getPath('axes.xMax');
     var pane = Smartgraphs.activityViewController.paneForController(controller);
     
-    if (Smartgraphs.sensorController.register(pane, series, xMin, xMax)) {
+    if (Smartgraphs.sensorController.register(pane, dataset, xMin, xMax)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
       return YES;
     }
@@ -154,29 +154,29 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   //   return YES;
   // },
   // 
-  // displaySeriesOnGraph: function (context, args) {
+  // displayDatasetOnGraph: function (context, args) {
   //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);    
   //   controller.addObjectByName(Smartgraphs.Dataset, args.datasetName);
   //   return YES;
   // },
   // 
-  // copyExampleSeriesToGraph: function (context, args) {
+  // copyExampleDatasetToGraph: function (context, args) {
   //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   var series = Smartgraphs.sessionController.createSeries(args.datasetName);
-  //   Smartgraphs.sessionController.copyExampleSeries(args.exampleSeriesName, args.datasetName);
-  //   controller.addSeries(series);
+  //   var dataset = Smartgraphs.sessionController.createDataset(args.datasetName);
+  //   Smartgraphs.sessionController.copyExampleDataset(args.exampleDatasetName, args.datasetName);
+  //   controller.addDataset(dataset);
   //   return YES;
   // },
   // 
-  // removeAllSeries: function (context, args) {
+  // removeAllDataset: function (context, args) {
   //   return NO;      // not handled yet.
   //   // var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   // controller.removeAllSeries();
+  //   // controller.removeAllDataset();
   // },
   // 
   // selectDataset: function (context, args) {
   //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   controller.selectSeries(args.datasetName);
+  //   controller.selectDataset(args.datasetName);
   //   return YES;
   // }
   

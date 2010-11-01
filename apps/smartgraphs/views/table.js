@@ -16,7 +16,7 @@ Smartgraphs.TableView = SC.View.extend(
   
   showTableBinding: '*tableController.showTable',
   showLabelsBinding: '*tableController.showLabels',
-  seriesBinding: '*tableController.series',
+  datasetBinding: '*tableController.dataset',
   xLabelBinding: '*tableController.axes.xLabelAbbreviated',
   yLabelBinding: '*tableController.axes.yLabelAbbreviated',
   latestXBinding: '*tableController.latestX',
@@ -149,9 +149,9 @@ Smartgraphs.TableView = SC.View.extend(
     })
   }),
   
-  seriesDidChange: function () {
+  datasetDidChange: function () {
     this.invokeOnce('adjustViews');
-  }.observes('series'),
+  }.observes('dataset'),
   
   showTableDidChange: function () {
     this.invokeOnce('adjustViews');    

@@ -42,7 +42,7 @@ function setupFixtures() {
       name: 'test-graph',
       axes: 'test-axes',
       title: 'Test Graph',
-      initialSeries: []
+      initialDataset: []
     }
   ];
   
@@ -68,7 +68,7 @@ module('Table view', {
     setupFixtures();
     newSession();
     
-    dataset = Smartgraphs.sessionController.createSeries('test-dataset');
+    dataset = Smartgraphs.sessionController.createDataset('test-dataset');
     
     SC.RunLoop.begin();
     pane = SC.MainPane.create({
@@ -84,7 +84,7 @@ module('Table view', {
     tableColumnView = view.get('tableColumnView');
     
     Smartgraphs.firstGraphController.openGraph('test-graph');
-    Smartgraphs.firstGraphController.addSeries(dataset); 
+    Smartgraphs.firstGraphController.addDataset(dataset); 
     Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
   },
   
@@ -122,7 +122,7 @@ test("inner view's height adjusts as points are added and removed", function () 
   equals(innerView.get('frame').height, 2*rowHeight, "table's height should adjust to `rowHeight * 2` after a second datapoint is added");
 
   SC.RunLoop.begin();
-  p1.set('series', null);
+  p1.set('dataset', null);
   p1.destroy();
   SC.RunLoop.end();
   

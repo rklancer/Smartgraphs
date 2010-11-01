@@ -1,17 +1,17 @@
 GraphController methods not used:
 
 setAxes
-removeSeries
-selectSeries
+removeDataset
+selectDataset
 
 
 ACTIVITY_STEP commands not used:
 
 setAxes
-displaySeriesOnGraph
-copyExampleSeriesToGraph
-removeSeries
-removeAllSeries
+displayDatasetOnGraph
+copyExampleDatasetToGraph
+removeDataset
+removeAllDataset
 selectDataset
 
 removeAnnotation (** BUT note this *should* be used!)
@@ -55,8 +55,8 @@ new commands:
 commands to modify:
 
   showSinglePane/showSplitPane (--> setPaneConfig)
-  createSeriesOnGraph (change name to 'createSeries', modify 'pane' to baseTable & make optional)
-  removeSeries
+  createDatasetOnGraph (change name to 'createDataset', modify 'pane' to baseTable & make optional)
+  removeDataset
   createAnnotation
   addAnnotation
   removeAnnotation

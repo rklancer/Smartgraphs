@@ -51,7 +51,7 @@ Smartgraphs.GraphView = SC.View.extend(
       itemType = itemTypes[j];
       list = this.get(itemType === 'data' ? 'datasetList' : 'annotationList');
       
-      // add views for items (series or annotations) not currently in the list of child views
+      // add views for items (datasets or annotations) not currently in the list of child views
       for (var i = 0, ii = list.get('length'); i < ii; i++) {
         item = list.objectAt(i);
         className = item.constructor.toString();

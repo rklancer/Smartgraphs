@@ -17,7 +17,7 @@ function disconnectBindings(view) {
 function addPoint(dataset, x, y) {    
   SC.RunLoop.begin();
   var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
-  point.set('series', dataset);
+  point.set('dataset', dataset);
   SC.RunLoop.end();
   
   return point;

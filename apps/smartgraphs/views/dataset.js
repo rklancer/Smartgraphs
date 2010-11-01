@@ -20,14 +20,14 @@ Smartgraphs.DatasetView = RaphaelViews.RaphaelCollectionView.extend({
   selectionBinding: '.item.selection',
   
   content: function () {
-    var series = this.get('item');
-    if (!series) return null;
+    var dataset = this.get('item');
+    if (!dataset) return null;
     
     return Smartgraphs.store.find(SC.Query.local(Smartgraphs.DataPoint, { 
-      conditions: 'series = {series}',
-      series: series,
+      conditions: 'dataset = {dataset}',
+      dataset: dataset,
       orderBy: 'id'
     }));
-  }.property('series').cacheable()
+  }.property('dataset').cacheable()
   
 });

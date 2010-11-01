@@ -1520,61 +1520,61 @@
       "x": 1,
       "y": 200,
       "guid": 400,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 2,
       "y": 400,
       "guid": 401,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 3,
       "y": 600,
       "guid": 402,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 4,
       "y": 800,
       "guid": 403,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 5,
       "y": 800,
       "guid": 404,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 6,
       "y": 800,
       "guid": 405,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 7,
       "y": 1050,
       "guid": 406,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 8,
       "y": 1300,
       "guid": 407,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 9,
       "y": 1550,
       "guid": 408,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 10,
       "y": 1800,
       "guid": 409,
-      "series": "/shared/marias-run/dataset/maria"
+      "dataset": "/shared/marias-run/dataset/maria"
     }
   ],
   "graphs": [
@@ -1585,7 +1585,7 @@
       "description": "Graph of Maria's run",
       "title": "Position vs. Time",
       "axes": "/shared/marias-run/axes/2000m-10min",
-      "initialSeries": [
+      "initialDataset": [
         "maria"
       ],
       "initialAnnotations": [
@@ -1599,7 +1599,7 @@
       "description": "Playing around with the sensor in page 2",
       "title": "Position vs. Time",
       "axes": "/shared/marias-run/axes/5m-30s",
-      "initialSeries": [
+      "initialDataset": [
 
       ],
       "initialAnnotations": [
@@ -1613,7 +1613,7 @@
       "description": "Starting, stopping, and starting again in page 4",
       "title": "Position vs. Time",
       "axes": "/shared/marias-run/axes/5m-30s",
-      "initialSeries": [
+      "initialDataset": [
 
       ],
       "initialAnnotations": [
@@ -1627,7 +1627,7 @@
       "description": "Walking at two speeds in page 3",
       "title": "Position vs. Time",
       "axes": "/shared/marias-run/axes/5m-30s",
-      "initialSeries": [
+      "initialDataset": [
 
       ],
       "initialAnnotations": [
