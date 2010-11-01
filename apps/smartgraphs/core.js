@@ -17,6 +17,9 @@ Smartgraphs = SC.Application.create(
   NAMESPACE: 'Smartgraphs',
   VERSION: '0.1.0',
   
+  // Only attempt to read data from JSON documents with doc.data_format_version that matches the version below
+  DATA_FORMAT_VERSION: 1,
+  
   // Add global constants or singleton objects here
   triggers: [],
 

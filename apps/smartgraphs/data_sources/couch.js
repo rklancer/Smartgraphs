@@ -40,7 +40,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     
     var recordType = Smartgraphs.store.recordTypeFor(storeKey);
     var activityId = Smartgraphs.store.idFor(storeKey);
-    var requestUrl = '/db/smartgraphs/_design/app/_view/activities?key="'+activityId+'"';
+    var requestUrl = '/db/smartgraphs/_design/app/_view/activities-by-url-and-version?key=["'+activityId+'",'+Smartgraphs.DATA_FORMAT_VERSION+']';
 
     this.log('CouchDataSource.retrieveRecord()');
     this.log('  Record type requested = %s', recordType.toString());
