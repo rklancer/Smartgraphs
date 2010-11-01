@@ -1,13 +1,13 @@
 // ==========================================================================
-// Project:   Smartgraphs.DataSeries Fixtures
+// Project:   Smartgraphs.Dataset Fixtures
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/data_series');
+sc_require('models/dataset');
 
-Smartgraphs.DataSeries.FIXTURES = [
+Smartgraphs.Dataset.FIXTURES = [
   // need to have some fixtures or fixturesDataSource's updateRecords() thinks it can't handle the record.
   
   { url: '/shared/motion-towards-and-away/series/walking-example-1',

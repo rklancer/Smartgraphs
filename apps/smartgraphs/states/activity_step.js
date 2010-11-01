@@ -156,7 +156,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   // 
   // displaySeriesOnGraph: function (context, args) {
   //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);    
-  //   controller.addObjectByName(Smartgraphs.DataSeries, args.seriesName);
+  //   controller.addObjectByName(Smartgraphs.Dataset, args.seriesName);
   //   return YES;
   // },
   // 
@@ -174,7 +174,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   //   // controller.removeAllSeries();
   // },
   // 
-  // selectDataSeries: function (context, args) {
+  // selectDataset: function (context, args) {
   //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
   //   controller.selectSeries(args.seriesName);
   //   return YES;

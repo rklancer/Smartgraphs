@@ -9,7 +9,7 @@
 
   A 'freehand sketch' annotation drawn on top of the graph. 
   
-  Note that, unlike a standard DataSeries, a sketch consists of an *ordered* list of x,y pairs; also, we don't expect
+  Note that, unlike a standard Dataset, a sketch consists of an *ordered* list of x,y pairs; also, we don't expect
   to need to reference individual points that make up the sketch, so there's no need for a 'SketchPoints' model.
 
   @extends SC.Record

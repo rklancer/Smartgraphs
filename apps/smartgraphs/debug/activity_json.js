@@ -126,11 +126,11 @@ Smartgraphs.generateJsonForActivity = function (activityId) {
   });
 
 
-  // get all the DataSeries (soon to be renamed 'DataSet') records associated with this activity
+  // get all the Dataset (soon to be renamed 'DataSet') records associated with this activity
   ret.datasets = [];
   ret.datapoints = [];
 
-  var datasets = Smartgraphs.store.find(Smartgraphs.DataSeries);
+  var datasets = Smartgraphs.store.find(Smartgraphs.Dataset);
 
   datasets.forEach(function (dataset) {
     if (dataset.get('url').indexOf(activityId) === 0) {

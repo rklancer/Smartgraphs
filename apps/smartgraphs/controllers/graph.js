@@ -81,7 +81,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     // add the initial data series and annotations
     var initial = this.get('initialSeries') || [];
     for (var i = 0, len = initial.get('length'); i < len; i++) {
-      this.addObjectByName(Smartgraphs.DataSeries, initial.objectAt(i));
+      this.addObjectByName(Smartgraphs.Dataset, initial.objectAt(i));
     }
     
     initial = this.get('initialAnnotations') || [];
@@ -129,7 +129,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
   
     var object = objectList.objectAt(0);
-    if (objectType === Smartgraphs.DataSeries) {
+    if (objectType === Smartgraphs.Dataset) {
       this.addSeries(object);
       return YES;
     }

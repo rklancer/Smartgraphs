@@ -80,7 +80,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
           ['ActivityStep',        'steps'],
           ['Axes',                'axes'],
           ['DataPoint',           'datapoints'],
-          ['DataSeries',          'datasets'],
+          ['Dataset',          'datasets'],
           ['FreehandSketch',      'freehandSketches'],
           ['Graph',               'graphs'],
           ['HighlightedPoint',    'highlightedPoints'],

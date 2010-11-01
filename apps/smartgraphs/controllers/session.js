@@ -22,7 +22,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   },
   
   createSeries: function (name) {
-    var newSeries = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { 
+    var newSeries = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { 
       isExample: NO,
       name: name,
       points: []
@@ -50,7 +50,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   // copyExampleSeries: function (exampleSeriesName, targetSeriesName) {
   //   // get the example series
   //   var query = SC.Query.local(
-  //     Smartgraphs.DataSeries, 
+  //     Smartgraphs.Dataset, 
   //     'isExample=YES AND name={seriesName}', 
   //     { seriesName: exampleSeriesName }
   //   );
@@ -62,7 +62,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   //   
   //   // get the series we're copying into
   //   query = SC.Query.local(
-  //     Smartgraphs.DataSeries,
+  //     Smartgraphs.Dataset,
   //     'isExample=NO AND session={session} AND name={seriesName}',
   //     { session: this.get('content'), name: targetSeriesName }
   //   );

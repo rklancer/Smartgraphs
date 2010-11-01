@@ -111,11 +111,11 @@ function runTests() {
   });
   
   
-  test('adding and removing DataSeries from the graph controller should result in calls to appendChild and removeChild', function () {
+  test('adding and removing Dataset from the graph controller should result in calls to appendChild and removeChild', function () {
     var seriesList = Smartgraphs.firstGraphController.get('seriesList');
-    var series1 = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { url: 'series1' });
+    var series1 = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series1' });
     var series1View = null;
-    var series2 = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { url: 'series2' });
+    var series2 = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series2' });
     var series2View = null;
     var viewAppended = null;
     var viewRemoved = null;
@@ -172,9 +172,9 @@ function runTests() {
   });
 
 
-  test("adding or removing DataPoints to/from a DataSeries should add or remove elements to/from the DataSeries' layer", function () {
+  test("adding or removing DataPoints to/from a Dataset should add or remove elements to/from the Dataset' layer", function () {
     var seriesList = Smartgraphs.firstGraphController.get('seriesList');
-    var series = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { url: 'series1' });
+    var series = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series1' });
 
     equals(dataHolder.getPath('childViews.length'), 0, 'dataHolder has no child views before series is pushed to seriesList');
 
@@ -209,9 +209,9 @@ function runTests() {
   });
 
 
-  test("adding DataPoints to a DataSeries and then adding the DataSeries to the graph should add 1 element per DataPoint to the DataSeries' layer", function () {
+  test("adding DataPoints to a Dataset and then adding the Dataset to the graph should add 1 element per DataPoint to the Dataset' layer", function () {
     var seriesList = Smartgraphs.firstGraphController.get('seriesList');
-    var series = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { url: 'series1' });
+    var series = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series1' });
 
     var point1 = addPoint(series, 1, 6);
     var point2 = addPoint(series, 6, 1);
@@ -292,7 +292,7 @@ function runTests() {
 
   test('updating the coordinates of a DataPoint should result in a call to render() with the correct color and coordinates', function () {  
     var seriesList = Smartgraphs.firstGraphController.get('seriesList');
-    var series = Smartgraphs.store.createRecord(Smartgraphs.DataSeries, { url: 'series1' });
+    var series = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series1' });
     series.set('color', '#badcaf');
     
     seriesList.pushObject(series);

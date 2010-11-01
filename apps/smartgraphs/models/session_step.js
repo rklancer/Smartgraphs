@@ -16,6 +16,6 @@ Smartgraphs.SessionStep = SC.Record.extend(
 /** @scope Smartgraphs.SessionStep.prototype */ {
 
   values: SC.Record.attr(Array),
-  series: SC.Record.toOne('Smartgraphs.DataSeries')
+  series: SC.Record.toOne('Smartgraphs.Dataset')
 
 }) ;

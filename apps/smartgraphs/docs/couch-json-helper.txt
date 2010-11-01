@@ -45,7 +45,7 @@ These are the models we need to include the in the JSON document:
   ActivityStep
   Axes
   DataPoint (for example data)
-  DataSeries (for example data)
+  Dataset (for example data)
   FreehandSketch
   Graph
   HighlightedPoint

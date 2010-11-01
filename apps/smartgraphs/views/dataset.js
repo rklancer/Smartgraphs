@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.DataSeriesView
+// Project:   Smartgraphs.DatasetView
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -11,7 +11,7 @@
 */
 sc_require('views/data_point');
 
-Smartgraphs.DataSeriesView = RaphaelViews.RaphaelCollectionView.extend({
+Smartgraphs.DatasetView = RaphaelViews.RaphaelCollectionView.extend({
 
   exampleView: Smartgraphs.DataPointView, 
   // keep this set to YES prevents the collection view from redrawing all the points when re-rendering

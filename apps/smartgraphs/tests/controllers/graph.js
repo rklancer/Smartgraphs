@@ -11,8 +11,8 @@ var dataset1, dataset2, dataset3;
 function setupGraphFixtures() {
 
   // without some data in a RecordType's FIXTURES, the FixturesDataSource won't allow any records to be committed.
-  Smartgraphs.DataSeries.oldFixtures = Smartgraphs.DataSeries.FIXTURES;
-  Smartgraphs.DataSeries.FIXTURES = [{url: 'dataset-1'}];
+  Smartgraphs.Dataset.oldFixtures = Smartgraphs.Dataset.FIXTURES;
+  Smartgraphs.Dataset.FIXTURES = [{url: 'dataset-1'}];
   
   Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
   Smartgraphs.Graph.FIXTURES = [
@@ -26,7 +26,7 @@ function setupGraphFixtures() {
 
 function restoreGraphFixtures() {
   Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
-  Smartgraphs.DataSeries.FIXTURES = Smartgraphs.DataSeries.oldFixtures;
+  Smartgraphs.Dataset.FIXTURES = Smartgraphs.Dataset.oldFixtures;
 }
 
 
@@ -68,7 +68,7 @@ test("adding series to a graph results in assignment of different colors to 'col
   ok( colorRE.test(color2), "dataset2 should have a valid color after it is added to the graph (via addSeries)");
   ok( color1 !== color2, "dataset1 and dataset2 should have different colors");
   
-  Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.DataSeries, dataset3.get('name'));
+  Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Dataset, dataset3.get('name'));
   var color3 = dataset3.get('color');
   ok( colorRE.test(color3), "dataset3 should have a valid color after it is added to the graph (via addObjectByName)");
   ok( color3 !== color2, "dataset3 and dataset2 should have different colors");

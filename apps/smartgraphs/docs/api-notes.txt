@@ -12,7 +12,7 @@ displaySeriesOnGraph
 copyExampleSeriesToGraph
 removeSeries
 removeAllSeries
-selectDataSeries
+selectDataset
 
 removeAnnotation (** BUT note this *should* be used!)
 

@@ -9,7 +9,7 @@
 
   Highlight a particular point on the graph. This model should eventually encompass several kinds of highlight.
   
-  It is conceptually distinct from the highlight applied by default to the 'selected' point of a DataSeriesView;
+  It is conceptually distinct from the highlight applied by default to the 'selected' point of a DatasetView;
   however, one might code a Smartgraphs step to add this annotation to a point after the user selects it.
 
   @extends Smartgraphs.Annotation

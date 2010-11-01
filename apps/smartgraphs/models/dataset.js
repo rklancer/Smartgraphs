@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.DataSeries
+// Project:   Smartgraphs.Dataset
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -12,10 +12,10 @@
   @extends SC.Record
   @version 0.1
 */
-sc_require('views/data_series');
+sc_require('views/dataset');
 
-Smartgraphs.DataSeries = SC.Record.extend(
-/** @scope Smartgraphs.DataSeries.prototype */ {
+Smartgraphs.Dataset = SC.Record.extend(
+/** @scope Smartgraphs.Dataset.prototype */ {
 
   url: SC.Record.attr(String),
   primaryKey: 'url',
@@ -93,4 +93,4 @@ Smartgraphs.DataSeries = SC.Record.extend(
 
 }) ;
 
-Smartgraphs.DataSeries.viewClass = Smartgraphs.DataSeriesView;
+Smartgraphs.Dataset.viewClass = Smartgraphs.DatasetView;

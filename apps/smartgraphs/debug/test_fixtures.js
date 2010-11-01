@@ -30,13 +30,13 @@ function newSession() {
 }
 
 function setupDatapointFixtures() {
-  Smartgraphs.DataSeries.oldFixtures = Smartgraphs.DataSeries.FIXTURES;
-  Smartgraphs.DataSeries.FIXTURES = [{url: 'dataset-1'}];
+  Smartgraphs.Dataset.oldFixtures = Smartgraphs.Dataset.FIXTURES;
+  Smartgraphs.Dataset.FIXTURES = [{url: 'dataset-1'}];
   Smartgraphs.DataPoint.oldFixtures = Smartgraphs.DataPoint.FIXTURES;
   Smartgraphs.DataPoint.FIXTURES = [{url: 'datapoint-1'}];
 }
 
 function restoreDatapointFixtures() {
-  Smartgraphs.DataSeries.FIXTURES = Smartgraphs.DataSeries.oldFixtures;
+  Smartgraphs.Dataset.FIXTURES = Smartgraphs.Dataset.oldFixtures;
   Smartgraphs.DataPoint.FIXTURES = Smartgraphs.DataPoint.oldFixtures;
 }
