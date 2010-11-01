@@ -317,7 +317,7 @@ module('Freehand sketch input', {
     Smartgraphs.firstGraphController.clear();
 
     // disconnect the graph view's bindings to the graph controller, or else the graph view from old tests will 
-    // try to instantiate new child views when the annotationList or seriesList change
+    // try to instantiate new child views when the annotationList or datasetList change
     graphView.bindings.forEach(function (b) { b.disconnect(); });
     
     pane.remove();    

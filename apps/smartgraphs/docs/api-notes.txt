@@ -25,7 +25,7 @@ changes:
 Models
 
 add BaseTable model
-make BaseTable model include seriesList and annotationList
+make BaseTable model include datasetList and annotationList
 modify Graph model to reference BaseTable model
 make Table model analagous to Graph model
 

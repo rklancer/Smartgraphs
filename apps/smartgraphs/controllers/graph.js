@@ -17,7 +17,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   /**
     The datasets being shown on this graph.
   */
-  seriesList: null,
+  datasetList: null,
   
   /**
     The (static) annotations being shown on this graph.
@@ -47,7 +47,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
       Smartgraphs.GraphController.controllerForName.set(currentGraphName, null);
     }
     
-    this.set('seriesList', []);
+    this.set('datasetList', []);
     this.set('annotationList', []);
     this.set('content', null);
   },
@@ -146,16 +146,16 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     // get a color for the series
     series.set('color', this.getColorForSeries(series));
     
-    this.get('seriesList').pushObject(series);
+    this.get('datasetList').pushObject(series);
   },
 
   /**
     Remove the named dataset from the graph.
   */
   removeSeries: function (name) {
-    var seriesList = this.get('seriesList');
+    var datasetList = this.get('datasetList');
     var series = this.findSeriesByName(name);
-    if (series) seriesList.removeObject(series);
+    if (series) datasetList.removeObject(series);
   },
   
   addAnnotation: function (annotation) {
@@ -175,7 +175,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   },
   
   findSeriesByName: function (name) {
-    return this.findObjectByNameIn(name, this.get('seriesList'));
+    return this.findObjectByNameIn(name, this.get('datasetList'));
   },
   
   findAnnotationByName: function (name) {
@@ -194,7 +194,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   */
   getColorForSeries: function (series) {
     var defaultColor = series.get('defaultColor');
-    var used = this.get('seriesList').getEach('color');
+    var used = this.get('datasetList').getEach('color');
   
     if (defaultColor && !used.contains(defaultColor)) {
       return defaultColor;

@@ -15,7 +15,7 @@ Smartgraphs.GraphView = SC.View.extend(
 /** @scope Smartgraphs.GraphView.prototype */ {
   
   axesBinding: '*graphController.axes',
-  seriesListBinding: '*graphController.seriesList',
+  datasetListBinding: '*graphController.datasetList',
   annotationListBinding: '*graphController.annotationList',
   
   padding: { top: 15, right: 15, bottom: 45, left: 45 },  
@@ -36,12 +36,12 @@ Smartgraphs.GraphView = SC.View.extend(
     this._itemListsDidChange();
   }.observes('*annotationList.[]'),
   
-  seriesListDidChange: function () {
+  datasetListDidChange: function () {
     this._itemListsDidChange();
-  }.observes('*seriesList.[]'),
+  }.observes('*datasetList.[]'),
   
   _itemListsDidChange: function () {  
-    var list = this.get('seriesList').concat(this.get('annotationList'));
+    var list = this.get('datasetList').concat(this.get('annotationList'));
     var item, className, id;
     var desiredViewsByClassAndId = {};
     
@@ -49,7 +49,7 @@ Smartgraphs.GraphView = SC.View.extend(
     
     for (var j = 0; j < itemTypes.length; j++ ) {
       itemType = itemTypes[j];
-      list = this.get(itemType === 'data' ? 'seriesList' : 'annotationList');
+      list = this.get(itemType === 'data' ? 'datasetList' : 'annotationList');
       
       // add views for items (series or annotations) not currently in the list of child views
       for (var i = 0, ii = list.get('length'); i < ii; i++) {

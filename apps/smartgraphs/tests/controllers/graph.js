@@ -57,7 +57,7 @@ test("adding series to a graph results in assignment of different colors to 'col
   Smartgraphs.firstGraphController.openGraph('test');
   
   var color1 = dataset1.get('color');
-  equals(Smartgraphs.firstGraphController.getPath('seriesList.length'), 1, "firstGraphController should have 1 dataset");
+  equals(Smartgraphs.firstGraphController.getPath('datasetList.length'), 1, "firstGraphController should have 1 dataset");
   ok( colorRE.test(color1), 'dataset1 should have a valid color');
   
   var color2 = dataset2.get('color');

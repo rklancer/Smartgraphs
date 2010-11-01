@@ -112,7 +112,7 @@ function runTests() {
   
   
   test('adding and removing Dataset from the graph controller should result in calls to appendChild and removeChild', function () {
-    var seriesList = Smartgraphs.firstGraphController.get('seriesList');
+    var datasetList = Smartgraphs.firstGraphController.get('datasetList');
     var series1 = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series1' });
     var series1View = null;
     var series2 = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series2' });
@@ -139,31 +139,31 @@ function runTests() {
     var childViews = dataHolder.get('childViews');
     var startLength = childViews.get('length');
 
-    seriesList.pushObject(series1);
-    ok(SC.kindOf(viewAppended, RaphaelViews.RaphaelCollectionView), 'a RaphaelCollectionView was appended after series1 was pushed onto seriesList');
-    equals(childViews.get('length'), startLength+1, 'dataHolder has one more childView than it did before series1 was pushed onto seriesList');
+    datasetList.pushObject(series1);
+    ok(SC.kindOf(viewAppended, RaphaelViews.RaphaelCollectionView), 'a RaphaelCollectionView was appended after series1 was pushed onto datasetList');
+    equals(childViews.get('length'), startLength+1, 'dataHolder has one more childView than it did before series1 was pushed onto datasetList');
 
     series1View = viewAppended;
 
-    seriesList.pushObject(series2);
-    ok(SC.kindOf(viewAppended, RaphaelViews.RaphaelCollectionView), 'a RaphaelCollectionView was appended after series2 was pushed onto seriesList');
-    equals(childViews.get('length'), startLength+2, 'dataHolder has two more childViews than it did before series1 and series2 were pushed onto seriesList');
+    datasetList.pushObject(series2);
+    ok(SC.kindOf(viewAppended, RaphaelViews.RaphaelCollectionView), 'a RaphaelCollectionView was appended after series2 was pushed onto datasetList');
+    equals(childViews.get('length'), startLength+2, 'dataHolder has two more childViews than it did before series1 and series2 were pushed onto datasetList');
 
     series2View = viewAppended;
 
-    equals(appendCallCount, 2, 'there were two calls to appendChild() for two push()es to seriesList');
+    equals(appendCallCount, 2, 'there were two calls to appendChild() for two push()es to datasetList');
     equals(removeCallCount, 0, 'no views were removed when series were added');
     
-    seriesList.removeObject(series1);
-    equals(viewRemoved, series1View, 'The view for series1 was removed when series1 was removed from the seriesList');
-    equals(childViews.get('length'), startLength+1, 'dataHolder has one fewer childView than it did before series1 was removed from the seriesList');
+    datasetList.removeObject(series1);
+    equals(viewRemoved, series1View, 'The view for series1 was removed when series1 was removed from the datasetList');
+    equals(childViews.get('length'), startLength+1, 'dataHolder has one fewer childView than it did before series1 was removed from the datasetList');
 
-    seriesList.removeObject(series2);
-    equals(viewRemoved, series2View, 'The view for series2 was removed when series2 was removed from the seriesList');
-    equals(childViews.get('length'), startLength, 'dataHolder has the same number of childViews that it did before series1 and series2 were added and then removed from seriesList');
+    datasetList.removeObject(series2);
+    equals(viewRemoved, series2View, 'The view for series2 was removed when series2 was removed from the datasetList');
+    equals(childViews.get('length'), startLength, 'dataHolder has the same number of childViews that it did before series1 and series2 were added and then removed from datasetList');
     
     equals(appendCallCount, 2, 'no views were added when series were removed');
-    equals(removeCallCount, 2, 'there were two calls to removeChild() for two removeObject()s from seriesList');
+    equals(removeCallCount, 2, 'there were two calls to removeChild() for two removeObject()s from datasetList');
 
     dataHolder.appendChild = dataHolder.oldAppendChild;
     delete dataHolder.oldAppendChild;
@@ -173,15 +173,15 @@ function runTests() {
 
 
   test("adding or removing DataPoints to/from a Dataset should add or remove elements to/from the Dataset' layer", function () {
-    var seriesList = Smartgraphs.firstGraphController.get('seriesList');
+    var datasetList = Smartgraphs.firstGraphController.get('datasetList');
     var series = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series1' });
 
-    equals(dataHolder.getPath('childViews.length'), 0, 'dataHolder has no child views before series is pushed to seriesList');
+    equals(dataHolder.getPath('childViews.length'), 0, 'dataHolder has no child views before series is pushed to datasetList');
 
-    seriesList.pushObject(series);
+    datasetList.pushObject(series);
     var seriesView = dataHolder.get('childViews').objectAt(0);
 
-    ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to seriesList, seriesView exists and is a RaphaelCollectionView');
+    ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to datasetList, seriesView exists and is a RaphaelCollectionView');
 
     var point1 = addPoint(series, 0, 0);
 
@@ -210,26 +210,26 @@ function runTests() {
 
 
   test("adding DataPoints to a Dataset and then adding the Dataset to the graph should add 1 element per DataPoint to the Dataset' layer", function () {
-    var seriesList = Smartgraphs.firstGraphController.get('seriesList');
+    var datasetList = Smartgraphs.firstGraphController.get('datasetList');
     var series = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series1' });
 
     var point1 = addPoint(series, 1, 6);
     var point2 = addPoint(series, 6, 1);
 
-    equals(dataHolder.getPath('childViews.length'), 0, 'dataHolder has no child views before the dataset is pushed to seriesList');
+    equals(dataHolder.getPath('childViews.length'), 0, 'dataHolder has no child views before the dataset is pushed to datasetList');
 
     SC.RunLoop.begin();
-    seriesList.pushObject(series);
+    datasetList.pushObject(series);
     SC.RunLoop.end();
 
     var seriesView = dataHolder.get('childViews').objectAt(0);
-    ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to seriesList, seriesView exists and is a RaphaelCollectionView');
+    ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to datasetList, seriesView exists and is a RaphaelCollectionView');
 
     var layerId = seriesView.get('layerId');
     var $seriesLayer = $('#'+layerId);
     var seriesLayer = $seriesLayer[0];
 
-    ok(!SC.none(seriesLayer), "after pushing the pre-populated series to the seriesList, seriesView's layer exists and is findable in the document body");
+    ok(!SC.none(seriesLayer), "after pushing the pre-populated series to the datasetList, seriesView's layer exists and is findable in the document body");
     equals(seriesView.getPath('content.length'), 2, 'The seriesView contains 2 DataPoints');
     equals(numVisibleChildren($seriesLayer), 2, "The seriesView's layer contains two visible child (one per data point)");
   });
@@ -291,14 +291,14 @@ function runTests() {
   // TODO move to unit test for DataPointView?
 
   test('updating the coordinates of a DataPoint should result in a call to render() with the correct color and coordinates', function () {  
-    var seriesList = Smartgraphs.firstGraphController.get('seriesList');
+    var datasetList = Smartgraphs.firstGraphController.get('datasetList');
     var series = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { url: 'series1' });
     series.set('color', '#badcaf');
     
-    seriesList.pushObject(series);
+    datasetList.pushObject(series);
 
     var seriesView = dataHolder.get('childViews').objectAt(0);
-    ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to seriesList, seriesView exists and is a RaphaelCollectionView');
+    ok(SC.kindOf(seriesView, RaphaelViews.RaphaelCollectionView), 'after pushing the series to datasetList, seriesView exists and is a RaphaelCollectionView');
 
     var point = addPoint(series, 1, 1);  
     var childViews = seriesView.get('childViews');

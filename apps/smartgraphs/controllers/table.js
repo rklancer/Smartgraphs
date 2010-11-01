@@ -112,7 +112,7 @@ Smartgraphs.TableController = SC.ArrayController.extend(
       this.set('series', series);
     }
     else {
-      graphController.get('seriesList').addObserver('[]', this, this.waitForSeries);
+      graphController.get('datasetList').addObserver('[]', this, this.waitForSeries);
     }
   },
   
@@ -123,7 +123,7 @@ Smartgraphs.TableController = SC.ArrayController.extend(
       Smartgraphs.GraphController.controllerForName.removeObserver(graphName, this, this.waitForController);
       var graphController = this.get('graphController');
       if (graphController) {
-        graphController.get('seriesList').removeObserver('[]', this, this.waitForSeries);
+        graphController.get('datasetList').removeObserver('[]', this, this.waitForSeries);
       }
     }
   }
