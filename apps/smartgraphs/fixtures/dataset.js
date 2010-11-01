@@ -10,7 +10,7 @@ sc_require('models/dataset');
 Smartgraphs.Dataset.FIXTURES = [
   // need to have some fixtures or fixturesDataSource's updateRecords() thinks it can't handle the record.
   
-  { url: '/shared/motion-towards-and-away/series/walking-example-1',
+  { url: '/shared/motion-towards-and-away/dataset/walking-example-1',
     name: 'walking-example-1',
     activity: '/shared/motion-towards-and-away',
     isExample: YES,
@@ -19,7 +19,7 @@ Smartgraphs.Dataset.FIXTURES = [
     defaultColor: null
   },
   
-  { url: '/shared/motion-towards-and-away/series/walking-away-example',
+  { url: '/shared/motion-towards-and-away/dataset/walking-away-example',
     name: 'walking-away-example',
     activity: '/shared/motion-towards-and-away',    
     isExample: YES,
@@ -34,7 +34,7 @@ Smartgraphs.Dataset.FIXTURES = [
     defaultColor: null
   },
   
-  { url: '/shared/motion-towards-and-away/series/walking-toward-example',
+  { url: '/shared/motion-towards-and-away/dataset/walking-toward-example',
     name: 'walking-toward-example',
     activity: '/shared/motion-towards-and-away',    
     isExample: YES,
@@ -49,7 +49,7 @@ Smartgraphs.Dataset.FIXTURES = [
     defaultColor: null
   },
 
-  { url: '/shared/marias-run/series/maria',
+  { url: '/shared/marias-run/dataset/maria',
     name: 'maria',
     activity: '/shared/marias-run',    
     isExample: YES,
@@ -58,7 +58,7 @@ Smartgraphs.Dataset.FIXTURES = [
     defaultColor: null
   },
 
-  { url: '/shared/example-activity/series/test',
+  { url: '/shared/example-activity/dataset/test',
     name: 'test-dataset',
     activity: '/shared/example-activity',    
     isExample: YES,

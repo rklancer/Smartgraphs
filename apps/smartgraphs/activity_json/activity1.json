@@ -1755,7 +1755,7 @@
   ],
   "datasets": [
     {
-      "url": "/shared/motion-towards-and-away/series/walking-away-example",
+      "url": "/shared/motion-towards-and-away/dataset/walking-away-example",
       "name": "walking-away-example",
       "activity": "/shared/motion-towards-and-away",
       "isExample": true,
@@ -1816,7 +1816,7 @@
       "defaultColor": null
     },
     {
-      "url": "/shared/motion-towards-and-away/series/walking-example-1",
+      "url": "/shared/motion-towards-and-away/dataset/walking-example-1",
       "name": "walking-example-1",
       "activity": "/shared/motion-towards-and-away",
       "isExample": true,
@@ -1902,7 +1902,7 @@
       "defaultColor": null
     },
     {
-      "url": "/shared/motion-towards-and-away/series/walking-toward-example",
+      "url": "/shared/motion-towards-and-away/dataset/walking-toward-example",
       "name": "walking-toward-example",
       "activity": "/shared/motion-towards-and-away",
       "isExample": true,
@@ -1968,1069 +1968,1069 @@
       "x": 0,
       "y": 2,
       "guid": 100,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 0.4,
       "y": 2.039,
       "guid": 102,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 0.8,
       "y": 2.175,
       "guid": 104,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 1.2,
       "y": 2.262,
       "guid": 106,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 1.6,
       "y": 2.352,
       "guid": 108,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 2,
       "y": 2.377,
       "guid": 110,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 2.4,
       "y": 2.378,
       "guid": 112,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 2.8,
       "y": 2.415,
       "guid": 114,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 3.2,
       "y": 2.473,
       "guid": 116,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 3.6,
       "y": 2.495,
       "guid": 118,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 4,
       "y": 2.53,
       "guid": 120,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 4.4,
       "y": 2.558,
       "guid": 122,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 4.8,
       "y": 2.601,
       "guid": 124,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 5.2,
       "y": 2.641,
       "guid": 126,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 5.6,
       "y": 2.661,
       "guid": 128,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 6,
       "y": 2.676,
       "guid": 130,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 6.4,
       "y": 2.695,
       "guid": 132,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 6.8,
       "y": 2.754,
       "guid": 134,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 7.2,
       "y": 2.799,
       "guid": 136,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 7.6,
       "y": 2.829,
       "guid": 138,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 8,
       "y": 2.881,
       "guid": 140,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 8.4,
       "y": 2.892,
       "guid": 142,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 8.8,
       "y": 2.939,
       "guid": 144,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 9.2,
       "y": 2.956,
       "guid": 146,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 9.6,
       "y": 2.989,
       "guid": 148,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 10,
       "y": 3.012,
       "guid": 150,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 10.4,
       "y": 3.049,
       "guid": 152,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 10.8,
       "y": 3.072,
       "guid": 154,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 11.2,
       "y": 3.119,
       "guid": 156,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 11.6,
       "y": 3.161,
       "guid": 158,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 12,
       "y": 3.212,
       "guid": 160,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 12.4,
       "y": 3.246,
       "guid": 162,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 12.8,
       "y": 3.293,
       "guid": 164,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 13.2,
       "y": 3.322,
       "guid": 166,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 13.6,
       "y": 3.359,
       "guid": 168,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 14,
       "y": 3.397,
       "guid": 170,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 14.4,
       "y": 3.415,
       "guid": 172,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 14.8,
       "y": 3.45,
       "guid": 174,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 15.2,
       "y": 3.481,
       "guid": 176,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 15.6,
       "y": 3.517,
       "guid": 178,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 16,
       "y": 3.53,
       "guid": 180,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 16.4,
       "y": 3.57,
       "guid": 182,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 16.8,
       "y": 3.595,
       "guid": 184,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 17.2,
       "y": 3.618,
       "guid": 186,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 17.6,
       "y": 3.668,
       "guid": 188,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 18,
       "y": 3.677,
       "guid": 190,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 18.4,
       "y": 3.71,
       "guid": 192,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 18.8,
       "y": 3.74,
       "guid": 194,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 19.2,
       "y": 3.839,
       "guid": 196,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 19.6,
       "y": 3.901,
       "guid": 198,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 20,
       "y": 4,
       "guid": 200,
-      "series": "/shared/motion-towards-and-away/series/walking-away-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-away-example"
     },
     {
       "x": 0,
       "y": 4.016,
       "guid": 1,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 0.2,
       "y": 3.965,
       "guid": 2,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 0.4,
       "y": 3.899,
       "guid": 3,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 0.6,
       "y": 3.826,
       "guid": 4,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 0.8,
       "y": 3.795,
       "guid": 5,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 1,
       "y": 3.793,
       "guid": 6,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 1.2,
       "y": 3.768,
       "guid": 7,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 1.4,
       "y": 3.695,
       "guid": 8,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 1.6,
       "y": 3.612,
       "guid": 9,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 1.8,
       "y": 3.535,
       "guid": 10,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 2,
       "y": 3.453,
       "guid": 11,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 2.2,
       "y": 3.418,
       "guid": 12,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 2.4,
       "y": 3.393,
       "guid": 13,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 2.6,
       "y": 3.321,
       "guid": 14,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 2.8,
       "y": 3.249,
       "guid": 15,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 3,
       "y": 3.175,
       "guid": 16,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 3.2,
       "y": 3.12,
       "guid": 17,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 3.4,
       "y": 3.056,
       "guid": 18,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 3.6,
       "y": 2.992,
       "guid": 19,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 3.8,
       "y": 2.925,
       "guid": 20,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 4,
       "y": 2.868,
       "guid": 21,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 4.2,
       "y": 2.829,
       "guid": 22,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 4.4,
       "y": 2.791,
       "guid": 23,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 4.6,
       "y": 2.794,
       "guid": 24,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 4.8,
       "y": 2.669,
       "guid": 25,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 5,
       "y": 2.596,
       "guid": 26,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 5.2,
       "y": 2.559,
       "guid": 27,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 5.4,
       "y": 2.503,
       "guid": 28,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 5.6,
       "y": 2.441,
       "guid": 29,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 5.8,
       "y": 2.398,
       "guid": 30,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 6,
       "y": 2.339,
       "guid": 31,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 6.2,
       "y": 2.331,
       "guid": 32,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 6.4,
       "y": 2.268,
       "guid": 33,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 6.6,
       "y": 2.178,
       "guid": 34,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 6.8,
       "y": 2.124,
       "guid": 35,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 7,
       "y": 2.062,
       "guid": 36,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 7.2,
       "y": 2.001,
       "guid": 37,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 7.4,
       "y": 1.971,
       "guid": 38,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 7.6,
       "y": 1.935,
       "guid": 39,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 7.8,
       "y": 1.883,
       "guid": 40,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 8,
       "y": 1.824,
       "guid": 41,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 8.2,
       "y": 1.763,
       "guid": 42,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 8.4,
       "y": 1.706,
       "guid": 43,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 8.6,
       "y": 1.644,
       "guid": 44,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 8.8,
       "y": 1.604,
       "guid": 45,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 9,
       "y": 1.557,
       "guid": 46,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 9.2,
       "y": 1.54,
       "guid": 47,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 9.4,
       "y": 1.478,
       "guid": 48,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 9.6,
       "y": 1.424,
       "guid": 49,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 9.8,
       "y": 1.344,
       "guid": 50,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 10,
       "y": 1.28,
       "guid": 51,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 10.2,
       "y": 1.244,
       "guid": 52,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 10.4,
       "y": 1.189,
       "guid": 53,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 10.6,
       "y": 1.132,
       "guid": 54,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 10.8,
       "y": 1.082,
       "guid": 55,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 11,
       "y": 1.036,
       "guid": 56,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 11.2,
       "y": 0.984,
       "guid": 57,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 11.4,
       "y": 0.926,
       "guid": 58,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 11.6,
       "y": 0.873,
       "guid": 59,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 11.8,
       "y": 0.835,
       "guid": 60,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 12,
       "y": 0.778,
       "guid": 61,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 12.2,
       "y": 0.72,
       "guid": 62,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 12.4,
       "y": 0.694,
       "guid": 63,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 12.6,
       "y": 0.651,
       "guid": 64,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 12.8,
       "y": 0.623,
       "guid": 65,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 13,
       "y": 0.554,
       "guid": 66,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 13.2,
       "y": 0.493,
       "guid": 67,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 13.4,
       "y": 0.446,
       "guid": 68,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 13.6,
       "y": 0.393,
       "guid": 69,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 13.8,
       "y": 0.351,
       "guid": 70,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 14,
       "y": 0.314,
       "guid": 71,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 14.2,
       "y": 0.287,
       "guid": 72,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 14.4,
       "y": 0.266,
       "guid": 73,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 14.6,
       "y": 0.239,
       "guid": 74,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 14.8,
       "y": 0.191,
       "guid": 75,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 15,
       "y": 0.133,
       "guid": 76,
-      "series": "/shared/motion-towards-and-away/series/walking-example-1"
+      "series": "/shared/motion-towards-and-away/dataset/walking-example-1"
     },
     {
       "x": 0,
       "y": 2.04,
       "guid": 201,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 0.4,
       "y": 2.006,
       "guid": 203,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 0.8,
       "y": 1.994,
       "guid": 205,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 1.2,
       "y": 1.959,
       "guid": 207,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 1.6,
       "y": 1.928,
       "guid": 209,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 2,
       "y": 1.891,
       "guid": 211,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 2.4,
       "y": 1.853,
       "guid": 213,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 2.8,
       "y": 1.827,
       "guid": 215,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 3.2,
       "y": 1.783,
       "guid": 217,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 3.6,
       "y": 1.748,
       "guid": 219,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 4,
       "y": 1.708,
       "guid": 221,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 4.4,
       "y": 1.679,
       "guid": 223,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 4.8,
       "y": 1.641,
       "guid": 225,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 5.2,
       "y": 1.622,
       "guid": 227,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 5.6,
       "y": 1.621,
       "guid": 229,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 6,
       "y": 1.602,
       "guid": 231,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 6.4,
       "y": 1.554,
       "guid": 233,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 6.8,
       "y": 1.488,
       "guid": 235,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 7.2,
       "y": 1.45,
       "guid": 237,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 7.6,
       "y": 1.428,
       "guid": 239,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 8,
       "y": 1.393,
       "guid": 241,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 8.4,
       "y": 1.354,
       "guid": 243,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 8.8,
       "y": 1.293,
       "guid": 245,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 9.2,
       "y": 1.258,
       "guid": 247,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 9.6,
       "y": 1.221,
       "guid": 249,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 10,
       "y": 1.197,
       "guid": 251,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 10.4,
       "y": 1.156,
       "guid": 253,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 10.8,
       "y": 1.124,
       "guid": 255,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 11.2,
       "y": 1.089,
       "guid": 257,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 11.6,
       "y": 1.052,
       "guid": 259,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 12,
       "y": 1.002,
       "guid": 261,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 12.4,
       "y": 0.951,
       "guid": 263,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 12.8,
       "y": 0.913,
       "guid": 265,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 13.2,
       "y": 0.879,
       "guid": 267,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 13.6,
       "y": 0.837,
       "guid": 269,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 14,
       "y": 0.801,
       "guid": 271,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 14.4,
       "y": 0.772,
       "guid": 273,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 14.8,
       "y": 0.729,
       "guid": 275,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 15.2,
       "y": 0.656,
       "guid": 277,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 15.6,
       "y": 0.621,
       "guid": 279,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 16,
       "y": 0.602,
       "guid": 281,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 16.4,
       "y": 0.55,
       "guid": 283,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 16.8,
       "y": 0.517,
       "guid": 285,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 17.2,
       "y": 0.473,
       "guid": 287,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 17.6,
       "y": 0.427,
       "guid": 289,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 18,
       "y": 0.353,
       "guid": 291,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 18.4,
       "y": 0.297,
       "guid": 293,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 18.8,
       "y": 0.249,
       "guid": 295,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 19.2,
       "y": 0.2,
       "guid": 297,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 19.6,
       "y": 0.134,
       "guid": 299,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     },
     {
       "x": 20,
       "y": 0.133,
       "guid": 301,
-      "series": "/shared/motion-towards-and-away/series/walking-toward-example"
+      "series": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     }
   ],
   "graphs": [

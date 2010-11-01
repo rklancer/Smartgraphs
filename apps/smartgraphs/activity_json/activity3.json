@@ -131,7 +131,7 @@
   ],
   "datasets": [
     {
-      "url": "/shared/example-activity/series/test",
+      "url": "/shared/example-activity/dataset/test",
       "name": "test-dataset",
       "activity": "/shared/example-activity",
       "isExample": true,
@@ -147,7 +147,7 @@
       "x": -2,
       "y": -2,
       "guid": 410,
-      "series": "/shared/example-activity/series/test"
+      "series": "/shared/example-activity/dataset/test"
     }
   ],
   "graphs": [

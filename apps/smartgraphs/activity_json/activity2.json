@@ -1495,7 +1495,7 @@
   ],
   "datasets": [
     {
-      "url": "/shared/marias-run/series/maria",
+      "url": "/shared/marias-run/dataset/maria",
       "name": "maria",
       "activity": "/shared/marias-run",
       "isExample": true,
@@ -1520,61 +1520,61 @@
       "x": 1,
       "y": 200,
       "guid": 400,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 2,
       "y": 400,
       "guid": 401,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 3,
       "y": 600,
       "guid": 402,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 4,
       "y": 800,
       "guid": 403,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 5,
       "y": 800,
       "guid": 404,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 6,
       "y": 800,
       "guid": 405,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 7,
       "y": 1050,
       "guid": 406,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 8,
       "y": 1300,
       "guid": 407,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 9,
       "y": 1550,
       "guid": 408,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     },
     {
       "x": 10,
       "y": 1800,
       "guid": 409,
-      "series": "/shared/marias-run/series/maria"
+      "series": "/shared/marias-run/dataset/maria"
     }
   ],
   "graphs": [
