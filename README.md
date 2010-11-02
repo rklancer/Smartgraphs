@@ -40,7 +40,7 @@ to visit all tests directly (in English), open <http://localhost:4020/static/sma
 
 ## Miscellaneous reference:
 
-#### How to install CouchDB on OS X
+#### How to install CouchDB on OS X using [macports](http://www.macports.org/)
 
     $ sudo port install couchdb
     $ sudo dscl localhost
@@ -53,6 +53,34 @@ to visit all tests directly (in English), open <http://localhost:4020/static/sma
     $ sudo chown -R couchdb:couchdb /opt/local/etc/couchdb
     $ sudo launchctl load -w /Library/LaunchDaemons/org.apache.couchdb.plist
     
+#### How to install CouchDB on Mac OS X using [homebrew](http://github.com/mxcl/homebrew)
+
+    $ brew install couchdb
+
+Follow the instructions displayed after a successful installation. 
+
+These instructions can also be displayed with the following command:
+
+    $ brew info couchdb
+    couchdb 1.0.1
+    http://couchdb.apache.org/
+    Depends on: spidermonkey, icu4c, erlang
+    /usr/local/Cellar/couchdb/1.0.1 (281 files, 2.4M)
+
+    If this is your first install, automatically load on login with:
+        cp /usr/local/Cellar/couchdb/1.0.1/Library/LaunchDaemons/org.apache.couchdb.plist ~/Library/LaunchAgents
+        launchctl load -w ~/Library/LaunchAgents/org.apache.couchdb.plist
+
+    If this is an upgrade and you already have the org.apache.couchdb.plist loaded:
+        launchctl unload -w ~/Library/LaunchAgents/org.apache.couchdb.plist
+        cp /usr/local/Cellar/couchdb/1.0.1/Library/LaunchDaemons/org.apache.couchdb.plist ~/Library/LaunchAgents
+        launchctl load -w ~/Library/LaunchAgents/org.apache.couchdb.plist
+
+    Or start manually with:
+        couchdb
+
+    http://github.com/mxcl/homebrew/commits/master/Library/Formula/couchdb.rb
+
 
 ### Get the latest build number like this:
 
