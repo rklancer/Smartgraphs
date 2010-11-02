@@ -83,6 +83,10 @@ Smartgraphs.ActivityPage = SC.Record.extend(
       conditions: 'page = {page}',
       parameters: { page: this }
     });
-  }.property().cacheable()
+  }.property().cacheable(),
+  
+  indexAsString: function () {
+    return this.get('index')+'';
+  }.property('index')
 
 }) ;

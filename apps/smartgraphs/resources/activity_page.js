@@ -26,7 +26,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       instructionsView: SC.View.design({
         layout: { right: 5, top: 0, bottom: 0 },
         classNames: 'smartgraph-pane',
-        childViews: 'textWrapper nextButton pageInfo'.w(),
+        childViews: 'textWrapper pageInfo'.w(),
 
         // provide padding and style rules for the intro text and dialog
         textWrapper: SC.View.design({
@@ -104,20 +104,6 @@ Smartgraphs.activityPageDef = SC.Page.extend({
               })
             })
           })
-        }),
-
-        nextButton: SC.ButtonView.design({
-          layout: {
-            right: 30,            
-            bottom: 36,
-            height: 24,
-            width: 110
-          },
-          title: "Next Page >>",
-          action: 'gotoNextPage',
-          isVisibleBinding: 'Smartgraphs.activityViewController.showNextPageButton',
-          isEnabledBinding: 'Smartgraphs.activityViewController.enableNextPageButton',
-          isDefaultBinding: 'Smartgraphs.activityViewController.enableNextPageButton'
         }),
         
         // TODO disabled for now, until we have page *visitation* working.
