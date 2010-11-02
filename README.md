@@ -86,6 +86,8 @@ These instructions can also be displayed with the following command:
     $ curl -i -H 'Content-Type: application/json' -X POST \
     -d '{"source":"http://<remote_host>/smartgraphs","target":"http://<user>:<password>@127.0.0.1:5984/smartgraphs"}' http://127.0.0.1:5984/_replicate
 
+Do not include the `<user>:<password>@` section in the target url unless it is required to write to your local database.
+
 More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
 
 ### Get the latest build number like this:
