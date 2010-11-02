@@ -81,6 +81,12 @@ These instructions can also be displayed with the following command:
 
     http://github.com/mxcl/homebrew/commits/master/Library/Formula/couchdb.rb
 
+*** Replicating a remote smartgraphs couchdb databse to your local couchdb instance using curl
+
+    $ curl -i -H 'Content-Type: application/json' -X POST \
+    -d '{"source":"http://<remote_host>/smartgraphs","target":"http://<user>:<password>@127.0.0.1:5984/smartgraphs"}' http://127.0.0.1:5984/_replicate
+
+More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
 
 ### Get the latest build number like this:
 
