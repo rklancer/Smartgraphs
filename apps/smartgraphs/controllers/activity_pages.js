@@ -19,9 +19,8 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   allowsMultipleSelection: NO,
 
   indexOfSelectedPage: function () {
-    var selection = this.get('selection');
-    var indexSet = selection.indexSetForSource(this);
-    return (indexSet ? indexSet.toArray().objectAt(0) : undefined);
+    var indexSet = this.get('selection').indexSetForSource(this);
+    return indexSet && indexSet.firstObject();
   }.property('selection', '[]').cacheable(),
 
   pageInfo: function () {
