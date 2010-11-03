@@ -18,4 +18,3 @@ config 'raphael_views/g_raphael',
 config 'raphael_views/g_raphael_base', 
   :required => 'raphael_views/raphael'
   
-proxy "/backend", :to => "localhost:3000"
