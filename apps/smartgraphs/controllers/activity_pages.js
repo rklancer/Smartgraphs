@@ -18,23 +18,23 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
 
   allowsMultipleSelection: NO,
 
-  indexOfSelectedPage: function () {
+  currentPageNumber: function () {
     var indexSet = this.get('selection').indexSetForSource(this);
     return indexSet && indexSet.firstObject();
   }.property('selection', '[]').cacheable(),
 
   pageInfo: function () {
-    var index = this.get('indexOfSelectedPage');
+    var pageNumber = this.get('currentPageNumber');
     var length = this.get('length');
     
     // Avoid displaying when there is no content
-    if (length === 0 || index === undefined) {
+    if (length === 0 || pageNumber === undefined) {
       return "";
     }
     
     // (the only reason page number > total pages is if this.length = 0, which we already check for)
-    return "Page " + (index+1) + " of " + length;
-  }.property('indexOfSelectedPage', 'length').cacheable(),
+    return "Page " + (pageNumber+1) + " of " + length;
+  }.property('currentPageNumber', 'length').cacheable(),
 
   selectFirstPage: function () {
     if (this.get('length') > 0) {
@@ -43,14 +43,14 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   },
 
   selectNextPage: function () {
-    var index = this.get('indexOfSelectedPage');
+    var index = this.get('currentPageNumber');
     if (index + 1 < this.get('length')) {
       this.selectObject(this.objectAt(index + 1));
     }
   },
 
   isLastPage: function () {
-    return (this.get('indexOfSelectedPage') >= (this.get('length') - 1));
-  }.property('indexOfSelectedPage', 'length').cacheable()
+    return (this.get('currentPageNumber') >= (this.get('length') - 1));
+  }.property('currentPageNumber', 'length').cacheable()
   
 });
