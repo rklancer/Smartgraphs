@@ -3,29 +3,29 @@
 
 ## To install:
     
-    git clone git://github.com/rklancer/Smartgraphs.git
-    cd Smartgraphs
+    $ git clone git://github.com/rklancer/Smartgraphs.git
+    $ cd Smartgraphs
 
 ### Update Ruby and RVM if needed:
     
-    rvm update && rvm reload
-    rvm install 1.9.2
+    $ rvm update && rvm reload
+    $ rvm install 1.9.2
 
 ### Create a Smartgraphs gemset and set RVM to use it if you (a) just cloned the repo or (b) updated your Ruby version:
     
-    rvm use 1.9.2
-    rvm gemset create Smartgraphs
-    rvm use 1.9.2@Smartgraphs
-    rvm 1.9.2@Smartgraphs gemset import
-    echo "rvm use 1.9.2@Smartgraphs" > .rvmrc
+    $ rvm use 1.9.2
+    $ rvm gemset create Smartgraphs
+    $ rvm use 1.9.2@Smartgraphs
+    $ rvm 1.9.2@Smartgraphs gemset import
+    $ echo "rvm use 1.9.2@Smartgraphs" > .rvmrc
 
 (Trusting the .rvmrc file later means that whenever you cd into the Smartgraphs directory RVM will execute the .rvmrc 
 script in your shell.)
 
 ### Import/update the project dependencies via `git submodule`
 
-    mkdir -p frameworks
-    git submodule update --init --recursive
+    $ mkdir -p frameworks
+    $ git submodule update --init --recursive
     
 ### Install CouchDB on your system
 
@@ -49,10 +49,11 @@ in `/opt/local/etc/couchdb/` if using MacPorts) as follows:
 
     <username> = <password>
     
-Where `<username>` and `<password>` are the password you want to use to access your local CouchDB instance.
+    Where `<username>` and `<password>` are the username and password you want to use to access your local CouchDB
+    instance.
 
 Visit <http://127.0.0.1/_utils/> to see the web interface to CouchDB and to verify your username and password. Once
-you do, your plaintext password in the `local.ini` file will be replaced by a hashed version. 
+you do, your plaintext password in the `local.ini` file will be replaced by a hashed version.
 
 Create the CouchDB database called `smartgraphs` as follows:
 
@@ -75,11 +76,11 @@ The response should be something like:
     "missing_checked":0,"missing_found":9,"docs_read":9,"docs_written":9,"doc_write_failures":0}]}
 
 
-### Set up an Apache proxy SproutCore + CouchDB development on your local machine.
+### Set up an Apache to proxy SproutCore + CouchDB development on your local machine.
 
 On OS X, turn on Web Sharing via (Apple Menu) -> System Preferences -> Sharing -> Web Sharing
 
-Now, make sure that virtual hosting is enabled by editing `/private/etc/apache2/httpd.conf/` and uncommenting the
+Now, make sure that virtual hosting is enabled by editing `/private/etc/apache2/httpd.conf` and uncommenting the
 virtual hosting line (at about line 465 of the stock `httpd.conf`) as follows:
 
     # Virtual hosts
@@ -108,14 +109,18 @@ Edit the virtual hosting configuration file `/private/etc/apache2/extra/httpd-vh
 
 after making changes ...
 
-- testing the config: `apachectl configtest`
-- restarting apache:  `sudo apachectl restart`  
+- test the config: `apachectl configtest` 
 
+(apachectl may complain that the directory `/opt/local/www/dummy` doesn't exist. You can create it if you like,
+possibly at an alternate location of your choosing.)
+
+- restart apache:  `sudo apachectl restart`
+
+(For more instructions, set <http://shapeshed.com/journal/setting_up_local_websites_on_snow_leopard/>.)
 
 And, finally, edit your `/etc/hosts` file to include the following line:
 
     127.0.0.1       sc.local
-    
 
 ### Start the development server
 
