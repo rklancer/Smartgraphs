@@ -59,6 +59,7 @@ Smartgraphs.mainPage = SC.Page.design({
       
       pageButtons: SC.SegmentedView.design({
         layout: { left: 120, right: 120, height: 24, centerY: 0 },
+        classNames: ['sc-regular-size'],        // workaround for apparent bug in SC.SegmentedView
         itemsBinding: 'Smartgraphs.activityPagesController',
         itemTitleKey: 'indexAsString'
       }),
