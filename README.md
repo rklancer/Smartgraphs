@@ -83,7 +83,7 @@ These instructions can also be displayed with the following command:
 
 #### Add an entry to /etc/hosts mapping '/db' to 127.0.0.1
 
-As the root user (sudo) dd the following to `/etc/hosts`:
+As the root user (sudo) add the following to `/etc/hosts`:
 
     127.0.0.1       db
 
@@ -118,6 +118,7 @@ Add a new vhost entry similar to this in: `/etc/apache2/extra/httpd-vhosts.conf`
     </VirtualHost>
 
 after making changes ...
+
 - testing the config: `apachectl configtest`
 - restarting apache:  `sudo apachectl restart`                                                                                                                    
     
