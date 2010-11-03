@@ -10,9 +10,11 @@ module("Smartgraphs.activityPagesController");
 test("test Smartgraphs.activityPagesController.pageInfo",
 function() {
     var activityPageView, pane;
-    var page, pages = [];
+    var page, pageHash, pages = [];
 
-    page = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/1"] = {
+    Smartgraphs.store = SC.Store.create().from(SC.FixturesDataSource.create());
+    
+    pageHash = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/1"] = {
         "steps": ["/shared/motion-towards-and-away/page/1/step/1"],
         "name": "Introductory Page",
         "firstStep": "/shared/motion-towards-and-away/page/1/step/1",
@@ -22,9 +24,10 @@ function() {
         "index": 1,
         "stepListUrl": "/shared/motion-towards-and-away/page/1/steps"
     };
+    page = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, pageHash);
     pages.push(page);
 
-    page = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/2"] = {
+    pageHash = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/2"] = {
         "steps": ["/shared/motion-towards-and-away/page/2/step/1", "/shared/motion-towards-and-away/page/2/step/2"],
         "name": "Prediction Page",
         "firstStep": "/shared/motion-towards-and-away/page/2/step/1",
@@ -34,6 +37,7 @@ function() {
         "index": 2,
         "stepListUrl": "/shared/motion-towards-and-away/page/2/steps"
     };
+    page = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, pageHash);    
     pages.push(page);
 
     SC.RunLoop.begin();

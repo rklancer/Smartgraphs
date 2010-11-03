@@ -85,8 +85,14 @@ Smartgraphs.ActivityPage = SC.Record.extend(
     });
   }.property().cacheable(),
   
-  indexAsString: function () {
-    return this.get('index')+'';
-  }.property('index')
+  /**
+    The page number of this page. Set by the activityPagesController and only valid when this page is part of the
+    "current" activity.
+  */
+  pageNumber: null,
+  
+  pageNumberAsString: function () {
+    return (this.get('pageNumber')+1)+'';
+  }.property('pageNumber')
 
 }) ;

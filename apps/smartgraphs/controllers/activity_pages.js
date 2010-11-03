@@ -51,6 +51,14 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
 
   isLastPage: function () {
     return (this.get('currentPageNumber') >= (this.get('length') - 1));
-  }.property('currentPageNumber', 'length').cacheable()
+  }.property('currentPageNumber', 'length').cacheable(),
+  
+  contentsDidChange: function () {
+    var n = 0;
+    this.forEach(function (page) {
+      page.set('pageNumber', n);
+      n++;
+    });
+  }.observes('[]')
   
 });
