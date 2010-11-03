@@ -17,4 +17,5 @@ config 'raphael_views/g_raphael',
   :required => 'raphael_views/g_raphael_base'
 config 'raphael_views/g_raphael_base', 
   :required => 'raphael_views/raphael'
-  
+
+proxy "/jnlp", :to => "localhost:4321"
