@@ -81,6 +81,46 @@ These instructions can also be displayed with the following command:
 
     http://github.com/mxcl/homebrew/commits/master/Library/Formula/couchdb.rb
 
+#### Add an entry to /etc/hosts mapping '/db' to 127.0.0.1
+
+As the root user (sudo) dd the following to `/etc/hosts`:
+
+    127.0.0.1       db
+
+Confirm that the new entry works:
+
+    $ dscacheutil -q host -a name db
+    name: db
+    ip_address: 127.0.0.1
+
+It might be necessary to flush the local DNS cache:
+
+    $ sudo dscacheutil -flushcache
+
+#### Add an Apache reverse proxy virtual host mapping /db to the couchdb http server
+
+Add a new vhost entry similar to this in: `/etc/apache2/extra/httpd-vhosts.conf`:
+
+    <VirtualHost db:80>
+       ServerName db
+       AllowEncodedSlashes On
+       ProxyRequests Off
+       KeepAlive Off
+       <Proxy *>
+          Order deny,allow
+          Deny from all
+          Allow from 127.0.0.1
+       </Proxy>
+       ProxyPass / http://localhost:5984/ nocanon
+       ProxyPassReverse / http://db/
+       ErrorLog "/path/to/couchdb/logs/couchdb.localhost-error_log"
+       CustomLog "/path/to/couchdb/logs/couchdb.localhost-access_log" common
+    </VirtualHost>
+
+after making changes ...
+- testing the config: `apachectl configtest`
+- restarting apache:  `sudo apachectl restart`                                                                                                                    
+    
 ### Replicating a remote smartgraphs couchdb databse to your local couchdb instance using curl
 
     $ curl -i -H 'Content-Type: application/json' -X POST \
