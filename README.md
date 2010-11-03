@@ -75,6 +75,7 @@ The response should be something like:
     "end_time":"Wed, 03 Nov 2010 17:40:12 GMT","start_last_seq":0,"end_last_seq":15,"recorded_seq":15,
     "missing_checked":0,"missing_found":9,"docs_read":9,"docs_written":9,"doc_write_failures":0}]}
 
+More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
 
 ### Set up an Apache to proxy SproutCore + CouchDB development on your local machine.
 
@@ -116,11 +117,26 @@ possibly at an alternate location of your choosing.)
 
 - restart apache:  `sudo apachectl restart`
 
+If you have multiple virtual hosts defined you should add the name of the smartgraphs virtual host to the Apache vhost configuration as follows:
+
+    <VirtualHost sc.local:80>
+      ServerName sc.local
+
 (For more instructions, set <http://shapeshed.com/journal/setting_up_local_websites_on_snow_leopard/>.)
 
 And, finally, edit your `/etc/hosts` file to include the following line:
 
     127.0.0.1       sc.local
+
+Confirm that the new entry works:
+
+    $ dscacheutil -q host -a name sc.local
+    name: sc.local
+    ip_address: 127.0.0.1
+
+It might be necessary to flush the local DNS cache:
+
+    $ sudo dscacheutil -flushcache
 
 ### Start the development server
 
@@ -202,47 +218,4 @@ More information about [replicating couchdb databases](http://wiki.apache.org/co
 ### Get the latest build number like this:
 
     sc-build-number smartgraphs    
-
-## Alternative config suggestions:
-
-#### (but see above) Possibly add an entry to /etc/hosts mapping '/db' to 127.0.0.1
-
-As the root user (sudo) add the following to `/etc/hosts`:
-
-    127.0.0.1       db
-
-Confirm that the new entry works:
-
-    $ dscacheutil -q host -a name db
-    name: db
-    ip_address: 127.0.0.1
-
-It might be necessary to flush the local DNS cache:
-
-    $ sudo dscacheutil -flushcache
-
-#### (but first see above) Possibly add an Apache reverse proxy virtual host mapping /db to the couchdb http server
-
-Add a new vhost entry similar to this in: `/etc/apache2/extra/httpd-vhosts.conf`:
-
-    <VirtualHost db:80>
-       ServerName db
-       AllowEncodedSlashes On
-       ProxyRequests Off
-       KeepAlive Off
-       <Proxy *>
-          Order deny,allow
-          Deny from all
-          Allow from 127.0.0.1
-       </Proxy>
-       ProxyPass / http://localhost:5984/ nocanon
-       ProxyPassReverse / http://db/
-       ErrorLog "/path/to/couchdb/logs/couchdb.localhost-error_log"
-       CustomLog "/path/to/couchdb/logs/couchdb.localhost-access_log" common
-    </VirtualHost>
-
-after making changes ...
-
-- testing the config: `apachectl configtest`
-- restarting apache:  `sudo apachectl restart`
 
