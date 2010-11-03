@@ -1,4 +1,5 @@
 {
+  "_rev": "4-692bd104d4f47ea52ed912ee73a25383",
   "data_format_version": 1,
   "activity": {
     "title": "Motion Towards And Away",
@@ -168,7 +169,7 @@
       "introText": "<p>Congratulations! You have finished the activity.</p>",
       "url": "/shared/motion-towards-and-away/page/11",
       "activity": "/shared/motion-towards-and-away",
-      "index": 10,
+      "index": 11,
       "stepListUrl": "/shared/motion-towards-and-away/page/11/steps"
     }
   ],

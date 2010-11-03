@@ -1,4 +1,5 @@
 {
+  "_rev": "1-e9948d32e664b73d00dd08dacd589b13",
   "data_format_version": 1,
   "activity": {
     "title": "Maria's Run",
@@ -96,7 +97,7 @@
       "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
       "url": "/shared/marias-run/page/6",
       "activity": "/shared/marias-run",
-      "index": 5,
+      "index": 6,
       "stepListUrl": "/shared/marias-run/page/6/steps"
     },
     {
@@ -113,7 +114,7 @@
       "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
       "url": "/shared/marias-run/page/7",
       "activity": "/shared/marias-run",
-      "index": 5,
+      "index": 7,
       "stepListUrl": "/shared/marias-run/page/7/steps"
     },
     {
@@ -126,7 +127,7 @@
       "introText": "",
       "url": "/shared/marias-run/page/8",
       "activity": "/shared/marias-run",
-      "index": 5,
+      "index": 8,
       "stepListUrl": "/shared/marias-run/page/8/steps"
     }
   ],
