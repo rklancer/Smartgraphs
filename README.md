@@ -19,23 +19,126 @@
     rvm 1.9.2@Smartgraphs gemset import
     echo "rvm use 1.9.2@Smartgraphs" > .rvmrc
 
-Trusting the .rvmrc file later means that whenever you cd into the Smartgraphs directory RVM will execute the .rvmrc script in your shell
+(Trusting the .rvmrc file later means that whenever you cd into the Smartgraphs directory RVM will execute the .rvmrc 
+script in your shell.)
+
 ### Import/update the project dependencies via `git submodule`
 
     mkdir -p frameworks
     git submodule update --init --recursive
+    
+### Install CouchDB on your system
 
-### Start the development server and visit the Smartgraphs app in your web browser
+See below for instructions for installing CouchDB on OS X using MacPorts or Homebrew.
 
-    sc-server -v
+### Set up the `smartgraphs` database in CouchDB and replicate the Smartgraphs code
 
-(do subsequent work in a new Terminal window)
+Try the following:
+  
+     $ curl http://127.0.0.1:5984/
+  
+If you get the following response
+
+    {"couchdb":"Welcome","version":"1.0.1"}
+    
+then you're good to go. (Obviously, a version >= 1.0.1 is fine.)
+
+You may want to set yourself up as an administrator on your local CouchDB instance. If you do not, everyone who can
+access your machine via the network can administer your CouchDB instance Add a line to the file `local.ini` (located
+in `/opt/local/etc/couchdb/` if using MacPorts) as follows:
+
+    <username> = <password>
+    
+Where `<username>` and `<password>` are the password you want to use to access your local CouchDB instance.
+
+Visit <http://127.0.0.1/_utils/> to see the web interface to CouchDB and to verify your username and password. Once
+you do, your plaintext password in the `local.ini` file will be replaced by a hashed version. 
+
+Create the CouchDB database called `smartgraphs` as follows:
+
+    $ curl -X PUT http://<username>:<password>@127.0.0.1:5984/smartgraphs
+
+The response should be:
+
+    {"ok":true}
+
+Finally, replicate the Smartgraphs database into your local machine:
+
+    $ curl -i -H 'Content-Type: application/json' -X POST \
+      -d '{"source":"http://couchdb.cosmos.concord.org/smartgraphs","target":"http://<username>:<password>@127.0.0.1:5984/smartgraphs"}' http://127.0.0.1:5984/_replicate
+      
+The response should be something like:
+
+    {"ok":true,"session_id":"94c64a6984b88ff2dade30783df468b3","source_last_seq":15,
+    "history":[{"session_id":"94c64a6984b88ff2dade30783df468b3","start_time":"Wed, 03 Nov 2010 17:40:11 GMT",
+    "end_time":"Wed, 03 Nov 2010 17:40:12 GMT","start_last_seq":0,"end_last_seq":15,"recorded_seq":15,
+    "missing_checked":0,"missing_found":9,"docs_read":9,"docs_written":9,"doc_write_failures":0}]}
+
+
+### Set up an Apache proxy SproutCore + CouchDB development on your local machine.
+
+On OS X, turn on Web Sharing via (Apple Menu) -> System Preferences -> Sharing -> Web Sharing
+
+Now, make sure that virtual hosting is enabled by editing `/private/etc/apache2/httpd.conf/` and uncommenting the
+virtual hosting line (at about line 465 of the stock `httpd.conf`) as follows:
+
+    # Virtual hosts
+    Include /private/etc/apache2/extra/httpd-vhosts.conf
+
+Edit the virtual hosting configuration file `/private/etc/apache2/extra/httpd-vhosts.conf` to include the entry:
+
+    <VirtualHost *:80>
+      ServerAdmin webmaster@localhost
+      DocumentRoot "/opt/local/www/dummy"
+      ServerName sc.local
+      ProxyRequests Off
+      KeepAlive Off
+      <Proxy *>
+         Order deny,allow
+         Deny from all
+         Allow from 127.0.0.1
+      </Proxy>
+
+       ProxyPass /db/ http://127.0.0.1:5984/ nocanon retry=0
+       ProxyPassReverse /db/ http://127.0.0.1:5984/
+       ProxyPass / http://127.0.0.1:4020/ retry=0
+       ProxyPassReverse / http://127.0.0.1:4020/
+
+    </VirtualHost>
+
+after making changes ...
+
+- testing the config: `apachectl configtest`
+- restarting apache:  `sudo apachectl restart`  
+
+
+And, finally, edit your `/etc/hosts` file to include the following line:
+
+    127.0.0.1       sc.local
+    
+
+### Start the development server
+
+(in the root of the Smartgraphs project:)
+
+    $ sc-server -v
+
+This will take over the Terminal window. Do subsequent work in a new Terminal window.
+
+
+### Visit the Smartgraphs site:
+
+If you visit <http://sc.local/> you should be greeted by the SproutCore Welcome app; if you visit 
+<http://sc.local/db/_utils/> you should be greeted by the CouchDB web administration app, Futon.
+
+If these addresses work, visit <http://sc.local/smartgraphs> to see Smartgraphs in action.
+
 
 ### To see test results:
 
-to use TestRunner, open <http://localhost:4020/sproutcore/tests>
+To use TestRunner, open <http://localhost:4020/sproutcore/tests>
 
-to visit all tests directly (in English), open <http://localhost:4020/static/smartgraphs/en/current/tests.html>
+To visit all tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests.html>
 
 
 ## Miscellaneous reference:
@@ -79,9 +182,25 @@ These instructions can also be displayed with the following command:
     Or start manually with:
         couchdb
 
-    http://github.com/mxcl/homebrew/commits/master/Library/Formula/couchdb.rb
+    http://github.com/mxcl/homebrew/commits/master/Library/Formula/couchdb.rb                                                                                                                 
+    
+### Replicating a remote smartgraphs couchdb databse to your local couchdb instance using curl
 
-#### Add an entry to /etc/hosts mapping '/db' to 127.0.0.1
+    $ curl -i -H 'Content-Type: application/json' -X POST \
+    -d '{"source":"http://<remote_host>/smartgraphs","target":"http://<user>:<password>@127.0.0.1:5984/smartgraphs"}' http://127.0.0.1:5984/_replicate
+
+Do not include the `<user>:<password>@` section in the target url unless it is required to write to your local database.
+
+More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
+
+
+### Get the latest build number like this:
+
+    sc-build-number smartgraphs    
+
+## Alternative config suggestions:
+
+#### (but see above) Possibly add an entry to /etc/hosts mapping '/db' to 127.0.0.1
 
 As the root user (sudo) add the following to `/etc/hosts`:
 
@@ -97,7 +216,7 @@ It might be necessary to flush the local DNS cache:
 
     $ sudo dscacheutil -flushcache
 
-#### Add an Apache reverse proxy virtual host mapping /db to the couchdb http server
+#### (but first see above) Possibly add an Apache reverse proxy virtual host mapping /db to the couchdb http server
 
 Add a new vhost entry similar to this in: `/etc/apache2/extra/httpd-vhosts.conf`:
 
@@ -120,17 +239,5 @@ Add a new vhost entry similar to this in: `/etc/apache2/extra/httpd-vhosts.conf`
 after making changes ...
 
 - testing the config: `apachectl configtest`
-- restarting apache:  `sudo apachectl restart`                                                                                                                    
-    
-### Replicating a remote smartgraphs couchdb databse to your local couchdb instance using curl
+- restarting apache:  `sudo apachectl restart`
 
-    $ curl -i -H 'Content-Type: application/json' -X POST \
-    -d '{"source":"http://<remote_host>/smartgraphs","target":"http://<user>:<password>@127.0.0.1:5984/smartgraphs"}' http://127.0.0.1:5984/_replicate
-
-Do not include the `<user>:<password>@` section in the target url unless it is required to write to your local database.
-
-More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
-
-### Get the latest build number like this:
-
-    sc-build-number smartgraphs
