@@ -91,12 +91,16 @@ virtual hosting line (at about line 465 of the stock `httpd.conf`) as follows:
     # Virtual hosts
     Include /private/etc/apache2/extra/httpd-vhosts.conf
 
+At the top of httpd-vhosts.conf enable name-based virtual hosts for port 80 on all interfaces:
+
+    NameVirtualHost *:80
+    
 Edit the virtual hosting configuration file `/private/etc/apache2/extra/httpd-vhosts.conf` to include the entry:
 
     <VirtualHost *:80>
+      ServerName sc.local
       ServerAdmin webmaster@localhost
       DocumentRoot "/opt/local/www/dummy"
-      ServerName sc.local
       ProxyRequests Off
       KeepAlive Off
       <Proxy *>
@@ -120,11 +124,6 @@ after making changes ...
 possibly at an alternate location of your choosing.)
 
 - restart apache:  `sudo apachectl restart`
-
-If you have multiple virtual hosts defined you should add the name of the smartgraphs virtual host to the Apache vhost configuration as follows:
-
-    <VirtualHost sc.local:80>
-      ServerName sc.local
 
 (For more instructions, set <http://shapeshed.com/journal/setting_up_local_websites_on_snow_leopard/>.)
 
