@@ -181,7 +181,9 @@ Smartgraphs.sensorController = SC.ObjectController.create(
         // indefinitely.)
 
         setTimeout( function () {
+          SC.RunLoop.begin();
           Smartgraphs.sendAction('stopSensor');
+          SC.RunLoop.end();
         }, 10);
 
         return;
