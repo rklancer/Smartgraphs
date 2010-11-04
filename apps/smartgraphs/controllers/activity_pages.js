@@ -59,6 +59,30 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
       page.set('pageNumber', n);
       n++;
     });
-  }.observes('[]')
+  }.observes('[]'),
+  
+  outline: function () {
+    var ret = SC.Object.create();
+      
+    ret.set('treeItemChildren', this.map( function (page) {
+      var n = 1;
+      var ret = SC.Object.create();
+      ret.set('treeItemChildren', page.get('steps').map( function (step) {
+         return SC.Object.create({
+           title: 'Step %@'.fmt(n++)
+         });
+      }));
+      
+      ret.set('title', page.get('name'));
+      ret.set('treeItemIsExpanded', YES);
+      return ret;
+    }));
+    
+    ret.set('treeItemIsExanded', YES);
+    ret.set('title', 'who cares what the top level title is?');
+    
+    return ret;
+    // FIXME this will NOT update when steps are added/removed or have their properties changed
+  }.property('content')
   
 });
