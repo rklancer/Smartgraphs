@@ -26,7 +26,11 @@ script in your shell.)
 
     $ mkdir -p frameworks
     $ git submodule update --init --recursive
-    
+
+### Setup a default config for the applets server
+
+    cp applets/config/config.sample.yml applets/config/config.yml
+
 ### Install CouchDB on your system
 
 See below for instructions for installing CouchDB on OS X using MacPorts or Homebrew.
@@ -137,6 +141,12 @@ Confirm that the new entry works:
 It might be necessary to flush the local DNS cache:
 
     $ sudo dscacheutil -flushcache
+
+### Start the applets server
+
+If you are using applets start the applet server in another console window:
+
+    ruby applets/start_local_server.rb
 
 ### Start the development server
 

@@ -10,3 +10,6 @@
 [submodule "frameworks/sproutcore"]
 	path = frameworks/sproutcore
 	url = http://github.com/sproutcore/sproutcore.git
+[submodule "applets"]
+	path = applets
+	url = ./applets
