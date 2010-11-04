@@ -173,7 +173,17 @@ Smartgraphs.sensorController = SC.ObjectController.create(
       y = data[i];
       
       if (x > this.get('xMax')) {
-        Smartgraphs.sendAction('stopSensor');
+        
+        // 'stopSensor' action results in an applet method being called inline. This does not work well in all
+        // browsers (they seem to trip up when the applet method is called from within an applet callback.)
+        // Therefore, use setTimeout to trigger the stopSensor action after the callback finishes. Note that using
+        // this.invokeLater() rather than setTimeout did not seem to work (the invokeLater blocks queued up 
+        // indefinitely.)
+
+        setTimeout( function () {
+          Smartgraphs.sendAction('stopSensor');
+        }, 10);
+
         return;
       }
       
