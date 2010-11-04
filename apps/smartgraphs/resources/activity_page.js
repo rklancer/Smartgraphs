@@ -12,8 +12,8 @@ Smartgraphs.activityPageDef = SC.Page.extend({
   activityView: SC.SplitView.design({
     defaultThickness: 200,
     layoutDirection: SC.LAYOUT_HORIZONTAL,
-    topLeftView: SC.View.design({
-      // TODO: This will become an OutlineView
+    topLeftView: SC.SourceListView.design({
+      contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects'
     }),
     dividerView: SC.SplitDividerView,
     bottomRightView: SC.View.design({

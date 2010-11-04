@@ -63,7 +63,8 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   
   outline: function () {
     var ret = SC.Object.create();
-      
+    
+    var page_n = 1;
     ret.set('treeItemChildren', this.map( function (page) {
       var n = 1;
       var ret = SC.Object.create();
@@ -73,7 +74,8 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
          });
       }));
       
-      ret.set('title', page.get('name'));
+      //ret.set('title', page.get('name'));
+      ret.set('title', 'Page %@'.fmt(page_n++));
       ret.set('treeItemIsExpanded', YES);
       return ret;
     }));
