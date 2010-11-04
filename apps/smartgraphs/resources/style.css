@@ -142,3 +142,8 @@ body.sc-theme {
 .sc-theme .sc-view.dialog-text .sc-view.ace.sc-radio-view span.button {
   top: 2px;
 }
+
+/* quick fix to color of SplitDividerView */
+.sc-theme .sc-view.ace.sc-split-divider-view {
+  background-color: #ddd;
+}
