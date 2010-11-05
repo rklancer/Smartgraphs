@@ -40,7 +40,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       
         instructionsView: SC.View.design({
           classNames: 'smartgraph-pane',
-          childViews: 'textWrapper pageInfo'.w(),
+          childViews: 'textWrapper'.w(),
 
           // provide padding and style rules for the intro text and dialog
           textWrapper: SC.View.design({
@@ -118,33 +118,6 @@ Smartgraphs.activityPageDef = SC.Page.extend({
                 })
               })
             })
-          }),
-        
-          // TODO disabled for now, until we have page *visitation* working.
-
-          // backButton: SC.ButtonView.design({
-          //   layout: {
-          //     bottom: 36,
-          //     left: 30,
-          //     height: 24,
-          //     width: 80
-          //   },
-          //   title: "<< Back",
-          //   action: 'openPreviousActivityPage',
-          //   isEnabledBinding: SC.Binding.oneWay('Smartgraphs.activityPagesController.canSelectPreviousPage'),
-          //   isVisibleBinding: SC.Binding.not('Smartgraphs.activityPagesController.isFirstPage').oneWay()
-          // }),
-
-          pageInfo: SC.LabelView.design({
-            classNames: 'pane-label',
-            layout: {
-              bottom: 36,
-              left: 30,
-              height: 24,
-              width: 200
-            },
-            valueBinding: 'Smartgraphs.activityPagesController.pageInfo',
-            isVisible: YES
           })
         })
       }),
