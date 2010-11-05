@@ -26,6 +26,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
     bottomRightView: SC.View.design({
       childViews: 'instructionsWrapper dataWrapper'.w(),
     
+      theme: 'sc-ace',
       loadingMessage: 'Loading Activity...',
     
       // ..........................................................
