@@ -51,7 +51,8 @@ Smartgraphs.mainPage = SC.Page.design({
       backButton: SC.ButtonView.design({
         layout: { left: 20, centerY: 0, height: 24, width: 80 },
         title: "Back",
-        theme: "point-left",
+        // theme: "point-left",
+        theme: 'capsule',
         action: "gotoPrevPage",
         isSwipeLeft: YES,
 
@@ -70,7 +71,8 @@ Smartgraphs.mainPage = SC.Page.design({
       nextButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
         title: "Next",
-        theme: "point-right",
+        // theme: "point-right",
+        theme: 'capsule',
         action: "gotoNextPage",
         isSwipeRight: YES,
         
