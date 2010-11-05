@@ -34,11 +34,10 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       // the left pane shows the activity page intro and the instructions for the currently selected activity step
     
       instructionsWrapper: SC.View.design({
-        layout: { left: 0, width: 0.5 },       // need to specify 0.5 rather than '50%'
+        layout: { left: 0, width: 0.45 },       // need to specify 0.5 rather than '50%'
         childViews: 'instructionsView'.w(),
       
         instructionsView: SC.View.design({
-          layout: { right: 5, top: 0, bottom: 0 },
           classNames: 'smartgraph-pane',
           childViews: 'textWrapper pageInfo'.w(),
 
@@ -155,12 +154,12 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       //
       // the right pane shows the data the user is manipulating
       dataWrapper: SC.View.design({
-        layout: { right: 0, width: 0.5 },
+        layout: { right: 0, width: 0.55 },
       
         childViews: 'dataView'.w(),
       
         dataView: SC.ContainerView.design({
-          layout: { left: 5 },
+          layout: { top: 4, right: 4, bottom: 4, left: 4 },
           nowShowingBinding: 'Smartgraphs.activityViewController.dataViewNowShowing'
         })
       })
@@ -180,7 +179,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       childViews: 'topPane'.w(),
       
       topPane: SC.ContainerView.design({
-        layout: { bottom: 5 },
+        layout: { bottom: 2 },
         classNames: 'smartgraph-pane',
         nowShowingBinding: 'Smartgraphs.activityViewController.topPaneNowShowing'
       })
@@ -191,7 +190,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
       childViews: 'bottomPane'.w(),
     
       bottomPane: SC.ContainerView.design({
-        layout: { top: 5 },
+        layout: { top: 2 },
         classNames: 'smartgraph-pane',//TEMP
         nowShowingBinding: 'Smartgraphs.activityViewController.bottomPaneNowShowing'
       })
