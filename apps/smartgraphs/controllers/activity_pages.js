@@ -56,35 +56,33 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   contentsDidChange: function () {
     var n = 0;
     this.forEach(function (page) {
-      page.set('pageNumber', n);
-      n++;
+      page.set('pageNumber', n++);
     });
   }.observes('[]'),
   
   outline: function () {
-    var ret = SC.Object.create();
-    
     var page_n = 1;
-    ret.set('treeItemChildren', this.map( function (page) {
-      var n = 1;
-      var ret = SC.Object.create();
-      ret.set('treeItemChildren', page.get('steps').map( function (step) {
-         return SC.Object.create({
-           title: 'Step %@'.fmt(n++)
-         });
-      }));
-      
-      //ret.set('title', page.get('name'));
-      ret.set('title', 'Page %@'.fmt(page_n++));
-      ret.set('treeItemIsExpanded', YES);
-      return ret;
-    }));
-    
-    ret.set('treeItemIsExanded', YES);
-    ret.set('title', 'who cares what the top level title is?');
-    
-    return ret;
+    return SC.Object.create({
+      title: 'toplevel',
+      treeItemIsExpanded: YES,
+      pages: this.map( function (page) { return page; } ),
+      treeItemChildren: this.map( function (page) {
+        var n = 1;
+        return SC.Object.create({
+          title: 'Page %@'.fmt(page_n++),
+          treeItemIsExpanded: YES,
+          steps: page.get('steps'),          
+          treeItemChildren: page.get('steps').map( function (step) {
+            return SC.Object.create({
+              title: 'Step %@'.fmt(n++),
+              treeItemIsExpanded: YES,
+              treeItemChildren: null
+            });
+          })
+        });
+      })
+    });
     // FIXME this will NOT update when steps are added/removed or have their properties changed
-  }.property('content')
+  }.property('[]').cacheable()
   
 });
