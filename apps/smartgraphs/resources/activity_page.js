@@ -47,7 +47,6 @@ Smartgraphs.activityPageDef = SC.Page.extend({
             layout: {
               top: 20,
               right: 20,
-              bottom: 70,
               left: 20
             },
 
