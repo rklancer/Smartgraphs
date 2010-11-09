@@ -51,7 +51,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
       Smartgraphs.activityPagesController.selectFirstPage();
     }
     
-    Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection'));    
+    Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());    
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
   },
 

@@ -31,8 +31,7 @@ Smartgraphs.activityOutlineController = SC.TreeController.create(
     var pages = outline.get('pages');
     if (!pages) return;
     
-    var pageContent = Smartgraphs.activityPageController.get('content');
-    var page = pageContent && pageContent.firstObject();
+    var page = Smartgraphs.activityPageController.get('content');
     var pageIndex = pages.indexOf(page);
     if (pageIndex < 0) return;
     
