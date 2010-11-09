@@ -24,17 +24,26 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   activityPage: SC.Record.toOne('Smartgraphs.ActivityPage', { inverse: 'steps', isMaster: YES }),
   
   /**
-    Whether to show a split pane or single pane
+    Whether to show a split pane or single pane (value is "split" or "single")
   */  
-  initialPaneConfig: SC.Record.toOne(String),
+  paneConfig: SC.Record.toOne(String),
   
-  singleGraph: SC.Record.toOne('Smartgraphs.Graph'),
-  topGraph: SC.Record.toOne('Smartgraphs.Graph'),
-  bottomGraph: SC.Record.toOne('Smartgraphs.Graph'),
-  
-  singleImage: SC.Record.attr(String),
-  topImage: SC.Record.attr(String),
-  bottomImage: SC.Record.attr(String),
+  /**
+    How to configure the panes, ex:
+    
+    "panes": {
+      "top": {
+        "type": "graph",
+        "name": "sensor-playing"
+      },
+      "bottom": {
+        "type": "table",
+        "graphName": "sensor-playing",
+        "datasetName": "sensor-play"
+      }
+    }
+  */
+  panes: SC.Record.attr(Object),
   
   /**
     Text to display *before* the response template
