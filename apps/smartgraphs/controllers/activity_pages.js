@@ -48,15 +48,16 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   }.observes('[]'),
   
   outline: function () {
-    var page_n = 1;
+    var page_n = 0;
     return SC.Object.create({
       title: 'toplevel',
       treeItemIsExpanded: YES,
       pages: this.map( function (page) { return page; } ),
       treeItemChildren: this.map( function (page) {
         var n = 1;
+        page_n++;
         return SC.Object.create({
-          title: 'Page %@'.fmt(page_n++),
+          title: page.get('name') || 'Page %@'.fmt(page_n),
           treeItemIsExpanded: YES,
           steps: page.get('steps'),          
           treeItemChildren: page.get('steps').map( function (step) {
