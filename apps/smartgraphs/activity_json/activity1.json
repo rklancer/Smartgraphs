@@ -1,5 +1,5 @@
 {
-  "_rev": "4-692bd104d4f47ea52ed912ee73a25383",
+  "_rev": "6-0c3e49843707fe7dca9115b5991b7567",
   "data_format_version": 1,
   "activity": {
     "title": "Motion Towards And Away",
@@ -25,7 +25,7 @@
       "steps": [
         "/shared/motion-towards-and-away/page/1/step/1"
       ],
-      "name": "Introductory Page",
+      "name": "Introduction",
       "firstStep": "/shared/motion-towards-and-away/page/1/step/1",
       "introText": "<h1>How can you tell a story about motion without using words?</h1>\n\n<p>The picture at right communicates direction of traffic using recognizable symbols. In this activity, you will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will learn conventional methods of motion storytelling and analysis.</p>",
       "url": "/shared/motion-towards-and-away/page/1",
@@ -38,7 +38,7 @@
         "/shared/motion-towards-and-away/page/2/step/1",
         "/shared/motion-towards-and-away/page/2/step/2"
       ],
-      "name": "Prediction Page",
+      "name": "Drawing Motions",
       "firstStep": "/shared/motion-towards-and-away/page/2/step/1",
       "introText": "<p>Let\u2019s start by demonstrating what you already know about representing motion on a graph. Imagine a straight walking path that is 4 meters long.</p><p>Point A is at the 0-meter mark.</p><p>Point B is at the 4-meter mark.</p>",
       "url": "/shared/motion-towards-and-away/page/2",
@@ -51,7 +51,7 @@
         "/shared/motion-towards-and-away/page/3/step/1",
         "/shared/motion-towards-and-away/page/3/step/2"
       ],
-      "name": "Motion Sensor Page",
+      "name": "Experimenting with the Sensor",
       "firstStep": "/shared/motion-towards-and-away/page/3/step/1",
       "introText": "<p>Let\u2019s practice collecting data with the motion sensor so you can see whether your sketches were accurate. You will walk on a 4-meter walking path like the one described earlier.</p>",
       "url": "/shared/motion-towards-and-away/page/3",
@@ -65,7 +65,7 @@
         "/shared/motion-towards-and-away/page/4/step/2",
         "/shared/motion-towards-and-away/page/4/step/3"
       ],
-      "name": "Replay Page",
+      "name": "Walking to Match Drawings",
       "firstStep": "/shared/motion-towards-and-away/page/4/step/1",
       "introText": "<p>To the right are your predictions for walking away and toward point B.</p><p>Now that you &quot;have the hang of it,&quot; you will walk with the sensor to see if your sketches of forward and backward motion are correct.</p>",
       "url": "/shared/motion-towards-and-away/page/4",
@@ -78,7 +78,7 @@
         "/shared/motion-towards-and-away/page/5/step/1",
         "/shared/motion-towards-and-away/page/5/step/2"
       ],
-      "name": "Replay Page",
+      "name": "Reflecting on Motions",
       "firstStep": "/shared/motion-towards-and-away/page/5/step/1",
       "introText": "<p>At right is the data you just collected with the motion sensor.</p>",
       "url": "/shared/motion-towards-and-away/page/5",
@@ -94,7 +94,7 @@
         "/shared/motion-towards-and-away/page/6/step/4",
         "/shared/motion-towards-and-away/page/6/step/5"
       ],
-      "name": "Replay Page",
+      "name": "MC: y-intercept of Walker",
       "firstStep": "/shared/motion-towards-and-away/page/6/step/1",
       "introText": "<p>At right is a position-time graph created by someone walking in front of a motion sensor.</p>",
       "url": "/shared/motion-towards-and-away/page/6",
@@ -109,7 +109,7 @@
         "/shared/motion-towards-and-away/page/7/step/3",
         "/shared/motion-towards-and-away/page/7/step/4"
       ],
-      "name": "Replay Page",
+      "name": "Motion from Different Starting Point",
       "firstStep": "/shared/motion-towards-and-away/page/7/step/1",
       "introText": "<p>Now you will collect and analyze your own data once again.</p>",
       "url": "/shared/motion-towards-and-away/page/7",
@@ -126,7 +126,7 @@
         "/shared/motion-towards-and-away/page/8/step/5",
         "/shared/motion-towards-and-away/page/8/step/6"
       ],
-      "name": "Replay Page",
+      "name": "MC: Two Walkers",
       "firstStep": "/shared/motion-towards-and-away/page/8/step/1",
       "introText": "<p>To the right, two different data sets are plotted on the same graph.</p>",
       "url": "/shared/motion-towards-and-away/page/8",
@@ -139,7 +139,7 @@
         "/shared/motion-towards-and-away/page/9/step/1",
         "/shared/motion-towards-and-away/page/9/step/2"
       ],
-      "name": "Replay Page",
+      "name": "Motion Challenge",
       "firstStep": "/shared/motion-towards-and-away/page/9/step/1",
       "introText": "<p>Look at the position-time graph to the right. You are going to recreate this graph as closely as possible by walking in front of the motion sensor to collect position and time data.</p>",
       "url": "/shared/motion-towards-and-away/page/9",
@@ -152,7 +152,7 @@
         "/shared/motion-towards-and-away/page/10/step/1",
         "/shared/motion-towards-and-away/page/10/step/2"
       ],
-      "name": "Replay Page",
+      "name": "Reflection On Activity",
       "firstStep": "/shared/motion-towards-and-away/page/10/step/1",
       "introText": "<p>To the right are the sketches you drew at the beginning of this activity.</p>",
       "url": "/shared/motion-towards-and-away/page/10",
@@ -164,7 +164,7 @@
       "steps": [
         "/shared/motion-towards-and-away/page/11/step/1"
       ],
-      "name": "Replay Page",
+      "name": "Last Page",
       "firstStep": "/shared/motion-towards-and-away/page/11/step/1",
       "introText": "<p>Congratulations! You have finished the activity.</p>",
       "url": "/shared/motion-towards-and-away/page/11",
