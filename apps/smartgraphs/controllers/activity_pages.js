@@ -55,7 +55,7 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
       treeItemChildren: this.map( function (page) {
         var stepNum = 1;
         return SC.Object.create({
-          title: page.get('name') || 'Page %@'.fmt(page.get('pageNumber')),
+          title: page.get('name') || 'Page %@'.fmt(page.get('pageNumber') + 1),
           treeItemIsExpanded: YES,
           steps: page.get('steps'),          
           treeItemChildren: page.get('steps').map( function (step) {
