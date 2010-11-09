@@ -74,11 +74,7 @@ test("activityOutlineController sets its selection correctly when the current st
   [p1s1, p1s2, p2s1].forEach( function (step) {
     SC.RunLoop.begin();
     Smartgraphs.activityStepController.set('content', step);
-
-    // need to set these explicitly because they are not bound; activityOutlineController expects activityPageController's
-    // content to be a SelectionSet.
-    Smartgraphs.activityPagesController.selectObject(step.get('activityPage'));
-    Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());
+    Smartgraphs.activityPageController.set('content', step.get('activityPage'));
     SC.RunLoop.end();  
  
     sel = Smartgraphs.activityOutlineController.get('selection');
