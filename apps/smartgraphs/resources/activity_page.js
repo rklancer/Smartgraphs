@@ -11,8 +11,11 @@ Smartgraphs.activityPageDef = SC.Page.extend({
 
   activityView: SC.SplitView.design({
     defaultThickness: 200,
+    topLeftMaxThickness: 314,
     layoutDirection: SC.LAYOUT_HORIZONTAL,
+
     topLeftView: SC.ScrollView.design({
+
       classNames: ['desk'],
       contentView: SC.SourceListView.design({
         classNames: ['desk'],
