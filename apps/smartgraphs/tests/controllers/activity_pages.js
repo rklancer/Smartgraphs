@@ -64,3 +64,26 @@ test("activityPagesController's 'outline' property should be in a format consuma
   equals(childTic.get('length'), 1, "Second child should have 1 child (= 1 step)");
   equals(childTic.objectAt(0).get('title'), 'Step 1', "first child of second child should have title 'Step 1'");
 });
+
+
+test("activityOutlineController sets its selection correctly when the current step changes", function () {
+  Smartgraphs.activityPagesController.set('content', Smartgraphs.store.find(Smartgraphs.ActivityPage));
+  
+  var sel;
+  
+  [p1s1, p1s2, p2s1].forEach( function (step) {
+    SC.RunLoop.begin();
+    Smartgraphs.activityStepController.set('content', step);
+
+    // need to set these explicitly because they are not bound; activityOutlineController expects activityPageController's
+    // content to be a SelectionSet.
+    Smartgraphs.activityPagesController.selectObject(step.get('activityPage'));
+    Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());
+    SC.RunLoop.end();  
+ 
+    sel = Smartgraphs.activityOutlineController.get('selection');
+
+    equals(sel.get('length'), 1, "A single item should be selected in the activityOutlineController");
+    equals(sel.firstObject().getPath('step.url'), step.get('url'), "activityOutlineController's selection should reflect the activityStepController's content (" + step.get('url') + ")");
+  });
+});
