@@ -134,6 +134,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   handleSubmission: function () {
     if ( !this.get('canSubmit') ) return NO;
     
+    this.executeCommands(this.get('afterSubmissionCommands'));
+    
     var inspector = this.makeInspector('responseInspector');
     if (inspector) {
       var value = inspector.inspect();
