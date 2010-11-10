@@ -44,7 +44,7 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
     return YES;
   },
 
-  createHighlightedPointFromSelection: function (context, args) {
+  createHighlightedPointsFromSelection: function (context, args) {
     var graphName = args.graphName;
     args.dataset.get('selection').forEach( function (selectedPoint) {
       var hp = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName);
