@@ -48,9 +48,8 @@ access your machine via the network can administer your CouchDB instance Add a l
 in `/opt/local/etc/couchdb/` if using MacPorts) as follows:
 
     <username> = <password>
-    
-    Where `<username>` and `<password>` are the username and password you want to use to access your local CouchDB
-    instance.
+
+Where `<username>` and `<password>` are the username and password you want to use to access your local CouchDB instance.
 
 Visit <http://127.0.0.1:5984/_utils/> to see the web interface to CouchDB and to verify your username and password. Once
 you do, your plaintext password in the `local.ini` file will be replaced by a hashed version.
