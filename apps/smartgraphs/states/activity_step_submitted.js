@@ -42,6 +42,21 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
     Smartgraphs.activityStepController.set('content', step);
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_LOADING);    
     return YES;
+  },
+
+  createHighlightedPointFromSelection: function (context, args) {
+    var graphName = args.graphName,
+    dataset = args.dataset,
+    highlightedPointName = args.highlightedPointName,
+    highlightedPoints = [];
+    dataset.get('selection').forEach( function (selectedPoint) {
+      highlightedPoints.push(Smartgraphs.store.createRecord(Smartgraphs.HighlightedPoint, { 'point': selectedPoint, 'name': highlightedPointName, 'isExample': NO, 'activity': Smartgraphs.activityController.get('content') }));
+    });
+    if (highlightedPoints.length == 1) {
+      return highlightedPoints[0];
+    } else {
+      return highlightedPoints;
+    }
   }
   
 }) ;
