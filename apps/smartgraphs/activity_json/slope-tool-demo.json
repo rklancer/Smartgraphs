@@ -1,5 +1,5 @@
 {
-  "_rev": "4-9cd23b5aef6a6c3feed82b1d0f9f8bbb",
+  "_rev": "6-7aedc5f3a4ff383b04426e22f541ade7",
   "data_format_version": 1,
   "activity": {
     "title": "Slope Tool Demo",
@@ -13,7 +13,8 @@
   "pages": [
     {
       "steps": [
-        "/shared/slope-tool-demo/page/1/step/1"
+        "/shared/slope-tool-demo/page/1/step/1",
+        "/shared/slope-tool-demo/page/1/step/2"
       ],
       "name": "Slope Tool Page",
       "firstStep": "/shared/slope-tool-demo/page/1/step/1",
@@ -41,6 +42,53 @@
         }
       },
       "beforeText": "<p>Click a point, any point.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+      
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.SelectedPointInspector",
+        "config": {
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "submissibilityCriterion": {
+        "notempty": "value"
+      },
+      "triggeredCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/2",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>Click a second point.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
