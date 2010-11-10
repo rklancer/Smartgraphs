@@ -1,6 +1,5 @@
 {
-  "_rev": "6-7aedc5f3a4ff383b04426e22f541ade7",
-  "data_format_version": 1,
+  "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
     "url": "/shared/slope-tool-demo",
@@ -62,6 +61,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": [
 
@@ -103,6 +105,9 @@
 
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": null,
