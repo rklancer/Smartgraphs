@@ -45,18 +45,13 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
   },
 
   createHighlightedPointFromSelection: function (context, args) {
-    var graphName = args.graphName,
-    dataset = args.dataset,
-    highlightedPointName = args.highlightedPointName,
-    highlightedPoints = [];
-    dataset.get('selection').forEach( function (selectedPoint) {
-      highlightedPoints.push(Smartgraphs.store.createRecord(Smartgraphs.HighlightedPoint, { 'point': selectedPoint, 'name': highlightedPointName, 'isExample': NO, 'activity': Smartgraphs.activityController.get('content') }));
+    var graphName = args.graphName;
+    args.dataset.get('selection').forEach( function (selectedPoint) {
+      var hp = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName);
+      hp.set('point', selectedPoint);
+      hp.set('activity', Smartgraphs.activityController.get('content'));
     });
-    if (highlightedPoints.length == 1) {
-      return highlightedPoints[0];
-    } else {
-      return highlightedPoints;
-    }
+    return YES;
   }
   
 }) ;
