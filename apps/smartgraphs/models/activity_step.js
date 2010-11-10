@@ -106,6 +106,11 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   triggeredCommands: SC.Record.toMany('Smartgraphs.TriggeredCommands'),  
   
+  /** 
+    The list of commands (and their arguments) to be run right after this ActivityStep is submitted.
+  */
+  afterSubmissionCommands: SC.Record.attr(Array),
+  
   /**
     a hash that contains:
       the class name of the Inspector that checks the user's submitted response, if any.
