@@ -1,6 +1,5 @@
 {
-  "_rev": "4-bb1fd399bdb3b3068db733588404ba72",
-  "data_format_version": 1,
+  "data_format_version": 2,
   "activity": {
     "title": "Maria's Run",
     "url": "/shared/marias-run",
@@ -155,6 +154,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": [
 
@@ -209,6 +211,9 @@
         ]
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": null,
@@ -267,6 +272,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": [
 
@@ -323,6 +331,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": [
 
@@ -368,6 +379,9 @@
         "notempty": "value"
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": {
@@ -431,6 +445,9 @@
         "notempty": "value"
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": {
@@ -509,6 +526,9 @@
         "notempty": "value"
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": {
@@ -595,6 +615,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
@@ -650,6 +673,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": [
 
@@ -687,6 +713,9 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": null,
@@ -737,6 +766,9 @@
         ]
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": {
@@ -799,6 +831,9 @@
         ]
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": {
@@ -868,6 +903,9 @@
         ]
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": {
@@ -947,6 +985,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
@@ -998,6 +1039,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": [
 
@@ -1035,6 +1079,9 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": null,
@@ -1085,6 +1132,9 @@
         ]
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": {
@@ -1156,6 +1206,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
@@ -1216,6 +1269,9 @@
         ]
       },
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": {
@@ -1280,6 +1336,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
@@ -1331,6 +1390,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": [
 
@@ -1368,6 +1430,9 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": null,
@@ -1420,6 +1485,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": null,
       "defaultBranch": "/shared/marias-run/page/8/step/2",
@@ -1455,6 +1523,9 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": null,
