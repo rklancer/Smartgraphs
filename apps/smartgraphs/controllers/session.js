@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs */
+/*globals Smartgraphs property */
 
 /** @class
 
@@ -33,13 +33,19 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     return newDataset;
   },
   
-  createAnnotation: function (type, name) {
+  createAnnotation: function (type, name, attributes) {
     var newAnnotation = Smartgraphs.store.createRecord(type, {
       isExample: NO,
       name: name
     });
     newAnnotation.set('session', this.get('content'));
     newAnnotation.set('id', Smartgraphs.getNextGuid());
+    if (attributes) {
+      // Iterate over keys
+      for (property in attributes) {
+        newAnnotation.set(property, attributes.property);
+      }
+    }
         
     return newAnnotation;
   }
