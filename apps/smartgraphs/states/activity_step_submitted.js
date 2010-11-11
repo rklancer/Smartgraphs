@@ -80,7 +80,13 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
     if (selection.get('length') !== 1) return YES;
     
     var selectedPoint = selection.firstObject();
-    var highlightedPoint = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName, {'point': selectedPoint });
+    
+    // set point (a relation) using its id rather than the object, because createAnnotation works like createRecord
+    // in that regard (it works on the datahash underlying the record)
+    var highlightedPoint = 
+      Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName, { 
+        point: selectedPoint.get('id')
+      });
     
     return YES;
   }
