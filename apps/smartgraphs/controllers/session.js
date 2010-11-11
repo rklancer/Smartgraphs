@@ -15,9 +15,11 @@ Smartgraphs.sessionController = SC.ObjectController.create(
 /** @scope Smartgraphs.sessionController.prototype */ {
 
   newSession: function () {
-    var session = Smartgraphs.store.createRecord(Smartgraphs.Session, { steps: [] });
-    session.set('user', Smartgraphs.userController.get('content'));
-    session.set('id', Smartgraphs.getNextGuid());
+    var session = Smartgraphs.store.createRecord(Smartgraphs.Session, {
+      steps: [],
+      guid: Smartgraphs.getNextGuid(),
+      user: Smartgraphs.userController.getPath('content.id')
+    });
     this.set('content', session);
   },
   
@@ -34,19 +36,12 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   },
   
   createAnnotation: function (type, name, attributes) {
-    var newAnnotation = Smartgraphs.store.createRecord(type, {
+    var newAnnotation = Smartgraphs.store.createRecord(type, SC.mixin({
+      id: Smartgraphs.getNextGuid(),
       isExample: NO,
+      session: this.getPath('content.id'),
       name: name
-    });
-    newAnnotation.set('session', this.get('content'));
-    newAnnotation.set('id', Smartgraphs.getNextGuid());
-    if (attributes) {
-      // Iterate over keys
-      for (property in attributes) {
-        newAnnotation.set(property, attributes.property);
-      }
-    }
-        
+    }, attributes));     
     return newAnnotation;
   }
   
