@@ -39,14 +39,16 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     // call store.dataSourceDidComplete(storeKey) when done.
     
     var recordType = Smartgraphs.store.recordTypeFor(storeKey);
-    var activityId = Smartgraphs.store.idFor(storeKey);
-    var requestUrl = '/db/smartgraphs/_design/app/_view/activities-by-url-and-version?key=["'+activityId+'",'+Smartgraphs.DATA_FORMAT_VERSION+']';
+    var id = Smartgraphs.store.idFor(storeKey);
 
     this.log('CouchDataSource.retrieveRecord()');
     this.log('  Record type requested = %s', recordType.toString());
-    this.log('  id requested = %s', activityId);
+    this.log('  id requested = %s', id);
 
-    if ((recordType === Smartgraphs.Activity)) {
+    if (recordType === Smartgraphs.Activity) {
+      var activityId = id;
+      var requestUrl = '/db/smartgraphs/_design/app/_view/activities-by-url-and-version?key=["'+activityId+'",'+Smartgraphs.DATA_FORMAT_VERSION+']';
+      
       SC.Request.getUrl(requestUrl)
                 .json()
   		          .header('Accept', 'application/json')
@@ -57,6 +59,20 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
       return YES;
     }
     
+    if (recordType === Smartgraphs.User) {
+      // The default user record is just this simple
+      this.log('  recognized request for User record');
+      if (id === 'default') {
+        store.dataSourceDidComplete(storeKey, {
+          userId: 'default',
+          name: 'Default Smartgraphs User',
+          sessions: []
+        });
+        this.log("  handled request for User record of 'default' user");
+      }
+      return YES;
+   }
+   
     return NO ; // return YES if you handled the storeKey
   },
   
