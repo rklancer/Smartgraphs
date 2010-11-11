@@ -1,5 +1,5 @@
 {
-  "_rev": "1-ea69e1f7b4a2c641c993cf107e8f6355",
+  "_rev": "4-0473ac266df39d3b16c9ec320e69bf11",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -64,9 +64,11 @@
       ],
       "afterSubmissionCommands": [
         {
-          "action": "openActivity",
+          "action": "createHighlightedPointFromSelection",
           "literalArgs": {
-            "id": "/shared/marias-run"
+            "graphName": "demo-graph",
+            "datasetName": "demo-data",
+            "highlightedPointName": "first-selected-point"
           }
         }
       ],
@@ -100,7 +102,14 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-      
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.HighlightedPoint",
+            "name": "first-selected-point",
+            "graphName": "demo-graph"
+          }
+        }
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": false,
