@@ -50,6 +50,39 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
       var hp = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName, {'point': selectedPoint });
     });
     return YES;
+  },
+  
+  /**
+    Create a HighlightedPoint record with name highlightedPointName in the current session. Takes the point from the
+    the selected datapoint in the dataset with name datasetName, which must be open in the graph graphName.
+    
+    Does nothing if there is no dataset with the passed name, or it is not open in the graph with graphName, or 
+    there are more or fewer than 1 datapoints selected.
+    
+    Arguments:
+      graphName
+      datasetName
+      highlightedPointName
+      
+    A possible variant of this command would not require a graphName to be specified.
+  */
+  createHighlightedPointFromSelection: function (context, args) {
+    // given the graphName, find the associated graph controller
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+
+    // use the graph controller's findDatasetByName method to dereference datasetName to an actual Dataset record
+    var dataset = controller && controller.findDatasetByName(args.datasetName);
+    
+    if (!dataset) return YES;   // handled, but graph controller or dataset could not be found
+    
+    var selection = dataset.get('selection');
+    // consider the action handled -- but do nothing -- if there is <1 or there are >1 points selected.
+    if (selection.get('length') !== 1) return YES;
+    
+    var selectedPoint = selection.firstObject();
+    var highlightedPoint = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName, {'point': selectedPoint });
+    
+    return YES;
   }
   
 }) ;

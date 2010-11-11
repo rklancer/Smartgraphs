@@ -133,7 +133,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     var dataset = controller && controller.findDatasetByName(args.datasetName);
     
-    if ( !dataset ) return YES;        // handled, but invalid pane or dataset...
+    if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
     
     // TODO let 'args' override these settings if desired
     var xMin = controller.getPath('axes.xMin');
