@@ -71,7 +71,7 @@ Smartgraphs.Dataset = SC.Record.extend(
   /**
     The (unordered) set of Datapoints in this dataset.
     
-    @property {Array}
+    @property {Smartgraphs.DataPoint[]}
   */
   points: SC.Record.toMany('Smartgraphs.DataPoint', { inverse: 'dataset' } ),
 
