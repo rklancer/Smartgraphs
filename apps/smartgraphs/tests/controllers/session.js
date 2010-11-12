@@ -10,6 +10,7 @@ module("Smartgraphs.sessionController", {
   setup: function () {
     oldStore = Smartgraphs.store;
     Smartgraphs.store = SC.Store.create().from(SC.FixturesDataSource.create());
+    Smartgraphs.sessionController.set('content', null);
   },
 
   teardown: function () {
