@@ -1,6 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.responseTemplate Unit Test
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2010 Concord Consortium
+// @author:   Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
