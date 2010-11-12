@@ -7,9 +7,12 @@
 module("Smartgraphs.freehandInputController");
 
 // TODO: Replace with real unit test for Smartgraphs.freehandInputController
-test("test description", function() {
-  var expected = "test";
-  var result   = "test";
-  equals(result, expected, "test should equal test");
-});
+// TODO: sensor.js is probably a good model to start with
+// TODO: See also ../integration/freehand_sketch.js which covers most of it
+
+// test("test description", function() {
+//   var expected = "test";
+//   var result   = "test";
+//   equals(result, expected, "test should equal test");
+// });
 

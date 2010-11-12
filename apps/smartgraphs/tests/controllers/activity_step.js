@@ -38,6 +38,7 @@ test("makeInspector method should return an inspector instance corresponding to 
 
 test("executeCommands should ignore a falsy list of commands", function () {
   var callCount = 0;
+  // Replace sendAction with a stub
   Smartgraphs.sendAction = function () {
     callCount++;
   };
