@@ -73,6 +73,10 @@ module("sensorController <--> SENSOR_* state interactions", {
 });
 
 test("Correct sequence of events should occur when sensor loads and is used in the nominal fashion", function () {
+  expect(34);
+  // This looks like a lot of assertions for one test, but the dependencies are such that breaking them up
+  // into separate tests will only introduce more code.
+  
   // mock validPaneFor
   Smartgraphs.activityViewController.validPaneFor = function (pane) {
     return (pane === 'valid-pane') ? pane : NO;
@@ -229,6 +233,7 @@ test("Correct sequence of events should occur when sensor loads and is used in t
 
 
 test("sensor controller should properly set isStreaming and streamSource properties when it starts recording", function () {
+  expect(5);
   // mock validPaneFor
   Smartgraphs.activityViewController.validPaneFor = function (pane) {
     return (pane === 'valid-pane') ? pane : NO;
