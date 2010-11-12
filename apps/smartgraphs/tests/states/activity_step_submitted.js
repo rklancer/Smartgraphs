@@ -22,6 +22,7 @@ test("creating a HighlightedPoint record from the selection in a dataset", funct
   expect(6);
   var startingAnnotationCount = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length');
 
+  // FIXME: Using the fixtures here is brittle
   var graphName = 'walking-example-1'; // From motion toward and away in fixtures
   Smartgraphs.firstGraphController.openGraph(graphName); // Set the graph
 
@@ -42,7 +43,6 @@ test("creating a HighlightedPoint record from the selection in a dataset", funct
   equals(result, YES, "method returns YES");
   var currentAnnotationCount = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length');
   equals(currentAnnotationCount, startingAnnotationCount + 1, "There is one more HighlightedPoint");
-  // TODO: Check the HighlightedPoint's point
   var newHp = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').lastObject();
   equals(newHp.get('point'), dataset.get('selection').firstObject(), "The highlighted point is the first one from the dataset");
 });
