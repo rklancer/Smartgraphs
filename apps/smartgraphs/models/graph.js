@@ -12,7 +12,7 @@
   @extends SC.Record
   @version 0.1
 */
-Smartgraphs.Graph = Smartgraphs.Annotation.extend(
+Smartgraphs.Graph = SC.Record.extend(
 /** @scope Smartgraphs.Graph.prototype */ {
 
   url: SC.Record.attr(String),
