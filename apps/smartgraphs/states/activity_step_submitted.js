@@ -123,6 +123,60 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
       });
     
     return YES;
+  },
+  
+  /** 
+    Create a LineThroughPoints with the name lineName in the current session. Takes as one point of the line
+    a current HighlightedPoint annotation, and as the other, the selected data point in the dataset with the
+    name datasetName, which must be open in the graph graphName.
+    
+    The LineThroughPoints is not automatically added to the graph.
+    
+    This method does nothing if there is no dataset with the passed name, or if it is not open in the graph
+    with graphName, if there is no HighlightedPoint annotation, or if there are more or fewer than 1 data
+    points selected.
+    
+    A possible future version of this method might accept two selected points.
+    
+    @param context
+    @param args
+    
+    @param {String} args.graphName
+      The name of the graph on which the dataset with the selected point must be displayed. This graph must be open in 
+      the page when this command executes.
+    @param {String} args.datasetName
+      The name of the dataset, which must have a single selected point.
+    @param {String} args.highlightedName
+      The name of the HighlightedPoint annotation.
+    @param {String} args.lineName
+      The name given to the session-scoped LineThroughPoints annotation which will be created.
+  */
+  createLineThroughPointsFromHighlightedPointAndSelection: function (context, args) {
+    // given the graphName, find the associated graph controller
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    
+    // Use the graph controllers findDatasetByName method to dereference datasetName to an actual Dataset record
+    var dataset = controller && controller.findDatasetByName(args.datasetName);
+    
+    if (!dataset) return YES; // handled, but graph controller or dataset could not be found
+    
+    var selection = dataset.get('selection');
+    // consider the action handled -- but do nothing -- if there are < 1 or > 1 points selected.
+    if (selection.get('length') !== 1) return YES;
+    
+    var selectedPoint = selection.firstObject();
+    
+    var annotation = controller.findAnnotationByName(args.highlightedName);
+    
+    // set points (a relation) using ids rather than objects, because createAnnotation works like createRecord
+    // in that regard (it works on the datahash underlying the record)
+    var lineThroughPoints = 
+      Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineThroughPoints, args.lineName, { 
+        point1: annotation.get('point').get('id'),
+        point2: selectedPoint.get('id')
+      });
+    
+    return YES;
   }
   
 }) ;
