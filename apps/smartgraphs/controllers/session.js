@@ -17,9 +17,9 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   newSession: function () {
     var session = Smartgraphs.store.createRecord(Smartgraphs.Session, {
       steps: [],
-      guid: Smartgraphs.getNextGuid(),
       user: Smartgraphs.userController.getPath('content.id')
     });
+    session.set('id', Smartgraphs.getNextGuid());
     this.set('content', session);
   },
   
@@ -37,11 +37,12 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   
   createAnnotation: function (type, name, attributes) {
     var newAnnotation = Smartgraphs.store.createRecord(type, SC.mixin({
-      id: Smartgraphs.getNextGuid(),
       isExample: NO,
       session: this.getPath('content.id'),
       name: name
-    }, attributes));     
+    }, attributes));
+    
+    newAnnotation.set('id', Smartgraphs.getNextGuid());
     return newAnnotation;
   }
   

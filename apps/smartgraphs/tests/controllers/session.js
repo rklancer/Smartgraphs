@@ -22,23 +22,31 @@ module("Smartgraphs.sessionController", {
 });
 
 test("Creates a new session", function() {
-  expect(3);
+  expect(4);
   equals( Smartgraphs.sessionController.get('content'), null, "The controller's content is initially null" );
   var result = Smartgraphs.sessionController.newSession(); // Run the method
   equals( result, undefined, "Function returns nothing (undefined)" );
-  ok( Smartgraphs.sessionController.get('content').kindOf(Smartgraphs.Session), "The controller's content is now a Smartgraphs.Session" );
+  var session = Smartgraphs.sessionController.get('content');
+  ok( session.kindOf(Smartgraphs.Session), "The controller's content is now a Smartgraphs.Session" );
+  var pk = session.get('primaryKey');
+  // it is easy to fail to set the session's ID if createRecord() called incorrectly
+  ok( session.get(pk), "The newly-created session should have a valid identifier");
 });
 
 test("Create a dataset", function() {
-  expect(3);
+  expect(4);
   var result = Smartgraphs.sessionController.createDataset("TestDataset"); // Run the method
   ok( result.kindOf(Smartgraphs.Dataset), "The method returns a Smartgraphs.Dataset" );
   equals( result.get('name'), "TestDataset", "The dataset's name is as provided in the function parameters" );
   equals( result.get('points').get('length'), 0, "The dataset's data points are an empty array" );
+  
+  var pk = result.get('primaryKey');
+  // it is easy to fail to set the dataset's ID if createRecord() called incorrectly
+  ok( result.get(pk), "The newly-created dataset should have a valid identifier.");
 });
 
 test("Create an annotation", function() {
-  expect(4);
+  expect(5);
   Smartgraphs.sessionController.newSession();
   var selectedPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {'x': 1, 'y': 1, 'url': Smartgraphs.getNextGuid() });
 
@@ -48,7 +56,8 @@ test("Create an annotation", function() {
     'isExample': NO,
     'session': Smartgraphs.sessionController.getPath('content.id'),
     'name': "TestAnnotation1",
-    'point': selectedPoint.get('id') }) );
+    'point': selectedPoint.get('id') 
+  }));
 
   // Create a similar annotation using the controller
   var result = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'TestAnnotation1', { 'point': selectedPoint.get('id') } );
@@ -57,5 +66,9 @@ test("Create an annotation", function() {
   equals( expected.get('name'), result.get('name'), "The annotations' names should match");
   equals( expected.get('point'), result.get('point'), "The annotations' points should match"); // Both null, as it happens
   equals( Smartgraphs.sessionController.get('content'), result.get('session'), "The annotation is associated with the current session");
+  
+  var pk = result.get('primaryKey');
+  // it is easy to fail to set the annotation's ID if createRecord() called incorrectly
+  ok( result.get(pk), "The newly-created annotation should have a valid identifier.");
 });
 
