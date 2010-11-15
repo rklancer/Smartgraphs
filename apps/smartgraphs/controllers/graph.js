@@ -40,6 +40,9 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
   ],
   
+  /**
+  * Sets values for the current graph, dataset list, annotation list, and content to empty or null.
+  */
   clear: function () {
     // remove this controller from the controllerForName hash
     var currentGraphName = this.get('name');
@@ -52,6 +55,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     this.set('content', null);
   },
   
+  /** 
+  * Opens the named graph. Does nothing if the named graph is already open.
+  * @param name The name of the graph to open.
+  */
   openGraph: function (name) {
     var currentGraphName = this.get('name');
     if (name === currentGraphName) return YES;    // nothing to do!
@@ -108,6 +115,9 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     
     This is the canonical way to add an object given its name. (Once it finds the object, it adds it using
     the addDataset/addAnnotation methods.)
+    
+    @param objectType The type of object to open.
+    @param objectName The name of the object to open.
   */
   addObjectByName: function (objectType, objectName) {
     // first try to get the named dataset from the current session
@@ -138,6 +148,9 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
   },
 
+  /**
+   * @param dataset
+   */
   addDataset: function (dataset) {
     if (this.findDatasetByName(dataset.get('name'))) {
       return;      // don't add the dataset if it is already in the graph!
@@ -151,6 +164,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
 
   /**
     Remove the named dataset from the graph.
+    @param name The dataset to remove.
   */
   removeDataset: function (name) {
     var datasetList = this.get('datasetList');
@@ -158,6 +172,9 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     if (dataset) datasetList.removeObject(dataset);
   },
   
+  /**
+   * @param annotation
+   */
   addAnnotation: function (annotation) {
     if (this.findAnnotationByName(annotation.get('name'))) {
       return;
@@ -167,6 +184,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   
   /**
     Remove the named annotation from the graph.
+    @param name
   */
   removeAnnotation: function (name) {
     var annotationList = this.get('annotationList');
@@ -174,14 +192,23 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     if (annotation) annotationList.removeObject(annotation);
   },
   
+  /**
+    @param name
+  */
   findDatasetByName: function (name) {
     return this.findObjectByNameIn(name, this.get('datasetList'));
   },
   
+  /**
+    @param name
+  */
   findAnnotationByName: function (name) {
     return this.findObjectByNameIn(name, this.get('annotationList'));
   },
   
+  /**
+    @param name
+  */
   findObjectByNameIn: function (name, list) {
     var names = list.getEach('name');
     var idx = names.indexOf(name);
@@ -191,6 +218,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
   /**
     a simple implementation for now...  Later, we can use color names, handle default colors a little more
     carefully, maybe cycle through colors if we have > 10 datasets on a graph (which we would ... why?)
+    @param dataset
   */
   getColorForDataset: function (dataset) {
     var defaultColor = dataset.get('defaultColor');
@@ -210,6 +238,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     return colors.objectAt(0);
   },
 
+  /**
+    @param x
+    @param y
+  */
   inputAreaMouseDown: function (x, y) {
     if (this._routeEvents) {
       this._eventQueue.pushObject({
@@ -220,6 +252,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
   },
   
+  /**
+    @param x
+    @param y
+  */
   inputAreaMouseDragged: function (x, y) {
     if (this._routeEvents) {
       this._eventQueue.pushObject({
@@ -230,6 +266,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder,
     }
   },
   
+  /**
+    @param x
+    @param y
+  */
   inputAreaMouseUp: function (x, y) {
     if (this._routeEvents) {
       this._eventQueue.pushObject({
