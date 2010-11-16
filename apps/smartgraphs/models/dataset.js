@@ -91,6 +91,13 @@ Smartgraphs.Dataset = SC.Record.extend(
   selection: null,
   
   /**
+    Whether the user can click to select points.
+    
+    @property {Boolean}
+  */
+  isSelectable: YES,
+  
+  /**
     The color actually being used to represent points in this dataset, if it is being shown on a graph. (Transient 
     property.)
     

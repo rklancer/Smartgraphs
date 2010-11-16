@@ -18,6 +18,7 @@ Smartgraphs.DatasetView = RaphaelViews.RaphaelCollectionView.extend({
   useFastPath: YES,
   colorBinding: '.item.color',
   selectionBinding: '.item.selection',
+  isSelectableBinding: '.item.isSelectable',
   
   content: function () {
     var dataset = this.get('item');

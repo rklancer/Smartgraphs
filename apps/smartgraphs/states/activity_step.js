@@ -312,8 +312,8 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     if (Smartgraphs.freehandInputController.register(controller, args.annotationName)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT);
-      return YES;
     }
+    return YES;
   },
   
   /**
@@ -350,8 +350,47 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     
     if (Smartgraphs.sensorController.register(pane, dataset, xMin, xMax)) {
       Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
-      return YES;
     }
+    return YES;
+  },
+  
+  /**
+    Allow the user to interactively select the 'anchor' datapoint for some annotation, such as a HighlightedPoint or,
+    in future, a label. Step submission is not allowed until the student selects a datapoint.
+    
+    This implementation requires specifying a dataset. It also modifies the behavior of the dataset view so that
+    points are not selected in the dataset when they are clicked on; instead, they set the 'point' property of the
+    desired annotation.
+    
+    @param context
+    @param args
+    
+    @param {String} args.annotationName
+      The name of the annotation object (for now, this will be a HighlightedPoint annotation)
+    @param {String} args.graphName
+      The name of the graph which should contain the dataset we are choosing a data point from
+    @param {String} args.datasetName
+      The name of the dataset we are choosing a data point from.
+  */
+  startInteractiveSelection: function (context, args) {
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    var dataset = controller && controller.findDatasetByName(args.datasetName);
+  
+    if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
+  
+    var annotation = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName);  
+    controller.addAnnotation(annotation);
+    
+    // try a simpler paradigm .. just stash the info needed by the state, in the state
+    Smartgraphs.INTERACTIVE_SELECTION.set('annotation', annotation);
+    Smartgraphs.INTERACTIVE_SELECTION.set('dataset', dataset);
+  
+    // disable submission until a selection is made...
+    Smartgraphs.activityStepController.disableSubmission();
+          
+    Smartgraphs.makeFirstResponder(Smartgraphs.INTERACTIVE_SELECTION);
+
+    return YES;
   }
   
   // NOT CURRENTLY USED

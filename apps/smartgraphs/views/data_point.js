@@ -52,6 +52,13 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
     this.set('isHovered', NO);
   },
   
+  mouseDown: function () {
+    Smartgraphs.sendAction('dataPointSelected', this, null);
+    // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
+    // also handle it
+    return NO;
+  },
+  
   renderCallback: function (raphaelCanvas, x, y, radius, fill, stroke) {
     return raphaelCanvas.circle(x, y, radius).attr({ fill: fill, stroke: stroke });
   },
