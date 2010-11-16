@@ -126,7 +126,7 @@ Smartgraphs.Dataset = SC.Record.extend(
     If nonnull, and isStreaming is YES, then this represents the expected length of the array after the currently
     streaming data is finished streaming.
     
-    @property {Number}
+    @property {Number | null}
   */
   expectedLength: null
 
