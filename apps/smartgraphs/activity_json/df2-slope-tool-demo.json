@@ -1,5 +1,5 @@
 {
-  "_rev": "4-0473ac266df39d3b16c9ec320e69bf11",
+  "_rev": "7-867d545e60a16c62a058058735e023cd",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -14,7 +14,8 @@
     {
       "steps": [
         "/shared/slope-tool-demo/page/1/step/1",
-        "/shared/slope-tool-demo/page/1/step/2"
+        "/shared/slope-tool-demo/page/1/step/2",
+        "/shared/slope-tool-demo/page/1/step/3"
       ],
       "name": "Slope Tool Page",
       "firstStep": "/shared/slope-tool-demo/page/1/step/1",
@@ -45,32 +46,24 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-      
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "first-point",
+            "graphName": "demo-graph", 
+            "datasetName": "demo-data"
+          }
+        }
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
-      "submissibilityInspector": {
-        "type": "Smartgraphs.SelectedPointInspector",
-        "config": {
-          "graphName": "demo-graph",
-          "datasetName": "demo-data"
-        }
-      },
-      "submissibilityCriterion": {
-        "notempty": "value"
-      },
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
       "triggeredCommands": [
 
       ],
       "afterSubmissionCommands": [
-        {
-          "action": "createHighlightedPointFromSelection",
-          "literalArgs": {
-            "graphName": "demo-graph",
-            "datasetName": "demo-data",
-            "highlightedPointName": "first-selected-point"
-          }
-        }
+
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -106,7 +99,93 @@
           "action": "addAnnotation",
           "literalArgs": {
             "type": "Smartgraphs.HighlightedPoint",
-            "name": "first-selected-point",
+            "name": "first-point",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "second-point",
+            "graphName": "demo-graph", 
+            "datasetName": "demo-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+
+      },
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/3",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>Here is a line through the two points.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.HighlightedPoint",
+            "name": "first-point",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.HighlightedPoint",
+            "name": "second-point",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "line",
+            "firstPoint": "first-point",
+            "secondPoint": "second-point",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.LineThroughPoints",
+            "name": "line",
             "graphName": "demo-graph"
           }
         }
