@@ -9,7 +9,10 @@
 
   Display view for the LineThroughPoints annotation model, which represents a line
   running through two defined points and extending to the edges of the graph.
-
+  
+  There may be unpredictable results if the two points define a vertical line
+  (that is, there is not a real function defining the line).
+  
   @extends RaphaelViews.RaphaelView
 */
 
@@ -152,7 +155,11 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
    *
    */
   _getXFromY: function (y, m, b) {
-    return (y - b)/m;
+    if (m === 0) { // If the slope is 0, line is horizontal. We don't want to try division by 0.
+      return b;
+    } else {
+      return (y - b)/m;
+    }
   }
 
 });
