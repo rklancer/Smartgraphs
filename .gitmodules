@@ -12,4 +12,4 @@
 	url = http://github.com/sproutcore/sproutcore.git
 [submodule "applets"]
 	path = applets
-	url = ./applets
+	url = http://github.com/stepheneb/lightweight-sensor-graphs.git
