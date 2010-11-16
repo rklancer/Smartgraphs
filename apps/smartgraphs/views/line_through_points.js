@@ -49,47 +49,57 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
     var point2 = annotation.get('point2');
     var points = [];
     
-    // Find border "endpoints" of the segment to be drawn, in conceptual form
-    var m, b;
-    // y = mx + b
-    m = (point2.get('y')-point1.get('y'))/(point2.get('x')-point1.get('x'));
-    // y - mx = b
-    b = point2.get('y') - (m * point2.get('x'));
-    // x = (y - b)/m
+    var x1 = point1.get('x'),
+        y1 = point1.get('y'),
+        x2 = point2.get('x'),
+        y2 = point2.get('y');
 
-    if (this._getXFromY(xMin, m, b) < yMin) {
-      // start point is on bottom border
-      points.push({ 'y': yMin, 'x': this._getXFromY(yMin, m, b) });
-      if (this._getYFromX(xMin, m, b) > yMax) {
-        // end point is on top border
-        points.push({ 'y': yMax, 'x': this._getXFromY(yMax, m, b) });
-      } else {
-        // end point is on right border
-        points.push({ 'x': xMax, 'y': this._getYFromX(xMax, m, b) });
-      } // Because we started at the bottom and are going left/right, end point can't be on left
-    } else if (yMin <= this._getXFromY(xMin, m, b) <= yMax) {
-      // start point on left border
-      points.push( { 'x': xMin, 'y': this._getYFromX(xMin, m, b) });
-      if (this._getYFromX(xMax, m, b) < yMin) {
-        // end point on bottom border
-        points.push( { 'y': yMin, 'x': this._getXFromY(yMin, m, b) });
-      } else if (yMin < this._getYFromX(xMax, m, b) < yMax) {
-        // end point on right border
-        points.push( { 'x': xMax, 'y': this._getYFromX(xMax, m, b) });
-      } else {
-        // end point is on top border
-        points.push({ 'y': yMax, 'x': this._getXFromY(yMax, m, b) });
+    if (x1 === x2) {
+      points.push( {x: x1, y: yMin} );
+      points.push( {x: x1, y: yMax} );
+    }
+    else {
+      // Find border "endpoints" of the segment to be drawn, in conceptual form
+      var m, b;
+      // y = mx + b
+      m = (y2-y1)/(x2-x1);
+      // y - mx = b
+      b = y2 - (m * x2);
+      
+      if (this._y(xMin, m, b) < yMin) {
+        // start point is on bottom border
+        points.push({ 'y': yMin, 'x': this._x(yMin, m, b) });
+        if (this._y(xMax, m, b) > yMax) {
+          // end point is on top border
+          points.push({ 'y': yMax, 'x': this._x(yMax, m, b) });
+        } else {
+          // end point is on right border
+          points.push({ 'x': xMax, 'y': this._y(xMax, m, b) });
+        } // Because we started at the bottom and are going left/right, end point can't be on left
+      } else if (yMin <= this._y(xMin, m, b) <= yMax) {
+        // start point on left border
+        points.push( { 'x': xMin, 'y': this._y(xMin, m, b) });
+        if (this._y(xMax, m, b) < yMin) {
+          // end point on bottom border
+          points.push( { 'y': yMin, 'x': this._x(yMin, m, b) });
+        } else if (this._y(xMax, m, b) <= yMax) {
+          // end point on right border
+          points.push( { 'x': xMax, 'y': this._y(xMax, m, b) });
+        } else {
+          // end point is on top border
+          points.push({ 'y': yMax, 'x': this._x(yMax, m, b) });
+        }
+      } else if (yMax < this._y(xMin, m, b)) {
+        // start point on top border
+        points.push({ 'y': yMax, 'x': this._x(yMax, m, b) });
+        if (this._y(xMax, m, b) < yMin) {
+          // end point is on bottom border
+          points.push({ 'y': yMin, 'x': this._x(yMin, m, b) });
+        } else {
+          // end point is on right border
+          points.push({ 'x': xMax, 'y': this._y(xMax, m, b) });
+        } // Because we started at the top and are going left/right, end point can't be on left
       }
-    } else if (yMax < this._getXFromY(xMin, m, b)) {
-      // start point on top border
-      points.push({ 'y': yMax, 'x': this._getXFromY(yMax, m, b) });
-      if ((m * xMax + b) < yMin) {
-        // end point is on bottom border
-        points.push({ 'y': yMin, 'x': this._getXFromY(yMin, m, b) });
-      } else {
-        // end point is on right border
-        points.push({ 'x': xMax, 'y': this._getYFromX(xMax, m, b) });
-      } // Because we started at the top and are going left/right, end point can't be on left
     }
     
     var coords, point;
@@ -139,7 +149,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
    * @param {Numeric} b The line's y-intercept
    *
    */
-  _getYFromX: function (x, m, b) {
+  _y: function (x, m, b) {
     return (m * x) + b;
   },
   
@@ -153,7 +163,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
    * @param {Numeric} b The line's y-intercept
    *
    */
-  _getXFromY: function (y, m, b) {
+  _x: function (y, m, b) {
     if (m === 0) { // If the slope is 0, line is horizontal. We don't want to try division by 0.
       return b;
     } else {
