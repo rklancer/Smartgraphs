@@ -1,5 +1,5 @@
 {
-  "_rev": "7-867d545e60a16c62a058058735e023cd",
+  "_rev": "8-176ef30e777da2a677839f8960867c81",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -96,14 +96,6 @@
       "afterText": "",
       "startCommands": [
         {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "type": "Smartgraphs.HighlightedPoint",
-            "name": "first-point",
-            "graphName": "demo-graph"
-          }
-        },
-        {
           "action": "startInteractiveSelection",
           "literalArgs": {
             "annotationName": "second-point",
@@ -124,7 +116,15 @@
 
       ],
       "afterSubmissionCommands": [
-
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "line",
+            "firstPoint": "first-point",
+            "secondPoint": "second-point",
+            "graphName": "demo-graph"
+          }
+        }
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -156,31 +156,6 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "type": "Smartgraphs.HighlightedPoint",
-            "name": "first-point",
-            "graphName": "demo-graph"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "type": "Smartgraphs.HighlightedPoint",
-            "name": "second-point",
-            "graphName": "demo-graph"
-          }
-        },
-        {
-          "action": "createLineThroughPoints",
-          "literalArgs": {
-            "lineName": "line",
-            "firstPoint": "first-point",
-            "secondPoint": "second-point",
-            "graphName": "demo-graph"
-          }
-        },
         {
           "action": "addAnnotation",
           "literalArgs": {
