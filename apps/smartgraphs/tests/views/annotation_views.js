@@ -144,7 +144,6 @@ test('LineToAxis location should have the expected path to the x-axis with the s
   var point = addPoint(dataset, -1, -5);
   lineToXAxis.set('point', point);
   lineToXAxis.set('axis', "x");
-  console.log("lineToXAxis:", lineToXAxis);
   Smartgraphs.firstGraphController.addAnnotation(lineToXAxis);
 
   var lineToAxisView = annotationViews.objectAt(annotationViews.get('length') - 1);
