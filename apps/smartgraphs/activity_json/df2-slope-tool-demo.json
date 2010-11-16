@@ -1,0 +1,356 @@
+{
+  "_rev": "7-867d545e60a16c62a058058735e023cd",
+  "data_format_version": 2,
+  "activity": {
+    "title": "Slope Tool Demo",
+    "url": "/shared/slope-tool-demo",
+    "owner": "shared",
+    "pages": [
+      "/shared/slope-tool-demo/page/1"
+    ],
+    "pageListUrl": "/shared/slope-tool-demo/pages"
+  },
+  "pages": [
+    {
+      "steps": [
+        "/shared/slope-tool-demo/page/1/step/1",
+        "/shared/slope-tool-demo/page/1/step/2",
+        "/shared/slope-tool-demo/page/1/step/3"
+      ],
+      "name": "Slope Tool Page",
+      "firstStep": "/shared/slope-tool-demo/page/1/step/1",
+      "introText": "<h1>Slope Tool Demo</h1>",
+      "url": "/shared/slope-tool-demo/page/1",
+      "activity": "/shared/slope-tool-demo",
+      "index": 1,
+      "stepListUrl": "/shared/slope-tool-demo/page/1/steps"
+    }
+  ],
+  "steps": [
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/1",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>Click a point, any point.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "first-point",
+            "graphName": "demo-graph", 
+            "datasetName": "demo-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/2",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>Click a second point.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.HighlightedPoint",
+            "name": "first-point",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "second-point",
+            "graphName": "demo-graph", 
+            "datasetName": "demo-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+
+      },
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/3",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>Here is a line through the two points.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.HighlightedPoint",
+            "name": "first-point",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.HighlightedPoint",
+            "name": "second-point",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "line",
+            "firstPoint": "first-point",
+            "secondPoint": "second-point",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.LineThroughPoints",
+            "name": "line",
+            "graphName": "demo-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": {
+
+      },
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    }
+  ],
+  "responseTemplates": [
+
+  ],
+  "datasets": [
+    {
+      "url": "/shared/slope-tool-demo/dataset/demo-data",
+      "name": "demo-data",
+      "activity": "/shared/slope-tool-demo",
+      "isExample": true,
+      "points": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "session": null,
+      "defaultColor": null
+    }
+  ],
+  "datapoints": [
+    {
+      "x": 0,
+      "y": 0,
+      "guid": 1,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "guid": 2,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "guid": 3,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "guid": 4,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "guid": 5,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "guid": 6,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 6,
+      "y": 8,
+      "guid": 7,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 7,
+      "y": 10,
+      "guid": 8,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "guid": 9,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 9,
+      "y": 12,
+      "guid": 10,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    },
+    {
+      "x": 10,
+      "y": 15,
+      "guid": 11,
+      "dataset": "/shared/slope-tool-demo/dataset/demo-data"
+    }
+  ],
+  "graphs": [
+    {
+      "url": "/shared/slope-tool-demo/graph/demo-graph",
+      "activity": "/shared/slope-tool-demo",
+      "name": "demo-graph",
+      "description": "Demonstration Data for Slope Tool",
+      "title": "Position versus Time",
+      "axes": "/shared/slope-tool-demo/axes/10s-15meters",
+      "initialDatasets": [
+        "demo-data"
+      ],
+      "initialAnnotations": [
+
+      ]
+    }
+  ],
+  "axes": [
+    {
+      "url": "/shared/slope-tool-demo/axes/10s-15meters",
+      "xMin": 0,
+      "xMax": 10,
+      "xSteps": 10,
+      "xLabel": "Time (sec)",
+      "xLabelAbbreviated": "Time (sec)",
+      "yMin": 0,
+      "yMax": 15,
+      "ySteps": 10,
+      "yLabel": "Position (m)",
+      "yLabelAbbreviated": "Position (m)"
+    }
+  ],
+  "freehandSketches": [
+
+  ],
+  "highlightedPoints": [
+
+  ],
+  "highlightedSegments": [
+
+  ],
+  "linesToAxis": [
+
+  ]
+}

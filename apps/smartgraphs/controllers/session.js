@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs */
+/*globals Smartgraphs property */
 
 /** @class
 
@@ -15,8 +15,10 @@ Smartgraphs.sessionController = SC.ObjectController.create(
 /** @scope Smartgraphs.sessionController.prototype */ {
 
   newSession: function () {
-    var session = Smartgraphs.store.createRecord(Smartgraphs.Session, { steps: [] });
-    session.set('user', Smartgraphs.userController.get('content'));
+    var session = Smartgraphs.store.createRecord(Smartgraphs.Session, {
+      steps: [],
+      user: Smartgraphs.userController.getPath('content.id')
+    });
     session.set('id', Smartgraphs.getNextGuid());
     this.set('content', session);
   },
@@ -33,14 +35,14 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     return newDataset;
   },
   
-  createAnnotation: function (type, name) {
-    var newAnnotation = Smartgraphs.store.createRecord(type, {
+  createAnnotation: function (type, name, attributes) {
+    var newAnnotation = Smartgraphs.store.createRecord(type, SC.mixin({
       isExample: NO,
+      session: this.getPath('content.id'),
       name: name
-    });
-    newAnnotation.set('session', this.get('content'));
+    }, attributes));
+    
     newAnnotation.set('id', Smartgraphs.getNextGuid());
-        
     return newAnnotation;
   }
   

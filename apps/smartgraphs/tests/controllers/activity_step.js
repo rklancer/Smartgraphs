@@ -6,7 +6,7 @@
 /*globals Smartgraphs module test ok equals same stop start */
 
 var step;
-var oldMI, oldSA;
+var oldMI, oldSA, oldEC;
 
 module("Smartgraphs.activityStepController", {
   setup: function () {
@@ -15,11 +15,13 @@ module("Smartgraphs.activityStepController", {
     Smartgraphs.activityStepController.set('content', step);
     oldMI = Smartgraphs.activityStepController.makeInspector;
     oldSA = Smartgraphs.sendAction;
+    oldEC = Smartgraphs.activityStepController.executeCommands;
   },
   
   teardown: function () {
     Smartgraphs.activityStepController.makeInspector = oldMI;
     Smartgraphs.sendAction = oldSA;
+    Smartgraphs.activityStepController.executeCommands = oldEC;
   }
 });
 
@@ -31,6 +33,57 @@ test("makeInspector method should return an inspector instance corresponding to 
   
   var inspector = Smartgraphs.activityStepController.makeInspector('submissibilityInspector');
   ok(SC.kindOf(inspector, Smartgraphs.FirstResponseFieldInspector), 'makeInspector should return a valid FirstResponseFieldInspector instance');
+});
+
+
+test("executeCommands should ignore a falsy list of commands", function () {
+  var callCount = 0;
+  // Replace sendAction with a stub
+  Smartgraphs.sendAction = function () {
+    callCount++;
+  };
+  
+  Smartgraphs.activityStepController.executeCommands();
+  Smartgraphs.activityStepController.executeCommands([]);
+  Smartgraphs.activityStepController.executeCommands(null);
+  
+  equals(callCount, 0, "activityStepController.executeCommands correctly refused to call sendAction and did not error out after being passed falsy arguments.");
+});
+
+
+test("executeCommands should cause the appropriate actions to be sent", function () {
+  var actions = [];
+  var contexts = [];
+  var argLists = [];
+  
+  Smartgraphs.sendAction = function (action, context, argList) {
+    actions.push(action);
+    contexts.push(context);
+    argLists.push(argList);
+  };
+  
+  var commands = [
+    {
+      "action": "command1",
+      "literalArgs": {
+        "arg1": "val1",
+        "arg2": "val2"
+      }
+    },
+    {
+      "action": "command2",
+      "literalArgs": {
+        "arg1": "val1"
+      }
+    }
+  ];
+  Smartgraphs.activityStepController.executeCommands(commands);
+  
+  same(actions, ["command1", "command2"], "sendAction should have been invoked with action 'command1' then 'command2'");
+  var that = Smartgraphs.activityStepController;
+  same(contexts, [that, that], "sendAction should have been invoked with context == Smartgraphs.activityStepController, both times");
+  same(argLists[0], { "arg1": "val1", "arg2": "val2"}, "sendAction should have been passed action args {'arg1': 'val1', 'arg2': 'val2'} in the first invocation"); 
+  same(argLists[1], { "arg1": "val1" }, "sendAction should have been passed action args {'arg1': 'val1'} in the second invocation");
 });
 
 
@@ -63,7 +116,7 @@ test("after enableSubmission, handleSubmission should call make the appropriate 
     };
   };
   
-  // disable submission...
+  // enable submission...
   Smartgraphs.activityStepController.enableSubmission();
   
   // and check that handleSubmission calls makeInspector with the correct arg...
@@ -72,6 +125,46 @@ test("after enableSubmission, handleSubmission should call make the appropriate 
   
   // and check that it calls inspect() on the returned inspector object.
   ok(inspectWasCalled === YES, "handleSubmission() should have called the inspect() method of the returned inspector");
+});
+
+
+test("handleSubmission should execute the 'afterSubmissionCommands' before calling the response inspector", function () {  
+  var commandsPassed = null;
+  var inspectWasCalled = "no";
+  var inspectWasCalledWhenCommandsExecuted;
+  
+  Smartgraphs.activityStepController.executeCommands = function (args) {
+    commandsPassed = args;
+    inspectWasCalledWhenCommandsExecuted = inspectWasCalled;
+  };
+  
+  Smartgraphs.activityStepController.makeInspector = function () {
+    return {
+      inspect: function () {
+        inspectWasCalled = "yes";
+      }
+    };
+  };
+  
+  var commands = [
+    {
+      "action": "command1",
+      "literalArgs": {
+        "arg1": "val1",
+        "arg2": "val2"
+      }
+    }
+  ];
+  
+  step.afterSubmissionCommands = commands;
+  step.responseBranches = [];
+  
+  Smartgraphs.activityStepController.enableSubmission();
+  Smartgraphs.activityStepController.handleSubmission();
+  
+  equals(commandsPassed, commands, "handleSubmission should result in a call to executeCommands with the 'afterSubmissionCommand' command list.");
+  equals(inspectWasCalled, "yes", "ResponseInspector.inspect() should have been called during handleSubmission");
+  equals(inspectWasCalledWhenCommandsExecuted, "no", "ResponseInspector.inspect() should not have been called when the executeCommands was called.");
 });
 
 

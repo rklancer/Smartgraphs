@@ -52,11 +52,10 @@ access your machine via the network can administer your CouchDB instance Add a l
 in `/opt/local/etc/couchdb/` if using MacPorts) as follows:
 
     <username> = <password>
-    
-    Where `<username>` and `<password>` are the username and password you want to use to access your local CouchDB
-    instance.
 
-Visit <http://127.0.0.1/_utils/> to see the web interface to CouchDB and to verify your username and password. Once
+Where `<username>` and `<password>` are the username and password you want to use to access your local CouchDB instance.
+
+Visit <http://127.0.0.1:5984/_utils/> to see the web interface to CouchDB and to verify your username and password. Once
 you do, your plaintext password in the `local.ini` file will be replaced by a hashed version.
 
 Create the CouchDB database called `smartgraphs` as follows:
@@ -228,3 +227,54 @@ More information about [replicating couchdb databases](http://wiki.apache.org/co
 
     sc-build-number smartgraphs    
 
+
+### Recommended git practice.
+
+If you have a large or 'speculative' set of commits to make, don't be afraid to create a new branch to hold your
+work as you go.
+
+If you are making smaller or more routine commits, it's better not to create a new branch. However, if others are
+working on the master branch at the same time, this will create unnecessary merge commits as you reconcile their work
+with yours (or vice versa).
+
+Therefore, please checkout a local branch, called for example 'tmp', before starting work:
+
+    (master) $ git checkout -b tmp
+    (tmp) $
+
+When you are ready to push your work to the repo, check for the latest updates to master:
+
+    (tmp) $ git checkout master
+    (master) $ git pull
+
+There should be no merges or conflicts, because you didn't make changes to master.
+
+Then, rebase the changes from 'tmp' onto 'master':
+
+    (master)$ git checkout tmp
+    (tmp) $ git rebase master
+    First, rewinding head to replay your work on top of it...
+    ...
+    (tmp) $ git checkout master
+    (master) $ git merge tmp
+
+If there are rebase conflicts, you have to deal with them at this step.
+
+Once you are sure the work is ready, push your changes:
+
+    (master) $ git push origin master
+
+Ideally, you will have done this in a short window of time and `git push` will report no conflicts. If there are, you 
+can merge 'master' into 'tmp' again:
+
+    (master) $ git checkout tmp
+    (tmp) $ git merge master
+    (tmp) $
+
+Then reset 'master' to the last common commit with origin/master, and repeat the pull-rebase cycle.
+
+Once you have successfully pushed your changes, don't forget to update 'tmp' to point to 'master' again:
+
+    (master) $ git checkout tmp
+    (tmp) $ git merge master
+    (tmp) $

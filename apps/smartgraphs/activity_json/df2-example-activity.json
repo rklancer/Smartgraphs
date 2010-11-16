@@ -1,5 +1,6 @@
 {
-  "data_format_version": 1,
+  "_rev": "1-0f5a23a5ad094e9c34c3ddabeec05d72",
+  "data_format_version": 2,
   "activity": {
     "title": "Example Activity",
     "url": "/shared/example-activity",
@@ -81,6 +82,9 @@
       "triggeredCommands": [
 
       ],
+      "afterSubmissionCommands": [
+
+      ],
       "responseInspector": null,
       "responseBranches": [
 
@@ -113,6 +117,9 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": null,

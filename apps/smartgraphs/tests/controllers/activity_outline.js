@@ -1,12 +1,12 @@
 // ==========================================================================
-// Project:   Smartgraphs.activityViewController Unit Test
+// Project:   Smartgraphs.activityOutlineController Unit Test
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.activityViewController");
+module("Smartgraphs.activityOutlineController");
 
-// TODO: Replace with real unit test for Smartgraphs.activityViewController
+// TODO: Replace with real unit test for Smartgraphs.activityOutlineController
 test("test description", function() {
   var expected = "test";
   var result   = "test";

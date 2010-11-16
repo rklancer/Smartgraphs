@@ -91,9 +91,10 @@ body.sc-theme {
   font-size: 14px;
 }
 
-.sc-view.dialog-text textarea {
+/* lose the textarea padding for now ... it breaks the focus style when used with the textarea-reset.css */
+/*.sc-view.dialog-text textarea {
   padding: 5px;
-}
+}*/
 
 /* graph labels and more */
 .sc-theme .sc-label-view.pane-label {
@@ -107,6 +108,9 @@ body.sc-theme {
   font-style: italic;
   line-height: 1.0;
   color: #666666;
+  background-image: sc_static('resources/small_loading_icon.gif');
+  background-repeat: no-repeat;
+  background-position: left top;
 }
 
 .smartgraph-table .sc-list-item-view.sc-regular-size {
@@ -141,4 +145,9 @@ body.sc-theme {
 /* adjust the RadioView button top to match up with wrapped labels */
 .sc-theme .sc-view.dialog-text .sc-view.ace.sc-radio-view span.button {
   top: 2px;
+}
+
+/* quick fix to color of SplitDividerView */
+.sc-theme .sc-view.ace.sc-split-divider-view {
+  background-color: #ddd;
 }

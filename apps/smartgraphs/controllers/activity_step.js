@@ -85,12 +85,15 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
 
   executeCommands: function (commands) {
-    // 'commands' is a hash, not an SC.Object
-    for (var i = 0; i < commands.length; i++) {
-      // TODO action 'whitelist'?
-      // TODO deal with argument substitution?
-      Smartgraphs.sendAction(commands[i].action, this, commands[i].literalArgs);
-    }
+    if (!commands) return;
+
+    // TODO action 'whitelist'?
+    // TODO deal with argument substitution?
+    
+    var self = this;
+    commands.forEach(function (command) {
+      Smartgraphs.sendAction(command.action, self, command.literalArgs);
+    });
   },
   
   setupTriggers: function () {
@@ -133,6 +136,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   */
   handleSubmission: function () {
     if ( !this.get('canSubmit') ) return NO;
+    
+    this.executeCommands(this.get('afterSubmissionCommands'));
     
     var inspector = this.makeInspector('responseInspector');
     if (inspector) {

@@ -1,0 +1,38 @@
+/* outline style for each browser tricky stuff... */
+.safari .sc-view .ace.sc-text-field-view.focus {
+  outline: auto 7px -webkit-focus-ring-color; 
+  outline-offset: -2px;
+}
+
+.mozilla .sc-view .ace.sc-text-field-view.focus {
+  outline-color:-moz-mac-focusring;
+  outline-offset: -1px;
+  outline-style:solid;
+  outline-width:1px;
+}
+
+.msie .sc-view .ace.sc-text-field-view.focus {
+  outline: 1px dotted;
+}
+
+.sc-text-field-view .border {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+/*css style to make divs look like native controls*/
+
+.mozilla .sc-view .ace.sc-text-field-view .border {
+  -moz-appearance: none;
+}
+
+.msie .sc-view .ace.sc-text-field-view .border {
+  border: 1px transparent;
+}
+
+.safari .ace.sc-text-field-view .border {
+  -webkit-appearance: none;
+}

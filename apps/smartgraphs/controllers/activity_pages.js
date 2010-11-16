@@ -18,24 +18,10 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
 
   allowsMultipleSelection: NO,
 
-  indexOfSelectedPage: function () {
-    var selection = this.get('selection');
-    var indexSet = selection.indexSetForSource(this);
-    return (indexSet ? indexSet.toArray().objectAt(0) : undefined);
+  currentPageNumber: function () {
+    var indexSet = this.get('selection').indexSetForSource(this);
+    return indexSet && indexSet.firstObject();
   }.property('selection', '[]').cacheable(),
-
-  pageInfo: function () {
-    var index = this.get('indexOfSelectedPage');
-    var length = this.get('length');
-    
-    // Avoid displaying when there is no content
-    if (length === 0 || index === undefined) {
-      return "";
-    }
-    
-    // (the only reason page number > total pages is if this.length = 0, which we already check for)
-    return "Page " + (index+1) + " of " + length;
-  }.property('indexOfSelectedPage', 'length').cacheable(),
 
   selectFirstPage: function () {
     if (this.get('length') > 0) {
@@ -44,14 +30,46 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   },
 
   selectNextPage: function () {
-    var index = this.get('indexOfSelectedPage');
+    var index = this.get('currentPageNumber');
     if (index + 1 < this.get('length')) {
       this.selectObject(this.objectAt(index + 1));
     }
   },
 
   isLastPage: function () {
-    return (this.get('indexOfSelectedPage') >= (this.get('length') - 1));
-  }.property('indexOfSelectedPage', 'length').cacheable()
+    return (this.get('currentPageNumber') >= (this.get('length') - 1));
+  }.property('currentPageNumber', 'length').cacheable(),
+  
+  contentsDidChange: function () {
+    var n = 0;
+    this.forEach(function (page) {
+      page.set('pageNumber', n++);
+    });
+  }.observes('[]'),
+  
+  outline: function () {
+    return SC.Object.create({
+      title: 'toplevel',
+      treeItemIsExpanded: YES,
+      pages: this.map( function (page) { return page; } ),
+      treeItemChildren: this.map( function (page) {
+        var stepNum = 1;
+        return SC.Object.create({
+          title: page.get('name') || 'Page %@'.fmt(page.get('pageNumber') + 1),
+          treeItemIsExpanded: YES,
+          steps: page.get('steps'),          
+          treeItemChildren: page.get('steps').map( function (step) {
+            return SC.Object.create({
+              title: 'Step %@'.fmt(stepNum++),
+              step: step,
+              treeItemIsExpanded: YES,
+              treeItemChildren: null
+            });
+          })
+        });
+      })
+    });
+    // FIXME this will NOT update when steps are added/removed or have their properties changed
+  }.property('[]').cacheable()
   
 });

@@ -9,6 +9,7 @@
 Smartgraphs.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
+    theme: 'pig',
 
     defaultResponder: 'Smartgraphs',
         
@@ -37,12 +38,11 @@ Smartgraphs.mainPage = SC.Page.design({
       // this minimum width & height should not overflow on a 1024x768 screen even in a browsing setup with lots of 
       // extraneous on-screen chrome (say, in FF or IE running in Windows XP)
       
-      layout: { top: 32, right: 20, bottom: 32, left: 20, minWidth: 960, minHeight: 536 },
+      layout: { top: 32, bottom: 33, minWidth: 960, minHeight: 536 },
       nowShowingBinding: 'Smartgraphs.appWindowController.nowShowing'
     }),
     
     bottomToolbar: SC.ToolbarView.design({
-      layout: { height: 32 },
       anchorLocation: SC.ANCHOR_BOTTOM,
       
       childViews: ['backButton', 'pageButtons', 'nextButton'],
@@ -50,7 +50,8 @@ Smartgraphs.mainPage = SC.Page.design({
       backButton: SC.ButtonView.design({
         layout: { left: 20, centerY: 0, height: 24, width: 80 },
         title: "Back",
-        theme: "point-left",
+        // theme: "point-left",
+        theme: 'capsule',
         action: "gotoPrevPage",
         isSwipeLeft: YES,
 
@@ -59,14 +60,18 @@ Smartgraphs.mainPage = SC.Page.design({
       
       pageButtons: SC.SegmentedView.design({
         layout: { left: 120, right: 120, height: 24, centerY: 0 },
+        classNames: ['sc-regular-size'],        // workaround for apparent bug in SC.SegmentedView
         itemsBinding: 'Smartgraphs.activityPagesController',
-        itemTitleKey: 'indexAsString'
+        itemTitleKey: 'pageNumberAsString',
+        itemValueKey: 'pageNumber',
+        valueBinding: 'Smartgraphs.activityPagesController.currentPageNumber'
       }),
       
       nextButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
         title: "Next",
-        theme: "point-right",
+        // theme: "point-right",
+        theme: 'capsule',
         action: "gotoNextPage",
         isSwipeRight: YES,
         

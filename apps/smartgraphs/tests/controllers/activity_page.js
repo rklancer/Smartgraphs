@@ -6,10 +6,11 @@
 
 module("Smartgraphs.activityPageController");
 
+// TODO: Very little to test here
 // TODO: Replace with real unit test for Smartgraphs.activityPageController
-test("test description", function() {
-  var expected = "test";
-  var result   = "test";
-  equals(result, expected, "test should equal test");
-});
+// test("test description", function() {
+//   var expected = "test";
+//   var result   = "test";
+//   equals(result, expected, "test should equal test");
+// });
 

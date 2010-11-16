@@ -1,48 +1,85 @@
 // ==========================================================================
 // Project:   Smartgraphs.activityPagesController Unit Test
 // Copyright: ©2010 Concord Consortium
-// Author: Dr. Baba Kofi Weusijana <kofi@edutek.net>
+// @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.activityPagesController");
+var oldStore;
+var p1, p2, p1s1, p1s2, p2s1;
 
-test("test Smartgraphs.activityPagesController.pageInfo",
-function() {
-    var activityPageView, pane;
-    var page, pages = [];
+module("Smartgraphs.activityPagesController", {
+  setup: function () {
+    oldStore = Smartgraphs.store;
+    Smartgraphs.store = SC.Store.create().from(SC.FixturesDataSource.create());
+    
+    p1s1 = Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {
+      url: 'p1s1'
+    });
+    p1s2 = Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {
+      url: 'p1s2'
+    });
+    p2s1 = Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {
+      url: 'p2s1'
+    });
 
-    page = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/1"] = {
-        "steps": ["/shared/motion-towards-and-away/page/1/step/1"],
-        "name": "Introductory Page",
-        "firstStep": "/shared/motion-towards-and-away/page/1/step/1",
-        "introText": "<h1>How can you tell a story about motion without using words?</h1>\n\n<p>The picture at right communicates direction of traffic using recognizable symbols. In this activity, you will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will learn conventional methods of motion storytelling and analysis.</p>",
-        "url": "/shared/motion-towards-and-away/page/1",
-        "activity": "/shared/motion-towards-and-away",
-        "index": 1,
-        "stepListUrl": "/shared/motion-towards-and-away/page/1/steps"
-    };
-    pages.push(page);
+    p1 = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, {
+      url: 'p1',
+      name: ''
+    });
+    p2 = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, {
+      url: 'p2',
+      name: 'Second Page'
+    });
 
-    page = Smartgraphs.mockResponses["/shared/motion-towards-and-away/page/2"] = {
-        "steps": ["/shared/motion-towards-and-away/page/2/step/1", "/shared/motion-towards-and-away/page/2/step/2"],
-        "name": "Prediction Page",
-        "firstStep": "/shared/motion-towards-and-away/page/2/step/1",
-        "introText": "<p>Let\u2019s start by demonstrating what you already know about representing motion on a graph. " + "Imagine a straight walking path that is 4 meters long. Point A is at the 0-meter mark. Point B is at " + "the 4-meter mark.</p>",
-        "url": "/shared/motion-towards-and-away/page/2",
-        "activity": "/shared/motion-towards-and-away",
-        "index": 2,
-        "stepListUrl": "/shared/motion-towards-and-away/page/2/steps"
-    };
-    pages.push(page);
+    [p1s1, p1s2].setEach('activityPage', p1);
+    p2s1.set('activityPage', p2);
+  },
+  
+  teardown: function () {
+    Smartgraphs.store = oldStore;
+  }
+});
 
+
+test("activityPagesController's 'outline' property should be in a format consumable by a TreeController", function () {
+  Smartgraphs.activityPagesController.set('content', Smartgraphs.store.find(Smartgraphs.ActivityPage));
+
+  var outline = Smartgraphs.activityPagesController.get('outline');
+  var tic = outline.get('treeItemChildren');
+  equals(tic.get('length'), 2, "outline's treeItemChildren should contain two items");
+
+  var child = tic.objectAt(0);
+  equals(child.get('title'), "Page 1", "Title of first child (first page) should be the default 'Page 1'");
+  
+  var childTic = child.get('treeItemChildren');
+  equals(childTic.get('length'), 2, "First child should have two children (= 2 steps)");
+  equals(childTic.objectAt(0).get('title'), 'Step 1', "first child of first child should have title 'Step 1'");
+  equals(childTic.objectAt(1).get('title'), 'Step 2', "second child of first child should have title 'Step 2'");
+  
+  child = tic.objectAt(1);
+  equals(child.get('title'), "Second Page", "Title of second child (second page) should be the explicit name, 'Second Page'");
+  
+  childTic = child.get('treeItemChildren');
+  equals(childTic.get('length'), 1, "Second child should have 1 child (= 1 step)");
+  equals(childTic.objectAt(0).get('title'), 'Step 1', "first child of second child should have title 'Step 1'");
+});
+
+
+test("activityOutlineController sets its selection correctly when the current step changes", function () {
+  Smartgraphs.activityPagesController.set('content', Smartgraphs.store.find(Smartgraphs.ActivityPage));
+  
+  var sel;
+  
+  [p1s1, p1s2, p2s1].forEach( function (step) {
     SC.RunLoop.begin();
-    Smartgraphs.activityPagesController.set('content', pages);
-    var content = Smartgraphs.activityPagesController.get('content');
-    Smartgraphs.activityPagesController.selectObject(content[0]);
-    SC.RunLoop.end();
+    Smartgraphs.activityStepController.set('content', step);
+    Smartgraphs.activityPageController.set('content', step.get('activityPage'));
+    SC.RunLoop.end();  
+ 
+    sel = Smartgraphs.activityOutlineController.get('selection');
 
-    var expected = "Page 1 of 2";
-    var result = Smartgraphs.activityPagesController.get('pageInfo');
-    equals(result, expected, "Smartgraphs.activityPagesController.pageInfo() should return 'Page 1 of 2'");
+    equals(sel.get('length'), 1, "A single item should be selected in the activityOutlineController");
+    equals(sel.firstObject().getPath('step.url'), step.get('url'), "activityOutlineController's selection should reflect the activityStepController's content (" + step.get('url') + ")");
+  });
 });

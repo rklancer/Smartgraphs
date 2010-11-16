@@ -15,95 +15,66 @@
 Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.HighlightedSegmentView.prototype */
 {
-  // TODO: fix blocking users from selecting points in the highlighted segment despite calling toBack()
-  // TODO: fix the highlighted segment not showing sometimes in Chrome
+  stroke: '#aa0000',
+  strokeWidth: 14,
+  strokeOpacity: 0.1,
+  
+  // SC will call render(context, firstTime == NO) if these properties change
+  displayProperties: 'points.[] stroke strokeWidth strokeOpacity'.w(),
 
-  // defaults
-  // TODO: redo these defaults and
-  // TODO: DRY the multiple usages of attributes to calls to raphaelCanvas.path(attrs.pathString).attr...
-  radius: 8,
-  stroke: '#cc0000',
-  strokeWidth: 2,
-  strokeOpacity: 1.0,
-  fill: '#ffffff',
-  fillOpacity: 0,
+  // We are using renderCallback in views to call non-SC render methods like
+  // RaphaelCanvas.segmentPath with the correct attributes.
+  // This is done this way because Raphael methods shouldn't be called unless
+  // its tags are already in the DOM.
 
-  /**
-   SC will call render(context, firstTime) if these properties change
-   even if it is not onscreen and not in the DOM (this will change
-   later in the SC framework)
-   */
-  // TODO: Update this displayProperties list
-  displayProperties: 'points.[]'.w(),
-
-  /**
-   We are using renderCallback in views to call non-SC render methods like
-   RaphaelCanvas.segmentPath with the correct attributes.
-   This is done this way because Raphael methods shouldn't be called unless
-   its tags are already in the DOM.
-   */
   renderCallback: function(raphaelCanvas, attrs) {
-    //    console.warn("HighlightedSegmentView.renderCallback() called with raphaelCanvas:",raphaelCanvas);
-    var segmentPath = raphaelCanvas.path(attrs.pathString).attr({
-      'stroke-width': 14,
-      'stroke': '#aa0000',
-      'stroke-opacity': 0.10,
-      'stroke-linecap': 'round',
-      'stroke-linejoin': 'round'
-    });  
-    return segmentPath;
+    console.log('creating path element; attrs.d = ', attrs.d);
+    var path = raphaelCanvas.path(attrs.d).attr(attrs);
+    return path;
   },
 
-  /**
-   Called by SC (by the parent view)
-   */
+  // Called by SC (by the parent view)
   render: function(context, firstTime) {
     var graphView = this.get('graphView');
     var annotation = this.get('item');
-
+    
     var points = annotation.get('points');
     var coords, point;
-    var pathComponents = ['M'];
-    for (var i = 0,
-    pointsLength = points.get('length'); i < pointsLength; i++) {
+    var pathComponents = [];
+    
+    for (var i = 0, len = points.get('length'); i < len; i++) {
+      pathComponents.push( i === 0 ? 'M' : 'L');
       point = points.objectAt(i);
       coords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
       pathComponents.push(coords.x);
       pathComponents.push(coords.y);
-      pathComponents.push('L');
     }
-
-    pathComponents.splice(pathComponents.length); // get rid of trailing 'L'
     var pathString = pathComponents.join(' ');
-    //    console.log(pathString);
+
     var attrs = {
-      pathString: pathString
+      d: pathString,
+      stroke: this.get('stroke'),
+      'stroke-width': this.get('strokeWidth'),
+      'stroke-opacity': this.get('strokeOpacity'),
+      'stroke-linecap': 'round',
+      'stroke-linejoin': 'round'
     };
 
-    /**
-     boolean firstTime: Does this view start from scratch and created HTML
-     in a context object
-     or does it just needs to update properites of a context object?
-     */
+    // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need
+    // to update properties of a context object?
+
     if (firstTime) {
-      /**
-       Create the segmentPath in Raphael
-       context is not a SC object but SC expects it (it was created by SC.Pane.append() )
-       This call creates a tag and CSS and stores it in the context.
-       for rendering later (by by SC.Pane.append() using innerHTML() )
-       */
+       // Queue up the callback with will create the Raphael path object on the SVG canvas, once it is created.
+       // In non-Raphael views, context is not a SC object but SC expects it (it was created by SC.Pane.append() ) This
+       // call creates a tag and CSS and stores it in the context. for rendering later (by by SC.Pane.append() using
+       // innerHTML()
       context.callback(this, this.renderCallback, attrs);
     }
     else {
-      /** Get the segmentPath from Raphael */
-      var segmentPath = context.raphael();
-      /**
-       Calling toBack() on the updated segmentPath puts the segmentPath earliest in the
-       SVG DOM and thus in the back layer on the HTML page
-       */
-      segmentPath.attr({
-        'path': pathString
-      });
+      // get the Raphael path object from the context
+      var path = context.raphael();
+      // and update it
+      path.attr(attrs);
     }
   }
 

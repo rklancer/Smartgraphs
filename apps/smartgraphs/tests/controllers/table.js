@@ -57,6 +57,7 @@ module('Table controller', {
 
 
 test("table controller should open the named dataset on the named graph", function () {
+  expect(5);
   Smartgraphs.firstGraphController.openGraph('test-graph');
   Smartgraphs.firstGraphController.addDataset(dataset);
   
@@ -71,6 +72,7 @@ test("table controller should open the named dataset on the named graph", functi
 });
 
 test("table controller should reference the correct graph even when two graphs have the same dataset open", function () {
+  expect(3);
   Smartgraphs.firstGraphController.openGraph('test-graph');
   Smartgraphs.firstGraphController.addDataset(dataset);
   Smartgraphs.secondGraphController.openGraph('test-graph-2');
@@ -86,6 +88,7 @@ test("table controller should reference the correct graph even when two graphs h
 
 
 test("table controller should wait for the graph and dataset to be opened", function () {
+  expect(4);
   Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
   
   ok( !Smartgraphs.firstTableController.get('content'), "table controller content should be empty before dataset is also opened on the graph");
@@ -100,6 +103,7 @@ test("table controller should wait for the graph and dataset to be opened", func
 
 
 test("table controller should not be confused by opening and closing a graph it is not watching", function () {
+  expect(6);
   Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
   
   ok( !Smartgraphs.firstTableController.get('content'), "table controller content should be empty before dataset is also opened on the graph");
@@ -120,6 +124,7 @@ test("table controller should not be confused by opening and closing a graph it 
 
 
 test("table controller should set the 'showTable' property according to whether data is being streamed or not", function () {
+  expect(4);
   dataset.set('isStreaming', NO);
   Smartgraphs.firstGraphController.openGraph('test-graph');
   Smartgraphs.firstGraphController.addDataset(dataset); 

@@ -53,6 +53,7 @@ module("Smartgraphs.graphController", {
 });
 
 test("adding dataset to a graph results in assignment of different colors to 'color' property of each dataset", function () {
+  expect(8);
   var colorRE = /^#[0-9a-fA-F]{6}$/;
   Smartgraphs.firstGraphController.openGraph('test');
   
@@ -74,3 +75,5 @@ test("adding dataset to a graph results in assignment of different colors to 'co
   ok( color3 !== color2, "dataset3 and dataset2 should have different colors");
   ok( color3 !== color1, "dataset3 and dataset1 should have different colors");
 });
+// This test exercises most of the controller.
+// TODO: include an annotation.

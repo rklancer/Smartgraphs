@@ -10,6 +10,6 @@ results/
 server.log
 server.pid.lock
 .idea
-apps/smartgraphs/activity_json/push.json
-apps/smartgraphs/activity_json/pull.json
+apps/smartgraphs/activity_json/push.sh
+apps/smartgraphs/activity_json/update.sh
 apps/smartgraphs/activity_json/couch.txt

@@ -20,7 +20,7 @@ Smartgraphs.ACTIVITY_PAGE_LOADING = SC.Responder.create(Smartgraphs.ResourceLoad
   nextResponder: Smartgraphs.ACTIVITY,
   
   masterResource: {
-    load: function () { return Smartgraphs.activityPageController.get('content').toArray().objectAt(0); }
+    load: function () { return Smartgraphs.activityPageController.get('content'); }
   },
   
   subordinateResources: [
