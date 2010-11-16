@@ -55,9 +55,9 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.Responder.create(
     
     If this event comes from the dataset we care about, we update the annotation's 'point' property to the clicked-on
     point. This also enables activity step submission, if it was disabled.
-    
-    @param datasetView The datasetView that was clicked on
-    @param points An array containing the content object of the clicked-on view, i.e., a Smartgraphs.DataPoint
+  
+    @param {Smartgraphs.DataPointView} dataPointView 
+      The dataPointView that was clicked on
   */
   dataPointSelected: function (dataPointView) {
     var dataset = this.get('dataset');
