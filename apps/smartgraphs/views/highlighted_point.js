@@ -18,7 +18,7 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
 
   // defaults
   radius: 8,
-  stroke: '#cc0000',
+  strokeBinding: SC.Binding.oneWay('item.color'),
   strokeWidth: 2,
   strokeOpacity: 1.0,
   fill: '#ffffff',
@@ -42,7 +42,7 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
       cx: coords.x,
       cy: coords.y,
       r: this.get('radius'),
-      stroke: this.get('stroke'),
+      stroke: annotation.get('color'),
       'stroke-width': this.get('strokeWidth'),
       'stroke-opacity': this.get('strokeOpacity'),
       fill: this.get('fill'),

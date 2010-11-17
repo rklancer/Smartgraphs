@@ -87,6 +87,13 @@ Smartgraphs.Annotation = SC.Record.extend(
     
     @property {Smartgraphs.Session}
   */
-  session: SC.Record.toOne('Smartgraphs.Session')
+  session: SC.Record.toOne('Smartgraphs.Session'),
+
+  /**
+    Color with which to draw the annotation. Defaults to #cc0000, which is red.
+    
+    @property {String} 
+   */
+  color: SC.Record.attr(String, { defaultValue: '#cc0000' })
 
 }) ;
