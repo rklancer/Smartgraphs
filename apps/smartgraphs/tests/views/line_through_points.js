@@ -39,8 +39,6 @@ function setupFixtures() {
   
   oldStore = Smartgraphs.store;
   Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
-  // Smartgraphs.store = SC.Store.create().from(SC.FixturesDataSource.create());
-  debugger;
 }
 
 function restoreFixtures() {
@@ -79,7 +77,6 @@ function testEndpointsInBorders(pair) {
 }
 
 for (var i=0; i<testpoints.length; i++) {
-  // debugger;
   testEndpointsInBorders(testpoints[i]);
 }
 
