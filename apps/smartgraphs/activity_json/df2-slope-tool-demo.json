@@ -1,5 +1,5 @@
 {
-  "_rev": "8-176ef30e777da2a677839f8960867c81",
+  "_rev": "10-a7a4530e6d0b9e7517c11d4b5cca9782",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -50,8 +50,9 @@
           "action": "startInteractiveSelection",
           "literalArgs": {
             "annotationName": "first-point",
-            "graphName": "demo-graph", 
-            "datasetName": "demo-data"
+            "graphName": "demo-graph",
+            "datasetName": "demo-data",
+            "color": "#1f77b4"
           }
         }
       ],
@@ -99,8 +100,9 @@
           "action": "startInteractiveSelection",
           "literalArgs": {
             "annotationName": "second-point",
-            "graphName": "demo-graph", 
-            "datasetName": "demo-data"
+            "graphName": "demo-graph",
+            "datasetName": "demo-data",
+            "color": "#ff7f0e"
           }
         }
       ],
