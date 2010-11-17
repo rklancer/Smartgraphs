@@ -42,7 +42,7 @@ Smartgraphs.GraphView = SC.View.extend(
   
   _itemListsDidChange: function () {  
     var list = this.get('datasetList').concat(this.get('annotationList'));
-    var item, className, id;
+    var item, classKey, id;
     var desiredViewsByClassAndId = {};
     
     var itemType, itemTypes = ['data', 'annotation'];
@@ -54,16 +54,18 @@ Smartgraphs.GraphView = SC.View.extend(
       // add views for items (datasets or annotations) not currently in the list of child views
       for (var i = 0, ii = list.get('length'); i < ii; i++) {
         item = list.objectAt(i);
-        className = item.constructor.toString();
+
+        // I believe this is the most cross-browser-compatible way to get a unique key representing the class of the item
+        classKey = SC.guidFor(item.constructor);
         id = item.get('id');
       
-        if (desiredViewsByClassAndId[className] === undefined) {
-          desiredViewsByClassAndId[className] = {};
+        if (desiredViewsByClassAndId[classKey] === undefined) {
+          desiredViewsByClassAndId[classKey] = {};
         }
       
-        desiredViewsByClassAndId[className][id] = item;     // for our reference when we remove views
+        desiredViewsByClassAndId[classKey][id] = item;     // for our reference when we remove views
       
-        if (!this._viewsByClassAndId[className] || !this._viewsByClassAndId[className][id]) {
+        if (!this._viewsByClassAndId[classKey] || !this._viewsByClassAndId[classKey][id]) {
           this._addViewForItem(item, itemType);
         }
       }
@@ -73,13 +75,13 @@ Smartgraphs.GraphView = SC.View.extend(
     // remove views for no-longer-to-be-displayed items
     var oldView;
   
-    for (className in this._viewsByClassAndId) {
-      if (this._viewsByClassAndId.hasOwnProperty(className)) {
-        for (id in this._viewsByClassAndId[className]) {
-          if (this._viewsByClassAndId[className].hasOwnProperty(id)) {
-            oldView = this._viewsByClassAndId[className][id];
+    for (classKey in this._viewsByClassAndId) {
+      if (this._viewsByClassAndId.hasOwnProperty(classKey)) {
+        for (id in this._viewsByClassAndId[classKey]) {
+          if (this._viewsByClassAndId[classKey].hasOwnProperty(id)) {
+            oldView = this._viewsByClassAndId[classKey][id];
           
-            if (!desiredViewsByClassAndId[className] || !desiredViewsByClassAndId[className][id]) {
+            if (!desiredViewsByClassAndId[classKey] || !desiredViewsByClassAndId[classKey][id]) {
               this._removeView(oldView);
             }
           }
@@ -90,7 +92,7 @@ Smartgraphs.GraphView = SC.View.extend(
   
   
   _addViewForItem: function (item, itemType) {
-    var className = item.constructor.toString();
+    var classKey = SC.guidFor(item.constructor);
 
     var view = item.constructor.viewClass.design({
         graphView: this,
@@ -106,10 +108,10 @@ Smartgraphs.GraphView = SC.View.extend(
       this.getPath('graphCanvasView.annotationsHolder').appendChild(view);
     }
 
-    if (this._viewsByClassAndId[className] === undefined) {
-      this._viewsByClassAndId[className] = {};
+    if (this._viewsByClassAndId[classKey] === undefined) {
+      this._viewsByClassAndId[classKey] = {};
     }    
-    this._viewsByClassAndId[className][item.get('id')] = view;
+    this._viewsByClassAndId[classKey][item.get('id')] = view;
     
     // THIS IS A WORKAROUND FOR A CHROME REDRAW BUG
     var svg = this.get('graphCanvasView').$('svg')[0];
@@ -125,10 +127,10 @@ Smartgraphs.GraphView = SC.View.extend(
   _removeView: function (view) {
     var item = view.get('item');
     var itemType = view.get('itemType');
-    var className = item.constructor.toString();
+    var classKey = SC.guidFor(item.constructor);
     var id = item.get('id');
     
-    delete this._viewsByClassAndId[className][id];
+    delete this._viewsByClassAndId[classKey][id];
     
     if (itemType === 'data') {
       this.getPath('graphCanvasView.dataHolder').removeChild(view);
