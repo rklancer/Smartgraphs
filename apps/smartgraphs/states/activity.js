@@ -47,7 +47,7 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     @param args
     
     @param {String} args.graphName
-      The name of the graph on which the dataset with the selected point must be displayed. This graph must be open in 
+      The name of the graph on which the dataset with the line must be displayed. This graph must be open in 
       the page when this command executes.
     @param {String} args.firstPoint
       The name of one HighlightedPoint annotation.
@@ -55,6 +55,8 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
       The name of the other HighlightedPoint annotation.      
     @param {String} args.lineName
       The name given to the session-scoped LineThroughPoints annotation which will be created.
+    @param {String} args.color
+      The RGB color definition for the color to render the line.
   */
   createLineThroughPoints: function (context, args) {
     // given the graphName, find the associated graph controller
@@ -64,15 +66,17 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     
     var firstAnnotation = controller.findAnnotationByName(args.firstPoint);
     var secondAnnotation = controller.findAnnotationByName(args.secondPoint);
+    var color = args.color ? args.color : "#000000";
     
     // set points (a relation) using ids rather than objects, because createAnnotation works like createRecord
     // in that regard (it works on the datahash underlying the record)
     var lineThroughPoints = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineThroughPoints, args.lineName, { 
         point1: firstAnnotation.get('point').get('id'),
-        point2: secondAnnotation.get('point').get('id')
+        point2: secondAnnotation.get('point').get('id'),
+        color: color
       });
-    
+    debugger;
     return YES;
   }
   
