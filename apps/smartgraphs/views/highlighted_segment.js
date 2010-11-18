@@ -15,7 +15,7 @@
 Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.HighlightedSegmentView.prototype */
 {
-  stroke: '#aa0000',
+  strokeBinding: '.item.color',
   strokeWidth: 14,
   strokeOpacity: 0.1,
   
