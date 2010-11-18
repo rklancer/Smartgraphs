@@ -80,11 +80,12 @@ test("graphControllerForPane returns the graph controller for a given pane", fun
   expect(3);
   
   Smartgraphs.activityViewController.set('paneIsSplit', NO);
-  ok( Smartgraphs.activityViewController.graphControllerForPane('single').kindOf(Smartgraphs.firstGraphController), "A single pane uses the firstGraphController");
+  
+  ok( Smartgraphs.activityViewController.graphControllerForPane('single') === Smartgraphs.firstGraphController, "A single pane uses the firstGraphController");
   
   Smartgraphs.activityViewController.set('paneIsSplit', YES);
-  ok( Smartgraphs.activityViewController.graphControllerForPane('top').kindOf(Smartgraphs.firstGraphController), "The top pane uses the firstGraphController");
-  ok( Smartgraphs.activityViewController.graphControllerForPane('bottom').kindOf(Smartgraphs.secondGraphController), "The bottom pane uses the secondGraphController");
+  ok( Smartgraphs.activityViewController.graphControllerForPane('top') === Smartgraphs.firstGraphController, "The top pane uses the firstGraphController");
+  ok( Smartgraphs.activityViewController.graphControllerForPane('bottom') === Smartgraphs.secondGraphController, "The bottom pane uses the secondGraphController");
 });
 
 test("setPaneConfig changes attributes", function() {
