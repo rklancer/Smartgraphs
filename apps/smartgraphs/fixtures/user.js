@@ -7,6 +7,14 @@
 
 sc_require('models/user');
 
+Smartgraphs.User.TEST_FIXTURES = [
+  { guid: 'default',
+    userId: 'anonymous',
+    name: 'Anonymous User',
+    sessions: []
+  }
+];
+
 Smartgraphs.User.FIXTURES = [
 
   { guid: 'default',
