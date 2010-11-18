@@ -12,7 +12,7 @@
   @extends SC.ObjectController
 */
 Smartgraphs.GraphController = SC.ObjectController.extend( 
-/** @scope Smartgraphs.graphController.prototype */ {
+/** @scope Smartgraphs.GraphController.prototype */ {
   
   /**
     The datasets being shown on this graph.
