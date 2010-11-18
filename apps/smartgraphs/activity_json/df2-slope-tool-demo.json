@@ -1,5 +1,5 @@
 {
-  "_rev": "10-a7a4530e6d0b9e7517c11d4b5cca9782",
+  "_rev": "11-115f23f0ff472b5ce0ab3a4b622adb42",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -124,7 +124,8 @@
             "lineName": "line",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
-            "graphName": "demo-graph"
+            "graphName": "demo-graph",
+            "color": "#110000"
           }
         }
       ],

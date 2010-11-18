@@ -168,12 +168,16 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
     
     var annotation = controller.findAnnotationByName(args.highlightedName);
     
+    // Color is #000000 unless the action supplies a 'color' argument
+    var color = args.color ? args.color : '#000000';
+    
     // set points (a relation) using ids rather than objects, because createAnnotation works like createRecord
     // in that regard (it works on the datahash underlying the record)
     var lineThroughPoints = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineThroughPoints, args.lineName, { 
         point1: annotation.get('point').get('id'),
-        point2: selectedPoint.get('id')
+        point2: selectedPoint.get('id'),
+        color: color
       });
     
     return YES;
