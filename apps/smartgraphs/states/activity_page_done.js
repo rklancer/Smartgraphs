@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/activity');
+
 /** @class
 
   State representing a finished activity page. The user should be able to proceed to the next activity page from here.
@@ -12,8 +14,6 @@
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/activity');
 
 Smartgraphs.ACTIVITY_PAGE_DONE = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_PAGE_DONE.prototype */ {

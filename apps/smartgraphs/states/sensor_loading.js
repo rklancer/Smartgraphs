@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/sensor');
+
 /** @class
 
   State representing an error with the sensor. You could transition here from SENSOR_RECORDING if data stops coming.
@@ -12,8 +14,6 @@
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/sensor');
 
 Smartgraphs.SENSOR_LOADING = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR_LOADING.prototype */ {

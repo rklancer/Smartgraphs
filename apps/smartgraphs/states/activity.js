@@ -5,6 +5,9 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+
+sc_require('states/ready');
+
 /** @class
 
   Superstate representing that the application is running a Activity.
@@ -12,8 +15,6 @@
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/ready');
 
 Smartgraphs.ACTIVITY = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY.prototype */ {

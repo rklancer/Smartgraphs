@@ -5,6 +5,10 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('models/annotation');
+sc_require('models/data_point');
+sc_require('views/line_through_points');
+
 /** @class
 
   A line through the entire graph, passing through two given points and extending to the borders
@@ -13,10 +17,6 @@
   @extends Smartgraphs.Annotation
   @version 0.1
 */
-
-sc_require('models/annotation');
-sc_require('models/data_point');
-sc_require('views/line_through_points');
 
 Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.LineThroughPoints.prototype */ {

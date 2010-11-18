@@ -5,11 +5,12 @@
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 
+sc_require('views/data_point');
+
 /** @class
 
-  @extends SC.View
+  @extends RaphaelViews.RaphaelCollectionView
 */
-sc_require('views/data_point');
 
 Smartgraphs.DatasetView = RaphaelViews.RaphaelCollectionView.extend({
 
