@@ -5,6 +5,9 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('models/annotation');
+sc_require('views/freehand_sketch');
+
 /** @class
 
   A 'freehand sketch' annotation drawn on top of the graph. 
@@ -16,20 +19,20 @@
   @version 0.1
 */
 
-sc_require('models/annotation');
-sc_require('views/freehand_sketch');
-
 Smartgraphs.FreehandSketch = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.FreehandSketch.prototype */ {
   
   /**
-    ordered array of {x, y} pairs that make up the sketch.
+    Ordered array of {x, y} pairs that make up the sketch.
+    
+    @property {Smartgraphs.DataPoint[]}
   */
   points: SC.Record.attr(Array),
 
   /**
-    whether the sketch is considered 'directional'; ie proceeds from beginning to end the points list and should 
-    have an arrow
+    Currently unused. Whether the sketch is considered 'directional'; i.e. should have an arrow.
+    
+    @property {Boolean}
   */
   isDirectional: SC.Record.attr(Boolean)
     

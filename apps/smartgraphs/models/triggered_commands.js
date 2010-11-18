@@ -7,7 +7,7 @@
 
 /** @class
 
-  (Document your Model here)
+  Currently unused.
 
   @extends SC.Record
   @version 0.1
