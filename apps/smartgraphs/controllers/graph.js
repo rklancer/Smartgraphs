@@ -11,7 +11,7 @@
 
   @extends SC.ObjectController
 */
-Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder, 
+Smartgraphs.GraphController = SC.ObjectController.extend( 
 /** @scope Smartgraphs.graphController.prototype */ {
   
   /**
