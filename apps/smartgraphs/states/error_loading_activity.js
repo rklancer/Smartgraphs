@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/ready');
+
 /** @class
 
   State representing that we attempted to load a Activity but encountered an error. Trivial implementation for now.
@@ -12,8 +14,6 @@
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/ready');
 
 Smartgraphs.ERROR_LOADING_ACTIVITY = SC.Responder.create(
 /** @scope Smartgraphs.ERROR_LOADING_ACTIVITY.prototype */ {

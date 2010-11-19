@@ -5,13 +5,13 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/activity_step');
+
 /** @class
 
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/activity_step');
 
 Smartgraphs.FREEHAND_INPUT = SC.Responder.create(
 /** @scope Smartgraphs.FREEHAND_INPUT.prototype */ {

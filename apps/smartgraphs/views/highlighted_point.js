@@ -18,7 +18,7 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
 
   // defaults
   radius: 8,
-  stroke: '#cc0000',
+  strokeBinding: '.item.color',
   strokeWidth: 2,
   strokeOpacity: 1.0,
   fill: '#ffffff',

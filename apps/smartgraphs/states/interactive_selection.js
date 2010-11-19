@@ -14,7 +14,7 @@
   @version 0.1
 */
 Smartgraphs.INTERACTIVE_SELECTION = SC.Responder.create(
-/** @scope Smartgraphs.INTERACTIVESELECTION.prototype */ {
+/** @scope Smartgraphs.INTERACTIVE_SELECTION.prototype */ {
 
   nextResponder: Smartgraphs.ACTIVITY_STEP,
 

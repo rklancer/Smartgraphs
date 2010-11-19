@@ -7,6 +7,13 @@
 
 sc_require('models/session');
 
+Smartgraphs.Session.TEST_FIXTURES = [
+  { guid: 'empty-session',
+    user: null,
+    steps: []
+  }
+];
+
 Smartgraphs.Session.FIXTURES = [
 
   { guid: 'empty-session',

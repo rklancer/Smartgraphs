@@ -5,24 +5,29 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('models/annotation');
+sc_require('views/highlighted_point');
+
 /** @class
 
-  Highlight a particular point on the graph. This model should eventually encompass several kinds of highlight.
+  An annotation that highlights or 'calls out' a particular point on a graph. This model will eventually encompass 
+  several visual styles for the highlight. Currently it displays a circle around the point.
   
-  It is conceptually distinct from the highlight applied by default to the 'selected' point of a DatasetView;
-  however, one might code a Smartgraphs step to add this annotation to a point after the user selects it.
+  It is conceptually distinct from the highlight applied by default to the 'selected' point of a DatasetView.
 
   @extends Smartgraphs.Annotation
   @version 0.1
 */
 
-sc_require('models/annotation');
-sc_require('views/highlighted_point');
-
 Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.HighlightedPoint.prototype */
 {
 
+  /**
+    The point being highlighted.
+    
+    @property {Smartgraphs.DataPoint}
+  */
   point: SC.Record.toOne('Smartgraphs.DataPoint')
 
 });

@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/sensor_loaded');
+
 /** @class
 
   State representing that the sensor applet has been stopped, ready for data to be cleared or for user to finish
@@ -13,8 +15,6 @@
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/sensor_loaded');
 
 Smartgraphs.SENSOR_STOPPED = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR_STOPPED.prototype */ {

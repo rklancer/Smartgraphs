@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/activity_step');
+
 /** @class
 
   Superstate representing that the sensor applet is being loaded up or has been loaded
@@ -12,7 +14,6 @@
   @extends SC.Responder
   @version 0.1
 */
-sc_require('states/activity_step');
 
 Smartgraphs.SENSOR = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR.prototype */ {

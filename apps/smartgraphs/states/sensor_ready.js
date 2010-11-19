@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/sensor_loaded');
+
 /** @class
 
   State representing that the sensor applet is loaded and ready for the user to click 'start'
@@ -12,8 +14,6 @@
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/sensor_loaded');
 
 Smartgraphs.SENSOR_READY = SC.Responder.create(
 /** @scope Smartgraphs.SENSOR_READY.prototype */ {

@@ -28,8 +28,6 @@ Smartgraphs.Session = SC.Record.extend(
     
     @property {Smartgraphs.User}
   */
-  user: SC.Record.toOne('Smartgraphs.User', { inverse: 'session', isMaster: YES }),
-  
-  steps: SC.Record.toMany('Smartgraphs.  SessionStep', { inverse: 'session' })
+  user: SC.Record.toOne('Smartgraphs.User', { inverse: 'session', isMaster: YES })
 
 }) ;

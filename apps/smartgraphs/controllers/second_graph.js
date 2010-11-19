@@ -5,13 +5,16 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('controllers/graph');
+
 /** @class
 
-  (Document Your Controller Here)
+  GraphController for the 'second' graph being displayed. If a split pane is being displayed, and a graph is showing
+  in the lower pane, this represents the graph in the bottom pane. If a single pane is being displayed, this graph 
+  controller is not in use. 
 
-  @extends SC.ObjectController
+  @extends Smartgraphs.GraphController
 */
-sc_require('controllers/graph');
 
 Smartgraphs.secondGraphController = Smartgraphs.GraphController.create(
 /** @scope Smartgraphs.secondGraphController.prototype */ {

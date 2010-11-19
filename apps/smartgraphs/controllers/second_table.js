@@ -5,13 +5,14 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('controllers/table');
+
 /** @class
 
   (Document Your Controller Here)
 
   @extends Smartgraphs.TableController
 */
-sc_require('controllers/table');
 
 Smartgraphs.secondTableController = Smartgraphs.TableController.create(
 /** @scope Smartgraphs.secondTableController.prototype */ {

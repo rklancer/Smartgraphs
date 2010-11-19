@@ -7,12 +7,19 @@
 
 /** @class
 
-  (Document Your Controller Here)
+  The GraphController class defines a controller for Graph objects. Two instances of this controller exist in
+  Smartgraphs currently: Smartgraphs.firstGraphController (which controls the graph in the top pane if the panes are
+  in the 'split' configuration, and controls the graph in the only pane if the panes are not split) and
+  Smartgraphs.secondGraphController (controls the graph in the bottom pane if split panes are showing).
+  
+  This controller operates at a 'logical' level, maintaining lists of model objects that represent the Graph currently
+  open in the controller. The corresponding GraphViews observe properties of their controller and dynamically add or
+  remove views from the graph to represent the annotations and data requested by the GraphController.
 
   @extends SC.ObjectController
 */
-Smartgraphs.GraphController = SC.ObjectController.extend(SC.Responder, 
-/** @scope Smartgraphs.graphController.prototype */ {
+Smartgraphs.GraphController = SC.ObjectController.extend( 
+/** @scope Smartgraphs.GraphController.prototype */ {
   
   /**
     The datasets being shown on this graph.

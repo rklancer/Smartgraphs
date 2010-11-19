@@ -1,5 +1,5 @@
 {
-  "_rev": "7-867d545e60a16c62a058058735e023cd",
+  "_rev": "11-115f23f0ff472b5ce0ab3a4b622adb42",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -50,8 +50,9 @@
           "action": "startInteractiveSelection",
           "literalArgs": {
             "annotationName": "first-point",
-            "graphName": "demo-graph", 
-            "datasetName": "demo-data"
+            "graphName": "demo-graph",
+            "datasetName": "demo-data",
+            "color": "#1f77b4"
           }
         }
       ],
@@ -96,19 +97,12 @@
       "afterText": "",
       "startCommands": [
         {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "type": "Smartgraphs.HighlightedPoint",
-            "name": "first-point",
-            "graphName": "demo-graph"
-          }
-        },
-        {
           "action": "startInteractiveSelection",
           "literalArgs": {
             "annotationName": "second-point",
-            "graphName": "demo-graph", 
-            "datasetName": "demo-data"
+            "graphName": "demo-graph",
+            "datasetName": "demo-data",
+            "color": "#ff7f0e"
           }
         }
       ],
@@ -124,7 +118,16 @@
 
       ],
       "afterSubmissionCommands": [
-
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "line",
+            "firstPoint": "first-point",
+            "secondPoint": "second-point",
+            "graphName": "demo-graph",
+            "color": "#110000"
+          }
+        }
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -156,31 +159,6 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "type": "Smartgraphs.HighlightedPoint",
-            "name": "first-point",
-            "graphName": "demo-graph"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "type": "Smartgraphs.HighlightedPoint",
-            "name": "second-point",
-            "graphName": "demo-graph"
-          }
-        },
-        {
-          "action": "createLineThroughPoints",
-          "literalArgs": {
-            "lineName": "line",
-            "firstPoint": "first-point",
-            "secondPoint": "second-point",
-            "graphName": "demo-graph"
-          }
-        },
         {
           "action": "addAnnotation",
           "literalArgs": {

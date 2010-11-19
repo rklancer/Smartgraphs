@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/activity');
+
 /** @class
 
   State representing that the activity activity is finished. User may want to proceed to another activity, or may 
@@ -13,8 +15,6 @@
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/activity');
 
 Smartgraphs.ACTIVITY_DONE = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY_DONE.prototype */ {

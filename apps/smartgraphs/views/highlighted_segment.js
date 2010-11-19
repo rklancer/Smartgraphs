@@ -15,7 +15,7 @@
 Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.HighlightedSegmentView.prototype */
 {
-  stroke: '#aa0000',
+  strokeBinding: '.item.color',
   strokeWidth: 14,
   strokeOpacity: 0.1,
   
@@ -28,7 +28,6 @@ Smartgraphs.HighlightedSegmentView = RaphaelViews.RaphaelView.extend(
   // its tags are already in the DOM.
 
   renderCallback: function(raphaelCanvas, attrs) {
-    console.log('creating path element; attrs.d = ', attrs.d);
     var path = raphaelCanvas.path(attrs.d).attr(attrs);
     return path;
   },

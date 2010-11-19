@@ -5,14 +5,15 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+
+sc_require('states/activity');
+sc_require('states/mixins/resource_loader');
+
 /** @class
 
   @extends SC.Responder
   @version 0.1
 */
-
-sc_require('states/activity');
-sc_require('states/mixins/resource_loader');
 
 Smartgraphs.ACTIVITY_PAGE_LOADING = SC.Responder.create(Smartgraphs.ResourceLoader,
 /** @scope Smartgraphs.ACTIVITY_PAGE_LOADING.prototype */ {

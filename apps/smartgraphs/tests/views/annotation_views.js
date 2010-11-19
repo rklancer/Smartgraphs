@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd setupUserAndSessionFixtures restoreUserAndSessionFixtures setupDatapointFixtures restoreDatapointFixtures newSession addPoint */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start setup teardown newSession addPoint */
 
 var pane;
 var graphView;
@@ -14,59 +14,20 @@ var session;
 var dataset;
 
 
-// TODO copied straight from GraphView -- should probably be moved to debug folder? How are they different/the same?
 function setupFixtures() {
-  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
-  Smartgraphs.Graph.FIXTURES = [
-    { url: 'test',
-      name: 'test',
-      axes: 'test-axes',
-      title: 'Test Graph',
-      initialDatasets: []
-    }
-  ];
-  
-  Smartgraphs.Axes.oldFixtures = Smartgraphs.Axes.FIXTURES;
-  Smartgraphs.Axes.FIXTURES = [
-    { url: 'test-axes',
-
-      xMin: -5,
-      xMax: 10,
-      xSteps: 5,
-      xLabel: 'xLabel (long)',
-      xLabelAbbreviated: 'xLabel (abbrev)',
-
-      yMin: 2,
-      yMax: 8,
-      ySteps: 6,
-      yLabel: 'yLabel (long)',
-      yLabelAbbreviated: 'yLabel (abbrev)'
-    }
-  ];
-  
-  setupDatapointFixtures();
-  
-  oldStore = Smartgraphs.store;
-  
-  // REMINDER: 'SC.Record.fixtures' is a singleton object; using it below would result in pollution of the data store
-  // with data from prior tests.
-  Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
-}
-
-function restoreFixtures() {
-  Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
-  Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
-  restoreDatapointFixtures();
-  
-  Smartgraphs.set('store', oldStore);
+  setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
+  setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
+  setup.fixtures(Smartgraphs.Dataset, [{url: 'dataset-1'}]);
+  setup.fixtures(Smartgraphs.DataPoint, [{url: 'datapoint-1'}]);
 }
 
 
 module("Smartgraphs Annotation View instantiation", {
   setup: function() {
     setupFixtures();
+    setup.store();
 
-    Smartgraphs.firstGraphController.openGraph('test');
+    Smartgraphs.firstGraphController.openGraph('test-graph');
 
     SC.RunLoop.begin();
     pane = SC.MainPane.create({
@@ -93,7 +54,7 @@ module("Smartgraphs Annotation View instantiation", {
     Smartgraphs.firstGraphController.clear();
     graphView.bindings.forEach( function (b) { b.disconnect(); } );
     pane.remove();
-    restoreFixtures();
+    teardown.store();
   }
 });
 
@@ -144,7 +105,6 @@ test('LineToAxis location should have the expected path to the x-axis with the s
   var point = addPoint(dataset, -1, -5);
   lineToXAxis.set('point', point);
   lineToXAxis.set('axis', "x");
-  console.log("lineToXAxis:", lineToXAxis);
   Smartgraphs.firstGraphController.addAnnotation(lineToXAxis);
 
   var lineToAxisView = annotationViews.objectAt(annotationViews.get('length') - 1);

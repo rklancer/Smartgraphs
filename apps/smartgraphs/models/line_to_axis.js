@@ -5,17 +5,18 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+
+sc_require('models/annotation');
+sc_require('models/highlighted_point');
+sc_require('views/line_to_axis');
+
 /** @class
 
   // TODO: Finish the description of this class
 
  @extends Smartgraphs.HighlightedPoint
  @version 0.1
- */
-
-sc_require('models/annotation');
-sc_require('models/highlighted_point');
-sc_require('views/line_to_axis');
+*/
 
 Smartgraphs.LineToAxis = Smartgraphs.Annotation.extend(
   /** @scope Smartgraphs.LineToAxis.prototype */
@@ -28,12 +29,12 @@ Smartgraphs.LineToAxis = Smartgraphs.Annotation.extend(
   
   /**
    Whether the linePath should be hidden or not
-   */
+  */
   shouldHideLinePath: SC.Record.attr(Boolean, {  defaultValue : NO }),
 
   /**
    Which axis to draw the linePath from the point to
-   */
+  */
   axis: SC.Record.attr(String, {  defaultValue : "y" })
 
 });

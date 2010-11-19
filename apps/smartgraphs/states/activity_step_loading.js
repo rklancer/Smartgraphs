@@ -5,14 +5,18 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-/** @class
-  
-  @extends SC.Responder
-  @version 0.1
-*/
-
 sc_require('states/activity');
 sc_require('states/mixins/resource_loader');
+
+/** @class
+  
+  State that represents that the ActivityStep is being loaded. If all ActivitySteps are preloaded when the activity
+  loads, then this state can be considered to be the transient 'start' state of the activity step.
+  
+  @extends SC.Responder
+  @extends Smartgraphs.ResourceLoader
+  @version 0.1
+*/
 
 Smartgraphs.ACTIVITY_STEP_LOADING = SC.Responder.create(Smartgraphs.ResourceLoader,
 /** @scope Smartgraphs.ACTIVITY_STEP_LOADING.prototype */ {

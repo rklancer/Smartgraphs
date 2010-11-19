@@ -7,6 +7,16 @@
 
 sc_require('models/graph');
 
+Smartgraphs.Graph.TEST_FIXTURES = [
+  { url: 'test-graph',
+    name: 'test-graph',
+    axes: 'test-axes',
+    title: 'Test Graph',
+    initialDatasets: []
+  }
+];
+
+
 Smartgraphs.Graph.FIXTURES = [
 
   { url: 

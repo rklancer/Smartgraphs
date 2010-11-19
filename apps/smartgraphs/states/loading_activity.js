@@ -5,6 +5,9 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/ready');
+sc_require('states/mixins/resource_loader');
+
 /** @class
 
   Loading state for Activity view. (Not called ACTIVITY_LOADING because it is not an ACTIVITY substate)
@@ -13,9 +16,6 @@
   @extends Smartgraphs.ResourceLoader
   @version 0.1
 */
-
-sc_require('states/ready');
-sc_require('states/mixins/resource_loader');
 
 Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
 /** @scope Smartgraphs.LOADING_ACTIVITY.prototype */ {
