@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('mixins/annotation_support');
+
 /** @class
 
   Initial implementation of table controller. Currently only allows displaying a single dataset, which must be open
@@ -12,7 +14,7 @@
   
   @extends SC.Object
 */
-Smartgraphs.TableController = SC.ArrayController.extend(
+Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.tableController.prototype */ {
   
   /**

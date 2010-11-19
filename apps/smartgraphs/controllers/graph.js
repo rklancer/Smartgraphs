@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('mixins/annotation_support');
+
 /** @class
 
   The GraphController class defines a controller for Graph objects. Two instances of this controller exist in
@@ -18,7 +20,7 @@
 
   @extends SC.ObjectController
 */
-Smartgraphs.GraphController = SC.ObjectController.extend( 
+Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.GraphController.prototype */ {
   
   /**
@@ -26,11 +28,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend(
   */
   datasetList: null,
   
-  /**
-    The (static) annotations being shown on this graph.
-  */
-  annotationList: null,
-
   /**
     Mouse events are pushed onto this array when we are in freehand input mode.
   */
@@ -180,37 +177,10 @@ Smartgraphs.GraphController = SC.ObjectController.extend(
   },
   
   /**
-   * @param annotation
-   */
-  addAnnotation: function (annotation) {
-    if (this.findAnnotationByName(annotation.get('name'))) {
-      return;
-    }
-    this.get('annotationList').pushObject(annotation);
-  },
-  
-  /**
-    Remove the named annotation from the graph.
-    @param name
-  */
-  removeAnnotation: function (name) {
-    var annotationList = this.get('annotationList');
-    var annotation = this.findAnnotationByName(name);
-    if (annotation) annotationList.removeObject(annotation);
-  },
-  
-  /**
     @param name
   */
   findDatasetByName: function (name) {
     return this.findObjectByNameIn(name, this.get('datasetList'));
-  },
-  
-  /**
-    @param name
-  */
-  findAnnotationByName: function (name) {
-    return this.findObjectByNameIn(name, this.get('annotationList'));
   },
   
   /**
