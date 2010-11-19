@@ -144,7 +144,7 @@ It might be necessary to flush the local DNS cache:
 
 If you are using applets start the applet server in another console window:
 
-    ruby applets/local_server.rb
+    ruby applets/bin/local_server.rb
 
 ### Start the development server
 
