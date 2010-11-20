@@ -76,7 +76,6 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
         point2: secondAnnotation.get('point').get('id'),
         color: color
       });
-    debugger;
     return YES;
   }
   
