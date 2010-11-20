@@ -8,20 +8,6 @@
 Smartgraphs.main = function main() {
   
   Smartgraphs.dataSource = Smartgraphs.CouchDataSource.create();
-  
-  // cascade the Rails data source in front of the fixtures data source until everything is transferred to Rails
-  //
-  // Smartgraphs.dataSource = SC.CascadeDataSource.create({
-  //   dataSources: "rest fixtures".w(),
-  //   
-  //   rest: Smartgraphs.RestDataSource.create(),
-  //   
-  //   fixtures: SC.FixturesDataSource.create({
-  //     simulateRemoteResponse: NO,
-  //     latency: 500
-  //   })
-  // });
-  
   Smartgraphs.store = SC.Store.create().from(Smartgraphs.dataSource);
   
   // make the mainPane visible on screen.
