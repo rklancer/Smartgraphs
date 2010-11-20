@@ -165,7 +165,16 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
 
   log: function() {
     if (Smartgraphs.get('logDataSource')) {
-      console.log.apply(console, arguments);
+      if (console.log.apply) {
+        console.log.apply(console, arguments);
+      }
+      else {
+        // IE Dev tools debug mode provides a console.log which throws an error when you try to call the 'apply'
+        // method. In that case, just replace ourself outright with console.log (after this happens, this.log() will
+        // of course no longer check the 'logDataSource' property. This should only be a problem on the off chance
+        // someone attempts to turn off datasource logging mid-session.
+        this.log = console.log;
+      }
     }
   }
   
