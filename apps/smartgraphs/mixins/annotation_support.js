@@ -33,7 +33,12 @@ Smartgraphs.AnnotationSupport = {
     if (this.findAnnotationByName(annotation.get('name'))) {
       return;
     }
-    this.get('annotationList').pushObject(annotation);
+    if (this.get('annotationList')) {
+      this.get('annotationList').pushObject(annotation);
+    } else {
+      // I don't understand how this worked before, using pushObject on null
+      this.set('annotationList', [annotation]);
+    }
   },
   
   /**
@@ -59,8 +64,12 @@ Smartgraphs.AnnotationSupport = {
     // Originally this used a generic "find" function in the graphs controller.
     // return this.findObjectByNameIn(name, this.get('annotationList'));
     var list = this.get('annotationList');
-    var names = list.getEach('name');
-    var idx = names.indexOf(name);
-    return (idx >= 0) ? list.objectAt(idx) : null;
+    if (list) { // if the list is empty it will start null
+      var names = list.getEach('name');
+      var idx = names.indexOf(name);
+      return (idx >= 0) ? list.objectAt(idx) : null;
+    } else {
+      return null;
+    }
   }
 };
