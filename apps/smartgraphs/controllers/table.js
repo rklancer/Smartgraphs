@@ -89,9 +89,11 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
       Smartgraphs.TableController.controllerForDataset.set(currentDatasetName, null);
     }
     Smartgraphs.TableController.controllerForDataset.set(datasetName, this);
+    // TODO: This may be unnecessary
     this.waitForController();
   },
 
+  // TODO: Refactor to remove this method
   waitForController: function () {
     var graphName = this.get('graphName');
     var datasetName = this.get('datasetName');
@@ -107,6 +109,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     }
   },
   
+  // TODO: Refactor to remove this method
   waitForDataset: function () {
     var graphController = this.get('graphController');
     var datasetName = this.get('datasetName');

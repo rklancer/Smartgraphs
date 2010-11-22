@@ -126,6 +126,7 @@ test("table controller should not be confused by opening and closing a graph it 
 test("table controller should set the 'showTable' property according to whether data is being streamed or not", function () {
   expect(4);
   dataset.set('isStreaming', NO);
+  // TODO: This is now creating an error - unclear if it has trouble opening this graph or if I've broken the controller.
   Smartgraphs.firstGraphController.openGraph('test-graph');
   Smartgraphs.firstGraphController.addDataset(dataset); 
   Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
