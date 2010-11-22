@@ -52,7 +52,7 @@ Smartgraphs.TableController = SC.ArrayController.extend(
     Whether to display the table at all and latest datapoint to display
   */
   showTable: function () {
-    // SC.Binding.not() creates a single Binding object that ends up being shared by all TableConrtroller instances
+    // SC.Binding.not() creates a single Binding object that ends up being shared by all TableController instances
     return !this.get('isStreaming');
   }.property('isStreaming').cacheable(),
   
