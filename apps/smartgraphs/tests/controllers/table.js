@@ -145,3 +145,14 @@ test("table controller should set the 'showTable' property according to whether 
   
   equals( Smartgraphs.firstTableController.get('showTable'), YES, "table controller's `showTable` property should be YES again once data is no longer being streamed");
 });
+
+test("table controller should support knowing about annotations", function () {
+  expect(1);
+  equals( Smartgraphs.firstTableController.get('supportsAnnotations'), YES, "The table controller's `supportsAnnotations` property is YES");
+});
+
+test("We should be able to find the table controller by dataset name", function () {
+  expect(1);
+  Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
+  same( Smartgraphs.TableController.controllerForName['test-dataset'], Smartgraphs.firstTableController, "The Smartgraphs.TableController.controllerForName hash has firstTableController for this dataset.");
+});
