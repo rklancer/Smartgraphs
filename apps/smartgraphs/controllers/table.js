@@ -80,6 +80,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   openDataset: function (graphName, datasetName) {
     var currentDatasetName = this.get('datasetName');
     if (currentDatasetName === datasetName) return YES;  // Nothing to do - unlikely, though
+    this.clear();
     this.removeObservers();
 
     this.set('graphName', graphName);
