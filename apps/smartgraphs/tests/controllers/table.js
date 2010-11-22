@@ -154,5 +154,5 @@ test("table controller should support knowing about annotations", function () {
 test("We should be able to find the table controller by dataset name", function () {
   expect(1);
   Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
-  same( Smartgraphs.TableController.controllerForName['test-dataset'], Smartgraphs.firstTableController, "The Smartgraphs.TableController.controllerForName hash has firstTableController for this dataset.");
+  same( Smartgraphs.TableController.controllerForDataset['test-dataset'], Smartgraphs.firstTableController, "The Smartgraphs.TableController.controllerForDataset hash has firstTableController for this dataset.");
 });
