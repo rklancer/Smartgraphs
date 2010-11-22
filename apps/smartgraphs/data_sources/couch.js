@@ -47,15 +47,8 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
 
     if (recordType === Smartgraphs.Activity) {
       var activityId = id;
-      var requestUrl = '/db/smartgraphs/_design/app/_view/activities-by-url-and-version?key=["'+activityId+'",'+Smartgraphs.DATA_FORMAT_VERSION+']';
-      
-      SC.Request.getUrl(requestUrl)
-                .json()
-  		          .header('Accept', 'application/json')
-  		          .notify(this, 'didRetrieveActivity', store, storeKey)
-  		          .send();
-  		this.log('  sent request to url %s', requestUrl);
-      this.log('  returning YES from retrieveRecord');
+      this.log('  recognized request for Activity record');
+      this.didRetrieveActivity(Smartgraphs.ACTIVITY_DOCS[id], store, storeKey);
       return YES;
     }
     
@@ -77,45 +70,37 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
   },
   
   
-  didRetrieveActivity: function (response, store, storeKey) {
+  didRetrieveActivity: function (doc, store, storeKey) {        
 
-    if (SC.ok(response)) {
-      var body = response.get('body');
-      this.log('retrieved response.body = ', body);
-      
-      if (body && body.rows && body.rows.length === 1 && body.rows[0].value) {
-        var doc = body.rows[0].value;
-        
-        this.log('doc = ', doc);
-        this.log('doc.activity = ', doc.activity);
-        
-        // push all the associated records into the store
-        var self = this;
-        [
-          ['ActivityPage',        'pages'],
-          ['ActivityStep',        'steps'],
-          ['Axes',                'axes'],
-          ['DataPoint',           'datapoints'],
-          ['Dataset',             'datasets'],
-          ['FreehandSketch',      'freehandSketches'],
-          ['Graph',               'graphs'],
-          ['HighlightedPoint',    'highlightedPoints'],
-          ['HighlightedSegment',  'highlightedSegments'],
-          ['LineToAxis',          'linesToAxis'],
-          ['ResponseTemplate',    'responseTemplates']
-                    
-        ].forEach(function (pair) {
-          self.loadRecordsFromArray(Smartgraphs[pair[0]], doc[pair[1]]);
-        });
-
-        // and call back to the datastore (which loads the Activity record as well)
-        store.dataSourceDidComplete(storeKey, doc.activity);
-        return;
-      }
+    if (!doc) {
+      store.dataSourceDidError(storeKey);
+      return;
     }
     
-    // otherwise...
-    store.dataSourceDidError(storeKey, response);
+    this.log('doc = ', doc);
+    this.log('doc.activity = ', doc.activity);
+    
+    // push all the associated records into the store
+    var self = this;
+    [
+      ['ActivityPage',        'pages'],
+      ['ActivityStep',        'steps'],
+      ['Axes',                'axes'],
+      ['DataPoint',           'datapoints'],
+      ['Dataset',             'datasets'],
+      ['FreehandSketch',      'freehandSketches'],
+      ['Graph',               'graphs'],
+      ['HighlightedPoint',    'highlightedPoints'],
+      ['HighlightedSegment',  'highlightedSegments'],
+      ['LineToAxis',          'linesToAxis'],
+      ['ResponseTemplate',    'responseTemplates']
+                
+    ].forEach(function (pair) {
+      self.loadRecordsFromArray(Smartgraphs[pair[0]], doc[pair[1]]);
+    });
+
+    // and call back to the datastore (which loads the Activity record as well)
+    store.dataSourceDidComplete(storeKey, doc.activity);
   },
   
   loadRecordsFromArray: function (recordType, hashes) {
