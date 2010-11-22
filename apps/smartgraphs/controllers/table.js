@@ -85,9 +85,9 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     this.set('graphName', graphName);
     this.set('datasetName', datasetName);  
     if (currentDatasetName) {
-      Smartgraphs.TableController.controllerForName.set(currentDatasetName, null);
+      Smartgraphs.TableController.controllerForDataset.set(currentDatasetName, null);
     }
-    Smartgraphs.TableController.controllerForName.set(datasetName, this);
+    Smartgraphs.TableController.controllerForDataset.set(datasetName, this);
     this.waitForController();
   },
 
@@ -129,7 +129,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     var graphName = this.get('graphName');
     
     if (graphName) {
-      Smartgraphs.GraphController.controllerForName.removeObserver(graphName, this, this.waitForController);
+      Smartgraphs.TableController.controllerForDataset.removeObserver(graphName, this, this.waitForController);
       var graphController = this.get('graphController');
       if (graphController) {
         graphController.get('datasetList').removeObserver('[]', this, this.waitForDataset);
@@ -139,4 +139,4 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   
 }) ;
 
-Smartgraphs.TableController.controllerForName = SC.Object.create({});
+Smartgraphs.TableController.controllerForDataset = SC.Object.create({});
