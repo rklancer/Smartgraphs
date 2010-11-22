@@ -77,10 +77,16 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     by that graph controller before setting our content to the set of points in the dataset.
   */
   openDataset: function (graphName, datasetName) {
+    var currentDatasetName = this.get('datasetName');
+    if (currentDatasetName === datasetName) return YES;  // Nothing to do - unlikely, though
     this.removeObservers();
 
     this.set('graphName', graphName);
     this.set('datasetName', datasetName);  
+    if (currentDatasetName) {
+      Smartgraphs.TableController.controllerForName.set(currentDatasetName, null);
+    }
+    Smartgraphs.TableController.controllerForName.set(datasetName, this);
     this.waitForController();
   },
 
@@ -131,3 +137,5 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   }
   
 }) ;
+
+Smartgraphs.TableController.controllerForName = SC.Object.create({});
