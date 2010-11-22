@@ -9,23 +9,9 @@
 
 Smartgraphs.activityPageDef = SC.Page.extend({
 
-  activityView: SC.SplitView.design({
-    defaultThickness: 200,
-    topLeftMaxThickness: 300,
-    layoutDirection: SC.LAYOUT_HORIZONTAL,
-
-    topLeftView: SC.ScrollView.design({
-
-      classNames: ['desk'],
-      contentView: SC.SourceListView.design({
-        classNames: ['desk'],
-        contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
-        contentValueKey: 'title',
-        selectionBinding: 'Smartgraphs.activityOutlineController.selection',
-        isSelectable: NO
-      })
-    }),
-    dividerView: SC.SplitDividerView,
+  activityView: SC.View.design({
+    childViews: 'bottomRightView'.w(),
+    
     bottomRightView: SC.View.design({
       childViews: 'instructionsWrapper dataWrapper'.w(),
     
