@@ -377,8 +377,10 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     var dataset = graphController && graphController.findDatasetByName(args.datasetName);
   
     if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
+    var tableController = Smartgraphs.TableController.controllerForDataset[args.datasetName];
     var annotation = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
     graphController.addAnnotation(annotation);
+    tableController.addAnnotation(annotation);
     
     // try a simpler paradigm .. just stash the info needed by the state, in the state
     Smartgraphs.INTERACTIVE_SELECTION.set('annotation', annotation);
