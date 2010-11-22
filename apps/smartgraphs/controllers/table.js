@@ -63,6 +63,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   
   clear: function () {
     this.removeObservers();
+    this.clearAnnotations();
     this.set('content', null);
     this.set('dataset', null);
     this.set('graphController', null);

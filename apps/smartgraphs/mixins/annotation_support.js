@@ -31,14 +31,13 @@ Smartgraphs.AnnotationSupport = {
   */
   addAnnotation: function (annotation) {
     if (this.findAnnotationByName(annotation.get('name'))) {
-      return;
+      return; // Nothing to be done
     }
-    if (this.get('annotationList')) {
-      this.get('annotationList').pushObject(annotation);
-    } else {
-      // I don't understand how this worked before, using pushObject on null
-      this.set('annotationList', [annotation]);
-    }
+    this.get('annotationList').pushObject(annotation);
+  },
+  
+  clearAnnotations: function () {
+    this.set('annotationList', []);
   },
   
   /**

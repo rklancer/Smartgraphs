@@ -55,7 +55,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
     }
     
     this.set('datasetList', []);
-    this.set('annotationList', []);
+    this.clearAnnotations();
     this.set('content', null);
   },
   
