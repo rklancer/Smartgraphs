@@ -7,7 +7,10 @@
 // Because this is a mixin, we need to create an object to mix it in, in 
 // order to test
 Smartgraphs.AnnotationBucket = SC.Object.extend(Smartgraphs.AnnotationSupport, {
-  name: null
+  name: null,
+  clear: function () {
+    this.clearAnnotations();
+  }
 });
 
 module("Smartgraphs.annotationSupport", {
@@ -29,15 +32,17 @@ test("An object mixing in Annotation Support will respond to supportsAnnotations
 });
 
 test("The annotationList array can be manipulated with addAnnotation, removeAnnotation", function() {
-  expect(3);
+  expect(4);
   var ab = Smartgraphs.AnnotationBucket.create({ 'name': "Bucket Two" });
   Smartgraphs.sessionController.newSession();
   var hp = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, "Test Point", { "color": "#cc0000" });
   same( ab.get('annotationList'), null, "Annotation list is initially null");
+  ab.clear(); // Usually called by e.g. Smartgraphs.GraphController.addGraph()
+  equals( ab.get('annotationList').get('length'), 0, "Annotation list is now an empty array (not null)");
   ab.addAnnotation(hp);
   equals( ab.get('annotationList').get('length'), 1, "The annotation list is 1");
   ab.removeAnnotation("Test Point");
-  equals( ab.get('annotationList').get('length'), 0, "The annotation list is now empty (not null)");
+  equals( ab.get('annotationList').get('length'), 0, "The annotation list is empty again");
 });
 
 // findAnnotationByName() is exercised by removeAnnotation(), above.
