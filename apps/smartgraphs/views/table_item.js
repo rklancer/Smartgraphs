@@ -15,6 +15,7 @@
 Smartgraphs.TableItemView = SC.ListItemView.extend(
 /** @scope Smartgraphs.TableItemView.prototype */ {
 
-  classNames: "table-item-view"
+  classNames: "table-item-view",
+  backgroundColorBinding: '.content.backgroundColor'
   
 });
