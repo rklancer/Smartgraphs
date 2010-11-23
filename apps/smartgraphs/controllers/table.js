@@ -139,8 +139,48 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
         graphController.get('datasetList').removeObserver('[]', this, this.waitForDataset);
       }
     }
+  },
+
+  /**
+    Add an annotation to this controller.
+    
+    This version overrides the mixin version by adding an observer to the incoming annotation.
+    
+    @param {Smartgraphs.Annotation} annotation
+      The annotation to be added.
+  */
+  addAnnotation: function (annotation) {
+    if (this.findAnnotationByName(annotation.get('name'))) {
+      return; // Nothing to be done
+    }
+    var controller = this;
+    this.get('annotationList').pushObject(annotation);
+    if (annotation.kindOf(Smartgraphs.HighlightedPoint)) {
+      // Watch this and update colors for datapoints if the point changes
+      annotation.addObserver('point', this, 'updateDataPoints');
+    }
+  },
+
+  /**
+    Updates a value on the dataset based on changes in the annotations.
+    
+    If the annotation is a HighlightedPoint and its 'point' attribute changes, we want to update the
+    dataset's DataPoints with appropriate backgroundColor attributes.
+  */
+  updateDataPoints: function (sender, key) {
+    var dataset = this.get('dataset');
+    if (sender.kindOf(Smartgraphs.HighlightedPoint) && (sender.get('point') !== undefined )) {
+      dataset.get('points').forEach( function (point) {
+        if (point == sender.get('point')) {
+          point.set('backgroundColor', sender.get('color'));
+        } else if (point.get('backgroundColor') == sender.get('color')) {
+          // TODO: We need to remove the old highlight
+          point.set('backgroundColor', null); // FIXME: This is a problem if there are two annotations with the same color
+        }
+      });
+    }
   }
-  
+
 }) ;
 
 Smartgraphs.TableController.controllerForDataset = SC.Object.create({});
