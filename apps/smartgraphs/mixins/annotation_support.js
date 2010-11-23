@@ -36,6 +36,10 @@ Smartgraphs.AnnotationSupport = {
     this.get('annotationList').pushObject(annotation);
   },
   
+  /** 
+    Removes all annotations from the list. Sets the annotationList attribute to [] (therefore, also initializes the
+    list if the value had previously been null).
+  */
   clearAnnotations: function () {
     this.set('annotationList', []);
   },
