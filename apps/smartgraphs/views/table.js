@@ -7,10 +7,13 @@
 
 /** @class
 
-  (Document Your View Here)
+  A view for displaying table data.
 
   @extends SC.View
 */
+
+sc_require('views/table_item');
+
 Smartgraphs.TableView = SC.View.extend(
 /** @scope Smartgraphs.TableView.prototype */ {
   
@@ -118,7 +121,9 @@ Smartgraphs.TableView = SC.View.extend(
         contentBinding: '.parentView.parentView.parentView.parentView*tableController.arrangedObjects',
         selectionBinding: '.parentView.parentView.parentView.parentView*tableController.selection',
         contentLengthBinding: '.content.length',
-      
+        annotationsListBinding: '.parentView.parentView.parentView.parentView*tableController.annotationsList',
+        // TODO: So the parent now knows about the list of annotations...
+        
         contentLengthDidChange: function () {
           this.adjust('height', this.get('contentLength') * this.get('rowHeight'));
         }.observes('contentLength'),
@@ -132,7 +137,8 @@ Smartgraphs.TableView = SC.View.extend(
           canEditContent: NO,
           contentValueKey: 'xRounded',
           contentBinding: '.parentView.content',
-          selectionBinding: '.parentView.selection'
+          selectionBinding: '.parentView.selection',
+          exampleView: Smartgraphs.TableItemView
         }),
 
         ysView: SC.ListView.design({
