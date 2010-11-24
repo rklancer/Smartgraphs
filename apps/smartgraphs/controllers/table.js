@@ -150,11 +150,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
       The annotation to be added.
   */
   addAnnotation: function (annotation) {
-    if (this.findAnnotationByName(annotation.get('name'))) {
-      return; // Nothing to be done
-    }
-    var controller = this;
-    this.get('annotationList').pushObject(annotation);
+    sc_super();
     if (annotation.kindOf(Smartgraphs.HighlightedPoint)) {
       // Watch this and update colors for datapoints if the point changes
       annotation.addObserver('point', this, 'updateDataPoints');
