@@ -173,9 +173,10 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
       dataset.get('points').forEach( function (point) {
         if (point == sender.get('point')) {
           point.set('backgroundColor', sender.get('color'));
-        } else if (point.get('backgroundColor') == sender.get('color')) {
-          // TODO: We need to remove the old highlight
-          point.set('backgroundColor', null); // FIXME: This is a problem if there are two annotations with the same color
+        } 
+        else if (point.get('backgroundColor') == sender.get('color')) {
+          // We need to remove the old highlight. Use '' rather than null or undefined to make the binding sync
+          point.set('backgroundColor', ''); // FIXME: This is a problem if there are two annotations with the same color
         }
       });
     }
