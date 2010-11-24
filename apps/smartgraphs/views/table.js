@@ -149,7 +149,8 @@ Smartgraphs.TableView = SC.View.extend(
           canEditContent: NO,
           contentValueKey: 'yRounded',
           contentBinding: '.parentView.content',
-          selectionBinding: '.parentView.selection'
+          selectionBinding: '.parentView.selection',
+          exampleView: Smartgraphs.TableItemView          
         })
       })
     })
