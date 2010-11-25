@@ -38,6 +38,13 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   */
   dataset: null,
   
+  /**
+    A RecordArray containing the results of a query for the datasets in this session with name equal to 
+    this.datasetName. This is used so that the table controller can display a dataset with a given name, even if 
+    the dataset hasn't been created as of the time the table is opened.
+  */
+  sessionDatasets: null,
+  
   axesBinding: '*graphController.axes',
   selectionBinding: '*dataset.selection',
 
@@ -62,12 +69,12 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   latestYBinding: '*dataset.latestPoint.yRounded',
   
   clear: function () {
-    this.removeObservers();
+    this.removeDatasetsObserver();
+    this.set('sessionDatasets', null);    
+  
     this.clearAnnotations();
     this.set('content', null);
     this.set('dataset', null);
-    this.set('graphController', null);
-    this.set('graphName', null);
     this.set('datasetName', null);
   },
   
@@ -77,68 +84,69 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     Waits for the specified graph to be opened by one of the graph controllers and waits for the dataset to be opened
     by that graph controller before setting our content to the set of points in the dataset.
   */
-  openDataset: function (graphName, datasetName) {
+  openDataset: function (datasetName) {
     var currentDatasetName = this.get('datasetName');
     if (currentDatasetName === datasetName) return YES;  // Nothing to do - unlikely, though
-    this.clear();
-    this.removeObservers();
 
-    this.set('graphName', graphName);
-    this.set('datasetName', datasetName);  
+    this.clear(); 
+
+    this.set('datasetName', datasetName);
+    
     if (currentDatasetName) {
       Smartgraphs.TableController.controllerForDataset.set(currentDatasetName, null);
     }
     Smartgraphs.TableController.controllerForDataset.set(datasetName, this);
-    // TODO: This may be unnecessary
-    this.waitForController();
-  },
-
-  // TODO: Refactor to remove this method
-  waitForController: function () {
-    var graphName = this.get('graphName');
-    var datasetName = this.get('datasetName');
     
-    var graphController = Smartgraphs.GraphController.controllerForName[graphName];
-    if (graphController) {
-      this.removeObservers();
-      this.set('graphController', graphController);
-      this.waitForDataset();
-    }
-    else {
-      Smartgraphs.GraphController.controllerForName.addObserver(graphName, this, this.waitForController);
-    }
-  },
-  
-  // TODO: Refactor to remove this method
-  waitForDataset: function () {
-    var graphController = this.get('graphController');
-    var datasetName = this.get('datasetName');
+    // FIXME sessionController should manage this kind of thing
     
-    var dataset = graphController.findDatasetByName(datasetName);
-    if (dataset) {
-      this.removeObservers();
-      if (this.get('graphName') !== graphController.get('name')) {
-        this.waitForController();
-        return;
-      }
-      this.set('content', dataset.get('points'));
-      this.set('dataset', dataset);
+    var query = SC.Query.local(Smartgraphs.Dataset, 'name={name} AND session={session}', { 
+      name: datasetName,
+      session: Smartgraphs.sessionController.getPath('content')
+    });
+    var sessionDatasets = Smartgraphs.store.find(query);
+    
+    if (sessionDatasets.get('length') > 0) {
+      this.useDataset(sessionDatasets.firstObject());
+      return;
     }
-    else {
-      graphController.get('datasetList').addObserver('[]', this, this.waitForDataset);
+    
+    // no dataset with that name is found in the session, see if there's an example dataset with that name
+      
+    query = SC.Query.local(Smartgraphs.Dataset, 'name={name} AND isExample=YES', { 
+      name: datasetName
+    });
+    var exampleDatasets = Smartgraphs.store.find(query);
+    
+    if (exampleDatasets.get('length') > 0) {
+      this.useDataset(exampleDatasets.firstObject());
+      return;
     }
+    
+    // No example or session dataset was found with that name. Wait to see if a dataset with the requested name
+    // is created during this step, and use that one when it is available.
+    
+    this.set('sessionDatasets', sessionDatasets);
+    sessionDatasets.addObserver('length', this, this.sessionDatasetsObserver);
   },
   
-  removeObservers: function () {
-    var graphName = this.get('graphName');
-    
-    if (graphName) {
-      Smartgraphs.TableController.controllerForDataset.removeObserver(graphName, this, this.waitForController);
-      var graphController = this.get('graphController');
-      if (graphController) {
-        graphController.get('datasetList').removeObserver('[]', this, this.waitForDataset);
-      }
+  sessionDatasetsObserver: function () {
+    var sessionDatasets = this.get('sessionDatasets');
+    if (sessionDatasets.get('length') > 0) {
+      this.useDataset(sessionDatasets.firstObject());
     }
+    this.removeDatasetsObserver();
+    this.set('sessionDatasets', null);
+  },
+  
+  removeDatasetsObserver: function () {
+    var sessionDatasets = this.get('sessionDatasets');
+    if (sessionDatasets) sessionDatasets.removeObserver('length', this, this.sessionDatasetsObserver);
+  },  
+  
+  useDataset: function (dataset) {
+    console.log("setting dataset to id %s:", dataset.get('id'));
+    this.set('dataset', dataset);
+    this.set('content', dataset.get('points'));
   },
 
   /**

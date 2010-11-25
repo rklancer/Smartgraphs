@@ -161,7 +161,8 @@ Smartgraphs.TableView = SC.View.extend(
   }.observes('dataset'),
   
   showTableDidChange: function () {
-    this.invokeOnce('adjustViews');    
+    console.log('showTableDidChange');
+    this.invokeOnce('adjustViews'); 
   }.observes('showTable'),
   
   adjustViews: function () {
@@ -183,7 +184,7 @@ Smartgraphs.TableView = SC.View.extend(
     }
     else {
       numericView.set('isVisible', YES);
-      innerView.bindings.forEach( function (b) { b.disconnect(); } );
+      innerView.bindings.forEach( function (b) { b.disconnect(); });
       tableColumnView.set('isVisible', NO);       
     }
   }
