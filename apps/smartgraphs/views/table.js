@@ -161,7 +161,6 @@ Smartgraphs.TableView = SC.View.extend(
   }.observes('dataset'),
   
   showTableDidChange: function () {
-    console.log('showTableDidChange');
     this.invokeOnce('adjustViews'); 
   }.observes('showTable'),
   

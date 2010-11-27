@@ -144,7 +144,6 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   },  
   
   useDataset: function (dataset) {
-    console.log("setting dataset to id %s:", dataset.get('id'));
     this.set('dataset', dataset);
     this.set('content', dataset.get('points'));
   },
