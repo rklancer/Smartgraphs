@@ -64,6 +64,13 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
   },
   
   render: function (context, firstTime) {
+    var graphView = this.getPath('parentView.graphView');
+    if (!graphView) {
+      // apparently render may have been called after we were removed from our old parent. Redraw after add to new parent.
+      this.displayDidChange();
+      return;
+    }
+    
     var fill = this.get('fill'),
         stroke = this.get('stroke'),
         radius = this.get('radius');
@@ -71,7 +78,8 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
     // get the x and y values, and translate to our coordinate system
     var x = this.getPath('content.x'),
         y = this.getPath('content.y');
-    var coords = this.getPath('parentView.graphView').coordinatesForPoint(x, y);
+
+    var coords = graphView.coordinatesForPoint(x, y);
     
     if (firstTime) {
       context.callback(this, this.renderCallback, coords.x, coords.y, radius, fill, stroke);
