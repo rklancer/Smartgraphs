@@ -7,7 +7,7 @@
 
 sc_require('models/annotation');
 sc_require('models/data_point');
-// sc_require('views/rise_run_arrows');
+sc_require('views/rise_run_arrows');
 
 /** @class
 
@@ -42,16 +42,14 @@ Smartgraphs.RiseRunArrows = Smartgraphs.Annotation.extend(
   point2: SC.Record.toOne('Smartgraphs.DataPoint'),
   
   /** 
-    The color of the vertical ("rise") line. Uses the superclass color default if no specific
-    color is provided.
+    The color of the vertical ("rise") line. 
     
     @property {String}
   */ 
   riseColor: SC.Record.attr(String, { defaultValue: '#cc0000' }),
   
   /** 
-    The color of the horizontal ("run") line. Uses the superclass color default if no specific
-    color is provided.
+    The color of the horizontal ("run") line.
     
     @property {String}
   */ 
@@ -65,10 +63,14 @@ Smartgraphs.RiseRunArrows = Smartgraphs.Annotation.extend(
     @property {Smartgraphs.DataPoint}
   */
   vertex: function() {
-    var v = Smartgraphs.DataPoint.create();
-    v.set('x', this.point2.get('x'));
-    v.set('y', this.point1.get('y'));
+    var v = SC.Object.create();
+    v.set('x', this.get('point2').get('x'));
+    v.set('y', this.get('point1').get('y'));
     return v;
-  }.property().cacheable()
+  }.property('point1', 'point2').cacheable()
 
 }) ;
+
+// let the graph view know how to instantiate a view class to display this item
+Smartgraphs.RiseRunArrows.viewClass = Smartgraphs.RiseRunArrowsView;
+
