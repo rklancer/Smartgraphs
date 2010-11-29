@@ -22,14 +22,17 @@ Smartgraphs.RiseRunArrowsView = RaphaelViews.RaphaelView.extend(
   strokeRiseBinding: '.item.riseColor',
   strokeRunBinding: '.item.runColor',
 
-  // SC will call render(context, firstTime == NO) if these properties change
+  /**
+    SproutCore will call render(context, firstTime == NO) if these properties change
+  */
   displayProperties: 'point1 point2 vertex strokeRise strokeRun strokeWidth strokeOpacity'.w(),
   
-  // We are using renderCallback in views to call non-SC render methods like
-  // RaphaelCanvas.segmentPath with the correct attributes.
-  // This is done this way because Raphael methods shouldn't be called unless
-  // its tags are already in the DOM.
-
+  /**
+    We are using renderCallback in views to call non-SC render methods like
+    RaphaelCanvas.segmentPath with the correct attributes.
+    This is done this way because Raphael methods shouldn't be called unless
+    its tags are already in the DOM.
+  */
   renderCallback: function(raphaelCanvas, attrs) {
     var path = raphaelCanvas.path(attrs.d).attr(attrs);
     return path;
@@ -57,7 +60,10 @@ Smartgraphs.RiseRunArrowsView = RaphaelViews.RaphaelView.extend(
       pathComponents.push(coords.y);
     }
     var pathString = pathComponents.join(' ');
-
+    
+    // FIXME: This basically draws one path with a corner. It could easily be adapted to arrowheads but it can't do
+    // two colors, which means it's not what we need here. Rather, we need to draw two arrows, and they each need
+    // their own label.
     var attrs = {
       d: pathString,
       stroke: this.get('strokeRise'),
