@@ -212,11 +212,13 @@ Smartgraphs.activityPageDef = SC.Page.extend({
   }),
   
   firstHtmlView: SC.StaticContentView.design({   
-    contentBinding: 'Smartgraphs.activityViewController.firstPaneHtml'
+    contentBinding: 'Smartgraphs.activityViewController.firstPaneHtml',
+    classNames: ['html-pane']
   }),
 
   secondHtmlView: SC.StaticContentView.design({
-    contentBinding: 'Smartgraphs.activityViewController.secondPaneHtml'
+    contentBinding: 'Smartgraphs.activityViewController.secondPaneHtml',
+    classNames: ['html-pane']    
   }),
   
   errorLoadingActivityView: SC.View.design({

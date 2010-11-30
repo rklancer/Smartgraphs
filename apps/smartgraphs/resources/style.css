@@ -64,6 +64,10 @@ body.sc-theme {
   border: 1px solid #A2B5D7;
 }
 
+.sc-view.sc-static-content-view.html-pane {
+  position: absolute;
+}
+
 .sc-view.text-wrapper .sc-view {
   font-size: 16px;
 }
