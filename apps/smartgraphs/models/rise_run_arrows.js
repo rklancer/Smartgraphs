@@ -67,8 +67,17 @@ Smartgraphs.RiseRunArrows = Smartgraphs.Annotation.extend(
     v.set('x', this.get('point2').get('x'));
     v.set('y', this.get('point1').get('y'));
     return v;
-  }.property('point1', 'point2').cacheable()
+  }.property('point1', 'point2').cacheable(),
+  
+  riseArrow: function() {
+    var rise = Smartgraphs.store.createRecord(Smartgraphs.Arrow, {'point1': this.get('vertex'), 'point2': this.get('point2'), 'color': this.get('riseColor'), 'label': "Rise" });
+    return rise;
+  }.property('point1', 'point2').cacheable(),
 
+  runArrow: function() {
+    var run = Smartgraphs.store.createRecord(Smartgraphs.Arrow, {'point1': this.get('point1'), 'point2': this.get('vertex'), 'color': this.get('runColor'), 'label': "Run" });
+    return run;
+  }.property('point1', 'point2').cacheable()
 }) ;
 
 // let the graph view know how to instantiate a view class to display this item
