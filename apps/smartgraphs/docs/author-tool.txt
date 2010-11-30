@@ -1,0 +1,157 @@
+Notes & sketch of authoring tool
+RPK 
+11/29/2010
+
+
+Prepatory Refactoring Work:
+
+This describes some changes that I will make to already-existing Smartgraphs code in order to make the development of
+authoring capabilities proceed as smoothly as possible. These won't be represented as explicit stories. Rather, they
+will be undertaken piece-by-piece as part of implementing authoring stories.
+
+In some cases, it is simply the case that these refactorings need to occur *eventually*, but because some authoring
+code would need to be changed too when those refactorings are done, it will be wiser to do the refactoring before the
+related authoring code is even written.
+
+ * Transition from SC.Responders to the Statechart framework (formerly known as Ki). There are a number of places
+   where we would like to use concurrent states, and/or represent nested states more cleanly, and the newly-added
+   Statecharts framework will make this easier.
+
+ * Remove "loading" states since we no longer really use incremental loading.
+
+ * Create a superstate of ACTIVITY_STEP and ACTIVITY_STEP_SUMITTED to represent actions available both presumbission
+   and postsubmission, and to distinguish these from actions that are available when the activity is open generally.
+   Note that these substates can now be labeled "notSubmitted" and "submitted", since they 'nest' inside ACTIVITY_STEP
+   in a more natural way once we use the statechart framework.
+   
+ * Move Activity, ActivityPage, ActivityStep state *out* of controllers and into respective models
+ 
+   Putting activity state in controllers was an understandable architectural mistake, and we should correct it before
+   we build authoring capabilities on top of this mistaken design. As a side effect, it will be much easier to 
+   *visit* an previously finished activity step or page. Although we will demo this capability to verify that state
+   has indeed been moved out of the controllers, we won't yet create UI for visiting old activity pages. However, when
+   we do create a story for visiting past activity, it will be easier to code it as a result of this work.)
+
+ * canGotoNextPage should be represented with a STATE!
+
+ * Datasets should have a units model for the columns; refactor Axes to reference these. This is important for
+   cleaning up the Table model (see the next bullet point.)
+  
+ * Clean up Table model so that it parallels Graph. In the authoring interface, tables will have names, just like 
+   graphs do, so make this true in the Smartgraphs runtime as well.
+   
+ * Graph model has to be able to "wait" for an annotation with a given name to be created, just like table does.
+   
+ * Move table and graph state out of the controllers and into the related models. Again, having the state in the
+   controllers is something of an architectural mistake, and we should address this concern before implementing any
+   new authoring capabilities on top of this.
+  
+ * Clean up the distinction between "example" (or canned) graphs, datasets, and annotations by creating SessionGraph,
+   SessionDataset, and SessionAnnotation models that extend a common mixin that Graph, Dataset, and Annotation extend.
+   Clean up usage of Session and SessionController by requiring everywhere that and clean up Session/SessionController
+   handling. Meaning: sessionController should be responsible for finding a graph/table/dataset/annotation from the
+   definition and duplicating it to the session if it hasn't been. The Session* models should inherit from a mixin
+   shared by the base models (which are just called "Graph", "Dataset", etc.)
+   
+ * implement a registry of all annotation names used in the session. Remove requirement to specify type of annotation
+   from any smartgraph commands that don't specifically need it. 
+ 
+ * clarify/organize the processing model of ActivitySteps a little better -- what about shouldAutoAdvance? What if
+   there's no explicit Submissibility inspector defined in the step, yet the step is supposed to wait for submission?
+   (Right now this logs a complaint to the console.)
+      
+ * Update existing activities with the new data format implied by these changes!
+ 
+ * For later: The 2 "panes" on the right should be full fledged SC.Panes so they can have state, like FreehandInput.
+   Note that it may be better to remove the FreehandInputController and put its logic into the FreehandInput *state*
+  
+ * For later: also combine SENSOR states and sensorController, although unlike FREEHAND_INPUT, SENSOR should probably 
+   remain a global state.
+ 
+ * A note for later: the ResponseTemplate model is a hack. There should be a Response object that gets saved with the 
+   ActivityStep.
+ 
+
+Notes toward implementation of the authoring side of Smartgraphs:
+
+  Good time to start Lebowski tests!
+
+  * We'll create an ActivityDataSource and a SessionDataSource. The ActivityDataSource knows how to serialize and 
+    unserialize an Activity. The ActivityDataSource or an associated object should use the knowledge of what records
+    constitute a given Activity to maintain an "Activity status" flag indicating whether the activity is saved or
+    not. Committing the Activity record moves us into a "SAVING" state which implements no UI actions. (Use history 
+    state support to return to where we were when finished.)
+    
+  * Add to the Activity data model a registry of the graph, dataset, annotation *names* in the dataset, with links
+    to the related objects. (Perhaps this can be a transient property?) This will be used to allow the user to
+    select a dataset (etc) from a dropdown, and to check that a name for a dataset doesn't duplicate other names used
+    in the activity. Concurrent states can keep track of the fact that you need to finish specifying the name of a
+    dataset on a graph, while not rigidly requiring you to enter it before moving on.
+    
+  * Implement a special controller class that keeps track of when fields have been edited. (Views bound to the
+    controller can issue action when focus changes in order to let controller(s) know editing is completed.) The 
+    controller issues "editField" actions with (model, fieldname, oldvalue, newvalue). These get saved in an 
+    UndoManager (as do all other actions that affect the activity content, like creation of datasets, etc.)
+
+  * Some states and actions:
+  
+    READY
+      * create new activity (a toolbar option)
+      
+    ACTIVITY
+      (note the transition from READY to ACTIVITY should enable the 'edit activity' control)
+      * edit activity
+      
+    EDITING_ACTIVITY and substates:
+    
+      * action: move page!
+      * action: editField on activity, page, step name
+      
+      state: activity page opened, but contains no steps
+        * editField (see above about the edit class)
+        * setPaneConfig (implicitly creates step first!)
+        * createStep (uses a default pane config, etc. However, there might not be any UI just for creating a step?)
+        * next page
+        * prev page
+        * editField (see above regarding undo manager)
+      
+      state: activity page opened to step x
+        * createStep
+        * setPaneConfig (possibly modifying pane config)
+        * insertGraph (moves to a concurrent state that either waits for the user to specify a new graph name or pick
+          a predefined one from the dropdown)
+        * insertTable (similar to insertGraph)
+      
+      state: Graph open (substate on a pane -- the 2 right side panes should be SC.Panes so they can have state.) 
+    
+        * change axis label
+        * add dataset
+        * remove dataset
+        * add annotation
+        * remove annotation
+        * click annotation (edit info about the annotation?)
+        * click dataset (edit info about the dataset?)
+        * insert tool (goes to "tool selection" state)
+
+      state: Tool Selection
+        (this opens up a pane which the user can specify what tool gets turned on in the graph in the step, if any)
+    
+      state: Step Navigation
+        (i.e., the "submit" button was clicked. Opens up a pane to ask what the student's "action" was).
+    
+      a concurrent state: document is saved/not saved (serializer component/datasource observes status of models it cares 
+      about to update this state)
+    
+      a mutually exclusive state: document is in the process of being saved. No UI actions during this time!
+    
+    
+  * app window controller opens EditingView which in turn has its own EditingViewController a la ActivityViewController
+  
+  * Make Tool an explicit model, and make ActivityStep understand it (i.e., rather than using a command to turn on a 
+    particular tool, create an explicit config for tools)
+    
+  * create & test serializer/unserializer in ActivityDataSource. Make it observe the models it serializes and 
+    unserializes, so that it knows whether the activity is "saved" and provides a single place to trigger saving the 
+    activity to couchdb.
+  
+  * we'll need annotations to be more descriptive about themselves, but I have no general model for this yet!
