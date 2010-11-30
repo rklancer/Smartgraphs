@@ -1,5 +1,5 @@
 {
-  "_rev": "3-0c64fb6afcdf50ac802f2dfff4c23793",
+  "_rev": "8-8b25bd7bb6e680391e42464fbd5eb861",
   "data_format_version": 2,
   "activity": {
     "title": "Boiling Water",
@@ -101,8 +101,8 @@
       "paneConfig": "single",
       "panes": {
         "single": {
-          "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/boilingWater.jpg"
+          "type": "html",
+          "html": "<img src=\"/static/smartgraphs/en/current/resources/smart-graphs-100.png\"><h1>Smartgraphs</h1><p>Funded by NSF grant (etc.)</p>"
         }
       },
       "beforeText": "",
