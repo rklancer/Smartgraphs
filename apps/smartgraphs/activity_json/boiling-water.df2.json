@@ -1,5 +1,5 @@
 {
-  "_rev": "18-392c0229813d76fb6323eb920a5367f9",
+  "_rev": "20-f84a59687d01d6eac37b0bb2e22ea5a9",
   "data_format_version": 2,
   "activity": {
     "title": "Boiling Water",
@@ -102,7 +102,8 @@
       "panes": {
         "single": {
           "type": "html",
-           "html": "<img src=\"/static/smartgraphs/en/current/resources/smart-graphs-100.png\" style=\"float: left; margin: 60px 10px 10px 10px\"><div style=\"float: left; margin: 60px 10px 10px 10px;\"><h1 style=\"font-size: 48px; margin: 0\">Smartgraphs</h1><p style=\"margin: 5px 2px; font-size: 18px\">A project of the Concord Consortium</p></div><div style=\"position: absolute; bottom: 0\"><img src=\"/static/smartgraphs/en/current/resources/nsf-flat-logo.jpg\" style=\"float: left; margin: 10px; width: 100px; height: 100px\"><p style=\"float: left; height: 25px; margin-top: 87px; margin-left: 10px; font-size: 18px; font-style: italic\">Funded by NSF Grant DRL-0918522</p></div>"
+           "html2": "<img src=\"/static/smartgraphs/en/current/resources/smart-graphs-100.png\" style=\"float: left; margin: 60px 10px 10px 10px\"><div style=\"float: left; margin: 60px 10px 10px 10px;\"><h1 style=\"font-size: 48px; margin: 0\">Smartgraphs</h1><p style=\"margin: 5px 2px; font-size: 18px\">A project of the Concord Consortium</p></div><div style=\"position: absolute; bottom: 0\"><img src=\"/static/smartgraphs/en/current/resources/nsf-flat-logo.jpg\" style=\"float: left; margin: 10px; width: 100px; height: 100px\"><p style=\"float: left; height: 25px; margin-top: 87px; margin-left: 10px; font-size: 18px; font-style: italic\">Funded by NSF Grant DRL-0918522</p></div>",
+           "html": "<img src=\"/static/smartgraphs/en/current/resources/cc-logo-vertical.jpg\">"
         }
       },
       "beforeText": "",
