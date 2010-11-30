@@ -101,6 +101,24 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   /**
+    Show HTML rich text in the specified pane.
+    
+    @param context  
+    @param args
+    
+    @param {String} args.pane
+      The pane in which to show the html content. Valid values are 'single', 'top', or 'bottom'.
+    
+    @param {String} args.html
+      The HTML to show. Can include arbitrary elements with inline styles, e.g., 
+      <&lt;img style="width: 100%" src="/static..."&gt;>
+  */
+  showHtml: function (context, args) {
+    Smartgraphs.activityViewController.showHtml(args.pane, args.html);
+    return YES;
+  },
+  
+  /**
     Show a table in the specified pane corresponding to the dataset with the specified name.
     
     This command will wait for the specified graph to be open and for the specified dataset to be opened in that graph

@@ -81,6 +81,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       case 'image':
         Smartgraphs.sendAction('showImage', this, { pane: pane, path: config.path });
         return;
+      case 'html':
+        Smartgraphs.sendAction('showHtml', this, { pane: pane, html: config.html });
     }
   },
 
