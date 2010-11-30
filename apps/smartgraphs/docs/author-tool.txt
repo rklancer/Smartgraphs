@@ -5,9 +5,9 @@ RPK
 
 Prepatory Refactoring Work:
 
-This describes some changes that I will make to already-existing Smartgraphs code in order to make the development of
-authoring capabilities proceed as smoothly as possible. These won't be represented as explicit stories. Rather, they
-will be undertaken piece-by-piece as part of implementing authoring stories.
+This section describes some changes that I will make to already-existing Smartgraphs code in order to make the
+development of authoring capabilities proceed as smoothly as possible. These won't be represented as explicit stories.
+Rather, they will be undertaken piece-by-piece as part of implementing authoring stories.
 
 In some cases, it is simply the case that these refactorings need to occur *eventually*, but because some authoring
 code would need to be changed too when those refactorings are done, it will be wiser to do the refactoring before the
@@ -17,7 +17,7 @@ related authoring code is even written.
    where we would like to use concurrent states, and/or represent nested states more cleanly, and the newly-added
    Statecharts framework will make this easier.
 
- * Remove "loading" states since we no longer really use incremental loading.
+ * Remove "loading" states since we no longer use incremental loading.
 
  * Create a superstate of ACTIVITY_STEP and ACTIVITY_STEP_SUMITTED to represent actions available both presumbission
    and postsubmission, and to distinguish these from actions that are available when the activity is open generally.
@@ -40,7 +40,8 @@ related authoring code is even written.
  * Clean up Table model so that it parallels Graph. In the authoring interface, tables will have names, just like 
    graphs do, so make this true in the Smartgraphs runtime as well.
    
- * Graph model has to be able to "wait" for an annotation with a given name to be created, just like table does.
+ * Graph model has to be able to "wait" for an annotation or dataset a given name to be created, just like table does.
+   Part of this functionality may be provided by Session/sessionController.
    
  * Move table and graph state out of the controllers and into the related models. Again, having the state in the
    controllers is something of an architectural mistake, and we should address this concern before implementing any
@@ -52,6 +53,9 @@ related authoring code is even written.
    handling. Meaning: sessionController should be responsible for finding a graph/table/dataset/annotation from the
    definition and duplicating it to the session if it hasn't been. The Session* models should inherit from a mixin
    shared by the base models (which are just called "Graph", "Dataset", etc.)
+   
+ * (Note that we shouldn't repeat the mistake of putting lots of state into the sessionController which should be in
+   the Session model)
    
  * implement a registry of all annotation names used in the session. Remove requirement to specify type of annotation
    from any smartgraph commands that don't specifically need it. 
@@ -105,7 +109,11 @@ Notes toward implementation of the authoring side of Smartgraphs:
     EDITING_ACTIVITY and substates:
     
       * action: move page!
-      * action: editField on activity, page, step name
+      * action: editField on activity, page name, step name
+      * move page
+      * move step (I think we'll let users decide whether steps belong where they get put)
+      * delete page
+      * delete step
       
       state: activity page opened, but contains no steps
         * editField (see above about the edit class)
@@ -143,8 +151,7 @@ Notes toward implementation of the authoring side of Smartgraphs:
       about to update this state)
     
       a mutually exclusive state: document is in the process of being saved. No UI actions during this time!
-    
-    
+  
   * app window controller opens EditingView which in turn has its own EditingViewController a la ActivityViewController
   
   * Make Tool an explicit model, and make ActivityStep understand it (i.e., rather than using a command to turn on a 
