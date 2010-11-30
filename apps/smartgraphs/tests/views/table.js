@@ -3,71 +3,40 @@
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings setupDatapointFixtures restoreDatapointFixtures */
+/*globals Smartgraphs module test ok equals same stop start setup teardown newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings setupDatapointFixtures restoreDatapointFixtures */
 
-var oldStore;
-var session;
 var dataset;
-var oldShowTable;
 var pane;
-var view;
-var tableColumnView;
-
-
-function setupFixtures() {
-  setupUserAndSessionFixtures();
-  setupDatapointFixtures();
-  
-  Smartgraphs.Axes.oldFixtures = Smartgraphs.Axes.FIXTURES;
-  Smartgraphs.Axes.FIXTURES = [
-    { url: 'test-axes',
-
-      xMin: -5,
-      xMax: 10,
-      xSteps: 5,
-      xLabel: 'xLabel (long)',
-      xLabelAbbreviated: 'xLabel',
-
-      yMin: 2,
-      yMax: 8,
-      ySteps: 6,
-      yLabel: 'yLabel (long)',
-      yLabelAbbreviated: 'yLabel'
-    }
-  ];
-  
-  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
-  Smartgraphs.Graph.FIXTURES = [
-    { url: 'test-graph',
-      name: 'test-graph',
-      axes: 'test-axes',
-      title: 'Test Graph',
-      initialDatasets: []
-    }
-  ];
-  
-  oldStore = Smartgraphs.store;
-  Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
-}
-
-function restoreFixtures() {
-  restoreUserAndSessionFixtures();
-  restoreDatapointFixtures();
-  
-  Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
-  Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
-  Smartgraphs.set('store', oldStore);
-}
+var view, tableColumnView, scrollView, innerView;
+var rowHeight;
 
 module('Table view', {
   setup: function () {
-    // mock showTable
-    oldShowTable = Smartgraphs.firstTableController.showTable;
-    Smartgraphs.firstTableController.showTable = YES;
+    setupUserAndSessionFixtures();
+    setupDatapointFixtures();
+
+    // setup.fixtures(Smartgraphs.Axes, [
+    //   { url: 'test-axes',
+    // 
+    //     xMin: -5,
+    //     xMax: 10,
+    //     xSteps: 5,
+    //     xLabel: 'xLabel (long)',
+    //     xLabelAbbreviated: 'xLabel',
+    // 
+    //     yMin: 2,
+    //     yMax: 8,
+    //     ySteps: 6,
+    //     yLabel: 'yLabel (long)',
+    //     yLabelAbbreviated: 'yLabel'
+    //   }
+    // ]);
     
-    setupFixtures();
+    setup.store();
+    
+    setup.mock(Smartgraphs.firstTableController, 'showTable', YES);
+
     newSession();
-    
     dataset = Smartgraphs.sessionController.createDataset('test-dataset');
     
     SC.RunLoop.begin();
@@ -82,33 +51,31 @@ module('Table view', {
     
     view = pane.get('tableView');
     tableColumnView = view.get('tableColumnView');
+    scrollView = tableColumnView.get('scrollView');
+    innerView = scrollView.get('contentView');
+    rowHeight = innerView.get('rowHeight');
     
-    Smartgraphs.firstGraphController.openGraph('test-graph');
-    Smartgraphs.firstGraphController.addDataset(dataset); 
-    Smartgraphs.firstTableController.openDataset('test-graph', 'test-dataset');
+    SC.RunLoop.begin();
+    Smartgraphs.firstTableController.openDataset('test-dataset');
+    SC.RunLoop.end();
   },
   
   teardown: function () {
     pane.remove();
     disconnectBindings(view);
-    view = pane = null;
+    rowHeight = innerView = scrollView = tableColumnView = view = pane = null;
     
-    Smartgraphs.firstTableController.showTable = oldShowTable;
-    
-    Smartgraphs.firstGraphController.clear();
-    Smartgraphs.secondGraphController.clear();
     Smartgraphs.firstTableController.clear();
     Smartgraphs.secondTableController.clear();
-    restoreFixtures();
+
+    restoreUserAndSessionFixtures();
+    restoreDatapointFixtures();
+    teardown.all();
   }
 });
 
 
 test("inner view's height adjusts as points are added and removed", function () {
-  var tableColumnView = view.get('tableColumnView');
-  var scrollView = tableColumnView.get('scrollView');
-  var innerView = scrollView.get('contentView');
-  var rowHeight = innerView.get('rowHeight');
   var p1, p2;
     
   equals(innerView.get('frame').height, 0, "table's height should be 0 before any datapoints are displayed");
@@ -153,9 +120,6 @@ test("numeric view is shown, and table view is hidden, when tableController says
 
 
 test("table does not update for new data when showTable is false", function () {
-  var scrollView = tableColumnView.get('scrollView');
-  var innerView = scrollView.get('contentView');
-  var rowHeight = innerView.get('rowHeight');
   var p1, p2;
     
   equals(innerView.get('frame').height, 0, "table's height should be 0 before any datapoints are displayed");
@@ -169,18 +133,19 @@ test("table does not update for new data when showTable is false", function () {
   SC.RunLoop.begin();
   Smartgraphs.firstTableController.set('showTable', NO);
   SC.RunLoop.end();
-  
-  // check that adding a datapoint after showTable is set to YES doesn't cause table view to update anything
-  p2 = addPoint(dataset, 3, 4);
 
+  // ...and check that adding a datapoint after showTable is set to NO doesn't cause table view to update anything
+  p2 = addPoint(dataset, 3, 4);
+  
   equals(innerView.get('contentLength'), 1, "table's content length should still be 1 after a second datapoint is added with showTable = NO");
   equals(innerView.get('frame').height, rowHeight, "table's height should still be `rowHeight * 1` after a second datapoint is added with showTable = NO");
-  
-  // now, turn off 'showTable'
+
+  // now, turn 'showTable' back on
   SC.RunLoop.begin();
   Smartgraphs.firstTableController.set('showTable', YES);
   SC.RunLoop.end();
   
+  // ..and confirm that the table length & frame is now updated for the new point that was ignored when showTable = NO
   equals(innerView.get('contentLength'), 2, "table's content length should be 2 after showTable is set to YES");
   equals(innerView.get('frame').height, 2 * rowHeight, "table's height should be `rowHeight * 2` after showTable is set to YES");
 });

@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
+// TODO: These tests pass when the module runs in isolation, but fail when part of a complete application run
+
 module("Smartgraphs.activityViewController", {
   setup: function () {
     // Default settings for controller

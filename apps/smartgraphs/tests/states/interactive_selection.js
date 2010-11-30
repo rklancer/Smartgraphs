@@ -7,6 +7,8 @@
 
 var pane, graphView, datasetView;
 
+// TODO: These tests pass when the module runs in isolation, but fail when part of a complete application run
+
 module("Smartgraphs.INTERACTIVE_SELECTION", {
   setup: function () {
     setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);

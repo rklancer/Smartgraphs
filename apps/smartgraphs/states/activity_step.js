@@ -102,13 +102,10 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   
   /**
     Show a table in the specified pane corresponding to the dataset with the specified name.
-    
-    This command will wait for the specified graph to be open and for the specified dataset to be opened in that graph
-    before displaying the table. 
-    
-    In addition, when data is streamed into the dataset (for example, from the sensor applet) the table will switch to
-    'numeric display' mode, showing the values of the latest incoming datapoint in large type. When streaming stops,
-    it will automatically display the new data in a table form.
+
+    When data is streamed into the dataset (for example, from the sensor applet) the table will switch to 'numeric
+    display' mode, showing the values of the latest incoming datapoint in large type. When streaming stops, it will
+    automatically display the new data in a table form.
     
     @param context
     @param args
@@ -117,14 +114,11 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       The pane in which to show the table. In practice, valid values are 'top', or 'bottom' because a graph must be
       open while the table is showing.
     
-    @param {String} args.graphName
-      Required. The name of a graph to which to link this table.
-    
     @param {String} args.datasetName
       The name of the Dataset to be displayed in the table.
   */
   showTable: function (context, args) {
-    Smartgraphs.activityViewController.showTable(args.pane, args.graphName, args.datasetName);  
+    Smartgraphs.activityViewController.showTable(args.pane, args.datasetName);  
   },
   
   /**
@@ -373,12 +367,16 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
       The name of the dataset we are choosing a data point from.
   */
   startInteractiveSelection: function (context, args) {
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    var dataset = controller && controller.findDatasetByName(args.datasetName);
+    var graphController = Smartgraphs.GraphController.controllerForName[args.graphName];
+    var dataset = graphController && graphController.findDatasetByName(args.datasetName);
   
     if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
+    var tableController = Smartgraphs.TableController.controllerForDataset[args.datasetName];
     var annotation = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
-    controller.addAnnotation(annotation);
+    graphController.addAnnotation(annotation);
+    if (tableController) {
+      tableController.addAnnotation(annotation);
+    }
     
     // try a simpler paradigm .. just stash the info needed by the state, in the state
     Smartgraphs.INTERACTIVE_SELECTION.set('annotation', annotation);

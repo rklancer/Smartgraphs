@@ -155,13 +155,13 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return YES;
   },
   
-  showTable: function (pane, graphName, datasetName) {
+  showTable: function (pane, datasetName) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
     
     if ( !which ) return NO;
     
-    Smartgraphs.get(which+'TableController').openDataset(graphName, datasetName);
+    Smartgraphs.get(which+'TableController').openDataset(datasetName);
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'TableView');
   
     return YES;

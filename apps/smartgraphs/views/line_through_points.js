@@ -10,9 +10,6 @@
   Display view for the LineThroughPoints annotation model, which represents a line
   running through two defined points and extending to the edges of the graph.
   
-  There may be unpredictable results if the two points define a vertical line
-  (that is, there is not a real function defining the line).
-  
   @extends RaphaelViews.RaphaelView
 */
 

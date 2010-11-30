@@ -7,10 +7,13 @@
 
 /** @class
 
-  (Document Your View Here)
+  A view for displaying table data.
 
   @extends SC.View
 */
+
+sc_require('views/table_item');
+
 Smartgraphs.TableView = SC.View.extend(
 /** @scope Smartgraphs.TableView.prototype */ {
   
@@ -118,7 +121,9 @@ Smartgraphs.TableView = SC.View.extend(
         contentBinding: '.parentView.parentView.parentView.parentView*tableController.arrangedObjects',
         selectionBinding: '.parentView.parentView.parentView.parentView*tableController.selection',
         contentLengthBinding: '.content.length',
-      
+        annotationsListBinding: '.parentView.parentView.parentView.parentView*tableController.annotationsList',
+        // TODO: So the parent now knows about the list of annotations...
+        
         contentLengthDidChange: function () {
           this.adjust('height', this.get('contentLength') * this.get('rowHeight'));
         }.observes('contentLength'),
@@ -132,7 +137,8 @@ Smartgraphs.TableView = SC.View.extend(
           canEditContent: NO,
           contentValueKey: 'xRounded',
           contentBinding: '.parentView.content',
-          selectionBinding: '.parentView.selection'
+          selectionBinding: '.parentView.selection',
+          exampleView: Smartgraphs.TableItemView
         }),
 
         ysView: SC.ListView.design({
@@ -143,7 +149,8 @@ Smartgraphs.TableView = SC.View.extend(
           canEditContent: NO,
           contentValueKey: 'yRounded',
           contentBinding: '.parentView.content',
-          selectionBinding: '.parentView.selection'
+          selectionBinding: '.parentView.selection',
+          exampleView: Smartgraphs.TableItemView          
         })
       })
     })
@@ -154,7 +161,7 @@ Smartgraphs.TableView = SC.View.extend(
   }.observes('dataset'),
   
   showTableDidChange: function () {
-    this.invokeOnce('adjustViews');    
+    this.invokeOnce('adjustViews'); 
   }.observes('showTable'),
   
   adjustViews: function () {
@@ -176,7 +183,7 @@ Smartgraphs.TableView = SC.View.extend(
     }
     else {
       numericView.set('isVisible', YES);
-      innerView.bindings.forEach( function (b) { b.disconnect(); } );
+      innerView.bindings.forEach( function (b) { b.disconnect(); });
       tableColumnView.set('isVisible', NO);       
     }
   }
