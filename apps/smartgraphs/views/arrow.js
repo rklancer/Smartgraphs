@@ -43,7 +43,7 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
     var startCoords = graphView.coordinatesForPoint(annotation.get('point1').get('x'), annotation.get('point1').get('y'));
     var endCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point2').get('y'));
 
-    var pathString = this.arrow_path(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 20);
+    var pathString = this.arrow_path(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
 
     var attrs = {
       d: pathString,
