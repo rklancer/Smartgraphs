@@ -66,6 +66,7 @@ body.sc-theme {
 
 .sc-view.sc-static-content-view.html-pane {
   position: absolute;
+  background-color: #FFFFFF;
 }
 
 .sc-view.text-wrapper .sc-view {
