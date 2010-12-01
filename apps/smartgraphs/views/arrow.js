@@ -50,7 +50,7 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
     } else {
       endCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point2').get('y'));
     }
-    var pathString = this.arrow_path(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
+    var pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
 
     var attrs = {
       d: pathString,
@@ -89,7 +89,7 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
     @params len {Number} Length of the "tip" of the arrowhead
     @params angle {Number} Angle in degrees between the line and each wing of the arrowhead. Should be less than 90.
   */
-  arrow_path: function(startx,starty,endx,endy,len,angle) {    
+  arrowPath: function(startx,starty,endx,endy,len,angle) {    
     var theta = Math.atan2((endy-starty),(endx-startx));
     var baseAngleA = theta + angle * Math.PI/180;
     var baseAngleB = theta - angle * Math.PI/180;
