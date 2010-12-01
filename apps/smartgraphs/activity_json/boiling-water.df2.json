@@ -1,5 +1,5 @@
 {
-  "_rev": "20-f84a59687d01d6eac37b0bb2e22ea5a9",
+  "_rev": "31-18054ca3818d6b3ecc63bd7fc650f9f6",
   "data_format_version": 2,
   "activity": {
     "title": "Boiling Water",
@@ -102,8 +102,7 @@
       "panes": {
         "single": {
           "type": "html",
-           "html2": "<img src=\"/static/smartgraphs/en/current/resources/smart-graphs-100.png\" style=\"float: left; margin: 60px 10px 10px 10px\"><div style=\"float: left; margin: 60px 10px 10px 10px;\"><h1 style=\"font-size: 48px; margin: 0\">Smartgraphs</h1><p style=\"margin: 5px 2px; font-size: 18px\">A project of the Concord Consortium</p></div><div style=\"position: absolute; bottom: 0\"><img src=\"/static/smartgraphs/en/current/resources/nsf-flat-logo.jpg\" style=\"float: left; margin: 10px; width: 100px; height: 100px\"><p style=\"float: left; height: 25px; margin-top: 87px; margin-left: 10px; font-size: 18px; font-style: italic\">Funded by NSF Grant DRL-0918522</p></div>",
-           "html": "<img src=\"/static/smartgraphs/en/current/resources/cc-logo-vertical.jpg\">"
+           "html": "<div style=\"width: 440px; margin: 0 auto\"><img src=\"/static/smartgraphs/en/current/resources/smart-graphs-100.png\" style=\"position: relative; top: 60px; left: 10px\"><div style=\"position: relative; top: -40px; left: 120px;\"><h1 style=\"font-size: 48px; margin: 0\">Smartgraphs</h1><p style=\"margin: 5px 2px; font-size: 18px\">A project of the Concord Consortium</p></div></div><div style=\"position: absolute; bottom: 0\"><img src=\"/static/smartgraphs/en/current/resources/nsf-flat-logo.jpg\" style=\"position: absolute; left: 10px; bottom: 20px; width: 100px; height: 100px\"><p style=\"float: right; margin: 0 10px 20px 120px; font-size: 14px; font-style: italic\">This material is based upon work supported by the National Science Foundation under Grant No. DRL-0918522. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</p></div>"
         }
       },
       "beforeText": "",
@@ -635,8 +634,8 @@
       "paneConfig": "single",
       "panes": {
         "single": {
-          "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/boilingWater-credits.jpg"
+          "type": "html",
+           "html": "<div style=\"width: 370px; margin: 0 auto; padding-top: 40px\"><img src=\"/static/smartgraphs/en/current/resources/cc-logo-vertical.jpg\"><h1 style=\"margin: 25px 10px 10px 20px\">Our Smartgraphs project team includes:</h1> <ul style=\"padding-left: 10px\"> <li>Eric Kattwinkel</li> <li>Rachel Kay</li> <li>Richard Klancer</li> <li>Carolyn Staudt</li> <li>Robert Tinker</li> <li>Kofi Weusijana</li> <li>Dewi Win</li> <li>Andy Zucker</li> </ul></div>"
         }
       },
       "beforeText": "",
