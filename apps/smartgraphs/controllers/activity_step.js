@@ -39,16 +39,17 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   begin: function () {
     this.setupPanes();
     Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
+    // enableSubmission *before* executing startCommands -- they might disable submission
+    this.enableSubmission();
     this.executeCommands(this.get('startCommands'));
     this.setupTriggers();
-    this.enableSubmission();
   
-    // then, finish the step, or wait
-    if (this.get('shouldWaitForSubmissibleResponse')) {
-      Smartgraphs.sendAction('waitForResponse');
-    }
-    else if (this.get('shouldFinishImmediately')) {
+    // does the step goes "straight through"?
+    if (this.get('shouldFinishImmediately')) {
       Smartgraphs.sendAction('submitStep');
+    }
+    else {
+      Smartgraphs.sendAction('waitForResponse');
     }
   },
   
@@ -113,9 +114,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       this.disableSubmission();
       this.setupSubmissibilityInspector();
     }
-    else {
-      this.enableSubmission();
-    }
   },
   
   /**
@@ -161,11 +159,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   setupSubmissibilityInspector: function () {
-    if (!this.get('submissibilityInspector')) {
-      this.enableSubmission();
-      return;
-    }
-    
     var inspector = this.makeInspector('submissibilityInspector');
     
     if (!inspector) {
