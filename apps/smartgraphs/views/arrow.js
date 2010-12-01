@@ -37,12 +37,19 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
+    var startCoords, endCoords;
     var graphView = this.get('graphView');
     var annotation = this.get('item');
-
-    var startCoords = graphView.coordinatesForPoint(annotation.get('point1').get('x'), annotation.get('point1').get('y'));
-    var endCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point2').get('y'));
-
+    if (annotation.get('isVertical') && !annotation.get('isHorizontal')) {
+      startCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point1').get('y'));
+    } else {
+      startCoords = graphView.coordinatesForPoint(annotation.get('point1').get('x'), annotation.get('point1').get('y'));
+    }
+    if (annotation.get('isHorizontal')) {
+      endCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point1').get('y'));
+    } else {
+      endCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point2').get('y'));
+    }
     var pathString = this.arrow_path(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
 
     var attrs = {
