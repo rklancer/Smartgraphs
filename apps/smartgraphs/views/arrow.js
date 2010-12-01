@@ -17,7 +17,7 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
 
   strokeBinding: '.item.color',
   strokeWidth: 2,
-  strokeOpacity: 0.3,
+  strokeOpacity: 0.5,
 
   /**
     SproutCore will call render(context, firstTime == NO) if these properties change
