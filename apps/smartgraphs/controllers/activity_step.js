@@ -175,8 +175,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     this.set('submissibilityInspectorInstance', inspector);
 
-    this._valueWasValid = null;
-
     inspector.addObserver('value', this, this.checkSubmissibility);
     inspector.watch();
   },
@@ -204,17 +202,16 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     var value = inspector.get('value');
 
     var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
+    var canSubmit = this.get('canSubmit');
     
     //console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
     
-    if (valueIsValid && !this._valueWasValid) {
+    if (valueIsValid && !canSubmit) {
       this.enableSubmission();
     }
-    else if (this._valueWasValid && !valueIsValid) {
+    else if (canSubmit && !valueIsValid) {
       this.disableSubmission();
     }
-    
-    this._valueWasValid = valueIsValid;
   }
   
 }) ;
