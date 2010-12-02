@@ -46,7 +46,7 @@ test("Create a dataset", function() {
 });
 
 test("Create an annotation", function() {
-  expect(5);
+  expect(6);
   Smartgraphs.sessionController.newSession();
   var selectedPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {'x': 1, 'y': 1, 'url': Smartgraphs.getNextGuid() });
 
@@ -56,15 +56,17 @@ test("Create an annotation", function() {
     'isExample': NO,
     'session': Smartgraphs.sessionController.getPath('content.id'),
     'name': "TestAnnotation1",
-    'point': selectedPoint.get('id') 
+    'point': selectedPoint.get('id'),
+    'color': "#123456"
   }));
 
   // Create a similar annotation using the controller
-  var result = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'TestAnnotation1', { 'point': selectedPoint.get('id') } );
+  var result = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'TestAnnotation1', { 'point': selectedPoint.get('id'), 'color': "#123456" } );
 
   ok( result.kindOf(Smartgraphs.HighlightedPoint), "The method returns a Smartgraphs.HighlightedPoint");
   equals( expected.get('name'), result.get('name'), "The annotations' names should match");
   equals( expected.get('point'), result.get('point'), "The annotations' points should match"); // Both null, as it happens
+  equals( expected.get('color'), result.get('color'), "The annotations' colors should match");
   equals( Smartgraphs.sessionController.get('content'), result.get('session'), "The annotation is associated with the current session");
   
   var pk = result.get('primaryKey');
