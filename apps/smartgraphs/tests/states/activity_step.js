@@ -26,6 +26,7 @@ test("creating a HighlightedPoint record with color param", function () {
   var startingAnnotationCount = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length');
 
   // create the annotation
+  // TODO: This doesn't actually test the state at all, it tests the sessionController method.
   var result = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, "TestHighlighted", { 'color': '#123456' });
   ok( result.kindOf(Smartgraphs.Annotation), "method returns a Smartgraphs.Annotation");
   equals( result.get("color"), "#123456", "The new Annotation has the color provided in the arguments");
