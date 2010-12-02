@@ -51,7 +51,7 @@ module("Smartgraphs.ACTIVITY", {
     setup.mock(Smartgraphs.ACTIVITY, 'nextResponder', null);
     setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
     setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY);
   },
 
   teardown: function () {
