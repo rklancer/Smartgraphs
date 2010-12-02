@@ -113,7 +113,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     var inspectorInfo = this.get('submissibilityInspector');
 
     if (inspectorInfo) {
-      var inspector = this.makeInspector('submissibilityInspector');
+      var inspector = this.makeInspector(inspectorInfo);
 
       if (inspector) {
         this.set('submissibilityInspectorInstance', inspector);
@@ -149,7 +149,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     this.executeCommands(this.get('afterSubmissionCommands'));
     
-    var inspector = this.makeInspector('responseInspector');
+    var inspector = this.makeInspector(this.get('responseInspector'));
     if (inspector) {
       var value = inspector.inspect();
       var branch, branches = this.get('responseBranches');
@@ -170,15 +170,13 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
-  makeInspector: function (inspectorProperty) {
-    var inspectorInfo = this.get(inspectorProperty);
-    
+  makeInspector: function (inspectorInfo) {
     if (!inspectorInfo || !inspectorInfo.type) {
       return NO;
     }
     
     var klass = SC.objectForPropertyPath(inspectorInfo.type);
-    
+        
     if (!klass || !klass.isClass) {
       return NO;
     }

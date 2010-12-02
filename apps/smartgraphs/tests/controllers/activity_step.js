@@ -27,11 +27,11 @@ module("Smartgraphs.activityStepController", {
 
 
 test("makeInspector method should return an inspector instance corresponding to the classname in the inspector info", function () {
-  step.submissibilityInspector = {
+  var submissibilityInspector = {
     type: 'Smartgraphs.FirstResponseFieldInspector'
   };
   
-  var inspector = Smartgraphs.activityStepController.makeInspector('submissibilityInspector');
+  var inspector = Smartgraphs.activityStepController.makeInspector(submissibilityInspector);
   ok(SC.kindOf(inspector, Smartgraphs.FirstResponseFieldInspector), 'makeInspector should return a valid FirstResponseFieldInspector instance');
 });
 
@@ -104,6 +104,7 @@ test("handleSubmission should do nothing if disableSubmission was called", funct
 
 test("after enableSubmission, handleSubmission should call make the appropriate inspector and ask it to inspect", function () {
   step.responseBranches = [];
+  step.responseInspector = '(response inspector config hash)';
   
   var makeInspectorArg = null;
   var inspectWasCalled = NO;
@@ -121,7 +122,7 @@ test("after enableSubmission, handleSubmission should call make the appropriate 
   
   // and check that handleSubmission calls makeInspector with the correct arg...
   Smartgraphs.activityStepController.handleSubmission();
-  equals(makeInspectorArg, 'responseInspector', "handleSubmission() should have called makeInspector with arg 'responseInspector'");
+  equals(makeInspectorArg, '(response inspector config hash)', "handleSubmission() should have called makeInspector with arg '(response inspector config hash)'");
   
   // and check that it calls inspect() on the returned inspector object.
   ok(inspectWasCalled === YES, "handleSubmission() should have called the inspect() method of the returned inspector");
