@@ -41,7 +41,9 @@ related authoring code is even written.
    graphs do, so make this true in the Smartgraphs runtime as well.
    
  * Graph model has to be able to "wait" for an annotation or dataset a given name to be created, just like table does.
-   Part of this functionality may be provided by Session/sessionController.
+   Part of this functionality may be provided by Session/sessionController. NOTE: the datasetList and annotationList
+   should become RecordArrays backed by a query. When annotation records matching the specified criteria come into
+   existence, they should be automatically added to the list.
    
  * Move table and graph state out of the controllers and into the related models. Again, having the state in the
    controllers is something of an architectural mistake, and we should address this concern before implementing any
@@ -74,7 +76,8 @@ related authoring code is even written.
  
  * A note for later: the ResponseTemplate model is a hack. There should be a Response object that gets saved with the 
    ActivityStep.
- 
+   
+ * For later: consistent error handling if the activity is poorly specified. 
 
 Notes toward implementation of the authoring side of Smartgraphs:
 
@@ -162,3 +165,11 @@ Notes toward implementation of the authoring side of Smartgraphs:
     activity to couchdb.
   
   * we'll need annotations to be more descriptive about themselves, but I have no general model for this yet!
+  
+  * need metadata about tools and commands. At the very least, there should be pre and post conditions regarding the
+    annotation and dataset models which are available at any given point. (i.e., this command requires annotation named
+    x to exist before running...)
+    
+  * Control flow analysis of activities to verify whether annotations and datasets exist when needed. How to handle
+    this cleanly? You don't necessarily want to prevent authors from taking actions which *temporarily* create an
+    invalid activity -- that can be very awkward -- but you want to make sure they fix the problem eventually.
