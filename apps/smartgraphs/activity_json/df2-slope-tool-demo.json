@@ -185,7 +185,7 @@
         {
           "action": "createRunArrow",
           "literalArgs": {
-            "lineName": "run-arrow",
+            "arrowName": "run-arrow",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
             "graphName": "demo-graph",
@@ -247,7 +247,7 @@
         {
           "action": "createRiseArrow",
           "literalArgs": {
-            "lineName": "rise-arrow",
+            "arrowName": "rise-arrow",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
             "graphName": "demo-graph",
