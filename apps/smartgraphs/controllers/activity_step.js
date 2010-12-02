@@ -110,9 +110,21 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   waitForResponse: function () {
-    if (this.get('submissibilityInspector')) {
-      this.disableSubmission();
-      this.setupSubmissibilityInspector();
+    var inspectorInfo = this.get('submissibilityInspector');
+
+    if (inspectorInfo) {
+      var inspector = this.makeInspector('submissibilityInspector');
+
+      if (inspector) {
+        this.set('submissibilityInspectorInstance', inspector);
+        // if (and only if) we have a valid inspector, it is its job to enable submission
+        this.disableSubmission();
+        inspector.addObserver('value', this, this.checkSubmissibility);
+        inspector.watch();
+      }
+      else {
+        console.error('submissibilityInspector was truthy, but makeInspector could not make an inspector instance.');
+      }
     }
   },
   
@@ -156,20 +168,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (defaultBranch) {
       Smartgraphs.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
     }
-  },
-  
-  setupSubmissibilityInspector: function () {
-    var inspector = this.makeInspector('submissibilityInspector');
-    
-    if (!inspector) {
-      console.error('setupSubmissibilityInspector was called, but makeInspector could not make an inspector instance.');
-      return;
-    }
-    
-    this.set('submissibilityInspectorInstance', inspector);
-
-    inspector.addObserver('value', this, this.checkSubmissibility);
-    inspector.watch();
   },
   
   makeInspector: function (inspectorProperty) {
