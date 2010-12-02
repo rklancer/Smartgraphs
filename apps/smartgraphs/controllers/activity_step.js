@@ -128,6 +128,21 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
+  checkSubmissibility: function () {
+    var value = this.getPath('submissibilityInspectorInstance.value');
+    var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
+    var canSubmit = this.get('canSubmit');
+    
+    //console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
+    
+    if (valueIsValid && !canSubmit) {
+      this.enableSubmission();
+    }
+    else if (canSubmit && !valueIsValid) {
+      this.disableSubmission();
+    }
+  },
+  
   /**
     Called when the user clicks the 'done' or 'submit' button associated with this step.
         
@@ -184,23 +199,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     return klass.create({
       config: inspectorInfo.config
     });
-  },
-  
-  checkSubmissibility: function () {
-    var inspector = this.get('submissibilityInspectorInstance');
-    var value = inspector.get('value');
-
-    var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
-    var canSubmit = this.get('canSubmit');
-    
-    //console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
-    
-    if (valueIsValid && !canSubmit) {
-      this.enableSubmission();
-    }
-    else if (canSubmit && !valueIsValid) {
-      this.disableSubmission();
-    }
   }
   
 }) ;
