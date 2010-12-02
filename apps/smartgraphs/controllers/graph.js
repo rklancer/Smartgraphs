@@ -265,36 +265,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
   
   endFreehandInput: function () {   
     this._routeEvents = NO;
-  },
-
-  /** 
-    Temporary method to demonstrate steps needed to show rise and run using "Arrow" annotations,
-    i.e., creating a "vertex" DataPoint, then creating two annotations and adding them. To run this,
-    the controller needs to already have two HighlightedPoint Annotations occupying the first two spots
-    in the 'annotationList' array; otherwise the method will return nothing.
-    
-    @deprecated This method is inelegant and for demonstration purposes only. There will be a better way soon.
-  */
-  addRiseRun: function() {
-    var vertex, vArrow, hArrow;
-    if (this.get('supportsAnnotations') &&
-        (this.get('annotationList').get('length') > 1) && 
-        this.get('annotationList').firstObject().kindOf(Smartgraphs.HighlightedPoint) && 
-        this.get('annotationList').objectAt(1).kindOf(Smartgraphs.HighlightedPoint)) {
-      console.log("OK, let's do this");
-      vertex = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {});
-      vertex.set('y', this.get('annotationList').firstObject().get('point').get('y'));
-      vertex.set('x', this.get('annotationList').objectAt(1).get('point').get('x'));
-      console.log("Vertex is at " + vertex.get('x') + ", " + vertex.get('y'));
-      hArrow = Smartgraphs.sessionController.createAnnotation(Smartgraphs.Arrow, "run", { 'color': "#d62728" });
-      hArrow.set('point1', this.get('annotationList').firstObject().get('point'));
-      hArrow.set('point2', vertex);
-      this.addAnnotation(hArrow);
-      vArrow = Smartgraphs.sessionController.createAnnotation(Smartgraphs.Arrow, "rise", { 'color': "#9467bd" });
-      vArrow.set('point1', vertex);
-      vArrow.set('point2', this.get('annotationList').objectAt(1).get('point'));
-      this.addAnnotation(vArrow);
-    }
   }
 
   // NOT CURRENTLY USED:
