@@ -38,35 +38,10 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
     var graphView = this.get('graphView');
-    var annotation = this.get('item');
-
-    var p1 = annotation.get('point1'),
-        p2 = annotation.get('point2');
-
-    var x1 = p1.get('x'),
-        y1 = p1.get('y'),
-        x2 = p2.get('x'),
-        y2 = p2.get('y');
+    var arrowEnds = this.getStartAndEnd(this.get('item'));
     
-    var x, y, start, end;
-    
-    if (annotation.get('isHorizontal')) {
-      y = annotation.get('isClockwise') ? y2 : y1;
-      start = { x: x1, y: y };
-      end =   { x: x2, y: y };
-    }
-    else if (annotation.get('isVertical')) {
-      x = annotation.get('isClockwise') ? x1 : x2;
-      start = { x: x, y: y1 };
-      end =   { x: x, y: y2 };
-    }
-    else {
-      start = { x: x1, y: y1 };
-      end =   { x: x2, y: y2 };
-    }
-    
-    var startCoords = graphView.coordinatesForPoint(start.x, start.y);
-    var endCoords =   graphView.coordinatesForPoint(end.x, end.y);
+    var startCoords = graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y);
+    var endCoords =   graphView.coordinatesForPoint(arrowEnds.end.x, arrowEnds.end.y);
     var pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
 
     var attrs = {
@@ -122,7 +97,43 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
                    " L " + baseBX  + " " + baseBY +
                    " L " + tipX    + " " + tipY;
     return pathData;
-  }
+  },
 
+  /** 
+    Given an annotation, returns the start and end points of the arrow to be drawn, relative to the graph axes. In other
+    words, this adjusts for isHorizontal, isVertical and isClockwise values, as well as extracting x and y values from
+    the points of the annotation.
+    
+    Returns an object containing "start" and "end" objects, each of which is a coordinate pair (i.e. "x" and "y" values).
+    
+    @params annotation {Smartgraphs.Arrow} The arrow being viewed.
+  */
+  getStartAndEnd: function(annotation) {
+    var p1 = annotation.get('point1'),
+        p2 = annotation.get('point2');
+
+    var x1 = p1.get('x'),
+        y1 = p1.get('y'),
+        x2 = p2.get('x'),
+        y2 = p2.get('y');
+    
+    var x, y, start, end;
+    
+    if (annotation.get('isHorizontal')) {
+      y = annotation.get('isClockwise') ? y2 : y1;
+      start = { x: x1, y: y };
+      end =   { x: x2, y: y };
+    }
+    else if (annotation.get('isVertical')) {
+      x = annotation.get('isClockwise') ? x1 : x2;
+      start = { x: x, y: y1 };
+      end =   { x: x, y: y2 };
+    }
+    else {
+      start = { x: x1, y: y1 };
+      end =   { x: x2, y: y2 };
+    }
+    return { 'start': start, 'end': end };
+  }
   
 });
