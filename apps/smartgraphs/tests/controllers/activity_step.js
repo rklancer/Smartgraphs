@@ -3,25 +3,23 @@
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start */
+/*globals Smartgraphs module test ok equals same stop start setup teardown */
 
 var step;
-var oldMI, oldSA, oldEC;
 
 module("Smartgraphs.activityStepController", {
   setup: function () {
+    setup.mock(Smartgraphs.activityStepController, 'makeInspector');
+    setup.mock(Smartgraphs, 'sendAction');
+    setup.mock(Smartgraphs.activityStepController, 'executeCommands');
+    
     step = SC.Object.create({
     });
     Smartgraphs.activityStepController.set('content', step);
-    oldMI = Smartgraphs.activityStepController.makeInspector;
-    oldSA = Smartgraphs.sendAction;
-    oldEC = Smartgraphs.activityStepController.executeCommands;
   },
   
   teardown: function () {
-    Smartgraphs.activityStepController.makeInspector = oldMI;
-    Smartgraphs.sendAction = oldSA;
-    Smartgraphs.activityStepController.executeCommands = oldEC;
+    teardown.mocks();
   }
 });
 
@@ -238,14 +236,7 @@ test("handleSubmission should branch according to the value returned by the insp
 });
 
 
-var oldMFR;
-var oldActivityStepNR;
-var oldActivityStepSubmittedNR;
-var oldBegin;
-var oldHS;
-
 var gotoStepArgs = null;
-
 
 module("ActivityStepController <--> state interaction", {
   setup: function () {
@@ -256,27 +247,16 @@ module("ActivityStepController <--> state interaction", {
       }
     });
         
-    oldSA = Smartgraphs.sendAction;
-    Smartgraphs.oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
-    oldBegin = Smartgraphs.activityStepController.begin;
-    oldHS = Smartgraphs.activityStepController.handleSubmission;
-
-    oldActivityStepNR = Smartgraphs.ACTIVITY_STEP.get('nextResponder');
-    oldActivityStepSubmittedNR = Smartgraphs.ACTIVITY_STEP_SUBMITTED.get('nextResponder');    
-    Smartgraphs.ACTIVITY_STEP.set('nextResponder', mockResponder);
-    Smartgraphs.ACTIVITY_STEP_SUBMITTED.set('nextResponder', mockResponder);
+    setup.mock(Smartgraphs, 'sendAction');
+    setup.mock(Smartgraphs, 'makeFirstResponder');
+    setup.mock(Smartgraphs.activityStepController, 'begin');
+    setup.mock(Smartgraphs.activityStepController, 'handleSubmission');
+    setup.mock(Smartgraphs.ACTIVITY_STEP, 'nextResponder', mockResponder);
+    setup.mock(Smartgraphs.ACTIVITY_STEP_SUBMITTED, 'nextResponder', mockResponder);
   },
   
   teardown: function () {
-    Smartgraphs.makeFirstResponder = Smartgraphs.oldMakeFirstResponder;
-    delete Smartgraphs.oldMakeFirstResponder;
-    Smartgraphs.sendAction = oldSA;
-    Smartgraphs.activityStepController.begin = oldBegin;
-    Smartgraphs.activityStepController.handleSubmission = oldHS;
-    
-    Smartgraphs.makeFirstResponder(null);
-    Smartgraphs.ACTIVITY_STEP.set('nextResponder', oldActivityStepNR);
-    Smartgraphs.ACTIVITY_STEP_SUBMITTED.set('nextResponder', oldActivityStepSubmittedNR);
+    teardown.mocks();
   }
 });
 
