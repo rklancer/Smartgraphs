@@ -1,5 +1,5 @@
 {
-  "_rev": "14-2c28f58383c8f654ab12cbe778671732",
+  "_rev": "15-ce8c80e2cbf8e7dcbc0ab85030e1f556",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -176,6 +176,16 @@
       ],
       "afterSubmissionCommands": [
         {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow",
+            "firstPoint": "first-point",
+            "secondPoint": "second-point",
+            "graphName": "demo-graph",
+            "color": "#9467bd"
+          }
+        },
+        {
           "action": "createRunArrow",
           "literalArgs": {
             "arrowName": "run-arrow",
@@ -212,7 +222,7 @@
           "datasetName": "demo-data"
         }
       },
-      "beforeText": "<p>Here is a &ldquo;run&rdquo; arrow.</p>",
+      "beforeText": "<p>Here is a &ldquo;rise&rdquo; arrow.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -220,7 +230,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "type": "Smartgraphs.Arrow",
-            "name": "run-arrow",
+            "name": "rise-arrow",
             "graphName": "demo-graph"
           }
         }
@@ -234,16 +244,7 @@
 
       ],
       "afterSubmissionCommands": [
-        {
-          "action": "createRiseArrow",
-          "literalArgs": {
-            "arrowName": "rise-arrow",
-            "firstPoint": "first-point",
-            "secondPoint": "second-point",
-            "graphName": "demo-graph",
-            "color": "#9467bd"
-          }
-        }
+
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -271,7 +272,7 @@
           "datasetName": "demo-data"
         }
       },
-      "beforeText": "<p>Here is a &ldquo;rise&rdquo; arrow.</p>",
+      "beforeText": "<p>Here is a &ldquo;run&rdquo; arrow.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -279,7 +280,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "type": "Smartgraphs.Arrow",
-            "name": "rise-arrow",
+            "name": "run-arrow",
             "graphName": "demo-graph"
           }
         }
