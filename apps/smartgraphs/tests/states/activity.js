@@ -80,7 +80,7 @@ test("creating a LineThroughPoints", function () {
 });
 
 test("creating a rise Arrow", function () {
-  expect(5);
+  expect(6);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
   Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
@@ -96,10 +96,11 @@ test("creating a rise Arrow", function () {
   ok(annotation.kindOf(Smartgraphs.Arrow), 'The Annotation is an Arrow');
   ok(annotation.get('isVertical'), 'The Annotation is vertical');
   ok(!annotation.get('isHorizontal'), 'The Annotation is not confusingly also horizontal');
+  ok(annotation.get('isClockwise'), 'The annotation will be rendered clockwise');
 });
 
 test("creating a run Arrow", function () {
-  expect(4);
+  expect(5);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
   Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
@@ -114,4 +115,24 @@ test("creating a run Arrow", function () {
   var annotation = Smartgraphs.firstGraphController.findAnnotationByName('runArrow'); // Grab the annotation to examine it
   ok(annotation.kindOf(Smartgraphs.Arrow), 'The Annotation is an Arrow');
   ok(annotation.get('isHorizontal'), 'The Annotation is horizontal');
+  ok(annotation.get('isClockwise'), 'The annotation will be rendered clockwise');
+});
+
+test("Reordering points for rise/run arrows", function () {
+  expect(4);
+  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
+  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
+  Smartgraphs.firstGraphController.addAnnotation(hp2);
+  Smartgraphs.ACTIVITY.createRunArrow(null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.ACTIVITY.createRiseArrow(null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'riseArrow', 'color': '#ff0000'});
+  Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
+  Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'riseArrow');
+  var runArrow = Smartgraphs.firstGraphController.findAnnotationByName('runArrow'); // Grab the annotation to examine it
+  var riseArrow = Smartgraphs.firstGraphController.findAnnotationByName('riseArrow'); // Grab the annotation to examine it
+  equals( riseArrow.get('point1'), hp1.get('point'), "The first point of the rise arrow annotation should be the same as the first Highlighted Point even though it was provided as the second");
+  equals( riseArrow.get('point2'), hp2.get('point'), "The second point of the rise arrow annotation should be the same as the second Highlighted Point even though it was provided as the first");
+  equals( runArrow.get('point1'), hp1.get('point'), "The first point of the run arrow annotation should be the same as the first Highlighted Point even though it was provided as the second");
+  equals( runArrow.get('point2'), hp2.get('point'), "The second point of the run arrow annotation should be the same as the second Highlighted Point even though it was provided as the first");
 });
