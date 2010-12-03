@@ -132,7 +132,8 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     If the current ActivityStep does not specify a submissibilityInspector, this command enables submission
     immediately.
     
-    This command executes automatically when an ActivityStep which has shouldWaitForSubmissibleResponse == YES begins.
+    This command executes automatically when an ActivityStep is loaded unless its 'shouldFinishImmediately' property
+    is true.
   */
   waitForResponse: function (context, args) {
     Smartgraphs.activityStepController.waitForResponse();

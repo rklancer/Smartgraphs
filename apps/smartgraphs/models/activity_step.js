@@ -18,9 +18,23 @@
   the ACTIVITY_STEP state. ACTIVITY_STEP (or one of its substates, i.e., a state like SENSOR_RECORDING that has
   ACTIVITY_STEP in its nextResponder chain) remains the current state while the user interacts with the Smartgraph
   application. When the user is done interacting with that step -- perhaps they have chosen an answer, or entered data
-  to their satisfaction -- they can click a button to "submit" the step for consideration by the system. 
+  to their satisfaction -- they can click a button to "submit" the step for consideration by the system. Submission
+  is performed by the submitStep action defined in the ACTIVITY_STEP.
   
-  Submitting is only allowed when the step is in a "submissible" state; see below for details of how an ActivityStep
+  Submission is only allowed when the step is in a "submissible" state. (The "submissible" state is not an 
+  SC.Responder like ACTIVITY_STEP; when Smartgraphs transitions to using the new SC.Statechart framework it will be
+  possible to fix this.) The rules for enablement/disablement of submission are as follows:
+  
+    - if 'shouldFinishImmediately' is true, the step is automatically submitted, unless one of the startCommands
+      turns submissibility off. This would likely be considered an error.
+    - if one of the startCommands disables submission as a side effect, submissibility will remain off until 
+      submission is explicitly turned on again. Turning submission back on might happen as a side effect of a tool 
+      that is turned on in the command; as a side effect of another command; or by the submissibility inspector
+    - if, regardless of the startCommands, the step is able to successfully instantiate an submissibility inspector 
+      instance, submissibililty is turned off and remains off until the submissibilityInspector's value meets the
+      criterion specified by the submissibilityCriterion 
+    - otherwise, submissibility is turned on  
+
   specifies how to configure the system to observe its state and turn submissibility on or off based on that state.
   Moreover submission can be performed programmatically, rather than in response to a button click.
   
@@ -193,17 +207,6 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     @property {Boolean}
   */
   shouldFinishImmediately: SC.Record.attr(Boolean),
-  
-  /**
-    Whether to turn submissibility off at the beginning of the step and wait for submissibility to become true before
-    allowing the user to submit the step.
-    
-     (The alternative is that the user can click 'done' without taking any prior step, as we might want if the step is
-    purely informative or if the users' action is optional.)
-    
-    @property {Boolean}
-  */
-  shouldWaitForSubmissibleResponse: SC.Record.attr(Boolean),
   
   /**
     A hash that specifies an Inspector class that will be instantiated to continually monitor the system state for
