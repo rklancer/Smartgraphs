@@ -6,21 +6,98 @@
 /*globals Smartgraphs module test ok equals same stop start setup teardown */
 
 var step;
+var RESTING = SC.Responder.create();
 
 module("Smartgraphs.activityStepController", {
   setup: function () {
     setup.mock(Smartgraphs.activityStepController, 'makeInspector');
     setup.mock(Smartgraphs, 'sendAction');
     setup.mock(Smartgraphs.activityStepController, 'executeCommands');
+    setup.mock(Smartgraphs.ACTIVITY_STEP, 'nextResponder', null);
+    setup.mock(Smartgraphs.ACTIVITY_STEP, 'didBecomeFirstResponder', function () {});  
+    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
     
     step = SC.Object.create({
     });
+    Smartgraphs.activityStepController.cleanup();
     Smartgraphs.activityStepController.set('content', step);
   },
   
   teardown: function () {
     teardown.mocks();
+
+    setup.mock(Smartgraphs.ACTIVITY_STEP, 'willLoseFirstResponder', function () {});
+    Smartgraphs.makeFirstResponder(RESTING);
+    teardown.mocks();
   }
+});
+
+
+test("step should be automatically submitted, and should ignore submissibilityInspector setting, in begin() if shouldFinishImmediately is YES", function () {
+  var stepSubmittedSuccessfully = NO;
+  
+  var sendAction = Smartgraphs.sendAction;
+  Smartgraphs.sendAction = function (actionName) {
+    if (actionName === 'submitStep' && Smartgraphs.activityStepController.get('canSubmit')) {
+      stepSubmittedSuccessfully = YES;
+    }
+    return sendAction.apply(Smartgraphs, arguments);
+  };
+  
+  step.set('submissibilityInspector', {
+    type: 'Smartgraphs.FirstResponseFieldInspector'
+  });
+  step.set('shouldFinishImmediately', YES);
+  
+  Smartgraphs.activityStepController.begin();  
+
+  ok( stepSubmittedSuccessfully, "the activity step should have been submitted, while the step was submissible, during begin()");
+});
+
+
+test("step should not be submissible after begin() if a start command disables submission", function () {
+  step.set('startCommands', [{"action": "disableSubmission"}]);
+  Smartgraphs.activityStepController.begin();
+  ok( !Smartgraphs.activityStepController.get('canSubmit'), "submission should have been disabled by the start command");
+});
+
+
+test("step should not be submissible after begin() if a submissibility inspector can be successfully instantiated, regardless of initial commands", function () {
+  var submissionEnablingCommandDidRun = NO;
+  
+  var sendAction = Smartgraphs.sendAction;
+  Smartgraphs.sendAction = function (actionName) {
+    if (actionName === 'submission-enabling-command') {
+      console.log('submission-enabling-command about to issue enableSubmission');
+      Smartgraphs.sendAction('enableSubmission');
+      submissionEnablingCommandDidRun = YES;
+      return YES;
+    }
+    return sendAction.apply(Smartgraphs, arguments);
+  };
+
+  step.set('startCommands', [{"action": "submission-enabling-command"}]);
+  window.inspector = Smartgraphs.Inspector.extend();
+  step.set('submissibilityInspector', { type: 'window.inspector' });
+  
+  Smartgraphs.activityStepController.begin();
+  ok( submissionEnablingCommandDidRun, "submission-enabling startCommand should have run");
+  ok( !Smartgraphs.activityStepController.get('canSubmit'), "submission should have be disabled immediately after begin()");
+});
+
+
+test("step should be submissible after begin() if no start commands disable submission and no submissibility inspector is specified", function () {
+  Smartgraphs.activityStepController.begin();
+  ok( Smartgraphs.activityStepController.get('canSubmit'), "submission should be enabled immediately after begin()");
+});
+
+
+test("step should be submissible after begin() if no start commands disable submission and no submissibility inspector can be instantiated", function () {
+  window.junkInspector = {};
+  step.set('submissibilityInspector', { type: 'window.junkInspector' });
+  
+  Smartgraphs.activityStepController.begin();
+  ok( Smartgraphs.activityStepController.get('canSubmit'), "submission should be enabled immediately after begin()");
 });
 
 
@@ -100,7 +177,7 @@ test("handleSubmission should do nothing if disableSubmission was called", funct
 });
 
 
-test("after enableSubmission, handleSubmission should call make the appropriate inspector and ask it to inspect", function () {
+test("after enableSubmission, handleSubmission should make the appropriate response inspector and ask it to inspect", function () {
   step.responseBranches = [];
   step.responseInspector = '(response inspector config hash)';
   
@@ -282,17 +359,17 @@ test("ACTIVITY_STEP should implement a submitStep action that can be disabled/en
     
   Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   
-  Smartgraphs.activityStepController.disableSubmission();
+  Smartgraphs.sendAction('disableSubmission');
   Smartgraphs.sendAction('submitStep');
   
   ok(handleSubmissionWasCalled === NO, "submitStep action after disableSubmission should not have resulted in a call to handleSubmission");
   equals(Smartgraphs.get('firstResponder'), Smartgraphs.ACTIVITY_STEP, "submitStep action after disableSubmission should not have resulted in firstResponder change");
   
-  Smartgraphs.activityStepController.enableSubmission();
+  Smartgraphs.sendAction('enableSubmission');
   Smartgraphs.sendAction('submitStep');
     
   ok(handleSubmissionWasCalled === YES, "submitStep action after enableSubmission should have resulted in a call to handleSubmission");
-  equals(Smartgraphs.get('firstResponder'), Smartgraphs.ACTIVITY_STEP_SUBMITTED, "submitStep action after enableSubmission should not have changed firstResponder to ACTIVITY_STEP_SUBMITTED"); 
+  equals(Smartgraphs.get('firstResponder'), Smartgraphs.ACTIVITY_STEP_SUBMITTED, "submitStep action after enableSubmission should have changed firstResponder to ACTIVITY_STEP_SUBMITTED"); 
 });
 
 
