@@ -20,7 +20,7 @@ sc_require('states/mixins/resource_loader');
 Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
 /** @scope Smartgraphs.LOADING_ACTIVITY.prototype */ {
 
-  nextResponder: Smartgraphs.READY,
+  nextResponder: null,
   
   masterResource: {
     load: function () { return Smartgraphs.activityController.get('content'); }
@@ -31,9 +31,15 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   ],
   
   didBecomeFirstResponder: function () {
-    if (this.loadResources()) {
+    console.log("LOADING_ACTIVITY firstResponder");
+    console.log("START: calling loadResources");
+    var loaded = this.loadResources();
+    console.log("END: calling loadResources");
+    
+    if (loaded) {
       return;
     }
+    console.log('showing activity view, right?');
     Smartgraphs.appWindowController.showActivityLoadingView();
   },
   
@@ -42,6 +48,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   },
   
   resourcesDidLoad: function () {
+    console.log('resourcesDidLoad');
     Smartgraphs.sessionController.newSession();
 
     var pages = Smartgraphs.activityController.get('pages');
@@ -63,17 +70,17 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   // ACTIONS
   //
   
-  // Handle 're-entrance' (opening a activity while we're still waiting for another activity to load)
-  openActivity: function (context, args){
-    if (args.id === Smartgraphs.activityController.getPath('content.id')) {
-      // do nothing if it's a repeat request to load the same id
-      return YES;
-    }
-    
-    //  let READY handle opening the new activity, but we need to resetFirstResponder because the
-    // 'makeFirstResponder' call in READY won't cause our didBecomeFirstResponder method to be called again
-    Smartgraphs.invokeLater(Smartgraphs.resetFirstResponder);
-    return NO;
-  }
+  // // Handle 're-entrance' (opening a activity while we're still waiting for another activity to load)
+  // openActivity: function (context, args){
+  //   if (args.id === Smartgraphs.activityController.getPath('content.id')) {
+  //     // do nothing if it's a repeat request to load the same id
+  //     return YES;
+  //   }
+  //   
+  //   //  let READY handle opening the new activity, but we need to resetFirstResponder because the
+  //   // 'makeFirstResponder' call in READY won't cause our didBecomeFirstResponder method to be called again
+  //   Smartgraphs.invokeLater(Smartgraphs.resetFirstResponder);
+  //   return NO;
+  // }
   
 }) ;
