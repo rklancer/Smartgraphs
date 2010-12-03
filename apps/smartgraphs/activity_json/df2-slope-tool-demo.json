@@ -1,5 +1,5 @@
 {
-  "_rev": "13-02dab8a35f1ecd895f8cb0e8ed819d73",
+  "_rev": "14-2c28f58383c8f654ab12cbe778671732",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -59,7 +59,6 @@
         }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
@@ -109,10 +108,7 @@
         }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
-      "submissibilityInspector": {
-
-      },
+      "submissibilityInspector": null,
       "submissibilityCriterion": {
 
       },
@@ -171,10 +167,7 @@
         }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": false,
-      "submissibilityInspector": {
-
-      },
+      "submissibilityInspector": null,
       "submissibilityCriterion": {
 
       },
@@ -233,10 +226,7 @@
         }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": false,
-      "submissibilityInspector": {
-
-      },
+      "submissibilityInspector": null,
       "submissibilityCriterion": {
 
       },
@@ -295,10 +285,7 @@
         }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": false,
-      "submissibilityInspector": {
-
-      },
+      "submissibilityInspector": null,
       "submissibilityCriterion": {
 
       },
