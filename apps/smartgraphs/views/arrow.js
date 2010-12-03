@@ -37,19 +37,34 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
-    var startCoords, endCoords;
     var graphView = this.get('graphView');
     var annotation = this.get('item');
-    if (annotation.get('isVertical') && !annotation.get('isHorizontal')) {
-      startCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point1').get('y'));
-    } else {
-      startCoords = graphView.coordinatesForPoint(annotation.get('point1').get('x'), annotation.get('point1').get('y'));
-    }
+
+    var p1 = annotation.get('point1'),
+        p2 = annotation.get('point2');
+
+    var x1 = p1.get('x'),
+        y1 = p1.get('y'),
+        x2 = p2.get('x'),
+        y2 = p2.get('y');
+    
+    var start, end;
+    
     if (annotation.get('isHorizontal')) {
-      endCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point1').get('y'));
-    } else {
-      endCoords = graphView.coordinatesForPoint(annotation.get('point2').get('x'), annotation.get('point2').get('y'));
+      start = { x: x1, y: y1 };
+      end =   { x: x2, y: y1 };
     }
+    else if (annotation.get('isVertical')) {
+      start = { x: x2, y: y1 };
+      end =   { x: x2, y: y2 };
+    }
+    else {
+      start = { x: x1, y: y1 };
+      end =   { x: x2, y: y2 };
+    }
+    
+    var startCoords = graphView.coordinatesForPoint(start.x, start.y);
+    var endCoords =   graphView.coordinatesForPoint(end.x, end.y);
     var pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
 
     var attrs = {
