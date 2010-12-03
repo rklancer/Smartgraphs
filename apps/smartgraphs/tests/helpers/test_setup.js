@@ -31,9 +31,8 @@ module("Test-setup and teardown mocking helpers", {
     });
   }
 });
-
    
-test("setup.mock() should replace the specified method, which should be restored by teardown.mocks()", function () {
+test("setup.mock() should replace the method, if specified, and it should be restored by teardown.mocks()", function () {
   
   var mockInnerMethodWasCalled = NO,
       mockOuterMethodWasCalled = NO;
@@ -93,6 +92,33 @@ test("setup.mock() should replace the specified method, which should be restored
   namespace.siblingMethod();
   
   ok( siblingMethodWasCalled, "unmocking of namespace.outerMethod() should not interfere with sibling method");
+});
+
+
+test("setup.mock() should simply back up the specified method if no substitute is passed", function () {
+  
+  var mockInnerMethodWasCalled;
+  
+  setup.mock(namespace.inner, 'innerMethod');
+  namespace.inner.innerMethod();
+  ok( innerMethodWasCalled, "namespace.inner.innerMethod() should have called the original inner method since no substitute was provided");
+  
+  namespace.inner.innerMethod = function () {
+    mockInnerMethodWasCalled = YES;
+  };
+  
+  innerMethodWasCalled = NO;
+  
+  namespace.inner.innerMethod();
+  ok( mockInnerMethodWasCalled && !innerMethodWasCalled, "namespace.inner.innerMethod() should have called hand-mocked inner method");
+  
+  teardown.mocks();
+  
+  mockInnerMethodWasCalled = NO;
+  innerMethodWasCalled = NO;
+  
+  namespace.inner.innerMethod();
+  ok( innerMethodWasCalled && !mockInnerMethodWasCalled, "after teardown.mocks() namespace.inner.innerMethod() should have called the original inner method");
 });
 
 

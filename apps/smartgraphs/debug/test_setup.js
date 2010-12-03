@@ -8,7 +8,7 @@
 var setup = {};
 var teardown = {};
 
-(function () {
+(function (undefined) {
   var savedStore;
   var savedFixtures = {};
   var savedMethods = {};
@@ -54,7 +54,7 @@ var teardown = {};
       method: object[methodName]
     };
   
-    object[methodName] = mock;
+    if (mock !== undefined) object[methodName] = mock;
   };
   
   teardown.mocks = function () {
