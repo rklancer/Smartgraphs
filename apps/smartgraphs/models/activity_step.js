@@ -25,20 +25,12 @@
   SC.Responder like ACTIVITY_STEP; when Smartgraphs transitions to using the new SC.Statechart framework it will be
   possible to fix this.) The rules for enablement/disablement of submission are as follows:
   
-    - if 'shouldFinishImmediately' is true, the step is automatically submitted, unless one of the startCommands
-      turns submissibility off. This would likely be considered an error.
-    - if one of the startCommands disables submission as a side effect, submissibility will remain off until 
-      submission is explicitly turned on again. Turning submission back on might happen as a side effect of a tool 
-      that is turned on in the command; as a side effect of another command; or by the submissibility inspector
-    - if, regardless of the startCommands, the step is able to successfully instantiate an submissibility inspector 
-      instance, submissibililty is turned off and remains off until the submissibilityInspector's value meets the
-      criterion specified by the submissibilityCriterion 
-    - otherwise, submissibility is turned on  
-
-  specifies how to configure the system to observe its state and turn submissibility on or off based on that state.
-  Moreover submission can be performed programmatically, rather than in response to a button click.
+    - if 'shouldFinishImmediately' is true, the step is automatically submitted, unless one of the startCommands turns submissibility off. This would likely be considered an error.
+    - if one of the startCommands disables submission as a side effect, submissibility will remain off untilsubmission is explicitly turned on again. Turning submission back on might happen as a side effect of a tool that is turned on in the command; as a side effect of another command; or by the submissibility inspector
+    - if, regardless of the startCommands, the step is able to successfully instantiate an submissibility inspector instance, submissibililty is turned off and remains off until the submissibilityInspector's value meets the criterion specified by the submissibilityCriterion 
+    - otherwise, submissibility is turned on
   
-  Steps specify how to inspect the system state and choose the next step to load once the step is submitted.
+  Steps also specify how to inspect the system state and choose the next step to load once the step is submitted.
   
   h3. What is specified in an ActivityStep record
   
@@ -91,9 +83,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
 /** @scope Smartgraphs.ActivityStep.prototype */ {
 
   /**
-    The primary key of an ActivityStep record is its url.
-    
-    The usual format is /<username>/<activityname>/page/nnn/step/nnn
+    The primary key of an ActivityStep record is its url. The usual format is /<username>/<activityname>/page/nnn/step/nnn
     
     @property {String}
   */
