@@ -111,14 +111,22 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   
     if (!controller) return YES;
     
-    var firstAnnotation = controller.findAnnotationByName(args.firstPoint);
-    var secondAnnotation = controller.findAnnotationByName(args.secondPoint);
+    var firstAnnotationPoint = controller.findAnnotationByName(args.firstPoint).get('point');
+    var secondAnnotationPoint = controller.findAnnotationByName(args.secondPoint).get('point');
     var color = args.color ? args.color : "#000000";
+    // Reorder the points such that the first point is the leftmost one, i.e. the lower x-value
+    var points;
+    if (firstAnnotationPoint.get('x') < secondAnnotationPoint.get('x')) {
+      points = [firstAnnotationPoint.get('id'), secondAnnotationPoint.get('id')];
+    }
+    else {
+      points = [secondAnnotationPoint.get('id'), firstAnnotationPoint.get('id')];
+    }
     
     var riseArrow = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.Arrow, args.arrowName, { 
-        point1: firstAnnotation.get('point').get('id'),
-        point2: secondAnnotation.get('point').get('id'),
+        point1: points[0],
+        point2: points[1],
         color: color,
         isVertical: YES,
         isClockwise: YES
@@ -157,14 +165,22 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
   
     if (!controller) return YES;
     
-    var firstAnnotation = controller.findAnnotationByName(args.firstPoint);
-    var secondAnnotation = controller.findAnnotationByName(args.secondPoint);
+    var firstAnnotationPoint = controller.findAnnotationByName(args.firstPoint).get('point');
+    var secondAnnotationPoint = controller.findAnnotationByName(args.secondPoint).get('point');
     var color = args.color ? args.color : "#000000";
+    // Reorder the points such that the first point is the leftmost one, i.e. the lower x-value
+    var points;
+    if (firstAnnotationPoint.get('x') < secondAnnotationPoint.get('x')) {
+      points = [firstAnnotationPoint.get('id'), secondAnnotationPoint.get('id')];
+    }
+    else {
+      points = [secondAnnotationPoint.get('id'), firstAnnotationPoint.get('id')];
+    }
     
     var runArrow = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.Arrow, args.arrowName, { 
-        point1: firstAnnotation.get('point').get('id'),
-        point2: secondAnnotation.get('point').get('id'),
+        point1: points[0],
+        point2: points[1],
         color: color,
         isHorizontal: YES,
         isClockwise: YES
