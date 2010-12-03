@@ -40,7 +40,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     this.setupPanes();
     Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
     // enableSubmission *before* executing startCommands -- they might disable submission
-    this.enableSubmission();
+    Smartgraphs.sendAction('enableSubmission');
     this.executeCommands(this.get('startCommands'));
     this.setupTriggers();
   
@@ -118,7 +118,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       if (inspector) {
         this.set('submissibilityInspectorInstance', inspector);
         // if (and only if) we have a valid inspector, it is its job to enable submission
-        this.disableSubmission();
+        Smartgraphs.sendAction('disableSubmission');
         inspector.addObserver('value', this, this.checkSubmissibility);
         inspector.watch();
       }
@@ -136,10 +136,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     //console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
     
     if (valueIsValid && !canSubmit) {
-      this.enableSubmission();
+      Smartgraphs.sendAction('enableSubmission');
     }
     else if (canSubmit && !valueIsValid) {
-      this.disableSubmission();
+      Smartgraphs.sendAction('disableSubmission');
     }
   },
   

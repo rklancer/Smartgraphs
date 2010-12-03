@@ -141,6 +141,23 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   },
   
   /**
+    Disable submission of the ActivityStep. After this action, the submitStep action (triggered by clicking 'submit'
+    or 'OK') will not succeed until the enableSubmission action is performed.
+  */
+  disableSubmission: function () {
+    Smartgraphs.activityStepController.disableSubmission();
+    return YES;
+  },
+  
+  /**
+    Enable submission of the ActivityStep. After this action, the submitStep action will be able to proceed.
+  */
+  enableSubmission: function () {
+    Smartgraphs.activityStepController.enableSubmission();
+    return YES;
+  },
+  
+  /**
     If submission is enabled, transitions to the ACTIVITY_STEP_SUBMITTED state. Otherwise, does nothing.
     
     The transition to the ACTIVITY_STEP_SUBMITTED results in the execution of the 'afterSubmissionCommands' specified
@@ -381,9 +398,6 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     // try a simpler paradigm .. just stash the info needed by the state, in the state
     Smartgraphs.INTERACTIVE_SELECTION.set('annotation', annotation);
     Smartgraphs.INTERACTIVE_SELECTION.set('dataset', dataset);
-  
-    // disable submission until a selection is made...
-    Smartgraphs.activityStepController.disableSubmission();
           
     Smartgraphs.makeFirstResponder(Smartgraphs.INTERACTIVE_SELECTION);
 

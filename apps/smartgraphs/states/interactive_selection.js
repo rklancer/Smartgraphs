@@ -33,6 +33,9 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.Responder.create(
   dataset: null,
   
   didBecomeFirstResponder: function () {
+    // disable submission until a selection is made...
+    Smartgraphs.sendAction('disableSubmission');
+    
     var dataset = this.get('dataset');
     this._oldIsSelectable = dataset.get('isSelectable');
     dataset.set('isSelectable', NO);
@@ -65,7 +68,7 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.Responder.create(
     
     if (dataset && point.get('dataset') === dataset) {
       this.setPath('annotation.point', point);
-      Smartgraphs.activityStepController.enableSubmission();
+      Smartgraphs.sendAction('enableSubmission');
     }
   },
   
