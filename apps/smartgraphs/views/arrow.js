@@ -48,15 +48,17 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
         x2 = p2.get('x'),
         y2 = p2.get('y');
     
-    var start, end;
+    var x, y, start, end;
     
     if (annotation.get('isHorizontal')) {
-      start = { x: x1, y: y1 };
-      end =   { x: x2, y: y1 };
+      y = annotation.get('isClockwise') ? y2 : y1;
+      start = { x: x1, y: y };
+      end =   { x: x2, y: y };
     }
     else if (annotation.get('isVertical')) {
-      start = { x: x2, y: y1 };
-      end =   { x: x2, y: y2 };
+      x = annotation.get('isClockwise') ? x1 : x2;
+      start = { x: x, y: y1 };
+      end =   { x: x, y: y2 };
     }
     else {
       start = { x: x1, y: y1 };
