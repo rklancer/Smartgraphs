@@ -120,7 +120,8 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
         point1: firstAnnotation.get('point').get('id'),
         point2: secondAnnotation.get('point').get('id'),
         color: color,
-        isVertical: YES
+        isVertical: YES,
+        isClockwise: YES
       });
     return YES;
   },
@@ -165,7 +166,8 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
         point1: firstAnnotation.get('point').get('id'),
         point2: secondAnnotation.get('point').get('id'),
         color: color,
-        isHorizontal: YES
+        isHorizontal: YES,
+        isClockwise: YES
       });
     return YES;
   }
