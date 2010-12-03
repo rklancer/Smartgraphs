@@ -9,7 +9,12 @@ Smartgraphs.Inspector = SC.Object.extend({
   
   init: function () {
     var config = this.get('config'); 
-    this.configure(config || {});
+    if (this.configure) this.configure(config || {});
     sc_super();
-  }
+  },
+  
+  watch: function () {},
+  
+  stopWatching: function () {}
+  
 });
