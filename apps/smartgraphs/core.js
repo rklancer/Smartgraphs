@@ -9,7 +9,7 @@
 
   Smaht Graphs. Wicked Smaht Graphs!
   
-  @extends SC.Object
+  @extends SC.Application
 */
 Smartgraphs = SC.Application.create(
   /** @scope Smartgraphs.prototype */ {

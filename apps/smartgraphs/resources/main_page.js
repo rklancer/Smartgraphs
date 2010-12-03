@@ -11,7 +11,7 @@ Smartgraphs.mainPage = SC.Page.design({
   mainPane: SC.MainPane.design({
     theme: 'pig',
 
-    defaultResponder: 'Smartgraphs',
+    defaultResponder: 'Smartgraphs.statechart',
         
     childViews: 'topToolbar container bottomToolbar'.w(),
     

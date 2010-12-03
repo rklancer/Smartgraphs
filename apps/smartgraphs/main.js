@@ -25,9 +25,8 @@ Smartgraphs.main = function main() {
     return "You will lose your place in the activity if you leave this page.";
   };
   
-  // ... then the START state will kick things off
-  Smartgraphs.makeFirstResponder(Smartgraphs.START);
-  
+  // and kick things off
+  Smartgraphs.statechart.initStatechart();
 } ;
 
 function main() { Smartgraphs.main(); }
