@@ -34,6 +34,34 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
   */
   point2: SC.Record.toOne('Smartgraphs.DataPoint'),
   
+  /** 
+    Should this arrow run directly from point1 to point2, or should it represent only
+    the horizontal vector of that movement?
+    
+    If true, the arrow will be drawn from point1 horizontally to a point directly below
+    point2.
+    
+    Default value is false.
+    
+    @property {Boolean}
+  */
+  isHorizontal: SC.Record.attr(Boolean, { defaultValue: false } ),
+  
+  /** 
+    Should this arrow run directly from point1 to point2, or should it represent only
+    the vertical vector of that movement?
+    
+    If true, the arrow will be drawn from a point level with point1, vertically to point2.
+    
+    isHorizontal and isVertical should not both be true. If the value of isHorizontal
+    is true, this value will be assumed false even if it is true.
+    
+    Default value is false.
+    
+    @property {Boolean}
+  */
+  isVertical: SC.Record.attr(Boolean, { defaultValue: false } ),
+  
   /**
     The optional text label for the arrow.
     

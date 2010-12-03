@@ -1,5 +1,5 @@
 {
-  "_rev": "11-115f23f0ff472b5ce0ab3a4b622adb42",
+  "_rev": "13-02dab8a35f1ecd895f8cb0e8ed819d73",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -15,7 +15,9 @@
       "steps": [
         "/shared/slope-tool-demo/page/1/step/1",
         "/shared/slope-tool-demo/page/1/step/2",
-        "/shared/slope-tool-demo/page/1/step/3"
+        "/shared/slope-tool-demo/page/1/step/3",
+        "/shared/slope-tool-demo/page/1/step/4",
+        "/shared/slope-tool-demo/page/1/step/5"
       ],
       "name": "Slope Tool Page",
       "firstStep": "/shared/slope-tool-demo/page/1/step/1",
@@ -164,6 +166,130 @@
           "literalArgs": {
             "type": "Smartgraphs.LineThroughPoints",
             "name": "line",
+            "graphName": "demo-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": {
+
+      },
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow",
+            "firstPoint": "first-point",
+            "secondPoint": "second-point",
+            "graphName": "demo-graph",
+            "color": "#d62728"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/4",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>Here is a &ldquo;run&rdquo; arrow.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.Arrow",
+            "name": "run-arrow",
+            "graphName": "demo-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": {
+
+      },
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow",
+            "firstPoint": "first-point",
+            "secondPoint": "second-point",
+            "graphName": "demo-graph",
+            "color": "#9467bd"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/5",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/5",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>Here is a &ldquo;rise&rdquo; arrow.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "type": "Smartgraphs.Arrow",
+            "name": "rise-arrow",
             "graphName": "demo-graph"
           }
         }
