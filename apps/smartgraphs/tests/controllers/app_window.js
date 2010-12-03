@@ -7,7 +7,8 @@
 
 module("Smartgraphs.appWindowController", {
   setup: function() {
-    
+    Smartgraphs.appWindowController.set('nowShowing', null);
+    Smartgraphs.appWindowController.set('loadingMessage', null);
   },
   
   teardown: function() {

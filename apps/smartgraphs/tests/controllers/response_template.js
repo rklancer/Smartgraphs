@@ -5,14 +5,24 @@
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-module("Smartgraphs.responseTemplate");
+module("Smartgraphs.responseTemplate", {
+  setup: function () {
+    // clean up any stray state possibly set by other tests
+    Smartgraphs.responseTemplateController.setTemplate(null);
+    Smartgraphs.responseTemplateController.set('viewShouldReset', NO);
+    Smartgraphs.responseTemplateController.set('initialValues', null);
+  }
+});
 
 test("Set a template", function() {
   expect(6);
-  equals( Smartgraphs.responseTemplateController.get('viewShouldReset'), NO, "Initial value of viewShouldReset is NO");
-  same( Smartgraphs.responseTemplateController.get('content'), null, "Initial controller content is null");
-  same( Smartgraphs.responseTemplateController.get('initialValues'), undefined, "Initial controller initialValues is undefined");
   
+  // preconditions
+  equals( Smartgraphs.responseTemplateController.get('viewShouldReset'), NO, "Initial value of viewShouldReset is NO");
+  equals( Smartgraphs.responseTemplateController.get('content'), null, "Initial controller content is null");
+  equals( Smartgraphs.responseTemplateController.get('initialValues'), null, "Initial controller initialValues is falsy");
+  
+  // what we're actually testing
   Smartgraphs.responseTemplateController.set('initialValues', "Lorem ipsum"); // To test assignment within method
   Smartgraphs.responseTemplateController.setTemplate("/components/response-template/open"); 
   // The above template doesn't necessarily exist, but needn't for the test
