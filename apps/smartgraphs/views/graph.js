@@ -112,15 +112,6 @@ Smartgraphs.GraphView = SC.View.extend(
       this._viewsByClassAndId[classKey] = {};
     }    
     this._viewsByClassAndId[classKey][item.get('id')] = view;
-    
-    // THIS IS A WORKAROUND FOR A CHROME REDRAW BUG
-    var svg = this.get('graphCanvasView').$('svg')[0];
-    if (svg) {
-      svg.style.display = "none";
-      this.invokeLast(function () {
-        svg.style.display = "block";
-      });
-    }
   },
   
   
