@@ -216,6 +216,24 @@ test("setup.fixtures() followed by setup.store() should create alternate datasto
 });
 
 
+test("setup.fixtures() should restore the record type's original FIXTURES property after mocking it", function () {
+
+  var originalFixtures = SC.copy(firstRecordType.FIXTURES, true);  // deep copy to confirm FIXTURES wasn't messed with
+  var newFixtures = [
+    { guid: 'record1',
+      source: 'test fixtures' }
+  ];
+  
+  setup.fixtures(firstRecordType, newFixtures);
+  setup.store();
+  equals(firstRecordType.FIXTURES, newFixtures, "firstRecordType.FIXTURES are the newFixtures after setup.store");
+
+  teardown.store();
+  equals( firstRecordType.FIXTURES.length, 1, "firstRecordType.FIXTURES should have 1 element after teardown.store()");
+  same( firstRecordType.FIXTURES[0], originalFixtures[0], "firstRecordType.FIXTURES[0] should be exactly as it was before setup.fixtures()");
+});
+
+
 test("repeated calls to teardown.store() should not overwrite store", function () {
   var originalStore = Smartgraphs.store;
   

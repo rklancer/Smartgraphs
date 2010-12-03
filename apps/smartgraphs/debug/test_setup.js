@@ -36,7 +36,7 @@ var teardown = {};
       if (!savedFixtures.hasOwnProperty(key)) continue;
       
       recordType = savedFixtures[key].recordType;
-      recordType.FIXTURES = savedFixtures[key];
+      recordType.FIXTURES = savedFixtures[key].fixtures;
     }
     
     if (savedStore) Smartgraphs.set('store', savedStore);
