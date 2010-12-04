@@ -19,6 +19,11 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
 /** @scope Smartgraphs.ACTIVITY_STEP.prototype */ {
   
   enterState: function() {
+    // We haven't completed entering the state at this point, so wait until we enter the state
+    this.invokeLast(this.didEnterState);
+  },
+  
+  didEnterState: function () {
     Smartgraphs.activityStepController.begin();
   },
   
