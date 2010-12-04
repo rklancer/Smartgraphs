@@ -34,6 +34,7 @@ Smartgraphs.statechart = SC.Statechart.create(
       
       initialSubstate: 'READY_START', 
       
+      
       READY_START: SC.State.design({
         
         enterState: function () {
@@ -54,6 +55,7 @@ Smartgraphs.statechart = SC.Statechart.create(
         this.gotoState('LOADING_ACTIVITY');
         return YES;
       },
+      
       
       LOADING_ACTIVITY: SC.State.design(Smartgraphs.ResourceLoader, {
 
@@ -94,8 +96,7 @@ Smartgraphs.statechart = SC.Statechart.create(
         },
 
         resourceLoadingError: function () {
-          Smartgraphs.mainPage.mainPane.set('defaultResponder', 'Smartgraphs');          
-          Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
+          this.gotoState('ERROR_LOADING_ACTIVITY');
         },
 
         // Handle opening a activity while we're still waiting for another activity to load by ignoring repeat
@@ -103,7 +104,15 @@ Smartgraphs.statechart = SC.Statechart.create(
         openActivity: function (context, args) {
           return (args.id === Smartgraphs.activityController.getPath('content.id')) ? YES : NO;
         }
+      }),
+      
+
+      ERROR_LOADING_ACTIVITY: SC.State.design({
+        enterState: function () {
+          Smartgraphs.appWindowController.showErrorLoadingActivityView();          
+        }
       })
+      
     })
   })
 });
