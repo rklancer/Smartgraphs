@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('states/mixins/resource_loader');
+
 /** @namespace
 
   Statechart for the Smartgraphs application.
@@ -48,32 +50,58 @@ Smartgraphs.statechart = SC.Statechart.create(
         if (activityContent && activityContent.get('id') === args.id) {
           return YES; // nothing to do!
         }
-        console.log('setting content; id = %s', args.id);
-        
         Smartgraphs.activityController.set('content', Smartgraphs.store.find(Smartgraphs.Activity, args.id));
-
         this.gotoState('LOADING_ACTIVITY');
         return YES;
       },
       
-      LOADING_ACTIVITY: SC.State.design({
+      LOADING_ACTIVITY: SC.State.design(Smartgraphs.ResourceLoader, {
 
-        enterState: function () {
-          Smartgraphs.mainPage.mainPane.set('defaultResponder', 'Smartgraphs');
-          Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_ACTIVITY);
+        masterResource: {
+          load: function () { return Smartgraphs.activityController.get('content'); }
         },
 
-        // Handle 're-entrance' (opening a activity while we're still waiting for another activity to load)
-        openActivity: function (context, args) {
-          if (args.id === Smartgraphs.activityController.getPath('content.id')) {
-            // do nothing if it's a repeat request to load the same id
-            return YES;
+        subordinateResources: [
+          { load: function () { return Smartgraphs.store.find(Smartgraphs.activityController.get('pagesQuery')); } }
+        ],
+
+        enterState: function () {
+          if (this.loadResources()) {
+            return;
+          }
+          else {
+            Smartgraphs.appWindowController.showActivityLoadingView();
+          }
+        },
+
+        exitState: function () {
+          this.cancelLoading();
+        },
+
+        resourcesDidLoad: function () {
+          Smartgraphs.sessionController.newSession();
+
+          var pages = Smartgraphs.activityController.get('pages');
+          Smartgraphs.activityPagesController.set('content', pages);
+
+          if (pages.get('length') > 0) {
+            Smartgraphs.activityPagesController.selectFirstPage();
           }
 
-          // return NO so READY handles opening the new activity, but first make sure that the didBecomeFirstResponder
-          // method of the LOADING_ACTIVITY responder is called again
-          this.invokeLast(Smartgraphs.resetFirstResponder);
-          return NO;
+          Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());    
+          Smartgraphs.mainPage.mainPane.set('defaultResponder', 'Smartgraphs');
+          Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
+        },
+
+        resourceLoadingError: function () {
+          Smartgraphs.mainPage.mainPane.set('defaultResponder', 'Smartgraphs');          
+          Smartgraphs.makeFirstResponder(Smartgraphs.ERROR_LOADING_ACTIVITY);
+        },
+
+        // Handle opening a activity while we're still waiting for another activity to load by ignoring repeat
+        // request to load the same activity, or kicking the request back to the parent state otherwise.
+        openActivity: function (context, args) {
+          return (args.id === Smartgraphs.activityController.getPath('content.id')) ? YES : NO;
         }
       })
     })
