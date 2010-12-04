@@ -92,8 +92,6 @@ Smartgraphs.statechart = SC.Statechart.create(
 
           Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());    
           this.gotoState('ACTIVITY');
-          // Smartgraphs.mainPage.mainPane.set('defaultResponder', 'Smartgraphs');
-          // Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
         },
 
         resourceLoadingError: function () {
