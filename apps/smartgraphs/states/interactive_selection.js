@@ -33,7 +33,7 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.State.extend(
   
   enterState: function () {
     // disable submission until a selection is made...
-    Smartgraphs.sendAction('disableSubmission');
+    Smartgraphs.statechart.sendAction('disableSubmission');
     
     var dataset = this.get('dataset');
     this._oldIsSelectable = dataset.get('isSelectable');
@@ -63,7 +63,7 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.State.extend(
     
     if (dataset && point.get('dataset') === dataset) {
       this.setPath('annotation.point', point);
-      Smartgraphs.sendAction('enableSubmission');
+      Smartgraphs.statechart.sendAction('enableSubmission');
     }
   },
   

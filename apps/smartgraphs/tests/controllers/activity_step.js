@@ -36,8 +36,8 @@ module("Smartgraphs.activityStepController", {
 test("step should be automatically submitted, and should ignore submissibilityInspector setting, in begin() if shouldFinishImmediately is YES", function () {
   var stepSubmittedSuccessfully = NO;
   
-  var sendAction = Smartgraphs.sendAction;
-  Smartgraphs.sendAction = function (actionName) {
+  var sendAction = Smartgraphs.statechart.sendAction;
+  Smartgraphs.statechart.sendAction = function (actionName) {
     if (actionName === 'submitStep' && Smartgraphs.activityStepController.get('canSubmit')) {
       stepSubmittedSuccessfully = YES;
     }
@@ -65,11 +65,11 @@ test("step should not be submissible after begin() if a start command disables s
 test("step should not be submissible after begin() if a submissibility inspector can be successfully instantiated, regardless of initial commands", function () {
   var submissionEnablingCommandDidRun = NO;
   
-  var sendAction = Smartgraphs.sendAction;
-  Smartgraphs.sendAction = function (actionName) {
+  var sendAction = Smartgraphs.statechart.sendAction;
+  Smartgraphs.statechart.sendAction = function (actionName) {
     if (actionName === 'submission-enabling-command') {
       console.log('submission-enabling-command about to issue enableSubmission');
-      Smartgraphs.sendAction('enableSubmission');
+      Smartgraphs.statechart.sendAction('enableSubmission');
       submissionEnablingCommandDidRun = YES;
       return YES;
     }
@@ -114,7 +114,7 @@ test("makeInspector method should return an inspector instance corresponding to 
 test("executeCommands should ignore a falsy list of commands", function () {
   var callCount = 0;
   // Replace sendAction with a stub
-  Smartgraphs.sendAction = function () {
+  Smartgraphs.statechart.sendAction = function () {
     callCount++;
   };
   
@@ -131,7 +131,7 @@ test("executeCommands should cause the appropriate actions to be sent", function
   var contexts = [];
   var argLists = [];
   
-  Smartgraphs.sendAction = function (action, context, argList) {
+  Smartgraphs.statechart.sendAction = function (action, context, argList) {
     actions.push(action);
     contexts.push(context);
     argLists.push(argList);
@@ -257,7 +257,7 @@ test("handleSubmission should branch according to the value returned by the insp
     };
   };
   
-  Smartgraphs.sendAction = function (action, context, args) {
+  Smartgraphs.statechart.sendAction = function (action, context, args) {
     sentAction = action;
     actionArgs = args;
   };
@@ -359,14 +359,14 @@ test("ACTIVITY_STEP should implement a submitStep action that can be disabled/en
     
   Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   
-  Smartgraphs.sendAction('disableSubmission');
-  Smartgraphs.sendAction('submitStep');
+  Smartgraphs.statechart.sendAction('disableSubmission');
+  Smartgraphs.statechart.sendAction('submitStep');
   
   ok(handleSubmissionWasCalled === NO, "submitStep action after disableSubmission should not have resulted in a call to handleSubmission");
   equals(Smartgraphs.get('firstResponder'), Smartgraphs.ACTIVITY_STEP, "submitStep action after disableSubmission should not have resulted in firstResponder change");
   
-  Smartgraphs.sendAction('enableSubmission');
-  Smartgraphs.sendAction('submitStep');
+  Smartgraphs.statechart.sendAction('enableSubmission');
+  Smartgraphs.statechart.sendAction('submitStep');
     
   ok(handleSubmissionWasCalled === YES, "submitStep action after enableSubmission should have resulted in a call to handleSubmission");
   equals(Smartgraphs.get('firstResponder'), Smartgraphs.ACTIVITY_STEP_SUBMITTED, "submitStep action after enableSubmission should have changed firstResponder to ACTIVITY_STEP_SUBMITTED"); 
@@ -381,7 +381,7 @@ test("ACTIVITY_STEP_SUBMITTED, but not ACTIVITY_STEP, should implement the gotoS
   Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
   gotoStepArgs = null;
   
-  Smartgraphs.sendAction('gotoStep', null, {arg: 'test-arg'});
+  Smartgraphs.statechart.sendAction('gotoStep', null, {arg: 'test-arg'});
   equals(gotoStepArgs.arg, 'test-arg', "gotoStep should not have be handled by ACTIVITY_STEP, and so should have passed arg 'test-arg' to next responder");
 
   Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_SUBMITTED);

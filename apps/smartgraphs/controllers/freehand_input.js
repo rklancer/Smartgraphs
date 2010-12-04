@@ -91,7 +91,7 @@ Smartgraphs.freehandInputController = SC.ObjectController.create(
   endAt: function (x, y) {
     if (this._isRecording && this._inputIsEnabled) {
       this._sketch.get('points').pushObject({x: x, y: y});
-      Smartgraphs.sendAction('freehandSketchCompleted');
+      Smartgraphs.statechart.sendAction('freehandSketchCompleted');
     }
   },
   

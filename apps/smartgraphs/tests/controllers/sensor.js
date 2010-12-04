@@ -43,7 +43,7 @@ module("sensorController <--> SENSOR_* state interactions", {
 
     // allow redefinition of these methods
     oldMFR = Smartgraphs.makeFirstResponder;
-    oldSA = Smartgraphs.sendAction;
+    oldSA = Smartgraphs.statechart.sendAction;
     oldVPF = Smartgraphs.activityViewController.validPaneFor;
     oldSC = Smartgraphs.activityViewController.showControls;
     oldSSLV = Smartgraphs.activityViewController.showSensorLoadingView;
@@ -59,7 +59,7 @@ module("sensorController <--> SENSOR_* state interactions", {
     
     Smartgraphs.activityViewController.showControls = oldSC;    
     Smartgraphs.makeFirstResponder = oldMFR;
-    Smartgraphs.sendAction = oldSA;
+    Smartgraphs.statechart.sendAction = oldSA;
     Smartgraphs.activityViewController.validPaneFor = oldVPF;
     Smartgraphs.activityViewController.showSensorLoadingView = oldSSLV;
     Smartgraphs.set('appletPage', oldAppletPage);
@@ -85,7 +85,7 @@ test("Correct sequence of events should occur when sensor loads and is used in t
   // spy on sendAction
   var actionSent = null;
   var actionArgs = null;
-  Smartgraphs.sendAction = function (action, context, args) {
+  Smartgraphs.statechart.sendAction = function (action, context, args) {
     actionSent = action;
     actionArgs = args;
   };

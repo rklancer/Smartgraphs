@@ -193,7 +193,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   gotoNextPage: function () {
     this.submitStep();
     this.invokeLast(function () {
-      Smartgraphs.sendAction('gotoNextPage');
+      Smartgraphs.statechart.sendAction('gotoNextPage');
     });
   },
 
@@ -327,7 +327,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       This graph must be open in the page when this command executes.
   */
   startFreehandInput: function (context, args) {
-    Smartgraphs.sendAction('createAnnotation', this, { 
+    Smartgraphs.statechart.sendAction('createAnnotation', this, { 
       graphName: args.graphName,
       type: Smartgraphs.FreehandSketch,
       name: args.annotationName
@@ -357,7 +357,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       The name of the graph on which the data will be shown.
   */
   startSensorInput: function (context, args) {
-    Smartgraphs.sendAction('createDataset', this, { 
+    Smartgraphs.statechart.sendAction('createDataset', this, { 
       graphName: args.graphName, 
       datasetName: args.datasetName
     });

@@ -72,7 +72,7 @@ test("Preconditions should be met", function () {
 });
 
 function startSelection() {
-  Smartgraphs.sendAction('startInteractiveSelection', this, {
+  Smartgraphs.statechart.sendAction('startInteractiveSelection', this, {
     annotationName: 'test-annotation',
     graphName: 'test-graph',
     datasetName: 'test-dataset'
@@ -89,7 +89,7 @@ test("startInteractiveSelection should create a point-centered annotation and mo
 
 
 test("optional 'color' argument to startInteractiveSelection should set 'color' attribute of annotation", function () {
-  Smartgraphs.sendAction('startInteractiveSelection', this, {
+  Smartgraphs.statechart.sendAction('startInteractiveSelection', this, {
     annotationName: 'test-annotation',
     graphName: 'test-graph',
     datasetName: 'test-dataset',
@@ -137,7 +137,7 @@ test("after submission, clicking on points in the graph should not change the an
   SC.Event.trigger(point1View.get('layer'), 'mousedown');
   equals( annotation.get('point'), point1View.get('content'), "annotation 'point' property should be datapoint 1 after datapoint 1 is clicked");
 
-  Smartgraphs.sendAction('submitStep');
+  Smartgraphs.statechart.sendAction('submitStep');
   
   equals( annotation.get('point'), point1View.get('content'), "annotation 'point' property should still be datapoint 1 after submission of step");
   
