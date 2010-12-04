@@ -32,10 +32,10 @@ Smartgraphs.statechart = SC.Statechart.create(
     
     READY: SC.State.design({
       
-      initialSubstate: 'READY_START', 
+      initialSubstate: 'READY_DEFAULT', 
       
       
-      READY_START: SC.State.design({
+      READY_DEFAULT: SC.State.design({
         
         enterState: function () {
           SC.routes.add('*activityId', this, 'route');
@@ -91,8 +91,9 @@ Smartgraphs.statechart = SC.Statechart.create(
           }
 
           Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());    
-          Smartgraphs.mainPage.mainPane.set('defaultResponder', 'Smartgraphs');
-          Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
+          this.gotoState('ACTIVITY');
+          // Smartgraphs.mainPage.mainPane.set('defaultResponder', 'Smartgraphs');
+          // Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
         },
 
         resourceLoadingError: function () {
@@ -111,6 +112,69 @@ Smartgraphs.statechart = SC.Statechart.create(
         enterState: function () {
           Smartgraphs.appWindowController.showErrorLoadingActivityView();          
         }
+      }),
+      
+      
+      ACTIVITY: SC.State.design({
+
+        initialSubstate: 'ACTIVITY_PAGE_START',
+        
+        enterState: function() {
+          Smartgraphs.appWindowController.showActivityView();
+        },
+
+        exitState: function () {
+          Smartgraphs.activityController.cleanup();
+        },
+        
+        
+        ACTIVITY_PAGE_START: SC.State.design({
+          enterState: function () {
+            Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
+            this.gotoState('ACTIVITY_STEP_START');
+          }
+        }),
+        
+        
+        ACTIVITY_STEP_START: SC.State.design({
+          enterState: function () {
+            this.gotoState('ACTIVITY_STEP');
+          }
+        }),
+        
+        
+        ACTIVITY_STEP: SC.State.plugin('Smartgraphs.ACTIVITY_STEP'),
+        
+        
+        ACTIVITY_STEP_SUBMITTED: SC.State.plugin('Smartgraphs.ACTIVITY_STEP_SUBMITTED'),
+        
+        
+        ACTIVITY_PAGE_DONE: SC.State.design({
+          
+          enterState: function() {    
+            if (Smartgraphs.activityPagesController.get('isLastPage')) {
+              this.gotoState('ACTIVITY_DONE');
+            }
+            else {
+              Smartgraphs.activityController.set('canGotoNextPage', YES);
+            }
+          },
+
+          exitState: function() {
+            Smartgraphs.activityController.set('canGotoNextPage', NO);
+            Smartgraphs.activityPageController.cleanup();
+          },
+
+          gotoNextPage: function () {
+            Smartgraphs.activityPagesController.selectNextPage();
+            Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());
+            this.gotoState('ACTIVITY_PAGE_START');
+          }
+        })
+      }),
+      
+      
+      ACTIVITY_DONE: SC.State.design({
       })
       
     })

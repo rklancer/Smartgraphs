@@ -5,30 +5,42 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('states/activity');
-
 /** @class
 
   State representing that an ActivityStep is currently active and has not yet been submitted.
   
   This state defines most of the commands available to an activity author.
   
-  @extends SC.Responder
+  @extends SC.State
   @version 0.1
 */
 
-Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
+Smartgraphs.ACTIVITY_STEP = SC.State.extend(
 /** @scope Smartgraphs.ACTIVITY_STEP.prototype */ {
   
-  nextResponder: Smartgraphs.ACTIVITY,
-  
-  didBecomeFirstResponder: function() {
+  enterState: function() {
     Smartgraphs.activityStepController.begin();
   },
   
-  willLoseFirstResponder: function () {
+  exitState: function () {
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', NO);
   },
+  
+  initialSubstate: 'ACTIVITY_STEP_DEFAULT',
+  
+  
+  // Q: Is it really always necessary to enter one substate or the other?
+  ACTIVITY_STEP_DEFAULT: SC.State.design(),
+  
+  
+  SENSOR: SC.State.plugin('Smartgraphs.SENSOR'),
+  
+  
+  FREEHAND_INPUT: SC.State.plugin('Smartgraphs.FREEHAND_INPUT'),
+  
+  
+  INTERACTIVE_SELECTION: SC.State.plugin('Smartgraphs.INTERACTIVE_SELECTION'),
+  
   
   // ..........................................................
   // ACTIONS
@@ -166,7 +178,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
   */
   submitStep: function () {
     if (Smartgraphs.activityStepController.get('canSubmit')) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_SUBMITTED);
+      this.gotoState('ACTIVITY_STEP_SUBMITTED');
     }
     return YES;
   },
@@ -323,7 +335,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
 
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     if (Smartgraphs.freehandInputController.register(controller, args.annotationName)) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.FREEHAND_INPUT);
+      this.gotoState('FREEHAND_INPUT');
     }
     return YES;
   },
@@ -361,7 +373,7 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     var pane = Smartgraphs.activityViewController.paneForController(controller);
     
     if (Smartgraphs.sensorController.register(pane, dataset, xMin, xMax)) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.SENSOR);
+      this.gotoState('SENSOR');
     }
     return YES;
   },
@@ -400,43 +412,9 @@ Smartgraphs.ACTIVITY_STEP = SC.Responder.create(
     Smartgraphs.INTERACTIVE_SELECTION.set('annotation', annotation);
     Smartgraphs.INTERACTIVE_SELECTION.set('dataset', dataset);
           
-    Smartgraphs.makeFirstResponder(Smartgraphs.INTERACTIVE_SELECTION);
+    this.gotoState('INTERACTIVE_SELECTION');
 
     return YES;
   }
   
-  // NOT CURRENTLY USED
-  
-  // setAxes: function (context, args) {
-  //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   controller.setAxes(args.axesId);
-  //   return YES;
-  // },
-  // 
-  // displayDatasetOnGraph: function (context, args) {
-  //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);    
-  //   controller.addObjectByName(Smartgraphs.Dataset, args.datasetName);
-  //   return YES;
-  // },
-  // 
-  // copyExampleDatasetToGraph: function (context, args) {
-  //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   var dataset = Smartgraphs.sessionController.createDataset(args.datasetName);
-  //   Smartgraphs.sessionController.copyExampleDataset(args.exampleDatasetName, args.datasetName);
-  //   controller.addDataset(dataset);
-  //   return YES;
-  // },
-  // 
-  // removeAllDataset: function (context, args) {
-  //   return NO;      // not handled yet.
-  //   // var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   // controller.removeAllDataset();
-  // },
-  // 
-  // selectDataset: function (context, args) {
-  //   var controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
-  //   controller.selectDataset(args.datasetName);
-  //   return YES;
-  // }
-  
-}) ;
+});
