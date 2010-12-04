@@ -14,8 +14,7 @@
 Smartgraphs.FREEHAND_INPUT = SC.State.extend(
 /** @scope Smartgraphs.FREEHAND_INPUT.prototype */ {
   
-  
-  initialState: 'FREEHAND_INPUT_START',
+  initialSubstate: 'FREEHAND_INPUT_START',
   
   exitState: function () {
     Smartgraphs.freehandInputController.disableInput();
