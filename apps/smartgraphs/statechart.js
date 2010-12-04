@@ -18,6 +18,20 @@ Smartgraphs.statechart = SC.Statechart.create(
   
   trace: YES,
   
+  init: function () {
+    sc_super();
+    this.invokeLast( function () {
+      this.sendAction = function (event, sender, context) {
+        var trace = this.get('trace');
+    
+        if (trace) console.log('BEGIN sendAction %s', event);
+        this.sendEvent(event, sender, context);
+        if (trace) console.log('END sendAction %s', event);
+      };
+      if (this.get('trace')) console.log("BEGIN LOGGING ACTIONS:");
+    });
+  },
+  
   rootState: SC.State.design({
     initialSubstate: 'LOGIN',
     
