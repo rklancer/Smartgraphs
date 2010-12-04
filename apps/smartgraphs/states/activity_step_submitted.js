@@ -5,8 +5,6 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('states/activity');
-
 /** @class
   
   State representing that the currently open ActivityStep has been submitted.
@@ -22,7 +20,7 @@ sc_require('states/activity');
   the page, the system transitions to the ACTIVITY_PAGE_DONE state. If this step is not intended to be a terminal 
   step and no step has been branched to, it is considered an error.
 
-  @extends SC.Responder
+  @extends SC.State
   @version 0.1
 */
 
