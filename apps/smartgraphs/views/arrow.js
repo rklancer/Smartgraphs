@@ -16,11 +16,14 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.ArrowView.prototype */ {
 
   strokeBinding: '.item.color',
+  isHighlightedBinding: '.item.isHighlighted',
+  
   strokeWidth: function () {
-    return this.get('item').get('isHighlighted') ? 3 : 2;
+    return this.get('isHighlighted') ? 3 : 2;
   }.property('isHighlighted'),
+  
   strokeOpacity: function () {
-    return this.get('item').get('isHighlighted') ? 0.9 : 0.5;
+    return this.get('isHighlighted') ? 0.9 : 0.5;
   }.property('isHighlighted'),
 
   /**
