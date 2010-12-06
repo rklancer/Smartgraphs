@@ -11,7 +11,53 @@ sc_require('resources/main_page');
 
 Smartgraphs.authorPageDef = SC.Page.extend({
 
-  authorView: SC.View.design()
+  authorView: SC.View.design({
+    childViews: ['instructionsWrapper', 'dataWrapper'],
+    
+    theme: 'sc-ace',
+    
+    instructionsWrapper: SC.View.design({
+      layout: { left: 0, width: 0.45 },       // need to specify 0.5 rather than '50%'
+      childViews: 'instructionsView'.w(),
+    
+      instructionsView: SC.View.design({
+        classNames: 'smartgraph-pane',
+        childViews: 'textWrapper'.w(),
+
+        // provide padding and style rules for the intro text and dialog
+        textWrapper: SC.View.design({
+          layout: {
+            top: 20,
+            right: 20,
+            left: 20
+          },
+
+          classNames: 'text-wrapper'.w(),
+
+          childViews: 'introText'.w(),
+
+          introText: SC.StaticContentView.design({            
+            contentBinding: 'Smartgraphs.activityPageController.introText',
+            isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText')
+          })
+        })
+      })
+    }),
+    
+    // ..........................................................
+    // RIGHT PANE
+    //
+    // the right pane shows the data the user is manipulating
+    dataWrapper: SC.View.design({
+      layout: { right: 0, width: 0.55 },
+    
+      childViews: 'dataView'.w(),
+    
+      dataView: SC.View.design({
+        layout: { top: 4, right: 4, bottom: 4, left: 4 }
+      })
+    })
+  })
 
 });
 
