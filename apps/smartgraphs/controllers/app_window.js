@@ -17,6 +17,9 @@ Smartgraphs.appWindowController = SC.ObjectController.create(
   nowShowing: null,
   loadingMessage: null,
   
+  /** 
+    Shows the activity view (i.e., the "live" activity)
+  */
   showActivityView: function () {
     this.set('nowShowing', 'Smartgraphs.activityPage.activityView');
   },
@@ -34,6 +37,14 @@ Smartgraphs.appWindowController = SC.ObjectController.create(
    */
   showErrorLoadingActivityView: function () {
     this.set('nowShowing', 'Smartgraphs.activityPage.errorLoadingActivityView');
+  },
+  
+  
+  /**
+    Shows the author's view
+  */
+  showAuthorView: function () {
+    this.set('nowShowing', 'Smartgraphs.authorPage.authorView');
   }
-
+  
 }) ;
