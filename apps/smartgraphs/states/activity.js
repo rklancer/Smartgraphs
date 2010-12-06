@@ -186,6 +186,34 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
         isClockwise: YES
       });
     return YES;
+  },
+  
+  /**
+    For the named annotation, toggle the isHighlighted property. (If truthy, set to false; if falsy, set to true.)
+    
+    @param context
+    @param args
+    
+    @param {String} args.graphName
+      The name of the graph where the Annotation is displayed. 
+    @param {String} args.annotationName
+      The name of the Annotation whose isHighlighted property will be toggled.
+  */
+  toggleAnnotationHighlight: function (context, args) {
+    // TODO: Unfortunately, we need the graphName to find the right controller. And we need the
+    // controller to find the annotation by name.
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+
+    if (!controller) return YES;
+    
+    var annotation = controller.findAnnotationByName(args.annotationName);
+    if (annotation.get('isHighlighted')) {
+      annotation.set('isHighlighted', NO);
+    }
+    else {
+      annotation.set('isHighlighted', YES);
+    }
+    return YES;
   }
 
 }) ;
