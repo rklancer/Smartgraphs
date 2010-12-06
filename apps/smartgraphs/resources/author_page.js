@@ -11,16 +11,8 @@ sc_require('resources/main_page');
 
 Smartgraphs.authorPageDef = SC.Page.extend({
 
-  authorView: SC.SplitView.design({
-    defaultThickness: 200,
-    topLeftMaxThickness: 300,
-    layoutDirection: SC.LAYOUT_HORIZONTAL,
+  authorView: SC.View.design()
 
-    topLeftView: Smartgraphs.mainPage.outlineView,
-    dividerView: SC.SplitDividerView,
-    bottomRightView: SC.View.design()
-  })
-    
 });
 
 Smartgraphs.authorPage = Smartgraphs.authorPageDef.design();

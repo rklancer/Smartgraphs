@@ -11,125 +11,117 @@ sc_require('resources/main_page');
 
 Smartgraphs.activityPageDef = SC.Page.extend({
 
-  activityView: SC.SplitView.design({
-    defaultThickness: 200,
-    topLeftMaxThickness: 300,
-    layoutDirection: SC.LAYOUT_HORIZONTAL,
-
-    topLeftView: Smartgraphs.mainPage.outlineView,
-    dividerView: SC.SplitDividerView,
-    bottomRightView: SC.View.design({
-      childViews: 'instructionsWrapper dataWrapper'.w(),
+  activityView: SC.View.design({
+    childViews: 'instructionsWrapper dataWrapper'.w(),
+  
+    theme: 'sc-ace',
+    loadingMessage: 'Loading Activity...',
+  
+    // ..........................................................
+    // LEFT PANE
+    //
+    // the left pane shows the activity page intro and the instructions for the currently selected activity step
+  
+    instructionsWrapper: SC.View.design({
+      layout: { left: 0, width: 0.45 },       // need to specify 0.5 rather than '50%'
+      childViews: 'instructionsView'.w(),
     
-      theme: 'sc-ace',
-      loadingMessage: 'Loading Activity...',
-    
-      // ..........................................................
-      // LEFT PANE
-      //
-      // the left pane shows the activity page intro and the instructions for the currently selected activity step
-    
-      instructionsWrapper: SC.View.design({
-        layout: { left: 0, width: 0.45 },       // need to specify 0.5 rather than '50%'
-        childViews: 'instructionsView'.w(),
-      
-        instructionsView: SC.View.design({
-          classNames: 'smartgraph-pane',
-          childViews: 'textWrapper'.w(),
+      instructionsView: SC.View.design({
+        classNames: 'smartgraph-pane',
+        childViews: 'textWrapper'.w(),
 
-          // provide padding and style rules for the intro text and dialog
-          textWrapper: SC.View.design({
-            layout: {
-              top: 20,
-              right: 20,
-              left: 20
-            },
+        // provide padding and style rules for the intro text and dialog
+        textWrapper: SC.View.design({
+          layout: {
+            top: 20,
+            right: 20,
+            left: 20
+          },
 
-            classNames: 'text-wrapper'.w(),
+          classNames: 'text-wrapper'.w(),
 
-            childViews: 'introText activityStepWrapper'.w(),
+          childViews: 'introText activityStepWrapper'.w(),
 
-            introText: SC.StaticContentView.design({            
-              contentBinding: 'Smartgraphs.activityPageController.introText',
-              isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText')
-            }),
+          introText: SC.StaticContentView.design({            
+            contentBinding: 'Smartgraphs.activityPageController.introText',
+            isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText')
+          }),
+        
+          activityStepWrapper: SC.View.design({
+            useStaticLayout: YES,
           
-            activityStepWrapper: SC.View.design({
+            childViews: 'activityStepDialog buttonsView'.w(),
+          
+            activityStepDialog: SC.View.design({          
               useStaticLayout: YES,
             
-              childViews: 'activityStepDialog buttonsView'.w(),
-            
-              activityStepDialog: SC.View.design({          
-                useStaticLayout: YES,
-              
-                childViews: 'beforeText responseTemplate afterText'.w(),
-                classNames: 'dialog-text'.w(),
+              childViews: 'beforeText responseTemplate afterText'.w(),
+              classNames: 'dialog-text'.w(),
 
-                beforeText: SC.StaticContentView.design({
-                  contentBinding: 'Smartgraphs.activityStepController.beforeText',
-                  isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.beforeText')
-                }),
-              
-                responseTemplate: Smartgraphs.ResponseTemplateView.design({
-                  fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
-                  fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
-                  valuesBinding: 'Smartgraphs.responseTemplateController.values',
-                  editingShouldBeEnabledBinding: 'Smartgraphs.responseTemplateController.editingShouldBeEnabled',
-                  viewShouldResetBinding: 'Smartgraphs.responseTemplateController.viewShouldReset'
-                }),
-              
-                afterText: SC.StaticContentView.design({
-                  contentBinding: 'Smartgraphs.activityStepController.afterText',
-                  isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.afterText')
-                })
+              beforeText: SC.StaticContentView.design({
+                contentBinding: 'Smartgraphs.activityStepController.beforeText',
+                isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.beforeText')
               }),
-          
-              buttonsView: SC.View.design({
-                useStaticLayout: YES,
             
+              responseTemplate: Smartgraphs.ResponseTemplateView.design({
+                fieldTypesBinding: 'Smartgraphs.responseTemplateController.fieldTypes',
+                fieldChoicesListBinding: 'Smartgraphs.responseTemplateController.fieldChoicesList',
+                valuesBinding: 'Smartgraphs.responseTemplateController.values',
+                editingShouldBeEnabledBinding: 'Smartgraphs.responseTemplateController.editingShouldBeEnabled',
+                viewShouldResetBinding: 'Smartgraphs.responseTemplateController.viewShouldReset'
+              }),
+            
+              afterText: SC.StaticContentView.design({
+                contentBinding: 'Smartgraphs.activityStepController.afterText',
+                isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.afterText')
+              })
+            }),
+        
+            buttonsView: SC.View.design({
+              useStaticLayout: YES,
+          
+              layout: {
+                height: 24
+              },
+
+              childViews: 'submitButton'.w(),
+
+              submitButton: SC.ButtonView.design({
                 layout: {
-                  height: 24
+                  width: 180,
+                  right: 0
                 },
+                titleBinding: 'Smartgraphs.activityStepController.submitButtonTitle',
+                isVisibleBinding: 'Smartgraphs.activityViewController.showSubmitButton',
+                isEnabledBinding: 'Smartgraphs.activityViewController.enableSubmitButton',
+                isDefaultBinding: 'Smartgraphs.activityViewController.enableSubmitButton',                
+                action: 'submitStep',
 
-                childViews: 'submitButton'.w(),
-
-                submitButton: SC.ButtonView.design({
-                  layout: {
-                    width: 180,
-                    right: 0
-                  },
-                  titleBinding: 'Smartgraphs.activityStepController.submitButtonTitle',
-                  isVisibleBinding: 'Smartgraphs.activityViewController.showSubmitButton',
-                  isEnabledBinding: 'Smartgraphs.activityViewController.enableSubmitButton',
-                  isDefaultBinding: 'Smartgraphs.activityViewController.enableSubmitButton',                
-                  action: 'submitStep',
-
-                  titleDidChange: function () {
-                    var metrics = SC.metricsForString(this.get('title'), 'label', ['sc-button-label', 'text-wrapper']);
-                    this.adjust('width', metrics.width + 48);     
-                  }.observes('title')
-                
-                })
+                titleDidChange: function () {
+                  var metrics = SC.metricsForString(this.get('title'), 'label', ['sc-button-label', 'text-wrapper']);
+                  this.adjust('width', metrics.width + 48);     
+                }.observes('title')
+              
               })
             })
           })
         })
-      }),
+      })
+    }),
+  
+  
+    // ..........................................................
+    // RIGHT PANE
+    //
+    // the right pane shows the data the user is manipulating
+    dataWrapper: SC.View.design({
+      layout: { right: 0, width: 0.55 },
     
+      childViews: 'dataView'.w(),
     
-      // ..........................................................
-      // RIGHT PANE
-      //
-      // the right pane shows the data the user is manipulating
-      dataWrapper: SC.View.design({
-        layout: { right: 0, width: 0.55 },
-      
-        childViews: 'dataView'.w(),
-      
-        dataView: SC.ContainerView.design({
-          layout: { top: 4, right: 4, bottom: 4, left: 4 },
-          nowShowingBinding: 'Smartgraphs.activityViewController.dataViewNowShowing'
-        })
+      dataView: SC.ContainerView.design({
+        layout: { top: 4, right: 4, bottom: 4, left: 4 },
+        nowShowingBinding: 'Smartgraphs.activityViewController.dataViewNowShowing'
       })
     })
   }),

@@ -34,12 +34,45 @@ Smartgraphs.mainPage = SC.Page.design({
       })
     }),
     
-    container: SC.ContainerView.design({
+    container: SC.SplitView.design({
       // this minimum width & height should not overflow on a 1024x768 screen even in a browsing setup with lots of 
       // extraneous on-screen chrome (say, in FF or IE running in Windows XP)
-      
+
       layout: { top: 32, bottom: 33, minWidth: 960, minHeight: 536 },
-      nowShowingBinding: 'Smartgraphs.appWindowController.nowShowing'
+      defaultThickness: 200,
+      topLeftMaxThickness: 300,
+      layoutDirection: SC.LAYOUT_HORIZONTAL,
+
+      topLeftView: SC.ScrollView.design({
+        classNames: ['desk'],
+        contentView: SC.SourceListView.design({
+          classNames: ['desk'],
+          contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
+          contentValueKey: 'title',
+          selectionBinding: 'Smartgraphs.activityOutlineController.selection',
+          isSelectable: NO
+        })
+      }),
+
+      dividerView: SC.SplitDividerView,
+
+      bottomRightView: SC.ContainerView.design({
+        nowShowingBinding: 'Smartgraphs.appWindowController.viewToShow'
+      }),
+      
+      shouldShowOutlineBinding: 'Smartgraphs.appWindowController.shouldShowOutline',
+      shouldShowOutlineDidChange: function () {
+        if (this.get('shouldShowOutline')) {
+          this.setPath('topLeftView.isVisible', YES);
+          this.setPath('dividerView.isVisible', YES);
+          this.updateChildLayout();
+        }
+        else {
+          this.setPath('topLeftView.isVisible', NO);
+          this.setPath('dividerView.isVisible', NO);
+          this.get('bottomRightView').adjust('left', 0);
+        }
+      }.observes('shouldShowOutline')
     }),
     
     bottomToolbar: SC.ToolbarView.design({
@@ -98,17 +131,6 @@ Smartgraphs.mainPage = SC.Page.design({
       textAlign: SC.ALIGN_CENTER,
       valueBinding: 'Smartgraphs.appWindowController.loadingMessage'
     })
-  }),
-  
-  outlineView: SC.ScrollView.design({
-    classNames: ['desk'],
-    contentView: SC.SourceListView.design({
-      classNames: ['desk'],
-      contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
-      contentValueKey: 'title',
-      selectionBinding: 'Smartgraphs.activityOutlineController.selection',
-      isSelectable: NO
-    })
   })
-
+  
 });
