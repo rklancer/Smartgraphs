@@ -16,7 +16,7 @@ Smartgraphs.appWindowController = SC.ObjectController.create(
 
   viewToShow: null,
   loadingMessage: null,
-  shouldShowOutline: null,
+  shouldShowOutline: Smartgraphs.showOutline,
   shouldShowOutlineBindingDefault: SC.Binding.oneWay(),
   
   /** 
