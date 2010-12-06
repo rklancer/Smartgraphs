@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('resources/main_page');
+
 // This is a place to hold the activityView until it's appended to the document
 
 Smartgraphs.activityPageDef = SC.Page.extend({
@@ -14,17 +16,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
     topLeftMaxThickness: 300,
     layoutDirection: SC.LAYOUT_HORIZONTAL,
 
-    topLeftView: SC.ScrollView.design({
-
-      classNames: ['desk'],
-      contentView: SC.SourceListView.design({
-        classNames: ['desk'],
-        contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
-        contentValueKey: 'title',
-        selectionBinding: 'Smartgraphs.activityOutlineController.selection',
-        isSelectable: NO
-      })
-    }),
+    topLeftView: Smartgraphs.mainPage.outlineView,
     dividerView: SC.SplitDividerView,
     bottomRightView: SC.View.design({
       childViews: 'instructionsWrapper dataWrapper'.w(),

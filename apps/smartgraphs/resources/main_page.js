@@ -98,6 +98,17 @@ Smartgraphs.mainPage = SC.Page.design({
       textAlign: SC.ALIGN_CENTER,
       valueBinding: 'Smartgraphs.appWindowController.loadingMessage'
     })
+  }),
+  
+  outlineView: SC.ScrollView.design({
+    classNames: ['desk'],
+    contentView: SC.SourceListView.design({
+      classNames: ['desk'],
+      contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
+      contentValueKey: 'title',
+      selectionBinding: 'Smartgraphs.activityOutlineController.selection',
+      isSelectable: NO
+    })
   })
 
 });
