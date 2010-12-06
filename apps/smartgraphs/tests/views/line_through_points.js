@@ -69,10 +69,10 @@ function testEndpointsInBorders(pair) {
   test("Given two points defining a line which " + pair.desc + ", we should get endpoints on the borders of the graph", function() {
     // expect(4);
     endpoints = view.getEndPoints(pair.point1, pair.point2, axes);
-    ok(xMin <= endpoints[0].x <= xMax, "First point is inside horizontal borders of the graph");
-    ok(yMin <= endpoints[0].y <= yMax, "First point is inside vertical borders of the graph");
-    ok(xMin <= endpoints[1].x <= xMax, "Second point is inside horizontal borders of the graph");
-    ok(yMin <= endpoints[1].y <= yMax, "Second point is inside vertical borders of the graph");
+    ok( ((xMin <= endpoints[0].x) && (endpoints[0].x <= xMax)), "First point is inside horizontal borders of the graph");
+    ok( ((yMin <= endpoints[0].y) && (endpoints[0].y <= yMax)), "First point is inside vertical borders of the graph");
+    ok( ((xMin <= endpoints[1].x) && (endpoints[1].x <= xMax)), "Second point is inside horizontal borders of the graph");
+    ok( ((yMin <= endpoints[1].y) && (endpoints[1].y <= yMax)), "Second point is inside vertical borders of the graph");
   });
 }
 

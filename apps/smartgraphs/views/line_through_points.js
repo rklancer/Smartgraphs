@@ -159,7 +159,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
     }
 
     // case 3: leftmost point is on the left border
-    if (yMin <= this._y(xMin, m, b) <= yMax) {
+    if ((yMin <= this._y(xMin, m, b)) && (this._y(xMin, m, b) <= yMax)) {
       points.push( { 'x': xMin, 'y': this._y(xMin, m, b) });
       if (this._y(xMax, m, b) < yMin) {
         // end point on bottom border
