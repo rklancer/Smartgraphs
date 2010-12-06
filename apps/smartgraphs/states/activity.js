@@ -34,6 +34,11 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     Smartgraphs.makeFirstResponder(Smartgraphs.AUTHOR);
   },
   
+  openActivity: function () {
+    Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', NO);
+    return NO;    // let READY handle the rest.
+  },
+  
   // ..........................................................
   // ACTIONS
   //
