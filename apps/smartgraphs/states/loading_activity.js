@@ -21,6 +21,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
 /** @scope Smartgraphs.LOADING_ACTIVITY.prototype */ {
 
   nextResponder: Smartgraphs.READY,
+  openAuthorViewAfterLoading: NO,
   
   masterResource: {
     load: function () { return Smartgraphs.activityController.get('content'); }
@@ -50,7 +51,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
     if (pages.get('length') > 0) {
       Smartgraphs.activityPagesController.selectFirstPage();
     }
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
+    Smartgraphs.makeFirstResponder(this.get('openAuthorViewAfterLoading') ? Smartgraphs.AUTHOR : Smartgraphs.ACTIVITY_PAGE_LOADING);
   },
 
   resourceLoadingError: function () {
@@ -72,6 +73,11 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
     // 'makeFirstResponder' call in READY won't cause our didBecomeFirstResponder method to be called again
     Smartgraphs.invokeLater(Smartgraphs.resetFirstResponder);
     return NO;
+  },
+  
+  openAuthorView: function () {
+    this.set('openAuthorViewAfterLoading', YES);
+    return YES;
   }
   
 }) ;

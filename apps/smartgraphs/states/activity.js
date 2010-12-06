@@ -30,6 +30,10 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     Smartgraphs.activityController.cleanup();
   },
   
+  openAuthorView: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.AUTHOR);
+  },
+  
   // ..........................................................
   // ACTIONS
   //
