@@ -41,32 +41,7 @@ Smartgraphs.READY = SC.Responder.create(
   
   // SC.routes callback (not really an action; SC.routes calls this method directly)
   route: function (route) {
-    var activityId = route.activityId;
-
-    // as a quickfix, put a 'fence' around the back button
-    // URL Fragment #1: user visits '#/shared/motion-towards-and-away":
-    //    a. Smartgraphs saves activity id "/shared/motion-towards-and-away" as this.fencedActivityId
-    //    b. Smartgraphs visits fragment #fence
-    // URL Fragment # 2: Smartgraphs visits #fence
-    //    a. Smartgraphs visits the URL fragment at this.fencedActivityId; in this case, '#/shared/motion-towards-and-away'
-    // URL Fragment #3: Smartgraphs visits '#/shared/motion-towards-and-away'
-    //    a. Since this.fencedActivityId, Smartgraphs issues openActivity Command instead of revisiting the steps
-    //       above (those starting with Fragment #1)
-    
-    if (activityId === 'fence') {
-      if (this.fencedActivityId) {
-        SC.routes.set('location', this.fencedActivityId);
-      }
-    }
-    else if (activityId) {
-      if (activityId === this.fencedActivityId) {
-        Smartgraphs.sendAction('openActivity', this, { id: this.fencedActivityId });
-      }
-      else  {
-        this.fencedActivityId = activityId;
-        SC.routes.set('location', 'fence');
-      }
-    }
+    if (route.activityId) Smartgraphs.sendAction('openActivity', this, { id: route.activityId });
   },
 
   // ..........................................................
