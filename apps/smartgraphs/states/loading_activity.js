@@ -50,8 +50,6 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
     if (pages.get('length') > 0) {
       Smartgraphs.activityPagesController.selectFirstPage();
     }
-    
-    Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());    
     Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
   },
 
