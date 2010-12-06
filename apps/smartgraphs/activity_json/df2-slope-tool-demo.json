@@ -1,5 +1,5 @@
 {
-  "_rev": "16-d62b4ba9abfbafd526daa5dec1104fe8",
+  "_rev": "17-f50cc7dbbebaaf011905425ef6c015da",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -17,7 +17,8 @@
         "/shared/slope-tool-demo/page/1/step/2",
         "/shared/slope-tool-demo/page/1/step/3",
         "/shared/slope-tool-demo/page/1/step/4",
-        "/shared/slope-tool-demo/page/1/step/5"
+        "/shared/slope-tool-demo/page/1/step/5",
+        "/shared/slope-tool-demo/page/1/step/6"
       ],
       "name": "Slope Tool Page",
       "firstStep": "/shared/slope-tool-demo/page/1/step/1",
@@ -284,6 +285,55 @@
             "graphName": "demo-graph"
           }
         }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "toggleAnnotationHighlight",
+          "literalArgs": {
+            "annotationName": "run-arrow",
+            "graphName": "demo-graph"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/6",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/6",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>The run arrow is highlighted.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+
       ],
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
