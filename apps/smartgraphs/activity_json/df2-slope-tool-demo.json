@@ -1,5 +1,5 @@
 {
-  "_rev": "15-ce8c80e2cbf8e7dcbc0ab85030e1f556",
+  "_rev": "16-d62b4ba9abfbafd526daa5dec1104fe8",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -379,7 +379,7 @@
     },
     {
       "x": 7,
-      "y": 10,
+      "y": 5,
       "guid": 8,
       "dataset": "/shared/slope-tool-demo/dataset/demo-data"
     },
