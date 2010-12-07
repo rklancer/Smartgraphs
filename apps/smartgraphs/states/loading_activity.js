@@ -32,6 +32,13 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   ],
   
   didBecomeFirstResponder: function () {
+    if (this.get('openAuthorViewAfterLoading')) {
+      Smartgraphs.toolbarController.showRunButton();
+    }
+    else {
+      Smartgraphs.toolbarController.showEditButton();
+    }
+    
     if (this.loadResources()) {
       return;
     }
@@ -75,8 +82,15 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
     return NO;
   },
   
+  // handle edit/run button while still loading
+  
   openAuthorView: function () {
     this.set('openAuthorViewAfterLoading', YES);
+    return YES;
+  },
+  
+  runActivity: function () {
+    this.set('openAuthorViewAfterLoading', NO);
     return YES;
   }
   

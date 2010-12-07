@@ -21,6 +21,7 @@ Smartgraphs.AUTHOR = SC.Responder.create(
   
   didBecomeFirstResponder: function () {
     Smartgraphs.appWindowController.showAuthorView();
+    Smartgraphs.toolbarController.showRunButton();
   },
   
   // ..........................................................
@@ -30,6 +31,12 @@ Smartgraphs.AUTHOR = SC.Responder.create(
   openActivity: function () {
     Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', YES);
     return NO;    // let READY handle the rest.
+  },
+  
+  runActivity: function () {
+    Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', NO);
+    Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_ACTIVITY);
+    return YES;
   }
 
 }) ;
