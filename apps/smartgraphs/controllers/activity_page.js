@@ -17,7 +17,7 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
   // use this instead of a binding so that a change to the page selection is reflected immediately rather than at the 
   // end of a runloop.
   pageSelectionDidChange: function () {
-    this.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());
+    this.setIfChanged('content', Smartgraphs.activityPagesController.get('selection').firstObject());
   }.observes('Smartgraphs.activityPagesController.selection'),
   
   cleanup: function () {
