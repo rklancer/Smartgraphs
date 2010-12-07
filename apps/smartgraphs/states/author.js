@@ -22,7 +22,17 @@ Smartgraphs.AUTHOR = SC.Responder.create(
   didBecomeFirstResponder: function () {
     Smartgraphs.appWindowController.showAuthorView();
     Smartgraphs.toolbarController.showRunButton();
+    Smartgraphs.activityPagesController.set('shouldShowStepsInOutline', NO);
+    Smartgraphs.activityOutlineController.set('shouldSelectPageInOutline', YES);
+    Smartgraphs.activityOutlineController.set('isSelectable', YES);
   },
+  
+  willLoseFirstResponder: function () {
+    Smartgraphs.activityPagesController.set('shouldShowStepsInOutline', YES);
+    Smartgraphs.activityOutlineController.set('shouldSelectPageInOutline', NO);
+    Smartgraphs.activityOutlineController.set('isSelectable', NO);
+  },
+  
   
   // ..........................................................
   // ACTIONS
