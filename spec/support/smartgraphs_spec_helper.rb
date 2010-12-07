@@ -24,7 +24,7 @@ include Lebowski::Foundation
 TEST_PORT =  ENV[:TEST_PORT.to_s] || 4022;
 SELENIUM_PORT = ENV[:SELENIUM_PORT.to_s] || 4244;
 TEST_SETTINGS = {
-  :app_root_path => "/smartgraphs",
+  :app_root_path => "/smartgraphs#/shared/slope-tool-demo",
   :app_name => "Smartgraphs",
   :app_server_port => TEST_PORT,
   :selenium_server_port => SELENIUM_PORT,
@@ -58,12 +58,16 @@ end
 def new_test
   app =  MainApplication.new TEST_SETTINGS
   app.start
-  app.maximize  # TODO: Seems like dragging doesn't work unless we are maximized.
+  # app.maximize  # TODO: Seems like dragging doesn't work unless we are maximized.
   sleep 2       # TODO: hackish pause, CanvasView is not ready otherwise..
-  # app.define_path 'canvas', 'mainPage.mainPane.topView.bottomRightView.bottomRightView', CanvasView
-  # app.define_path 'palette', 'mainPage.mainPane.topView.topLeftView', View
-  # app.define_path 'story', 'mainPage.mainPane.topView.bottomRightView.topLeftView', LabelView
+  # TODO: Would be helpful to define proxies for ToolbarView and SplitView if we wanted to seriously test these.
+  app.define_path 'top_toolbar', 'mainPage.mainPane.topToolbar', View
+  app.define_path 'bottom_toolbar', 'mainPage.mainPane.bottomToolbar', View
+  app.define_path 'activity', 'activityPage.activityView', View
   return app
+  # TODO: currently it's trying to get CouchDB files from /db in its testing server, which fails.
+  # I don't know enough about data sources to figure out how to adjust this for the sake of running 
+  # Lebowski tests, but the sc-server set up for these tests should be able to get exercises somehow.
 end
 
 def start_command(name)

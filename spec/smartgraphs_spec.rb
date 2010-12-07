@@ -15,14 +15,20 @@ describe "Smartgraphs" do
   before(:all) do
     start_testing_servers
     @test = new_test
+    @activity = @test['activity']
   end
 
   after(:all) do
     stop_testing_servers
   end
 
-  # TODO: Tests go here
   it "should have tests here" do
     true
+  end
+  
+  it "should have a top bar, bottom bar, and main section" do
+    @test['top_toolbar'].should_not be nil
+    @test['bottom_toolbar'].should_not be nil
+    @activity.should_not be nil
   end
 end
