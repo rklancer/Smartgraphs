@@ -21,6 +21,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
 /** @scope Smartgraphs.LOADING_ACTIVITY.prototype */ {
 
   nextResponder: Smartgraphs.READY,
+  openAuthorViewAfterLoading: NO,
   
   masterResource: {
     load: function () { return Smartgraphs.activityController.get('content'); }
@@ -31,6 +32,13 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
   ],
   
   didBecomeFirstResponder: function () {
+    if (this.get('openAuthorViewAfterLoading')) {
+      Smartgraphs.toolbarController.showRunButton();
+    }
+    else {
+      Smartgraphs.toolbarController.showEditButton();
+    }
+    
     if (this.loadResources()) {
       return;
     }
@@ -50,9 +58,7 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
     if (pages.get('length') > 0) {
       Smartgraphs.activityPagesController.selectFirstPage();
     }
-    
-    Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());    
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_LOADING);
+    Smartgraphs.makeFirstResponder(this.get('openAuthorViewAfterLoading') ? Smartgraphs.AUTHOR : Smartgraphs.ACTIVITY_PAGE_LOADING);
   },
 
   resourceLoadingError: function () {
@@ -74,6 +80,18 @@ Smartgraphs.LOADING_ACTIVITY = SC.Responder.create(Smartgraphs.ResourceLoader,
     // 'makeFirstResponder' call in READY won't cause our didBecomeFirstResponder method to be called again
     Smartgraphs.invokeLater(Smartgraphs.resetFirstResponder);
     return NO;
+  },
+  
+  // handle edit/run button while still loading
+  
+  openAuthorView: function () {
+    this.set('openAuthorViewAfterLoading', YES);
+    return YES;
+  },
+  
+  runActivity: function () {
+    this.set('openAuthorViewAfterLoading', NO);
+    return YES;
   }
   
 }) ;

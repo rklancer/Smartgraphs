@@ -18,7 +18,7 @@ Smartgraphs.mainPage = SC.Page.design({
     topToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_TOP,
       
-      childViews: ['title', 'editButton'],
+      childViews: ['title', 'editButton', 'runButton'],
       
       title: SC.LabelView.design({
         layout: { centerY: 0, height: 24, left: 8, width: 400 },
@@ -29,17 +29,58 @@ Smartgraphs.mainPage = SC.Page.design({
       
       editButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowEditButton',
         title: "Edit",
         action: "openAuthorView"
+      }),
+      
+      runButton: SC.ButtonView.design({
+        layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowRunButton',
+        title: "Run",
+        action: "runActivity"
       })
     }),
     
-    container: SC.ContainerView.design({
+    container: SC.SplitView.design({
       // this minimum width & height should not overflow on a 1024x768 screen even in a browsing setup with lots of 
       // extraneous on-screen chrome (say, in FF or IE running in Windows XP)
-      
+
       layout: { top: 32, bottom: 33, minWidth: 960, minHeight: 536 },
-      nowShowingBinding: 'Smartgraphs.appWindowController.nowShowing'
+      defaultThickness: 200,
+      topLeftMaxThickness: 300,
+      layoutDirection: SC.LAYOUT_HORIZONTAL,
+
+      topLeftView: SC.ScrollView.design({
+        classNames: ['desk'],
+        contentView: SC.SourceListView.design({
+          classNames: ['desk'],
+          contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
+          contentValueKey: 'title',
+          selectionBinding: 'Smartgraphs.activityOutlineController.selection',
+          isSelectableBinding: 'Smartgraphs.activityOutlineController.isSelectable'
+        })
+      }),
+
+      dividerView: SC.SplitDividerView,
+
+      bottomRightView: SC.ContainerView.design({
+        nowShowingBinding: 'Smartgraphs.appWindowController.viewToShow'
+      }),
+      
+      shouldShowOutlineBinding: 'Smartgraphs.appWindowController.shouldShowOutline',
+      shouldShowOutlineDidChange: function () {
+        if (this.get('shouldShowOutline')) {
+          this.setPath('topLeftView.isVisible', YES);
+          this.setPath('dividerView.isVisible', YES);
+          this.updateChildLayout();
+        }
+        else {
+          this.setPath('topLeftView.isVisible', NO);
+          this.setPath('dividerView.isVisible', NO);
+          this.get('bottomRightView').adjust('left', 0);
+        }
+      }.observes('shouldShowOutline')
     }),
     
     bottomToolbar: SC.ToolbarView.design({
@@ -52,10 +93,10 @@ Smartgraphs.mainPage = SC.Page.design({
         title: "Back",
         // theme: "point-left",
         theme: 'capsule',
-        action: "gotoPrevPage",
+        action: "gotoPreviousPage",
         isSwipeLeft: YES,
 
-        isEnabled: NO
+        isEnabledBinding: 'Smartgraphs.activityViewController.enableBackPageButton'
       }),
       
       pageButtons: SC.SegmentedView.design({
@@ -77,7 +118,7 @@ Smartgraphs.mainPage = SC.Page.design({
         
         isVisibleBinding: 'Smartgraphs.activityViewController.showNextPageButton',
         isEnabledBinding: 'Smartgraphs.activityViewController.enableNextPageButton',
-        isDefaultBinding: 'Smartgraphs.activityViewController.enableNextPageButton'
+        isDefaultBinding: 'Smartgraphs.activityViewController.highlightNextPageButton'
       })
     })
   }),
@@ -99,5 +140,5 @@ Smartgraphs.mainPage = SC.Page.design({
       valueBinding: 'Smartgraphs.appWindowController.loadingMessage'
     })
   })
-
+  
 });

@@ -7,33 +7,59 @@
 
 /** @class
 
-  The appWindow controller controls what high-level views are visible on the main screen.
+  The app-window controller controls what high-level views are visible on the main screen.
 
   @extends SC.Object
 */
 Smartgraphs.appWindowController = SC.ObjectController.create(
 /** @scope Smartgraphs.appWindowController.prototype */ {
 
-  nowShowing: null,
+  viewToShow: null,
   loadingMessage: null,
+  shouldShowOutline: Smartgraphs.showOutline,
+  shouldShowOutlineBindingDefault: SC.Binding.oneWay(),
   
+  /** 
+    Shows the activity view (i.e., the "live" activity) in the main window.
+  */
   showActivityView: function () {
-    this.set('nowShowing', 'Smartgraphs.activityPage.activityView');
+    this.set('viewToShow', 'Smartgraphs.activityPage.activityView');
   },
   
   /**
-   * shows the generic loading view, with a custom message for activity loading
-   */
+     shows the generic loading view, with a custom message for activity loading.
+  */
   showActivityLoadingView: function () {
-    this.set('nowShowing', 'Smartgraphs.mainPage.loadingView');
+    this.set('viewToShow', 'Smartgraphs.mainPage.loadingView');
     this.set('loadingMessage', Smartgraphs.activityPage.getPath('activityView.loadingMessage'));
   },
   
   /**
-   * shows the particular error view associated with a activity-loading error
-   */
+    Shows the particular error view associated with an activity-loading error.
+  */
   showErrorLoadingActivityView: function () {
-    this.set('nowShowing', 'Smartgraphs.activityPage.errorLoadingActivityView');
+    this.set('viewToShow', 'Smartgraphs.activityPage.errorLoadingActivityView');
+  },
+  
+  /**
+    Shows the author's view in the main window.
+  */
+  showAuthorView: function () {
+    this.set('viewToShow', 'Smartgraphs.authorPage.authorView');
+  },
+  
+  /**
+    Shows the outline view on the left.
+  */
+  showOutline: function () {
+    this.set('shouldShowOutline', YES);
+  },
+  
+  /**
+    Hides the outline view and the splitView divider, if showing.
+  */
+  hideOutline: function () {
+    this.set('shouldShowOutline', NO);
   }
-
+  
 }) ;

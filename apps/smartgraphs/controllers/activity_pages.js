@@ -17,7 +17,13 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
 {
 
   allowsMultipleSelection: NO,
+  shouldShowStepsInOutline: YES,
 
+  // use rather than a binding because the opposite side also uses an obserer (to update immediately)
+  currentPageDidChange: function () {
+    this.selectObject(Smartgraphs.activityPageController.get('content'));
+  }.observes('Smartgraphs.activityPageController.content'),
+  
   currentPageNumber: function () {
     var indexSet = this.get('selection').indexSetForSource(this);
     return indexSet && indexSet.firstObject();
@@ -35,10 +41,21 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
       this.selectObject(this.objectAt(index + 1));
     }
   },
+  
+  selectPreviousPage: function () {
+    var index = this.get('currentPageNumber');
+    if (index > 0) {
+      this.selectObject(this.objectAt(index - 1));
+    }
+  },
 
   isLastPage: function () {
     return (this.get('currentPageNumber') >= (this.get('length') - 1));
   }.property('currentPageNumber', 'length').cacheable(),
+  
+  isFirstPage: function () {
+    return (this.get('currentPageNumber') === 0);
+  }.property('currentPageNumber').cacheable(),
   
   contentsDidChange: function () {
     var n = 0;
@@ -48,6 +65,7 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   }.observes('[]'),
   
   outline: function () {
+    var skipSteps = !this.get('shouldShowStepsInOutline');
     return SC.Object.create({
       title: 'toplevel',
       treeItemIsExpanded: YES,
@@ -57,8 +75,9 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
         return SC.Object.create({
           title: page.get('name') || 'Page %@'.fmt(page.get('pageNumber') + 1),
           treeItemIsExpanded: YES,
-          steps: page.get('steps'),          
-          treeItemChildren: page.get('steps').map( function (step) {
+          page: page,
+          steps: skipSteps ? undefined : page.get('steps'),       
+          treeItemChildren: skipSteps ? undefined : page.get('steps').map( function (step) {
             return SC.Object.create({
               title: 'Step %@'.fmt(stepNum++),
               step: step,
@@ -70,6 +89,6 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
       })
     });
     // FIXME this will NOT update when steps are added/removed or have their properties changed
-  }.property('[]').cacheable()
+  }.property('[]', 'shouldShowStepsInOutline').cacheable()
   
 });
