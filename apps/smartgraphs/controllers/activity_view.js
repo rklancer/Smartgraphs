@@ -53,6 +53,13 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   hideSubmitButtonBinding: 'Smartgraphs.activityStepController.hideSubmitButton',
   nextButtonShouldSubmit: null,
   nextButtonShouldSubmitBinding: 'Smartgraphs.activityStepController.nextButtonShouldSubmit',
+
+  isFirstPage: NO,
+  isFirstPageBinding: 'Smartgraphs.activityPagesController.isFirstPage',
+  isLastPage: NO,
+  isLastPageBinding: 'Smartgraphs.activityPagesController.isLastPage',
+  
+  enableBackAndForward: NO,
   
   showSubmitButton: function () {
     return !(this.get('hideSubmitButton') || this.get('nextButtonShouldSubmit'));
@@ -63,10 +70,19 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     
   showNextPageButton: null,
   showNextPageButtonBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage'),
-    
-  enableNextPageButton: function () {
-    return this.get('canGotoNextPage') || (this.get('isFinalStep') && this.get('nextButtonShouldSubmit') && this.get('canSubmit'));
+  
+  highlightNextPageButton: function () {
+    return this.get('canGotoNextPage') || 
+           (this.get('isFinalStep') && this.get('nextButtonShouldSubmit') && this.get('canSubmit'));
   }.property('canGotoNextPage', 'isFinalStep', 'nextButtonShouldSubmit', 'canSubmit').cacheable(),
+  
+  enableNextPageButton: function () {
+    return (this.get('enableBackAndForward') && !this.get('isLastPage')) || this.get('highlightNextPageButton');
+  }.property('enableBackAndForward', 'isLastPage', 'highlightNextPageButton').cacheable(),
+  
+  enableBackPageButton: function () {
+    return (this.get('enableBackAndForward') && !this.get('isFirstPage'));
+  }.property('enableBackAndForward', 'isFirstPage'),
   
   // ..........................................................
   // PANE NAME HANDLING

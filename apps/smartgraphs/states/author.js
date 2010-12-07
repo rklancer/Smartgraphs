@@ -25,12 +25,14 @@ Smartgraphs.AUTHOR = SC.Responder.create(
     Smartgraphs.activityPagesController.set('shouldShowStepsInOutline', NO);
     Smartgraphs.activityOutlineController.set('shouldSelectPageInOutline', YES);
     Smartgraphs.activityOutlineController.set('isSelectable', YES);
+    Smartgraphs.activityViewController.set('enableBackAndForward', YES);
   },
   
   willLoseFirstResponder: function () {
     Smartgraphs.activityPagesController.set('shouldShowStepsInOutline', YES);
     Smartgraphs.activityOutlineController.set('shouldSelectPageInOutline', NO);
     Smartgraphs.activityOutlineController.set('isSelectable', NO);
+    Smartgraphs.activityViewController.set('enableBackAndForward', NO);
   },
   
   
@@ -47,6 +49,14 @@ Smartgraphs.AUTHOR = SC.Responder.create(
     Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', NO);
     Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_ACTIVITY);
     return YES;
+  },
+  
+  gotoNextPage: function () {
+    Smartgraphs.activityPagesController.selectNextPage();
+  },
+  
+  gotoPreviousPage: function () {
+    Smartgraphs.activityPagesController.selectPreviousPage();
   }
 
 }) ;

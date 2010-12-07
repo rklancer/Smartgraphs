@@ -36,10 +36,21 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
       this.selectObject(this.objectAt(index + 1));
     }
   },
+  
+  selectPreviousPage: function () {
+    var index = this.get('currentPageNumber');
+    if (index > 0) {
+      this.selectObject(this.objectAt(index - 1));
+    }
+  },
 
   isLastPage: function () {
     return (this.get('currentPageNumber') >= (this.get('length') - 1));
   }.property('currentPageNumber', 'length').cacheable(),
+  
+  isFirstPage: function () {
+    return (this.get('currentPageNumber') === 0);
+  }.property('currentPageNumber').cacheable(),
   
   contentsDidChange: function () {
     var n = 0;

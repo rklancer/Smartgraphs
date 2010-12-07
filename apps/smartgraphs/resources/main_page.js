@@ -58,7 +58,7 @@ Smartgraphs.mainPage = SC.Page.design({
           contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
           contentValueKey: 'title',
           selectionBinding: 'Smartgraphs.activityOutlineController.selection',
-          isSelectable: NO
+          isSelectableBinding: 'Smartgraphs.activityOutlineController.isSelectable'
         })
       }),
 
@@ -93,10 +93,10 @@ Smartgraphs.mainPage = SC.Page.design({
         title: "Back",
         // theme: "point-left",
         theme: 'capsule',
-        action: "gotoPrevPage",
+        action: "gotoPreviousPage",
         isSwipeLeft: YES,
 
-        isEnabled: NO
+        isEnabledBinding: 'Smartgraphs.activityViewController.enableBackPageButton'
       }),
       
       pageButtons: SC.SegmentedView.design({
@@ -118,7 +118,7 @@ Smartgraphs.mainPage = SC.Page.design({
         
         isVisibleBinding: 'Smartgraphs.activityViewController.showNextPageButton',
         isEnabledBinding: 'Smartgraphs.activityViewController.enableNextPageButton',
-        isDefaultBinding: 'Smartgraphs.activityViewController.enableNextPageButton'
+        isDefaultBinding: 'Smartgraphs.activityViewController.highlightNextPageButton'
       })
     })
   }),
