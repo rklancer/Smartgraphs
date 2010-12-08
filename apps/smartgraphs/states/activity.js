@@ -10,7 +10,7 @@ sc_require('states/ready');
 
 /** @class
 
-  Superstate representing that the application is running a Activity.
+  Superstate representing that the application is running an Activity.
 
   @extends SC.Responder
   @version 0.1
@@ -19,8 +19,7 @@ sc_require('states/ready');
 Smartgraphs.ACTIVITY = SC.Responder.create(
 /** @scope Smartgraphs.ACTIVITY.prototype */ {
   
-  nextResponder: Smartgraphs.READY,       // the default; if some other app state implements the openActivity action in 
-                                          // some way, presumably that state should set itself as our nextResponder
+  nextResponder: Smartgraphs.READY,
   
   didBecomeFirstResponder: function() {
     Smartgraphs.appWindowController.showActivityView();
@@ -30,18 +29,27 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     Smartgraphs.activityController.cleanup();
   },
   
+  // ..........................................................
+  // ACTIONS
+  //
+  
+  /**
+    Open author's view of the currently running activity.
+  */
   openAuthorView: function () {
     Smartgraphs.makeFirstResponder(Smartgraphs.AUTHOR);
+    return YES;
   },
   
+  /**
+    Executes if openActivity action is sent within the ACTIVITY state. Instructs the LOADING_ACTIVITY state to switch
+    back to the ACTIVITY state (rather than AUTHOR) when the new activity is loaded. Returns NO so that the main
+    openActivity handler (defined in the READY state) is also called, thereby actually loading the activity.
+  */
   openActivity: function () {
     Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', NO);
     return NO;    // let READY handle the rest.
   },
-  
-  // ..........................................................
-  // ACTIONS
-  //
   
   /** 
     Create a LineThroughPoints with the name lineName in the current session. Takes two HighlightedPoints as the 
