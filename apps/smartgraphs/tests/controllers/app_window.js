@@ -7,36 +7,36 @@
 
 module("Smartgraphs.appWindowController", {
   setup: function() {
-    Smartgraphs.appWindowController.set('nowShowing', null);
+    Smartgraphs.appWindowController.set('viewToShow', null);
     Smartgraphs.appWindowController.set('loadingMessage', null);
   },
   
   teardown: function() {
-    Smartgraphs.appWindowController.set('nowShowing', null);
+    Smartgraphs.appWindowController.set('viewToShow', null);
     Smartgraphs.appWindowController.set('loadingMessage', null);
   }
 });
 
-test("showActivityView sets the nowShowing value", function() {
+test("showActivityView sets the viewToShow value", function() {
   expect(2);
-  equals( Smartgraphs.appWindowController.get('nowShowing'), null, "nowShowing value starts as null");
+  equals( Smartgraphs.appWindowController.get('viewToShow'), null, "viewToShow value starts as null");
   Smartgraphs.appWindowController.showActivityView();
-  equals( Smartgraphs.appWindowController.get('nowShowing'), 'Smartgraphs.activityPage.activityView', "nowShowing value is for activityPage.activityView");
+  equals( Smartgraphs.appWindowController.get('viewToShow'), 'Smartgraphs.activityPage.activityView', "viewToShow value is for activityPage.activityView");
 });
 
 test("showActivityLoadingView sets the values for the loading view", function() {
   expect(4);
-  equals( Smartgraphs.appWindowController.get('nowShowing'), null, "nowShowing value starts as null");
+  equals( Smartgraphs.appWindowController.get('viewToShow'), null, "viewToShow value starts as null");
   equals( Smartgraphs.appWindowController.get('loadingMessage'), null, "loadingMessage value starts as null");
   Smartgraphs.appWindowController.showActivityLoadingView();
-  equals( Smartgraphs.appWindowController.get('nowShowing'), 'Smartgraphs.mainPage.loadingView', "nowShowing value is for mainPage.loadingView");
+  equals( Smartgraphs.appWindowController.get('viewToShow'), 'Smartgraphs.mainPage.loadingView', "viewToShow value is for mainPage.loadingView");
   equals( Smartgraphs.appWindowController.get('loadingMessage'), Smartgraphs.activityPage.getPath('activityView.loadingMessage'), 'loadingMessage value should match the activityView loadingMessage');
 });
 
-test("showErrorLoadingActivityView sets the nowShowing value for errors", function() {
+test("showErrorLoadingActivityView sets the viewToShow value for errors", function() {
   expect(2);
-  equals( Smartgraphs.appWindowController.get('nowShowing'), null, "nowShowing value starts as null");
+  equals( Smartgraphs.appWindowController.get('viewToShow'), null, "viewToShow value starts as null");
   Smartgraphs.appWindowController.showErrorLoadingActivityView();
-  equals( Smartgraphs.appWindowController.get('nowShowing'), 'Smartgraphs.activityPage.errorLoadingActivityView', "nowShowing value is for activityPage.errorLoadingActivityView");
+  equals( Smartgraphs.appWindowController.get('viewToShow'), 'Smartgraphs.activityPage.errorLoadingActivityView', "viewToShow value is for activityPage.errorLoadingActivityView");
 });
 
