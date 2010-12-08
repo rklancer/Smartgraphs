@@ -19,9 +19,17 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   allowsMultipleSelection: NO,
   shouldShowStepsInOutline: YES,
 
-  // use rather than a binding because the opposite side also uses an obserer (to update immediately)
+  // use rather than a binding because the opposite side also uses an observer (to update immediately)
   currentPageDidChange: function () {
-    this.selectObject(Smartgraphs.activityPageController.get('content'));
+    var content = this.get('content');
+    var page = Smartgraphs.activityPageController.get('content');
+    
+    if (content && content.indexOf(page) >= 0) {
+      this.selectObject(page);
+    }
+    else {
+      this.selectObject(null);
+    }
   }.observes('Smartgraphs.activityPageController.content'),
   
   currentPageNumber: function () {
