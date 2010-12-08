@@ -53,3 +53,13 @@ test("showErrorLoadingActivityView sets the viewToShow value for errors", functi
   ok( pathIsAView(viewToShow), "viewToShow value should represent a real SC.View");
 });
 
+
+test("showAuthorView sets the viewToShow value for the author view", function () {
+  expect(3);
+  equals( Smartgraphs.appWindowController.get('viewToShow'), null, "viewToShow value starts as null");
+  Smartgraphs.appWindowController.showAuthorView();
+  var viewToShow = Smartgraphs.appWindowController.get('viewToShow');
+  equals(viewToShow, 'Smartgraphs.authorPage.authorView', "viewToShow value is for the authorView");
+  ok( pathIsAView(viewToShow), "viewToShow value should represent a real SC.View");
+});
+
