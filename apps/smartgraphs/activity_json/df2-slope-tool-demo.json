@@ -1,5 +1,5 @@
 {
-  "_rev": "17-f50cc7dbbebaaf011905425ef6c015da",
+  "_rev": "18-df828ae83e133ea9fa97b342881940e2",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -295,13 +295,7 @@
 
       ],
       "afterSubmissionCommands": [
-        {
-          "action": "toggleAnnotationHighlight",
-          "literalArgs": {
-            "annotationName": "run-arrow",
-            "graphName": "demo-graph"
-          }
-        }
+      
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -333,7 +327,13 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-
+        {
+          "action": "toggleAnnotationHighlight",
+          "literalArgs": {
+            "annotationName": "run-arrow",
+            "graphName": "demo-graph"
+          }
+        }
       ],
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
