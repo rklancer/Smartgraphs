@@ -7,7 +7,49 @@
 
 var pane, graphView, datasetView;
 
+var dummyState = SC.Responder.create();
+
 module("Smartgraphs.ACTIVITY", {
+  setup: function () {
+    setup.mock(Smartgraphs, 'READY', dummyState);
+    setup.mock(Smartgraphs.ACTIVITY, 'nextResponder', Smartgraphs.READY);
+    setup.mock(Smartgraphs.AUTHOR, 'nextResponder', Smartgraphs.READY);
+    setup.store();
+    
+    Smartgraphs.makeFirstResponder(Smartgraphs.READY);
+  },
+  
+  teardown: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.READY);
+    teardown.all();
+  }
+});
+
+test("ACTIVITY should open the activity view", function () {
+  expect(1);
+  Smartgraphs.appWindowController.set('viewToShow', null);   
+  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY);
+  equals(Smartgraphs.appWindowController.get('viewToShow'), 'Smartgraphs.activityPage.activityView', "Entering ACTIVITY state should open the activity view");
+});
+
+
+test("openAuthorView action should transition us to AUTHOR view of the same activity, and the same activity page should be open", function () {
+  expect(3);
+  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY);
+  
+  var page = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, { guid: 'page' });
+  Smartgraphs.activityPageController.set('content', page);
+
+  equals(Smartgraphs.activityPageController.get('content'), page, "Before 'openAuthorView' action is sent, page controller content should be the test page");
+  
+  Smartgraphs.sendAction('openAuthorView');
+
+  equals(Smartgraphs.get('firstResponder'), Smartgraphs.AUTHOR, "'openAuthorView' action sent in ACTIVITY state should transition Smartgraphs to AUTHOR state");
+  equals(Smartgraphs.activityPageController.get('content'), page, "After 'openAuthorView' action is sent, page controller content should be the same test page.");
+});
+
+
+module("Smartgraphs.ACTIVITY: annotation-creating actions", {
   // Setup/teardown borrowed from Smartgraphs.INTERACTIVE_SELECTION tests
   setup: function () {
     setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
