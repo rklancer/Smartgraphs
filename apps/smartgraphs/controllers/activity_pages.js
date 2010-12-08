@@ -66,7 +66,9 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   
   outline: function () {
     var skipSteps = !this.get('shouldShowStepsInOutline');
-    return SC.Object.create({
+    var contentLength = this.getPath('content.length') || 0;
+
+    return contentLength === 0 ? null : SC.Object.create({
       title: 'toplevel',
       treeItemIsExpanded: YES,
       pages: this.map( function (page) { return page; } ),
