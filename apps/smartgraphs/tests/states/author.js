@@ -52,3 +52,18 @@ test("exiting AUTHOR state should unset selectability and navigability", functio
   equals( Smartgraphs.activityOutlineController.get('isSelectable'), NO, "Transitioning away from AUTHOR state should set 'isSelectable' on outline controller to NO");
   equals( Smartgraphs.activityViewController.get('enableBackAndForward'), NO, "Transitioning away from AUTHOR state should set 'enableBackAndForward' on activity view controller to NO");  
 });
+
+
+test("'runActivity' action in AUTHOR state should go to LOADING_ACTIVITY and set openAuthorViewAfterLoading to NO", function () {
+  expect(2);
+  setup.mock(Smartgraphs.LOADING_ACTIVITY, 'nextResponder', Smartgraphs.READY);
+  setup.mock(Smartgraphs.LOADING_ACTIVITY, 'didBecomeFirstResponder', function () {});
+  setup.mock(Smartgraphs.LOADING_ACTIVITY, 'willLoseFirstResponder', function () {});
+  Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', YES);
+
+  Smartgraphs.makeFirstResponder(Smartgraphs.AUTHOR);
+  Smartgraphs.sendAction('runActivity');
+  
+  equals(Smartgraphs.get('firstResponder'), Smartgraphs.LOADING_ACTIVITY, "after 'runActivity' action, Smartgraphs should be in the LOADING_ACTIVITY state");
+  equals(Smartgraphs.LOADING_ACTIVITY.get('openAuthorViewAfterLoading'), NO, "after 'runActivity' action in AUTHOR state, LOADING_ACTIVITY.openAuthorViewAfterLoading should be NO");
+});
