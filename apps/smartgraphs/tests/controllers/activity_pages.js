@@ -112,10 +112,12 @@ test("activityPagesController shouldn't complain if activityPageController's con
   Smartgraphs.activityPageController.set('content', p1);
   equals( Smartgraphs.activityPagesController.getPath('selection.length'), 1, "activityPagesController's selection should have 1 page after activityPageController content is set to p1");
   
+  Smartgraphs.activityPagesController.set('selection', SC.SelectionSet.create());
   Smartgraphs.activityPageController.set('content', p2);
   equals( Smartgraphs.activityPagesController.getPath('selection.length'), 0, "activityPagesController's selection should have no pages after activityPageController content is set to p2");
   
   Smartgraphs.activityPageController.set('content', p1);
+  Smartgraphs.activityPagesController.set('selection', SC.SelectionSet.create());  
   Smartgraphs.activityPageController.set('content', null);
   equals( Smartgraphs.activityPagesController.getPath('selection.length'), 0, "activityPagesController's selection should have no pages after activityPageController content is set to null");
 });

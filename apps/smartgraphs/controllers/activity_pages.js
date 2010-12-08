@@ -27,9 +27,6 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
     if (content && content.indexOf(page) >= 0) {
       this.selectObject(page);
     }
-    else {
-      this.selectObject(null);
-    }
   }.observes('Smartgraphs.activityPageController.content'),
   
   currentPageNumber: function () {
