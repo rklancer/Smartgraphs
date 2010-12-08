@@ -22,7 +22,7 @@
       ],
       "name": "Introduction",
       "firstStep": "/shared/boiling-water/page/1/step/1",
-      "introText": "<h1>Smartgraphs</h1><p>The Smartgraphs project is developing <i>open source, browser-based</i> activities that help students learn the meaning of graphs. </p><p> Activities run directly in a modern Web browser such as Firefox.  Programming is done in Javascript using the Sproutcore framework.</p><p>Click the Next button for a demo.<p>",
+      "introText": "<h1>Smartgraphs</h1><p>The Smartgraphs project is developing <i>open source, browser-based</i> activities that help students learn the meaning of graphs. </p><p> Activities run directly in a modern Web browser such as Firefox.  Programming is done in Javascript using the Sproutcore framework.</p><p>Please click the Next button for a demo.<p>",
       "url": "/shared/boiling-water/page/1",
       "activity": "/shared/boiling-water",
       "index": 1,
