@@ -332,7 +332,8 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       This graph must be open in the page when this command executes.
   */
   startFreehandInput: function (context, args) {
-    Smartgraphs.statechart.sendAction('createAnnotation', this, { 
+    
+    this.createAnnotation(this, { 
       graphName: args.graphName,
       type: Smartgraphs.FreehandSketch,
       name: args.annotationName
@@ -362,7 +363,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       The name of the graph on which the data will be shown.
   */
   startSensorInput: function (context, args) {
-    Smartgraphs.statechart.sendAction('createDataset', this, { 
+    this.createDataset(this, { 
       graphName: args.graphName, 
       datasetName: args.datasetName
     });
