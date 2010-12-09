@@ -43,7 +43,8 @@ describe "Smartgraphs" do
     @step.activityStepDialog.beforeText.content.should == "<p>Click a point, any point.</p>"
   end
   
-  # TODO: This route tries to do the activity
+  # TODO: This route tries to do the activity, not what we're after at the moment
+
   # it "should activate the button on clicking a point" do
   #   @step.buttonsView.submitButton.isEnabled.should be false
   #   @graph.should_not be nil
@@ -53,4 +54,23 @@ describe "Smartgraphs" do
   #   @graph.graphCanvasView.dataHolder.childViews.firstObject().childViews.objectAt(1).isSelected.should be true
   #   @step.buttonsView.submitButton.isEnabled.should be true
   # end
+  
+  it "should have an 'Edit' button" do
+    @test['top_toolbar'].editButton.should be_a_kind_of ButtonView
+    @test['top_toolbar'].runButton.should be_a_kind_of ButtonView
+    @test['top_toolbar'].editButton.isVisible.should be true
+    @test['top_toolbar'].runButton.isVisible.should be false
+  end
+  
+  it "should activate the 'Run' button when 'Edit' is clicked" do
+    @test['top_toolbar'].editButton.click
+    @test['top_toolbar'].editButton.isVisible.should be false
+    @test['top_toolbar'].runButton.isVisible.should be true
+  end
+  
+  it "should return to 'Edit' when 'Run' is clicked" do
+    @test['top_toolbar'].runButton.click
+    @test['top_toolbar'].editButton.isVisible.should be true
+    @test['top_toolbar'].runButton.isVisible.should be false
+  end
 end
