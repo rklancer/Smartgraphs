@@ -58,7 +58,7 @@ Smartgraphs.FREEHAND_INPUT = SC.State.extend(
   
   FREEHAND_INPUT_COMPLETED: SC.State.design({
     
-    didBecomeFirstResponder: function () {
+    enterState: function () {
       Smartgraphs.freehandInputController.stopRecording();    
       Smartgraphs.activityViewController.highlightClearControl();
     },
