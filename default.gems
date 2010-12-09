@@ -1,10 +1,13 @@
 # smartgraphs generated gem export file. Note that any env variable settings will be missing. Append these after using a ';' field separator
 abstract -v1.0.0
+builder -v3.0.0
 capybara -v0.3.9
+ci_reporter -v1.6.3
 columnize -v0.3.1
 culerity -v0.2.12
 daemon_controller -v0.2.5
 daemons -v1.1.0
+diff-lcs -v1.1.2
 erubis -v2.6.6
 eventmachine -v0.12.10
 extlib -v0.9.15
