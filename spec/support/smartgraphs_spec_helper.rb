@@ -58,12 +58,14 @@ end
 def new_test
   app =  MainApplication.new TEST_SETTINGS
   app.start
-  # app.maximize  # TODO: Seems like dragging doesn't work unless we are maximized.
+  app.maximize  # TODO: Seems like dragging doesn't work unless we are maximized.
   sleep 2       # TODO: hackish pause, CanvasView is not ready otherwise..
   # TODO: Would be helpful to define proxies for ToolbarView and SplitView if we wanted to seriously test these.
   app.define_path 'top_toolbar', 'mainPage.mainPane.topToolbar', View
   app.define_path 'bottom_toolbar', 'mainPage.mainPane.bottomToolbar', View
   app.define_path 'activity', 'activityPage.activityView', View
+  app.define_path 'description', 'activityPage.activityView.instructionsWrapper.instructionsView.textWrapper.activityStepWrapper', View
+  app.define_path 'graph', 'activityPage.activityView.dataWrapper.dataView.contentView.topPaneWrapper.topPane.contentView.graphView', View
   return app
   # TODO: currently it's trying to get CouchDB files from /db in its testing server, which fails.
   # I don't know enough about data sources to figure out how to adjust this for the sake of running 
