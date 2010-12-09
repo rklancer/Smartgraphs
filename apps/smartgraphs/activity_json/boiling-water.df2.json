@@ -1,5 +1,5 @@
 {
-   "_rev": "67-ffe2dcad3108c8c3f5e3e810faad3b74",
+   "_rev": "68-58d16fa3c03f16c2df66b218e7712531",
   "data_format_version": 2,
   "activity": {
     "title": "Boiling Water",
@@ -71,7 +71,8 @@
       "steps": [
         "/shared/boiling-water/page/5/step/1",
         "/shared/boiling-water/page/5/step/2",
-        "/shared/boiling-water/page/5/step/3"
+        "/shared/boiling-water/page/5/step/3",
+        "/shared/boiling-water/page/5/step/4"
       ],
       "name": "Multiple Choice",
       "firstStep": "/shared/boiling-water/page/5/step/1",
@@ -583,7 +584,7 @@
         {
           "criterion": { "equals": [ "value", 3 ]
           },
-          "step": "/shared/boiling-water/page/5/step/3"
+          "step": "/shared/boiling-water/page/5/step/4"
         }
       ],
       "defaultBranch": "",
@@ -633,12 +634,12 @@
       "responseBranches": [
         {
           "criterion": { "in": [ "value", [1,2,4] ] },
-          "step": "/shared/boiling-water/page/5/step/2"
+          "step": "/shared/boiling-water/page/5/step/3"
         },
         {
           "criterion": { "equals": [ "value", 3 ]
           },
-          "step": "/shared/boiling-water/page/5/step/3"
+          "step": "/shared/boiling-water/page/5/step/4"
         }
       ],
       "defaultBranch": "",
@@ -650,6 +651,61 @@
     },
     {
       "url": "/shared/boiling-water/page/5/step/3",
+      "activityPage": "/shared/boiling-water/page/5",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "correct-boiling-point",
+          "datasetName": "correct-boiling-point"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "correct-boiling-point",
+          "datasetName": "correct-boiling-point"
+        }
+      },
+      "beforeText": "<p>Incorrect! Think about what happens when water boils. Try again.</p>",
+      "responseTemplate": "/shared/boiling-water/response-template/plateau-explanation",
+      "afterText": "",
+      "startCommands": [ ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [ "value", [1,2,3,4] ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": { "in": [ "value", [1,2,4] ] },
+          "step": "/shared/boiling-water/page/5/step/3"
+        },
+        {
+          "criterion": { "equals": [ "value", 3 ]
+          },
+          "step": "/shared/boiling-water/page/5/step/4"
+        }
+      ],
+      "defaultBranch": "",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/boiling-water/page/5/step/4",
       "activityPage": "/shared/boiling-water/page/5",
       "paneConfig": "split",
       "panes": {
