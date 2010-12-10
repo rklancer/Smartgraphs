@@ -77,9 +77,7 @@ Smartgraphs.statechart = SC.Statechart.create(
           load: function () { return Smartgraphs.activityController.get('content'); }
         },
 
-        subordinateResources: [
-          { load: function () { return Smartgraphs.store.find(Smartgraphs.activityController.get('pagesQuery')); } }
-        ],
+        subordinateResources: [],
 
         enterState: function () {
           if (Smartgraphs.loadingActivityController.get('openAuthorViewAfterLoading')) {

@@ -42,26 +42,6 @@ Smartgraphs.Activity = SC.Record.extend(
     a list of 'global' variables in a given Activity. These would be, for example, names of 'globally available' things
     like the labels created by the openLabelTool command.
   */
-  context: {},
-  
-  
-  /**
-    Server endpoint for getting the page records. 
-  */
-  pageListUrl: SC.Record.attr(String),
-
-  /**
-    A local SC.Query that returns all the ActivityPages associated with this activity. Used to signal the data
-    source to fetch those records from the server.
-  */
-  pagesQuery: function () {
-    // cacheable, so DataStore only ever sees one pagesQuery instance per Activity record
-    return SC.Query.create({
-      isPagesQuery: YES,                       // so the data source can interpret what query we are
-      recordType: Smartgraphs.ActivityPage,
-      conditions: 'activity = {activity}',
-      parameters: { activity: this }
-    });
-  }.property().cacheable()
+  context: {}
 
 }) ;
