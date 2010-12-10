@@ -94,6 +94,13 @@ Smartgraphs.Annotation = SC.Record.extend(
     
     @property {String} 
    */
-  color: SC.Record.attr(String, { defaultValue: '#cc0000' })
+  color: SC.Record.attr(String, { defaultValue: '#cc0000' }),
+  
+  /**
+    If this annotation is highlighted.
+    
+    @property {Boolean}
+  */
+  isHighlighted: SC.Record.attr(Boolean, { defaultValue: false })
 
 }) ;

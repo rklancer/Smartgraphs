@@ -414,9 +414,9 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       tableController.addAnnotation(annotation);
     }
     
-    // try a simpler paradigm .. just stash the info needed by the state, in the state
-    Smartgraphs.INTERACTIVE_SELECTION.set('annotation', annotation);
-    Smartgraphs.INTERACTIVE_SELECTION.set('dataset', dataset);
+    // stash the info needed by the state
+    Smartgraphs.interactiveSelectionController.set('annotation', annotation);
+    Smartgraphs.interactiveSelectionController.set('dataset', dataset);
           
     this.gotoState('INTERACTIVE_SELECTION');
 

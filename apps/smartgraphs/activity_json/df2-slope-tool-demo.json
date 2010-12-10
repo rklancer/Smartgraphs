@@ -1,5 +1,5 @@
 {
-  "_rev": "15-ce8c80e2cbf8e7dcbc0ab85030e1f556",
+  "_rev": "18-df828ae83e133ea9fa97b342881940e2",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -17,7 +17,8 @@
         "/shared/slope-tool-demo/page/1/step/2",
         "/shared/slope-tool-demo/page/1/step/3",
         "/shared/slope-tool-demo/page/1/step/4",
-        "/shared/slope-tool-demo/page/1/step/5"
+        "/shared/slope-tool-demo/page/1/step/5",
+        "/shared/slope-tool-demo/page/1/step/6"
       ],
       "name": "Slope Tool Page",
       "firstStep": "/shared/slope-tool-demo/page/1/step/1",
@@ -294,6 +295,55 @@
 
       ],
       "afterSubmissionCommands": [
+      
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/6",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/6",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>The run arrow is highlighted.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "toggleAnnotationHighlight",
+          "literalArgs": {
+            "annotationName": "run-arrow",
+            "graphName": "demo-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
 
       ],
       "responseInspector": null,
@@ -379,7 +429,7 @@
     },
     {
       "x": 7,
-      "y": 10,
+      "y": 5,
       "guid": 8,
       "dataset": "/shared/slope-tool-demo/dataset/demo-data"
     },

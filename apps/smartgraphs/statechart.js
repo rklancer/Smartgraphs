@@ -82,6 +82,13 @@ Smartgraphs.statechart = SC.Statechart.create(
         ],
 
         enterState: function () {
+          if (Smartgraphs.loadingActivityController.get('openAuthorViewAfterLoading')) {
+            Smartgraphs.toolbarController.showRunButton();
+          }
+          else {
+            Smartgraphs.toolbarController.showEditButton();
+          }
+          
           if (this.loadResources()) {
             return;
           }
@@ -104,8 +111,8 @@ Smartgraphs.statechart = SC.Statechart.create(
             Smartgraphs.activityPagesController.selectFirstPage();
           }
 
-          Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());    
-          this.gotoState('ACTIVITY');
+          var openAuthorView = Smartgraphs.loadingActivityController.get('openAuthorViewAfterLoading');
+          this.gotoState(openAuthorView ? 'AUTHOR' : 'ACTIVITY');
         },
 
         resourceLoadingError: function () {
@@ -116,10 +123,23 @@ Smartgraphs.statechart = SC.Statechart.create(
         // request to load the same activity, or kicking the request back to the parent state otherwise.
         openActivity: function (context, args) {
           return (args.id === Smartgraphs.activityController.getPath('content.id')) ? YES : NO;
+        },
+        
+        // handle edit/run button while still loading
+
+        openAuthorView: function () {
+          Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', YES);
+          return YES;
+        },
+
+        runActivity: function () {
+          Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', NO);
+          return YES;
         }
+
       }),
       
-
+      
       ERROR_LOADING_ACTIVITY: SC.State.design({
         enterState: function () {
           Smartgraphs.appWindowController.showErrorLoadingActivityView();          
@@ -127,67 +147,11 @@ Smartgraphs.statechart = SC.Statechart.create(
       }),
       
       
-      ACTIVITY: SC.State.design({
-
-        initialSubstate: 'ACTIVITY_PAGE_START',
-        
-        enterState: function() {
-          Smartgraphs.appWindowController.showActivityView();
-        },
-
-        exitState: function () {
-          Smartgraphs.activityController.cleanup();
-        },
-        
-        
-        ACTIVITY_PAGE_START: SC.State.design({
-          enterState: function () {
-            Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
-            this.gotoState('ACTIVITY_STEP_START');
-          }
-        }),
-        
-        
-        ACTIVITY_STEP_START: SC.State.design({
-          enterState: function () {
-            this.gotoState('ACTIVITY_STEP');
-          }
-        }),
-        
-        
-        ACTIVITY_STEP: SC.State.plugin('Smartgraphs.ACTIVITY_STEP'),
-        
-        
-        ACTIVITY_STEP_SUBMITTED: SC.State.plugin('Smartgraphs.ACTIVITY_STEP_SUBMITTED'),
-        
-        
-        ACTIVITY_PAGE_DONE: SC.State.design({
-          
-          enterState: function() {    
-            if (Smartgraphs.activityPagesController.get('isLastPage')) {
-              this.gotoState('ACTIVITY_DONE');
-            }
-            else {
-              Smartgraphs.activityController.set('canGotoNextPage', YES);
-            }
-          },
-
-          exitState: function() {
-            Smartgraphs.activityController.set('canGotoNextPage', NO);
-            Smartgraphs.activityPageController.cleanup();
-          },
-
-          gotoNextPage: function () {
-            Smartgraphs.activityPagesController.selectNextPage();
-            Smartgraphs.activityPageController.set('content', Smartgraphs.activityPagesController.get('selection').firstObject());
-            this.gotoState('ACTIVITY_PAGE_START');
-          }
-        })
-      }),
+      ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY'),
       
+      ACTIVITY_DONE: SC.State.design(),
       
-      ACTIVITY_DONE: SC.State.design({
-      })
+      AUTHOR: SC.State.plugin('Smartgraphs.AUTHOR')
       
     })
   })

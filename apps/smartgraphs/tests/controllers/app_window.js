@@ -7,36 +7,59 @@
 
 module("Smartgraphs.appWindowController", {
   setup: function() {
-    Smartgraphs.appWindowController.set('nowShowing', null);
+    Smartgraphs.appWindowController.set('viewToShow', null);
     Smartgraphs.appWindowController.set('loadingMessage', null);
   },
   
   teardown: function() {
-    Smartgraphs.appWindowController.set('nowShowing', null);
+    Smartgraphs.appWindowController.set('viewToShow', null);
     Smartgraphs.appWindowController.set('loadingMessage', null);
   }
 });
 
-test("showActivityView sets the nowShowing value", function() {
-  expect(2);
-  equals( Smartgraphs.appWindowController.get('nowShowing'), null, "nowShowing value starts as null");
+function pathIsAView(path) {
+  return SC.kindOf(SC.objectForPropertyPath(path), SC.View);
+}
+
+test("showActivityView sets the viewToShow value", function() {
+  expect(3);
+  equals( Smartgraphs.appWindowController.get('viewToShow'), null, "viewToShow value starts as null");
   Smartgraphs.appWindowController.showActivityView();
-  equals( Smartgraphs.appWindowController.get('nowShowing'), 'Smartgraphs.activityPage.activityView', "nowShowing value is for activityPage.activityView");
+  var viewToShow = Smartgraphs.appWindowController.get('viewToShow');
+  equals( viewToShow, 'Smartgraphs.activityPage.activityView', "viewToShow value should be the activity view");
+  ok( pathIsAView(viewToShow), "viewToShow value should represent a real SC.View");
+  
 });
 
+
 test("showActivityLoadingView sets the values for the loading view", function() {
-  expect(4);
-  equals( Smartgraphs.appWindowController.get('nowShowing'), null, "nowShowing value starts as null");
+  expect(5);
+  equals( Smartgraphs.appWindowController.get('viewToShow'), null, "viewToShow value starts as null");
   equals( Smartgraphs.appWindowController.get('loadingMessage'), null, "loadingMessage value starts as null");
   Smartgraphs.appWindowController.showActivityLoadingView();
-  equals( Smartgraphs.appWindowController.get('nowShowing'), 'Smartgraphs.mainPage.loadingView', "nowShowing value is for mainPage.loadingView");
+  var viewToShow = Smartgraphs.appWindowController.get('viewToShow');
+  equals(viewToShow, 'Smartgraphs.mainPage.loadingView', "viewToShow value is for mainPage.loadingView");
+  ok( pathIsAView(viewToShow), "viewToShow value should represent a real SC.View");
   equals( Smartgraphs.appWindowController.get('loadingMessage'), Smartgraphs.activityPage.getPath('activityView.loadingMessage'), 'loadingMessage value should match the activityView loadingMessage');
 });
 
-test("showErrorLoadingActivityView sets the nowShowing value for errors", function() {
-  expect(2);
-  equals( Smartgraphs.appWindowController.get('nowShowing'), null, "nowShowing value starts as null");
+
+test("showErrorLoadingActivityView sets the viewToShow value for errors", function() {
+  expect(3);
+  equals( Smartgraphs.appWindowController.get('viewToShow'), null, "viewToShow value starts as null");
   Smartgraphs.appWindowController.showErrorLoadingActivityView();
-  equals( Smartgraphs.appWindowController.get('nowShowing'), 'Smartgraphs.activityPage.errorLoadingActivityView', "nowShowing value is for activityPage.errorLoadingActivityView");
+  var viewToShow = Smartgraphs.appWindowController.get('viewToShow');
+  equals(viewToShow, 'Smartgraphs.activityPage.errorLoadingActivityView', "viewToShow value is for activityPage.errorLoadingActivityView");
+  ok( pathIsAView(viewToShow), "viewToShow value should represent a real SC.View");
+});
+
+
+test("showAuthorView sets the viewToShow value for the author view", function () {
+  expect(3);
+  equals( Smartgraphs.appWindowController.get('viewToShow'), null, "viewToShow value starts as null");
+  Smartgraphs.appWindowController.showAuthorView();
+  var viewToShow = Smartgraphs.appWindowController.get('viewToShow');
+  equals(viewToShow, 'Smartgraphs.authorPage.authorView', "viewToShow value is for the authorView");
+  ok( pathIsAView(viewToShow), "viewToShow value should represent a real SC.View");
 });
 

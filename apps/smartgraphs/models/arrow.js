@@ -70,6 +70,8 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
     counterclockwise case.)
     
     See ArrowAnnotation.png in the docs/ folder  
+
+    @property {Boolean}
   */
   isClockwise: SC.Record.attr(Boolean, { defaultValue: false }),
   

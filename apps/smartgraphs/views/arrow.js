@@ -16,13 +16,20 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.ArrowView.prototype */ {
 
   strokeBinding: '.item.color',
-  strokeWidth: 2,
-  strokeOpacity: 0.5,
+  isHighlightedBinding: '.item.isHighlighted',
+  
+  strokeWidth: function () {
+    return this.get('isHighlighted') ? 3 : 2;
+  }.property('isHighlighted'),
+  
+  strokeOpacity: function () {
+    return this.get('isHighlighted') ? 0.9 : 0.5;
+  }.property('isHighlighted'),
 
   /**
     SproutCore will call render(context, firstTime == NO) if these properties change
   */
-  displayProperties: 'point1 point2 label stroke strokeWidth strokeOpacity'.w(),
+  displayProperties: 'point1 point2 label stroke isHighlighted strokeWidth strokeOpacity'.w(),
   
   /**
     We are using renderCallback in views to call non-SC render methods like

@@ -35,16 +35,16 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.State.extend(
     // disable submission until a selection is made...
     Smartgraphs.statechart.sendAction('disableSubmission');
     
-    var dataset = this.get('dataset');
+    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
     this._oldIsSelectable = dataset.get('isSelectable');
     dataset.set('isSelectable', NO);
   },
   
   exitState: function () {
-    var dataset = this.get('dataset');
+    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
     dataset.set('isSelectable', this._oldIsSelectable);
-    this.set('dataset', null);
-    this.set('annotation', null);
+    Smartgraphs.interactiveSelectionController.set('dataset', null);
+    Smartgraphs.interactiveSelectionController.set('annotation', null);
   },
   
   /** 
@@ -58,11 +58,11 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.State.extend(
       The dataPointView that was clicked on
   */
   dataPointSelected: function (dataPointView) {
-    var dataset = this.get('dataset');
+    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
     var point = dataPointView.get('content');
     
     if (dataset && point.get('dataset') === dataset) {
-      this.setPath('annotation.point', point);
+      Smartgraphs.interactiveSelectionController.setPath('annotation.point', point);
       Smartgraphs.statechart.sendAction('enableSubmission');
     }
   },

@@ -7,7 +7,49 @@
 
 var pane, graphView, datasetView;
 
+var dummyState = SC.Responder.create();
+
 module("Smartgraphs.ACTIVITY", {
+  setup: function () {
+    setup.mock(Smartgraphs, 'READY', dummyState);
+    setup.mock(Smartgraphs.ACTIVITY, 'nextResponder', Smartgraphs.READY);
+    setup.mock(Smartgraphs.AUTHOR, 'nextResponder', Smartgraphs.READY);
+    setup.store();
+    
+    Smartgraphs.makeFirstResponder(Smartgraphs.READY);
+  },
+  
+  teardown: function () {
+    Smartgraphs.makeFirstResponder(Smartgraphs.READY);
+    teardown.all();
+  }
+});
+
+test("ACTIVITY should open the activity view", function () {
+  expect(1);
+  Smartgraphs.appWindowController.set('viewToShow', null);   
+  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY);
+  equals(Smartgraphs.appWindowController.get('viewToShow'), 'Smartgraphs.activityPage.activityView', "Entering ACTIVITY state should open the activity view");
+});
+
+
+test("openAuthorView action should transition us to AUTHOR view of the same activity, and the same activity page should be open", function () {
+  expect(3);
+  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY);
+  
+  var page = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, { guid: 'page' });
+  Smartgraphs.activityPageController.set('content', page);
+
+  equals(Smartgraphs.activityPageController.get('content'), page, "Before 'openAuthorView' action is sent, page controller content should be the test page");
+  
+  Smartgraphs.sendAction('openAuthorView');
+
+  equals(Smartgraphs.get('firstResponder'), Smartgraphs.AUTHOR, "'openAuthorView' action sent in ACTIVITY state should transition Smartgraphs to AUTHOR state");
+  equals(Smartgraphs.activityPageController.get('content'), page, "After 'openAuthorView' action is sent, page controller content should be the same test page.");
+});
+
+
+module("Smartgraphs.ACTIVITY: annotation-creating actions", {
   // Setup/teardown borrowed from Smartgraphs.INTERACTIVE_SELECTION tests
   setup: function () {
     setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
@@ -135,4 +177,19 @@ test("Reordering points for rise/run arrows", function () {
   equals( riseArrow.get('point2'), hp2.get('point'), "The second point of the rise arrow annotation should be the same as the second Highlighted Point even though it was provided as the first");
   equals( runArrow.get('point1'), hp1.get('point'), "The first point of the run arrow annotation should be the same as the first Highlighted Point even though it was provided as the second");
   equals( runArrow.get('point2'), hp2.get('point'), "The second point of the run arrow annotation should be the same as the second Highlighted Point even though it was provided as the first");
+});
+
+test("Toggling isHighlighted state for annotations", function () {
+  expect(1);
+  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
+  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
+  Smartgraphs.firstGraphController.addAnnotation(hp2);
+  Smartgraphs.ACTIVITY.createRunArrow(null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
+  var runArrow = Smartgraphs.firstGraphController.findAnnotationByName('runArrow'); // Grab the annotation to examine it
+  var originalHighlighted = runArrow.get('isHighlighted');
+  Smartgraphs.ACTIVITY.toggleAnnotationHighlight(null, {'graphName': 'test-graph', 'annotationName': 'runArrow'});
+  equals(runArrow.get('isHighlighted'), !originalHighlighted, "The isHighlighted property should be the inverse of its original value");
 });
