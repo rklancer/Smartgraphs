@@ -6,28 +6,35 @@
 /*globals Smartgraphs module test ok equals same stop start setup teardown */
 
 var step;
-var RESTING = SC.Responder.create();
 
 module("Smartgraphs.activityStepController", {
   setup: function () {
-    setup.mock(Smartgraphs.activityStepController, 'makeInspector');
-    setup.mock(Smartgraphs, 'sendAction');
-    setup.mock(Smartgraphs.activityStepController, 'executeCommands');
-    setup.mock(Smartgraphs.ACTIVITY_STEP, 'nextResponder', null);
-    setup.mock(Smartgraphs.ACTIVITY_STEP, 'didBecomeFirstResponder', function () {});  
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
     
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'ACTIVITY_STEP',
+        ACTIVITY_STEP: SC.State.plugin('Smartgraphs.ACTIVITY_STEP')
+      })
+    }));
+    
+    setup.mock(Smartgraphs, 'ACTIVITY_STEP', Smartgraphs.ACTIVITY_STEP.extend({
+      enterState: function () {}
+    }));
+    
+    Smartgraphs.statechart.initStatechart();
+
+    setup.mock(Smartgraphs.activityStepController, 'makeInspector');
+    setup.mock(Smartgraphs.statechart, 'sendAction');
+    setup.mock(Smartgraphs.activityStepController, 'executeCommands');
+
     step = SC.Object.create({
     });
     Smartgraphs.activityStepController.cleanup();
-    Smartgraphs.activityStepController.set('content', step);
+    Smartgraphs.activityStepController.set('content', step); 
   },
   
   teardown: function () {
-    teardown.mocks();
-
-    setup.mock(Smartgraphs.ACTIVITY_STEP, 'willLoseFirstResponder', function () {});
-    Smartgraphs.makeFirstResponder(RESTING);
     teardown.mocks();
   }
 });
@@ -41,7 +48,7 @@ test("step should be automatically submitted, and should ignore submissibilityIn
     if (actionName === 'submitStep' && Smartgraphs.activityStepController.get('canSubmit')) {
       stepSubmittedSuccessfully = YES;
     }
-    return sendAction.apply(Smartgraphs, arguments);
+    return sendAction.apply(Smartgraphs.statechart, arguments);
   };
   
   step.set('submissibilityInspector', {
@@ -73,7 +80,7 @@ test("step should not be submissible after begin() if a submissibility inspector
       submissionEnablingCommandDidRun = YES;
       return YES;
     }
-    return sendAction.apply(Smartgraphs, arguments);
+    return sendAction.apply(Smartgraphs.statechart, arguments);
   };
 
   step.set('startCommands', [{"action": "submission-enabling-command"}]);
@@ -318,18 +325,26 @@ var gotoStepArgs = null;
 module("ActivityStepController <--> state interaction", {
   setup: function () {
     
-    var mockResponder = SC.Responder.create({
-      gotoStep: function (context, args) {
-        gotoStepArgs = args;
-      }
-    });
-        
-    setup.mock(Smartgraphs, 'sendAction');
-    setup.mock(Smartgraphs, 'makeFirstResponder');
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'DUMMY',
+        DUMMY: SC.State.design(),
+        ACTIVITY_STEP: SC.State.plugin('Smartgraphs.ACTIVITY_STEP'),
+        ACTIVITY_STEP_SUBMITTED: SC.State.plugin('Smartgraphs.ACTIVITY_STEP_SUBMITTED'),
+
+        gotoStep: function (context, args) {
+          gotoStepArgs = args;
+        }
+      })
+    }));
+    
+    setup.mock(Smartgraphs.statechart, 'sendAction');
+    setup.mock(Smartgraphs.statechart, 'gotoState');
     setup.mock(Smartgraphs.activityStepController, 'begin');
     setup.mock(Smartgraphs.activityStepController, 'handleSubmission');
-    setup.mock(Smartgraphs.ACTIVITY_STEP, 'nextResponder', mockResponder);
-    setup.mock(Smartgraphs.ACTIVITY_STEP_SUBMITTED, 'nextResponder', mockResponder);
+    
+    Smartgraphs.statechart.initStatechart();
   },
   
   teardown: function () {
@@ -338,14 +353,17 @@ module("ActivityStepController <--> state interaction", {
 });
 
 
-test("ACTIVITY_STEP should call activityStepController.begin() when it becomes first responder", function () {
+test("ACTIVITY_STEP should call activityStepController.begin() after it is entered", function () {
   var beginWasCalled = NO;
   Smartgraphs.activityStepController.begin = function () {
     beginWasCalled = YES;
   };
   
-  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
-  ok(beginWasCalled, "begin() should have been called when ACTIVITY_STEP became first responder");
+  SC.RunLoop.begin();
+  Smartgraphs.statechart.gotoState('ACTIVITY_STEP');
+  SC.RunLoop.end();
+  
+  ok(beginWasCalled, "begin() should have been called after ACTIVITY_STEP state was entered");
 });
 
 
@@ -357,19 +375,19 @@ test("ACTIVITY_STEP should implement a submitStep action that can be disabled/en
     handleSubmissionWasCalled = YES;
   };
     
-  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+  Smartgraphs.statechart.gotoState('ACTIVITY_STEP');
   
   Smartgraphs.statechart.sendAction('disableSubmission');
   Smartgraphs.statechart.sendAction('submitStep');
   
   ok(handleSubmissionWasCalled === NO, "submitStep action after disableSubmission should not have resulted in a call to handleSubmission");
-  equals(Smartgraphs.get('firstResponder'), Smartgraphs.ACTIVITY_STEP, "submitStep action after disableSubmission should not have resulted in firstResponder change");
+  same(Smartgraphs.statechart.get('currentStates').getEach('parentState').getEach('name'), ["ACTIVITY_STEP"], "submitStep action after disableSubmission should not have caused us to leave ACTIVITY_STEP");
   
   Smartgraphs.statechart.sendAction('enableSubmission');
   Smartgraphs.statechart.sendAction('submitStep');
     
   ok(handleSubmissionWasCalled === YES, "submitStep action after enableSubmission should have resulted in a call to handleSubmission");
-  equals(Smartgraphs.get('firstResponder'), Smartgraphs.ACTIVITY_STEP_SUBMITTED, "submitStep action after enableSubmission should have changed firstResponder to ACTIVITY_STEP_SUBMITTED"); 
+  same(Smartgraphs.statechart.get('currentStates').getEach('name'), ["ACTIVITY_STEP_SUBMITTED"], "submitStep action after enableSubmission should have changed firstResponder to ACTIVITY_STEP_SUBMITTED"); 
 });
 
 
@@ -378,13 +396,13 @@ test("ACTIVITY_STEP_SUBMITTED, but not ACTIVITY_STEP, should implement the gotoS
   Smartgraphs.activityStepController.begin = function () {};
   Smartgraphs.activityStepController.handleSubmission = function () {};
   
-  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+  Smartgraphs.statechart.gotoState('ACTIVITY_STEP');
   gotoStepArgs = null;
   
   Smartgraphs.statechart.sendAction('gotoStep', null, {arg: 'test-arg'});
   equals(gotoStepArgs.arg, 'test-arg', "gotoStep should not have be handled by ACTIVITY_STEP, and so should have passed arg 'test-arg' to next responder");
 
-  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_SUBMITTED);
+  Smartgraphs.statechart.gotoState('ACTIVITY_STEP_SUBMITTED');
   gotoStepArgs = null;
   ok(gotoStepArgs === null, "gotoStep should have been handled by ACTIVITY_STEP_SUMBITTED, and so should have not resulted in handling of gotoStep by next responder");
 });
