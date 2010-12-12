@@ -11,16 +11,27 @@ var dummyState = SC.Responder.create();
 
 module("Smartgraphs.ACTIVITY", {
   setup: function () {
-    setup.mock(Smartgraphs, 'READY', dummyState);
-    setup.mock(Smartgraphs.ACTIVITY, 'nextResponder', Smartgraphs.READY);
-    setup.mock(Smartgraphs.AUTHOR, 'nextResponder', Smartgraphs.READY);
-    setup.store();
     
-    Smartgraphs.makeFirstResponder(Smartgraphs.READY);
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'DUMMY',
+        DUMMY: SC.State.design(),
+        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY'),
+        AUTHOR: SC.State.plugin('Smartgraphs.AUTHOR')
+      })
+    }));
+
+    // don't actually do anything when we go into ACTIVITY_STEP
+    setup.mock(Smartgraphs, 'ACTIVITY_STEP', Smartgraphs.ACTIVITY_STEP.extend({
+      enterState: function () {}
+    }));
+    
+    setup.store();    
+    Smartgraphs.statechart.initStatechart();
   },
   
   teardown: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.READY);
     teardown.all();
   }
 });
@@ -28,23 +39,23 @@ module("Smartgraphs.ACTIVITY", {
 test("ACTIVITY should open the activity view", function () {
   expect(1);
   Smartgraphs.appWindowController.set('viewToShow', null);   
-  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY);
+  Smartgraphs.statechart.gotoState('ACTIVITY');
   equals(Smartgraphs.appWindowController.get('viewToShow'), 'Smartgraphs.activityPage.activityView', "Entering ACTIVITY state should open the activity view");
 });
 
 
 test("openAuthorView action should transition us to AUTHOR view of the same activity, and the same activity page should be open", function () {
   expect(3);
-  Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY);
+  Smartgraphs.statechart.gotoState('ACTIVITY');
   
   var page = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, { guid: 'page' });
   Smartgraphs.activityPageController.set('content', page);
 
   equals(Smartgraphs.activityPageController.get('content'), page, "Before 'openAuthorView' action is sent, page controller content should be the test page");
   
-  Smartgraphs.sendAction('openAuthorView');
+  Smartgraphs.statechart.sendAction('openAuthorView');
 
-  equals(Smartgraphs.get('firstResponder'), Smartgraphs.AUTHOR, "'openAuthorView' action sent in ACTIVITY state should transition Smartgraphs to AUTHOR state");
+  same(Smartgraphs.statechart.get('currentStates').getEach('name'), ['AUTHOR'], "'openAuthorView' action sent in ACTIVITY state should transition Smartgraphs to AUTHOR state");
   equals(Smartgraphs.activityPageController.get('content'), page, "After 'openAuthorView' action is sent, page controller content should be the same test page.");
 });
 
@@ -90,10 +101,21 @@ module("Smartgraphs.ACTIVITY: annotation-creating actions", {
     datasetView = graphView.getPath('graphCanvasView.dataHolder.childViews').objectAt(0);
 
     newSession();
-    setup.mock(Smartgraphs.ACTIVITY, 'nextResponder', null);
+    
     setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
     setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY);
+
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'ACTIVITY',
+        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY')
+      })
+    }));
+
+    SC.RunLoop.begin();
+    Smartgraphs.statechart.initStatechart();
+    SC.RunLoop.end();
   },
 
   teardown: function () {
@@ -104,6 +126,7 @@ module("Smartgraphs.ACTIVITY: annotation-creating actions", {
   }
 });
 
+
 test("creating a LineThroughPoints", function () {
   expect(3);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.LineThroughPoints').get('length');
@@ -113,7 +136,7 @@ test("creating a LineThroughPoints", function () {
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the line
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
-  Smartgraphs.ACTIVITY.createLineThroughPoints(null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'lineName': 'test-line', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createLineThroughPoints', null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'lineName': 'test-line', 'color': '#ff0000'});
   equals(Smartgraphs.store.find('Smartgraphs.LineThroughPoints').get('length'), startLineCount + 1, "There should be one more LineThroughPoints");
   equals(Smartgraphs.firstGraphController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.LineThroughPoints, 'test-line'); // Grab the annotation to examine it
@@ -130,7 +153,7 @@ test("creating a rise Arrow", function () {
   Smartgraphs.firstGraphController.addAnnotation(hp1);  // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
-  Smartgraphs.ACTIVITY.createRiseArrow(null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'riseArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRiseArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'riseArrow', 'color': '#ff0000'});
   equals(Smartgraphs.store.find('Smartgraphs.Arrow').get('length'), startLineCount + 1, "There should be one more Arrow");
   equals(Smartgraphs.firstGraphController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'riseArrow'); // Grab the annotation to examine it
@@ -150,7 +173,7 @@ test("creating a run Arrow", function () {
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
-  Smartgraphs.ACTIVITY.createRunArrow(null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRunArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'runArrow', 'color': '#ff0000'});
   equals(Smartgraphs.store.find('Smartgraphs.Arrow').get('length'), startLineCount + 1, "There should be one more Arrow");
   equals(Smartgraphs.firstGraphController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
@@ -167,8 +190,8 @@ test("Reordering points for rise/run arrows", function () {
   var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
-  Smartgraphs.ACTIVITY.createRunArrow(null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
-  Smartgraphs.ACTIVITY.createRiseArrow(null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'riseArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRunArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRiseArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'riseArrow', 'color': '#ff0000'});
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'riseArrow');
   var runArrow = Smartgraphs.firstGraphController.findAnnotationByName('runArrow'); // Grab the annotation to examine it
@@ -186,10 +209,10 @@ test("Toggling isHighlighted state for annotations", function () {
   var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
-  Smartgraphs.ACTIVITY.createRunArrow(null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRunArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
   var runArrow = Smartgraphs.firstGraphController.findAnnotationByName('runArrow'); // Grab the annotation to examine it
   var originalHighlighted = runArrow.get('isHighlighted');
-  Smartgraphs.ACTIVITY.toggleAnnotationHighlight(null, {'graphName': 'test-graph', 'annotationName': 'runArrow'});
+  Smartgraphs.statechart.sendAction('toggleAnnotationHighlight', null, {'graphName': 'test-graph', 'annotationName': 'runArrow'});
   equals(runArrow.get('isHighlighted'), !originalHighlighted, "The isHighlighted property should be the inverse of its original value");
 });
