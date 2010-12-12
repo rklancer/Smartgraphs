@@ -348,6 +348,7 @@ module("ActivityStepController <--> state interaction", {
   },
   
   teardown: function () {
+    SC.RunLoop.begin().end();     // clean up any pending actions sent by invokeLast in enterState
     teardown.mocks();
   }
 });
