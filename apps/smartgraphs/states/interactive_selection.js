@@ -10,13 +10,11 @@
   In this application state, the student updates the 'points' property of an annotation by clicking on points in 
   a dataset. This can continue until we leave this state (for example, when the activity step is submitted.)
 
-  @extends SC.Responder
+  @extends SC.State
   @version 0.1
 */
-Smartgraphs.INTERACTIVE_SELECTION = SC.Responder.create(
+Smartgraphs.INTERACTIVE_SELECTION = SC.State.extend(
 /** @scope Smartgraphs.INTERACTIVE_SELECTION.prototype */ {
-
-  nextResponder: Smartgraphs.ACTIVITY_STEP,
 
   /**
    The annotation object we're updating
@@ -32,25 +30,22 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.Responder.create(
   */
   dataset: null,
   
-  didBecomeFirstResponder: function () {
+  
+  enterState: function () {
     // disable submission until a selection is made...
-    Smartgraphs.sendAction('disableSubmission');
+    Smartgraphs.statechart.sendAction('disableSubmission');
     
-    var dataset = this.get('dataset');
+    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
     this._oldIsSelectable = dataset.get('isSelectable');
     dataset.set('isSelectable', NO);
   },
   
-  willLoseFirstResponder: function () {
-    var dataset = this.get('dataset');
+  exitState: function () {
+    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
     dataset.set('isSelectable', this._oldIsSelectable);
-    this.set('dataset', null);
-    this.set('annotation', null);
+    Smartgraphs.interactiveSelectionController.set('dataset', null);
+    Smartgraphs.interactiveSelectionController.set('annotation', null);
   },
-  
-  // ..........................................................
-  // ACTIONS
-  //
   
   /** 
     This event is fired by DatapointViews whenever the user clicks on a data point. We ignore clicks on data points in
@@ -63,12 +58,12 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.Responder.create(
       The dataPointView that was clicked on
   */
   dataPointSelected: function (dataPointView) {
-    var dataset = this.get('dataset');
+    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
     var point = dataPointView.get('content');
     
     if (dataset && point.get('dataset') === dataset) {
-      this.setPath('annotation.point', point);
-      Smartgraphs.sendAction('enableSubmission');
+      Smartgraphs.interactiveSelectionController.setPath('annotation.point', point);
+      Smartgraphs.statechart.sendAction('enableSubmission');
     }
   },
   

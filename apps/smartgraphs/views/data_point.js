@@ -53,7 +53,7 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
   },
   
   mouseDown: function () {
-    Smartgraphs.sendAction('dataPointSelected', this, null);
+    Smartgraphs.statechart.sendAction('dataPointSelected', this, null);
     // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
     // also handle it
     return NO;

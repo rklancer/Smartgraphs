@@ -48,10 +48,20 @@ module("Smartgraphs.ACTIVITY_STEP", {
     datasetView = graphView.getPath('graphCanvasView.dataHolder.childViews').objectAt(0);
 
     newSession();
-    setup.mock(Smartgraphs.ACTIVITY, 'nextResponder', null);
     setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
     setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP);
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'ACTIVITY',
+        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY')
+      })
+    }));
+
+    SC.RunLoop.begin();
+    Smartgraphs.statechart.initStatechart();
+    Smartgraphs.statechart.gotoState('ACTIVITY_STEP');
+    SC.RunLoop.end();
   },
 
   teardown: function () {
@@ -67,8 +77,8 @@ test("creating a HighlightedPoint record with color param", function () {
   var startingAnnotationCount = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length');
   var controllerAnnotationCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
   // create the annotation
-  var result = Smartgraphs.ACTIVITY_STEP.createAnnotation(null, {'type': Smartgraphs.HighlightedPoint, 'name': "TestHighlighted", 'graphName': 'test-graph'});
-  equals( result, YES, "method returns YES");
+  var handlingState = Smartgraphs.statechart.sendAction('createAnnotation', null, {'type': Smartgraphs.HighlightedPoint, 'name': "TestHighlighted", 'graphName': 'test-graph'});
+  equals( handlingState.get('name'), 'ACTIVITY_STEP', "ACTIVITY_STEP should have handled the createAnnotation action");
   equals( Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length'), startingAnnotationCount + 1, "There should be one more HighlightedPoint annotation in the store");
   equals( Smartgraphs.firstGraphController.get('annotationList').get('length'), controllerAnnotationCount + 1, "There should be one more annotation associated with the controller");
   ok( Smartgraphs.firstGraphController.findAnnotationByName('TestHighlighted').kindOf(Smartgraphs.HighlightedPoint), "The controller can find the annotation, which is the appropriate type");

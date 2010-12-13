@@ -7,7 +7,7 @@
 config :all, :required => [:sproutcore]
 
 config :smartgraphs,
-  :required => ['raphael_views/raphael_views', 'raphael_views/g_raphael', 'cc/cc'],
+  :required => ['sproutcore/statechart', 'raphael_views/raphael_views', 'raphael_views/g_raphael', 'cc/cc'],
   :theme => :pig
 
 config 'raphael_views/raphael_views', 

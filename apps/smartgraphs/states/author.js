@@ -5,21 +5,18 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('states/ready');
 
 /** @class
 
   The authoring mode of the application.
 
-  @extends SC.Responder
+  @extends SC.State
   @version 0.1
 */
-Smartgraphs.AUTHOR = SC.Responder.create(
-/** @scope Smartgraphs.START.prototype */ {
-
-  nextResponder: Smartgraphs.READY,
+Smartgraphs.AUTHOR = SC.State.extend(
+/** @scope Smartgraphs.AUTHOR.prototype */ {
   
-  didBecomeFirstResponder: function () {
+  enterState: function () {
     Smartgraphs.appWindowController.showAuthorView();
     Smartgraphs.toolbarController.showRunButton();
     Smartgraphs.activityPagesController.set('shouldShowStepsInOutline', NO);
@@ -28,26 +25,25 @@ Smartgraphs.AUTHOR = SC.Responder.create(
     Smartgraphs.activityViewController.set('enableBackAndForward', YES);
   },
   
-  willLoseFirstResponder: function () {
+  exitState: function () {
     Smartgraphs.activityPagesController.set('shouldShowStepsInOutline', YES);
     Smartgraphs.activityOutlineController.set('shouldSelectPageInOutline', NO);
     Smartgraphs.activityOutlineController.set('isSelectable', NO);
     Smartgraphs.activityViewController.set('enableBackAndForward', NO);
   },
-  
-  
+
   // ..........................................................
   // ACTIONS
   //
   
   openActivity: function () {
-    Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', YES);
+    Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', YES);
     return NO;    // let READY handle the rest.
   },
   
   runActivity: function () {
-    Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', NO);
-    Smartgraphs.makeFirstResponder(Smartgraphs.LOADING_ACTIVITY);
+    Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', NO);
+    this.gotoState('LOADING_ACTIVITY');
     return YES;
   },
   

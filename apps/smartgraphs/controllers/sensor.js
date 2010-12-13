@@ -79,10 +79,10 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     }
 
     if (this.get('sensorIsReady')) {
-      Smartgraphs.sendAction('sensorHasLoaded');
+      Smartgraphs.statechart.sendAction('sensorHasLoaded');
     }
     else {
-      Smartgraphs.sendAction('waitForSensorToLoad');
+      Smartgraphs.statechart.sendAction('waitForSensorToLoad');
     }
 
     return YES;
@@ -149,7 +149,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     SC.RunLoop.begin();
     this.set('sensorIsReady', YES);
     if (this._inputIsEnabled) {
-      Smartgraphs.sendAction('sensorHasLoaded');
+      Smartgraphs.statechart.sendAction('sensorHasLoaded');
     }
     SC.RunLoop.end();
   },
@@ -182,7 +182,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
 
         setTimeout( function () {
           SC.RunLoop.begin();
-          Smartgraphs.sendAction('stopSensor');
+          Smartgraphs.statechart.sendAction('stopSensor');
           SC.RunLoop.end();
         }, 10);
 

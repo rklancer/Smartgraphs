@@ -40,21 +40,21 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     this.setupPanes();
     Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
     // enableSubmission *before* executing startCommands -- they might disable submission
-    Smartgraphs.sendAction('enableSubmission');
+    Smartgraphs.statechart.sendAction('enableSubmission');
     this.executeCommands(this.get('startCommands'));
     this.setupTriggers();
   
     // does the step goes "straight through"?
     if (this.get('shouldFinishImmediately')) {
-      Smartgraphs.sendAction('submitStep');
+      Smartgraphs.statechart.sendAction('submitStep');
     }
     else {
-      Smartgraphs.sendAction('waitForResponse');
+      Smartgraphs.statechart.sendAction('waitForResponse');
     }
   },
   
   setupPanes: function () {
-    Smartgraphs.sendAction('setPaneConfig', this, this.get('paneConfig'));
+    Smartgraphs.statechart.sendAction('setPaneConfig', this, this.get('paneConfig'));
     
     var panes = this.get('panes');
     for (var key in panes) {
@@ -68,19 +68,19 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (!pane) return;
     
     if (config === null) {
-      Smartgraphs.sendAction('hidePane', this, pane);
+      Smartgraphs.statechart.sendAction('hidePane', this, pane);
       return;
     }
     
     switch (config.type) {
       case 'graph': 
-        Smartgraphs.sendAction('showGraph', this, { pane: pane, name: config.name });
+        Smartgraphs.statechart.sendAction('showGraph', this, { pane: pane, name: config.name });
         return;        
       case 'table':
-        Smartgraphs.sendAction('showTable', this, { pane: pane, datasetName: config.datasetName } );
+        Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, datasetName: config.datasetName } );
         return;
       case 'image':
-        Smartgraphs.sendAction('showImage', this, { pane: pane, path: config.path });
+        Smartgraphs.statechart.sendAction('showImage', this, { pane: pane, path: config.path });
         return;
     }
   },
@@ -93,7 +93,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     var self = this;
     commands.forEach(function (command) {
-      Smartgraphs.sendAction(command.action, self, command.literalArgs);
+      Smartgraphs.statechart.sendAction(command.action, self, command.literalArgs);
     });
   },
   
@@ -118,7 +118,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       if (inspector) {
         this.set('submissibilityInspectorInstance', inspector);
         // if (and only if) we have a valid inspector, it is its job to enable submission
-        Smartgraphs.sendAction('disableSubmission');
+        Smartgraphs.statechart.sendAction('disableSubmission');
         inspector.addObserver('value', this, this.checkSubmissibility);
         inspector.watch();
       }
@@ -136,10 +136,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     //console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
     
     if (valueIsValid && !canSubmit) {
-      Smartgraphs.sendAction('enableSubmission');
+      Smartgraphs.statechart.sendAction('enableSubmission');
     }
     else if (canSubmit && !valueIsValid) {
-      Smartgraphs.sendAction('disableSubmission');
+      Smartgraphs.statechart.sendAction('disableSubmission');
     }
   },
   
@@ -172,7 +172,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       for (var i = 0; i < branches.length; i++) {
         branch = branches.objectAt(i);
         if (Smartgraphs.evaluate(branch.criterion, value)) {
-          Smartgraphs.sendAction('gotoStep', this, { stepId: branch.step });
+          Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: branch.step });
           return;
         }
       }
@@ -181,7 +181,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     var defaultBranch = this.get('defaultBranch');
     
     if (defaultBranch) {
-      Smartgraphs.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
+      Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
     }
   },
   

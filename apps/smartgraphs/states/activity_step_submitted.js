@@ -5,8 +5,6 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('states/activity');
-
 /** @class
   
   State representing that the currently open ActivityStep has been submitted.
@@ -22,27 +20,25 @@ sc_require('states/activity');
   the page, the system transitions to the ACTIVITY_PAGE_DONE state. If this step is not intended to be a terminal 
   step and no step has been branched to, it is considered an error.
 
-  @extends SC.Responder
+  @extends SC.State
   @version 0.1
 */
 
-Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
+Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.State.extend(
 /** @scope Smartgraphs.ACTIVITY_STEP_SUBMITTED.prototype */ {
-
-  nextResponder: Smartgraphs.ACTIVITY,
   
-  didBecomeFirstResponder: function () {
+  enterState: function () {
     var oldStep = Smartgraphs.activityStepController.get('content');
     Smartgraphs.activityStepController.handleSubmission();
     
     // if we didn't change steps after submission completed, then there must be no more steps for this page.
     var newStep = Smartgraphs.activityStepController.get('content');
     if (newStep === oldStep && oldStep.get('isFinalStep')) {
-      Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_PAGE_DONE);
+      this.gotoState('ACTIVITY_PAGE_DONE');
     }
   },
    
-  willLoseFirstResponder: function () {
+  exitState: function () {
     Smartgraphs.activityStepController.cleanup();
   },
   
@@ -66,7 +62,7 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.Responder.create(
   gotoStep: function (context, args) {
     var step = Smartgraphs.store.find(Smartgraphs.ActivityStep, args.stepId);
     Smartgraphs.activityStepController.set('content', step);
-    Smartgraphs.makeFirstResponder(Smartgraphs.ACTIVITY_STEP_LOADING);    
+    this.gotoState('ACTIVITY_STEP');
     return YES;
   },
 

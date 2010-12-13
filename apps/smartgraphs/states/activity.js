@@ -6,29 +6,65 @@
 /*globals Smartgraphs */
 
 
-sc_require('states/ready');
-
 /** @class
 
   Superstate representing that the application is running an Activity.
 
-  @extends SC.Responder
+  @extends SC.State
   @version 0.1
 */
 
-Smartgraphs.ACTIVITY = SC.Responder.create(
-/** @scope Smartgraphs.ACTIVITY.prototype */ {
+Smartgraphs.ACTIVITY = SC.State.extend(
+  /** @scope Smartgraphs.ACTIVITY.prototype */ {
   
-  nextResponder: Smartgraphs.READY,
+  initialSubstate: 'ACTIVITY_PAGE_START',
   
-  didBecomeFirstResponder: function() {
+  enterState: function() {
     Smartgraphs.appWindowController.showActivityView();
   },
-  
-  willLoseFirstResponder: function () {
+
+  exitState: function () {
     Smartgraphs.activityController.cleanup();
   },
   
+  
+  ACTIVITY_PAGE_START: SC.State.design({
+    enterState: function () {
+      Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
+      this.gotoState('ACTIVITY_STEP');
+    }
+  }),
+  
+  
+  ACTIVITY_STEP: SC.State.plugin('Smartgraphs.ACTIVITY_STEP'),
+  
+  
+  ACTIVITY_STEP_SUBMITTED: SC.State.plugin('Smartgraphs.ACTIVITY_STEP_SUBMITTED'),
+  
+  
+  ACTIVITY_PAGE_DONE: SC.State.design({
+    
+    enterState: function() {    
+      if (Smartgraphs.activityPagesController.get('isLastPage')) {
+        this.gotoState('ACTIVITY_DONE');
+      }
+      else {
+        Smartgraphs.activityController.set('canGotoNextPage', YES);
+      }
+    },
+
+    exitState: function() {
+      Smartgraphs.activityController.set('canGotoNextPage', NO);
+      Smartgraphs.activityPageController.cleanup();
+    },
+
+    gotoNextPage: function () {
+      Smartgraphs.activityPagesController.selectNextPage();
+      this.gotoState('ACTIVITY_PAGE_START');
+    }
+  }),
+
+
   // ..........................................................
   // ACTIONS
   //
@@ -37,7 +73,7 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     Open author's view of the currently running activity.
   */
   openAuthorView: function () {
-    Smartgraphs.makeFirstResponder(Smartgraphs.AUTHOR);
+    this.gotoState('AUTHOR');
     return YES;
   },
   
@@ -47,7 +83,7 @@ Smartgraphs.ACTIVITY = SC.Responder.create(
     openActivity handler (defined in the READY state) is also called, thereby actually loading the activity.
   */
   openActivity: function () {
-    Smartgraphs.LOADING_ACTIVITY.set('openAuthorViewAfterLoading', NO);
+    Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', NO);
     return NO;    // let READY handle the rest.
   },
   

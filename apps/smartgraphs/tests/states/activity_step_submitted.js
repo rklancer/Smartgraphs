@@ -3,18 +3,29 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setupUserAndSessionFixtures newSession restoreUserAndSessionFixtures */
-
-var oldStore;
+/*globals Smartgraphs module test ok equals same stop start setup teardown*/
 
 module("Smartgraphs.ACTIVITY_STEP_SUBMITTED", {
   setup: function () {
-    oldStore = Smartgraphs.store;
-    Smartgraphs.store = SC.Store.create().from(SC.FixturesDataSource.create());
+    setup.store();
+    
+    setup.mock(Smartgraphs, 'ACTIVITY_STEP_SUBMITTED', Smartgraphs.ACTIVITY_STEP_SUBMITTED.extend({
+      enterState: function () {}
+    }));
+    
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'ACTIVITY_STEP_SUBMITTED',
+        ACTIVITY_STEP_SUBMITTED: SC.State.plugin('Smartgraphs.ACTIVITY_STEP_SUBMITTED')
+      })
+    }));
+    
+    Smartgraphs.statechart.initStatechart();
   },
 
   teardown: function () {
-    Smartgraphs.store = oldStore;
+    teardown.all();
   }
 });
 
@@ -39,8 +50,8 @@ test("creating a HighlightedPoint record from the selection in a dataset", funct
   equals(dataset.get('selection').get('length'), 1, "The dataset has one point selected");
 
   // create the annotation
-  var result = Smartgraphs.ACTIVITY_STEP_SUBMITTED.createHighlightedPointFromSelection(null, {'graphName': graphName, 'datasetName': 'walking-example-1', 'highlightedPointName': 'FirstPointOfSlope'});
-  equals(result, YES, "method returns YES");
+  var handlingState = Smartgraphs.statechart.sendAction('createHighlightedPointFromSelection', null, {'graphName': graphName, 'datasetName': 'walking-example-1', 'highlightedPointName': 'FirstPointOfSlope'});
+  equals( handlingState.get('name'), 'ACTIVITY_STEP_SUBMITTED', "ACTIVITY_STEP_SUBMITTED should handle the createHighlightedPointFromSelection action");
   var currentAnnotationCount = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length');
   equals(currentAnnotationCount, startingAnnotationCount + 1, "There is one more HighlightedPoint");
   var newHp = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').lastObject();
