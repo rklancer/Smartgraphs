@@ -62,7 +62,7 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.State.extend(
   gotoStep: function (context, args) {
     var step = Smartgraphs.store.find(Smartgraphs.ActivityStep, args.stepId);
     Smartgraphs.activityStepController.set('content', step);
-    this.gotoState('ACTIVITY_STEP_START');
+    this.gotoState('ACTIVITY_STEP');
     return YES;
   },
 

@@ -31,13 +31,6 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   ACTIVITY_PAGE_START: SC.State.design({
     enterState: function () {
       Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
-      this.gotoState('ACTIVITY_STEP_START');
-    }
-  }),
-  
-  
-  ACTIVITY_STEP_START: SC.State.design({
-    enterState: function () {
       this.gotoState('ACTIVITY_STEP');
     }
   }),
