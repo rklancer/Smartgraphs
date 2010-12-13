@@ -34,16 +34,53 @@ Smartgraphs.authorPageDef = SC.Page.extend({
 
           classNames: 'text-wrapper'.w(),
 
-          childViews: 'introText'.w(),
-
-          introText: SC.LabelView.design({            
+          childViews: 'introTextView introTextHintView'.w(),
+          
+          introTextView: SC.LabelView.design({            
             valueBinding: 'Smartgraphs.activityPageController.introText',
-            isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText'),
             useStaticLayout: YES,
             escapeHTML: NO,
             isEditable: YES,
-            isInlineEditorMultiline: YES
+            isInlineEditorMultiline: YES,
+            
+            showEditor: NO,
+            showEditorDidChange: function () {
+              if (this.get('showEditor')) this.beginEditing();
+            }.observes('showEditor'),
+            
+            beginEditing: function () {
+              if (this.get('frame').height < 100) {
+                SC.RunLoop.begin();
+                this.adjust('height', 100);
+                SC.RunLoop.end();
+              }
+              sc_super();
+            },
+            
+            inlineEditorDidEndEditing: function () {
+              sc_super();
+              this.set('showEditor', NO);
+              this.set('layout', {});            // be sure to unset any explicit height we may have set!
+            }
+          }),
+          
+          introTextHintView: SC.LabelView.design({
+            useStaticLayout: YES,
+            value: "<p>Introduce Page Here...</p>",
+            classNames: 'hint'.w(),
+            escapeHTML: NO,
+            
+            showEditorBinding: SC.Binding.oneWay('.parentView.introTextView.showEditor'),
+            introTextIsEmptyBinding: SC.Binding.not('Smartgraphs.activityPageController.introText'),
+            isVisible: function () {
+              return this.get('introTextIsEmpty') && !this.get('showEditor');
+            }.property('introTextIsEmpty', 'showEditor').cacheable(),
+
+            doubleClick: function () {
+              this.setPath('parentView.introTextView.showEditor', YES);
+            }            
           })
+          
         })
       })
     }),

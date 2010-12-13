@@ -81,6 +81,11 @@ body.sc-theme {
   margin: 10px;
 }
 
+.sc-view.hint {
+  color: #666666;
+  font-style: italic;
+}
+
 .sc-view.dialog-text {
   margin: 10px 0 10px 0;
   border: 1px solid #cccccc;
