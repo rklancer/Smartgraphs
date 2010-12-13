@@ -36,9 +36,13 @@ Smartgraphs.authorPageDef = SC.Page.extend({
 
           childViews: 'introText'.w(),
 
-          introText: SC.StaticContentView.design({            
-            contentBinding: 'Smartgraphs.activityPageController.introText',
-            isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText')
+          introText: SC.LabelView.design({            
+            valueBinding: 'Smartgraphs.activityPageController.introText',
+            isVisibleBinding: SC.Binding.bool('Smartgraphs.activityPageController.introText'),
+            useStaticLayout: YES,
+            escapeHTML: NO,
+            isEditable: YES,
+            isInlineEditorMultiline: YES
           })
         })
       })

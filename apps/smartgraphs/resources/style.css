@@ -66,6 +66,7 @@ body.sc-theme {
 
 .sc-view.text-wrapper .sc-view {
   font-size: 16px;
+  line-height: 1.4em;
 }
 
 .text-wrapper p, .text-wrapper h1, .text-wrapper img {
