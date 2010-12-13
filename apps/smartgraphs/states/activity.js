@@ -243,6 +243,104 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     return YES;
   },
   
+  /** 
+    Create an IndicatingArrow Annotation with the name arrowName in the current session, pointing
+    at a specific dataPoint.
+    
+    @param context
+    @param args
+    
+    @param {String} args.arrowName
+      The name for this annotation
+    @param {Smartgraphs.DataPoint} args.point
+      The data point the arrow will indicate.
+    @param {String} [args.color='#cc0000']
+      The color of the arrow.
+    @param {Number} [args.angle=335]
+    
+  */
+  createIndicatingArrowFromDataPoint: function (context, args) {
+    var indicator = 
+      Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
+        dataPoint: args.point.get('id'),
+        pointAngle: args.angle,
+        color: args.color
+      });
+    return YES;
+  },
+  
+  /** 
+    Create an IndicatingArrow Annotation with the name arrowName in the current session, pointing
+    at a specific HighlightedPoint in a named table or graph.
+    
+    @param context
+    @param args
+    
+    @param {String} args.arrowName
+      The name for this annotation
+    @param {String} args.point
+      The name of the HighlightedPoint annotation the arrow will indicate
+    @param {String} args.graphName
+      The name of the graph which has the named HighlightedPoint. At least one of graphName or tableName must be provided.
+    @param {String} args.tableName
+      The name of the table which has the named HighlightedPoint. At least one of graphName or tableName must be provided.
+    @param {String} [args.color='#cc0000']
+      The color of the arrow.
+    @param {Number} [args.angle=335]
+    
+  */
+  createIndicatingArrowFromHighlightedPoint: function (context, args) {
+    
+    var controller;
+    if (args.graphName) {
+      controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    }
+    else if (args.tableName) {
+      controller = Smartgraphs.TableController.controllerForName[args.tableName];
+    }
+  
+    if (!controller) return YES;
+    
+    var highlightedPoint = controller.findAnnotationByName(args.point).get('id');
+    var indicator = 
+      Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
+        annotation: highlightedPoint,
+        pointAngle: args.angle,
+        color: args.color
+      });
+    return YES;
+  },
+  
+  /** 
+    Create an IndicatingArrow Annotation with the name arrowName in the current session, pointing
+    at a specific set of coordinates.
+    
+    @param context
+    @param args
+    
+    @param {String} args.arrowName
+      The name for this annotation
+    @param {Number} args.x
+      The x-coordinate of the point being indicated
+    @param {Number} args.y
+      The y-coordinate of the point being indicated
+    @param {String} [args.color='#cc0000']
+      The color of the arrow.
+    @param {Number} [args.angle=335]
+    
+  */
+  createIndicatingArrowFromCoordinates: function (context, args) {
+    var indicator = 
+      Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
+        dataPoint: args.point.get('id'),
+        specificX: args.x,
+        specificY: args.y,
+        pointAngle: args.angle,
+        color: args.color
+      });
+    return YES;
+  },
+  
   /**
     For the named annotation, toggle the isHighlighted property. (If truthy, set to false; if falsy, set to true.)
     
