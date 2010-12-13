@@ -154,7 +154,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The name of the other HighlightedPoint annotation.      
     @param {String} args.arrowName
       The name given to the session-scoped Arrow annotation which will be created.
-    @param {String} args.color
+    @param {String} [args.color='#000000']
       The RGB color definition for the color to render the line.
   */
   createRiseArrow: function (context, args) {
@@ -166,6 +166,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
     var firstAnnotationPoint = controller.findAnnotationByName(args.firstPoint).get('point');
     var secondAnnotationPoint = controller.findAnnotationByName(args.secondPoint).get('point');
+    // Default to black
     var color = args.color ? args.color : "#000000";
     // Reorder the points such that the first point is the leftmost one, i.e. the lower x-value
     var points;
@@ -208,7 +209,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The name of the other HighlightedPoint annotation.      
     @param {String} args.arrowName
       The name given to the session-scoped Arrow annotation which will be created.
-    @param {String} args.color
+    @param {String} [args.color='#000000']
       The RGB color definition for the color to render the line.
   */
   createRunArrow: function (context, args) {
@@ -220,6 +221,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
     var firstAnnotationPoint = controller.findAnnotationByName(args.firstPoint).get('point');
     var secondAnnotationPoint = controller.findAnnotationByName(args.secondPoint).get('point');
+    // default to black
     var color = args.color ? args.color : "#000000";
     // Reorder the points such that the first point is the leftmost one, i.e. the lower x-value
     var points;
