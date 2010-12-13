@@ -67,6 +67,13 @@ body.sc-theme {
 .sc-view.text-wrapper .sc-view {
   font-size: 16px;
   line-height: 1.4em;
+  padding: 1px;
+}
+
+.sc-view.text-wrapper .sc-view.hovered {
+  border: 1px solid #6699cc;
+  padding: 0;
+  background-color: #ffffff;
 }
 
 .text-wrapper p, .text-wrapper h1, .text-wrapper img {

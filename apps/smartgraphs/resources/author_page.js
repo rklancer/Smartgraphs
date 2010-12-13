@@ -61,6 +61,14 @@ Smartgraphs.authorPageDef = SC.Page.extend({
               sc_super();
               this.set('showEditor', NO);
               this.set('layout', {});            // be sure to unset any explicit height we may have set!
+            },
+            
+            mouseEntered: function () {
+              this.$().addClass('hovered');
+            },
+            
+            mouseExited: function () {
+              this.$().removeClass('hovered');
             }
           }),
           
@@ -78,7 +86,15 @@ Smartgraphs.authorPageDef = SC.Page.extend({
 
             doubleClick: function () {
               this.setPath('parentView.introTextView.showEditor', YES);
-            }            
+            },
+            
+            mouseEntered: function () {
+              this.$().addClass('hovered');
+            },
+            
+            mouseExited: function () {
+              this.$().removeClass('hovered');
+            }
           })
           
         })
