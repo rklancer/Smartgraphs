@@ -54,6 +54,7 @@ Smartgraphs.activityPageDef = SC.Page.extend({
           
             activityStepDialog: SC.View.design({          
               useStaticLayout: YES,
+              isVisibleBinding: 'Smartgraphs.activityStepController.dialogTextHasContent',
             
               childViews: 'beforeText responseTemplate afterText'.w(),
               classNames: 'dialog-text'.w(),

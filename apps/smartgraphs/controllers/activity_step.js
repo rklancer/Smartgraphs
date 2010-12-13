@@ -21,6 +21,13 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   submissibilityInspectorInstance: null,
   
   /**
+    YES iff there is content (a response template or before/after text) to put in the 'dialog text' area
+  */
+  dialogTextHasContent: function () {
+    return this.get('beforeText') || this.get('responseTemplate') || this.get('afterText');
+  }.property('beforeText', 'responseTemplate', 'afterText').cacheable(),
+  
+  /**
     Clean up any stale controller state. Called when we leave ACTIVITY_STEP_SUBMITTED and/or ACTIVITY itself
   */  
   cleanup: function () {
