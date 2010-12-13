@@ -3,33 +3,30 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange rnd setupUserAndSessionFixtures restoreUserAndSessionFixtures newSession */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start setup teardown newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures */
 
-var oldStore;
 var sketch;
 var session;
 var pane;
 var graphView;
 var canvasView;
 var annotationsHolder;
-var oldValidPaneFor;
-var oldMakeFirstResponder;
+var FREEHAND_INPUT, FREEHAND_INPUT_START, FREEHAND_INPUT_READY;
+var gotoState, newState;
 
 function setupFixtures() {
   setupUserAndSessionFixtures();
   
-  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
-  Smartgraphs.Graph.FIXTURES = [
+  setup.fixtures(Smartgraphs.Graph, [
     { url: 'test',
       name: 'test',
       axes: 'test-axes',
       title: 'Test Graph',
       initialDatasets: []
     }
-  ];
+  ]);
   
-  Smartgraphs.Axes.oldFixtures = Smartgraphs.Axes.FIXTURES;
-  Smartgraphs.Axes.FIXTURES = [
+  setup.fixtures(Smartgraphs.Axes, [
     { url: 'test-axes',
 
       xMin: -5,
@@ -44,100 +41,97 @@ function setupFixtures() {
       yLabel: 'yLabel (long)',
       yLabelAbbreviated: 'yLabel (abbrev)'
     }
-  ];
-  
-  oldStore = Smartgraphs.store;
-  Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
-}
-
-function restoreFixtures() {
-  restoreUserAndSessionFixtures();
-  
-  Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
-  Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
-  Smartgraphs.set('store', oldStore);
+  ]);
 }
 
 
 module('Freehand input controllers and states', {
   setup: function () {
     setupFixtures();
+    setup.store();
+    
     newSession();
     session = Smartgraphs.sessionController.get('content');
     sketch = Smartgraphs.sessionController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
     
-    // disable makeFirstResponder by default - tests can spy on it if they want, though
-    oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
-    Smartgraphs.makeFirstResponder = function (state) { };
-        
     Smartgraphs.firstGraphController.openGraph('test');
     Smartgraphs.secondGraphController.openGraph('test');
     
-    // freehandInputController checks validPaneFor...
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'ACTIVITY_STEP_DEFAULT',
+        ACTIVITY_STEP_DEFAULT: SC.State.design(),
+        FREEHAND_INPUT: SC.State.plugin('Smartgraphs.FREEHAND_INPUT')
+      })
+    }));
     
-    oldValidPaneFor = Smartgraphs.activityViewController.validPaneFor;
-    Smartgraphs.activityViewController.validPaneFor = function (pane) { return pane; };
-  },    
+    Smartgraphs.statechart.initStatechart();
+    FREEHAND_INPUT = Smartgraphs.statechart.getState('FREEHAND_INPUT'); 
+    
+    newState = null;
+    gotoState = Smartgraphs.statechart.gotoState;
+    setup.mock(Smartgraphs.statechart, 'gotoState', function (state) {
+      newState = state;
+    });
+  },
   
   teardown: function () {
     Smartgraphs.firstGraphController.clear();
     Smartgraphs.secondGraphController.clear();
-    Smartgraphs.activityViewController.validPaneFor = oldValidPaneFor;
-    Smartgraphs.makeFirstResponder = oldMakeFirstResponder;    
-    restoreFixtures();
+    restoreUserAndSessionFixtures();
+    teardown.all();
   }
 });
 
 
 test('sketch should be set up correctly', function () {
+  expect(2);
   ok(sketch.get('isExample') === NO, 'test-sketch should have isExample === NO');
   equals(sketch.get('session'), session, 'test-sketch.session should be the current session');
 });
 
 
 test('moving into FREEHAND_INPUT state without first registering the controller and sketch name returns us to ACTIVITY_STEP state', function () {
-  var newState;
+  expect(5);
+
   var ret;
-  
-  // spy on makeFirstResponder without actually making the state transition (makeFirstResponder is restored on teardown)
-  Smartgraphs.makeFirstResponder = function (state) {
-    newState = state;
-  };
+  // don't do the exitState stuff, it'll throw exceptions
+  var exitState = FREEHAND_INPUT.exitState;
+  setup.mock(FREEHAND_INPUT, 'exitState', function () {});
   
   // do at least add the sketch to the graph before attempting to transition to FREEHAND_INPUT
   Smartgraphs.firstGraphController.addAnnotation(sketch);
   
-  // don't actually make FREEHAND_INPUT first responder, but pretend we did...
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();  
-  equals(newState, Smartgraphs.ACTIVITY_STEP, 'FREEHAND_INPUT should have attempted to transition back to ACTIVITY_STEP after becoming first responder with register() having been called');
-  
+  newState = null;
+  gotoState.call(Smartgraphs.statechart, 'FREEHAND_INPUT');
+  equals(newState, 'ACTIVITY_STEP_DEFAULT', 'FREEHAND_INPUT should have attempted to transition back to ACTIVITY_STEP_DEFAULT after becoming first responder with register() having been called');
+
+  gotoState.call(Smartgraphs.statechart, 'ACTIVITY_STEP');
   // now attempt to register with an sketch name that isn't found on the graph
   ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'nonexistent-sketch');
-  newState = null;
-  
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
   ok(ret === NO, 'freehandInputController.register() should have returned NO when an invalid sketch name was passed');
-  equals(newState, Smartgraphs.ACTIVITY_STEP, 'FREEHAND_INPUT should have attempted to transition back to ACTIVITY_STEP after becoming first responder with an invalid sketch name given to register()');
+
+  newState = null;
+  gotoState.call(Smartgraphs.statechart, 'FREEHAND_INPUT');  
+  equals(newState, 'ACTIVITY_STEP_DEFAULT', 'FREEHAND_INPUT should have attempted to transition back to ACTIVITY_STEP_DEFAULT after becoming first responder with an invalid sketch name given to register()');
 
   ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
-
   ok(ret === YES, 'freehandInputController.register() should have returned YES when a valid controller and sketch name were passed.');
-  equals(newState, Smartgraphs.FREEHAND_INPUT_READY, 'because a register() worked, FREEHAND_INPUT should have attempted to transition to FREEHAND_INPUT_READY on becoming firsr responder');
+
+  gotoState.call(Smartgraphs.statechart, 'ACTIVITY_STEP');
+  newState = null;
+  gotoState.call(Smartgraphs.statechart, 'FREEHAND_INPUT');
+  equals(newState, 'FREEHAND_INPUT_READY', 'because a register() worked, FREEHAND_INPUT should have attempted to transition to FREEHAND_INPUT_READY upon becoming the current state');
   
   // cleanup state after FREEHAND_INPUT
-  Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
+  exitState.call(FREEHAND_INPUT);
 });
 
 
 test('hide start and stop buttons happens when in "prediction graph" mode', function () {
-  var newState;
+  expect(8);
   var ret;
-
-  // spy on makeFirstResponder without actually making the state transition (makeFirstResponder is restored on teardown)
-  Smartgraphs.makeFirstResponder = function (state) {
-    newState = state;
-  };
 
   // do at least add the sketch to the graph before attempting to transition to FREEHAND_INPUT
   Smartgraphs.firstGraphController.addAnnotation(sketch);
@@ -154,12 +148,12 @@ test('hide start and stop buttons happens when in "prediction graph" mode', func
     "Before registering with the freehandInputController Smartgraphs.activityViewController.clearControlIsVisible should at the wrong visibility setting given to it by this test: NO.");
 
   ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'FREEHAND_INPUT');
 
   equals(ret, YES,
     'freehandInputController.register() should have returned YES when a valid controller and sketch name were passed.');
-  equals(newState, Smartgraphs.FREEHAND_INPUT_READY,
-    'because a register() worked, FREEHAND_INPUT should have attempted to transition to FREEHAND_INPUT_READY on becoming firsr responder');
+  equals(newState, 'FREEHAND_INPUT_READY',
+    'because a register() worked, FREEHAND_INPUT should have attempted to transition to FREEHAND_INPUT_READY on becoming the current state');
 
   // Did Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder()'s call to Smartgraphs.activityViewController.revealOnlyClearControl() happen and work?
   equals(Smartgraphs.activityViewController.get('startControlIsVisible'),  NO,
@@ -170,69 +164,60 @@ test('hide start and stop buttons happens when in "prediction graph" mode', func
     "After registering with the freehandInputController Smartgraphs.activityViewController.clearControlIsVisible should be YES.");
 
   // cleanup state after FREEHAND_INPUT
-  Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'ACTIVITY_STEP_DEFAULT');
 });
 
 
 test('moving into and out of FREEHAND_INPUT after registering a controller and sketch name should result in a call to graphController.enableInput and graphController.disableInput', function () {
+  expect(7);
   var startCallCount = 0;
-  var oldenableInput = Smartgraphs.firstGraphController.startFreehandInput;
-  Smartgraphs.firstGraphController.startFreehandInput = function () {
+  setup.mock(Smartgraphs.firstGraphController, 'startFreehandInput', function () {
     startCallCount++;
-  };
+  }); 
   
   var endCallCount = 0;
-  var olddisableInput = Smartgraphs.firstGraphController.endFreehandInput;
-  Smartgraphs.firstGraphController.endFreehandInput = function () {
+  setup.mock(Smartgraphs.firstGraphController, 'endFreehandInput', function () {
     endCallCount++;
-  };
+  });
   
   Smartgraphs.firstGraphController.addAnnotation(sketch);
   var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
-  
   ok(ret === YES, 'freehandInputController.register() should have returned YES');
   
   equals(startCallCount, 0, 'graphController.startFreehandInput should not have been called (should have been called 0 times) before FREEHAND_INPUT state was entered');
   equals(endCallCount, 0, 'graphController.endFreehandInput should not have been called (should have been called 0 times) before FREEHAND_INPUT state was entered');
   
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'FREEHAND_INPUT');
   
   equals(startCallCount, 1, 'graphController.startFreehandInput should have been called 1 time after FREEHAND_INPUT state was entered');
   equals(endCallCount, 0, 'graphController.endFreehandInput should not have been called (should have been called 0 times) after FREEHAND_INPUT state was entered but not exited');
   
-  Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'ACTIVITY_STEP_DEFAULT');
   
   equals(startCallCount, 1, 'graphController.startFreehandInput should have been called exactly 1 time after FREEHAND_INPUT state was entered and exited');
   equals(endCallCount, 1, 'graphController.endFreehandInput should have been called exactly 1 time after FREEHAND_INPUT state was entered and exited');
-  
-  // remove spies
-  Smartgraphs.firstGraphController.startFreehandInput = oldenableInput;
-  Smartgraphs.firstGraphController.endFreehandInput = olddisableInput;
 });
 
 
 test('attempts to register a different controller and sketch pair should be rejected while in FREEHAND_SKETCH state but should be allowed after leaving FREEHAND_SKETCH state', function () {
+  expect(11);
   var firstGraphStarts = 0;
-  var firstenableInput = Smartgraphs.firstGraphController.startFreehandInput;
-  Smartgraphs.firstGraphController.startFreehandInput = function () {
+  setup.mock(Smartgraphs.firstGraphController, 'startFreehandInput', function () {
     firstGraphStarts++;
-  };
+  });
   var firstGraphEnds = 0;
-  var firstdisableInput = Smartgraphs.firstGraphController.endFreehandInput;
-  Smartgraphs.firstGraphController.endFreehandInput = function () {
+  setup.mock(Smartgraphs.firstGraphController, 'endFreehandInput', function () {
     firstGraphEnds++;
-  };
+  });
 
   var secondGraphStarts = 0;
-  var secondenableInput = Smartgraphs.secondGraphController.startFreehandInput;
-  Smartgraphs.secondGraphController.startFreehandInput = function () {
+  setup.mock(Smartgraphs.secondGraphController, 'startFreehandInput', function () {
     secondGraphStarts++;
-  };
+  });
   var secondGraphEnds = 0;
-  var seconddisableInput = Smartgraphs.secondGraphController.endFreehandInput;
-  Smartgraphs.secondGraphController.endFreehandInput = function () {
+  setup.mock(Smartgraphs.secondGraphController, 'endFreehandInput', function () {
     secondGraphEnds++;
-  };
+  });
   
   // add the sketch to both firstGraph and secondGraph 
   Smartgraphs.firstGraphController.addAnnotation(sketch);  
@@ -242,7 +227,7 @@ test('attempts to register a different controller and sketch pair should be reje
   
   ok(ret === YES, 'freehandInputController.register() should have returned YES when firstGraphController test-sketch was opened');
   
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'FREEHAND_INPUT');
   
   equals(firstGraphStarts, 1, 'firstGraphController.startFreehandInput should have been called 1 time after FREEHAND_INPUT state was entered');
   equals(secondGraphStarts, 0, 'secondGraphController.startFreehandInput should have been called 0 times before being registered.');
@@ -251,7 +236,7 @@ test('attempts to register a different controller and sketch pair should be reje
   
   ok(ret === NO, 'freehandInputController.register() should have retured NO when secondGraphController test-sketch were passed while in FREEHAND_INPUT');
 
-  Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'ACTIVITY_STEP_DEFAULT');
   
   equals(firstGraphEnds, 1, 'firstGraphController.endFreehandInput should be called 1 time after FREEHAND_INPUT state was exited');
   equals(secondGraphEnds, 0, 'secondGraphController.endFreehandInput should not have been called despite bogus attempt to register secondGraphController');
@@ -261,28 +246,24 @@ test('attempts to register a different controller and sketch pair should be reje
   
   ok(ret === YES, 'freehandInputController.register() should have retured YES when secondGraphController & test-sketch were passed after we left FREEHAND_INPUT');
 
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'FREEHAND_INPUT');
   
   equals(firstGraphStarts, 1, 'firstGraphController.startFreehandInput should still have been called only 1 time now that secondGraphController is registered');
   equals(secondGraphStarts, 1, 'secondGraphController.startFreehandInpt should have been called 1 time after secondGraphController was registed');
   
-  Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'ACTIVITY_STEP_DEFAULT');
   
   equals(firstGraphEnds, 1, 'firstGraphController.endFreehandInput should be still have been called only 1 time now that secondGraphController is registered');
   equals(secondGraphEnds, 1, 'secondGraphController.endFreehandInput should have been called 1 time after secondGraphController was registered.');
-  
-  // remove spies
-  Smartgraphs.firstGraphController.startFreehandInput = firstenableInput;
-  Smartgraphs.secondGraphController.startFreehandInput = secondenableInput;
-  Smartgraphs.firstGraphController.endFreehandInput = firstdisableInput;
-  Smartgraphs.secondGraphController.endFreehandInput = seconddisableInput;  
 });
 
 
 module('Freehand sketch input', {
   setup: function () {
+    setup.store();
     setupFixtures();
     newSession();
+    
     session = Smartgraphs.sessionController.get('content');
     sketch = Smartgraphs.sessionController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
     
@@ -304,13 +285,21 @@ module('Freehand sketch input', {
     canvasView = graphView.get('graphCanvasView');
     annotationsHolder = canvasView.get('annotationsHolder');
     
-    // disable makeFirstResponder by default - tests can spy on it if they want, though
-    oldMakeFirstResponder = Smartgraphs.makeFirstResponder;
-    Smartgraphs.makeFirstResponder = function (state) { };
+    setup.mock(Smartgraphs.activityViewController, 'validPaneFor', function (pane) { return pane; });
     
-    // required to make freehandInputController.register() happy
-    oldValidPaneFor = Smartgraphs.activityViewController.validPaneFor;
-    Smartgraphs.activityViewController.validPaneFor = function (pane) { return pane; };
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'ACTIVITY_STEP_DEFAULT',
+        ACTIVITY_STEP_DEFAULT: SC.State.design(),
+        FREEHAND_INPUT: SC.State.plugin('Smartgraphs.FREEHAND_INPUT')
+      })
+    }));
+    
+    Smartgraphs.statechart.initStatechart();
+    FREEHAND_INPUT = Smartgraphs.statechart.getState('FREEHAND_INPUT');
+    FREEHAND_INPUT_READY = Smartgraphs.statechart.getState('FREEHAND_INPUT_READY');
+    FREEHAND_INPUT_START = Smartgraphs.statechart.getState('FREEHAND_INPUT_START');
   },
   
   teardown: function () {
@@ -322,15 +311,14 @@ module('Freehand sketch input', {
     
     pane.remove();    
     pane = graphView = canvasView = null;
-    restoreFixtures();
-    
-    Smartgraphs.activityViewController.validPaneFor = oldValidPaneFor;
-    Smartgraphs.makeFirstResponder = oldMakeFirstResponder;
+    restoreUserAndSessionFixtures();
+    teardown.all();
   }
 });
 
 
 test('adding test-sketch annotation via graph controller should result in addition of a FreehandSketchView as a child of GraphView', function () {
+  expect(2);
   var childViews = annotationsHolder.get('childViews');
   var startLength = childViews.get('length');
   
@@ -344,7 +332,8 @@ test('adding test-sketch annotation via graph controller should result in additi
 
 
 test("simulated mouse events should result in rendering the appropriate path string, which a simulated 'clear' button click should clear", function () {
-
+  expect(9);
+  
   // utility stuff.
   var inputArea = canvasView.getPath('axesView.inputArea.layer');
   var offset = graphView.$().offset();
@@ -366,23 +355,29 @@ test("simulated mouse events should result in rendering the appropriate path str
   var valueOfFirstTime;
   var points;
   var raphael;
-  
-  sketchView.oldRender = sketchView.render;
-  sketchView.render = function (context, firstTime) {
+  var originalRender = sketchView.render;
+  setup.mock(sketchView.render = function (context, firstTime) {
     callCount++;
     valueOfFirstTime = firstTime;
     raphael = context.raphael();
     points = this.getPath('item.points');
-    this.oldRender(context, firstTime);
-  };
+    originalRender.call(this, context, firstTime);
+  });
 
+  // interrupt the process of leaving FREEHAND_INPUT_READY on mouseup
+  var freehandSketchCompletedWasCalled = NO;
+  var freehandSketchCompleted = FREEHAND_INPUT_READY.freehandSketchCompleted;
+  setup.mock(FREEHAND_INPUT_READY, 'freehandSketchCompleted', function () {
+    freehandSketchCompletedWasCalled = YES;
+  });
+  
   // open freehand input state
   var ret = Smartgraphs.freehandInputController.register(Smartgraphs.firstGraphController, 'test-sketch');
   ok(ret === YES, 'freehandInputController.register() should return YES when firstGraphController test-sketch was opened');
 
-  Smartgraphs.FREEHAND_INPUT.didBecomeFirstResponder();
-  Smartgraphs.FREEHAND_INPUT_READY.didBecomeFirstResponder();
-
+  gotoState.call(Smartgraphs.statechart, 'FREEHAND_INPUT');
+  same(Smartgraphs.statechart.get('currentStates').getEach('name'), ['FREEHAND_INPUT_READY'], "After entering FREEHAND_INPUT, we should have immediately transitioned to FREEHAND_INPUT_READY");
+  
   // input some events
   fireEvent(inputArea, 'mousedown', 0, 10);
   
@@ -394,26 +389,26 @@ test("simulated mouse events should result in rendering the appropriate path str
   canvasView.getPath('axesView.inputArea').mouseDragged(evt);
   SC.RunLoop.end();
   
+  freehandSketchCompletedWasCalled = NO;
   fireEvent(inputArea, 'mouseup', 40, 50);
-
+  equals( freehandSketchCompletedWasCalled, YES, "The action 'freehandSketchCompleted' should have been sent after mouseup");
   equals(points.get('length'), 3, 'There should be 3 points in the data being rendered by FreehandSketchView');
   var pathStr = raphael.attr('path').toString().split(' ').join(',');   // .split.join normalizes path string for IE
   
   equals(pathStr, "M0,10L20,30L40,50", 'path string should represent the points clicked');
 
   // simulate the normal sequence of state transitions corresponding to finishing freehand input
-  Smartgraphs.FREEHAND_INPUT_COMPLETED.didBecomeFirstResponder();
-
+  freehandSketchCompleted.call(FREEHAND_INPUT_READY);
+  same(Smartgraphs.statechart.get('currentStates').getEach('name'), ['FREEHAND_INPUT_COMPLETED'], "after 'freehandSketchCompleted' action is allowed to execute, we should be in FREEHAND_INPUT_COMPLETED");
+  
   // click 'clear' and test that it renders an empty sketch
   SC.RunLoop.begin();
-  Smartgraphs.FREEHAND_INPUT_COMPLETED.clearControlWasClicked();
-  SC.RunLoop.end(); 
+  Smartgraphs.statechart.sendAction('clearControlWasClicked');
+  SC.RunLoop.end();
   
   equals(points.get('length'), 0, 'There should be 0 points in the data after the sketch is cleared');
   pathStr = raphael.attr('path').toString().split(' ').join(',');   // .split.join normalizes path string for IE
   equals(pathStr, "M0,0", 'path string should be M0,0 after the sketch is cleared');
 
-  Smartgraphs.FREEHAND_INPUT_COMPLETED.willLoseFirstResponder(); 
-  Smartgraphs.FREEHAND_INPUT_READY.willLoseFirstResponder();  
-  Smartgraphs.FREEHAND_INPUT.willLoseFirstResponder();
+  gotoState.call(Smartgraphs.statechart, 'ACTIVITY_STEP_DEFAULT');
 });
