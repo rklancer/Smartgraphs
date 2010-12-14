@@ -53,7 +53,6 @@ end
 
 
 # create a new started test applicaion 
-# configured with mysystem settings
 
 def new_test
   app =  MainApplication.new TEST_SETTINGS
@@ -67,9 +66,6 @@ def new_test
   app.define_path 'description', 'activityPage.activityView.instructionsWrapper.instructionsView.textWrapper.activityStepWrapper', View
   app.define_path 'graph', 'activityPage.activityView.dataWrapper.dataView.contentView.topPaneWrapper.topPane.contentView.graphView', View
   return app
-  # TODO: currently it's trying to get CouchDB files from /db in its testing server, which fails.
-  # I don't know enough about data sources to figure out how to adjust this for the sake of running 
-  # Lebowski tests, but the sc-server set up for these tests should be able to get exercises somehow.
 end
 
 def start_command(name)
