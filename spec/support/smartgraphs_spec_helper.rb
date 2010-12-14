@@ -24,7 +24,7 @@ include Lebowski::Foundation
 TEST_PORT =  ENV[:TEST_PORT.to_s] || 4022;
 SELENIUM_PORT = ENV[:SELENIUM_PORT.to_s] || 4244;
 TEST_SETTINGS = {
-  :app_root_path => "/smartgraphs#/shared/slope-tool-demo",
+  :app_root_path => "/smartgraphs", # "/smartgraphs#/shared/slope-tool-demo"
   :app_name => "Smartgraphs",
   :app_server_port => TEST_PORT,
   :selenium_server_port => SELENIUM_PORT,
@@ -64,7 +64,8 @@ def new_test
   app.define_path 'bottom_toolbar', 'mainPage.mainPane.bottomToolbar', View
   app.define_path 'activity', 'activityPage.activityView', View
   app.define_path 'description', 'activityPage.activityView.instructionsWrapper.instructionsView.textWrapper.activityStepWrapper', View
-  app.define_path 'graph', 'activityPage.activityView.dataWrapper.dataView.contentView.topPaneWrapper.topPane.contentView.graphView', View
+  # app.define_path 'graph', 'activityPage.activityView.dataWrapper.dataView.contentView.topPaneWrapper.topPane.contentView.graphView', View
+  # Above turns out to be activity-specific
   return app
 end
 

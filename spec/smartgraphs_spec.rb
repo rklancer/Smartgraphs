@@ -33,14 +33,14 @@ describe "Smartgraphs" do
   
   it "should have an activity step description" do
     @step.activityStepDialog.should_not be nil
-    @step.activityStepDialog.beforeText.content.should == "<p>Click a point, any point.</p>"
+    @step.activityStepDialog.beforeText.content.should == "<p>In this activity, when you see the 'Next Page >>' button turned on, you can go to the next page.</p><p>Go ahead and click on the Next Page button now to see the next page.<p>"
     @step.buttonsView.submitButton.should be_a_kind_of ButtonView
   end
   
-  it "should have an inactive OK button" do
-    @step.buttonsView.submitButton.isEnabled.should be false
+  it "should have an active OK button" do
+    @step.buttonsView.submitButton.isEnabled.should be true
     @step.buttonsView.submitButton.click # should do nothing
-    @step.activityStepDialog.beforeText.content.should == "<p>Click a point, any point.</p>"
+    @step.activityStepDialog.beforeText.content.should == "<p>In this activity, when you see the 'Next Page >>' button turned on, you can go to the next page.</p><p>Go ahead and click on the Next Page button now to see the next page.<p>"
   end
   
   # TODO: This route tries to do the activity, not what we're after at the moment
