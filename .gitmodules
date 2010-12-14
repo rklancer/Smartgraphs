@@ -9,7 +9,7 @@
 	url = http://github.com/rklancer/RaphaelViews.git
 [submodule "frameworks/sproutcore"]
 	path = frameworks/sproutcore
-	url = http://github.com/sproutcore/sproutcore.git
+	url = http://github.com/rklancer/sproutcore.git
 [submodule "applets"]
 	path = applets
 	url = http://github.com/stepheneb/lightweight-sensor-graphs.git
