@@ -19,6 +19,8 @@ describe "Smartgraphs" do
     @activity = @test['activity']
     @step = @test['description']
     @graph = @test['graph']
+    @menu = @test['edit_menu']
+    # Smartgraphs.mainPage.mainPane.container.topLeftView.containerView.contentView.childViews.undefined
   end
 
   after(:all) do
@@ -72,5 +74,17 @@ describe "Smartgraphs" do
     @test['top_toolbar'].runButton.click
     @test['top_toolbar'].editButton.isVisible.should be true
     @test['top_toolbar'].runButton.isVisible.should be false
+  end
+  
+  it "should go back to 'Edit' mode and allow us to pick steps" do
+    @test['top_toolbar'].editButton.click
+    @menu.childViews[4].should be_a_kind_of ListItemView
+    @menu.childViews[5].click
+    @test['intro_text'].content.should == "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>"
+  end
+  
+  it "should show a text edit field when the intro text is clicked" do
+    @test['intro_text'].click
+    
   end
 end

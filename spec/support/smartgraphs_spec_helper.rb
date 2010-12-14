@@ -66,6 +66,8 @@ def new_test
   app.define_path 'description', 'activityPage.activityView.instructionsWrapper.instructionsView.textWrapper.activityStepWrapper', View
   # app.define_path 'graph', 'activityPage.activityView.dataWrapper.dataView.contentView.topPaneWrapper.topPane.contentView.graphView', View
   # Above turns out to be activity-specific
+  app.define_path 'edit_menu', 'mainPage.mainPane.container.topLeftView.containerView.contentView', View
+  app.define_path 'intro_text', 'activityPage.activityView.instructionsWrapper.instructionsView.textWrapper.introText', View
   return app
 end
 
