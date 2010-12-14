@@ -36,12 +36,17 @@ Smartgraphs.authorPageDef = SC.Page.extend({
 
           childViews: 'introTextView introTextHintView'.w(),
           
-          introTextView: SC.LabelView.design({            
+          // If the introText contents < 100px in height, adjust to this height before inline editing
+          minEditorHeight: 100,
+          
+          // The following just works; enables a hint with a hover style that can be single-clicked to edit.
+          introTextView: SC.LabelView.design({
             valueBinding: 'Smartgraphs.activityPageController.introText',
             useStaticLayout: YES,
             escapeHTML: NO,
             isEditable: YES,
             isInlineEditorMultiline: YES,
+            minEditorHeightBinding: '.parentView.minEditorHeight',            
             
             showEditor: NO,
             showEditorDidChange: function () {
@@ -49,9 +54,9 @@ Smartgraphs.authorPageDef = SC.Page.extend({
             }.observes('showEditor'),
             
             beginEditing: function () {
-              if (this.get('frame').height < 100) {
+              if (this.get('frame').height < this.get('minEditorHeight')) {
                 SC.RunLoop.begin();
-                this.adjust('height', 100);
+                this.adjust('height', this.get('minEditorHeight'));
                 SC.RunLoop.end();
               }
               sc_super();
@@ -64,36 +69,55 @@ Smartgraphs.authorPageDef = SC.Page.extend({
             },
             
             mouseEntered: function () {
-              this.$().addClass('hovered');
+              if (this.get('frame').height < this.get('minEditorHeight')) {
+                this.adjust('height', this.get('minEditorHeight'));
+              }
+              this.$().addClass('hovered');     
             },
             
             mouseExited: function () {
               this.$().removeClass('hovered');
+              this.set('layout', {});
+            },
+            
+            mouseDown: function () {
+              this.beginEditing();
             }
           }),
           
           introTextHintView: SC.LabelView.design({
-            useStaticLayout: YES,
             value: "<p>Introduce Page Here...</p>",
             classNames: 'hint'.w(),
             escapeHTML: NO,
-            
+
             showEditorBinding: SC.Binding.oneWay('.parentView.introTextView.showEditor'),
             introTextIsEmptyBinding: SC.Binding.not('Smartgraphs.activityPageController.introText'),
             isVisible: function () {
               return this.get('introTextIsEmpty') && !this.get('showEditor');
             }.property('introTextIsEmpty', 'showEditor').cacheable(),
 
-            doubleClick: function () {
+            minEditorHeightBinding: '.parentView.minEditorHeight',
+            
+            didUpdateLayer: function () {
+              this.invokeLast(function () {
+                this.set('originalHeight', this.$('p').outerHeight(true));
+                this.adjust('height', this.get('originalHeight'));
+              });
+            },
+            
+            mouseDown: function () {
+              this.adjust('height', this.get('originalHeight'));                
               this.setPath('parentView.introTextView.showEditor', YES);
             },
             
             mouseEntered: function () {
+              this.adjust('height', this.get('minEditorHeight'));
               this.$().addClass('hovered');
             },
             
             mouseExited: function () {
               this.$().removeClass('hovered');
+              this.adjust('height', this.get('originalHeight'));
             }
           })
           
