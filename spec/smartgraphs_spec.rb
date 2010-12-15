@@ -84,7 +84,9 @@ describe "Smartgraphs" do
   end
   
   it "should show a text edit field when the intro text is clicked" do
-    @test['intro_text'].click
-    
+    @test['author_text'].should be_a_kind_of View
+    # @test['author_text'].click # puts up the text edit view
+    @test['author_text'].edit('<p>This is the changed value.</p>')
+    @test['author_text'].value.should == '<p>This is the changed value.</p>' # need the right path here
   end
 end
