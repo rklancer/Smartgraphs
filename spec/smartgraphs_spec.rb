@@ -20,6 +20,7 @@ describe "Smartgraphs" do
     @step = @test['description']
     @graph = @test['graph']
     @menu = @test['edit_menu']
+    @pane = @test['main_pane']
     # Smartgraphs.mainPage.mainPane.container.topLeftView.containerView.contentView.childViews.undefined
   end
 
@@ -70,23 +71,31 @@ describe "Smartgraphs" do
     @test['top_toolbar'].runButton.isVisible.should be true
   end
   
-  it "should return to 'Edit' when 'Run' is clicked" do
-    @test['top_toolbar'].runButton.click
-    @test['top_toolbar'].editButton.isVisible.should be true
-    @test['top_toolbar'].runButton.isVisible.should be false
-  end
-  
-  it "should go back to 'Edit' mode and allow us to pick steps" do
-    @test['top_toolbar'].editButton.click
+  it "should allow selection of arbitrary pages in 'edit' mode" do
     @menu.childViews[4].should be_a_kind_of ListItemView
     @menu.childViews[5].click
     @test['intro_text'].content.should == "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>"
   end
   
-  it "should show a text edit field when the intro text is clicked" do
-    @test['author_text'].should be_a_kind_of View
-    # @test['author_text'].click # puts up the text edit view
-    @test['author_text'].edit('<p>This is the changed value.</p>')
-    @test['author_text'].value.should == '<p>This is the changed value.</p>' # need the right path here
+  it "should activate the 'Edit' button when 'Run' is clicked" do
+    @test['top_toolbar'].runButton.click
+    @test['top_toolbar'].editButton.isVisible.should be true
+    @test['top_toolbar'].runButton.isVisible.should be false
   end
+  
+  it "should show a text edit field when the intro text is clicked" do
+    @test['top_toolbar'].editButton.click
+    @test['author_text'].should be_a_kind_of View
+    @test['author_text'].click    # puts up the text edit view
+    @pane.childViews.last.should be_a_kind_of TextFieldView
+    @pane.childViews.last.type('<p>This is the changed value.</p>')
+    @pane.click
+    @test['author_text'].value.should == '<p>This is the changed value.</p>'
+  end
+  
+  it "should reflect the edited intro text when 'Run' is clicked" do
+    @test['top_toolbar'].runButton.click
+    @test['intro_text'].content.should == "<p>This is the changed value.</p>"
+  end
+  
 end

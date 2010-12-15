@@ -70,6 +70,7 @@ def new_test
   app.define_path 'instructions', 'activityPage.activityView.instructionsWrapper.instructionsView', View
   app.define_path 'intro_text', 'activityPage.activityView.instructionsWrapper.instructionsView.textWrapper.introText', View
   app.define_path 'author_text', 'authorPage.authorView.instructionsWrapper.instructionsView.textWrapper.introTextView', View
+  app.define_path 'main_pane', 'mainPage.mainPane', Pane
   return app
 end
 
