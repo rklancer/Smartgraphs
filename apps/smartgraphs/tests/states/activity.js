@@ -216,3 +216,43 @@ test("Toggling isHighlighted state for annotations", function () {
   Smartgraphs.statechart.sendAction('toggleAnnotationHighlight', null, {'graphName': 'test-graph', 'annotationName': 'runArrow'});
   equals(runArrow.get('isHighlighted'), !originalHighlighted, "The isHighlighted property should be the inverse of its original value");
 });
+
+test("Creating IndicatingArrow from datapoint", function () {
+  expect(3);
+  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
+  var points = Smartgraphs.store.find('Smartgraphs.DataPoint');
+  Smartgraphs.statechart.sendAction('createIndicatingArrowFromDataPoint', null, { 'arrowName': 'test-point-arrow', 'point': points.firstObject() });
+  var startingAnnotationCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
+  Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.IndicatingArrow, 'test-point-arrow');
+  equals( Smartgraphs.firstGraphController.get('annotationList').get('length'), startingAnnotationCount + 1, "The annotation list is one longer");
+  var indicator = Smartgraphs.firstGraphController.findAnnotationByName('test-point-arrow');
+  ok( indicator.kindOf(Smartgraphs.IndicatingArrow), "The annotation is an IndicatingArrow");
+  equals( indicator.get('x'), points.firstObject().get('x'), "The x-coordinate of the arrow is that of the DataPoint" );
+});
+
+test("Creating IndicatingArrow from HighlightedPoint", function () {
+  expect(4);
+  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
+  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  Smartgraphs.firstGraphController.addAnnotation(hp1); // The point needs to be in the graph to create the arrow
+  Smartgraphs.statechart.sendAction('createIndicatingArrowFromHighlightedPoint', null, { 'arrowName': 'test-point-arrow', 'point': 'hp1', 'graphName': 'test-graph' });
+  var startingAnnotationCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
+  Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.IndicatingArrow, 'test-point-arrow');
+  equals( Smartgraphs.firstGraphController.get('annotationList').get('length'), startingAnnotationCount + 1, "The annotation list is one longer");
+  var indicator = Smartgraphs.firstGraphController.findAnnotationByName('test-point-arrow');
+  ok( indicator.kindOf(Smartgraphs.IndicatingArrow), "The annotation is an IndicatingArrow");
+  ok( indicator.get('annotation'), "The annotation has an Annotation attribute");
+  equals( indicator.get('x'), hp1.get('point').get('x'), "The x-coordinate of the arrow is that of the HighlightedPoint's DataPoint" );
+});
+
+test("Creating IndicatingArrow from coordinates", function () {
+  expect(3);
+  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
+  Smartgraphs.statechart.sendAction('createIndicatingArrowFromCoordinates', null, { 'arrowName': 'test-point-arrow', 'x': 10, 'y': 15 });
+  var startingAnnotationCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
+  Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.IndicatingArrow, 'test-point-arrow');
+  equals( Smartgraphs.firstGraphController.get('annotationList').get('length'), startingAnnotationCount + 1, "The annotation list is one longer");
+  var indicator = Smartgraphs.firstGraphController.findAnnotationByName('test-point-arrow');
+  ok( indicator.kindOf(Smartgraphs.IndicatingArrow), "The annotation is an IndicatingArrow");
+  equals( indicator.get('x'), 10, "The x-coordinate of the arrow is 10" );
+});

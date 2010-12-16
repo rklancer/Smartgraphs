@@ -40,7 +40,7 @@ Smartgraphs.IndicatingArrow = Smartgraphs.Annotation.extend(
     
     @property {Smartgraphs.Annotation}
   */
-  annotation: SC.Record.toOne("Smartgraphs.Annotation"),
+  annotation: SC.Record.toOne("Smartgraphs.HighlightedPoint"),
   
   /**
     The arrow can also indicate a Smartgraphs.DataPoint which is not associated with a HighlightedPoint annotation.
@@ -68,18 +68,18 @@ Smartgraphs.IndicatingArrow = Smartgraphs.Annotation.extend(
   // The "x" coordinate, depending on what the arrow is given to point at.
   // Returns null if there's not enough information to work from.
   x: function () {
-    if (this.specificX) {
-      return this.specificX;
+    if (this.get('specificX')) {
+      return this.get('specificX');
     }
-    else if (this.dataPoint) {
-      return this.dataPoint.get('x');
+    else if (this.get('dataPoint')) {
+      return this.get('dataPoint').get('x');
     }
-    else if (this.annotation) {
-      if (this.annotation.get('point')) {
-        return this.annotation.get('point').get('x');
+    else if (this.get('annotation')) {
+      if (this.get('annotation').get('point')) {
+        return this.get('annotation').get('point').get('x');
       }
-      else if (this.annotation.get('point1')) {
-        return this.annotation.get('point1').get('x');
+      else if (this.get('annotation').get('point1')) {
+        return this.get('annotation').get('point1').get('x');
       }
       else {
         return null;
@@ -88,23 +88,23 @@ Smartgraphs.IndicatingArrow = Smartgraphs.Annotation.extend(
     else {
       return null;
     }
-  },
+  }.property('annotation', 'dataPoint', 'specificX').cacheable(),
 
   // The "y" coordinate, depending on what the arrow is given to point at.
   // Returns null if there's not enough information to work from.
   y: function () {
-    if (this.specificY) {
-      return this.specificY;
+    if (this.get('specificY')) {
+      return this.get('specificY');
     }
-    else if (this.dataPoint) {
-      return this.dataPoint.get('y');
+    else if (this.get('dataPoint')) {
+      return this.get('dataPoint').get('y');
     }
-    else if (this.annotation) {
-      if (this.annotation.get('point')) {
-        return this.annotation.get('point').get('y');
+    else if (this.get('annotation')) {
+      if (this.get('annotation').get('point')) {
+        return this.get('annotation').get('point').get('y');
       }
-      else if (this.annotation.get('point1')) {
-        return this.annotation.get('point1').get('y');
+      else if (this.get('annotation').get('point1')) {
+        return this.get('annotation').get('point1').get('y');
       }
       else {
         return null;
@@ -113,7 +113,7 @@ Smartgraphs.IndicatingArrow = Smartgraphs.Annotation.extend(
     else {
       return null;
     }
-  }
+  }.property('annotation', 'dataPoint', 'specificY').cacheable()
 
 }) ;
 

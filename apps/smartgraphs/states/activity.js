@@ -300,11 +300,11 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     }
   
     if (!controller) return YES;
-    
-    var highlightedPoint = controller.findAnnotationByName(args.point).get('id');
+    debugger;
+    var hp = controller.findAnnotationByName(args.point);
     var indicator = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
-        annotation: highlightedPoint,
+        annotation: hp.get('id'),
         pointAngle: args.angle,
         color: args.color
       });
@@ -332,7 +332,6 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   createIndicatingArrowFromCoordinates: function (context, args) {
     var indicator = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
-        dataPoint: args.point.get('id'),
         specificX: args.x,
         specificY: args.y,
         pointAngle: args.angle,
