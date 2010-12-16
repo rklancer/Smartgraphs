@@ -56,7 +56,7 @@ Smartgraphs.IndicatingArrow = Smartgraphs.Annotation.extend(
     
     @property {Number}
   */
-  point_angle: SC.Record.attr(Number, { default_value: 335 }),
+  pointAngle: SC.Record.attr(Number, { default_value: 335 }),
   
   /**
     The length of the arrow, from tail to tip, in pixels. Default value is 25.
