@@ -300,13 +300,12 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     }
   
     if (!controller) return YES;
-    debugger;
     var hp = controller.findAnnotationByName(args.point);
     var indicator = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
         annotation: hp.get('id'),
-        pointAngle: args.angle,
-        color: args.color
+        pointAngle: args.angle ? args.angle : 335,
+        color: args.color ? args.color : '#cc0000'
       });
     return YES;
   },
