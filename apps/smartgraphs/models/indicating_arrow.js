@@ -6,7 +6,7 @@
 /*globals Smartgraphs */
 
 sc_require('models/annotation');
-// sc_require('views/indicating_arrow');
+sc_require('views/indicating_arrow');
 
 /** @class
 
@@ -116,3 +116,6 @@ Smartgraphs.IndicatingArrow = Smartgraphs.Annotation.extend(
   }
 
 }) ;
+
+// let the graph view know how to instantiate a view class to display this item
+Smartgraphs.IndicatingArrow.viewClass = Smartgraphs.IndicatingArrowView;
