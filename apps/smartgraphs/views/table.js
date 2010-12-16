@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs */
+/*globals Smartgraphs RaphaelViews */
 
 /** @class
 
@@ -128,10 +128,15 @@ Smartgraphs.TableView = SC.View.extend(
           this.adjust('height', this.get('contentLength') * this.get('rowHeight'));
         }.observes('contentLength'),
       
-        childViews: ['xsView', 'ysView'],
+        childViews: ['backdrop', 'xsView', 'ysView'],
+
+        backdrop: RaphaelViews.RaphaelCanvasView.design({
+          // This is the canvas behind the table, used for adding notes
+          layout: { zIndex: 0, width: 350 }
+        }),
 
         xsView: SC.ListView.design({
-          layout: { left: 0, top: 0, width: 120 },
+          layout: { left: 50, top: 0, width: 120 },
 
           rowHeightBinding: '.parentView.rowHeight',
           canEditContent: NO,
@@ -143,7 +148,7 @@ Smartgraphs.TableView = SC.View.extend(
 
         ysView: SC.ListView.design({
           // using left: rather than right: keeps the ysView from being pushed to the left when the scroll bar appears
-          layout: { left: 130, top: 0, width: 120 }, 
+          layout: { left: 180, top: 0, width: 120 },
       
           rowHeightBinding: '.parentView.rowHeight',
           canEditContent: NO,
