@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 
+sc_require('mixins/arrow_drawing');
+
 /** @class
 
   Display view for the Arrow subclass of Smartgraphs.Annotation. Draws a stroke 
@@ -12,7 +14,7 @@
   
   @extends RaphaelViews.RaphaelView
 */
-Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
+Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawing,
 /** @scope Smartgraphs.ArrowView.prototype */ {
 
   strokeBinding: '.item.color',
@@ -76,36 +78,6 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend(
     }
   },
   
-  /**
-    Returns a Raphael path string which draws an arrow. Parameters should be actual screen coordinates, not dataset coordinates.
-    
-    Original from Noah Paessel, https://gist.github.com/550233
-    
-    @params startx {Number} X-coordinate of the start point
-    @params starty {Number} Y-coordinate of the start point
-    @params endx {Number} X-coordinate of the end point
-    @params endy {Number} Y-coordinate of the end point
-    @params len {Number} Length of the "tip" of the arrowhead
-    @params angle {Number} Angle in degrees between the line and each wing of the arrowhead. Should be less than 90.
-  */
-  arrowPath: function(startx,starty,endx,endy,len,angle) {    
-    var theta = Math.atan2((endy-starty),(endx-startx));
-    var baseAngleA = theta + angle * Math.PI/180;
-    var baseAngleB = theta - angle * Math.PI/180;
-    var tipX = endx;
-    var tipY = endy;
-    var baseAX = endx - len * Math.cos(baseAngleA);
-    var baseAY = endy - len * Math.sin(baseAngleA);
-    var baseBX = endx - len * Math.cos(baseAngleB);
-    var baseBY = endy - len * Math.sin(baseAngleB);
-    var pathData = " M " + startx  + " " + starty +
-                   " L " + tipX      + " " + tipY +
-                   " L " + baseAX  + " " + baseAY +
-                   " L " + baseBX  + " " + baseBY +
-                   " L " + tipX    + " " + tipY;
-    return pathData;
-  },
-
   /** 
     Given an annotation, returns the start and end points of the arrow to be drawn, relative to the graph axes. In other
     words, this adjusts for isHorizontal, isVertical and isClockwise values, as well as extracting x and y values from
