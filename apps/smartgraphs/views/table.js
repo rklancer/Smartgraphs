@@ -132,7 +132,13 @@ Smartgraphs.TableView = SC.View.extend(
 
         backdrop: RaphaelViews.RaphaelCanvasView.design({
           // This is the canvas behind the table, used for adding notes
-          layout: { zIndex: 0, width: 350 }
+          layout: { zIndex: 0, width: 350 },
+
+          childViews: 'annotationsHolder'.w(),
+
+          // Holds the annotation views.
+          annotationsHolder: RaphaelViews.RaphaelView.design({
+          })
         }),
 
         xsView: SC.ListView.design({
@@ -169,6 +175,52 @@ Smartgraphs.TableView = SC.View.extend(
     this.invokeOnce('adjustViews'); 
   }.observes('showTable'),
   
+  annotationListDidChange: function () {
+    // Added an annotation; now we need to adjust the canvas
+    var list = this.get('annotationList');
+    var item, classKey, id;
+    var desiredViewsByClassAndId = {};
+
+    // add views for items (datasets or annotations) not currently in the list of child views
+    for (var i = 0, ii = list.get('length'); i < ii; i++) {
+      item = list.objectAt(i);
+
+      // I believe this is the most cross-browser-compatible way to get a unique key representing the class of the item
+      classKey = SC.guidFor(item.constructor);
+      id = item.get('id');
+
+      // Add to the list of views we want to have
+      if (desiredViewsByClassAndId[classKey] === undefined) {
+        desiredViewsByClassAndId[classKey] = {};
+      }
+
+      desiredViewsByClassAndId[classKey][id] = item;     // for our reference when we remove views
+
+      if (!this._viewsByClassAndId[classKey] || !this._viewsByClassAndId[classKey][id]) { 
+        // If this view isn't already in the list, add it 
+        this._addViewForItemToBackdrop(item, 'annotation');
+      }
+    }
+
+    // remove views for no-longer-to-be-displayed items
+    var oldView;
+
+    for (classKey in this._viewsByClassAndId) {
+      if (this._viewsByClassAndId.hasOwnProperty(classKey)) {
+        for (id in this._viewsByClassAndId[classKey]) {
+          if (this._viewsByClassAndId[classKey].hasOwnProperty(id)) {
+            oldView = this._viewsByClassAndId[classKey][id]; // Get the existing view
+
+            if (!desiredViewsByClassAndId[classKey] || !desiredViewsByClassAndId[classKey][id]) {
+              // if the old view isn't in our list of desired views, remove it
+              this._removeViewFromBackdrop(oldView);
+            }
+          }
+        }
+      }
+    }
+  }.observes('*annotationList.[]'),
+  
   adjustViews: function () {
     var tableColumnView = this.get('tableColumnView');
     var scrollView = tableColumnView.get('scrollView');
@@ -191,6 +243,42 @@ Smartgraphs.TableView = SC.View.extend(
       innerView.bindings.forEach( function (b) { b.disconnect(); });
       tableColumnView.set('isVisible', NO);       
     }
+  },
+  
+  /**
+    Adds an annotation view to the backdrop SVG
+  */
+  _addViewForItemToBackdrop: function (item, itemType) {
+    var classKey = SC.guidFor(item.constructor);
+
+    // create the view for the item we're adding
+    var view = item.constructor.viewClass.design({
+        item: item,
+        itemType: itemType
+    }).create();
+    
+    // append view to the canvas
+    this.getPath('tableColumnView.scrollView.contentView.backdrop.annotationsHolder').appendChild(view);
+
+    // Accounting
+    if (this._viewsByClassAndId[classKey] === undefined) {
+      this._viewsByClassAndId[classKey] = {};
+    }    
+    this._viewsByClassAndId[classKey][item.get('id')] = view;
+  },
+  
+  /**
+    Removes an annotation view from the backdrop SVG
+  */
+  _removeViewFromBackdrop: function (view) {
+    var item = view.get('item');
+    var itemType = view.get('itemType');
+    var classKey = SC.guidFor(item.constructor);
+    var id = item.get('id');
+    
+    delete this._viewsByClassAndId[classKey][id];
+    
+    this.getPath('tableColumnView.scrollView.contentView.backdrop.annotationsHolder').removeChild(view);
   }
   
 });
