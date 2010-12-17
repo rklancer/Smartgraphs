@@ -51,8 +51,8 @@ Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.A
     var graphView = this.get('graphView');
     var arrowEnds = this.getStartAndEnd(this.get('item'));
     
-    var startCoords = graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y);
-    var endCoords =   graphView.coordinatesForPoint(arrowEnds.end.x, arrowEnds.end.y);
+    var startCoords = graphView ? graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y) : {'x': arrowEnds.start.x, 'y': arrowEnds.start.y };
+    var endCoords =   graphView ? graphView.coordinatesForPoint(arrowEnds.end.x, arrowEnds.end.y) : {'x': arrowEnds.end.x, 'y': arrowEnds.end.y };
     var pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
 
     var attrs = {
