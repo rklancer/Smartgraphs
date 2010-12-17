@@ -305,7 +305,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
         annotation: hp.get('id'),
         pointAngle: args.angle ? args.angle : 335,
-        color: args.color ? args.color : '#cc0000'
+        color: args.color ? args.color : '#cc0000',
+        length: args.length ? args.length : 40
       });
     return YES;
   },
@@ -333,8 +334,9 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
         specificX: args.x,
         specificY: args.y,
-        pointAngle: args.angle,
-        color: args.color
+        pointAngle: args.angle ? args.angle : 335,
+        color: args.color ? args.color : '#cc0000',
+        length: args.length ? args.length : 40
       });
     return YES;
   },
