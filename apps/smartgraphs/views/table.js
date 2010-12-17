@@ -94,30 +94,30 @@ Smartgraphs.TableView = SC.View.extend(
   }),
   
   tableColumnView: SC.View.design({
-    layout: { width: 250, centerX: 0 },
+    layout: { width: 350, centerX: 0 },
     
     childViews: ['labelsView', 'scrollView'],
     
     labelsView: SC.View.design({
       isVisibleBinding: '.parentView.parentView.showLabels',
       
-      layout: { left: 0, top: 0, width: 250, height: 30 },
+      layout: { left: 0, top: 0, width: 350, height: 30 },
       classNames: ['smartgraph-table'],
       childViews: ['xsLabel', 'ysLabel'],
 
       xsLabel: SC.LabelView.design({    
-        layout: { left: 0, top: 0, width: 120, height: 25 },
+        layout: { left: 50, top: 0, width: 120, height: 25 },
         valueBinding: '.parentView.parentView.parentView.xLabel'
       }),
 
       ysLabel: SC.LabelView.design({
-        layout: { right: 0, top: 0, width: 120, height: 25 },
+        layout: { right: 50, top: 0, width: 120, height: 25 },
         valueBinding: '.parentView.parentView.parentView.yLabel'
       })
     }),
   
     scrollView: SC.ScrollView.design({
-      layout: { left: 0, top: 35, width: 250 },
+      layout: { left: 0, top: 35, width: 350 },
       borderStyle: SC.BORDER_NONE,
     
       contentView: SC.View.design({
