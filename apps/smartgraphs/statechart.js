@@ -65,7 +65,15 @@ Smartgraphs.statechart = SC.Statechart.create(
         if (activityContent && activityContent.get('id') === args.id) {
           return YES; // nothing to do!
         }
-        Smartgraphs.activityController.set('content', Smartgraphs.store.find(Smartgraphs.Activity, args.id));
+        
+        // need to do this so we don't load the activity into the session store which gets destroyed when we exit the
+        // ACTIVITY state.
+        var rootStore = Smartgraphs.store;
+        while (rootStore.get('parentStore')) {
+          rootStore = rootStore.get('parentStore');
+        }
+        Smartgraphs.activityController.set('content', rootStore.find(Smartgraphs.Activity, args.id));
+        
         this.gotoState('LOADING_ACTIVITY');
         return YES;
       },
