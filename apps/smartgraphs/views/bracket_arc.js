@@ -54,7 +54,18 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     
     // Figure out the pathString
     var pathString = "M " + start.x + " " + start.y + 
-                     "S " + (end.x - 40) + " " + end.y + " " + end.x + " " + end.y;
+                     "C " + (start.x - 40) + " " + start.y +  
+                     " " + (end.x - 40) + " " + end.y + 
+                     " " + end.x + " " + end.y;
+    // TODO: Needs arrowheads. 
+    
+    // TODO: Currently this assumes that the arc is vertical and the available width is ~40 pixels. Ultimately it's possible to 
+    // use a height param to let the arc grow arbitrarily away from the line described by the two points, not to mention
+    // specify which side of the line the arc should be on. To figure out that "control point" we would need to figure out
+    // the absolute angle of the line perpendicular from the line described by the two points, then find a point {height}
+    // pixels away from the endpoint in that direction. Which should be possible with a little math.
+    
+    // N.B. maybe this is the place to use that SVG feature which rotates the frame of reference temporarily?
     
     var attrs = {
       d: pathString,
