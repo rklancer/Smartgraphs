@@ -17,6 +17,8 @@ sc_require('mixins/arrow_drawing');
 Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawing,
 /** @scope Smartgraphs.ArrowView.prototype */ {
 
+  canShowInTable: NO,
+  
   strokeBinding: '.item.color',
   isHighlightedBinding: '.item.isHighlighted',
   

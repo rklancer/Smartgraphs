@@ -16,6 +16,8 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
   /** @scope Smartgraphs.LineToAxisView.prototype */
 {
 
+  canShowInTable: NO,
+  
   // TODO: update these defaults (and also displayProperties)
   radius: 8,
   defaultStroke: '#aa0000',

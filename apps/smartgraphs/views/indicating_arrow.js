@@ -17,6 +17,8 @@ to a specified point, with an arrowhead at that point.
 Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawing,
 /** @scope Smartgraphs.IndicatingArrowView.prototype */ {
 
+  canShowInTable: YES,
+  
   strokeBinding: '.item.color',
   isHighlightedBinding: '.item.isHighlighted',
   

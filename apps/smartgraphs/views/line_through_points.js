@@ -16,6 +16,8 @@
 Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LineThroughPointsView.prototype */ {
 
+  canShowInTable: NO,
+  
   strokeBinding: '.item.color',
   strokeWidth: 2,
   strokeOpacity: 0.3,
