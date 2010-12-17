@@ -332,7 +332,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       This graph must be open in the page when this command executes.
   */
   startFreehandInput: function (context, args) {
-    
+
     this.createAnnotation(this, { 
       graphName: args.graphName,
       type: Smartgraphs.FreehandSketch,

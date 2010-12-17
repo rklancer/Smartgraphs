@@ -85,7 +85,7 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
   },
   
   findAnnotation: function (name) {
-    return this.get('annotation').get(name);
+    return this.get('annotations').get(name);
   },
   
   createDataset: function (name) {
@@ -100,7 +100,7 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
     });
     dataset.set('id', Smartgraphs.getNextGuid());
     
-    this.get('datasets').push({name: dataset});
+    this.get('datasets').set(name, dataset);
     return dataset;
   },
   
@@ -115,7 +115,7 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
     }, attributes));
     annotation.set('id', Smartgraphs.getNextGuid());
 
-    this.get('annotations').push({name: annotation});
+    this.get('annotations').set(name, annotation);
     return annotation;
   }
   

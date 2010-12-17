@@ -71,8 +71,9 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
     var query = activity ?
       SC.Query.local(Smartgraphs.Graph, 'name={name} AND activity={activity}', { 
         name: name,
-        activity: Smartgraphs.activityController.get('content')
-      }) 
+        // activityController.get('content') won't work because it is a record from a different store, thus not identical
+        activity: Smartgraphs.store.find(Smartgraphs.Activity, Smartgraphs.activityController.get('id'))
+      })
       :
       SC.Query.local(Smartgraphs.Graph, 'name={name}', {      // e.g., in testing mode
         name: name
@@ -125,22 +126,13 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
   */
   addObjectByName: function (objectType, objectName) {
     // first try to get the named dataset from the current session
-    var query = SC.Query.local(objectType, 'name={name} AND session={session}', { 
+    var query = SC.Query.local(objectType, 'name={name} AND activity={activity}', { 
       name: objectName,
-      session: Smartgraphs.sessionController.getPath('content')
+      activity: Smartgraphs.store.find(Smartgraphs.Activity, Smartgraphs.activityController.get('id'))
     });
     var objectList = Smartgraphs.store.find(query);
     
-    if (objectList.get('length') < 1) {
-      // get an example dataset if that's what has this name
-      query = SC.Query.local(objectType, 'name={name} AND isExample=YES', { 
-        name: objectName
-      });
-      objectList = Smartgraphs.store.find(query);
-      if (objectList.get('length') < 1) return NO;
-      
-      // FIXME copy the object to the session before using it!
-    }
+    if (objectList.get('length') < 1) return NO;
   
     var object = objectList.objectAt(0);
     if (objectType === Smartgraphs.Dataset) {
