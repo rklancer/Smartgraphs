@@ -1,18 +1,20 @@
 // ==========================================================================
-// Project:   Smartgraphs.sessionController
+// Project:   Smartgraphs.activityObjectsController
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs property */
+/*globals Smartgraphs */
 
 /** @class
 
-  (Document Your Controller Here)
+  This controller handles creating and finding "activity objects" which are created during a user session, and which
+  the various commands reference by name (where the name is chosen by and exposed to the activity author). So far this
+  means datasets and annotations.
 
   @extends SC.Object
 */
-Smartgraphs.sessionController = SC.ObjectController.create(
-/** @scope Smartgraphs.sessionController.prototype */ {
+Smartgraphs.activityObjectsController = SC.ObjectController.create(
+/** @scope Smartgraphs.activityObjectsController.prototype */ {
 
   newSession: function () {
     var session = Smartgraphs.store.createRecord(Smartgraphs.Session, {
