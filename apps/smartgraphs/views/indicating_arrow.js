@@ -92,7 +92,7 @@ Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.A
         y2 = annotation.get('y'),
         len = annotation.get('length'),
         angle = annotation.get('pointAngle');
-    console.log('Length: ' + len + ', angle: ' + angle);
+    // console.log('Length: ' + len + ', angle: ' + angle);
     
     var x1, y1, start, end;
     
