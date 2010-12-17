@@ -269,10 +269,10 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   },
   
   /**
-    Add an existing Annotation with the specified name and type to the specified graph.
+    Add an existing Annotation with the specified name and type to the specified graph or table.
     
     If no session-scoped Annotation with the specified name and type exists, an example Annotation with the specified
-    name and type is searched for and, if one is found, it is added to the graph.
+    name and type is searched for and, if one is found, it is added to the graph or table.
     
     Note that eventually it will make sense to remove the requirement to specify the Annotation type as well as the 
     Annotation name here. However, this requirement does exist now.
@@ -287,27 +287,45 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     @param {String} args.graphName
       The name of the graph on which the Annotation should be displayed. This graph must be open in the page when this
       command executes.
+    @param {String} args.tableName
+      The name of the table on which the Annotation should be displayed. This table must be open in the page when this
+      command executes. Ignored if args.graphName is defined.
   */
   addAnnotation: function (context, args) {
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    var controller;
+    if (args.graphName) {
+      controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    }
+    else if (args.tableName) {
+      controller = Smartgraphs.TableController.controllerForDataset[args.tableName];
+    }
     controller.addObjectByName(args.type, args.name);
     return YES;
   },
   
   /** 
-    Remove the specified Annotation from the specified graph.
+    Remove the specified Annotation from the specified graph or table.
     
     @param context
     @param args
     
     @param {String} args.name
-      The name of the Annotation to be removed from the graph.
+      The name of the Annotation to be removed from the graph or table.
     @param {String} args.graphName
       The name of the graph from which the Annotation should be removed. This graph must be open in the page when this
       command executes.
+    @param {String} args.tableName
+      The name of the table from which the Annotation should be removed. This table must be open in the page when this
+      command executes. Ignored if args.graphName is defined.
   */
   removeAnnotation: function (context, args) {
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    var controller;
+    if (args.graphName) {
+      controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    }
+    else if (args.tableName) {
+      controller = Smartgraphs.TableController.controllerForDataset[args.tableName];
+    }
     controller.removeAnnotation(args.name);
     return YES;
   },
