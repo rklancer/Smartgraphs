@@ -342,6 +342,38 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   },
   
   /**
+    Create a BracketArc Annotation with the name bracketName in the current session, pointing at two
+    specific points defined by coordinates.
+    
+    @param context
+    @param args
+    
+    @param {String} args.bracketName
+      The name for this annotation
+    @param {Number} args.startX
+      The x-coordinate of the starting point of the arc
+    @param {Number} args.startY
+      The y-coordinate of the starting point of the arc
+    @param {Number} args.endX
+      The x-coordinate of the ending point of the arc
+    @param {Number} args.endY
+      The y-coordinate of the ending point of the arc
+    @param {String} [args.color='#cc0000']
+      The color in which the arc should be rendered.
+  */
+  createBracketArcFromCoordinates: function (context, args) {
+    var arc = 
+      Smartgraphs.sessionController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
+        startX: args.startX,
+        startY: args.startY,
+        endX: args.endX,
+        endY: args.endY,
+        color: args.color ? args.color : '#cc0000'
+      });
+    return YES;
+  },
+  
+  /**
     For the named annotation, toggle the isHighlighted property. (If truthy, set to false; if falsy, set to true.)
     
     @param context
