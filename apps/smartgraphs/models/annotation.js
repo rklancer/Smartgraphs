@@ -10,24 +10,17 @@
   This is the abstract superclass of all Annotation types. The various subclasses of Annotation have a corresponding
   'viewClass' property which identifies the SC.View class which is instantiated by the GraphView in order to view
   an instance of that annotation on a graph.
-
-  Each instance of an Annotation subclass represents either an 'example' annotation or a 'session-scoped' annotation.
-  'Example' annotations (those with isExample == YES) are created by the activity author when the activity is
-  designed. Typical uses of such annotations would be to highlight a pre-chosen portion of a graph as part of a hint
-  or tutorial within an activity. 'Session-scoped' annotations, by contrast, are created during a run of the
-  activity. Thus session-scoped annotations can be created from student input. Moreover, restarting an activity
-  creates a new session; thus annotations can safely be referenced by name within an activity, without the worry 
-  that one student's annotations will overwrite another student's annotations.
   
-  Within an activity document, annotations are referenced by type (i.e., class) and name. This allows the serialized
-  form of an activity to reference specific annotation objects using any human readable name the author chooses to
-  think up. Although the name of an annotation should normally be unique within an activity, a session-scoped
-  annotation with a given type and name, if it exists in the current session, will be used in preference to any
-  example annotation with the same type and name.
+  Within an activity document, annotations are referenced by name. (In order to create a new annotation within the
+  user's session, the document must also specify the annotation type to be created.) This allows the serialized form
+  of an activity to reference specific annotation objects using any human readable name the author chooses.
   
-  Typically, Smartgraph commands should use the addObjectByName method of a GraphController instance to add an
-  annotation to the graph. The addObjectByName method will find the specified annotation within the current session 
-  if possible, or else within the set of example annotations associated with the current activity.
+  Annotations names are unique within an activity; it is a runtime error to create two annotations with the same name
+  during a single user session. The authoring tool will enforce this restriction before allowing an activity to be
+  published, so that such runtime errors should not be encountered in practice.
+  
+  Annotations can also be associated with sessions so that it is possible to save a user's session, and to analyze
+  which annotations were created within a particular session.
 
   @extends SC.Record
   @version 0.1
@@ -52,14 +45,6 @@ Smartgraphs.Annotation = SC.Record.extend(
   isAnnotation: YES,
   
   /**
-    Whether this is an 'example' annotation (part of the authored content of the activity) or a session-scoped
-    (and perhaps student-drawn) annotation.
-    
-    @property {Boolean}
-  */
-  isExample: SC.Record.attr(Boolean),
-  
-  /**
     Name of the annotation. This should be unique within a Session or Activity.
     
     @property {String}
@@ -67,23 +52,18 @@ Smartgraphs.Annotation = SC.Record.extend(
   name: SC.Record.attr(String),
   
   /**
-    If the annotation is an example annotation, the activity this annotation is associated with. (Different activities
-    are free to have example annotations with the same name; but a given activity should have only one example
-    annotation with a given name.)
+    The activity this annotation is associated with. (Two or more different activities are free to have annotations
+    that share a given name; but a given activity should have only one annotation with a given name.)
     
     @property {Smartgraphs.Activity}
   */
   activity: SC.Record.toOne('Smartgraphs.Activity'),
   
   /**
-    If the annotation is a session-scoped annotation, the session this annotation is associated with. The name of an
-    annotation should be unique within an activity. However, multiple "runs" of the same activity within a single 
-    browser session (which is to say, multiple Smartgraph sessions) will naturally contain annotations that share a 
-    name. The session disambiguates the Annotation records so that only the Annotation associated with the current
-    "run" of the activity is called up when it is requested by name.
-    
-    A session-scoped annotation with a given type and name, if it exists in the current session, will be used in 
-    preference to any example annotation with the same type and name.
+    The session this annotation is associated with. (When a user begins running an activity, any new annotations
+    created during the run of the activity, and any modifications to annotations pre-defined by the author, are 
+    buffered to a nested data store. When the user's session state is saved, the new or modified annotations are
+    uploaded to the server, and the buffered changes are dropped.)
     
     @property {Smartgraphs.Session}
   */

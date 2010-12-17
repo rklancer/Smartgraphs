@@ -15,77 +15,63 @@
 */
 Smartgraphs.activityObjectsController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityObjectsController.prototype */ {
-
-  newSession: function () {
-    var session = Smartgraphs.store.createRecord(Smartgraphs.Session, {
-      steps: [],
-      user: Smartgraphs.userController.getPath('content.id')
-    });
-    session.set('id', Smartgraphs.getNextGuid());
-    this.set('content', session);
+  
+  /**
+    All annotations available to the user session, indexed by name. Observable.
+  */
+  annotations: SC.Object.create(),
+  
+  /**
+    All datasets avaiable to the user session, indexed by name. Observable.
+  */
+  datasets: SC.Object.create(),
+  
+  /**
+    Call this when starting a session to clear the annotations and datasets. (Before starting the activity, it will be
+    necessary to add any datasets and annotations pre-defined in the activity.)
+  */
+  clear: function () {
+    this.set('annotations', SC.Object.create());
+    this.set('datasets', SC.Object.create());
+  },
+  
+  findDataset: function (name) {
+    return this.get('datasets').get(name);
+  },
+  
+  findAnnotation: function (name) {
+    return this.get('annotation').get(name);
   },
   
   createDataset: function (name) {
-    var newDataset = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { 
-      isExample: NO,
+    if (this.findDataset(name)) {
+      throw "The activity tried to create a dataset with name %@, which is already in use.".fmt(name);
+    }
+    
+    var dataset = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { 
+      activity: Smartgraphs.activityController.get('url'),
       name: name,
       points: []
     });
-    newDataset.set('session', this.get('content'));
-    newDataset.set('id', Smartgraphs.getNextGuid());
+    dataset.set('id', Smartgraphs.getNextGuid());
     
-    return newDataset;
+    this.get('datasets').push({name: dataset});
+    return dataset;
   },
   
   createAnnotation: function (type, name, attributes) {
-    var newAnnotation = Smartgraphs.store.createRecord(type, SC.mixin({
-      isExample: NO,
-      session: this.getPath('content.id'),
+    if (this.findAnnotation(name)) {
+      throw "The activity tried to create an annotation with name %@, which is already in use.".fmt(name);
+    }
+    
+    var annotation = Smartgraphs.store.createRecord(type, SC.mixin({
+      activity: Smartgraphs.activityController.get('url'),
       name: name
     }, attributes));
-    
-    newAnnotation.set('id', Smartgraphs.getNextGuid());
-    return newAnnotation;
+    annotation.set('id', Smartgraphs.getNextGuid());
+
+    this.get('annotations').push({name: annotation});
+    return annotation;
   }
-  
-  // NOT CURRENTLY USED:
-  // TODO: change to 'copy example object to session' or the like. (but only if we really need that functionality)
-  
-  // copyExampleDataset: function (exampleDatasetName, targetDatasetName) {
-  //   // get the example dataset
-  //   var query = SC.Query.local(
-  //     Smartgraphs.Dataset, 
-  //     'isExample=YES AND name={datasetName}', 
-  //     { datasetName: exampleDatasetName }
-  //   );
-  // 
-  //   var exampleDatasetList = Smartgraphs.store.find(query);
-  //   if (exampleDatasetList.get('length') < 1) return NO;
-  //   
-  //   var exampleDataset = exampleDatasetList.objectAt(0);
-  //   
-  //   // get the dataset we're copying into
-  //   query = SC.Query.local(
-  //     Smartgraphs.Dataset,
-  //     'isExample=NO AND session={session} AND name={datasetName}',
-  //     { session: this.get('content'), name: targetDatasetName }
-  //   );
-  //   var targetDatasetList = Smartgraphs.store.find(query);
-  //   
-  //   if (targetDatasetList.get('length') < 1) return NO;
-  //   var targetDataset = targetDatasetList.objectAt(0);
-  //   
-  //   // copy all the data points
-  //   var examplePoints = exampleDataset.get('points');
-  //   var point, newPoint;
-  //   for (var i = 0, ii = examplePoints.get('length'); i < ii; i++) {
-  //     point = examplePoints[i];
-  //     newPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: point.get('x'), y: point.get('y') });
-  //     newPoint.set('id', Smartgraphs.getNextGuid());
-  //     newPoint.set('dataset', targetDataset);
-  //   }
-  //   
-  //   return YES;
-  // }
   
 }) ;

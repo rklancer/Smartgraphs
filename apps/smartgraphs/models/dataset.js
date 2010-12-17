@@ -11,12 +11,7 @@ sc_require('views/dataset');
 
   A Dataset record represents an unordered set of DataPoint records that can be displayed on a graph or table.
   
-  Analogously to Annotations, Datasets can be 'example' datasets, created by the activity author when the activity is
-  written, or 'session-scoped' datasets, created by the student during a session with the activity. Datasets are 
-  referenced by name throughout an activity, and that name should be unique within an activity or session. When a 
-  dataset with a given name is requested, a 'session-scoped' dataset with that name, scoped to the current session, is
-  searched for; if none is found, then an example activity corresponding to the current activity is searched for as a
-  fallback.  
+  Datasets are  referenced by name throughout an activity, and that name should be unique within an activity.
 
   @extends SC.Record
   @version 0.1
@@ -41,15 +36,6 @@ Smartgraphs.Dataset = SC.Record.extend(
   */
   name: SC.Record.attr(String),
   
-  /** 
-    If isExample == YES, this is an immutable "example" dataset (i.e., example data created by the activity author.)
-    If isExample == NO, this is a session-scoped dataset created or manipulated by the student during the current
-    activity session.
-    
-    @property {Boolean}
-  */
-  isExample: SC.Record.attr(Boolean),
-  
   /**
     The Activity this dataset is part of.
     
@@ -58,12 +44,11 @@ Smartgraphs.Dataset = SC.Record.extend(
   activity: SC.Record.toOne('Smartgraphs.Activity'),
   
   /**
-    The session this dataset is associated with, if any. (Datasets with isExample = YES are not associated with a 
-    specific session.)
+    The session this dataset is associated with. (When a user begins running an activity, any new datasets
+    created during the run of the activity, and any modifications to datasets pre-defined by the author, are 
+    buffered to a nested data store. When the user's session state is saved, the new or modified datasets are
+    uploaded to the server, and the buffered changes are dropped.)
     
-    Authors reference datasets by name, and names are scoped to sessions. Smartgraphs looks for the dataset in the 
-    current session; if not found, it looks for an example dataset with that name.
-
     @property {Smartgraphs.Session}
   */
   session: SC.Record.toOne('Smartgraphs.Session'),
