@@ -92,18 +92,17 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
     
     // add the initial dataset and annotations
     var initial = this.get('initialDatasets') || [];
-    for (var i = 0, len = initial.get('length'); i < len; i++) {
-      this.addObjectByName(Smartgraphs.Dataset, initial.objectAt(i));
-    }
+    var self = this;
+    initial.forEach( function (datasetName) {
+      self.addDataset(Smartgraphs.activityObjectsController.findDataset(datasetName));
+    });
     
     initial = this.get('initialAnnotations') || [];
-    var annotation;
-    for (i = 0, len = initial.get('length'); i < len; i++) {
-      annotation = initial.objectAt(i);
-      // FIXME we probably just want to have a session-scoped list of all annotation names mapped to types
-      // so the type can be assumed from the name
-      this.addObjectByName(SC.objectForPropertyPath(annotation.type), annotation.name);
-    }
+    initial.forEach( function (annotation) {
+      // FIXME data format can now be updated to initialAnnotations is a list of names, just like initialDatasets
+      // FIXME make this lazy load in case the annotations don't exist yet!
+      this.addAnnotation(Smartgraphs.activityObjectsController.findAnnotation(annotation.name));
+    });
   },
   
   /**
