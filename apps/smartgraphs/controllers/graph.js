@@ -107,40 +107,27 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
   },
   
   /**
-    Tries to find the object (dataset or annotation, based on 'objectType') with name 'objectName' in the current
-    session and adds that object to the list of datasets or annotations associated with this graph. (This will
-    cause the dataset or annotation to be show in the corresponding graph view.)
+    Tries to find the object (dataset or annotation, based on 'objectType') with name 'objectName', and adds that 
+    object to the list of datasets or annotations associated with this graph. (This will cause the dataset or 
+    annotation to be show in the corresponding graph view.)
     
-    If the object is not found in the current session, then tries to find and add an example dataset/annotation with 
-    the given name. (TODO: should copy the example to the session so further manipulation doesn't affect the example
-    object.)
-    
-    ("Example" datasets and annotations are canonical data or annotations created by the author of the activity
-    rather than the user of the activity.)
-    
-    This is the canonical way to add an object given its name. (Once it finds the object, it adds it using
-    the addDataset/addAnnotation methods.)
+    This is being kept for compatibility. It will be easier to use, e.g., 
+    this.addAnnotation(Smartgraphs.activityObjectsController.findAnnotation(annotationName))
     
     @param objectType The type of object to open.
     @param objectName The name of the object to open.
   */
   addObjectByName: function (objectType, objectName) {
-    // first try to get the named dataset from the current session
-    var query = SC.Query.local(objectType, 'name={name} AND activity={activity}', { 
-      name: objectName,
-      activity: Smartgraphs.store.find(Smartgraphs.Activity, Smartgraphs.activityController.get('id'))
-    });
-    var objectList = Smartgraphs.store.find(query);
+    var obj;
+    objectType = SC.objectForPropertyPath(objectType);
     
-    if (objectList.get('length') < 1) return NO;
-  
-    var object = objectList.objectAt(0);
-    if (objectType === Smartgraphs.Dataset) {
-      this.addDataset(object);
-      return YES;
+    if (SC.kindOf(objectType, Smartgraphs.Annotation)) {
+      obj = Smartgraphs.activityObjectsController.findAnnotation(objectName);
+      if (obj) this.addAnnotation(obj);
     }
-    if (object.get('isAnnotation')) {
-      this.addAnnotation(object);
+    else if (SC.kindOf(objectType, Smartgraphs.Dataset)) {
+      obj = Smartgraphs.activityObjectsController.findDataset(objectName);
+      if (obj) this.addDataset(obj);
     }
   },
 
