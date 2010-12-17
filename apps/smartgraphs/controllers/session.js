@@ -34,7 +34,8 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     }
     
     // TODO save these modified objects up to the server. Until we need that capability, we'll just throw them away.
-    console.log("discarding these changes: ", Smartgraphs.store.get('changelog').toString());
+    var changelog = Smartgraphs.store.get('changelog');
+    if (changelog) console.log("discarding these changes: ", changelog.toString());
     
     Smartgraphs.store.discardChanges().destroy();
     Smartgraphs.set('store', parentStore);
