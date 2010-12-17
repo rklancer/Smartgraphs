@@ -131,8 +131,8 @@ test("creating a LineThroughPoints", function () {
   expect(3);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.LineThroughPoints').get('length');
   Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
-  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
-  var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the line
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
@@ -148,8 +148,8 @@ test("creating a rise Arrow", function () {
   expect(6);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
   Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
-  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
-  var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1);  // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
@@ -168,8 +168,8 @@ test("creating a run Arrow", function () {
   expect(5);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
   Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
-  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
-  var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
@@ -186,8 +186,8 @@ test("creating a run Arrow", function () {
 test("Reordering points for rise/run arrows", function () {
   expect(4);
   Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
-  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
-  var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   Smartgraphs.statechart.sendAction('createRunArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
@@ -205,8 +205,8 @@ test("Reordering points for rise/run arrows", function () {
 test("Toggling isHighlighted state for annotations", function () {
   expect(1);
   Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
-  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
-  var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   Smartgraphs.statechart.sendAction('createRunArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
@@ -233,7 +233,7 @@ test("Creating IndicatingArrow from datapoint", function () {
 test("Creating IndicatingArrow from HighlightedPoint", function () {
   expect(4);
   Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
-  var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The point needs to be in the graph to create the arrow
   Smartgraphs.statechart.sendAction('createIndicatingArrowFromHighlightedPoint', null, { 'arrowName': 'test-point-arrow', 'point': 'hp1', 'graphName': 'test-graph' });
   var startingAnnotationCount = Smartgraphs.firstGraphController.get('annotationList').get('length');

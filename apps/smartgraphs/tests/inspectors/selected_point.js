@@ -46,7 +46,7 @@ module('selectedPointInspector', {
     setupFixtures();
     newSession();
 
-    dataset = Smartgraphs.sessionController.createDataset('test-dataset');
+    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
     p1 = addPoint(dataset, 1, 1);
     p2 = addPoint(dataset, 2, 2);
     p3 = addPoint(dataset, 3, 3);

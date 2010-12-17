@@ -52,7 +52,7 @@ module('Freehand input controllers and states', {
     
     newSession();
     session = Smartgraphs.sessionController.get('content');
-    sketch = Smartgraphs.sessionController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
+    sketch = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
     
     Smartgraphs.firstGraphController.openGraph('test');
     Smartgraphs.secondGraphController.openGraph('test');
@@ -265,7 +265,7 @@ module('Freehand sketch input', {
     newSession();
     
     session = Smartgraphs.sessionController.get('content');
-    sketch = Smartgraphs.sessionController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
+    sketch = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
     
     // TODO this might make sense in a debug helper
     Smartgraphs.firstGraphController.openGraph('test');

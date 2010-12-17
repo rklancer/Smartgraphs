@@ -38,9 +38,9 @@ module("Smartgraphs.graphController", {
     setupUserAndSessionFixtures();
     newSession();
    
-    dataset1 = Smartgraphs.sessionController.createDataset('test-dataset-1');
-    dataset2 = Smartgraphs.sessionController.createDataset('test-dataset-2');
-    dataset3 = Smartgraphs.sessionController.createDataset('test-dataset-3');
+    dataset1 = Smartgraphs.activityObjectsController.createDataset('test-dataset-1');
+    dataset2 = Smartgraphs.activityObjectsController.createDataset('test-dataset-2');
+    dataset3 = Smartgraphs.activityObjectsController.createDataset('test-dataset-3');
        
     setupGraphFixtures();
   },

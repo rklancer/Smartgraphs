@@ -69,7 +69,7 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.State.extend(
   createHighlightedPointsFromSelection: function (context, args) {
     var graphName = args.graphName;
     args.dataset.get('selection').forEach( function (selectedPoint) {
-      var hp = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName, {'point': selectedPoint });
+      var hp = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName, {'point': selectedPoint });
     });
     return YES;
   },
@@ -114,7 +114,7 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.State.extend(
     // set point (a relation) using its id rather than the object, because createAnnotation works like createRecord
     // in that regard (it works on the datahash underlying the record)
     var highlightedPoint = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName, { 
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.highlightedPointName, { 
         point: selectedPoint.get('id')
       });
     
@@ -170,7 +170,7 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.State.extend(
     // set points (a relation) using ids rather than objects, because createAnnotation works like createRecord
     // in that regard (it works on the datahash underlying the record)
     var lineThroughPoints = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineThroughPoints, args.lineName, { 
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.LineThroughPoints, args.lineName, { 
         point1: annotation.get('point').get('id'),
         point2: selectedPoint.get('id'),
         color: color

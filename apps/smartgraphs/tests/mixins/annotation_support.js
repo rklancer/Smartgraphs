@@ -35,7 +35,7 @@ test("The annotationList array can be manipulated with addAnnotation, removeAnno
   expect(4);
   var ab = Smartgraphs.AnnotationBucket.create({ 'name': "Bucket Two" });
   Smartgraphs.sessionController.newSession();
-  var hp = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, "Test Point", { "color": "#cc0000" });
+  var hp = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, "Test Point", { "color": "#cc0000" });
   same( ab.get('annotationList'), null, "Annotation list is initially null");
   ab.clear(); // Usually called by e.g. Smartgraphs.GraphController.addGraph()
   equals( ab.get('annotationList').get('length'), 0, "Annotation list is now an empty array (not null)");

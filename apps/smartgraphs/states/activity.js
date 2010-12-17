@@ -127,7 +127,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     // set points (a relation) using ids rather than objects, because createAnnotation works like createRecord
     // in that regard (it works on the datahash underlying the record)
     var lineThroughPoints = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineThroughPoints, args.lineName, { 
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.LineThroughPoints, args.lineName, { 
         point1: firstAnnotation.get('point').get('id'),
         point2: secondAnnotation.get('point').get('id'),
         color: color
@@ -180,7 +180,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     }
     
     var riseArrow = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.Arrow, args.arrowName, { 
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.Arrow, args.arrowName, { 
         point1: points[0],
         point2: points[1],
         color: color,
@@ -235,7 +235,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     }
     
     var runArrow = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.Arrow, args.arrowName, { 
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.Arrow, args.arrowName, { 
         point1: points[0],
         point2: points[1],
         color: color,
@@ -263,7 +263,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   */
   createIndicatingArrowFromDataPoint: function (context, args) {
     var indicator = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
         dataPoint: args.point.get('id'),
         pointAngle: args.angle,
         color: args.color
@@ -304,7 +304,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     if (!controller) return YES;
     var hp = controller.findAnnotationByName(args.point);
     var indicator = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
         annotation: hp.get('id'),
         pointAngle: args.angle ? args.angle : 335,
         color: args.color ? args.color : '#cc0000'
@@ -332,7 +332,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   */
   createIndicatingArrowFromCoordinates: function (context, args) {
     var indicator = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
         specificX: args.x,
         specificY: args.y,
         pointAngle: args.angle,

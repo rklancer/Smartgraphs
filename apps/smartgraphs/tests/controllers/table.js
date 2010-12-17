@@ -12,7 +12,7 @@ module('Table controller', {
     setupUserAndSessionFixtures();
     setup.store();
     newSession();
-    dataset = Smartgraphs.sessionController.createDataset('test-dataset');
+    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
   },    
   
   teardown: function () {

@@ -46,7 +46,7 @@ module("Smartgraphs Annotation View instantiation", {
 
     newSession();
     session = Smartgraphs.sessionController.get('content');
-    dataset = Smartgraphs.sessionController.createDataset();
+    dataset = Smartgraphs.activityObjectsController.createDataset();
     Smartgraphs.firstGraphController.addDataset(dataset);
   },
 
@@ -60,7 +60,7 @@ module("Smartgraphs Annotation View instantiation", {
 
 
 test('HighlightedPoint location should track the point it highlights', function () {
-  var highlightedPoint = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'test-highlightedPoint');
+  var highlightedPoint = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'test-highlightedPoint');
   var point = addPoint(dataset, 1, 5);
   highlightedPoint.set('point', point);
   Smartgraphs.firstGraphController.addAnnotation(highlightedPoint);
@@ -101,7 +101,7 @@ test('HighlightedPoint location should track the point it highlights', function 
 
 
 test('LineToAxis location should have the expected path to the x-axis with the starting point it highlights', function () {
-  var lineToXAxis = Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
+  var lineToXAxis = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
   var point = addPoint(dataset, -1, -5);
   lineToXAxis.set('point', point);
   lineToXAxis.set('axis', "x");
@@ -130,7 +130,7 @@ test('LineToAxis location should have the expected path to the x-axis with the s
 
 
 test('LineToAxis location should have the expected path to the y-axis with the starting point it highlights', function () {
-  var lineToYAxis = Smartgraphs.sessionController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
+  var lineToYAxis = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.LineToAxis, 'test-lineToAxis');
   var point = addPoint(dataset, 1, 5);
   lineToYAxis.set('point', point);
   console.warn("lineToYAxis:", lineToYAxis);
@@ -159,7 +159,7 @@ test('LineToAxis location should have the expected path to the y-axis with the s
 
 
 test('HighlightedSegment location should have the expected path with the points it highlights', function () {
-  var highlightedSegment = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedSegment, 'test-highlightedSegment');
+  var highlightedSegment = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedSegment, 'test-highlightedSegment');
   var pointA = addPoint(dataset, 1, 5);
   var pointB = addPoint(dataset, 2, 6);
   highlightedSegment.set('points', [pointA, pointB]);

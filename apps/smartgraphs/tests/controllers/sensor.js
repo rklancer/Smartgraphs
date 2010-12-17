@@ -15,7 +15,7 @@ module("sensorController <--> SENSOR_* state interactions", {
     setupUserAndSessionFixtures();
     newSession();
     
-    dataset = Smartgraphs.sessionController.createDataset('test-dataset');
+    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
     
     // mock the applet page so we don't try to append an actual applet
     setup.mock(Smartgraphs, 'appletPage', SC.Page.design({

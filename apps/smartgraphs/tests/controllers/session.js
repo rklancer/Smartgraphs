@@ -35,7 +35,7 @@ test("Creates a new session", function() {
 
 test("Create a dataset", function() {
   expect(4);
-  var result = Smartgraphs.sessionController.createDataset("TestDataset"); // Run the method
+  var result = Smartgraphs.activityObjectsController.createDataset("TestDataset"); // Run the method
   ok( result.kindOf(Smartgraphs.Dataset), "The method returns a Smartgraphs.Dataset" );
   equals( result.get('name'), "TestDataset", "The dataset's name is as provided in the function parameters" );
   equals( result.get('points').get('length'), 0, "The dataset's data points are an empty array" );
@@ -61,7 +61,7 @@ test("Create an annotation", function() {
   }));
 
   // Create a similar annotation using the controller
-  var result = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'TestAnnotation1', { 'point': selectedPoint.get('id'), 'color': "#123456" } );
+  var result = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'TestAnnotation1', { 'point': selectedPoint.get('id'), 'color': "#123456" } );
 
   ok( result.kindOf(Smartgraphs.HighlightedPoint), "The method returns a Smartgraphs.HighlightedPoint");
   equals( expected.get('name'), result.get('name'), "The annotations' names should match");

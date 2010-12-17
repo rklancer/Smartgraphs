@@ -37,7 +37,7 @@ module('Table view', {
     setup.mock(Smartgraphs.firstTableController, 'showTable', YES);
 
     newSession();
-    dataset = Smartgraphs.sessionController.createDataset('test-dataset');
+    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
     
     SC.RunLoop.begin();
     pane = SC.MainPane.create({

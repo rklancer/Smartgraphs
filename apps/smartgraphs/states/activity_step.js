@@ -216,7 +216,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       page when this command executes.
   */
   createDataset: function (context, args) {
-    var dataset = Smartgraphs.sessionController.createDataset(args.datasetName);
+    var dataset = Smartgraphs.activityObjectsController.createDataset(args.datasetName);
     if (args.graphName) {
       var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
       controller.addDataset(dataset);
@@ -263,7 +263,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   */
   createAnnotation: function (context, args) {
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    var annotation = Smartgraphs.sessionController.createAnnotation(args.type, args.name);
+    var annotation = Smartgraphs.activityObjectsController.createAnnotation(args.type, args.name);
     controller.addAnnotation(annotation);
     return YES;
   },
@@ -408,7 +408,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   
     if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
     var tableController = Smartgraphs.TableController.controllerForDataset[args.datasetName];
-    var annotation = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
+    var annotation = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
     graphController.addAnnotation(annotation);
     if (tableController) {
       tableController.addAnnotation(annotation);
