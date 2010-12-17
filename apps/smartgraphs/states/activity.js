@@ -20,11 +20,13 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   initialSubstate: 'ACTIVITY_PAGE_START',
   
   enterState: function() {
+    Smartgraphs.sessionController.beginSession();
     Smartgraphs.appWindowController.showActivityView();
   },
 
   exitState: function () {
     Smartgraphs.activityController.cleanup();
+    Smartgraphs.sessionController.endSession();
   },
   
   

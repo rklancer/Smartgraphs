@@ -10,6 +10,9 @@
   This controller handles creating and finding "activity objects" which are created during a user session, and which
   the various commands reference by name (where the name is chosen by and exposed to the activity author). So far this
   means datasets and annotations.
+  
+  This controller has some complexity because there are a number of Annotation subclasses, and there is no way to
+  create a RecordArray backed by a query for all Annotations subtype instances associated with the current activity.
 
   @extends SC.Object
 */
@@ -27,12 +30,54 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
   datasets: SC.Object.create(),
   
   /**
-    Call this when starting a session to clear the annotations and datasets. (Before starting the activity, it will be
-    necessary to add any datasets and annotations pre-defined in the activity.)
+    Call this when starting a session to set the list of annotations and datasets to those predefined by the activity
+    document.
   */
-  clear: function () {
-    this.set('annotations', SC.Object.create());
-    this.set('datasets', SC.Object.create());
+  loadPredefinedObjects: function () {
+    var datasets = SC.Object.create();
+    var annotations = SC.Object.create();
+    
+    // FIXME it is probably more efficient to make this query a computed property of the activity
+    var query = SC.Query.local(Smartgraphs.Dataset, 'activity={activity}', {
+      activity: Smartgraphs.activityController.get('content')
+    });
+    var foundDatasets = Smartgraphs.store.find(query).refresh();
+    
+    if ( !(foundDatasets.get('status') & SC.Record.READY)) {
+      throw "predefined dataset records are not READY!";
+    }
+    
+    foundDatasets.forEach(function (dataset) {
+      var name = dataset.get('name');
+      if (datasets.get(name)) {
+        throw "The activity contains multiple datasets named '%@'".fmt(name);
+      }
+      datasets.set(name, dataset);
+    });
+    
+    // now, repeat the above for each annotation type...
+    
+    Smartgraphs.Annotation.types.forEach(function (type) {
+      query = SC.Query.local(type, 'activity={activity}', {
+        activity: Smartgraphs.activityController.get('content')
+      });
+      var foundAnnotations = Smartgraphs.store.find(query).refresh();
+      
+      if ( !(foundAnnotations.get('status') & SC.Record.READY)) {
+        throw "predefined %@ records are not READY!".fmt(type);
+      }
+
+      foundAnnotations.forEach(function (annotation) {
+        var name = annotation.get('name');
+        if (annotations.get(name)) {
+          throw "The activity contains multiple datasets named '%@'".fmt(name);
+        }        
+        annotation.set(name, annotation);
+      });
+    });
+    
+    this.set('datasets', datasets);
+    this.set('annotations', annotations);
   },
   
   findDataset: function (name) {

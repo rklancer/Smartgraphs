@@ -86,3 +86,4 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
 
 // let the graph view know how to instantiate a view class to display this item
 Smartgraphs.Arrow.viewClass = Smartgraphs.ArrowView;
+Smartgraphs.Annotation.types.push(Smartgraphs.Arrow);

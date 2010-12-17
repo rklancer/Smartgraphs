@@ -100,8 +100,6 @@ Smartgraphs.statechart = SC.Statechart.create(
         },
 
         resourcesDidLoad: function () {
-          Smartgraphs.sessionController.newSession();
-
           var pages = Smartgraphs.activityController.get('pages');
           Smartgraphs.activityPagesController.set('content', pages);
 

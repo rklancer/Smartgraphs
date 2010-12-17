@@ -23,9 +23,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     // Skip actually talking to the backend.
 
     this.log('CouchDataSource.fetch()');
-    this.invokeLast(function () {
-      store.dataSourceDidFetchQuery(query);
-    });
+    store.dataSourceDidFetchQuery(query);
     return YES;
   },
 

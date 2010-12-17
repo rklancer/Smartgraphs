@@ -38,7 +38,7 @@ Smartgraphs.Annotation = SC.Record.extend(
   primaryKey: 'url',
   
   /**
-    "Walk like a duck." All Annotation subclasses have isAnnotation == YES.
+    "Walk like a duck." All instances of Annotation subclasses have isAnnotation == YES.
     
     @property {Boolean}
   */
@@ -84,3 +84,8 @@ Smartgraphs.Annotation = SC.Record.extend(
   isHighlighted: SC.Record.attr(Boolean, { defaultValue: false })
 
 }) ;
+
+/**
+  A list of all Annotation subtypes
+*/
+Smartgraphs.Annotation.types = [];

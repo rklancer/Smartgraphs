@@ -25,6 +25,13 @@ Smartgraphs.main = function main() {
     return "You will lose your place in the activity if you leave this page.";
   };
   
+  // create the list of annotation types
+  for (var prop in Smartgraphs) { 
+    if (Smartgraphs.hasOwnProperty(prop) && SC.kindOf(Smartgraphs[prop], Smartgraphs.Annotation) && prop !== 'Annotation') {
+      Smartgraphs.Annotation.types.push(Smartgraphs[prop]);
+    }
+  }
+  
   // and kick things off
   Smartgraphs.statechart.initStatechart();
 } ;
