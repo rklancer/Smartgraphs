@@ -6,6 +6,7 @@
 /*globals Smartgraphs */
 
 sc_require('models/annotation');
+sc_require('views/bracket_arc');
 
 /** @class
 
@@ -54,3 +55,6 @@ Smartgraphs.BracketArc = Smartgraphs.Annotation.extend(
   endY: SC.Record.attr(Number)
 
 }) ;
+
+// let the graph view know how to instantiate a view class to display this item
+Smartgraphs.BracketArc.viewClass = Smartgraphs.BracketArcView;
