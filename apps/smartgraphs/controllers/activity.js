@@ -22,6 +22,11 @@ Smartgraphs.activityController = SC.ObjectController.create(
   cleanup: function () {
     Smartgraphs.activityPageController.cleanup();
     Smartgraphs.activityStepController.cleanup();
-  }
+  },
+  
+  activityRecordInCurrentStore: function () {
+    var id = this.get('id');
+    return id ? Smartgraphs.store.find(Smartgraphs.Activity, id) : null;
+  }.property()
     
 }) ;

@@ -72,7 +72,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
       SC.Query.local(Smartgraphs.Graph, 'name={name} AND activity={activity}', { 
         name: name,
         // activityController.get('content') won't work because it is a record from a different store, thus not identical
-        activity: Smartgraphs.store.find(Smartgraphs.Activity, Smartgraphs.activityController.get('id'))
+        activity: Smartgraphs.activityController.get('activityRecordInCurrentStore')
       })
       :
       SC.Query.local(Smartgraphs.Graph, 'name={name}', {      // e.g., in testing mode
