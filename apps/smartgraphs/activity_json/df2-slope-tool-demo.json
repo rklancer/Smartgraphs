@@ -1,5 +1,5 @@
 {
-  "_rev": "20-67865e9b2ccd769540082f16cdfb77d9",
+  "_rev": "21-fc28c97a31c3058a3363775a416a15c3",
   "data_format_version": 2,
   "activity": {
     "title": "Slope Tool Demo",
@@ -19,7 +19,8 @@
         "/shared/slope-tool-demo/page/1/step/4",
         "/shared/slope-tool-demo/page/1/step/5",
         "/shared/slope-tool-demo/page/1/step/6",
-        "/shared/slope-tool-demo/page/1/step/7"
+        "/shared/slope-tool-demo/page/1/step/7",
+        "/shared/slope-tool-demo/page/1/step/8"
       ],
       "name": "Slope Tool Page",
       "firstStep": "/shared/slope-tool-demo/page/1/step/1",
@@ -424,12 +425,86 @@
 
       ],
       "afterSubmissionCommands": [
-
+        {
+          "action": "createBracketArcFromCoordinates",
+          "literalArgs": {
+            "bracketName": "demo-bracket",
+            "startX": 40,
+            "startY": 10,
+            "endX": 40,
+            "endY": 130,
+            "color": "#9467bd"
+          }
+        }
       ],
       "responseInspector": null,
       "responseBranches": [
 
       ],
+        "defaultBranch": "/shared/slope-tool-demo/page/1/step/8",
+        "isFinalStep": false,
+        "shouldAutoAdvancePage": false,
+        "hideSubmitButton": false,
+        "submitButtonTitle": "OK",
+        "nextButtonShouldSubmit": false
+      },
+      {
+        "url": "/shared/slope-tool-demo/page/1/step/8",
+        "activityPage": "/shared/slope-tool-demo/page/1",
+        "paneConfig": "split",
+        "panes": {
+          "top": {
+            "type": "graph",
+            "name": "demo-graph"
+          },
+          "bottom": {
+            "type": "table",
+            "graphName": "demo-graph",
+            "datasetName": "demo-data"
+          }
+        },
+        "beforeText": "<p>How about a bracket instead of arrows?</p>",
+        "responseTemplate": "",
+        "afterText": "",
+        "startCommands": [
+          {
+            "action": "addAnnotation",
+            "literalArgs": {
+              "type": "Smartgraphs.BracketArc",
+              "name": "demo-bracket",
+              "tableName": "demo-data"
+            }
+          },
+          {
+            "action": "removeAnnotation",
+            "literalArgs": {
+              "name": "test-arrow-two",
+              "tableName": "demo-data"
+            }
+          },
+          {
+            "action": "removeAnnotation",
+            "literalArgs": {
+              "name": "test-arrow",
+              "tableName": "demo-data"
+            }
+          }
+        ],
+        "shouldFinishImmediately": false,
+        "submissibilityInspector": null,
+        "submissibilityCriterion": {
+
+        },
+        "triggeredCommands": [
+
+        ],
+        "afterSubmissionCommands": [
+
+        ],
+        "responseInspector": null,
+        "responseBranches": [
+
+        ],
       "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
