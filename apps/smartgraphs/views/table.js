@@ -24,6 +24,12 @@ Smartgraphs.TableView = SC.View.extend(
   yLabelBinding: '*tableController.axes.yLabelAbbreviated',
   latestXBinding: '*tableController.latestX',
   latestYBinding: '*tableController.latestY',
+  annotationListBinding: '*tableController.annotationList',
+  
+  init: function () {
+    this._viewsByClassAndId = {};
+    sc_super();
+  },
   
   fix: function (val, n) {
     return (val === undefined || val === null) ? null : val.toFixed(n);
@@ -258,13 +264,15 @@ Smartgraphs.TableView = SC.View.extend(
     }).create();
     
     // append view to the canvas
-    this.getPath('tableColumnView.scrollView.contentView.backdrop.annotationsHolder').appendChild(view);
+    if (view.get('canShowInTable')) {
+      this.getPath('tableColumnView.scrollView.contentView.backdrop.annotationsHolder').appendChild(view);
+      // Accounting
+      if (this._viewsByClassAndId[classKey] === undefined) {
+        this._viewsByClassAndId[classKey] = {};
+      }    
+      this._viewsByClassAndId[classKey][item.get('id')] = view;
+    }
 
-    // Accounting
-    if (this._viewsByClassAndId[classKey] === undefined) {
-      this._viewsByClassAndId[classKey] = {};
-    }    
-    this._viewsByClassAndId[classKey][item.get('id')] = view;
   },
   
   /**
