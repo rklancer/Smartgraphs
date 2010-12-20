@@ -103,7 +103,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
           ['ResponseTemplate',    'responseTemplates']
                     
         ].forEach(function (pair) {
-          self.loadRecordsFromArray(Smartgraphs[pair[0]], doc[pair[1]]);
+          self.loadRecordsFromArray(store, Smartgraphs[pair[0]], doc[pair[1]]);
         });
 
         // and call back to the datastore (which loads the Activity record as well)
@@ -116,9 +116,9 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     store.dataSourceDidError(storeKey, response);
   },
   
-  loadRecordsFromArray: function (recordType, hashes) {
+  loadRecordsFromArray: function (store, recordType, hashes) {
     hashes.forEach(function (hash) {
-      Smartgraphs.store.loadRecord(recordType, hash, hash.url);
+      store.loadRecord(recordType, hash, hash.url);
     });
   },
   

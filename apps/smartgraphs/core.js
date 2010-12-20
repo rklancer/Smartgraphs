@@ -20,9 +20,15 @@ Smartgraphs = SC.Application.create(
   // Only attempt to read data from JSON documents with doc.data_format_version that matches the version below
   DATA_FORMAT_VERSION: 2,
   
-  // Add global constants or singleton objects here
-  triggers: [],
+  rootStore: function () {
+    var ret = Smartgraphs.store;
+    while (ret.get('parentStore')) {
+      ret = ret.get('parentStore');
+    }
+    return ret;
+  }.property(),
 
+  // Add global constants or singleton objects here
   _nextGuid: 1000,
   getNextGuid: function () {
     return this._nextGuid++;
