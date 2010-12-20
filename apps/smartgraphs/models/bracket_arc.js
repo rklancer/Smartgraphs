@@ -52,7 +52,14 @@ Smartgraphs.BracketArc = Smartgraphs.Annotation.extend(
     
     @property {Number}
   */
-  endY: SC.Record.attr(Number)
+  endY: SC.Record.attr(Number),
+
+  /** 
+    Which direction should this arc travel from start to end: clockwise, or counter-clockwise? Default false == counterclockwise.
+
+    @property {Boolean}
+  */
+  isClockwise: SC.Record.attr(Boolean, { defaultValue: false })
 
 }) ;
 

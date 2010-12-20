@@ -52,20 +52,61 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     var start = { 'x': annotation.get('startX'), 'y': annotation.get('startY') };
     var end = { 'x': annotation.get('endX'), 'y': annotation.get('endY') };
     
+    // Figure points for the arrowheads
+    var controlE, controlF, theta, baseAngleA, baseAngleB, baseAngleC, baseAngleD;
+    // Arrowhead angle, length
+    var angle = 25;
+    var length = 6;
+    if (annotation.get('isClockwise')) {
+      theta = Math.atan2((end.y-start.y),(end.x-start.x))+(Math.PI/2); // 90 degrees from line
+      
+      controlE = { 'x': start.x + 40, 'y': start.y }; // TODO: these are vertical, might use theta later, see below
+      controlF = { 'x': end.x + 40, 'y': end.y };
+      
+      // These angles are biased to make the arrowheads "toe out" a bit; they look goofy otherwise
+      baseAngleA = theta + (1.5 * angle) * Math.PI/180;
+      baseAngleB = theta - (0.5 * angle) * Math.PI/180;
+      baseAngleC = theta + (0.5 * angle) * Math.PI/180;
+      baseAngleD = theta - (1.5 * angle) * Math.PI/180;
+    }
+    else { // Sign change
+      theta = Math.atan2((end.y-start.y),(end.x-start.x))-(Math.PI/2);
+      
+      controlE = { 'x': start.x - 40, 'y': start.y }; // TODO: these are vertical, might use theta later, see below
+      controlF = { 'x': end.x - 40, 'y': end.y };
+
+      // These angles are biased to make the arrowheads "toe out" a bit; they look goofy otherwise
+      baseAngleA = theta + (0.5 * angle) * Math.PI/180;
+      baseAngleB = theta - (1.5 * angle) * Math.PI/180;
+      baseAngleC = theta + (1.5 * angle) * Math.PI/180;
+      baseAngleD = theta - (0.5 * angle) * Math.PI/180;
+    }
+    
+    var baseAX = start.x - length * Math.cos(baseAngleA);
+    var baseAY = start.y - length * Math.sin(baseAngleA);
+    var baseBX = start.x - length * Math.cos(baseAngleB);
+    var baseBY = start.y - length * Math.sin(baseAngleB);
+    var baseCX = end.x - length * Math.cos(baseAngleC);
+    var baseCY = end.y - length * Math.sin(baseAngleC);
+    var baseDX = end.x - length * Math.cos(baseAngleD);
+    var baseDY = end.y - length * Math.sin(baseAngleD);
+    
     // Figure out the pathString
-    var pathString = "M " + start.x + " " + start.y + 
-                     "C " + (start.x - 40) + " " + start.y +  
-                     " " + (end.x - 40) + " " + end.y + 
-                     " " + end.x + " " + end.y;
-    // TODO: Needs arrowheads. 
+    var pathString = "M " + start.x + " " + start.y + // Starting point
+                     "L " + baseAX + " " + baseAY + // "Wing" A
+                     "L " + baseBX + " " + baseBY + // Arrowhead base
+                     "L " + start.x + " " + start.y + // "Wing" B
+                     "C " + (start.x - 40) + " " + start.y +  // Control point 1
+                     " " + (end.x - 40) + " " + end.y +  // Control point 2
+                     " " + end.x + " " + end.y + // End point
+                     "L " + baseCX + " " + baseCY + // "Wing" C
+                     "L " + baseDX + " " + baseDY + // Arrowhead base
+                     "L " + end.x + " " + end.y; // "Wing" D
     
-    // TODO: Currently this assumes that the arc is vertical and the available width is ~40 pixels. Ultimately it's possible to 
-    // use a height param to let the arc grow arbitrarily away from the line described by the two points, not to mention
-    // specify which side of the line the arc should be on. To figure out that "control point" we would need to figure out
-    // the absolute angle of the line perpendicular from the line described by the two points, then find a point {height}
-    // pixels away from the endpoint in that direction. Which should be possible with a little math.
-    
-    // N.B. maybe this is the place to use that SVG feature which rotates the frame of reference temporarily?
+    // TODO: Currently this assumes that the arc is vertical (that is, that the two points are vertically aligned) and the 
+    // available width is ~40 pixels. Ultimately it's possible to use a height param to let the arc grow arbitrarily away 
+    // from the line described by the two points. To remove the assumption of verticality, use theta to figure the points 
+    // controlE and controlF with math similar to the baseAX, baseAB etc. calculations.
     
     var attrs = {
       d: pathString,
