@@ -22,6 +22,9 @@ Smartgraphs.activityController = SC.ObjectController.create(
   cleanup: function () {
     Smartgraphs.activityPageController.cleanup();
     Smartgraphs.activityStepController.cleanup();
+    // let everything sync so graph views removes child views representing datasets & annotations that are about
+    // to be removed from the current datastore
+    SC.RunLoop.begin().end();
   },
   
   activityRecordInCurrentStore: function () {
