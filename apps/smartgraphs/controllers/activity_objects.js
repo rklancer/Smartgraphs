@@ -55,6 +55,9 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
       if (self._datasets[name]) {
         throw "The activity contains multiple datasets named '%@'".fmt(name);
       }
+      if (dataset.get('session')) {
+        throw "The predefined dataset '%@' was incorrectly annotated with a session!".fmt(name);
+      }
       self._datasets[name] = dataset;
     });
     
@@ -64,7 +67,7 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
       query = SC.Query.local(type, 'activity={activity}', {
         activity: Smartgraphs.activityController.get('activityRecordInCurrentStore')
       });
-      var foundAnnotations = Smartgraphs.store.find(query).refresh();
+      var foundAnnotations = Smartgraphs.store.find(query);
       
       if ( !(foundAnnotations.get('status') & SC.Record.READY)) {
         throw "predefined %@ records are not READY!".fmt(type);
@@ -74,7 +77,10 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
         var name = annotation.get('name');
         if (self._annotations[name]) {
           throw "The activity contains multiple datasets named '%@'".fmt(name);
-        }        
+        }
+        if (annotation.get('session')) {
+          throw "The predefined annotation '%@' was incorrectly annotated with a session!".fmt(name);
+        }
         self._annotations[name] = annotation;
       });
     });
