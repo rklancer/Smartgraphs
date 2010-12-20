@@ -51,7 +51,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
 
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
-    if (pane && dataset && dataset.get('isExample') === NO) {
+    if (pane && dataset) {
       this._pane = pane;
       this._dataset = dataset;
       
