@@ -368,7 +368,96 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         startY: args.startY,
         endX: args.endX,
         endY: args.endY,
-        color: args.color ? args.color : '#cc0000'
+        color: args.color ? args.color : '#cc0000',
+        isClockwise: false
+      });
+    return YES;
+  },
+  
+  /** 
+    Creates a BracketArc annotation intended to sit to the right of the data table and indicate the 
+    gap between the Y coordinates of two HighlightedPoints, i.e. the "rise" of the slope between 
+    those two points.
+    
+    @param context
+    @param args
+    
+    @param {String} args.bracketName
+      The name for this annotation
+    @param {Number} args.tableName
+      The name of the dataset which contains the point of the two HighlightedPoint annotations. This
+      is used to find the TableController which has that dataset open.
+    @param {Number} args.point1
+      The name of the HighlightedPoint where the arc should start.
+    @param {Number} args.point2
+      The name of the HighlightedPoint where the arc should end.
+    @param {String} [args.color='#cc0000']
+      The color in which the arc should be rendered.
+  */
+  createRiseBracket: function (context, args) {
+    // Really does need the table controller
+    var controller = Smartgraphs.TableController.controllerForName[args.tableName];
+
+    if (!controller) return YES;
+    var hp1 = controller.findAnnotationByName(args.point1);
+    var hp2 = controller.findAnnotationByName(args.point2);
+    
+    // This indexing assumes the points are in order, which is not a safe assumption
+    var pointOneIndex = controller.get('dataset').get('points').indexOf(hp1);
+    var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2);
+    
+    var arc = 
+      Smartgraphs.sessionController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
+        startX: 310,
+        startY: (pointOneIndex * 20) + 10,
+        endX: 310,
+        endY: (pointTwoIndex * 20) + 10,
+        color: args.color ? args.color : '#cc0000',
+        isClockwise: (pointOneIndex < pointTwoIndex)
+      });
+    return YES;
+  },
+  
+  /** 
+    Creates a BracketArc annotation intended to sit to the left of the data table and indicate the 
+    gap between the X coordinates of two HighlightedPoints, i.e. the "run" of the slope between 
+    those two points.
+    
+    @param context
+    @param args
+    
+    @param {String} args.bracketName
+      The name for this annotation
+    @param {Number} args.tableName
+      The name of the dataset which contains the point of the two HighlightedPoint annotations. This
+      is used to find the TableController which has that dataset open.
+    @param {Number} args.point1
+      The name of the HighlightedPoint where the arc should start.
+    @param {Number} args.point2
+      The name of the HighlightedPoint where the arc should end.
+    @param {String} [args.color='#cc0000']
+      The color in which the arc should be rendered.
+  */
+  createRunBracket: function (context, args) {
+    // Really does need the table controller
+    var controller = Smartgraphs.TableController.controllerForName[args.tableName];
+    
+    if (!controller) return YES;
+    var hp1 = controller.findAnnotationByName(args.point1);
+    var hp2 = controller.findAnnotationByName(args.point2);
+    
+    // This indexing assumes the points are in order, which is not a safe assumption
+    var pointOneIndex = controller.get('dataset').get('points').indexOf(hp1);
+    var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2);
+    
+    var arc = 
+      Smartgraphs.sessionController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
+        startX: 40,
+        startY: (pointOneIndex * 20) + 10,
+        endX: 40,
+        endY: (pointTwoIndex * 20) + 10,
+        color: args.color ? args.color : '#cc0000',
+        isClockwise: (pointOneIndex > pointTwoIndex)
       });
     return YES;
   },
