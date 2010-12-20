@@ -82,10 +82,13 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
       baseAngleD = theta - (0.5 * angle) * Math.PI/180;
     }
     
+    // These points describe the arrow head at the "start" end
     var baseAX = start.x - length * Math.cos(baseAngleA);
     var baseAY = start.y - length * Math.sin(baseAngleA);
     var baseBX = start.x - length * Math.cos(baseAngleB);
     var baseBY = start.y - length * Math.sin(baseAngleB);
+    
+    // ...and these describe the arrow head at the "end" end.
     var baseCX = end.x - length * Math.cos(baseAngleC);
     var baseCY = end.y - length * Math.sin(baseAngleC);
     var baseDX = end.x - length * Math.cos(baseAngleD);
