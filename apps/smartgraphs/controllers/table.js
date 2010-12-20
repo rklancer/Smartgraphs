@@ -13,6 +13,7 @@ sc_require('mixins/annotation_support');
   in a graph controller.
   
   @extends SC.Object
+  @extends Smartgraphs.AnnotationSupport
 */
 Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.tableController.prototype */ {

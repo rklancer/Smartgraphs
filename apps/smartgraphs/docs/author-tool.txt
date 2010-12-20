@@ -3,7 +3,7 @@ RPK
 Originally written 11/29/2010
 
 
-Prepatory Refactoring Work:
+Preparatory Refactoring Work:
 
 This section describes some changes that I will make to already-existing Smartgraphs code in order to make the
 development of authoring capabilities proceed as smoothly as possible. These won't be represented as explicit stories.

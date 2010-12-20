@@ -84,7 +84,6 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
   },
   
   findDataset: function (name) {
-    // FIXME this is not a good way to do this. Name collisions with object properties are inevitable.
     return this._datasets[name];
   },
   
