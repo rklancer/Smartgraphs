@@ -46,6 +46,9 @@ module("sensorController <--> SENSOR_* state interactions", {
   },
   
   teardown: function () {
+    Smartgraphs.sessionController.endSession();
+    SC.RunLoop.begin().end();
+    
     teardown.all();
     restoreUserAndSessionFixtures();
     
