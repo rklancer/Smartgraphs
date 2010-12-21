@@ -48,7 +48,7 @@ test("openAuthorView action should transition us to AUTHOR view of the same acti
   expect(3);
   Smartgraphs.statechart.gotoState('ACTIVITY');
   
-  var page = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, { guid: 'page' });
+  var page = Smartgraphs.get('rootStore').createRecord(Smartgraphs.ActivityPage, { guid: 'page' });
   Smartgraphs.activityPageController.set('content', page);
 
   equals(Smartgraphs.activityPageController.get('content'), page, "Before 'openAuthorView' action is sent, page controller content should be the test page");
