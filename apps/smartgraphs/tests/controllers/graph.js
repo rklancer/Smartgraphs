@@ -45,7 +45,9 @@ module("Smartgraphs.graphController", {
     setupGraphFixtures();
   },
   
-  teardown: function () { 
+  teardown: function () {
+    endSession();
+
     restoreUserAndSessionFixtures();
     restoreGraphFixtures();
     Smartgraphs.set('store', oldStore);
