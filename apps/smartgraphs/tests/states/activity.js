@@ -3,11 +3,9 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession */
+/*globals Smartgraphs module test ok equals same stop start setup teardown setupUserAndSessionFixtures */
 
 var pane, graphView, datasetView;
-
-var dummyState = SC.Responder.create();
 
 module("Smartgraphs.ACTIVITY", {
   setup: function () {
@@ -32,6 +30,7 @@ module("Smartgraphs.ACTIVITY", {
   },
   
   teardown: function () {
+    Smartgraphs.statechart.gotoState('DUMMY');    // exit ACTIVITY state (and end session)  
     teardown.all();
   }
 });
@@ -61,30 +60,45 @@ test("openAuthorView action should transition us to AUTHOR view of the same acti
 
 
 module("Smartgraphs.ACTIVITY: annotation-creating actions", {
-  // Setup/teardown borrowed from Smartgraphs.INTERACTIVE_SELECTION tests
   setup: function () {
     setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
     setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
-
-    setup.fixtures(Smartgraphs.Dataset, [
-      { url: 'test-dataset',
-        name: 'test-dataset',
-        isExample: YES,
-        points: ['p1', 'p2']
-      }
-    ]);
-
     setup.fixtures(Smartgraphs.DataPoint, [
       { guid: 'p1', x: 1, y: 3, dataset: 'test-dataset' },
       { guid: 'p2', x: 4, y: 5, dataset: 'test-dataset' }
     ]);
-
-    setup.fixtures(Smartgraphs.Session, Smartgraphs.Session.TEST_FIXTURES);
-    setup.fixtures(Smartgraphs.User, Smartgraphs.User.TEST_FIXTURES);
+    setupUserAndSessionFixtures();
     setup.store();
+    
+    // FIXME why is it necessary to do this before Axes and Graphs are visible in nested store?
+    Smartgraphs.store.find(Smartgraphs.DataPoint);
+    Smartgraphs.store.find(Smartgraphs.Axes);
+    Smartgraphs.store.find(Smartgraphs.Graph);
 
+    setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
+    setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
+
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'DUMMY',
+        DUMMY: SC.State.design(),
+        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY')
+      })
+    }));
+
+    SC.RunLoop.begin();
+    Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', NO);
+    Smartgraphs.statechart.initStatechart();
+    Smartgraphs.statechart.gotoState('ACTIVITY');
+    SC.RunLoop.end();
+    
+    var points = Smartgraphs.store.find(Smartgraphs.DataPoint);
+    var dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
+    dataset.set('points', points);
+    
     Smartgraphs.firstGraphController.openGraph('test-graph');
-    Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Dataset, 'test-dataset');
+    Smartgraphs.firstGraphController.addDataset(dataset);
 
     SC.RunLoop.begin();
     pane = SC.MainPane.create({
@@ -99,27 +113,12 @@ module("Smartgraphs.ACTIVITY: annotation-creating actions", {
 
     graphView = pane.get('childViews').objectAt(0);
     datasetView = graphView.getPath('graphCanvasView.dataHolder.childViews').objectAt(0);
-
-    beginSession();
-    
-    setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
-    setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
-
-    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
-      trace: YES,
-      rootState: SC.State.design({
-        initialSubstate: 'ACTIVITY',
-        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY')
-      })
-    }));
-
-    SC.RunLoop.begin();
-    Smartgraphs.statechart.initStatechart();
-    SC.RunLoop.end();
   },
 
   teardown: function () {
-    Smartgraphs.firstGraphController.clear();
+    // let graphs finish drawing before leaving ACTIVITY state (and clearing the graphs)
+    SC.RunLoop.begin().end();
+    Smartgraphs.statechart.gotoState('DUMMY');
     graphView.bindings.forEach( function (b) { b.disconnect(); } );
     pane.remove();
     teardown.all();
@@ -130,7 +129,6 @@ module("Smartgraphs.ACTIVITY: annotation-creating actions", {
 test("creating a LineThroughPoints", function () {
   expect(3);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.LineThroughPoints').get('length');
-  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the line
@@ -144,10 +142,10 @@ test("creating a LineThroughPoints", function () {
   ok(annotation.kindOf(Smartgraphs.LineThroughPoints), 'The Annotation is a LineThroughPoints');
 });
 
+
 test("creating a rise Arrow", function () {
   expect(6);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
-  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1);  // The points need to be in the graph to create the arrow
@@ -164,10 +162,10 @@ test("creating a rise Arrow", function () {
   ok(annotation.get('isClockwise'), 'The annotation will be rendered clockwise');
 });
 
+
 test("creating a run Arrow", function () {
   expect(5);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
-  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
@@ -183,9 +181,9 @@ test("creating a run Arrow", function () {
   ok(annotation.get('isClockwise'), 'The annotation will be rendered clockwise');
 });
 
+
 test("Reordering points for rise/run arrows", function () {
   expect(4);
-  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
@@ -202,9 +200,9 @@ test("Reordering points for rise/run arrows", function () {
   equals( runArrow.get('point2'), hp2.get('point'), "The second point of the run arrow annotation should be the same as the second Highlighted Point even though it was provided as the first");
 });
 
+
 test("Toggling isHighlighted state for annotations", function () {
   expect(1);
-  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
@@ -217,9 +215,9 @@ test("Toggling isHighlighted state for annotations", function () {
   equals(runArrow.get('isHighlighted'), !originalHighlighted, "The isHighlighted property should be the inverse of its original value");
 });
 
+
 test("Creating IndicatingArrow from datapoint", function () {
   expect(3);
-  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var points = Smartgraphs.store.find('Smartgraphs.DataPoint');
   Smartgraphs.statechart.sendAction('createIndicatingArrowFromDataPoint', null, { 'arrowName': 'test-point-arrow', 'point': points.firstObject() });
   var startingAnnotationCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
@@ -230,9 +228,9 @@ test("Creating IndicatingArrow from datapoint", function () {
   equals( indicator.get('x'), points.firstObject().get('x'), "The x-coordinate of the arrow is that of the DataPoint" );
 });
 
+
 test("Creating IndicatingArrow from HighlightedPoint", function () {
   expect(4);
-  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The point needs to be in the graph to create the arrow
   Smartgraphs.statechart.sendAction('createIndicatingArrowFromHighlightedPoint', null, { 'arrowName': 'test-point-arrow', 'point': 'hp1', 'graphName': 'test-graph' });
@@ -245,9 +243,9 @@ test("Creating IndicatingArrow from HighlightedPoint", function () {
   equals( indicator.get('x'), hp1.get('point').get('x'), "The x-coordinate of the arrow is that of the HighlightedPoint's DataPoint" );
 });
 
+
 test("Creating IndicatingArrow from coordinates", function () {
   expect(3);
-  Smartgraphs.firstGraphController.openGraph('test-graph'); // Thought this happened in setup()?
   Smartgraphs.statechart.sendAction('createIndicatingArrowFromCoordinates', null, { 'arrowName': 'test-point-arrow', 'x': 10, 'y': 15 });
   var startingAnnotationCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.IndicatingArrow, 'test-point-arrow');
