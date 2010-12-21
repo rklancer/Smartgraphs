@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint setupDatapointFixtures restoreDatapointFixtures */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start afterPropertyChange beginSession endSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint setupDatapointFixtures restoreDatapointFixtures */
 
 var oldStore;
 var session;
@@ -44,7 +44,7 @@ function restoreFixtures() {
 module('selectedPointInspector', {
   setup: function () {
     setupFixtures();
-    newSession();
+    beginSession();
 
     dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
     p1 = addPoint(dataset, 1, 1);

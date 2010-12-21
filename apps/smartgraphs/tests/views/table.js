@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setup teardown newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings setupDatapointFixtures restoreDatapointFixtures */
+/*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings setupDatapointFixtures restoreDatapointFixtures */
 
 var dataset;
 var pane;
@@ -36,7 +36,7 @@ module('Table view', {
     
     setup.mock(Smartgraphs.firstTableController, 'showTable', YES);
 
-    newSession();
+    beginSession();
     dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
     
     SC.RunLoop.begin();

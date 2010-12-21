@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setupUserAndSessionFixtures newSession restoreUserAndSessionFixtures */
+/*globals Smartgraphs module test ok equals same stop start setupUserAndSessionFixtures beginSession endSession restoreUserAndSessionFixtures */
 
 var oldStore;
 var dataset1, dataset2, dataset3;
@@ -36,7 +36,7 @@ module("Smartgraphs.graphController", {
     Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
     
     setupUserAndSessionFixtures();
-    newSession();
+    beginSession();
    
     dataset1 = Smartgraphs.activityObjectsController.createDataset('test-dataset-1');
     dataset2 = Smartgraphs.activityObjectsController.createDataset('test-dataset-2');

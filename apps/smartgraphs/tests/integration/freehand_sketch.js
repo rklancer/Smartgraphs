@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start setup teardown newSession setupUserAndSessionFixtures restoreUserAndSessionFixtures */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start setup teardown beginSession endSession setupUserAndSessionFixtures restoreUserAndSessionFixtures */
 
 var sketch;
 var session;
@@ -50,7 +50,7 @@ module('Freehand input controllers and states', {
     setupFixtures();
     setup.store();
     
-    newSession();
+    beginSession();
     session = Smartgraphs.sessionController.get('content');
     sketch = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
     
@@ -261,7 +261,7 @@ module('Freehand sketch input', {
   setup: function () {
     setup.store();
     setupFixtures();
-    newSession();
+    beginSession();
     
     sketch = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
     // FIXME why is the following find necessary? If it is left out, Axes records are EMPTY
@@ -304,8 +304,8 @@ module('Freehand sketch input', {
   },
   
   teardown: function () {
-    Smartgraphs.sessionController.endSession();
     SC.RunLoop.begin().end();
+    endSession();
     
     Smartgraphs.firstGraphController.clear();
 

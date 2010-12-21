@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setup teardown newSession */
+/*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession */
 
 var pane, graphView, datasetView;
 
@@ -47,7 +47,7 @@ module("Smartgraphs.ACTIVITY_STEP", {
     graphView = pane.get('childViews').objectAt(0);
     datasetView = graphView.getPath('graphCanvasView.dataHolder.childViews').objectAt(0);
 
-    newSession();
+    beginSession();
     setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
     setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
     setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({

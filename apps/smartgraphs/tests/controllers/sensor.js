@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start afterPropertyChange setupUserAndSessionFixtures restoreUserAndSessionFixtures newSession setup teardown */
+/*globals Smartgraphs module test ok equals same stop start afterPropertyChange setupUserAndSessionFixtures restoreUserAndSessionFixtures beginSession endSession setup teardown */
 
 var dataset;
 var appletViewStartWasCalled = NO;
@@ -13,7 +13,7 @@ module("sensorController <--> SENSOR_* state interactions", {
     setup.store();
     
     setupUserAndSessionFixtures();
-    newSession();
+    beginSession();
     
     dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
     
@@ -46,8 +46,8 @@ module("sensorController <--> SENSOR_* state interactions", {
   },
   
   teardown: function () {
-    Smartgraphs.sessionController.endSession();
     SC.RunLoop.begin().end();
+    endSession();
     
     teardown.all();
     restoreUserAndSessionFixtures();

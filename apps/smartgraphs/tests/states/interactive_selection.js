@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer 
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setup teardown newSession */
+/*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession */
 
 var pane, graphView, datasetView;
 
@@ -46,7 +46,7 @@ module("Smartgraphs.INTERACTIVE_SELECTION", {
     graphView = pane.get('childViews').objectAt(0);
     datasetView = graphView.getPath('graphCanvasView.dataHolder.childViews').objectAt(0);
 
-    newSession();
+    beginSession();
     
     setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
       trace: YES,

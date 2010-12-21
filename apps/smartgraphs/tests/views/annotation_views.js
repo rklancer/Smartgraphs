@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews module test ok equals same stop start setup teardown newSession addPoint */
+/*globals Smartgraphs RaphaelViews module test ok equals same stop start setup teardown beginSession endSession addPoint */
 
 var pane;
 var graphView;
@@ -44,7 +44,7 @@ module("Smartgraphs Annotation View instantiation", {
     canvasView = graphView.get('graphCanvasView');
     annotationViews = canvasView.getPath('annotationsHolder.childViews');
 
-    newSession();
+    beginSession();
     session = Smartgraphs.sessionController.get('content');
     dataset = Smartgraphs.activityObjectsController.createDataset();
     Smartgraphs.firstGraphController.addDataset(dataset);
