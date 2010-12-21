@@ -46,7 +46,6 @@ module("sensorController <--> SENSOR_* state interactions", {
   },
   
   teardown: function () {
-    SC.RunLoop.begin().end();
     endSession();
     
     teardown.all();

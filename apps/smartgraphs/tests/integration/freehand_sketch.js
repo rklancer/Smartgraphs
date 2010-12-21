@@ -304,7 +304,6 @@ module('Freehand sketch input', {
   },
   
   teardown: function () {
-    SC.RunLoop.begin().end();
     endSession();
     
     Smartgraphs.firstGraphController.clear();

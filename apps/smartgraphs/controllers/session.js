@@ -39,6 +39,10 @@ Smartgraphs.sessionController = SC.ObjectController.create(
       throw "Tried to end session, but there is no parent store to restore";
     }
     
+    // let everything sync so that, e.g., graph views removes child views representing datasets & annotations that are 
+    // about to be removed from the current datastore
+    SC.RunLoop.begin().end();
+    
     // TODO save these modified objects up to the server. Until we need that capability, we'll just throw them away.
     var changelog = Smartgraphs.store.get('changelog') || [];
     changelog.forEach( function (storeKey) {
