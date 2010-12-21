@@ -396,16 +396,16 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   */
   createRiseBracket: function (context, args) {
     // Really does need the table controller
-    var controller = Smartgraphs.TableController.controllerForName[args.tableName];
+    var controller = Smartgraphs.TableController.controllerForDataset[args.tableName];
 
     if (!controller) return YES;
     var hp1 = controller.findAnnotationByName(args.point1);
     var hp2 = controller.findAnnotationByName(args.point2);
     
     // This indexing assumes the points are in order, which is not a safe assumption
-    var pointOneIndex = controller.get('dataset').get('points').indexOf(hp1);
-    var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2);
-    
+    var pointOneIndex = controller.get('dataset').get('points').indexOf(hp1.get('point'));
+    var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2.get('point'));
+
     var arc = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
         startX: 310,
@@ -440,16 +440,16 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   */
   createRunBracket: function (context, args) {
     // Really does need the table controller
-    var controller = Smartgraphs.TableController.controllerForName[args.tableName];
+    var controller = Smartgraphs.TableController.controllerForDataset[args.tableName];
     
     if (!controller) return YES;
     var hp1 = controller.findAnnotationByName(args.point1);
     var hp2 = controller.findAnnotationByName(args.point2);
     
     // This indexing assumes the points are in order, which is not a safe assumption
-    var pointOneIndex = controller.get('dataset').get('points').indexOf(hp1);
-    var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2);
-    
+    var pointOneIndex = controller.get('dataset').get('points').indexOf(hp1.get('point'));
+    var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2.get('point'));
+
     var arc = 
       Smartgraphs.sessionController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
         startX: 40,
