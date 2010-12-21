@@ -80,7 +80,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
       });
     
     var graphs = Smartgraphs.store.find(query);
-    if (graphs.get('length') < 1) return NO;
+    if (graphs.get('length') < 1) throw "Could not open graph %@".fmt(name);
     
     this.clear();
     
