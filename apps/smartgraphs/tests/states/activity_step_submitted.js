@@ -3,11 +3,31 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setup teardown*/
+/*globals Smartgraphs module test ok equals same stop start setup teardown setupUserAndSessionFixtures beginSession endSession */
+
+var dataset;
 
 module("Smartgraphs.ACTIVITY_STEP_SUBMITTED", {
   setup: function () {
+    setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
+    setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
+    setup.fixtures(Smartgraphs.DataPoint, [
+      { guid: 'p1', x: 1, y: 3 },
+      { guid: 'p2', x: 4, y: 5 }
+    ]);
+    setupUserAndSessionFixtures();    
     setup.store();
+    
+    // FIXME why is it necessary to do this before Axes and Graphs are visible in nested store?
+    Smartgraphs.store.find(Smartgraphs.DataPoint);
+    Smartgraphs.store.find(Smartgraphs.Axes);
+    Smartgraphs.store.find(Smartgraphs.Graph);
+    
+    beginSession();
+    
+    var points = Smartgraphs.store.find(Smartgraphs.DataPoint);
+    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
+    dataset.set('points', points);
     
     setup.mock(Smartgraphs, 'ACTIVITY_STEP_SUBMITTED', Smartgraphs.ACTIVITY_STEP_SUBMITTED.extend({
       enterState: function () {}
@@ -25,23 +45,21 @@ module("Smartgraphs.ACTIVITY_STEP_SUBMITTED", {
   },
 
   teardown: function () {
+    endSession();
     teardown.all();
   }
 });
 
+
 test("creating a HighlightedPoint record from the selection in a dataset", function () {
-  expect(6);
+  expect(5);
   var startingAnnotationCount = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length');
 
-  // FIXME: Using the fixtures here is brittle
-  var graphName = 'walking-example-1'; // From motion toward and away in fixtures
+  var graphName = 'test-graph';
   Smartgraphs.firstGraphController.openGraph(graphName); // Set the graph
 
-  // get a dataset
   // This code actually "borrowed" from the method we're testing...
-  var controller = Smartgraphs.GraphController.controllerForName[graphName];
-  var dataset = controller && controller.findDatasetByName('walking-example-1');
-  ok(dataset, "There is a graph controller and dataset");
+  Smartgraphs.firstGraphController.addDataset(dataset);
   equals(dataset.get('selection'), null, "There is no datapoint selected yet");
 
   // select a point in the dataset
@@ -50,10 +68,10 @@ test("creating a HighlightedPoint record from the selection in a dataset", funct
   equals(dataset.get('selection').get('length'), 1, "The dataset has one point selected");
 
   // create the annotation
-  var handlingState = Smartgraphs.statechart.sendAction('createHighlightedPointFromSelection', null, {'graphName': graphName, 'datasetName': 'walking-example-1', 'highlightedPointName': 'FirstPointOfSlope'});
+  var handlingState = Smartgraphs.statechart.sendAction('createHighlightedPointFromSelection', null, {'graphName': graphName, 'datasetName': 'test-dataset', 'highlightedPointName': 'FirstPointOfSlope'});
   equals( handlingState.get('name'), 'ACTIVITY_STEP_SUBMITTED', "ACTIVITY_STEP_SUBMITTED should handle the createHighlightedPointFromSelection action");
-  var currentAnnotationCount = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length');
+  var currentAnnotationCount = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').refresh().get('length');
   equals(currentAnnotationCount, startingAnnotationCount + 1, "There is one more HighlightedPoint");
-  var newHp = Smartgraphs.store.find('Smartgraphs.HighlightedPoint').lastObject();
+  var newHp = Smartgraphs.activityObjectsController.findAnnotation('FirstPointOfSlope');  
   equals(newHp.get('point'), dataset.get('selection').firstObject(), "The highlighted point is the first one from the dataset");
 });
