@@ -118,7 +118,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
   */
   addObjectByName: function (objectType, objectName) {
     var obj;
-    objectType = SC.objectForPropertyPath(objectType);
+    //objectType = SC.objectForPropertyPath(objectType);
     
     if (SC.kindOf(objectType, Smartgraphs.Annotation)) {
       obj = Smartgraphs.activityObjectsController.findAnnotation(objectName);

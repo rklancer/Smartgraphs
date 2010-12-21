@@ -290,7 +290,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   */
   addAnnotation: function (context, args) {
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    controller.addObjectByName(args.type, args.name);
+    controller.addObjectByName(SC.objectForPropertyPath(args.type), args.name);
     return YES;
   },
   
