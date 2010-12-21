@@ -124,7 +124,10 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
       name: name
     }, attributes));
     annotation.set('id', Smartgraphs.getNextGuid());
-
+    
+    var session = Smartgraphs.sessionController.get('content');
+    if (session) annotation.set('session', session);
+    
     this._annotations[name] = annotation;
     this.notifyPropertyChange('annotationNames');
     return annotation;
