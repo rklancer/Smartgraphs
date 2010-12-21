@@ -47,7 +47,7 @@ test("Create a dataset", function() {
 
 test("Create an annotation", function() {
   expect(6);
-  Smartgraphs.sessionController.newSession();
+  Smartgraphs.sessionController.beginSession();
   var selectedPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {'x': 1, 'y': 1, 'url': Smartgraphs.getNextGuid() });
 
   // Set up a HighlightedPoint annotation ourselves
