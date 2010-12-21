@@ -2,7 +2,7 @@
 Smartgraphs.activityJson = Smartgraphs.activityJson || {};
 Smartgraphs.activityJson['/shared/boiling-water'] = 
 {
-  "_rev": "33-0b827c26a8ecd188ff06d618a8ca103a",
+  "_rev": "34-22527fd9d5e7795fc94b780e1134a460",
   "data_format_version": 2,
   "activity": {
     "title": "Boiling Water",
@@ -37,7 +37,7 @@ Smartgraphs.activityJson['/shared/boiling-water'] =
       ],
       "name": "Boiling Point Prediction",
       "firstStep": "/shared/boiling-water/page/2/step/1",
-      "introText": "<h1>Boiling Water</h1><p>Water is boiling on a stove.  A thermometer placed in the water reads 90 degrees Celsius (&deg;C).  After 5 minutes the water begins to boil and the thermometer reads 100&deg;C.  The water continues boiling for 5 more minutes.</p><p>At the top right, use your mouse to sketch a graph of the temperature for a period of 10 minutes, starting when the temperature measured 90&deg;C.</p><p>When you are done click <b>Next</b>.</p>",
+      "introText": "<h1>Boiling Water</h1><p>Water is being heated on a stove.  A thermometer placed in the water reads 90 degrees Celsius (&deg;C).  After 5 minutes the water begins to boil and the thermometer reads 100&deg;C.  The water continues boiling for 5 more minutes.</p><p>At the top right, use your mouse to sketch a graph of the temperature for a period of 10 minutes, starting when the temperature measured 90&deg;C.</p><p>When you are done click <b>Next</b>.</p>",
       "url": "/shared/boiling-water/page/2",
       "activity": "/shared/boiling-water",
       "index": 2,
