@@ -15,6 +15,8 @@ Smartgraphs.sessionController = SC.ObjectController.create(
 /** @scope Smartgraphs.sessionController.prototype */ {
 
   beginSession: function () {
+    if ( this.get('content') ) throw "beginSession was called when a session is already open!";
+    
     Smartgraphs.set('store', Smartgraphs.store.chain());
     Smartgraphs.activityObjectsController.loadPredefinedObjects();
     
@@ -24,10 +26,13 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     });
     // FIXME this works for now --- but we'll eventually need some way to create a globally unique id for a session
     session.set('id', Smartgraphs.getNextGuid());
+
     this.set('content', session);
   },
   
   endSession: function () {
+    if ( !this.get('content') ) throw "endSession was called when no session is open!";
+    
     var parentStore = Smartgraphs.store.get('parentStore');
 
     if (!parentStore) {
@@ -48,6 +53,8 @@ Smartgraphs.sessionController = SC.ObjectController.create(
 
     Smartgraphs.store.discardChanges().destroy();
     Smartgraphs.set('store', parentStore);
+    
+    this.set('content', null);
   }
   
 }) ;
