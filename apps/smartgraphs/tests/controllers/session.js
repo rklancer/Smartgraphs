@@ -16,6 +16,7 @@ module("Smartgraphs.sessionController", {
   },
 
   teardown: function () {
+    Smartgraphs.sessionController.endSession();
     Smartgraphs.store = oldStore;
   }
 
@@ -33,8 +34,11 @@ test("Creates a new session", function() {
   ok( session.get(pk), "The newly-created session should have a valid identifier");
 });
 
+// TODO move these tests to activityObjectsController test
+
 test("Create a dataset", function() {
   expect(4);
+  Smartgraphs.sessionController.beginSession();  
   var result = Smartgraphs.activityObjectsController.createDataset("TestDataset"); // Run the method
   ok( result.kindOf(Smartgraphs.Dataset), "The method returns a Smartgraphs.Dataset" );
   equals( result.get('name'), "TestDataset", "The dataset's name is as provided in the function parameters" );
@@ -48,17 +52,18 @@ test("Create a dataset", function() {
 test("Create an annotation", function() {
   expect(6);
   Smartgraphs.sessionController.beginSession();
-  var selectedPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {'x': 1, 'y': 1, 'url': Smartgraphs.getNextGuid() });
-
+  var selectedPoint = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {'x': 1, 'y': 1});
+  selectedPoint.set('id', Smartgraphs.getNextGuid());
+  
   // Set up a HighlightedPoint annotation ourselves
   var expected = Smartgraphs.store.createRecord(Smartgraphs.HighlightedPoint, SC.mixin({
-    'id': Smartgraphs.getNextGuid(),
     'isExample': NO,
     'session': Smartgraphs.sessionController.getPath('content.id'),
     'name': "TestAnnotation1",
     'point': selectedPoint.get('id'),
     'color': "#123456"
   }));
+  expected.set('id', Smartgraphs.getNextGuid());
 
   // Create a similar annotation using the controller
   var result = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'TestAnnotation1', { 'point': selectedPoint.get('id'), 'color': "#123456" } );

@@ -18,6 +18,7 @@ module('Table controller', {
   teardown: function () {
     Smartgraphs.firstTableController.clear();
     Smartgraphs.secondTableController.clear();
+    endSession();
     restoreUserAndSessionFixtures();
     teardown.store();
   }
