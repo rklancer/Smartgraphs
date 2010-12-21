@@ -34,7 +34,7 @@ test("An object mixing in Annotation Support will respond to supportsAnnotations
 test("The annotationList array can be manipulated with addAnnotation, removeAnnotation", function() {
   expect(4);
   var ab = Smartgraphs.AnnotationBucket.create({ 'name': "Bucket Two" });
-  Smartgraphs.sessionController.newSession();
+  Smartgraphs.sessionController.beginSession();
   var hp = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, "Test Point", { "color": "#cc0000" });
   same( ab.get('annotationList'), null, "Annotation list is initially null");
   ab.clear(); // Usually called by e.g. Smartgraphs.GraphController.addGraph()

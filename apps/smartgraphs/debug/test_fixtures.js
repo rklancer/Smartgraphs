@@ -26,7 +26,7 @@ function restoreUserAndSessionFixtures() {
 
 function newSession() {
   Smartgraphs.userController.set('content', Smartgraphs.store.find(Smartgraphs.User, 'default'));
-  Smartgraphs.sessionController.newSession();
+  Smartgraphs.sessionController.beginSession();
 }
 
 function setupDatapointFixtures() {

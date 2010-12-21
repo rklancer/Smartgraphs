@@ -24,7 +24,7 @@ module("Smartgraphs.sessionController", {
 test("Creates a new session", function() {
   expect(4);
   equals( Smartgraphs.sessionController.get('content'), null, "The controller's content is initially null" );
-  var result = Smartgraphs.sessionController.newSession(); // Run the method
+  var result = Smartgraphs.sessionController.beginSession(); // Run the method
   equals( result, undefined, "Function returns nothing (undefined)" );
   var session = Smartgraphs.sessionController.get('content');
   ok( session.kindOf(Smartgraphs.Session), "The controller's content is now a Smartgraphs.Session" );
