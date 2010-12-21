@@ -57,7 +57,8 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     // Arrowhead angle, length
     var angle = 25;
     var length = 6;
-    if (annotation.get('isClockwise')) {
+    if ((annotation.get('isClockwise') && (start.y < end.y)) || 
+        (!annotation.get('isClockwise') && (start.y > end.y))) {
       theta = Math.atan2((end.y-start.y),(end.x-start.x))+(Math.PI/2); // 90 degrees from line
       
       controlE = { 'x': start.x + 40, 'y': start.y }; // TODO: these are vertical, might use theta later, see below
@@ -81,7 +82,7 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
       baseAngleC = theta + (1.5 * angle) * Math.PI/180;
       baseAngleD = theta - (0.5 * angle) * Math.PI/180;
     }
-    
+
     // These points describe the arrow head at the "start" end
     var baseAX = start.x - length * Math.cos(baseAngleA);
     var baseAY = start.y - length * Math.sin(baseAngleA);
@@ -99,8 +100,8 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
                      "L " + baseAX + " " + baseAY + // "Wing" A
                      "L " + baseBX + " " + baseBY + // Arrowhead base
                      "L " + start.x + " " + start.y + // "Wing" B
-                     "C " + (start.x - 40) + " " + start.y +  // Control point 1
-                     " " + (end.x - 40) + " " + end.y +  // Control point 2
+                     "C " + controlE.x + " " + controlE.y +  // Control point 1
+                     " " + controlF.x + " " + controlF.y +  // Control point 2
                      " " + end.x + " " + end.y + // End point
                      "L " + baseCX + " " + baseCY + // "Wing" C
                      "L " + baseDX + " " + baseDY + // Arrowhead base
