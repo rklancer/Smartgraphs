@@ -86,8 +86,7 @@ module('Freehand input controllers and states', {
 
 
 test('sketch should be set up correctly', function () {
-  expect(2);
-  ok(sketch.get('isExample') === NO, 'test-sketch should have isExample === NO');
+  expect(1);
   equals(sketch.get('session'), session, 'test-sketch.session should be the current session');
 });
 
@@ -264,8 +263,9 @@ module('Freehand sketch input', {
     setupFixtures();
     newSession();
     
-    session = Smartgraphs.sessionController.get('content');
     sketch = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
+    // FIXME why is the following find necessary? If it is left out, Axes records are EMPTY
+    Smartgraphs.store.find(Smartgraphs.Axes);
     
     // TODO this might make sense in a debug helper
     Smartgraphs.firstGraphController.openGraph('test');
@@ -278,8 +278,8 @@ module('Freehand sketch input', {
           viewName: 'testGraphView'
         })]
     });
-    pane.append();
     SC.RunLoop.end();
+    pane.append();
     
     graphView = pane.get('childViews').objectAt(0);  
     canvasView = graphView.get('graphCanvasView');
@@ -300,9 +300,13 @@ module('Freehand sketch input', {
     FREEHAND_INPUT = Smartgraphs.statechart.getState('FREEHAND_INPUT');
     FREEHAND_INPUT_READY = Smartgraphs.statechart.getState('FREEHAND_INPUT_READY');
     FREEHAND_INPUT_START = Smartgraphs.statechart.getState('FREEHAND_INPUT_START');
+    gotoState = Smartgraphs.statechart.gotoState; 
   },
   
   teardown: function () {
+    Smartgraphs.sessionController.endSession();
+    SC.RunLoop.begin().end();
+    
     Smartgraphs.firstGraphController.clear();
 
     // disconnect the graph view's bindings to the graph controller, or else the graph view from old tests will 

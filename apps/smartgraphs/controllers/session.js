@@ -15,15 +15,16 @@ Smartgraphs.sessionController = SC.ObjectController.create(
 /** @scope Smartgraphs.sessionController.prototype */ {
 
   beginSession: function () {
+    Smartgraphs.set('store', Smartgraphs.store.chain());
+    Smartgraphs.activityObjectsController.loadPredefinedObjects();
+    
+    // make sure the session is loaded into the nested store -- optionally it can be saved back to the parent store
     var session = Smartgraphs.store.createRecord(Smartgraphs.Session, {
       user: Smartgraphs.userController.get('id')
     });
     // FIXME this works for now --- but we'll eventually need some way to create a globally unique id for a session
     session.set('id', Smartgraphs.getNextGuid());
     this.set('content', session);
-    
-    Smartgraphs.set('store', Smartgraphs.store.chain());
-    Smartgraphs.activityObjectsController.loadPredefinedObjects();
   },
   
   endSession: function () {
