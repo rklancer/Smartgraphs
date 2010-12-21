@@ -39,13 +39,6 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   */
   dataset: null,
   
-  /**
-    A RecordArray containing the results of a query for the datasets in this session with name equal to 
-    this.datasetName. This is used so that the table controller can display a dataset with a given name, even if 
-    the dataset hasn't been created as of the time the table is opened.
-  */
-  sessionDatasets: null,
-  
   axesBinding: '*graphController.axes',
   selectionBinding: '*dataset.selection',
 
@@ -152,6 +145,8 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   // not into the annotation-support-mixin which is the available mixin.
   addObjectByName: function (objectType, objectName) {
     // first try to get the named dataset from the current session
+    throw "why did you call me?";
+    
     var query = SC.Query.local(objectType, 'name={name} AND session={session}', { 
       name: objectName,
       session: Smartgraphs.sessionController.getPath('content')
