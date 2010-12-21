@@ -46,13 +46,11 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     // TODO save these modified objects up to the server. Until we need that capability, we'll just throw them away.
     var changelog = Smartgraphs.store.get('changelog') || [];
     changelog.forEach( function (storeKey) {
-      console.log("    about to call beginPropertyChanges for storeKey %d", storeKey);
+      console.log("    about to permanently turn off observing for about-to-be-destroyed record %d", storeKey);
       var rec = Smartgraphs.store.find(Smartgraphs.store.recordTypeFor(storeKey), Smartgraphs.store.idFor(storeKey));
 
       // hack hack hack ... 
-      rec._notifyPropertyObservers = function () {};
-      
-      console.log("    permanently turned off observing for about-to-be-destroyed record: %s", rec.toString());
+      if (rec) rec._notifyPropertyObservers = function () {};
     });
 
     Smartgraphs.store.discardChanges().destroy();
