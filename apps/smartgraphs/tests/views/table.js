@@ -22,6 +22,10 @@ module('Table view', {
     dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
     
     SC.RunLoop.begin();
+    Smartgraphs.firstTableController.openDataset('test-dataset');
+    SC.RunLoop.end();
+    
+    SC.RunLoop.begin();
     pane = SC.MainPane.create({
       childViews: 'tableView'.w(),
       tableView: Smartgraphs.TableView.design({
@@ -36,10 +40,6 @@ module('Table view', {
     scrollView = tableColumnView.get('scrollView');
     innerView = scrollView.get('contentView');
     rowHeight = innerView.get('rowHeight');
-    
-    SC.RunLoop.begin();
-    Smartgraphs.firstTableController.openDataset('test-dataset');
-    SC.RunLoop.end();
   },
   
   teardown: function () {
