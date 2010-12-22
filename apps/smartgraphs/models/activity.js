@@ -38,10 +38,6 @@ Smartgraphs.Activity = SC.Record.extend(
   //      b) move all state like 'context' to session
   
   /**
-    @private
-    a list of 'global' variables in a given Activity. These would be, for example, names of 'globally available' things
-    like the labels created by the openLabelTool command.
   */
-  context: {}
 
 }) ;

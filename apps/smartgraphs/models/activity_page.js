@@ -51,15 +51,6 @@ Smartgraphs.ActivityPage = SC.Record.extend(
   */
   firstStep: SC.Record.toOne('Smartgraphs.ActivityStep'),
   
-  // TODO!! This needs to migrate to session
-  /**
-    @private
-    The ActivityPage context (variables). This would include things like responses that were deemed acceptable at the end
-    of the last ActivityStep, and therefore promoted to the ActivityPage context so that they can be referenced by subsequent
-    ActivitySteps
-  */
-  context: {},
-  
   /**
     @private
     Whether the ActivityPage is selectable or not
