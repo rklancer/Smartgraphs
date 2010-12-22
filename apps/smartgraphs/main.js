@@ -27,7 +27,7 @@ Smartgraphs.main = function main() {
   
   // create the list of annotation types
   for (var prop in Smartgraphs) { 
-    if (Smartgraphs.hasOwnProperty(prop) && prop.isClass && SC.kindOf(Smartgraphs[prop], Smartgraphs.Annotation) && prop !== 'Annotation') {
+    if (Smartgraphs.hasOwnProperty(prop) && Smartgraphs[prop] && Smartgraphs[prop].isClass && prop !== 'Annotation' && SC.kindOf(Smartgraphs[prop], Smartgraphs.Annotation)) {
       Smartgraphs.Annotation.types.push(Smartgraphs[prop]);
     }
   }
