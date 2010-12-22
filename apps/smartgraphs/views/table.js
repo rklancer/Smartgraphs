@@ -24,6 +24,12 @@ Smartgraphs.TableView = SC.View.extend(
   yLabelBinding: '*tableController.axes.yLabelAbbreviated',
   latestXBinding: '*tableController.latestX',
   latestYBinding: '*tableController.latestY',
+  annotationListBinding: '*tableController.annotationList',
+  
+  init: function () {
+    this._viewsByClassAndId = {};
+    sc_super();
+  },
   
   fix: function (val, n) {
     return (val === undefined || val === null) ? null : val.toFixed(n);
@@ -88,30 +94,30 @@ Smartgraphs.TableView = SC.View.extend(
   }),
   
   tableColumnView: SC.View.design({
-    layout: { width: 250, centerX: 0 },
+    layout: { width: 350, centerX: 0 },
     
     childViews: ['labelsView', 'scrollView'],
     
     labelsView: SC.View.design({
       isVisibleBinding: '.parentView.parentView.showLabels',
       
-      layout: { left: 0, top: 0, width: 250, height: 30 },
+      layout: { left: 0, top: 0, width: 350, height: 30 },
       classNames: ['smartgraph-table'],
       childViews: ['xsLabel', 'ysLabel'],
 
       xsLabel: SC.LabelView.design({    
-        layout: { left: 0, top: 0, width: 120, height: 25 },
+        layout: { left: 50, top: 0, width: 120, height: 25 },
         valueBinding: '.parentView.parentView.parentView.xLabel'
       }),
 
       ysLabel: SC.LabelView.design({
-        layout: { right: 0, top: 0, width: 120, height: 25 },
+        layout: { right: 50, top: 0, width: 120, height: 25 },
         valueBinding: '.parentView.parentView.parentView.yLabel'
       })
     }),
   
     scrollView: SC.ScrollView.design({
-      layout: { left: 0, top: 35, width: 250 },
+      layout: { left: 0, top: 35, width: 350 },
       borderStyle: SC.BORDER_NONE,
     
       contentView: SC.View.design({
@@ -258,13 +264,15 @@ Smartgraphs.TableView = SC.View.extend(
     }).create();
     
     // append view to the canvas
-    this.getPath('tableColumnView.scrollView.contentView.backdrop.annotationsHolder').appendChild(view);
+    if (view.get('canShowInTable')) {
+      this.getPath('tableColumnView.scrollView.contentView.backdrop.annotationsHolder').appendChild(view);
+      // Accounting
+      if (this._viewsByClassAndId[classKey] === undefined) {
+        this._viewsByClassAndId[classKey] = {};
+      }    
+      this._viewsByClassAndId[classKey][item.get('id')] = view;
+    }
 
-    // Accounting
-    if (this._viewsByClassAndId[classKey] === undefined) {
-      this._viewsByClassAndId[classKey] = {};
-    }    
-    this._viewsByClassAndId[classKey][item.get('id')] = view;
   },
   
   /**

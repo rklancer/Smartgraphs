@@ -5,7 +5,7 @@
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start setup teardown setupUserAndSessionFixtures */
 
-var pane, graphView, datasetView;
+var pane, graphView, datasetView, tableView;
 
 module("Smartgraphs.ACTIVITY", {
   setup: function () {
@@ -59,7 +59,7 @@ test("openAuthorView action should transition us to AUTHOR view of the same acti
 });
 
 
-module("Smartgraphs.ACTIVITY: annotation-creating actions", {
+module("Smartgraphs.ACTIVITY: graph annotation-creating actions", {
   setup: function () {
     setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
     setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
@@ -253,4 +253,90 @@ test("Creating IndicatingArrow from coordinates", function () {
   var indicator = Smartgraphs.firstGraphController.findAnnotationByName('test-point-arrow');
   ok( indicator.kindOf(Smartgraphs.IndicatingArrow), "The annotation is an IndicatingArrow");
   equals( indicator.get('x'), 10, "The x-coordinate of the arrow is 10" );
+});
+
+module("Smartgraphs.ACTIVITY: table annotation-creating actions", {
+  // Setup/teardown borrowed from Smartgraphs.INTERACTIVE_SELECTION tests
+  setup: function () {
+    setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
+    setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
+
+    setup.fixtures(Smartgraphs.Dataset, [
+      { url: 'test-dataset',
+        name: 'test-dataset',
+        isExample: YES,
+        points: ['p1', 'p2']
+      }
+    ]);
+
+    setup.fixtures(Smartgraphs.DataPoint, [
+      { guid: 'p1', x: 1, y: 3, dataset: 'test-dataset' },
+      { guid: 'p2', x: 4, y: 5, dataset: 'test-dataset' }
+    ]);
+
+    setup.fixtures(Smartgraphs.Session, Smartgraphs.Session.TEST_FIXTURES);
+    setup.fixtures(Smartgraphs.User, Smartgraphs.User.TEST_FIXTURES);
+    setup.store();
+
+    Smartgraphs.firstTableController.openDataset('test-dataset');
+
+    SC.RunLoop.begin();
+    pane = SC.MainPane.create({
+      childViews: [
+        Smartgraphs.TableView.design({
+          tableControllerBinding: 'Smartgraphs.firstTableController',
+          viewName: 'testTableView'
+        })]
+    });
+    pane.append();
+    SC.RunLoop.end();
+
+    tableView = pane.get('childViews').objectAt(0);
+
+    beginSession();
+    
+    setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
+    setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
+
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'ACTIVITY',
+        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY')
+      })
+    }));
+
+    SC.RunLoop.begin();
+    Smartgraphs.statechart.initStatechart();
+    SC.RunLoop.end();
+  },
+
+  teardown: function () {
+    Smartgraphs.firstTableController.clear();
+    graphView.bindings.forEach( function (b) { b.disconnect(); } );
+    pane.remove();
+    teardown.all();
+  }
+});
+
+test("Creating rise BracketArc", function () {
+  // expect();
+  // var startBracketCount = Smartgraphs.store.find('Smartgraphs.BracketArc').get('length');
+  // var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  // var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  // var startAnnotationsCount = Smartgraphs.firstTableController.get('annotationList').get('length');
+  // Smartgraphs.statechart.sendAction('createRiseBracket', null, {'bracketName': 'test-rise-bracket', 'tableName': 'test-graph', 'point1': 'hp1', 'point2': 'hp2', 'color': '#ff0000'});
+  // equals(Smartgraphs.store.find('Smartgraphs.BracketArc').get('length'), startBracketCount + 1, "There should be one more BracketArc");
+  // equals(Smartgraphs.firstTableController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
+  // Smartgraphs.firstTableController.addObjectByName(Smartgraphs.BracketArc, 'test-rise-bracket'); // Grab the annotation to examine it
+  // var annotation = Smartgraphs.firstTableController.findAnnotationByName('test-rise-bracket');
+  // ok(annotation.kindOf(Smartgraphs.BracketArc), 'The Annotation is a BracketArc');
+  // ok(annotation.get('isClockwise'), 'The annotation should be rendered clockwise');
+  // ok(annotation.get('startX'), 'The starting point should not be undefined');
+  // ok(annotation.get('endY'), 'The ending point should not be undefined');
+  ok(true);
+});
+
+test("Creating run BracketArc", function () {
+  ok(true);
 });

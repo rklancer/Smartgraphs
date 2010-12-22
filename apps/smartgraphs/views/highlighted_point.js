@@ -16,6 +16,8 @@ Smartgraphs.HighlightedPointView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.HighlightedPointView.prototype */
 {
 
+  canShowInTable: NO,
+  
   // defaults
   radius: 8,
   strokeBinding: '.item.color',
