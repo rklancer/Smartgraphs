@@ -9,7 +9,6 @@ var pane;
 var graphView;
 var canvasView;
 var annotationViews;
-var oldStore;
 var session;
 var dataset;
 
@@ -17,15 +16,20 @@ var dataset;
 function setupFixtures() {
   setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
   setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
-  setup.fixtures(Smartgraphs.Dataset, [{url: 'dataset-1'}]);
+  setup.fixtures(Smartgraphs.Dataset, [{url: 'dataset-1'}]);        // just so FixturesDataSource recognizes we have fixtures
   setup.fixtures(Smartgraphs.DataPoint, [{url: 'datapoint-1'}]);
+  setup.store();
+  
+  Smartgraphs.store.find(Smartgraphs.DataPoint);
+  Smartgraphs.store.find(Smartgraphs.Axes);
+  Smartgraphs.store.find(Smartgraphs.Graph);
 }
 
 
 module("Smartgraphs Annotation View instantiation", {
   setup: function() {
     setupFixtures();
-    setup.store();
+    beginSession();
 
     Smartgraphs.firstGraphController.openGraph('test-graph');
 
@@ -44,7 +48,6 @@ module("Smartgraphs Annotation View instantiation", {
     canvasView = graphView.get('graphCanvasView');
     annotationViews = canvasView.getPath('annotationsHolder.childViews');
 
-    beginSession();
     session = Smartgraphs.sessionController.get('content');
     dataset = Smartgraphs.activityObjectsController.createDataset();
     Smartgraphs.firstGraphController.addDataset(dataset);
@@ -52,6 +55,7 @@ module("Smartgraphs Annotation View instantiation", {
 
   teardown: function () {
     Smartgraphs.firstGraphController.clear();
+    endSession();
     graphView.bindings.forEach( function (b) { b.disconnect(); } );
     pane.remove();
     teardown.store();
