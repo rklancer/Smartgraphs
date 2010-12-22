@@ -500,6 +500,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
+            "type": "Smartgraphs.HighlightedSegment",
             "name": "maria-running-interval-1"
           }
         },
@@ -507,6 +508,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
+            "type": "Smartgraphs.HighlightedSegment",
             "name": "maria-running-interval-2"
           }
         }
@@ -593,6 +595,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
+            "type": "Smartgraphs.HighlightedSegment",
             "name": "maria-stationary-interval"
           }
         }
@@ -879,6 +882,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
+            "type": "Smartgraphs.HighlightedPoint",
             "name": "where-maria-stopped"
           }
         }
@@ -950,6 +954,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
+            "type": "Smartgraphs.HighlightedPoint",
             "name": "where-maria-stopped"
           }
         },
@@ -957,6 +962,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
+            "type": "Smartgraphs.LineToAxis",
             "name": "where-maria-stopped-to-y-axis"
           }
         }
@@ -1177,6 +1183,7 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
+            "type": "Smartgraphs.HighlightedSegment",
             "name": "maria-stationary-interval"
           }
         }
