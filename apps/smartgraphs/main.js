@@ -29,6 +29,7 @@ Smartgraphs.main = function main() {
   for (var prop in Smartgraphs) { 
     if (Smartgraphs.hasOwnProperty(prop) && Smartgraphs[prop] && Smartgraphs[prop].isClass && prop !== 'Annotation' && SC.kindOf(Smartgraphs[prop], Smartgraphs.Annotation)) {
       Smartgraphs.Annotation.types.push(Smartgraphs[prop]);
+      Smartgraphs.Annotation.typeNames.push(prop);
     }
   }
   

@@ -85,7 +85,14 @@ Smartgraphs.Annotation = SC.Record.extend(
 
 }) ;
 
+// FIXME what is the jsdoc for "class property"?
+
 /**
   A list of all Annotation subtypes
 */
 Smartgraphs.Annotation.types = [];
+
+/**
+  The names of all Annotation subtypes
+*/
+Smartgraphs.Annotation.typeNames = [];
