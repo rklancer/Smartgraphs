@@ -336,7 +336,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "correct-boiling-point",
-            "type": "Smartgraphs.HighlightedSegment",
             "name": "before-boiling-began"
           }
         }
@@ -424,7 +423,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "correct-boiling-point",
-            "type": "Smartgraphs.HighlightedPoint",
             "name": "where-boiling-began"
           }
         }
@@ -519,7 +517,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "correct-boiling-point",
-            "type": "Smartgraphs.HighlightedSegment",
             "name": "after-boiling-began"
           }
         }
