@@ -3,7 +3,7 @@
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings setupDatapointFixtures restoreDatapointFixtures */
+/*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings */
 
 var dataset;
 var pane;
@@ -13,30 +13,12 @@ var rowHeight;
 module('Table view', {
   setup: function () {
     setupUserAndSessionFixtures();
-    setupDatapointFixtures();
-
-    // setup.fixtures(Smartgraphs.Axes, [
-    //   { url: 'test-axes',
-    // 
-    //     xMin: -5,
-    //     xMax: 10,
-    //     xSteps: 5,
-    //     xLabel: 'xLabel (long)',
-    //     xLabelAbbreviated: 'xLabel',
-    // 
-    //     yMin: 2,
-    //     yMax: 8,
-    //     ySteps: 6,
-    //     yLabel: 'yLabel (long)',
-    //     yLabelAbbreviated: 'yLabel'
-    //   }
-    // ]);
-    
+    setup.fixtures(Smartgraphs.Dataset, [{url: 'dataset-1'}]);
+    setup.fixtures(Smartgraphs.DataPoint, [{url: 'datapoint-1'}]);
     setup.store();
-    
-    setup.mock(Smartgraphs.firstTableController, 'showTable', YES);
-
     beginSession();
+        
+    setup.mock(Smartgraphs.firstTableController, 'showTable', YES);
     dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
     
     SC.RunLoop.begin();
@@ -61,15 +43,14 @@ module('Table view', {
   },
   
   teardown: function () {
-    pane.remove();
-    disconnectBindings(view);
-    rowHeight = innerView = scrollView = tableColumnView = view = pane = null;
-    
     Smartgraphs.firstTableController.clear();
     Smartgraphs.secondTableController.clear();
+    endSession();
+    disconnectBindings(view);
+    pane.remove();
+    rowHeight = innerView = scrollView = tableColumnView = view = pane = null;
 
     restoreUserAndSessionFixtures();
-    restoreDatapointFixtures();
     teardown.all();
   }
 });
