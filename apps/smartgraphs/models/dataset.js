@@ -41,7 +41,7 @@ Smartgraphs.Dataset = SC.Record.extend(
     
     @property {Smartgraphs.Activity}
   */
-  activity: SC.Record.toOne('Smartgraphs.Activity'),
+  activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'datasets', isMaster: YES }),
   
   /**
     The session this dataset is associated with. (When a user begins running an activity, any new datasets

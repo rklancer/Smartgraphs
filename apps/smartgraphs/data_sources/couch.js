@@ -36,8 +36,8 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     // TODO: Add handlers to retrieve an individual record's contents
     // call store.dataSourceDidComplete(storeKey) when done.
     
-    var recordType = Smartgraphs.store.recordTypeFor(storeKey);
-    var id = Smartgraphs.store.idFor(storeKey);
+    var recordType = store.recordTypeFor(storeKey);
+    var id = store.idFor(storeKey);
 
     this.log('CouchDataSource.retrieveRecord()');
     this.log('  Record type requested = %s', recordType.toString());
@@ -105,6 +105,11 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         ].forEach(function (pair) {
           self.loadRecordsFromArray(store, Smartgraphs[pair[0]], doc[pair[1]]);
         });
+
+        // Data format 2 doesn't include activity->datasets, activity->axes, or activity->graphs ManyArrays
+        doc.activity.datasets = doc.datasets.map( function (dataset) { return dataset.url; } );
+        doc.activity.axes = doc.axes.map( function (axes) { return axes.url; } );
+        doc.activity.graphs = doc.graphs.map( function (graph) { return graph.url; } );
 
         // and call back to the datastore (which loads the Activity record as well)
         store.dataSourceDidComplete(storeKey, doc.activity);

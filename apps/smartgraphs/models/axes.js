@@ -18,6 +18,13 @@ Smartgraphs.Axes = SC.Record.extend(
   url: SC.Record.attr(String),
   primaryKey: 'url',
   
+  /**
+    The activity these axes are part of.
+    
+    @property {Smartgraphs.Activity}
+  */
+  activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'axes', isMaster: YES }),
+  
   xMin: SC.Record.attr(Number),
   xMax: SC.Record.attr(Number),
   xSteps: SC.Record.attr(Number),
