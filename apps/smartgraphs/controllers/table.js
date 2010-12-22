@@ -63,8 +63,8 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   latestYBinding: '*dataset.latestPoint.yRounded',
   
   pendingDatasetName: null,
-  //datasetNamesBinding: 'Smartgraphs.activityObjectsController.datasetNames',
-  //datasetNamesBindingDefault: SC.Binding.oneWay(),
+  datasetNamesBinding: 'Smartgraphs.activityObjectsController.datasetNames',
+  datasetNamesBindingDefault: SC.Binding.oneWay(),
   
   // a first implementation of lazy loading of activity objects
   maybeAddPendingDataset: function () {
