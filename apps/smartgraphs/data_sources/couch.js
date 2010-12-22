@@ -14,6 +14,20 @@
 Smartgraphs.CouchDataSource = SC.DataSource.extend(
 /** @scope Smartgraphs.CouchDataSource.prototype */ {
 
+  /**
+    @private
+    
+    couchdb _ids for all activity records loaded by this data source, indexed by storeKey
+  */
+  _ids: {},
+
+  /**
+    @private
+    
+    couchdb _revs for all activity records loaded by this data source, indexed by storeKey
+  */
+  _revs: {},
+  
   // ..........................................................
   // QUERY SUPPORT
   // 
@@ -87,6 +101,10 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         this.log('doc = ', doc);
         this.log('doc.activity = ', doc.activity);
         
+        // save the _rev and _id for later
+        this._ids[storeKey] = doc._id;
+        this._revs[storeKey] = doc._rev;
+        
         // push all the associated records into the store
         var self = this;
         [
@@ -110,7 +128,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         doc.activity.datasets = doc.datasets.map( function (dataset) { return dataset.url; } );
         doc.activity.axes = doc.axes.map( function (axes) { return axes.url; } );
         doc.activity.graphs = doc.graphs.map( function (graph) { return graph.url; } );
-
+        
         // and call back to the datastore (which loads the Activity record as well)
         store.dataSourceDidComplete(storeKey, doc.activity);
         return;
