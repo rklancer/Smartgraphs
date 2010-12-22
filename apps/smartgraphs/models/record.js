@@ -9,7 +9,7 @@
 /**
   Serialized form of the record suitable for conversion to JSON
   
-  @property {Object}
+  @returns {Object}
 */
 SC.Record.prototype.serialize = function () {
   return this.get('store').readDataHash( this.get('storeKey') );

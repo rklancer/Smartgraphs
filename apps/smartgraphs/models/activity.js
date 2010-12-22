@@ -47,7 +47,7 @@ Smartgraphs.Activity = SC.Record.extend(
   axes: SC.Record.toMany('Smartgraphs.Axes', { inverse: 'activity' }),
   
   /**
-    Graphs that are part of th activity
+    Graphs that are part of the activity
     
     @property(Smartgraphs.Graph[])
   */
@@ -63,7 +63,7 @@ Smartgraphs.Activity = SC.Record.extend(
   /**
     Serialized form convertible to JSON
     
-    @property {Object}
+    @returns {Object}
   */
   serialize: function () {
     var ret = {};
@@ -87,7 +87,23 @@ Smartgraphs.Activity = SC.Record.extend(
     var datapoints = datasets.map( function (dataset) { return dataset.get('points').map( function (point) { return point.serialize(); } ); } );
     ret.datapoints = Array.prototype.concat.apply([], datapoints);
     
+    var self = this;
+    ret.annotations = [];
+    Smartgraphs.Annotation.typeNames.forEach(function (typeName) {
+      var query = SC.Query.local(Smartgraphs[typeName], 'activity={activity}', {
+        activity: self
+      });
+      var annotations = store.find(query);
+      
+      if (annotations.get('length') > 0) {
+        ret.annotations.push({
+          type: typeName,
+          records: annotations.map( function (annotation) { return annotation.serialize(); } )
+        });
+      }
+    });
+    
     return ret;
-  }.property()
+  }
 
 }) ;
