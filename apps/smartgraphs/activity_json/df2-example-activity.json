@@ -1,8 +1,8 @@
 {
-  "_rev": "1-0f5a23a5ad094e9c34c3ddabeec05d72",
+  "_rev": "4-0a545312f3c907db4af1f16578bf7ff7",
   "data_format_version": 2,
   "activity": {
-    "title": "Example Activity",
+    "title": "An Example Activity for Testing",
     "url": "/shared/example-activity",
     "owner": "shared",
     "pages": [
