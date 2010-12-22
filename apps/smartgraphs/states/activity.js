@@ -386,12 +386,12 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
     @param {String} args.bracketName
       The name for this annotation
-    @param {Number} args.tableName
+    @param {String} args.tableName
       The name of the dataset which contains the point of the two HighlightedPoint annotations. This
       is used to find the TableController which has that dataset open.
-    @param {Number} args.point1
+    @param {String} args.point1
       The name of the HighlightedPoint where the arc should start.
-    @param {Number} args.point2
+    @param {String} args.point2
       The name of the HighlightedPoint where the arc should end.
     @param {String} [args.color='#cc0000']
       The color in which the arc should be rendered.
@@ -430,12 +430,12 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
     @param {String} args.bracketName
       The name for this annotation
-    @param {Number} args.tableName
+    @param {String} args.tableName
       The name of the dataset which contains the point of the two HighlightedPoint annotations. This
       is used to find the TableController which has that dataset open.
-    @param {Number} args.point1
+    @param {String} args.point1
       The name of the HighlightedPoint where the arc should start.
-    @param {Number} args.point2
+    @param {String} args.point2
       The name of the HighlightedPoint where the arc should end.
     @param {String} [args.color='#cc0000']
       The color in which the arc should be rendered.
