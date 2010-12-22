@@ -256,65 +256,30 @@ test("Creating IndicatingArrow from coordinates", function () {
 });
 
 module("Smartgraphs.ACTIVITY: table annotation-creating actions", {
-  // Setup/teardown borrowed from Smartgraphs.INTERACTIVE_SELECTION tests
+  // See 'graph annotation-creating actions' above if you need to see how to set up a pane displaying a graph
   setup: function () {
-    setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
-    setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
-
-    setup.fixtures(Smartgraphs.Dataset, [
-      { url: 'test-dataset',
-        name: 'test-dataset',
-        isExample: YES,
-        points: ['p1', 'p2']
-      }
-    ]);
-
-    setup.fixtures(Smartgraphs.DataPoint, [
-      { guid: 'p1', x: 1, y: 3, dataset: 'test-dataset' },
-      { guid: 'p2', x: 4, y: 5, dataset: 'test-dataset' }
-    ]);
-
-    setup.fixtures(Smartgraphs.Session, Smartgraphs.Session.TEST_FIXTURES);
-    setup.fixtures(Smartgraphs.User, Smartgraphs.User.TEST_FIXTURES);
-    setup.store();
-
-    Smartgraphs.firstTableController.openDataset('test-dataset');
-
-    SC.RunLoop.begin();
-    pane = SC.MainPane.create({
-      childViews: [
-        Smartgraphs.TableView.design({
-          tableControllerBinding: 'Smartgraphs.firstTableController',
-          viewName: 'testTableView'
-        })]
-    });
-    pane.append();
-    SC.RunLoop.end();
-
-    tableView = pane.get('childViews').objectAt(0);
-
-    beginSession();
-    
     setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
     setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
 
     setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
       trace: YES,
       rootState: SC.State.design({
-        initialSubstate: 'ACTIVITY',
-        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY')
+        initialSubstate: 'DUMMY',
+        DUMMY: SC.State.design(),
+        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY')     // implicitly starts a session (on entry to ACTIVITY)
       })
     }));
 
     SC.RunLoop.begin();
+    Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', NO);
     Smartgraphs.statechart.initStatechart();
+    Smartgraphs.statechart.gotoState('ACTIVITY');
     SC.RunLoop.end();
   },
 
   teardown: function () {
     Smartgraphs.firstTableController.clear();
-    graphView.bindings.forEach( function (b) { b.disconnect(); } );
-    pane.remove();
+    Smartgraphs.statechart.gotoState('DUMMY');              // implicitly ends a session (on exit from ACTIVITY)
     teardown.all();
   }
 });
