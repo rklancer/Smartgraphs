@@ -269,19 +269,11 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   },
   
   /**
-    Add an existing Annotation with the specified name and type to the specified graph or table.
-    
-    If no session-scoped Annotation with the specified name and type exists, an example Annotation with the specified
-    name and type is searched for and, if one is found, it is added to the graph or table.
-    
-    Note that eventually it will make sense to remove the requirement to specify the Annotation type as well as the 
-    Annotation name here. However, this requirement does exist now.
+    Add an existing Annotation with the specified name to the specified graph or table.
     
     @param context
     @param args
     
-    @param {String} args.type
-      The name of the subclass of Annotation. For example, 'Smartgraphs.HighlightedPoint'
     @param {String} args.name
       The name of the Annotation object.
     @param {String} args.graphName
@@ -299,7 +291,10 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     else if (args.tableName) {
       controller = Smartgraphs.TableController.controllerForDataset[args.tableName];
     }
-    controller.addObjectByName(SC.objectForPropertyPath(args.type), args.name);
+    
+    var obj = Smartgraphs.activityObjectsController.findAnnotation(args.name);
+    if (obj) controller.addAnnotation(obj);
+    
     return YES;
   },
   

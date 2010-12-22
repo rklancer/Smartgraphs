@@ -124,57 +124,6 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   },
 
   /**
-    Tries to find the object (dataset or annotation, based on 'objectType') with name 'objectName' in the current
-    session and adds that object to the list of datasets or annotations associated with this graph. (This will
-    cause the dataset or annotation to be show in the corresponding graph view.)
-    
-    If the object is not found in the current session, then tries to find and add an example dataset/annotation with 
-    the given name. (TODO: should copy the example to the session so further manipulation doesn't affect the example
-    object.)
-    
-    ("Example" datasets and annotations are canonical data or annotations created by the author of the activity
-    rather than the user of the activity.)
-    
-    This is the canonical way to add an object given its name. (Once it finds the object, it adds it using
-    the addDataset/addAnnotation methods.)
-    
-    @param objectType The type of object to open.
-    @param objectName The name of the object to open.
-  */
-  // TODO: I don't like just copying this from GraphController, which is what I've done; it should be refactored, but
-  // not into the annotation-support-mixin which is the available mixin.
-  addObjectByName: function (objectType, objectName) {
-    // first try to get the named dataset from the current session
-    throw "why did you call me?";
-    
-    var query = SC.Query.local(objectType, 'name={name} AND session={session}', { 
-      name: objectName,
-      session: Smartgraphs.sessionController.getPath('content')
-    });
-    var objectList = Smartgraphs.store.find(query);
-    
-    if (objectList.get('length') < 1) {
-      // get an example dataset if that's what has this name
-      query = SC.Query.local(objectType, 'name={name} AND isExample=YES', { 
-        name: objectName
-      });
-      objectList = Smartgraphs.store.find(query);
-      if (objectList.get('length') < 1) return NO;
-      
-      // FIXME copy the object to the session before using it!
-    }
-  
-    var object = objectList.objectAt(0);
-    if (objectType === Smartgraphs.Dataset) {
-      this.addDataset(object);
-      return YES;
-    }
-    if (object.get('isAnnotation')) {
-      this.addAnnotation(object);
-    }
-  },
-
-  /**
     Add an annotation to this controller.
     
     This version overrides the mixin version by adding an observer to the incoming annotation.

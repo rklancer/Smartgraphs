@@ -328,8 +328,9 @@ test("Creating rise BracketArc", function () {
   // Smartgraphs.statechart.sendAction('createRiseBracket', null, {'bracketName': 'test-rise-bracket', 'tableName': 'test-graph', 'point1': 'hp1', 'point2': 'hp2', 'color': '#ff0000'});
   // equals(Smartgraphs.store.find('Smartgraphs.BracketArc').get('length'), startBracketCount + 1, "There should be one more BracketArc");
   // equals(Smartgraphs.firstTableController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
-  // Smartgraphs.firstTableController.addObjectByName(Smartgraphs.BracketArc, 'test-rise-bracket'); // Grab the annotation to examine it
-  // var annotation = Smartgraphs.firstTableController.findAnnotationByName('test-rise-bracket');
+  // var annotation = Smartgraphs.activityObjectsController.F('test-rise-bracket');
+  // // Smartgraphs.firstTableController.addAnnotation(riseBracket);
+  // // var annotation = Smartgraphs.firstTableController.findAnnotationByName('test-rise-bracket');
   // ok(annotation.kindOf(Smartgraphs.BracketArc), 'The Annotation is a BracketArc');
   // ok(annotation.get('isClockwise'), 'The annotation should be rendered clockwise');
   // ok(annotation.get('startX'), 'The starting point should not be undefined');

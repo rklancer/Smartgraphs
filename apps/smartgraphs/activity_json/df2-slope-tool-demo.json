@@ -163,7 +163,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.LineThroughPoints",
             "name": "line",
             "graphName": "demo-graph"
           }
@@ -232,7 +231,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.Arrow",
             "name": "rise-arrow",
             "graphName": "demo-graph"
           }
@@ -282,7 +280,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.Arrow",
             "name": "run-arrow",
             "graphName": "demo-graph"
           }
@@ -402,7 +399,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.IndicatingArrow",
             "name": "test-arrow",
             "tableName": "demo-data"
           }
@@ -410,7 +406,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.IndicatingArrow",
             "name": "test-arrow-two",
             "tableName": "demo-data"
           }
@@ -470,7 +465,6 @@
           {
             "action": "addAnnotation",
             "literalArgs": {
-              "type": "Smartgraphs.BracketArc",
               "name": "demo-bracket",
               "tableName": "demo-data"
             }
