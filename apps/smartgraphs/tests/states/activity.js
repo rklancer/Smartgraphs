@@ -287,8 +287,8 @@ module("Smartgraphs.ACTIVITY: table annotation-creating actions", {
 test("Creating rise BracketArc", function () {
   // expect();
   // var startBracketCount = Smartgraphs.store.find('Smartgraphs.BracketArc').get('length');
-  // var hp1 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
-  // var hp2 = Smartgraphs.sessionController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
+  // var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  // var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   // var startAnnotationsCount = Smartgraphs.firstTableController.get('annotationList').get('length');
   // Smartgraphs.statechart.sendAction('createRiseBracket', null, {'bracketName': 'test-rise-bracket', 'tableName': 'test-graph', 'point1': 'hp1', 'point2': 'hp2', 'color': '#ff0000'});
   // equals(Smartgraphs.store.find('Smartgraphs.BracketArc').get('length'), startBracketCount + 1, "There should be one more BracketArc");

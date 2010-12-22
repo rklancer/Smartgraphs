@@ -365,7 +365,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   */
   createBracketArcFromCoordinates: function (context, args) {
     var arc = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
         startX: args.startX,
         startY: args.startY,
         endX: args.endX,
@@ -409,7 +409,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2.get('point'));
 
     var arc = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
         startX: 310,
         startY: (pointOneIndex * 20) + 10,
         endX: 310,
@@ -453,7 +453,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2.get('point'));
 
     var arc = 
-      Smartgraphs.sessionController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
+      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
         startX: 40,
         startY: (pointOneIndex * 20) + 10,
         endX: 40,
