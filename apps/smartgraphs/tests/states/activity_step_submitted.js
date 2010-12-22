@@ -27,7 +27,7 @@ module("Smartgraphs.ACTIVITY_STEP_SUBMITTED", {
     
     var points = Smartgraphs.store.find(Smartgraphs.DataPoint);
     dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
-    dataset.set('points', points);
+    points.setEach('dataset', dataset);
     
     setup.mock(Smartgraphs, 'ACTIVITY_STEP_SUBMITTED', Smartgraphs.ACTIVITY_STEP_SUBMITTED.extend({
       enterState: function () {}
@@ -45,6 +45,7 @@ module("Smartgraphs.ACTIVITY_STEP_SUBMITTED", {
   },
 
   teardown: function () {
+    Smartgraphs.firstGraphController.clear();
     endSession();
     teardown.all();
   }

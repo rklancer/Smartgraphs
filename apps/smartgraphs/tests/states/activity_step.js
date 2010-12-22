@@ -43,7 +43,7 @@ module("Smartgraphs.ACTIVITY_STEP", {
 
     var points = Smartgraphs.store.find(Smartgraphs.DataPoint);
     var dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
-    dataset.set('points', points);
+    points.setEach('dataset', dataset);
 
     Smartgraphs.firstGraphController.openGraph('test-graph');
     Smartgraphs.firstGraphController.addDataset(dataset);

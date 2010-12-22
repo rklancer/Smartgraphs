@@ -64,8 +64,8 @@ module("Smartgraphs.ACTIVITY: annotation-creating actions", {
     setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
     setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
     setup.fixtures(Smartgraphs.DataPoint, [
-      { guid: 'p1', x: 1, y: 3, dataset: 'test-dataset' },
-      { guid: 'p2', x: 4, y: 5, dataset: 'test-dataset' }
+      { guid: 'p1', x: 1, y: 3 },
+      { guid: 'p2', x: 4, y: 5 }
     ]);
     setupUserAndSessionFixtures();
     setup.store();
@@ -95,7 +95,7 @@ module("Smartgraphs.ACTIVITY: annotation-creating actions", {
     
     var points = Smartgraphs.store.find(Smartgraphs.DataPoint);
     var dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
-    dataset.set('points', points);
+    points.setEach('dataset', dataset);
     
     Smartgraphs.firstGraphController.openGraph('test-graph');
     Smartgraphs.firstGraphController.addDataset(dataset);

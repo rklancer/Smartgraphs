@@ -3,34 +3,51 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer 
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession */
+/*globals Smartgraphs module test ok equals same stop start setup teardown setupUserAndSessionFixtures */
 
 var pane, graphView, datasetView;
+var dataset;
 
 module("Smartgraphs.INTERACTIVE_SELECTION", {
   setup: function () {
     setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
     setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
-
-    setup.fixtures(Smartgraphs.Dataset, [
-      { url: 'test-dataset',
-        name: 'test-dataset',
-        isExample: YES,
-        points: ['p1', 'p2']
-      }
-    ]);
-    
     setup.fixtures(Smartgraphs.DataPoint, [
-      { guid: 'p1', x: 1, y: 3, dataset: 'test-dataset' },
-      { guid: 'p2', x: 4, y: 5, dataset: 'test-dataset' }
+      { guid: 'p1', x: 1, y: 3 },
+      { guid: 'p2', x: 4, y: 5 }
     ]);
-    
-    setup.fixtures(Smartgraphs.Session, Smartgraphs.Session.TEST_FIXTURES);
-    setup.fixtures(Smartgraphs.User, Smartgraphs.User.TEST_FIXTURES);
+    setupUserAndSessionFixtures();
     setup.store();
+
+    // FIXME why is it necessary to do this before Axes and Graphs are visible in nested store?
+    Smartgraphs.store.find(Smartgraphs.DataPoint);
+    Smartgraphs.store.find(Smartgraphs.Axes);
+    Smartgraphs.store.find(Smartgraphs.Graph);
+
+    setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
+    setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
+
+    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
+      trace: YES,
+      rootState: SC.State.design({
+        initialSubstate: 'DUMMY',
+        DUMMY: SC.State.design(),
+        ACTIVITY: SC.State.plugin('Smartgraphs.ACTIVITY')
+      })
+    }));
+
+    SC.RunLoop.begin();
+    Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', NO);
+    Smartgraphs.statechart.initStatechart();
+    Smartgraphs.statechart.gotoState('ACTIVITY_STEP');
+    SC.RunLoop.end();
+    
+    var points = Smartgraphs.store.find(Smartgraphs.DataPoint);
+    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
+    points.setEach('dataset', dataset);
     
     Smartgraphs.firstGraphController.openGraph('test-graph');
-    Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Dataset, 'test-dataset');
+    Smartgraphs.firstGraphController.addDataset(dataset);
 
     SC.RunLoop.begin();
     pane = SC.MainPane.create({
@@ -42,31 +59,15 @@ module("Smartgraphs.INTERACTIVE_SELECTION", {
     });
     pane.append();
     SC.RunLoop.end();
-
+    
     graphView = pane.get('childViews').objectAt(0);
     datasetView = graphView.getPath('graphCanvasView.dataHolder.childViews').objectAt(0);
-
-    beginSession();
-    
-    setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
-      trace: YES,
-      rootState: SC.State.design({
-        initialSubstate: 'ACTIVITY_STEP',
-        ACTIVITY_STEP: SC.State.plugin('Smartgraphs.ACTIVITY_STEP'),
-        ACTIVITY_STEP_SUBMITTED: SC.State.design()
-      })
-    }));
-    
-    // don't actually do anything when we go into ACTIVITY_STEP
-    setup.mock(Smartgraphs, 'ACTIVITY_STEP', Smartgraphs.ACTIVITY_STEP.extend({
-      enterState: function () {}
-    }));
-    
-    Smartgraphs.statechart.initStatechart();
   },
 
   teardown: function () {
-    Smartgraphs.firstGraphController.clear();
+    // let graphs finish drawing before leaving ACTIVITY state (and clearing the graphs)
+    SC.RunLoop.begin().end();
+    Smartgraphs.statechart.gotoState('DUMMY');
     graphView.bindings.forEach( function (b) { b.disconnect(); } );
     pane.remove();
     teardown.all();
