@@ -15,6 +15,9 @@
 Smartgraphs.Activity = SC.Record.extend(
 /** @scope Smartgraphs.Activity.prototype */ {
 
+  /** 
+    The (relative) URL at which this Activity can be found. Also its primary key in the datastore.
+  */
   url: SC.Record.attr(String),
   primaryKey: 'url',
   
