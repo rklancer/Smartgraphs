@@ -19,6 +19,7 @@ Smartgraphs.AUTHOR = SC.State.extend(
   enterState: function () {
     Smartgraphs.appWindowController.showAuthorView();
     Smartgraphs.toolbarController.showRunButton();
+    Smartgraphs.toolbarController.showSaveButton();
     Smartgraphs.activityPagesController.set('shouldShowStepsInOutline', NO);
     Smartgraphs.activityOutlineController.set('shouldSelectPageInOutline', YES);
     Smartgraphs.activityOutlineController.set('isSelectable', YES);
@@ -26,6 +27,7 @@ Smartgraphs.AUTHOR = SC.State.extend(
   },
   
   exitState: function () {
+    Smartgraphs.toolbarController.hideSaveButton();    
     Smartgraphs.activityPagesController.set('shouldShowStepsInOutline', YES);
     Smartgraphs.activityOutlineController.set('shouldSelectPageInOutline', NO);
     Smartgraphs.activityOutlineController.set('isSelectable', NO);
@@ -53,6 +55,10 @@ Smartgraphs.AUTHOR = SC.State.extend(
   
   gotoPreviousPage: function () {
     Smartgraphs.activityPagesController.selectPreviousPage();
+  },
+  
+  saveActivity: function () {
+    Smartgraphs.activityController.get('content').commitRecord();
   }
 
 }) ;

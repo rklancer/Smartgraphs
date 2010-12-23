@@ -18,7 +18,7 @@ Smartgraphs.mainPage = SC.Page.design({
     topToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_TOP,
       
-      childViews: ['title', 'editButton', 'runButton'],
+      childViews: ['title', 'editButton', 'runButton', 'saveButton'],
       
       title: SC.LabelView.design({
         layout: { centerY: 0, height: 24, left: 8, width: 400 },
@@ -30,15 +30,23 @@ Smartgraphs.mainPage = SC.Page.design({
       editButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
         isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowEditButton',
-        title: "Edit",
-        action: "openAuthorView"
+        title: 'Edit',
+        action: 'openAuthorView'
       }),
       
       runButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
         isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowRunButton',
-        title: "Run",
-        action: "runActivity"
+        title: 'Run',
+        action: 'runActivity'
+      }),
+      
+      saveButton: SC.ButtonView.design({
+        layout: { right: 120, centerY: 0, height: 24, width: 80 },
+        isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowSaveButton',
+        isEnabledBinding: 'Smartgraphs.activityController.isDirty',
+        title: 'Save',
+        action: 'saveActivity'
       })
     }),
     
@@ -90,10 +98,10 @@ Smartgraphs.mainPage = SC.Page.design({
       
       backButton: SC.ButtonView.design({
         layout: { left: 20, centerY: 0, height: 24, width: 80 },
-        title: "Back",
-        // theme: "point-left",
+        title: 'Back',
+        // theme: 'point-left',
         theme: 'capsule',
-        action: "gotoPreviousPage",
+        action: 'gotoPreviousPage',
         isSwipeLeft: YES,
 
         isEnabledBinding: 'Smartgraphs.activityViewController.enableBackPageButton'
@@ -110,10 +118,10 @@ Smartgraphs.mainPage = SC.Page.design({
       
       nextButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
-        title: "Next",
-        // theme: "point-right",
+        title: 'Next',
+        // theme: 'point-right',
         theme: 'capsule',
-        action: "gotoNextPage",
+        action: 'gotoNextPage',
         isSwipeRight: YES,
         
         isVisibleBinding: 'Smartgraphs.activityViewController.showNextPageButton',
