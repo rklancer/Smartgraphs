@@ -65,10 +65,18 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
       controlF = { 'x': end.x + 40, 'y': end.y };
       
       // These angles are biased to make the arrowheads "toe out" a bit; they look goofy otherwise
-      baseAngleA = theta + (1.5 * angle) * Math.PI/180;
-      baseAngleB = theta - (0.5 * angle) * Math.PI/180;
-      baseAngleC = theta + (0.5 * angle) * Math.PI/180;
-      baseAngleD = theta - (1.5 * angle) * Math.PI/180;
+      if (start.y < end.y) {
+        baseAngleA = theta + (1.5 * angle) * Math.PI/180;
+        baseAngleB = theta - (0.5 * angle) * Math.PI/180;
+        baseAngleC = theta + (0.5 * angle) * Math.PI/180;
+        baseAngleD = theta - (1.5 * angle) * Math.PI/180;
+      }
+      else {
+        baseAngleA = theta + (0.5 * angle) * Math.PI/180;
+        baseAngleB = theta - (1.5 * angle) * Math.PI/180;
+        baseAngleC = theta + (1.5 * angle) * Math.PI/180;
+        baseAngleD = theta - (0.5 * angle) * Math.PI/180;
+      }
     }
     else { // Sign change
       theta = Math.atan2((end.y-start.y),(end.x-start.x))-(Math.PI/2);
@@ -77,23 +85,48 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
       controlF = { 'x': end.x - 40, 'y': end.y };
 
       // These angles are biased to make the arrowheads "toe out" a bit; they look goofy otherwise
-      baseAngleA = theta + (0.5 * angle) * Math.PI/180;
-      baseAngleB = theta - (1.5 * angle) * Math.PI/180;
-      baseAngleC = theta + (1.5 * angle) * Math.PI/180;
-      baseAngleD = theta - (0.5 * angle) * Math.PI/180;
+      if (start.y < end.y) {
+        baseAngleA = theta + (0.5 * angle) * Math.PI/180;
+        baseAngleB = theta - (1.5 * angle) * Math.PI/180;
+        baseAngleC = theta + (1.5 * angle) * Math.PI/180;
+        baseAngleD = theta - (0.5 * angle) * Math.PI/180;
+      } 
+      else {
+        baseAngleA = theta + (1.5 * angle) * Math.PI/180;
+        baseAngleB = theta - (0.5 * angle) * Math.PI/180;
+        baseAngleC = theta + (0.5 * angle) * Math.PI/180;
+        baseAngleD = theta - (1.5 * angle) * Math.PI/180;
+      }
     }
 
-    // These points describe the arrow head at the "start" end
-    var baseAX = start.x - length * Math.cos(baseAngleA);
-    var baseAY = start.y - length * Math.sin(baseAngleA);
-    var baseBX = start.x - length * Math.cos(baseAngleB);
-    var baseBY = start.y - length * Math.sin(baseAngleB);
+    var baseAX, baseAY, baseBX, baseBY, baseCX, baseCY, baseDX, baseDY;
     
-    // ...and these describe the arrow head at the "end" end.
-    var baseCX = end.x - length * Math.cos(baseAngleC);
-    var baseCY = end.y - length * Math.sin(baseAngleC);
-    var baseDX = end.x - length * Math.cos(baseAngleD);
-    var baseDY = end.y - length * Math.sin(baseAngleD);
+    if (start.y < end.y) {
+      // These points describe the arrow head at the "start" end
+      baseAX = start.x - length * Math.cos(baseAngleA);
+      baseAY = start.y - length * Math.sin(baseAngleA);
+      baseBX = start.x - length * Math.cos(baseAngleB);
+      baseBY = start.y - length * Math.sin(baseAngleB);
+
+      // ...and these describe the arrow head at the "end" end.
+      baseCX = end.x - length * Math.cos(baseAngleC);
+      baseCY = end.y - length * Math.sin(baseAngleC);
+      baseDX = end.x - length * Math.cos(baseAngleD);
+      baseDY = end.y - length * Math.sin(baseAngleD);
+    }
+    else {
+      // These points describe the arrow head at the "start" end
+      baseAX = start.x + length * Math.cos(baseAngleA);
+      baseAY = start.y + length * Math.sin(baseAngleA);
+      baseBX = start.x + length * Math.cos(baseAngleB);
+      baseBY = start.y + length * Math.sin(baseAngleB);
+
+      // ...and these describe the arrow head at the "end" end.
+      baseCX = end.x + length * Math.cos(baseAngleC);
+      baseCY = end.y + length * Math.sin(baseAngleC);
+      baseDX = end.x + length * Math.cos(baseAngleD);
+      baseDY = end.y + length * Math.sin(baseAngleD);
+    }
     
     // Figure out the pathString
     var pathString = "M " + start.x + " " + start.y + // Starting point
