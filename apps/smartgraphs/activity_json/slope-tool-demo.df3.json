@@ -1,6 +1,6 @@
 {
   "_id": "slope-tool-demo.df3",
-  "_rev": "12-4c597d47490d188782c29db1ca43d898",
+  "_rev": "20-e7855d9909647badaa8c778104b0837b",
   "data_format_version": 3,  
   "activity": {
     "title": "Slope Tool Demo",
@@ -432,14 +432,23 @@
       ],
       "afterSubmissionCommands": [
         {
-          "action": "createBracketArcFromCoordinates",
+          "action": "createRiseBracket",
           "literalArgs": {
-            "bracketName": "demo-bracket",
-            "startX": 40,
-            "startY": 10,
-            "endX": 40,
-            "endY": 130,
+            "bracketName": "demo-rise-bracket",
+            "point1": "first-point",
+            "point2": "second-point",
+            "tableName": "demo-data",
             "color": "#9467bd"
+          }
+        },
+        {
+          "action": "createRunBracket",
+          "literalArgs": {
+            "bracketName": "demo-run-bracket",
+            "point1": "first-point",
+            "point2": "second-point",
+            "tableName": "demo-data",
+            "color": "#d62728"
           }
         }
       ],
@@ -476,7 +485,14 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "name": "demo-bracket",
+            "name": "demo-rise-bracket",
+            "tableName": "demo-data"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "demo-run-bracket",
             "tableName": "demo-data"
           }
         },
