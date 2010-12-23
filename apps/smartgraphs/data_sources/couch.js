@@ -111,19 +111,18 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
           ['ActivityPage',        'pages'],
           ['ActivityStep',        'steps'],
           ['Axes',                'axes'],
-          ['DataPoint',           'datapoints'],
-          ['Dataset',             'datasets'],
-          ['FreehandSketch',      'freehandSketches'],
           ['Graph',               'graphs'],
-          ['HighlightedPoint',    'highlightedPoints'],
-          ['HighlightedSegment',  'highlightedSegments'],
-          ['LineToAxis',          'linesToAxis'],
-          ['ResponseTemplate',    'responseTemplates']
-                    
+          ['ResponseTemplate',    'responseTemplates'],
+          ['DataPoint',           'datapoints'],
+          ['Dataset',             'datasets']
         ].forEach(function (pair) {
           self.loadRecordsFromArray(store, Smartgraphs[pair[0]], doc[pair[1]]);
         });
 
+        doc.annotations.forEach( function (annotationRecs) {
+          self.loadRecordsFromArray(store, Smartgraphs[annotationRecs.type], annotationRecs.records);
+        });
+        
         // Data format 2 doesn't include activity->datasets, activity->axes, or activity->graphs ManyArrays
         doc.activity.datasets = doc.datasets.map( function (dataset) { return dataset.url; } );
         doc.activity.axes = doc.axes.map( function (axes) { return axes.url; } );
