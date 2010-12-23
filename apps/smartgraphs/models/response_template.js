@@ -20,7 +20,12 @@ Smartgraphs.ResponseTemplate = SC.Record.extend(
 
   url: SC.Record.attr(String),
   primaryKey: 'url',
-  
+
+  /**
+    The Activity this ResponseTemplate belongs to.
+  */
+  activity: SC.Record.toOne('Smartgraphs.Activity',  { inverse: 'pages', isMaster: YES, aggregate: YES }),
+    
   templateString: SC.Record.attr(String),
   fieldTypes: SC.Record.attr(Array),
   fieldChoicesList: SC.Record.attr(Array),            // for multiple choice

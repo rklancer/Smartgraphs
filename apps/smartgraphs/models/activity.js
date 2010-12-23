@@ -64,6 +64,13 @@ Smartgraphs.Activity = SC.Record.extend(
   datasets: SC.Record.toMany('Smartgraphs.Dataset', { inverse: 'activity' }),
   
   /**
+    ResponseTemplates used in this activity
+    
+    @property(Smartgraphs.ResponseTemplate[])
+  */
+  responseTemplates: SC.Record.toMany('Smartgraphs.ResponseTemplate', { inverse: 'activity' }),
+  
+  /**
     Serialized form convertible to JSON
     
     @returns {Object}
@@ -83,6 +90,9 @@ Smartgraphs.Activity = SC.Record.extend(
     ret.axes = axes.map( function (axes) { return axes.serialize(); } );
     var graphs = this.get('graphs');
     ret.graphs = graphs.map( function (graph) { return graph.serialize(); } );
+    
+    var responseTemplates = this.get('responseTemplates');
+    ret.responseTemplates = responseTemplates.map( function (responseTemplate) { return responseTemplate.serialize(); });
     
     var datasets = this.get('datasets');
     ret.datasets = datasets.map( function (dataset) { return dataset.serialize(); } );
