@@ -53,7 +53,13 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawin
     
     var startCoords = graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y);
     var endCoords =   graphView.coordinatesForPoint(arrowEnds.end.x, arrowEnds.end.y);
-    var pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
+    var pathString;
+    if ((startCoords.x !== endCoords.x) || (startCoords.y !== endCoords.y)) {
+      pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
+    }
+    else { // An arrow going nowhere, e.g. a rise arrow for a zero-slope line
+      pathString = "";
+    }
 
     var attrs = {
       d: pathString,
