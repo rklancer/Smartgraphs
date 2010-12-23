@@ -22,7 +22,7 @@ Smartgraphs.ActivityPage = SC.Record.extend(
   /**
     The Activity this ActivityPage belongs to.
   */
-  activity: SC.Record.toOne('Smartgraphs.Activity',  { inverse: 'pages', isMaster: YES }),
+  activity: SC.Record.toOne('Smartgraphs.Activity',  { inverse: 'pages', isMaster: YES, aggregate: YES }),
 
   /**
     A name for this ActivityPage; to be exposed to authors and, possibly, to learners as the heading of the page.

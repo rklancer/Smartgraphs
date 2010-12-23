@@ -39,7 +39,7 @@ Smartgraphs.Graph = SC.Record.extend(
     
     @property {Smartgraphs.Activity}
   */
-  activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'graphs', isMaster: YES} ),
+  activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'graphs', isMaster: YES, aggregate: YES} ),
   
   /**
     The name of this graph. This is exposed to authors and is used whenever the graph needs to be referenced elsewhere

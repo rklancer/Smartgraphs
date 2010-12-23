@@ -23,7 +23,7 @@ Smartgraphs.Axes = SC.Record.extend(
     
     @property {Smartgraphs.Activity}
   */
-  activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'axes', isMaster: YES }),
+  activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'axes', isMaster: YES, aggregate: YES }),
   
   xMin: SC.Record.attr(Number),
   xMax: SC.Record.attr(Number),

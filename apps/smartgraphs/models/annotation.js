@@ -57,7 +57,7 @@ Smartgraphs.Annotation = SC.Record.extend(
     
     @property {Smartgraphs.Activity}
   */
-  activity: SC.Record.toOne('Smartgraphs.Activity'),
+  activity: SC.Record.toOne('Smartgraphs.Activity', { aggregate: YES } ),
   
   /**
     The session this annotation is associated with. (When a user begins running an activity, any new annotations

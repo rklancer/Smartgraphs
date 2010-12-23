@@ -95,7 +95,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     
     @property {Smartgraphs.ActivityPage}
   */
-  activityPage: SC.Record.toOne('Smartgraphs.ActivityPage', { inverse: 'steps', isMaster: YES }),
+  activityPage: SC.Record.toOne('Smartgraphs.ActivityPage', { inverse: 'steps', isMaster: YES, aggregate: YES }),
   
   /**
     Whether to show a split or single pane on the right hand side of the screen. Acceptable values are "split" or 
