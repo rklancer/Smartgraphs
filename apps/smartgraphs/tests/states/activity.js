@@ -219,7 +219,7 @@ test("Toggling isHighlighted state for annotations", function () {
 
 
 test("Creating rise BracketArc", function () {
-  expect(6);
+  expect(7);
   var startBracketCount = Smartgraphs.store.find('Smartgraphs.BracketArc').get('length');
   Smartgraphs.firstTableController.openDataset('test-dataset');
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
@@ -237,10 +237,11 @@ test("Creating rise BracketArc", function () {
   ok(annotation.get('isClockwise'), 'The annotation should be rendered clockwise');
   equals(annotation.get('startX'), 310, 'The starting point should be 310');
   ok(annotation.get('endY'), 'The ending point should not be undefined');
+  equals(annotation.get('label'), "Rise", 'The annotation should have a label reading Rise');
 });
 
 test("Creating run BracketArc", function () {
-  expect(6);
+  expect(7);
   var startBracketCount = Smartgraphs.store.find('Smartgraphs.BracketArc').get('length');
   Smartgraphs.firstTableController.openDataset('test-dataset');
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
@@ -258,4 +259,5 @@ test("Creating run BracketArc", function () {
   ok(!annotation.get('isClockwise'), 'The annotation should not be rendered clockwise');
   equals(annotation.get('startX'), 40, 'The starting point should be 310');
   ok(annotation.get('endY'), 'The ending point should not be undefined');
+  equals(annotation.get('label'), "Run", 'The annotation should have a label reading Run');
 });
