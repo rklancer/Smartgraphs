@@ -417,7 +417,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         endX: 310,
         endY: (pointTwoIndex * 20) + 10,
         color: args.color ? args.color : '#cc0000',
-        isClockwise: (pointOneIndex < pointTwoIndex)
+        isClockwise: (pointOneIndex < pointTwoIndex),
+        label: 'Rise'
       });
     return YES;
   },
@@ -461,7 +462,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         endX: 40,
         endY: (pointTwoIndex * 20) + 10,
         color: args.color ? args.color : '#cc0000',
-        isClockwise: (pointOneIndex > pointTwoIndex)
+        isClockwise: (pointOneIndex > pointTwoIndex),
+        label: 'Run'
       });
     return YES;
   },

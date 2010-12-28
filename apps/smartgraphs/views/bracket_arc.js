@@ -41,8 +41,12 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     its tags are already in the DOM.
   */
   renderCallback: function(raphaelCanvas, attrs) {
-    var path = raphaelCanvas.path(attrs.d).attr(attrs);
-    return path;
+    var bracket = raphaelCanvas.set();
+    bracket.push(
+        raphaelCanvas.path(attrs.d).attr(attrs),
+        raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'stroke': "#000", 'font-size': 15}).rotate(attrs.rotate, true)
+      );
+    return bracket;
   },
 
   // Called by SC (by the parent view)
@@ -54,6 +58,8 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     
     // Figure points for the arrowheads
     var controlE, controlF, theta, baseAngleA, baseAngleB, baseAngleC, baseAngleD;
+    // Label position variables
+    var labelCoords, rotate;
     // Arrowhead angle, length
     var angle = 25;
     var length = 6;
@@ -77,6 +83,10 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
         baseAngleC = theta + (1.5 * angle) * Math.PI/180;
         baseAngleD = theta - (0.5 * angle) * Math.PI/180;
       }
+      
+      // Label positioning
+      rotate = 90;
+      labelCoords = { 'x': start.x + 10, 'y': ((start.y + end.y)/2)};
     }
     else { // Sign change
       theta = Math.atan2((end.y-start.y),(end.x-start.x))-(Math.PI/2);
@@ -97,6 +107,10 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
         baseAngleC = theta + (0.5 * angle) * Math.PI/180;
         baseAngleD = theta - (1.5 * angle) * Math.PI/180;
       }
+
+      // Label positioning
+      rotate = -90;
+      labelCoords = { 'x': start.x - 10, 'y': ((start.y + end.y)/2)};
     }
 
     var baseAX, baseAY, baseBX, baseBY, baseCX, baseCY, baseDX, baseDY;
@@ -145,11 +159,18 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     // from the line described by the two points. To remove the assumption of verticality, use theta to figure the points 
     // controlE and controlF with math similar to the baseAX, baseAB etc. calculations.
     
+    // Label details: label, labelCoords (x and y), rotate value
+    var label = this.get('item').get('label');
+    
     var attrs = {
       d: pathString,
       stroke: this.get('stroke'),
       'stroke-width': this.get('strokeWidth'),
-      'stroke-opacity': this.get('strokeOpacity')
+      'stroke-opacity': this.get('strokeOpacity'),
+      'label': label,
+      'labelX': labelCoords.x,
+      'labelY': labelCoords.y,
+      'rotate': rotate
     };
 
     // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need
