@@ -185,7 +185,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         point2: points[1],
         color: color,
         isVertical: YES,
-        isClockwise: YES
+        isClockwise: YES,
+        label: 'Rise'
       });
     return YES;
   },
@@ -240,7 +241,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         point2: points[1],
         color: color,
         isHorizontal: YES,
-        isClockwise: YES
+        isClockwise: YES,
+        label: 'Run'
       });
     return YES;
   },
