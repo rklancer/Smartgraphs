@@ -144,7 +144,7 @@ test("creating a LineThroughPoints", function () {
 
 
 test("creating a rise Arrow", function () {
-  expect(7);
+  expect(8);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
@@ -161,11 +161,12 @@ test("creating a rise Arrow", function () {
   ok(!annotation.get('isHorizontal'), 'The Annotation is not confusingly also horizontal');
   ok(annotation.get('isClockwise'), 'The annotation will be rendered clockwise');
   equals(annotation.get('label'), "Rise", 'The annotation should have a label reading Rise');
+  equals(annotation.get('labelUnitKey'), 'yLabelAbbreviated', "The label unit key should be set to yLabelAbbreviated");
 });
 
 
 test("creating a run Arrow", function () {
-  expect(6);
+  expect(7);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
@@ -181,6 +182,7 @@ test("creating a run Arrow", function () {
   ok(annotation.get('isHorizontal'), 'The Annotation is horizontal');
   ok(annotation.get('isClockwise'), 'The annotation will be rendered clockwise');
   equals(annotation.get('label'), "Run", 'The annotation should have a label reading Run');
+  equals(annotation.get('labelUnitKey'), 'xLabelAbbreviated', "The label unit key should be set to xLabelAbbreviated");
 });
 
 
