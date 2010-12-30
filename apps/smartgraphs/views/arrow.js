@@ -21,6 +21,7 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawin
   
   strokeBinding: '.item.color',
   isHighlightedBinding: '.item.isHighlighted',
+  // labelBinding: '.item.label', // Frustratingly, this doesn't work.
   
   strokeWidth: function () {
     return this.get('isHighlighted') ? 3 : 2;
@@ -55,6 +56,14 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawin
     var graphView = this.get('graphView');
     var arrowEnds = this.getStartAndEnd(this.get('item'));
     var label = this.get('item').get('label');
+    
+    // Add axis units to labels, if relevant
+    var axes = graphView.get('axes');
+    var keyString = this.get('item').get('labelUnitKey');
+    if (keyString && (axes !== undefined)) {
+      var labelUnit = axes.get(keyString);
+      label += " (∆" + labelUnit + ")";
+    }
     
     var startCoords = graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y);
     var endCoords =   graphView.coordinatesForPoint(arrowEnds.end.x, arrowEnds.end.y);

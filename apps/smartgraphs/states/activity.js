@@ -186,7 +186,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         color: color,
         isVertical: YES,
         isClockwise: YES,
-        label: 'Rise'
+        label: 'Rise',
+        labelUnitKey: 'yLabelAbbreviated'
       });
     return YES;
   },
@@ -242,7 +243,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         color: color,
         isHorizontal: YES,
         isClockwise: YES,
-        label: 'Run'
+        label: 'Run',
+        labelUnitKey: 'xLabelAbbreviated'
       });
     return YES;
   },

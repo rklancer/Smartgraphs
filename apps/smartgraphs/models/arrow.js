@@ -80,7 +80,14 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
     
     @property {String}
   */
-  label: SC.Record.attr(String)
+  label: SC.Record.attr(String),
+  
+  /**
+    What axis property should be appended to this as a unit label? Undefined or empty string will use none.
+    
+    @property {Boolean}
+  */
+  labelUnitKey: SC.Record.attr(String)
   
 }) ;
 
