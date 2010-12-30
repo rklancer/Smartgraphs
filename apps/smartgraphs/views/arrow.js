@@ -62,7 +62,12 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawin
     var keyString = this.get('item').get('labelUnitKey');
     if (keyString && (axes !== undefined)) {
       var labelUnit = axes.get(keyString);
-      label += " (∆" + labelUnit + ")";
+      if (labelUnit.length > 5) {
+        label += " (∆" + labelUnit.substr(0,1) + ")";
+      }
+      else {
+        label += " (∆" + labelUnit + ")";
+      }
     }
     
     var startCoords = graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y);
