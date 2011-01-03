@@ -10,14 +10,14 @@ require 'lebowski'
 
 dir = File.dirname(__FILE__) 
 # Load Lebowski proxy objects, which should be in this directory
-# Dir.glob(dir + '/*_view.rb') {|viewfile| require viewfile}
+Dir.glob(dir + '/*_view.rb') {|viewfile| require viewfile}
 # require dir + '/link.rb'
 
 include Lebowski::Foundation
 # include Lebowski::SCUI::Views
-# include MySystem::Views
+include Smartgraphs::Views
 
-# ProxyFactory.proxy NodeView
+ProxyFactory.proxy HighlightedPointView
 # ProxyFactory.proxy AddButtonView
 # ProxyFactory.proxy Link
 
