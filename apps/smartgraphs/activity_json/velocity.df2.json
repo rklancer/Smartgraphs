@@ -1,6 +1,6 @@
 {
    "_id": "velocity.df2",
-   "_rev": "42-9cd7f778acc186edcd10f0b69d77db27",
+   "_rev": "44-1298d33a7b1f34cbbef96ff465ee729d",
    "data_format_version": 2,
    "activity": {
        "title": "How Fast Am I Moving?",
@@ -607,7 +607,7 @@
                "bottom": {
                    "type": "table",
                    "graphName": "sensor-result-normal-walking",
-                   "datasetName": "sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET"
+                   "datasetName": "sensor-normal"
                }
            },
            "beforeText": "<p>Based on your data, how long did it take you to walk 4 meters at your normal pace?</p>",
@@ -656,7 +656,7 @@
                "bottom": {
                    "type": "table",
                    "graphName": "sensor-result-normal-walking",
-                   "datasetName": "sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET"
+                   "datasetName": "sensor-normal"
                }
            },
            "beforeText": "<p>If it took you [TBD] seconds to walk 4 meters, then you were walking at a rate of [TBD] meters per second.</p>",
@@ -930,98 +930,8 @@
        }
    ],
    "datasets": [
-       {
-           "url": "/shared/what-is-velocity/dataset/sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET",
-           "name": "sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET",
-           "activity": "/shared/what-is-velocity",
-           "isExample": true,
-           "points": [
-               100,
-               101,
-               102,
-               103,
-               104
-           ],
-           "session": null,
-           "defaultColor": null
-       },
-       {
-           "url": "/shared/what-is-velocity/dataset/sensor-slow-TO-BE-REPLACED-WITH-SENSOR-DATASET",
-           "name": "sensor-slow-TO-BE-REPLACED-WITH-SENSOR-DATASET",
-           "activity": "/shared/what-is-velocity",
-           "isExample": true,
-           "points": [
-               200,
-               201,
-               202,
-               203,
-               204
-           ],
-           "session": null,
-           "defaultColor": null
-       }
    ],
    "datapoints": [
-       {
-           "x": 0,
-           "y": 0,
-           "guid": 100,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 4,
-           "y": 1,
-           "guid": 101,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 8,
-           "y": 2,
-           "guid": 102,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 12,
-           "y": 3,
-           "guid": 103,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 16,
-           "y": 4,
-           "guid": 104,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 0,
-           "y": 0,
-           "guid": 200,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-slow-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 7,
-           "y": 1,
-           "guid": 201,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-slow-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 14,
-           "y": 2,
-           "guid": 202,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-slow-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 21,
-           "y": 3,
-           "guid": 203,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-slow-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       },
-       {
-           "x": 28,
-           "y": 4,
-           "guid": 204,
-           "dataset": "/shared/what-is-velocity/dataset/sensor-slow-TO-BE-REPLACED-WITH-SENSOR-DATASET"
-       }
    ],
    "graphs": [
        {
@@ -1100,7 +1010,7 @@
            "title": "Position vs. Time",
            "axes": "/shared/what-is-velocity/axes/walking-position-time",
            "initialDatasets": [
-               "sensor-normal-TO-BE-REPLACED-WITH-SENSOR-DATASET"
+               "sensor-normal"
            ],
            "initialAnnotations": [
            ]
@@ -1125,7 +1035,7 @@
            "title": "Position vs. Time",
            "axes": "/shared/what-is-velocity/axes/walking-position-time",
            "initialDatasets": [
-               "sensor-slow-TO-BE-REPLACED-WITH-SENSOR-DATASET"
+               "sensor-slow"
            ],
            "initialAnnotations": [
            ]
