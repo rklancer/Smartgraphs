@@ -18,6 +18,14 @@ Smartgraphs.TableItemView = SC.ListItemView.extend(
   displayProperties: ['backgroundColor'],
   
   classNames: "table-item-view",
-  backgroundColorBinding: '.content.backgroundColor'
+  backgroundColorBinding: '.content.backgroundColor',
+
+  mouseDown: function () {
+    // Borrowed from DataPointView in the graph
+    Smartgraphs.statechart.sendAction('dataPointSelected', this, null);
+    // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
+    // also handle it
+    return NO;
+  }
   
 });
