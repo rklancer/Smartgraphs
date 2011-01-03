@@ -179,8 +179,8 @@
            "paneConfig": "single",
            "panes": {
                "single": {
-                   "type": "html",
-                   "html": "<div style=\"width: 440px; margin: 0 auto\"><img src=\"/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif\" style=\"position: relative; top: 0px; left: 0px\"></div>"
+                   "type": "image",
+                   "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif"
                }
            },
            "beforeText": "<p>Describe another way that you can tell how fast you are moving.</p>",
@@ -188,7 +188,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
