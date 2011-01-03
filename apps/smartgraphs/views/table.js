@@ -124,8 +124,9 @@ Smartgraphs.TableView = SC.View.extend(
         classNames: ['smartgraph-table'],
 
         rowHeight: 20,
-        contentBinding: '.parentView.parentView.parentView.parentView*tableController.arrangedObjects',
+        contentBinding: '.parentView.parentView.parentView.parentView*tableController.content',
         selectionBinding: '.parentView.parentView.parentView.parentView*tableController.selection',
+        isSelectableBinding: '.parentView.parentView.parentView.parentView*tableController.isSelectable',
         contentLengthBinding: '.content.length',
         annotationsListBinding: '.parentView.parentView.parentView.parentView*tableController.annotationsList',
         // TODO: So the parent now knows about the list of annotations...
@@ -154,6 +155,7 @@ Smartgraphs.TableView = SC.View.extend(
           canEditContent: NO,
           contentValueKey: 'xRounded',
           contentBinding: '.parentView.content',
+          isSelectableBinding: '.parentView.isSelectable',
           selectionBinding: '.parentView.selection',
           exampleView: Smartgraphs.TableItemView
         }),
@@ -166,6 +168,7 @@ Smartgraphs.TableView = SC.View.extend(
           canEditContent: NO,
           contentValueKey: 'yRounded',
           contentBinding: '.parentView.content',
+          isSelectableBinding: '.parentView.isSelectable',          
           selectionBinding: '.parentView.selection',
           exampleView: Smartgraphs.TableItemView          
         })

@@ -41,6 +41,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   
   axesBinding: '*graphController.axes',
   selectionBinding: '*dataset.selection',
+  isSelectableBinding: '*dataset.isSelectable',
 
   // These properties will be used to communicate to the table view. (These will change as the view becomes more
   // sophisticated.)
