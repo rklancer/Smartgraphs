@@ -123,12 +123,6 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
           self.loadRecordsFromArray(store, Smartgraphs[annotationRecs.type], annotationRecs.records);
         });
         
-        // Data format 2 doesn't include activity->datasets, activity->axes, or activity->graphs ManyArrays
-        doc.activity.datasets = doc.datasets.map( function (dataset) { return dataset.url; } );
-        doc.activity.axes = doc.axes.map( function (axes) { return axes.url; } );
-        doc.activity.graphs = doc.graphs.map( function (graph) { return graph.url; } );
-        doc.activity.responseTemplates = doc.responseTemplates.map( function (responseTemplate) { return responseTemplate.url; } );
-        
         // and call back to the datastore (which loads the Activity record as well)
         store.dataSourceDidComplete(storeKey, doc.activity);
         return;
