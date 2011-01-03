@@ -1,6 +1,6 @@
 {
    "_id": "velocity.df2",
-   "_rev": "39-bb9e0976d4aea1c22617e75c6c0de112",
+   "_rev": "42-9cd7f778acc186edcd10f0b69d77db27",
    "data_format_version": 2,
    "activity": {
        "title": "How Fast Am I Moving?",
@@ -229,7 +229,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -270,7 +270,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -425,7 +425,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -473,7 +473,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -521,7 +521,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -577,7 +577,7 @@
                    }
                }
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": null,
            "submissibilityCriterion": null,
@@ -615,7 +615,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -664,7 +664,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": null,
            "submissibilityCriterion": null,
@@ -709,7 +709,7 @@
                    }
                }
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": null,
            "submissibilityCriterion": null,
@@ -746,7 +746,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -794,7 +794,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -842,7 +842,7 @@
            "afterText": "",
            "startCommands": [
            ],
-           "shouldFinishImmediately": true,
+           "shouldFinishImmediately": false,
            "shouldWaitForSubmissibleResponse": true,
            "submissibilityInspector": {
                "type": "Smartgraphs.FirstResponseFieldInspector"
