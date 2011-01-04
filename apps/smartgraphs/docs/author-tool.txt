@@ -19,32 +19,43 @@ related authoring code is even written.
 
  * DONE: Remove "loading" states since we no longer use incremental loading.
 
- * Implement session using a nested store! (First, make sure that it's possible to save the session to the server
-   using the changelog...) Note that this gets rid of the "find in session, then in activity" problem, AND it makes it
-   easy to implement datasetList/annotationsList as queries backed by a list of names.
+ * DONE: Implement session using a nested store! (First, make sure that it's possible to save the session to the
+   server using the changelog...) Note that this gets rid of the "find in session, then in activity" problem, AND it
+   makes it easy to implement datasetList/annotationsList as queries backed by a list of names.
     
-     * rename sessionController -> activityObjectsController, keep createDataset, createAnnotation, add find methods
+     * DONE rename sessionController -> activityObjectsController, keep createDataset, createAnnotation, add find
+       methods
    
- * Implement a registry of all object (annotation/dataset) names used in the session. It is a runtime error to create
-   an object with a pre-existing name. Use this registry to remove the requirement to specify the type of annotation
-   from any smartgraph commands that don't specifically need it.
-   
+ * DONE: Implement a registry of all object (annotation/dataset) names used in the session. It is a runtime error to
+   create an object with a pre-existing name. Use this registry to remove the requirement to specify the type of
+   annotation from any smartgraph commands that don't specifically need it.
+--
+   (test & document activityObjectsController)
+
+ * Make an inventory of commands and annotations. Remove code that depends on having an object open in a particular
+   graph just in order to find that object.
+
+ * Move table and graph state out of the controllers and into the related models. When annotations are added to a
+   graph, they stay there until removed. Having the state in the controllers is something of an architectural mistake,
+   and we should address this concern before implementing any new authoring capabilities on top of this.
+
  * Make datasetList, annotationList into queries that lazily find all the datasets/annotations with the specified
    names. Add datasetNames, annotationNames lists, rename datasetList -> datasets, annotationsList -> annotations;
    modify initialDatasets property; bump version #
 
- * NO: Clean up the distinction between "example" (or canned) graphs, datasets, and annotations by creating
-   SessionGraph, SessionDataset, and SessionAnnotation models that extend a common mixin that Graph, Dataset, and
-   Annotation extend. Clean up usage of Session and SessionController by requiring everywhere that and clean up
-   Session/SessionController handling. Meaning: sessionController should be responsible for finding a
-   graph/table/dataset/annotation from the definition and duplicating it to the session if it hasn't been. The
-   Session* models should inherit from a mixin shared by the base models (which are just called "Graph", "Dataset",
-   etc.)
+ * Think about how tables and graphs *should* be linked -- what is the most *natural* way to specify that an
+   annotation should be displayed on a table and a graph? What is the best way to tell the sensor mode to display in
+   the graph as well as the table?
+
+ * ? - Clean up Table model so that it parallels Graph. In the authoring interface, tables will have names, just like 
+   graphs do, so make this true in the Smartgraphs runtime as well.
 
  * Create a superstate of ACTIVITY_STEP and ACTIVITY_STEP_SUMITTED to represent actions available both presumbission
    and postsubmission, and to distinguish these from actions that are available when the activity is open generally.
    Note that these substates can now be labeled "notSubmitted" and "submitted", since they 'nest' inside ACTIVITY_STEP
    in a more natural way once we use the statechart framework.
+
+ * canGotoNextPage and submissibility should be represented with STATEs!
    
  * Move Activity, ActivityPage, ActivityStep state *out* of controllers and into respective models
  
@@ -54,22 +65,15 @@ related authoring code is even written.
    has indeed been moved out of the controllers, we won't yet create UI for visiting old activity pages. However, when
    we do create a story for visiting past activity, it will be easier to code it as a result of this work.)
 
- * canGotoNextPage should be represented with a STATE!
-
  * Datasets should have a units model for the columns; refactor Axes to reference these. This is important for
    cleaning up the Table model (see the next bullet point.)
   
- * Clean up Table model so that it parallels Graph. In the authoring interface, tables will have names, just like 
-   graphs do, so make this true in the Smartgraphs runtime as well.
-   
  * Graph model has to be able to "wait" for an annotation or dataset a given name to be created, just like table does.
    Part of this functionality may be provided by Session/sessionController. NOTE: the datasetList and annotationList
    should become RecordArrays backed by a query. When annotation records matching the specified criteria come into
    existence, they should be automatically added to the list.
    
- * Move table and graph state out of the controllers and into the related models. Again, having the state in the
-   controllers is something of an architectural mistake, and we should address this concern before implementing any
-   new authoring capabilities on top of this.
+
 
  
  * clarify/organize the processing model of ActivitySteps a little better -- what about shouldAutoAdvance? What if
@@ -88,6 +92,14 @@ related authoring code is even written.
    ActivityStep.
    
  * For later: consistent error handling if the activity is poorly specified. 
+
+ * NO: Clean up the distinction between "example" (or canned) graphs, datasets, and annotations by creating
+   SessionGraph, SessionDataset, and SessionAnnotation models that extend a common mixin that Graph, Dataset, and
+   Annotation extend. Clean up usage of Session and SessionController by requiring everywhere that and clean up
+   Session/SessionController handling. Meaning: sessionController should be responsible for finding a
+   graph/table/dataset/annotation from the definition and duplicating it to the session if it hasn't been. The
+   Session* models should inherit from a mixin shared by the base models (which are just called "Graph", "Dataset",
+   etc.)
 
 Notes toward implementation of the authoring side of Smartgraphs:
 
