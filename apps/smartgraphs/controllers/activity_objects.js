@@ -14,9 +14,9 @@
   This controller has some complexity because there are a number of Annotation subclasses, and there is no way to
   create a RecordArray backed by a query for all Annotations subtype instances associated with the current activity.
 
-  @extends SC.Object
+  @extends SC.Controller
 */
-Smartgraphs.activityObjectsController = SC.ObjectController.create(
+Smartgraphs.activityObjectsController = SC.Controller.create(
 /** @scope Smartgraphs.activityObjectsController.prototype */ {
   
   /**
