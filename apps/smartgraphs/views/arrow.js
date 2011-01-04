@@ -21,6 +21,7 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawin
   
   strokeBinding: '.item.color',
   isHighlightedBinding: '.item.isHighlighted',
+  // labelBinding: '.item.label', // Frustratingly, this doesn't work.
   
   strokeWidth: function () {
     return this.get('isHighlighted') ? 3 : 2;
@@ -42,30 +43,62 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawin
     its tags are already in the DOM.
   */
   renderCallback: function(raphaelCanvas, attrs) {
-    var path = raphaelCanvas.path(attrs.d).attr(attrs);
-    return path;
+    var arrow = raphaelCanvas.set();
+    arrow.push(
+        raphaelCanvas.path(attrs.d).attr(attrs),
+        raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'stroke': "#000", 'font-size': 15}).rotate(attrs.rotate, true)
+      );
+    return arrow;
   },
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
     var graphView = this.get('graphView');
     var arrowEnds = this.getStartAndEnd(this.get('item'));
+    var label = this.get('item').get('label');
+    
+    // Add axis units to labels, if relevant
+    var axes = graphView.get('axes');
+    var keyString = this.get('item').get('labelUnitKey');
+    if (keyString && (axes !== undefined)) {
+      var labelUnit = axes.get(keyString);
+      if (labelUnit.length > 5) {
+        label += " (∆" + labelUnit.substr(0,1) + ")";
+      }
+      else {
+        label += " (∆" + labelUnit + ")";
+      }
+    }
     
     var startCoords = graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y);
     var endCoords =   graphView.coordinatesForPoint(arrowEnds.end.x, arrowEnds.end.y);
+    var labelCoords, rotate;
+    if (label && this.get('item').get('isHorizontal')) {
+      labelCoords = graphView.coordinatesForPoint(((arrowEnds.start.x + arrowEnds.end.x)/2), (arrowEnds.start.y + 0.3));
+      rotate = 0;
+    }
+    else if (label && this.get('item').get('isVertical')) {
+      labelCoords = graphView.coordinatesForPoint((arrowEnds.start.x - 0.15), ((arrowEnds.start.y + arrowEnds.end.y)/2));
+      rotate = -90;
+    } // TODO: Need an "else" for non-vertical, non-horizontal, but not yet
     var pathString;
     if ((startCoords.x !== endCoords.x) || (startCoords.y !== endCoords.y)) {
       pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
     }
     else { // An arrow going nowhere, e.g. a rise arrow for a zero-slope line
       pathString = "";
+      label = "";
     }
 
     var attrs = {
       d: pathString,
       stroke: this.get('stroke'),
       'stroke-width': this.get('strokeWidth'),
-      'stroke-opacity': this.get('strokeOpacity')
+      'stroke-opacity': this.get('strokeOpacity'),
+      'label': label,
+      'labelX': labelCoords.x,
+      'labelY': labelCoords.y,
+      'rotate': rotate
     };
 
     // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need

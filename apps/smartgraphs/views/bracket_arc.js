@@ -41,14 +41,65 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     its tags are already in the DOM.
   */
   renderCallback: function(raphaelCanvas, attrs) {
-    var path = raphaelCanvas.path(attrs.d).attr(attrs);
-    return path;
+    var bracket = raphaelCanvas.set();
+    bracket.push(
+        raphaelCanvas.path(attrs.d).attr(attrs),
+        raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'stroke': "#000", 'font-size': 15}).rotate(attrs.rotate, true)
+      );
+    return bracket;
   },
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
-    // var graphView = this.get('graphView');
     var annotation = this.get('item');
+    var pathString = this.figurePath(annotation);
+    // Label details: label, labelCoords (x and y), rotate value
+    var label = annotation.get('label');
+    
+    // Label position variables
+    var labelCoords, rotate;
+    if ((annotation.get('isClockwise') && (annotation.get('startY') < annotation.get('endY'))) || 
+        (!annotation.get('isClockwise') && (annotation.get('startY') > annotation.get('endY')))) {
+      // Label positioning
+      rotate = 90;
+      labelCoords = { 'x': annotation.get('startX') + 10, 'y': ((annotation.get('startY') + annotation.get('endY'))/2)};
+   }
+   else {
+     // Label positioning
+     rotate = -90;
+     labelCoords = { 'x': annotation.get('startX') - 10, 'y': ((annotation.get('startY') + annotation.get('endY'))/2)};
+   } 
+
+    var attrs = {
+      d: pathString,
+      stroke: this.get('stroke'),
+      'stroke-width': this.get('strokeWidth'),
+      'stroke-opacity': this.get('strokeOpacity'),
+      'label': label,
+      'labelX': labelCoords.x,
+      'labelY': labelCoords.y,
+      'rotate': rotate
+    };
+
+    // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need
+    // to update properties of a context object?
+
+    if (firstTime) {
+       // Queue up the callback with will create the Raphael path object on the SVG canvas, once it is created.
+       // In non-Raphael views, context is not a SC object but SC expects it (it was created by SC.Pane.append() ) This
+       // call creates a tag and CSS and stores it in the context. for rendering later (by by SC.Pane.append() using
+       // innerHTML()
+      context.callback(this, this.renderCallback, attrs);
+    }
+    else {
+      // get the Raphael path object from the context
+      var path = context.raphael();
+      // and update it
+      path.attr(attrs);
+    }
+  },
+  
+  figurePath: function(annotation) {
     var start = { 'x': annotation.get('startX'), 'y': annotation.get('startY') };
     var end = { 'x': annotation.get('endX'), 'y': annotation.get('endY') };
     
@@ -144,29 +195,6 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     // available width is ~40 pixels. Ultimately it's possible to use a height param to let the arc grow arbitrarily away 
     // from the line described by the two points. To remove the assumption of verticality, use theta to figure the points 
     // controlE and controlF with math similar to the baseAX, baseAB etc. calculations.
-    
-    var attrs = {
-      d: pathString,
-      stroke: this.get('stroke'),
-      'stroke-width': this.get('strokeWidth'),
-      'stroke-opacity': this.get('strokeOpacity')
-    };
-
-    // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need
-    // to update properties of a context object?
-
-    if (firstTime) {
-       // Queue up the callback with will create the Raphael path object on the SVG canvas, once it is created.
-       // In non-Raphael views, context is not a SC object but SC expects it (it was created by SC.Pane.append() ) This
-       // call creates a tag and CSS and stores it in the context. for rendering later (by by SC.Pane.append() using
-       // innerHTML()
-      context.callback(this, this.renderCallback, attrs);
-    }
-    else {
-      // get the Raphael path object from the context
-      var path = context.raphael();
-      // and update it
-      path.attr(attrs);
-    }
+    return pathString;
   }
 });

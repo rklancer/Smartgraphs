@@ -185,7 +185,9 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         point2: points[1],
         color: color,
         isVertical: YES,
-        isClockwise: YES
+        isClockwise: YES,
+        label: 'Rise',
+        labelUnitKey: 'yLabelAbbreviated'
       });
     return YES;
   },
@@ -240,7 +242,9 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         point2: points[1],
         color: color,
         isHorizontal: YES,
-        isClockwise: YES
+        isClockwise: YES,
+        label: 'Run',
+        labelUnitKey: 'xLabelAbbreviated'
       });
     return YES;
   },
@@ -415,7 +419,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         endX: 310,
         endY: (pointTwoIndex * 20) + 10,
         color: args.color ? args.color : '#cc0000',
-        isClockwise: (pointOneIndex < pointTwoIndex)
+        isClockwise: (pointOneIndex < pointTwoIndex),
+        label: 'Rise'
       });
     return YES;
   },
@@ -459,7 +464,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         endX: 40,
         endY: (pointTwoIndex * 20) + 10,
         color: args.color ? args.color : '#cc0000',
-        isClockwise: (pointOneIndex > pointTwoIndex)
+        isClockwise: (pointOneIndex > pointTwoIndex),
+        label: 'Run'
       });
     return YES;
   },
