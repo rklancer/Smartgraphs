@@ -90,7 +90,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   },
   
   /**
-    Causes the table to display dataset `datasetName`, which must be opened on graph `graphName`.
+    Causes the table to display dataset `datasetName`.
     
     Waits for the specified graph to be opened by one of the graph controllers and waits for the dataset to be opened
     by that graph controller before setting our content to the set of points in the dataset.
