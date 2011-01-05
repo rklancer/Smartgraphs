@@ -1,6 +1,6 @@
 {
   "data_format_version": 3,
-  "_rev": "32-085866484ebfbd2724aaaf2ff6e2c590",
+  "_rev": "34-3ba04905306f4aecd91527af401253a2",
   "activity": {
     "title": "How Fast Am I Moving?",
     "url": "/shared/what-is-velocity",
@@ -134,7 +134,7 @@
       ],
       "name": "Collect Data (Slow)",
       "firstStep": "/shared/what-is-velocity/page/8/step/1",
-      "introText": "<h1>Velocity</h1><p>Now you will try walking at a <b>normal, steady</b> pace.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>slow, steady</b> pace.</p>",
+      "introText": "<h1>Velocity</h1><p>Now you will try walking at a <b>slow, steady</b> pace.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>slow, steady</b> pace.</p>",
       "url": "/shared/what-is-velocity/page/8",
       "activity": "/shared/what-is-velocity",
       "index": 8
@@ -2044,7 +2044,10 @@
       "activityPage": "/shared/what-is-velocity/page/20",
       "paneConfig": "single",
       "panes": {
-        "single": null
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif"
+        }
       },
       "beforeText": "",
       "responseTemplate": null,
@@ -2121,7 +2124,7 @@
       "activity": "/shared/what-is-velocity",
       "name": "freehand-walking-normal",
       "description": "freehand prediciton of normal walking velocity",
-      "title": "Position vs. Time",
+      "title": "Predicted Data (Normal)",
       "axes": "/shared/what-is-velocity/axes/walking-position-time",
       "initialDatasets": [
 
@@ -2135,7 +2138,7 @@
       "activity": "/shared/what-is-velocity",
       "name": "prediction-walking-normal",
       "description": "prediciton of normal walking velocity",
-      "title": "Position vs. Time",
+      "title": "Predicted Data (Normal)",
       "axes": "/shared/what-is-velocity/axes/walking-position-time",
       "initialDatasets": [
 
@@ -2152,7 +2155,7 @@
       "activity": "/shared/what-is-velocity",
       "name": "freehand-walking-slow",
       "description": "freehand prediciton of slow walking velocity",
-      "title": "Position vs. Time",
+      "title": "Predicted Data (Slow)",
       "axes": "/shared/what-is-velocity/axes/walking-position-time",
       "initialDatasets": [
 
@@ -2166,7 +2169,7 @@
       "activity": "/shared/what-is-velocity",
       "name": "prediction-walking-slow",
       "description": "prediciton of slow walking velocity",
-      "title": "Position vs. Time",
+      "title": "Predicted Data (Slow)",
       "axes": "/shared/what-is-velocity/axes/walking-position-time",
       "initialDatasets": [
 
@@ -2183,7 +2186,7 @@
       "activity": "/shared/what-is-velocity",
       "name": "sensor-normal-walking",
       "description": "using sensor to measure normal walking pace",
-      "title": "Position vs. Time",
+      "title": "Actual Data (Normal)",
       "axes": "/shared/what-is-velocity/axes/walking-position-time",
       "initialDatasets": [
 
@@ -2197,7 +2200,7 @@
       "activity": "/shared/what-is-velocity",
       "name": "sensor-result-normal-walking",
       "description": "sensor result from normal walking",
-      "title": "Position vs. Time",
+      "title": "Actual Data (Normal)",
       "axes": "/shared/what-is-velocity/axes/walking-position-time",
       "initialDatasets": [
         "sensor-normal"
@@ -2211,7 +2214,7 @@
       "activity": "/shared/what-is-velocity",
       "name": "sensor-slow-walking",
       "description": "using sensor to measure slow walking pace",
-      "title": "Position vs. Time",
+      "title": "Actual Data (Slow)",
       "axes": "/shared/what-is-velocity/axes/walking-position-time",
       "initialDatasets": [
 
@@ -2225,7 +2228,7 @@
       "activity": "/shared/what-is-velocity",
       "name": "sensor-result-slow-walking",
       "description": "sensor result from slow walking",
-      "title": "Position vs. Time",
+      "title": "Actual Data (Slow)",
       "axes": "/shared/what-is-velocity/axes/walking-position-time",
       "initialDatasets": [
         "sensor-slow"
