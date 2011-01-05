@@ -199,8 +199,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     var klass = SC.objectForPropertyPath(inspectorInfo.type);
         
-    if (!klass || !klass.isClass) {
-      return NO;
+    if (!klass || !klass.isClass || !SC.kindOf(klass, Smartgraphs.Inspector)) {
+      throw "makeInspector was given an non-empty, but invalid, Inspector class name";
     }
     
     return klass.create({
