@@ -257,14 +257,13 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       The name of the subclass of Annotation to be created. For example, 'Smartgraphs.HighlightedPoint'
     @param {String} args.name
       The name to be given to the Annotation object once it is created.
-    @param {String} args.graphName
-      The name of the graph on which the Annotation should be displayed, once it is created. This graph must be open
-      in the page when this command executes.
+    @param {String} [args.graphName]
+      The name of an open graph on which the Annotation should be displayed, once it is created. Optional.
   */
   createAnnotation: function (context, args) {
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
     var annotation = Smartgraphs.activityObjectsController.createAnnotation(args.type, args.name);
-    controller.addAnnotation(annotation);
+    if (controller) controller.addAnnotation(annotation);
     return YES;
   },
   

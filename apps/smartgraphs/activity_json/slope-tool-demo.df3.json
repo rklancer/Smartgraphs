@@ -1,6 +1,6 @@
 {
   "_id": "slope-tool-demo.df3",
-  "_rev": "20-e7855d9909647badaa8c778104b0837b",
+  "_rev": "23-8b0e87e6059f8d75261f450d0db9ae3d",
   "data_format_version": 3,  
   "activity": {
     "title": "Slope Tool Demo",
@@ -437,7 +437,7 @@
             "bracketName": "demo-rise-bracket",
             "point1": "first-point",
             "point2": "second-point",
-            "tableName": "demo-data",
+            "datasetName": "demo-data",
             "color": "#9467bd"
           }
         },
@@ -447,7 +447,7 @@
             "bracketName": "demo-run-bracket",
             "point1": "first-point",
             "point2": "second-point",
-            "tableName": "demo-data",
+            "datasetName": "demo-data",
             "color": "#d62728"
           }
         }

@@ -29,11 +29,13 @@ related authoring code is even written.
  * DONE: Implement a registry of all object (annotation/dataset) names used in the session. It is a runtime error to
    create an object with a pre-existing name. Use this registry to remove the requirement to specify the type of
    annotation from any smartgraph commands that don't specifically need it.
---
-   (test & document activityObjectsController)
 
- * Make an inventory of commands and annotations. Remove code that depends on having an object open in a particular
-   graph just in order to find that object.
+ * DONE: Make an inventory of commands and annotations. Remove code that depends on having an object open in a
+   particular graph just in order to find that object.
+
+--
+
+  (test & document activityObjectsController)
 
  * Move table and graph state out of the controllers and into the related models. When annotations are added to a
    graph, they stay there until removed. Having the state in the controllers is something of an architectural mistake,

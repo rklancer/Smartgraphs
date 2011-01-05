@@ -65,14 +65,12 @@ Commands related to graphs, tables, annotations
   ACTIVITY
 
     createLineThroughPoints => LineThroughPoints
-      graphName
       lineName
       firstPoint
       secondPoint
       color (default black)
 
     createRiseArrow => Arrow
-      graphName
       arrowName
       firstPoint
       secondPoint
@@ -80,7 +78,6 @@ Commands related to graphs, tables, annotations
       (note label is 'Rise' and labelUnitKey is 'yLabelAbbreviated')
     
     createRunArrow => Arrow
-      graphName
       arrowName
       firstPoint
       secondPoint
@@ -88,6 +85,7 @@ Commands related to graphs, tables, annotations
       (note label is 'Run' and labelUnitKey is 'xLabelAbbreviated')
     
     createIndicatingArrowFromDataPoint => IndicatingArrow
+      (** requires a way to specify data point)
       (** graphName NOT required)
       arrowName
       point
@@ -96,8 +94,6 @@ Commands related to graphs, tables, annotations
       (** no 'length' argument)
     
     createIndicatingArrowFromHighlightedPoint => IndicatingArrow
-      graphName
-      tableName (used if graphName not supplied/valid; at least one table or graph name must be supplied)
       arrowName
       point (is name of highlighted point)
       angle (default 335)
@@ -121,14 +117,14 @@ Commands related to graphs, tables, annotations
       color (default "cc0000" -- reddish/pinkish)    
       
     createRiseBracket => BracketArc
-      tableName
+      datasetName
       point1
       point2
       color (default "cc0000" -- reddish/pinkish)
       ** NOTE this creates a BracketArc with hardwired coordinates
       
     createRunBracket => BracketArc
-      tableName
+      datasetName
       point1
       point2
       color (default "cc0000" -- reddish/pinkish)
