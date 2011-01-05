@@ -86,6 +86,9 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     this.clearAnnotations();
     this.set('content', null);
     this.set('dataset', null);
+    if (this.get('datasetName')) {
+      Smartgraphs.TableController.controllerForDataset.set(this.get('datasetName'), null);
+    }
     this.set('datasetName', null);
   },
   
@@ -136,6 +139,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     sc_super();
     if (annotation.kindOf(Smartgraphs.HighlightedPoint)) {
       // Watch this and update colors for datapoints if the point changes
+      console.log("**** TABLECONTROLLER ADDING OBSERVER");
       annotation.addObserver('point', this, 'updateDataPoints');
     }
   },
