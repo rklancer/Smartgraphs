@@ -489,8 +489,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   */
   createLabelAnnotation: function (context, args) {
     var point;
-    if (args.point.valueOf()) {
-      // Is it a GUID?
+    if (args.point.length) {
+      // It's a string, is it a GUID?
       point = Smartgraphs.store.find(Smartgraphs.DataPoint, args.point);
     }
     else if (args.point.kindOf(Smartgraphs.DataPoint)) { 
