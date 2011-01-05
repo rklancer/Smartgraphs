@@ -1,6 +1,6 @@
 {
   "data_format_version": 3,
-  "_rev": "34-3ba04905306f4aecd91527af401253a2",
+  "_rev": "42-cfa1449826b6f1bb9a0d32f555d755f2",
   "activity": {
     "title": "How Fast Am I Moving?",
     "url": "/shared/what-is-velocity",
@@ -22,6 +22,8 @@
       "/shared/what-is-velocity/page/14",
       "/shared/what-is-velocity/page/15",
       "/shared/what-is-velocity/page/16",
+      "/shared/what-is-velocity/page/17",
+      "/shared/what-is-velocity/page/18",
       "/shared/what-is-velocity/page/20"
     ],
     "datasets": [
@@ -230,9 +232,7 @@
     },
     {
       "steps": [
-        "/shared/what-is-velocity/page/16/step/1",
-        "/shared/what-is-velocity/page/16/step/2",
-        "/shared/what-is-velocity/page/16/step/3"
+        "/shared/what-is-velocity/page/16/step/1"
       ],
       "name": "Analyze/Conclusion",
       "firstStep": "/shared/what-is-velocity/page/16/step/1",
@@ -240,6 +240,28 @@
       "url": "/shared/what-is-velocity/page/16",
       "activity": "/shared/what-is-velocity",
       "index": 16
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/17/step/1"
+      ],
+      "name": "Analyze/Conclusion II",
+      "firstStep": "/shared/what-is-velocity/page/17/step/1",
+      "introText": "<h1>Velocity</h1>",
+      "url": "/shared/what-is-velocity/page/17",
+      "activity": "/shared/what-is-velocity",
+      "index": 17
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/18/step/1"
+      ],
+      "name": "Analyze/Conclusion III",
+      "firstStep": "/shared/what-is-velocity/page/18/step/1",
+      "introText": "<h1>Velocity</h1>",
+      "url": "/shared/what-is-velocity/page/18",
+      "activity": "/shared/what-is-velocity",
+      "index": 18
     },
     {
       "steps": [
@@ -1673,11 +1695,7 @@
           "type": "graph",
           "name": "slope-graph"
         },
-        "bottom": {
-          "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
-        }
+        "bottom": null
       },
       "beforeText": "",
       "responseTemplate": "/components/response-template/open",
@@ -1693,7 +1711,35 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
+            "name": "first-point-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "second-point-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
             "name": "slope-line-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "first-point-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "second-point-B",
             "graphName": "slope-graph"
           }
         }
@@ -1717,7 +1763,6 @@
 
       ],
       "afterSubmissionCommands": [
-
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -1755,7 +1800,7 @@
             "annotationName": "first-point-C",
             "graphName": "slope-graph",
             "datasetName": "slope-data",
-            "color": "#2f7f0d"
+            "color": "#1f77b3"
           }
         }
       ],
@@ -1805,7 +1850,7 @@
             "annotationName": "second-point-C",
             "graphName": "slope-graph",
             "datasetName": "slope-data",
-            "color": "#2f7f0e"
+            "color": "#1f77b4"
           }
         }
       ],
@@ -1824,7 +1869,7 @@
             "firstPoint": "first-point-C",
             "secondPoint": "second-point-C",
             "graphName": "slope-graph",
-            "color": "#2f7f0e"
+            "color": "#1f77b4"
           }
         }
       ],
@@ -1938,22 +1983,19 @@
       "responseBranches": [
 
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/16/step/2",
-      "isFinalStep": false,
+      "defaultBranch": "",
+      "isFinalStep": true,
       "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity/page/16/step/2",
-      "activityPage": "/shared/what-is-velocity/page/16",
+      "url": "/shared/what-is-velocity/page/17/step/1",
+      "activityPage": "/shared/what-is-velocity/page/17",
       "paneConfig": "single",
       "panes": {
-        "single": {
-          "type": "graph",
-          "name": "slope-graph-analyze"
-        }
+        "single": null
       },
       "beforeText": "<p>What is the difference between instantaneous speed and average speed?</p>",
       "responseTemplate": "/components/response-template/open",
@@ -1985,22 +2027,19 @@
       "responseBranches": [
 
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/16/step/3",
-      "isFinalStep": false,
+      "defaultBranch": "",
+      "isFinalStep": true,
       "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/what-is-velocity/page/16/step/3",
-      "activityPage": "/shared/what-is-velocity/page/16",
+      "url": "/shared/what-is-velocity/page/18/step/1",
+      "activityPage": "/shared/what-is-velocity/page/18",
       "paneConfig": "single",
       "panes": {
-        "single": {
-          "type": "graph",
-          "name": "slope-graph-analyze"
-        }
+        "single": null
       },
       "beforeText": "<p>How can a graph convey speed?</p>",
       "responseTemplate": "/components/response-template/open",
