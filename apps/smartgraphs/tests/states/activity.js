@@ -273,7 +273,7 @@ test("Creating LabelAnnotation", function () {
   var firstLabelCount = Smartgraphs.store.find('Smartgraphs.LabelAnnotation').get('length');
   equals ( firstLabelCount, startLabelCount + 1, "There should be one more LabelAnnotation");
   var stooge = Smartgraphs.activityObjectsController.findAnnotation('stooge-one');
-  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation");
+  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation using a GUID");
   equals ( stooge.get('label'), 'Larry', "The annotation's label is Larry");
   equals ( stooge.get('color'), '#000000', "The annotation's color is black");
   ok ( stooge.get('point').kindOf(Smartgraphs.DataPoint), "The annotation has a point");
@@ -284,7 +284,7 @@ test("Creating LabelAnnotation", function () {
   var secondLabelCount = Smartgraphs.store.find('Smartgraphs.LabelAnnotation').get('length');
   equals ( secondLabelCount, firstLabelCount + 1, "There should be one more LabelAnnotation");
   stooge = Smartgraphs.activityObjectsController.findAnnotation('stooge-two');
-  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation");
+  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation using a DataPoint");
   ok ( stooge.get('point').kindOf(Smartgraphs.DataPoint), "The annotation has a point");
 
   // Test creation with HighlightedPoint
@@ -293,6 +293,6 @@ test("Creating LabelAnnotation", function () {
   var thirdLabelCount = Smartgraphs.store.find('Smartgraphs.LabelAnnotation').get('length');
   equals ( thirdLabelCount, secondLabelCount + 1, "There should be one more LabelAnnotation");
   stooge = Smartgraphs.activityObjectsController.findAnnotation('stooge-three');
-  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation");
+  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation using a HighlightedPoint");
   ok ( stooge.get('point').kindOf(Smartgraphs.DataPoint), "The annotation has a point");
 });
