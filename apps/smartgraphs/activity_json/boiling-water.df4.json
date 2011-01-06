@@ -1,7 +1,7 @@
 {
-  "_id": "boiling-water.df3",
-  "_rev": "2-63136cdc38b0675f4d9500583acfc76a",
-  "data_format_version": 3,  
+  "_id": "boiling-water.df4",
+  "_rev": "1-68296b61419691ad092b5aa6726b1a44",
+  "data_format_version": 4,  
   "activity": {
     "title": "Boiling Water",
     "url": "/shared/boiling-water",
@@ -278,7 +278,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "correct-boiling-point",
           "datasetName": "correct-boiling-point"
         }
       },
@@ -294,7 +293,6 @@
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "correct-boiling-point",
           "datasetName": "correct-boiling-point"
         }
       },
@@ -375,7 +373,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "correct-boiling-point",
           "datasetName": "correct-boiling-point"
         }
       },
@@ -391,7 +388,6 @@
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "correct-boiling-point",
           "datasetName": "correct-boiling-point"
         }
       },
@@ -472,7 +468,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "correct-boiling-point",
           "datasetName": "correct-boiling-point"
         }
       },
@@ -488,7 +483,6 @@
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "correct-boiling-point",
           "datasetName": "correct-boiling-point"
         }
       },

@@ -177,7 +177,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       var branch, branches = this.get('responseBranches');
     
       for (var i = 0; i < branches.length; i++) {
-        branch = branches.objectAt(i);
+        branch = branches[i];
         if (Smartgraphs.evaluate(branch.criterion, value)) {
           Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: branch.step });
           return;
@@ -199,8 +199,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     var klass = SC.objectForPropertyPath(inspectorInfo.type);
         
-    if (!klass || !klass.isClass) {
-      return NO;
+    if (!klass || !klass.isClass || !SC.kindOf(klass, Smartgraphs.Inspector)) {
+      throw "makeInspector was given an non-empty, but invalid, Inspector class name";
     }
     
     return klass.create({

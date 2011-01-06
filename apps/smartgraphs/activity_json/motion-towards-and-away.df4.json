@@ -1,5 +1,7 @@
 {
-  "data_format_version": 2,
+  "_id": "motion-towards-and-away.df4",
+  "_rev": "1-abd4f9c36841e0d21690780e32bb2999",
+  "data_format_version": 4,  
   "activity": {
     "title": "Motion Towards And Away",
     "url": "/shared/motion-towards-and-away",
@@ -17,7 +19,32 @@
       "/shared/motion-towards-and-away/page/10",
       "/shared/motion-towards-and-away/page/11"
     ],
-    "pageListUrl": "/shared/motion-towards-and-away/pages"
+    "datasets": [
+      "/shared/motion-towards-and-away/dataset/walking-away-example",
+      "/shared/motion-towards-and-away/dataset/walking-example-1",
+      "/shared/motion-towards-and-away/dataset/walking-toward-example"
+    ],
+    "axes": [
+      "/shared/motion-towards-and-away/axes/5m-15s",
+      "/shared/motion-towards-and-away/axes/5m-25s"
+    ],
+    "graphs": [
+      "/shared/motion-towards-and-away/graph/graph-to-match",
+      "/shared/motion-towards-and-away/graph/graph-with-away-prediction",
+      "/shared/motion-towards-and-away/graph/graph-with-toward-prediction",
+      "/shared/motion-towards-and-away/graph/prediction-away",
+      "/shared/motion-towards-and-away/graph/prediction-toward",
+      "/shared/motion-towards-and-away/graph/sensor-away",
+      "/shared/motion-towards-and-away/graph/sensor-playing",
+      "/shared/motion-towards-and-away/graph/sensor-toward",
+      "/shared/motion-towards-and-away/graph/two-walkers",
+      "/shared/motion-towards-and-away/graph/walking-example-1"
+    ],
+    "responseTemplates": [
+      "/components/response-template/open",
+      "/shared/motion-towards-and-away/response-template/walking-example-1",
+      "/shared/motion-towards-and-away/response-template/two-walkers"
+    ]
   },
   "pages": [
     {
@@ -26,11 +53,10 @@
       ],
       "name": "Introduction",
       "firstStep": "/shared/motion-towards-and-away/page/1/step/1",
-      "introText": "<h1>How can you tell a story about motion without using words?</h1>\n\n<p>The picture at right communicates direction of traffic using recognizable symbols. In this activity, you will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will learn conventional methods of motion storytelling and analysis.</p>",
+      "introText": "<h1>How can you tell a story about motion without using words?</h1>\n\n<p>The picture at right communicates direction of traffic using recognizable symbols. In this activity, you will explore how motions in two opposite directions appear on a position-time graph. By doing so, you will learn conventional methods of motion storytelling and analysis.</p> ",
       "url": "/shared/motion-towards-and-away/page/1",
       "activity": "/shared/motion-towards-and-away",
-      "index": 1,
-      "stepListUrl": "/shared/motion-towards-and-away/page/1/steps"
+      "index": 1
     },
     {
       "steps": [
@@ -42,8 +68,7 @@
       "introText": "<p>Let\u2019s start by demonstrating what you already know about representing motion on a graph. Imagine a straight walking path that is 4 meters long.</p><p>Point A is at the 0-meter mark.</p><p>Point B is at the 4-meter mark.</p>",
       "url": "/shared/motion-towards-and-away/page/2",
       "activity": "/shared/motion-towards-and-away",
-      "index": 2,
-      "stepListUrl": "/shared/motion-towards-and-away/page/2/steps"
+      "index": 2
     },
     {
       "steps": [
@@ -55,8 +80,7 @@
       "introText": "<p>Let\u2019s practice collecting data with the motion sensor so you can see whether your sketches were accurate. You will walk on a 4-meter walking path like the one described earlier.</p>",
       "url": "/shared/motion-towards-and-away/page/3",
       "activity": "/shared/motion-towards-and-away",
-      "index": 3,
-      "stepListUrl": "/shared/motion-towards-and-away/page/3/steps"
+      "index": 3
     },
     {
       "steps": [
@@ -69,8 +93,7 @@
       "introText": "<p>To the right are your predictions for walking away and toward point B.</p><p>Now that you &quot;have the hang of it,&quot; you will walk with the sensor to see if your sketches of forward and backward motion are correct.</p>",
       "url": "/shared/motion-towards-and-away/page/4",
       "activity": "/shared/motion-towards-and-away",
-      "index": 4,
-      "stepListUrl": "/shared/motion-towards-and-away/page/4/steps"
+      "index": 4
     },
     {
       "steps": [
@@ -82,8 +105,7 @@
       "introText": "<p>At right is the data you just collected with the motion sensor.</p>",
       "url": "/shared/motion-towards-and-away/page/5",
       "activity": "/shared/motion-towards-and-away",
-      "index": 5,
-      "stepListUrl": "/shared/motion-towards-and-away/page/5/steps"
+      "index": 5
     },
     {
       "steps": [
@@ -98,8 +120,7 @@
       "introText": "<p>At right is a position-time graph created by someone walking in front of a motion sensor.</p>",
       "url": "/shared/motion-towards-and-away/page/6",
       "activity": "/shared/motion-towards-and-away",
-      "index": 6,
-      "stepListUrl": "/shared/motion-towards-and-away/page/6/steps"
+      "index": 6
     },
     {
       "steps": [
@@ -113,8 +134,7 @@
       "introText": "<p>Now you will collect and analyze your own data once again.</p>",
       "url": "/shared/motion-towards-and-away/page/7",
       "activity": "/shared/motion-towards-and-away",
-      "index": 7,
-      "stepListUrl": "/shared/motion-towards-and-away/page/7/steps"
+      "index": 7
     },
     {
       "steps": [
@@ -130,8 +150,7 @@
       "introText": "<p>To the right, two different data sets are plotted on the same graph.</p>",
       "url": "/shared/motion-towards-and-away/page/8",
       "activity": "/shared/motion-towards-and-away",
-      "index": 8,
-      "stepListUrl": "/shared/motion-towards-and-away/page/8/steps"
+      "index": 8
     },
     {
       "steps": [
@@ -143,8 +162,7 @@
       "introText": "<p>Look at the position-time graph to the right. You are going to recreate this graph as closely as possible by walking in front of the motion sensor to collect position and time data.</p>",
       "url": "/shared/motion-towards-and-away/page/9",
       "activity": "/shared/motion-towards-and-away",
-      "index": 9,
-      "stepListUrl": "/shared/motion-towards-and-away/page/9/steps"
+      "index": 9
     },
     {
       "steps": [
@@ -156,8 +174,7 @@
       "introText": "<p>To the right are the sketches you drew at the beginning of this activity.</p>",
       "url": "/shared/motion-towards-and-away/page/10",
       "activity": "/shared/motion-towards-and-away",
-      "index": 10,
-      "stepListUrl": "/shared/motion-towards-and-away/page/10/steps"
+      "index": 10
     },
     {
       "steps": [
@@ -168,8 +185,7 @@
       "introText": "<p>Congratulations! You have finished the activity.</p>",
       "url": "/shared/motion-towards-and-away/page/11",
       "activity": "/shared/motion-towards-and-away",
-      "index": 11,
-      "stepListUrl": "/shared/motion-towards-and-away/page/11/steps"
+      "index": 11
     }
   ],
   "steps": [
@@ -187,21 +203,21 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -249,14 +265,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/2/step/2",
       "isFinalStep": false,
@@ -307,14 +323,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -351,14 +367,14 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/3/step/2",
       "isFinalStep": false,
@@ -382,7 +398,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -400,14 +416,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -447,14 +463,14 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/4/step/2",
       "isFinalStep": false,
@@ -494,14 +510,14 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/4/step/3",
       "isFinalStep": false,
@@ -528,7 +544,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -546,14 +562,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -580,7 +596,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -598,14 +614,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/5/step/2",
       "isFinalStep": false,
@@ -632,7 +648,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -650,14 +666,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -680,7 +696,7 @@
       "responseTemplate": "/shared/motion-towards-and-away/response-template/walking-example-1",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -699,10 +715,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -766,7 +782,7 @@
       "responseTemplate": "/shared/motion-towards-and-away/response-template/walking-example-1",
       "afterText": "<p><b>Incorrect.</b> Look at the walker's position at the red point, and select another answer.</p>",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -785,10 +801,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -852,7 +868,7 @@
       "responseTemplate": "/shared/motion-towards-and-away/response-template/walking-example-1",
       "afterText": "<p><b>Incorrect.</b> Think about what happened to the walker's position after this point, and select another answer.</p>",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -871,10 +887,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -938,7 +954,7 @@
       "responseTemplate": "/shared/motion-towards-and-away/response-template/walking-example-1",
       "afterText": "<p><b>Incorrect.</b> Look at the walker's direction after the red point, and select another answer.</p>",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -957,10 +973,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1024,23 +1040,23 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
-
+        
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -1077,14 +1093,14 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/7/step/2",
       "isFinalStep": false,
@@ -1108,7 +1124,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1126,14 +1142,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/7/step/3",
       "isFinalStep": false,
@@ -1157,7 +1173,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1175,14 +1191,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/7/step/4",
       "isFinalStep": false,
@@ -1206,7 +1222,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1224,14 +1240,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -1254,7 +1270,7 @@
       "responseTemplate": "/shared/motion-towards-and-away/response-template/two-walkers",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1273,10 +1289,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1313,7 +1329,7 @@
       "responseTemplate": "/shared/motion-towards-and-away/response-template/two-walkers",
       "afterText": "<p><b>Incorrect.</b> Two data sets are represented on one graph. Analyze each set of data, and select another answer.</p>",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1332,10 +1348,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1372,7 +1388,7 @@
       "responseTemplate": "/shared/motion-towards-and-away/response-template/two-walkers",
       "afterText": "<p><b>Incorrect.</b> Figure out where each person started and ended, and select another answer.</p>",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1391,10 +1407,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1431,7 +1447,7 @@
       "responseTemplate": "/shared/motion-towards-and-away/response-template/two-walkers",
       "afterText": "<p><b>Incorrect.</b> Think about the direction each walker moved from the starting point, and select another answer.</p>",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1450,10 +1466,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1490,25 +1506,25 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
-
+        
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
-
+        
       },
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -1531,25 +1547,25 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
-
+        
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
-
+        
       },
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -1586,14 +1602,14 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/9/step/2",
       "isFinalStep": false,
@@ -1617,7 +1633,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1635,14 +1651,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -1669,7 +1685,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1687,14 +1703,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/motion-towards-and-away/page/10/step/2",
       "isFinalStep": false,
@@ -1721,7 +1737,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1739,14 +1755,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -1769,21 +1785,21 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -1791,6 +1807,189 @@
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
+    }
+  ],
+  "axes": [
+    {
+      "url": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xMin": 0,
+      "xMax": 15,
+      "xSteps": 15,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 5,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Position (m)"
+    },
+    {
+      "url": "/shared/motion-towards-and-away/axes/5m-25s",
+      "xMin": 0,
+      "xMax": 25,
+      "xSteps": 25,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 5,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Position (m)"
+    }
+  ],
+  "graphs": [
+    {
+      "url": "/shared/motion-towards-and-away/graph/graph-to-match",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "graph-to-match",
+      "description": "Graph to match with sensor data",
+      "title": "Position vs. Time",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "sketch-to-match"
+        }
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/graph-with-away-prediction",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "graph-with-away-prediction",
+      "description": "Graph with 'away' prediction for adding 'away' sensor data in page 4",
+      "title": "Away",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "prediction-away"
+        }
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/graph-with-toward-prediction",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "graph-with-toward-prediction",
+      "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
+      "title": "Toward",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "prediction-toward"
+        }
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/prediction-away",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "prediction-away",
+      "description": "Prediction graph of movement away",
+      "title": "Away",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/prediction-toward",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "prediction-toward",
+      "title": "Toward",
+      "description": "Prediction graph of movement towards",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/sensor-away",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "sensor-away",
+      "description": "Graph with'away' sensor data from page 4",
+      "title": "Away",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        "sensor-away"
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/sensor-playing",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "sensor-playing",
+      "description": "Playing around with the sensor in page 3",
+      "title": "Position vs. Time",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/sensor-toward",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "sensor-toward",
+      "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
+      "title": "Toward",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        "sensor-toward"
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/two-walkers",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "two-walkers",
+      "description": "Graph for multiple choice question in page 6",
+      "title": "Position vs. Time",
+      "axes": "/shared/motion-towards-and-away/axes/5m-25s",
+      "initialDatasets": [
+        "walking-away-example",
+        "walking-toward-example"
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/motion-towards-and-away/graph/walking-example-1",
+      "activity": "/shared/motion-towards-and-away",
+      "name": "walking-example-1",
+      "description": "Graph for multiple choice question in page 6",
+      "title": "An Example Walk",
+      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "initialDatasets": [
+        "walking-example-1"
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.HighlightedPoint",
+          "name": "walking-first-point"
+        }
+      ]
     }
   ],
   "responseTemplates": [
@@ -3124,230 +3323,49 @@
       "dataset": "/shared/motion-towards-and-away/dataset/walking-toward-example"
     }
   ],
-  "graphs": [
+  "annotations": [
     {
-      "url": "/shared/motion-towards-and-away/graph/graph-to-match",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "graph-to-match",
-      "description": "Graph to match with sensor data",
-      "title": "Position vs. Time",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
+      "type": "FreehandSketch",
+      "records": [
         {
-          "type": "Smartgraphs.FreehandSketch",
-          "name": "sketch-to-match"
+          "url": "/shared/motion-towards-and-away/annotation/sketch-to-match",
+          "name": "sketch-to-match",
+          "activity": "/shared/motion-towards-and-away",
+          "isExample": true,
+          "points": [
+            {
+              "x": 0,
+              "y": 3
+            },
+            {
+              "x": 3,
+              "y": 1
+            },
+            {
+              "x": 9,
+              "y": 2
+            },
+            {
+              "x": 15,
+              "y": 0
+            }
+          ],
+          "session": null
         }
       ]
     },
     {
-      "url": "/shared/motion-towards-and-away/graph/graph-with-away-prediction",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "graph-with-away-prediction",
-      "description": "Graph with 'away' prediction for adding 'away' sensor data in page 4",
-      "title": "Away",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
+      "type": "HighlightedPoint",
+      "records": [
         {
-          "type": "Smartgraphs.FreehandSketch",
-          "name": "prediction-away"
-        }
-      ]
-    },
-    {
-      "url": "/shared/motion-towards-and-away/graph/graph-with-toward-prediction",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "graph-with-toward-prediction",
-      "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
-      "title": "Toward",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
-        {
-          "type": "Smartgraphs.FreehandSketch",
-          "name": "prediction-toward"
-        }
-      ]
-    },
-    {
-      "url": "/shared/motion-towards-and-away/graph/prediction-away",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "prediction-away",
-      "description": "Prediction graph of movement away",
-      "title": "Away",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/shared/motion-towards-and-away/graph/prediction-toward",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "prediction-toward",
-      "title": "Toward",
-      "description": "Prediction graph of movement towards",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/shared/motion-towards-and-away/graph/sensor-away",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "sensor-away",
-      "description": "Graph with'away' sensor data from page 4",
-      "title": "Away",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-        "sensor-away"
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/shared/motion-towards-and-away/graph/sensor-playing",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "sensor-playing",
-      "description": "Playing around with the sensor in page 3",
-      "title": "Position vs. Time",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/shared/motion-towards-and-away/graph/sensor-toward",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "sensor-toward",
-      "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
-      "title": "Toward",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-        "sensor-toward"
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/shared/motion-towards-and-away/graph/two-walkers",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "two-walkers",
-      "description": "Graph for multiple choice question in page 6",
-      "title": "Position vs. Time",
-      "axes": "/shared/motion-towards-and-away/axes/5m-25s",
-      "initialDatasets": [
-        "walking-away-example",
-        "walking-toward-example"
-      ],
-      "initialAnnotations": [
-
-      ]
-    },
-    {
-      "url": "/shared/motion-towards-and-away/graph/walking-example-1",
-      "activity": "/shared/motion-towards-and-away",
-      "name": "walking-example-1",
-      "description": "Graph for multiple choice question in page 6",
-      "title": "An Example Walk",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
-      "initialDatasets": [
-        "walking-example-1"
-      ],
-      "initialAnnotations": [
-        {
-          "type": "Smartgraphs.HighlightedPoint",
-          "name": "walking-first-point"
+          "url": "/shared/motion-towards-and-away/annotation/walking-first-point",
+          "name": "walking-first-point",
+          "activity": "/shared/motion-towards-and-away",
+          "isExample": true,
+          "session": null,
+          "point": 1
         }
       ]
     }
-  ],
-  "axes": [
-    {
-      "url": "/shared/motion-towards-and-away/axes/5m-15s",
-      "xMin": 0,
-      "xMax": 15,
-      "xSteps": 15,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
-    },
-    {
-      "url": "/shared/motion-towards-and-away/axes/5m-25s",
-      "xMin": 0,
-      "xMax": 25,
-      "xSteps": 25,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
-    }
-  ],
-  "freehandSketches": [
-    {
-      "url": "/shared/motion-towards-and-away/annotation/sketch-to-match",
-      "name": "sketch-to-match",
-      "activity": "/shared/motion-towards-and-away",
-      "isExample": true,
-      "points": [
-        {
-          "x": 0,
-          "y": 3
-        },
-        {
-          "x": 3,
-          "y": 1
-        },
-        {
-          "x": 9,
-          "y": 2
-        },
-        {
-          "x": 15,
-          "y": 0
-        }
-      ],
-      "session": null
-    }
-  ],
-  "highlightedPoints": [
-    {
-      "url": "/shared/motion-towards-and-away/annotation/walking-first-point",
-      "name": "walking-first-point",
-      "activity": "/shared/motion-towards-and-away",
-      "isExample": true,
-      "session": null,
-      "point": 1
-    }
-  ],
-  "highlightedSegments": [
-
-  ],
-  "linesToAxis": [
-
   ]
 }

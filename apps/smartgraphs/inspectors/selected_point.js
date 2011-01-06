@@ -13,16 +13,13 @@ Smartgraphs.SelectedPointInspector = Smartgraphs.Inspector.extend({
   dataset: null, 
   
   configure: function (config) {
-    var controller = Smartgraphs.GraphController.controllerForName[config.graphName];
-    if (!controller) return;
-    
-    this.set('dataset', controller.findDatasetByName(config.datasetName));
+    this.set('dataset', Smartgraphs.activityObjectsController.findDataset(config.datasetName));
   },
   
   inspect: function () {
     var dataset = this.get('dataset');
     var selection = dataset && dataset.get('selection');
-    var value = selection && selection.get('length') === 1 ? selection.toArray().objectAt(0) : undefined;
+    var value = selection && selection.get('length') === 1 ? selection.firstObject() : undefined;
     this.set('value', value);
     return value;
   },

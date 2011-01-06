@@ -7,35 +7,45 @@
 
 /** @class
 
-  This controller handles creating and finding "activity objects" which are created during a user session, and which
-  the various commands reference by name (where the name is chosen by and exposed to the activity author). So far this
-  means datasets and annotations.
+  This controller maintains a registry of the names of all "activity objects" associated with the current activity
+  session.(Right now, "activity objects" means the datasets and annotations associated with an activity.)
+  
+  This controller handles:
+    (a) loading the initial set of datasets and annotations (those defined in the activity document) into the session
+    (b) dynamically creating new datasets or annotations and associating them with the current session
+    (c) finding datasets and annotations by name in the current session
+    (d) maintaining an observable list of dataset and annotation names in the current session
   
   This controller has some complexity because there are a number of Annotation subclasses, and there is no way to
   create a RecordArray backed by a query for all Annotations subtype instances associated with the current activity.
 
-  @extends SC.Object
+  @extends SC.Controller
 */
-Smartgraphs.activityObjectsController = SC.ObjectController.create(
+Smartgraphs.activityObjectsController = SC.Controller.create(
 /** @scope Smartgraphs.activityObjectsController.prototype */ {
   
   /**
     @private
     
-    All annotations available to the user session, indexed by name.
+    All annotations available to the activity session, indexed by name.
   */
   _annotations: {},
   
   /**
     @private
     
-    All datasets available to the user session, indexed by name.
+    All datasets available to the activity session, indexed by name.
   */
   _datasets: {},
   
   /**
-    Sets the registry of dataset and annotation in this activity to be just those predefined in the activity document.
-    (i.e., removes any datasets or annotations dynamically created in a run of the activity.
+    When an activity session is started, call this method to populate the registry of dataset and annotation names 
+    with the names of the datasets and annotations predefined the activity document (all other datasets and 
+    annotations will be removed from the registry).
+    
+    This method expects that Smartgraphs.store is a "clean slate"; that is, that it contains no dataset or annotation
+    records which reference the current activity but that were not predefined. This is normally taken care of by the 
+    sessionController just before loadPredefinedObjects is called.
   */
   loadPredefinedObjects: function () {
     this._datasets = {};
@@ -65,7 +75,7 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
     
       // now, repeat the above for each annotation type...
     
-      Smartgraphs.Annotation.types.forEach(function (type) {
+      Smartgraphs.Annotation.types().forEach(function (type) {
         query = SC.Query.local(type, 'activity={activity}', {
           activity: Smartgraphs.activityController.get('activityRecordInCurrentStore')
         });
@@ -92,14 +102,42 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
     this.notifyPropertyChange('annotationNames');
   },
   
+  /**
+    Returns the dataset with the given name in the current activity session, or undefined if the specified name does
+    not correspond to a dataset in the current activity session.
+
+    @param name The name of the dataset.
+    
+    @returns {Smartgraphs.Dataset|undefined}
+  */
   findDataset: function (name) {
     return this._datasets[name];
   },
   
+  /**
+    Returns the annotation with the given name in the current activity session, or undefined if the specified name
+    does not correspond to an annotation in the current activity session.
+
+    @param name The name of the annotation.
+    
+    @returns {Smartgraphs.Annotation|undefined}
+  */
   findAnnotation: function (name) {
     return this._annotations[name];
   },
   
+  /**
+    Create a dataset in the current activity session. This is the canonical way to create a dataset.
+    
+    It is a runtime error to call this method with the name of a dataset that has already been defined in the current
+    session.
+    
+    @param name 
+      The name to give to the newly created dataset.
+
+    @returns {Smartgraphs.Dataset}
+      The newly created datatset
+  */
   createDataset: function (name) {
     if (this._datasets[name]) {
       throw "The activity tried to create a dataset with name %@, which is already in use.".fmt(name);
@@ -117,6 +155,24 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
     return dataset;
   },
   
+  
+  /**
+    Create an annotation in the current activity session.
+    
+    It is a runtime error to call this method with the name of an annotation that has already been defined in the 
+    current session.
+    
+    @param {SC.Annotation} type 
+      Annotation subclass to create
+    @param {String} name 
+      The name to give to the newly created annotation
+    @param {Object} attributes
+      Hash of attributes to pass to SC.Record.create when creating the annotation record. (This implies that related
+      objects must be specified by id in the attributes hash.)
+    
+    @returns {Smartgraphs.Annotation}
+      The newly created annotation
+  */
   createAnnotation: function (type, name, attributes) {
     if (this._annotations[name]) {
       throw "The activity tried to create an annotation with name %@, which is already in use.".fmt(name);
@@ -137,8 +193,31 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
   },
   
   /**
-    Observable list of the names of all datasets available to the current activity. (Observers are notified whenever
-    datasets are added or removed from this list.)
+    Deletes an annotation in the current activity session.
+
+    Does nothing if no annotation with the specified name has been defined.
+    
+    @param {String} name 
+      The name of the annotation to destroy
+    
+    @returns {Boolean}
+      YES if the annotation was found (and destroyed); NO if the annotation was not found.
+  */
+  deleteAnnotation: function (name) {
+    var annotation = this.findAnnotation(name);
+    if (!annotation) return NO;
+    
+    annotation.destroy();
+    delete this._annotations[name];
+    this.notifyPropertyChange('annotationNames');
+    return YES;
+  },
+  
+  /**
+    @property {SC.Array} datasetNames      
+
+    Observable list of the names of all datasets defined in the current activity session. (Observers are notified 
+    whenever datasets are added or removed from this list.)
   */
   datasetNames: function () {
     var names = [];
@@ -149,7 +228,9 @@ Smartgraphs.activityObjectsController = SC.ObjectController.create(
   }.property(),
   
   /**
-    Observable list of the names of all annotations available to the current activity. (Observers are notified 
+    @property {SC.Array} annotationNames
+    
+    Observable list of the names of all annotations defined in the current activity session. (Observers are notified 
     whenever annotations are added or removed from this list.)
   */
   annotationNames: function () {

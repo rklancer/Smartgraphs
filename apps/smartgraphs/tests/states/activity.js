@@ -134,7 +134,7 @@ test("creating a LineThroughPoints", function () {
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the line
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
-  Smartgraphs.statechart.sendAction('createLineThroughPoints', null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'lineName': 'test-line', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createLineThroughPoints', null, {'firstPoint': 'hp1', 'secondPoint': 'hp2', 'lineName': 'test-line', 'color': '#ff0000'});
   equals(Smartgraphs.store.find('Smartgraphs.LineThroughPoints').get('length'), startLineCount + 1, "There should be one more LineThroughPoints");
   equals(Smartgraphs.firstGraphController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.LineThroughPoints, 'test-line'); // Grab the annotation to examine it
@@ -151,7 +151,7 @@ test("creating a rise Arrow", function () {
   Smartgraphs.firstGraphController.addAnnotation(hp1);  // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
-  Smartgraphs.statechart.sendAction('createRiseArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'riseArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRiseArrow', null, {'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'riseArrow', 'color': '#ff0000'});
   equals(Smartgraphs.store.find('Smartgraphs.Arrow').get('length'), startLineCount + 1, "There should be one more Arrow");
   equals(Smartgraphs.firstGraphController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'riseArrow'); // Grab the annotation to examine it
@@ -173,7 +173,7 @@ test("creating a run Arrow", function () {
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
-  Smartgraphs.statechart.sendAction('createRunArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRunArrow', null, {'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'runArrow', 'color': '#ff0000'});
   equals(Smartgraphs.store.find('Smartgraphs.Arrow').get('length'), startLineCount + 1, "There should be one more Arrow");
   equals(Smartgraphs.firstGraphController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
@@ -192,8 +192,8 @@ test("Reordering points for rise/run arrows", function () {
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
-  Smartgraphs.statechart.sendAction('createRunArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
-  Smartgraphs.statechart.sendAction('createRiseArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'riseArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRunArrow', null, {'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRiseArrow', null, {'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'riseArrow', 'color': '#ff0000'});
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'riseArrow');
   var runArrow = Smartgraphs.firstGraphController.findAnnotationByName('runArrow'); // Grab the annotation to examine it
@@ -211,11 +211,11 @@ test("Toggling isHighlighted state for annotations", function () {
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
-  Smartgraphs.statechart.sendAction('createRunArrow', null, {'graphName': 'test-graph', 'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRunArrow', null, {'firstPoint': 'hp2', 'secondPoint': 'hp1', 'arrowName': 'runArrow', 'color': '#ff0000'});
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
   var runArrow = Smartgraphs.firstGraphController.findAnnotationByName('runArrow'); // Grab the annotation to examine it
   var originalHighlighted = runArrow.get('isHighlighted');
-  Smartgraphs.statechart.sendAction('toggleAnnotationHighlight', null, {'graphName': 'test-graph', 'annotationName': 'runArrow'});
+  Smartgraphs.statechart.sendAction('toggleAnnotationHighlight', null, {'annotationName': 'runArrow'});
   equals(runArrow.get('isHighlighted'), !originalHighlighted, "The isHighlighted property should be the inverse of its original value");
 });
 
@@ -230,7 +230,7 @@ test("Creating rise BracketArc", function () {
   Smartgraphs.firstTableController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstTableController.get('annotationList').get('length');
 
-  Smartgraphs.statechart.sendAction('createRiseBracket', null, {'bracketName': 'test-rise-bracket', 'tableName': 'test-dataset', 'point1': 'hp1', 'point2': 'hp2'});
+  Smartgraphs.statechart.sendAction('createRiseBracket', null, {'bracketName': 'test-rise-bracket', 'datasetName': 'test-dataset', 'point1': 'hp1', 'point2': 'hp2'});
   equals(Smartgraphs.store.find('Smartgraphs.BracketArc').get('length'), startBracketCount + 1, "There should be one more BracketArc");
   equals(Smartgraphs.firstTableController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   
@@ -252,7 +252,7 @@ test("Creating run BracketArc", function () {
   Smartgraphs.firstTableController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstTableController.get('annotationList').get('length');
 
-  Smartgraphs.statechart.sendAction('createRunBracket', null, {'bracketName': 'test-run-bracket', 'tableName': 'test-dataset', 'point1': 'hp1', 'point2': 'hp2'});
+  Smartgraphs.statechart.sendAction('createRunBracket', null, {'bracketName': 'test-run-bracket', 'datasetName': 'test-dataset', 'point1': 'hp1', 'point2': 'hp2'});
   equals(Smartgraphs.store.find('Smartgraphs.BracketArc').get('length'), startBracketCount + 1, "There should be one more BracketArc");
   equals(Smartgraphs.firstTableController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   

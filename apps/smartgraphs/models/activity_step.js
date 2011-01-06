@@ -284,7 +284,6 @@ Smartgraphs.ActivityStep = SC.Record.extend(
       {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       }

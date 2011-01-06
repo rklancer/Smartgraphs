@@ -87,12 +87,36 @@ Smartgraphs.Annotation = SC.Record.extend(
 
 // FIXME what is the jsdoc for "class property"?
 
-/**
-  A list of all Annotation subtypes
-*/
-Smartgraphs.Annotation.types = [];
-
-/**
-  The names of all Annotation subtypes
-*/
-Smartgraphs.Annotation.typeNames = [];
+(function () {
+  
+  var types = null;
+  var typeNames = null;
+  
+  function findTypes() {
+    types = [];
+    typeNames = [];
+    for (var prop in Smartgraphs) {
+      if (Smartgraphs.hasOwnProperty(prop) && Smartgraphs[prop] && Smartgraphs[prop].isClass && prop !== 'Annotation' && SC.kindOf(Smartgraphs[prop], Smartgraphs.Annotation)) {
+        types.push(Smartgraphs[prop]);
+        typeNames.push(prop);
+      }
+    }
+  }
+  
+  /**
+    Returns a list of all Annotation subtypes. Value is calculated the first time this function or Smartgraphs.Annotation.typeNames is is called, and cached thereafter.
+  */
+  Smartgraphs.Annotation.types = function () {
+    if (!types) findTypes();
+    return types;
+  };
+  
+  /**
+    Returns a list of the names of all Annotation subtypes. Value is calculated the first time this function or Smartgraphs.Annotation.types is is called, and cached thereafter.
+  */
+  Smartgraphs.Annotation.typeNames = function () {
+    if (!typeNames) findTypes();
+    return typeNames;
+  };
+  
+}());

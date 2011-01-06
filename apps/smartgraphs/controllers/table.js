@@ -86,11 +86,14 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     this.clearAnnotations();
     this.set('content', null);
     this.set('dataset', null);
+    if (this.get('datasetName')) {
+      Smartgraphs.TableController.controllerForDataset.set(this.get('datasetName'), null);
+    }
     this.set('datasetName', null);
   },
   
   /**
-    Causes the table to display dataset `datasetName`, which must be opened on graph `graphName`.
+    Causes the table to display dataset `datasetName`.
     
     Waits for the specified graph to be opened by one of the graph controllers and waits for the dataset to be opened
     by that graph controller before setting our content to the set of points in the dataset.
@@ -136,6 +139,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     sc_super();
     if (annotation.kindOf(Smartgraphs.HighlightedPoint)) {
       // Watch this and update colors for datapoints if the point changes
+      console.log("**** TABLECONTROLLER ADDING OBSERVER");
       annotation.addObserver('point', this, 'updateDataPoints');
     }
   },

@@ -1,6 +1,7 @@
 {
-  "_rev": "18-df828ae83e133ea9fa97b342881940e2",
-  "data_format_version": 2,
+  "_id": "slope-tool-demo.df4",
+  "_rev": "1-8afd115d18d1d471fa6e82325c069158",
+  "data_format_version": 4,  
   "activity": {
     "title": "Slope Tool Demo",
     "url": "/shared/slope-tool-demo",
@@ -8,7 +9,18 @@
     "pages": [
       "/shared/slope-tool-demo/page/1"
     ],
-    "pageListUrl": "/shared/slope-tool-demo/pages"
+    "datasets": [
+      "/shared/slope-tool-demo/dataset/demo-data"
+    ],
+    "axes": [
+      "/shared/slope-tool-demo/axes/10s-15meters"
+    ],
+    "graphs": [
+      "/shared/slope-tool-demo/graph/demo-graph"
+    ],
+    "responseTemplates": [
+      
+    ]
   },
   "pages": [
     {
@@ -20,15 +32,15 @@
         "/shared/slope-tool-demo/page/1/step/5",
         "/shared/slope-tool-demo/page/1/step/6",
         "/shared/slope-tool-demo/page/1/step/7",
-        "/shared/slope-tool-demo/page/1/step/8"
+        "/shared/slope-tool-demo/page/1/step/8",
+        "/shared/slope-tool-demo/page/1/step/9"
       ],
       "name": "Slope Tool Page",
       "firstStep": "/shared/slope-tool-demo/page/1/step/1",
-      "introText": "<h1>Slope Tool Demo</h1>",
+      "introText": "<h1>Slope Tool Demo</h1> ",
       "url": "/shared/slope-tool-demo/page/1",
       "activity": "/shared/slope-tool-demo",
-      "index": 1,
-      "stepListUrl": "/shared/slope-tool-demo/page/1/steps"
+      "index": 1
     }
   ],
   "steps": [
@@ -65,14 +77,14 @@
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/slope-tool-demo/page/1/step/2",
       "isFinalStep": false,
@@ -113,10 +125,10 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
-
+        
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
         {
@@ -132,7 +144,7 @@
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/slope-tool-demo/page/1/step/3",
       "isFinalStep": false,
@@ -163,7 +175,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.LineThroughPoints",
             "name": "line",
             "graphName": "demo-graph"
           }
@@ -172,10 +183,10 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
-
+        
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
         {
@@ -184,7 +195,6 @@
             "arrowName": "rise-arrow",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
-            "graphName": "demo-graph",
             "color": "#9467bd"
           }
         },
@@ -194,14 +204,13 @@
             "arrowName": "run-arrow",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
-            "graphName": "demo-graph",
             "color": "#d62728"
           }
         }
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/slope-tool-demo/page/1/step/4",
       "isFinalStep": false,
@@ -232,7 +241,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.Arrow",
             "name": "rise-arrow",
             "graphName": "demo-graph"
           }
@@ -241,17 +249,17 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
-
+        
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/slope-tool-demo/page/1/step/5",
       "isFinalStep": false,
@@ -282,7 +290,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.Arrow",
             "name": "run-arrow",
             "graphName": "demo-graph"
           }
@@ -291,17 +298,17 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
-
+        
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-      
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/slope-tool-demo/page/1/step/6",
       "isFinalStep": false,
@@ -332,18 +339,17 @@
         {
           "action": "toggleAnnotationHighlight",
           "literalArgs": {
-            "annotationName": "run-arrow",
-            "graphName": "demo-graph"
+            "annotationName": "run-arrow"
           }
         }
       ],
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
-
+        
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
         {
@@ -371,7 +377,7 @@
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "/shared/slope-tool-demo/page/1/step/7",
       "isFinalStep": false,
@@ -402,7 +408,6 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.IndicatingArrow",
             "name": "test-arrow",
             "tableName": "demo-data"
           }
@@ -410,9 +415,183 @@
         {
           "action": "addAnnotation",
           "literalArgs": {
-            "type": "Smartgraphs.IndicatingArrow",
             "name": "test-arrow-two",
             "tableName": "demo-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+        
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createRiseBracket",
+          "literalArgs": {
+            "bracketName": "demo-rise-bracket",
+            "point1": "first-point",
+            "point2": "second-point",
+            "datasetName": "demo-data",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "createRunBracket",
+          "literalArgs": {
+            "bracketName": "demo-run-bracket",
+            "point1": "first-point",
+            "point2": "second-point",
+            "datasetName": "demo-data",
+            "color": "#d62728"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/8",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/8",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>How about a bracket instead of arrows?</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "demo-rise-bracket",
+            "tableName": "demo-data"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "demo-run-bracket",
+            "tableName": "demo-data"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "test-arrow-two",
+            "tableName": "demo-data"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "test-arrow",
+            "tableName": "demo-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+        
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "stooge-label-one",
+            "point": "6",
+            "label": "Larry"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "stooge-label-two",
+            "point": "7",
+            "label": "Moe"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "stooge-label-three",
+            "point": "8",
+            "label": "Curly"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/9",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/9",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>We can put arbitrary text labels on data points.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "stooge-label-one",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "stooge-label-two",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "stooge-label-three",
+            "graphName": "demo-graph"
           }
         }
       ],
@@ -425,86 +604,12 @@
 
       ],
       "afterSubmissionCommands": [
-        {
-          "action": "createBracketArcFromCoordinates",
-          "literalArgs": {
-            "bracketName": "demo-bracket",
-            "startX": 40,
-            "startY": 10,
-            "endX": 40,
-            "endY": 130,
-            "color": "#9467bd"
-          }
-        }
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
-        "defaultBranch": "/shared/slope-tool-demo/page/1/step/8",
-        "isFinalStep": false,
-        "shouldAutoAdvancePage": false,
-        "hideSubmitButton": false,
-        "submitButtonTitle": "OK",
-        "nextButtonShouldSubmit": false
-      },
-      {
-        "url": "/shared/slope-tool-demo/page/1/step/8",
-        "activityPage": "/shared/slope-tool-demo/page/1",
-        "paneConfig": "split",
-        "panes": {
-          "top": {
-            "type": "graph",
-            "name": "demo-graph"
-          },
-          "bottom": {
-            "type": "table",
-            "graphName": "demo-graph",
-            "datasetName": "demo-data"
-          }
-        },
-        "beforeText": "<p>How about a bracket instead of arrows?</p>",
-        "responseTemplate": "",
-        "afterText": "",
-        "startCommands": [
-          {
-            "action": "addAnnotation",
-            "literalArgs": {
-              "type": "Smartgraphs.BracketArc",
-              "name": "demo-bracket",
-              "tableName": "demo-data"
-            }
-          },
-          {
-            "action": "removeAnnotation",
-            "literalArgs": {
-              "name": "test-arrow-two",
-              "tableName": "demo-data"
-            }
-          },
-          {
-            "action": "removeAnnotation",
-            "literalArgs": {
-              "name": "test-arrow",
-              "tableName": "demo-data"
-            }
-          }
-        ],
-        "shouldFinishImmediately": false,
-        "submissibilityInspector": null,
-        "submissibilityCriterion": {
-
-        },
-        "triggeredCommands": [
-
-        ],
-        "afterSubmissionCommands": [
-
-        ],
-        "responseInspector": null,
-        "responseBranches": [
-
-        ],
       "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
@@ -513,8 +618,39 @@
       "nextButtonShouldSubmit": false
     }
   ],
+  "axes": [
+    {
+      "url": "/shared/slope-tool-demo/axes/10s-15meters",
+      "xMin": 0,
+      "xMax": 10,
+      "xSteps": 10,
+      "xLabel": "Time (sec)",
+      "xLabelAbbreviated": "Time (sec)",
+      "yMin": 0,
+      "yMax": 15,
+      "ySteps": 10,
+      "yLabel": "Position (m)",
+      "yLabelAbbreviated": "Position (m)"
+    }
+  ],
+  "graphs": [
+    {
+      "url": "/shared/slope-tool-demo/graph/demo-graph",
+      "activity": "/shared/slope-tool-demo",
+      "name": "demo-graph",
+      "description": "Demonstration Data for Slope Tool",
+      "title": "Position versus Time",
+      "axes": "/shared/slope-tool-demo/axes/10s-15meters",
+      "initialDatasets": [
+        "demo-data"
+      ],
+      "initialAnnotations": [
+        
+      ]
+    }
+  ],
   "responseTemplates": [
-
+    
   ],
   "datasets": [
     {
@@ -607,47 +743,7 @@
       "dataset": "/shared/slope-tool-demo/dataset/demo-data"
     }
   ],
-  "graphs": [
-    {
-      "url": "/shared/slope-tool-demo/graph/demo-graph",
-      "activity": "/shared/slope-tool-demo",
-      "name": "demo-graph",
-      "description": "Demonstration Data for Slope Tool",
-      "title": "Position versus Time",
-      "axes": "/shared/slope-tool-demo/axes/10s-15meters",
-      "initialDatasets": [
-        "demo-data"
-      ],
-      "initialAnnotations": [
-
-      ]
-    }
-  ],
-  "axes": [
-    {
-      "url": "/shared/slope-tool-demo/axes/10s-15meters",
-      "xMin": 0,
-      "xMax": 10,
-      "xSteps": 10,
-      "xLabel": "Time (sec)",
-      "xLabelAbbreviated": "Time (sec)",
-      "yMin": 0,
-      "yMax": 15,
-      "ySteps": 10,
-      "yLabel": "Position (m)",
-      "yLabelAbbreviated": "Position (m)"
-    }
-  ],
-  "freehandSketches": [
-
-  ],
-  "highlightedPoints": [
-
-  ],
-  "highlightedSegments": [
-
-  ],
-  "linesToAxis": [
-
+  "annotations": [
+    
   ]
 }

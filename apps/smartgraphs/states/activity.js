@@ -91,45 +91,35 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   
   /** 
     Create a LineThroughPoints with the name lineName in the current session. Takes two HighlightedPoints as the 
-    points through which to draw the line
+    points through which to draw the line.
     
-    The LineThroughPoints is not automatically added to the graph.
+    The LineThroughPoints is not automatically added to a graph.
     
-    This method does nothing if there is no dataset with the passed name, or if it is not open in the graph
-    with graphName.
+    This method does nothing if there is no dataset with the passed name
     
     @param context
     @param args
     
-    @param {String} args.graphName
-      The name of the graph on which the dataset with the line must be displayed. This graph must be open in 
-      the page when this command executes.
     @param {String} args.firstPoint
       The name of one HighlightedPoint annotation.
     @param {String} args.secondPoint
       The name of the other HighlightedPoint annotation.      
     @param {String} args.lineName
-      The name given to the session-scoped LineThroughPoints annotation which will be created.
+      The name given to the LineThroughPoints annotation which will be created.
     @param {String} args.color
       The RGB color definition for the color to render the line.
   */
   createLineThroughPoints: function (context, args) {
-    // TODO: This dependence on the controller is probably not useful long-term.
-    // given the graphName, find the associated graph controller
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-  
-    if (!controller) return YES;
-    
-    var firstAnnotation = controller.findAnnotationByName(args.firstPoint);
-    var secondAnnotation = controller.findAnnotationByName(args.secondPoint);
-    var color = args.color ? args.color : "#000000";
+    var p1 = Smartgraphs.activityObjectsController.findAnnotation(args.firstPoint).get('point');
+    var p2 = Smartgraphs.activityObjectsController.findAnnotation(args.secondPoint).get('point');   
+    var color = args.color || "#000000";
     
     // set points (a relation) using ids rather than objects, because createAnnotation works like createRecord
     // in that regard (it works on the datahash underlying the record)
     var lineThroughPoints = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.LineThroughPoints, args.lineName, { 
-        point1: firstAnnotation.get('point').get('id'),
-        point2: secondAnnotation.get('point').get('id'),
+        point1: p1.get('id'),
+        point2: p2.get('id'),
         color: color
       });
     return YES;
@@ -140,16 +130,11 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     defining points; the arrow will run from the height (y-value) of the first point vertically to the second
     point.
     
-    The Arrow is not automatically added to the graph.
-    
-    This method does nothing if there is no graph with the passed name.
+    The Arrow is not automatically added to a graph.
     
     @param context
     @param args
     
-    @param {String} args.graphName
-      The name of the graph on which the dataset with the line must be displayed. This graph must be open in 
-      the page when this command executes.
     @param {String} args.firstPoint
       The name of one HighlightedPoint annotation.
     @param {String} args.secondPoint
@@ -160,29 +145,17 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The RGB color definition for the color to render the line.
   */
   createRiseArrow: function (context, args) {
-    // TODO: This dependence on the controller is probably not useful long-term.
-    // given the graphName, find the associated graph controller
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    var p1 = Smartgraphs.activityObjectsController.findAnnotation(args.firstPoint).get('point');
+    var p2 = Smartgraphs.activityObjectsController.findAnnotation(args.secondPoint).get('point');    
+    var color = args.color || "#000000";
+    
+    // Reorder the points such that the first point is the leftmost one, i.e. the lower x-value   
+    var points = p1.get('x') < p2.get('x') ? [p1, p2] : [p2, p1];
   
-    if (!controller) return YES;
-    
-    var firstAnnotationPoint = controller.findAnnotationByName(args.firstPoint).get('point');
-    var secondAnnotationPoint = controller.findAnnotationByName(args.secondPoint).get('point');
-    // Default to black
-    var color = args.color ? args.color : "#000000";
-    // Reorder the points such that the first point is the leftmost one, i.e. the lower x-value
-    var points;
-    if (firstAnnotationPoint.get('x') < secondAnnotationPoint.get('x')) {
-      points = [firstAnnotationPoint.get('id'), secondAnnotationPoint.get('id')];
-    }
-    else {
-      points = [secondAnnotationPoint.get('id'), firstAnnotationPoint.get('id')];
-    }
-    
     var riseArrow = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.Arrow, args.arrowName, { 
-        point1: points[0],
-        point2: points[1],
+        point1: points[0].get('id'),
+        point2: points[1].get('id'),
         color: color,
         isVertical: YES,
         isClockwise: YES,
@@ -197,16 +170,11 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     defining points; the arrow will run from the first point horizontally to the x-value of the second
     point.
     
-    The Arrow is not automatically added to the graph.
-    
-    This method does nothing if there is no graph with the passed name.
+    The Arrow is not automatically added to a graph.
     
     @param context
     @param args
     
-    @param {String} args.graphName
-      The name of the graph on which the dataset with the line must be displayed. This graph must be open in 
-      the page when this command executes.
     @param {String} args.firstPoint
       The name of one HighlightedPoint annotation.
     @param {String} args.secondPoint
@@ -217,29 +185,17 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The RGB color definition for the color to render the line.
   */
   createRunArrow: function (context, args) {
-    // TODO: This dependence on the controller is probably not useful long-term.
-    // given the graphName, find the associated graph controller
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-  
-    if (!controller) return YES;
+    var p1 = Smartgraphs.activityObjectsController.findAnnotation(args.firstPoint).get('point');
+    var p2 = Smartgraphs.activityObjectsController.findAnnotation(args.secondPoint).get('point');    
+    var color = args.color || "#000000";
     
-    var firstAnnotationPoint = controller.findAnnotationByName(args.firstPoint).get('point');
-    var secondAnnotationPoint = controller.findAnnotationByName(args.secondPoint).get('point');
-    // default to black
-    var color = args.color ? args.color : "#000000";
-    // Reorder the points such that the first point is the leftmost one, i.e. the lower x-value
-    var points;
-    if (firstAnnotationPoint.get('x') < secondAnnotationPoint.get('x')) {
-      points = [firstAnnotationPoint.get('id'), secondAnnotationPoint.get('id')];
-    }
-    else {
-      points = [secondAnnotationPoint.get('id'), firstAnnotationPoint.get('id')];
-    }
+    // Reorder the points such that the first point is the leftmost one, i.e. the lower x-value   
+    var points = p1.get('x') < p2.get('x') ? [p1, p2] : [p2, p1];
     
     var runArrow = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.Arrow, args.arrowName, { 
-        point1: points[0],
-        point2: points[1],
+        point1: points[0].get('id'),
+        point2: points[1].get('id'),
         color: color,
         isHorizontal: YES,
         isClockwise: YES,
@@ -266,18 +222,20 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
   */
   createIndicatingArrowFromDataPoint: function (context, args) {
-    var indicator = 
-      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
-        dataPoint: args.point.get('id'),
-        pointAngle: args.angle,
-        color: args.color
-      });
-    return YES;
+    // TODO
+    
+    // var indicator = 
+    //   Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
+    //     dataPoint: args.point.get('id'),
+    //     pointAngle: args.angle,
+    //     color: args.color
+    //   });
+    // return YES;
   },
   
   /** 
     Create an IndicatingArrow Annotation with the name arrowName in the current session, pointing
-    at a specific HighlightedPoint in a named table or graph.
+    at a specific HighlightedPoint.
     
     @param context
     @param args
@@ -286,33 +244,19 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The name for this annotation
     @param {String} args.point
       The name of the HighlightedPoint annotation the arrow will indicate
-    @param {String} args.graphName
-      The name of the graph which has the named HighlightedPoint. At least one of graphName or tableName must be provided.
-    @param {String} args.tableName
-      The name of the table which has the named HighlightedPoint. At least one of graphName or tableName must be provided.
     @param {String} [args.color='#cc0000']
       The color of the arrow.
     @param {Number} [args.angle=335]
     
   */
   createIndicatingArrowFromHighlightedPoint: function (context, args) {
-    
-    var controller;
-    if (args.graphName) {
-      controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    }
-    else if (args.tableName) {
-      controller = Smartgraphs.TableController.controllerForName[args.tableName];
-    }
-  
-    if (!controller) return YES;
-    var hp = controller.findAnnotationByName(args.point);
+    var hp = Smartgraphs.activityObjectsController.findAnnotation(args.point);
     var indicator = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
         annotation: hp.get('id'),
-        pointAngle: args.angle ? args.angle : 335,
-        color: args.color ? args.color : '#cc0000',
-        length: args.length ? args.length : 40
+        pointAngle: args.angle || 335,
+        color: args.color || '#cc0000',
+        length: args.length || 40
       });
     return YES;
   },
@@ -333,6 +277,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     @param {String} [args.color='#cc0000']
       The color of the arrow.
     @param {Number} [args.angle=335]
+    @param {Number} [args.length=40]
     
   */
   createIndicatingArrowFromCoordinates: function (context, args) {
@@ -340,9 +285,9 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.IndicatingArrow, args.arrowName, {
         specificX: args.x,
         specificY: args.y,
-        pointAngle: args.angle ? args.angle : 335,
-        color: args.color ? args.color : '#cc0000',
-        length: args.length ? args.length : 40
+        pointAngle: args.angle || 335,
+        color: args.color || '#cc0000',
+        length: args.length || 40
       });
     return YES;
   },
@@ -374,7 +319,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         startY: args.startY,
         endX: args.endX,
         endY: args.endY,
-        color: args.color ? args.color : '#cc0000',
+        color: args.color || '#cc0000',
         isClockwise: false
       });
     return YES;
@@ -390,7 +335,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
     @param {String} args.bracketName
       The name for this annotation
-    @param {String} args.tableName
+    @param {String} args.datasetName
       The name of the dataset which contains the point of the two HighlightedPoint annotations. This
       is used to find the TableController which has that dataset open.
     @param {String} args.point1
@@ -401,16 +346,14 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The color in which the arc should be rendered.
   */
   createRiseBracket: function (context, args) {
-    // Really does need the table controller
-    var controller = Smartgraphs.TableController.controllerForDataset[args.tableName];
-
+    var controller = Smartgraphs.TableController.controllerForDataset[args.datasetName];
     if (!controller) return YES;
     var hp1 = controller.findAnnotationByName(args.point1);
     var hp2 = controller.findAnnotationByName(args.point2);
     
-    // This indexing assumes the points are in order, which is not a safe assumption
-    var pointOneIndex = controller.get('dataset').get('points').indexOf(hp1.get('point'));
-    var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2.get('point'));
+    var points = controller.getPath('dataset.points');
+    var pointOneIndex = points.indexOf(hp1.get('point'));
+    var pointTwoIndex = points.indexOf(hp2.get('point'));
 
     var arc = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
@@ -418,7 +361,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         startY: (pointOneIndex * 20) + 10,
         endX: 310,
         endY: (pointTwoIndex * 20) + 10,
-        color: args.color ? args.color : '#cc0000',
+        color: args.color || '#cc0000',
         isClockwise: (pointOneIndex < pointTwoIndex),
         label: 'Rise'
       });
@@ -435,7 +378,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
     @param {String} args.bracketName
       The name for this annotation
-    @param {String} args.tableName
+    @param {String} args.datasetName
       The name of the dataset which contains the point of the two HighlightedPoint annotations. This
       is used to find the TableController which has that dataset open.
     @param {String} args.point1
@@ -446,16 +389,15 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The color in which the arc should be rendered.
   */
   createRunBracket: function (context, args) {
-    // Really does need the table controller
-    var controller = Smartgraphs.TableController.controllerForDataset[args.tableName];
+    var controller = Smartgraphs.TableController.controllerForDataset[args.datasetName];
     
     if (!controller) return YES;
     var hp1 = controller.findAnnotationByName(args.point1);
     var hp2 = controller.findAnnotationByName(args.point2);
     
-    // This indexing assumes the points are in order, which is not a safe assumption
-    var pointOneIndex = controller.get('dataset').get('points').indexOf(hp1.get('point'));
-    var pointTwoIndex = controller.get('dataset').get('points').indexOf(hp2.get('point'));
+    var points = controller.getPath('dataset.points');
+    var pointOneIndex = points.indexOf(hp1.get('point'));
+    var pointTwoIndex = points.indexOf(hp2.get('point'));
 
     var arc = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
@@ -528,25 +470,12 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     @param context
     @param args
     
-    @param {String} args.graphName
-      The name of the graph where the Annotation is displayed. 
     @param {String} args.annotationName
       The name of the Annotation whose isHighlighted property will be toggled.
   */
   toggleAnnotationHighlight: function (context, args) {
-    // TODO: Unfortunately, we need the graphName to find the right controller. And we need the
-    // controller to find the annotation by name.
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-
-    if (!controller) return YES;
-    
-    var annotation = controller.findAnnotationByName(args.annotationName);
-    if (annotation.get('isHighlighted')) {
-      annotation.set('isHighlighted', NO);
-    }
-    else {
-      annotation.set('isHighlighted', YES);
-    }
+    var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName);
+    annotation.toggleProperty('isHighlighted');
     return YES;
   }
 

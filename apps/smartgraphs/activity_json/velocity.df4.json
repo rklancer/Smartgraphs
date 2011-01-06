@@ -1,0 +1,2537 @@
+{
+  "_id": "velocity.df4",
+  "_rev": "1-08d60b949a325c168b736be3a88fe231",
+  "data_format_version": 4,
+  "activity": {
+    "title": "How Fast Am I Moving?",
+    "url": "/shared/what-is-velocity",
+    "owner": "shared",
+    "pages": [
+      "/shared/what-is-velocity/page/1",
+      "/shared/what-is-velocity/page/2",
+      "/shared/what-is-velocity/page/3",
+      "/shared/what-is-velocity/page/4",
+      "/shared/what-is-velocity/page/5",
+      "/shared/what-is-velocity/page/6",
+      "/shared/what-is-velocity/page/7",
+      "/shared/what-is-velocity/page/8",
+      "/shared/what-is-velocity/page/9",
+      "/shared/what-is-velocity/page/10",
+      "/shared/what-is-velocity/page/11",
+      "/shared/what-is-velocity/page/12",
+      "/shared/what-is-velocity/page/13",
+      "/shared/what-is-velocity/page/14",
+      "/shared/what-is-velocity/page/15",
+      "/shared/what-is-velocity/page/16",
+      "/shared/what-is-velocity/page/17",
+      "/shared/what-is-velocity/page/18",
+      "/shared/what-is-velocity/page/20"
+    ],
+    "datasets": [
+
+    ],
+    "axes": [
+      "/shared/what-is-velocity/axes/walking-position-time"
+    ],
+    "graphs": [
+      "/shared/what-is-velocity/graph/freehand-walking-normal",
+      "/shared/what-is-velocity/graph/prediction-walking-normal",
+      "/shared/what-is-velocity/graph/freehand-walking-slow",
+      "/shared/what-is-velocity/graph/prediction-walking-slow",
+      "/shared/what-is-velocity/graph/sensor-normal-walking",
+      "/shared/what-is-velocity/graph/sensor-result-normal-walking",
+      "/shared/what-is-velocity/graph/sensor-slow-walking",
+      "/shared/what-is-velocity/graph/sensor-result-slow-walking",
+      "/shared/what-is-velocity/graph/slope-graph"
+     ],
+    "responseTemplates": [
+      "/components/response-template/open",
+      "/components/response-template/numeric"
+    ]
+  },
+  "pages": [
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/1/step/1"
+      ],
+      "name": "Engage",
+      "firstStep": "/shared/what-is-velocity/page/1/step/1",
+      "introText": "<h1>Velocity</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current speed.</p><p>(You can read more about the topic by researching \"eddy-current speedometer.\")</p> ",
+      "url": "/shared/what-is-velocity/page/1",
+      "activity": "/shared/what-is-velocity",
+      "index": 1
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/2/step/1",
+        "/shared/what-is-velocity/page/2/step/2"
+      ],
+      "name": "Predict With Numbers",
+      "firstStep": "/shared/what-is-velocity/page/2/step/1",
+      "introText": "<h1>Velocity</h1><p>Let's start by predicting how fast you <b>normally</b> walk.</p><p><b>Walk</b> approximately 4 meters at your normal walking pace.</p>",
+      "url": "/shared/what-is-velocity/page/2",
+      "activity": "/shared/what-is-velocity",
+      "index": 2
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/3/step/1"
+      ],
+      "name": "Predict With Graph (Normal)",
+      "firstStep": "/shared/what-is-velocity/page/3/step/1",
+      "introText": "<h1>Velocity</h1><p>Keeping your prediction in mind, <b>draw</b> a graph showing your position over time as you walked from 0 to 4 meters.</b></p>",
+      "url": "/shared/what-is-velocity/page/3",
+      "activity": "/shared/what-is-velocity",
+      "index": 3
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/4/step/1"
+      ],
+      "name": "Predict With Graph (Slow)",
+      "firstStep": "/shared/what-is-velocity/page/4/step/1",
+      "introText": "<h1>Velocity</h1><p>The top graph shows your predicted <b>normal</b> walking pace.</p><p>On the bottom graph, <b>predict</b> what <b>slow, steady</b> motion would look like from 0 to 4 meters.</p>",
+      "url": "/shared/what-is-velocity/page/4",
+      "activity": "/shared/what-is-velocity",
+      "index": 4
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/5/step/1",
+        "/shared/what-is-velocity/page/5/step/2",
+        "/shared/what-is-velocity/page/5/step/3"
+      ],
+      "name": "Normal vs Slow (Predictions)",
+      "firstStep": "/shared/what-is-velocity/page/5/step/1",
+      "introText": "<h1>Velocity</h1><p>The top graph shows your predicted <b>normal</b> walking pace. The bottom graph shows your predicted <b>slow</b> walking pace.</p><p>What do you observe about your predictions?</p>",
+      "url": "/shared/what-is-velocity/page/5",
+      "activity": "/shared/what-is-velocity",
+      "index": 5
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/6/step/1"
+      ],
+      "name": "Collect Data (Normal)",
+      "firstStep": "/shared/what-is-velocity/page/6/step/1",
+      "introText": "<h1>Velocity</h1><p>You will test your prediction by walking at a <b>normal, steady</b> pace along a straight 4-meter path while using a motion sensor.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>normal, steady</b> pace.</p><p><b>Click Reset</b> to try a different normal, steady pace.</p>",
+      "url": "/shared/what-is-velocity/page/6",
+      "activity": "/shared/what-is-velocity",
+      "index": 6
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/7/step/1",
+        "/shared/what-is-velocity/page/7/step/2"
+      ],
+      "name": "Analyze Data (Normal)",
+      "firstStep": "/shared/what-is-velocity/page/7/step/1",
+      "introText": "<h1>Velocity</h1><p></p>",
+      "url": "/shared/what-is-velocity/page/7",
+      "activity": "/shared/what-is-velocity",
+      "index": 7
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/8/step/1"
+      ],
+      "name": "Collect Data (Slow)",
+      "firstStep": "/shared/what-is-velocity/page/8/step/1",
+      "introText": "<h1>Velocity</h1><p>Now you will try walking at a <b>slow, steady</b> pace.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>slow, steady</b> pace.</p>",
+      "url": "/shared/what-is-velocity/page/8",
+      "activity": "/shared/what-is-velocity",
+      "index": 8
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/9/step/1"
+      ],
+      "name": "Actual vs. Prediction (Normal)",
+      "firstStep": "/shared/what-is-velocity/page/9/step/1",
+      "introText": "<h1>Velocity</h1><p>On the top is your predicted position-time graph for normal, steady motion.  Below is your actual position-time graph for normal, steady motion.</p>",
+      "url": "/shared/what-is-velocity/page/9",
+      "activity": "/shared/what-is-velocity",
+      "index": 9
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/10/step/1"
+      ],
+      "name": "Actual vs. Prediction (Slow)",
+      "firstStep": "/shared/what-is-velocity/page/10/step/1",
+      "introText": "<h1>Velocity</h1><p>On the top is your predicted position-time graph for slow, steady motion.  Below is your actual position-time graph for slow, steady motion.</p>",
+      "url": "/shared/what-is-velocity/page/10",
+      "activity": "/shared/what-is-velocity",
+      "index": 10
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/11/step/1"
+      ],
+      "name": "Normal vs Slow (Actual)",
+      "firstStep": "/shared/what-is-velocity/page/11/step/1",
+      "introText": "<h1>Velocity</h1><p>Here is the data you just collected for normal and slow, steady motion.</p>",
+      "url": "/shared/what-is-velocity/page/11",
+      "activity": "/shared/what-is-velocity",
+      "index": 11
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/12/step/1",
+        "/shared/what-is-velocity/page/12/step/2",
+        "/shared/what-is-velocity/page/12/step/3",
+        "/shared/what-is-velocity/page/12/step/4",
+        "/shared/what-is-velocity/page/12/step/5",
+        "/shared/what-is-velocity/page/12/step/6"
+      ],
+      "name": "Instantaneous Speed",
+      "firstStep": "/shared/what-is-velocity/page/12/step/1",
+      "introText": "<h1>Velocity</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the speed between those points. This calculation will be close to your <b>instantaneous</b> speed. </p>",
+      "url": "/shared/what-is-velocity/page/12",
+      "activity": "/shared/what-is-velocity",
+      "index": 12
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/13/step/1",
+        "/shared/what-is-velocity/page/13/step/2",
+        "/shared/what-is-velocity/page/13/step/3",
+        "/shared/what-is-velocity/page/13/step/4",
+        "/shared/what-is-velocity/page/13/step/5",
+        "/shared/what-is-velocity/page/13/step/6"
+      ],
+      "name": "Instantaneous Speed II",
+      "firstStep": "/shared/what-is-velocity/page/13/step/1",
+      "introText": "<h1>Velocity</h1><p>Now you will pick another set of points that are next to each other and find the speed between those points.</p>",
+      "url": "/shared/what-is-velocity/page/13",
+      "activity": "/shared/what-is-velocity",
+      "index": 13
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/14/step/1"
+      ],
+      "name": "Instantaneous Speed III",
+      "firstStep": "/shared/what-is-velocity/page/14/step/1",
+      "introText": "<h1>Velocity</h1><p>Was your speed during the two different time intervals the same? If not, during which interval were you going faster? Explain how you know.</p>",
+      "url": "/shared/what-is-velocity/page/14",
+      "activity": "/shared/what-is-velocity",
+      "index": 14
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/15/step/1",
+        "/shared/what-is-velocity/page/15/step/2",
+        "/shared/what-is-velocity/page/15/step/3"
+      ],
+      "name": "Average Speed",
+      "firstStep": "/shared/what-is-velocity/page/15/step/1",
+      "introText": "<h1>Velocity</h1><p>To find the average speed for the entire trip, you will use the start and end points of the whole trip.</p>",
+      "url": "/shared/what-is-velocity/page/15",
+      "activity": "/shared/what-is-velocity",
+      "index": 15
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/16/step/1"
+      ],
+      "name": "Analyze/Conclusion",
+      "firstStep": "/shared/what-is-velocity/page/16/step/1",
+      "introText": "<h1>Velocity</h1><p>In this activity, you predicted and confirmed different steady speeds while walking along a straight path.</p>",
+      "url": "/shared/what-is-velocity/page/16",
+      "activity": "/shared/what-is-velocity",
+      "index": 16
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/17/step/1"
+      ],
+      "name": "Analyze/Conclusion II",
+      "firstStep": "/shared/what-is-velocity/page/17/step/1",
+      "introText": "<h1>Velocity</h1>",
+      "url": "/shared/what-is-velocity/page/17",
+      "activity": "/shared/what-is-velocity",
+      "index": 17
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/18/step/1"
+      ],
+      "name": "Analyze/Conclusion III",
+      "firstStep": "/shared/what-is-velocity/page/18/step/1",
+      "introText": "<h1>Velocity</h1>",
+      "url": "/shared/what-is-velocity/page/18",
+      "activity": "/shared/what-is-velocity",
+      "index": 18
+    },
+    {
+      "steps": [
+        "/shared/what-is-velocity/page/20/step/1"
+      ],
+      "name": "Conclusion",
+      "firstStep": "/shared/what-is-velocity/page/20/step/1",
+      "introText": "<h1>Conclusion</h1><p>Congratulations! You have finished the activity.</p>",
+      "url": "/shared/what-is-velocity/page/20",
+      "activity": "/shared/what-is-velocity",
+      "index": 20
+    }
+  ],
+  "steps": [
+    {
+      "url": "/shared/what-is-velocity/page/1/step/1",
+      "activityPage": "/shared/what-is-velocity/page/1",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif"
+        }
+      },
+      "beforeText": "<p>Describe another way that you can tell how fast you are moving.</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/2/step/1",
+      "activityPage": "/shared/what-is-velocity/page/2",
+      "paneConfig": "single",
+      "panes": {
+        "single": null
+      },
+      "beforeText": "<p>About how many seconds did it take?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/2/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Continue",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/2/step/2",
+      "activityPage": "/shared/what-is-velocity/page/2",
+      "paneConfig": "single",
+      "panes": {
+        "single": null
+      },
+      "beforeText": "<p>Based on your estimate, what is your average speed in meters per second?</p><p>Remember that average speed = total distance/total time.</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/3/step/1",
+      "activityPage": "/shared/what-is-velocity/page/3",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "freehand-walking-normal"
+        },
+        "bottom": null
+      },
+      "beforeText": "",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startFreehandInput",
+          "literalArgs": {
+            "graphName": "freehand-walking-normal",
+            "annotationName": "prediction-normal"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.SketchLengthInspector",
+        "config": {
+          "annotationName": "prediction-normal",
+          "check": "continuously"
+        }
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          "value",
+          6
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/4/step/1",
+      "activityPage": "/shared/what-is-velocity/page/4",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "prediction-walking-normal"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "freehand-walking-slow"
+        }
+      },
+      "beforeText": "",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startFreehandInput",
+          "literalArgs": {
+            "graphName": "freehand-walking-slow",
+            "annotationName": "prediction-slow"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.SketchLengthInspector",
+        "config": {
+          "annotationName": "prediction-slow",
+          "check": "continuously"
+        }
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          "value",
+          6
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/5/step/1",
+      "activityPage": "/shared/what-is-velocity/page/5",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "prediction-walking-normal"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "prediction-walking-slow"
+        }
+      },
+      "beforeText": "<p>For forward motion, position should increase with time.</p><p>Do your lines point in an upward direction?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/5/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Continue",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/5/step/2",
+      "activityPage": "/shared/what-is-velocity/page/5",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "prediction-walking-normal"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "prediction-walking-slow"
+        }
+      },
+      "beforeText": "<p>For steady motion, your position should increase at a constant rate.</p><p>Is your prediction for steady motion a straight line?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/5/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Continue",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/5/step/3",
+      "activityPage": "/shared/what-is-velocity/page/5",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "prediction-walking-normal"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "prediction-walking-slow"
+        }
+      },
+      "beforeText": "<p>Compare the steepness of your two graphs.</p><p>In which graph is position always greater at a given time?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/6/step/1",
+      "activityPage": "/shared/what-is-velocity/page/6",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-normal-walking"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "sensor-normal-walking",
+          "datasetName": "sensor-normal"
+        }
+      },
+      "beforeText": "",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startSensorInput",
+          "literalArgs": {
+            "graphName": "sensor-normal-walking",
+            "datasetName": "sensor-normal"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/7/step/1",
+      "activityPage": "/shared/what-is-velocity/page/7",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-result-normal-walking"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "sensor-result-normal-walking",
+          "datasetName": "sensor-normal"
+        }
+      },
+      "beforeText": "<p>Based on your data, how long did it take you to walk 4 meters at your normal pace?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/7/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Continue",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/7/step/2",
+      "activityPage": "/shared/what-is-velocity/page/7",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-result-normal-walking"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "sensor-result-normal-walking",
+          "datasetName": "sensor-normal"
+        }
+      },
+      "beforeText": "<p>If it took you [TBD] seconds to walk 4 meters, then you were walking at a rate of [TBD] meters per second.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/8/step/1",
+      "activityPage": "/shared/what-is-velocity/page/8",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-slow-walking"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "sensor-slow-walking",
+          "datasetName": "sensor-slow"
+        }
+      },
+      "beforeText": "",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startSensorInput",
+          "literalArgs": {
+            "graphName": "sensor-slow-walking",
+            "datasetName": "sensor-slow"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/9/step/1",
+      "activityPage": "/shared/what-is-velocity/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "prediction-walking-normal"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "sensor-result-normal-walking"
+        }
+      },
+      "beforeText": "<p>Did your prediction graph of normal, steady motion match the actual data? Explain.</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/10/step/1",
+      "activityPage": "/shared/what-is-velocity/page/10",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "prediction-walking-slow"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "sensor-result-slow-walking"
+        }
+      },
+      "beforeText": "<p>Did your prediction graph of slow, steady motion match the actual data? Explain.</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/11/step/1",
+      "activityPage": "/shared/what-is-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "sensor-result-normal-walking"
+        },
+        "bottom": {
+          "type": "graph",
+          "name": "sensor-result-slow-walking"
+        }
+      },
+      "beforeText": "<p>How does normal, steady motion differ from slow, steady motion on a position-time graph?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Click a point, any point.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "first-point-A",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#1f77b3"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/2",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Click a point next to the first one.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "second-point-A",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#1f77b4"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "slope-line-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "graphName": "slope-graph",
+            "color": "#1f77b4"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/3",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Here is a line through the two points.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+        
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "graphName": "slope-graph",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "graphName": "slope-graph",
+            "color": "#d62728"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/4",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Here is a &ldquo;rise&rdquo; arrow.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+        
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/5",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/5",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Here is a &ldquo;run&rdquo; arrow.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+        
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/6",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/6",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>What is the speed between the two points?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Click a point, any point.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "first-point-B",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#ff7f0d"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/2",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Click a point next to the first one.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "second-point-B",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#ff7f0e"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "slope-line-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "graphName": "slope-graph",
+            "color": "#ff7f0d"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/3",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Here is a line through the two points.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+        
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "graphName": "slope-graph",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "graphName": "slope-graph",
+            "color": "#d62728"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/4",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Here is a &ldquo;rise&rdquo; arrow.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+        
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/5",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/5",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Here is a &ldquo;run&rdquo; arrow.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+        
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+        
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+        
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/6",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/6",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>What is the speed between the two points?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/14/step/1",
+      "activityPage": "/shared/what-is-velocity/page/14",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": null
+      },
+      "beforeText": "",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "first-point-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "second-point-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "first-point-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "second-point-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/15/step/1",
+      "activityPage": "/shared/what-is-velocity/page/15",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Click the point that represents the start of the trip.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "first-point-C",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#1f77b3"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/15/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/15/step/2",
+      "activityPage": "/shared/what-is-velocity/page/15",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Click that represents the end of the trip.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "second-point-C",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#1f77b4"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "slope-line-C",
+            "firstPoint": "first-point-C",
+            "secondPoint": "second-point-C",
+            "graphName": "slope-graph",
+            "color": "#1f77b4"
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/15/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/15/step/3",
+      "activityPage": "/shared/what-is-velocity/page/15",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Here is a line through the two points.</p><p>What was your average speed during the whole trip?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "<p>Hint: what were your total distance and your total time?</p>",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-C",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/16/step/1",
+      "activityPage": "/shared/what-is-velocity/page/16",
+      "paneConfig": "single",
+      "panes": {
+       "single": {
+          "type": "graph",
+          "name": "slope-graph-analyze"
+        }
+      },
+      "beforeText": "<p>Which of the lines in the accompanying graph indicates the fastest speed? Which indicates the slowest? Explain how you know.</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/17/step/1",
+      "activityPage": "/shared/what-is-velocity/page/17",
+      "paneConfig": "single",
+      "panes": {
+        "single": null
+      },
+      "beforeText": "<p>What is the difference between instantaneous speed and average speed?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/18/step/1",
+      "activityPage": "/shared/what-is-velocity/page/18",
+      "paneConfig": "single",
+      "panes": {
+        "single": null
+      },
+      "beforeText": "<p>How can a graph convey speed?</p>",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/20/step/1",
+      "activityPage": "/shared/what-is-velocity/page/20",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif"
+        }
+      },
+      "beforeText": "",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": true,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": false
+    }
+  ],
+  "axes": [
+    {
+      "url": "/shared/what-is-velocity/axes/walking-position-time",
+      "xMin": 0,
+      "xMax": 30,
+      "xSteps": 6,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 4.5,
+      "ySteps": 9,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Pos. (m)"
+    },
+    {
+      "url": "/shared/what-is-velocity/axes/slope-position-time",
+      "xMin": 0,
+      "xMax": 10,
+      "xSteps": 5,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 15,
+      "ySteps": 5,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Pos. (m)"
+    },
+    {
+      "url": "/shared/what-is-velocity/axes/slope-position-time-analyze",
+      "xMin": 0,
+      "xMax": 15,
+      "xSteps": 15,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 5,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Pos. (m)"
+    }
+  ],
+  "graphs": [
+    {
+      "url": "/shared/what-is-velocity/graph/freehand-walking-normal",
+      "activity": "/shared/what-is-velocity",
+      "name": "freehand-walking-normal",
+      "description": "freehand prediciton of normal walking velocity",
+      "title": "Predicted Data (Normal)",
+      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "initialDatasets": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/prediction-walking-normal",
+      "activity": "/shared/what-is-velocity",
+      "name": "prediction-walking-normal",
+      "description": "prediciton of normal walking velocity",
+      "title": "Predicted Data (Normal)",
+      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "initialDatasets": [
+
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "prediction-normal"
+        }
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/freehand-walking-slow",
+      "activity": "/shared/what-is-velocity",
+      "name": "freehand-walking-slow",
+      "description": "freehand prediciton of slow walking velocity",
+      "title": "Predicted Data (Slow)",
+      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "initialDatasets": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/prediction-walking-slow",
+      "activity": "/shared/what-is-velocity",
+      "name": "prediction-walking-slow",
+      "description": "prediciton of slow walking velocity",
+      "title": "Predicted Data (Slow)",
+      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "initialDatasets": [
+
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "prediction-slow"
+        }
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/sensor-normal-walking",
+      "activity": "/shared/what-is-velocity",
+      "name": "sensor-normal-walking",
+      "description": "using sensor to measure normal walking pace",
+      "title": "Actual Data (Normal)",
+      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "initialDatasets": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/sensor-result-normal-walking",
+      "activity": "/shared/what-is-velocity",
+      "name": "sensor-result-normal-walking",
+      "description": "sensor result from normal walking",
+      "title": "Actual Data (Normal)",
+      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "initialDatasets": [
+        "sensor-normal"
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/sensor-slow-walking",
+      "activity": "/shared/what-is-velocity",
+      "name": "sensor-slow-walking",
+      "description": "using sensor to measure slow walking pace",
+      "title": "Actual Data (Slow)",
+      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "initialDatasets": [
+
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/sensor-result-slow-walking",
+      "activity": "/shared/what-is-velocity",
+      "name": "sensor-result-slow-walking",
+      "description": "sensor result from slow walking",
+      "title": "Actual Data (Slow)",
+      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "initialDatasets": [
+        "sensor-slow"
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/slope-graph",
+      "activity": "/shared/what-is-velocity",
+      "name": "slope-graph",
+      "description": "graph for calculating slope",
+      "title": "Position vs. Time",
+      "axes": "/shared/what-is-velocity/axes/slope-position-time",
+      "initialDatasets": [
+        "slope-data"
+      ],
+      "initialAnnotations": [
+
+      ]
+    },
+    {
+      "url": "/shared/what-is-velocity/graph/slope-graph-analyze",
+      "activity": "/shared/what-is-velocity",
+      "name": "slope-graph-analyze",
+      "description": "graph for analyzing slope",
+      "title": "Position vs. Time",
+      "axes": "/shared/what-is-velocity/axes/slope-position-time-analyze",
+      "initialDatasets": [
+
+      ],
+      "initialAnnotations": [
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "slope-data-analyze-line-A"
+        },
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "slope-data-analyze-line-B"
+        },
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "slope-data-analyze-line-C"
+        },
+        {
+          "type": "Smartgraphs.FreehandSketch",
+          "name": "slope-data-analyze-line-D"
+        }
+      ]
+    }
+   ],
+   "responseTemplates": [
+    {
+      "url": "/components/response-template/open",
+      "templateString": "",
+      "fieldTypes": [
+        "textarea"
+      ],
+      "fieldChoicesList": [
+        null
+      ],
+      "initialValues": [
+        ""
+      ]
+    },
+    {
+      "url": "/components/response-template/numeric",
+      "templateString": "",
+      "fieldTypes": [
+        "numeric"
+      ],
+      "fieldChoicesList": [
+        null
+      ],
+      "initialValues": [
+
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "url": "/shared/what-is-velocity/dataset/slope-data",
+      "name": "slope-data",
+      "activity": "/shared/what-is-velocity",
+      "isExample": true,
+      "points": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "session": null,
+      "defaultColor": null
+    }
+  ],
+  "datapoints": [
+    {
+      "x": 0,
+      "y": 0,
+      "guid": 1,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "guid": 2,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "guid": 3,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "guid": 4,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "guid": 5,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "guid": 6,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 6,
+      "y": 8,
+      "guid": 7,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 7,
+      "y": 10,
+      "guid": 8,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "guid": 9,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 9,
+      "y": 12,
+      "guid": 10,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 10,
+      "y": 15,
+      "guid": 11,
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    }
+  ],
+  "annotations": [
+    {
+      "type": "FreehandSketch",
+      "records": [
+        {
+          "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-A",
+          "name": "slope-data-analyze-line-A",
+          "activity": "/shared/what-is-velocity",
+          "isExample": true,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 9,
+              "y": 4.5
+            }
+          ],
+          "session": null,
+          "strokeColor": "#2f7f0d"
+        }
+      ]
+    },
+    {
+      "type": "FreehandSketch",
+      "records": [
+        {
+          "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-B",
+          "name": "slope-data-analyze-line-B",
+          "activity": "/shared/what-is-velocity",
+          "isExample": true,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 15,
+              "y": 4
+            }
+          ],
+          "session": null,
+          "strokeColor": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "FreehandSketch",
+      "records": [
+        {
+          "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-C",
+          "name": "slope-data-analyze-line-C",
+          "activity": "/shared/what-is-velocity",
+          "isExample": true,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 15,
+              "y": 2.5
+            }
+          ],
+          "session": null,
+          "strokeColor": "#ff7f0d"
+        }
+      ]
+    },
+    {
+      "type": "FreehandSketch",
+      "records": [
+        {
+          "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-D",
+          "name": "slope-data-analyze-line-D",
+          "activity": "/shared/what-is-velocity",
+          "isExample": true,
+          "points": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 15,
+              "y": 1
+            }
+          ],
+          "session": null,
+          "strokeColor": "#1f77b3"
+        }
+      ]
+    }
+  ]
+}

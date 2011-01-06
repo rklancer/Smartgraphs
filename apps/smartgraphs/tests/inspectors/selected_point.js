@@ -17,16 +17,6 @@ function setupFixtures() {
   setupUserAndSessionFixtures();
   setupDatapointFixtures();
   
-  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
-  Smartgraphs.Graph.FIXTURES = [
-    { url: 'test-graph',
-      name: 'test-graph',
-      axes: 'test-axes',
-      title: 'Test Graph',
-      initialDatasets: []
-    }
-  ];
-  
   oldStore = Smartgraphs.store;
   Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
 }
@@ -34,9 +24,6 @@ function setupFixtures() {
 function restoreFixtures() {
   restoreUserAndSessionFixtures();
   restoreDatapointFixtures();
-  
-  Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
-  Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
   Smartgraphs.set('store', oldStore);
 }
 
@@ -51,19 +38,14 @@ module('selectedPointInspector', {
     p2 = addPoint(dataset, 2, 2);
     p3 = addPoint(dataset, 3, 3);
     
-    Smartgraphs.firstGraphController.openGraph('test-graph');
-    Smartgraphs.firstGraphController.addDataset(dataset); 
-    
     inspector = Smartgraphs.SelectedPointInspector.create({
       config: {
-        graphName: 'test-graph',
         datasetName: 'test-dataset'
       }
     });
   },
 
   teardown: function () {
-    Smartgraphs.firstGraphController.clear();
     restoreFixtures();
   }
 });

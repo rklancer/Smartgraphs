@@ -102,7 +102,7 @@ Smartgraphs.Activity = SC.Record.extend(
     
     var self = this;
     ret.annotations = [];
-    Smartgraphs.Annotation.typeNames.forEach(function (typeName) {
+    Smartgraphs.Annotation.typeNames().forEach(function (typeName) {
       var query = SC.Query.local(Smartgraphs[typeName], 'activity={activity}', {
         activity: self
       });

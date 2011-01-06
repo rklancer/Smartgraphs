@@ -1,5 +1,7 @@
 {
-  "data_format_version": 2,
+  "_id": "marias-run.df4",
+  "_rev": "1-f15274fa2abbdd22aa2f171385e64816",
+  "data_format_version": 4,  
   "activity": {
     "title": "Maria's Run",
     "url": "/shared/marias-run",
@@ -14,7 +16,23 @@
       "/shared/marias-run/page/7",
       "/shared/marias-run/page/8"
     ],
-    "pageListUrl": "/shared/marias-run/pages"
+    "datasets": [
+      "/shared/marias-run/dataset/maria"
+    ],
+    "axes": [
+      "/shared/marias-run/axes/2000m-10min",
+      "/shared/marias-run/axes/5m-30s"
+    ],
+    "graphs": [
+      "/shared/marias-run/graph/maria",
+      "/shared/marias-run/graph/sensor-playing",
+      "/shared/marias-run/graph/start-stop-start",
+      "/shared/marias-run/graph/two-speeds"
+    ],
+    "responseTemplates": [
+      "/components/response-template/open",
+      "/components/response-template/numeric"
+    ]
   },
   "pages": [
     {
@@ -23,11 +41,10 @@
       ],
       "name": "Introduction",
       "firstStep": "/shared/marias-run/page/1/step/1",
-      "introText": "<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p>",
+      "introText": "<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p> ",
       "url": "/shared/marias-run/page/1",
       "activity": "/shared/marias-run",
-      "index": 1,
-      "stepListUrl": "/shared/marias-run/page/1/steps"
+      "index": 1
     },
     {
       "steps": [
@@ -38,8 +55,7 @@
       "introText": "<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
       "url": "/shared/marias-run/page/2",
       "activity": "/shared/marias-run",
-      "index": 2,
-      "stepListUrl": "/shared/marias-run/page/2/steps"
+      "index": 2
     },
     {
       "steps": [
@@ -50,8 +66,7 @@
       "introText": "<p>Next you will try moving at two different speeds.</p><p>Start close to the motion sensor. When you are ready, click Start and walk away from the sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. Click Stop when the time is up.</p>",
       "url": "/shared/marias-run/page/3",
       "activity": "/shared/marias-run",
-      "index": 3,
-      "stepListUrl": "/shared/marias-run/page/3/steps"
+      "index": 3
     },
     {
       "steps": [
@@ -62,8 +77,7 @@
       "introText": "<p>This time, you are going to record your position and time during three different tasks.</p><p>Start close to the motion sensor and click Start. Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds.</p>",
       "url": "/shared/marias-run/page/4",
       "activity": "/shared/marias-run",
-      "index": 4,
-      "stepListUrl": "/shared/marias-run/page/4/steps"
+      "index": 4
     },
     {
       "steps": [
@@ -79,8 +93,7 @@
       "introText": "<p>Now you that you\u2019ve had a chance to create position versus time graphs from your own motions, let\u2019s look at some graphs that were created by someone running.</p><p>Maria ran practice laps around the school track. Her coach recorded the distances she ran after each minute. These data are shown in the graph and the table at right. Remember that the time was recorded in minutes rather than seconds.</p>",
       "url": "/shared/marias-run/page/5",
       "activity": "/shared/marias-run",
-      "index": 5,
-      "stepListUrl": "/shared/marias-run/page/5/steps"
+      "index": 5
     },
     {
       "steps": [
@@ -96,8 +109,7 @@
       "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
       "url": "/shared/marias-run/page/6",
       "activity": "/shared/marias-run",
-      "index": 6,
-      "stepListUrl": "/shared/marias-run/page/6/steps"
+      "index": 6
     },
     {
       "steps": [
@@ -113,8 +125,7 @@
       "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
       "url": "/shared/marias-run/page/7",
       "activity": "/shared/marias-run",
-      "index": 7,
-      "stepListUrl": "/shared/marias-run/page/7/steps"
+      "index": 7
     },
     {
       "steps": [
@@ -126,8 +137,7 @@
       "introText": "",
       "url": "/shared/marias-run/page/8",
       "activity": "/shared/marias-run",
-      "index": 8,
-      "stepListUrl": "/shared/marias-run/page/8/steps"
+      "index": 8
     }
   ],
   "steps": [
@@ -145,21 +155,21 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -211,14 +221,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -270,14 +280,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -329,14 +339,14 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -364,14 +374,13 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -379,15 +388,14 @@
         "notempty": "value"
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -430,14 +438,13 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -445,10 +452,10 @@
         "notempty": "value"
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
@@ -500,7 +507,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
-            "type": "Smartgraphs.HighlightedSegment",
             "name": "maria-running-interval-1"
           }
         },
@@ -508,7 +514,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
-            "type": "Smartgraphs.HighlightedSegment",
             "name": "maria-running-interval-2"
           }
         }
@@ -518,7 +523,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -526,15 +530,14 @@
         "notempty": "value"
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -595,7 +598,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
-            "type": "Smartgraphs.HighlightedSegment",
             "name": "maria-stationary-interval"
           }
         }
@@ -605,7 +607,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -613,15 +614,14 @@
         "notempty": "value"
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -664,21 +664,21 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -706,21 +706,21 @@
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -748,7 +748,7 @@
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -766,10 +766,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -813,7 +813,7 @@
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -831,10 +831,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -882,7 +882,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
-            "type": "Smartgraphs.HighlightedPoint",
             "name": "where-maria-stopped"
           }
         }
@@ -903,10 +902,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -954,7 +953,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
-            "type": "Smartgraphs.HighlightedPoint",
             "name": "where-maria-stopped"
           }
         },
@@ -962,7 +960,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
-            "type": "Smartgraphs.LineToAxis",
             "name": "where-maria-stopped-to-y-axis"
           }
         }
@@ -983,10 +980,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1030,21 +1027,21 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -1072,21 +1069,21 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -1114,7 +1111,7 @@
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1132,10 +1129,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1183,7 +1180,6 @@
           "action": "addAnnotation",
           "literalArgs": {
             "graphName": "maria",
-            "type": "Smartgraphs.HighlightedSegment",
             "name": "maria-stationary-interval"
           }
         }
@@ -1204,10 +1200,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1251,7 +1247,7 @@
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1269,10 +1265,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1316,7 +1312,7 @@
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1334,10 +1330,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
@@ -1381,21 +1377,21 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -1423,21 +1419,21 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": "",
       "isFinalStep": true,
@@ -1465,7 +1461,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -1483,10 +1479,10 @@
         ]
       },
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": null,
@@ -1516,17 +1512,17 @@
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": null,
@@ -1536,6 +1532,92 @@
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
+    }
+  ],
+  "axes": [
+    {
+      "url": "/shared/marias-run/axes/2000m-10min",
+      "xMin": 0,
+      "xMax": 10,
+      "xSteps": 10,
+      "xLabel": "Time (minutes)",
+      "xLabelAbbreviated": "Time (min)",
+      "yMin": 0,
+      "yMax": 2000,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Position (m)"
+    },
+    {
+      "url": "/shared/marias-run/axes/5m-30s",
+      "xMin": 0,
+      "xMax": 30,
+      "xSteps": 6,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 5,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Position (m)"
+    }
+  ],
+  "graphs": [
+    {
+      "url": "/shared/marias-run/graph/maria",
+      "activity": "/shared/marias-run",
+      "name": "maria",
+      "description": "Graph of Maria's run",
+      "title": "Position vs. Time",
+      "axes": "/shared/marias-run/axes/2000m-10min",
+      "initialDatasets": [
+        "maria"
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/marias-run/graph/sensor-playing",
+      "activity": "/shared/marias-run",
+      "name": "sensor-playing",
+      "description": "Playing around with the sensor in page 2",
+      "title": "Position vs. Time",
+      "axes": "/shared/marias-run/axes/5m-30s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/marias-run/graph/start-stop-start",
+      "activity": "/shared/marias-run",
+      "name": "start-stop-start",
+      "description": "Starting, stopping, and starting again in page 4",
+      "title": "Position vs. Time",
+      "axes": "/shared/marias-run/axes/5m-30s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        
+      ]
+    },
+    {
+      "url": "/shared/marias-run/graph/two-speeds",
+      "activity": "/shared/marias-run",
+      "name": "two-speeds",
+      "description": "Walking at two speeds in page 3",
+      "title": "Position vs. Time",
+      "axes": "/shared/marias-run/axes/5m-30s",
+      "initialDatasets": [
+        
+      ],
+      "initialAnnotations": [
+        
+      ]
     }
   ],
   "responseTemplates": [
@@ -1650,155 +1732,77 @@
       "dataset": "/shared/marias-run/dataset/maria"
     }
   ],
-  "graphs": [
+  "annotations": [
     {
-      "url": "/shared/marias-run/graph/maria",
-      "activity": "/shared/marias-run",
-      "name": "maria",
-      "description": "Graph of Maria's run",
-      "title": "Position vs. Time",
-      "axes": "/shared/marias-run/axes/2000m-10min",
-      "initialDatasets": [
-        "maria"
-      ],
-      "initialAnnotations": [
-
+      "type": "HighlightedPoint",
+      "records": [
+        {
+          "url": "/shared/marias-run/annotation/where-maria-stopped",
+          "name": "where-maria-stopped",
+          "activity": "/shared/marias-run",
+          "isExample": true,
+          "session": null,
+          "point": 403
+        }
       ]
     },
     {
-      "url": "/shared/marias-run/graph/sensor-playing",
-      "activity": "/shared/marias-run",
-      "name": "sensor-playing",
-      "description": "Playing around with the sensor in page 2",
-      "title": "Position vs. Time",
-      "axes": "/shared/marias-run/axes/5m-30s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
-
+      "type": "HighlightedSegment",
+      "records": [
+        {
+          "url": "/shared/marias-run/annotation/maria-running-interval-1",
+          "name": "maria-running-interval-1",
+          "activity": "/shared/marias-run",
+          "isExample": true,
+          "session": null,
+          "points": [
+            400,
+            401,
+            402,
+            403
+          ]
+        },
+        {
+          "url": "/shared/marias-run/annotation/maria-running-interval-2",
+          "name": "maria-running-interval-2",
+          "activity": "/shared/marias-run",
+          "isExample": true,
+          "session": null,
+          "points": [
+            405,
+            406,
+            407,
+            408,
+            409
+          ]
+        },
+        {
+          "url": "/shared/marias-run/annotation/maria-stationary-interval",
+          "name": "maria-stationary-interval",
+          "activity": "/shared/marias-run",
+          "isExample": true,
+          "session": null,
+          "points": [
+            403,
+            404,
+            405
+          ]
+        }
       ]
     },
     {
-      "url": "/shared/marias-run/graph/start-stop-start",
-      "activity": "/shared/marias-run",
-      "name": "start-stop-start",
-      "description": "Starting, stopping, and starting again in page 4",
-      "title": "Position vs. Time",
-      "axes": "/shared/marias-run/axes/5m-30s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
-
+      "type": "LineToAxis",
+      "records": [
+        {
+          "url": "/shared/marias-run/annotation/where-maria-stopped-to-y-axis",
+          "name": "where-maria-stopped-to-y-axis",
+          "activity": "/shared/marias-run",
+          "isExample": true,
+          "session": null,
+          "point": 403,
+          "axis": "y"
+        }
       ]
-    },
-    {
-      "url": "/shared/marias-run/graph/two-speeds",
-      "activity": "/shared/marias-run",
-      "name": "two-speeds",
-      "description": "Walking at two speeds in page 3",
-      "title": "Position vs. Time",
-      "axes": "/shared/marias-run/axes/5m-30s",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
-
-      ]
-    }
-  ],
-  "axes": [
-    {
-      "url": "/shared/marias-run/axes/2000m-10min",
-      "xMin": 0,
-      "xMax": 10,
-      "xSteps": 10,
-      "xLabel": "Time (minutes)",
-      "xLabelAbbreviated": "Time (min)",
-      "yMin": 0,
-      "yMax": 2000,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
-    },
-    {
-      "url": "/shared/marias-run/axes/5m-30s",
-      "xMin": 0,
-      "xMax": 30,
-      "xSteps": 6,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
-    }
-  ],
-  "freehandSketches": [
-
-  ],
-  "highlightedPoints": [
-    {
-      "url": "/shared/marias-run/annotation/where-maria-stopped",
-      "name": "where-maria-stopped",
-      "activity": "/shared/marias-run",
-      "isExample": true,
-      "session": null,
-      "point": 403
-    }
-  ],
-  "highlightedSegments": [
-    {
-      "url": "/shared/marias-run/annotation/maria-running-interval-1",
-      "name": "maria-running-interval-1",
-      "activity": "/shared/marias-run",
-      "isExample": true,
-      "session": null,
-      "points": [
-        400,
-        401,
-        402,
-        403
-      ]
-    },
-    {
-      "url": "/shared/marias-run/annotation/maria-running-interval-2",
-      "name": "maria-running-interval-2",
-      "activity": "/shared/marias-run",
-      "isExample": true,
-      "session": null,
-      "points": [
-        405,
-        406,
-        407,
-        408,
-        409
-      ]
-    },
-    {
-      "url": "/shared/marias-run/annotation/maria-stationary-interval",
-      "name": "maria-stationary-interval",
-      "activity": "/shared/marias-run",
-      "isExample": true,
-      "session": null,
-      "points": [
-        403,
-        404,
-        405
-      ]
-    }
-  ],
-  "linesToAxis": [
-    {
-      "url": "/shared/marias-run/annotation/where-maria-stopped-to-y-axis",
-      "name": "where-maria-stopped-to-y-axis",
-      "activity": "/shared/marias-run",
-      "isExample": true,
-      "session": null,
-      "point": 403,
-      "axis": "y"
     }
   ]
 }
