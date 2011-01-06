@@ -165,7 +165,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     @param {SC.Annotation} type 
       Annotation subclass to create
     @param {String} name 
-      The name to give to the newly  the annotation to create
+      The name to give to the newly created annotation
     @param {Object} attributes
       Hash of attributes to pass to SC.Record.create when creating the annotation record. (This implies that related
       objects must be specified by id in the attributes hash.)
@@ -190,6 +190,27 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     this._annotations[name] = annotation;
     this.notifyPropertyChange('annotationNames');
     return annotation;
+  },
+  
+  /**
+    Deletes an annotation in the current activity session.
+
+    Does nothing if no annotation with the specified name has been defined.
+    
+    @param {String} name 
+      The name of the annotation to destroy
+    
+    @returns {Boolean}
+      YES if the annotation was found (and destroyed); NO if the annotation was not found.
+  */
+  deleteAnnotation: function (name) {
+    var annotation = this.findAnnotation(name);
+    if (!annotation) return NO;
+    
+    annotation.destroy();
+    delete this._annotations[name];
+    this.notifyPropertyChange('annotationNames');
+    return YES;
   },
   
   /**

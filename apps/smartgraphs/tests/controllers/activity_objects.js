@@ -6,6 +6,8 @@
 /*globals Smartgraphs module test ok equals same stop start setup teardown */
 
 var activity, dataset1, point1, arrow1;
+var datasetNamesObserverFired, annotationNamesObserverFired;
+var datasetNamesObserver, annotationNamesObserver;
 
 module("Smartgraphs.activityObjectsController", {
   setup: function () {
@@ -43,6 +45,18 @@ module("Smartgraphs.activityObjectsController", {
       
     setup.store();
     
+    datasetNamesObserverFired = NO;
+    datasetNamesObserver = function () {
+      datasetNamesObserverFired = YES;
+    };
+    Smartgraphs.activityObjectsController.addObserver('datasetNames', datasetNamesObserver);
+    
+    annotationNamesObserverFired = NO;
+    annotationNamesObserver = function () {
+      annotationNamesObserverFired = YES;
+    };
+    Smartgraphs.activityObjectsController.addObserver('annotationNames', annotationNamesObserver);
+    
     activity = Smartgraphs.store.find(Smartgraphs.Activity, "test-activity"); 
     Smartgraphs.activityController.set('content', activity);
     
@@ -52,6 +66,8 @@ module("Smartgraphs.activityObjectsController", {
   },
   
   teardown: function () {
+    Smartgraphs.activityObjectsController.removeObserver('datasetNames', datasetNamesObserver);
+    Smartgraphs.activityObjectsController.removeObserver('annotationNames', annotationNamesObserver);        
     teardown.all();
   }
 });
@@ -73,7 +89,18 @@ test("loadPredefinedObjects should register annotations from store", function ()
   equals(anno, arrow1, "findAnnotation should find the correct 'arrow 1' annotation");
 });
 
-
+test("loadPredefinedObjects should destroy an annotation from store", function () {
+  expect(3);
+  Smartgraphs.activityObjectsController.loadPredefinedObjects();
+  var startingLength = Smartgraphs.activityObjectsController.get('annotationNames').length;
+  
+  annotationNamesObserverFired = NO;
+  Smartgraphs.activityObjectsController.deleteAnnotation('arrow 1');
+  
+  ok( arrow1.get('status') & SC.Record.DESTROYED, "The annotation record should be destroyed");
+  equals( Smartgraphs.activityObjectsController.get('annotationNames').length, startingLength - 1, "there should be one fewer name in the annotationNames property");
+  ok( annotationNamesObserverFired, "observers of annotationNames should have been notified");
+});
 
 /*
 loadPredefinedObjects should...
