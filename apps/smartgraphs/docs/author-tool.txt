@@ -52,6 +52,8 @@ related authoring code is even written.
  * ? - Clean up Table model so that it parallels Graph. In the authoring interface, tables will have names, just like 
    graphs do, so make this true in the Smartgraphs runtime as well.
 
+ * Smartgraphs.registerCommand() -- remove commands implementation from states?
+ 
  * Create a superstate of ACTIVITY_STEP and ACTIVITY_STEP_SUMITTED to represent actions available both presumbission
    and postsubmission, and to distinguish these from actions that are available when the activity is open generally.
    Note that these substates can now be labeled "notSubmitted" and "submitted", since they 'nest' inside ACTIVITY_STEP
