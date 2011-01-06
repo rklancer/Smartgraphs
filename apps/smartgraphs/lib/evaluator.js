@@ -63,6 +63,25 @@
     return val.get && val.get('x');
   }
   
+  function delta(terms, value) {
+    var annotations = value.annotations;
+    var fieldValue = value.fieldValue;
+    var axis = terms.axis;
+    var respectOrder = terms.respectOrder;
+
+    if (annotations && annotations.length == 2 && fieldValue && axis) {
+      var dataPoint1 = annotations[0].get('point');
+      var dataPoint2 = annotations[1].get('point');
+      var delta = dataPoint2.get(axis) - dataPoint1.get(axis);
+      if (!respectOrder) {
+        delta = Math.abs(delta);
+      }
+      return delta == fieldValue;
+    }
+
+    return false;
+  }
+  
   function slope(terms, value) {
     var annotations = value.annotations;
     var fieldValue = value.fieldValue;
@@ -157,6 +176,8 @@
             return dataPointsAreAdjacent(terms, value);
           case 'slope': 
             return slope(terms, value);
+          case 'delta': 
+            return delta(terms, value);
         }
         console.error('invalid expression operator: "' + op + '"');
         return;
