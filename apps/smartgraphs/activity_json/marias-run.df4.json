@@ -1,7 +1,6 @@
 {
-  "_id": "marias-run.df3",
-  "_rev": "2-97d2c0a8db4c12056a2fb6f950dae69c",
-  "data_format_version": 3,  
+  "_id": "marias-run.df4",
+  "data_format_version": 4,  
   "activity": {
     "title": "Maria's Run",
     "url": "/shared/marias-run",
@@ -381,7 +380,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -397,7 +395,6 @@
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -447,7 +444,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -526,7 +522,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -542,7 +537,6 @@
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -612,7 +606,6 @@
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },
@@ -628,7 +621,6 @@
       "responseInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
-          "graphName": "maria",
           "datasetName": "maria"
         }
       },

@@ -1,7 +1,6 @@
 {
-  "_id": "slope-tool-demo.df3",
-  "_rev": "23-8b0e87e6059f8d75261f450d0db9ae3d",
-  "data_format_version": 3,  
+  "_id": "slope-tool-demo.df4",
+  "data_format_version": 4,  
   "activity": {
     "title": "Slope Tool Demo",
     "url": "/shared/slope-tool-demo",
@@ -194,7 +193,6 @@
             "arrowName": "rise-arrow",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
-            "graphName": "demo-graph",
             "color": "#9467bd"
           }
         },
@@ -204,7 +202,6 @@
             "arrowName": "run-arrow",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
-            "graphName": "demo-graph",
             "color": "#d62728"
           }
         }
@@ -340,8 +337,7 @@
         {
           "action": "toggleAnnotationHighlight",
           "literalArgs": {
-            "annotationName": "run-arrow",
-            "graphName": "demo-graph"
+            "annotationName": "run-arrow"
           }
         }
       ],
