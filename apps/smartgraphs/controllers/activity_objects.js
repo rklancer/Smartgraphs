@@ -70,7 +70,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     
       // now, repeat the above for each annotation type...
     
-      Smartgraphs.Annotation.types.forEach(function (type) {
+      Smartgraphs.Annotation.types().forEach(function (type) {
         query = SC.Query.local(type, 'activity={activity}', {
           activity: Smartgraphs.activityController.get('activityRecordInCurrentStore')
         });
