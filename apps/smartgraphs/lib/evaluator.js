@@ -63,6 +63,29 @@
     return val.get && val.get('x');
   }
   
+  function slope(terms, value) {
+    var annotations = value.annotations;
+    var fieldValue = value.fieldValue;
+
+    if (annotations && annotations.length == 2 && fieldValue) {
+      var dataPoint1 = annotations[0].get('point');
+      var dataPoint2 = annotations[1].get('point');
+
+      var dataset = dataPoint1.get('dataset');
+      if (dataset !=  dataPoint2.get('dataset')) {
+        // TODO: log error?
+        return false;
+      }
+    
+      var dx = dataPoint2.get('x') - dataPoint1.get('x');
+      var dy = dataPoint2.get('y') - dataPoint1.get('y');
+      var slope = dy/dx;
+      return slope == fieldValue;
+    }
+
+    return false;
+  }
+  
   function dataPointsAreAdjacent(terms, value) {
     if (value.length != 2) {
       // TODO: log error?
@@ -132,6 +155,8 @@
             return intValue(terms, value);
           case 'dataPointsAreAdjacent': 
             return dataPointsAreAdjacent(terms, value);
+          case 'slope': 
+            return slope(terms, value);
         }
         console.error('invalid expression operator: "' + op + '"');
         return;
