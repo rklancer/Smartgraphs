@@ -39,8 +39,13 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   _datasets: {},
   
   /**
-    When an activity session is started, call this method to populate the registry of dataset and annotation with
-    those predefined the activity document (all other datasets and annotations will be removed from the registry).
+    When an activity session is started, call this method to populate the registry of dataset and annotation names 
+    with the names of the datasets and annotations predefined the activity document (all other datasets and 
+    annotations will be removed from the registry).
+    
+    This method expects that Smartgraphs.store is a "clean slate"; that is, that it contains no dataset or annotation
+    records which reference the current activity but that were not predefined. This is normally taken care of by the 
+    sessionController just before loadPredefinedObjects is called.
   */
   loadPredefinedObjects: function () {
     this._datasets = {};
