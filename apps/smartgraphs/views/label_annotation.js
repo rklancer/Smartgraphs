@@ -31,7 +31,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   /**
     SproutCore will call render(context, firstTime == NO) if these properties change
   */
-  displayProperties: 'point label stroke isHighlighted strokeWidth strokeOpacity'.w(),
+  displayProperties: 'point label stroke size isHighlighted strokeWidth strokeOpacity'.w(),
   
   /**
     We are using renderCallback in views to call non-SC render methods like
@@ -40,7 +40,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     its tags are already in the DOM.
   */
   renderCallback: function(raphaelCanvas, attrs) {
-    var label = raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label);
+    var label = raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'font-size': attrs.size});
     return label;
   },
 
@@ -49,13 +49,15 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     var graphView = this.get('graphView');
     var label = this.get('item').get('label');
     var point = this.get('item').get('point');
+    var size = this.get('item').get('size');
     
-    var labelCoords = graphView.coordinatesForPoint(point.get('x'), point.get('y') + 0.3);
+    var labelCoords = graphView.coordinatesForPoint(point.get('x'), point.get('y') + 0.5);
 
     var attrs = {
       'label': label,
       'labelX': labelCoords.x,
-      'labelY': labelCoords.y
+      'labelY': labelCoords.y,
+      'size': size
     };
 
     // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need
