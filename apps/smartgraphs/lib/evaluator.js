@@ -63,6 +63,35 @@
     return val.get && val.get('x');
   }
   
+  function dataPointsAreAdjacent(terms, value) {
+    if (value.length != 2) {
+      // TODO: log error?
+      return false;
+    }
+    var dataPoint1 = value[0].get('point');
+    var dataPoint2 = value[1].get('point');
+
+    var dataset = dataPoint1.get('dataset');
+    if (dataset !=  dataPoint2.get('dataset')) {
+      // TODO: log error?
+      return false;
+    }
+
+    var xValues = sortedXValues(dataset);
+    var index1 = xValues.indexOf(dataPoint1.get('x'));
+    var index2 = xValues.indexOf(dataPoint2.get('x'));
+    return Math.abs(index1 - index2) == 1;
+  }
+ 
+  function sortedXValues(dataset) {
+    var xValues = [];
+    var points = dataset.get('points');
+    points.forEach( function (point) {
+      xValues.push(point.get('x'));
+    });
+    return xValues.sort(function(a,b){return a - b});
+  }
+  
   function intValue(terms, value) {
     return parseInt(evaluate(terms, value), 10);
   }
@@ -101,6 +130,8 @@
             return xvalue(terms, value);
           case 'int': 
             return intValue(terms, value);
+          case 'dataPointsAreAdjacent': 
+            return dataPointsAreAdjacent(terms, value);
         }
         console.error('invalid expression operator: "' + op + '"');
         return;
