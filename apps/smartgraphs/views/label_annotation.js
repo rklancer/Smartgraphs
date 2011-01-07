@@ -31,7 +31,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   /**
     SproutCore will call render(context, firstTime == NO) if these properties change
   */
-  displayProperties: 'point label stroke size isHighlighted strokeWidth strokeOpacity'.w(),
+  displayProperties: 'item.point.x item.point.y item.label stroke size item.xOffset item.yOffset isHighlighted strokeWidth strokeOpacity'.w(),
   
   /**
     We are using renderCallback in views to call non-SC render methods like
