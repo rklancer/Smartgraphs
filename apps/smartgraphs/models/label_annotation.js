@@ -38,7 +38,7 @@ Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
     
     @property {Number}
   */
-  size: SC.Record.attr(Number)
+  size: SC.Record.attr(Number, { defaultValue: 15 })
 
 }) ;
 

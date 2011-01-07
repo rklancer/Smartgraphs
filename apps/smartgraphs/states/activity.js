@@ -449,7 +449,6 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.LabelAnnotation, args.labelName, {
           point: point.get('id'),
           label: args.label,
-          size: 15,
           color: args.color ? args.color : "#000000"
         });
       if (!label.kindOf(Smartgraphs.LabelAnnotation)) {
