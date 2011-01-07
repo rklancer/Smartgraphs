@@ -14,24 +14,75 @@
 Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelAnnotationView.prototype */ {
 
-  canShowInTable: NO, // TODO: Maybe eventually yes?
-  
-  strokeBinding: '.item.color',
-  isHighlightedBinding: '.item.isHighlighted',
-  // labelBinding: '.item.label', // Frustratingly, this doesn't work.
-  
-  strokeWidth: function () {
-    return this.get('isHighlighted') ? 2 : 1;
-  }.property('isHighlighted'),
-  
-  strokeOpacity: function () {
-    return this.get('isHighlighted') ? 1.0 : 0.8;
-  }.property('isHighlighted'),
-
   /**
     SproutCore will call render(context, firstTime == NO) if these properties change
   */
-  displayProperties: 'item.point.x item.point.y item.label stroke size item.xOffset item.yOffset isHighlighted strokeWidth strokeOpacity'.w(),
+  displayProperties: 'item.label stroke size item.xOffset item.yOffset isHighlighted strokeWidth'.w(),
+  
+  canShowInTable: NO, // TODO: Maybe eventually yes?
+  
+  selectedColor: '#aa0000',
+  notSelectedColorBinding: '.item.color',
+  isHighlightedBinding: '.item.isHighlighted',
+  highlightedStrokeWidth: 2,
+  notHighlightedStrokeWidth: 1,
+  // labelBinding: '.item.label', // Frustratingly, this doesn't work.
+  isSelected: NO,
+  
+  ox: null,
+  oy: null,
+  
+  strokeWidth: function () {
+    return (this.get('isHighlighted') ? this.get('highlightedStrokeWidth') : this.get('notHighlightedStrokeWidth'));
+  }.property('isHighlighted', 'highlightedStrokeWidth', 'notHighlightedStrokeWidth').cacheable(),
+  
+  stroke: function() {
+    return (this.get('isSelected') ? this.get('selectedColor') : this.get('notSelectedColor'));
+  }.property('isSelected', 'selectedColor', 'notSelectedColor').cacheable(),
+
+  // mouseEntered: function () {
+  // },
+  // 
+  // mouseExited: function () {
+  // },
+  // 
+
+  startDrag: function (labelObject) {
+    // I have a hunch we're not going to get that labelObject argument
+    this.set('ox', labelObject.attr("cx"));
+    this.set('oy', labelObject.attr("cy"));
+  },
+  
+  moveDrag: function (dx, dy) {
+    // move will be called with dx and dy
+    this.attr({cx: this.ox + dx, cy: this.oy + dy});
+  },
+  
+  upDrag: function () {
+      // restoring state
+  },
+
+  mouseDown: function(eventID) {
+    this.toggleSelection();
+
+    // get the Raphael path object from the context
+    // Need the context...
+    var labelObject = context.raphael();
+
+    labelObject.drag(this.moveDrag, this.startDrag(labelObject), this.upDrag);
+    // 'tee' the event, but don't consider the mouseDown handled; let the parent collection view
+    // also handle it
+    return NO;
+  },
+
+  toggleSelection: function () {
+    if (this.get('isSelected')) {
+      this.set('isSelected', NO);
+    }
+    else {
+      this.set('isSelected', YES);
+    }
+  },
   
   /**
     We are using renderCallback in views to call non-SC render methods like
@@ -67,7 +118,9 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
       'label': label,
       'labelX': labelCoords.x,
       'labelY': labelCoords.y,
-      'size': size
+      'size': size,
+      'stroke': this.get('stroke'),
+      'stroke-width': this.get('strokeWidth')
     };
 
     // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need
@@ -82,9 +135,9 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     }
     else {
       // get the Raphael path object from the context
-      var path = context.raphael();
+      var labelObject = context.raphael();
       // and update it
-      path.attr(attrs);
+      labelObject.attr(attrs);
     }
   }
 
