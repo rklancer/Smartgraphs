@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df4",
-  "_rev": "12-d342360db31c154ff65a8a6846b188f1",
+  "_rev": "29-8ce416ce87495867d79be4f65eefdef5",
   "data_format_version": 4,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -186,7 +186,12 @@
         "/shared/what-is-velocity/page/12/step/7",
         "/shared/what-is-velocity/page/12/step/8",
         "/shared/what-is-velocity/page/12/step/9",
-        "/shared/what-is-velocity/page/12/step/10"
+        "/shared/what-is-velocity/page/12/step/10",
+        "/shared/what-is-velocity/page/12/step/11",
+        "/shared/what-is-velocity/page/12/step/12",
+        "/shared/what-is-velocity/page/12/step/13",
+        "/shared/what-is-velocity/page/12/step/14",
+        "/shared/what-is-velocity/page/12/step/15"
       ],
       "name": "Instantaneous Speed",
       "firstStep": "/shared/what-is-velocity/page/12/step/1",
@@ -202,7 +207,16 @@
         "/shared/what-is-velocity/page/13/step/3",
         "/shared/what-is-velocity/page/13/step/4",
         "/shared/what-is-velocity/page/13/step/5",
-        "/shared/what-is-velocity/page/13/step/6"
+        "/shared/what-is-velocity/page/13/step/6",
+        "/shared/what-is-velocity/page/13/step/7",
+        "/shared/what-is-velocity/page/13/step/8",
+        "/shared/what-is-velocity/page/13/step/9",
+        "/shared/what-is-velocity/page/13/step/10",
+        "/shared/what-is-velocity/page/13/step/11",
+        "/shared/what-is-velocity/page/13/step/12",
+        "/shared/what-is-velocity/page/13/step/13",
+        "/shared/what-is-velocity/page/13/step/14",
+        "/shared/what-is-velocity/page/13/step/15"
       ],
       "name": "Instantaneous Speed II",
       "firstStep": "/shared/what-is-velocity/page/13/step/1",
@@ -217,7 +231,7 @@
       ],
       "name": "Instantaneous Speed III",
       "firstStep": "/shared/what-is-velocity/page/14/step/1",
-      "introText": "<h1>Velocity</h1><p>Was your speed during the two different time intervals the same? If not, during which interval were you going faster? Explain how you know.</p>",
+      "introText": "<h1>Velocity</h1><p>Was your speed the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>",
       "url": "/shared/what-is-velocity/page/14",
       "activity": "/shared/what-is-velocity",
       "index": 14
@@ -1100,7 +1114,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Select another point adjacent to the first one and click <b>OK</b>.</p>",
+      "beforeText": "<p>Select a point adjacent to the first point. Then click <b>OK</b>.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -1163,17 +1177,10 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Please select a point that is <b>adjacent</b> to the first selection, then click <b>OK</b>.</p>",
+      "beforeText": "<p>In order to calculate <b>instantaneous velocity</b>, please select a point that is <b>adjacent</b> to the first selection.  Then click <b>OK</b>.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-        {
-          "action": "deleteAnnotation",
-          "literalArgs": {
-            "name": "second-point-A",
-            "graphName": "slope-graph"
-          }
-        },
         {
           "action": "startInteractiveSelection",
           "literalArgs": {
@@ -1273,7 +1280,7 @@
         
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
@@ -1289,7 +1296,7 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/12/step/10"
+          "step": "/shared/what-is-velocity/page/12/step/15"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/12/step/5",
@@ -1314,9 +1321,9 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>That is incorrect. Try again.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p><p>Recall that velocity is the change in position over the change in time.</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
+      "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "startCommands": [
 
       ],
@@ -1354,7 +1361,7 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/12/step/10"
+          "step": "/shared/what-is-velocity/page/12/step/15"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/12/step/6",
@@ -1379,11 +1386,110 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>That is incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
       "startCommands": [
+        {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/12/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/7",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/7",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the highlighted change in the table.</p>",
+      "startCommands": [
+        {
+          "action": "createRiseBracket",
+          "literalArgs": {
+            "bracketName": "rise-bracket-A",
+            "point1": "first-point-A",
+            "point2": "second-point-A",
+            "datasetName": "slope-data",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
       ],
       "shouldFinishImmediately": false,
       "submissibilityInspector": {
@@ -1422,10 +1528,10 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/12/step/7"
+          "step": "/shared/what-is-velocity/page/12/step/9"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/6",
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/8",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1433,7 +1539,7 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/12/step/7",
+      "url": "/shared/what-is-velocity/page/12/step/8",
       "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
@@ -1447,11 +1553,40 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>What is the change in time?</p>",
+      "beforeText": "<p>Incorrect. The change in position is [y2] - [y1], or [dy].</p><p>What is the change in time?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
       "startCommands": [
-
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#d62728"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
       ],
       "shouldFinishImmediately": false,
       "submissibilityInspector": {
@@ -1490,75 +1625,10 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/12/step/8"
+          "step": "/shared/what-is-velocity/page/12/step/12"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/7",
-      "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
-    },
-    {
-      "url": "/shared/what-is-velocity/page/12/step/8",
-      "activityPage": "/shared/what-is-velocity/page/12",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "name": "slope-graph"
-        },
-        "bottom": {
-          "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
-        }
-      },
-      "beforeText": "<p>Correct. If the change in position is [TBD] and the change in time is [TBD], what is the velocity?</p>",
-      "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
-      "startCommands": [
-
-      ],
-      "shouldFinishImmediately": false,
-      "submissibilityInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "submissibilityCriterion": {
-        "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
-          0
-        ]
-      },
-      "triggeredCommands": [
-        
-      ],
-      "afterSubmissionCommands": [
- 
-      ],
-      "responseInspector": {
-        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
-        "config": {
-          "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
-          ]
-        }
-      },
-      "responseBranches": [
-        {
-          "criterion": {
-            "slope": "value"
-          },
-          "step": "/shared/what-is-velocity/page/12/step/10"
-        }
-      ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/9",
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/10",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1580,9 +1650,346 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect. Recall that velocity is change in position over change in time.</p><p>If the change in position is [TBD] and the change in time is [TBD], what is the velocity?</p>",
+      "beforeText": "<p>Correct.</p><p>What is the change in time? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#d62728"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/12/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/10",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/10",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the highlighted change in the table.</p>",
+      "startCommands": [
+        {
+          "action": "createRunBracket",
+          "literalArgs": {
+            "bracketName": "run-bracket-A",
+            "point1": "first-point-A",
+            "point2": "second-point-A",
+            "datasetName": "slope-data",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/12/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/11",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in time is [x2] - [x1], or [dx].</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/what-is-velocity/page/12/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/13",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/12",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct.</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/what-is-velocity/page/12/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/13",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/13",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "startCommands": [
 
       ],
@@ -1620,10 +2027,10 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/12/step/10"
+          "step": "/shared/what-is-velocity/page/12/step/15"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/9",
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/14",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1631,7 +2038,7 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/12/step/10",
+      "url": "/shared/what-is-velocity/page/12/step/14",
       "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
@@ -1645,7 +2052,49 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>That is correct.</p><p>The position changed [TBD] in [TBD], so the velocity was [TBD].",
+      "beforeText": "<p>Incorrect.</p><p>If the change in position is [dy] and the change in time is [dx], the velocity is [dy]/[dx], or [velocity] meters per second.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": true,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/15",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct!</p><p>The position changed [y] meters in [x] seconds, so the velocity was [velocity] meters per second.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -1687,7 +2136,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Click a point, any point.</p>",
+      "beforeText": "<p>Select a point and then click <b>OK</b>.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -1737,7 +2186,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Click a point next to the first one.</p>",
+      "beforeText": "<p>Select a point adjacent to the first point. Then click <b>OK</b>.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -1747,7 +2196,7 @@
             "annotationName": "second-point-B",
             "graphName": "slope-graph",
             "datasetName": "slope-data",
-            "color": "#ff7f0e"
+            "color": "#ff7f0c"
           }
         }
       ],
@@ -1759,20 +2208,24 @@
 
       ],
       "afterSubmissionCommands": [
-        {
-          "action": "createLineThroughPoints",
-          "literalArgs": {
-            "lineName": "slope-line-B",
-            "firstPoint": "first-point-B",
-            "secondPoint": "second-point-B",
-            "graphName": "slope-graph",
-            "color": "#ff7f0d"
-          }
-        }
-      ],
-      "responseInspector": null,
-      "responseBranches": [
 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.AnnotationInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "dataPointsAreAdjacent": []
+          },
+          "step": "/shared/what-is-velocity/page/13/step/4"
+        }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/13/step/3",
       "isFinalStep": false,
@@ -1796,53 +2249,48 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Here is a line through the two points.</p>",
+      "beforeText": "<p>In order to calculate <b>instantaneous velocity</b>, please select a point that is <b>adjacent</b> to the first selection.  Then click <b>OK</b>.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
         {
-          "action": "addAnnotation",
+          "action": "startInteractiveSelection",
           "literalArgs": {
-            "name": "slope-line-B",
-            "graphName": "slope-graph"
+            "annotationName": "second-point-B",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#ff7f0c"
           }
         }
       ],
       "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
-      "submissibilityCriterion": {
-        
-      },
+      "submissibilityCriterion": null,
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.AnnotationInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
         {
-          "action": "createRiseArrow",
-          "literalArgs": {
-            "arrowName": "rise-arrow-B",
-            "firstPoint": "first-point-B",
-            "secondPoint": "second-point-B",
-            "graphName": "slope-graph",
-            "color": "#9467bd"
-          }
-        },
-        {
-          "action": "createRunArrow",
-          "literalArgs": {
-            "arrowName": "run-arrow-B",
-            "firstPoint": "first-point-B",
-            "secondPoint": "second-point-B",
-            "graphName": "slope-graph",
-            "color": "#d62728"
-          }
+          "criterion": {
+            "dataPointsAreAdjacent": []
+          },
+          "step": "/shared/what-is-velocity/page/13/step/4"
         }
       ],
-      "responseInspector": null,
-      "responseBranches": [
-        
-      ],
-      "defaultBranch": "/shared/what-is-velocity/page/13/step/4",
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1864,32 +2312,64 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Here is a &ldquo;rise&rdquo; arrow.</p>",
-      "responseTemplate": "",
+      "beforeText": "<p>Here is a line through the two points.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
         {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "slope-line-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "graphName": "slope-graph",
+            "color": "#ff7f0d"
+          }
+        },
+        {
           "action": "addAnnotation",
           "literalArgs": {
-            "name": "rise-arrow-B",
+            "name": "slope-line-B",
             "graphName": "slope-graph"
           }
-        }
+        },
       ],
       "shouldFinishImmediately": false,
-      "submissibilityInspector": null,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
       "submissibilityCriterion": {
-        
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
       },
       "triggeredCommands": [
         
       ],
       "afterSubmissionCommands": [
-        
+
       ],
-      "responseInspector": null,
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
       "responseBranches": [
-        
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/what-is-velocity/page/13/step/15"
+        }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/13/step/5",
       "isFinalStep": false,
@@ -1913,32 +2393,48 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Here is a &ldquo;run&rdquo; arrow.</p>",
-      "responseTemplate": "",
-      "afterText": "",
+      "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "startCommands": [
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "run-arrow-B",
-            "graphName": "slope-graph"
-          }
-        }
+
       ],
       "shouldFinishImmediately": false,
-      "submissibilityInspector": null,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
       "submissibilityCriterion": {
-        
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
       },
       "triggeredCommands": [
         
       ],
       "afterSubmissionCommands": [
-        
+ 
       ],
-      "responseInspector": null,
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
       "responseBranches": [
-        
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/what-is-velocity/page/13/step/15"
+        }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/13/step/6",
       "isFinalStep": false,
@@ -1962,14 +2458,28 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>What is the speed between the two points?</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
       "startCommands": [
-
+        {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
@@ -1984,6 +2494,647 @@
         ]
       },
       "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/13/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/7",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/7",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the highlighted change in the table.</p>",
+      "startCommands": [
+        {
+          "action": "createRiseBracket",
+          "literalArgs": {
+            "bracketName": "rise-bracket-B",
+            "point1": "first-point-B",
+            "point2": "second-point-B",
+            "datasetName": "slope-data",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-B",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/13/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/8",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/8",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in position is [y2] - [y1], or [dy].</p><p>What is the change in time?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-B",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "color": "#d62728"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/13/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/10",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/9",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct.</p><p>What is the change in time?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-B",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "color": "#d62728"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/13/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/10",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/10",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "startCommands": [
+        {
+          "action": "createRunBracket",
+          "literalArgs": {
+            "bracketName": "run-bracket-B",
+            "point1": "first-point-B",
+            "point2": "second-point-B",
+            "datasetName": "slope-data",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-B",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/13/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/11",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in time is [x2] - [x1], or [dx].</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-B",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/what-is-velocity/page/13/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/13",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/12",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct.</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-B",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/what-is-velocity/page/13/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/13",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/13",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/what-is-velocity/page/13/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/14",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/14",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>If the change in position is [dy] and the change in time is [dx], the velocity is [dy]/[dx], or [velocity] meters per second.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": true,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
 
       ],
       "afterSubmissionCommands": [
@@ -1993,12 +3144,54 @@
       "responseBranches": [
 
       ],
-      "defaultBranch": null,
+      "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
-      "nextButtonShouldSubmit": true
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/15",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct!</p><p>The position changed [y] meters in [x] seconds, so the velocity was [velocity] meters per second.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": true,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": false
     },
     {
       "url": "/shared/what-is-velocity/page/14/step/1",
