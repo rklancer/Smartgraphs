@@ -531,7 +531,9 @@
           "literalArgs": {
             "labelName": "stooge-label-two",
             "point": "7",
-            "label": "Moe"
+            "label": "Moe",
+            "yOffset": 15,
+            "size": 25
           }
         },
         {
@@ -539,7 +541,10 @@
           "literalArgs": {
             "labelName": "stooge-label-three",
             "point": "8",
-            "label": "Curly"
+            "label": "Curly",
+            "xOffset": 72,
+            "yOffset": 0,
+            "size": 12
           }
         }
       ],
