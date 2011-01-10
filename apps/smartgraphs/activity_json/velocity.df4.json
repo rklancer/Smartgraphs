@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df4",
-  "_rev": "29-8ce416ce87495867d79be4f65eefdef5",
+  "_rev": "2-bb6f1e243eb1b9c8a7d66431a17c7537",
   "data_format_version": 4,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -1260,7 +1260,7 @@
             "name": "slope-line-A",
             "graphName": "slope-graph"
           }
-        },
+        }
       ],
       "shouldFinishImmediately": false,
       "submissibilityInspector": {
@@ -2332,7 +2332,7 @@
             "name": "slope-line-B",
             "graphName": "slope-graph"
           }
-        },
+        }
       ],
       "shouldFinishImmediately": false,
       "submissibilityInspector": {
