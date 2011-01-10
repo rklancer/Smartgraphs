@@ -46,7 +46,7 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawin
     var arrow = raphaelCanvas.set();
     arrow.push(
         raphaelCanvas.path(attrs.d).attr(attrs),
-        raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'stroke': "#000", 'font-size': 15}).rotate(attrs.rotate, true)
+        raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'stroke': "#000", 'font-size': 15, 'stroke-width': 1}).rotate(attrs.rotate, true)
       );
     return arrow;
   },

@@ -32,7 +32,8 @@
         "/shared/slope-tool-demo/page/1/step/5",
         "/shared/slope-tool-demo/page/1/step/6",
         "/shared/slope-tool-demo/page/1/step/7",
-        "/shared/slope-tool-demo/page/1/step/8"
+        "/shared/slope-tool-demo/page/1/step/8",
+        "/shared/slope-tool-demo/page/1/step/9"
       ],
       "name": "Slope Tool Page",
       "firstStep": "/shared/slope-tool-demo/page/1/step/1",
@@ -515,6 +516,97 @@
       },
       "triggeredCommands": [
         
+      ],
+      "afterSubmissionCommands": [
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "stooge-label-one",
+            "point": "6",
+            "label": "Larry"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "stooge-label-two",
+            "point": "7",
+            "label": "Moe",
+            "yOffset": 15,
+            "size": 25
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "stooge-label-three",
+            "point": "8",
+            "label": "Curly",
+            "xOffset": 72,
+            "yOffset": 0,
+            "size": 12
+          }
+        }
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/slope-tool-demo/page/1/step/9",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/slope-tool-demo/page/1/step/9",
+      "activityPage": "/shared/slope-tool-demo/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "demo-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "demo-graph",
+          "datasetName": "demo-data"
+        }
+      },
+      "beforeText": "<p>We can put arbitrary text labels on data points.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "stooge-label-one",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "stooge-label-two",
+            "graphName": "demo-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "stooge-label-three",
+            "graphName": "demo-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+
+      },
+      "triggeredCommands": [
+
       ],
       "afterSubmissionCommands": [
         

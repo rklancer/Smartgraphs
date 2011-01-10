@@ -263,3 +263,36 @@ test("Creating run BracketArc", function () {
   ok(annotation.get('endY'), 'The ending point should not be undefined');
   equals(annotation.get('label'), "Run", 'The annotation should have a label reading Run');
 });
+
+test("Creating LabelAnnotation", function () {
+  expect(11);
+  var startLabelCount = Smartgraphs.store.find('Smartgraphs.LabelAnnotation').get('length');
+
+  // Test creation with point GUID
+  Smartgraphs.statechart.sendAction('createLabelAnnotation', null, {"labelName": "stooge-one", "point": "p1", "label": "Larry"});
+  var firstLabelCount = Smartgraphs.store.find('Smartgraphs.LabelAnnotation').get('length');
+  equals ( firstLabelCount, startLabelCount + 1, "There should be one more LabelAnnotation");
+  var stooge = Smartgraphs.activityObjectsController.findAnnotation('stooge-one');
+  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation using a GUID");
+  equals ( stooge.get('label'), 'Larry', "The annotation's label is Larry");
+  equals ( stooge.get('color'), '#000000', "The annotation's color is black");
+  ok ( stooge.get('point').kindOf(Smartgraphs.DataPoint), "The annotation has a point");
+
+  // Test creation with DataPoint
+  var point = Smartgraphs.store.find('Smartgraphs.DataPoint', 'p2');
+  Smartgraphs.statechart.sendAction('createLabelAnnotation', null, {"labelName": "stooge-two", "point": point, "label": "Moe"});
+  var secondLabelCount = Smartgraphs.store.find('Smartgraphs.LabelAnnotation').get('length');
+  equals ( secondLabelCount, firstLabelCount + 1, "There should be one more LabelAnnotation");
+  stooge = Smartgraphs.activityObjectsController.findAnnotation('stooge-two');
+  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation using a DataPoint");
+  ok ( stooge.get('point').kindOf(Smartgraphs.DataPoint), "The annotation has a point");
+
+  // Test creation with HighlightedPoint
+  var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
+  Smartgraphs.statechart.sendAction('createLabelAnnotation', null, {"labelName": "stooge-three", "point": point, "label": "Curly"});
+  var thirdLabelCount = Smartgraphs.store.find('Smartgraphs.LabelAnnotation').get('length');
+  equals ( thirdLabelCount, secondLabelCount + 1, "There should be one more LabelAnnotation");
+  stooge = Smartgraphs.activityObjectsController.findAnnotation('stooge-three');
+  ok ( stooge.kindOf(Smartgraphs.LabelAnnotation), "We've created a LabelAnnotation using a HighlightedPoint");
+  ok ( stooge.get('point').kindOf(Smartgraphs.DataPoint), "The annotation has a point");
+});

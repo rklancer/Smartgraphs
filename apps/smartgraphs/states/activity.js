@@ -413,6 +413,70 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   },
   
   /**
+    Given a point and a label string, create a LabelAnnotation for that point.
+  
+  @param context
+  @param args
+  
+  @param {String} args.labelName
+    The name for this annotation
+  @param {String} args.point
+    The point we're annotating. This could be provided as an actual Smartgraphs.DataPoint, a 
+    Smartgraphs.Annotation type which has a "point" attribute (which is therefore a Smartgraphs.DataPoint),
+    or the guid (url) of a Smartgraphs.DataPoint.
+  @param {String} args.label
+    The actual text of the label we're putting on the point.
+  @param {String} [args.color='#000000']
+    The color in which the arc should be rendered.
+  @param {Number} [args.xOffset=0]
+    How far the center of the label should be offset to the left or right of the point being labeled, in pixels.
+    Negative numbers move the label to the left; positive numbers move the label to the right.
+  @param {Number} [args.yOffset=-15]
+    How far the center of the label should be offset vertically from the point being labeled, in pixels.
+    Negative numbers move the label up, positive numbers move the label down. The default is -15, or fifteen
+    pixels above the point.
+  @param {Number} [args.size=15]
+    The "point size" of the label type.
+  */
+  createLabelAnnotation: function (context, args) {
+    var point;
+    if (args.point.length) {
+      // It's a string, is it a GUID?
+      point = Smartgraphs.store.find(Smartgraphs.DataPoint, args.point);
+    }
+    else if (args.point.kindOf(Smartgraphs.DataPoint)) { 
+      // It's a DataPoint
+      point = args.point;
+    }
+    else if (args.point.kindOf(Smartgraphs.Annotation) && args.point.get('point')) { 
+      // It's an Annotation which has a 'point' attribute we can use
+      point = args.point.get('point');
+    }
+    if (point.kindOf(Smartgraphs.DataPoint) !== undefined) { // We should have a DataPoint by now
+      // Generate the annotation
+      var label =
+        Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.LabelAnnotation, args.labelName, {
+          point: point.get('id'),
+          label: args.label,
+          color: args.color ? args.color : "#000000",
+          xOffset: args.xOffset ? args.xOffset : 0,
+          yOffset: args.yOffset ? args.yOffset : -15,
+          size: args.size ? args.size : 15
+        });
+      if (!label.kindOf(Smartgraphs.LabelAnnotation)) {
+        // This error means the controller method to create the annotation failed.
+        console.log("Creation of the LabelAnnotation may not have worked properly.");
+      }
+    }
+    else {
+      // This error means the duck-typing of the args.point argument failed.
+      console.log("Couldn't figure out which DataPoint to associate with the annotation.");
+    }
+    // This always returns YES, but if there are problems they should be in the console log.
+    return YES;
+  },
+  
+  /**
     For the named annotation, toggle the isHighlighted property. (If truthy, set to false; if falsy, set to true.)
     
     @param context
