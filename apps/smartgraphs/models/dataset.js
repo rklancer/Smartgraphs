@@ -44,6 +44,15 @@ Smartgraphs.Dataset = SC.Record.extend(
   activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'datasets', isMaster: YES, aggregate: YES }),
   
   /**
+    @private
+    
+    A hack to deal with the fact that SC.Record.propagateToAggregates isn't recursive.
+  */
+  _statusDidChange: function () {
+    this.invokeLast(this.propagateToAggregates);
+  }.observes('status'),
+  
+  /**
     The session this dataset is associated with. (When a user begins running an activity, any new datasets
     created during the run of the activity, and any modifications to datasets pre-defined by the author, are 
     buffered to a nested data store. When the user's session state is saved, the new or modified datasets are

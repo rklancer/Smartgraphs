@@ -166,44 +166,48 @@ var doc = {
   ]
 };
 
-var mockSCRequest;
+var newMockSCRequest = function () {
+  var ret = {};
+  
+  ret.getUrl = function (url) {
+    this.url = url;
+    return this;
+  };
+    
+  ret.json = function () {
+    return this;
+  };
+    
+  ret.header = function () {
+    return this;
+  };
+    
+  ret.notify = function (target, methodName, store, storeKey) {
+    this.target = target;
+    this.methodName = methodName;
+    this.store = store;
+    this.storeKey = storeKey;
+    return this;
+  };
+  
+  ret.send = function () {
+    this.sendCalled = YES;
+    return this;
+  };
+  
+  return ret;
+};
+
+var activity;
 var mockResponse;
 var doRequestCallback;
 
-module("Smartgraphs.couchDataSource can back retrieveRecord", {
 
+module("Smartgraphs.couchDataSource record loading", {
   setup: function () {
-    
     setup.mock(Smartgraphs, 'dataSource', Smartgraphs.CouchDataSource.create());
-    setup.mock(Smartgraphs, 'store', SC.Store.create().from(Smartgraphs.dataSource));
-    
-    mockSCRequest = {
-      getUrl: function (url) {
-        this.url = url;
-        return this;
-      },
-      
-      json: function () {
-        return this;
-      },
-      
-      header: function () {
-        return this;
-      },
-      
-      notify: function (target, methodName, store, storeKey) {
-        this.target = target;
-        this.methodName = methodName;
-        this.store = store;
-        this.storeKey = storeKey;
-        return this;
-      },
-      
-      send: function () {
-        this.sendCalled = YES;
-        return this;
-      }
-    };
+    setup.mock(Smartgraphs, 'store', SC.Store.create().from(Smartgraphs.dataSource));    
+    var mockSCRequest = newMockSCRequest();
     setup.mock(SC, 'Request', mockSCRequest);
     
     mockResponse = SC.Object.create({
@@ -222,17 +226,158 @@ module("Smartgraphs.couchDataSource can back retrieveRecord", {
 
 
 test("activity record loading", function () {
-  var activity = Smartgraphs.store.find(Smartgraphs.Activity, '/test/skeleton');
-  ok( activity.get('status') & SC.Record.BUSY, "Record should be BUSY immediately after find");
-    
+  expect(2);
+  
+  activity = Smartgraphs.store.find(Smartgraphs.Activity, '/test/skeleton');
+  equals( activity.get('status'), SC.Record.BUSY_LOADING, "Record should be BUSY_LOADING after find");
   SC.RunLoop.begin();
   doRequestCallback();
   SC.RunLoop.end();
-  
   equals( activity.get('status'), SC.Record.READY_CLEAN, "Record should be READY_CLEAN after callback");
 });
 
 
-// test dirtying aggregate records
-// test markRecordsBusy
-// test 
+module("Smartgraphs.couchDataSource aggregate record handling", {
+  setup: function () {
+    setup.mock(Smartgraphs, 'dataSource', Smartgraphs.CouchDataSource.create());
+    setup.mock(Smartgraphs, 'store', SC.Store.create().from(Smartgraphs.dataSource));    
+    var mockSCRequest = newMockSCRequest();
+    setup.mock(SC, 'Request', mockSCRequest);
+    
+    mockResponse = SC.Object.create({
+      body: { rows: [ { value: doc } ] }
+    });
+    
+    doRequestCallback = function () {
+      Smartgraphs.dataSource[mockSCRequest.methodName].call(mockSCRequest.target, mockResponse, mockSCRequest.store, mockSCRequest.storeKey);
+    };
+    activity = Smartgraphs.store.find(Smartgraphs.Activity, '/test/skeleton');
+    SC.RunLoop.begin();
+    doRequestCallback();
+    SC.RunLoop.end();
+    
+    equals( activity.get('status'), SC.Record.READY_CLEAN, "Record should be READY_CLEAN to start");
+  },
+
+  teardown: function () {
+    teardown.mocks();
+  }
+});
+
+
+test("Modifying activity pages should dirty activity record", function () {
+  expect(3);
+  
+  var page = activity.get('pages').objectAt(0);
+
+  SC.RunLoop.begin();  
+  page.set('introText', "modified");
+  SC.RunLoop.end();
+  
+  ok( page.get('status') & SC.Record.DIRTY, "modifying page record should dirty page record");
+  ok( activity.get('status') & SC.Record.DIRTY, "modifying page record should dirty activity record");
+});
+
+
+test("Modifying activity steps should dirty activity record", function () {
+  expect(4);
+  
+  var page = activity.get('pages').objectAt(0);
+  var step = page.get('steps').objectAt(0);
+
+  SC.RunLoop.begin();
+  step.set('beforeText', "modified");
+  SC.RunLoop.end();
+  
+  ok( step.get('status') & SC.Record.DIRTY, "modifying step record should dirty step record");
+  ok( page.get('status') & SC.Record.DIRTY, "modifying step record should dirty page record");
+  ok( activity.get('status') & SC.Record.DIRTY, "modifying step record should dirty activity record");
+});
+
+
+test("Modifying canned datasets should dirty activity record", function () {
+  expect(3);
+  
+  var dataset = activity.get('datasets').objectAt(0);
+
+  SC.RunLoop.begin();  
+  dataset.set('defaultColor', "modified");
+  SC.RunLoop.end();  
+  
+  ok( dataset.get('status') & SC.Record.DIRTY, "modifying dataset record should dirty dataset record");
+  ok( activity.get('status') & SC.Record.DIRTY, "modifying dataset record should dirty activity record");
+});
+
+
+test("Modifying canned datapoint should dirty activity record", function () {
+  expect(4);
+
+  var dataset = activity.get('datasets').objectAt(0);
+  var point = dataset.get('points').objectAt(0);
+  
+  SC.RunLoop.begin();
+  point.set('x', -1);
+  SC.RunLoop.end();
+  
+  ok( point.get('status') & SC.Record.DIRTY, "modifying datapoint record should dirty datapoint record");
+  ok( dataset.get('status') & SC.Record.DIRTY, "modifying datapoint record should dirty dataset record");
+  ok( activity.get('status') & SC.Record.DIRTY, "modifying datapoint record should dirty activity record");
+});
+
+
+test("Modifying canned annotation should dirty activity record", function () {
+  expect(3);
+  
+  var highlight = Smartgraphs.store.find(Smartgraphs.HighlightedPoint, "/test/skeleton/highlight1");
+  
+  SC.RunLoop.begin();
+  highlight.set('color', "modified");
+  SC.RunLoop.end();
+  
+  ok( highlight.get('status') & SC.Record.DIRTY, "modifying annotation record should dirty annotation record");
+  ok( activity.get('status') & SC.Record.DIRTY, "modifying annotation record should dirty activity record");
+});
+
+
+test("Modifying axes record should dirty activity record", function () {
+  expect(3);
+
+  var axes = activity.get('axes').objectAt(0);
+  
+  SC.RunLoop.begin();
+  axes.set('xSteps', -1);
+  SC.RunLoop.end();
+  
+  ok( axes.get('status') & SC.Record.DIRTY, "modifying axes record should dirty axes record");
+  ok( activity.get('status') & SC.Record.DIRTY, "modifying axes record should dirty activity record");
+});
+
+
+test("Modifying graph record should dirty activity record", function () {
+  expect(3);
+  
+  var graph = activity.get('graphs').objectAt(0);
+  
+  SC.RunLoop.begin();
+  graph.set('description', 'modified');
+  SC.RunLoop.end();
+  
+  ok( graph.get('status') & SC.Record.DIRTY, "modifying graph record should dirty graph record");
+  ok( activity.get('status') & SC.Record.DIRTY, "modifying graph record should dirty activity record");
+});
+
+
+test("Modifying response template record should dirty activity record", function () {
+  expect(3);
+  
+  var template = activity.get('responseTemplates').objectAt(0);
+  
+  SC.RunLoop.begin();
+  template.set('templateString', 'modified');
+  SC.RunLoop.end();
+  
+  ok( template.get('status') & SC.Record.DIRTY, "modifying template record should dirty template record");
+  ok( activity.get('status') & SC.Record.DIRTY, "modifying template record should dirty activity record");
+});
+
+

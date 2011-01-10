@@ -23,7 +23,16 @@ Smartgraphs.ActivityPage = SC.Record.extend(
     The Activity this ActivityPage belongs to.
   */
   activity: SC.Record.toOne('Smartgraphs.Activity',  { inverse: 'pages', isMaster: YES, aggregate: YES }),
-
+  
+  /**
+    @private
+    
+    A hack to deal with the fact that SC.Record.propagateToAggregates isn't recursive.
+  */
+  _statusDidChange: function () {
+    this.invokeLast(this.propagateToAggregates);
+  }.observes('status'),
+  
   /**
     A name for this ActivityPage; to be exposed to authors and, possibly, to learners as the heading of the page.
   */
