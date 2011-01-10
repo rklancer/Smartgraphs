@@ -96,6 +96,23 @@ test("beginSession should raise an exception if it is called when a session is a
 });
 
 
+test("endSession should raise an exception if it is called when no session has been started", function () {
+  expect(2);
+  
+  equals(Smartgraphs.sessionController.get('content'), null, "The session controller content should be null before testing endSession's behavior");
+  
+  var exceptionWasRaised = NO;
+  try {
+    Smartgraphs.sessionController.endSession();
+  }
+  catch (e) {
+    exceptionWasRaised = YES;
+  }
+  
+  ok( exceptionWasRaised, "an exception should have been raised when endSession was called with no content in the sessionController");
+});
+
+
 test("endSession should clear the sessionController's content", function () {
   expect(2);
   
@@ -183,27 +200,77 @@ test("endSession should throw away changes to activity objects that were made du
 
 
 test("endSession should destroy activity objects created during a session without notifying their observers", function () {
-  expect(2);
+  expect(4);
   
   Smartgraphs.sessionController.beginSession();
   
   var highlight = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'highlight 2');
   
-  var highlightObserverWasCalled = NO;
-  var highlightObserver = function () {
-    highlightObserverWasCalled = YES;
-  };
+  var starObserverWasCalled = NO;
+  function starObserver() {
+    starObserverWasCalled = YES;
+  }
+  highlight.addObserver('*', starObserver);
   
-  highlight.addObserver('*', highlightObserver);
+  var colorObserverWasCalled = NO;
+  function colorObserver() {
+    colorObserverWasCalled = YES;
+  }
+  highlight.addObserver('color', colorObserver);
   
-  highlightObserverWasCalled = NO;
+  starObserverWasCalled = NO;
+  colorObserverWasCalled = NO;
   highlight.set('color', '#000000');
-  ok( highlightObserverWasCalled, "observer of highlight properties should have been called when highlight color was changed inside a session");
+  ok( starObserverWasCalled, "star observer of highlight properties should have been called when highlight color was changed inside a session");
+  ok( colorObserverWasCalled, "observer of highlight 'color' property should have been called when highlight color was changed inside a session");
+  
+  // need to let a runloop run, otherwise the runloop in endSession may cause the observers to fire spuriously
+  SC.RunLoop.begin().end();
+  
+  starObserverWasCalled = NO;
+  colorObserverWasCalled = NO;
+  Smartgraphs.sessionController.endSession();
+  ok( !starObserverWasCalled, "star observer of highlight properties should not have been called when session ended");
+  ok( !colorObserverWasCalled, "observer of highlight 'color' property should not have been called when session ended");
+});
+
+
+test("endSession should destroy activity objects created during a session without notifying observers indirectly via toOne or toMany relationships", function () {
+  expect(4);
+  var debugIt = NO;
+  
+  Smartgraphs.sessionController.beginSession();
+
+  var dataset = Smartgraphs.activityObjectsController.createDataset('dataset 2');
+  var pointsObserverWasCalled = NO;
+  function pointsObserver() {
+    pointsObserverWasCalled = YES;
+  }
+  dataset.addObserver('points.[]', pointsObserver);
+  
+  var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: 1, y: 1 });
+  point.set('guid', 'p2');
+  var datasetObserverWasCalled = NO;
+  function datasetObserver() {
+    datasetObserverWasCalled = YES;
+    if (debugIt) debugger;
+  }
+  point.addObserver('dataset', datasetObserver);
+
+  pointsObserverWasCalled = NO;  
+  datasetObserverWasCalled = NO;
+  point.set('dataset', dataset);
+  ok( pointsObserverWasCalled, "observer of dataset.points.[] should have been called when dataset - point relationship was set up");
+  ok( datasetObserverWasCalled, "observer of point.dataset should have been called when dataset - point relationship was set up");
   
   // need to let a runloop run, otherwise the runloop in endSession will cause the observer to fire spuriously
   SC.RunLoop.begin().end();
   
-  highlightObserverWasCalled = NO;
+  pointsObserverWasCalled = NO;
+  datasetObserverWasCalled = NO;
+  debugIt = YES;
   Smartgraphs.sessionController.endSession();
-  ok( !highlightObserverWasCalled, "observer of highlight properties should not have been called when session ended");
+  ok( !pointsObserverWasCalled, "observer of dataset.points.[] should not have been called when session ended");
+  ok( !datasetObserverWasCalled, "observer of points.dataset should not have been called when session ended");
 });
+
