@@ -153,7 +153,7 @@ test("loadPredefinedObjects should complain if the activity record contains mult
 
 
 test("createDataset should create a dataset of the requested type in the current activity session", function () {
-  expect(7);
+  expect(8);
   
   Smartgraphs.activityObjectsController.loadPredefinedObjects();
   
@@ -172,6 +172,7 @@ test("createDataset should create a dataset of the requested type in the current
   equals( Smartgraphs.activityObjectsController.findDataset('dataset 2'), dataset, "findDataset('dataset 2') should return the new dataset");  
   ok( dataset.get('status') & SC.Record.READY, "The dataset should have status READY");
   equals( dataset.get('activity'), activity, "The dataset should be associated with the current activity");
+  equals( dataset.getPath('points.length'), 0, "The dataset's data points should be an empty array" );
 });
 
 
