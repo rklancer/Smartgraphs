@@ -47,33 +47,58 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   // },
   // 
 
-  startDrag: function (labelObject) {
-    // I have a hunch we're not going to get that labelObject argument
-    this.set('ox', labelObject.attr("cx"));
-    this.set('oy', labelObject.attr("cy"));
-  },
+  // Raphael offers a drag and drop functionality, using a drag(start,
+  // move, end) method (see http://raphaeljs.com/reference.html#drag-n-drop
+  // ). The start, move, and end parameters are themselves functions - event 
+  // handlers - which Raphael expects the developer to make available; 
+  // the idea is that the start method is an opportunity to preserve starting 
+  // state (i.e. remember the start position), move is a method which accepts 
+  // dy and dx as movement vectors, and end does cleanup from the move.
+  // 
+  // In the case of the LabelAnnotations, which now have xOffset and
+  // yOffset parameters to describe where they appear in the SVG space,
+  // essentially start would preserve the starting xOffset and yOffset from
+  // the SproutCore object (or perhaps the starting cx and cy from the
+  // view's positioning), move would modify the cx/cy, and end would figure
+  // the cumulative dx/dy of the move, using the values saved in start, and
+  // write that new value back to the SproutCore object.
+  // 
+  // The thing I *haven't* figured out yet is the scoping, i.e. where to
+  // define those event handlers to make them available to Raphael while
+  // also knowing enough about both the SproutCore object and the Raphael
+  // object to do their jobs.
   
-  moveDrag: function (dx, dy) {
-    // move will be called with dx and dy
-    this.attr({cx: this.ox + dx, cy: this.oy + dy});
-  },
-  
-  upDrag: function () {
-      // restoring state
-  },
+  // The following three methods were a pass at providing the relevant event
+  // handlers; this might not be the place for them, nor do I claim that they
+  // do all the jobs those event handlers are expected to do.
 
-  mouseDown: function(eventID) {
-    this.toggleSelection();
-
-    // get the Raphael path object from the context
-    // Need the context...
-    var labelObject = context.raphael();
-
-    labelObject.drag(this.moveDrag, this.startDrag(labelObject), this.upDrag);
-    // 'tee' the event, but don't consider the mouseDown handled; let the parent collection view
-    // also handle it
-    return NO;
-  },
+  // startDrag: function (labelObject) {
+  //   // I have a hunch we're not going to get that labelObject argument
+  //   this.set('ox', labelObject.attr("cx"));
+  //   this.set('oy', labelObject.attr("cy"));
+  // },
+  // 
+  // moveDrag: function (dx, dy) {
+  //   // move will be called with dx and dy
+  //   this.attr({cx: this.ox + dx, cy: this.oy + dy});
+  // },
+  // 
+  // upDrag: function () {
+  //     // restoring state
+  // },
+  // 
+  // mouseDown: function(eventID) {
+  //   this.toggleSelection();
+  // 
+  //   // get the Raphael path object from the context
+  //   // Need the context...
+  //   var labelObject = context.raphael();
+  // 
+  //   labelObject.drag(this.moveDrag, this.startDrag(labelObject), this.upDrag);
+  //   // 'tee' the event, but don't consider the mouseDown handled; let the parent collection view
+  //   // also handle it
+  //   return NO;
+  // },
 
   toggleSelection: function () {
     if (this.get('isSelected')) {
