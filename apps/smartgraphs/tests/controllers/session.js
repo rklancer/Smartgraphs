@@ -190,7 +190,7 @@ test("endSession should throw away changes to activity objects that were made du
   ok( !Smartgraphs.store.readDataHash(point2.get('storeKey')), "after endSession, the second point should not exist in the store");
   
   point = findDatapoint();
-  ok( point.get('status') & SC.Record.CLEAN, "after endSession, the highlight record should be CLEAN");
+  ok( point.get('status') & SC.Record.CLEAN, "after endSession, the datapoint record should be CLEAN");
   equals( point.get('x'), originalX, "after endSession, the datapoint should have its original x value");
     
   highlight = findHighlight();
@@ -236,8 +236,7 @@ test("endSession should destroy activity objects created during a session withou
 
 
 test("endSession should destroy activity objects created during a session without notifying observers indirectly via toOne or toMany relationships", function () {
-  expect(4);
-  var debugIt = NO;
+  expect(8);
   
   Smartgraphs.sessionController.beginSession();
 
@@ -248,29 +247,40 @@ test("endSession should destroy activity objects created during a session withou
   }
   dataset.addObserver('points.[]', pointsObserver);
   
-  var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: 1, y: 1 });
-  point.set('guid', 'p2');
+  var point1 = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: 1, y: 1 });
   var datasetObserverWasCalled = NO;
   function datasetObserver() {
     datasetObserverWasCalled = YES;
-    if (debugIt) debugger;
   }
-  point.addObserver('dataset', datasetObserver);
+  point1.addObserver('dataset', datasetObserver);
 
   pointsObserverWasCalled = NO;  
   datasetObserverWasCalled = NO;
-  point.set('dataset', dataset);
-  ok( pointsObserverWasCalled, "observer of dataset.points.[] should have been called when dataset - point relationship was set up");
-  ok( datasetObserverWasCalled, "observer of point.dataset should have been called when dataset - point relationship was set up");
+  point1.set('dataset', dataset);
+  
+  // show that observer silencing works whether or not records have ids...
+  equals(point1.get('id'), undefined, "point 1 should have no id");
+  ok( pointsObserverWasCalled, "observer of dataset.points.[] should have been called when dataset - point1 relationship was set up");
+  ok( datasetObserverWasCalled, "observer of point.dataset should have been called when dataset - point1 relationship was set up");
+  
+  var point2 = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: 2, y: 2 });
+  point2.set('guid', 'p2');
+  point2.addObserver('dataset', datasetObserver);
+  
+  pointsObserverWasCalled = NO;  
+  datasetObserverWasCalled = NO;
+  point2.set('dataset', dataset);
+  equals(point2.get('id'), 'p2', "point 2 should have an id");
+  ok( pointsObserverWasCalled, "observer of dataset.points.[] should have been called when dataset - point2 relationship was set up");
+  ok( datasetObserverWasCalled, "observer of point.dataset should have been called when dataset - point2 relationship was set up");
   
   // need to let a runloop run, otherwise the runloop in endSession will cause the observer to fire spuriously
   SC.RunLoop.begin().end();
   
   pointsObserverWasCalled = NO;
   datasetObserverWasCalled = NO;
-  debugIt = YES;
   Smartgraphs.sessionController.endSession();
   ok( !pointsObserverWasCalled, "observer of dataset.points.[] should not have been called when session ended");
-  ok( !datasetObserverWasCalled, "observer of points.dataset should not have been called when session ended");
+  ok( !datasetObserverWasCalled, "observer of [point1|point2].dataset should not have been called when session ended");
 });
 

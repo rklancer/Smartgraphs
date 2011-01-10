@@ -77,7 +77,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     var changelog = Smartgraphs.store.get('changelog') || [];
     changelog.forEach( function (storeKey) {
       // hack hack hack ... (permanently disable observers for these records)
-      var rec = Smartgraphs.store.find(Smartgraphs.store.recordTypeFor(storeKey), Smartgraphs.store.idFor(storeKey));
+      var rec = Smartgraphs.store.materializeRecord(storeKey);
       if (rec) {
         rec.storeDidChangeProperties = function () {};
         rec._notifyPropertyObservers = function () {};
