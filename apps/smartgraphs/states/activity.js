@@ -428,6 +428,15 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     The actual text of the label we're putting on the point.
   @param {String} [args.color='#000000']
     The color in which the arc should be rendered.
+  @param {Number} [args.xOffset=0]
+    How far the center of the label should be offset to the left or right of the point being labeled, in pixels.
+    Negative numbers move the label to the left; positive numbers move the label to the right.
+  @param {Number} [args.yOffset=-15]
+    How far the center of the label should be offset vertically from the point being labeled, in pixels.
+    Negative numbers move the label up, positive numbers move the label down. The default is -15, or fifteen
+    pixels above the point.
+  @param {Number} [args.size=15]
+    The "point size" of the label type.
   */
   createLabelAnnotation: function (context, args) {
     var point;
@@ -449,9 +458,13 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.LabelAnnotation, args.labelName, {
           point: point.get('id'),
           label: args.label,
-          color: args.color ? args.color : "#000000"
+          color: args.color ? args.color : "#000000",
+          xOffset: args.xOffset ? args.xOffset : 0,
+          yOffset: args.yOffset ? args.yOffset : -15,
+          size: args.size ? args.size : 15
         });
       if (!label.kindOf(Smartgraphs.LabelAnnotation)) {
+        // This error means the controller method to create the annotation failed.
         console.log("Creation of the LabelAnnotation may not have worked properly.");
       }
     }
