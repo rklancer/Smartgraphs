@@ -25,8 +25,8 @@ Smartgraphs.activityController = SC.ObjectController.create(
   },
   
   activityRecordInCurrentStore: function () {
-    var content = this.get('content');
-    return content ? Smartgraphs.store.find(content) : null;
+    var id = this.get('id');
+    return id ? Smartgraphs.store.find(Smartgraphs.Activity, id) : null;
   }.property(),
   
   /**
