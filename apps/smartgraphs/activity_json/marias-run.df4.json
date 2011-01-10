@@ -1653,7 +1653,6 @@
       "url": "/shared/marias-run/dataset/maria",
       "name": "maria",
       "activity": "/shared/marias-run",
-      "isExample": true,
       "points": [
         400,
         401,
@@ -1740,7 +1739,6 @@
           "url": "/shared/marias-run/annotation/where-maria-stopped",
           "name": "where-maria-stopped",
           "activity": "/shared/marias-run",
-          "isExample": true,
           "session": null,
           "point": 403
         }
@@ -1753,7 +1751,6 @@
           "url": "/shared/marias-run/annotation/maria-running-interval-1",
           "name": "maria-running-interval-1",
           "activity": "/shared/marias-run",
-          "isExample": true,
           "session": null,
           "points": [
             400,
@@ -1766,7 +1763,6 @@
           "url": "/shared/marias-run/annotation/maria-running-interval-2",
           "name": "maria-running-interval-2",
           "activity": "/shared/marias-run",
-          "isExample": true,
           "session": null,
           "points": [
             405,
@@ -1780,7 +1776,6 @@
           "url": "/shared/marias-run/annotation/maria-stationary-interval",
           "name": "maria-stationary-interval",
           "activity": "/shared/marias-run",
-          "isExample": true,
           "session": null,
           "points": [
             403,
@@ -1797,7 +1792,6 @@
           "url": "/shared/marias-run/annotation/where-maria-stopped-to-y-axis",
           "name": "where-maria-stopped-to-y-axis",
           "activity": "/shared/marias-run",
-          "isExample": true,
           "session": null,
           "point": 403,
           "axis": "y"

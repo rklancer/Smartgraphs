@@ -1020,7 +1020,6 @@
       "url": "/shared/boiling-water/dataset/correct-boiling-point",
       "name": "correct-boiling-point",
       "activity": "/shared/boiling-water",
-      "isExample": true,
       "points": [
         100,
         101,
@@ -1114,7 +1113,6 @@
           "url": "/shared/boiling-water/annotation/sketch-to-match-correct-boiling-point",
           "name": "sketch-to-match-correct-boiling-point",
           "activity": "/shared/boiling-water",
-          "isExample": true,
           "points": [
             {
               "x": 0,
@@ -1140,7 +1138,6 @@
           "url": "/shared/boiling-water/annotation/where-boiling-began",
           "name": "where-boiling-began",
           "activity": "/shared/boiling-water",
-          "isExample": true,
           "session": null,
           "point": 105
         }
@@ -1153,7 +1150,6 @@
           "url": "/shared/boiling-water/annotation/after-boiling-began",
           "name": "after-boiling-began",
           "activity": "/shared/boiling-water",
-          "isExample": true,
           "session": null,
           "points": [
             106,
@@ -1164,7 +1160,6 @@
           "url": "/shared/boiling-water/annotation/before-boiling-began",
           "name": "before-boiling-began",
           "activity": "/shared/boiling-water",
-          "isExample": true,
           "session": null,
           "points": [
             100,

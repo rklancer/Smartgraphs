@@ -3860,7 +3860,6 @@
       "url": "/shared/what-is-velocity/dataset/slope-data",
       "name": "slope-data",
       "activity": "/shared/what-is-velocity",
-      "isExample": true,
       "points": [
         1,
         2,
@@ -3954,7 +3953,6 @@
           "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-A",
           "name": "slope-data-analyze-line-A",
           "activity": "/shared/what-is-velocity",
-          "isExample": true,
           "points": [
             {
               "x": 0,
@@ -3977,7 +3975,6 @@
           "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-B",
           "name": "slope-data-analyze-line-B",
           "activity": "/shared/what-is-velocity",
-          "isExample": true,
           "points": [
             {
               "x": 0,
@@ -4000,7 +3997,6 @@
           "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-C",
           "name": "slope-data-analyze-line-C",
           "activity": "/shared/what-is-velocity",
-          "isExample": true,
           "points": [
             {
               "x": 0,
@@ -4023,7 +4019,6 @@
           "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-D",
           "name": "slope-data-analyze-line-D",
           "activity": "/shared/what-is-velocity",
-          "isExample": true,
           "points": [
             {
               "x": 0,

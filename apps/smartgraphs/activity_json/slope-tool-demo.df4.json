@@ -662,7 +662,6 @@
       "url": "/shared/slope-tool-demo/dataset/demo-data",
       "name": "demo-data",
       "activity": "/shared/slope-tool-demo",
-      "isExample": true,
       "points": [
         1,
         2,

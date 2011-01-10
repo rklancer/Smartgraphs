@@ -2048,7 +2048,6 @@
       "url": "/shared/motion-towards-and-away/dataset/walking-away-example",
       "name": "walking-away-example",
       "activity": "/shared/motion-towards-and-away",
-      "isExample": true,
       "points": [
         100,
         102,
@@ -2109,7 +2108,6 @@
       "url": "/shared/motion-towards-and-away/dataset/walking-example-1",
       "name": "walking-example-1",
       "activity": "/shared/motion-towards-and-away",
-      "isExample": true,
       "points": [
         1,
         2,
@@ -2195,7 +2193,6 @@
       "url": "/shared/motion-towards-and-away/dataset/walking-toward-example",
       "name": "walking-toward-example",
       "activity": "/shared/motion-towards-and-away",
-      "isExample": true,
       "points": [
         201,
         203,
@@ -3331,7 +3328,6 @@
           "url": "/shared/motion-towards-and-away/annotation/sketch-to-match",
           "name": "sketch-to-match",
           "activity": "/shared/motion-towards-and-away",
-          "isExample": true,
           "points": [
             {
               "x": 0,
@@ -3361,7 +3357,6 @@
           "url": "/shared/motion-towards-and-away/annotation/walking-first-point",
           "name": "walking-first-point",
           "activity": "/shared/motion-towards-and-away",
-          "isExample": true,
           "session": null,
           "point": 1
         }
