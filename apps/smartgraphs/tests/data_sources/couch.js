@@ -471,7 +471,7 @@ test("markRecordBusy marks DIRTY records BUSY", function () {
 });
 
 
-test("markRecordBusy leaves CLEAN records CLEAN", function () {
+test("markRecordBusy should marks READY_CLEAN records BUSY", function () {
   expect(11);
   
   var pageKey = page.get('storeKey');
@@ -492,8 +492,8 @@ test("markRecordBusy leaves CLEAN records CLEAN", function () {
   Smartgraphs.dataSource.markRecordBusy(Smartgraphs.store, highlight);
   SC.RunLoop.end();
   
-  equals( page.get('status'), K.READY_CLEAN, "Page record should be READY_CLEAN after markRecordBusy");
-  equals( highlight.get('status'), K.DESTROYED_CLEAN, "Highlight record should be DESTROYED_CLEAN after markRecordBusy");  
+  equals( page.get('status'), K.BUSY_COMMITTING, "Page record should be BUSY_COMMITTING after markRecordBusy");
+  equals( highlight.get('status'), K.DESTROYED_CLEAN, "Highlight record should still be DESTROYED_CLEAN after markRecordBusy");  
 });
 
 
