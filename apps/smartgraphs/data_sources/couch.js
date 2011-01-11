@@ -243,7 +243,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         SC.Request.putUrl('/db/smartgraphs/'+this._ids[storeKey])
                   .json()
                   .header('Accept', 'application/json')
-                  .notify(this, this.didUpdateActivity, store, storeKey)
+                  .notify(this, 'didUpdateActivity', store, storeKey)
                   .send(doc);
         return YES;
       }

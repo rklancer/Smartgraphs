@@ -170,10 +170,15 @@ var newMockSCRequest = function () {
   var ret = {};
   
   ret.getUrl = function (url) {
-    this.url = url;
+    this.getUrl = url;
     return this;
   };
-    
+  
+  ret.putUrl = function (url) {
+    this.putUrl = url;
+    return this;
+  };
+  
   ret.json = function () {
     return this;
   };
@@ -190,7 +195,8 @@ var newMockSCRequest = function () {
     return this;
   };
   
-  ret.send = function () {
+  ret.send = function (doc) {
+    this.doc = doc;
     this.sendCalled = YES;
     return this;
   };
@@ -576,4 +582,86 @@ test("applyToChildRecords should apply the supplied method to records listing th
   equals( calls[2].record, step, "applyToChildRecords should have been called on step");
   equals( calls[3].store, Smartgraphs.store, "applyToChildRecords should have passed store");
   equals( calls[3].record, highlight, "applyToChildRecords should have been called on highlight annotation record");
+});
+
+
+test("didUpdateRecord marks BUSY activity record CLEAN", function () {
+  expect(23);
+  var stepKey = step.get('storeKey');
+  var pageKey = page.get('storeKey');
+  var activityKey = activity.get('storeKey');
+  
+  setup.mock(Smartgraphs.dataSource, '_ids', {});
+  setup.mock(Smartgraphs.dataSource, '_revs', {});
+  Smartgraphs.dataSource._ids[activityKey] = 'test.id';
+  Smartgraphs.dataSource._revs[activityKey] = '1';
+  
+  SC.RunLoop.begin();
+  var dataset = Smartgraphs.store.createRecord(Smartgraphs.Dataset, {
+    url: "test/test/dataset1",
+    name: "test dataset",
+    points: []
+  });
+  activity.get('datasets').pushObject(dataset);
+  var datasetKey = dataset.get('storeKey');
+  SC.RunLoop.end();
+  
+  SC.RunLoop.begin();
+  Smartgraphs.store.writeStatus(activityKey, K.READY_CLEAN);
+  Smartgraphs.store.dataHashDidChange(activityKey, null, YES);
+  SC.RunLoop.end();
+  
+  equals( activity.get('status'), K.READY_CLEAN, "Activity records should be READY_CLEAN before adding point");
+  equals( dataset.get('status'), K.READY_NEW, "Dataset record should be READY_NEW before adding point");
+  equals( dataset.get('activity'), activity, "Dataset record should point to the activity record");
+  
+  SC.RunLoop.begin();
+  var point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, {
+    guid: "p1",
+    x: 0,
+    y: 0
+  });
+  dataset.get('points').pushObject(point);
+  SC.RunLoop.end();
+  
+  equals( activity.get('status'), K.READY_DIRTY, "Activity record should be READY_DIRTY after adding point");
+  equals( dataset.get('status'), K.READY_NEW, "Dataset record should be READY_NEW after adding point");
+  
+  SC.RunLoop.begin();
+  Smartgraphs.store.writeStatus(stepKey, K.DESTROYED_DIRTY);
+  Smartgraphs.store.dataHashDidChange(stepKey, null, YES);  
+  Smartgraphs.store.writeStatus(pageKey, K.READY_DIRTY);
+  Smartgraphs.store.dataHashDidChange(pageKey, null, YES);
+  SC.RunLoop.end();
+  
+  equals( step.get('status'), K.DESTROYED_DIRTY, "Step record should be DESTROYED_DIRTY before test");
+  equals( page.get('status'), K.READY_DIRTY, "Page record should be READY_DIRTY before test");
+  
+  // mocks required for commitRecord()
+  var mockSCRequest = newMockSCRequest();
+  setup.mock(SC, 'Request', mockSCRequest);
+  
+  doRequestCallback = function () {
+    // use empty response
+    SC.RunLoop.begin();
+    Smartgraphs.dataSource[mockSCRequest.methodName].call(mockSCRequest.target, SC.Response.create( { body: { _rev: '2' } }), mockSCRequest.store, mockSCRequest.storeKey);
+    SC.RunLoop.end();
+  };
+  
+  mockSCRequest.sendCalled = NO;
+  SC.RunLoop.begin();
+  activity.commitRecord();
+  SC.RunLoop.end();
+  
+  ok( mockSCRequest.sendCalled, "SC.Request.send() should have been called after commitRecord()");
+  equals( activity.get('status'), K.BUSY_COMMITTING, "Activity record should be BUSY_COMMITTING after commitRecord()");
+  equals( dataset.get('status'), K.BUSY_CREATING, "Dataset record should be BUSY_CREATING after commitRecord()");
+  equals( step.get('status'), K.BUSY_DESTROYING, "Step record should be BUSY_DESTROYING after commitRecord()");
+  equals( page.get('status'), K.BUSY_COMMITTING, "Page record should be BUSY_COMMITTING after commitRecord()");
+  
+  doRequestCallback();
+  equals( activity.get('status'), K.READY_CLEAN, "Activity record should be READY_CLEAN after request completes");
+  equals( dataset.get('status'), K.READY_CLEAN, "Dataset record should be READY_CLEAN after request completes");  
+  equals( step.get('status'), K.DESTROYED_CLEAN, "Step record should be DESTROYED_CLEAN after request completes");
+  equals( page.get('status'), K.READY_CLEAN, "Page record should be READY_CLEAN after request completes");
 });
