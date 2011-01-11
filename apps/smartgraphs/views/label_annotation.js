@@ -42,6 +42,120 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     return (this.get('isSelected') ? this.get('selectedColor') : this.get('notSelectedColor'));
   }.property('isSelected', 'selectedColor', 'notSelectedColor').cacheable(),
 
+  /* Properties and methods for inline editing */
+  
+  exampleInlineTextFieldView: SC.InlineTextFieldView,
+  isInlineEditorMultiline: NO,
+  isEditable: YES,
+  isEditing: NO,
+
+  /**
+    Event dispatcher callback.
+    If isEditable is set to true, opens the inline text editor view.
+
+    @param {DOMMouseEvent} evt DOM event
+
+  */
+  doubleClick: function( evt ) { return this.beginEditing(); },
+  
+  /**
+    Opens the inline text editor (closing it if it was already open for
+    another view).
+
+    @return {Boolean} YES if did begin editing
+  */
+  beginEditing: function() {
+    if (this.get('isEditing')) return YES ;
+    if (!this.get('isEditable')) return NO ;
+
+    var el = this.$(),
+        value = this.get('value'),
+        f = SC.viewportOffset(el[0]),
+        frameTemp = this.convertFrameFromView(this.get('frame'), null) ;
+    f.width=frameTemp.width;
+    f.height=frameTemp.height;
+
+    SC.InlineTextFieldView.beginEditing({
+      frame: f,
+      delegate: this,
+      exampleElement: el,
+      value: value,
+      multiline: this.get('isInlineEditorMultiline'),
+      isCollection: NO,
+      validator: this.get('validator'),
+      exampleInlineTextFieldView: this.get('exampleInlineTextFieldView')
+    });
+  },
+
+  /**
+    Cancels the current inline editor and then exits editor.
+
+    @return {Boolean} NO if the editor could not exit.
+  */
+  discardEditing: function() {
+    if (!this.get('isEditing')) return YES ;
+    return SC.InlineTextFieldView.discardEditing() ;
+  },
+
+  /**
+    Commits current inline editor and then exits editor.
+
+    @return {Boolean} NO if the editor could not exit
+  */
+  commitEditing: function() {
+    if (!this.get('isEditing')) return YES ;
+    return SC.InlineTextFieldView.commitEditing() ;
+  },
+
+  /** @private
+    Allow editing.
+  */
+  inlineEditorShouldBeginEditing: function(inlineEditor) {
+    return YES ;
+  },
+
+  /** @private
+    Set editing to true so edits will no longer be allowed.
+  */
+  inlineEditorWillBeginEditing: function(inlineEditor) {
+    this.set('isEditing', YES);
+  },
+
+  /** @private
+    Hide the label view while the inline editor covers it.
+  */
+  inlineEditorDidBeginEditing: function(inlineEditor) {
+    var layer = this.$();
+    this._oldOpacity = layer.css('opacity') ;
+    layer.css('opacity', 0.0);
+  },
+
+  /** @private
+    Delegate method defaults to the isEditable property
+  */
+  inlineEditorShouldBeginEditing: function(){
+    return this.get('isEditable');
+  },
+
+  /** @private
+    Could check with a validator someday...
+  */
+  inlineEditorShouldEndEditing: function(inlineEditor, finalValue) {
+    return YES ;
+  },
+
+  /** @private
+    Update the field value and make it visible again.
+  */
+  inlineEditorDidEndEditing: function(inlineEditor, finalValue) {
+    this.setIfChanged('value', finalValue) ;
+    this.$().css('opacity', this._oldOpacity);
+    this._oldOpacity = null ;
+    this.set('isEditing', NO) ;
+  },
+
+  /* False-trail methods for drag-and-drop positioning */
+
   // mouseEntered: function () {
   // },
   // 
