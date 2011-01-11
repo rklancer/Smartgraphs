@@ -15,6 +15,10 @@
 Smartgraphs.Activity = SC.Record.extend(
 /** @scope Smartgraphs.Activity.prototype */ {
 
+  init: function () {
+    this.set('annotations', []);
+  },
+  
   /** 
     The (relative) URL at which this Activity can be found. Also its primary key in the datastore.
   */
@@ -62,6 +66,13 @@ Smartgraphs.Activity = SC.Record.extend(
     @property(Smartgraphs.Dataset[])
   */
   datasets: SC.Record.toMany('Smartgraphs.Dataset', { inverse: 'activity' }),
+  
+  /**
+    Annotations defined as part of this activity. Not persisted to the database.
+    
+    @property(Smartgraphs.Annotation[])
+  */
+  annotations: null,
   
   /**
     ResponseTemplates used in this activity

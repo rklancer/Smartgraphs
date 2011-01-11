@@ -211,6 +211,11 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         }
       }
     }
+    
+    // now find all the annotation records not directly linked to by the activity record
+    if (SC.kindOf(record, Smartgraphs.Activity)) {
+      record.get('annotations').forEach( function (annotation) { self.applyToChildRecords(store, annotation, fn); } );
+    }
   },
   
   updateRecord: function(store, storeKey) {

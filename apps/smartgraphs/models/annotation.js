@@ -28,6 +28,11 @@
 Smartgraphs.Annotation = SC.Record.extend(
 /** @scope Smartgraphs.Annotation.prototype */ {
 
+  init: function () {
+    this.invokeLast(this._updateAnnotationsList);
+    sc_super();
+  },
+  
   /**
     The primary key of an Annotation record is technically its url. However, annotations are referenced by type
     and name within the serialized format of an activity.
@@ -58,6 +63,23 @@ Smartgraphs.Annotation = SC.Record.extend(
     @property {Smartgraphs.Activity}
   */
   activity: SC.Record.toOne('Smartgraphs.Activity', { aggregate: YES } ),
+  
+  /**
+    @private
+    
+    Once the activity is defined, add this to the activity's list of annotations (which can't be a ManyArray because
+    ManyArray doesn't support polymorphic relationships)
+  */
+  _updateAnnotationsList: function () {
+    var activity = this.get('activity');
+    
+    if (activity) {
+      console.log('updating activity');
+      if (this._activity) this._activity.get('annotations').removeObject(this);
+      activity.get('annotations').pushObject(this);
+      this._activity = activity;
+    }
+  }.observes('activity'),
   
   /**
     The session this annotation is associated with. (When a user begins running an activity, any new annotations
