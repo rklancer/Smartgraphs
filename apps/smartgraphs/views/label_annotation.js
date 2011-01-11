@@ -21,6 +21,8 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   
   canShowInTable: NO, // TODO: Maybe eventually yes?
   
+  /* Properties and methods controlling display */
+
   selectedColor: '#aa0000',
   notSelectedColorBinding: '.item.color',
   isHighlightedBinding: '.item.isHighlighted',
@@ -108,6 +110,8 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
       this.set('isSelected', YES);
     }
   },
+  
+  /* Methods for actual rendering of the view */
   
   /**
     We are using renderCallback in views to call non-SC render methods like
