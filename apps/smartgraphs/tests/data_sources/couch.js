@@ -381,3 +381,199 @@ test("Modifying response template record should dirty activity record", function
 });
 
 
+var decoyActivity, page, decoyPage, step, highlight;
+var K = SC.Record;
+
+module("Smartgraphs.couchDataSource helper methods", {
+  setup: function () {
+    setup.mock(Smartgraphs, 'dataSource', Smartgraphs.CouchDataSource.create());
+    setup.mock(Smartgraphs, 'store', SC.Store.create().from(Smartgraphs.dataSource));
+    
+    activity = Smartgraphs.store.createRecord(Smartgraphs.Activity, {
+      url: '/test/test',
+      title: "Test activity",
+      pages: []
+    });
+    
+    decoyActivity = Smartgraphs.store.createRecord(Smartgraphs.Activity, {
+      url: '/test/decoy',
+      title: "Decoy activity",
+      pages: []
+    });
+    
+    page = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, {
+      url: 'test/test/page1',
+      introText: "Test page",
+      steps: []
+    });
+    activity.get('pages').pushObject(page);
+    
+    decoyPage = Smartgraphs.store.createRecord(Smartgraphs.ActivityPage, {
+      url: 'test/decoy/page1',
+      introText: "Decoy activity page",
+      steps: []
+    });
+    decoyActivity.get('pages').pushObject(decoyPage);
+    
+    step = Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {
+      url: '/test/test/page1/step1',
+      beforeText: "Test step"
+    });
+    page.get('steps').pushObject(step);
+    
+    highlight = Smartgraphs.store.createRecord(Smartgraphs.HighlightedPoint, {
+      activity: '/test/test'
+    });
+    
+    SC.RunLoop.begin().end();
+
+    equals(activity.get('status'), K.READY_NEW, "The activity record should be READY_NEW to start");
+    equals(page.get('activity'), activity, "The page should belong to the activity");
+    equals(step.get('activityPage'), page, "The step should belong to the page");
+    equals(highlight.get('activity'), activity, "The annotation should belong to the activity");
+    equals(activity.getPath('pages.length'), 1, "The activity should have one page");
+    equals(page.getPath('steps.length'), 1, "The page should have one step");
+    
+    ok( decoyPage.get('activity') !== activity, "The decoy page should not belong to the activity");
+  },
+
+  teardown: function () {
+    teardown.mocks();
+  }
+});
+
+
+test("markRecordBusy marks DIRTY records BUSY", function () {
+  expect(13);
+  var pageKey = page.get('storeKey');
+  var highlightKey = highlight.get('storeKey');
+  
+  SC.RunLoop.begin();
+  Smartgraphs.store.writeStatus(pageKey, K.READY_DIRTY);
+  Smartgraphs.store.dataHashDidChange(pageKey, null, YES);
+  Smartgraphs.store.writeStatus(highlightKey, K.DESTROYED_DIRTY);
+  Smartgraphs.store.dataHashDidChange(highlightKey, null, YES);  
+  SC.RunLoop.end();
+  
+  equals( step.get('status'), K.READY_NEW, "Step record should be READY_NEW before test");
+  equals( page.get('status'), K.READY_DIRTY, "Page record should be READY_CLEAN before test");
+  equals( highlight.get('status'), K.DESTROYED_DIRTY, "Highlight record should be DESTROYED_DIRTY before test");
+  
+  SC.RunLoop.begin();
+  Smartgraphs.dataSource.markRecordBusy(Smartgraphs.store, step);
+  Smartgraphs.dataSource.markRecordBusy(Smartgraphs.store, page);
+  Smartgraphs.dataSource.markRecordBusy(Smartgraphs.store, highlight);  
+  SC.RunLoop.end();
+  
+  equals( step.get('status'), K.BUSY_CREATING, "Step record should be BUSY_CREATING after markRecordBusy");
+  equals( page.get('status'), K.BUSY_COMMITTING, "Page record should be BUSY_COMMITTING after markRecordBusy");
+  equals( highlight.get('status'), K.BUSY_DESTROYING, "Highlight record should be BUSY_DESTROYING after markRecordBusy");
+});
+
+
+test("markRecordBusy leaves CLEAN records CLEAN", function () {
+  expect(11);
+  
+  var pageKey = page.get('storeKey');
+  var highlightKey = highlight.get('storeKey');
+  
+  SC.RunLoop.begin();
+  Smartgraphs.store.writeStatus(pageKey, K.READY_CLEAN);
+  Smartgraphs.store.dataHashDidChange(pageKey, null, YES);
+  Smartgraphs.store.writeStatus(highlightKey, K.DESTROYED_CLEAN);
+  Smartgraphs.store.dataHashDidChange(highlightKey, null, YES);
+  SC.RunLoop.end();
+  
+  equals( page.get('status'), K.READY_CLEAN, "Page record should be READY_CLEAN before test");
+  equals( highlight.get('status'), K.DESTROYED_CLEAN, "Highlight record should be DESTROYED_CLEAN before test");
+  
+  SC.RunLoop.begin();
+  Smartgraphs.dataSource.markRecordBusy(Smartgraphs.store, page);
+  Smartgraphs.dataSource.markRecordBusy(Smartgraphs.store, highlight);
+  SC.RunLoop.end();
+  
+  equals( page.get('status'), K.READY_CLEAN, "Page record should be READY_CLEAN after markRecordBusy");
+  equals( highlight.get('status'), K.DESTROYED_CLEAN, "Highlight record should be DESTROYED_CLEAN after markRecordBusy");  
+});
+
+
+test("markRecordCommitted should transition BUSY records to CLEAN", function () {
+  expect(13);
+  var stepKey = step.get('storeKey');
+  var pageKey = page.get('storeKey');
+  var highlightKey = highlight.get('storeKey');
+  
+  SC.RunLoop.begin();
+  Smartgraphs.store.writeStatus(stepKey, K.BUSY_CREATING);
+  Smartgraphs.store.dataHashDidChange(stepKey, null, YES);
+  Smartgraphs.store.writeStatus(pageKey, K.BUSY_COMMITTING);
+  Smartgraphs.store.dataHashDidChange(pageKey, null, YES);  
+  Smartgraphs.store.writeStatus(highlightKey, K.BUSY_DESTROYING);
+  Smartgraphs.store.dataHashDidChange(highlightKey, null, YES);  
+  SC.RunLoop.end();
+
+  equals( step.get('status'), K.BUSY_CREATING, "Step record should be BUSY_CREATING before test");
+  equals( page.get('status'), K.BUSY_COMMITTING, "Page record should be BUSY_COMMITTING before test");
+  equals( highlight.get('status'), K.BUSY_DESTROYING, "Highlight record should be BUSY_DESTROYING before test");
+  
+  SC.RunLoop.begin();
+  Smartgraphs.dataSource.markRecordCommitted(Smartgraphs.store, step);
+  Smartgraphs.dataSource.markRecordCommitted(Smartgraphs.store, page);
+  Smartgraphs.dataSource.markRecordCommitted(Smartgraphs.store, highlight);  
+  SC.RunLoop.end();
+  
+  equals( step.get('status'), K.READY_CLEAN, "Step record should be READY_CLEAN after markRecordCommitted");
+  equals( page.get('status'), K.READY_CLEAN, "Page record should be READY_CLEAN after markRecordCommitted");
+  equals( highlight.get('status'), K.DESTROYED_CLEAN, "Highlight record should be DESTROYED_CLEAN after markRecordCommitted");
+});
+
+
+test("markRecordCommitted should leave CLEAN records CLEAN", function () {
+  expect(13);
+  var pageKey = page.get('storeKey');
+  var highlightKey = highlight.get('storeKey');
+  
+  SC.RunLoop.begin();
+  Smartgraphs.store.writeStatus(pageKey, K.READY_CLEAN);
+  Smartgraphs.store.dataHashDidChange(pageKey, null, YES);  
+  Smartgraphs.store.writeStatus(highlightKey, K.DESTROYED_CLEAN);
+  Smartgraphs.store.dataHashDidChange(highlightKey, null, YES);  
+  SC.RunLoop.end();
+
+  equals( step.get('status'), K.READY_NEW, "Step record should be READY_NEW before test");
+  equals( page.get('status'), K.READY_CLEAN, "Page record should be READY_CLEAN before test");
+  equals( highlight.get('status'), K.DESTROYED_CLEAN, "Highlight record should be DESTROYED_CLEAN before test");
+  
+  SC.RunLoop.begin();
+  Smartgraphs.dataSource.markRecordCommitted(Smartgraphs.store, step);
+  Smartgraphs.dataSource.markRecordCommitted(Smartgraphs.store, page);
+  Smartgraphs.dataSource.markRecordCommitted(Smartgraphs.store, highlight);  
+  SC.RunLoop.end();
+  
+  equals( step.get('status'), K.READY_NEW, "Step record should still be READY_NEW after markRecordCommitted");
+  equals( page.get('status'), K.READY_CLEAN, "Page record should still be READY_CLEAN after markRecordCommitted");
+  equals( highlight.get('status'), K.DESTROYED_CLEAN, "Highlight record should still be DESTROYED_CLEAN after markRecordCommitted");
+});
+
+
+test("applyToChildRecords should apply the supplied method to records listing the target as aggregate", function () {
+  expect(16);
+  
+  var calls = [];
+  
+  setup.mock(Smartgraphs.dataSource, 'spyMethod', function (store, record) {
+    calls.push({ store: store, record: record });
+  });
+  
+  Smartgraphs.dataSource.applyToChildRecords(Smartgraphs.store, activity, Smartgraphs.dataSource.spyMethod);
+  
+  equals( calls.length, 4, "applyToChildRecords should have called spyMethod three times");
+  equals( calls[0].store, Smartgraphs.store, "applyToChildRecords should have passed store");
+  equals( calls[0].record, activity, "applyToChildRecords should have been called on activity");
+  equals( calls[1].store, Smartgraphs.store, "applyToChildRecords should have passed store");
+  equals( calls[1].record, page, "applyToChildRecords should have been called on page");
+  equals( calls[2].store, Smartgraphs.store, "applyToChildRecords should have passed store");
+  equals( calls[2].record, step, "applyToChildRecords should have been called on step");
+  equals( calls[3].store, Smartgraphs.store, "applyToChildRecords should have passed store");
+  equals( calls[3].record, highlight, "applyToChildRecords should have been called on highlight annotation record");
+});
