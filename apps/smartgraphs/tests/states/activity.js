@@ -54,7 +54,7 @@ test("openAuthorView action should transition us to AUTHOR view of the same acti
   
   Smartgraphs.statechart.sendAction('openAuthorView');
 
-  same(Smartgraphs.statechart.get('currentStates').getEach('name'), ['AUTHOR'], "'openAuthorView' action sent in ACTIVITY state should transition Smartgraphs to AUTHOR state");
+  same(Smartgraphs.statechart.get('currentStates').getEach('name'), ['AUTHOR_DEFAULT'], "'openAuthorView' action sent in ACTIVITY state should transition Smartgraphs to AUTHOR(_DEFAULT) state");
   equals(Smartgraphs.activityPageController.get('content'), page, "After 'openAuthorView' action is sent, page controller content should be the same test page.");
 });
 
