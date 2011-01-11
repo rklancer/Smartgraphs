@@ -147,37 +147,43 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     return NO ; // return YES if you handled the storeKey
   },
   
+  /**
+    Applied to 'child' records of an activity record being saved to CouchDB. Marks DIRTY, READY_NEW, and READY_CLEAN 
+    records with the appropriate BUSY states so that they are not edited until CouchDB confirms the write. (It is
+    important to mark READY_CLEAN records busy so that they are not edited while the activity they are part of is
+    inflight, a.k.a. BUSY)
+  */
   markRecordBusy: function (store, record) {
-    var K = SC.Record;
-    var storeKey = record.get('storeKey');
-    
     if (record.get('store') !== store) throw "WHOOPS. Trying to mark a record busy that's from the wrong store";
+
+    // adapted from SC.Store.commitRecords
     
+    var storeKey = record.get('storeKey'); 
     var status = store.readStatus(record.get('storeKey'));
+    var newStatus;
+    var K = SC.Record;
     
-    // copied from SC.Store.commitRecords
-    if ((status == K.EMPTY) || (status == K.ERROR)) {
-      throw K.NOT_FOUND_ERROR ;
-    } 
-    else {
-      if(status==K.READY_NEW) {
-        store.writeStatus(storeKey, K.BUSY_CREATING);
-        store.dataHashDidChange(storeKey, null, YES);
-      } 
-      else if (status==K.READY_DIRTY) {
-        store.writeStatus(storeKey, K.BUSY_COMMITTING);
-        this.log("marking record '%s' as BUSY_COMMITTING: ", record.toString());
-        store.dataHashDidChange(storeKey, null, YES);
-      } 
-      else if (status==K.DESTROYED_DIRTY) {
-        store.writeStatus(storeKey, K.BUSY_DESTROYING);
-        store.dataHashDidChange(storeKey, null, YES);
-      } 
-      else if (status==K.DESTROYED_CLEAN) {
-        store.dataHashDidChange(storeKey, null, YES);
-      }
-      // ignore K.READY_CLEAN, K.BUSY_LOADING, K.BUSY_CREATING, K.BUSY_COMMITTING, 
-      // K.BUSY_REFRESH_CLEAN, K_BUSY_REFRESH_DIRTY, KBUSY_DESTROYING
+    switch (status) {
+      case K.EMPTY:
+      case K.ERROR:
+        throw K.NOT_FOUND_ERROR;
+      case K.READY_NEW:
+        newStatus = K.BUSY_CREATING;
+        break;
+      case K.READY_DIRTY:
+      case K.READY_CLEAN: 
+        newStatus = K.BUSY_COMMITTING;
+        break;
+      case K.DESTROYED_DIRTY:
+        newStatus = K.BUSY_DESTROYING;
+        break;
+      // ignore K.DESTROYED_CLEAN, K.BUSY_LOADING, K.BUSY_CREATING, K.BUSY_COMMITTING, 
+      // K.BUSY_REFRESH_CLEAN, K.BUSY_REFRESH_DIRTY, K.BUSY_DESTROYING
+    }
+    
+    if (newStatus) {
+      store.writeStatus(storeKey, newStatus);
+      store.dataHashDidChange(storeKey, null, YES);
     }
   },
   
@@ -237,7 +243,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         SC.Request.putUrl('/db/smartgraphs/'+this._ids[storeKey])
                   .json()
                   .header('Accept', 'application/json')
-                  .notify(this, this.didUpdateActivity, store, storeKey)
+                  .notify(this, 'didUpdateActivity', store, storeKey)
                   .send(doc);
         return YES;
       }
@@ -256,7 +262,6 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
       this._revs[storeKey] = response.get('body').rev;
     }
     else {
-      //FIXME also iterate over child records!
       store.dataSourceDidError(storeKey);
     }
   },

@@ -15,6 +15,7 @@ Smartgraphs.activityController = SC.ObjectController.create(
 /** @scope Smartgraphs.activityController.prototype */ {
   
   canGotoNextPage: NO,
+  isSaving: NO,
   
   /** 
     Whatever needs to be done to clean up state when leaving an activity 
@@ -34,6 +35,32 @@ Smartgraphs.activityController = SC.ObjectController.create(
   */
   isDirty: function () {
     return !!(this.get('status') & SC.Record.DIRTY);
-  }.property('status')
+  }.property('status'),
+  
+  /**
+    YES if there was an error reading or writing the activity record
+  */
+  isError: function () {
+    return !!(this.get('status') & SC.Record.ERROR);
+  }.property('status'),
+  
+  isReady: function () {
+    return !!(this.get('status') & SC.Record.READY);
+  }.property('status'),
+
+  save: function () {
+    this.get('content').commitRecord();
+    this.set('isSaving', YES);
+  },
+  
+  _clearIsSaving: function () {
+    if (this.get('isReady')) this.set('isSaving', NO);
+  }.observes('isReady'),
+  
+  _sendErrorSavingActivity: function () {
+    if (this.get('isSaving') && this.get('isError')) {
+      Smartgraphs.statechart.sendAction('errorSavingActivity');
+    }
+  }.observes('isSaving', 'isError')
     
 }) ;

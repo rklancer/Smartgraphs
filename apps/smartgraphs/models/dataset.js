@@ -49,7 +49,7 @@ Smartgraphs.Dataset = SC.Record.extend(
     A hack to deal with the fact that SC.Record.propagateToAggregates isn't recursive.
   */
   _statusDidChange: function () {
-    this.invokeLast(this.propagateToAggregates);
+    if (this.get('status') & SC.Record.DIRTY) this.invokeLast(this.propagateToAggregates);
   }.observes('status'),
   
   /**

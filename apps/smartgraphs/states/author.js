@@ -16,6 +16,8 @@
 Smartgraphs.AUTHOR = SC.State.extend(
 /** @scope Smartgraphs.AUTHOR.prototype */ {
   
+  initialSubstate: 'AUTHOR_DEFAULT',
+  
   enterState: function () {
     Smartgraphs.appWindowController.showAuthorView();
     Smartgraphs.toolbarController.showRunButton();
@@ -33,6 +35,16 @@ Smartgraphs.AUTHOR = SC.State.extend(
     Smartgraphs.activityOutlineController.set('isSelectable', NO);
     Smartgraphs.activityViewController.set('enableBackAndForward', NO);
   },
+  
+  AUTHOR_DEFAULT: SC.State.design({
+  }),
+  
+  ERROR_SAVING_ACTIVITY: SC.State.design({
+    // TODO distinguish between editing conflicts and connectivity problems; give option to retry.
+    enterState: function() { 
+      SC.AlertPane.error("Could not save activity", "Could not save the activity. Someone else may have edited the activity you were working on. Try reloading the page and redoing your edits.");
+    }
+  }),
 
   // ..........................................................
   // ACTIONS
@@ -51,14 +63,22 @@ Smartgraphs.AUTHOR = SC.State.extend(
   
   gotoNextPage: function () {
     Smartgraphs.activityPagesController.selectNextPage();
+    return YES;
   },
   
   gotoPreviousPage: function () {
     Smartgraphs.activityPagesController.selectPreviousPage();
+    return YES;
   },
   
   saveActivity: function () {
-    Smartgraphs.activityController.get('content').commitRecord();
+    Smartgraphs.activityController.save();
+    return YES;
+  },
+  
+  errorSavingActivity: function () {
+    this.gotoState('ERROR_SAVING_ACTIVITY');
+    return YES;
   }
-
+  
 }) ;
