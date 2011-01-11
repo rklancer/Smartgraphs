@@ -262,7 +262,6 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
       this._revs[storeKey] = response.get('body').rev;
     }
     else {
-      //FIXME also iterate over child records!
       store.dataSourceDidError(storeKey);
     }
   },

@@ -55,6 +55,12 @@ Smartgraphs.activityController = SC.ObjectController.create(
   
   _clearIsSaving: function () {
     if (this.get('isReady')) this.set('isSaving', NO);
-  }.observes('isReady')
+  }.observes('isReady'),
+  
+  _sendErrorSavingActivity: function () {
+    if (this.get('isSaving') && this.get('isError')) {
+      Smartgraphs.statechart.sendAction('errorSavingActivity');
+    }
+  }.observes('isSaving', 'isError')
     
 }) ;
