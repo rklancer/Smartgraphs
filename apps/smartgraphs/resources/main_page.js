@@ -18,7 +18,7 @@ Smartgraphs.mainPage = SC.Page.design({
     topToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_TOP,
       
-      childViews: ['title', 'editButton', 'runButton', 'saveButton'],
+      childViews: ['title', 'editButton', 'runButton', 'saveButton', 'savingMessage'],
       
       title: SC.LabelView.design({
         layout: { centerY: 0, height: 24, left: 8, width: 400 },
@@ -47,6 +47,15 @@ Smartgraphs.mainPage = SC.Page.design({
         isEnabledBinding: 'Smartgraphs.activityController.isDirty',
         title: 'Save',
         action: 'saveActivity'
+      }),
+      
+      // eventually, we can let the toolbar controller handle message choice & visibility
+      
+      savingMessage: SC.LabelView.design({
+        layout: { right: 200, centerY: 0, height: 16, width: 80 },
+        classNames: ['toolbar-message'],
+        value: "saving...",
+        isVisibleBinding: 'Smartgraphs.activityController.isSaving'
       })
     }),
     

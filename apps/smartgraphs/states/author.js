@@ -51,14 +51,17 @@ Smartgraphs.AUTHOR = SC.State.extend(
   
   gotoNextPage: function () {
     Smartgraphs.activityPagesController.selectNextPage();
+    return YES;
   },
   
   gotoPreviousPage: function () {
     Smartgraphs.activityPagesController.selectPreviousPage();
+    return YES;
   },
   
   saveActivity: function () {
-    Smartgraphs.activityController.get('content').commitRecord();
+    Smartgraphs.activityController.save();
+    return YES;
   }
 
 }) ;
