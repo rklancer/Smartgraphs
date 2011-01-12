@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df4",
-  "_rev": "6-a021bb9367723e99f4d900ef12596ac1",
+  "_rev": "7-313920d63940f56c491e7d2d7965915a",
   "data_format_version": 4,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -28,7 +28,7 @@
       "/shared/what-is-velocity/page/20"
     ],
     "datasets": [
-
+      "/shared/instantaneous-speed/dataset/slope-data"
     ],
     "axes": [
       "/shared/what-is-velocity/axes/walking-position-time"
@@ -3813,10 +3813,94 @@
     }
   ],
   "datasets": [
-
+    {
+      "url": "/shared/instantaneous-speed/dataset/slope-data",
+      "name": "slope-data",
+      "activity": "/shared/instantaneous-speed",
+      "points": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "session": null,
+      "defaultColor": null
+    }
   ],
   "datapoints": [
-
+    {
+      "x": 0,
+      "y": 0,
+      "guid": 1,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "guid": 2,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "guid": 3,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "guid": 4,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "guid": 5,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "guid": 6,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 6,
+      "y": 8,
+      "guid": 7,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 7,
+      "y": 10,
+      "guid": 8,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "guid": 9,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 9,
+      "y": 12,
+      "guid": 10,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 10,
+      "y": 15,
+      "guid": 11,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    }
   ],
   "annotations": [
     {
