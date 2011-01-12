@@ -1,6 +1,6 @@
 {
   "_id": "instantaneous-speed.df4",
-  "_rev": "1-cfa3350293d18e550d6845f1f8d92a06",
+  "_rev": "8-f946e962a7c31cb5d643f447190e26d8",
   "data_format_version": 4,
   "activity": {
     "title": "Instantaneous Speed",
@@ -10,20 +10,12 @@
       "/shared/instantaneous-speed/page/1"
     ],
     "datasets": [
-
+      "/shared/instantaneous-speed/dataset/slope-data"
     ],
     "axes": [
       "/shared/instantaneous-speed/axes/walking-position-time"
     ],
     "graphs": [
-      "/shared/instantaneous-speed/graph/freehand-walking-normal",
-      "/shared/instantaneous-speed/graph/prediction-walking-normal",
-      "/shared/instantaneous-speed/graph/freehand-walking-slow",
-      "/shared/instantaneous-speed/graph/prediction-walking-slow",
-      "/shared/instantaneous-speed/graph/sensor-normal-walking",
-      "/shared/instantaneous-speed/graph/sensor-result-normal-walking",
-      "/shared/instantaneous-speed/graph/sensor-slow-walking",
-      "/shared/instantaneous-speed/graph/sensor-result-slow-walking",
       "/shared/instantaneous-speed/graph/slope-graph"
      ],
     "responseTemplates": [
