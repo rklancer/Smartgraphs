@@ -79,7 +79,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
       frame: f,
       delegate: this,
       exampleElement: el,
-      value: value,
+      value: this.get('item').get('label'),
       multiline: this.get('isInlineEditorMultiline'),
       isCollection: NO,
       validator: this.get('validator'),
