@@ -1,0 +1,1312 @@
+{
+  "_id": "instantaneous-speed.df4",
+  "_rev": "1-cfa3350293d18e550d6845f1f8d92a06",
+  "data_format_version": 4,
+  "activity": {
+    "title": "Instantaneous Speed",
+    "url": "/shared/instantaneous-speed",
+    "owner": "shared",
+    "pages": [
+      "/shared/instantaneous-speed/page/1"
+    ],
+    "datasets": [
+
+    ],
+    "axes": [
+      "/shared/instantaneous-speed/axes/walking-position-time"
+    ],
+    "graphs": [
+      "/shared/instantaneous-speed/graph/freehand-walking-normal",
+      "/shared/instantaneous-speed/graph/prediction-walking-normal",
+      "/shared/instantaneous-speed/graph/freehand-walking-slow",
+      "/shared/instantaneous-speed/graph/prediction-walking-slow",
+      "/shared/instantaneous-speed/graph/sensor-normal-walking",
+      "/shared/instantaneous-speed/graph/sensor-result-normal-walking",
+      "/shared/instantaneous-speed/graph/sensor-slow-walking",
+      "/shared/instantaneous-speed/graph/sensor-result-slow-walking",
+      "/shared/instantaneous-speed/graph/slope-graph"
+     ],
+    "responseTemplates": [
+      "/components/response-template/open",
+      "/components/response-template/numeric"
+    ]
+  },
+  "pages": [
+    {
+      "steps": [
+        "/shared/instantaneous-speed/page/1/step/1",
+        "/shared/instantaneous-speed/page/1/step/2",
+        "/shared/instantaneous-speed/page/1/step/3",
+        "/shared/instantaneous-speed/page/1/step/4",
+        "/shared/instantaneous-speed/page/1/step/5",
+        "/shared/instantaneous-speed/page/1/step/6",
+        "/shared/instantaneous-speed/page/1/step/7",
+        "/shared/instantaneous-speed/page/1/step/8",
+        "/shared/instantaneous-speed/page/1/step/9",
+        "/shared/instantaneous-speed/page/1/step/10",
+        "/shared/instantaneous-speed/page/1/step/11",
+        "/shared/instantaneous-speed/page/1/step/12",
+        "/shared/instantaneous-speed/page/1/step/13",
+        "/shared/instantaneous-speed/page/1/step/14",
+        "/shared/instantaneous-speed/page/1/step/15"
+      ],
+      "name": "Instantaneous Speed",
+      "firstStep": "/shared/instantaneous-speed/page/1/step/1",
+      "introText": "<h1>Velocity</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the speed between those points. This calculation will be close to your <b>instantaneous</b> speed. </p>",
+      "url": "/shared/instantaneous-speed/page/1",
+      "activity": "/shared/instantaneous-speed",
+      "index": 1
+    }
+  ],
+  "steps": [
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/1",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Select a point and then click <b>OK</b>.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "first-point-A",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#1f77b3"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/2",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Select a point adjacent to the first point. Then click <b>OK</b>.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "second-point-A",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#1f77b4"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.AnnotationInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "dataPointsAreAdjacent": []
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/4"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/3",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>In order to calculate <b>instantaneous velocity</b>, please select a point that is <b>adjacent</b> to the first selection.  Then click <b>OK</b>.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "second-point-A",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#1f77b4"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.AnnotationInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "dataPointsAreAdjacent": []
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/4"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/4",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Here is a line through the two points.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "slope-line-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "graphName": "slope-graph",
+            "color": "#1f77b4"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/5",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/5",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/6",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/6",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "startCommands": [
+        {
+          "action": "createRiseArrow",
+          "literalArgs": {
+            "arrowName": "rise-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/7",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/7",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the highlighted change in the table.</p>",
+      "startCommands": [
+        {
+          "action": "createRiseBracket",
+          "literalArgs": {
+            "bracketName": "rise-bracket-A",
+            "point1": "first-point-A",
+            "point2": "second-point-A",
+            "datasetName": "slope-data",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "y",
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/8",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/8",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in position is [y2] - [y1], or [dy].</p><p>What is the change in time?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#d62728"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/10",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/9",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct.</p><p>What is the change in time? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#d62728"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/10",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/10",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Observe the highlighted change in the table.</p>",
+      "startCommands": [
+        {
+          "action": "createRunBracket",
+          "literalArgs": {
+            "bracketName": "run-bracket-A",
+            "point1": "first-point-A",
+            "point2": "second-point-A",
+            "datasetName": "slope-data",
+            "color": "#9467bd"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/11",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect. The change in time is [x2] - [x1], or [dx].</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/13",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/12",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct.</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "run-bracket-A",
+            "tableName": "slope-data"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/13",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/13",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "length": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "slope": "value"
+          },
+          "step": "/shared/instantaneous-speed/page/1/step/15"
+        }
+      ],
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/14",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/14",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>If the change in position is [dy] and the change in time is [dx], the velocity is [dy]/[dx], or [velocity] meters per second.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": true,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/instantaneous-speed/page/1/step/15",
+      "activityPage": "/shared/instantaneous-speed/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct!</p><p>The position changed [y] meters in [x] seconds, so the velocity was [velocity] meters per second.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+
+      ],
+      "shouldFinishImmediately": true,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": false
+    }
+  ],
+  "axes": [
+    {
+      "url": "/shared/instantaneous-speed/axes/walking-position-time",
+      "xMin": 0,
+      "xMax": 30,
+      "xSteps": 6,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 4.5,
+      "ySteps": 9,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Pos. (m)"
+    },
+    {
+      "url": "/shared/instantaneous-speed/axes/slope-position-time",
+      "xMin": 0,
+      "xMax": 10,
+      "xSteps": 5,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 15,
+      "ySteps": 5,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Pos. (m)"
+    },
+    {
+      "url": "/shared/instantaneous-speed/axes/slope-position-time-analyze",
+      "xMin": 0,
+      "xMax": 15,
+      "xSteps": 15,
+      "xLabel": "Time (seconds)",
+      "xLabelAbbreviated": "Time (s)",
+      "yMin": 0,
+      "yMax": 5,
+      "ySteps": 10,
+      "yLabel": "Position (meters)",
+      "yLabelAbbreviated": "Pos. (m)"
+    }
+  ],
+  "graphs": [
+    {
+      "url": "/shared/instantaneous-speed/graph/slope-graph",
+      "activity": "/shared/instantaneous-speed",
+      "name": "slope-graph",
+      "description": "graph for calculating slope",
+      "title": "Position vs. Time",
+      "axes": "/shared/instantaneous-speed/axes/slope-position-time",
+      "initialDatasets": [
+        "slope-data"
+      ],
+      "initialAnnotations": [
+
+      ]
+    }
+   ],
+   "responseTemplates": [
+    {
+      "url": "/components/response-template/open",
+      "templateString": "",
+      "fieldTypes": [
+        "textarea"
+      ],
+      "fieldChoicesList": [
+        null
+      ],
+      "initialValues": [
+        ""
+      ]
+    },
+    {
+      "url": "/components/response-template/numeric",
+      "templateString": "",
+      "fieldTypes": [
+        "numeric"
+      ],
+      "fieldChoicesList": [
+        null
+      ],
+      "initialValues": [
+
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "url": "/shared/instantaneous-speed/dataset/slope-data",
+      "name": "slope-data",
+      "activity": "/shared/instantaneous-speed",
+      "points": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "session": null,
+      "defaultColor": null
+    }
+  ],
+  "datapoints": [
+    {
+      "x": 0,
+      "y": 0,
+      "guid": 1,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "guid": 2,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "guid": 3,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "guid": 4,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "guid": 5,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 5,
+      "y": 8,
+      "guid": 6,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 6,
+      "y": 8,
+      "guid": 7,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 7,
+      "y": 10,
+      "guid": 8,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "guid": 9,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 9,
+      "y": 12,
+      "guid": 10,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    },
+    {
+      "x": 10,
+      "y": 15,
+      "guid": 11,
+      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+    }
+  ],
+  "annotations": [
+  ]
+}
