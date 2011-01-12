@@ -54,7 +54,7 @@ Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
   yOffset: SC.Record.attr(Number, { defaultValue: -15 }),
   
   /** 
-    The point size of the label type.
+    The pixel size of the label type.
     
     @property {Number}
   */
