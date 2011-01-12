@@ -7,5 +7,5 @@ curl -s http://127.0.0.1:5984/smartgraphs/_design/app/_list/urls-with-revs/revs-
 
 # reset test activities
 for name in `ls apps/smartgraphs/activity_json/test/*.json` ; do
-  printf http://127.0.0.1:5984/smartgraphs/%s `basename $name` | xargs -n 1 curl -vX PUT -d@$name
+  printf http://127.0.0.1:5984/smartgraphs/test.%s `basename $name .json` | xargs -n 1 curl -vX PUT -d@$name
 done
