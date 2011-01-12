@@ -1,6 +1,6 @@
 {
   "_id": "instantaneous-speed.df4",
-  "_rev": "8-f946e962a7c31cb5d643f447190e26d8",
+  "_rev": "9-83cd1e7c3045c36d99dc820c3f84ea8f",
   "data_format_version": 4,
   "activity": {
     "title": "Instantaneous Speed",
@@ -44,7 +44,7 @@
       ],
       "name": "Instantaneous Speed",
       "firstStep": "/shared/instantaneous-speed/page/1/step/1",
-      "introText": "<h1>Velocity</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the speed between those points. This calculation will be close to your <b>instantaneous</b> speed. </p>",
+      "introText": "<h1>Analysis</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the speed between those points. This calculation will be close to your <b>instantaneous</b> speed. </p>",
       "url": "/shared/instantaneous-speed/page/1",
       "activity": "/shared/instantaneous-speed",
       "index": 1
