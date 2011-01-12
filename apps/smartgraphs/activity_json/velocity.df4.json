@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df4",
-  "_rev": "5-05c4b5ea73ce2b93d887ac241704633b",
+  "_rev": "6-a021bb9367723e99f4d900ef12596ac1",
   "data_format_version": 4,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -43,7 +43,7 @@
       "/shared/what-is-velocity/graph/sensor-slow-walking",
       "/shared/what-is-velocity/graph/sensor-result-slow-walking",
       "/shared/what-is-velocity/graph/slope-graph"
-     ],
+    ],
     "responseTemplates": [
       "/components/response-template/open",
       "/components/response-template/numeric"
@@ -56,7 +56,7 @@
       ],
       "name": "Engage",
       "firstStep": "/shared/what-is-velocity/page/1/step/1",
-      "introText": "<h1>Velocity</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current speed.</p><p>(You can read more about the topic by researching \"eddy-current speedometer.\")</p> ",
+      "introText": "<h1>Introduction</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current speed.</p><p>(You can read more about the topic by researching \"eddy-current speedometer.\")</p>  ",
       "url": "/shared/what-is-velocity/page/1",
       "activity": "/shared/what-is-velocity",
       "index": 1
@@ -68,7 +68,7 @@
       ],
       "name": "Predict With Numbers",
       "firstStep": "/shared/what-is-velocity/page/2/step/1",
-      "introText": "<h1>Velocity</h1><p>Let's start by predicting how fast you <b>normally</b> walk.</p><p><b>Walk</b> approximately 4 meters at your normal walking pace.</p>",
+      "introText": "<h1>Prediction</h1><p>In this activity, you will calculate how fast you are moving while walking. Let's start by predicting how fast you <b>normally</b> walk.</p> <p><b>Walk</b> approximately 4 meters at your normal walking pace.</p>",
       "url": "/shared/what-is-velocity/page/2",
       "activity": "/shared/what-is-velocity",
       "index": 2
@@ -79,7 +79,7 @@
       ],
       "name": "Predict With Graph (Normal)",
       "firstStep": "/shared/what-is-velocity/page/3/step/1",
-      "introText": "<h1>Velocity</h1><p>Keeping your prediction in mind, <b>draw</b> a graph showing your position over time as you walked from 0 to 4 meters.</b></p>",
+      "introText": "<h1>Prediction</h1><p>Draw a graph showing your position over time as you walked from 0 to 4 meters at your predicted, normal walking pace.</b></p>",
       "url": "/shared/what-is-velocity/page/3",
       "activity": "/shared/what-is-velocity",
       "index": 3
@@ -90,7 +90,7 @@
       ],
       "name": "Predict With Graph (Slow)",
       "firstStep": "/shared/what-is-velocity/page/4/step/1",
-      "introText": "<h1>Velocity</h1><p>The top graph shows your predicted <b>normal</b> walking pace.</p><p>On the bottom graph, <b>predict</b> what <b>slow, steady</b> motion would look like from 0 to 4 meters.</p>",
+      "introText": "<h1>Prediction</h1><p>The top graph shows your predicted <b>normal</b> walking pace.</p><p>On the bottom graph, <b>predict</b> what <b>slow, steady</b> motion would look like from 0 to 4 meters.</p>",
       "url": "/shared/what-is-velocity/page/4",
       "activity": "/shared/what-is-velocity",
       "index": 4
@@ -103,7 +103,7 @@
       ],
       "name": "Normal vs Slow (Predictions)",
       "firstStep": "/shared/what-is-velocity/page/5/step/1",
-      "introText": "<h1>Velocity</h1><p>The top graph shows your predicted <b>normal</b> walking pace. The bottom graph shows your predicted <b>slow</b> walking pace.</p><p>What do you observe about your predictions?</p>",
+      "introText": "<h1>Prediction</h1><p>The top graph shows your predicted <b>normal</b> walking pace. The bottom graph shows your predicted <b>slow</b> walking pace.</p><p>What do you observe about your predictions?</p>",
       "url": "/shared/what-is-velocity/page/5",
       "activity": "/shared/what-is-velocity",
       "index": 5
@@ -114,7 +114,7 @@
       ],
       "name": "Collect Data (Normal)",
       "firstStep": "/shared/what-is-velocity/page/6/step/1",
-      "introText": "<h1>Velocity</h1><p>You will test your prediction by walking at a <b>normal, steady</b> pace along a straight 4-meter path while using a motion sensor.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>normal, steady</b> pace.</p><p><b>Click Reset</b> to try a different normal, steady pace.</p>",
+      "introText": "<h1>Data Collection</h1><p>You will test your prediction by walking at a <b>normal, steady</b> pace along a straight 4-meter path while using a motion sensor.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>normal, steady</b> pace.</p><p><b>Click Clear</b> to try a different normal, steady pace.</p>",
       "url": "/shared/what-is-velocity/page/6",
       "activity": "/shared/what-is-velocity",
       "index": 6
@@ -126,7 +126,7 @@
       ],
       "name": "Analyze Data (Normal)",
       "firstStep": "/shared/what-is-velocity/page/7/step/1",
-      "introText": "<h1>Velocity</h1><p></p>",
+      "introText": "<h1>Data Collection</h1><p>",
       "url": "/shared/what-is-velocity/page/7",
       "activity": "/shared/what-is-velocity",
       "index": 7
@@ -137,7 +137,7 @@
       ],
       "name": "Collect Data (Slow)",
       "firstStep": "/shared/what-is-velocity/page/8/step/1",
-      "introText": "<h1>Velocity</h1><p>Now you will try walking at a <b>slow, steady</b> pace.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>slow, steady</b> pace.</p>",
+      "introText": "<h1>Data Collection</h1><p>Now you will try walking at a <b>slow, steady</b> pace.</p><p><b>Place</b> the sensor at the 0-meter mark.</p><p><b>Stand</b> near the sensor. When you are ready, have your partner <b>click Start</b> to record the data for your movements.</p><p><b>Walk</b> on the path at a <b>slow, steady</b> pace.</p>",
       "url": "/shared/what-is-velocity/page/8",
       "activity": "/shared/what-is-velocity",
       "index": 8
@@ -148,7 +148,7 @@
       ],
       "name": "Actual vs. Prediction (Normal)",
       "firstStep": "/shared/what-is-velocity/page/9/step/1",
-      "introText": "<h1>Velocity</h1><p>On the top is your predicted position-time graph for normal, steady motion.  Below is your actual position-time graph for normal, steady motion.</p>",
+      "introText": "<h1>Data Collection</h1><p>On the top is your predicted position-time graph for normal, steady motion.  Below is your actual position-time graph for normal, steady motion.</p>",
       "url": "/shared/what-is-velocity/page/9",
       "activity": "/shared/what-is-velocity",
       "index": 9
@@ -159,7 +159,7 @@
       ],
       "name": "Actual vs. Prediction (Slow)",
       "firstStep": "/shared/what-is-velocity/page/10/step/1",
-      "introText": "<h1>Velocity</h1><p>On the top is your predicted position-time graph for slow, steady motion.  Below is your actual position-time graph for slow, steady motion.</p>",
+      "introText": "<h1>Data Collection</h1><p>On the top is your predicted position-time graph for slow, steady motion.  Below is your actual position-time graph for slow, steady motion.</p>",
       "url": "/shared/what-is-velocity/page/10",
       "activity": "/shared/what-is-velocity",
       "index": 10
@@ -170,7 +170,7 @@
       ],
       "name": "Normal vs Slow (Actual)",
       "firstStep": "/shared/what-is-velocity/page/11/step/1",
-      "introText": "<h1>Velocity</h1><p>Here is the data you just collected for normal and slow, steady motion.</p>",
+      "introText": "<h1>Data Collection</h1><p>Here is the data you just collected for normal and slow, steady motion.</p>",
       "url": "/shared/what-is-velocity/page/11",
       "activity": "/shared/what-is-velocity",
       "index": 11
@@ -195,7 +195,7 @@
       ],
       "name": "Instantaneous Speed",
       "firstStep": "/shared/what-is-velocity/page/12/step/1",
-      "introText": "<h1>Velocity</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the speed between those points. This calculation will be close to your <b>instantaneous</b> speed. </p>",
+      "introText": "<h1>Analysis</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the speed between those points. This calculation will be close to your <b>instantaneous</b> speed. </p>",
       "url": "/shared/what-is-velocity/page/12",
       "activity": "/shared/what-is-velocity",
       "index": 12
@@ -220,7 +220,7 @@
       ],
       "name": "Instantaneous Speed II",
       "firstStep": "/shared/what-is-velocity/page/13/step/1",
-      "introText": "<h1>Velocity</h1><p>Now you will pick another set of points that are next to each other and find the speed between those points.</p>",
+      "introText": "<h1>Analysis</h1><p>Now you will pick another set of points that are next to each other and find the speed between those points.</p>",
       "url": "/shared/what-is-velocity/page/13",
       "activity": "/shared/what-is-velocity",
       "index": 13
@@ -231,7 +231,7 @@
       ],
       "name": "Instantaneous Speed III",
       "firstStep": "/shared/what-is-velocity/page/14/step/1",
-      "introText": "<h1>Velocity</h1><p>Was your speed the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>",
+      "introText": "<h1>Analysis</h1><p>Was your speed the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>",
       "url": "/shared/what-is-velocity/page/14",
       "activity": "/shared/what-is-velocity",
       "index": 14
@@ -244,7 +244,7 @@
       ],
       "name": "Average Speed",
       "firstStep": "/shared/what-is-velocity/page/15/step/1",
-      "introText": "<h1>Velocity</h1><p>To find the average speed for the entire trip, you will use the start and end points of the whole trip.</p>",
+      "introText": "<h1>Analysis</h1><p>To find the average speed for the entire trip, you will use the start and end points of the whole trip.</p>",
       "url": "/shared/what-is-velocity/page/15",
       "activity": "/shared/what-is-velocity",
       "index": 15
@@ -255,7 +255,7 @@
       ],
       "name": "Analyze/Conclusion",
       "firstStep": "/shared/what-is-velocity/page/16/step/1",
-      "introText": "<h1>Velocity</h1><p>In this activity, you predicted and confirmed different steady speeds while walking along a straight path.</p>",
+      "introText": "<h1>Analysis</h1><p>In this activity, you predicted and confirmed different steady speeds while walking along a straight path.</p>",
       "url": "/shared/what-is-velocity/page/16",
       "activity": "/shared/what-is-velocity",
       "index": 16
@@ -266,7 +266,7 @@
       ],
       "name": "Analyze/Conclusion II",
       "firstStep": "/shared/what-is-velocity/page/17/step/1",
-      "introText": "<h1>Velocity</h1>",
+      "introText": "<h1>Analysis</h1><p>",
       "url": "/shared/what-is-velocity/page/17",
       "activity": "/shared/what-is-velocity",
       "index": 17
@@ -277,7 +277,7 @@
       ],
       "name": "Analyze/Conclusion III",
       "firstStep": "/shared/what-is-velocity/page/18/step/1",
-      "introText": "<h1>Velocity</h1>",
+      "introText": "<h1>Analysis</h1><p>",
       "url": "/shared/what-is-velocity/page/18",
       "activity": "/shared/what-is-velocity",
       "index": 18
@@ -1142,15 +1142,17 @@
         "type": "Smartgraphs.AnnotationInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
       "responseBranches": [
         {
           "criterion": {
-            "dataPointsAreAdjacent": []
+            "dataPointsAreAdjacent": [
+
+            ]
           },
           "step": "/shared/what-is-velocity/page/12/step/4"
         }
@@ -1205,15 +1207,17 @@
         "type": "Smartgraphs.AnnotationInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
       "responseBranches": [
         {
           "criterion": {
-            "dataPointsAreAdjacent": []
+            "dataPointsAreAdjacent": [
+
+            ]
           },
           "step": "/shared/what-is-velocity/page/12/step/4"
         }
@@ -1277,7 +1281,7 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -1286,8 +1290,8 @@
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1342,17 +1346,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1422,7 +1426,7 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -1431,8 +1435,8 @@
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1506,17 +1510,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1603,17 +1607,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1621,7 +1625,7 @@
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -1700,17 +1704,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1718,7 +1722,7 @@
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -1784,17 +1788,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1802,7 +1806,7 @@
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -1865,17 +1869,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1943,17 +1947,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2008,17 +2012,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2214,15 +2218,17 @@
         "type": "Smartgraphs.AnnotationInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
       "responseBranches": [
         {
           "criterion": {
-            "dataPointsAreAdjacent": []
+            "dataPointsAreAdjacent": [
+
+            ]
           },
           "step": "/shared/what-is-velocity/page/13/step/4"
         }
@@ -2277,15 +2283,17 @@
         "type": "Smartgraphs.AnnotationInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
       "responseBranches": [
         {
           "criterion": {
-            "dataPointsAreAdjacent": []
+            "dataPointsAreAdjacent": [
+
+            ]
           },
           "step": "/shared/what-is-velocity/page/13/step/4"
         }
@@ -2349,7 +2357,7 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -2358,8 +2366,8 @@
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -2414,17 +2422,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -2494,7 +2502,7 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -2503,8 +2511,8 @@
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -2578,17 +2586,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -2675,17 +2683,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -2693,7 +2701,7 @@
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -2772,17 +2780,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -2790,7 +2798,7 @@
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -2856,17 +2864,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -2874,7 +2882,7 @@
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -2937,17 +2945,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3015,17 +3023,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3080,17 +3088,17 @@
         ]
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3270,6 +3278,7 @@
 
       ],
       "afterSubmissionCommands": [
+
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -3455,7 +3464,7 @@
       "activityPage": "/shared/what-is-velocity/page/16",
       "paneConfig": "single",
       "panes": {
-       "single": {
+        "single": {
           "type": "graph",
           "name": "slope-graph-analyze"
         }
@@ -3464,6 +3473,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
+
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -3508,6 +3518,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
+
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -3552,6 +3563,7 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
+
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -3634,32 +3646,6 @@
       "yMin": 0,
       "yMax": 4.5,
       "ySteps": 9,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Pos. (m)"
-    },
-    {
-      "url": "/shared/what-is-velocity/axes/slope-position-time",
-      "xMin": 0,
-      "xMax": 10,
-      "xSteps": 5,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 15,
-      "ySteps": 5,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Pos. (m)"
-    },
-    {
-      "url": "/shared/what-is-velocity/axes/slope-position-time-analyze",
-      "xMin": 0,
-      "xMax": 15,
-      "xSteps": 15,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
       "yLabel": "Position (meters)",
       "yLabelAbbreviated": "Pos. (m)"
     }
@@ -3796,38 +3782,9 @@
       "initialAnnotations": [
 
       ]
-    },
-    {
-      "url": "/shared/what-is-velocity/graph/slope-graph-analyze",
-      "activity": "/shared/what-is-velocity",
-      "name": "slope-graph-analyze",
-      "description": "graph for analyzing slope",
-      "title": "Position vs. Time",
-      "axes": "/shared/what-is-velocity/axes/slope-position-time-analyze",
-      "initialDatasets": [
-
-      ],
-      "initialAnnotations": [
-        {
-          "type": "Smartgraphs.FreehandSketch",
-          "name": "slope-data-analyze-line-A"
-        },
-        {
-          "type": "Smartgraphs.FreehandSketch",
-          "name": "slope-data-analyze-line-B"
-        },
-        {
-          "type": "Smartgraphs.FreehandSketch",
-          "name": "slope-data-analyze-line-C"
-        },
-        {
-          "type": "Smartgraphs.FreehandSketch",
-          "name": "slope-data-analyze-line-D"
-        }
-      ]
     }
-   ],
-   "responseTemplates": [
+  ],
+  "responseTemplates": [
     {
       "url": "/components/response-template/open",
       "templateString": "",
@@ -3856,94 +3813,10 @@
     }
   ],
   "datasets": [
-    {
-      "url": "/shared/what-is-velocity/dataset/slope-data",
-      "name": "slope-data",
-      "activity": "/shared/what-is-velocity",
-      "points": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
-      "session": null,
-      "defaultColor": null
-    }
+
   ],
   "datapoints": [
-    {
-      "x": 0,
-      "y": 0,
-      "guid": 1,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 1,
-      "y": 2,
-      "guid": 2,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 2,
-      "y": 4,
-      "guid": 3,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 3,
-      "y": 5,
-      "guid": 4,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 4,
-      "y": 6,
-      "guid": 5,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 5,
-      "y": 8,
-      "guid": 6,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 6,
-      "y": 8,
-      "guid": 7,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 7,
-      "y": 10,
-      "guid": 8,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 8,
-      "y": 11,
-      "guid": 9,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 9,
-      "y": 12,
-      "guid": 10,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    },
-    {
-      "x": 10,
-      "y": 15,
-      "guid": 11,
-      "dataset": "/shared/what-is-velocity/dataset/slope-data"
-    }
+
   ],
   "annotations": [
     {
@@ -3965,12 +3838,7 @@
           ],
           "session": null,
           "strokeColor": "#2f7f0d"
-        }
-      ]
-    },
-    {
-      "type": "FreehandSketch",
-      "records": [
+        },
         {
           "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-B",
           "name": "slope-data-analyze-line-B",
@@ -3987,12 +3855,7 @@
           ],
           "session": null,
           "strokeColor": "#000000"
-        }
-      ]
-    },
-    {
-      "type": "FreehandSketch",
-      "records": [
+        },
         {
           "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-C",
           "name": "slope-data-analyze-line-C",
@@ -4009,12 +3872,7 @@
           ],
           "session": null,
           "strokeColor": "#ff7f0d"
-        }
-      ]
-    },
-    {
-      "type": "FreehandSketch",
-      "records": [
+        },
         {
           "url": "/shared/what-is-velocity/dataset/slope-data-analyze-line-D",
           "name": "slope-data-analyze-line-D",
