@@ -7,9 +7,9 @@
 
 /** @class
 
-  (Document Your View Here)
+  Displaying text labels for DataPoints on the graph.
 
-  @extends SC.View
+  @extends RaphaelViews.RaphaelView
 */
 Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelAnnotationView.prototype */ {
