@@ -48,6 +48,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   isInlineEditorMultiline: NO,
   isEditable: YES,
   isEditing: NO,
+  editorWidth: 80,
 
   /**
     Event dispatcher callback.
@@ -69,11 +70,16 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     if (!this.get('isEditable')) return NO ;
 
     var el = this.$(),
-        value = this.get('value'),
-        f = SC.viewportOffset(el[0]),
-        frameTemp = this.convertFrameFromView(this.get('frame'), null) ;
-    f.width=frameTemp.width;
-    f.height=frameTemp.height;
+        f = SC.viewportOffset(el[0]) ;
+    var labelCoords = this.graphCoordinates(); // within the SVG
+    
+    // This "frame" positions the InlineTextFieldView
+    f.width= 80; // Magic number, but more effective than the clever way
+    f.height= this.get('item').get('size') + 8;
+    f.x = labelCoords.x - (f.width/2) + offsets.x + 
+          Smartgraphs.mainPage.mainPane.container.dividerView.get('layout').left;
+          // TODO: Needs the width of the instructionWrapper added
+    f.y = labelCoords.y - (f.height/2) + 32; // Default height of a SC.ToolbarView
 
     SC.InlineTextFieldView.beginEditing({
       frame: f,
@@ -105,6 +111,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   commitEditing: function() {
     if (!this.get('isEditing')) return YES ;
     return SC.InlineTextFieldView.commitEditing() ;
+    // TODO: saving values should happen here?
   },
 
   /** @private
