@@ -1,33 +1,31 @@
 {
-  "_id": "marias-run.df4",
-  "_rev": "17-0ea6f7dfc7c806f729e8dc8be2c50dfe",
   "data_format_version": 4,  
   "activity": {
-    "title": "Maria's Run",
-    "url": "/shared/marias-run",
-    "owner": "shared",
+    "title": "Maria's Run (TEST VERSION)",
+    "url": "/test/marias-run",
+    "owner": "test",
     "pages": [
-      "/shared/marias-run/page/1",
-      "/shared/marias-run/page/2",
-      "/shared/marias-run/page/3",
-      "/shared/marias-run/page/4",
-      "/shared/marias-run/page/5",
-      "/shared/marias-run/page/6",
-      "/shared/marias-run/page/7",
-      "/shared/marias-run/page/8"
+      "/test/marias-run/page/1",
+      "/test/marias-run/page/2",
+      "/test/marias-run/page/3",
+      "/test/marias-run/page/4",
+      "/test/marias-run/page/5",
+      "/test/marias-run/page/6",
+      "/test/marias-run/page/7",
+      "/test/marias-run/page/8"
     ],
     "datasets": [
-      "/shared/marias-run/dataset/maria"
+      "/test/marias-run/dataset/maria"
     ],
     "axes": [
-      "/shared/marias-run/axes/2000m-10min",
-      "/shared/marias-run/axes/5m-30s"
+      "/test/marias-run/axes/2000m-10min",
+      "/test/marias-run/axes/5m-30s"
     ],
     "graphs": [
-      "/shared/marias-run/graph/maria",
-      "/shared/marias-run/graph/sensor-playing",
-      "/shared/marias-run/graph/start-stop-start",
-      "/shared/marias-run/graph/two-speeds"
+      "/test/marias-run/graph/maria",
+      "/test/marias-run/graph/sensor-playing",
+      "/test/marias-run/graph/start-stop-start",
+      "/test/marias-run/graph/two-speeds"
     ],
     "responseTemplates": [
       "/components/response-template/open",
@@ -37,113 +35,113 @@
   "pages": [
     {
       "steps": [
-        "/shared/marias-run/page/1/step/1"
+        "/test/marias-run/page/1/step/1"
       ],
       "name": "Introduction",
-      "firstStep": "/shared/marias-run/page/1/step/1",
+      "firstStep": "/test/marias-run/page/1/step/1",
       "introText": "<p>Have you ever tried to tell someone a story about a trip you took? Most likely, your story included words and pictures. In this activity, you will tell stories that convey information about motion during a specific type of journey.</p><p>You will learn that the motion of an object can be described by its position, direction of motion, and speed. Motion can be measured and represented on a graph.</p> ",
-      "url": "/shared/marias-run/page/1",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/page/1",
+      "activity": "/test/marias-run",
       "index": 1
     },
     {
       "steps": [
-        "/shared/marias-run/page/2/step/1"
+        "/test/marias-run/page/2/step/1"
       ],
       "name": "Experimenting With Motion",
-      "firstStep": "/shared/marias-run/page/2/step/1",
+      "firstStep": "/test/marias-run/page/2/step/1",
       "introText": "<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
-      "url": "/shared/marias-run/page/2",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/page/2",
+      "activity": "/test/marias-run",
       "index": 2
     },
     {
       "steps": [
-        "/shared/marias-run/page/3/step/1"
+        "/test/marias-run/page/3/step/1"
       ],
       "name": "Motion at Two Speeds",
-      "firstStep": "/shared/marias-run/page/3/step/1",
+      "firstStep": "/test/marias-run/page/3/step/1",
       "introText": "<p>Next you will try moving at two different speeds.</p><p>Start close to the motion sensor. When you are ready, click Start and walk away from the sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. Click Stop when the time is up.</p>",
-      "url": "/shared/marias-run/page/3",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/page/3",
+      "activity": "/test/marias-run",
       "index": 3
     },
     {
       "steps": [
-        "/shared/marias-run/page/4/step/1"
+        "/test/marias-run/page/4/step/1"
       ],
       "name": "Motion: Slow, Stopped, and Faster",
-      "firstStep": "/shared/marias-run/page/4/step/1",
+      "firstStep": "/test/marias-run/page/4/step/1",
       "introText": "<p>This time, you are going to record your position and time during three different tasks.</p><p>Start close to the motion sensor and click Start. Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds.</p>",
-      "url": "/shared/marias-run/page/4",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/page/4",
+      "activity": "/test/marias-run",
       "index": 4
     },
     {
       "steps": [
-        "/shared/marias-run/page/5/step/1",
-        "/shared/marias-run/page/5/step/2",
-        "/shared/marias-run/page/5/step/3",
-        "/shared/marias-run/page/5/step/4",
-        "/shared/marias-run/page/5/step/5",
-        "/shared/marias-run/page/5/step/6"
+        "/test/marias-run/page/5/step/1",
+        "/test/marias-run/page/5/step/2",
+        "/test/marias-run/page/5/step/3",
+        "/test/marias-run/page/5/step/4",
+        "/test/marias-run/page/5/step/5",
+        "/test/marias-run/page/5/step/6"
       ],
       "name": "Where did Maria stop?",
-      "firstStep": "/shared/marias-run/page/5/step/1",
+      "firstStep": "/test/marias-run/page/5/step/1",
       "introText": "<p>Now you that you\u2019ve had a chance to create position versus time graphs from your own motions, let\u2019s look at some graphs that were created by someone running.</p><p>Maria ran practice laps around the school track. Her coach recorded the distances she ran after each minute. These data are shown in the graph and the table at right. Remember that the time was recorded in minutes rather than seconds.</p>",
-      "url": "/shared/marias-run/page/5",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/page/5",
+      "activity": "/test/marias-run",
       "index": 5
     },
     {
       "steps": [
-        "/shared/marias-run/page/6/step/1",
-        "/shared/marias-run/page/6/step/2",
-        "/shared/marias-run/page/6/step/3",
-        "/shared/marias-run/page/6/step/4",
-        "/shared/marias-run/page/6/step/5",
-        "/shared/marias-run/page/6/step/6"
+        "/test/marias-run/page/6/step/1",
+        "/test/marias-run/page/6/step/2",
+        "/test/marias-run/page/6/step/3",
+        "/test/marias-run/page/6/step/4",
+        "/test/marias-run/page/6/step/5",
+        "/test/marias-run/page/6/step/6"
       ],
       "name": "How far did Maria run?",
-      "firstStep": "/shared/marias-run/page/6/step/1",
+      "firstStep": "/test/marias-run/page/6/step/1",
       "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
-      "url": "/shared/marias-run/page/6",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/page/6",
+      "activity": "/test/marias-run",
       "index": 6
     },
     {
       "steps": [
-        "/shared/marias-run/page/7/step/1",
-        "/shared/marias-run/page/7/step/2",
-        "/shared/marias-run/page/7/step/3",
-        "/shared/marias-run/page/7/step/4",
-        "/shared/marias-run/page/7/step/5",
-        "/shared/marias-run/page/7/step/6"
+        "/test/marias-run/page/7/step/1",
+        "/test/marias-run/page/7/step/2",
+        "/test/marias-run/page/7/step/3",
+        "/test/marias-run/page/7/step/4",
+        "/test/marias-run/page/7/step/5",
+        "/test/marias-run/page/7/step/6"
       ],
       "name": "How long did Maria stop?",
-      "firstStep": "/shared/marias-run/page/7/step/1",
+      "firstStep": "/test/marias-run/page/7/step/1",
       "introText": "<p>Remember that the data on the right is the Maria's distance, recorded every minute (60 seconds) by her coach.<p>",
-      "url": "/shared/marias-run/page/7",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/page/7",
+      "activity": "/test/marias-run",
       "index": 7
     },
     {
       "steps": [
-        "/shared/marias-run/page/8/step/1",
-        "/shared/marias-run/page/8/step/2"
+        "/test/marias-run/page/8/step/1",
+        "/test/marias-run/page/8/step/2"
       ],
       "name": "Reflection on Activity",
-      "firstStep": "/shared/marias-run/page/8/step/1",
+      "firstStep": "/test/marias-run/page/8/step/1",
       "introText": "",
-      "url": "/shared/marias-run/page/8",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/page/8",
+      "activity": "/test/marias-run",
       "index": 8
     }
   ],
   "steps": [
     {
-      "url": "/shared/marias-run/page/1/step/1",
-      "activityPage": "/shared/marias-run/page/1",
+      "url": "/test/marias-run/page/1/step/1",
+      "activityPage": "/test/marias-run/page/1",
       "paneConfig": "single",
       "panes": {
         "single": {
@@ -179,8 +177,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/2/step/1",
-      "activityPage": "/shared/marias-run/page/1",
+      "url": "/test/marias-run/page/2/step/1",
+      "activityPage": "/test/marias-run/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -238,8 +236,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/3/step/1",
-      "activityPage": "/shared/marias-run/page/3",
+      "url": "/test/marias-run/page/3/step/1",
+      "activityPage": "/test/marias-run/page/3",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -297,8 +295,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/4/step/1",
-      "activityPage": "/shared/marias-run/page/4",
+      "url": "/test/marias-run/page/4/step/1",
+      "activityPage": "/test/marias-run/page/4",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -356,8 +354,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/5/step/1",
-      "activityPage": "/shared/marias-run/page/5",
+      "url": "/test/marias-run/page/5/step/1",
+      "activityPage": "/test/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -409,10 +407,10 @@
               4
             ]
           },
-          "step": "/shared/marias-run/page/5/step/6"
+          "step": "/test/marias-run/page/5/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/5/step/2",
+      "defaultBranch": "/test/marias-run/page/5/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -420,8 +418,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/5/step/2",
-      "activityPage": "/shared/marias-run/page/5",
+      "url": "/test/marias-run/page/5/step/2",
+      "activityPage": "/test/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -474,10 +472,10 @@
               4
             ]
           },
-          "step": "/shared/marias-run/page/5/step/6"
+          "step": "/test/marias-run/page/5/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/5/step/3",
+      "defaultBranch": "/test/marias-run/page/5/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -485,8 +483,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/5/step/3",
-      "activityPage": "/shared/marias-run/page/5",
+      "url": "/test/marias-run/page/5/step/3",
+      "activityPage": "/test/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -551,10 +549,10 @@
               4
             ]
           },
-          "step": "/shared/marias-run/page/5/step/6"
+          "step": "/test/marias-run/page/5/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/5/step/4",
+      "defaultBranch": "/test/marias-run/page/5/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -562,8 +560,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/5/step/4",
-      "activityPage": "/shared/marias-run/page/5",
+      "url": "/test/marias-run/page/5/step/4",
+      "activityPage": "/test/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -635,10 +633,10 @@
               4
             ]
           },
-          "step": "/shared/marias-run/page/5/step/6"
+          "step": "/test/marias-run/page/5/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/5/step/5",
+      "defaultBranch": "/test/marias-run/page/5/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -646,8 +644,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/5/step/5",
-      "activityPage": "/shared/marias-run/page/5",
+      "url": "/test/marias-run/page/5/step/5",
+      "activityPage": "/test/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -688,8 +686,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/5/step/6",
-      "activityPage": "/shared/marias-run/page/5",
+      "url": "/test/marias-run/page/5/step/6",
+      "activityPage": "/test/marias-run/page/5",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -730,8 +728,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/6/step/1",
-      "activityPage": "/shared/marias-run/page/6",
+      "url": "/test/marias-run/page/6/step/1",
+      "activityPage": "/test/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -784,10 +782,10 @@
               800
             ]
           },
-          "step": "/shared/marias-run/page/6/step/6"
+          "step": "/test/marias-run/page/6/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/6/step/2",
+      "defaultBranch": "/test/marias-run/page/6/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -795,8 +793,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/6/step/2",
-      "activityPage": "/shared/marias-run/page/6",
+      "url": "/test/marias-run/page/6/step/2",
+      "activityPage": "/test/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -849,10 +847,10 @@
               800
             ]
           },
-          "step": "/shared/marias-run/page/6/step/6"
+          "step": "/test/marias-run/page/6/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/6/step/3",
+      "defaultBranch": "/test/marias-run/page/6/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -860,8 +858,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/6/step/3",
-      "activityPage": "/shared/marias-run/page/6",
+      "url": "/test/marias-run/page/6/step/3",
+      "activityPage": "/test/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -920,10 +918,10 @@
               800
             ]
           },
-          "step": "/shared/marias-run/page/6/step/6"
+          "step": "/test/marias-run/page/6/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/6/step/4",
+      "defaultBranch": "/test/marias-run/page/6/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -931,8 +929,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/6/step/4",
-      "activityPage": "/shared/marias-run/page/6",
+      "url": "/test/marias-run/page/6/step/4",
+      "activityPage": "/test/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -998,10 +996,10 @@
               800
             ]
           },
-          "step": "/shared/marias-run/page/6/step/6"
+          "step": "/test/marias-run/page/6/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/6/step/5",
+      "defaultBranch": "/test/marias-run/page/6/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1009,8 +1007,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/6/step/5",
-      "activityPage": "/shared/marias-run/page/6",
+      "url": "/test/marias-run/page/6/step/5",
+      "activityPage": "/test/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1051,8 +1049,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/6/step/6",
-      "activityPage": "/shared/marias-run/page/6",
+      "url": "/test/marias-run/page/6/step/6",
+      "activityPage": "/test/marias-run/page/6",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1093,8 +1091,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/7/step/1",
-      "activityPage": "/shared/marias-run/page/7",
+      "url": "/test/marias-run/page/7/step/1",
+      "activityPage": "/test/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1147,10 +1145,10 @@
               2
             ]
           },
-          "step": "/shared/marias-run/page/7/step/6"
+          "step": "/test/marias-run/page/7/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/7/step/2",
+      "defaultBranch": "/test/marias-run/page/7/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1158,8 +1156,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/7/step/2",
-      "activityPage": "/shared/marias-run/page/7",
+      "url": "/test/marias-run/page/7/step/2",
+      "activityPage": "/test/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1218,10 +1216,10 @@
               2
             ]
           },
-          "step": "/shared/marias-run/page/7/step/6"
+          "step": "/test/marias-run/page/7/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/7/step/3",
+      "defaultBranch": "/test/marias-run/page/7/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1229,8 +1227,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/7/step/3",
-      "activityPage": "/shared/marias-run/page/7",
+      "url": "/test/marias-run/page/7/step/3",
+      "activityPage": "/test/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1283,10 +1281,10 @@
               2
             ]
           },
-          "step": "/shared/marias-run/page/7/step/6"
+          "step": "/test/marias-run/page/7/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/7/step/4",
+      "defaultBranch": "/test/marias-run/page/7/step/4",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1294,8 +1292,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/7/step/4",
-      "activityPage": "/shared/marias-run/page/7",
+      "url": "/test/marias-run/page/7/step/4",
+      "activityPage": "/test/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1348,10 +1346,10 @@
               2
             ]
           },
-          "step": "/shared/marias-run/page/7/step/6"
+          "step": "/test/marias-run/page/7/step/6"
         }
       ],
-      "defaultBranch": "/shared/marias-run/page/7/step/5",
+      "defaultBranch": "/test/marias-run/page/7/step/5",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1359,8 +1357,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/7/step/5",
-      "activityPage": "/shared/marias-run/page/7",
+      "url": "/test/marias-run/page/7/step/5",
+      "activityPage": "/test/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1401,8 +1399,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/7/step/6",
-      "activityPage": "/shared/marias-run/page/7",
+      "url": "/test/marias-run/page/7/step/6",
+      "activityPage": "/test/marias-run/page/7",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1443,8 +1441,8 @@
       "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/8/step/1",
-      "activityPage": "/shared/marias-run/page/8",
+      "url": "/test/marias-run/page/8/step/1",
+      "activityPage": "/test/marias-run/page/8",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1486,7 +1484,7 @@
       ],
       "responseInspector": null,
       "responseBranches": null,
-      "defaultBranch": "/shared/marias-run/page/8/step/2",
+      "defaultBranch": "/test/marias-run/page/8/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -1494,8 +1492,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/marias-run/page/8/step/2",
-      "activityPage": "/shared/marias-run/page/8",
+      "url": "/test/marias-run/page/8/step/2",
+      "activityPage": "/test/marias-run/page/8",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1536,7 +1534,7 @@
   ],
   "axes": [
     {
-      "url": "/shared/marias-run/axes/2000m-10min",
+      "url": "/test/marias-run/axes/2000m-10min",
       "xMin": 0,
       "xMax": 10,
       "xSteps": 10,
@@ -1549,7 +1547,7 @@
       "yLabelAbbreviated": "Position (m)"
     },
     {
-      "url": "/shared/marias-run/axes/5m-30s",
+      "url": "/test/marias-run/axes/5m-30s",
       "xMin": 0,
       "xMax": 30,
       "xSteps": 6,
@@ -1564,12 +1562,12 @@
   ],
   "graphs": [
     {
-      "url": "/shared/marias-run/graph/maria",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/graph/maria",
+      "activity": "/test/marias-run",
       "name": "maria",
       "description": "Graph of Maria's run",
       "title": "Position vs. Time",
-      "axes": "/shared/marias-run/axes/2000m-10min",
+      "axes": "/test/marias-run/axes/2000m-10min",
       "initialDatasets": [
         "maria"
       ],
@@ -1578,12 +1576,12 @@
       ]
     },
     {
-      "url": "/shared/marias-run/graph/sensor-playing",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/graph/sensor-playing",
+      "activity": "/test/marias-run",
       "name": "sensor-playing",
       "description": "Playing around with the sensor in page 2",
       "title": "Position vs. Time",
-      "axes": "/shared/marias-run/axes/5m-30s",
+      "axes": "/test/marias-run/axes/5m-30s",
       "initialDatasets": [
         
       ],
@@ -1592,12 +1590,12 @@
       ]
     },
     {
-      "url": "/shared/marias-run/graph/start-stop-start",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/graph/start-stop-start",
+      "activity": "/test/marias-run",
       "name": "start-stop-start",
       "description": "Starting, stopping, and starting again in page 4",
       "title": "Position vs. Time",
-      "axes": "/shared/marias-run/axes/5m-30s",
+      "axes": "/test/marias-run/axes/5m-30s",
       "initialDatasets": [
         
       ],
@@ -1606,12 +1604,12 @@
       ]
     },
     {
-      "url": "/shared/marias-run/graph/two-speeds",
-      "activity": "/shared/marias-run",
+      "url": "/test/marias-run/graph/two-speeds",
+      "activity": "/test/marias-run",
       "name": "two-speeds",
       "description": "Walking at two speeds in page 3",
       "title": "Position vs. Time",
-      "axes": "/shared/marias-run/axes/5m-30s",
+      "axes": "/test/marias-run/axes/5m-30s",
       "initialDatasets": [
         
       ],
@@ -1650,9 +1648,9 @@
   ],
   "datasets": [
     {
-      "url": "/shared/marias-run/dataset/maria",
+      "url": "/test/marias-run/dataset/maria",
       "name": "maria",
-      "activity": "/shared/marias-run",
+      "activity": "/test/marias-run",
       "points": [
         400,
         401,
@@ -1674,61 +1672,61 @@
       "x": 1,
       "y": 200,
       "guid": 400,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 2,
       "y": 400,
       "guid": 401,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 3,
       "y": 600,
       "guid": 402,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 4,
       "y": 800,
       "guid": 403,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 5,
       "y": 800,
       "guid": 404,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 6,
       "y": 800,
       "guid": 405,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 7,
       "y": 1050,
       "guid": 406,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 8,
       "y": 1300,
       "guid": 407,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 9,
       "y": 1550,
       "guid": 408,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     },
     {
       "x": 10,
       "y": 1800,
       "guid": 409,
-      "dataset": "/shared/marias-run/dataset/maria"
+      "dataset": "/test/marias-run/dataset/maria"
     }
   ],
   "annotations": [
@@ -1736,9 +1734,9 @@
       "type": "HighlightedPoint",
       "records": [
         {
-          "url": "/shared/marias-run/annotation/where-maria-stopped",
+          "url": "/test/marias-run/annotation/where-maria-stopped",
           "name": "where-maria-stopped",
-          "activity": "/shared/marias-run",
+          "activity": "/test/marias-run",
           "session": null,
           "point": 403
         }
@@ -1748,9 +1746,9 @@
       "type": "HighlightedSegment",
       "records": [
         {
-          "url": "/shared/marias-run/annotation/maria-running-interval-1",
+          "url": "/test/marias-run/annotation/maria-running-interval-1",
           "name": "maria-running-interval-1",
-          "activity": "/shared/marias-run",
+          "activity": "/test/marias-run",
           "session": null,
           "points": [
             400,
@@ -1760,9 +1758,9 @@
           ]
         },
         {
-          "url": "/shared/marias-run/annotation/maria-running-interval-2",
+          "url": "/test/marias-run/annotation/maria-running-interval-2",
           "name": "maria-running-interval-2",
-          "activity": "/shared/marias-run",
+          "activity": "/test/marias-run",
           "session": null,
           "points": [
             405,
@@ -1773,9 +1771,9 @@
           ]
         },
         {
-          "url": "/shared/marias-run/annotation/maria-stationary-interval",
+          "url": "/test/marias-run/annotation/maria-stationary-interval",
           "name": "maria-stationary-interval",
-          "activity": "/shared/marias-run",
+          "activity": "/test/marias-run",
           "session": null,
           "points": [
             403,
@@ -1789,9 +1787,9 @@
       "type": "LineToAxis",
       "records": [
         {
-          "url": "/shared/marias-run/annotation/where-maria-stopped-to-y-axis",
+          "url": "/test/marias-run/annotation/where-maria-stopped-to-y-axis",
           "name": "where-maria-stopped-to-y-axis",
-          "activity": "/shared/marias-run",
+          "activity": "/test/marias-run",
           "session": null,
           "point": 403,
           "axis": "y"
