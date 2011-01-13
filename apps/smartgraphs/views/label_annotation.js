@@ -227,6 +227,24 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   
   /* Methods for actual rendering of the view */
   
+  graphCoordinates: function () {
+    var graphView = this.get('graphView');
+    var point = this.get('item').get('point');
+    var xOffset = this.get('item').get('xOffset');
+    var yOffset = this.get('item').get('yOffset');
+    var labelCoords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
+    
+    if (xOffset) {
+      labelCoords.x += xOffset;
+    }
+    
+    if (yOffset) {
+      labelCoords.y += yOffset;
+    }
+
+    return labelCoords;
+  },
+
   /**
     We are using renderCallback in views to call non-SC render methods like
     RaphaelCanvas.segmentPath with the correct attributes.
@@ -240,23 +258,11 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
-    var graphView = this.get('graphView');
     var label = this.get('item').get('label');
-    var point = this.get('item').get('point');
     var size = this.get('item').get('size');
-    var xOffset = this.get('item').get('xOffset');
-    var yOffset = this.get('item').get('yOffset');
     
-    var labelCoords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
+    var labelCoords = this.graphCoordinates();
     
-    if (xOffset) {
-      labelCoords.x += xOffset;
-    }
-    
-    if (yOffset) {
-      labelCoords.y += yOffset;
-    }
-
     var attrs = {
       'label': label,
       'labelX': labelCoords.x,
