@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df4",
-  "_rev": "7-313920d63940f56c491e7d2d7965915a",
+  "_rev": "35-67ff1d0140f73f34d2a70d00ef249c86",
   "data_format_version": 4,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -28,7 +28,7 @@
       "/shared/what-is-velocity/page/20"
     ],
     "datasets": [
-      "/shared/instantaneous-speed/dataset/slope-data"
+      "/shared/what-is-velocity/dataset/slope-data"
     ],
     "axes": [
       "/shared/what-is-velocity/axes/walking-position-time"
@@ -68,7 +68,7 @@
       ],
       "name": "Predict With Numbers",
       "firstStep": "/shared/what-is-velocity/page/2/step/1",
-      "introText": "<h1>Prediction</h1><p>In this activity, you will calculate how fast you are moving while walking. Let's start by predicting how fast you <b>normally</b> walk.</p> <p><b>Walk</b> approximately 4 meters at your normal walking pace.</p>",
+      "introText": "<h1>Prediction</h1><p>In this activity, you will calculate how fast you are moving while walking. Let's start by predicting how fast you <b>normally</b> walk.</p> <p><b>Walk</b> approximately 4 meters at your normal walking pace of [TBD].</p>",
       "url": "/shared/what-is-velocity/page/2",
       "activity": "/shared/what-is-velocity",
       "index": 2
@@ -97,9 +97,7 @@
     },
     {
       "steps": [
-        "/shared/what-is-velocity/page/5/step/1",
-        "/shared/what-is-velocity/page/5/step/2",
-        "/shared/what-is-velocity/page/5/step/3"
+        "/shared/what-is-velocity/page/5/step/1"
       ],
       "name": "Normal vs Slow (Predictions)",
       "firstStep": "/shared/what-is-velocity/page/5/step/1",
@@ -307,7 +305,7 @@
       },
       "beforeText": "<p>Describe another way that you can tell how fast you are moving.</p>",
       "responseTemplate": "/components/response-template/open",
-      "afterText": "",
+      "afterText": "<p><i>Image courtesy DineshAdv at en.wikipedia</i></p>",
       "startCommands": [
 
       ],
@@ -395,7 +393,7 @@
       "panes": {
         "single": null
       },
-      "beforeText": "<p>Based on your estimate, what is your average speed in meters per second?</p><p>Remember that average speed = total distance/total time.</p>",
+      "beforeText": "<p>Based on your estimate of [TBD], what is your average speed in meters per second?</p><p>Remember:</p><blockquote><table cellspacing='4' cellpadding='4' style='text-align:center'><tr><td style='border-width:0px'>average speed</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td></tr></table></blockquote>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -560,111 +558,7 @@
           "name": "prediction-walking-slow"
         }
       },
-      "beforeText": "<p>For forward motion, position should increase with time.</p><p>Do your lines point in an upward direction?</p>",
-      "responseTemplate": "/components/response-template/open",
-      "afterText": "",
-      "startCommands": [
-
-      ],
-      "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
-      "submissibilityInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "submissibilityCriterion": {
-        "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
-          0
-        ]
-      },
-      "triggeredCommands": [
-
-      ],
-      "afterSubmissionCommands": [
-
-      ],
-      "responseInspector": null,
-      "responseBranches": [
-
-      ],
-      "defaultBranch": "/shared/what-is-velocity/page/5/step/2",
-      "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "Continue",
-      "nextButtonShouldSubmit": false
-    },
-    {
-      "url": "/shared/what-is-velocity/page/5/step/2",
-      "activityPage": "/shared/what-is-velocity/page/5",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "name": "prediction-walking-normal"
-        },
-        "bottom": {
-          "type": "graph",
-          "name": "prediction-walking-slow"
-        }
-      },
-      "beforeText": "<p>For steady motion, your position should increase at a constant rate.</p><p>Is your prediction for steady motion a straight line?</p>",
-      "responseTemplate": "/components/response-template/open",
-      "afterText": "",
-      "startCommands": [
-
-      ],
-      "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
-      "submissibilityInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "submissibilityCriterion": {
-        "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
-          0
-        ]
-      },
-      "triggeredCommands": [
-
-      ],
-      "afterSubmissionCommands": [
-
-      ],
-      "responseInspector": null,
-      "responseBranches": [
-
-      ],
-      "defaultBranch": "/shared/what-is-velocity/page/5/step/3",
-      "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "Continue",
-      "nextButtonShouldSubmit": false
-    },
-    {
-      "url": "/shared/what-is-velocity/page/5/step/3",
-      "activityPage": "/shared/what-is-velocity/page/5",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "name": "prediction-walking-normal"
-        },
-        "bottom": {
-          "type": "graph",
-          "name": "prediction-walking-slow"
-        }
-      },
-      "beforeText": "<p>Compare the steepness of your two graphs.</p><p>In which graph is position always greater at a given time?</p>",
+      "beforeText": "<p>Hints: Try to describe the shape, direction and steepness of the data.</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -765,7 +659,7 @@
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>Based on your data, how long did it take you to walk 4 meters at your normal pace?</p>",
+      "beforeText": "<p>Based on your data [TBD], how long did it take you to walk 4 meters at your normal pace?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -3356,7 +3250,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Click that represents the end of the trip.</p>",
+      "beforeText": "<p>Click the point that represents the end of the trip.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -3814,9 +3708,9 @@
   ],
   "datasets": [
     {
-      "url": "/shared/instantaneous-speed/dataset/slope-data",
+      "url": "/shared/what-is-velocity/dataset/slope-data",
       "name": "slope-data",
-      "activity": "/shared/instantaneous-speed",
+      "activity": "/shared/what-is-velocity",
       "points": [
         1,
         2,
@@ -3839,67 +3733,67 @@
       "x": 0,
       "y": 0,
       "guid": 1,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 1,
       "y": 2,
       "guid": 2,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 2,
       "y": 4,
       "guid": 3,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 3,
       "y": 5,
       "guid": 4,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 4,
       "y": 6,
       "guid": 5,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 5,
       "y": 8,
       "guid": 6,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 6,
       "y": 8,
       "guid": 7,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 7,
       "y": 10,
       "guid": 8,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 8,
       "y": 11,
       "guid": 9,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 9,
       "y": 12,
       "guid": 10,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     },
     {
       "x": 10,
       "y": 15,
       "guid": 11,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "dataset": "/shared/what-is-velocity/dataset/slope-data"
     }
   ],
   "annotations": [

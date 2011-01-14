@@ -1,6 +1,6 @@
 {
   "_id": "instantaneous-speed.df4",
-  "_rev": "9-83cd1e7c3045c36d99dc820c3f84ea8f",
+  "_rev": "13-43d6fe1f152859d810407d36b7094806",
   "data_format_version": 4,
   "activity": {
     "title": "Instantaneous Speed",
@@ -116,7 +116,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Select a point adjacent to the first point. Then click <b>OK</b>.</p>",
+      "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -179,7 +179,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>In order to calculate <b>instantaneous velocity</b>, please select a point that is <b>adjacent</b> to the first selection.  Then click <b>OK</b>.</p>",
+      "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -242,7 +242,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Here is a line through the two points.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
+      "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -390,7 +390,7 @@
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "afterText": "<p>Hint: Look at the graph.</p>",
       "startCommands": [
         {
           "action": "createRiseArrow",
@@ -473,7 +473,7 @@
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p>Hint: Observe the highlighted change in the table.</p>",
+      "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "startCommands": [
         {
           "action": "createRiseBracket",
@@ -555,86 +555,30 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect. The change in position is [y2] - [y1], or [dy].</p><p>What is the change in time?</p>",
-      "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "beforeText": "<p>Incorrect. The change in position is [y2] - [y1], or [dy].</p>",
+      "responseTemplate": "",
+      "afterText": "",
       "startCommands": [
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "rise-arrow-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "rise-bracket-A",
-            "tableName": "slope-data"
-          }
-        },
-        {
-          "action": "createRunArrow",
-          "literalArgs": {
-            "arrowName": "run-arrow-A",
-            "firstPoint": "first-point-A",
-            "secondPoint": "second-point-A",
-            "color": "#d62728"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "run-arrow-A",
-            "graphName": "slope-graph"
-          }
-        }
+
       ],
       "shouldFinishImmediately": false,
-      "submissibilityInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "submissibilityCriterion": {
-        "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
-          0
-        ]
-      },
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
       "triggeredCommands": [
         
       ],
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
-        "config": {
-          "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
-          ]
-        }
-      },
+      "responseInspector": null,
       "responseBranches": [
-        {
-          "criterion": {
-            "delta": {
-              "axis": "x", 
-              "respectOrder": false
-            }
-          },
-          "step": "/shared/instantaneous-speed/page/1/step/12"
-        }
+
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/1/step/10",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/9",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Continue",
       "nextButtonShouldSubmit": false
     },
     {
@@ -652,9 +596,9 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Correct.</p><p>What is the change in time? </p>",
+      "beforeText": "<p>What is the change in time? </p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p>Hint: Observe the arrow on the graph.</p>",
+      "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
         {
           "action": "removeAnnotation",
@@ -751,7 +695,7 @@
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p>Hint: Observe the highlighted change in the table.</p>",
+      "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "startCommands": [
         {
           "action": "createRunBracket",
@@ -833,67 +777,30 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect. The change in time is [x2] - [x1], or [dx].</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
-      "responseTemplate": "/components/response-template/numeric",
+      "beforeText": "<p>Incorrect. The change in time is [x2] - [x1], or [dx].</p>",
+      "responseTemplate": "",
       "afterText": "",
       "startCommands": [
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "run-arrow-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "run-bracket-A",
-            "tableName": "slope-data"
-          }
-        }
+
       ],
       "shouldFinishImmediately": false,
-      "submissibilityInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
-      },
-      "submissibilityCriterion": {
-        "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
-          0
-        ]
-      },
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
       "triggeredCommands": [
         
       ],
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
-        "config": {
-          "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
-          ]
-        }
-      },
+      "responseInspector": null,
       "responseBranches": [
-        {
-          "criterion": {
-            "slope": "value"
-          },
-          "step": "/shared/instantaneous-speed/page/1/step/15"
-        }
+
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/1/step/13",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/12",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Continue",
       "nextButtonShouldSubmit": false
     },
     {
@@ -911,7 +818,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Correct.</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "beforeText": "<p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
