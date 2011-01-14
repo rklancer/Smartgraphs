@@ -72,13 +72,14 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     var el = this.$(),
         f = SC.viewportOffset(el[0]) ;
     var labelCoords = this.graphCoordinates(); // within the SVG
-    
+    var activityWidth = Smartgraphs.mainPage.mainPane.container.get('bottomRightThickness');
+    var graphLeftEdge = activityWidth * Smartgraphs.mainPage.mainPane.container.bottomRightView.childViews[0].instructionsWrapper.get('layout').width;
     // This "frame" positions the InlineTextFieldView
     f.width= 80; // Magic number, but more effective than the clever way
     f.height= this.get('item').get('size') + 8;
-    f.x = labelCoords.x - (f.width/2) + offsets.x + 
-          Smartgraphs.mainPage.mainPane.container.dividerView.get('layout').left;
-          // TODO: Needs the width of the instructionWrapper added
+    f.x = labelCoords.x - (f.width/2) + 
+          Smartgraphs.mainPage.mainPane.container.dividerView.get('layout').left +
+          graphLeftEdge;
     f.y = labelCoords.y - (f.height/2) + 32; // Default height of a SC.ToolbarView
 
     SC.InlineTextFieldView.beginEditing({
