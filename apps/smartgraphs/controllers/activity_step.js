@@ -50,7 +50,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Smartgraphs.statechart.sendAction('enableSubmission');
     this.executeCommands(this.get('startCommands'));
     this.setupTriggers();
-  
+    this.processSubstitutions(this.get('substitutedExpressions'));
+   
     // does the step goes "straight through"?
     if (this.get('shouldFinishImmediately')) {
       Smartgraphs.statechart.sendAction('submitStep');
@@ -106,6 +107,35 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   
   setupTriggers: function () {
       // TODO!!
+  },
+  
+  processSubstitutions: function(expressions) {
+    if (!expressions) return;
+
+    // build args for call to fmt method
+    var fmtArgs = "";
+    for (var ind in expressions) {
+      if ( !expressions.hasOwnProperty(ind) ) continue;
+      var expression = expressions[ind];
+      
+      var inspector = this.makeInspector(expression);
+      if (inspector) {
+        var value = inspector.inspect();
+        fmtArgs += ",'" + value + "'";
+      }
+    }
+    fmtArgs = fmtArgs.substring(1);
+
+    var beforeText = this.get('beforeText');
+    if (beforeText) {
+      this.set('beforeText', eval("beforeText.fmt(" + fmtArgs + ")"));
+    }
+
+    var afterText = this.get('afterText');
+    if (afterText) {
+      this.set('afterText', eval("afterText.fmt(" + fmtArgs + ")"));
+    }
+
   },
   
   enableSubmission: function () {

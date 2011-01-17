@@ -138,6 +138,10 @@
     return parseInt(evaluate(terms, value), 10);
   }
   
+  function floatValue(terms, value) {
+    return parseFloat(evaluate(terms, value), 10);
+  }
+  
   evaluate = function (exp, value) {
     if (exp === 'value') return value;
 
@@ -172,6 +176,8 @@
             return xvalue(terms, value);
           case 'int': 
             return intValue(terms, value);
+          case 'float': 
+            return floatValue(terms, value);
           case 'dataPointsAreAdjacent': 
             return dataPointsAreAdjacent(terms, value);
           case 'slope': 

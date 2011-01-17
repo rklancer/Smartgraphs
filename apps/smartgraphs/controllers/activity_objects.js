@@ -39,6 +39,13 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   _datasets: {},
   
   /**
+    @private
+    
+    All variables available to the activity session, indexed by name.
+  */
+  _variables: {},
+  
+  /**
     When an activity session is started, call this method to populate the registry of dataset and annotation names 
     with the names of the datasets and annotations predefined the activity document (all other datasets and 
     annotations will be removed from the registry).
@@ -50,6 +57,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   loadPredefinedObjects: function () {
     this._datasets = {};
     this._annotations = {};
+    this._variables = {};
     
     var activity = Smartgraphs.activityController.get('activityRecordInCurrentStore');
     if (activity) {
@@ -74,7 +82,6 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
       });
     
       // now, repeat the above for each annotation type...
-    
       Smartgraphs.Annotation.types().forEach(function (type) {
         query = SC.Query.local(type, 'activity={activity}', {
           activity: Smartgraphs.activityController.get('activityRecordInCurrentStore')
@@ -96,10 +103,32 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
           self._annotations[name] = annotation;
         });
       });
+      
+      // get variables for the activity
+      var query = SC.Query.local(Smartgraphs.Variable, 'activity={activity}', {
+        activity: activity
+      });
+      var foundVariables = Smartgraphs.store.find(query);
+    
+      if ( !(foundVariables.get('status') & SC.Record.READY)) {
+        throw "predefined variable records are not READY!";
+      }
+      var self = this;
+      foundVariables.forEach(function (variable) {
+        var name = variable.get('name');
+        if (self._variables[name]) {
+          throw "The activity contains multiple variables named '%@'".fmt(name);
+        }
+        if (variable.get('session')) {
+          throw "The predefined variable '%@' was incorrectly annotated with a session!".fmt(name);
+        }
+        self._variables[name] = variable;
+      });
     }
     
     this.notifyPropertyChange('datasetNames');
     this.notifyPropertyChange('annotationNames');
+    this.notifyPropertyChange('variableNames');
   },
   
   /**
@@ -124,6 +153,18 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   */
   findAnnotation: function (name) {
     return this._annotations[name];
+  },
+  
+  /**
+    Returns the variable with the given name in the current activity session, or undefined if the specified name
+    does not correspond to a variable in the current activity session.
+
+    @param name The name of the variable.
+    
+    @returns {Smartgraphs.Variable|undefined}
+  */
+  findVariable: function (name) {
+    return this._variables[name];
   },
   
   /**
@@ -154,7 +195,6 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     this.notifyPropertyChange('datasetNames');
     return dataset;
   },
-  
   
   /**
     Create an annotation in the current activity session.
@@ -192,6 +232,46 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     return annotation;
   },
   
+  /**
+    Create a variable in the current activity session.
+    
+    It is a runtime error to call this method with the name of a variable that has already been defined in the current
+    session.
+    
+    @param name 
+      The name to give to the newly created variable.
+
+    @returns {Smartgraphs.Variable}
+      The newly created variable
+  */
+  setVariable: function (name, value) {
+    var variable = this._variables[name];
+  
+    if (!variable) {
+      variable = Smartgraphs.store.createRecord(Smartgraphs.Variable, { 
+        activity: Smartgraphs.activityController.get('id'),
+        name: name,
+        value: null
+      });
+      variable.set('id', Smartgraphs.getNextGuid());
+      this.notifyPropertyChange('variableNames');
+    }
+
+    variable.set('value', value);
+    this._variables[name] = variable;
+    return variable;
+  },
+  
+  /**
+    Returns a Variable in the current activity session.
+    
+    @param name 
+      The name of the desired Variable.
+  */
+  getVariable: function (name) {
+    return this._variables[name];
+  },
+
   /**
     Deletes an annotation in the current activity session.
 
@@ -237,6 +317,20 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     var names = [];
     for (var name in this._annotations) {
       if (this._annotations.hasOwnProperty(name)) names.push(name);
+    }
+    return names;
+  }.property(),
+  
+  /**
+    @property {SC.Array} variableNames
+    
+    Observable list of the names of all variables defined in the current activity session. (Observers are notified 
+    whenever variables are added or removed from this list.)
+  */
+  variableNames: function () {
+    var names = [];
+    for (var name in this._variables) {
+      if (this._variables.hasOwnProperty(name)) names.push(name);
     }
     return names;
   }.property()

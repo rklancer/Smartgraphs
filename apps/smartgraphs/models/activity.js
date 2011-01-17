@@ -17,6 +17,7 @@ Smartgraphs.Activity = SC.Record.extend(
 
   init: function () {
     this.set('annotations', []);
+    this.set('variables', []);
   },
   
   /** 
@@ -75,6 +76,13 @@ Smartgraphs.Activity = SC.Record.extend(
   annotations: null,
   
   /**
+    Variables defined as part of this activity. Not persisted to the database.
+    
+    @property(Smartgraphs.Variable[])
+  */
+  variables: null,
+  
+  /**
     ResponseTemplates used in this activity
     
     @property(Smartgraphs.ResponseTemplate[])
@@ -127,6 +135,15 @@ Smartgraphs.Activity = SC.Record.extend(
       }
     });
     
+    ret.variables = [];
+    var query = SC.Query.local(Smartgraphs.Variable, 'activity={activity}', {
+      activity: self
+    });
+    var variables = store.find(query);
+    if (variables.get('length') > 0) {
+      ret.variables = variables.map( function (variable) { return variable.serialize(); } );
+    }
+
     return ret;
   }
 
