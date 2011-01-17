@@ -1,6 +1,6 @@
 {
   "_id": "instantaneous-speed.df4",
-  "_rev": "13-43d6fe1f152859d810407d36b7094806",
+  "_rev": "38-c71548834dc589c1fdf9505173c7375f",
   "data_format_version": 4,
   "activity": {
     "title": "Instantaneous Speed",
@@ -262,6 +262,160 @@
             "name": "slope-line-A",
             "graphName": "slope-graph"
           }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "first-point-A-time",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "first-point-A",
+              "attributePath": "point.x"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "first-point-A-position",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "first-point-A",
+              "attributePath": "point.y"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "second-point-A-time",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "second-point-A",
+              "attributePath": "point.x"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "second-point-A-position",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "second-point-A",
+              "attributePath": "point.y"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "max-position-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "Math.max([0],[1])",
+              "variableNames": [ "first-point-A-position", "second-point-A-position" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "min-position-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "Math.min([0],[1])",
+              "variableNames": [ "first-point-A-position", "second-point-A-position" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "change-position-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "Math.abs([0]-[1])",
+              "variableNames": [ "first-point-A-position", "second-point-A-position" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "change-position-units-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "[0] == 1 ? ' meter' : ' meters'",
+              "variableNames": [ "change-position-A" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "max-time-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "Math.max([0],[1])",
+              "variableNames": [ "first-point-A-time", "second-point-A-time" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "min-time-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "Math.min([0],[1])",
+              "variableNames": [ "first-point-A-time", "second-point-A-time" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "change-time-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "Math.abs([0]-[1])",
+              "variableNames": [ "first-point-A-time", "second-point-A-time" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "change-time-units-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "[0] == 1 ? ' second' : ' seconds'",
+              "variableNames": [ "change-time-A" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "velocity-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "[0]/[1]",
+              "variableNames": [ "change-position-A", "change-time-A" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "velocity-units-A",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
+              "variableNames": [ "velocity-A" ]
+            }
+          }
         }
       ],
       "shouldFinishImmediately": false,
@@ -271,7 +425,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
@@ -336,7 +490,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
@@ -416,7 +570,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
@@ -500,7 +654,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
@@ -555,9 +709,39 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect. The change in position is [y2] - [y1], or [dy].</p>",
+      "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "responseTemplate": "",
       "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "max-position-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "min-position-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-position-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-position-units-A" ]
+          } 
+        }
+      ],
       "startCommands": [
 
       ],
@@ -638,7 +822,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
@@ -722,7 +906,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
@@ -777,9 +961,39 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect. The change in time is [x2] - [x1], or [dx].</p>",
+      "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "responseTemplate": "",
       "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "max-time-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "min-time-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-time-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-time-units-A" ]
+          } 
+        }
+      ],
       "startCommands": [
 
       ],
@@ -818,9 +1032,39 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-position-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-position-units-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-time-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-time-units-A" ]
+          } 
+        }
+      ],
       "startCommands": [
         {
           "action": "removeAnnotation",
@@ -844,7 +1088,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
@@ -896,9 +1140,39 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>If the change in position is [dy] and the change in time is [dx], what is the velocity, in meters per second?</p>",
+      "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-position-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-position-units-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-time-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-time-units-A" ]
+          } 
+        }
+      ],
       "startCommands": [
 
       ],
@@ -909,7 +1183,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
@@ -961,9 +1235,67 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>If the change in position is [dy] and the change in time is [dx], the velocity is [dy]/[dx], or [velocity] meters per second.</p>",
+      "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
       "responseTemplate": "",
       "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-position-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-position-units-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-time-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-time-units-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-position-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-time-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "velocity-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "velocity-units-A" ]
+          } 
+        }
+      ],
       "startCommands": [
 
       ],
@@ -1003,9 +1335,53 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Correct!</p><p>The position changed [y] meters in [x] seconds, so the velocity was [velocity] meters per second.</p>",
+      "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
       "responseTemplate": "",
       "afterText": "",
+      "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-position-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-position-units-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "change-time-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "change-time-units-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "velocity-A" ]
+          } 
+        },
+        {
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "velocity-units-A" ]
+          } 
+        }
+      ],
       "startCommands": [
 
       ],
