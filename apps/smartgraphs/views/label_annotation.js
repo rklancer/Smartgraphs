@@ -7,9 +7,9 @@
 
 /** @class
 
-  (Document Your View Here)
+  Displaying text labels for DataPoints on the graph.
 
-  @extends SC.View
+  @extends RaphaelViews.RaphaelView
 */
 Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelAnnotationView.prototype */ {
@@ -21,6 +21,8 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   
   canShowInTable: NO, // TODO: Maybe eventually yes?
   
+  /* Properties and methods controlling display */
+
   selectedColor: '#aa0000',
   notSelectedColorBinding: '.item.color',
   isHighlightedBinding: '.item.isHighlighted',
@@ -39,6 +41,128 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   stroke: function() {
     return (this.get('isSelected') ? this.get('selectedColor') : this.get('notSelectedColor'));
   }.property('isSelected', 'selectedColor', 'notSelectedColor').cacheable(),
+
+  /* Properties and methods for inline editing */
+  
+  exampleInlineTextFieldView: SC.InlineTextFieldView,
+  isInlineEditorMultiline: NO,
+  isEditable: YES,
+  isEditing: NO,
+  editorWidth: 80,
+
+  /**
+    Event dispatcher callback.
+    If isEditable is set to true, opens the inline text editor view.
+
+    @param {DOMMouseEvent} evt DOM event
+
+  */
+  doubleClick: function( evt ) { return this.beginEditing(); },
+  
+  /**
+    Opens the inline text editor (closing it if it was already open for
+    another view).
+
+    @return {Boolean} YES if did begin editing
+  */
+  beginEditing: function() {
+    if (this.get('isEditing')) return YES ;
+    if (!this.get('isEditable')) return NO ;
+
+    var el = this.$(),
+        f = SC.viewportOffset(el[0]) ;
+    var labelCoords = this.graphCoordinates(); // within the SVG
+    var activityWidth = Smartgraphs.mainPage.mainPane.container.get('bottomRightThickness');
+    var graphLeftEdge = activityWidth * Smartgraphs.mainPage.mainPane.container.bottomRightView.childViews[0].instructionsWrapper.get('layout').width;
+    // This "frame" positions the InlineTextFieldView
+    f.width= 80; // Magic number, but more effective than the clever way
+    f.height= this.get('item').get('size') + 8;
+    f.x = labelCoords.x - (f.width/2) + 
+          Smartgraphs.mainPage.mainPane.container.dividerView.get('layout').left +
+          graphLeftEdge;
+    f.y = labelCoords.y - (f.height/2) + 32; // Default height of a SC.ToolbarView
+
+    SC.InlineTextFieldView.beginEditing({
+      frame: f,
+      delegate: this,
+      exampleElement: el,
+      value: this.get('item').get('label'),
+      multiline: this.get('isInlineEditorMultiline'),
+      isCollection: NO,
+      validator: this.get('validator'),
+      exampleInlineTextFieldView: this.get('exampleInlineTextFieldView')
+    });
+  },
+
+  /**
+    Cancels the current inline editor and then exits editor.
+
+    @return {Boolean} NO if the editor could not exit.
+  */
+  discardEditing: function() {
+    if (!this.get('isEditing')) return YES ;
+    return SC.InlineTextFieldView.discardEditing() ;
+  },
+
+  /**
+    Commits current inline editor and then exits editor.
+
+    @return {Boolean} NO if the editor could not exit
+  */
+  commitEditing: function() {
+    if (!this.get('isEditing')) return YES ;
+    return SC.InlineTextFieldView.commitEditing() ;
+    // TODO: saving values should happen here?
+  },
+
+  /** @private
+    Allow editing.
+  */
+  inlineEditorShouldBeginEditing: function(inlineEditor) {
+    return YES ;
+  },
+
+  /** @private
+    Set editing to true so edits will no longer be allowed.
+  */
+  inlineEditorWillBeginEditing: function(inlineEditor) {
+    this.set('isEditing', YES);
+  },
+
+  /** @private
+    Hide the label view while the inline editor covers it.
+  */
+  inlineEditorDidBeginEditing: function(inlineEditor) {
+    var layer = this.$();
+    this._oldOpacity = layer.css('opacity') ;
+    layer.css('opacity', 0.0);
+  },
+
+  /** @private
+    Delegate method defaults to the isEditable property
+  */
+  inlineEditorShouldBeginEditing: function(){
+    return this.get('isEditable');
+  },
+
+  /** @private
+    Could check with a validator someday...
+  */
+  inlineEditorShouldEndEditing: function(inlineEditor, finalValue) {
+    return YES ;
+  },
+
+  /** @private
+    Update the field value and make it visible again.
+  */
+  inlineEditorDidEndEditing: function(inlineEditor, finalValue) {
+    this.setIfChanged('value', finalValue) ;
+    this.$().css('opacity', this._oldOpacity);
+    this._oldOpacity = null ;
+    this.set('isEditing', NO) ;
+  },
+
+  /* False-trail methods for drag-and-drop positioning */
 
   // mouseEntered: function () {
   // },
@@ -109,6 +233,26 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     }
   },
   
+  /* Methods for actual rendering of the view */
+  
+  graphCoordinates: function () {
+    var graphView = this.get('graphView');
+    var point = this.get('item').get('point');
+    var xOffset = this.get('item').get('xOffset');
+    var yOffset = this.get('item').get('yOffset');
+    var labelCoords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
+    
+    if (xOffset) {
+      labelCoords.x += xOffset;
+    }
+    
+    if (yOffset) {
+      labelCoords.y += yOffset;
+    }
+
+    return labelCoords;
+  },
+
   /**
     We are using renderCallback in views to call non-SC render methods like
     RaphaelCanvas.segmentPath with the correct attributes.
@@ -122,23 +266,11 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
-    var graphView = this.get('graphView');
     var label = this.get('item').get('label');
-    var point = this.get('item').get('point');
     var size = this.get('item').get('size');
-    var xOffset = this.get('item').get('xOffset');
-    var yOffset = this.get('item').get('yOffset');
     
-    var labelCoords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
+    var labelCoords = this.graphCoordinates();
     
-    if (xOffset) {
-      labelCoords.x += xOffset;
-    }
-    
-    if (yOffset) {
-      labelCoords.y += yOffset;
-    }
-
     var attrs = {
       'label': label,
       'labelX': labelCoords.x,
