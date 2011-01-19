@@ -113,7 +113,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (!expressions) return;
 
     // build args for call to fmt method
-    var fmtArgs = "";
+    var fmtArgs = [];
     for (var ind in expressions) {
       if ( !expressions.hasOwnProperty(ind) ) continue;
       var expression = expressions[ind];
@@ -121,19 +121,18 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       var inspector = this.makeInspector(expression);
       if (inspector) {
         var value = inspector.inspect();
-        fmtArgs += ",'" + value + "'";
+        fmtArgs.push(value);
       }
     }
-    fmtArgs = fmtArgs.substring(1);
 
     var beforeText = this.get('beforeText');
     if (beforeText) {
-      this.set('beforeText', eval("beforeText.fmt(" + fmtArgs + ")"));
+      this.set('beforeText', beforeText.fmt.apply(beforeText, fmtArgs));
     }
 
     var afterText = this.get('afterText');
     if (afterText) {
-      this.set('afterText', eval("afterText.fmt(" + fmtArgs + ")"));
+      this.set('afterText', afterText.fmt.apply(afterText, fmtArgs));
     }
 
   },
