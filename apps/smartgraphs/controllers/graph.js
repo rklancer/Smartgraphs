@@ -243,22 +243,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
   endFreehandInput: function () {   
     this._routeEvents = NO;
   }
-
-  // NOT CURRENTLY USED:
-  
-  // setAxes: function (axesId) {
-  //   var axes = Smartgraphs.store.find(Smartgraphs.Axes, axesId);
-  //   if (!axes) {
-  //     axes = Smartgraphs.store.createRecord(Smartgraphs.Axes, { guid: axesId });
-  //   }
-  //   
-  //   this.set('axes', axes);
-  // },
-  // 
-  // selectDataset: function (datasetName) {
-  //   var dataset = this.findDatasetByName(datasetName);
-  //   if (dataset) this.set('selectedDataset', dataset);
-  // }
   
 }) ;
 
