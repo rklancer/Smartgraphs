@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df4",
-  "_rev": "35-67ff1d0140f73f34d2a70d00ef249c86",
+  "_rev": "84-dfdc85521c24e01bb3fc844048fe44ab",
   "data_format_version": 4,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -56,7 +56,7 @@
       ],
       "name": "Engage",
       "firstStep": "/shared/what-is-velocity/page/1/step/1",
-      "introText": "<h1>Introduction</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current speed.</p><p>(You can read more about the topic by researching \"eddy-current speedometer.\")</p>  ",
+      "introText": "<h1>Introduction</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current velocity.</p><p>(You can read more about the topic by researching \"eddy-current speedometer.\")</p>  ",
       "url": "/shared/what-is-velocity/page/1",
       "activity": "/shared/what-is-velocity",
       "index": 1
@@ -64,11 +64,15 @@
     {
       "steps": [
         "/shared/what-is-velocity/page/2/step/1",
-        "/shared/what-is-velocity/page/2/step/2"
+        "/shared/what-is-velocity/page/2/step/2",
+        "/shared/what-is-velocity/page/2/step/3",
+        "/shared/what-is-velocity/page/2/step/4",
+        "/shared/what-is-velocity/page/2/step/5",
+        "/shared/what-is-velocity/page/2/step/6"
       ],
       "name": "Predict With Numbers",
       "firstStep": "/shared/what-is-velocity/page/2/step/1",
-      "introText": "<h1>Prediction</h1><p>In this activity, you will calculate how fast you are moving while walking. Let's start by predicting how fast you <b>normally</b> walk.</p> <p><b>Walk</b> approximately 4 meters at your normal walking pace of [TBD].</p>",
+      "introText": "<h1>Prediction</h1><p>In this activity, you will calculate how fast you are moving while walking. Let's start by predicting how fast you <b>normally</b> walk.</p>",
       "url": "/shared/what-is-velocity/page/2",
       "activity": "/shared/what-is-velocity",
       "index": 2
@@ -79,7 +83,7 @@
       ],
       "name": "Predict With Graph (Normal)",
       "firstStep": "/shared/what-is-velocity/page/3/step/1",
-      "introText": "<h1>Prediction</h1><p>Draw a graph showing your position over time as you walked from 0 to 4 meters at your predicted, normal walking pace.</b></p>",
+      "introText": "<h1>Prediction</h1><p>Draw a graph showing your position over time as you walked from 0 to 4 meters.</b></p>",
       "url": "/shared/what-is-velocity/page/3",
       "activity": "/shared/what-is-velocity",
       "index": 3
@@ -307,7 +311,6 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "<p><i>Image courtesy DineshAdv at en.wikipedia</i></p>",
       "startCommands": [
-
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -346,11 +349,14 @@
       "activityPage": "/shared/what-is-velocity/page/2",
       "paneConfig": "single",
       "panes": {
-        "single": null
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
+        }
       },
-      "beforeText": "<p>About how many seconds did it take?</p>",
+      "beforeText": "<p><b>Walk</b> approximately 4 meters at your normal walking pace.</p><p>About how many seconds did it take?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
+      "afterText": "<p><i>Image courtesy Auntie P creative commons flickr</i></p>",
       "startCommands": [
 
       ],
@@ -362,7 +368,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "int": {
               "strip": "value"
             }
           },
@@ -373,17 +379,33 @@
 
       ],
       "afterSubmissionCommands": [
-
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "observed-duration-four-meter-walk",
+            "inspectorType": "Smartgraphs.FirstResponseFieldInspector",
+            "config": {}
+          }
+        }
       ],
-      "responseInspector": null,
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
       "responseBranches": [
-
+        {
+          "criterion": {
+            "gt": [
+              "value", 30
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/2/step/2"
+        }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/2/step/2",
+      "defaultBranch": "/shared/what-is-velocity/page/2/step/3",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "Continue",
+      "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
     },
     {
@@ -391,11 +413,14 @@
       "activityPage": "/shared/what-is-velocity/page/2",
       "paneConfig": "single",
       "panes": {
-        "single": null
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
+        }
       },
-      "beforeText": "<p>Based on your estimate of [TBD], what is your average speed in meters per second?</p><p>Remember:</p><blockquote><table cellspacing='4' cellpadding='4' style='text-align:center'><tr><td style='border-width:0px'>average speed</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td></tr></table></blockquote>",
+      "beforeText": "<p><i>Please choose a number between 1 and 30.</i></p><p><b>Walk</b> approximately 4 meters at your normal walking pace.</p><p>About how many seconds did it take?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
+      "afterText": "<p><i>Image courtesy Auntie P creative commons flickr</i></p>",
       "startCommands": [
 
       ],
@@ -407,7 +432,7 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "int": {
               "strip": "value"
             }
           },
@@ -418,13 +443,349 @@
 
       ],
       "afterSubmissionCommands": [
-
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "observed-duration-four-meter-walk",
+            "inspectorType": "Smartgraphs.FirstResponseFieldInspector",
+            "config": {}
+          }
+        }
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "gt": [
+              "value", 30
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/2/step/2"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/2/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/2/step/3",
+      "activityPage": "/shared/what-is-velocity/page/2",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
+        }
+      },
+      "beforeText": "<p>Based on your observation that you walked <b>4</b> meters in <b>%@</b> %@, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average speed</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td></tr></table></blockquote>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
+      "substitutedExpressions": [
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        }
+      ],
+      "startCommands": [
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "velocity-based-on-observed-four-meter-walk",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "4 / [0]",
+              "variableNames": [ "observed-duration-four-meter-walk" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "rounded-velocity-based-on-observed-four-meter-walk",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "Math.round([0]*10) / 10",
+              "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
+            }
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "float": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [ ],
+      "afterSubmissionCommands": [
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              { 
+                "float": { "variable": "rounded-velocity-based-on-observed-four-meter-walk" }
+              },
+              { 
+                "float": { "strip" : "value" }
+              }
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/2/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/2/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/2/step/4",
+      "activityPage": "/shared/what-is-velocity/page/2",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
+        }
+      },
+      "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation of <b>%@</b> %@ for <b>4</b> meters, what is your average speed in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average speed</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>= ?</td></tr></table></blockquote>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
+      "substitutedExpressions": [
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        }
+      ],
+      "startCommands": [],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "gt": [
+          {
+            "float": {
+              "strip": "value"
+            }
+          },
+          0
+        ]
+      },
+      "triggeredCommands": [ ],
+      "afterSubmissionCommands": [
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              { 
+                "float": { "variable": "rounded-velocity-based-on-observed-four-meter-walk" }
+              },
+              { 
+                "float": { "strip" : "value" }
+              }
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/2/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/2/step/5",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/2/step/5",
+      "activityPage": "/shared/what-is-velocity/page/2",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity would be calculated like this:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>=</td><td style='border-width:0px'><b>%@</b></td></tr></table></blockquote><p>%@</p>.",
+      "responseTemplate": null,
+      "afterText": "",
+      "substitutedExpressions": [
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0] == [1] ? '' : 'Rounded to the nearest tenth, that makes <b>[2]</b>.'",
+            "variableNames": [ 
+              "velocity-based-on-observed-four-meter-walk", 
+              "rounded-velocity-based-on-observed-four-meter-walk", 
+              "rounded-velocity-based-on-observed-four-meter-walk" 
+            ]
+          }
+        }
+      ],
+      "startCommands": [],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [ ],
+      "afterSubmissionCommands": [
       ],
       "responseInspector": null,
       "responseBranches": [
-
       ],
-      "defaultBranch": null,
+      "defaultBranch": "",
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    {
+      "url": "/shared/what-is-velocity/page/2/step/6",
+      "activityPage": "/shared/what-is-velocity/page/2",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
+        }
+      },
+      "beforeText": "<p>Correct.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity is <b>%@</b> %@.</p><p>%@</p>.",
+      "responseTemplate": null,
+      "afterText": "",
+      "substitutedExpressions": [
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
+            "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0] == [1] ? '' : 'Rounded to the nearest tenth, that makes <b>[2]</b>.'",
+            "variableNames": [ 
+              "velocity-based-on-observed-four-meter-walk", 
+              "rounded-velocity-based-on-observed-four-meter-walk", 
+              "rounded-velocity-based-on-observed-four-meter-walk" 
+            ]
+          }
+        }
+      ],
+      "startCommands": [],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [ ],
+      "afterSubmissionCommands": [
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+      ],
+      "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
@@ -442,9 +803,25 @@
         },
         "bottom": null
       },
-      "beforeText": "",
+      "beforeText": "<p>Note: your predicted, normal walking pace was <b>%@</b> %@.</p>",
       "responseTemplate": "",
       "afterText": "",
+      "substitutedExpressions": [
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]'",
+            "variableNames": [ "rounded-velocity-based-on-observed-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "'[0]' == '1' ? 'meter per second' : 'meters per second'",
+            "variableNames": [ "rounded-velocity-based-on-observed-four-meter-walk" ]
+          }
+        }
+      ],
       "startCommands": [
         {
           "action": "startFreehandInput",
@@ -505,6 +882,83 @@
       "afterText": "",
       "startCommands": [
         {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-normal-start-time",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "prediction-normal",
+              "attributePath": "points.firstObject.x"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-normal-start-position",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "prediction-normal",
+              "attributePath": "points.firstObject.y"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-normal-end-time",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "prediction-normal",
+              "attributePath": "points.lastObject.x"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-normal-end-position",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "prediction-normal",
+              "attributePath": "points.lastObject.y"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-normal-change-time",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "[0]-[1]",
+              "variableNames": [ "prediction-normal-end-time", "prediction-normal-start-time" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-normal-change-position",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "[0]-[1]",
+              "variableNames": [ "prediction-normal-end-position", "prediction-normal-start-position" ]
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-normal-velocity",
+            "inspectorType": "Smartgraphs.VariableInspector",
+            "config": { 
+              "evalStatement": "[0]/[1]",
+              "variableNames": [ "prediction-normal-change-position", "prediction-normal-change-time" ]
+            }
+          }
+        },
+        {
           "action": "startFreehandInput",
           "literalArgs": {
             "graphName": "freehand-walking-slow",
@@ -562,7 +1016,50 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-slow-start-time",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "prediction-slow",
+              "attributePath": "points.firstObject.x"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-slow-start-position",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "prediction-slow",
+              "attributePath": "points.firstObject.y"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-slow-end-time",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "prediction-slow",
+              "attributePath": "points.lastObject.x"
+            }
+          }
+        },
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "variableName": "prediction-slow-end-position",
+            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
+            "config": { 
+              "name": "prediction-slow",
+              "attributePath": "points.lastObject.y"
+            }
+          }
+        }
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -659,7 +1156,7 @@
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>Based on your data [TBD], how long did it take you to walk 4 meters at your normal pace?</p>",
+      "beforeText": "<p>Based on your data, how long did it take you to walk 4 meters at your normal pace?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -673,11 +1170,11 @@
       "submissibilityCriterion": {
         "gt": [
           {
-            "length": {
+            "float": {
               "strip": "value"
             }
           },
-          0
+          1
         ]
       },
       "triggeredCommands": [
@@ -694,7 +1191,7 @@
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "Continue",
+      "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
     },
     {
@@ -712,9 +1209,32 @@
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>If it took you [TBD] seconds to walk 4 meters, then you were walking at a rate of [TBD] meters per second.</p>",
+      "beforeText": "<p>If it took you <b>%@</b> seconds to walk <b>%@</b> meters, then you were walking at a rate of <b>%@</b> meters per second.</p>",
       "responseTemplate": "",
       "afterText": "",
+      "substitutedExpressions": [
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "prediction-normal-change-time" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "prediction-normal-change-position" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "prediction-normal-velocity" ]
+          }
+        }
+      ],
       "startCommands": [
 
       ],
