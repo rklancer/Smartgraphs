@@ -112,11 +112,14 @@ Smartgraphs.Activity = SC.Record.extend(
     var steps = pages.map( function (page) { return page.get('steps').map( function (step) { return step.serialize(); } ); } );
     ret.steps = Array.prototype.concat.apply([], steps);
 
+    var units = this.get('units');
+    ret.units = units.map( function (unit) { return unit.serialize(); } );
+    
     var axes = this.get('axes');
     ret.axes = axes.map( function (axis) { return axis.serialize(); } );
     var graphs = this.get('graphs');
     ret.graphs = graphs.map( function (graph) { return graph.serialize(); } );
-    
+
     var responseTemplates = this.get('responseTemplates');
     ret.responseTemplates = responseTemplates.map( function (responseTemplate) { return responseTemplate.serialize(); });
     
