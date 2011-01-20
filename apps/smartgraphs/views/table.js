@@ -20,8 +20,6 @@ Smartgraphs.TableView = SC.View.extend(
   showTableBinding: '*tableController.showTable',
   showLabelsBinding: '*tableController.showLabels',
   datasetBinding: '*tableController.dataset',
-  xLabelBinding: '*tableController.axes.xLabelAbbreviated',
-  yLabelBinding: '*tableController.axes.yLabelAbbreviated',
   latestXBinding: '*tableController.latestX',
   latestYBinding: '*tableController.latestY',
   annotationListBinding: '*tableController.annotationList',

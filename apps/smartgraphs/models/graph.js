@@ -7,9 +7,8 @@
 
 /** @class
 
-  A Graph object represents a graph. It contains a number of default settings, such as which Axes to draw the graph
-  on (Axes records contain the x- and y-axis labels and ranges), the datasets and annotations to display, the title of
-  the graph, etc.
+  A Graph object represents a graph. It contains a number of default settings, such as information about the axes on 
+  which to draw the graph, the datasets and annotations to display, the title of the graph, etc.
   
   Graphs are referenced within the activity by the name given to them by the activity author.
   

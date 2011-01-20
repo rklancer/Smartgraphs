@@ -42,9 +42,10 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
 
     var point1 = annotation.get('point1');
     var point2 = annotation.get('point2');
-    var axes = graphView.get('axes');
+    var xAxis = graphView.get('xAxis');
+    var yAxis = graphView.get('yAxis');
 
-    var points = this.getEndPoints(point1, point2, axes);
+    var points = this.getEndPoints(point1, point2, xAxis, yAxis);
 
     var coords, point;
     var pathComponents = [];
@@ -119,11 +120,11 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
     Find the end points of a line segment through point1 and point2 that is bounded by the xMin, xMax, yMin, yMax of 
     the axes
   */
-  getEndPoints: function (point1, point2, axes) {
-    var xMax = axes.get('xMax');
-    var xMin = axes.get('xMin');
-    var yMax = axes.get('yMax');
-    var yMin = axes.get('yMin');
+  getEndPoints: function (point1, point2, xAxis, yAxis) {
+    var xMax = xAxis.get('max');
+    var xMin = xAxis.get('min');
+    var yMax = yAxis.get('max');
+    var yMin = yAxis.get('min');
 
     var points = [];
     

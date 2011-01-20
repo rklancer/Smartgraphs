@@ -386,8 +386,8 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
     
     // TODO let 'args' override these settings if desired
-    var xMin = controller.getPath('axes.xMin');
-    var xMax = controller.getPath('axes.xMax');
+    var xMin = controller.getPath('xAxis.min');
+    var xMax = controller.getPath('xAxis.max');
     var pane = Smartgraphs.activityViewController.paneForController(controller);
     
     if (Smartgraphs.sensorController.register(pane, dataset, xMin, xMax)) {
