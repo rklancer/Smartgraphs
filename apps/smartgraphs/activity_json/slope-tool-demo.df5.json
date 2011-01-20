@@ -1,5 +1,6 @@
 {
   "_id": "slope-tool-demo.df5",
+  "_rev": "2-a2fbb6f5ef1114562259833f2b2e2b9e",
   "data_format_version": 5,  
   "activity": {
     "title": "Slope Tool Demo",
@@ -10,6 +11,10 @@
     ],
     "datasets": [
       "/shared/slope-tool-demo/dataset/demo-data"
+    ],
+    "units": [
+      "/shared/slope-tool-demo/units/meters",
+      "/shared/slope-tool-demo/units/seconds"
     ],
     "axes": [
       "/shared/slope-tool-demo/axes/x-axis",
@@ -621,6 +626,22 @@
       "hideSubmitButton": true,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
+    }
+  ],
+  "units": [
+    {
+      "url": "/shared/slope-tool-demo/units/meters",
+      "activity": "/shared/slope-tool-demo",
+      "name": "meter",
+      "abbreviation": "m",
+      "pluralName": "meters"
+    },
+    {
+      "url": "/shared/slope-tool-demo/units/seconds",
+      "activity": "/shared/slope-tool-demo",
+      "name": "second",
+      "abbreviation": "s",      
+      "pluralName": "seconds"
     }
   ],
   "axes": [
