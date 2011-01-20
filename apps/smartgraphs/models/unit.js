@@ -35,6 +35,13 @@ Smartgraphs.Unit = SC.Record.extend(
   primaryKey: 'url',
   
   /**
+    The activity, if any, that defines these units.
+    
+    @property {Smartgraphs.Activity}
+  */
+  activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'units', isMaster: YES, aggregate: YES }),
+  
+  /**
     The singular name of this unit type, for example 'meter'
 
     @property {String}

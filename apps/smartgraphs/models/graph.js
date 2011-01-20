@@ -66,11 +66,18 @@ Smartgraphs.Graph = SC.Record.extend(
   title: SC.Record.attr(String),
   
   /**
-    The Axes record determines the x and y axis ranges and labels.
+    The x axis
     
-    @property {Smartgraphs.Axes}
+    @property {Smartgraphs.Axis}
   */
-  axes: SC.Record.toOne('Smartgraphs.Axes'),
+  xAxis: SC.Record.toOne('Smartgraphs.Axis'),
+  
+  /**
+    The y axis
+    
+    @property {Smartgraphs.Axis}
+  */
+  yAxis: SC.Record.toOne('Smartgraphs.Axis'),
   
   /**
     Names of any datasets that should be shown on the graph whenever it is opened.

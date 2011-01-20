@@ -50,9 +50,16 @@ Smartgraphs.Activity = SC.Record.extend(
   /**
     Axes that are part of the activity
     
-    @property(Smartgraphs.Axes[])
+    @property(Smartgraphs.Axis[])
   */
-  axes: SC.Record.toMany('Smartgraphs.Axes', { inverse: 'activity' }),
+  axes: SC.Record.toMany('Smartgraphs.Axis', { inverse: 'activity' }),
+
+  /**
+    Units defined in this activity.
+    
+    @property(Smartgraphs.Unit[])
+  */
+  units: SC.Record.toMany('Smartgraphs.Unit', { inverse: 'activity' }),
   
   /**
     Graphs that are part of the activity
@@ -106,7 +113,7 @@ Smartgraphs.Activity = SC.Record.extend(
     ret.steps = Array.prototype.concat.apply([], steps);
 
     var axes = this.get('axes');
-    ret.axes = axes.map( function (axes) { return axes.serialize(); } );
+    ret.axes = axes.map( function (axis) { return axis.serialize(); } );
     var graphs = this.get('graphs');
     ret.graphs = graphs.map( function (graph) { return graph.serialize(); } );
     

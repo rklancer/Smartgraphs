@@ -14,7 +14,8 @@
 Smartgraphs.GraphView = SC.View.extend( 
 /** @scope Smartgraphs.GraphView.prototype */ {
   
-  axesBinding: '*graphController.axes',
+  xAxisBinding: '*graphController.xAxis',
+  yAxisBinding: '*graphController.yAxis',
   datasetListBinding: '*graphController.datasetList',
   annotationListBinding: '*graphController.annotationList',
   
@@ -133,14 +134,15 @@ Smartgraphs.GraphView = SC.View.extend(
   
   
   coordinatesForPoint: function (x, y) {
-    var axes = this.get('axes');
+    var xAxis = this.get('xAxis');
+    var yAxis = this.get('yAxis');
 
-    if (!axes) return undefined;
+    if (!xAxis || !yAxis) return undefined;
 
-    var xMin = axes.get('xMin'),
-        xMax = axes.get('xMax'),
-        yMin = axes.get('yMin'),
-        yMax = axes.get('yMax');
+    var xMin = xAxis.get('min'),
+        xMax = xAxis.get('max'),
+        yMin = yAxis.get('min'),
+        yMax = yAxis.get('max');
 
     var frame = this.get('frame');
     var height = frame.height,
@@ -162,14 +164,15 @@ Smartgraphs.GraphView = SC.View.extend(
   
   
   pointForCoordinates: function (x, y) {
-    var axes = this.get('axes');
+    var xAxis = this.get('xAxis');
+    var yAxis = this.get('yAxis');
 
-    if (!axes) return undefined;
-    
-    var xMin = axes.get('xMin'),
-        xMax = axes.get('xMax'),
-        yMin = axes.get('yMin'),
-        yMax = axes.get('yMax');
+    if (!xAxis || !yAxis) return undefined;
+
+    var xMin = xAxis.get('min'),
+        xMax = xAxis.get('max'),
+        yMin = yAxis.get('min'),
+        yMax = yAxis.get('max');
 
     var frame = this.get('frame');
     var height = frame.height,
@@ -200,20 +203,22 @@ Smartgraphs.GraphView = SC.View.extend(
 
     layout: { zIndex: 0 },
     
-    axesBinding: '.parentView.axes',
+    xAxisBinding: '.parentView.xAxis',
+    yAxisBinding: '.parentView.yAxis',
     
-    displayProperties: 'axes.xMin axes.xMax axes.yMin axes.yMax'.w(),
+    displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
     
     childViews: 'axesView annotationsHolder dataHolder'.w(),
     
     axesView: RaphaelViews.RaphaelView.design({
-      axesBinding: '.parentView.parentView.axes',      
+      xAxisBinding: '.parentView.parentView.xAxis',
+      yAxisBinding: '.parentView.parentView.yAxis',     
       paddingBinding: '.parentView.parentView.padding',
       
       childViews: 'inputArea xAxisView yAxisView'.w(),
       
       inputArea: RaphaelViews.RaphaelView.design({
-        axesBinding: '.parentView.parentView.parentView*axes',
+        // axesBinding: '.parentView.parentView.parentView*axes',    // is this used anywhere?
         
         didCreateLayer: function () {
           // cache these rather than lookup the jquery object (graphView.$()) per mouse event
@@ -271,12 +276,12 @@ Smartgraphs.GraphView = SC.View.extend(
       }),
       
       xAxisView: Smartgraphs.AxisView.design({
-        axesBinding: '.parentView.parentView.parentView.axes',
+        axisBinding: '.parentView.parentView.parentView.xAxis',
         type: 'x'
       }),
       
       yAxisView: Smartgraphs.AxisView.design({
-        axesBinding: '.parentView.parentView.parentView.axes',
+        axisBinding: '.parentView.parentView.parentView.yAxis',
         type: 'y'
       })
     }),
