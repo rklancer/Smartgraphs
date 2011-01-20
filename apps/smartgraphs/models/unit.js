@@ -60,6 +60,6 @@ Smartgraphs.Unit = SC.Record.extend(
 
     @property {String}
   */
-  shortName: SC.Record.attr(String)
+  abbreviation: SC.Record.attr(String)
 
 }) ;
