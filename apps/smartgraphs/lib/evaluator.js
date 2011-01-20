@@ -31,12 +31,28 @@
     return (evaluate(terms[0], value) > evaluate(terms[1], value));
   }
   
+  function lt(terms, value) {
+    return (evaluate(terms[0], value) < evaluate(terms[1], value));
+  }
+  
+  function between(terms, value) {
+    var a = evaluate(terms[0], value);
+    var b = evaluate(terms[1], value);
+    var c = evaluate(terms[2], value);
+  
+    return (a <= b && b <= c);
+  }
+  
   function equals(terms, value) {
     return evaluate(terms[0], value) === evaluate(terms[1], value);
   }
   
   function strip(terms, value) {
     return (evaluate(terms, value) || '').strip();
+  }
+  
+  function variable(terms, value) {
+    return Smartgraphs.activityObjectsController.getVariable(terms).get("value");
   }
   
   function isIn(terms, value) {
@@ -156,6 +172,8 @@
         switch (op) {
           case 'literal':
             return terms;
+          case 'variable':
+            return variable(terms, value);
           case 'or': 
             return or(terms, value);
           case 'and': 
@@ -170,6 +188,10 @@
             return length(terms, value);
           case 'gt':
             return gt(terms, value);
+          case 'lt':
+            return lt(terms, value);
+          case 'between':
+            return between(terms, value);
           case 'notempty':
             return notempty(terms, value);
           case 'xvalue':
