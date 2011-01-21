@@ -20,9 +20,24 @@ Smartgraphs.TableView = SC.View.extend(
   showTableBinding: '*tableController.showTable',
   showLabelsBinding: '*tableController.showLabels',
   datasetBinding: '*tableController.dataset',
+  xUnitsAbbreviatedBinding: '*tableController.dataset.xUnits.abbreviation',
+  xShortLabelBinding: '*tableController.dataset.xShortLabel',
+  yUnitsAbbreviatedBinding: '*tableController.dataset.yUnits.abbreviation',
+  yShortLabelBinding: '*tableController.dataset.yShortLabel',  
+  yUnitsBinding: '*tableController.dataset.yUnits',
   latestXBinding: '*tableController.latestX',
   latestYBinding: '*tableController.latestY',
   annotationListBinding: '*tableController.annotationList',
+  
+  xLabel: function () {
+    var xUnitsAbbreviated = this.get('xUnitsAbbreviated');
+    return xUnitsAbbreviated ? "%@ (%@)".fmt(this.get('xShortLabel'), xUnitsAbbreviated) : this.get('xShortLabel');
+  }.property('xUnitsAbbreviated', 'xShortLabel').cacheable(),
+  
+  yLabel: function () {
+    var yUnitsAbbreviated = this.get('yUnitsAbbreviated');
+    return yUnitsAbbreviated ? "%@ (%@)".fmt(this.get('yShortLabel'), yUnitsAbbreviated) : this.get('yShortLabel');
+  }.property('yUnitsAbbreviated', 'yShortLabel').cacheable(),
   
   init: function () {
     this._viewsByClassAndId = {};

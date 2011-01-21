@@ -1,6 +1,6 @@
 {
   "_id": "slope-tool-demo.df5",
-  "_rev": "4-c23b4c78a2a7187e93e17303e5e8cf6f",
+  "_rev": "5-8eeb58eaadeff34e41e6701bf2ddf09a",
   "data_format_version": 5,  
   "activity": {
     "title": "Slope Tool Demo",
@@ -689,10 +689,10 @@
       "url": "/shared/slope-tool-demo/dataset/demo-data",
       "name": "demo-data",
       "activity": "/shared/slope-tool-demo",
-      "xUnits": null,
+      "xUnits": "/shared/slope-tool-demo/units/seconds",
       "xLabel": "Time",
       "xShortLabel": "Time",
-      "yUnits": null,
+      "yUnits": "/shared/slope-tool-demo/units/meters",
       "yLabel": "Position",
       "yShortLabel": "Pos", 
       "points": [
