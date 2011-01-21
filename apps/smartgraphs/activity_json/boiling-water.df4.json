@@ -1,7 +1,7 @@
 {
-  "_id": "boiling-water.df4",
-  "_rev": "2-9e8a0ec5056e47c5f1b9a4b9380edc22",
-  "data_format_version": 4,  
+  "_id": "boiling-water.df5",
+  "_rev": "3-641205239246baac74efb752d5499ed9",
+  "data_format_version": 5,  
   "activity": {
     "title": "Boiling Water",
     "url": "/shared/boiling-water",
@@ -18,7 +18,8 @@
       "/shared/boiling-water/dataset/correct-boiling-point"
     ],
     "axes": [
-      "/shared/boiling-water/axes/80-120d_0-10m"
+      "/shared/boiling-water/axes/x-axis",
+      "/shared/boiling-water/axes/y-axis"
     ],
     "graphs": [
       "/shared/boiling-water/graph/freehand-boiling-point",
@@ -903,19 +904,27 @@
       "nextButtonShouldSubmit": false
     }
   ],
+  "units": [
+
+  ],
   "axes": [
     {
-      "url": "/shared/boiling-water/axes/80-120d_0-10m",
-      "xMin": 0,
-      "xMax": 10,
-      "xSteps": 10,
-      "xLabel": "Time (minutes)",
-      "xLabelAbbreviated": "Time (m)",
-      "yMin": 80,
-      "yMax": 120,
-      "ySteps": 8,
-      "yLabel": "Temperature (Celsius)",
-      "yLabelAbbreviated": "Temp. (C)"
+      "url": "/shared/boiling-water/axes/x-axis",
+      "activity": "/shared/boiling-water/",
+      "units": "/builtins/units/minutes",
+      "min": 0,
+      "max": 10,
+      "nSteps": 10,
+      "label": "Time"
+    },
+    {
+      "url": "/shared/boiling-water/axes/y-axis",
+      "activity": "/shared/boiling-water/",
+      "units": "/builtins/units/degrees-celsius", 
+      "min": 80,
+      "max": 120,
+      "nSteps": 8,
+      "label": "Temperature"
     }
   ],
   "graphs": [
@@ -925,7 +934,8 @@
       "name": "freehand-boiling-point",
       "description": "freehand boiling point prediciton",
       "title": "Boiling Point: Prediction",
-      "axes": "/shared/boiling-water/axes/80-120d_0-10m",
+      "xAxis": "/shared/boiling-water/axes/x-axis",
+      "yAxis": "/shared/boiling-water/axes/y-axis",
       "initialDatasets": [
         
       ],
@@ -939,7 +949,8 @@
       "name": "correct-boiling-point",
       "description": "scatterpoint graph showing correct boiling point data",
       "title": "Boiling Point: Actual",
-      "axes": "/shared/boiling-water/axes/80-120d_0-10m",
+      "xAxis": "/shared/boiling-water/axes/x-axis",
+      "yAxis": "/shared/boiling-water/axes/y-axis",
       "initialDatasets": [
         "correct-boiling-point"
       ],
@@ -953,7 +964,8 @@
       "name": "correct-boiling-point-with-connected-dots",
       "description": "scatterpoint graph showing correct boiling point data, plus annotation connecting the dots",
       "title": "Boiling Point: Actual",
-      "axes": "/shared/boiling-water/axes/80-120d_0-10m",
+      "xAxis": "/shared/boiling-water/axes/x-axis",
+      "yAxis": "/shared/boiling-water/axes/y-axis",
       "initialDatasets": [
         "correct-boiling-point"
       ],
@@ -970,7 +982,8 @@
       "name": "predicted-boiling-point",
       "description": "graph showing user's prediction",
       "title": "Boiling Point: Predicted",
-      "axes": "/shared/boiling-water/axes/80-120d_0-10m",
+      "xAxis": "/shared/boiling-water/axes/x-axis",
+      "yAxis": "/shared/boiling-water/axes/y-axis",
       "initialDatasets": [
         
       ],
@@ -1020,6 +1033,12 @@
       "url": "/shared/boiling-water/dataset/correct-boiling-point",
       "name": "correct-boiling-point",
       "activity": "/shared/boiling-water",
+      "xUnits": "/builtins/units/minutes",
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": "/builtins/units/degrees-celsius",
+      "yLabel": "Temperature",
+      "yShortLabel": "Temp",      
       "points": [
         100,
         101,
