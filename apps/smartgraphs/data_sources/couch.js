@@ -33,12 +33,10 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
   // 
 
   fetch: function(store, query) {
-    // Everything should have been loaded into memory when we loaded the activity. 
-    // Skip actually talking to the backend.
-
+    // Everything related to the activity should already be in memory. Return NO so the fixtures data source has a
+    // chance to handle the request.
     this.log('CouchDataSource.fetch()');
-    store.dataSourceDidFetchQuery(query);
-    return YES;
+    return NO;
   },
 
   // ..........................................................
@@ -46,9 +44,6 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
   // 
   
   retrieveRecord: function(store, storeKey) {
-    
-    // TODO: Add handlers to retrieve an individual record's contents
-    // call store.dataSourceDidComplete(storeKey) when done.
     
     var recordType = store.recordTypeFor(storeKey);
     var id = store.idFor(storeKey);
@@ -70,22 +65,9 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
       this.log('  returning YES from retrieveRecord');
       return YES;
     }
-    
-    if (recordType === Smartgraphs.User) {
-      // The default user record is just this simple
-      this.log('  recognized request for User record');
-      if (id === 'default') {
-        store.dataSourceDidComplete(storeKey, {
-          userId: 'default',
-          name: 'Default Smartgraphs User',
-          sessions: []
-        });
-        this.log("  handled request for User record of 'default' user");
-      }
-      return YES;
-   }
    
-    return NO ; // return YES if you handled the storeKey
+    this.log(  'returning NO from retrieveRecord');
+    return NO;
   },
   
   

@@ -7,8 +7,22 @@
 
 Smartgraphs.main = function main() {
   
-  Smartgraphs.dataSource = Smartgraphs.CouchDataSource.create();
+  Smartgraphs.dataSource = SC.CascadeDataSource.create({
+    dataSources: "couch fixtures".w(),
+    
+    // use fixtures data source to handle builtin object definitions, instead of hacking them into CouchDataSource
+    couch: Smartgraphs.CouchDataSource.create(),
+    fixtures: SC.FixturesDataSource.create()
+  });
   Smartgraphs.store = SC.Store.create().from(Smartgraphs.dataSource);
+  
+  // hack(?): Preload fixtures so that the any nested store is populated (nested store returns EMPTY record if record
+  // datahash was not loaded into the store when the nested store was created)
+  for (var prop in Smartgraphs) {
+    if (Smartgraphs.hasOwnProperty(prop) && Smartgraphs[prop] && Smartgraphs[prop].isClass && Smartgraphs[prop].FIXTURES) {
+      Smartgraphs.store.find(Smartgraphs[prop]);
+    }
+  }
   
   // make the mainPane visible on screen.
   Smartgraphs.getPath('mainPage.mainPane').append() ;
