@@ -1,7 +1,7 @@
 {
-  "_id": "instantaneous-speed.df4",
-  "_rev": "11-2026f0f848a25915c6b1c630de10942f",
-  "data_format_version": 4,
+  "_id": "instantaneous-speed.df5",
+  "_rev": "9-1094cd1d2821490ee3fb5fead3f5df03",
+  "data_format_version": 5,
   "activity": {
     "title": "Instantaneous Speed",
     "url": "/shared/instantaneous-speed",
@@ -12,8 +12,12 @@
     "datasets": [
       "/shared/instantaneous-speed/dataset/slope-data"
     ],
+    "units": [
+
+    ],
     "axes": [
-      "/shared/instantaneous-speed/axes/walking-position-time"
+      "/shared/instantaneous-speed/axes/10s",
+      "/shared/instantaneous-speed/axes/15m"
     ],
     "graphs": [
       "/shared/instantaneous-speed/graph/slope-graph"
@@ -1407,45 +1411,25 @@
       "nextButtonShouldSubmit": false
     }
   ],
+  "units": [
+  
+  ],
   "axes": [
     {
-      "url": "/shared/instantaneous-speed/axes/walking-position-time",
-      "xMin": 0,
-      "xMax": 30,
-      "xSteps": 6,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 4.5,
-      "ySteps": 9,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Pos. (m)"
+      "url": "/shared/instantaneous-speed/axes/10s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 10,
+      "nSteps": 5,
+      "label": "Time"
     },
     {
-      "url": "/shared/instantaneous-speed/axes/slope-position-time",
-      "xMin": 0,
-      "xMax": 10,
-      "xSteps": 5,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 15,
-      "ySteps": 5,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Pos. (m)"
-    },
-    {
-      "url": "/shared/instantaneous-speed/axes/slope-position-time-analyze",
-      "xMin": 0,
-      "xMax": 15,
-      "xSteps": 15,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Pos. (m)"
+      "url": "/shared/instantaneous-speed/axes/15m",
+      "units": "/builtins/units/meters",
+      "min": 0,
+      "max": 15,
+      "nSteps": 5,
+      "label": "Position"
     }
   ],
   "graphs": [
@@ -1455,7 +1439,8 @@
       "name": "slope-graph",
       "description": "graph for calculating slope",
       "title": "Position vs. Time",
-      "axes": "/shared/instantaneous-speed/axes/slope-position-time",
+      "xAxis": "/shared/instantaneous-speed/axes/10s",
+      "yAxis": "/shared/instantaneous-speed/axes/15m",    
       "initialDatasets": [
         "slope-data"
       ],
@@ -1497,6 +1482,12 @@
       "url": "/shared/instantaneous-speed/dataset/slope-data",
       "name": "slope-data",
       "activity": "/shared/instantaneous-speed",
+      "xUnits": "/builtins/units/seconds",
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": "/builtins/units/meters",
+      "yLabel": "Position",
+      "yShortLabel": "Position",
       "points": [
         1,
         2,
