@@ -375,17 +375,16 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       The name of the graph on which the data will be shown.
   */
   startSensorInput: function (context, args) {
-    this.createDataset(this, { 
-      graphName: args.graphName, 
-      datasetName: args.datasetName,
-      xUnits: '/builtins/units/seconds',
-      yUnits: '/builtins/units/meters'
-    });
-
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    var dataset = controller && controller.findDatasetByName(args.datasetName);
+    var dataset = Smartgraphs.activityObjectsController.createDataset(args.datasetName, '/builtins/units/seconds', '/builtins/units/meters');
+    dataset.set('xLabel', "Position");
+    dataset.set('xShortLabel', "Position");
+    dataset.set('yLabel', "Time");
+    dataset.set('yShortLabel', "Time");
     
-    if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
+    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    controller.addDataset(dataset);
+    
+    if ( !dataset || !controller ) return YES;        // handled, but invalid graphName or dataset...
     
     // TODO let 'args' override these settings if desired
     var xMin = controller.getPath('xAxis.min');
