@@ -15,12 +15,3 @@ Smartgraphs.User.TEST_FIXTURES = [
   }
 ];
 
-Smartgraphs.User.FIXTURES = [
-
-  { guid: 'default',
-    userId: 'anonymous',
-    name: 'Anonymous User',
-    sessions: []
-  }
-
-];
