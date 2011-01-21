@@ -80,7 +80,10 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
     var axis  = this.get('axis');
     if (!axis) return;
     
-    var labelText = axis.get('label');
+    var axisLabel = axis.get('label');
+    var unitName = axis.getPath('units.pluralName');
+    var labelText = unitName ? "%@ (%@)".fmt(axisLabel, unitName) : axisLabel;
+    
     var x, y, rotation;
     
     if (this.get('type') === 'x') {
