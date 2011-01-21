@@ -1,6 +1,6 @@
 {
   "_id": "slope-tool-demo.df5",
-  "_rev": "5-8eeb58eaadeff34e41e6701bf2ddf09a",
+  "_rev": "7-f81b3da4eac0de325ad87c37a6500bfe",
   "data_format_version": 5,  
   "activity": {
     "title": "Slope Tool Demo",
@@ -13,8 +13,7 @@
       "/shared/slope-tool-demo/dataset/demo-data"
     ],
     "units": [
-      "/shared/slope-tool-demo/units/meters",
-      "/shared/slope-tool-demo/units/seconds"
+    
     ],
     "axes": [
       "/shared/slope-tool-demo/axes/x-axis",
@@ -629,26 +628,13 @@
     }
   ],
   "units": [
-    {
-      "url": "/shared/slope-tool-demo/units/meters",
-      "activity": "/shared/slope-tool-demo",
-      "name": "meter",
-      "abbreviation": "m",
-      "pluralName": "meters"
-    },
-    {
-      "url": "/shared/slope-tool-demo/units/seconds",
-      "activity": "/shared/slope-tool-demo",
-      "name": "second",
-      "abbreviation": "s",      
-      "pluralName": "seconds"
-    }
+  
   ],
   "axes": [
     {
       "url": "/shared/slope-tool-demo/axes/x-axis",
       "activity": "/shared/slope-tool-demo",
-      "units": "/shared/slope-tool-demo/units/seconds",
+      "units": "/builtins/units/seconds",
       "min": 0,
       "max": 10,
       "nSteps": 10,
@@ -657,7 +643,7 @@
     {
       "url": "/shared/slope-tool-demo/axes/y-axis",
       "activity": "/shared/slope-tool-demo",
-      "units": "/shared/slope-tool-demo/units/meters", 
+      "units": "/builtins/units/meters", 
       "min": 0,
       "max": 15,
       "nSteps": 10,
@@ -689,10 +675,10 @@
       "url": "/shared/slope-tool-demo/dataset/demo-data",
       "name": "demo-data",
       "activity": "/shared/slope-tool-demo",
-      "xUnits": "/shared/slope-tool-demo/units/seconds",
+      "xUnits": "/builtins/units/seconds",
       "xLabel": "Time",
       "xShortLabel": "Time",
-      "yUnits": "/shared/slope-tool-demo/units/meters",
+      "yUnits": "/builtins/units/meters",
       "yLabel": "Position",
       "yShortLabel": "Pos", 
       "points": [
