@@ -377,7 +377,9 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   startSensorInput: function (context, args) {
     this.createDataset(this, { 
       graphName: args.graphName, 
-      datasetName: args.datasetName
+      datasetName: args.datasetName,
+      xUnits: '/builtins/units/seconds',
+      yUnits: '/builtins/units/meters'
     });
 
     var controller = Smartgraphs.GraphController.controllerForName[args.graphName];

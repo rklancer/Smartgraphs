@@ -51,7 +51,10 @@ Smartgraphs.sensorController = SC.ObjectController.create(
 
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
-    if (pane && dataset) {
+    var meters = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/meters');
+    var seconds = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/seconds');
+    
+    if (pane && dataset && dataset.get('xUnits') === seconds && dataset.get('yUnits') === meters) {
       this._pane = pane;
       this._dataset = dataset;
       
