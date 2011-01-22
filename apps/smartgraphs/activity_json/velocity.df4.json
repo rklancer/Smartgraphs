@@ -1,7 +1,7 @@
 {
-  "_id": "velocity.df4",
-  "_rev": "84-dfdc85521c24e01bb3fc844048fe44ab",
-  "data_format_version": 4,
+  "_id": "velocity.df5",
+  "_rev": "1-093abb3f048ee9a8536f56ab0b53c39f",
+  "data_format_version": 5,
   "activity": {
     "title": "How Fast Am I Moving?",
     "url": "/shared/what-is-velocity",
@@ -30,8 +30,14 @@
     "datasets": [
       "/shared/what-is-velocity/dataset/slope-data"
     ],
+    "units": [
+
+    ],
     "axes": [
-      "/shared/what-is-velocity/axes/walking-position-time"
+      "/shared/what-is-velocity/axes/30s",
+      "/shared/what-is-velocity/axes/4.5m",
+      "/shared/what-is-velocity/axes/10s",
+      "/shared/what-is-velocity/axes/15m"
     ],
     "graphs": [
       "/shared/what-is-velocity/graph/freehand-walking-normal",
@@ -4049,19 +4055,41 @@
       "nextButtonShouldSubmit": false
     }
   ],
-  "axes": [
+  "units": [
+
+  ],
+  "axes": [  
     {
-      "url": "/shared/what-is-velocity/axes/walking-position-time",
-      "xMin": 0,
-      "xMax": 30,
-      "xSteps": 6,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 4.5,
-      "ySteps": 9,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Pos. (m)"
+      "url": "/shared/what-is-velocity/axes/30s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 30,
+      "nSteps": 6,
+      "label": "Time"
+    },
+    {
+      "url": "/shared/what-is-velocity/axes/4.5m",
+      "units": "/builtins/units/meters",      
+      "min": 0,
+      "max": 4.5,
+      "nSteps": 9,
+      "label": "Position"
+    },
+    {
+      "url": "/shared/what-is-velocity/axes/10s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 10,
+      "nSteps": 5,
+      "label": "Time"
+    },
+    {
+      "url": "/shared/what-is-velocity/axes/15m",
+      "units": "/builtins/units/meters",
+      "min": 0,
+      "max": 15,
+      "nSteps": 5,
+      "label": "Position"
     }
   ],
   "graphs": [
@@ -4071,7 +4099,8 @@
       "name": "freehand-walking-normal",
       "description": "freehand prediciton of normal walking velocity",
       "title": "Predicted Data (Normal)",
-      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/30s",
+      "yAxis": "/shared/what-is-velocity/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4085,7 +4114,8 @@
       "name": "prediction-walking-normal",
       "description": "prediciton of normal walking velocity",
       "title": "Predicted Data (Normal)",
-      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/30s",
+      "yAxis": "/shared/what-is-velocity/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4102,7 +4132,8 @@
       "name": "freehand-walking-slow",
       "description": "freehand prediciton of slow walking velocity",
       "title": "Predicted Data (Slow)",
-      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/30s",
+      "yAxis": "/shared/what-is-velocity/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4116,7 +4147,8 @@
       "name": "prediction-walking-slow",
       "description": "prediciton of slow walking velocity",
       "title": "Predicted Data (Slow)",
-      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/30s",
+      "yAxis": "/shared/what-is-velocity/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4133,7 +4165,8 @@
       "name": "sensor-normal-walking",
       "description": "using sensor to measure normal walking pace",
       "title": "Actual Data (Normal)",
-      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/30s",
+      "yAxis": "/shared/what-is-velocity/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4147,7 +4180,8 @@
       "name": "sensor-result-normal-walking",
       "description": "sensor result from normal walking",
       "title": "Actual Data (Normal)",
-      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/30s",
+      "yAxis": "/shared/what-is-velocity/axes/4.5m",
       "initialDatasets": [
         "sensor-normal"
       ],
@@ -4161,7 +4195,8 @@
       "name": "sensor-slow-walking",
       "description": "using sensor to measure slow walking pace",
       "title": "Actual Data (Slow)",
-      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/30s",
+      "yAxis": "/shared/what-is-velocity/axes/4.5m",
       "initialDatasets": [
 
       ],
@@ -4175,7 +4210,8 @@
       "name": "sensor-result-slow-walking",
       "description": "sensor result from slow walking",
       "title": "Actual Data (Slow)",
-      "axes": "/shared/what-is-velocity/axes/walking-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/30s",
+      "yAxis": "/shared/what-is-velocity/axes/4.5m",
       "initialDatasets": [
         "sensor-slow"
       ],
@@ -4189,7 +4225,8 @@
       "name": "slope-graph",
       "description": "graph for calculating slope",
       "title": "Position vs. Time",
-      "axes": "/shared/what-is-velocity/axes/slope-position-time",
+      "xAxis": "/shared/what-is-velocity/axes/10s",
+      "yAxis": "/shared/what-is-velocity/axes/15m",
       "initialDatasets": [
         "slope-data"
       ],
@@ -4231,6 +4268,12 @@
       "url": "/shared/what-is-velocity/dataset/slope-data",
       "name": "slope-data",
       "activity": "/shared/what-is-velocity",
+      "xUnits": "/builtins/units/seconds",
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": "/builtins/units/meters",
+      "yLabel": "Position",
+      "yShortLabel": "Position",
       "points": [
         1,
         2,
