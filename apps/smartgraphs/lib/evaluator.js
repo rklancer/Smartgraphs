@@ -43,6 +43,37 @@
     return (a <= b && b <= c);
   }
   
+  function difference(terms, value) {
+    var number1 = evaluate(terms[0], value);
+    var number2 = evaluate(terms[1], value);
+    return number1 - number2;
+  }
+  
+  function sum(terms, value) {
+    var number1 = evaluate(terms[0], value);
+    var number2 = evaluate(terms[1], value);
+    return number1 + number2;
+  }
+  
+  function product(terms, value) {
+    var number1 = evaluate(terms[0], value);
+    var number2 = evaluate(terms[1], value);
+    return number1 * number2;
+  }
+  
+  function quotient(terms, value) {
+    var number1 = evaluate(terms[0], value);
+    var number2 = evaluate(terms[1], value);
+    return number1 / number2;
+  }
+  
+  function round(terms, value) {
+    var number = evaluate(terms[0], value);
+    var decimal = evaluate(terms[1], value);
+    var result = Math.round(number * Math.pow(10, decimal)) / Math.pow(10, decimal);
+    return result;
+  }
+  
   function equals(terms, value) {
     return evaluate(terms[0], value) === evaluate(terms[1], value);
   }
@@ -60,7 +91,8 @@
     var list = evaluate(terms[1], value) || [];
     
     for (var i = 0; i < list.length; i++) {
-      if (item === list[i]) return true;
+      var testValue = evaluate(list[i], value)
+      if (item === testValue) return true;
     }
     return false;
   }
@@ -158,6 +190,11 @@
     return parseFloat(evaluate(terms, value), 10);
   }
   
+  function isNumeric(terms, value) {
+    var num = evaluate(terms, value)
+    return num.length > 0 && !isNaN(num);
+  }
+  
   evaluate = function (exp, value) {
     if (exp === 'value') return value;
 
@@ -192,6 +229,8 @@
             return lt(terms, value);
           case 'between':
             return between(terms, value);
+          case 'round':
+            return round(terms, value);
           case 'notempty':
             return notempty(terms, value);
           case 'xvalue':
@@ -206,6 +245,16 @@
             return slope(terms, value);
           case 'delta': 
             return delta(terms, value);
+          case 'difference': 
+            return difference(terms, value);
+          case 'sum': 
+            return sum(terms, value);
+          case 'product': 
+            return product(terms, value);
+          case 'quotient': 
+            return quotient(terms, value);
+          case 'isNumeric':
+            return isNumeric(terms, value);
         }
         console.error('invalid expression operator: "' + op + '"');
         return;
