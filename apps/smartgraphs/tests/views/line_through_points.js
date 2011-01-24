@@ -5,7 +5,7 @@
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start */
 
-var axes, endpoints, xMin, xMax, yMin, yMax;
+var xAxis, yAxis, endpoints, xMin, xMax, yMin, yMax;
 var oldFixtures, oldStore;
 var view;
 var testpoints = [
@@ -21,28 +21,28 @@ var testpoints = [
 ];
 
 function setupFixtures() {
-  Smartgraphs.Axes.oldFixtures = Smartgraphs.Axes.FIXTURES;
-  Smartgraphs.Axes.FIXTURES = [{ url: 'test-axes',
-
-    xMin: 0,
-    xMax: 15,
-    xSteps: 15,
-    xLabel: 'Time (seconds)',
-    xLabelAbbreviated: 'Time (s)',
-
-    yMin: 0,
-    yMax: 5,
-    ySteps: 10,
-    yLabel: 'Position (meters)',
-    yLabelAbbreviated: 'Position (m)'
-  }];
+  Smartgraphs.Axis.oldFixtures = Smartgraphs.Axis.FIXTURES;
+  Smartgraphs.Axis.FIXTURES = [  
+    { url: 'x-axis',
+      min: 0,
+      max: 15,
+      nSteps: 15,
+      label: 'time'
+    },
+    { url: 'y-axis',
+      min: 0,
+      max: 5,
+      nSteps: 10,
+      label: 'position'
+    }
+  ];
   
   oldStore = Smartgraphs.store;
   Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
 }
 
 function restoreFixtures() {
-  Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
+  Smartgraphs.Axis.FIXTURES = Smartgraphs.Axis.oldFixtures;
   Smartgraphs.set('store', oldStore);
 }
 
@@ -50,11 +50,12 @@ function restoreFixtures() {
 module("Smartgraphs.LineThroughPointsView", {
   setup: function () {
     setupFixtures();
-    axes = Smartgraphs.store.find(Smartgraphs.Axes, "test-axes");
-    xMin = axes.get('xMin');
-    xMax = axes.get('xMax');
-    yMin = axes.get('yMin');
-    yMax = axes.get('yMax');
+    xAxis = Smartgraphs.store.find(Smartgraphs.Axis, "x-axis");
+    yAxis = Smartgraphs.store.find(Smartgraphs.Axis, "y-axis");
+    xMin = xAxis.get('min');
+    xMax = xAxis.get('max');
+    yMin = yAxis.get('min');
+    yMax = yAxis.get('max');
     
     view = Smartgraphs.LineThroughPointsView.create();
   },
@@ -68,7 +69,7 @@ module("Smartgraphs.LineThroughPointsView", {
 function testEndpointsInBorders(pair) {
   test("Given two points defining a line which " + pair.desc + ", we should get endpoints on the borders of the graph", function() {
     // expect(4);
-    endpoints = view.getEndPoints(pair.point1, pair.point2, axes);
+    endpoints = view.getEndPoints(pair.point1, pair.point2, xAxis, yAxis);
     ok( ((xMin <= endpoints[0].x) && (endpoints[0].x <= xMax)), "First point is inside horizontal borders of the graph");
     ok( ((yMin <= endpoints[0].y) && (endpoints[0].y <= yMax)), "First point is inside vertical borders of the graph");
     ok( ((xMin <= endpoints[1].x) && (endpoints[1].x <= xMax)), "Second point is inside horizontal borders of the graph");

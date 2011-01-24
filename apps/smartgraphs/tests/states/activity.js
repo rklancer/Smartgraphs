@@ -61,8 +61,31 @@ test("openAuthorView action should transition us to AUTHOR view of the same acti
 
 module("Smartgraphs.ACTIVITY: graph annotation-creating actions", {
   setup: function () {
-    setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
-    setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
+    setup.fixtures(Smartgraphs.Graph, [
+      { url: 'test-graph',
+        name: 'test-graph',
+        xAxis: 'x-axis',
+        yAxis: 'y-axis',
+        title: 'Test Graph',
+        initialDatasets: []
+      }
+    ]);
+
+    setup.fixtures(Smartgraphs.Axis, [    
+      { url: 'x-axis',
+        min: -5,
+        max: 10,
+        nSteps: 5,
+        label: 'x axis'
+      },
+      { url: 'y-axis',
+        min: 2,
+        max: 8,
+        nSteps: 6,
+        label: 'y axis'
+      }
+    ]);
+    
     setup.fixtures(Smartgraphs.DataPoint, [
       { guid: 'p1', x: 1, y: 3 },
       { guid: 'p2', x: 4, y: 5 }
@@ -70,9 +93,8 @@ module("Smartgraphs.ACTIVITY: graph annotation-creating actions", {
     setupUserAndSessionFixtures();
     setup.store();
     
-    // FIXME why is it necessary to do this before Axes and Graphs are visible in nested store?
     Smartgraphs.store.find(Smartgraphs.DataPoint);
-    Smartgraphs.store.find(Smartgraphs.Axes);
+    Smartgraphs.store.find(Smartgraphs.Axis);
     Smartgraphs.store.find(Smartgraphs.Graph);
 
     setup.mock(Smartgraphs.activityStepController, 'begin', function () {});

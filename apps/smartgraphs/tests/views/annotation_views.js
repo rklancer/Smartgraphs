@@ -14,14 +14,37 @@ var dataset;
 
 
 function setupFixtures() {
-  setup.fixtures(Smartgraphs.Graph, Smartgraphs.Graph.TEST_FIXTURES);
-  setup.fixtures(Smartgraphs.Axes, Smartgraphs.Axes.TEST_FIXTURES);
+  
+  setup.fixtures(Smartgraphs.Graph, [
+    { url: 'test-graph',
+      name: 'test-graph',
+      xAxis: 'x-axis',
+      yAxis: 'y-axis',
+      title: 'Test Graph',
+      initialDatasets: []
+    }
+  ]);
+
+  setup.fixtures(Smartgraphs.Axis, [    
+    { url: 'x-axis',
+      min: -5,
+      max: 10,
+      nSteps: 5,
+      label: 'x axis'
+    },
+    { url: 'y-axis',
+      min: 2,
+      max: 8,
+      nSteps: 6,
+      label: 'y axis'
+    }
+  ]);
   setup.fixtures(Smartgraphs.Dataset, [{url: 'dataset-1'}]);        // just so FixturesDataSource recognizes we have fixtures
   setup.fixtures(Smartgraphs.DataPoint, [{url: 'datapoint-1'}]);
   setup.store();
   
   Smartgraphs.store.find(Smartgraphs.DataPoint);
-  Smartgraphs.store.find(Smartgraphs.Axes);
+  Smartgraphs.store.find(Smartgraphs.Axis);
   Smartgraphs.store.find(Smartgraphs.Graph);
 }
 

@@ -28,31 +28,30 @@ function numVisibleChildren($el) {
 
 
 function setupFixtures() {
-  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
+  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;
   Smartgraphs.Graph.FIXTURES = [
-    { url: 'test',
-      name: 'test',
-      axes: 'test-axes',
+    { url: 'test-graph',
+      name: 'test-graph',
+      xAxis: 'x-axis',
+      yAxis: 'y-axis',
       title: 'Test Graph',
-      initialDatasets: []
+      initialDatasets: []    
     }
   ];
   
-  Smartgraphs.Axes.oldFixtures = Smartgraphs.Axes.FIXTURES;
-  Smartgraphs.Axes.FIXTURES = [
-    { url: 'test-axes',
-
-      xMin: -5,
-      xMax: 10,
-      xSteps: 5,
-      xLabel: 'xLabel (long)',
-      xLabelAbbreviated: 'xLabel (abbrev)',
-
-      yMin: 2,
-      yMax: 8,
-      ySteps: 6,
-      yLabel: 'yLabel (long)',
-      yLabelAbbreviated: 'yLabel (abbrev)'
+  Smartgraphs.Axis.oldFixtures = Smartgraphs.Axis.FIXTURES;
+  Smartgraphs.Axis.FIXTURES = [
+    { url: 'x-axis',
+      min: -5,
+      max: 10,
+      nSteps: 5,
+      label: 'x axis'
+    },
+    { url: 'y-axis',
+      min: 2,
+      max: 8,
+      nSteps: 6,
+      label: 'y axis'
     }
   ];
   
@@ -67,7 +66,7 @@ function setupFixtures() {
 
 function restoreFixtures() {
   Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
-  Smartgraphs.Axes.FIXTURES = Smartgraphs.Axes.oldFixtures;
+  Smartgraphs.Axis.FIXTURES = Smartgraphs.Axis.oldFixtures;
   restoreDatapointFixtures();
   
   Smartgraphs.set('store', oldStore);
@@ -384,33 +383,34 @@ function runTests() {
 
     // xLabel's .node property is the DOM node corresponding to the label
     ok($.contains(document.body, xNode), "the x label's node should be contained within document.body (not offscreen)");
-    equals(xLabel.attr('text'), 'xLabel (long)', "the x label's text attr should be 'xLabel (long)'");
+    equals(xLabel.attr('text'), 'x axis', "the x label's text attr should be 'x axis'");
 
     ok($.contains(document.body, yNode), "the y label's node should be contained within document.body (not offscreen)");
-    equals(yLabel.attr('text'), 'yLabel (long)', "the y label's text attr should be 'yLabel (long)");
+    equals(yLabel.attr('text'), 'y axis', "the y label's text attr should be 'y axis");
 
     // test that axis labels correctly update when label properties are changed
-    var axes = Smartgraphs.firstGraphController.get('axes');
+    var xAxis = Smartgraphs.firstGraphController.get('xAxis');
 
     // x label...
     SC.RunLoop.begin();
-    axes.set('xLabel', 'updated xLabel');
+    xAxis.set('label', 'updated x axis label');
     SC.RunLoop.end();
 
     var newXNode = xAxisView._label.node;
     equals(newXNode, xNode, "changing the axis label should not have changed the x label's DOM node");
     ok($.contains(document.body, newXNode), "the x label's node should still be contained within document.body (not offscreen)");
-    equals(xLabel.attr('text'), 'updated xLabel', "after updating the x label's text, the x label's text attr should be 'updated xLabel'");
+    equals(xLabel.attr('text'), 'updated x axis label', "after updating the x label's text, the x label's text attr should be 'updated x axis label'");
 
     // y label...
+    var yAxis = Smartgraphs.firstGraphController.get('yAxis');    
     SC.RunLoop.begin();
-    axes.set('yLabel', 'updated yLabel');
+    yAxis.set('label', 'updated y axis label');
     SC.RunLoop.end();
 
     var newYNode = yAxisView._label.node;
     equals(newYNode, yNode, 'changing the axis label should not have changed the y label node');
     ok($.contains(document.body, newYNode), "the y label's node should still be contained within document.body (not offscreen)");  
-    equals(yLabel.attr('text'), 'updated yLabel', "after updating the y label's text, the y label's text attr should be 'updated yLabel'");
+    equals(yLabel.attr('text'), 'updated y axis label', "after updating the y label's text, the y label's text attr should be 'updated y axis label'");
   });
 
 
@@ -424,10 +424,11 @@ function runTests() {
     equals(yLabel.attr('rotation'), 270, "the y label's node should be rotated at 270 degrees");
 
     // guard against re-rotating the axis labels every time they are updated...
-    var axes = Smartgraphs.firstGraphController.get('axes');
+    var xAxis = Smartgraphs.firstGraphController.get('xAxis');  
+    var yAxis = Smartgraphs.firstGraphController.get('yAxis');  
     SC.RunLoop.begin();
-    axes.set('xLabel', 'updated xLabel');
-    axes.set('yLabel', 'updated yLabel');
+    xAxis.set('xLabel', 'updated xLabel');
+    yAxis.set('yLabel', 'updated yLabel');
     SC.RunLoop.end();
 
     equals(xLabel.attr('rotation'), 0, "after updating the x label's text, the x label should still not be rotated (rotation of 0 degrees)");
@@ -491,7 +492,7 @@ module("Smartgraphs.GraphView -- initial instantiation of graph", {
   setup: function() {
     setupFixtures();
     
-    Smartgraphs.firstGraphController.openGraph('test');
+    Smartgraphs.firstGraphController.openGraph('test-graph');
     
     SC.RunLoop.begin();
     pane = SC.MainPane.create({
@@ -528,7 +529,7 @@ module("Smartgraphs.GraphView -- resized graph", {
   setup: function() {
     setupFixtures();
     
-    Smartgraphs.firstGraphController.openGraph('test');
+    Smartgraphs.firstGraphController.openGraph('test-graph');
     
     SC.RunLoop.begin();
     pane = SC.MainPane.create({
