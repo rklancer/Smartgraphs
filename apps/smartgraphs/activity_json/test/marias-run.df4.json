@@ -1,5 +1,5 @@
 {
-  "data_format_version": 4,  
+  "data_format_version": 5,  
   "activity": {
     "title": "Maria's Run (TEST VERSION)",
     "url": "/test/marias-run",
@@ -17,9 +17,14 @@
     "datasets": [
       "/test/marias-run/dataset/maria"
     ],
+    "units": [
+    
+    ],
     "axes": [
-      "/test/marias-run/axes/2000m-10min",
-      "/test/marias-run/axes/5m-30s"
+      "/test/marias-run/axes/2000m",
+      "/test/marias-run/axes/10min",
+      "/test/marias-run/axes/5m",
+      "/test/marias-run/axes/30s"
     ],
     "graphs": [
       "/test/marias-run/graph/maria",
@@ -1532,32 +1537,42 @@
       "nextButtonShouldSubmit": false
     }
   ],
-  "axes": [
+  "units": [
+  
+  ],
+  "axes": [      
     {
-      "url": "/test/marias-run/axes/2000m-10min",
-      "xMin": 0,
-      "xMax": 10,
-      "xSteps": 10,
-      "xLabel": "Time (minutes)",
-      "xLabelAbbreviated": "Time (min)",
-      "yMin": 0,
-      "yMax": 2000,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
+      "url": "/test/marias-run/axes/2000m",
+      "units": "/builtins/units/meters",
+      "min": 0,
+      "max": 2000,
+      "nSteps": 10,
+      "label": "Position"
     },
     {
-      "url": "/test/marias-run/axes/5m-30s",
-      "xMin": 0,
-      "xMax": 30,
-      "xSteps": 6,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
+      "url": "/test/marias-run/axes/10min",
+      "units": "/builtins/units/minutes",
+      "min": 0,
+      "max": 10,
+      "nSteps": 10,
+      "label": "Time"
+    },
+    
+    {
+      "url": "/test/marias-run/axes/30s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 30,
+      "nSteps": 6,
+      "label": "Time"
+    },
+    {
+      "url": "/test/marias-run/axes/5m",
+      "units": "/builtins/units/meters",
+      "min": 0,
+      "max": 5,
+      "nSteps": 10,
+      "label": "Position"
     }
   ],
   "graphs": [
@@ -1567,7 +1582,8 @@
       "name": "maria",
       "description": "Graph of Maria's run",
       "title": "Position vs. Time",
-      "axes": "/test/marias-run/axes/2000m-10min",
+      "xAxis": "/test/marias-run/axes/10min",
+      "yAxis": "/test/marias-run/axes/2000m",  
       "initialDatasets": [
         "maria"
       ],
@@ -1581,7 +1597,8 @@
       "name": "sensor-playing",
       "description": "Playing around with the sensor in page 2",
       "title": "Position vs. Time",
-      "axes": "/test/marias-run/axes/5m-30s",
+      "xAxis": "/test/marias-run/axes/30s",
+      "yAxis": "/test/marias-run/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1595,7 +1612,8 @@
       "name": "start-stop-start",
       "description": "Starting, stopping, and starting again in page 4",
       "title": "Position vs. Time",
-      "axes": "/test/marias-run/axes/5m-30s",
+      "xAxis": "/test/marias-run/axes/30s",
+      "yAxis": "/test/marias-run/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1609,7 +1627,8 @@
       "name": "two-speeds",
       "description": "Walking at two speeds in page 3",
       "title": "Position vs. Time",
-      "axes": "/test/marias-run/axes/5m-30s",
+      "xAxis": "/test/marias-run/axes/30s",
+      "yAxis": "/test/marias-run/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1651,6 +1670,12 @@
       "url": "/test/marias-run/dataset/maria",
       "name": "maria",
       "activity": "/test/marias-run",
+      "xUnits": "/builtins/units/minutes",
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": "/builtins/units/meters",
+      "yLabel": "Position",
+      "yShortLabel": "Pos",
       "points": [
         400,
         401,
