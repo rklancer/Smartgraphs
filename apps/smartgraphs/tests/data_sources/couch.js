@@ -17,6 +17,8 @@ var doc = {
     "datasets": [
       "/test/skeleton/dataset1"
     ],
+    "units": [
+    ],
     "axes": [
       "/test/skeleton/axes/x-axis",
       "/test/skeleton/axes/y-axis"      
@@ -56,21 +58,21 @@ var doc = {
       "responseTemplate": "/test/skeleton/response1",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -79,6 +81,9 @@ var doc = {
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
     }
+  ],
+  "units": [
+
   ],
   "axes": [
     {

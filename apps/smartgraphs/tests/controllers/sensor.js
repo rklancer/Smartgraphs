@@ -13,9 +13,10 @@ module("sensorController <--> SENSOR_* state interactions", {
     setup.store();
     
     setupUserAndSessionFixtures();
+    Smartgraphs.store.find(Smartgraphs.Unit);       // can't lazy load from fixtures after session sets up the nested store.
     beginSession();
     
-    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset');
+    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset', '/builtins/units/seconds', '/builtins/units/meters');
     
     // mock the applet page so we don't try to append an actual applet
     setup.mock(Smartgraphs, 'appletPage', SC.Page.design({
@@ -61,7 +62,7 @@ test("Correct sequence of events should occur when sensor loads and is used in t
   expect(34);
   // This looks like a lot of assertions for one test, but the dependencies are such that breaking them up
   // into separate tests will only introduce more code.
-  
+
   // spy on sendAction
   var actionSent = null;
   var actionArgs = null;
@@ -235,7 +236,7 @@ test("sensor controller should properly set isStreaming and streamSource propert
   });
   
   Smartgraphs.statechart.gotoState('SENSOR');
-  equals(enableSucceeded, YES, "(precondition) entering SENSOR state should have called enableInput and enableInput should have returned function YES");  
+  equals(enableSucceeded, YES, "(precondition) entering SENSOR state should have called enableInput and enableInput should have returned YES");  
   equals(dataset.get('isStreaming'), NO, "dataset's isStreaming property should still be NO after entering SENSOR state");
   
   dataset.set('streamSource', null);
