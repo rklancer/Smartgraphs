@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df5",
-  "_rev": "2-2aa580b0d6ed0f0d310cf98ceb1bbf26",
+  "_rev": "6-0ced48b76528d08b30deaadd9afa32b5",
   "data_format_version": 5,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -34,9 +34,11 @@
 
     ],
     "axes": [
+      "/shared/what-is-velocity/axes/10s",
+      "/shared/what-is-velocity/axes/15s",
       "/shared/what-is-velocity/axes/30s",
       "/shared/what-is-velocity/axes/4.5m",
-      "/shared/what-is-velocity/axes/10s",
+      "/shared/what-is-velocity/axes/5m",
       "/shared/what-is-velocity/axes/15m"
     ],
     "graphs": [
@@ -4921,6 +4923,22 @@
   ],
   "axes": [  
     {
+      "url": "/shared/what-is-velocity/axes/10s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 10,
+      "nSteps": 5,
+      "label": "Time"
+    },
+    {
+      "url": "/shared/what-is-velocity/axes/15s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 15,
+      "nSteps": 15,
+      "label": "Time"
+    },
+    {
       "url": "/shared/what-is-velocity/axes/30s",
       "units": "/builtins/units/seconds",
       "min": 0,
@@ -4936,13 +4954,14 @@
       "nSteps": 9,
       "label": "Position"
     },
+
     {
-      "url": "/shared/what-is-velocity/axes/10s",
-      "units": "/builtins/units/seconds",
+      "url": "/shared/what-is-velocity/axes/5m",
+      "units": "/builtins/units/meters",      
       "min": 0,
-      "max": 10,
-      "nSteps": 5,
-      "label": "Time"
+      "max": 5,
+      "nSteps": 10,
+      "label": "Position"
     },
     {
       "url": "/shared/what-is-velocity/axes/15m",
@@ -5101,7 +5120,8 @@
       "name": "slope-graph-analyze",
       "description": "graph for analyzing slope",
       "title": "Position vs. Time",
-      "axes": "/shared/what-is-velocity/axes/slope-position-time-analyze",
+      "xAxis": "/shared/what-is-velocity/axes/15s",
+      "yAxis": "/shared/what-is-velocity/axes/5m",
       "initialDatasets": [
 
       ],
