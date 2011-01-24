@@ -16,6 +16,7 @@ module('Table view', {
     setup.fixtures(Smartgraphs.Dataset, [{url: 'dataset-1'}]);
     setup.fixtures(Smartgraphs.DataPoint, [{url: 'datapoint-1'}]);
     setup.store();
+    Smartgraphs.store.find(Smartgraphs.Unit);
     beginSession();
         
     setup.mock(Smartgraphs.firstTableController, 'showTable', YES);
@@ -53,6 +54,32 @@ module('Table view', {
     restoreUserAndSessionFixtures();
     teardown.all();
   }
+});
+
+
+test("table labels reflect units set on dataset", function () {
+  expect(4);
+  
+  SC.RunLoop.begin();
+  dataset.set('xUnits', null);
+  dataset.set('xShortLabel', 'x');
+  dataset.set('yUnits', null);
+  dataset.set('yShortLabel', 'y');  
+  SC.RunLoop.end();
+  
+  equals(view.get('xLabel'), 'x', "without units, x-column heading should be just 'x'");
+  equals(view.get('yLabel'), 'y', "without units, y-column heading should be just 'y'");
+  
+  var meters = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/meters');
+  var seconds = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/seconds');
+
+  SC.RunLoop.begin();
+  dataset.set('xUnits', seconds);
+  dataset.set('yUnits', meters);  
+  SC.RunLoop.end();
+  
+  equals(view.get('xLabel'), 'x (s)', "with units, x-column heading should be x (s)");
+  equals(view.get('yLabel'), 'y (m)', "with units, y-column heading should be y (m)");
 });
 
 

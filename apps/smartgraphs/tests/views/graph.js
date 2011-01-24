@@ -45,13 +45,16 @@ function setupFixtures() {
       min: -5,
       max: 10,
       nSteps: 5,
-      label: 'x axis'
+      label: 'x axis',
+      units: '/builtins/units/seconds'
     },
+    
     { url: 'y-axis',
       min: 2,
       max: 8,
       nSteps: 6,
-      label: 'y axis'
+      label: 'y axis',
+      units: '/builtins/units/meters'
     }
   ];
   
@@ -383,10 +386,10 @@ function runTests() {
 
     // xLabel's .node property is the DOM node corresponding to the label
     ok($.contains(document.body, xNode), "the x label's node should be contained within document.body (not offscreen)");
-    equals(xLabel.attr('text'), 'x axis', "the x label's text attr should be 'x axis'");
+    equals(xLabel.attr('text'), 'x axis (seconds)', "the x label's text attr should be 'x axis (seconds)'");
 
     ok($.contains(document.body, yNode), "the y label's node should be contained within document.body (not offscreen)");
-    equals(yLabel.attr('text'), 'y axis', "the y label's text attr should be 'y axis");
+    equals(yLabel.attr('text'), 'y axis (meters)', "the y label's text attr should be 'y axis (meters)'");
 
     // test that axis labels correctly update when label properties are changed
     var xAxis = Smartgraphs.firstGraphController.get('xAxis');
@@ -399,7 +402,7 @@ function runTests() {
     var newXNode = xAxisView._label.node;
     equals(newXNode, xNode, "changing the axis label should not have changed the x label's DOM node");
     ok($.contains(document.body, newXNode), "the x label's node should still be contained within document.body (not offscreen)");
-    equals(xLabel.attr('text'), 'updated x axis label', "after updating the x label's text, the x label's text attr should be 'updated x axis label'");
+    equals(xLabel.attr('text'), 'updated x axis label (seconds)', "after updating the x label's text, the x label's text attr should be 'updated x axis label (seconds)'");
 
     // y label...
     var yAxis = Smartgraphs.firstGraphController.get('yAxis');    
@@ -410,7 +413,7 @@ function runTests() {
     var newYNode = yAxisView._label.node;
     equals(newYNode, yNode, 'changing the axis label should not have changed the y label node');
     ok($.contains(document.body, newYNode), "the y label's node should still be contained within document.body (not offscreen)");  
-    equals(yLabel.attr('text'), 'updated y axis label', "after updating the y label's text, the y label's text attr should be 'updated y axis label'");
+    equals(yLabel.attr('text'), 'updated y axis label (meters)', "after updating the y label's text, the y label's text attr should be 'updated y axis label (meters)'");
   });
 
 
