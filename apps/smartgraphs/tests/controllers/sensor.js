@@ -221,6 +221,43 @@ test("Correct sequence of events should occur when sensor loads and is used in t
 });
 
 
+test("sensor controller should only write to datasets with units of meters versus seconds", function () {
+  expect(6);
+  
+  var meters = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/meters');
+  var seconds = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/seconds');
+  var degrees = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/degrees-celsius');
+  var minutes = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/minutes');
+  
+  ok( !!meters && !!seconds && !!degrees && !!minutes, "(precondition) All units required for this test should be defined.");
+
+  dataset.set('xUnits', seconds);  
+  dataset.set('yUnits', meters);
+  var succeeded = Smartgraphs.sensorController.register('valid-pane', dataset, 0, 10);
+  ok( succeeded, "sensorController should have allowed registering a dataset with seconds on the x axis and meters on the y axis");
+  
+  dataset.set('xUnits', minutes);
+  dataset.set('yUnits', meters);  
+  succeeded = Smartgraphs.sensorController.register('valid-pane', dataset, 0, 10);
+  ok( !succeeded, "sensorController should not have allowed registering a dataset with minutes on the x axis");
+  
+  dataset.set('xUnits', seconds);  
+  dataset.set('yUnits', degrees);
+  succeeded = Smartgraphs.sensorController.register('valid-pane', dataset, 0, 10);
+  ok( !succeeded, "sensorController should not have allowed registering a dataset with degrees Celsius on the y axis");
+
+  dataset.set('xUnits', seconds);  
+  dataset.set('yUnits', null);
+  succeeded = Smartgraphs.sensorController.register('valid-pane', dataset, 0, 10);
+  ok( !succeeded, "sensorController should not have allowed registering a dataset with no units on the y axis");
+
+  dataset.set('xUnits', null);  
+  dataset.set('yUnits', meters);
+  succeeded = Smartgraphs.sensorController.register('valid-pane', dataset, 0, 10);
+  ok( !succeeded, "sensorController should not have allowed registering a dataset with no units on the x axis"); 
+});
+
+
 test("sensor controller should properly set isStreaming and streamSource properties when it starts recording", function () {
   expect(6);
 

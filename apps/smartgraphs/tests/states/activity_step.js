@@ -45,10 +45,12 @@ module("Smartgraphs.ACTIVITY_STEP", {
     Smartgraphs.store.find(Smartgraphs.DataPoint);
     Smartgraphs.store.find(Smartgraphs.Axis);
     Smartgraphs.store.find(Smartgraphs.Graph);
+    Smartgraphs.store.find(Smartgraphs.Unit);
 
     setup.mock(Smartgraphs.activityStepController, 'begin', function () {});
     setup.mock(Smartgraphs.activityStepController, 'content', Smartgraphs.store.createRecord(Smartgraphs.ActivityStep, {}));
 
+    setup.mock(Smartgraphs, 'SENSOR', SC.State.design());
     setup.mock(Smartgraphs, 'statechart', SC.Statechart.create({
       trace: YES,
       rootState: SC.State.design({
@@ -106,4 +108,29 @@ test("creating a HighlightedPoint record with color param", function () {
   equals( Smartgraphs.store.find('Smartgraphs.HighlightedPoint').get('length'), startingAnnotationCount + 1, "There should be one more HighlightedPoint annotation in the store");
   equals( Smartgraphs.firstGraphController.get('annotationList').get('length'), controllerAnnotationCount + 1, "There should be one more annotation associated with the controller");
   ok( Smartgraphs.firstGraphController.findAnnotationByName('TestHighlighted').kindOf(Smartgraphs.HighlightedPoint), "The controller can find the annotation, which is the appropriate type");
+});
+
+
+test("startSensorInput should create a dataset with the appropriate properties, and transition to SENSOR state", function () {
+  expect(10);
+
+  var handlingState = Smartgraphs.statechart.sendAction('startSensorInput', null, { graphName: 'test-graph', datasetName: 'sensor-data' });
+  equals( handlingState.get('name'), 'ACTIVITY_STEP', "ACTIVITY_STEP should have handled the startSensorInput action");
+  
+  var sensorDataset = Smartgraphs.activityObjectsController.findDataset('sensor-data');
+  same(Smartgraphs.statechart.get('currentStates').getEach('name'), ['SENSOR'], "startSensorInput should have transitioned to the SENSOR state");
+  
+  ok( SC.kindOf(sensorDataset, Smartgraphs.Dataset), "startSensorInput should have created a Dataset object");
+  equals( Smartgraphs.sensorController._dataset, sensorDataset, "startSensorInput should have registered the new Dataset with the sensorController");
+
+  var meters = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/meters');
+  var seconds = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/seconds');
+    
+  equals( sensorDataset.get('xUnits'), seconds, "sensor dataset should have seconds on x axis");
+  equals( sensorDataset.get('yUnits'), meters, "sensor dataset should have meters on y axis");
+  
+  equals( sensorDataset.get('xLabel'), 'Time', "sensor dataset x label should be 'Time'");
+  equals( sensorDataset.get('xShortLabel'), 'Time', "sensor dataset x short label should be 'Time'");
+  equals( sensorDataset.get('yLabel'), 'Position', "sensor dataset y label should be 'Position'");  
+  equals( sensorDataset.get('yShortLabel'), 'Position', "sensor dataset y short label should be 'Position'");
 });
