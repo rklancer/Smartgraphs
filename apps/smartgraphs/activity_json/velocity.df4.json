@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df4",
-  "_rev": "36-f9d892b943cac00030913f2f75596086",
+  "_rev": "50-26b6ba86383d841b114d750f28e781b1",
   "data_format_version": 4,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -59,7 +59,7 @@
       ],
       "name": "Engage",
       "firstStep": "/shared/what-is-velocity/page/1/step/1",
-      "introText": "<h1>Introduction</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current velocity.</p><p>(You can read more about the topic by researching \"eddy-current speedometer.\")</p>  ",
+      "introText": "<h1>Introduction</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current velocity.</p>",
       "url": "/shared/what-is-velocity/page/1",
       "activity": "/shared/what-is-velocity",
       "index": 1
@@ -210,6 +210,7 @@
     {
       "steps": [
         "/shared/what-is-velocity/page/13/step/1",
+        "/shared/what-is-velocity/page/13/step/1a",
         "/shared/what-is-velocity/page/13/step/2",
         "/shared/what-is-velocity/page/13/step/3",
         "/shared/what-is-velocity/page/13/step/4",
@@ -325,7 +326,10 @@
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [ { "length": { "strip": "value" } }, 0 ]
+        "gt": [ 
+          { "length": { "strip": "value" } }, 
+          0 
+        ]
       },
       "triggeredCommands": [
 
@@ -389,7 +393,10 @@
       "responseBranches": [
         {
           "criterion": {
-            "gt": [ "value", 30 ]
+            "gt": [ 
+              { "int": { "strip": "value" } },
+              30
+            ]
           },
           "step": "/shared/what-is-velocity/page/2/step/2"
         }
@@ -447,7 +454,10 @@
       "responseBranches": [
         {
           "criterion": {
-            "gt": [ "value", 30 ]
+            "gt": [
+              { "int": { "strip": "value" } },
+              30
+            ]
           },
           "step": "/shared/what-is-velocity/page/2/step/2"
         }
@@ -780,22 +790,36 @@
         },
         "bottom": null
       },
-      "beforeText": "<p>Note: your predicted, normal walking pace was <b>%@</b> %@.</p>",
+      "beforeText": "<p>Hint: You walked <b>4</b> meters in <b>%@</b> %@, so your velocity was <b>%@</b> %@.</p>",
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
         { 
           "type": "Smartgraphs.VariableInspector",
           "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "rounded-velocity-based-on-observed-four-meter-walk" ]
+            "evalStatement": "[0]",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
         { 
           "type": "Smartgraphs.VariableInspector",
           "config" : {
-            "evalStatement": "'[0]' == '1' ? 'meter per second' : 'meters per second'",
-            "variableNames": [ "rounded-velocity-based-on-observed-four-meter-walk" ]
+            "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
+            "variableNames": [ "observed-duration-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0]",
+            "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
+          }
+        },
+        { 
+          "type": "Smartgraphs.VariableInspector",
+          "config" : {
+            "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
+            "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
           }
         }
       ],
@@ -818,7 +842,10 @@
         }
       },
       "submissibilityCriterion": {
-        "gt": [ "value", 6 ]
+        "gt": [ 
+          "value",
+          0.1
+        ]
       },
       "triggeredCommands": [
 
@@ -873,7 +900,10 @@
         }
       },
       "submissibilityCriterion": {
-        "gt": [ "value", 6 ]
+        "gt": [ 
+          "value",
+          0.1
+        ]
       },
       "triggeredCommands": [
 
@@ -918,7 +948,10 @@
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [ { "length": { "strip": "value" } }, 0 ]
+        "gt": [ 
+          { "length": { "strip": "value" } }, 
+          0 
+        ]
       },
       "triggeredCommands": [
 
@@ -1054,7 +1087,7 @@
             "variableName": "actual-normal-change-time",
             "inspectorType": "Smartgraphs.EvaluatorInspector",
             "config": { 
-              "round" { [
+              "round": [
                 { 
                   "difference": [
                     { "variable": "rounded-actual-normal-end-time" },
@@ -1312,7 +1345,7 @@
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>If it took you <b>%@</b> seconds to walk <b>%@</b> meters, then you were walking at a rate of <b>%@</b> meters per second.</p>",
+      "beforeText": "<p>If it took you <b>%@</b> seconds to walk <b>%@</b> meters, then you were walking at a rate of <b>%@</b> meters per second.</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>%@<hr/>%@</td><td style='border-width:0px'>=</td><td style='border-width:0px'>%@</td></tr></table></blockquote>",
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
@@ -1323,6 +1356,18 @@
         { 
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-change-position" }
+        },
+        { 
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "actual-normal-velocity" }
+        },
+        { 
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "actual-normal-change-position" }
+        },
+        { 
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "actual-normal-change-time" }
         },
         { 
           "type": "Smartgraphs.EvaluatorInspector",
@@ -1427,7 +1472,10 @@
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [ { "length": { "strip": "value" } }, 0 ]
+        "gt": [ 
+          { "length": { "strip": "value" } }, 
+          0 
+        ]
       },
       "triggeredCommands": [
 
@@ -2856,10 +2904,24 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Select a point other than the ones you selected earlier. Then click <b>OK</b>.</p>",
+      "beforeText": "<p>Choose a point that is different from those you selected earlier. Then click <b>OK</b>.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "first-point-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "second-point-A",
+            "graphName": "slope-graph"
+          }
+        },
         {
           "action": "startInteractiveSelection",
           "literalArgs": {
@@ -2898,7 +2960,88 @@
               ]
             ]
           },
-          "step": "/shared/what-is-velocity/page/13/step/1"
+          "step": "/shared/what-is-velocity/page/13/step/1a"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/1a",
+      "activityPage": "/shared/what-is-velocity/page/1",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Try again.</p><p>Choose a point that is <b>different</b> from those you selected earlier. Then click <b>OK</b>.</p>",
+      "responseTemplate": "",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "first-point-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "second-point-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "startInteractiveSelection",
+          "literalArgs": {
+            "annotationName": "first-point-B",
+            "graphName": "slope-graph",
+            "datasetName": "slope-data",
+            "color": "#ff7f0d"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.AnnotationAttributeInspector",
+        "config": { 
+          "name": "first-point-B",
+          "attributePath": "point.x"
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": { 
+            "in" : [
+              "value",
+              [
+                { "int" : { "variable" : "first-point-A-time" } },
+                { "int" : { "variable" : "second-point-A-time" } }
+              ]
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/13/step/1a"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/13/step/2",
@@ -4222,11 +4365,7 @@
       },
       "submissibilityCriterion": {
         "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
+          { "length": { "strip": "value" } },
           0
         ]
       },
@@ -4495,8 +4634,8 @@
         }
       },
       "beforeText": "<p>Here is a line through the two points.</p><p>What was your average speed during the whole trip?</p>",
-      "responseTemplate": "/components/response-template/open",
-      "afterText": "<p>Hint: what were your total distance and your total time?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint: What were your total distance and your total time?</p>",
       "startCommands": [
         {
           "action": "createLineThroughPoints",
@@ -4523,11 +4662,7 @@
       },
       "submissibilityCriterion": {
         "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
+          { "float": { "strip": "value" } },
           0
         ]
       },
@@ -4562,7 +4697,66 @@
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
-
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-A",
+            "point": "16-A",
+            "label": "Line A"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-B",
+            "point": "16-B",
+            "label": "Line B"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-C",
+            "point": "16-C",
+            "label": "Line C"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-D",
+            "point": "16-D",
+            "label": "Line D"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-A",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-B",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-C",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-D",
+            "graphName": "slope-graph-analyze"
+          }
+        }
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
@@ -4571,11 +4765,7 @@
       },
       "submissibilityCriterion": {
         "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
+          { "length": { "strip": "value" } },
           0
         ]
       },
@@ -4601,7 +4791,10 @@
       "activityPage": "/shared/what-is-velocity/page/17",
       "paneConfig": "single",
       "panes": {
-        "single": null
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
+        }
       },
       "beforeText": "<p>What is the difference between instantaneous speed and average speed?</p>",
       "responseTemplate": "/components/response-template/open",
@@ -4616,11 +4809,7 @@
       },
       "submissibilityCriterion": {
         "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
+          { "length": { "strip": "value" } },
           0
         ]
       },
@@ -4646,7 +4835,10 @@
       "activityPage": "/shared/what-is-velocity/page/18",
       "paneConfig": "single",
       "panes": {
-        "single": null
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
+        }
       },
       "beforeText": "<p>How can a graph convey speed?</p>",
       "responseTemplate": "/components/response-template/open",
@@ -4661,11 +4853,7 @@
       },
       "submissibilityCriterion": {
         "gt": [
-          {
-            "length": {
-              "strip": "value"
-            }
-          },
+          { "length": { "strip": "value" } },
           0
         ]
       },
@@ -5044,6 +5232,26 @@
       "y": 15,
       "guid": 11,
       "dataset": "/shared/what-is-velocity/dataset/slope-data"
+    },
+    {
+      "x": 7,
+      "y": 4,
+      "guid": "16-A"
+    },
+    {
+      "x": 10,
+      "y": 2.9,
+      "guid": "16-B"
+    },
+    {
+      "x": 10.5,
+      "y": 1.9,
+      "guid": "16-C"
+    },
+    {
+      "x": 13,
+      "y": 0.9,
+      "guid": "16-D"
     }
   ],
   "annotations": [
