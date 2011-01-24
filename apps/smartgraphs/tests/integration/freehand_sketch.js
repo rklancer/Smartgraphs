@@ -20,26 +20,25 @@ function setupFixtures() {
   setup.fixtures(Smartgraphs.Graph, [
     { url: 'test',
       name: 'test',
-      axes: 'test-axes',
+      xAxis: 'x-axis',
+      yAxis: 'y-axis',
       title: 'Test Graph',
       initialDatasets: []
     }
   ]);
   
-  setup.fixtures(Smartgraphs.Axes, [
-    { url: 'test-axes',
-
-      xMin: -5,
-      xMax: 10,
-      xSteps: 5,
-      xLabel: 'xLabel (long)',
-      xLabelAbbreviated: 'xLabel (abbrev)',
-
-      yMin: 2,
-      yMax: 8,
-      ySteps: 6,
-      yLabel: 'yLabel (long)',
-      yLabelAbbreviated: 'yLabel (abbrev)'
+  setup.fixtures(Smartgraphs.Axis, [    
+    { url: 'x-axis',
+      min: -5,
+      max: 10,
+      nSteps: 5,
+      label: 'x axis'
+    },
+    { url: 'y-axis',
+      min: 2,
+      max: 8,
+      nSteps: 6,
+      label: 'y axis'
     }
   ]);
 }
@@ -265,8 +264,7 @@ module('Freehand sketch input', {
     beginSession();
     
     sketch = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.FreehandSketch, 'test-sketch');
-    // FIXME why is the following find necessary? If it is left out, Axes records are EMPTY
-    Smartgraphs.store.find(Smartgraphs.Axes);
+    Smartgraphs.store.find(Smartgraphs.Axis);
     
     // TODO this might make sense in a debug helper
     Smartgraphs.firstGraphController.openGraph('test');
