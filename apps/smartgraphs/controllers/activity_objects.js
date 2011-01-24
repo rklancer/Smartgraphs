@@ -105,7 +105,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
       });
       
       // get variables for the activity
-      var query = SC.Query.local(Smartgraphs.Variable, 'activity={activity}', {
+      query = SC.Query.local(Smartgraphs.Variable, 'activity={activity}', {
         activity: activity
       });
       var foundVariables = Smartgraphs.store.find(query);
@@ -113,7 +113,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
       if ( !(foundVariables.get('status') & SC.Record.READY)) {
         throw "predefined variable records are not READY!";
       }
-      var self = this;
+      self = this;
       foundVariables.forEach(function (variable) {
         var name = variable.get('name');
         if (self._variables[name]) {
@@ -179,7 +179,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     @returns {Smartgraphs.Dataset}
       The newly created datatset
   */
-  createDataset: function (name) {
+  createDataset: function (name, xUnits, yUnits) {
     if (this._datasets[name]) {
       throw "The activity tried to create a dataset with name %@, which is already in use.".fmt(name);
     }
@@ -187,7 +187,9 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     var dataset = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { 
       activity: Smartgraphs.activityController.get('id'),
       name: name,
-      points: []
+      points: [], 
+      xUnits: xUnits,
+      yUnits: yUnits
     });
     dataset.set('id', Smartgraphs.getNextGuid());
     

@@ -6,9 +6,7 @@
 /*globals Smartgraphs module test ok equals same stop start setup teardown */
 
 var doc = {
-  "_id": "skeleton.df4",
-  "_rev": "5-64bc869f1066f0b6f3ebf5a38e795db5",
-  "data_format_version": 4,  
+  "data_format_version": 5,
   "activity": {
     "title": "Skeleton Activity",
     "url": "/test/skeleton",
@@ -19,8 +17,11 @@ var doc = {
     "datasets": [
       "/test/skeleton/dataset1"
     ],
+    "units": [
+    ],
     "axes": [
-      "/test/skeleton/axes1"
+      "/test/skeleton/axes/x-axis",
+      "/test/skeleton/axes/y-axis"      
     ],
     "graphs": [
       "/test/skeleton/graph1"
@@ -57,21 +58,21 @@ var doc = {
       "responseTemplate": "/test/skeleton/response1",
       "afterText": "",
       "startCommands": [
-
+        
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-
+        
       ],
       "afterSubmissionCommands": [
-
+        
       ],
       "responseInspector": null,
       "responseBranches": [
-
+        
       ],
       "defaultBranch": null,
       "isFinalStep": true,
@@ -81,20 +82,27 @@ var doc = {
       "nextButtonShouldSubmit": false
     }
   ],
+  "units": [
+
+  ],
   "axes": [
     {
-      "url": "/test/skeleton/axes1",
+      "url": "/test/skeleton/axes/x-axis",
       "activity": "/test/skeleton",
-      "xMin": 0,
-      "xMax": 10,
-      "xSteps": 10,
-      "xLabel": "Time (minutes)",
-      "xLabelAbbreviated": "Time (m)",
-      "yMin": 0,
-      "yMax": 100,
-      "ySteps": 10,
-      "yLabel": "Temperature (Celsius)",
-      "yLabelAbbreviated": "Temp. (C)"
+      "units": null,
+      "min": 0,
+      "max": 10,
+      "nSteps": 10,
+      "label": "Time"
+    },
+    {
+      "url": "/test/skeleton/axes/y-axis",
+      "activity": "/test/skeleton",
+      "units": null, 
+      "min": 0,
+      "max": 100,
+      "nSteps": 10,
+      "label": "Temperature"
     }
   ],
   "graphs": [
@@ -104,7 +112,8 @@ var doc = {
       "name": "test graph",
       "description": "test graph",
       "title": "Temperature vs. Time",
-      "axes": "/test/skeleton/axes1",
+      "xAxis": "/test/skeleton/axes/x-axis",
+      "yAxis": "/test/skeleton/axes/y-axis",
       "initialDatasets": [
         "test dataset"
       ],
@@ -137,6 +146,12 @@ var doc = {
       "url": "/test/skeleton/dataset1",
       "name": "test dataset",
       "activity": "/test/skeleton",
+      "xUnits": null,
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": null,
+      "yLabel": "Temperature",
+      "yShortLabel": "Temp",
       "points": [
         "p1"
       ],

@@ -13,12 +13,3 @@ Smartgraphs.Session.TEST_FIXTURES = [
     steps: []
   }
 ];
-
-Smartgraphs.Session.FIXTURES = [
-
-  { guid: 'empty-session',
-    user: null,
-    steps: []
-  }
-
-];

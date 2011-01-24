@@ -8,6 +8,7 @@ config :all, :required => [:sproutcore]
 
 config :smartgraphs,
   :required => ['sproutcore/statechart', 'raphael_views/raphael_views', 'raphael_views/g_raphael', 'cc/cc'],
+  :load_fixtures => true,
   :theme => :pig
 
 config 'raphael_views/raphael_views', 

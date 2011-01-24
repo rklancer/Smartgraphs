@@ -137,6 +137,19 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
       return;      // don't add the dataset if it is already in the graph!
     }
     
+    var xAxisUnits = this.getPath('xAxis.units');
+    var yAxisUnits = this.getPath('yAxis.units');
+    
+    if (xAxisUnits && xAxisUnits !== dataset.get('xUnits')) {
+      console.error("x units of dataset %s do not match x axis units (%s)", dataset.get('name'), xAxisUnits.get('pluralName'));
+      return;
+    }
+    
+    if (yAxisUnits && yAxisUnits !== dataset.get('yUnits')) {
+      console.error("y units of dataset %s do not match y axis units (%s)", dataset.get('name'), yAxisUnits.get('pluralName'));
+      return;
+    }
+    
     // get a color for the dataset
     dataset.set('color', this.getColorForDataset(dataset));
     
@@ -243,22 +256,6 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
   endFreehandInput: function () {   
     this._routeEvents = NO;
   }
-
-  // NOT CURRENTLY USED:
-  
-  // setAxes: function (axesId) {
-  //   var axes = Smartgraphs.store.find(Smartgraphs.Axes, axesId);
-  //   if (!axes) {
-  //     axes = Smartgraphs.store.createRecord(Smartgraphs.Axes, { guid: axesId });
-  //   }
-  //   
-  //   this.set('axes', axes);
-  // },
-  // 
-  // selectDataset: function (datasetName) {
-  //   var dataset = this.findDatasetByName(datasetName);
-  //   if (dataset) this.set('selectedDataset', dataset);
-  // }
   
 }) ;
 

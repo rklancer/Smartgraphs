@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.Dataset
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2011 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
@@ -11,7 +11,7 @@ sc_require('views/dataset');
 
   A Dataset record represents an unordered set of DataPoint records that can be displayed on a graph or table.
   
-  Datasets are  referenced by name throughout an activity, and that name should be unique within an activity.
+  Datasets are referenced by name throughout an activity, and that name should be unique within an activity.
 
   @extends SC.Record
   @version 0.1
@@ -61,6 +61,48 @@ Smartgraphs.Dataset = SC.Record.extend(
     @property {Smartgraphs.Session}
   */
   session: SC.Record.toOne('Smartgraphs.Session'),
+  
+  /**
+    The unit of measure for the x values
+    
+    @property {Smartgraphs.Unit}
+  */
+  xUnits: SC.Record.toOne('Smartgraphs.Unit'),
+  
+  /**
+    Full label for the x values
+    
+    @property {String}
+  */
+  xLabel: SC.Record.attr(String),
+  
+  /** 
+    Abbreviated label for the x values
+    
+    @property {String}    
+  */
+  xShortLabel: SC.Record.attr(String),
+
+  /**
+    The unit of measure for the y values
+    
+    @property {Smartgraphs.Unit}
+  */
+  yUnits: SC.Record.toOne('Smartgraphs.Unit'),
+  
+  /**
+    Full label for the y values
+    
+    @property {String}
+  */
+  yLabel: SC.Record.attr(String),
+  
+  /** 
+    Abbreviated label for the y values
+    
+    @property {String}
+  */
+  yShortLabel: SC.Record.attr(String),
 
   /**
     The (unordered) set of Datapoints in this dataset.

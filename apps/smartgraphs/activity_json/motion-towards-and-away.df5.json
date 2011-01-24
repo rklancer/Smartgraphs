@@ -1,7 +1,7 @@
 {
-  "_id": "motion-towards-and-away.df4",
-  "_rev": "6-a69cca0083709b7a9696ac240c0ab7b9",
-  "data_format_version": 4,  
+  "_id": "motion-towards-and-away.df5",
+  "_rev": "2-e6ab07ba0a272aaf764ada25ea2d491f",
+  "data_format_version": 5,  
   "activity": {
     "title": "Motion Towards And Away",
     "url": "/shared/motion-towards-and-away",
@@ -24,9 +24,13 @@
       "/shared/motion-towards-and-away/dataset/walking-example-1",
       "/shared/motion-towards-and-away/dataset/walking-toward-example"
     ],
+    "units": [
+
+    ],
     "axes": [
-      "/shared/motion-towards-and-away/axes/5m-15s",
-      "/shared/motion-towards-and-away/axes/5m-25s"
+      "/shared/motion-towards-and-away/axes/5m",
+      "/shared/motion-towards-and-away/axes/15s",
+      "/shared/motion-towards-and-away/axes/25s"
     ],
     "graphs": [
       "/shared/motion-towards-and-away/graph/graph-to-match",
@@ -1809,32 +1813,33 @@
       "nextButtonShouldSubmit": false
     }
   ],
+  "units": [
+  
+  ],
   "axes": [
     {
-      "url": "/shared/motion-towards-and-away/axes/5m-15s",
-      "xMin": 0,
-      "xMax": 15,
-      "xSteps": 15,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
+      "url": "/shared/motion-towards-and-away/axes/15s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 15,
+      "nSteps": 15,
+      "label": "Time"
     },
     {
-      "url": "/shared/motion-towards-and-away/axes/5m-25s",
-      "xMin": 0,
-      "xMax": 25,
-      "xSteps": 25,
-      "xLabel": "Time (seconds)",
-      "xLabelAbbreviated": "Time (s)",
-      "yMin": 0,
-      "yMax": 5,
-      "ySteps": 10,
-      "yLabel": "Position (meters)",
-      "yLabelAbbreviated": "Position (m)"
+      "url": "/shared/motion-towards-and-away/axes/5m",
+      "units": "/builtins/units/meters",
+      "min": 0,
+      "max": 5,
+      "nSteps": 10,
+      "label": "Position"
+    },
+    {
+      "url": "/shared/motion-towards-and-away/axes/25s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 25,
+      "nSteps": 25,
+      "label": "Time"
     }
   ],
   "graphs": [
@@ -1844,7 +1849,8 @@
       "name": "graph-to-match",
       "description": "Graph to match with sensor data",
       "title": "Position vs. Time",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1861,7 +1867,8 @@
       "name": "graph-with-away-prediction",
       "description": "Graph with 'away' prediction for adding 'away' sensor data in page 4",
       "title": "Away",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1878,7 +1885,8 @@
       "name": "graph-with-toward-prediction",
       "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
       "title": "Toward",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1895,7 +1903,8 @@
       "name": "prediction-away",
       "description": "Prediction graph of movement away",
       "title": "Away",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1909,7 +1918,8 @@
       "name": "prediction-toward",
       "title": "Toward",
       "description": "Prediction graph of movement towards",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1923,7 +1933,8 @@
       "name": "sensor-away",
       "description": "Graph with'away' sensor data from page 4",
       "title": "Away",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         "sensor-away"
       ],
@@ -1937,7 +1948,8 @@
       "name": "sensor-playing",
       "description": "Playing around with the sensor in page 3",
       "title": "Position vs. Time",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         
       ],
@@ -1951,7 +1963,8 @@
       "name": "sensor-toward",
       "description": "Graph with 'toward' prediction for adding 'toward' sensor data in page 4",
       "title": "Toward",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         "sensor-toward"
       ],
@@ -1965,7 +1978,8 @@
       "name": "two-walkers",
       "description": "Graph for multiple choice question in page 6",
       "title": "Position vs. Time",
-      "axes": "/shared/motion-towards-and-away/axes/5m-25s",
+      "xAxis": "/shared/motion-towards-and-away/axes/25s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         "walking-away-example",
         "walking-toward-example"
@@ -1980,7 +1994,8 @@
       "name": "walking-example-1",
       "description": "Graph for multiple choice question in page 6",
       "title": "An Example Walk",
-      "axes": "/shared/motion-towards-and-away/axes/5m-15s",
+      "xAxis": "/shared/motion-towards-and-away/axes/15s",
+      "yAxis": "/shared/motion-towards-and-away/axes/5m",
       "initialDatasets": [
         "walking-example-1"
       ],
@@ -2048,6 +2063,12 @@
       "url": "/shared/motion-towards-and-away/dataset/walking-away-example",
       "name": "walking-away-example",
       "activity": "/shared/motion-towards-and-away",
+      "xUnits": "/builtins/units/seconds",
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": "/builtins/units/meters",
+      "yLabel": "Position",
+      "yShortLabel": "Position",      
       "points": [
         100,
         102,
@@ -2108,6 +2129,12 @@
       "url": "/shared/motion-towards-and-away/dataset/walking-example-1",
       "name": "walking-example-1",
       "activity": "/shared/motion-towards-and-away",
+      "xUnits": "/builtins/units/seconds",
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": "/builtins/units/meters",
+      "yLabel": "Position",
+      "yShortLabel": "Position",      
       "points": [
         1,
         2,
@@ -2193,6 +2220,12 @@
       "url": "/shared/motion-towards-and-away/dataset/walking-toward-example",
       "name": "walking-toward-example",
       "activity": "/shared/motion-towards-and-away",
+      "xUnits": "/builtins/units/seconds",
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": "/builtins/units/meters",
+      "yLabel": "Position",
+      "yShortLabel": "Position",      
       "points": [
         201,
         203,

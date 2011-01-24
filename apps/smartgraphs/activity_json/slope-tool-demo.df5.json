@@ -1,7 +1,7 @@
 {
-  "_id": "slope-tool-demo.df4",
-  "_rev": "3-72a24bad0d5e3310f9b8e56717e541ce",
-  "data_format_version": 4,  
+  "_id": "slope-tool-demo.df5",
+  "_rev": "7-f81b3da4eac0de325ad87c37a6500bfe",
+  "data_format_version": 5,  
   "activity": {
     "title": "Slope Tool Demo",
     "url": "/shared/slope-tool-demo",
@@ -12,8 +12,12 @@
     "datasets": [
       "/shared/slope-tool-demo/dataset/demo-data"
     ],
+    "units": [
+    
+    ],
     "axes": [
-      "/shared/slope-tool-demo/axes/10s-15meters"
+      "/shared/slope-tool-demo/axes/x-axis",
+      "/shared/slope-tool-demo/axes/y-axis"
     ],
     "graphs": [
       "/shared/slope-tool-demo/graph/demo-graph"
@@ -623,19 +627,27 @@
       "nextButtonShouldSubmit": false
     }
   ],
+  "units": [
+  
+  ],
   "axes": [
     {
-      "url": "/shared/slope-tool-demo/axes/10s-15meters",
-      "xMin": 0,
-      "xMax": 10,
-      "xSteps": 10,
-      "xLabel": "Time (sec)",
-      "xLabelAbbreviated": "Time (sec)",
-      "yMin": 0,
-      "yMax": 15,
-      "ySteps": 10,
-      "yLabel": "Position (m)",
-      "yLabelAbbreviated": "Position (m)"
+      "url": "/shared/slope-tool-demo/axes/x-axis",
+      "activity": "/shared/slope-tool-demo",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 10,
+      "nSteps": 10,
+      "label": "Time"
+    },
+    {
+      "url": "/shared/slope-tool-demo/axes/y-axis",
+      "activity": "/shared/slope-tool-demo",
+      "units": "/builtins/units/meters", 
+      "min": 0,
+      "max": 15,
+      "nSteps": 10,
+      "label": "Position"
     }
   ],
   "graphs": [
@@ -645,7 +657,8 @@
       "name": "demo-graph",
       "description": "Demonstration Data for Slope Tool",
       "title": "Position versus Time",
-      "axes": "/shared/slope-tool-demo/axes/10s-15meters",
+      "xAxis": "/shared/slope-tool-demo/axes/x-axis",
+      "yAxis": "/shared/slope-tool-demo/axes/y-axis",
       "initialDatasets": [
         "demo-data"
       ],
@@ -662,6 +675,12 @@
       "url": "/shared/slope-tool-demo/dataset/demo-data",
       "name": "demo-data",
       "activity": "/shared/slope-tool-demo",
+      "xUnits": "/builtins/units/seconds",
+      "xLabel": "Time",
+      "xShortLabel": "Time",
+      "yUnits": "/builtins/units/meters",
+      "yLabel": "Position",
+      "yShortLabel": "Pos", 
       "points": [
         1,
         2,

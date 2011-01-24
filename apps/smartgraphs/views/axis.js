@@ -14,15 +14,7 @@
 Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.AxisView.prototype */ {
 
-  init: function () {
-    if (this.get('type') === 'x') {
-      this.set('displayProperties', 'axes.xMin axes.xMax axes.xSteps axes.xLabel parentView.parentView.frame'.w());
-    }
-    else {
-      this.set('displayProperties', 'axes.yMin axes.yMax axes.ySteps axes.yLabel parentView.parentView.frame'.w());
-    }
-    sc_super();
-  },
+  displayProperties: 'axis.min axis.max axis.nSteps axis.label parentView.parentView.frame'.w(),
   
   render: function (context, firstTime) {
     // unfortunately, Raphael can't draw text correctly when the svg element is hidden or offscreen (as it is when
@@ -46,8 +38,8 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
 
     if (this._axis) this._axis.remove();
     
-    var axes = this.get('axes');
-    if (!axes) return;
+    var axis = this.get('axis');
+    if (!axis) return;
     
     var padding = this.getPath('parentView.parentView.parentView.padding');
     var frame = this.getPath('parentView.parentView.frame');
@@ -60,17 +52,17 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
     if (raphaelCanvas.canvas.style.display !== 'block') raphaelCanvas.canvas.style.display = 'block';       
     
     if (this.get('type') === 'y') {
-      var yMin = axes.get('yMin');
-      var yMax = axes.get('yMax');
-      var ySteps = axes.get('ySteps');
+      var yMin = axis.get('min');
+      var yMax = axis.get('max');
+      var ySteps = axis.get('nSteps');
       var plotHeight = frame.height - padding.top - padding.bottom;
     
       this._axis = raphaelCanvas.g.axis(xLeft, yBottom, plotHeight, yMin, yMax, ySteps, 1);
     }
     else if (this.get('type') === 'x') {
-      var xMin = axes.get('xMin');
-      var xMax = axes.get('xMax');
-      var xSteps = axes.get('xSteps');
+      var xMin = axis.get('min');
+      var xMax = axis.get('max');
+      var xSteps = axis.get('nSteps');
       
       var plotWidth = frame.width - padding.left - padding.right;
       
@@ -85,19 +77,21 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
     var padding = this.getPath('parentView.parentView.parentView.padding');
     var frame = this.getPath('parentView.parentView.frame');
     
-    var axes  = this.get('axes');
-    if (!axes) return;
+    var axis  = this.get('axis');
+    if (!axis) return;
     
-    var labelText, x, y, rotation;
+    var axisLabel = axis.get('label');
+    var unitName = axis.getPath('units.pluralName');
+    var labelText = unitName ? "%@ (%@)".fmt(axisLabel, unitName) : axisLabel;
+    
+    var x, y, rotation;
     
     if (this.get('type') === 'x') {
-      labelText = axes.get('xLabel');
       x = (padding.left + frame.width - padding.right) / 2;
       y = frame.height - 15;
       rotation = 0;
     }
     else {
-      labelText = axes.get('yLabel');
       x = 10;
       y = (padding.top + frame.height - padding.bottom) / 2;
       rotation = 270;
