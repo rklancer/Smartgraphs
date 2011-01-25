@@ -65,19 +65,6 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   datasetNamesBinding: 'Smartgraphs.activityObjectsController.datasetNames',
   datasetNamesBindingDefault: SC.Binding.oneWay(),
   
-  // a first implementation of lazy loading of activity objects
-  maybeUsePendingDataset: function () {
-    var pendingDatasetName = this.get('pendingDatasetName');
-    if (!pendingDatasetName) return;
-    
-    var datasetNames = Smartgraphs.activityObjectsController.get('datasetNames');
-    
-    if (datasetNames && datasetNames.indexOf(pendingDatasetName) >= 0) {
-      this.useDataset(Smartgraphs.activityObjectsController.findDataset(pendingDatasetName));
-      this.set('pendingDatasetName', null);
-    }
-  }.observes('datasetNames'),
-  
   clear: function () {
     this.set('pendingDatasetName', null);
   
@@ -113,10 +100,20 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     this.maybeUsePendingDataset();
   },
   
-  useDataset: function (dataset) {
-    this.set('dataset', dataset);
-    this.set('content', dataset.get('points'));
-  },
+  // a first implementation of lazy loading of activity objects
+  maybeUsePendingDataset: function () {
+    var pendingDatasetName = this.get('pendingDatasetName');
+    if (!pendingDatasetName) return;
+    
+    var datasetNames = Smartgraphs.activityObjectsController.get('datasetNames');
+    
+    if (datasetNames && datasetNames.indexOf(pendingDatasetName) >= 0) {
+      var dataset = Smartgraphs.activityObjectsController.findDataset(pendingDatasetName);
+      this.set('dataset', dataset);
+      this.set('content', dataset.get('points'));
+      this.set('pendingDatasetName', null);
+    }
+  }.observes('datasetNames'),
 
   /**
     Add an annotation to this controller.
