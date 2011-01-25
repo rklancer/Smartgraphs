@@ -9,8 +9,7 @@ sc_require('mixins/annotation_support');
 
 /** @class
 
-  Initial implementation of table controller. Currently only allows displaying a single dataset, which must be open
-  in a graph controller.
+  Initial implementation of table controller. Currently only allows displaying a single dataset
   
   @extends SC.Object
   @extends Smartgraphs.AnnotationSupport
@@ -67,11 +66,11 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   datasetNamesBindingDefault: SC.Binding.oneWay(),
   
   // a first implementation of lazy loading of activity objects
-  maybeAddPendingDataset: function () {
+  maybeUsePendingDataset: function () {
     var pendingDatasetName = this.get('pendingDatasetName');
     if (!pendingDatasetName) return;
     
-    var datasetNames = this.get('datasetNames');
+    var datasetNames = Smartgraphs.activityObjectsController.get('datasetNames');
     
     if (datasetNames && datasetNames.indexOf(pendingDatasetName) >= 0) {
       this.useDataset(Smartgraphs.activityObjectsController.findDataset(pendingDatasetName));
@@ -110,15 +109,8 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
       Smartgraphs.TableController.controllerForDataset.set(currentDatasetName, null);
     }
     Smartgraphs.TableController.controllerForDataset.set(datasetName, this);
-    
-    var dataset = Smartgraphs.activityObjectsController.findDataset(datasetName);
-    if (dataset) {
-      this.useDataset(dataset);
-    }
-    else {
-      // wait for the dataset to be created
-      this.set('pendingDatasetName', datasetName);
-    }
+    this.set('pendingDatasetName', datasetName);
+    this.maybeUsePendingDataset();
   },
   
   useDataset: function (dataset) {

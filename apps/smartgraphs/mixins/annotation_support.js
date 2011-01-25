@@ -64,15 +64,8 @@ Smartgraphs.AnnotationSupport = {
       The name under which to search for the annotation.
   */
   findAnnotationByName: function (name) {
-    // Originally this used a generic "find" function in the graphs controller.
-    // return this.findObjectByNameIn(name, this.get('annotationList'));
     var list = this.get('annotationList');
-    if (list) { // if the list is empty it will start null
-      var names = list.getEach('name');
-      var idx = names.indexOf(name);
-      return (idx >= 0) ? list.objectAt(idx) : null;
-    } else {
-      return null;
-    }
+    return list ? list.findProperty('name', name) : null;
   }
+
 };
