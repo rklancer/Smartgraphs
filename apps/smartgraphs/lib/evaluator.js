@@ -83,7 +83,11 @@
   }
   
   function variable(terms, value) {
-    return Smartgraphs.activityObjectsController.getVariable(terms).get("value");
+    var variable = Smartgraphs.activityObjectsController.getVariable(terms);
+    if (variable) {
+      return variable.get("value");
+    }
+    return null;
   }
   
   function isIn(terms, value) {

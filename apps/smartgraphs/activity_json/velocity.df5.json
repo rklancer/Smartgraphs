@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df5",
-  "_rev": "6-0ced48b76528d08b30deaadd9afa32b5",
+  "_rev": "10-2675322e47dd414531f942abb048e207",
   "data_format_version": 5,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -554,7 +554,7 @@
                 "float": { "variable": "rounded-velocity-based-on-observed-four-meter-walk" }
               },
               { 
-                "float": { "strip" : "value" }
+                "round": [ { "float": { "strip" : "value" } }, 1 ]
               }
             ]
           },
@@ -651,7 +651,7 @@
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity would be calculated like this:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>=</td><td style='border-width:0px'><b>%@</b></td></tr></table></blockquote><p>%@</p>.",
+      "beforeText": "<p>Incorrect.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity would be calculated like this:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>=</td><td style='border-width:0px'><b>%@</b></td></tr></table></blockquote><p>%@</p>",
       "responseTemplate": null,
       "afterText": "",
       "substitutedExpressions": [
@@ -723,7 +723,7 @@
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
         }
       },
-      "beforeText": "<p>Correct.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity is <b>%@</b> %@.</p><p>%@</p>.",
+      "beforeText": "<p>Correct.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity is <b>%@</b> %@.</p><p>%@</p>",
       "responseTemplate": null,
       "afterText": "",
       "substitutedExpressions": [
@@ -818,14 +818,14 @@
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
-            "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
+            "variableNames": [ "rounded-velocity-based-on-observed-four-meter-walk" ]
           }
         },
         { 
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
-            "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
+            "variableNames": [ "rounded-velocity-based-on-observed-four-meter-walk" ]
           }
         }
       ],
