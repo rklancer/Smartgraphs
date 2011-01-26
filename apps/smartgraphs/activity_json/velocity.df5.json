@@ -1,6 +1,6 @@
 {
   "_id": "velocity.df5",
-  "_rev": "8-060d7fd0995a4fa7adb8d3272876f383",
+  "_rev": "13-ad74e0730d5b59225812bfbc82d32edb",
   "data_format_version": 5,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -65,7 +65,7 @@
       ],
       "name": "Engage",
       "firstStep": "/shared/what-is-velocity/page/1/step/1",
-      "introText": "<h1>Introduction</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current velocity.</p>",
+      "introText": "<h1>Introduction</h1><p>The dashboard instrument to the right, called a <i>speedometer</i>, tells us how fast a car is moving.</p><p>The eddy-current speedometer was patented in 1902 by Otto Shultz. Through a complex interaction of wheels, cables, gears, magnets, forces, and electric currents, the speedometer's needle points to a car's current speed.</p><p><b>How can you tell how fast you are moving?</b></p>",
       "url": "/shared/what-is-velocity/page/1",
       "activity": "/shared/what-is-velocity",
       "index": 1
@@ -204,11 +204,12 @@
         "/shared/what-is-velocity/page/12/step/12",
         "/shared/what-is-velocity/page/12/step/13",
         "/shared/what-is-velocity/page/12/step/14",
-        "/shared/what-is-velocity/page/12/step/15"
+        "/shared/what-is-velocity/page/12/step/15",
+        "/shared/what-is-velocity/page/12/step/16"
       ],
       "name": "Instantaneous Speed",
       "firstStep": "/shared/what-is-velocity/page/12/step/1",
-      "introText": "<h1>Analysis</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the speed between those points. This calculation will be close to your <b>instantaneous</b> speed. </p>",
+      "introText": "<h1>Analysis</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the velocity between those points. This calculation will be close to your <b>instantaneous</b> velocity. </p>",
       "url": "/shared/what-is-velocity/page/12",
       "activity": "/shared/what-is-velocity",
       "index": 12
@@ -230,11 +231,12 @@
         "/shared/what-is-velocity/page/13/step/12",
         "/shared/what-is-velocity/page/13/step/13",
         "/shared/what-is-velocity/page/13/step/14",
-        "/shared/what-is-velocity/page/13/step/15"
+        "/shared/what-is-velocity/page/13/step/15",
+        "/shared/what-is-velocity/page/13/step/16"
       ],
       "name": "Instantaneous Speed",
       "firstStep": "/shared/what-is-velocity/page/13/step/1",
-      "introText": "<h1>Analysis</h1><p>Now you will pick another set of points that are next to each other and find the speed between those points.</p>",
+      "introText": "<h1>Analysis</h1><p>Now you will pick another set of points that are next to each other and find the velocity between those points.</p>",
       "url": "/shared/what-is-velocity/page/13",
       "activity": "/shared/what-is-velocity",
       "index": 13
@@ -245,7 +247,7 @@
       ],
       "name": "Instantaneous Speed III",
       "firstStep": "/shared/what-is-velocity/page/14/step/1",
-      "introText": "<h1>Analysis</h1><p>Was your speed the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>",
+      "introText": "<h1>Analysis</h1><p>Was your velocity the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>",
       "url": "/shared/what-is-velocity/page/14",
       "activity": "/shared/what-is-velocity",
       "index": 14
@@ -260,7 +262,7 @@
       ],
       "name": "Average Speed",
       "firstStep": "/shared/what-is-velocity/page/15/step/1",
-      "introText": "<h1>Analysis</h1><p>To find the average speed for the entire trip, you will use the start and end points of the whole trip.</p>",
+      "introText": "<h1>Analysis</h1><p>To find the average velocity for the entire trip, you will use the start and end points of the whole trip.</p>",
       "url": "/shared/what-is-velocity/page/15",
       "activity": "/shared/what-is-velocity",
       "index": 15
@@ -271,7 +273,7 @@
       ],
       "name": "Analyze/Conclusion",
       "firstStep": "/shared/what-is-velocity/page/16/step/1",
-      "introText": "<h1>Analysis</h1><p>In this activity, you predicted and confirmed different steady speeds while walking along a straight path.</p>",
+      "introText": "<h1>Analysis</h1><p>In this activity, you predicted and confirmed different steady velocities while walking along a straight path.</p>",
       "url": "/shared/what-is-velocity/page/16",
       "activity": "/shared/what-is-velocity",
       "index": 16
@@ -485,7 +487,7 @@
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
         }
       },
-      "beforeText": "<p>Based on your observation that you walked <b>4</b> meters in <b>%@</b> %@, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average speed</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td></tr></table></blockquote>",
+      "beforeText": "<p>Based on your observation that you walked <b>4</b> meters in <b>%@</b> %@, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td></tr></table></blockquote>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
@@ -578,7 +580,7 @@
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
         }
       },
-      "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation of <b>%@</b> %@ for <b>4</b> meters, what is your average speed in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average speed</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>= ?</td></tr></table></blockquote>",
+      "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation of <b>%@</b> %@ for <b>4</b> meters, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>= ?</td></tr></table></blockquote>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
@@ -1598,7 +1600,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/1",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1648,7 +1650,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/2",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1711,7 +1713,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/3",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1774,7 +1776,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/4",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1990,7 +1992,7 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/12/step/15"
+          "step": "/shared/what-is-velocity/page/12/step/16"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/12/step/5",
@@ -2002,7 +2004,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/5",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2048,7 +2050,7 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/12/step/15"
+          "step": "/shared/what-is-velocity/page/12/step/16"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/12/step/6",
@@ -2060,7 +2062,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/6",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2124,7 +2126,7 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/12/step/9"
+          "step": "/shared/what-is-velocity/page/12/step/10"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/12/step/7",
@@ -2136,7 +2138,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/7",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2201,7 +2203,7 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/12/step/9"
+          "step": "/shared/what-is-velocity/page/12/step/10"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/12/step/8",
@@ -2213,7 +2215,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/8",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2284,7 +2286,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/9",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2362,10 +2364,10 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/12/step/12"
+          "step": "/shared/what-is-velocity/page/12/step/13"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/10",
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/11",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2374,7 +2376,97 @@
     },
     {
       "url": "/shared/what-is-velocity/page/12/step/10",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/12",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint:Look at the graph.</p>",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-A",
+            "firstPoint": "first-point-A",
+            "secondPoint": "second-point-A",
+            "color": "#d62728"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-A",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-A", 
+            "second-point-A" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/12/step/13"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/12/step/11",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2439,10 +2531,10 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/12/step/12"
+          "step": "/shared/what-is-velocity/page/12/step/13"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/11",
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/12",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2450,8 +2542,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/12/step/11",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/12/step/12",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2513,7 +2605,7 @@
       "responseBranches": [
 
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/12",
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/13",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2521,8 +2613,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/12/step/12",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/12/step/13",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2611,10 +2703,10 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/12/step/15"
+          "step": "/shared/what-is-velocity/page/12/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/13",
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/14",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2622,8 +2714,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/12/step/13",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/12/step/14",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2699,10 +2791,10 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/12/step/15"
+          "step": "/shared/what-is-velocity/page/12/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/12/step/14",
+      "defaultBranch": "/shared/what-is-velocity/page/12/step/15",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -2710,8 +2802,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/12/step/14",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/12/step/15",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2810,8 +2902,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/12/step/15",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/12/step/16",
+      "activityPage": "/shared/what-is-velocity/page/12",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2897,7 +2989,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/1",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -2978,7 +3070,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/1a",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3059,7 +3151,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/2",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3122,7 +3214,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/3",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3185,7 +3277,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/4",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3401,7 +3493,7 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/13/step/15"
+          "step": "/shared/what-is-velocity/page/13/step/16"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/13/step/5",
@@ -3413,7 +3505,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/5",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3459,7 +3551,7 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/13/step/15"
+          "step": "/shared/what-is-velocity/page/13/step/16"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/13/step/6",
@@ -3471,7 +3563,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/6",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3535,7 +3627,7 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/13/step/9"
+          "step": "/shared/what-is-velocity/page/13/step/10"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/13/step/7",
@@ -3547,7 +3639,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/7",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3612,7 +3704,7 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/13/step/9"
+          "step": "/shared/what-is-velocity/page/13/step/10"
         }
       ],
       "defaultBranch": "/shared/what-is-velocity/page/13/step/8",
@@ -3624,7 +3716,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/8",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3695,7 +3787,7 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/9",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3773,10 +3865,10 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/13/step/12"
+          "step": "/shared/what-is-velocity/page/13/step/13"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/13/step/10",
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/11",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3785,7 +3877,97 @@
     },
     {
       "url": "/shared/what-is-velocity/page/13/step/10",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "activityPage": "/shared/what-is-velocity/page/13",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint:Look at the graph.</p>",
+      "startCommands": [
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-B",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "createRunArrow",
+          "literalArgs": {
+            "arrowName": "run-arrow-B",
+            "firstPoint": "first-point-B",
+            "secondPoint": "second-point-B",
+            "color": "#d62728"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "run-arrow-B",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+        
+      ],
+      "afterSubmissionCommands": [
+ 
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
+        "config": {
+          "annotationNames": [
+            "first-point-B", 
+            "second-point-B" 
+          ]
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "delta": {
+              "axis": "x", 
+              "respectOrder": false
+            }
+          },
+          "step": "/shared/what-is-velocity/page/13/step/13"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/11",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "OK",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/13/step/11",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3850,10 +4032,10 @@
               "respectOrder": false
             }
           },
-          "step": "/shared/what-is-velocity/page/13/step/12"
+          "step": "/shared/what-is-velocity/page/13/step/13"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/13/step/11",
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/12",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3861,8 +4043,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/13/step/11",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/13/step/12",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -3924,7 +4106,7 @@
       "responseBranches": [
 
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/13/step/12",
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/13",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -3932,8 +4114,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/13/step/12",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/13/step/13",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -4022,10 +4204,10 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/13/step/15"
+          "step": "/shared/what-is-velocity/page/13/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/13/step/13",
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/14",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -4033,8 +4215,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/13/step/13",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/13/step/14",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -4110,10 +4292,10 @@
           "criterion": {
             "slope": "value"
           },
-          "step": "/shared/what-is-velocity/page/13/step/15"
+          "step": "/shared/what-is-velocity/page/13/step/16"
         }
       ],
-      "defaultBranch": "/shared/what-is-velocity/page/13/step/14",
+      "defaultBranch": "/shared/what-is-velocity/page/13/step/15",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
@@ -4121,8 +4303,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/13/step/14",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/13/step/15",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -4221,8 +4403,8 @@
       "nextButtonShouldSubmit": false
     },
     {
-      "url": "/shared/what-is-velocity/page/13/step/15",
-      "activityPage": "/shared/what-is-velocity/page/1",
+      "url": "/shared/what-is-velocity/page/13/step/16",
+      "activityPage": "/shared/what-is-velocity/page/13",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -4639,7 +4821,7 @@
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Here is a line through the two points.</p><p>What was your average speed during the whole trip?</p>",
+      "beforeText": "<p>Here is a line through the two points.</p><p>What was your average velocity during the whole trip?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: What were your total distance and your total time?</p>",
       "startCommands": [
@@ -4699,7 +4881,7 @@
           "name": "slope-graph-analyze"
         }
       },
-      "beforeText": "<p>Which of the lines in the accompanying graph indicates the fastest speed? Which indicates the slowest? Explain how you know.</p>",
+      "beforeText": "<p>Which of the lines in the accompanying graph indicates the fastest velocity? Which indicates the slowest? Explain how you know.</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -4802,7 +4984,7 @@
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
         }
       },
-      "beforeText": "<p>What is the difference between instantaneous speed and average speed?</p>",
+      "beforeText": "<p>What is the difference between instantaneous velocity and average velocity?</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -4846,7 +5028,7 @@
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg"
         }
       },
-      "beforeText": "<p>How can a graph convey speed?</p>",
+      "beforeText": "<p>How can you tell how fast you are moving?</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
