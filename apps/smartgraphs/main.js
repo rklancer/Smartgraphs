@@ -16,13 +16,7 @@ Smartgraphs.main = function main() {
   });
   Smartgraphs.store = SC.Store.create().from(Smartgraphs.dataSource);
   
-  // hack(?): Preload fixtures so that the any nested store is populated (nested store returns EMPTY record if record
-  // datahash was not loaded into the store when the nested store was created)
-  for (var prop in Smartgraphs) {
-    if (Smartgraphs.hasOwnProperty(prop) && Smartgraphs[prop] && Smartgraphs[prop].isClass && Smartgraphs[prop].FIXTURES) {
-      Smartgraphs.store.find(Smartgraphs[prop]);
-    }
-  }
+  Smartgraphs.preloadFixtures();
   
   // make the mainPane visible on screen.
   Smartgraphs.getPath('mainPage.mainPane').append() ;
@@ -42,5 +36,16 @@ Smartgraphs.main = function main() {
   // and kick things off
   Smartgraphs.statechart.initStatechart();
 } ;
+
+// hack(?): Preload fixtures so that the any nested store is populated (nested store returns EMPTY record if record
+// datahash was not loaded into the store when the nested store was created)
+
+Smartgraphs.preloadFixtures = function () {
+  for (var prop in Smartgraphs) {
+    if (Smartgraphs.hasOwnProperty(prop) && Smartgraphs[prop] && Smartgraphs[prop].isClass && Smartgraphs[prop].FIXTURES) {
+      Smartgraphs.store.find(Smartgraphs[prop]);
+    }
+  }
+};
 
 function main() { Smartgraphs.main(); }
