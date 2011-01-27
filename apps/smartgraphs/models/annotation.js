@@ -33,6 +33,9 @@ Smartgraphs.Annotation = SC.Record.extend(
     sc_super();
   },
   
+  // Allow subclasses to define additional propertyOverride
+  concatenatedProperties: ['propertyOverrides'],
+  
   /**
     The primary key of an Annotation record is technically its url. However, annotations are referenced by type
     and name within the serialized format of an activity.
