@@ -140,9 +140,12 @@ module("Smartgraphs Property Annotations", {
 
   teardown: function() {
     Smartgraphs.firstGraphController.clear();
+    Smartgraphs.secondGraphController.clear();    
     graphView.bindings.forEach( function (b) { b.disconnect(); } );
+    graph2View.bindings.forEach( function (b) { b.disconnect(); } );
+    
     pane.remove();
-    pane = graphView = null;
+    pane = graphView = graph2View = null;
     
     endSession();
     
@@ -184,6 +187,7 @@ test("property-modifying annotation types that do not require a separate annotat
   equals( annotationsHolder.getPath('childViews.length'), startingLength + 1, "Adding 'circle-point' style HighlightedPoint should increase by 1 the number of annotation views");
 
   Smartgraphs.firstGraphController.addAnnotation(hp2);
+  // TODO 
   equals( annotationsHolder.getPath('childViews.length'), startingLength + 1, "Adding 'recolor-point-and-dim-datset' style HighlightedPoint should not increase the number of annotation views");
 });
 
@@ -212,7 +216,7 @@ test("the relevant properties of the item views are restored when the annotation
   equals( dataPointViews['p1'].get('color'), '#badcaf', "The HighlightedPoint 'recolor' annotation should override the dataPointView color");  
   
   SC.RunLoop.begin();  
-  Smartgraphs.firstGraphController.removeAnnotation(hp1);
+  Smartgraphs.firstGraphController.removeAnnotation('hp1');
   SC.RunLoop.end();
   
   equals( datasetViews['dataset1'].get('color'), '#000000', "The datasetView color should be restored after the annotation is removed");
@@ -238,6 +242,7 @@ test("the relevant properties of the item views are restored when the annotation
   equals( dataPointViews['p1'].get('color'), '#000000', "The dataPointView color should be restored after the annotation is removed");  
 });
 
+
 test("the properties of views that represent points which are annotated, but only in a different graph, are not overwritten", function () {
   expect(N_SETUP_TESTS + 6);
 
@@ -254,7 +259,7 @@ test("the properties of views that represent points which are annotated, but onl
 
   dataset1ViewInGraph2.set('color', '#000000');
   p1ViewInGraph2.set('color', '#000000');
-  
+
   SC.RunLoop.begin();
   Smartgraphs.firstGraphController.addAnnotation(hp1);
   SC.RunLoop.end();
@@ -292,7 +297,7 @@ test("adding a second annotation to a point by adding it to the table/dataset mi
   equals( dataPointViews['p1'].get('color'), '#facdab', "The second highlighted point annotation should override the dataPointView color");
   
   SC.RunLoop.begin();
-  Smartgraphs.firstGraphController.removeAnnotation(hp2);
+  Smartgraphs.firstGraphController.removeAnnotation('hp2');
   SC.RunLoop.end();
   
   equals( datasetViews['dataset1'].get('color'), '#caffe1', "Removing the second highlighted point should reveal the first highlighted point's datasetView color");
@@ -333,7 +338,7 @@ test("adding a second annotation to a point by updating the annotation's 'point'
 });
 
 
-test("changes to the annotation source property result in obervable changes to the target property of the corresponding view", function () {
+test("changes to the annotation source property result in observable changes to the target property of the corresponding view", function () {
   expect(N_SETUP_TESTS + 4);
   
   SC.RunLoop.begin();  
@@ -344,10 +349,10 @@ test("changes to the annotation source property result in obervable changes to t
   equals( dataPointViews['p1'].get('color'), '#badcaf', "The HighlightedPoint 'recolor' annotation should override the dataPointView color");
  
   SC.RunLoop.begin();
-  hp1.set('datasetColor', '#1effac');
+  hp1.set('datasetColor', '#1effac');  
   SC.RunLoop.end();
 
-  equals( datasetViews['dataset1'].get('color'), '#facdab', "Updating the 'datasetColor' property of the annotation should update the color property of the dataset");
+  equals( datasetViews['dataset1'].get('color'), '#1effac', "Updating the 'datasetColor' property of the annotation should update the color property of the dataset");
    
   SC.RunLoop.begin();
   hp1.set('pointColor', '#facdab');
@@ -357,31 +362,59 @@ test("changes to the annotation source property result in obervable changes to t
 });
 
 
-test("changes to the annotation source property do not affect the former target after a new target is set", function () {
+test("changes to the annotation source property do not affect the former target after the annotation is removed", function () {
   expect(N_SETUP_TESTS + 6);
   
   SC.RunLoop.begin();  
   Smartgraphs.firstGraphController.addAnnotation(hp1);
   SC.RunLoop.end();
+  
+  equals( datasetViews['dataset1'].get('color'), '#caffe1', "The HighlightedPoint 'recolor' annotation should override the datasetView color");
+  equals( dataPointViews['p1'].get('color'), '#badcaf', "The HighlightedPoint 'recolor' annotation should override the dataPointView color");
+ 
+  Smartgraphs.firstGraphController.removeAnnotation('hp1');
+  
+  equals( datasetViews['dataset1'].get('color'), '#000000', "Removing the highlightedPoint annotation from the graph should restore p1 color to '#000000'");
+  equals( dataPointViews['p1'].get('color'), '#000000', "Removing the highlightedPoint annotation from the graph should restore dataset1 color to '#000000'");
+  
+  SC.RunLoop.begin();
+  hp1.set('datasetColor', '#1effac');
+  hp1.set('pointColor', '#facdab');
+  SC.RunLoop.end();
 
+  equals( datasetViews['dataset1'].get('color'), '#000000', "After the highlightedPoint annotation is removed from the graph, updating its datasetColor property should not affect dataset color of its target");
+  equals( dataPointViews['p1'].get('color'), '#000000', "After the highlightedPoint annotation is removed from the graph, updating its pointColor property should not affect point color of its target");
+});
+
+
+test("changes to the annotation source property do not affect the former target after a new target is set", function () {
+  expect(N_SETUP_TESTS + 8);
+  
+  SC.RunLoop.begin();  
+  Smartgraphs.firstGraphController.addAnnotation(hp1);
+  SC.RunLoop.end();
+  
   equals( datasetViews['dataset1'].get('color'), '#caffe1', "The HighlightedPoint 'recolor' annotation should override the datasetView color");
   equals( dataPointViews['p1'].get('color'), '#badcaf', "The HighlightedPoint 'recolor' annotation should override the dataPointView color");
  
   hp1.set('point', p2);
+  
+  equals( datasetViews['dataset1'].get('color'), '#000000', "Removing the highlightedPoint annotation from p1 to p2 should restore p1 color to '#000000'");
+  equals( dataPointViews['p1'].get('color'), '#000000', "Removing the highlightedPoint annotation from p1 to p2 should restore dataset1 color to '#000000'");
   
   SC.RunLoop.begin();
   hp1.set('datasetColor', '#1effac');
   SC.RunLoop.end();
 
   equals( datasetViews['dataset2'].get('color'), '#1effac', "Updating the 'datasetColor' property of the annotation should update the color property of the current-target dataset");   
-  equals( datasetViews['dataset1'].get('color'), '#caffe1', "Updating the 'datasetColor' property of the annotation should not update color property of former-target dataset");
-  
+  equals( datasetViews['dataset1'].get('color'), '#000000', "Updating the 'datasetColor' property of the annotation should not update color property of former-target dataset");
+
   SC.RunLoop.begin();
   hp1.set('pointColor', '#facdab');
   SC.RunLoop.end();
 
   equals( dataPointViews['p2'].get('color'), '#facdab', "Updating the 'pointColor' property of the annotation should update the color property of the current-target point");
-  equals( dataPointViews['p1'].get('color'), '#badcaf', "Updating the 'pointColor' property of the annotation should not update the color property of the former-target point");
+  equals( dataPointViews['p1'].get('color'), '#000000', "Updating the 'pointColor' property of the annotation should not update the color property of the former-target point");
 });
 
 
@@ -391,14 +424,17 @@ test("removing annotations from a point by clearing annotations resets target pr
   SC.RunLoop.begin();  
   Smartgraphs.firstGraphController.addAnnotation(hp1);
   SC.RunLoop.end();
-
+  
   equals( datasetViews['dataset1'].get('color'), '#caffe1', "The HighlightedPoint 'recolor' annotation should override the datasetView color");
   equals( dataPointViews['p1'].get('color'), '#badcaf', "The HighlightedPoint 'recolor' annotation should override the dataPointView color");
-  
+
   Smartgraphs.firstGraphController.clearAnnotations();
   
   equals( datasetViews['dataset1'].get('color'), '#000000', "The datasetView color should be restored after clearAnnotations()");
   equals( dataPointViews['p1'].get('color'), '#000000', "The dataPointView color should be restored after clearAnnotations()");
+  
+  datasetViews['dataset2'].set('color', '#000000');
+  dataPointViews['p2'].set('color', '#000000');
   
   SC.RunLoop.begin();
   hp1.set('point', p2);
