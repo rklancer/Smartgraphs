@@ -163,7 +163,7 @@ Smartgraphs.GraphView = SC.View.extend(
     var xAxis = this.get('xAxis');
     var yAxis = this.get('yAxis');
 
-    if (!xAxis || !yAxis) return undefined;
+    if (!xAxis || !yAxis) return { x: -9999, y: -9999 };
 
     var xMin = xAxis.get('min'),
         xMax = xAxis.get('max'),
