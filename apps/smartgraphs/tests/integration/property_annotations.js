@@ -155,32 +155,27 @@ module("Smartgraphs Property Annotations", {
 
 
 test("property-modifying annotation types that do not require a separate annotation view shouldn't cause an annotation view to be intantiated", function () {
-  expect(N_SETUP_TESTS + 4);
+  expect(N_SETUP_TESTS + 7);
     
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1-2', {
-    displayStyle: 'circle-point',
+    displayStyle: Smartgraphs.HighlightedPoint.CIRCLE_STYLE,
     point: 'p1'
   });
   
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {
-    displayStyle: 'recolor-point-and-dim-dataset',
+    displayStyle: Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE,
     point: 'p2'
-    // The following will be set on any Smartgraphs.HiglightedPoint with style 'recolor-point-and-dim-dataset'
-    // propertyOverrides: [
-    //   { targetObject: 'dataset',
-    //     targetProperty: 'color',
-    //     sourceProperty: 'datasetColor'
-    //   },
-    //   { targetObject: 'point',
-    //     targetProperty: 'color',
-    //     sourceProperty: 'pointColor'
-    //   }
-    // ]
   });
+  
+  hp2.set('displayStyle', Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE);
   
   equals(hp1.get('point'), p1, "Highlighted point #1 should point at point p1");
   equals(hp2.get('point'), p2, "Highlighted point #2 should point at point p2");
-    
+
+  equals(hp1.get('viewClass'), Smartgraphs.HighlightedPointView, "viewClass of 'circle-point' style HighlightedPoint should be Smartgraphs.HighlightedPointView");
+  ok( !hp2.get('viewClass'), "viewClass of 'recolor-point-and-dim-dataset' style HighlightedPoint should be falsy");
+  equals( hp2.get('displayStyle'), Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE, "displayStyle of 'highlight-and-dim' style HighlightedPoint should be Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE");
+  
   var annotationsHolder = graphView.getPath('graphCanvasView.annotationsHolder');
   var startingLength = annotationsHolder.getPath('childViews.length');
   Smartgraphs.firstGraphController.addAnnotation(hp1);

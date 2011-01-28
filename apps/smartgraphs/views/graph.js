@@ -93,9 +93,10 @@ Smartgraphs.GraphView = SC.View.extend(
   
   
   _addViewForItem: function (item, itemType) {
-    var classKey = SC.guidFor(item.constructor);
-
-    var view = item.constructor.viewClass.design({
+    var viewClass = item.get('viewClass');
+    if (!viewClass) return;
+    
+    var view = viewClass.design({
         graphView: this,
         item: item,
         itemType: itemType,
@@ -135,6 +136,7 @@ Smartgraphs.GraphView = SC.View.extend(
       this.getPath('graphCanvasView.annotationsHolder').appendChild(view);
     }
 
+    var classKey = SC.guidFor(item.constructor);
     if (this._viewsByClassAndId[classKey] === undefined) {
       this._viewsByClassAndId[classKey] = {};
     }    

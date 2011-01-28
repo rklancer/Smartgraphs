@@ -106,7 +106,30 @@ Smartgraphs.Annotation = SC.Record.extend(
     
     @property {Boolean}
   */
-  isHighlighted: SC.Record.attr(Boolean, { defaultValue: false })
+  isHighlighted: SC.Record.attr(Boolean, { defaultValue: false }),
+  
+  /**
+    View class to instantiate to represent this anotation. Should be falsy for annotations which don't require a view
+    to be instantiated (e.g., property-override annotations).
+    
+    The default value is the 'viewClass' class property of this annotation's Annotation subclass.
+    
+    @property
+  */
+  viewClass: function () {
+    return this.constructor.viewClass;
+  }.property(),
+  
+  /**
+    Display style of this annotation. Annotations may use this property to choose a view class and set properties
+    as they wish.
+    
+    Note: currently there is no support for changing an annotation's display style while it is being displayed on a
+    graph or table.
+    
+    @property
+  */
+  displayStyle: null
 
 }) ;
 

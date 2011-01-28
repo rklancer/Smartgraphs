@@ -22,7 +22,7 @@ sc_require('views/highlighted_point');
 Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.HighlightedPoint.prototype */
 {
-
+  
   /**
     The point being highlighted.
     
@@ -30,6 +30,11 @@ Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
   */
   point: SC.Record.toOne('Smartgraphs.DataPoint'),
   
+  viewClass: function () {
+    return this.get('displayStyle') === Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE ? null : Smartgraphs.HighlightedPointView;
+  }.property(),
+  
+  // TODO: make "targetObject: 'point.dataset'" work 
   // we may dim the dataset the point is part of
   // Avoid using a binding which could result in a 'dataset' value out of sync with the latest 'point' value
   dataset: function () {
@@ -38,6 +43,7 @@ Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
   
   // for now, we will only allow 'recolor point and dim dataset' style HighlightedPoints...
   annotationDoesNotRequireView: YES, 
+  
   propertyOverrides: [
     { targetObject: 'dataset',        // (1) find the view corresponding to this.dataset on graph or table which contains this annotation
       targetProperty: 'color',        // and (2) bind the 'color' property of that view
@@ -50,6 +56,9 @@ Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
   ]
 
 });
+
+Smartgraphs.HighlightedPoint.CIRCLE_STYLE = 'circle-point';
+Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE = 'highlight-point-and-dim-background';
 
 // let the graph view know how to instantiate a view class to display this item
 Smartgraphs.HighlightedPoint.viewClass = Smartgraphs.HighlightedPointView;
