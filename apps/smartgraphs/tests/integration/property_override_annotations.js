@@ -131,7 +131,7 @@ module("Smartgraphs Property Annotations", {
     dataPointViews['p1'].set('color', '#000000');
 
     hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {
-      displayStyle: 'recolor-point-and-dim-dataset',
+      displayStyle: Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE,
       point: 'p1',
       pointColor: '#badcaf',
       datasetColor: '#caffe1'
@@ -166,8 +166,6 @@ test("property-modifying annotation types that do not require a separate annotat
     displayStyle: Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE,
     point: 'p2'
   });
-  
-  hp2.set('displayStyle', Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE);
   
   equals(hp1.get('point'), p1, "Highlighted point #1 should point at point p1");
   equals(hp2.get('point'), p2, "Highlighted point #2 should point at point p2");
@@ -278,7 +276,7 @@ test("adding a second annotation to a point by adding it to the table/dataset mi
   equals( dataPointViews['p1'].get('color'), '#badcaf', "The HighlightedPoint 'recolor' annotation should override the dataPointView color");
 
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {
-    displayStyle: 'recolor-point-and-dim-dataset',
+    displayStyle: Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE,
     point: 'p1',
     pointColor: '#facdab',
     datasetColor: '#1effac'
@@ -304,7 +302,7 @@ test("adding a second annotation to a point by updating the annotation's 'point'
   expect(N_SETUP_TESTS + 6);
     
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {
-    displayStyle: 'recolor-point-and-dim-dataset',
+    displayStyle: Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE,
     pointColor: '#facdab',
     datasetColor: '#1effac'
   });

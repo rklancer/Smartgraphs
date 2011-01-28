@@ -41,19 +41,20 @@ Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
     return this.getPath('point.dataset');
   }.property('point').cacheable(),
   
-  // for now, we will only allow 'recolor point and dim dataset' style HighlightedPoints...
-  annotationDoesNotRequireView: YES, 
-  
-  propertyOverrides: [
-    { targetObject: 'dataset',        // (1) find the view corresponding to this.dataset on graph or table which contains this annotation
-      targetProperty: 'color',        // and (2) bind the 'color' property of that view
-      sourceProperty: 'datasetColor'  // (3) to the 'pointColor' property of this annotation
-    },
-    { targetObject: 'point',          // (4) find the view corresponding to this.point on the graph or table which contains this annotation
-      targetProperty: 'color',        // and (5) bind the 'color' property of that view
-      sourceProperty: 'pointColor'    // (6) to the 'pointColor' property of this annotation
+  propertyOverrides: function () {
+    if (this.get('displayStyle') === Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE) {
+      return [
+        { targetObject: 'dataset',        // (1) find the view corresponding to this.dataset on graph or table which contains this annotation
+          targetProperty: 'color',        // and (2) bind the 'color' property of that view
+          sourceProperty: 'datasetColor'  // (3) to the 'pointColor' property of this annotation
+        },
+        { targetObject: 'point',          // (4) find the view corresponding to this.point on the graph or table which contains this annotation
+          targetProperty: 'color',        // and (5) bind the 'color' property of that view
+          sourceProperty: 'pointColor'    // (6) to the 'pointColor' property of this annotation
+        }
+      ];
     }
-  ]
+  }.property('displayStyle').cacheable()
 
 });
 

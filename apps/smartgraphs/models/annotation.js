@@ -33,9 +33,6 @@ Smartgraphs.Annotation = SC.Record.extend(
     sc_super();
   },
   
-  // Allow subclasses to define additional propertyOverride
-  concatenatedProperties: ['propertyOverrides'],
-  
   /**
     The primary key of an Annotation record is technically its url. However, annotations are referenced by type
     and name within the serialized format of an activity.
@@ -118,18 +115,7 @@ Smartgraphs.Annotation = SC.Record.extend(
   */
   viewClass: function () {
     return this.constructor.viewClass;
-  }.property(),
-  
-  /**
-    Display style of this annotation. Annotations may use this property to choose a view class and set properties
-    as they wish.
-    
-    Note: currently there is no support for changing an annotation's display style while it is being displayed on a
-    graph or table.
-    
-    @property
-  */
-  displayStyle: null
+  }.property()
 
 }) ;
 
