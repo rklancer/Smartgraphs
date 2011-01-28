@@ -44,6 +44,12 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
     return (this.get('isHovered') ? this.get('hoveredRadius') : this.get('notHoveredRadius'));
   }.property('isHovered', 'hoveredRadius', 'notHoveredRadius').cacheable(),
   
+  init: function () {
+    sc_super();
+    this._baseValues = {};
+    this.contentDidChange();
+  },
+  
   mouseEntered: function () {
     this.set('isHovered', YES);
   },
@@ -88,6 +94,36 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
       var circle = context.raphael();
       circle.attr({ cx: coords.x, cy: coords.y, r: radius, fill: fill, stroke: stroke });
     }
-  }
+  },
+  
+  contentDidChange: function () {
+    var newContent = this.get('content');
+    var oldContent = this._oldContent;
+    this._oldContent = newContent;
 
+    var queues = this.getPath('parentView.graphView.graphController.overrideQueuesByTarget');
+        
+    if (oldContent) {
+      queues[SC.guidFor(oldContent)].removeObserver('[]', this, this._overridePropertyDidChange);
+    }
+
+    var targetGuid = SC.guidFor(newContent);
+    if (!queues[targetGuid]) queues[targetGuid] = [];
+    
+    queues[targetGuid].addObserver('[]', this, this._overridePropertyDidChange);
+  }.observes('content'),
+  
+  _overridePropertyDidChange: function (queue) {
+    queue.beginPropertyChanges();
+    var self = this;
+    queue.forEach( function (change) {
+      if (self._baseValues[change.property] === undefined) {
+        self._baseValues[change.property] = self.get(change.property);
+      }
+      self.set(change.property, change.restoreBaseValue ? self._baseValues[change.property] : change.value);
+    });
+    queue.splice(0, queue.length);
+    queue.endPropertyChanges();
+  }
+  
 });

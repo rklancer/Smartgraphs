@@ -170,16 +170,8 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
     @param name
   */
   findDatasetByName: function (name) {
-    return this.findObjectByNameIn(name, this.get('datasetList'));
-  },
-  
-  /**
-    @param name
-  */
-  findObjectByNameIn: function (name, list) {
-    var names = list.getEach('name');
-    var idx = names.indexOf(name);
-    return (idx >= 0) ? list.objectAt(idx) : null;
+    var list = this.get('datasetList');
+    return list ? list.findProperty('name', name) : null;
   },
   
   /**

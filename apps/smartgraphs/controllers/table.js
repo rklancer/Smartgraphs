@@ -9,8 +9,7 @@ sc_require('mixins/annotation_support');
 
 /** @class
 
-  Initial implementation of table controller. Currently only allows displaying a single dataset, which must be open
-  in a graph controller.
+  Initial implementation of table controller. Currently only allows displaying a single dataset
   
   @extends SC.Object
   @extends Smartgraphs.AnnotationSupport
@@ -66,19 +65,6 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   datasetNamesBinding: 'Smartgraphs.activityObjectsController.datasetNames',
   datasetNamesBindingDefault: SC.Binding.oneWay(),
   
-  // a first implementation of lazy loading of activity objects
-  maybeAddPendingDataset: function () {
-    var pendingDatasetName = this.get('pendingDatasetName');
-    if (!pendingDatasetName) return;
-    
-    var datasetNames = this.get('datasetNames');
-    
-    if (datasetNames && datasetNames.indexOf(pendingDatasetName) >= 0) {
-      this.useDataset(Smartgraphs.activityObjectsController.findDataset(pendingDatasetName));
-      this.set('pendingDatasetName', null);
-    }
-  }.observes('datasetNames'),
-  
   clear: function () {
     this.set('pendingDatasetName', null);
   
@@ -110,21 +96,24 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
       Smartgraphs.TableController.controllerForDataset.set(currentDatasetName, null);
     }
     Smartgraphs.TableController.controllerForDataset.set(datasetName, this);
-    
-    var dataset = Smartgraphs.activityObjectsController.findDataset(datasetName);
-    if (dataset) {
-      this.useDataset(dataset);
-    }
-    else {
-      // wait for the dataset to be created
-      this.set('pendingDatasetName', datasetName);
-    }
+    this.set('pendingDatasetName', datasetName);
+    this.maybeUsePendingDataset();
   },
   
-  useDataset: function (dataset) {
-    this.set('dataset', dataset);
-    this.set('content', dataset.get('points'));
-  },
+  // a first implementation of lazy loading of activity objects
+  maybeUsePendingDataset: function () {
+    var pendingDatasetName = this.get('pendingDatasetName');
+    if (!pendingDatasetName) return;
+    
+    var datasetNames = Smartgraphs.activityObjectsController.get('datasetNames');
+    
+    if (datasetNames && datasetNames.indexOf(pendingDatasetName) >= 0) {
+      var dataset = Smartgraphs.activityObjectsController.findDataset(pendingDatasetName);
+      this.set('dataset', dataset);
+      this.set('content', dataset.get('points'));
+      this.set('pendingDatasetName', null);
+    }
+  }.observes('datasetNames'),
 
   /**
     Add an annotation to this controller.

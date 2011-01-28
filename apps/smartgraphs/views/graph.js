@@ -93,12 +93,39 @@ Smartgraphs.GraphView = SC.View.extend(
   
   
   _addViewForItem: function (item, itemType) {
-    var classKey = SC.guidFor(item.constructor);
-
-    var view = item.constructor.viewClass.design({
+    var viewClass = item.get('viewClass');
+    if (!viewClass) return;
+    
+    var view = viewClass.design({
         graphView: this,
         item: item,
-        itemType: itemType
+        itemType: itemType,
+        
+        // TODO: put this common functionality (e.g., see DataPointView) into an 'overridable' mixin so it can be reused
+        init: function () {
+          sc_super();
+          this._baseValues = {};          
+          
+          var queues = this.getPath('graphView.graphController.overrideQueuesByTarget');
+          var target = this.get('item');
+          var targetGuid = SC.guidFor(target);
+          if (!queues[targetGuid]) queues[targetGuid] = [];
+          
+          queues[targetGuid].addObserver('[]', this, this._overridePropertyDidChange);
+        },
+        
+        _overridePropertyDidChange: function (queue) {
+          queue.beginPropertyChanges();
+          var self = this;
+          queue.forEach( function (change) {
+            if (self._baseValues[change.property] === undefined) {
+              self._baseValues[change.property] = self.get(change.property);
+            }
+            self.set(change.property, change.restoreBaseValue ? self._baseValues[change.property] : change.value);
+          });
+          queue.splice(0, queue.length);
+          queue.endPropertyChanges();
+        }
     }).create();
     
     // append data and annotations 
@@ -109,6 +136,7 @@ Smartgraphs.GraphView = SC.View.extend(
       this.getPath('graphCanvasView.annotationsHolder').appendChild(view);
     }
 
+    var classKey = SC.guidFor(item.constructor);
     if (this._viewsByClassAndId[classKey] === undefined) {
       this._viewsByClassAndId[classKey] = {};
     }    
@@ -137,7 +165,7 @@ Smartgraphs.GraphView = SC.View.extend(
     var xAxis = this.get('xAxis');
     var yAxis = this.get('yAxis');
 
-    if (!xAxis || !yAxis) return undefined;
+    if (!xAxis || !yAxis) return { x: -9999, y: -9999 };
 
     var xMin = xAxis.get('min'),
         xMax = xAxis.get('max'),

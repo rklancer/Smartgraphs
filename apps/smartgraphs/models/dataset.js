@@ -171,8 +171,13 @@ Smartgraphs.Dataset = SC.Record.extend(
     
     @property {Number | null}
   */
-  expectedLength: null
+  expectedLength: null,
+  
+  /**
+    View class to instantiate to represent this dataset on a graph. The default value is Smartgraphs.DatasetView.
+  */
+  viewClass: function () {
+    return Smartgraphs.DatasetView;
+  }.property()
 
-}) ;
-
-Smartgraphs.Dataset.viewClass = Smartgraphs.DatasetView;
+});
