@@ -1,7 +1,8 @@
 // ==========================================================================
 // Project:   Smartgraphs.TableView
 // Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer <rpk@pobox.com>
+// Author:    Richard Klancer <rpk@pobox.com>
+// Author:    Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 

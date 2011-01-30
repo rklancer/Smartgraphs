@@ -96,37 +96,12 @@ Smartgraphs.GraphView = SC.View.extend(
     var viewClass = item.get('viewClass');
     if (!viewClass) return;
     
-    var view = viewClass.design({
-        graphView: this,
-        item: item,
-        itemType: itemType,
-        
-        // TODO: put this common functionality (e.g., see DataPointView) into an 'overridable' mixin so it can be reused
-        init: function () {
-          sc_super();
-          this._baseValues = {};          
-          
-          var queues = this.getPath('graphView.graphController.overrideQueuesByTarget');
-          var target = this.get('item');
-          var targetGuid = SC.guidFor(target);
-          if (!queues[targetGuid]) queues[targetGuid] = [];
-          
-          queues[targetGuid].addObserver('[]', this, this._overridePropertyDidChange);
-        },
-        
-        _overridePropertyDidChange: function (queue) {
-          queue.beginPropertyChanges();
-          var self = this;
-          queue.forEach( function (change) {
-            if (self._baseValues[change.property] === undefined) {
-              self._baseValues[change.property] = self.get(change.property);
-            }
-            self.set(change.property, change.restoreBaseValue ? self._baseValues[change.property] : change.value);
-          });
-          queue.splice(0, queue.length);
-          queue.endPropertyChanges();
-        }
-    }).create();
+    var view = viewClass.create({
+      graphView: this,
+      controller: this.get('graphController'),
+      item: item,
+      itemType: itemType
+    });
     
     // append data and annotations 
     if (itemType === 'data') {

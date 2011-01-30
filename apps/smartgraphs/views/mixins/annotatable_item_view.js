@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.AnnotatableItemView
-// Copyright: ©2010 Concord Consortium
-// @author    Parker Morse <pmorse@cantinaconsulting.com>
+// Copyright: ©2011 Concord Consortium
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 

@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews*/
 
+sc_require('views/mixins/annotatable_item_view');
+
 /** @class
 
   (Document Your View Here)
@@ -12,7 +14,6 @@
   @extends SC.View
   @extends Smartgraphs.AnnotatableItemView  
 */
-sc_require('views/mixins/annotatable_item_view');
 
 Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend( Smartgraphs.AnnotatableItemView, 
 /** @scope Smartgraphs.DataPointView.prototype */ {
@@ -21,7 +22,6 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend( Smartgraphs.Annotat
   
   controllerPath: 'parentView.graphView.graphController',
   
-  // TODO should inherit these colors (and possibly other properties) from parent view
   datasetColorBinding: '.parentView.color',
   color: function () {
     return this.get('overrideColor') || this.get('datasetColor');

@@ -5,8 +5,6 @@
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession */
 
-// TODO generalize to table annotations
-
 // We'll test the targetObject/targetProperty/sourceProperty stuff more generically elsewhere (?); here we test the 
 // specific implementation embodied in HighlightedPoint
 

@@ -6,18 +6,19 @@
 /*globals Smartgraphs RaphaelViews */
 
 sc_require('views/data_point');
+sc_require('views/mixins/annotatable_parent_view');
 
 /** @class
 
   @extends RaphaelViews.RaphaelCollectionView
 */
 
-Smartgraphs.DatasetView = RaphaelViews.RaphaelCollectionView.extend({
+Smartgraphs.DatasetView = RaphaelViews.RaphaelCollectionView.extend( Smartgraphs.AnnotatableParentView, {
 
   exampleView: Smartgraphs.DataPointView, 
   // keep this set to YES prevents the collection view from redrawing all the points when re-rendering
   useFastPath: YES,
-
+  
   modelColorBinding: '.item.color',
   modelColorBindingDefault: SC.Binding.oneWay(),
   color: function () {
