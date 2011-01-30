@@ -113,45 +113,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
       this.set('content', dataset.get('points'));
       this.set('pendingDatasetName', null);
     }
-  }.observes('datasetNames'),
-
-  /**
-    Add an annotation to this controller.
-    
-    This version overrides the mixin version by adding an observer to the incoming annotation.
-    
-    @param {Smartgraphs.Annotation} annotation
-      The annotation to be added.
-  */
-  addAnnotation: function (annotation) {
-    sc_super();
-    if (annotation.kindOf(Smartgraphs.HighlightedPoint)) {
-      // Watch this and update colors for datapoints if the point changes
-      console.log("**** TABLECONTROLLER ADDING OBSERVER");
-      annotation.addObserver('point', this, 'updateDataPoints');
-    }
-  },
-
-  /**
-    Updates a value on the dataset based on changes in the annotations.
-    
-    If the annotation is a HighlightedPoint and its 'point' attribute changes, we want to update the
-    dataset's DataPoints with appropriate backgroundColor attributes.
-  */
-  updateDataPoints: function (sender, key) {
-    var dataset = this.get('dataset');
-    if (sender.kindOf(Smartgraphs.HighlightedPoint) && (sender.get('point') !== undefined )) {
-      dataset.get('points').forEach( function (point) {
-        if (point == sender.get('point')) {
-          point.set('backgroundColor', sender.get('color'));
-        } 
-        else if (point.get('backgroundColor') == sender.get('color')) {
-          // We need to remove the old highlight. Use '' rather than null or undefined to make the binding sync
-          point.set('backgroundColor', ''); // FIXME: This is a problem if there are two annotations with the same color
-        }
-      });
-    }
-  }
+  }.observes('datasetNames')
 
 }) ;
 

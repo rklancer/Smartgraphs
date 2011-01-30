@@ -413,7 +413,10 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     @param {String} args.graphName
       The name of the graph which should contain the dataset we are choosing a data point from
     @param {String} args.datasetName
-      The name of the dataset we are choosing a data point from.
+      The name of the dataset we are choosing a data point from
+    @param {String} args.color
+      Color of the HighlightedPoint to create. Currently used only if the HighlightedPoint did not exist before this
+      command.     
   */
   startInteractiveSelection: function (context, args) {
     var graphController = Smartgraphs.GraphController.controllerForName[args.graphName];
@@ -424,10 +427,9 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     
     var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName);
     if (!annotation) annotation = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
+
     graphController.addAnnotation(annotation);
-    if (tableController) {
-      tableController.addAnnotation(annotation);
-    }
+    if (tableController) tableController.addAnnotation(annotation);
     
     // stash the info needed by the state
     Smartgraphs.interactiveSelectionController.set('annotation', annotation);

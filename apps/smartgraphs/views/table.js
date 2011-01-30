@@ -137,6 +137,7 @@ Smartgraphs.TableView = SC.View.extend(
         classNames: ['smartgraph-table'],
 
         rowHeight: 20,
+        tableControllerBinding: '.parentView.parentView.parentView.parentView*tableController',
         contentBinding: '.parentView.parentView.parentView.parentView*tableController.arrangedObjects',
         selectionBinding: '.parentView.parentView.parentView.parentView*tableController.selection',
         isSelectableBinding: '.parentView.parentView.parentView.parentView*tableController.isSelectable',
