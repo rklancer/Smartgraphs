@@ -1,6 +1,6 @@
 {
   "_id": "slope-tool-demo.df5",
-  "_rev": "7-f81b3da4eac0de325ad87c37a6500bfe",
+  "_rev": "8-a39ed27820ad86519dc947eeb482a040",
   "data_format_version": 5,  
   "activity": {
     "title": "Slope Tool Demo",
@@ -767,6 +767,20 @@
     }
   ],
   "annotations": [
-    
+    {
+      "type": "HighlightedPoint",
+      "records": [
+        {
+          "url": "/shared/slope-tool-demo/annotation/first-point",
+          "name": "first-point",
+          "activity": "/shared/slope-tool-demo",
+          "session": null,
+          "point": null,
+          "displayStyle": "highlight-point-and-dim-background",
+          "datasetColor": "#CCCCCC",
+          "pointColor": "#FF0000"
+        }
+      ]
+    } 
   ]
 }
