@@ -38,6 +38,7 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.State.extend(
     var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
     this._oldIsSelectable = dataset.get('isSelectable');
     dataset.set('isSelectable', NO);
+    Smartgraphs.interactiveSelectionController.setPath('annotation.point', null);    
   },
   
   exitState: function () {

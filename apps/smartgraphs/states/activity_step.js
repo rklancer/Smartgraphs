@@ -422,18 +422,8 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
     var tableController = Smartgraphs.TableController.controllerForDataset[args.datasetName];
     
-    var objectsController = Smartgraphs.activityObjectsController;
-
-    // remove any existing annotation with the given name
-    if (objectsController.findAnnotation(args.annotationName)) {
-      objectsController.deleteAnnotation(args.annotationName);
-      graphController.removeAnnotation(args.annotationName);
-      if (tableController) {
-        tableController.removeAnnotation(args.annotationName);
-      }
-    }
-
-    var annotation = objectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
+    var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName);
+    if (!annotation) annotation = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
     graphController.addAnnotation(annotation);
     if (tableController) {
       tableController.addAnnotation(annotation);
