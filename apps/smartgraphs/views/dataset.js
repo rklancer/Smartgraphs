@@ -17,9 +17,13 @@ Smartgraphs.DatasetView = RaphaelViews.RaphaelCollectionView.extend({
   exampleView: Smartgraphs.DataPointView, 
   // keep this set to YES prevents the collection view from redrawing all the points when re-rendering
   useFastPath: YES,
-  colorBinding: '.item.color',
-  colorBindingDefault: SC.Binding.oneWay(),
-  
+
+  modelColorBinding: '.item.color',
+  modelColorBindingDefault: SC.Binding.oneWay(),
+  color: function () {
+    return this.get('overrideColor') || this.get('modelColor');
+  }.property('overrideColor', 'modelColor'),
+
   selectionBinding: '.item.selection',
   isSelectableBinding: '.item.isSelectable',
   
