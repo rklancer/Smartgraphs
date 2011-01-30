@@ -1,6 +1,6 @@
 {
   "_id": "slope-tool-demo.df5",
-  "_rev": "8-a39ed27820ad86519dc947eeb482a040",
+  "_rev": "10-1ce869053c55fab9b9c6dd0d61f9b780",
   "data_format_version": 5,  
   "activity": {
     "title": "Slope Tool Demo",
@@ -72,8 +72,7 @@
           "literalArgs": {
             "annotationName": "first-point",
             "graphName": "demo-graph",
-            "datasetName": "demo-data",
-            "color": "#1f77b4"
+            "datasetName": "demo-data"
           }
         }
       ],
@@ -121,8 +120,7 @@
           "literalArgs": {
             "annotationName": "second-point",
             "graphName": "demo-graph",
-            "datasetName": "demo-data",
-            "color": "#ff7f0e"
+            "datasetName": "demo-data"
           }
         }
       ],
@@ -777,8 +775,18 @@
           "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
-          "datasetColor": "#CCCCCC",
-          "pointColor": "#FF0000"
+          "datasetColor": "#cccccc",
+          "pointColor": "#1f77b4"
+        },
+        {
+          "url": "/shared/slope-tool-demo/annotation/second-point",
+          "name": "second-point",
+          "activity": "/shared/slope-tool-demo",
+          "session": null,
+          "point": null,
+          "displayStyle": "highlight-point-and-dim-background",
+          "datasetColor": "#cccccc",
+          "pointColor": "#ff7f0e"
         }
       ]
     } 
