@@ -17,8 +17,13 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
   displayProperties: 'content.x content.y isEnabled fill stroke radius'.w(),
   
   // TODO should inherit these colors (and possibly other properties) from parent view
-  notSelectedFillBinding: '.parentView.color',
-  notSelectedStrokeBinding: '.parentView.color',
+  datasetColorBinding: '.parentView.color',
+  color: function () {
+    return this.get('overrideColor') || this.get('datasetColor');
+  }.property('overrideColor', 'datasetColor'),
+    
+  notSelectedFillBinding: '.color',
+  notSelectedStrokeBinding: '.color',
   selectedFill: '#aa0000',
   selectedStroke: '#aa0000',
   
@@ -118,7 +123,7 @@ Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend(
     var self = this;
     queue.forEach( function (change) {
       if (self._baseValues[change.property] === undefined) {
-        self._baseValues[change.property] = self.get(change.property);
+        self._baseValues[change.property] = self.get(change.property) || null;
       }
       self.set(change.property, change.restoreBaseValue ? self._baseValues[change.property] : change.value);
     });

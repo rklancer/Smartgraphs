@@ -58,9 +58,9 @@ Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
           targetProperty: 'overrideColor',        // and (2) bind the 'overrideColor' property of that view
           sourceProperty: 'datasetOverrideColor'  // (3) to the 'overrideColor' property of this annotation
         },
-        { targetObject: 'point',          // (4) find the view corresponding to this.point on the graph or table which contains this annotation
-          targetProperty: 'color',        // and (5) bind the 'color' property of that view
-          sourceProperty: 'pointColor'    // (6) to the 'pointColor' property of this annotation
+        { targetObject: 'point',            // (4) find the view corresponding to this.point on the graph or table which contains this annotation
+          targetProperty: 'overrideColor',  // and (5) bind the 'overrideColor' property of that view
+          sourceProperty: 'pointColor'      // (6) to the 'pointColor' property of this annotation
         }
       ];
     }
