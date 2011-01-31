@@ -108,38 +108,35 @@ Smartgraphs.TableView = SC.View.extend(
   }),
   
   tableColumnView: SC.View.design({
-    layout: { width: 350, left: 10 },
-    
+    layout: { width: 350, left: 45 },
+    classNames: ['smartgraph-table'],
     childViews: ['labelsView', 'scrollView'],
     
     labelsView: SC.View.design({
+      classNames: ['table-background', 'table-background-top'],
       isVisibleBinding: '.parentView.parentView.showLabels',
       
-      layout: { left: 40, top: 0, width: 250, height: 30 },
-      backgroundColor: '#eee',
-      classNames: ['smartgraph-table'],
+      layout: { left: 40, top: 0, width: 250, height: 25 },
       childViews: ['xsLabel', 'ysLabel'],
 
       xsLabel: SC.LabelView.design({    
-        layout: { left: 10, top: 0, width: 82, height: 19 },
+        layout: { left: 15, top: 7, width: 90, height: 18 },
         valueBinding: '.parentView.parentView.parentView.xLabel'
       }),
 
       ysLabel: SC.LabelView.design({
-        layout: { left: 100, top: 0, width: 82, height: 19 },   
+        layout: { left: 105, top: 7, width: 90, height: 18 },   
         valueBinding: '.parentView.parentView.parentView.yLabel'
       })
     }),
   
     scrollView: SC.ScrollView.design({
       layout: { left: 0, top: 25, width: 290 },
-      backgroundColor: '#eee',
+      classNames: ['table-background'], 
       
       borderStyle: SC.BORDER_NONE,
     
       contentView: SC.View.design({
-        classNames: ['smartgraph-table'],
-        
         rowHeight: 20,
         tableControllerBinding: '.parentView.parentView.parentView.parentView*tableController',
         contentBinding: '.parentView.parentView.parentView.parentView*tableController.arrangedObjects',
@@ -167,8 +164,8 @@ Smartgraphs.TableView = SC.View.extend(
         }),
 
         xsView: SC.ListView.design({
-          // 'bottom: 2' is required or else scrolling all the way cuts off the bottom border.
-          layout: { left: 50, top: 10, bottom: 2, width: 80 },
+          // 'bottom: 3' is required or else scrolling all the way cuts off the bottom border.
+          layout: { left: 50, top: 10, bottom: 4, width: 80 },
           classNames: 'table-column',
 
           rowHeightBinding: '.parentView.rowHeight',
@@ -182,7 +179,7 @@ Smartgraphs.TableView = SC.View.extend(
 
         ysView: SC.ListView.design({
           // using left: rather than right: keeps the ysView from being pushed to the left when the scroll bar appears
-          layout: { left: 140, top: 10, bottom: 2, width: 80 }, 
+          layout: { left: 140, top: 10, bottom: 4, width: 80 }, 
           classNames: 'table-column',
 
           rowHeightBinding: '.parentView.rowHeight',
@@ -265,7 +262,7 @@ Smartgraphs.TableView = SC.View.extend(
       // innerView's content depends on parentView, which isn't set until the end of the runloop. Without the 
       // line below, the scroll view believes it's contentView's height is 0
       this.invokeLast(function () {
-        innerView.adjust('height', innerView.getPath('content.length') * innerView.get('rowHeight') + 13);
+        innerView.adjust('height', innerView.getPath('content.length') * innerView.get('rowHeight') + 15);
       });
     }
     else {
