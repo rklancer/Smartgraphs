@@ -83,6 +83,22 @@ body.sc-theme {
   background-color: #ffffff;
 }
 
+.sc-list-view.table-column {
+  background-color: #fff;
+}
+
+.sc-list-item-view.table-item {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #ddd;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #ddd;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #ddd;
+}
+
 .text-wrapper p, .text-wrapper h1, .text-wrapper img {
   margin: 10px;
 }
