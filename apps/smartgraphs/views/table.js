@@ -115,26 +115,24 @@ Smartgraphs.TableView = SC.View.extend(
     labelsView: SC.View.design({
       isVisibleBinding: '.parentView.parentView.showLabels',
       
-      layout: { left: 0, top: 0, width: 350, height: 30 },
+      layout: { left: 40, top: 0, width: 250, height: 30 },
+      backgroundColor: '#eee',
       classNames: ['smartgraph-table'],
       childViews: ['xsLabel', 'ysLabel'],
 
       xsLabel: SC.LabelView.design({    
-        layout: { left: 50, top: 0, width: 90, height: 25 },
-        backgroundColor: '#eee',
+        layout: { left: 10, top: 0, width: 82, height: 19 },
         valueBinding: '.parentView.parentView.parentView.xLabel'
       }),
 
       ysLabel: SC.LabelView.design({
-        layout: { left: 140, top: 0, width: 150, height: 25 },
-        backgroundColor: '#eee',      
+        layout: { left: 100, top: 0, width: 82, height: 19 },   
         valueBinding: '.parentView.parentView.parentView.yLabel'
       })
     }),
   
     scrollView: SC.ScrollView.design({
       layout: { left: 0, top: 25, width: 290 },
-      
       backgroundColor: '#eee',
       
       borderStyle: SC.BORDER_NONE,
@@ -149,11 +147,11 @@ Smartgraphs.TableView = SC.View.extend(
         isSelectableBinding: '.parentView.parentView.parentView.parentView*tableController.isSelectable',
         contentLengthBinding: '.content.length',
         annotationsListBinding: '.parentView.parentView.parentView.parentView*tableController.annotationsList',
-        // TODO: So the parent now knows about the list of annotations...
-        
-        contentLengthDidChange: function () {
-          this.adjust('height', this.get('contentLength') * this.get('rowHeight') + 15);
-        }.observes('contentLength'),
+
+        // not necessary if we're also using numericView for streaming data?:
+        // contentLengthDidChange: function () {
+        //   this.adjust('height', this.get('contentLength') * this.get('rowHeight') + 15);
+        // }.observes('contentLength'),
         
         childViews: ['backdrop', 'xsView', 'ysView'],
 
@@ -169,8 +167,9 @@ Smartgraphs.TableView = SC.View.extend(
         }),
 
         xsView: SC.ListView.design({
-          layout: { left: 50, top: 10, width: 80 },
-          classNames: 'table-column',     
+          // 'bottom: 2' is required or else scrolling all the way cuts off the bottom border.
+          layout: { left: 50, top: 10, bottom: 2, width: 80 },
+          classNames: 'table-column',
 
           rowHeightBinding: '.parentView.rowHeight',
           canEditContent: NO,
@@ -183,7 +182,7 @@ Smartgraphs.TableView = SC.View.extend(
 
         ysView: SC.ListView.design({
           // using left: rather than right: keeps the ysView from being pushed to the left when the scroll bar appears
-          layout: { left: 140, top: 10, width: 80 },    
+          layout: { left: 140, top: 10, bottom: 2, width: 80 }, 
           classNames: 'table-column',
 
           rowHeightBinding: '.parentView.rowHeight',
@@ -266,7 +265,7 @@ Smartgraphs.TableView = SC.View.extend(
       // innerView's content depends on parentView, which isn't set until the end of the runloop. Without the 
       // line below, the scroll view believes it's contentView's height is 0
       this.invokeLast(function () {
-        innerView.adjust('height', innerView.getPath('content.length') * innerView.get('rowHeight') + 15);
+        innerView.adjust('height', innerView.getPath('content.length') * innerView.get('rowHeight') + 13);
       });
     }
     else {

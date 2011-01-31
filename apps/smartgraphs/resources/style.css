@@ -85,6 +85,9 @@ body.sc-theme {
 
 .sc-list-view.table-column {
   background-color: #fff;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #ddd;
 }
 
 .sc-list-item-view.table-item {
@@ -154,7 +157,8 @@ body.sc-theme {
 }
 
 .smartgraph-table .sc-label-view.sc-regular-size {
-  font-size: 18px;
+  font-size: 16px;
+  padding: 4px;
 }
 
 .smartgraph-numeric-view-label.sc-label-view.sc-regular-size {
