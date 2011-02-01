@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.ResponseFieldAnnotationsInspector
 // Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer <rpk@pobox.com>
+// Author:    Eric Kattwinkel
 // ==========================================================================
 /*globals Smartgraphs */
 
