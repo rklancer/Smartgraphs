@@ -75,6 +75,9 @@ Smartgraphs.sessionController = SC.ObjectController.create(
       throw "Tried to end session, but there is no parent store to restore";
     }
     
+    var activityId = Smartgraphs.activityController.get('id');    
+    var pageId = Smartgraphs.activityPageController.get('id');
+    
     // let everything sync so that, e.g., graph views removes child views representing datasets & annotations that are 
     // about to be removed from the current datastore
     SC.RunLoop.begin().end();
@@ -93,7 +96,19 @@ Smartgraphs.sessionController = SC.ObjectController.create(
 
     Smartgraphs.store.discardChanges().destroy();
     Smartgraphs.set('store', parentStore);
+
+    // avoid getting static from the activityOutlineController as we mess with the controllers it's observing
+    // (it will reset its selection after the runloop anyway)
+    Smartgraphs.activityOutlineController.set('selection', SC.SelectionSet.create());
     
+    // ..and set the activity controllers back to point to records from the parent store.
+    // TODO: is there a more elegant way to do this?
+    Smartgraphs.activityController.set('content', Smartgraphs.store.find(Smartgraphs.Activity, activityId));
+    var pages = Smartgraphs.activityController.get('pages');
+    var page = pages && pages.findProperty('id', pageId);
+    if (pages) Smartgraphs.activityPagesController.set('content', pages);
+    if (page) Smartgraphs.activityPageController.set('content', page);
+
     this.set('content', null);
   }
   

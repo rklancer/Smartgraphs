@@ -18,7 +18,7 @@ Smartgraphs.activityOutlineController = SC.TreeController.create(
   }.property('shouldSelectPageInOutline').cacheable(),
   
   allowsMultipleSelection: NO,
-  allowsEmptySelection: NO,
+  allowsEmptySelection: YES,
   contentBinding: SC.Binding.oneWay('Smartgraphs.activityPagesController.outline'),
   
   isSelectable: NO,
