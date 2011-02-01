@@ -35,6 +35,8 @@ module("Smartgraphs.activityStepController", {
   },
   
   teardown: function () {
+    Smartgraphs.activityController.set('content', null);
+    Smartgraphs.activityStepController.set('content', null);
     teardown.mocks();
   }
 });
@@ -349,6 +351,8 @@ module("ActivityStepController <--> state interaction", {
   
   teardown: function () {
     SC.RunLoop.begin().end();     // clean up any pending actions sent by invokeLast in enterState
+    Smartgraphs.activityController.set('content', null);
+    Smartgraphs.activityStepController.set('content', null);
     teardown.mocks();
   }
 });

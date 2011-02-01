@@ -41,16 +41,22 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     if ( this.get('content') ) throw "beginSession was called when a session is already open!";
     
     Smartgraphs.set('store', Smartgraphs.store.chain());
-    Smartgraphs.activityObjectsController.loadPredefinedObjects();
     
     // make sure the session is loaded into the nested store -- optionally it can be saved back to the parent store
     var session = Smartgraphs.store.createRecord(Smartgraphs.Session, {
       user: Smartgraphs.userController.get('id')
     });
+        
     // FIXME this works for now --- but we'll eventually need some way to create a globally unique id for a session
-    session.set('id', Smartgraphs.getNextGuid());
-
+    session.set('id', Smartgraphs.getNextGuid());    
     this.set('content', session);
+    
+    // load the activity into the nested store...
+    if (Smartgraphs.activityController.get('content')) {      
+      Smartgraphs.activityController.set('content', Smartgraphs.store.find(Smartgraphs.activityController.get('content')));
+    }
+    // and register the names of the datasets, annotations, etc defined in the activity
+    Smartgraphs.activityObjectsController.loadPredefinedObjects();
   },
   
   /**
@@ -79,6 +85,7 @@ Smartgraphs.sessionController = SC.ObjectController.create(
       // hack hack hack ... (permanently disable observers for these records)
       var rec = Smartgraphs.store.materializeRecord(storeKey);
       if (rec) {
+        console.log('destroying record %s of type ', rec.get('id'), Smartgraphs.store.recordTypeFor(storeKey));
         rec.storeDidChangeProperties = function () {};
         rec._notifyPropertyObservers = function () {};
       }

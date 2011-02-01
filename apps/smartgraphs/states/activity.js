@@ -21,6 +21,11 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   
   enterState: function() {
     Smartgraphs.sessionController.beginSession();
+
+    var pages = Smartgraphs.activityController.get('pages');
+    Smartgraphs.activityPagesController.set('content', pages);
+    Smartgraphs.activityPagesController.selectFirstPage();    
+
     Smartgraphs.appWindowController.showActivityView();
   },
 

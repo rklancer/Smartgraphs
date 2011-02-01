@@ -63,6 +63,7 @@ module("Smartgraphs.sessionController", {
 
   teardown: function () {
     if (Smartgraphs.sessionController.get('content')) Smartgraphs.sessionController.endSession();
+    Smartgraphs.activityController.set('content', null);
     teardown.all();
   }
 });

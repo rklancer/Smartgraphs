@@ -34,7 +34,7 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.State.extend(
     // if we didn't change steps after submission completed, then there must be no more steps for this page.
     // note: using invokeLast allows handleSubmission execution to complete before the state change
     var newStep = Smartgraphs.activityStepController.get('content');
-    if (newStep === oldStep && oldStep.get('isFinalStep')) {
+    if (newStep === oldStep && oldStep && oldStep.get('isFinalStep')) {
       var self = this;
       this.invokeLast(function () {
         self.gotoState('ACTIVITY_PAGE_DONE');
@@ -64,7 +64,7 @@ Smartgraphs.ACTIVITY_STEP_SUBMITTED = SC.State.extend(
       The id (url) of the ActivityStep to branch to
   */
   gotoStep: function (context, args) {
-    var step = Smartgraphs.get('rootStore').find(Smartgraphs.ActivityStep, args.stepId);
+    var step = Smartgraphs.store.find(Smartgraphs.ActivityStep, args.stepId);
     Smartgraphs.activityStepController.set('content', step);
     this.gotoState('ACTIVITY_STEP');
     return YES;

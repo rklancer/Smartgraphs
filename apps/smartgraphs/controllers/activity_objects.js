@@ -59,7 +59,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     this._annotations = {};
     this._variables = {};
     
-    var activity = Smartgraphs.activityController.get('activityRecordInCurrentStore');
+    var activity = Smartgraphs.activityController.get('content');
     if (activity) {
       var query = SC.Query.local(Smartgraphs.Dataset, 'activity={activity}', {
         activity: activity
@@ -84,7 +84,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
       // now, repeat the above for each annotation type...
       Smartgraphs.Annotation.types().forEach(function (type) {
         query = SC.Query.local(type, 'activity={activity}', {
-          activity: Smartgraphs.activityController.get('activityRecordInCurrentStore')
+          activity: activity
         });
         var foundAnnotations = Smartgraphs.store.find(query);
       
@@ -179,7 +179,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     @returns {Smartgraphs.Dataset}
       The newly created datatset
   */
-  createDataset: function (name, xUnits, yUnits) {
+  createDataset: function (name, xUnits, yUnits) {    
     if (this._datasets[name]) {
       throw "The activity tried to create a dataset with name %@, which is already in use.".fmt(name);
     }

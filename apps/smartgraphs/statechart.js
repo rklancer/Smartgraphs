@@ -104,15 +104,14 @@ Smartgraphs.statechart = SC.Statechart.create(
         },
 
         resourcesDidLoad: function () {
-          var pages = Smartgraphs.activityController.get('pages');
-          Smartgraphs.activityPagesController.set('content', pages);
-
-          if (pages.get('length') > 0) {
+          if (Smartgraphs.loadingActivityController.get('openAuthorViewAfterLoading')) {
+            Smartgraphs.activityPagesController.set('content', Smartgraphs.activityController.get('pages'));
             Smartgraphs.activityPagesController.selectFirstPage();
+            this.gotoState('AUTHOR');
           }
-
-          var openAuthorView = Smartgraphs.loadingActivityController.get('openAuthorViewAfterLoading');
-          this.gotoState(openAuthorView ? 'AUTHOR' : 'ACTIVITY');
+          else {
+            this.gotoState('ACTIVITY');
+          }
         },
 
         resourceLoadingError: function () {

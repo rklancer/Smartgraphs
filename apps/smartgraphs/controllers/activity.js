@@ -25,11 +25,6 @@ Smartgraphs.activityController = SC.ObjectController.create(
     Smartgraphs.activityStepController.cleanup();
   },
   
-  activityRecordInCurrentStore: function () {
-    var id = this.get('id');
-    return id ? Smartgraphs.store.find(Smartgraphs.Activity, id) : null;
-  }.property(),
-  
   /**
     YES if the activity record itself (which including its dependent child records) needs to be saved
   */
