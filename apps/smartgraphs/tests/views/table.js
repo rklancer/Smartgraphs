@@ -91,17 +91,17 @@ test("inner view's height adjusts as points are added and removed", function () 
   p1 = addPoint(dataset, 1, 2);
 
   equals(innerView.get('contentLength'), 1, "table's content length should be 1 after one datapoint is added.");
-  equals(innerView.get('frame').height, rowHeight, "table's height should adjust to `rowHeight * 1` after one datapoint is added");
+  equals(innerView.get('frame').height, rowHeight+15, "table's height should adjust to `rowHeight * 1 + 15` after one datapoint is added");
   p2 = addPoint(dataset, 3, 4);
     
-  equals(innerView.get('frame').height, 2*rowHeight, "table's height should adjust to `rowHeight * 2` after a second datapoint is added");
+  equals(innerView.get('frame').height, 2*rowHeight+15, "table's height should adjust to `rowHeight * 2 + 15` after a second datapoint is added");
 
   SC.RunLoop.begin();
   p1.set('dataset', null);
   p1.destroy();
   SC.RunLoop.end();
   
-  equals(innerView.get('frame').height, rowHeight, "table's height should adjust to `rowHeight * 1` after second datapoint is removed");
+  equals(innerView.get('frame').height, rowHeight+15, "table's height should adjust to `rowHeight * 1 + 15` after second datapoint is removed");
 });
 
 
@@ -135,7 +135,7 @@ test("table does not update for new data when showTable is false", function () {
   p1 = addPoint(dataset, 1, 2);
 
   equals(innerView.get('contentLength'), 1, "table's content length should be 1 after one datapoint is added.");
-  equals(innerView.get('frame').height, rowHeight, "table's height should adjust to `rowHeight * 1` after one datapoint is added");
+  equals(innerView.get('frame').height, rowHeight + 15, "table's height should adjust to `rowHeight * 1 + 15` after one datapoint is added");
   
   // now, turn off 'showTable'
   SC.RunLoop.begin();
@@ -146,7 +146,7 @@ test("table does not update for new data when showTable is false", function () {
   p2 = addPoint(dataset, 3, 4);
   
   equals(innerView.get('contentLength'), 1, "table's content length should still be 1 after a second datapoint is added with showTable = NO");
-  equals(innerView.get('frame').height, rowHeight, "table's height should still be `rowHeight * 1` after a second datapoint is added with showTable = NO");
+  equals(innerView.get('frame').height, rowHeight + 15, "table's height should still be `rowHeight * 1 + 15` after a second datapoint is added with showTable = NO");
 
   // now, turn 'showTable' back on
   SC.RunLoop.begin();
@@ -155,6 +155,6 @@ test("table does not update for new data when showTable is false", function () {
   
   // ..and confirm that the table length & frame is now updated for the new point that was ignored when showTable = NO
   equals(innerView.get('contentLength'), 2, "table's content length should be 2 after showTable is set to YES");
-  equals(innerView.get('frame').height, 2 * rowHeight, "table's height should be `rowHeight * 2` after showTable is set to YES");
+  equals(innerView.get('frame').height, 2 * rowHeight + 15, "table's height should be `rowHeight * 2 + 15` after showTable is set to YES");
 });
 

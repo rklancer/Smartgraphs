@@ -138,7 +138,30 @@ body.sc-theme {
 }
 
 .smartgraph-table .sc-label-view.sc-regular-size {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+.smartgraph-table .sc-view.table-background {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.smartgraph-table .sc-view.table-background.table-background-top {
+  background-color: #eee;
+  border-bottom-width: 0px;
+  z-index: 2;  
+}
+
+.sc-list-view.table-column {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.sc-list-item-view.table-item {
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 .smartgraph-numeric-view-label.sc-label-view.sc-regular-size {

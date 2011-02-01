@@ -21,7 +21,7 @@ Smartgraphs.TableItemView = SC.ListItemView.extend( Smartgraphs.AnnotatableItemV
 
   displayProperties: ['backgroundColor'],
   
-  classNames: "table-item-view",
+  classNames: ['table-item'],
   
   controllerPath: 'parentView.parentView.tableController',
   

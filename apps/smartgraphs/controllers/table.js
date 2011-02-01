@@ -46,10 +46,6 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   
   isStreamingBinding: '*dataset.isStreaming',
   
-  showLabels: function () {
-    return this.get('length') > 0;
-  }.property('length').cacheable(),
-  
   /**
     Whether to display the table at all and latest datapoint to display
   */
