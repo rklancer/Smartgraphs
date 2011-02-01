@@ -155,21 +155,13 @@ body.sc-theme {
 
 .sc-list-view.table-column {
   background-color: #fff;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #ddd;
+  border-top: 1px solid #ddd;
 }
 
 .sc-list-item-view.table-item {
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: #ddd;
-  border-left-width: 1px;
-  border-left-style: solid;
-  border-left-color: #ddd;
-  border-right-width: 1px;
-  border-right-style: solid;
-  border-right-color: #ddd;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 .smartgraph-numeric-view-label.sc-label-view.sc-regular-size {
