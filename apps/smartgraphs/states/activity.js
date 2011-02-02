@@ -362,10 +362,10 @@ Smartgraphs.ACTIVITY = SC.State.extend(
 
     var arc = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
-        startX: 310,
-        startY: (pointOneIndex * 20) + 10,
-        endX: 310,
-        endY: (pointTwoIndex * 20) + 10,
+        startX: 230,
+        startY: (pointOneIndex * 20) + 20,
+        endX: 230,
+        endY: (pointTwoIndex * 20) + 20,
         color: args.color || '#cc0000',
         isClockwise: (pointOneIndex < pointTwoIndex),
         label: 'Rise'
@@ -404,13 +404,14 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     var pointOneIndex = points.indexOf(hp1.get('point'));
     var pointTwoIndex = points.indexOf(hp2.get('point'));
 
+    // FIXME centralize coordinate computation in the table controller
     var arc = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
         startX: 40,
-        startY: (pointOneIndex * 20) + 10,
+        startY: (pointOneIndex * 20) + 20,
         endX: 40,
-        endY: (pointTwoIndex * 20) + 10,
         color: args.color ? args.color : '#cc0000',
+        endY: (pointTwoIndex * 20) + 20,
         isClockwise: (pointOneIndex > pointTwoIndex),
         label: 'Run'
       });
