@@ -1,12 +1,23 @@
 {
   "_id": "velocity.df5",
-  "_rev": "22-e6a774c154a3c6c84f6d22f3b880feea",
+  "_rev": "27-b408817e29910d93b2a127e29a5e4b2c",
   "data_format_version": 5,
   "activity": {
     "title": "How Fast Am I Moving?",
     "url": "/shared/what-is-velocity",
     "owner": "shared",
     "pages": [
+      "/shared/what-is-velocity/page/1",
+      "/shared/what-is-velocity/page/2",
+      "/shared/what-is-velocity/page/3",
+      "/shared/what-is-velocity/page/4",
+      "/shared/what-is-velocity/page/5",
+      "/shared/what-is-velocity/page/6",
+      "/shared/what-is-velocity/page/7",
+      "/shared/what-is-velocity/page/8",
+      "/shared/what-is-velocity/page/9",
+      "/shared/what-is-velocity/page/10",
+      "/shared/what-is-velocity/page/11",      
       "/shared/what-is-velocity/page/12",
       "/shared/what-is-velocity/page/13",
       "/shared/what-is-velocity/page/14",
@@ -2074,7 +2085,8 @@
             "arrowName": "rise-arrow-A",
             "firstPoint": "first-point-A",
             "secondPoint": "second-point-A",
-            "color": "#9467bd"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -2151,7 +2163,8 @@
             "point1": "first-point-A",
             "point2": "second-point-A",
             "datasetName": "slope-data",
-            "color": "#9467bd"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -2173,7 +2186,7 @@
         
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
@@ -2293,17 +2306,17 @@
       "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
         {
-          "action": "removeAnnotation",
+          "action": "setAnnotationAttribute",
           "literalArgs": {
             "name": "rise-arrow-A",
-            "graphName": "slope-graph"
+            "isHighlighted": false
           }
         },
         {
-          "action": "removeAnnotation",
+          "action": "setAnnotationAttribute",
           "literalArgs": {
             "name": "rise-bracket-A",
-            "tableName": "slope-data"
+            "isHighlighted": false
           }
         },
         {
@@ -2312,7 +2325,8 @@
             "arrowName": "run-arrow-A",
             "firstPoint": "first-point-A",
             "secondPoint": "second-point-A",
-            "color": "#d62728"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -2383,26 +2397,13 @@
       "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
         {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "rise-arrow-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "rise-bracket-A",
-            "tableName": "slope-data"
-          }
-        },
-        {
           "action": "createRunArrow",
           "literalArgs": {
             "arrowName": "run-arrow-A",
             "firstPoint": "first-point-A",
             "secondPoint": "second-point-A",
-            "color": "#d62728"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -2479,7 +2480,8 @@
             "point1": "first-point-A",
             "point2": "second-point-A",
             "datasetName": "slope-data",
-            "color": "#9467bd"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -2661,6 +2663,20 @@
           "action": "removeAnnotation",
           "literalArgs": {
             "name": "run-bracket-A",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-A",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-A",
             "tableName": "slope-data"
           }
         }
@@ -3591,7 +3607,8 @@
             "arrowName": "rise-arrow-B",
             "firstPoint": "first-point-B",
             "secondPoint": "second-point-B",
-            "color": "#9467bd"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -3668,7 +3685,8 @@
             "point1": "first-point-B",
             "point2": "second-point-B",
             "datasetName": "slope-data",
-            "color": "#9467bd"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -3810,17 +3828,17 @@
       "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
         {
-          "action": "removeAnnotation",
+          "action": "setAnnotationAttribute",
           "literalArgs": {
             "name": "rise-arrow-B",
-            "graphName": "slope-graph"
+            "isHighlighted": false
           }
         },
         {
-          "action": "removeAnnotation",
+          "action": "setAnnotationAttribute",
           "literalArgs": {
             "name": "rise-bracket-B",
-            "tableName": "slope-data"
+            "isHighlighted": false
           }
         },
         {
@@ -3829,7 +3847,8 @@
             "arrowName": "run-arrow-B",
             "firstPoint": "first-point-B",
             "secondPoint": "second-point-B",
-            "color": "#d62728"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -3900,17 +3919,17 @@
       "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
         {
-          "action": "removeAnnotation",
+          "action": "setAnnotationAttribute",
           "literalArgs": {
             "name": "rise-arrow-B",
-            "graphName": "slope-graph"
+            "isHighlighted": false
           }
         },
         {
-          "action": "removeAnnotation",
+          "action": "setAnnotationAttribute",
           "literalArgs": {
             "name": "rise-bracket-B",
-            "tableName": "slope-data"
+            "isHighlighted": false
           }
         },
         {
@@ -3919,7 +3938,8 @@
             "arrowName": "run-arrow-B",
             "firstPoint": "first-point-B",
             "secondPoint": "second-point-B",
-            "color": "#d62728"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -3996,7 +4016,8 @@
             "point1": "first-point-B",
             "point2": "second-point-B",
             "datasetName": "slope-data",
-            "color": "#9467bd"
+            "color": "#cccccc",
+            "isHighlighted": true
           }
         },
         {
@@ -4178,6 +4199,20 @@
           "action": "removeAnnotation",
           "literalArgs": {
             "name": "run-bracket-B",
+            "tableName": "slope-data"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "graphName": "slope-graph"
+          }
+        },
+        {
+          "action": "removeAnnotation",
+          "literalArgs": {
+            "name": "rise-bracket-B",
             "tableName": "slope-data"
           }
         }
