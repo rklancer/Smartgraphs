@@ -276,24 +276,21 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     @param {String} args.name
       The name of the Annotation object.
     @param {String} args.graphName
-      The name of the graph on which the Annotation should be displayed. This graph must be open in the page when this
-      command executes.
+      The name of the graph on which the Annotation should be displayed.
     @param {String} args.tableName
-      The name of the table on which the Annotation should be displayed. This table must be open in the page when this
-      command executes. Ignored if args.graphName is defined.
+      The name of the table (or dataset) on which the Annotation should be displayed.
   */
   addAnnotation: function (context, args) {
-    var controller;
-    if (args.graphName) {
-      controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    }
-    else if (args.tableName) {
-      controller = Smartgraphs.TableController.controllerForDataset[args.tableName];
-    }
+    var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.name);
+    if (!annotation) return YES;
     
-    var obj = Smartgraphs.activityObjectsController.findAnnotation(args.name);
-    if (obj) controller.addAnnotation(obj);
-    
+    if (args.graphName && Smartgraphs.GraphController.controllerForName[args.graphName]) {
+      Smartgraphs.GraphController.controllerForName[args.graphName].addAnnotation(annotation);
+    }
+
+    if (args.tableName && Smartgraphs.TableController.controllerForDataset[args.tableName]) {
+      Smartgraphs.TableController.controllerForDataset[args.tableName].addAnnotation(annotation);
+    }    
     return YES;
   },
   
