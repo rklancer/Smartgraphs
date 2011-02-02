@@ -1,6 +1,9 @@
+/*globals Smartgraphs */
+
+Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
+Smartgraphs.activityDocs["/shared/what-is-velocity"] =
+
 {
-  "_id": "velocity.df5",
-  "_rev": "32-7b9c08b7dfc12b53ccf0bc9becd7ad0f",
   "data_format_version": 5,
   "activity": {
     "title": "How Fast Am I Moving?",
@@ -5689,3 +5692,4 @@
     }
   ]
 }
+;

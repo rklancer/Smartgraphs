@@ -1,5 +1,9 @@
+/*globals Smartgraphs */
+
+Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
+Smartgraphs.activityDocs["/shared/marias-run"] = 
+
 {
-  "_id": "marias-run.df5",
   "data_format_version": 5,  
   "activity": {
     "title": "Maria's Run",
@@ -1824,3 +1828,4 @@
     }
   ]
 }
+;

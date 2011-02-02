@@ -1,6 +1,9 @@
+/*globals Smartgraphs */
+
+Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
+Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
+
 {
-  "_id": "motion-towards-and-away.df5",
-  "_rev": "2-e6ab07ba0a272aaf764ada25ea2d491f",
   "data_format_version": 5,  
   "activity": {
     "title": "Motion Towards And Away",
@@ -3397,3 +3400,4 @@
     }
   ]
 }
+;
