@@ -1,23 +1,12 @@
 {
   "_id": "velocity.df5",
-  "_rev": "13-692313c1e105b06a09c4e8ee60bf8fc6",
+  "_rev": "22-e6a774c154a3c6c84f6d22f3b880feea",
   "data_format_version": 5,
   "activity": {
     "title": "How Fast Am I Moving?",
     "url": "/shared/what-is-velocity",
     "owner": "shared",
     "pages": [
-      "/shared/what-is-velocity/page/1",
-      "/shared/what-is-velocity/page/2",
-      "/shared/what-is-velocity/page/3",
-      "/shared/what-is-velocity/page/4",
-      "/shared/what-is-velocity/page/5",
-      "/shared/what-is-velocity/page/6",
-      "/shared/what-is-velocity/page/7",
-      "/shared/what-is-velocity/page/8",
-      "/shared/what-is-velocity/page/9",
-      "/shared/what-is-velocity/page/10",
-      "/shared/what-is-velocity/page/11",
       "/shared/what-is-velocity/page/12",
       "/shared/what-is-velocity/page/13",
       "/shared/what-is-velocity/page/14",
@@ -3007,17 +2996,33 @@
       "afterText": "",
       "startCommands": [
         {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "first-point-A",
+            "pointColor": "#f2b3b3"
+          }
+        },
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "second-point-A",
+            "pointColor": "#f2b3b3"
+          }
+        },        
+        {
           "action": "addAnnotation",
           "literalArgs": {
             "name": "first-point-A",
-            "graphName": "slope-graph"
+            "graphName": "slope-graph",
+            "tableName": "slope-data"
           }
         },
         {
           "action": "addAnnotation",
           "literalArgs": {
             "name": "second-point-A",
-            "graphName": "slope-graph"
+            "graphName": "slope-graph",
+            "tableName": "slope-data"         
           }
         },
         {
@@ -4504,6 +4509,20 @@
       "afterText": "",
       "startCommands": [
         {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "first-point-B",
+            "pointColor": "#f2b3b3"          
+          }
+        },
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "second-point-B",
+            "pointColor": "#f2b3b3"
+          }
+        },
+        {
           "action": "addAnnotation",
           "literalArgs": {
             "name": "slope-line-A",
@@ -5542,6 +5561,71 @@
           ],
           "session": null,
           "strokeColor": "#1f77b3"
+        }
+      ]
+    },
+    {
+      "type": "HighlightedPoint",
+      "records": [
+        {
+          "url": "/shared/what-is-velocity/annotation/first-point-A",
+          "name": "first-point-A",
+          "activity": "/shared/what-is-velocity",
+          "session": null,
+          "point": null,
+          "displayStyle": "highlight-point-and-dim-background",
+          "datasetColor": "#cccccc",
+          "pointColor": "#1f77b4"
+        },
+        {
+          "url": "/shared/what-is-velocity/annotation/second-point-A",
+          "name": "second-point-A",
+          "activity": "/shared/what-is-velocity",
+          "session": null,
+          "point": null,
+          "displayStyle": "highlight-point-and-dim-background",
+          "datasetColor": "#cccccc",
+          "pointColor": "#ff7f0e"
+        },
+        {
+          "url": "/shared/what-is-velocity/annotation/first-point-B",
+          "name": "first-point-B",
+          "activity": "/shared/what-is-velocity",
+          "session": null,
+          "point": null,
+          "displayStyle": "highlight-point-and-dim-background",
+          "datasetColor": "#cccccc",
+          "pointColor": "#1f77b4"
+        },
+        {
+          "url": "/shared/what-is-velocity/annotation/second-point-B",
+          "name": "second-point-B",
+          "activity": "/shared/what-is-velocity",
+          "session": null,
+          "point": null,
+          "displayStyle": "highlight-point-and-dim-background",
+          "datasetColor": "#cccccc",
+          "pointColor": "#ff7f0e"
+        },
+        {
+          "url": "/shared/what-is-velocity/annotation/first-point-C",
+          "name": "first-point-C",
+          "activity": "/shared/what-is-velocity",
+          "session": null,
+          "point": null,
+          "displayStyle": "highlight-point-and-dim-background",
+          "datasetColor": "#cccccc",
+          "pointColor": "#1f77b4"
+        },
+        {
+          "url": "/shared/what-is-velocity/annotation/second-point-C",
+          "name": "second-point-C",
+          "activity": "/shared/what-is-velocity",
+          "session": null,
+          "point": null,
+          "displayStyle": "highlight-point-and-dim-background",
+          "datasetColor": "#cccccc",
+          "pointColor": "#ff7f0e"
         }
       ]
     }
