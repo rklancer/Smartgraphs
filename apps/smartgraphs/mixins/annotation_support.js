@@ -56,6 +56,7 @@ Smartgraphs.AnnotationSupport = {
       The annotation to be added.
   */
   addAnnotation: function (annotation) {
+    
     if (this.findAnnotationByName(annotation.get('name'))) {
       return; // Nothing to be done
     }
@@ -76,16 +77,20 @@ Smartgraphs.AnnotationSupport = {
     var targets = this._propertyOverrideTargetsBySource[sourceGuid];
     
     var oldTarget = targets[targetObjectName];
-    this._removeSourceFromTarget(source, oldTarget, targetObjectName);
+    if (oldTarget) this._removeSourceFromTarget(source, oldTarget, targetObjectName);
 
     var newTarget = source && targetObjectName && source.get(targetObjectName);
     this._addSourceToTarget(source, newTarget, targetObjectName);
     targets[targetObjectName] = newTarget;
   },
   
-  
   _removeSourceFromTarget: function (source, target, targetObjectName) {
     if (!target) return;
+
+    var sourceGuid = SC.guidFor(source);
+    
+    // this source no longer points to the target
+    delete this._propertyOverrideTargetsBySource[sourceGuid][targetObjectName];
     
     var targetGuid = SC.guidFor(target);
     var queue = this.get('overrideQueuesByTarget')[targetGuid];

@@ -25,6 +25,8 @@ Smartgraphs.AnnotatableParentView = {
     if (!queues[targetGuid]) queues[targetGuid] = [];
     
     queues[targetGuid].addObserver('[]', this, this._apv_overridePropertyDidChange);
+    queues[targetGuid].notifyPropertyChange('[]');
+    
     this._apv_targetGuids.push(targetGuid);
   },
   
@@ -32,7 +34,8 @@ Smartgraphs.AnnotatableParentView = {
     var queues = this.getPath('controller.overrideQueuesByTarget');
     var self = this;
     this._apv_targetGuids.forEach( function (targetGuid) {
-      queues[targetGuid].removeObserver('[]', self, self._apv_overridePropertyDidChange);
+      if (queues[targetGuid]) queues[targetGuid].removeObserver('[]', self, self._apv_overridePropertyDidChange);
+      delete queues[targetGuid];
     });
     this._apv_targetGuids = [];    
   },

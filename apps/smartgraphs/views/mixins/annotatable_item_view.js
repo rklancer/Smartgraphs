@@ -33,6 +33,8 @@ Smartgraphs.AnnotatableItemView = {
     if (!queues[targetGuid]) queues[targetGuid] = [];
     
     queues[targetGuid].addObserver('[]', this, this._aiv_overridePropertyDidChange);
+    queues[targetGuid].notifyPropertyChange('[]');
+    
     this._aiv_targetGuids.push(targetGuid);    
   }.observes('content'),
   
@@ -40,7 +42,8 @@ Smartgraphs.AnnotatableItemView = {
     var queues = this.getPath(this.get('controllerPath')).get('overrideQueuesByTarget');
     var self = this;
     this._aiv_targetGuids.forEach( function (targetGuid) {
-      queues[targetGuid].removeObserver('[]', self, self._aiv_overridePropertyDidChange);
+      if (queues[targetGuid]) queues[targetGuid].removeObserver('[]', self, self._aiv_overridePropertyDidChange);
+      delete queues[targetGuid];      
     });
     this._aiv_targetGuids = [];
   },
