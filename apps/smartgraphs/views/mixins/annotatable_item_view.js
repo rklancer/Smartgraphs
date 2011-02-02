@@ -14,6 +14,7 @@ Smartgraphs.AnnotatableItemView = {
 
   initMixin: function () {
     this._aiv_baseValues = {};
+    this._aiv_targetGuids = [];
     this._aiv_contentDidChange();
   },
   
@@ -32,7 +33,17 @@ Smartgraphs.AnnotatableItemView = {
     if (!queues[targetGuid]) queues[targetGuid] = [];
     
     queues[targetGuid].addObserver('[]', this, this._aiv_overridePropertyDidChange);
+    this._aiv_targetGuids.push(targetGuid);    
   }.observes('content'),
+  
+  willRemoveFromDataView: function () {
+    var queues = this.getPath(this.get('controllerPath')).get('overrideQueuesByTarget');
+    var self = this;
+    this._aiv_targetGuids.forEach( function (targetGuid) {
+      queues[targetGuid].removeObserver('[]', self, self._aiv_overridePropertyDidChange);
+    });
+    this._aiv_targetGuids = [];
+  },
   
   _aiv_overridePropertyDidChange: function (queue) {
     queue.beginPropertyChanges();

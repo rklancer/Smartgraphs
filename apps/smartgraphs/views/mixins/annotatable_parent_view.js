@@ -16,7 +16,8 @@ Smartgraphs.AnnotatableParentView = {
   // FIXME I don't know why 'initMixin' won't work here.
   init: function () {
     sc_super();
-    this._apv_baseValues = {};        
+    this._apv_baseValues = {}; 
+    this._apv_targetGuids = [];       
     
     var queues = this.getPath('controller.overrideQueuesByTarget');
     var target = this.get('item');
@@ -24,6 +25,16 @@ Smartgraphs.AnnotatableParentView = {
     if (!queues[targetGuid]) queues[targetGuid] = [];
     
     queues[targetGuid].addObserver('[]', this, this._apv_overridePropertyDidChange);
+    this._apv_targetGuids.push(targetGuid);
+  },
+  
+  willRemoveFromDataView: function () {
+    var queues = this.getPath('controller.overrideQueuesByTarget');
+    var self = this;
+    this._apv_targetGuids.forEach( function (targetGuid) {
+      queues[targetGuid].removeObserver('[]', self, self._apv_overridePropertyDidChange);
+    });
+    this._apv_targetGuids = [];    
   },
   
   _apv_overridePropertyDidChange: function (queue) {

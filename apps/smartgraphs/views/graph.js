@@ -127,6 +127,8 @@ Smartgraphs.GraphView = SC.View.extend(
     
     delete this._viewsByClassAndId[classKey][id];
     
+    if (view.willRemoveFromDataView) view.willRemoveFromDataView();
+    
     if (itemType === 'data') {
       this.getPath('graphCanvasView.dataHolder').removeChild(view);
     }

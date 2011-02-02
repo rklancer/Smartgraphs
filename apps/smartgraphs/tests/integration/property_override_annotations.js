@@ -434,3 +434,40 @@ test("removing annotations from a point by clearing annotations resets target pr
   equals( datasetViews['dataset2'].get('overrideColor'), '#000000', "After clearAnnotations(), the datasetView color of dataset2 should not be affected by making p2/dataset2 the target of hp1");
   equals( dataPointViews['p2'].get('overrideColor'), '#000000', "After clearAnnotations(), the dataPointView color of p2 should not be affected by making p2 the target of hp1");    
 });
+
+
+test("After a view is removed from a graph, it must not block new views representing the same items from receiving property change notifications", function () {
+  expect(N_SETUP_TESTS + 8);
+  
+  SC.RunLoop.begin();  
+  Smartgraphs.firstGraphController.addAnnotation(hp1);
+  SC.RunLoop.end();
+  
+  equals( datasetViews['dataset1'].get('overrideColor'), '#caffe1', "The HighlightedPoint 'recolor' annotation should override the datasetView color");
+  equals( dataPointViews['p1'].get('overrideColor'), '#badcaf', "The HighlightedPoint 'recolor' annotation should override the dataPointView color");
+  
+  SC.RunLoop.begin();
+  Smartgraphs.firstGraphController.removeDataset('dataset1');
+  SC.RunLoop.end();
+  
+  SC.RunLoop.begin();
+  Smartgraphs.firstGraphController.addDataset(dataset1);
+  SC.RunLoop.end();
+  
+  var newDatasetView = graphView.getPath('graphCanvasView.dataHolder.childViews').objectAt(1);
+  var newPointView = newDatasetView.get('childViews').objectAt(0);
+  
+  ok( newDatasetView !== datasetViews['dataset1'], "After removing and re-adding dataset1 from the graph, the new dataset view should be a different object");
+  equals( newDatasetView.get('item'), dataset1, "...but the new dataset view should represent dataset1");
+  ok( newPointView !== dataPointViews['p1'], "After removing and re-adding dataset1 from the graph, the new datapoint view should be a different object");
+  equals( newPointView.get('content'), p1, "...but the new datapoint view should represent p1");
+  
+  SC.RunLoop.begin();
+  hp1.set('datasetColor', '#1effac');
+  hp1.set('pointColor', '#facdab');
+  SC.RunLoop.end();
+  
+  equals(newDatasetView.get('overrideColor'), '#1effac', "The new dataset view should update itself after the annotation's datasetColor property is set to '#1effac'");
+  equals(newPointView.get('overrideColor'), '#facdab', "The new datapoint view should update itself after the annotation's pointColor property is set to '#facdab'");
+});
+
