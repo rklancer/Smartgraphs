@@ -31,91 +31,67 @@ Smartgraphs.ArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowDrawin
     return this.get('isHighlighted') ? 0.9 : 0.5;
   }.property('isHighlighted'),
 
-  /**
-    SproutCore will call render(context, firstTime == NO) if these properties change
-  */
   displayProperties: 'point1 point2 label stroke isHighlighted strokeWidth strokeOpacity'.w(),
-  
-  /**
-    We are using renderCallback in views to call non-SC render methods like
-    RaphaelCanvas.segmentPath with the correct attributes.
-    This is done this way because Raphael methods shouldn't be called unless
-    its tags are already in the DOM.
-  */
-  renderCallback: function(raphaelCanvas, attrs) {
-    var arrow = raphaelCanvas.set();
-    arrow.push(
-        raphaelCanvas.path(attrs.d).attr(attrs),
-        raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'stroke': "#000", 'font-size': 15, 'stroke-width': 1}).rotate(attrs.rotate, true)
-      );
-    return arrow;
+
+  renderCallback: function (raphaelCanvas, attrs, label, labelCoords, labelRotation) {
+    var labelX = labelCoords && labelCoords.x || 0;
+    var labelY = labelCoords && labelCoords.y || 0;
+ 
+    return raphaelCanvas.set().push(
+      raphaelCanvas.path(attrs.d).attr(attrs),
+      raphaelCanvas.text(labelX, labelY, label || '').attr({'fill': attrs.stroke, 'font-size': 15, 'stroke-width': 1}).rotate(labelRotation || 0, true)
+    );
   },
 
   // Called by SC (by the parent view)
-  render: function(context, firstTime) {
+  render: function(context, firstTime) {  
     var graphView = this.get('graphView');
     var arrowEnds = this.getStartAndEnd(this.get('item'));
-    var label = this.get('item').get('label');
-    
-    // Add axis units to labels, if relevant
-    // var axes = graphView.get('axes');
-    // var keyString = this.get('item').get('labelUnitKey');
-    // if (keyString && (axes !== undefined)) {
-    //   var labelUnit = axes.get(keyString);
-    //   if (labelUnit.length > 5) {
-    //     label += " (∆" + labelUnit.substr(0,1) + ")";
-    //   }
-    //   else {
-    //     label += " (∆" + labelUnit + ")";
-    //   }
-    // }
-    
+    var label = this.getPath('item.label');
+
     var startCoords = graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y);
     var endCoords =   graphView.coordinatesForPoint(arrowEnds.end.x, arrowEnds.end.y);
-    var labelCoords, rotate;
+    var labelCoords, labelRotation;
+    
     if (label && this.get('item').get('isHorizontal')) {
-      labelCoords = graphView.coordinatesForPoint(((arrowEnds.start.x + arrowEnds.end.x)/2), (arrowEnds.start.y + 0.3));
-      rotate = 0;
+      labelCoords = graphView.coordinatesForPoint( (arrowEnds.start.x + arrowEnds.end.x) / 2, arrowEnds.start.y);
+      labelCoords.y -= 12;
+      labelRotation = 0;
     }
     else if (label && this.get('item').get('isVertical')) {
-      labelCoords = graphView.coordinatesForPoint((arrowEnds.start.x - 0.15), ((arrowEnds.start.y + arrowEnds.end.y)/2));
-      rotate = -90;
+      labelCoords = graphView.coordinatesForPoint(arrowEnds.start.x, (arrowEnds.start.y + arrowEnds.end.y) / 2);
+      labelCoords.x -= 12;
+      labelRotation = -90;
     } // TODO: Need an "else" for non-vertical, non-horizontal, but not yet
+
     var pathString;
     if ((startCoords.x !== endCoords.x) || (startCoords.y !== endCoords.y)) {
       pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
     }
-    else { // An arrow going nowhere, e.g. a rise arrow for a zero-slope line
-      pathString = "";
-      label = "";
+    else { 
+      // An arrow going nowhere, e.g. a rise arrow for a zero-slope line
+      pathString = '';
+      label = '';
     }
 
     var attrs = {
       d: pathString,
       stroke: this.get('stroke'),
       'stroke-width': this.get('strokeWidth'),
-      'stroke-opacity': this.get('strokeOpacity'),
-      'label': label,
-      'labelX': labelCoords.x,
-      'labelY': labelCoords.y,
-      'rotate': rotate
+      'stroke-opacity': this.get('strokeOpacity')
     };
 
-    // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need
-    // to update properties of a context object?
-
     if (firstTime) {
-       // Queue up the callback with will create the Raphael path object on the SVG canvas, once it is created.
-       // In non-Raphael views, context is not a SC object but SC expects it (it was created by SC.Pane.append() ) This
-       // call creates a tag and CSS and stores it in the context. for rendering later (by by SC.Pane.append() using
-       // innerHTML()
-      context.callback(this, this.renderCallback, attrs);
+      context.callback(this, this.renderCallback, attrs, label, labelCoords, labelRotation);
     }
-    else {
-      // get the Raphael path object from the context
-      var path = context.raphael();
-      // and update it
-      path.attr(attrs);
+    else {      
+      var arrow = context.raphael();
+
+      // update <path> element
+      arrow.items[0].attr(attrs);
+
+      // update <text> element      
+      arrow.items[1].attr({fill: this.get('stroke')});
     }
   },
   

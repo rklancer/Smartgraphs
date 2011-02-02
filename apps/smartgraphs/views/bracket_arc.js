@@ -29,73 +29,52 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     return this.get('isHighlighted') ? 0.9 : 0.5;
   }.property('isHighlighted'),
 
-  /**
-    SproutCore will call render(context, firstTime == NO) if these properties change
-  */
   displayProperties: 'point1 point2 label stroke isHighlighted strokeWidth strokeOpacity'.w(),
   
-  /**
-    We are using renderCallback in views to call non-SC render methods like
-    RaphaelCanvas.segmentPath with the correct attributes.
-    This is done this way because Raphael methods shouldn't be called unless
-    its tags are already in the DOM.
-  */
-  renderCallback: function(raphaelCanvas, attrs) {
-    var bracket = raphaelCanvas.set();
-    bracket.push(
-        raphaelCanvas.path(attrs.d).attr(attrs),
-        raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'stroke': "#000", 'font-size': 15}).rotate(attrs.rotate, true)
-      );
-    return bracket;
+  renderCallback: function (raphaelCanvas, attrs, label, labelX, labelY, labelRotation) {
+    return raphaelCanvas.set().push(
+      raphaelCanvas.path(attrs.d).attr(attrs),
+      raphaelCanvas.text(labelX || 0, labelY || 0, label || '').attr({'fill': attrs.stroke, 'font-size': 15}).rotate(labelRotation || 0, true)
+    );
   },
 
-  // Called by SC (by the parent view)
   render: function(context, firstTime) {
     var annotation = this.get('item');
     var pathString = this.figurePath(annotation);
-    // Label details: label, labelCoords (x and y), rotate value
-    var label = annotation.get('label');
     
-    // Label position variables
-    var labelCoords, rotate;
-    if ((annotation.get('isClockwise') && (annotation.get('startY') < annotation.get('endY'))) || 
-        (!annotation.get('isClockwise') && (annotation.get('startY') > annotation.get('endY')))) {
-      // Label positioning
-      rotate = 90;
-      labelCoords = { 'x': annotation.get('startX') + 10, 'y': ((annotation.get('startY') + annotation.get('endY'))/2)};
-   }
-   else {
-     // Label positioning
-     rotate = -90;
-     labelCoords = { 'x': annotation.get('startX') - 10, 'y': ((annotation.get('startY') + annotation.get('endY'))/2)};
-   } 
+    // Label details
+    var label = annotation.get('label');
+    var labelX, labelY, labelRotation;
+    
+    if ((  annotation.get('isClockwise') && (annotation.get('startY') < annotation.get('endY'))) || 
+        ( !annotation.get('isClockwise') && (annotation.get('startY') > annotation.get('endY')))) {
+      labelRotation = 90;
+      labelX = annotation.get('startX') + 10;
+      labelY = (annotation.get('startY') + annotation.get('endY')) / 2;
+    }
+    else {
+      labelRotation = -90;
+      labelX = annotation.get('startX') - 10;
+      labelY = (annotation.get('startY') + annotation.get('endY')) / 2;
+    } 
 
     var attrs = {
       d: pathString,
       stroke: this.get('stroke'),
       'stroke-width': this.get('strokeWidth'),
-      'stroke-opacity': this.get('strokeOpacity'),
-      'label': label,
-      'labelX': labelCoords.x,
-      'labelY': labelCoords.y,
-      'rotate': rotate
+      'stroke-opacity': this.get('strokeOpacity')
     };
 
-    // boolean firstTime: Does this view start from scratch and create HTML in a context object or does it just need
-    // to update properties of a context object?
-
     if (firstTime) {
-       // Queue up the callback with will create the Raphael path object on the SVG canvas, once it is created.
-       // In non-Raphael views, context is not a SC object but SC expects it (it was created by SC.Pane.append() ) This
-       // call creates a tag and CSS and stores it in the context. for rendering later (by by SC.Pane.append() using
-       // innerHTML()
-      context.callback(this, this.renderCallback, attrs);
+      context.callback(this, this.renderCallback, attrs, label, labelX, labelY, labelRotation);
     }
     else {
-      // get the Raphael path object from the context
-      var path = context.raphael();
-      // and update it
-      path.attr(attrs);
+      var bracket = context.raphael();
+      // update <path> element
+      bracket.items[0].attr(attrs);
+      
+      // update <text> element
+      bracket.items[1].attr({fill: this.get('stroke')});
     }
   },
   
