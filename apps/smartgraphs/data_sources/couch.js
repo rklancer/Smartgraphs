@@ -55,14 +55,9 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     if (recordType === Smartgraphs.Activity) {
       var activityId = id;
       var requestUrl = '/db/smartgraphs/_design/app/_view/activities-by-url-and-version?key=["'+activityId+'",'+Smartgraphs.DATA_FORMAT_VERSION+']';
-      
-      SC.Request.getUrl(requestUrl)
-                .json()
-  		          .header('Accept', 'application/json')
-  		          .notify(this, 'didRetrieveActivity', store, storeKey)
-  		          .send();
-  		this.log('  sent request to url %s', requestUrl);
-      this.log('  returning YES from retrieveRecord');
+
+      var response = Smartgraphs.activityDocs[id] ? SC.Object.create({ body: { rows: [ { value: Smartgraphs.activityDocs[id] } ] } }) : SC.Error.create();      
+      this.didRetrieveActivity(response, store, storeKey);
       return YES;
     }
    
