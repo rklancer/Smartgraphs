@@ -150,6 +150,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The RGB color definition for the color to render the line.
     @param {String} [args.label]
       Optional label for the arrow
+    @param {String} [args.isHighlighted=false]
+      Whether the arrow should be highlighted      
   */
   createRiseArrow: function (context, args) {
     var p1 = Smartgraphs.activityObjectsController.findAnnotation(args.firstPoint).get('point');
@@ -166,6 +168,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         color: color,
         isVertical: YES,
         isClockwise: YES,
+        isHighlighted: args.isHighlighted || NO,
         label: args.label
       });
     return YES;
@@ -190,7 +193,9 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     @param {String} [args.color='#000000']
       The RGB color definition for the color to render the line.
     @param {String} [args.label]
-      Optional label for the arrow      
+      Optional label for the arrow
+    @param {String} [args.isHighlighted=false]
+      Whether the arrow should be highlighted          
   */
   createRunArrow: function (context, args) {
     var p1 = Smartgraphs.activityObjectsController.findAnnotation(args.firstPoint).get('point');
@@ -207,6 +212,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         color: color,
         isHorizontal: YES,
         isClockwise: YES,
+        isHighlighted: args.isHighlighted || NO,        
         label: args.label
       });
     return YES;
@@ -353,6 +359,8 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       The color in which the arc should be rendered.
     @param {String} [args.label]
       Optional label for the bracket
+    @param {String} [args.isHighlighted=false]
+      Whether the bracket should be highlighted      
   */
   createRiseBracket: function (context, args) {
     var controller = Smartgraphs.TableController.controllerForDataset[args.datasetName];
@@ -373,6 +381,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         endY: (indices[1] * 20) + 20,
         color: args.color || '#cc0000',
         isClockwise: YES,
+        isHighlighted: args.isHighlighted || NO,
         label: args.label
       });
     return YES;
@@ -398,7 +407,9 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     @param {String} [args.color='#cc0000']
       The color in which the arc should be rendered.
     @param {String} [args.label]
-      Optional label for the bracket      
+      Optional label for the bracket
+    @param {String} [args.isHighlighted=false]
+      Whether the arrow should be highlighted           
   */
   createRunBracket: function (context, args) {
     var controller = Smartgraphs.TableController.controllerForDataset[args.datasetName];
@@ -421,6 +432,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
         endY: (indices[1] * 20) + 20,
         color: args.color || '#cc0000',
         isClockwise: NO,
+        isHighlighted: args.isHighlighted || NO,        
         label: args.label
       });
     return YES;
