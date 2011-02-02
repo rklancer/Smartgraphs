@@ -166,14 +166,14 @@ test("creating a LineThroughPoints", function () {
 
 
 test("creating a rise Arrow", function () {
-  expect(8);
+  expect(7);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1);  // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
-  Smartgraphs.statechart.sendAction('createRiseArrow', null, {'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'riseArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRiseArrow', null, {'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'riseArrow', 'color': '#ff0000', 'label': 'Rise'});
   equals(Smartgraphs.store.find('Smartgraphs.Arrow').get('length'), startLineCount + 1, "There should be one more Arrow");
   equals(Smartgraphs.firstGraphController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'riseArrow'); // Grab the annotation to examine it
@@ -183,19 +183,18 @@ test("creating a rise Arrow", function () {
   ok(!annotation.get('isHorizontal'), 'The Annotation is not confusingly also horizontal');
   ok(annotation.get('isClockwise'), 'The annotation will be rendered clockwise');
   equals(annotation.get('label'), "Rise", 'The annotation should have a label reading Rise');
-  equals(annotation.get('labelUnitKey'), 'yLabelAbbreviated', "The label unit key should be set to yLabelAbbreviated");
 });
 
 
 test("creating a run Arrow", function () {
-  expect(7);
+  expect(6);
   var startLineCount = Smartgraphs.store.find('Smartgraphs.Arrow').get('length');
   var hp1 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp1', {'point': 'p1'});
   var hp2 = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'hp2', {'point': 'p2'});
   Smartgraphs.firstGraphController.addAnnotation(hp1); // The points need to be in the graph to create the arrow
   Smartgraphs.firstGraphController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstGraphController.get('annotationList').get('length');
-  Smartgraphs.statechart.sendAction('createRunArrow', null, {'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'runArrow', 'color': '#ff0000'});
+  Smartgraphs.statechart.sendAction('createRunArrow', null, {'firstPoint': 'hp1', 'secondPoint': 'hp2', 'arrowName': 'runArrow', 'color': '#ff0000', 'label': 'Run'});
   equals(Smartgraphs.store.find('Smartgraphs.Arrow').get('length'), startLineCount + 1, "There should be one more Arrow");
   equals(Smartgraphs.firstGraphController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   Smartgraphs.firstGraphController.addObjectByName(Smartgraphs.Arrow, 'runArrow');
@@ -204,7 +203,6 @@ test("creating a run Arrow", function () {
   ok(annotation.get('isHorizontal'), 'The Annotation is horizontal');
   ok(annotation.get('isClockwise'), 'The annotation will be rendered clockwise');
   equals(annotation.get('label'), "Run", 'The annotation should have a label reading Run');
-  equals(annotation.get('labelUnitKey'), 'xLabelAbbreviated', "The label unit key should be set to xLabelAbbreviated");
 });
 
 
@@ -252,14 +250,14 @@ test("Creating rise BracketArc", function () {
   Smartgraphs.firstTableController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstTableController.get('annotationList').get('length');
 
-  Smartgraphs.statechart.sendAction('createRiseBracket', null, {'bracketName': 'test-rise-bracket', 'datasetName': 'test-dataset', 'point1': 'hp1', 'point2': 'hp2'});
+  Smartgraphs.statechart.sendAction('createRiseBracket', null, {'bracketName': 'test-rise-bracket', 'datasetName': 'test-dataset', 'point1': 'hp1', 'point2': 'hp2', 'label': 'Rise'});
   equals(Smartgraphs.store.find('Smartgraphs.BracketArc').get('length'), startBracketCount + 1, "There should be one more BracketArc");
   equals(Smartgraphs.firstTableController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   
   var annotation = Smartgraphs.activityObjectsController.findAnnotation('test-rise-bracket');
   ok(annotation.kindOf(Smartgraphs.BracketArc), 'The Annotation is a BracketArc');
   ok(annotation.get('isClockwise'), 'The annotation should be rendered clockwise');
-  equals(annotation.get('startX'), 310, 'The starting point should be 310');
+  equals(annotation.get('startX'), 230, 'The starting point should be 230');
   ok(annotation.get('endY'), 'The ending point should not be undefined');
   equals(annotation.get('label'), "Rise", 'The annotation should have a label reading Rise');
 });
@@ -274,14 +272,14 @@ test("Creating run BracketArc", function () {
   Smartgraphs.firstTableController.addAnnotation(hp2);
   var startAnnotationsCount = Smartgraphs.firstTableController.get('annotationList').get('length');
 
-  Smartgraphs.statechart.sendAction('createRunBracket', null, {'bracketName': 'test-run-bracket', 'datasetName': 'test-dataset', 'point1': 'hp1', 'point2': 'hp2'});
+  Smartgraphs.statechart.sendAction('createRunBracket', null, {'bracketName': 'test-run-bracket', 'datasetName': 'test-dataset', 'point1': 'hp1', 'point2': 'hp2', 'label': 'Run'});
   equals(Smartgraphs.store.find('Smartgraphs.BracketArc').get('length'), startBracketCount + 1, "There should be one more BracketArc");
   equals(Smartgraphs.firstTableController.get('annotationList').get('length'), startAnnotationsCount, "The new Annotation should not have been added to the controller");
   
   var annotation = Smartgraphs.activityObjectsController.findAnnotation('test-run-bracket');
   ok(annotation.kindOf(Smartgraphs.BracketArc), 'The Annotation is a BracketArc');
   ok(!annotation.get('isClockwise'), 'The annotation should not be rendered clockwise');
-  equals(annotation.get('startX'), 40, 'The starting point should be 310');
+  equals(annotation.get('startX'), 40, 'The starting point should be 40');
   ok(annotation.get('endY'), 'The ending point should not be undefined');
   equals(annotation.get('label'), "Run", 'The annotation should have a label reading Run');
 });

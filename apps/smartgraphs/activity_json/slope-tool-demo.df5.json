@@ -1,6 +1,6 @@
 {
   "_id": "slope-tool-demo.df5",
-  "_rev": "10-1ce869053c55fab9b9c6dd0d61f9b780",
+  "_rev": "11-e5043caebb33a596ec0df3afd31670a4",
   "data_format_version": 5,  
   "activity": {
     "title": "Slope Tool Demo",
@@ -197,7 +197,8 @@
             "arrowName": "rise-arrow",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
-            "color": "#9467bd"
+            "color": "#9467bd",
+            "label": "Rise"
           }
         },
         {
@@ -206,7 +207,8 @@
             "arrowName": "run-arrow",
             "firstPoint": "first-point",
             "secondPoint": "second-point",
-            "color": "#d62728"
+            "color": "#d62728",
+            "label": "Run"
           }
         }
       ],
@@ -438,7 +440,8 @@
             "point1": "first-point",
             "point2": "second-point",
             "datasetName": "demo-data",
-            "color": "#9467bd"
+            "color": "#9467bd",
+            "label": "Rise"
           }
         },
         {
@@ -448,7 +451,8 @@
             "point1": "first-point",
             "point2": "second-point",
             "datasetName": "demo-data",
-            "color": "#d62728"
+            "color": "#d62728",
+            "label": "Run"
           }
         }
       ],
