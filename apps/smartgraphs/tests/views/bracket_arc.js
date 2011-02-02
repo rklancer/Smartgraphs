@@ -31,7 +31,7 @@ test("The view figurePath method should produce the expected SVG path", function
       isClockwise: false,
       label: 'Run'
     });
-  var expected = "M 40 10L 34.1422239572804 8.701362316371382L 35.23987995825259 13.652568574052324L 40 10C 0 10 0 30 40 30L 35.23987995825259 26.347431425947676L 34.1422239572804 31.298637683628616L 40 30";
+  var expected = "M 40 10C 0 10 0 30 40 30L 35.23987995825259 26.347431425947676L 34.1422239572804 31.298637683628616L 40 30";
   var result = view.figurePath(arc);
   equals(result, expected, "figurePath should have produced a matching path");
 });
