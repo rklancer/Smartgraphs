@@ -158,24 +158,60 @@ Smartgraphs.activityPageDef = SC.Page.extend({
     })
   }),
   
-  firstImageView: SC.ImageView.design({
-    useStaticLayout: YES,
-    valueBinding: 'Smartgraphs.activityViewController.firstImageValue',
-
-    // This is a hack.  At the moment SC.View.layoutStyle doesn't know how to set width or height to '100%',
-    // but it does recognize numbers between 0 and 1, non-inclusive, as percentages; 0.9999999 appears to be about
-    // the smallest number that gets recognized as a percentage and gets rounded up to 'height=100%' (rather than
-    // 'height=99.9999%')
+  firstImageView: SC.View.design({
+    useStaticLayout: YES,    
+    childViews: ['image', 'caption'],
     
-    layout: { width: 0.9999999, height: 0.9999999 }
+    useStaticLayout: YES,
+
+    caption: SC.LabelView.design({
+      valueBinding: 'Smartgraphs.activityViewController.firstImageCaption',
+      valueBindingDefault: SC.Binding.oneWay(),
+      
+      isVisible: function () {
+        return !!this.get('value');
+      }.property('value'),
+      
+      classNames: 'floating-caption',
+      layout: { top: 10, left: 10, right: 10, height: 20 }
+    }),
+    
+    image: SC.ImageView.design({
+      valueBinding: 'Smartgraphs.activityViewController.firstImageValue',
+      useStaticLayout: YES,
+      
+      // This is a hack.  At the moment SC.View.layoutStyle doesn't know how to set width or height to '100%',
+      // but it does recognize numbers between 0 and 1, non-inclusive, as percentages; 0.9999999 appears to be about
+      // the smallest number that gets recognized as a percentage and gets rounded up to 'height=100%' (rather than
+      // 'height=99.9999%')
+    
+      layout: { width: 0.9999999 }
+    })      
   }),
   
-  secondImageView: SC.ImageView.design({
+  secondImageView: SC.View.design({
     useStaticLayout: YES,
-    valueBinding: 'Smartgraphs.activityViewController.secondImageValue',
+    childViews: ['image', 'caption'],
 
-    // same hack described in firstImageView:
-    layout: { width: 0.9999999, height: 0.9999999 }
+    caption: SC.LabelView.design({
+      valueBinding: 'Smartgraphs.activityViewController.secondImageCaption',
+      valueBindingDefault: SC.Binding.oneWay(),
+       
+      isVisible: function () {
+        return !!this.get('value');
+      }.property('value'),
+
+      classNames: 'floating-caption',
+      layout: { top: 10, left: 10, right: 10, height: 20 }
+    }),
+    
+    image: SC.ImageView.design({
+      valueBinding: 'Smartgraphs.activityViewController.secondImageValue',
+      useStaticLayout: YES,
+       
+      // same hack described in firstImageView:
+      layout: { width: 0.9999999 }
+    })
   }),
   
   firstGraphPane: Smartgraphs.GraphPane.design({

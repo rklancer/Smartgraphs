@@ -97,7 +97,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       The url at which to find the image.
   */
   showImage: function (context, args) {
-    return Smartgraphs.activityViewController.showImage(args.pane, args.path);
+    return Smartgraphs.activityViewController.showImage(args.pane, args.path, args.caption);
   },
   
   /**

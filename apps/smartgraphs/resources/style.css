@@ -71,6 +71,15 @@ body.sc-theme {
   border: 1px solid #A2B5D7;
 }
 
+.sc-label-view.floating-caption {
+  opacity: 0.5 !important;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
 .sc-view.text-wrapper .sc-view {
   font-size: 16px;
   line-height: 1.4em;

@@ -20,7 +20,9 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   singlePaneNowShowing: null,
 
   firstImageValue: null,
+  firstImageCaption: null,
   secondImageValue: null,
+  secondImageCaption: null,
   
   firstGraphPaneControls: null,
   secondGraphPaneControls: null,
@@ -147,13 +149,14 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     }
   },
 
-  showImage: function (pane, path) {
+  showImage: function (pane, path, caption) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
     
     if ( !which ) return NO;
     
     this.set(which + 'ImageValue', path);
+    this.set(which + 'ImageCaption', caption || null);    
     this.set(pane + 'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'ImageView');
     
     return YES;
