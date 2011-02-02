@@ -18,16 +18,14 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
 
   canShowInTable: YES,
   
-  strokeBinding: '.item.color',
+  itemColorBinding: '.item.color',
   isHighlightedBinding: '.item.isHighlighted',
+  strokeWidth: 2,
+  strokeOpacity: 0.9,
   
-  strokeWidth: function () {
-    return this.get('isHighlighted') ? 3 : 2;
-  }.property('isHighlighted'),
-  
-  strokeOpacity: function () {
-    return this.get('isHighlighted') ? 0.9 : 0.5;
-  }.property('isHighlighted'),
+  stroke: function () {
+    return this.get('isHighlighted') ? '#ff0000' : this.get('itemColor');
+  }.property('isHighlighted', 'itemColor'),
 
   displayProperties: 'point1 point2 label stroke isHighlighted strokeWidth strokeOpacity'.w(),
   
