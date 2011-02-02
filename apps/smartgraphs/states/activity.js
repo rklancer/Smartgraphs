@@ -494,6 +494,25 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName);
     annotation.toggleProperty('isHighlighted');
     return YES;
+  },
+  
+  /**
+    Set attributes (other than 'name'!) of an attribute
+    
+    @param context
+    @param args
+  
+    @param {String} args.name
+      The name of the Annotation whose properties will be modified
+  */
+  setAnnotationAttribute: function (context, args) {
+    var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.name);
+    if (!annotation) return YES;
+
+    for (var prop in args) {
+      if (!args.hasOwnProperty(prop) || prop === 'name') continue;
+      annotation.set(prop, args[prop]);
+    }
   }
 
 }) ;
