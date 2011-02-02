@@ -360,18 +360,19 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     var hp1 = controller.findAnnotationByName(args.point1);
     var hp2 = controller.findAnnotationByName(args.point2);
     
-    var points = controller.getPath('dataset.points');
-    var pointOneIndex = points.indexOf(hp1.get('point'));
-    var pointTwoIndex = points.indexOf(hp2.get('point'));
-
+    // make to start from the point with the smaller x-value
+    var points = controller.getPath('dataset.points');  // note that dataset.points are always ordered by x-value
+    var indices = [hp1, hp2].getEach('point').map(points.indexOf, points);
+    if (indices[0] > indices[1]) indices = [indices[1], indices[0]];
+    
     var arc = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
         startX: 230,
-        startY: (pointOneIndex * 20) + 20,
+        startY: (indices[0] * 20) + 20,
         endX: 230,
-        endY: (pointTwoIndex * 20) + 20,
+        endY: (indices[1] * 20) + 20,
         color: args.color || '#cc0000',
-        isClockwise: (pointOneIndex < pointTwoIndex),
+        isClockwise: YES,
         label: args.label
       });
     return YES;
@@ -405,20 +406,21 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     if (!controller) return YES;
     var hp1 = controller.findAnnotationByName(args.point1);
     var hp2 = controller.findAnnotationByName(args.point2);
-    
+
+    // make to start from the point with the smaller x-value    
     var points = controller.getPath('dataset.points');
-    var pointOneIndex = points.indexOf(hp1.get('point'));
-    var pointTwoIndex = points.indexOf(hp2.get('point'));
+    var indices = [hp1, hp2].getEach('point').map(points.indexOf, points);
+    if (indices[0] > indices[1]) indices = [indices[1], indices[0]];
 
     // FIXME centralize coordinate computation in the table controller
     var arc = 
       Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
         startX: 40,
-        startY: (pointOneIndex * 20) + 20,
+        startY: (indices[0] * 20) + 20,
         endX: 40,
-        endY: (pointTwoIndex * 20) + 20,
+        endY: (indices[1] * 20) + 20,
         color: args.color || '#cc0000',
-        isClockwise: (pointOneIndex > pointTwoIndex),
+        isClockwise: NO,
         label: args.label
       });
     return YES;

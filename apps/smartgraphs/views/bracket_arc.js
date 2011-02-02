@@ -159,10 +159,11 @@ Smartgraphs.BracketArcView = RaphaelViews.RaphaelView.extend( Smartgraphs.ArrowD
     }
     
     // Figure out the pathString
+    // NOTE: modified to remove 'start' arrow
     var pathString = "M " + start.x + " " + start.y + // Starting point
-                     "L " + baseAX + " " + baseAY + // "Wing" A
-                     "L " + baseBX + " " + baseBY + // Arrowhead base
-                     "L " + start.x + " " + start.y + // "Wing" B
+                     // "L " + baseAX + " " + baseAY + // "Wing" A
+                     // "L " + baseBX + " " + baseBY + // Arrowhead base
+                     // "L " + start.x + " " + start.y + // "Wing" B
                      "C " + controlE.x + " " + controlE.y +  // Control point 1
                      " " + controlF.x + " " + controlF.y +  // Control point 2
                      " " + end.x + " " + end.y + // End point
