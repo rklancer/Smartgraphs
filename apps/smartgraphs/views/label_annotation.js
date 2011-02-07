@@ -112,14 +112,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   commitEditing: function() {
     if (!this.get('isEditing')) return YES ;
     return SC.InlineTextFieldView.commitEditing() ;
-    // TODO: saving values should happen here?
-  },
-
-  /** @private
-    Allow editing.
-  */
-  inlineEditorShouldBeginEditing: function(inlineEditor) {
-    return YES ;
+    // This doesn't seem to get called
   },
 
   /** @private
@@ -156,10 +149,12 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     Update the field value and make it visible again.
   */
   inlineEditorDidEndEditing: function(inlineEditor, finalValue) {
-    this.setIfChanged('value', finalValue) ;
+    this.get('item').setIfChanged('label', finalValue) ;
     this.$().css('opacity', this._oldOpacity);
     this._oldOpacity = null ;
     this.set('isEditing', NO) ;
+    // TODO: Now we need to convince this to get a firstTime render...
+    this.render(RaphaelViews.RaphaelContext(this.get('layer')), YES);
   },
 
   /* False-trail methods for drag-and-drop positioning */
