@@ -153,8 +153,9 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     this.$().css('opacity', this._oldOpacity);
     this._oldOpacity = null ;
     this.set('isEditing', NO) ;
-    // TODO: Now we need to convince this to get a firstTime render...
-    this.render(RaphaelViews.RaphaelContext(this.get('layer')), YES);
+    // Now we need to convince this to get a firstTime render...
+    var context = RaphaelViews.RaphaelContext(this.get('layer'));
+    this.get('graphView').viewDidResize();
   },
 
   /* False-trail methods for drag-and-drop positioning */
