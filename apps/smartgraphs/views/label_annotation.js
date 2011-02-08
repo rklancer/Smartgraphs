@@ -28,7 +28,6 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   isHighlightedBinding: '.item.isHighlighted',
   highlightedStrokeWidth: 2,
   notHighlightedStrokeWidth: 1,
-  // labelBinding: '.item.label', // Frustratingly, this doesn't work.
   isSelected: NO,
   
   ox: null,
@@ -153,9 +152,6 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     this.$().css('opacity', this._oldOpacity);
     this._oldOpacity = null ;
     this.set('isEditing', NO) ;
-    // Now we need to convince this to get a firstTime render...
-    var context = RaphaelViews.RaphaelContext(this.get('layer'));
-    this.get('graphView').viewDidResize();
   },
 
   /* False-trail methods for drag-and-drop positioning */
@@ -233,9 +229,9 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   
   graphCoordinates: function () {
     var graphView = this.get('graphView');
-    var point = this.get('item').get('point');
-    var xOffset = this.get('item').get('xOffset');
-    var yOffset = this.get('item').get('yOffset');
+    var point = this.getPath('item.point');
+    var xOffset = this.getPath('item.xOffset');
+    var yOffset = this.getPath('item.yOffset');
     var labelCoords = graphView.coordinatesForPoint(point.get('x'), point.get('y'));
     
     if (xOffset) {
@@ -256,23 +252,24 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     its tags are already in the DOM.
   */
   renderCallback: function(raphaelCanvas, attrs) {
-    var label = raphaelCanvas.text(attrs.labelX, attrs.labelY, attrs.label).attr({'font-size': attrs.size});
+    var label = raphaelCanvas.text().attr(attrs);
+    window.label = label;
     return label;
   },
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
-    var label = this.get('item').get('label');
-    var size = this.get('item').get('size');
+    var label = this.getPath('item.label');
+    var size = this.getPath('item.size');
     
     var labelCoords = this.graphCoordinates();
     
     var attrs = {
-      'label': label,
-      'labelX': labelCoords.x,
-      'labelY': labelCoords.y,
-      'size': size,
-      'stroke': this.get('stroke'),
+      text: label,
+      x: labelCoords.x,
+      y: labelCoords.y,
+      'font-size': size,
+      stroke: this.get('stroke'),
       'stroke-width': this.get('strokeWidth')
     };
 
