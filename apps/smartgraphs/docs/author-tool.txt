@@ -1,3 +1,66 @@
+Plan, based on Priorities section below:
+
+0. Focus on the instantaneous-speed activity, loaded into the app to eliminate the couchdb update cycle for now.
+
+Ideal is to gradually replace everything. Build the tools needed to make the new things work before removing the old things.
+
+2. Make the expression-evaluator extensible and make it possible for certain expression terms to 'autoregister' as observers of the relevant property
+
+3. Make response branches use expressions instead of inspectors
+
+4. Make submissibility use an expression instead of an inspector (this is a good first test of expression observers)
+
+5. Add a 'context' property to activityPage as SC.Record.attr(Object) property whose defaultValue is {}. When doing this story and the next story (about refactoring activityObjects into a global context), remember that we need to generate simple context objects usable by Handlebars templates so that authors can easily specify "the 'height' expression from the previous page" https://github.com/sproutcore/sproutcore/commit/21a6ab0a9364665af6411c55857d6f4c2789c616
+
+6. activityObjectsController has to be refactored to be a global context of some sort; and there should be a single 'getFromContext' (possibly 'find'; current usage of 'find' seems mostly to be store & jquery related) method that gets from the page context first, and then from the global context (so there's shadowing of a sort)
+
+7. Define name: expression pairs in the current context and 'shapshot' when done. Create a model objects called ExpressionDefinition that is linked to page, step (why? for analogy to AnnotationDefinition)
+
+8. Incoporate templates into activity steps, using variables.
+
+At this point, we should be able to complete the "authoring steps" story.
+
+Now, onwards!
+
+9. Switch to defining annotations inline using 'AnnotationDefinition' "child" records on a step
+
+10. Make it so any annotation highlighting is a property of a step (i.e., is transient & not done via a command)
+
+11. Finally eliminate Graph model
+
+12. Cleanup from above
+
+
+
+Priorities:
+ 
+(0) Graph declarations should be 'stateless'. Each step declares what is and is not on the graph. (though *implementation* should look at deltas from step to step to avoid lots of svg/vml node creation and destruction) Probably get rid of Graph model? A graph is made 'just-in-time' from the stateful components (datasets, annotations, axes) It would be valuable to keep 'Axis' model around as authors may want to reuse certain axes at different places in the activity.
+
+Principle: if user modifies axis limits, etc, ask if they want to change all axes or a subset and provide UI allowing them to rename some of the axes. Similarly, when a user changes the graphs/table layout and datasets (NOT annotations) AND the change doesn't refer to a dataset newly created in the step, ask if you want to change the layout for all steps on the page or just this step.
+
+(0b) Expected behavior is, when creating a new step in the authoring interface, to copy the panes from the previous step (or from the 'page master'???)
+
+(1) get rid of inspectors totally! They've led to some very awkward extensions -- make use of expressions
+
+(2) Activity can declare a set of expressions or expressions can be used inline. Although we'll introduce indirection with expressions, so that mustache templates can be used, the UI can be very simple. click a point to open the expression builder and insert an template tag that references the expression at that place.
+
+(3) modularize expression definitions so you can just append a function describing a new expression.
+
+(4) Require annotations, datasets, and variables to be declared at the top of an activity. No dynamic *creation* of these during the activity -- though of course they are dynamically inited.
+
+(5) As per 'graphs are stateless', each step declares what variables, annotations, and datasets it references/cares about (this set is not necessarily identical to the list of objects being shown during the step.) An init section describes via a each is inited (via a property: expression hash).... this way we can give warnings to authors who save activities with possibly-unitialized objects.
+
+Question: What's the "continuation" path if user saves the session and wants to return to it? You have to jump to the relevant step, and certain annotations/datasets it may be showing might therefore be populated from saved session data instead of the tool or expression that "normally" would init the same dataset/annotation/variable
+
+Presumably a session ends when in the ACTIVITY_STEP state ... should this be a guarantee? ... so session saving can be implemented by saving:
+ * the activity, page, and step ids
+ * hashes for the activity objects (variables, datasets, annotations)
+ * hashes for any other changed models, like Axes if the student has modified any of them...
+ * plus a version identifier?
+
+and then reloading the activity step, redoing any init (which one would think shouldn't be a problem unless there are self-referential variables assignments...) and turning on any tools that are supposed to be turned on. An issue might arise here if we want to allow a user to save to the session, for example, sensor data they just input without submitting the step first. That said, it could be that the sensor tool recognizes when it starts up that data is already present, and go first to the state that turns on the "clear" button.
+
+
 Notes & sketch of authoring tool
 RPK 
 Originally written 11/29/2010
