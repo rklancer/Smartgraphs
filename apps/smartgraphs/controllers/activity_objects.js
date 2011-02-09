@@ -55,75 +55,43 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     sessionController just before loadPredefinedObjects is called.
   */
   loadPredefinedObjects: function () {
+    var activity,
+        findObjects,
+        self = this;
+
     this._datasets = {};
     this._annotations = {};
     this._variables = {};
+          
+    findObjects = function (type, typeName, hash) {
+      var query,
+          found;
+          
+      query = SC.Query.local(type, 'activity={activity}', { activity: activity });
+      found = Smartgraphs.store.find(query);
     
-    var activity = Smartgraphs.activityController.get('content');
-    if (activity) {
-      var query = SC.Query.local(Smartgraphs.Dataset, 'activity={activity}', {
-        activity: activity
-      });
-      var foundDatasets = Smartgraphs.store.find(query);
-    
-      if ( !(foundDatasets.get('status') & SC.Record.READY)) {
-        throw "predefined dataset records are not READY!";
+      if ( !(found.get('status') & SC.Record.READY)) {
+        throw "predefined %@ records are not READY!".fmt(typeName);
       }
-      var self = this;
-      foundDatasets.forEach(function (dataset) {
-        var name = dataset.get('name');
-        if (self._datasets[name]) {
-          throw "The activity contains multiple datasets named '%@'".fmt(name);
-        }
-        if (dataset.get('session')) {
-          throw "The predefined dataset '%@' was incorrectly annotated with a session!".fmt(name);
-        }
-        self._datasets[name] = dataset;
-      });
-    
-      // now, repeat the above for each annotation type...
-      Smartgraphs.Annotation.types().forEach(function (type) {
-        query = SC.Query.local(type, 'activity={activity}', {
-          activity: activity
-        });
-        var foundAnnotations = Smartgraphs.store.find(query);
-      
-        if ( !(foundAnnotations.get('status') & SC.Record.READY)) {
-          throw "predefined %@ records are not READY!".fmt(type);
-        }
 
-        foundAnnotations.forEach(function (annotation) {
-          var name = annotation.get('name');
-          if (self._annotations[name]) {
-            throw "The activity contains multiple datasets named '%@'".fmt(name);
-          }
-          if (annotation.get('session')) {
-            throw "The predefined annotation '%@' was incorrectly annotated with a session!".fmt(name);
-          }
-          self._annotations[name] = annotation;
-        });
+      found.forEach(function (rec) {
+        var name = rec.get('name');
+        
+        if (hash[name]) {
+          throw "The activity contains multiple %@ records named '%@'".fmt(typeName, name);
+        }
+        if (rec.get('session')) {
+          throw "The predefined %@ record '%@' was incorrectly annotated with a session!".fmt(typeName, name);
+        }
+        hash[name] = rec;
       });
-      
-      // get variables for the activity
-      query = SC.Query.local(Smartgraphs.Variable, 'activity={activity}', {
-        activity: activity
-      });
-      var foundVariables = Smartgraphs.store.find(query);
+    };
     
-      if ( !(foundVariables.get('status') & SC.Record.READY)) {
-        throw "predefined variable records are not READY!";
-      }
-      self = this;
-      foundVariables.forEach(function (variable) {
-        var name = variable.get('name');
-        if (self._variables[name]) {
-          throw "The activity contains multiple variables named '%@'".fmt(name);
-        }
-        if (variable.get('session')) {
-          throw "The predefined variable '%@' was incorrectly annotated with a session!".fmt(name);
-        }
-        self._variables[name] = variable;
-      });
+    activity = Smartgraphs.activityController.get('content');
+    if (activity) {
+      findObjects(Smartgraphs.Dataset,    'dataset',    this._datasets);
+      findObjects(Smartgraphs.Annotation, 'annotation', this._annotations);
+      findObjects(Smartgraphs.Variable,   'variable',   this._variables);
     }
     
     this.notifyPropertyChange('datasetNames');
