@@ -5,6 +5,8 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+// support serializing expressions built using a builder like http://www.smartclient.com/?skin=Enterprise#bigFilter
+
 (function (undefined) {
   
   var evaluate;       // defined below; declared here to make jslint happy
@@ -95,7 +97,7 @@
     var list = evaluate(terms[1], value) || [];
     
     for (var i = 0; i < list.length; i++) {
-      var testValue = evaluate(list[i], value)
+      var testValue = evaluate(list[i], value);
       if (item === testValue) return true;
     }
     return false;
@@ -157,6 +159,15 @@
     return false;
   }
   
+  function sortedXValues(dataset) {
+    var xValues = [];
+    var points = dataset.get('points');
+    points.forEach( function (point) {
+      xValues.push(point.get('x'));
+    });
+    return xValues.sort( function(a,b) { return a - b; } );
+  }
+  
   function dataPointsAreAdjacent(terms, value) {
     if (value.length != 2) {
       // TODO: log error?
@@ -176,15 +187,6 @@
     var index2 = xValues.indexOf(dataPoint2.get('x'));
     return Math.abs(index1 - index2) == 1;
   }
- 
-  function sortedXValues(dataset) {
-    var xValues = [];
-    var points = dataset.get('points');
-    points.forEach( function (point) {
-      xValues.push(point.get('x'));
-    });
-    return xValues.sort(function(a,b){return a - b});
-  }
   
   function intValue(terms, value) {
     return parseInt(evaluate(terms, value), 10);
@@ -195,7 +197,7 @@
   }
   
   function isNumeric(terms, value) {
-    var num = evaluate(terms, value)
+    var num = evaluate(terms, value);
     return num.length > 0 && !isNaN(num);
   }
   
