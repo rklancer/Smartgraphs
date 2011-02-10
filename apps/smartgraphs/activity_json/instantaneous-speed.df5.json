@@ -1,3 +1,7 @@
+/*globals Smartgraphs */
+
+Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
+Smartgraphs.activityDocs["/shared/instantaneous-speed"] = 
 {
   "_id": "instantanous-speed.df5",
   "_rev": "10-bfcf2cf128db41df9bd9141454564e9d",
@@ -3651,4 +3655,4 @@
       ]
     }
   ]
-}
+};
