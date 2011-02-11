@@ -21,6 +21,7 @@ Smartgraphs.evaluator = {
   
   args: function (argSpec) {
     this.argSpec = argSpec;
+    return this;
   },
   
   evaluate: function (exp) {
