@@ -38,6 +38,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       inspector.destroy();
     }
     this.set('submissibilityInspectorInstance', null);
+    
+    if (this._liveExpression) {
+      this._liveExpression.die();
+    }
   },
   
   /**
@@ -149,17 +153,35 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     var inspectorInfo = this.get('submissibilityInspector');
 
     if (inspectorInfo) {
-      var inspector = this.makeInspector(inspectorInfo);
-
-      if (inspector) {
-        this.set('submissibilityInspectorInstance', inspector);
-        // if (and only if) we have a valid inspector, it is its job to enable submission
-        Smartgraphs.statechart.sendAction('disableSubmission');
-        inspector.addObserver('value', this, this.checkSubmissibility);
-        inspector.watch();
+      
+      if (inspectorInfo.type === "Smartgraphs.DummyInspector") {
+        // this will become the main code path once Inspectors are shown the door...
+        
+        var self = this;
+        this._liveEvaluator = Smartgraphs.evaluator.evaluateLive(this.get('submissibilityCriterion'), function (isSubmissible) {
+          var canSubmit = self.get('canSubmit');
+          if (isSubmissible && !canSubmit) {
+            Smartgraphs.statechart.sendAction('enableSubmission');
+          }
+          else if (canSubmit && !isSubmissible) {
+            Smartgraphs.statechart.sendAction('disableSubmission');
+          }
+        });
       }
       else {
-        console.error('submissibilityInspector was truthy, but makeInspector could not make an inspector instance.');
+        // the old code path
+        var inspector = this.makeInspector(inspectorInfo);
+
+        if (inspector) {
+          this.set('submissibilityInspectorInstance', inspector);
+          // if (and only if) we have a valid inspector, it is its job to enable submission
+          Smartgraphs.statechart.sendAction('disableSubmission');
+          inspector.addObserver('value', this, this.checkSubmissibility);
+          inspector.watch();
+        }
+        else {
+          console.error('submissibilityInspector was truthy, but makeInspector could not make an inspector instance.');
+        }
       }
     }
   },
