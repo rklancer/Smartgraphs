@@ -76,7 +76,6 @@ Smartgraphs.evaluator = {
     
     evaluator = function () {
       var val = Smartgraphs.evaluator.evaluate(exp);
-      console.log("*** evaluator; val = ", val);
       callback(val);
     };
     
@@ -109,6 +108,11 @@ Smartgraphs.evaluator = {
         for (var i = 0; i < tuples.length; i++) {
           tuples[i][0].removeObserver(tuples[i][1], null, evaluator);
         }
+      },
+      
+      evaluate: function () {
+        evaluator();
+        return this;
       }
     };
   },

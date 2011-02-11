@@ -158,7 +158,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         // this will become the main code path once Inspectors are shown the door...
         
         var self = this;
-        this._liveEvaluator = Smartgraphs.evaluator.evaluateLive(this.get('submissibilityCriterion'), function (isSubmissible) {
+        this._liveExpression = Smartgraphs.evaluator.evaluateLive(this.get('submissibilityCriterion'), function (isSubmissible) {
           var canSubmit = self.get('canSubmit');
           if (isSubmissible && !canSubmit) {
             Smartgraphs.statechart.sendAction('enableSubmission');
@@ -166,7 +166,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
           else if (canSubmit && !isSubmissible) {
             Smartgraphs.statechart.sendAction('disableSubmission');
           }
-        });
+        }).evaluate();
       }
       else {
         // the old code path
