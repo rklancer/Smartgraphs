@@ -269,19 +269,11 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
 
       ],
       "responseInspector": {
-        "type": "Smartgraphs.AnnotationInspector",
-        "config": {
-          "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
-          ]
-        }
+        "type": "Smartgraphs.DummyInspector"
       },
       "responseBranches": [
         {
-          "criterion": {
-            "dataPointsAreAdjacent": []
-          },
+          "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
           "step": "/shared/instantaneous-speed/page/12/step/4"
         }
       ],
@@ -485,11 +477,9 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityInspector": {
-        "type": "Smartgraphs.FirstResponseFieldInspector"
+        "type": "Smartgraphs.DummyInspector"
       },
-      "submissibilityCriterion": {
-        "isNumeric": { "strip": "value" }
-      },
+      "submissibilityCriterion": ["isNumeric", ["responseField", 0]],
       "triggeredCommands": [
         
       ],
