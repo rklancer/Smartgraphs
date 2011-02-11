@@ -203,30 +203,22 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
 
       ],
       "responseInspector": {
-        "type": "Smartgraphs.AnnotationInspector",
-        "config": {
-          "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
-          ]
-        }
+        "type": "Smartgraphs.DummyInspector"
       },
       
       // **** the first thing we want to change ... make dataPointsAreAdjacent work w/o an associated Inspector
       //
       // what we want is basically expressed by
       //
-      // (= 1 (- (indexOf first-point-A) (indexOf first-point-B)))
+      // (= 1 (absDiff (indexOf first-point-A) (indexOf second-point-A)))
       //
       // translated to json:
       //
-      // ["=", 1, ["-", ["indexOf", "first-point-A"], ["indexOf", "first-point-B"]]]
+      // ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]]
       
       "responseBranches": [
         {
-          "criterion": {
-            "dataPointsAreAdjacent": []
-          },
+          "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
           "step": "/shared/instantaneous-speed/page/12/step/4"
         }
       ],
