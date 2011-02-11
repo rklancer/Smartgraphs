@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.evaluator expressions
+// Project:   Smartgraphs.evaluator
 // Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================

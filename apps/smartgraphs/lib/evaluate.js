@@ -1,11 +1,11 @@
 // ==========================================================================
-// Project:   Smartgraphs.evaluator
+// Project:   Smartgraphs.evaluate ("old" evaluator currently being replaced)
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('lib/expressions');
+sc_require('lib/evaluator');
 
 // support serializing expressions built using a builder like http://www.smartclient.com/?skin=Enterprise#bigFilter
 
