@@ -179,4 +179,29 @@ Smartgraphs.evaluator.def('responseField', function (index) {
   var values = Smartgraphs.responseTemplateController.get('values');
   return values[index];  
 }).args({n: 1}).dependsOn('Smartgraphs.responseTemplateController*values.[]');
+
+
+Smartgraphs.evaluator.def('coord', function (coordName, annotationName) {
+  var annotation = Smartgraphs.activityObjectsController.findAnnotation(annotationName);
   
+  if (!annotation) throw "Annotation " + annotationName + " not found.";
+  if (!annotation.get('point')) throw "Annotation " + annotationName + " does not have a 'point' property";
+  if (coordName !== 'x' && coordName !== 'y') throw "x or y coordinates only!"
+
+  return annotation.get('point').get(coordName);
+}).args({n: 2});
+
+
+Smartgraphs.evaluator.def('slope', function (name1, name2) {
+  var anno1 = Smartgraphs.activityObjectsController.findAnnotation(name1);
+  var anno2 = Smartgraphs.activityObjectsController.findAnnotation(name2);
+  var p1 = anno1.get('point');
+  var p2 = anno2.get('point');
+  
+  return (p1.get('y') - p2.get('y')) / (p1.get('x') - p2.get('x'));
+}).args({n: 2});
+
+
+Smartgraphs.evaluator.def("withinAbsTolerance", function (val1, val2, tolerance) {
+  return Math.abs(val1 - val2) < tolerance;
+}).args({n: 3});

@@ -487,19 +487,11 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
 
       ],
       "responseInspector": {
-        "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
-        "config": {
-          "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
-          ]
-        }
+        "type": "Smartgraphs.DummyInspector"
       },
       "responseBranches": [
         {
-          "criterion": {
-            "slope": "value"
-          },
+          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 0], 0.1],
           "step": "/shared/instantaneous-speed/page/12/step/16"
         }
       ],
