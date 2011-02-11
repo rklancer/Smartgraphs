@@ -14,13 +14,22 @@ Smartgraphs.evaluator = {
     if (!this.operators[name]) this.operators[name] = {};       // allow redefinition
     var op = this.operators[name];
     
+    if (!op.argSpec) op.argSpec = {};
+    if (!op.deps) op.deps = [];
+    
     op.impl = impl;
     op.args = this.args;
+    op.dependsOn = this.dependsOn;
     return op;
   },
   
   args: function (argSpec) {
     this.argSpec = argSpec;
+    return this;
+  },
+  
+  dependsOn: function () {
+    this.deps = Array.prototype.splice.apply(arguments);
     return this;
   },
   
@@ -53,9 +62,74 @@ Smartgraphs.evaluator = {
 
     // if 'exp' is not an array, it's a literal
     return exp;
+  },
+  
+  evaluateLive: function (exp, callback) {
+    var tuples = [],
+        tuple,
+        deps,
+        i,
+        bracketIndex,
+        evaluator;
+    
+    deps = this.collectDeps(exp);
+    
+    evaluator = function () {
+      var val = Smartgraphs.evaluator.evaluate(exp);
+      console.log("*** evaluator; val = ", val);
+      callback(val);
+    };
+    
+    for (i = 0; i < deps.length; i++) {
+      
+      // tupleForPropertyPath doeesn't understand '.[]' property paths
+      bracketIndex = deps[i].indexOf('.[]');
+      
+      if (bracketIndex > 0) {
+        deps[i] = deps[i].substr(0, bracketIndex);
+
+        if (deps[i].indexOf('*') < 0) {
+          // no star observer, it's easy:
+          tuple = [SC.objectForPropertyPath(deps[i]), '[]'];
+        }
+        else {
+          tuple = SC.tupleForPropertyPath(deps[i]);
+          tuple[1] = tuple[1] + '.[]';
+        }
+      }
+      else {
+        tuple = SC.tupleForPropertyPath(deps[i]);
+      }
+      tuple[0].addObserver(tuple[1], null, evaluator);      
+      tuples.push(tuple);
+    }
+    
+    return {
+      die: function () {
+        for (var i = 0; i < tuples.length; i++) {
+          tuples[i][0].removeObserver(tuples[i][1], null, evaluator);
+        }
+      }
+    };
+  },
+  
+  collectDeps: function (exp) {
+    var ret;
+    
+    if ( (typeof exp === 'object') && (exp.splice === [].splice) ) {
+      var op = this.operators[exp[0]];
+      ret = op.deps.concat();
+      
+      for (var i = 1; i < exp.length; i++) {
+        ret = ret.concat(this.collectDeps(exp[i]));
+      }
+      return ret;
+    }
+    return [];
   }
   
 };
+
 
 Smartgraphs.evaluator.def('+', function () {
   var ret = 0;
@@ -87,5 +161,18 @@ Smartgraphs.evaluator.def('=', function (x, y) {
 
 Smartgraphs.evaluator.def('indexOf', function (name) {
   var annotation = Smartgraphs.activityObjectsController.findAnnotation(name);
+  if (!annotation) throw "Annotation " + name + " not found.";
   return annotation.getPath('point.dataset.points').indexOf(annotation.get('point'));
 }).args({n: 1});
+
+
+Smartgraphs.evaluator.def('isNumeric', function (val) {
+  return !isNaN(parseFloat(val)) && isFinite(val);  
+}).args({n: 1});
+
+
+Smartgraphs.evaluator.def('responseField', function (index) {
+  var values = Smartgraphs.responseTemplateController.get('values');
+  return values[index];  
+}).args({n: 1}).dependsOn('Smartgraphs.responseTemplateController*values.[]');
+  
