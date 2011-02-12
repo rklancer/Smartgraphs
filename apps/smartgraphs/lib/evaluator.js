@@ -39,8 +39,10 @@ Smartgraphs.evaluator = {
     if ( (typeof exp === 'object') && (exp.splice === [].splice) ) {
       if (exp.length < 1) throw "Evaluator was asked to evaluate an empty expression";
       
+      if (exp[0] === "'" || exp[0] === 'quote') return exp[1];      // treat quote operator specially
+ 
       var op = this.operators[exp[0]];
-      
+
       var nArgs = exp.length - 1;
       if (op.argSpec.n && nArgs !== op.argSpec.n) {
         throw "Evaluator expected " + op.argSpec.n + " arguments, but got " + nArgs + " arguments";
@@ -121,9 +123,10 @@ Smartgraphs.evaluator = {
     var ret;
     
     if ( (typeof exp === 'object') && (exp.splice === [].splice) ) {
+      if (exp[0] === "'" || exp[0] === 'quote') return [];        // quote operator has no dependencies
+
       var op = this.operators[exp[0]];
       ret = op.deps.concat();
-      
       for (var i = 1; i < exp.length; i++) {
         ret = ret.concat(this.collectDeps(exp[i]));
       }
@@ -171,6 +174,7 @@ Smartgraphs.evaluator.def('indexOf', function (name) {
 
 
 Smartgraphs.evaluator.def('isNumeric', function (val) {
+  // see http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric/1830844#1830844
   return !isNaN(parseFloat(val)) && isFinite(val);  
 }).args({n: 1});
 
@@ -181,14 +185,14 @@ Smartgraphs.evaluator.def('responseField', function (index) {
 }).args({n: 1}).dependsOn('Smartgraphs.responseTemplateController*values.[]');
 
 
-Smartgraphs.evaluator.def('coord', function (coordName, annotationName) {
+Smartgraphs.evaluator.def('coord', function (axis, annotationName) {
   var annotation = Smartgraphs.activityObjectsController.findAnnotation(annotationName);
   
+  if (axis !== 'x' && axis !== 'y') throw "x or y coordinates only!"
   if (!annotation) throw "Annotation " + annotationName + " not found.";
   if (!annotation.get('point')) throw "Annotation " + annotationName + " does not have a 'point' property";
-  if (coordName !== 'x' && coordName !== 'y') throw "x or y coordinates only!"
 
-  return annotation.get('point').get(coordName);
+  return annotation.get('point').get(axis);
 }).args({n: 2});
 
 
