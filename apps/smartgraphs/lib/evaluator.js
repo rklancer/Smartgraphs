@@ -206,6 +206,29 @@ Smartgraphs.evaluator.def('slope', function (name1, name2) {
 }).args({n: 2});
 
 
-Smartgraphs.evaluator.def("withinAbsTolerance", function (val1, val2, tolerance) {
+Smartgraphs.evaluator.def('withinAbsTolerance', function (val1, val2, tolerance) {
   return Math.abs(val1 - val2) < tolerance;
 }).args({n: 3});
+
+
+Smartgraphs.evaluator.def('slopeToolOrder', function (name1, name2) {
+  var anno1 = Smartgraphs.activityObjectsController.findAnnotation(name1);
+  var anno2 = Smartgraphs.activityObjectsController.findAnnotation(name2);
+  var p1 = anno1.get('point');
+  var p2 = anno2.get('point');
+  
+  // currently, "slope tool order" means points go from left to right
+  return p1.get('x') < p2.get('x') ? [name1, name2] : [name2, name1];
+}).args({n: 2});
+
+
+Smartgraphs.evaluator.def('delta', function (axis, namePair) {
+  var anno1 = Smartgraphs.activityObjectsController.findAnnotation(namePair[0]);
+  var anno2 = Smartgraphs.activityObjectsController.findAnnotation(namePair[1]);
+  var p1 = anno1.get('point');
+  var p2 = anno2.get('point');
+  
+  return p2.get(axis) - p1.get(axis);
+}).args({n: 2});
+
+
