@@ -435,59 +435,6 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     this.gotoState('INTERACTIVE_SELECTION');
 
     return YES;
-  },
-
-  /**
-    Set a session-scoped Variable with the specified name using a specified Inspector.
-    
-    @param context
-    @param args
-    
-    @param {String} args.variableName
-      The name of the Variable to be set.
-    @param {String} args.inspectorType
-      The type of Inspector to use for setting the Variable.
-    @param {String} args.config
-      The configuration for the Inspector.
-  */
-  setVariable: function (context, args) {
-    var variableName = args.variableName;
-    var inspectorType = args.inspectorType;
-    var config = args.config;
-
-    if (SC.none(variableName)) {
-      throw("variableName is required");
-    }
-    if (SC.none(inspectorType)) {
-      throw("inspectorType is required");
-    }
-    if (SC.none(config)) {
-      throw("config is required");
-    }
-    
-    var inspector = this.makeInspector(inspectorType, config);
-    if (inspector) {
-      var newValue = inspector.inspect();
-      Smartgraphs.activityObjectsController.setVariable(variableName, newValue); 
-      return YES;
-    }
-
-    return NO;
-  },
-  
-  makeInspector: function (inspectorType, inspectorConfig) {
-    if (!inspectorType) {
-      return NO;
-    }
-    
-    var klass = SC.objectForPropertyPath(inspectorType);
-        
-    if (!klass || !klass.isClass || !SC.kindOf(klass, Smartgraphs.Inspector)) {
-      throw "makeInspector was given an non-empty, but invalid, Inspector class name";
-    }
-    
-    return klass.create({
-      config: inspectorConfig
-    });
   }
+  
 });
