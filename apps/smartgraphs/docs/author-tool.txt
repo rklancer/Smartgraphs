@@ -10,6 +10,29 @@ Ideal is to gradually replace everything. Build the tools needed to make the new
 
 4. Make submissibility use an expression instead of an inspector (this is a good first test of expression observers)
 
+
+--
+
+
+Next: 
+
+* fixup 'setVariable' and 'substitutedExpressions'
+* remove unused stuff:
+  * triggeredCommands
+  * submissibilityInspector, responseInspector!
+* make evaluator use .nArgs.maxArgs.minArgs
+
+
+Then (this restates steps 5-8 below):
+
+ * add 'context' to activityPage, convert activityObjectsController to be global context
+ * replace setVariable with 'name: expression' pairs in the step definition (which define 'name' in the context). Or route these through setVariable...
+ * Always process beforeText/afterText through handlebars templates, which are automatically provided with local and global context objects. Use this to replace 'substitutedExpressions' and 'processSubstitutions'.
+
+ 
+ 
+ 
+
 5. Add a 'context' property to activityPage as SC.Record.attr(Object) property whose defaultValue is {}. When doing this story and the next story (about refactoring activityObjects into a global context), remember that we need to generate simple context objects usable by Handlebars templates so that authors can easily specify "the 'height' expression from the previous page" https://github.com/sproutcore/sproutcore/commit/21a6ab0a9364665af6411c55857d6f4c2789c616
 
 6. activityObjectsController has to be refactored to be a global context of some sort; and there should be a single 'getFromContext' (possibly 'find'; current usage of 'find' seems mostly to be store & jquery related) method that gets from the page context first, and then from the global context (so there's shadowing of a sort)
