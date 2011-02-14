@@ -537,19 +537,33 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   },
   
   /**
-    Set a session-scoped Variable with the specified name using a specified Inspector.
+    Set a session-scoped Variable to the value of a specific expression.
     
     @param context
     @param args
     
-    @param {String} args.variableName
-      The name of the Variable to be set.
-    @param {String} args.inspectorType
-      The type of Inspector to use for setting the Variable.
-    @param {String} args.config
-      The configuration for the Inspector.
+    @param {String} args.name
+      The name of the variable to be set.
+    @param {String} args.expression
+      The value of the variable, expressed as an expression that can be evaluated by Smartgraphs.evaluator.evaluate()
   */
   setVariable: function (context, args) {
+    var val;
+    if (args.name && args.expression) {
+      // new code path; don't remove these checks   
+      if (SC.none(args.name)) {
+        throw("variable name is required");
+      }
+      if (SC.none(args.expression)) {
+        throw("variable value is required");
+      }
+
+      val = Smartgraphs.evaluator.evaluate(args.expression);
+      Smartgraphs.activityObjectsController.setVariable(args.name, val); 
+      return YES;
+    }
+    // old code path
+   
     var variableName = args.variableName;
     var inspectorType = args.inspectorType;
     var config = args.config;
@@ -571,9 +585,10 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       return YES;
     }
 
-    return NO;
+    return YES; 
   },
   
+  // remove when remove 'old code path' above
   makeInspector: function (inspectorType, inspectorConfig) {
     if (!inspectorType) {
       return NO;
