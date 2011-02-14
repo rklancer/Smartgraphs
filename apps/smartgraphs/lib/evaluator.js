@@ -178,10 +178,10 @@ Smartgraphs.evaluator.def('isNumeric', function (val) {
   return !isNaN(parseFloat(val)) && isFinite(val);  
 }).args({n: 1});
 
-
+// get a response field using 1-based index of response fields
 Smartgraphs.evaluator.def('responseField', function (index) {
   var values = Smartgraphs.responseTemplateController.get('values');
-  return values[index];  
+  return values[index - 1];
 }).args({n: 1}).dependsOn('Smartgraphs.responseTemplateController*values.[]');
 
 
