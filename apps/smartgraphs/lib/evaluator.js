@@ -232,3 +232,32 @@ Smartgraphs.evaluator.def('delta', function (axis, namePair) {
 }).args({n: 2});
 
 
+Smartgraphs.evaluator.def('or', function () {
+  for (var i = 0; i < arguments.length; i++) {
+    if (arguments[i]) return true;
+  }
+  return false;
+}).args({min: 1});
+
+
+Smartgraphs.evaluator.def('not', function (val) {
+  return !val;
+}).args({n: 1});
+
+
+Smartgraphs.evaluator.def('samePoint', function (name1, name2) {
+  var anno1 = Smartgraphs.activityObjectsController.findAnnotation(name1);
+  var anno2 = Smartgraphs.activityObjectsController.findAnnotation(name2);
+  var p1 = anno1.get('point');
+  var p2 = anno2.get('point');
+  
+  return p1 && p1 === p2;
+}).args({n: 2});
+
+
+// note this (textLengthIsAtLeast 1 (responseField 0)) is easier to describe in an expression-authoring interface 
+// than is (> 0 (strip (responseField 0)))
+
+Smartgraphs.evaluator.def('textLengthIsAtLeast', function (minLength, text) {
+  return (text || '').strip().length >= minLength;
+}).args({n: 2});
