@@ -72,11 +72,11 @@ Smartgraphs.evaluator = {
         deps,
         i,
         bracketIndex,
-        evaluator;
+        evaluate;
     
     deps = this.collectDeps(exp);
     
-    evaluator = function () {
+    evaluate = function () {
       var val = Smartgraphs.evaluator.evaluate(exp);
       callback(val);
     };
@@ -101,19 +101,19 @@ Smartgraphs.evaluator = {
       else {
         tuple = SC.tupleForPropertyPath(deps[i]);
       }
-      tuple[0].addObserver(tuple[1], null, evaluator);      
+      tuple[0].addObserver(tuple[1], null, evaluate);      
       tuples.push(tuple);
     }
     
     return {
       die: function () {
         for (var i = 0; i < tuples.length; i++) {
-          tuples[i][0].removeObserver(tuples[i][1], null, evaluator);
+          tuples[i][0].removeObserver(tuples[i][1], null, evaluate);
         }
       },
       
       evaluate: function () {
-        evaluator();
+        evaluate();
         return this;
       }
     };
