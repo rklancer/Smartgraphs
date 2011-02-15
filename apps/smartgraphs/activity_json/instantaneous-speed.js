@@ -323,155 +323,102 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "first-point-A-time",
-            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
-              "name": "first-point-A",
-              "attributePath": "point.x"
-            }
+            "name": "first-point-A-time",
+            "expression": ["coord", "x", "first-point-A"]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "first-point-A-position",
-            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
-              "name": "first-point-A",
-              "attributePath": "point.y"
-            }
+            "name": "first-point-A-position",
+            "expression": ["coord", "y", "first-point-A"]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "second-point-A-time",
-            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
-              "name": "second-point-A",
-              "attributePath": "point.x"
-            }
+            "name": "second-point-A-time",
+            "expression": ["coord", "x", "second-point-A"]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "second-point-A-position",
-            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
-              "name": "second-point-A",
-              "attributePath": "point.y"
-            }
+            "name": "second-point-A-position",
+            "expression": ["coord", "y", "second-point-A"]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "max-position-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.max([0],[1])",
-              "variableNames": [ "first-point-A-position", "second-point-A-position" ]
-            }
+            "name": "max-position-A",
+            "expression": ["max", ["get", "first-point-A-position"], ["get", "second-point-A-position"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "min-position-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.min([0],[1])",
-              "variableNames": [ "first-point-A-position", "second-point-A-position" ]
-            }
+            "name": "min-position-A",
+            "expression": ["min", ["get", "first-point-A-position"], ["get", "second-point-A-position"]]
+          }
+        },
+        
+        // This is not *correct*, but it replicates what was done before:
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "name": "change-position-A",
+            "expression": ["abs", ["delta", "y", ["quote", ["first-point-A", "second-point-A"]]]]
+          }
+        },
+        
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "name": "change-position-units-A",
+            "expression": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position-A"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "change-position-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.abs([0]-[1])",
-              "variableNames": [ "first-point-A-position", "second-point-A-position" ]
-            }
+            "name": "max-time-A",
+            "expression": ["max", ["get", "first-point-A-time"], ["get", "second-point-A-time"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "change-position-units-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "[0] == 1 ? ' meter' : ' meters'",
-              "variableNames": [ "change-position-A" ]
-            }
+            "name": "min-time-A",
+            "expression": ["min", ["get", "first-point-A-time"], ["get", "second-point-A-time"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "max-time-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.max([0],[1])",
-              "variableNames": [ "first-point-A-time", "second-point-A-time" ]
-            }
+            "name": "change-time-A",
+            "expression": ["abs", ["-", ["get", "first-point-A-time"], ["get", "second-point-A-time"]]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "min-time-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.min([0],[1])",
-              "variableNames": [ "first-point-A-time", "second-point-A-time" ]
-            }
+            "name": "change-time-units-A",
+            "expression": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time-A"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "change-time-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.abs([0]-[1])",
-              "variableNames": [ "first-point-A-time", "second-point-A-time" ]
-            }
+            "name": "velocity-A",
+            "expression": ["/", ["get", "change-position-A"], ["get", "change-time-A"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "change-time-units-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "[0] == 1 ? ' second' : ' seconds'",
-              "variableNames": [ "change-time-A" ]
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "velocity-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "[0]/[1]",
-              "variableNames": [ "change-position-A", "change-time-A" ]
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "velocity-units-A",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
-              "variableNames": [ "velocity-A" ]
-            }
+            "name": "velocity-units-A",
+            "expression": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity-A"]]
           }
         }
       ],
@@ -1727,155 +1674,100 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "first-point-B-time",
-            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
-              "name": "first-point-B",
-              "attributePath": "point.x"
-            }
+            "name": "first-point-B-time",
+            "expression": ["coord", "x", "first-point-B"]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "first-point-B-position",
-            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
-              "name": "first-point-B",
-              "attributePath": "point.y"
-            }
+            "name": "first-point-B-position",
+            "expression": ["coord", "y", "first-point-B"]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "second-point-B-time",
-            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
-              "name": "second-point-B",
-              "attributePath": "point.x"
-            }
+            "name": "second-point-B-time",
+            "expression": ["coord", "x", "second-point-B"]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "second-point-B-position",
-            "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
-              "name": "second-point-B",
-              "attributePath": "point.y"
-            }
+            "name": "second-point-B-position",
+            "expression": ["coord", "y", "second-point-B"]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "max-position-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.max([0],[1])",
-              "variableNames": [ "first-point-B-position", "second-point-B-position" ]
-            }
+            "name": "max-position-B",
+            "expression": ["max", ["get", "first-point-B-position"], ["get", "second-point-B-position"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "min-position-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.min([0],[1])",
-              "variableNames": [ "first-point-B-position", "second-point-B-position" ]
-            }
+            "name": "min-position-B",
+            "expression": ["min", ["get", "first-point-B-position"], ["get", "second-point-B-position"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "change-position-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.abs([0]-[1])",
-              "variableNames": [ "first-point-B-position", "second-point-B-position" ]
-            }
+            "name": "change-position-B",
+            "expression": ["abs", ["delta", "y", ["quote", ["first-point-B", "second-point-B"]]]]
+          }
+        },
+
+        {
+          "action": "setVariable",
+          "literalArgs": {
+            "name": "change-position-units-B",
+            "expression": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position-B"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "change-position-units-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "[0] == 1 ? ' meter' : ' meters'",
-              "variableNames": [ "change-position-B" ]
-            }
+            "name": "max-time-B",
+            "expression": ["max", ["get", "first-point-B-time"], ["get", "second-point-B-time"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "max-time-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.max([0],[1])",
-              "variableNames": [ "first-point-B-time", "second-point-B-time" ]
-            }
+            "name": "min-time-B",
+            "expression": ["min", ["get", "first-point-B-time"], ["get", "second-point-B-time"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "min-time-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.min([0],[1])",
-              "variableNames": [ "first-point-B-time", "second-point-B-time" ]
-            }
+            "name": "change-time-B",
+            "expression": ["abs", ["-", ["get", "first-point-B-time"], ["get", "second-point-B-time"]]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "change-time-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "Math.abs([0]-[1])",
-              "variableNames": [ "first-point-B-time", "second-point-B-time" ]
-            }
+            "name": "change-time-units-B",
+            "expression": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time-B"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "change-time-units-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "[0] == 1 ? ' second' : ' seconds'",
-              "variableNames": [ "change-time-B" ]
-            }
+            "name": "velocity-B",
+            "expression": ["/", ["get", "change-position-B"], ["get", "change-time-B"]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
-            "variableName": "velocity-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "[0]/[1]",
-              "variableNames": [ "change-position-B", "change-time-B" ]
-            }
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "variableName": "velocity-units-B",
-            "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
-              "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
-              "variableNames": [ "velocity-B" ]
-            }
+            "name": "velocity-units-B",
+            "expression": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity-B"]]
           }
         }
       ],
