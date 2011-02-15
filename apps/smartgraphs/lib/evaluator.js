@@ -261,3 +261,48 @@ Smartgraphs.evaluator.def('samePoint', function (name1, name2) {
 Smartgraphs.evaluator.def('textLengthIsAtLeast', function (minLength, text) {
   return (text || '').strip().length >= minLength;
 }).args({n: 2});
+
+
+Smartgraphs.evaluator.def('coord', function (axis, annotationName) {
+  var annotation = Smartgraphs.activityObjectsController.findAnnotation(annotationName),
+      point = annotation.get('point');
+  return point.get(axis);
+}).args({n: 2});
+
+
+Smartgraphs.evaluator.def('max', function () {
+  return Math.max.apply(Math, arguments);
+}).args({min: 1});
+
+
+Smartgraphs.evaluator.def('min', function () {
+  return Math.min.apply(Math, arguments);
+}).args({min: 1});
+
+
+Smartgraphs.evaluator.def('abs', function (val) {
+  return Math.abs(val);
+}).args({n: 1});
+
+
+// note that quantities should carry units with them, not require unit pluralization to be written into a variable
+// by the author!
+Smartgraphs.evaluator.def('pluralizeUnits', function (unitId, quantity) {
+  var units = Smartgraphs.store.find(Smartgraphs.Unit, unitId);
+  if (!units) throw "Couldn't find units '%@'".fmt(unitId);
+  return units.pluralizeFor(quantity);
+}).args({n: 2});
+
+
+// dereference a single variable. May want to implement this in the evaluator itself, but first we need to demonstrate
+// a clear need to do so, and consistent rules;  we are NOT trying to implement Scheme in javascript
+Smartgraphs.evaluator.def('get', function (varName) {
+  var val = Smartgraphs.activityObjectsController.findVariable(varName);
+  return val.get('value');
+}).args({n: 1});
+
+
+Smartgraphs.evaluator.def('/', function (x, y) {
+  return x / y;
+}).args({n: 2});
+
