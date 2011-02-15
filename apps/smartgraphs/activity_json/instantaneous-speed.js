@@ -151,7 +151,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -200,9 +199,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       
       // **** the first thing we want to change ... make dataPointsAreAdjacent work w/o an associated Inspector
       //
@@ -265,9 +261,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
@@ -427,9 +420,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
@@ -472,9 +462,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
@@ -533,9 +520,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
@@ -595,9 +579,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
@@ -646,7 +627,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -716,9 +696,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
@@ -777,9 +754,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
@@ -839,9 +813,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
@@ -890,7 +861,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -963,9 +933,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
@@ -1014,9 +981,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
@@ -1070,7 +1034,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -1119,7 +1082,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -1225,9 +1187,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
@@ -1293,9 +1252,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
@@ -1347,9 +1303,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-B"], ["indexOf", "second-point-B"]]],
@@ -1401,9 +1354,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-B"], ["indexOf", "second-point-B"]]],
@@ -1561,9 +1511,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
@@ -1606,9 +1553,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
@@ -1667,9 +1611,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
@@ -1729,9 +1670,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
@@ -1780,7 +1718,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -1850,9 +1787,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
@@ -1925,9 +1859,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
@@ -1987,9 +1918,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
@@ -2038,7 +1966,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -2111,9 +2038,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
@@ -2162,9 +2086,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
  
       ],
-      "responseInspector": {
-        "type": "Smartgraphs.DummyInspector"
-      },
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
@@ -2218,7 +2139,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -2267,7 +2187,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],
@@ -2386,7 +2305,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      "responseInspector": null,
       "responseBranches": [
 
       ],

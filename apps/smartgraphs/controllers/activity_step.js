@@ -212,29 +212,45 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     here. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
     
     Loops in order through the responseBranches associated with this step, evaluates the 'criterion' property of each 
-    in turn (passing in the return value of the responseInspector) and jumps to the step associated with the first 
-    branch whose 'criterion' evaluates to YES.
+    in turn and jumps to the step associated with the first branch whose 'criterion' evaluates to YES.
     
-    If there are no Reactions or none evaluate to YES, jumps to the defaultBranch, if any.
+    If there are no responseBranches or none have criteria that evaluate to YES, jumps to the defaultBranch, if any.
     
-    Does nothing if no Reactions evaluate to YES and there is no defaultBranch. In this case, it is considered
-    an error if the 'isFinalStep' property is NO.
+    Does nothing if no responseBranch criteria evaluate to YES and there is no defaultBranch. In this case, it is 
+    considered an error if the 'isFinalStep' property is NO.
   */
   handleSubmission: function () {
     if ( !this.get('canSubmit') ) return NO;
     
+    var inspectorInfo = this.get('responseInspector'),
+        branches = this.get('responseBranches'),
+        branch,
+        i;
+    
     this.executeCommands(this.get('afterSubmissionCommands'));
-    
-    var inspector = this.makeInspector(this.get('responseInspector'));
-    if (inspector) {
-      var value = inspector.inspect();
-      var branch, branches = this.get('responseBranches');
-    
-      for (var i = 0; i < branches.length; i++) {
+  
+    if (branches && branches.length > 0 && !inspectorInfo) {
+      // new code path
+      for (i = 0; i < branches.length; i++) {
         branch = branches[i];
-        if (Smartgraphs.evaluate(branch.criterion, value)) {
+        if (Smartgraphs.evaluator.evaluate(branch.criterion)) {
           Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: branch.step });
           return;
+        }
+      }
+    }
+    else {
+      // old code path    
+      var inspector = this.makeInspector(inspectorInfo);
+      if (inspector) {
+        var value = inspector.inspect();
+            
+        for (i = 0; i < branches.length; i++) {
+          branch = branches[i];
+          if (Smartgraphs.evaluate(branch.criterion, value)) {
+            Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: branch.step });
+            return;
+          }
         }
       }
     }
