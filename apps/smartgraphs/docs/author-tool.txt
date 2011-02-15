@@ -16,11 +16,14 @@ Ideal is to gradually replace everything. Build the tools needed to make the new
 
 Next: 
 
-* fixup 'setVariable' and 'substitutedExpressions'
-* remove unused stuff:
-  * triggeredCommands
-  * submissibilityInspector, responseInspector!
-* make evaluator use .nArgs.maxArgs.minArgs
+* make 'setVariable' and 'substitutedExpressions' use new expressions instead of inspectors
+* make the slope tool logic (and prompts?) work with negative slopes
+* fix up evaluator:
+  (0) .nArgs, .minArgs, .maxArgs; Smargraphs.evaluator.defs( function () { def(...) ..} instead of Smartgraphs.evaluator.def()
+  (1) recognize distinction between variables and names
+  (2) builtin support for values that carry units around with them
+  (3) rationalize and organize the operators used so far (some expect annotation names an dereference the 'point' property; others expect variable names, others expect literal values...)
+  (4) elegance question: should we evaluate a name to get a lambda instead of special-casing operator recognition? How easy would it be to make reduce, apply, etc work and should such a thing be done in this case?
 
 
 Then (this restates steps 5-8 below):
