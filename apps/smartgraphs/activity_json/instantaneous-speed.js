@@ -144,7 +144,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
-      "submissibilityCriterion": null,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/2",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
@@ -183,7 +182,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
-      "submissibilityCriterion": null,
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
@@ -228,7 +226,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
-      "submissibilityCriterion": null,
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
@@ -529,7 +526,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-position-units-A"
       ],
       "shouldFinishImmediately": false,
-      "submissibilityCriterion": null,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/9",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
@@ -733,7 +729,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-time-units-A"
       ],
       "shouldFinishImmediately": false,
-      "submissibilityCriterion": null,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/13",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
@@ -879,7 +874,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
-      "submissibilityCriterion": null,
       "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
@@ -915,7 +909,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
-      "submissibilityCriterion": null,
       "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
@@ -1011,7 +1004,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
-      "submissibilityCriterion": null,
       "responseBranches": [
         {
           "criterion": ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
@@ -1070,7 +1062,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
-      "submissibilityCriterion": null,
       "responseBranches": [
         {
           "criterion": ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
@@ -1115,7 +1106,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
-      "submissibilityCriterion": null,
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-B"], ["indexOf", "second-point-B"]]],
@@ -1160,7 +1150,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
-      "submissibilityCriterion": null,
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-B"], ["indexOf", "second-point-B"]]],
@@ -1461,7 +1450,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-position-units-B"
       ],
       "shouldFinishImmediately": false,
-      "submissibilityCriterion": null,
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/9",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
@@ -1679,7 +1667,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-time-units-B"
       ],
       "shouldFinishImmediately": false,
-      "submissibilityCriterion": null,
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/13",
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
@@ -1825,7 +1812,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
-      "submissibilityCriterion": null,
       "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
@@ -1861,7 +1847,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
-      "submissibilityCriterion": null,
       "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
@@ -1971,7 +1956,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
-      "defaultBranch": null,
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
