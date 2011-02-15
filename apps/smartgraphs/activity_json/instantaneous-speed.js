@@ -304,52 +304,22 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "action": "setVariable",
           "literalArgs": {
-            "name": "first-point-A-time",
-            "expression": ["coord", "x", "first-point-A"]
+            "name": "start-position-A",
+            "expression": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]]
           }
-        },
+        },        
         {
           "action": "setVariable",
           "literalArgs": {
-            "name": "first-point-A-position",
-            "expression": ["coord", "y", "first-point-A"]
+            "name": "end-position-A",
+            "expression": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]]
           }
         },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "second-point-A-time",
-            "expression": ["coord", "x", "second-point-A"]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "second-point-A-position",
-            "expression": ["coord", "y", "second-point-A"]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "max-position-A",
-            "expression": ["max", ["get", "first-point-A-position"], ["get", "second-point-A-position"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "min-position-A",
-            "expression": ["min", ["get", "first-point-A-position"], ["get", "second-point-A-position"]]
-          }
-        },
-        
-        // This is not *correct*, but it replicates what was done before:
         {
           "action": "setVariable",
           "literalArgs": {
             "name": "change-position-A",
-            "expression": ["abs", ["delta", "y", ["quote", ["first-point-A", "second-point-A"]]]]
+            "expression": ["-", ["get", "end-position-A"], ["get", "start-position-A"]]
           }
         },
         
@@ -363,22 +333,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "action": "setVariable",
           "literalArgs": {
-            "name": "max-time-A",
-            "expression": ["max", ["get", "first-point-A-time"], ["get", "second-point-A-time"]]
+            "name": "start-time-A",
+            "expression": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]]
           }
-        },
+        },        
         {
           "action": "setVariable",
           "literalArgs": {
-            "name": "min-time-A",
-            "expression": ["min", ["get", "first-point-A-time"], ["get", "second-point-A-time"]]
+            "name": "end-time-A",
+            "expression": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]]
           }
         },
+
         {
           "action": "setVariable",
           "literalArgs": {
             "name": "change-time-A",
-            "expression": ["abs", ["-", ["get", "first-point-A-time"], ["get", "second-point-A-time"]]]
+            "expression": ["-", ["get", "end-time-A"], ["get", "start-time-A"]]
           }
         },
         {
@@ -590,8 +561,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        "max-position-A",
-        "min-position-A",
+        "end-position-A",
+        "start-position-A",
         "change-position-A",
         "change-position-units-A"
       ],
@@ -812,8 +783,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        "max-time-A",
-        "min-time-A",
+        "end-time-A",
+        "start-time-A",
         "change-time-A",
         "change-time-units-A"
       ],
@@ -1346,50 +1317,22 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "action": "setVariable",
           "literalArgs": {
-            "name": "first-point-B-time",
-            "expression": ["coord", "x", "first-point-B"]
+            "name": "start-position-B",
+            "expression": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]]
           }
-        },
+        },        
         {
           "action": "setVariable",
           "literalArgs": {
-            "name": "first-point-B-position",
-            "expression": ["coord", "y", "first-point-B"]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "second-point-B-time",
-            "expression": ["coord", "x", "second-point-B"]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "second-point-B-position",
-            "expression": ["coord", "y", "second-point-B"]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "max-position-B",
-            "expression": ["max", ["get", "first-point-B-position"], ["get", "second-point-B-position"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "min-position-B",
-            "expression": ["min", ["get", "first-point-B-position"], ["get", "second-point-B-position"]]
+            "name": "end-position-B",
+            "expression": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]]
           }
         },
         {
           "action": "setVariable",
           "literalArgs": {
             "name": "change-position-B",
-            "expression": ["abs", ["delta", "y", ["quote", ["first-point-B", "second-point-B"]]]]
+            "expression": ["-", ["get", "end-position-B"], ["get", "start-position-B"]]
           }
         },
 
@@ -1403,22 +1346,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "action": "setVariable",
           "literalArgs": {
-            "name": "max-time-B",
-            "expression": ["max", ["get", "first-point-B-time"], ["get", "second-point-B-time"]]
+            "name": "start-time-B",
+            "expression": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]]
           }
-        },
+        },        
         {
           "action": "setVariable",
           "literalArgs": {
-            "name": "min-time-B",
-            "expression": ["min", ["get", "first-point-B-time"], ["get", "second-point-B-time"]]
+            "name": "end-time-B",
+            "expression": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]]
           }
         },
+
         {
           "action": "setVariable",
           "literalArgs": {
             "name": "change-time-B",
-            "expression": ["abs", ["-", ["get", "first-point-B-time"], ["get", "second-point-B-time"]]]
+            "expression": ["-", ["get", "end-time-B"], ["get", "start-time-B"]]
           }
         },
         {
@@ -1630,8 +1574,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        "max-position-B",
-        "min-position-B",
+        "end-position-B",
+        "start-position-B",
         "change-position-B",
         "change-position-units-B"
       ],
@@ -1866,8 +1810,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        "max-time-B",
-        "min-time-B",
+        "end-time-B",
+        "start-time-B",
         "change-time-B",
         "change-time-units-B"
       ],
