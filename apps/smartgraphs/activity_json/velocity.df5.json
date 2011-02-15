@@ -340,9 +340,6 @@
           0 
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
       ],
       "responseInspector": null,
@@ -384,9 +381,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
         {
           "action": "setVariable",
@@ -446,9 +440,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
         {
           "action": "setVariable",
@@ -546,7 +537,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [ ],
       "afterSubmissionCommands": [
       ],
       "responseInspector": {
@@ -620,7 +610,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [ ],
       "afterSubmissionCommands": [
       ],
       "responseInspector": {
@@ -708,7 +697,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [ ],
       "afterSubmissionCommands": [
       ],
       "responseInspector": null,
@@ -781,7 +769,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [ ],
       "afterSubmissionCommands": [
       ],
       "responseInspector": null,
@@ -862,9 +849,6 @@
           0.1
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -920,9 +904,6 @@
           0.1
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -968,9 +949,6 @@
           0 
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1016,9 +994,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
         {
           "action": "setVariable",
@@ -1205,9 +1180,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1268,9 +1240,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1329,9 +1298,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1396,9 +1362,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1444,9 +1407,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1492,9 +1452,6 @@
           0 
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1540,9 +1497,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1588,9 +1542,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1638,9 +1589,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1688,9 +1636,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1751,9 +1696,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1979,9 +1921,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -2037,9 +1976,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2111,9 +2047,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -2189,9 +2122,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -2276,9 +2206,6 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2351,9 +2278,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2442,9 +2366,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2520,9 +2441,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2607,9 +2525,6 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2709,9 +2624,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2797,9 +2709,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2910,9 +2819,6 @@
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -2996,9 +2902,6 @@
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -3076,9 +2979,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -3157,9 +3057,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -3224,9 +3121,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -3287,9 +3181,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -3515,9 +3406,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -3573,9 +3461,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -3647,9 +3532,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -3725,9 +3607,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -3812,9 +3691,6 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -3887,9 +3763,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -3978,9 +3851,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -4056,9 +3926,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -4143,9 +4010,6 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -4245,9 +4109,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -4333,9 +4194,6 @@
       "submissibilityCriterion": {
         "isNumeric": { "strip": "value" }
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -4446,9 +4304,6 @@
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -4532,9 +4387,6 @@
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -4632,9 +4484,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -4682,9 +4531,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -4741,9 +4587,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -4800,8 +4643,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-      ],
       "afterSubmissionCommands": [
       ],
       "responseInspector": {
@@ -4857,8 +4698,6 @@
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-      ],
       "afterSubmissionCommands": [
       ],
       "responseInspector": {
@@ -4929,9 +4768,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -5032,9 +4868,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -5077,9 +4910,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -5122,9 +4952,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -5159,9 +4986,6 @@
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],

@@ -247,23 +247,6 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   submissibilityCriterion: SC.Record.attr(Object),
   
   /**
-    Currently unimplemented. Commands that can be triggered to execute when the student manipulates the system into a
-    certain state.
-    
-    The idea is that this would consist of a list of (systemInspector, triggerCriterion, onCommands, offCommands) sets
-     - The systemInspector is registered to observe the system state while the step is waiting and produce a value whenever the relevant state changes
-     - the triggerCriterion turns the value into a boolean
-     - when the boolean goes from NO to YES, the onCommands are run
-     - when the boolean goes from YES to NO, the offCommands are run
-      
-    These triggered commands do things like run commands immediately when the student's input acquires certain
-    features.
-    
-    @property {Smartgraphs.TriggeredCommands[]}
-  */
-  triggeredCommands: SC.Record.toMany('Smartgraphs.TriggeredCommands'),  
-  
-  /**
     The list of commands (and their arguments) to be immediately after this ActivityStep is submitted, before the
     response inspector is consulted and before branching to another step.
     

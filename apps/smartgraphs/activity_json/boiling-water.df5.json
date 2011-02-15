@@ -127,9 +127,6 @@
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -182,9 +179,6 @@
           6
         ]
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -235,9 +229,6 @@
           0
         ]
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -285,9 +276,6 @@
       "submissibilityCriterion": {
         "notempty": "value"
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -380,9 +368,6 @@
       "submissibilityCriterion": {
         "notempty": "value"
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -475,9 +460,6 @@
       "submissibilityCriterion": {
         "notempty": "value"
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -570,9 +552,6 @@
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -625,9 +604,6 @@
           ]
         ]
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -703,9 +679,6 @@
           ]
         ]
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -781,9 +754,6 @@
           ]
         ]
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -849,9 +819,6 @@
       "submissibilityCriterion": {
         
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -886,9 +853,6 @@
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],

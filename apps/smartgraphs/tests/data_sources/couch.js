@@ -64,9 +64,6 @@ var doc = {
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],

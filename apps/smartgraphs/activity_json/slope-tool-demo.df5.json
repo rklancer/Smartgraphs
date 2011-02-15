@@ -79,9 +79,6 @@
       "shouldFinishImmediately": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -129,9 +126,6 @@
       "submissibilityCriterion": {
         
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         {
           "action": "createLineThroughPoints",
@@ -187,9 +181,6 @@
       "submissibilityCriterion": {
         
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         {
           "action": "createRiseArrow",
@@ -255,9 +246,6 @@
       "submissibilityCriterion": {
         
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -304,9 +292,6 @@
       "submissibilityCriterion": {
         
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         
       ],
@@ -352,9 +337,6 @@
       "submissibilityCriterion": {
         
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         {
           "action": "createIndicatingArrowFromCoordinates",
@@ -429,9 +411,6 @@
       "submissibilityCriterion": {
         
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         {
           "action": "createRiseBracket",
@@ -520,9 +499,6 @@
       "submissibilityCriterion": {
         
       },
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
         {
           "action": "createLabelAnnotation",
@@ -611,9 +587,6 @@
       "submissibilityCriterion": {
 
       },
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
         
       ],

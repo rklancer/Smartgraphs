@@ -145,9 +145,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -193,9 +190,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -255,9 +249,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -414,9 +405,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -456,9 +444,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -514,9 +499,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -573,9 +555,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -621,9 +600,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -690,9 +666,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -748,9 +721,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -807,9 +777,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -855,9 +822,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -927,9 +891,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -975,9 +936,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1028,9 +986,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1076,9 +1031,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1181,9 +1133,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1246,9 +1195,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1297,9 +1243,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1348,9 +1291,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1505,9 +1445,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1547,9 +1484,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -1605,9 +1539,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -1664,9 +1595,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -1712,9 +1640,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -1781,9 +1706,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -1853,9 +1775,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -1912,9 +1831,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -1960,9 +1876,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2032,9 +1945,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2080,9 +1990,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "triggeredCommands": [
-        
-      ],
       "afterSubmissionCommands": [
  
       ],
@@ -2133,9 +2040,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -2181,9 +2085,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityCriterion": null,
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
@@ -2299,9 +2200,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
-      "triggeredCommands": [
-
-      ],
       "afterSubmissionCommands": [
 
       ],
