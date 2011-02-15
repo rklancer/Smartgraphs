@@ -26,6 +26,15 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
     Smartgraphs.firstTableController.clear();
     Smartgraphs.secondTableController.clear();
     Smartgraphs.activityViewController.clear();
+  },
+  
+  /**
+    Get the specified value from the context, or else the 'global context' (which is, for now, basically just the
+    Variable objects defined by the activityObjectsController
+  */
+  getFromContext: function (name) {
+    var context = this.get('context');
+    return context.hasOwnProperty(name) ? context[name] : Smartgraphs.activityObjectsController.findVariable(name).get('value');
   }
   
 });

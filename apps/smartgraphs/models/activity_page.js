@@ -74,6 +74,18 @@ Smartgraphs.ActivityPage = SC.Record.extend(
   
   pageNumberAsString: function () {
     return (this.get('pageNumber')+1)+'';
-  }.property('pageNumber')
+  }.property('pageNumber'),
+  
+  /**
+    @private
+    
+    The context in which local page variables are kept
+  */
+  context: null,
+  
+  init: function () {
+    sc_super();
+    this.set('context', {});
+  }
 
 }) ;

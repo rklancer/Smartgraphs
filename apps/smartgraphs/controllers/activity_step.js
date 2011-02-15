@@ -123,7 +123,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     subs.forEach( function (sub) {
       // new code path
       if (typeof sub === "string") {
-        fmtArgs.push( Smartgraphs.activityObjectsController.findVariable(sub).get('value') );
+        fmtArgs.push( Smartgraphs.activityPageController.getFromContext(sub) );
       }
       else {
         // old code path        

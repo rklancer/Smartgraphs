@@ -296,9 +296,8 @@ Smartgraphs.evaluator.def('pluralizeUnits', function (unitId, quantity) {
 
 // dereference a single variable. May want to implement this in the evaluator itself, but first we need to demonstrate
 // a clear need to do so, and consistent rules;  we are NOT trying to implement Scheme in javascript
-Smartgraphs.evaluator.def('get', function (varName) {
-  var val = Smartgraphs.activityObjectsController.findVariable(varName);
-  return val.get('value');
+Smartgraphs.evaluator.def('get', function (name) {
+  return Smartgraphs.activityPageController.getFromContext(name);
 }).args({n: 1});
 
 
