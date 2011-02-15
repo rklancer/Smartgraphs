@@ -173,7 +173,6 @@
       ],
       "defaultBranch": null,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
@@ -229,7 +228,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -285,7 +283,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -341,7 +338,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -402,7 +398,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/5/step/2",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -464,7 +459,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/5/step/3",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -538,7 +532,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/5/step/4",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -619,7 +612,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/5/step/5",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -658,7 +650,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -697,7 +688,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -759,7 +749,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/6/step/2",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -821,7 +810,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/6/step/3",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -889,7 +877,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/6/step/4",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -964,7 +951,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/6/step/5",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -1003,7 +989,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -1042,7 +1027,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -1104,7 +1088,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/7/step/2",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -1172,7 +1155,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/7/step/3",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -1234,7 +1216,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/7/step/4",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -1296,7 +1277,6 @@
       ],
       "defaultBranch": "/test/marias-run/page/7/step/5",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
@@ -1335,7 +1315,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -1374,7 +1353,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -1422,7 +1400,6 @@
       "responseBranches": null,
       "defaultBranch": "/test/marias-run/page/8/step/2",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1459,7 +1436,6 @@
       "responseBranches": null,
       "defaultBranch": null,
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": false

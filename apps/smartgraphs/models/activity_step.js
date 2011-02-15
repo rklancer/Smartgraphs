@@ -365,7 +365,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     
     @property {Boolean}
   */
-  nextButtonShouldSubmit: SC.Record.attr(Boolean),
+  nextButtonShouldSubmit: SC.Record.attr(Boolean)
   
   /**
     Not currently implemented. 
@@ -374,6 +374,6 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     nextButtonShouldSubmit because (nominally) it leaves the submit button visible and the next button hidden; unsure
     if we want to implement both this and nextButtonShouldSubmit
   */
-  shouldAutoAdvancePage: SC.Record.attr(Boolean)
+  // shouldAutoAdvancePage: SC.Record.attr(Boolean)
 
 }) ;

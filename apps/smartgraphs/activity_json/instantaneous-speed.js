@@ -144,7 +144,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldWaitForSubmissibleResponse": true,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/2",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -186,7 +185,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/3",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -228,7 +226,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/3",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -351,7 +348,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/5",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -384,7 +380,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/6",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -436,7 +431,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/7",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -489,7 +483,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/8",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -519,7 +512,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/9",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Continue",
       "nextButtonShouldSubmit": false
@@ -585,7 +577,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/11",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -637,7 +628,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/11",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -690,7 +680,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/12",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -720,7 +709,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/13",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Continue",
       "nextButtonShouldSubmit": false
@@ -788,7 +776,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/14",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -827,7 +814,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/15",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -861,7 +847,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": false
     },
@@ -892,7 +877,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": false
     },
@@ -990,7 +974,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/2",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1046,7 +1029,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/2",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1088,7 +1070,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/3",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1130,7 +1111,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/3",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1253,7 +1233,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/5",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1286,7 +1265,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/6",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1338,7 +1316,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/7",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1391,7 +1368,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/8",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1421,7 +1397,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/9",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Continue",
       "nextButtonShouldSubmit": false
@@ -1487,7 +1462,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/11",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1553,7 +1527,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/11",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1606,7 +1579,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/12",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1636,7 +1608,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": false,
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/13",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Continue",
       "nextButtonShouldSubmit": false
@@ -1704,7 +1675,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/14",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1743,7 +1713,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/15",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -1777,7 +1746,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": false
     },
@@ -1808,7 +1776,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": false
     },
@@ -1913,7 +1880,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
     }

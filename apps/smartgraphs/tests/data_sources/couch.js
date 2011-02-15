@@ -73,7 +73,6 @@ var doc = {
       ],
       "defaultBranch": null,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false

@@ -136,7 +136,6 @@
       ],
       "defaultBranch": null,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
@@ -188,7 +187,6 @@
       ],
       "defaultBranch": null,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -238,7 +236,6 @@
       ],
       "defaultBranch": null,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -317,7 +314,6 @@
       ],
       "defaultBranch": "/shared/boiling-water/page/4/step/4",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check Answer",
       "nextButtonShouldSubmit": false
@@ -409,7 +405,6 @@
       ],
       "defaultBranch": "/shared/boiling-water/page/4/step/4",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check Answer",
       "nextButtonShouldSubmit": false
@@ -501,7 +496,6 @@
       ],
       "defaultBranch": "/shared/boiling-water/page/4/step/4",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check Answer",
       "nextButtonShouldSubmit": false
@@ -561,7 +555,6 @@
       ],
       "defaultBranch": null,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
@@ -636,7 +629,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -711,7 +703,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -786,7 +777,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": false,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
@@ -828,7 +818,6 @@
       ],
       "defaultBranch": "",
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
@@ -862,7 +851,6 @@
       ],
       "defaultBranch": null,
       "isFinalStep": true,
-      "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
