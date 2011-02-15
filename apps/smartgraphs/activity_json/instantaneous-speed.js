@@ -140,13 +140,9 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/2",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/2",
@@ -175,7 +171,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
@@ -184,10 +179,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/3",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/3",
@@ -216,7 +208,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
@@ -225,10 +216,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/3",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/4",
@@ -338,7 +326,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -347,10 +334,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/5",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/5",
@@ -370,7 +354,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -379,10 +362,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/6",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/6",
@@ -421,7 +401,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -430,10 +409,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/7",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/7",
@@ -473,7 +449,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -482,10 +457,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/8",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/8",
@@ -509,12 +481,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-position-A",
         "change-position-units-A"
       ],
-      "shouldFinishImmediately": false,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/9",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "Continue",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "Continue"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/9",
@@ -567,7 +535,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -576,10 +543,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/11",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/10",
@@ -618,7 +582,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -627,10 +590,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/11",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/11",
@@ -670,7 +630,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -679,10 +638,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/12",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/12",
@@ -706,12 +662,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-time-A",
         "change-time-units-A"
       ],
-      "shouldFinishImmediately": false,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/13",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "Continue",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "Continue"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/13",
@@ -766,7 +718,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -775,10 +726,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/14",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/14",
@@ -804,7 +752,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-time-A",
         "change-time-units-A"
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -813,10 +760,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/15",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/15",
@@ -845,10 +789,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "velocity-units-A"
       ],
       "shouldFinishImmediately": true,
-      "shouldWaitForSubmissibleResponse": false,
       "isFinalStep": true,
-      "hideSubmitButton": true,
-      "nextButtonShouldSubmit": false
+      "hideSubmitButton": true
     },
     {
       "url": "/shared/instantaneous-speed/page/12/step/16",
@@ -875,10 +817,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "velocity-units-A"
       ],
       "shouldFinishImmediately": true,
-      "shouldWaitForSubmissibleResponse": false,
       "isFinalStep": true,
-      "hideSubmitButton": true,
-      "nextButtonShouldSubmit": false
+      "hideSubmitButton": true
     },
     
     
@@ -964,7 +904,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
@@ -973,10 +912,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/2",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/1a",
@@ -1019,7 +955,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
@@ -1028,10 +963,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/2",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/2",
@@ -1060,7 +992,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
@@ -1069,10 +1000,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/3",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/3",
@@ -1101,7 +1029,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
@@ -1110,10 +1037,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/3",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/4",
@@ -1223,7 +1147,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1232,10 +1155,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/5",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/5",
@@ -1255,7 +1175,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1264,10 +1183,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/6",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/6",
@@ -1306,7 +1222,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1315,10 +1230,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/7",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/7",
@@ -1358,7 +1270,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1367,10 +1278,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/8",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/8",
@@ -1394,12 +1302,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-position-B",
         "change-position-units-B"
       ],
-      "shouldFinishImmediately": false,
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/9",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "Continue",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "Continue"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/9",
@@ -1452,7 +1356,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1461,10 +1364,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/11",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/10",
@@ -1517,7 +1417,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1526,10 +1425,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/11",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/11",
@@ -1569,7 +1465,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1578,10 +1473,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/12",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/12",
@@ -1605,12 +1497,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-time-B",
         "change-time-units-B"
       ],
-      "shouldFinishImmediately": false,
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/13",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "Continue",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "Continue"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/13",
@@ -1665,7 +1553,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1674,10 +1561,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/14",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/14",
@@ -1703,7 +1587,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-time-B",
         "change-time-units-B"
       ],
-      "shouldFinishImmediately": false,
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1712,10 +1595,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/15",
-      "isFinalStep": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "submitButtonTitle": "OK"
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/15",
@@ -1744,10 +1624,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "velocity-units-B"
       ],
       "shouldFinishImmediately": true,
-      "shouldWaitForSubmissibleResponse": false,
       "isFinalStep": true,
-      "hideSubmitButton": true,
-      "nextButtonShouldSubmit": false
+      "hideSubmitButton": true
     },
     {
       "url": "/shared/instantaneous-speed/page/13/step/16",
@@ -1774,10 +1652,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "velocity-units-B"
       ],
       "shouldFinishImmediately": true,
-      "shouldWaitForSubmissibleResponse": false,
       "isFinalStep": true,
-      "hideSubmitButton": true,
-      "nextButtonShouldSubmit": false
+      "hideSubmitButton": true
     },
     
     
@@ -1876,7 +1752,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "isFinalStep": true,
