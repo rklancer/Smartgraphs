@@ -35,6 +35,13 @@ Smartgraphs.Unit.FIXTURES = [
     "name": "minute",
     "abbreviation": "min",      
     "pluralName": "minutes"
+  },
+  
+  { "url": "/builtins/units/meters-per-second",
+    "activity": null,
+    "name": "meter per second",
+    "abbreviation": "m/s",      
+    "pluralName": "meters per second"
   }
 
 ];
