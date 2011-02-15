@@ -203,11 +203,7 @@ sc_require('lib/evaluator');
     return num.length > 0 && !isNaN(num);
   }
   
-  evaluate = function (exp, value) {
-    if (value === Smartgraphs.DummyInspector.token) {
-      return Smartgraphs.evaluator.evaluate(exp);
-    }
-    
+  evaluate = function (exp, value) {  
     if (exp === 'value') return value;
     
     if (exp === undefined || exp === null || typeof(exp) === 'string' || typeof(exp) === 'number' || typeof(exp) === 'boolean' || exp.splice === [].splice ) { 
