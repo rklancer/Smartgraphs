@@ -113,22 +113,29 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       // TODO!!
   },
   
-  processSubstitutions: function(expressions) {
-    if (!expressions) return;
-
+  processSubstitutions: function (subs) {
+    var fmtArgs = [],
+        self = this;
+        
+    if (!subs) return;
+    
     // build args for call to fmt method
-    var fmtArgs = [];
-    for (var ind in expressions) {
-      if ( !expressions.hasOwnProperty(ind) ) continue;
-      var expression = expressions[ind];
-      
-      var inspector = this.makeInspector(expression);
-      if (inspector) {
-        var value = inspector.inspect();
-        fmtArgs.push(value);
+    subs.forEach( function (sub) {
+      // new code path
+      if (typeof sub === "string") {
+        fmtArgs.push( Smartgraphs.activityObjectsController.findVariable(sub).get('value') );
       }
-    }
+      else {
+        // old code path        
+        var inspector = self.makeInspector(sub);
+        if (inspector) {
+          var value = inspector.inspect();
+          fmtArgs.push(value);
+        }
+      }
+    });
 
+    // better yet, make beforeText & afterText computed properties
     var beforeText = this.get('beforeText');
     if (beforeText) {
       this.set('beforeText', beforeText.fmt.apply(beforeText, fmtArgs));
