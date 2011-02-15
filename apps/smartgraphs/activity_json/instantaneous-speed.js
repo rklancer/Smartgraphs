@@ -129,8 +129,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Select a point and then click <b>OK</b>.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "startCommands": [
         {
           "action": "startInteractiveSelection",
@@ -167,8 +165,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "startCommands": [
         {
           "action": "startInteractiveSelection",
@@ -211,8 +207,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "startCommands": [
         {
           "action": "startInteractiveSelection",
@@ -256,7 +250,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
       "startCommands": [
         {
           "action": "createLineThroughPoints",
@@ -517,8 +510,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "substitutedExpressions": [
         "end-position-A",
         "start-position-A",
@@ -720,8 +711,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "substitutedExpressions": [
         "end-time-A",
         "start-time-A",
@@ -753,7 +742,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
       "substitutedExpressions": [
         "change-position-A",
         "change-position-units-A",
@@ -860,8 +848,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "substitutedExpressions": [
         "change-position-A",
         "change-position-units-A",
@@ -874,11 +860,9 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
-      "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
-      "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
     },
     {
@@ -897,8 +881,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "substitutedExpressions": [
         "change-position-A",
         "change-position-units-A",
@@ -909,11 +891,9 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
-      "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
-      "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
     },
     
@@ -959,8 +939,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Choose a point that is different from those you selected earlier. Then click <b>OK</b>.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "startCommands": [
         {
           "action": "setAnnotationAttribute",
@@ -1033,8 +1011,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Try again.</p><p>Choose a point that is <b>different</b> from those you selected earlier. Then click <b>OK</b>.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "startCommands": [
         {
           "action": "addAnnotation",
@@ -1091,8 +1067,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "startCommands": [
         {
           "action": "startInteractiveSelection",
@@ -1135,8 +1109,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "startCommands": [
         {
           "action": "startInteractiveSelection",
@@ -1180,7 +1152,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
       "startCommands": [
         {
           "action": "createLineThroughPoints",
@@ -1441,8 +1412,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "substitutedExpressions": [
         "end-position-B",
         "start-position-B",
@@ -1658,8 +1627,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "substitutedExpressions": [
         "end-time-B",
         "start-time-B",
@@ -1691,7 +1658,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "",
       "substitutedExpressions": [
         "change-position-B",
         "change-position-units-B",
@@ -1798,8 +1764,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "substitutedExpressions": [
         "change-position-B",
         "change-position-units-B",
@@ -1812,11 +1776,9 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
-      "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
-      "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
     },
     {
@@ -1835,8 +1797,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
-      "responseTemplate": "",
-      "afterText": "",
       "substitutedExpressions": [
         "change-position-B",
         "change-position-units-B",
@@ -1847,11 +1807,9 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
-      "defaultBranch": "",
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
-      "submitButtonTitle": "",
       "nextButtonShouldSubmit": false
     },
     
@@ -1892,9 +1850,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         },
         "bottom": null
       },
-      "beforeText": "",
       "responseTemplate": "/components/response-template/open",
-      "afterText": "",
       "startCommands": [
         {
           "action": "setAnnotationAttribute",
@@ -1959,7 +1915,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": true,
-      "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
     }
   ],
