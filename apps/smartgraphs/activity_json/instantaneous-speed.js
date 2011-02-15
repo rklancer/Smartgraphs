@@ -645,34 +645,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "max-position-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "min-position-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-A" ]
-          } 
-        }
+        "max-position-A",
+        "min-position-A",
+        "change-position-A",
+        "change-position-units-A"
       ],
       "startCommands": [
 
@@ -923,34 +899,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "max-time-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "min-time-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-A" ]
-          } 
-        }
+        "max-time-A",
+        "min-time-A",
+        "change-time-A",
+        "change-time-units-A"
       ],
       "startCommands": [
 
@@ -994,34 +946,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-A" ]
-          } 
-        }
+        "change-position-A",
+        "change-position-units-A",
+        "change-time-A",
+        "change-time-units-A"
       ],
       "startCommands": [
         {
@@ -1099,34 +1027,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-A" ]
-          } 
-        }
+        "change-position-A",
+        "change-position-units-A",
+        "change-time-A",
+        "change-time-units-A"
       ],
       "startCommands": [
 
@@ -1177,62 +1081,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "velocity-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "velocity-units-A" ]
-          } 
-        }
+        "change-position-A",
+        "change-position-units-A",
+        "change-time-A",
+        "change-time-units-A",
+        "change-position-A",
+        "change-time-A",
+        "velocity-A",
+        "velocity-units-A"
       ],
       "startCommands": [
 
@@ -1277,48 +1133,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "velocity-A" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "velocity-units-A" ]
-          } 
-        }
+        "change-position-A",
+        "change-position-units-A",
+        "change-time-A",
+        "change-time-units-A",
+        "velocity-A",
+        "velocity-units-A"
       ],
       "startCommands": [
 
@@ -1994,34 +1814,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "max-position-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "min-position-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-B" ]
-          } 
-        }
+        "max-position-B",
+        "min-position-B",
+        "change-position-B",
+        "change-position-units-B"
       ],
       "startCommands": [
 
@@ -2286,34 +2082,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "max-time-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "min-time-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-B" ]
-          } 
-        }
+        "max-time-B",
+        "min-time-B",
+        "change-time-B",
+        "change-time-units-B"
       ],
       "startCommands": [
 
@@ -2357,34 +2129,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-B" ]
-          } 
-        }
+        "change-position-B",
+        "change-position-units-B",
+        "change-time-B",
+        "change-time-units-B"
       ],
       "startCommands": [
         {
@@ -2462,34 +2210,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-B" ]
-          } 
-        }
+        "change-position-B",
+        "change-position-units-B",
+        "change-time-B",
+        "change-time-units-B"
       ],
       "startCommands": [
 
@@ -2540,62 +2264,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "velocity-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "velocity-units-B" ]
-          } 
-        }
+        "change-position-B",
+        "change-position-units-B",
+        "change-time-B",
+        "change-time-units-B",
+        "change-position-B",
+        "change-time-B",
+        "velocity-B",
+        "velocity-units-B"
       ],
       "startCommands": [
 
@@ -2640,48 +2316,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-position-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-position-units-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "change-time-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "change-time-units-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "[0]",
-            "variableNames": [ "velocity-B" ]
-          } 
-        },
-        {
-          "type": "Smartgraphs.VariableInspector",
-          "config" : {
-            "evalStatement": "'[0]'",
-            "variableNames": [ "velocity-units-B" ]
-          } 
-        }
+        "change-position-B",
+        "change-position-units-B",
+        "change-time-B",
+        "change-time-units-B",
+        "velocity-B",
+        "velocity-units-B"
       ],
       "startCommands": [
 
