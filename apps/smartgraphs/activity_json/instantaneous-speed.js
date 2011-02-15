@@ -193,17 +193,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "afterSubmissionCommands": [
 
       ],
-      
-      // **** the first thing we want to change ... make dataPointsAreAdjacent work w/o an associated Inspector
-      //
-      // what we want is basically expressed by
-      //
-      // (= 1 (absDiff (indexOf first-point-A) (indexOf second-point-A)))
-      //
-      // translated to json:
-      //
-      // ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]]
-      
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
