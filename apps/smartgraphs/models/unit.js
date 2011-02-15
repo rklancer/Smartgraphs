@@ -60,6 +60,18 @@ Smartgraphs.Unit = SC.Record.extend(
 
     @property {String}
   */
-  abbreviation: SC.Record.attr(String)
-
+  abbreviation: SC.Record.attr(String),
+  
+  /**
+    Returns the singular or plural form based on quantity
+    
+    @argument {Number} quantity
+      The quantity
+    @returns {String}
+      The pluralized or singular unit name appropriate for that quantity
+  */
+  pluralizeFor: function (quantity) {
+    return Math.abs(quantity) === 1 ? this.get('name') : this.get('pluralName');
+  }
+  
 }) ;
