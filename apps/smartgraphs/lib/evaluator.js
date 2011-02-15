@@ -306,3 +306,7 @@ Smartgraphs.evaluator.def('/', function (x, y) {
   return x / y;
 }).args({n: 2});
 
+
+Smartgraphs.evaluator.def('listItem', function (index, list) {
+  return list[index-1];
+}).args({n: 2});
