@@ -1,14 +1,14 @@
 Plan, based on Priorities section below:
 
-0. Focus on the instantaneous-speed activity, loaded into the app to eliminate the couchdb update cycle for now.
+0. Focus on the instantaneous-speed activity, loaded into the app to eliminate the couchdb update cycle for now. (Done.)
 
 Ideal is to gradually replace everything. Build the tools needed to make the new things work before removing the old things.
 
-2. Make the expression-evaluator extensible and make it possible for certain expression terms to 'autoregister' as observers of the relevant property
+2. Make the expression-evaluator extensible and make it possible for certain expression terms to 'autoregister' as observers of the relevant property. (Done.)
 
-3. Make response branches use expressions instead of inspectors
+3. Make response branches use expressions instead of inspectors. (Done.)
 
-4. Make submissibility use an expression instead of an inspector (this is a good first test of expression observers)
+4. Make submissibility use an expression instead of an inspector (this is a good first test of "live" expressions) (Done.)
 
 
 --
@@ -16,8 +16,9 @@ Ideal is to gradually replace everything. Build the tools needed to make the new
 
 Next: 
 
-* make 'setVariable' and 'substitutedExpressions' use new expressions instead of inspectors
-* make the slope tool logic (and prompts?) work with negative slopes
+* make 'setVariable' and 'substitutedExpressions' use new expressions instead of inspectors. (Done.)
+* make the slope tool logic (and prompts?) work with negative slopes. (Done.)
+
 * fix up evaluator:
   (0) .nArgs, .minArgs, .maxArgs; Smargraphs.evaluator.defs( function () { def(...) ..} instead of Smartgraphs.evaluator.def()
   (1) recognize distinction between variables and names
