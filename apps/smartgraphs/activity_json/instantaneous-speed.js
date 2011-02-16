@@ -48,6 +48,11 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
   },
   "pages": [
     {
+      "name": "Instantaneous Speed I",
+      "url": "/shared/instantaneous-speed/page/12",
+      "activity": "/shared/instantaneous-speed",
+      "index": 12,
+      "introText": "<h1>Analysis</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the velocity between those points. This calculation will be close to your <b>instantaneous</b> velocity. </p>",                        
       "steps": [
         "/shared/instantaneous-speed/page/12/step/1",
         "/shared/instantaneous-speed/page/12/step/2",
@@ -66,14 +71,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "/shared/instantaneous-speed/page/12/step/15",
         "/shared/instantaneous-speed/page/12/step/16"
       ],
-      "name": "Instantaneous Speed",
-      "firstStep": "/shared/instantaneous-speed/page/12/step/1",
-      "introText": "<h1>Analysis</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the velocity between those points. This calculation will be close to your <b>instantaneous</b> velocity. </p>",
-      "url": "/shared/instantaneous-speed/page/12",
-      "activity": "/shared/instantaneous-speed",
-      "index": 12
+      "firstStep": "/shared/instantaneous-speed/page/12/step/1"
     },
     {
+      "name": "Instantaneous Speed II",
+      "url": "/shared/instantaneous-speed/page/13",
+      "activity": "/shared/instantaneous-speed",
+      "index": 13,
+      "introText": "<h1>Analysis</h1><p>Now you will pick another set of points that are next to each other and find the velocity between those points.</p>",                    
       "steps": [
         "/shared/instantaneous-speed/page/13/step/1",
         "/shared/instantaneous-speed/page/13/step/1a",
@@ -93,25 +98,20 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "/shared/instantaneous-speed/page/13/step/15",
         "/shared/instantaneous-speed/page/13/step/16"
       ],
-      "name": "Instantaneous Speed",
-      "firstStep": "/shared/instantaneous-speed/page/13/step/1",
-      "introText": "<h1>Analysis</h1><p>Now you will pick another set of points that are next to each other and find the velocity between those points.</p>",
-      "url": "/shared/instantaneous-speed/page/13",
-      "activity": "/shared/instantaneous-speed",
-      "index": 13
+      "firstStep": "/shared/instantaneous-speed/page/13/step/1"
     },
     {
+      "name": "Instantaneous Speed III",
+      "url": "/shared/instantaneous-speed/page/14",
+      "activity": "/shared/instantaneous-speed",
+      "index": 14,            
       "steps": [
         "/shared/instantaneous-speed/page/14/step/1"
       ],
-      "name": "Instantaneous Speed III",
       "firstStep": "/shared/instantaneous-speed/page/14/step/1",
-      "introText": "<h1>Analysis</h1><p>Was your velocity the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>",
-      "url": "/shared/instantaneous-speed/page/14",
-      "activity": "/shared/instantaneous-speed",
-      "index": 14
+      "introText": "<h1>Analysis</h1><p>Was your velocity the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>"
     }
-  ],
+  ],  
   "steps": [
     {
       "url": "/shared/instantaneous-speed/page/12/step/1",
