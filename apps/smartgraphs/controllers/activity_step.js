@@ -52,8 +52,9 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
     // enableSubmission *before* executing startCommands -- they might disable submission
     Smartgraphs.statechart.sendAction('enableSubmission');
+
+    this.setContextVars(this.get('contextVars'));
     this.executeCommands(this.get('startCommands'));
-    this.setupTriggers();
     this.processSubstitutions(this.get('substitutedExpressions'));
    
     // does the step goes "straight through"?
@@ -97,6 +98,15 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
 
+  setContextVars: function (varDefs) {
+    if (!varDefs) return;
+    
+    varDefs.forEach( function (varDef) {
+      Smartgraphs.activityPageController.setInContext(varDef.name, Smartgraphs.evaluator.evaluate(varDef.value));
+    });
+  },
+  
+  
   executeCommands: function (commands) {
     if (!commands) return;
 
@@ -107,10 +117,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     commands.forEach(function (command) {
       Smartgraphs.statechart.sendAction(command.action, self, command.literalArgs);
     });
-  },
-  
-  setupTriggers: function () {
-      // TODO!!
   },
   
   processSubstitutions: function (subs) {

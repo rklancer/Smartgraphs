@@ -172,6 +172,15 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   substitutedExpressions: SC.Record.attr(Array),
   
+  
+  /**
+    A set of names to be defined in the current context, together with expressions that define their values.
+    Processed in order before startCommands.
+        
+    @property {Array}
+  */
+  contextVars: SC.Record.attr(Array),
+  
   /** 
     A list of commands (and their arguments) to be run when this ActivityStep is loaded. Each item in the list should
     be an object with an 'action' property and a 'literalArgs' property. The arguments in the literalArgs will be 

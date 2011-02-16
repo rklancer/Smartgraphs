@@ -31,10 +31,23 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
   /**
     Get the specified value from the context, or else the 'global context' (which is, for now, basically just the
     Variable objects defined by the activityObjectsController
+    
+    @param {String} name
   */
   getFromContext: function (name) {
     var context = this.get('context');
     return context.hasOwnProperty(name) ? context[name] : Smartgraphs.activityObjectsController.findVariable(name).get('value');
-  }
+  },
+
+  /**
+    Set the specified name in the context ot the specified value
+    
+    @param {String} name
+    @param value
+  */
+  setInContext: function (name, value) {
+    var context = this.get('context');
+    context[name] = value;
+  }    
   
 });
