@@ -235,6 +235,18 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
+      "contextVars": [
+        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
+        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
+        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
+        { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
+        { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
+      ],
       "startCommands": [
         {
           "action": "createLineThroughPoints",
@@ -251,78 +263,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "literalArgs": {
             "name": "slope-line-A",
             "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "start-position-A",
-            "expression": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]]
-          }
-        },        
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "end-position-A",
-            "expression": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "change-position-A",
-            "expression": ["-", ["get", "end-position-A"], ["get", "start-position-A"]]
-          }
-        },
-        
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "change-position-units-A",
-            "expression": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position-A"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "start-time-A",
-            "expression": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]]
-          }
-        },        
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "end-time-A",
-            "expression": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]]
-          }
-        },
-
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "change-time-A",
-            "expression": ["-", ["get", "end-time-A"], ["get", "start-time-A"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "change-time-units-A",
-            "expression": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time-A"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "velocity-A",
-            "expression": ["/", ["get", "change-position-A"], ["get", "change-time-A"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "velocity-units-A",
-            "expression": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity-A"]]
           }
         }
       ],
@@ -476,10 +416,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "end-position-A",
-        "start-position-A",
-        "change-position-A",
-        "change-position-units-A"
+        "end-position",
+        "start-position",
+        "change-position",
+        "change-position-units"
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/9",
       "submitButtonTitle": "Continue"
@@ -657,10 +597,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "end-time-A",
-        "start-time-A",
-        "change-time-A",
-        "change-time-units-A"
+        "end-time",
+        "start-time",
+        "change-time",
+        "change-time-units"
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/13",
       "submitButtonTitle": "Continue"
@@ -683,10 +623,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "substitutedExpressions": [
-        "change-position-A",
-        "change-position-units-A",
-        "change-time-A",
-        "change-time-units-A"
+        "change-position",
+        "change-position-units",
+        "change-time",
+        "change-time-units"
       ],
       "startCommands": [
         {
@@ -747,10 +687,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "substitutedExpressions": [
-        "change-position-A",
-        "change-position-units-A",
-        "change-time-A",
-        "change-time-units-A"
+        "change-position",
+        "change-position-units",
+        "change-time",
+        "change-time-units"
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
@@ -779,14 +719,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "change-position-A",
-        "change-position-units-A",
-        "change-time-A",
-        "change-time-units-A",
-        "change-position-A",
-        "change-time-A",
-        "velocity-A",
-        "velocity-units-A"
+        "change-position",
+        "change-position-units",
+        "change-time",
+        "change-time-units",
+        "change-position",
+        "change-time",
+        "velocity",
+        "velocity-units"
       ],
       "shouldFinishImmediately": true,
       "isFinalStep": true,
@@ -809,12 +749,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "change-position-A",
-        "change-position-units-A",
-        "change-time-A",
-        "change-time-units-A",
-        "velocity-A",
-        "velocity-units-A"
+        "change-position",
+        "change-position-units",
+        "change-time",
+        "change-time-units",
+        "velocity",
+        "velocity-units"
       ],
       "shouldFinishImmediately": true,
       "isFinalStep": true,
@@ -1056,6 +996,18 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
+      "contextVars": [
+        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
+        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
+        { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
+        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
+        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
+        { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
+        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
+        { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
+        { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
+      ],
       "startCommands": [
         {
           "action": "createLineThroughPoints",
@@ -1072,78 +1024,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "literalArgs": {
             "name": "slope-line-B",
             "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "start-position-B",
-            "expression": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]]
-          }
-        },        
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "end-position-B",
-            "expression": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "change-position-B",
-            "expression": ["-", ["get", "end-position-B"], ["get", "start-position-B"]]
-          }
-        },
-
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "change-position-units-B",
-            "expression": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position-B"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "start-time-B",
-            "expression": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]]
-          }
-        },        
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "end-time-B",
-            "expression": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]]
-          }
-        },
-
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "change-time-B",
-            "expression": ["-", ["get", "end-time-B"], ["get", "start-time-B"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "change-time-units-B",
-            "expression": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time-B"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "velocity-B",
-            "expression": ["/", ["get", "change-position-B"], ["get", "change-time-B"]]
-          }
-        },
-        {
-          "action": "setVariable",
-          "literalArgs": {
-            "name": "velocity-units-B",
-            "expression": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity-B"]]
           }
         }
       ],
@@ -1297,10 +1177,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "end-position-B",
-        "start-position-B",
-        "change-position-B",
-        "change-position-units-B"
+        "end-position",
+        "start-position",
+        "change-position",
+        "change-position-units"
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/9",
       "submitButtonTitle": "Continue"
@@ -1492,10 +1372,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "end-time-B",
-        "start-time-B",
-        "change-time-B",
-        "change-time-units-B"
+        "end-time",
+        "start-time",
+        "change-time",
+        "change-time-units"
       ],
       "defaultBranch": "/shared/instantaneous-speed/page/13/step/13",
       "submitButtonTitle": "Continue"
@@ -1518,10 +1398,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "substitutedExpressions": [
-        "change-position-B",
-        "change-position-units-B",
-        "change-time-B",
-        "change-time-units-B"
+        "change-position",
+        "change-position-units",
+        "change-time",
+        "change-time-units"
       ],
       "startCommands": [
         {
@@ -1582,10 +1462,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "substitutedExpressions": [
-        "change-position-B",
-        "change-position-units-B",
-        "change-time-B",
-        "change-time-units-B"
+        "change-position",
+        "change-position-units",
+        "change-time",
+        "change-time-units"
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
@@ -1614,14 +1494,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "change-position-B",
-        "change-position-units-B",
-        "change-time-B",
-        "change-time-units-B",
-        "change-position-B",
-        "change-time-B",
-        "velocity-B",
-        "velocity-units-B"
+        "change-position",
+        "change-position-units",
+        "change-time",
+        "change-time-units",
+        "change-position",
+        "change-time",
+        "velocity",
+        "velocity-units"
       ],
       "shouldFinishImmediately": true,
       "isFinalStep": true,
@@ -1644,12 +1524,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "change-position-B",
-        "change-position-units-B",
-        "change-time-B",
-        "change-time-units-B",
-        "velocity-B",
-        "velocity-units-B"
+        "change-position",
+        "change-position-units",
+        "change-time",
+        "change-time-units",
+        "velocity",
+        "velocity-units"
       ],
       "shouldFinishImmediately": true,
       "isFinalStep": true,
