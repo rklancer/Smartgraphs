@@ -117,7 +117,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         Smartgraphs.statechart.sendAction('showGraph', this, { pane: pane, name: name });
         return;
       case 'table':
-        Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, datasetName: config.datasetName, annotations: config.annotations } );
+        Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, dataset: config.datasetName || config.dataset, annotations: config.annotations } );
         return;
       case 'image':
         Smartgraphs.statechart.sendAction('showImage', this, { pane: pane, path: config.path, caption: config.caption });

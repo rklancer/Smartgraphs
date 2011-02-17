@@ -174,7 +174,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return YES;
   },
   
-  showTable: function (pane, datasetName, annotations) {
+  showTable: function (pane, dataset, annotations) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane),
         controller;
@@ -185,7 +185,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     // old code path: annotations is not passed, and annotations are sticky
     // new code path: annotations are added on a per-step basis, and annotations are not sticky
     if (annotations) controller.clearAnnotations();
-    controller.openDataset(datasetName);
+    controller.openDataset(dataset);
     controller.addAnnotationsByName(annotations);
     
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'TableView');

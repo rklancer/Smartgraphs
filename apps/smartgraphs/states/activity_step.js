@@ -137,7 +137,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       Optional list of names of annotations to add to the table when it is opened
   */
   showTable: function (context, args) {
-    Smartgraphs.activityViewController.showTable(args.pane, args.datasetName, args.annotations);  
+    Smartgraphs.activityViewController.showTable(args.pane, args.dataset, args.annotations);  
   },
   
   /**
