@@ -120,24 +120,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "datasetName": "slope-data",  // rename this field to just "dataset"
+          "annotations": ["first-point-A"]
         }
       },
       "beforeText": "<p>Select a point and then click <b>OK</b>.</p>",
-      "startCommands": [
-        {
-          "action": "startInteractiveSelection",
-          "literalArgs": {
-            "annotationName": "first-point-A",
-            "graphName": "slope-graph",
-            "datasetName": "slope-data",
-            "color": "#1f77b3"
-          }
+      "tools": [
+        { "type": "interactiveSelection",
+          "annotation": "first-point-A",
+          "dataset": "slope-data"
         }
       ],
       "shouldWaitForSubmissibleResponse": true,
