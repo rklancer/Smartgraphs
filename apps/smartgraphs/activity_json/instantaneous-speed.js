@@ -1800,79 +1800,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
   ],
   "annotations": [
     {
-      "type": "FreehandSketch",
-      "records": [
-        {
-          "url": "/shared/instantaneous-speed/annotation/slope-data-analyze-line-A",
-          "name": "slope-data-analyze-line-A",
-          "activity": "/shared/instantaneous-speed",
-          "points": [
-            {
-              "x": 0,
-              "y": 0
-            },
-            {
-              "x": 9,
-              "y": 4.5
-            }
-          ],
-          "session": null,
-          "strokeColor": "#2f7f0d"
-        },
-        {
-          "url": "/shared/instantaneous-speed/annotation/slope-data-analyze-line-B",
-          "name": "slope-data-analyze-line-B",
-          "activity": "/shared/instantaneous-speed",
-          "points": [
-            {
-              "x": 0,
-              "y": 0
-            },
-            {
-              "x": 15,
-              "y": 4
-            }
-          ],
-          "session": null,
-          "strokeColor": "#000000"
-        },
-        {
-          "url": "/shared/instantaneous-speed/annotation/slope-data-analyze-line-C",
-          "name": "slope-data-analyze-line-C",
-          "activity": "/shared/instantaneous-speed",
-          "points": [
-            {
-              "x": 0,
-              "y": 0
-            },
-            {
-              "x": 15,
-              "y": 2.5
-            }
-          ],
-          "session": null,
-          "strokeColor": "#ff7f0d"
-        },
-        {
-          "url": "/shared/instantaneous-speed/annotation/slope-data-analyze-line-D",
-          "name": "slope-data-analyze-line-D",
-          "activity": "/shared/instantaneous-speed",
-          "points": [
-            {
-              "x": 0,
-              "y": 0
-            },
-            {
-              "x": 15,
-              "y": 1
-            }
-          ],
-          "session": null,
-          "strokeColor": "#1f77b3"
-        }
-      ]
-    },
-    {
       "type": "HighlightedPoint",
       "records": [
         {
@@ -1908,26 +1835,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "url": "/shared/instantaneous-speed/annotation/second-point-B",
           "name": "second-point-B",
-          "activity": "/shared/instantaneous-speed",
-          "session": null,
-          "point": null,
-          "displayStyle": "highlight-point-and-dim-background",
-          "datasetColor": "#cccccc",
-          "pointColor": "#ff7f0e"
-        },
-        {
-          "url": "/shared/instantaneous-speed/annotation/first-point-C",
-          "name": "first-point-C",
-          "activity": "/shared/instantaneous-speed",
-          "session": null,
-          "point": null,
-          "displayStyle": "highlight-point-and-dim-background",
-          "datasetColor": "#cccccc",
-          "pointColor": "#1f77b4"
-        },
-        {
-          "url": "/shared/instantaneous-speed/annotation/second-point-C",
-          "name": "second-point-C",
           "activity": "/shared/instantaneous-speed",
           "session": null,
           "point": null,
