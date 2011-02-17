@@ -124,7 +124,6 @@
         
       ],
       "shouldFinishImmediately": true,
-      "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "afterSubmissionCommands": [
@@ -164,7 +163,6 @@
         }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.SketchLengthInspector",
         "config": {
@@ -213,7 +211,6 @@
         
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
@@ -263,7 +260,6 @@
         
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
@@ -354,7 +350,6 @@
         }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
@@ -445,7 +440,6 @@
         }
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.SelectedPointInspector",
         "config": {
@@ -543,7 +537,6 @@
         }
       ],
       "shouldFinishImmediately": true,
-      "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "afterSubmissionCommands": [
@@ -582,7 +575,6 @@
         
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
@@ -656,7 +648,6 @@
         
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
@@ -730,7 +721,6 @@
         
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
@@ -804,7 +794,6 @@
         
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": null,
       "submissibilityCriterion": {
         
@@ -839,7 +828,6 @@
         
       ],
       "shouldFinishImmediately": false,
-      "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "afterSubmissionCommands": [

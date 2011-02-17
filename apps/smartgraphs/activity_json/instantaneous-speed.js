@@ -139,7 +139,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "dataset": "slope-data"
         }
       ],
-      "shouldWaitForSubmissibleResponse": true,
       "defaultBranch": "/shared/instantaneous-speed/page/12/step/2",
       "submitButtonTitle": "OK"
     },
@@ -170,7 +169,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
@@ -207,7 +205,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
@@ -843,7 +840,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
           "criterion": ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
@@ -894,7 +890,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
           "criterion": ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
@@ -931,7 +926,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-B"], ["indexOf", "second-point-B"]]],
@@ -968,7 +962,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldWaitForSubmissibleResponse": true,
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-B"], ["indexOf", "second-point-B"]]],
@@ -1631,7 +1624,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           }
         }
       ],
-      "shouldWaitForSubmissibleResponse": true,
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "isFinalStep": true,
       "hideSubmitButton": true,
