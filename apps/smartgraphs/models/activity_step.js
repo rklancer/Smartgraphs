@@ -172,7 +172,10 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   substitutedExpressions: SC.Record.attr(Array),
   
-  
+  /** 
+    Tool(s) to start when the step opens.
+  */
+  tools: SC.Record.attr(Array, { defaultValue: [] }),
   /**
     A set of names to be defined in the current context, together with expressions that define their values.
     Processed in order before startCommands.

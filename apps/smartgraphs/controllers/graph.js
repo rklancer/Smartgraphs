@@ -97,12 +97,7 @@ Smartgraphs.GraphController = SC.ObjectController.extend( Smartgraphs.Annotation
       self.addDataset(Smartgraphs.activityObjectsController.findDataset(datasetName));
     });
     
-    initial = this.get('initialAnnotations') || [];
-    initial.forEach( function (annotation) {
-      // FIXME data format can now be updated to initialAnnotations is a list of names, just like initialDatasets
-      // FIXME make this lazy load in case the annotations don't exist yet!
-      self.addAnnotation(Smartgraphs.activityObjectsController.findAnnotation(annotation.name));
-    });
+    this.addAnnotationsByName(this.get('initialAnnotations'));
   },
   
   /**

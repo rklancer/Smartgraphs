@@ -133,9 +133,11 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     
     @param {String} args.datasetName
       The name of the Dataset to be displayed in the table.
+    @param {String[]} [args.annotations]
+      Optional list of names of annotations to add to the table when it is opened
   */
   showTable: function (context, args) {
-    Smartgraphs.activityViewController.showTable(args.pane, args.datasetName);  
+    Smartgraphs.activityViewController.showTable(args.pane, args.datasetName, args.annotations);  
   },
   
   /**
@@ -413,20 +415,24 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
       The name of the dataset we are choosing a data point from
     @param {String} args.color
       Color of the HighlightedPoint to create. Currently used only if the HighlightedPoint did not exist before this
-      command.     
+      command.
   */
   startInteractiveSelection: function (context, args) {
-    var graphController = Smartgraphs.GraphController.controllerForName[args.graphName];
-    var dataset = graphController && graphController.findDatasetByName(args.datasetName);
-  
-    if ( !dataset ) return YES;        // handled, but invalid graphName or dataset...
-    var tableController = Smartgraphs.TableController.controllerForDataset[args.datasetName];
-    
-    var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName);
-    if (!annotation) annotation = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
+    var dataset = Smartgraphs.activityObjectsController.findDataset(args.datasetName),
+        annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName),
+        graphController,
+        tableController;
+        
+    if (args.graphName) {
+      // old code path (the new code path can safely assume the annotation has been created and added to a graph or table)
+      graphController = Smartgraphs.GraphController.controllerForName[args.graphName];
+      tableController = Smartgraphs.TableController.controllerForDataset[args.datasetName];
 
-    graphController.addAnnotation(annotation);
-    if (tableController) tableController.addAnnotation(annotation);
+      if (!annotation) annotation = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
+
+      graphController.addAnnotation(annotation);
+      if (tableController) tableController.addAnnotation(annotation);
+    } 
     
     // stash the info needed by the state
     Smartgraphs.interactiveSelectionController.set('annotation', annotation);

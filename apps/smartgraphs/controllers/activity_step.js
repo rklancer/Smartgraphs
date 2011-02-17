@@ -54,6 +54,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Smartgraphs.statechart.sendAction('enableSubmission');
 
     this.setContextVars(this.get('contextVars'));
+    this.startTools();
     this.executeCommands(this.get('startCommands'));
     this.processSubstitutions(this.get('substitutedExpressions'));
    
@@ -77,6 +78,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   setupPane: function (pane, config) {
+    var name, id;
+    
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     if (!pane) return;
     
@@ -86,11 +89,35 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
     
     switch (config.type) {
-      case 'graph': 
-        Smartgraphs.statechart.sendAction('showGraph', this, { pane: pane, name: config.name });
-        return;        
+      case 'graph':
+        if (!config.name) {
+          // new code path:
+          // temporarily and somewhat hackily creates a Graph object to be opened in the graphController.
+          // (When all activities are switched over to the next json format, we can revisit existence of Graph model.)
+
+          // no existing activities use an 'graphN' as the graph name, and no new ones are going be created, so:
+          id = Smartgraphs.getNextGuid();
+          name = 'graph'+id;
+          Smartgraphs.store.createRecord(Smartgraphs.Graph, {
+            url: id,
+            activity: Smartgraphs.activityController.get('id'),
+            name: name,
+            title: config.title,
+            xAxis: config.xAxis,
+            yAxis: config.yAxis,
+            initialDatasets: config.datasets,
+            initialAnnotations: config.annotations
+          });
+        }
+        else {
+          // old code path
+          name = config.name;
+        }
+        // FIXME stop using actions for all this stuff!
+        Smartgraphs.statechart.sendAction('showGraph', this, { pane: pane, name: name });
+        return;
       case 'table':
-        Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, datasetName: config.datasetName } );
+        Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, datasetName: config.datasetName, annotations: config.annotations } );
         return;
       case 'image':
         Smartgraphs.statechart.sendAction('showImage', this, { pane: pane, path: config.path, caption: config.caption });
@@ -106,7 +133,20 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     });
   },
   
-  
+  startTools: function () {
+    var tools = this.get('tools');
+    tools.forEach( function (toolSpec) {
+      // hastily special-cased for demo purposes until we figure out an extensible way to define the tools
+      switch (toolSpec.type) {
+        case "interactiveSelection":
+          Smartgraphs.statechart.sendAction('startInteractiveSelection', null, { annotationName: toolSpec.annotation, datasetName: toolSpec.dataset });
+          break;
+        default:
+          throw "unknown tool " + toolSpec.type;
+      }
+    });
+  },
+
   executeCommands: function (commands) {
     if (!commands) return;
 
