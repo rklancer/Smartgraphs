@@ -277,18 +277,27 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     
     @param {String} args.name
       The name of the Annotation object.
-    @param {String} args.graphName
+    @param {String} [args.graphName]
       The name of the graph on which the Annotation should be displayed.
     @param {String} args.tableName
       The name of the table (or dataset) on which the Annotation should be displayed.
   */
   addAnnotation: function (context, args) {
-    var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.name);
+    var annotation = Smartgraphs.activityObjectsController.findAnnotation(args.name),
+        graphController;
+        
     if (!annotation) return YES;
-    
-    if (args.graphName && Smartgraphs.GraphController.controllerForName[args.graphName]) {
-      Smartgraphs.GraphController.controllerForName[args.graphName].addAnnotation(annotation);
+
+    if (args.graphName) {
+      // old code path: graph is specified by graphName      
+      graphController = Smartgraphs.GraphController.controllerForName[args.graphName];
     }
+    else if (args.pane) {
+      // new code path: graph is specified by pane (temporarily; eventually, addAnnotation won't be used)      
+      graphController = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
+    }
+
+    if (graphController) graphController.addAnnotation(annotation);
 
     if (args.tableName && Smartgraphs.TableController.controllerForDataset[args.tableName]) {
       Smartgraphs.TableController.controllerForDataset[args.tableName].addAnnotation(annotation);
