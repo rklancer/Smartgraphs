@@ -30,16 +30,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "/shared/instantaneous-speed/axes/15m"
     ],
     "graphs": [
-      "/shared/instantaneous-speed/graph/freehand-walking-normal",
-      "/shared/instantaneous-speed/graph/prediction-walking-normal",
-      "/shared/instantaneous-speed/graph/freehand-walking-slow",
-      "/shared/instantaneous-speed/graph/prediction-walking-slow",
-      "/shared/instantaneous-speed/graph/sensor-normal-walking",
-      "/shared/instantaneous-speed/graph/sensor-result-normal-walking",
-      "/shared/instantaneous-speed/graph/sensor-slow-walking",
-      "/shared/instantaneous-speed/graph/sensor-result-slow-walking",
-      "/shared/instantaneous-speed/graph/slope-graph",
-      "/shared/instantaneous-speed/graph/slope-graph-analyze"
+    
     ],
     "responseTemplates": [
       "/components/response-template/open",
@@ -128,7 +119,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         },
         "bottom": {
           "type": "table",
-          "datasetName": "slope-data",  // rename this field to just "dataset"
+          "dataset": "slope-data",
           "annotations": ["first-point-A"]
         }
       },
@@ -149,24 +140,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
-      "startCommands": [
-        {
-          "action": "startInteractiveSelection",
-          "literalArgs": {
-            "annotationName": "second-point-A",
-            "graphName": "slope-graph",
-            "datasetName": "slope-data",
-            "color": "#1f77b4"
-          }
+      "tools": [
+        { "type": "interactiveSelection",
+          "annotation": "second-point-A",
+          "dataset": "slope-data"
         }
       ],
       "responseBranches": [
@@ -185,24 +175,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
-      "startCommands": [
-        {
-          "action": "startInteractiveSelection",
-          "literalArgs": {
-            "annotationName": "second-point-A",
-            "graphName": "slope-graph",
-            "datasetName": "slope-data",
-            "color": "#1f77b4"
-          }
+      "tools": [
+        { "type": "interactiveSelection",
+          "annotation": "second-point-A",
+          "dataset": "slope-data"
         }
       ],
       "responseBranches": [
@@ -221,12 +210,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -243,6 +236,10 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
         { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
       ],
+      
+      // FIXME This is the next thing to replace ... we want to declaratively represent the new annotations created/defined
+      // in this step. (instead of creating the annotation here, we'll tell how to *specify* it in a 'newAnnotations' field
+      
       "startCommands": [
         {
           "action": "createLineThroughPoints",
@@ -258,10 +255,11 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "action": "addAnnotation",
           "literalArgs": {
             "name": "slope-line-A",
-            "graphName": "slope-graph"
+            "pane": "top"
           }
         }
       ],
+      
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -279,12 +277,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -307,12 +309,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -333,7 +339,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "action": "addAnnotation",
           "literalArgs": {
             "name": "rise-arrow-A",
-            "graphName": "slope-graph"
+            "pane": "top"
           }
         }
       ],
@@ -354,12 +360,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -402,12 +412,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -427,12 +441,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -467,7 +485,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "action": "addAnnotation",
           "literalArgs": {
             "name": "run-arrow-A",
-            "graphName": "slope-graph"
+            "pane": "top"
           }
         }
       ],
@@ -488,12 +506,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
@@ -535,12 +557,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A", "run-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
@@ -583,12 +609,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A", "run-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A", "run-bracket-A"]
         }
       },
       "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -608,12 +638,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -623,36 +657,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-position-units",
         "change-time",
         "change-time-units"
-      ],
-      "startCommands": [
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "run-arrow-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "run-bracket-A",
-            "tableName": "slope-data"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "rise-arrow-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "rise-bracket-A",
-            "tableName": "slope-data"
-          }
-        }
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
@@ -671,12 +675,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -705,12 +713,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -735,12 +747,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A"]
         }
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
@@ -790,15 +806,25 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B"]
         }
       },
       "beforeText": "<p>Choose a point that is different from those you selected earlier. Then click <b>OK</b>.</p>",
+      "tools": [
+        { "type": "interactiveSelection",
+          "annotation": "first-point-B",
+          "dataset": "slope-data"
+        }
+      ],
       "startCommands": [
         {
           "action": "setAnnotationAttribute",
@@ -812,31 +838,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "literalArgs": {
             "name": "second-point-A",
             "pointColor": "#f2b3b3"
-          }
-        },        
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "first-point-A",
-            "graphName": "slope-graph",
-            "tableName": "slope-data"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "second-point-A",
-            "graphName": "slope-graph",
-            "tableName": "slope-data"         
-          }
-        },
-        {
-          "action": "startInteractiveSelection",
-          "literalArgs": {
-            "annotationName": "first-point-B",
-            "graphName": "slope-graph",
-            "datasetName": "slope-data",
-            "color": "#ff7f0d"
           }
         }
       ],
@@ -856,38 +857,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B"]
         }
       },
       "beforeText": "<p>Try again.</p><p>Choose a point that is <b>different</b> from those you selected earlier. Then click <b>OK</b>.</p>",
-      "startCommands": [
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "first-point-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "second-point-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "startInteractiveSelection",
-          "literalArgs": {
-            "annotationName": "first-point-B",
-            "graphName": "slope-graph",
-            "datasetName": "slope-data",
-            "color": "#ff7f0d"
-          }
+      "tools": [
+        { "type": "interactiveSelection",
+          "annotation": "first-point-B",
+          "dataset": "slope-data"
         }
       ],
       "responseBranches": [
@@ -906,24 +892,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
-      "startCommands": [
-        {
-          "action": "startInteractiveSelection",
-          "literalArgs": {
-            "annotationName": "second-point-B",
-            "graphName": "slope-graph",
-            "datasetName": "slope-data",
-            "color": "#ff7f0c"
-          }
+      "tools": [
+        { "type": "interactiveSelection",
+          "annotation": "second-point-B",
+          "dataset": "slope-data"
         }
       ],
       "responseBranches": [
@@ -942,24 +927,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
-      "startCommands": [
-        {
-          "action": "startInteractiveSelection",
-          "literalArgs": {
-            "annotationName": "second-point-B",
-            "graphName": "slope-graph",
-            "datasetName": "slope-data",
-            "color": "#ff7f0c"
-          }
+      "tools": [
+        { "type": "interactiveSelection",
+          "annotation": "second-point-B",
+          "dataset": "slope-data"
         }
       ],
       "responseBranches": [
@@ -978,12 +962,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -1015,7 +1003,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "action": "addAnnotation",
           "literalArgs": {
             "name": "slope-line-B",
-            "graphName": "slope-graph"
+            "pane": "top"
           }
         }
       ],
@@ -1036,12 +1024,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -1064,12 +1056,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -1090,7 +1086,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "action": "addAnnotation",
           "literalArgs": {
             "name": "rise-arrow-B",
-            "graphName": "slope-graph"
+            "pane": "top"
           }
         }
       ],
@@ -1111,12 +1107,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -1159,12 +1159,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1184,12 +1188,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -1224,7 +1232,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "action": "addAnnotation",
           "literalArgs": {
             "name": "run-arrow-B",
-            "graphName": "slope-graph"
+            "pane": "top"
           }
         }
       ],
@@ -1245,12 +1253,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
@@ -1285,7 +1297,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "action": "addAnnotation",
           "literalArgs": {
             "name": "run-arrow-B",
-            "graphName": "slope-graph"
+            "pane": "top"
           }
         }
       ],
@@ -1306,12 +1318,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B", "run-arrow-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
@@ -1354,12 +1370,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B", "run-arrow-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B", "run-bracket-B"]
         }
       },
       "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1379,12 +1399,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -1394,36 +1418,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-position-units",
         "change-time",
         "change-time-units"
-      ],
-      "startCommands": [
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "run-arrow-B",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "run-bracket-B",
-            "tableName": "slope-data"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "rise-arrow-B",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "removeAnnotation",
-          "literalArgs": {
-            "name": "rise-bracket-B",
-            "tableName": "slope-data"
-          }
-        }
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
@@ -1442,12 +1436,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -1476,12 +1474,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1506,12 +1508,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
-          "graphName": "slope-graph",
-          "datasetName": "slope-data"
+          "dataset": "slope-data",
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
         }
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
@@ -1561,9 +1567,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "panes": {
         "top": {
           "type": "graph",
-          "name": "slope-graph"
-        },
-        "bottom": null
+          "title": "Position vs. Time",
+          "xAxis": "/shared/instantaneous-speed/axes/10s",
+          "yAxis": "/shared/instantaneous-speed/axes/15m",
+          "datasets": ["slope-data"],
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "first-point-B", "second-point-B", "slope-line-B"]
+        }
       },
       "responseTemplate": "/components/response-template/open",
       "startCommands": [
@@ -1579,48 +1588,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "literalArgs": {
             "name": "second-point-B",
             "pointColor": "#f2b3b3"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "slope-line-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "first-point-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "second-point-A",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "slope-line-B",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "first-point-B",
-            "graphName": "slope-graph"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "second-point-B",
-            "graphName": "slope-graph"
           }
         }
       ],
