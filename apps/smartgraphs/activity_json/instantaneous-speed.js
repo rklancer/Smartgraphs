@@ -23,10 +23,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
     ],
     "axes": [
       "/shared/instantaneous-speed/axes/10s",
-      "/shared/instantaneous-speed/axes/15s",
-      "/shared/instantaneous-speed/axes/30s",
-      "/shared/instantaneous-speed/axes/4.5m",
-      "/shared/instantaneous-speed/axes/5m",
       "/shared/instantaneous-speed/axes/15m"
     ],
     "graphs": [
@@ -1608,39 +1604,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "max": 10,
       "nSteps": 5,
       "label": "Time"
-    },
-    {
-      "url": "/shared/instantaneous-speed/axes/15s",
-      "units": "/builtins/units/seconds",
-      "min": 0,
-      "max": 15,
-      "nSteps": 15,
-      "label": "Time"
-    },
-    {
-      "url": "/shared/instantaneous-speed/axes/30s",
-      "units": "/builtins/units/seconds",
-      "min": 0,
-      "max": 30,
-      "nSteps": 6,
-      "label": "Time"
-    },
-    {
-      "url": "/shared/instantaneous-speed/axes/4.5m",
-      "units": "/builtins/units/meters",      
-      "min": 0,
-      "max": 4.5,
-      "nSteps": 9,
-      "label": "Position"
-    },
-
-    {
-      "url": "/shared/instantaneous-speed/axes/5m",
-      "units": "/builtins/units/meters",      
-      "min": 0,
-      "max": 5,
-      "nSteps": 10,
-      "label": "Position"
     },
     {
       "url": "/shared/instantaneous-speed/axes/15m",
