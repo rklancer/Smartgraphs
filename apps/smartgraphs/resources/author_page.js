@@ -34,7 +34,7 @@ Smartgraphs.authorPageDef = SC.Page.extend({
 
           classNames: 'text-wrapper'.w(),
 
-          childViews: 'introTextView introTextHintView'.w(),
+          childViews: 'introTextView introTextHintView activityStepView'.w(),
           
           // If the introText contents < 100px in height, adjust to this height before inline editing
           minEditorHeight: 100,
@@ -83,7 +83,7 @@ Smartgraphs.authorPageDef = SC.Page.extend({
             mouseDown: function () {
               this.beginEditing();
             }
-          }),
+          }),//introTextView
           
           introTextHintView: SC.LabelView.design({
             value: "<p>Introduce Page Here...</p>",
@@ -119,9 +119,27 @@ Smartgraphs.authorPageDef = SC.Page.extend({
               this.$().removeClass('hovered');
               this.adjust('height', this.get('originalHeight'));
             }
-          })
+          }),// introTextHintView
           
-        })
+          activityStepView: SC.View.design({          
+            useStaticLayout: YES,
+            
+            isVisibleBinding: 'Smartgraphs.activityStepController.dialogTextHasContent',
+
+            childViews: 'beforeTextView afterTextView'.w(),
+            classNames: 'dialog-text'.w(),
+
+            beforeTextView: SC.StaticContentView.design({
+              contentBinding: 'Smartgraphs.activityStepController.beforeText',
+              isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.beforeText')
+            }),
+
+            afterTextView: SC.StaticContentView.design({
+              contentBinding: 'Smartgraphs.activityStepController.afterText',
+              isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.afterText')
+            })
+          }) // activityStepView
+        }) // textWrapper
       })
     }),
     
