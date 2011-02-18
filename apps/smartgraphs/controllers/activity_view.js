@@ -47,14 +47,22 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   
   canGotoNextPage: null,
   canGotoNextPageBinding: 'Smartgraphs.activityController.canGotoNextPage',
+
   canSubmit: null,
   canSubmitBinding: 'Smartgraphs.activityStepController.canSubmit',
+  canSubmitBindingDefault: SC.Binding.oneWay(),
+
   isFinalStep: null,
   isFinalStepBinding: 'Smartgraphs.activityStepController.isFinalStep',
+  isFinalStepBindingDefault: SC.Binding.oneWay(),
+  
   hideSubmitButton: null,
   hideSubmitButtonBinding: 'Smartgraphs.activityStepController.hideSubmitButton',
+  hideSubmitButtonBindingDefault: SC.Binding.oneWay(),
+  
   nextButtonShouldSubmit: null,
   nextButtonShouldSubmitBinding: 'Smartgraphs.activityStepController.nextButtonShouldSubmit',
+  nextButtonShouldSubmitBindingDefault: SC.Binding.oneWay(),
 
   isFirstPage: NO,
   isFirstPageBinding: 'Smartgraphs.activityPagesController.isFirstPage',
@@ -69,6 +77,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     
   enableSubmitButton: null,
   enableSubmitButtonBinding: 'Smartgraphs.activityStepController.canSubmit',
+  enableSubmitButtonBindingDefault: SC.Binding.oneWay(),
     
   showNextPageButton: null,
   showNextPageButtonBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage'),
