@@ -13,18 +13,12 @@
 Smartgraphs.activityOutlineController = SC.TreeController.create(
 /** @scope Smartgraphs.activityOutlineController.prototype */ {
   
-  treeItemIsGrouped: function () {
-    return !this.get('shouldSelectPageInOutline');
-  }.property('shouldSelectPageInOutline').cacheable(),
-  
   allowsMultipleSelection: NO,
   allowsEmptySelection: YES,
   contentBinding: SC.Binding.oneWay('Smartgraphs.activityPagesController.outline'),
   
+  // default is that selection is not allowed when running an activity; this is overridden to YES in the AUTHOR state
   isSelectable: NO,
-
-  // (temporary) whether to highlight the current step or the current page
-  shouldSelectPageInOutline: NO,
 
   /**
     When the activity step changes in the live activity, find the corresponding item in the 'outline' data
@@ -45,23 +39,26 @@ Smartgraphs.activityOutlineController = SC.TreeController.create(
     
     var pageInOutline = outline.get('treeItemChildren').objectAt(pageIndex);
     
-    if (this.get('shouldSelectPageInOutline')) {
-      this.selectObject(pageInOutline);
-    }
-    else {      
-      var step = Smartgraphs.activityStepController.get('content');
-      var stepIndex = pageInOutline.get('steps').indexOf(step);
-      if (stepIndex < 0) return;
-  
-      this.selectObject(pageInOutline.get('treeItemChildren').objectAt(stepIndex));
-    }
+    var step = Smartgraphs.activityStepController.get('content');
+    var stepIndex = pageInOutline.get('steps').indexOf(step);
+    if (stepIndex < 0) return;
+    
+    this.selectObject(pageInOutline.get('treeItemChildren').objectAt(stepIndex));
   }.observes('currentStep', 'currentPage'),
   
   selectionDidChange: function () {
-    // only allow selection of pages for now.
-    var selectedObject = this.get('selection').firstObject();
-    var page = selectedObject ? selectedObject.get('page') : null;
-    if (page) Smartgraphs.activityPageController.set('content', page);
+    var selectedObject = this.get('selection').firstObject(),
+        step = selectedObject && selectedObject.get('step'),
+        page = selectedObject && selectedObject.get('page');
+    
+    if (page) {
+      Smartgraphs.activityPageController.set('content', page);
+      Smartgraphs.activityStepController.set('content', null);
+    }
+    else if (step) {
+      Smartgraphs.activityPageController.set('content', step.get('activityPage'));
+      Smartgraphs.activityStepController.set('content', step);
+    }
   }.observes('selection')
   
 });

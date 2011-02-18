@@ -17,7 +17,6 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
 {
 
   allowsMultipleSelection: NO,
-  shouldShowStepsInOutline: YES,
 
   // use rather than a binding because the opposite side also uses an observer (to update immediately)
   currentPageDidChange: function () {
@@ -70,7 +69,6 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   }.observes('[]'),
   
   outline: function () {
-    var skipSteps = !this.get('shouldShowStepsInOutline');
     var contentLength = this.getPath('content.length') || 0;
 
     return contentLength === 0 ? null : SC.Object.create({
@@ -82,9 +80,10 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
         return SC.Object.create({
           title: page.get('name') || 'Page %@'.fmt(page.get('pageNumber') + 1),
           treeItemIsExpanded: YES,
+          treeItemIsGrouped: NO,
           page: page,
-          steps: skipSteps ? undefined : page.get('steps'),       
-          treeItemChildren: skipSteps ? undefined : page.get('steps').map( function (step) {
+          steps: page.get('steps'),
+          treeItemChildren: page.get('steps').map( function (step) {
             return SC.Object.create({
               title: 'Step %@'.fmt(stepNum++),
               step: step,
@@ -96,6 +95,7 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
       })
     });
     // FIXME this will NOT update when steps are added/removed or have their properties changed
-  }.property('[]', 'shouldShowStepsInOutline').cacheable()
+    // (probably want to move the treeItem* properties to the model objects themselves, so 'outline' isn't necessary)
+  }.property('[]').cacheable()
   
 });
