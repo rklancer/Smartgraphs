@@ -69,21 +69,23 @@ Smartgraphs.sessionController = SC.ObjectController.create(
   endSession: function () {
     if ( !this.get('content') ) throw "endSession was called when no session is open!";
     
-    var parentStore = Smartgraphs.store.get('parentStore');
+    var parentStore = Smartgraphs.store.get('parentStore'),
+        activityId = Smartgraphs.activityController.get('id'),    
+        pageId = Smartgraphs.activityPageController.get('id'),
+        stepId = Smartgraphs.activityStepController.get('id'),
+        pages, page, steps, step,
+        changelog;
 
     if (!parentStore) {
       throw "Tried to end session, but there is no parent store to restore";
     }
-    
-    var activityId = Smartgraphs.activityController.get('id');    
-    var pageId = Smartgraphs.activityPageController.get('id');
-    
+   
     // let everything sync so that, e.g., graph views removes child views representing datasets & annotations that are 
     // about to be removed from the current datastore
     SC.RunLoop.begin().end();
     
     // TODO save these modified objects up to the server. Until we need that capability, we'll just throw them away.
-    var changelog = Smartgraphs.store.get('changelog') || [];
+    changelog = Smartgraphs.store.get('changelog') || [];
     changelog.forEach( function (storeKey) {
       // hack hack hack ... (permanently disable observers for these records)
       var rec = Smartgraphs.store.materializeRecord(storeKey);
@@ -102,12 +104,17 @@ Smartgraphs.sessionController = SC.ObjectController.create(
     Smartgraphs.activityOutlineController.set('selection', SC.SelectionSet.create());
     
     // ..and set the activity controllers back to point to records from the parent store.
-    // TODO: is there a more elegant way to do this?
+    // FIXME: surely there's a more elegant way to do this
     Smartgraphs.activityController.set('content', Smartgraphs.store.find(Smartgraphs.Activity, activityId));
-    var pages = Smartgraphs.activityController.get('pages');
-    var page = pages && pages.findProperty('id', pageId);
-    if (pages) Smartgraphs.activityPagesController.set('content', pages);
-    if (page) Smartgraphs.activityPageController.set('content', page);
+
+    pages = Smartgraphs.activityController.get('pages');
+    page = pages && pages.findProperty('id', pageId) || null;
+    steps = page && page.get('steps') || null;
+    step = steps && steps.findProperty('id', stepId) || null;
+    
+    Smartgraphs.activityPagesController.set('content', pages);
+    Smartgraphs.activityPageController.set('content', page);
+    Smartgraphs.activityStepController.set('content', step);
 
     this.set('content', null);
   }
