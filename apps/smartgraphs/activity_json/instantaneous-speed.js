@@ -210,7 +210,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
@@ -232,30 +232,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
         { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
       ],
-      
-      // FIXME This is the next thing to replace ... we want to declaratively represent the new annotations created/defined
-      // in this step. (instead of creating the annotation here, we'll tell how to *specify* it in a 'newAnnotations' field
-      
-      "startCommands": [
-        {
-          "action": "createLineThroughPoints",
-          "literalArgs": {
-            "lineName": "slope-line-A",
-            "firstPoint": "first-point-A",
-            "secondPoint": "second-point-A",
-            "graphName": "slope-graph",
-            "color": "#1f77b4"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "slope-line-A",
-            "pane": "top"
-          }
-        }
-      ],
-      
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -962,7 +938,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
@@ -983,25 +959,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
         { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
         { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
-      ],
-      "startCommands": [
-        {
-          "action": "createLineThroughPoints",
-          "literalArgs": {
-            "lineName": "slope-line-B",
-            "firstPoint": "first-point-B",
-            "secondPoint": "second-point-B",
-            "graphName": "slope-graph",
-            "color": "#ff7f0d"
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "slope-line-B",
-            "pane": "top"
-          }
-        }
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
@@ -1762,6 +1719,28 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
     }
   ],
   "annotations": [
+    { "type": "LineThroughPoints",
+      "records": [
+        {
+          "url": "/shared/instantaneous-speed/annotation/slope-line-A",
+          "name": "slope-line-A",
+          "activity": "/shared/instantaneous-speed",
+          "session": null,
+          "point1": "first-point-A",
+          "point2": "second-point-A",
+          "color": "#1f77b4"
+        },
+        {
+          "url": "/shared/instantaneous-speed/annotation/slope-line-B",
+          "name": "slope-line-B",
+          "activity": "/shared/instantaneous-speed",
+          "session": null,
+          "point1": "first-point-B",
+          "point2": "second-point-B",
+          "color": "#ff7f0d"
+        }
+      ]
+    },
     {
       "type": "HighlightedPoint",
       "records": [
