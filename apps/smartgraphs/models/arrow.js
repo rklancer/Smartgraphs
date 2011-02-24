@@ -1,18 +1,19 @@
 // ==========================================================================
 // Project:   Smartgraphs.Arrow
-// Copyright: ©2010 Concord Consortium
-// @author    Parker Morse <pmorse@cantinaconsulting.com>
+// Copyright: ©2010-2011 Concord Consortium
+// Author:    Parker Morse <pmorse@cantinaconsulting.com>
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
 sc_require('models/annotation');
-sc_require('models/data_point');
 sc_require('views/arrow');
 
 /** @class
 
-  Arrow is an Annotation which, given two points, shows a line between those points, with an
-  arrowhead on the side of the second point, and an optional text label. 
+  An Arrow annotation to be drawn on the graph. In this base class, the arrow's end points are specified by 2 (x,y)
+  pairs. Semantically meaningful subclasses may choose to define additional properties (such as DataPoints being 
+  pointed at, or between which arrows should be drawn) and derive (x1, y1) and (x2, y2) from those properties.
 
   @extends Smartgraphs.Annotation
   @version 0.1
@@ -21,68 +22,130 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.Arrow.prototype */ {
 
   /**
-    The first of the two points which define the hypotenuse line.
-    
-    @property {Smartgraphs.DataPoint}
+    x-coordinate of start point
+
+    @property {Number}
   */
-  point1: SC.Record.toOne('Smartgraphs.DataPoint'),
+  x1: SC.Record.attr(Number),
 
   /**
-    The second of the two points which define the hypotenuse line.
+    y-coordinate of start point
     
-    @property {Smartgraphs.DataPoint}
+    @property {Number}
   */
-  point2: SC.Record.toOne('Smartgraphs.DataPoint'),
+  y1: SC.Record.attr(Number),
   
-  /** 
-    Should this arrow run directly from point1 to point2, or should it represent only
-    a horizontal vector of that movement?
+  /**
+    x-coordinate of end point
     
-    If true, the arrow will be drawn from point1 horizontally to a point directly below
-    point2.
-    
-    Default value is false.
-    
-    @property {Boolean}
+    @property {Number}
   */
-  isHorizontal: SC.Record.attr(Boolean, { defaultValue: false } ),
-  
-  /** 
-    Should this arrow run directly from point1 to point2, or should it represent only
-    a vertical vector of that movement?
-    
-    If true, the arrow will be drawn from a point level with point1, vertically to point2.
-    
-    isHorizontal and isVertical should not both be true. If the value of isHorizontal
-    is true, this value will be assumed false even if it is true.
-    
-    Default value is false.
-    
-    @property {Boolean}
-  */
-  isVertical: SC.Record.attr(Boolean, { defaultValue: false } ),
-  
-  /** 
-    If this arrow is horizontal or vertical, it must be drawn to a third point, the vertex shared by point1 & point2.
-    But there are two vertices to choose from. This specifies which vertex. There are two possibilities: if the vertex
-    is such that an arrow were drawn from point1 to the vertex, and another arrow were drawn from the vertex to point2, 
-    and the resulting arrows form a clockwise figure, this setting should be YES. Otherwise it is NO (the
-    counterclockwise case.)
-    
-    See ArrowAnnotation.png in the docs/ folder  
+  x2: SC.Record.attr(Number),
 
-    @property {Boolean}
+  /**
+    y-coordinate of end point
+
+    @property {Number}
   */
-  isClockwise: SC.Record.attr(Boolean, { defaultValue: false }),
+  y2: SC.Record.attr(Number),
   
+  // TODO:
+  // /**
+  //   This bitfield specifies what arrowheads should be drawn:
+  //   
+  //     no arrowheads (Smartgraphs.Arrow.NO_ARROW_HEADS),
+  //     an arrowhead at the start (Smartgraphs.Arrow.ARROW_HEAD_AT_START),
+  //     an arrowhead at the end (Smartgraphs.Arrow.ARROW_HEAD_AT_END),
+  //     an arrowhead at both ends (Smartgraphs.Arrow.ARROW_HEAD_AT_START_AND_END)
+  //   
+  //   @property {Number}
+  // */    
+  // arrowHeadsToShow: SC.Record.attr(Number, {defaultValue: 2}),    // FIXME: what's a good way to set this to Smartgraphs.Arrow.ARROW_HEAD_AT_END? 
+
   /**
     The optional text label for the arrow.
     
     @property {String}
   */
-  label: SC.Record.attr(String)
+  label: SC.Record.attr(String),
+  
+  /**
+    Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
+    override calculateCoordinatesFromPoints() to compute (x1, y1) and (x2, y2) from (p1, p2).
+    
+    @property {Smartgraphs.DataPoint}
+  */
+  p1: SC.Record.toOne('Smartgraphs.DataPoint'),
+  
+  /**
+    Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
+    override calculateCoordinatesFromPoints () to compute (x1, y1) and (x2, y2) from (p1, p2).
+    
+    @property {Smartgraphs.DataPoint}
+  */
+  p2: SC.Record.toOne('Smartgraphs.DataPoint'),
+
+  /**
+    Optional Tag object which can be used to indirectly specify p1
+    (TODO: change this from a HighlightedPoint to a Tag)
+
+    @property {Smartgraphs.Tag}
+  */
+  p1Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint'),
+
+  /**
+    Optional Tag object which can be used to indirectly specify p2
+    (TODO: change this from a HighlightedPoint to a Tag)
+
+    @property {Smartgraphs.Tag}
+  */
+  p2Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint'),
+  
+  // use this instead of a one-way binding to 'p1Tag.point' because we may ultimately support a variety of indirection
+  // properties, like p1Tag and p2Tag, which determine p1 and p2
+  _setPointsFromTags: function () {
+    var p1 = this.getPath('p1Tag.point'),
+        p2 = this.getPath('p2Tag.point');
+        
+    if (p1) this.setIfChanged('p1', p1);
+    if (p2) this.setIfChanged('p2', p2);
+  }.observes('*p1Tag.point', '*p2Tag.point'),
+  
+  _startAndEndDidChange: function () {
+    var p1 = this.get('p1'),
+        p2 = this.get('p2'),
+        coords;
+
+    if (!p1 || !p2) return;
+    
+    coords = this.calculateCoordinatesFromPoints(this.get('p1'), this.get('p2'));
+    
+    this.setIfChanged('x1', coords.x1);
+    this.setIfChanged('y1', coords.y1);
+    this.setIfChanged('x2', coords.x2);
+    this.setIfChanged('y2', coords.y2);
+  }.observes('*p1.x', '*p1.y', '*p2.x', '*p2.y'),
+  
+  /**
+    Calculate (x1, y1) and (x2, y2) from (p1, p2). The base class implementation sets x1 = p1.x, y1 = p1.y, etc, in 
+    order to draw an arrow that starts and p1 and ends at p2. Subclasses can override this method to draw an arrow
+    with different semantics.
+  */  
+  calculateCoordinatesFromPoints: function (p1, p2) {
+    return {
+      x1: p1.get('x'),
+      y1: p1.get('y'),
+      x2: p2.get('x'),
+      y2: p2.get('y')
+    };
+  }
   
 }) ;
 
 // let the graph view know how to instantiate a view class to display this item
 Smartgraphs.Arrow.viewClass = Smartgraphs.ArrowView;
+
+Smartgraphs.Arrow.NO_ARROW_HEADS = 0;
+Smartgraphs.Arrow.ARROW_HEAD_AT_START = 1;
+Smartgraphs.Arrow.ARROW_HEAD_AT_END = 2;
+Smartgraphs.Arrow.ARROW_HEAD_AT_START_AND_END = 3;
