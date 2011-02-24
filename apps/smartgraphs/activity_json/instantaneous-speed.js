@@ -121,8 +121,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Select a point and then click <b>OK</b>.</p>",
       "tools": [
-        { "type": "interactiveSelection",
-          "annotation": "first-point-A",
+        { "type": "dataPointTagging",
+          "tagName": "first-point-A",
           "dataset": "slope-data"
         }
       ],
@@ -150,8 +150,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
       "tools": [
-        { "type": "interactiveSelection",
-          "annotation": "second-point-A",
+        { "type": "dataPointTagging",
+          "tagName": "second-point-A",
           "dataset": "slope-data"
         }
       ],
@@ -185,8 +185,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
       "tools": [
-        { "type": "interactiveSelection",
-          "annotation": "second-point-A",
+        { "type": "dataPointTagging",
+          "tagName": "second-point-A",
           "dataset": "slope-data"
         }
       ],
@@ -792,8 +792,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Choose a point that is different from those you selected earlier. Then click <b>OK</b>.</p>",
       "tools": [
-        { "type": "interactiveSelection",
-          "annotation": "first-point-B",
+        { "type": "dataPointTagging",
+          "tagName": "first-point-B",
           "dataset": "slope-data"
         }
       ],
@@ -843,8 +843,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Try again.</p><p>Choose a point that is <b>different</b> from those you selected earlier. Then click <b>OK</b>.</p>",
       "tools": [
-        { "type": "interactiveSelection",
-          "annotation": "first-point-B",
+        { "type": "dataPointTagging",
+          "tagName": "first-point-B",
           "dataset": "slope-data"
         }
       ],
@@ -878,8 +878,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
       "tools": [
-        { "type": "interactiveSelection",
-          "annotation": "second-point-B",
+        { "type": "dataPointTagging",
+          "tagName": "second-point-B",
           "dataset": "slope-data"
         }
       ],
@@ -913,8 +913,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
       "tools": [
-        { "type": "interactiveSelection",
-          "annotation": "second-point-B",
+        { "type": "dataPointTagging",
+          "tagName": "second-point-B",
           "dataset": "slope-data"
         }
       ],

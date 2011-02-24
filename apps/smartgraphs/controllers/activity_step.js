@@ -138,8 +138,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     tools.forEach( function (toolSpec) {
       // hastily special-cased for demo purposes until we figure out an extensible way to define the tools
       switch (toolSpec.type) {
-        case "interactiveSelection":
-          Smartgraphs.statechart.sendAction('startInteractiveSelection', null, { annotationName: toolSpec.annotation, datasetName: toolSpec.dataset });
+        case "dataPointTagging":
+          Smartgraphs.statechart.sendAction('startInteractiveSelection', null, { annotationName: toolSpec.tagName, datasetName: toolSpec.dataset });
           break;
         default:
           throw "unknown tool " + toolSpec.type;
