@@ -100,7 +100,39 @@ body.sc-theme {
   font-size: 18px;
 }
 
-.text-wrapper .text-field-view-wrapper, .sc-view.dialog-text .sc-radio-view {
+.sc-view.json-editor .sc-view {
+  line-height: 1.4em;
+  padding: 3px;
+  position:relative;
+}
+
+.sc-view.json-editor .json-editor-code {
+  border: 1px solid #6699cc;
+  font: normal 12px monospace;
+  height:400px;
+}
+.sc-view.json-editor .json-editor-feedback {
+  font:bold 12px sans-serif;
+  color:white;
+  background-color:red;
+  padding:3px;
+}
+
+.sc-view.json-editor .sc-view.hovered {
+  border: 1px solid #6699cc;
+  padding: 2;
+  background-color: #ffffff;
+}
+
+.json-editor p, .json-editor h1, .json-editor img {
+  margin: 10px;
+}
+
+.json-editor h1 {
+  font-size: 18px;
+}
+
+.text-wrapper .text-field-view-wrapper, .sc-view.dialog-text .sc-radio-view   {
   margin: 10px;
 }
 

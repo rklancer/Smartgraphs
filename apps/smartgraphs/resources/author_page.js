@@ -153,7 +153,60 @@ Smartgraphs.authorPageDef = SC.Page.extend({
       childViews: 'dataView'.w(),
     
       dataView: SC.View.design({
-        layout: { top: 4, right: 4, bottom: 4, left: 4 }
+        layout: { 
+          top: 20, 
+          right: 20, 
+          bottom: 20, 
+          left: 20 
+        },
+        
+        childViews: 'jsonEditorFeedback panesAsJsonView'.w(),
+        classNames: 'json-editor'.w(),
+
+        jsonEditorFeedback: SC.LabelView.design({
+          classNames: 'json-editor-feedback'.w(),
+          valueBinding: 'Smartgraphs.activityStepController.jsonEditingFeedback',
+          escapeHTML: NO,
+          showEditor: NO,
+          isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.jsonEditingFeedback')
+        }),// jsonEditorFeedback
+
+        panesAsJsonView: SC.LabelView.design({
+          valueBinding: "Smartgraphs.activityStepController.panesJson",
+          useStaticLayout: YES,
+          escapeHTML: NO,
+          isEditable: YES,
+          isInlineEditorMultiline: YES,
+
+          classNames: 'json-editor-code'.w(),
+          
+          showEditor: NO,
+          showEditorDidChange: function () {
+            if (this.get('showEditor')) this.beginEditing();
+          }.observes('showEditor'),
+          
+          beginEditing: function () {
+            sc_super();
+          },
+          
+          inlineEditorDidEndEditing: function () {
+            sc_super();
+            this.set('showEditor', NO);
+          },
+          
+          mouseEntered: function () {
+            this.$().addClass('hovered');     
+          },
+          
+          mouseExited: function () {
+            this.$().removeClass('hovered');
+          },
+          
+          mouseDown: function () {
+            this.beginEditing();
+          }
+        })
+
       })
     })
   })

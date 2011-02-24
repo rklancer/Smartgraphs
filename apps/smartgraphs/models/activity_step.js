@@ -142,6 +142,20 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   panes: SC.Record.attr(Object),
   
   /**
+    JSON representation of the panes property. 
+    
+    @property {String}
+  */
+  panesJson: SC.Record.attr(String),
+
+  /**
+    String containing feedback for authors editing JSON representations of activity step properties.
+    
+    @property {String}
+  */
+  jsonEditingFeedback: SC.Record.attr(String),
+
+  /**
     HTML-formatted text to display above the response template. Text here should be wrapped within html elements such
     as &lt;h1&gt; or &lt;p&gt; in order to be correctly styled.
     
