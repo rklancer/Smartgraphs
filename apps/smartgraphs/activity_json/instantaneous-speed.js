@@ -285,7 +285,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"]
         },
         "bottom": {
           "type": "table",
@@ -296,25 +296,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the graph.</p>",
-      "startCommands": [
-        {
-          "action": "createRiseArrow",
-          "literalArgs": {
-            "arrowName": "rise-arrow-A",
-            "firstPoint": "first-point-A",
-            "secondPoint": "second-point-A",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "rise-arrow-A",
-            "pane": "top"
-          }
-        }
-      ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -417,7 +398,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"]
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A", "run-arrow-A"]
         },
         "bottom": {
           "type": "table",
@@ -442,23 +423,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
             "name": "rise-bracket-A",
             "isHighlighted": false
           }
-        },
-        {
-          "action": "createRunArrow",
-          "literalArgs": {
-            "arrowName": "run-arrow-A",
-            "firstPoint": "first-point-A",
-            "secondPoint": "second-point-A",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "run-arrow-A",
-            "pane": "top"
-          }
         }
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -482,7 +446,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"]
+          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A", "run-arrow-A"]
         },
         "bottom": {
           "type": "table",
@@ -490,28 +454,25 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
         }
       },
-      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
-      "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
         {
-          "action": "createRunArrow",
+          "action": "setAnnotationAttribute",
           "literalArgs": {
-            "arrowName": "run-arrow-A",
-            "firstPoint": "first-point-A",
-            "secondPoint": "second-point-A",
-            "color": "#cccccc",
-            "isHighlighted": true
+            "name": "rise-arrow-A",
+            "isHighlighted": false
           }
         },
         {
-          "action": "addAnnotation",
+          "action": "setAnnotationAttribute",
           "literalArgs": {
-            "name": "run-arrow-A",
-            "graphName": "slope-graph"
+            "name": "rise-bracket-A",
+            "isHighlighted": false
           }
         }
       ],
+      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Hint:Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1013,7 +974,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-A"]
         },
         "bottom": {
           "type": "table",
@@ -1024,25 +985,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the graph.</p>",
-      "startCommands": [
-        {
-          "action": "createRiseArrow",
-          "literalArgs": {
-            "arrowName": "rise-arrow-B",
-            "firstPoint": "first-point-B",
-            "secondPoint": "second-point-B",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "rise-arrow-B",
-            "pane": "top"
-          }
-        }
-      ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1145,7 +1087,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"]
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B", "run-arrow-B"]
         },
         "bottom": {
           "type": "table",
@@ -1170,23 +1112,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
             "name": "rise-bracket-B",
             "isHighlighted": false
           }
-        },
-        {
-          "action": "createRunArrow",
-          "literalArgs": {
-            "arrowName": "run-arrow-B",
-            "firstPoint": "first-point-B",
-            "secondPoint": "second-point-B",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "run-arrow-B",
-            "pane": "top"
-          }
         }
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1210,7 +1135,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"]
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B", "run-arrow-B"]
         },
         "bottom": {
           "type": "table",
@@ -1218,6 +1143,22 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
         }
       },
+      "startCommands": [
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-arrow-B",
+            "isHighlighted": false
+          }
+        },
+        {
+          "action": "setAnnotationAttribute",
+          "literalArgs": {
+            "name": "rise-bracket-B",
+            "isHighlighted": false
+          }
+        }
+      ],
       "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint:Look at the graph.</p>",
@@ -1234,23 +1175,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "literalArgs": {
             "name": "rise-bracket-B",
             "isHighlighted": false
-          }
-        },
-        {
-          "action": "createRunArrow",
-          "literalArgs": {
-            "arrowName": "run-arrow-B",
-            "firstPoint": "first-point-B",
-            "secondPoint": "second-point-B",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "run-arrow-B",
-            "pane": "top"
           }
         }
       ],
@@ -1725,7 +1649,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "url": "/shared/instantaneous-speed/annotation/slope-line-A",
           "name": "slope-line-A",
           "activity": "/shared/instantaneous-speed",
-          "session": null,
           "point1": "first-point-A",
           "point2": "second-point-A",
           "color": "#1f77b4"
@@ -1734,10 +1657,55 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "url": "/shared/instantaneous-speed/annotation/slope-line-B",
           "name": "slope-line-B",
           "activity": "/shared/instantaneous-speed",
-          "session": null,
           "point1": "first-point-B",
           "point2": "second-point-B",
           "color": "#ff7f0d"
+        }
+      ]
+    },
+    {
+      "type": "RiseArrow",
+      "records": [
+        {
+          "url": "/shared/instantaneous-speed/annotation/rise-arrow-A",
+          "name": "rise-arrow-A",
+          "activity": "/shared/instantaneous-speed",
+          "color": "#cccccc",
+          "isHighlighted": true,
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A"
+        },
+        {
+          "url": "/shared/instantaneous-speed/annotation/rise-arrow-B",
+          "name": "rise-arrow-B",
+          "activity": "/shared/instantaneous-speed",
+          "color": "#cccccc",
+          "isHighlighted": true,
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B"
+        }
+      ]
+    },
+    {
+      "type": "RunArrow",
+      "records": [
+        {
+          "url": "/shared/instantaneous-speed/annotation/run-arrow-A",
+          "name": "run-arrow-A",
+          "activity": "/shared/instantaneous-speed",
+          "color": "#cccccc",
+          "isHighlighted": true,
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A"
+        },
+        {
+          "url": "/shared/instantaneous-speed/annotation/run-arrow-B",
+          "name": "run-arrow-B",
+          "activity": "/shared/instantaneous-speed",
+          "color": "#cccccc",
+          "isHighlighted": true,
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B"
         }
       ]
     },
@@ -1748,7 +1716,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "url": "/shared/instantaneous-speed/annotation/first-point-A",
           "name": "first-point-A",
           "activity": "/shared/instantaneous-speed",
-          "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
@@ -1758,7 +1725,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "url": "/shared/instantaneous-speed/annotation/second-point-A",
           "name": "second-point-A",
           "activity": "/shared/instantaneous-speed",
-          "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
@@ -1768,7 +1734,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "url": "/shared/instantaneous-speed/annotation/first-point-B",
           "name": "first-point-B",
           "activity": "/shared/instantaneous-speed",
-          "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
@@ -1778,7 +1743,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "url": "/shared/instantaneous-speed/annotation/second-point-B",
           "name": "second-point-B",
           "activity": "/shared/instantaneous-speed",
-          "session": null,
           "point": null,
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
