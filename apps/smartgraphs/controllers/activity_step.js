@@ -78,8 +78,11 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   setupPane: function (pane, config) {
-    var name, id;
+    var name, id, 
+        allAnnotations = (config.annotations || []).concat(config.highlightedAnnotations || []);
     
+    this._setAnnotationHighlights(config.annotations, config.highlightedAnnotations);
+
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     if (!pane) return;
     
@@ -106,7 +109,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
             xAxis: config.xAxis,
             yAxis: config.yAxis,
             initialDatasets: config.datasets,
-            initialAnnotations: config.annotations
+            initialAnnotations: allAnnotations
           });
         }
         else {
@@ -117,12 +120,27 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         Smartgraphs.statechart.sendAction('showGraph', this, { pane: pane, name: name });
         return;
       case 'table':
-        Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, dataset: config.datasetName || config.dataset, annotations: config.annotations } );
+        Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, dataset: config.datasetName || config.dataset, annotations: allAnnotations } );
         return;
       case 'image':
         Smartgraphs.statechart.sendAction('showImage', this, { pane: pane, path: config.path, caption: config.caption });
         return;
     }
+  },
+  
+  _setAnnotationHighlights: function (annotationNames, highlightedAnnotationNames) {
+    annotationNames = annotationNames || [];
+    highlightedAnnotationNames = highlightedAnnotationNames || [];
+
+    annotationNames.forEach( function (name) {
+      var annotation = Smartgraphs.activityObjectsController.findAnnotation(name);
+      if (annotation) annotation.set('isHighlighted', NO);
+    });
+    
+    highlightedAnnotationNames.forEach( function (name) {
+      var annotation = Smartgraphs.activityObjectsController.findAnnotation(name);
+      if (annotation) annotation.set('isHighlighted', YES);
+    });
   },
 
   setContextVars: function (varDefs) {
