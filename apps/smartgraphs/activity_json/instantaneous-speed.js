@@ -974,7 +974,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-A"]
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
