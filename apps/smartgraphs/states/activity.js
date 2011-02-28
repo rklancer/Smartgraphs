@@ -348,9 +348,6 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
     @param {String} args.bracketName
       The name for this annotation
-    @param {String} args.datasetName
-      The name of the dataset which contains the point of the two HighlightedPoint annotations. This
-      is used to find the TableController which has that dataset open.
     @param {String} args.point1
       The name of the HighlightedPoint where the arc should start.
     @param {String} args.point2
@@ -360,30 +357,31 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     @param {String} [args.label]
       Optional label for the bracket
     @param {String} [args.isHighlighted=false]
-      Whether the bracket should be highlighted      
+      Whether the bracket should be highlighted
   */
   createRiseBracket: function (context, args) {
-    var controller = Smartgraphs.TableController.controllerForDataset[args.datasetName];
-    if (!controller) return YES;
-    var hp1 = controller.findAnnotationByName(args.point1);
-    var hp2 = controller.findAnnotationByName(args.point2);
+    var hp1 = Smartgraphs.activityObjectsController.findAnnotation(args.point1),
+        hp2 = Smartgraphs.activityObjectsController.findAnnotation(args.point2),
+        p1 = hp1.get('point'),
+        p2 = hp2.get('point'),
+        dataset = p1.get('dataset'),
+        points = dataset.get('points'),
+        p1Index = points.indexOf(p1),
+        p2Index = points.indexOf(p2);
     
-    // make to start from the point with the smaller x-value
-    var points = controller.getPath('dataset.points');  // note that dataset.points are always ordered by x-value
-    var indices = [hp1, hp2].getEach('point').map(points.indexOf, points);
-    if (indices[0] > indices[1]) indices = [indices[1], indices[0]];
+    // dataset.points is automatically sorted by x-value. Therefore the rise arrow always goes from lower to higher index.
+        
+    if (p1.get('dataset') !== p2.get('dataset')) return YES;
+
+    Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
+      item1Index: Math.min(p1Index, p2Index),
+      item2Index: Math.max(p1Index, p2Index),
+      isLeftOfColumn: NO,
+      color: args.color || '#cc0000',
+      isHighlighted: args.isHighlighted || NO,
+      label: args.label
+    });
     
-    var arc = 
-      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
-        startX: 230,
-        startY: (indices[0] * 20) + 20,
-        endX: 230,
-        endY: (indices[1] * 20) + 20,
-        color: args.color || '#cc0000',
-        isClockwise: YES,
-        isHighlighted: args.isHighlighted || NO,
-        label: args.label
-      });
     return YES;
   },
   
@@ -397,9 +395,6 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     
     @param {String} args.bracketName
       The name for this annotation
-    @param {String} args.datasetName
-      The name of the dataset which contains the point of the two HighlightedPoint annotations. This
-      is used to find the TableController which has that dataset open.
     @param {String} args.point1
       The name of the HighlightedPoint where the arc should start.
     @param {String} args.point2
@@ -412,29 +407,26 @@ Smartgraphs.ACTIVITY = SC.State.extend(
       Whether the arrow should be highlighted           
   */
   createRunBracket: function (context, args) {
-    var controller = Smartgraphs.TableController.controllerForDataset[args.datasetName];
-    
-    if (!controller) return YES;
-    var hp1 = controller.findAnnotationByName(args.point1);
-    var hp2 = controller.findAnnotationByName(args.point2);
+    var hp1 = Smartgraphs.activityObjectsController.findAnnotation(args.point1),
+        hp2 = Smartgraphs.activityObjectsController.findAnnotation(args.point2),
+        p1 = hp1.get('point'),
+        p2 = hp2.get('point'),
+        dataset = p1.get('dataset'),
+        points = dataset.get('points'),
+        p1Index = points.indexOf(p1),
+        p2Index = points.indexOf(p2);
 
-    // make to start from the point with the smaller x-value    
-    var points = controller.getPath('dataset.points');
-    var indices = [hp1, hp2].getEach('point').map(points.indexOf, points);
-    if (indices[0] > indices[1]) indices = [indices[1], indices[0]];
+    if (p1.get('dataset') !== p2.get('dataset')) return YES;
 
-    // FIXME centralize coordinate computation in the table controller
-    var arc = 
-      Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
-        startX: 40,
-        startY: (indices[0] * 20) + 20,
-        endX: 40,
-        endY: (indices[1] * 20) + 20,
-        color: args.color || '#cc0000',
-        isClockwise: NO,
-        isHighlighted: args.isHighlighted || NO,        
-        label: args.label
-      });
+    Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.BracketArc, args.bracketName, {
+      item1Index: Math.min(p1Index, p2Index),
+      item2Index: Math.max(p1Index, p2Index),
+      isLeftOfColumn: YES,
+      color: args.color || '#cc0000',
+      isHighlighted: args.isHighlighted || NO,
+      label: args.label
+    });
+
     return YES;
   },
   

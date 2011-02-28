@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.TableView
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2010-2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // Author:    Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
@@ -28,6 +28,11 @@ Smartgraphs.TableView = SC.View.extend(
   latestXBinding: '*tableController.latestX',
   latestYBinding: '*tableController.latestY',
   annotationListBinding: '*tableController.annotationList',
+  
+  columnsView: SC.outlet('tableColumnView.scrollView.contentView'),
+  xsView: SC.outlet('columnsView.xsView'),
+  ysView: SC.outlet('columnsView.ysView'),
+  backdropView: SC.outlet('columnsView.backdropView'),
   
   xLabel: function () {
     var xUnitsAbbreviated = this.get('xUnitsAbbreviated');
@@ -152,9 +157,9 @@ Smartgraphs.TableView = SC.View.extend(
           this.adjust('height', length === 0 ? 0 : length * this.get('rowHeight') + 15);
         },
         
-        childViews: ['backdrop', 'xsView', 'ysView'],
+        childViews: ['backdropView', 'xsView', 'ysView'],
 
-        backdrop: RaphaelViews.RaphaelCanvasView.design({
+        backdropView: RaphaelViews.RaphaelCanvasView.design({
           // This is the canvas behind the table, used for adding notes
           layout: { zIndex: 0, width: 290 },
         
@@ -310,7 +315,41 @@ Smartgraphs.TableView = SC.View.extend(
     
     delete this._viewsByClassAndId[classKey][id];
     
-    this.getPath('tableColumnView.scrollView.contentView.backdrop.annotationsHolder').removeChild(view);
+    this.getPath('tableColumnView.scrollView.contentView.backdropView.annotationsHolder').removeChild(view);
+  },
+  
+  /**
+    Returns the four outside corners of the table cell at itemIndex, relative to the backdropView SVG element.
+    
+    left is considered to be flush with the left side of the left (xs) column; right is considered to be flush with 
+    the right of the right (ys) column.
+    
+    @param itemIndex the zero-based index of the element we're considering
+    @returns {Object} Hash containing 'top', 'left', 'bottom', and 'right' coordinates of the table cell at itemIndex
+  */
+  coordinatesForIndex: function (itemIndex) {
+    if (SC.none(itemIndex)) {     // remember itemIndex could be 0 which would be falsy
+      return { top: -9999, left: -9999, bottom: -9999, right: -9999 };
+    }
+    
+    var rowHeight = this.getPath('columnsView.rowHeight'), 
+        $backdrop = this.get('backdropView').$(),
+        backdropWidth = $backdrop.width(),
+        backdropOffset = $backdrop.offset(),
+        xsOffset = this.get('xsView').$().offset(),
+        $ys = this.get('ysView').$(),
+        ysOffset = $ys.offset(),
+        ysWidth = $ys.width(),
+        top = xsOffset.top - backdropOffset.top + itemIndex * rowHeight,
+        left = xsOffset.left - backdropOffset.left,
+        right = ysOffset.left + ysWidth - backdropOffset.left;
+    
+    return {
+      top: top,
+      left: left,
+      bottom: top + rowHeight,
+      right: right
+    };
   }
   
 });

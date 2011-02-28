@@ -1,7 +1,8 @@
 // ==========================================================================
 // Project:   Smartgraphs.BracketArc
-// Copyright: ©2010 Concord Consortium
-// @author    Parker Morse <pmorse@cantinaconsulting.com>
+// Copyright: ©2010-2011 Concord Consortium
+// Author:    Parker Morse <pmorse@cantinaconsulting.com>
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -10,12 +11,8 @@ sc_require('views/bracket_arc');
 
 /** @class
 
-  A BracketArc is an annotation which creates an arc, with arrowheads at both ends,
-  between two designated points.
-  
-  At initial creation, the designated points are literal coordinates, either contextual
-  (i.e. relative to provided axes) or literal, but the model could be expanded to extract
-  the start and end from other annotations.
+  A BracketArc is an annotation which creates an arc, with arrowheads at both ends, between two designated items
+  displayed on a table.
   
   Although the model has "start" and "end" points, the bracket itself is not directional,
   i.e. it has arrowheads at both ends.
@@ -31,35 +28,21 @@ Smartgraphs.BracketArc = Smartgraphs.Annotation.extend(
     
     @property {Number}
   */
-  startX: SC.Record.attr(Number),
+  item1Index: SC.Record.attr(Number),
   
   /**
-    The y-coordinate of the spot the bracket's path begins at.
+    The index of the table item the bracket path's 
     
     @property {Number}
   */
-  startY: SC.Record.attr(Number),
-  
-  /**
-    The x-coordinate of the spot the bracket's path ends at.
-    
-    @property {Number}
-  */
-  endX: SC.Record.attr(Number),
-  
-  /**
-    The y-coordinate of the spot the bracket's path ends at.
-    
-    @property {Number}
-  */
-  endY: SC.Record.attr(Number),
+  item2Index: SC.Record.attr(Number),
 
-  /** 
-    Which direction should this arc travel from start to end: clockwise, or counter-clockwise? Default false == counterclockwise.
-
+  /**
+    Whether the arc is to be displayed to the left or right of the table columns it points to.
+    
     @property {Boolean}
   */
-  isClockwise: SC.Record.attr(Boolean, { defaultValue: false })
+  isLeftOfColumn: SC.Record.attr(Boolean)
 
 }) ;
 
