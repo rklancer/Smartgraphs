@@ -282,13 +282,14 @@ Smartgraphs.TableView = SC.View.extend(
 
     // create the view for the item we're adding
     var view = item.constructor.viewClass.design({
-        item: item,
+        tableView: this,
+        item: item, 
         itemType: itemType
     }).create();
     
     // append view to the canvas
     if (view.get('canShowInTable')) {
-      this.getPath('tableColumnView.scrollView.contentView.backdrop.annotationsHolder').appendChild(view);
+      this.getPath('tableColumnView.scrollView.contentView.backdropView.annotationsHolder').appendChild(view);
       // Accounting
       if (this._viewsByClassAndId[classKey] === undefined) {
         this._viewsByClassAndId[classKey] = {};
