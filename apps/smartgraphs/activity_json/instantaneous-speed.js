@@ -322,32 +322,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
-      "startCommands": [
-        {
-          "action": "createRiseBracket",
-          "literalArgs": {
-            "bracketName": "rise-bracket-A",
-            "point1": "first-point-A",
-            "point2": "second-point-A",
-            "datasetName": "slope-data",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "rise-bracket-A",
-            "tableName": "slope-data"
-          }
-        }
-      ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -499,32 +479,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
+          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A", "run-bracket-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
-      "startCommands": [
-        {
-          "action": "createRunBracket",
-          "literalArgs": {
-            "bracketName": "run-bracket-A",
-            "point1": "first-point-A",
-            "point2": "second-point-A",
-            "datasetName": "slope-data",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "run-bracket-A",
-            "tableName": "slope-data"
-          }
-        }
-      ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1011,32 +971,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
-      "startCommands": [
-        {
-          "action": "createRiseBracket",
-          "literalArgs": {
-            "bracketName": "rise-bracket-B",
-            "point1": "first-point-B",
-            "point2": "second-point-B",
-            "datasetName": "slope-data",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "rise-bracket-B",
-            "tableName": "slope-data"
-          }
-        }
-      ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1204,32 +1144,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
+          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B", "run-bracket-B"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
-      "startCommands": [
-        {
-          "action": "createRunBracket",
-          "literalArgs": {
-            "bracketName": "run-bracket-B",
-            "point1": "first-point-B",
-            "point2": "second-point-B",
-            "datasetName": "slope-data",
-            "color": "#cccccc",
-            "isHighlighted": true
-          }
-        },
-        {
-          "action": "addAnnotation",
-          "literalArgs": {
-            "name": "run-bracket-B",
-            "tableName": "slope-data"
-          }
-        }
-      ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1701,6 +1621,52 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "url": "/shared/instantaneous-speed/annotation/run-arrow-B",
           "name": "run-arrow-B",
+          "activity": "/shared/instantaneous-speed",
+          "color": "#cccccc",
+          "isHighlighted": true,
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B"
+        }
+      ]
+    },
+    {
+      "type": "RiseBracket",
+      "records": [
+        {
+          "url": "/shared/instantaneous-speed/annotation/rise-bracket-A",
+          "name": "rise-bracket-A",
+          "activity": "/shared/instantaneous-speed",
+          "color": "#cccccc",
+          "isHighlighted": true,
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A"
+        },
+        {
+          "url": "/shared/instantaneous-speed/annotation/rise-bracket-B",
+          "name": "rise-bracket-B",
+          "activity": "/shared/instantaneous-speed",
+          "color": "#cccccc",
+          "isHighlighted": true,
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B"
+        }
+      ]
+    },
+    {
+      "type": "RunBracket",
+      "records": [
+        {
+          "url": "/shared/instantaneous-speed/annotation/run-bracket-A",
+          "name": "run-bracket-A",
+          "activity": "/shared/instantaneous-speed",
+          "color": "#cccccc",
+          "isHighlighted": true,
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A"
+        },
+        {
+          "url": "/shared/instantaneous-speed/annotation/run-bracket-B",
+          "name": "run-bracket-B",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
           "isHighlighted": true,
