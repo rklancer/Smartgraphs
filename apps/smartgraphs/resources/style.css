@@ -103,19 +103,19 @@ body.sc-theme {
 .sc-view.json-editor .sc-view {
   line-height: 1.4em;
   padding: 3px;
-  position:relative;
 }
 
 .sc-view.json-editor .json-editor-code {
-  border: 1px solid #6699cc;
+  border: 1px solid #E5E8EF;
   font: normal 12px monospace;
-  height:400px;
+  white-space: pre;
 }
+
 .sc-view.json-editor .json-editor-feedback {
-  font:bold 12px sans-serif;
-  color:white;
-  background-color:red;
-  padding:3px;
+  font: bold 12px sans-serif;
+  color: white;
+  background-color: red;
+  padding: 3px;
 }
 
 .sc-view.json-editor .sc-view.hovered {

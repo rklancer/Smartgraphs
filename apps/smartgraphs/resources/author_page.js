@@ -153,15 +153,10 @@ Smartgraphs.authorPageDef = SC.Page.extend({
       childViews: 'dataView'.w(),
     
       dataView: SC.View.design({
-        layout: { 
-          top: 20, 
-          right: 20, 
-          bottom: 20, 
-          left: 20 
-        },
+        layout: { top: 4, right: 4, bottom: 4, left: 4 },
         
         childViews: 'jsonEditorFeedback panesAsJsonView'.w(),
-        classNames: 'json-editor'.w(),
+        classNames: 'json-editor smartgraph-pane'.w(),
 
         jsonEditorFeedback: SC.LabelView.design({
           classNames: 'json-editor-feedback'.w(),
@@ -169,12 +164,12 @@ Smartgraphs.authorPageDef = SC.Page.extend({
           escapeHTML: NO,
           showEditor: NO,
           isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.jsonEditingFeedback')
-        }),// jsonEditorFeedback
+        }), // jsonEditorFeedback
 
         panesAsJsonView: SC.LabelView.design({
+          layout: { top: 10, right: 10, bottom: 10, left: 10 },
           valueBinding: "Smartgraphs.activityStepController.panesJson",
-          useStaticLayout: YES,
-          escapeHTML: NO,
+          escapeHTML: YES,
           isEditable: YES,
           isInlineEditorMultiline: YES,
 
