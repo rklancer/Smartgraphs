@@ -132,10 +132,11 @@ Smartgraphs.Activity = SC.Record.extend(
     var self = this;
     ret.annotations = [];
     Smartgraphs.Annotation.typeNames().forEach(function (typeName) {
-      var query = SC.Query.local(Smartgraphs[typeName], 'activity={activity}', {
-        activity: self
-      });
-      var annotations = store.find(query);
+      var annotationType = Smartgraphs[typeName],
+          query = SC.Query.local(annotationType, 'activity={activity}', {
+            activity: self
+          }),
+          annotations = store.find(query).filter(function (annotation) { return annotation.constructor === annotationType; });
       
       if (annotations.get('length') > 0) {
         ret.annotations.push({
