@@ -1,11 +1,7 @@
-/*globals Smartgraphs */
-
-Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
-Smartgraphs.activityDocs["/shared/instantaneous-speed"] = 
 {
-  "_id": "instantanous-speed.df5",
-  "_rev": "10-bfcf2cf128db41df9bd9141454564e9d",
-  "data_format_version": 5,
+  "_id": "instantanous-speed.df7",
+  "_rev":"6-4ddfa21d1338b9366ec04844d902f526",
+  "data_format_version": 7,
   "activity": {
     "title": "Instantaneous Speed (Slope Tool)",
     "url": "/shared/instantaneous-speed",
@@ -657,20 +653,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
     
     
     
-    /************ Page 13 ************/
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
     {
       "url": "/shared/instantaneous-speed/page/13/step/1",
       "activityPage": "/shared/instantaneous-speed/page/13",
@@ -1285,7 +1269,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
     
     
     
-    /************ Page 14 ************/
 
 
 
@@ -1651,4 +1634,4 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ]
     }
   ]
-};
+}
