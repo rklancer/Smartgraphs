@@ -324,7 +324,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"],
+          "annotations": ["first-point-A", "second-point-A"],
           "highlightedAnnotations": ["rise-bracket-A"]      
         }
       },
