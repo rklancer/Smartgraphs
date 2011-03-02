@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.evaluator expressions
+// Project:   Smartgraphs operator definitions
 // Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -7,7 +7,7 @@
 
 sc_require('lib/evaluator');
 
-Smartgraphs.evaluator.defineExpressions( function (def) {
+Smartgraphs.evaluator.defineOperators( function (def) {
   
   def('+', function () {
     var ret = 0;

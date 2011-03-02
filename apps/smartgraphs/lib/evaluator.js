@@ -27,8 +27,8 @@ Smartgraphs.evaluator = {
     return op;
   },
   
-  // define many expression operators, see lib/expressions.js for usage
-  defineExpressions: function (defsCallback) {
+  // define many expression operators, see lib/operators.js for usage
+  defineOperators: function (defsCallback) {
     var def, self = this;
     
     def = function () {
