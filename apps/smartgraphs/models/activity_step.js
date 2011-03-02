@@ -26,8 +26,8 @@
   possible to fix this.) The rules for enablement/disablement of submission are as follows:
   
     - if 'shouldFinishImmediately' is true, the step is automatically submitted, unless one of the startCommands turns submissibility off. This would likely be considered an error.
-    - if one of the startCommands disables submission as a side effect, submissibility will remain off untilsubmission is explicitly turned on again. Turning submission back on might happen as a side effect of a tool that is turned on in the command; as a side effect of another command; or by the submissibility inspector
-    - if, regardless of the startCommands, the step is able to successfully instantiate an submissibility inspector instance, submissibililty is turned off and remains off until the submissibilityInspector's value meets the criterion specified by the submissibilityCriterion 
+    - if one of the startCommands disables submission as a side effect, submissibility will remain off untilsubmission is explicitly turned on again. Turning submission back on might happen as a side effect of a tool that is turned on or by the submissibility criterion
+    - if, regardless of the startCommands, the submissibility criterion evaluates to YES, submissibility is turned on
     - otherwise, submissibility is turned on
   
   Steps also specify how to inspect the system state and choose the next step to load once the step is submitted.
@@ -46,15 +46,11 @@
    
    - whether this automatically move to the submitted state when it loads (this could be used to create a step whose only purpose is to execute some commands)
    
-   - a "submissibility" Inspector which continuously watches the system state (such as the currently-entered value in the response form, or the contents of the student's current sketch) and reduces it to a summary value (such as the value entered into that form, or the total path length of the student's sketch) whenever that state changes
-      
-   - an expression that translates that inspector's value to YES or NO whenever it changes, and that is used to enable submission only when its value is YES
+   - an "live" submissibility criterion that is evaluated whenever its input values change, and that is used to enable submission only when its value is YES
 
    - a set of commands to be executed immediately after the user submits the step
   
-   - a response Inspector which inspects the system state once when student submits the step and reduces it to a summary value
-
-   - a set of expressions that translate the response inspector's value into YES or NO values in order to determine which step to load next
+   - a set of expressions that evaluate to YES or NO values in order to determine which step to load next
      
    - whether this is a 'terminal' step; ie., whether failure to branch away from this step should be taken to mean that we have finished the ActivityPage itself
      
@@ -231,42 +227,9 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   shouldFinishImmediately: SC.Record.attr(Boolean),
   
-  /**
-    A hash that specifies an Inspector class that will be instantiated to continually monitor the system state for
-    submissibility during this step, and a config hash that will be passed to the Inspector's config method to
-    configure the Inspector.
-
-    Example:
-
-    {{{
-      {
-        "type": "Smartgraphs.SketchLengthInspector",
-        "config": {
-          "annotationName": "prediction",
-          "check": "continuously"
-        }
-      }
-    }}}
-    
-    @property {Object}
-  */
-  submissibilityInspector: SC.Record.attr(Object),
 
   /** 
-    A JSON expression tree that will be used to convert the submissibilityInspector's output to a YES or NO answer
-    whenever the submissibilityInspector's output changes. 
-    
-    When the output changes from YES to NO, submissibility is disabled. When it transitions from NO to YES,
-    submissibility is enabled.
-    
-    The expression format will be documented elsewhere; note that the sub-expression "value" will be substituted
-    by the value of the submissibilityInspector.
-    
-    {{{
-      {
-        "gt": ["value", 5]
-      }
-    }}}
+    An expression that is evaluated "live" and turns on submissiblity when its value is YES
     
     @property {Object}
   */
@@ -274,7 +237,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   
   /**
     The list of commands (and their arguments) to be immediately after this ActivityStep is submitted, before the
-    response inspector is consulted and before branching to another step.
+    response expressions are evaluated and before branching to another step.
     
     The format of this list is the same as for the startCommands <i>(q.v.)</i>. However, these commands execute while 
     the system is in the ACTIVITY_STEP_SUBMITTED state. Therefore only the commands defined in ACTIVITY_STEP_SUBMITTED
@@ -285,61 +248,14 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   afterSubmissionCommands: SC.Record.attr(Array),
   
   /**
-    A hash that specifies an Inspector class that will be instantiated to inspect the state of the system after the
-    step is submitted, and that specifies a config hash that is passed to the config method of the Inspector class.
-    This is used to decide the system's response to the user's manipulation of system state (which may represent the
-    user's answer to a question or challenge posed by the ActivityStep) prior to submitting the ActivityStep.
-    
-    The Inspector's <code>inspect()</code> method will be called once, after the step is submitted; the value returned
-    by the inspect method will be used to determine the next ActivityStep to load, as per the specification in the 
-    responseBranches property of the activityStep.
-    
-    For example, this value of <code>responseInspector</code> will configure the system to consider the student's
-    response to be the selected point in dataset 'maria' on graph 'maria'.
-    {{{
-      {
-        "type": "Smartgraphs.SelectedPointInspector",
-        "config": {
-          "datasetName": "maria"
-        }
-      }
-    }}}
-    
-    @property {Object}
-  */
-  responseInspector: SC.Record.attr(Object),
-  
-  /**
     An ordered list of criterion -> ActivityStep pairs that is used to choose the next ActivityStep to load after
-    the student has submitted the step and the ResponseInspector has evaluated the system state.
+    the student has submitted the step.
     
-    After response is submitted, each criterion is evaluated in order, with the return value of the responseInspector
-    as the value. The system jumps to the ActivityStep associated with the first criterion that evaluates to YES.
-    Think of an if-else chain.
+    After response is submitted, each criterion is evaluated in order. The system jumps to the ActivityStep associated 
+    with the first criterion that evaluates to YES. Think of an if-else chain.
     
-    If no reactionCriterion evaluates to YES, the ActivityStep specified by the <code>defaultBranch</code> property is
+    If no expression evaluates to YES, the ActivityStep specified by the <code>defaultBranch</code> property is
     jumped to, if one is specified.
-    
-    For example, this value of <code>responseBranches</code> will cause the system to open the ActivityStep
-    "/shared/marias-run/page/5/step/6" if the 'xvalue' of the responseInspector value is equal to 4. (If it is not,
-    the system will attempt to load the step specified in the defaultBranch.)
-    {{{
-      [
-        {
-          "criterion": {
-            "equals": [
-              {
-                "xvalue": "value"
-              },
-              4
-            ]
-          },
-          "step": "/shared/marias-run/page/5/step/6"
-        }
-      ]
-    }}}
-
-    Note that steps are specified by url.
 
     @property {Object[]}
   */
@@ -374,8 +290,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   /**
     The title of the submit button, if it is displayed. 
     
-    The button will be enabled or not according to whether step submission is currently enabled. (e.g., the
-    submissibilityInspector/submissiblityCriterion pair dynamically determine whether this button is enabled.)
+    The button will be enabled or not according to whether step submission is currently enabled.
     
     @property {String}
   */

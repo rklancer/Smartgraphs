@@ -18,8 +18,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   canSubmit: NO,
   showSubmitButton: NO,
   
-  submissibilityInspectorInstance: null,
-  
   /**
     YES iff there is content (a response template or before/after text) to put in the 'dialog text' area
   */
@@ -31,14 +29,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Clean up any stale controller state. Called when we leave ACTIVITY_STEP_SUBMITTED and/or ACTIVITY itself
   */  
   cleanup: function () {
-    var inspector = this.get('submissibilityInspectorInstance');
-    if (inspector) {
-      inspector.stopWatching();
-      inspector.removeObserver('value', this, this.checkSubmissibility);
-      inspector.destroy();
-    }
-    this.set('submissibilityInspectorInstance', null);
-    
     if (this._liveExpression) {
       this._liveExpression.die();
     }
@@ -185,18 +175,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     // build args for call to fmt method
     subs.forEach( function (sub) {
-      // new code path
-      if (typeof sub === "string") {
-        fmtArgs.push( Smartgraphs.activityPageController.getFromContext(sub) );
-      }
-      else {
-        // old code path        
-        var inspector = self.makeInspector(sub);
-        if (inspector) {
-          var value = inspector.inspect();
-          fmtArgs.push(value);
-        }
-      }
+      fmtArgs.push( Smartgraphs.activityPageController.getFromContext(sub) );
     });
 
     // better yet, make beforeText & afterText computed properties
@@ -221,12 +200,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   waitForResponse: function () {
-    var inspectorInfo = this.get('submissibilityInspector');
-
-    if (!inspectorInfo && this.get('submissibilityCriterion')) {
-      // this will become the main code path once Inspectors are shown the door...
+    var criterion = this.get('submissibilityCriterion');
+    if (criterion) {
       var self = this;
-      this._liveExpression = Smartgraphs.evaluator.evaluateLive(this.get('submissibilityCriterion'), function (isSubmissible) {
+      this._liveExpression = Smartgraphs.evaluator.evaluateLive(criterion, function (isSubmissible) {
         var canSubmit = self.get('canSubmit');
         if (isSubmissible && !canSubmit) {
           Smartgraphs.statechart.sendAction('enableSubmission');
@@ -235,36 +212,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
           Smartgraphs.statechart.sendAction('disableSubmission');
         }
       }).evaluate();
-    }
-    else if (inspectorInfo) {
-      // the old code path
-      var inspector = this.makeInspector(inspectorInfo);
-
-      if (inspector) {
-        this.set('submissibilityInspectorInstance', inspector);
-        // if (and only if) we have a valid inspector, it is its job to enable submission
-        Smartgraphs.statechart.sendAction('disableSubmission');
-        inspector.addObserver('value', this, this.checkSubmissibility);
-        inspector.watch();
-      }
-      else {
-        console.error('submissibilityInspector was truthy, but makeInspector could not make an inspector instance.');
-      }
-    }
-  },
-  
-  checkSubmissibility: function () {
-    var value = this.getPath('submissibilityInspectorInstance.value');
-    var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
-    var canSubmit = this.get('canSubmit');
-    
-    //console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
-    
-    if (valueIsValid && !canSubmit) {
-      Smartgraphs.statechart.sendAction('enableSubmission');
-    }
-    else if (canSubmit && !valueIsValid) {
-      Smartgraphs.statechart.sendAction('disableSubmission');
     }
   },
   
@@ -286,35 +233,18 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   handleSubmission: function () {
     if ( !this.get('canSubmit') ) return NO;
     
-    var inspectorInfo = this.get('responseInspector'),
-        branches = this.get('responseBranches'),
+    var branches = this.get('responseBranches'),
         branch,
         i;
     
     this.executeCommands(this.get('afterSubmissionCommands'));
   
-    if (branches && branches.length > 0 && !inspectorInfo) {
-      // new code path
+    if (branches && branches.length > 0) {
       for (i = 0; i < branches.length; i++) {
         branch = branches[i];
         if (Smartgraphs.evaluator.evaluate(branch.criterion)) {
           Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: branch.step });
           return;
-        }
-      }
-    }
-    else {
-      // old code path    
-      var inspector = this.makeInspector(inspectorInfo);
-      if (inspector) {
-        var value = inspector.inspect();
-            
-        for (i = 0; i < branches.length; i++) {
-          branch = branches[i];
-          if (Smartgraphs.evaluate(branch.criterion, value)) {
-            Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: branch.step });
-            return;
-          }
         }
       }
     }
@@ -324,22 +254,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (defaultBranch) {
       Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
     }
-  },
-  
-  makeInspector: function (inspectorInfo) {
-    if (!inspectorInfo || !inspectorInfo.type) {
-      return NO;
-    }
-    
-    var klass = SC.objectForPropertyPath(inspectorInfo.type);
-        
-    if (!klass || !klass.isClass || !SC.kindOf(klass, Smartgraphs.Inspector)) {
-      throw "makeInspector was given an non-empty, but invalid, Inspector class name";
-    }
-    
-    return klass.create({
-      config: inspectorInfo.config
-    });
   },
   
   panesJsonDidChange: function() {

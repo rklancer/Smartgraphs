@@ -541,60 +541,17 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   */
   setVariable: function (context, args) {
     var val;
-    if (args.name && args.expression) {
-      // new code path; don't remove these checks   
-      if (SC.none(args.name)) {
-        throw("variable name is required");
-      }
-      if (SC.none(args.expression)) {
-        throw("variable value is required");
-      }
 
-      val = Smartgraphs.evaluator.evaluate(args.expression);
-      Smartgraphs.activityObjectsController.setVariable(args.name, val); 
-      return YES;
+    if (SC.none(args.name)) {
+      throw("variable name is required");
     }
-    // old code path
-   
-    var variableName = args.variableName;
-    var inspectorType = args.inspectorType;
-    var config = args.config;
-
-    if (SC.none(variableName)) {
-      throw("variableName is required");
-    }
-    if (SC.none(inspectorType)) {
-      throw("inspectorType is required");
-    }
-    if (SC.none(config)) {
-      throw("config is required");
-    }
-    
-    var inspector = this.makeInspector(inspectorType, config);
-    if (inspector) {
-      var newValue = inspector.inspect();
-      Smartgraphs.activityObjectsController.setVariable(variableName, newValue); 
-      return YES;
+    if (SC.none(args.expression)) {
+      throw("variable value is required");
     }
 
-    return YES; 
-  },
-  
-  // remove when remove 'old code path' above
-  makeInspector: function (inspectorType, inspectorConfig) {
-    if (!inspectorType) {
-      return NO;
-    }
-    
-    var klass = SC.objectForPropertyPath(inspectorType);
-        
-    if (!klass || !klass.isClass || !SC.kindOf(klass, Smartgraphs.Inspector)) {
-      throw "makeInspector was given an non-empty, but invalid, Inspector class name";
-    }
-    
-    return klass.create({
-      config: inspectorConfig
-    });
+    val = Smartgraphs.evaluator.evaluate(args.expression);
+    Smartgraphs.activityObjectsController.setVariable(args.name, val); 
+    return YES;
   }
 
 }) ;

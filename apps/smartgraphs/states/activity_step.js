@@ -145,12 +145,6 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     
     This command enables editing of the responseTemplate, if there is one.
     
-    Moreover, If the current ActivityStep specifies a submissibilityInspector, this instantiates the inspector, which
-    watches the current state of the system as manipulated by the user and disables/enables submission accordingly.
-
-    If the current ActivityStep does not specify a submissibilityInspector, this command enables submission
-    immediately.
-    
     This command executes automatically when an ActivityStep is loaded unless its 'shouldFinishImmediately' property
     is true.
   */
@@ -339,7 +333,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     name, so that it can be called up later in the activity.
     
     The system remains in the FREEHAND_INPUT state or one of its substates until the user submits the step. It is
-    possible to specify a submissibilityInspector that only allows submission once an appropriate sketch has been 
+    possible to specify a submissibility expression that only allows submission once an appropriate sketch has been 
     completed.
     
     @param context
