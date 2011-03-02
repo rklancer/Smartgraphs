@@ -136,10 +136,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   startTools: function () {
     var tools = this.get('tools');
     tools.forEach( function (toolSpec) {
-      // hastily special-cased for demo purposes until we figure out an extensible way to define the tools
+      // FIXME! hastily special-cased for demo purposes until we figure out an extensible way to define the tools
       switch (toolSpec.type) {
         case "dataPointTagging":
-          Smartgraphs.statechart.sendAction('startInteractiveSelection', null, { annotationName: toolSpec.tagName, datasetName: toolSpec.dataset });
+          Smartgraphs.executor.execute('startInteractiveSelection', { annotationName: toolSpec.tagName, datasetName: toolSpec.dataset });
           break;
         default:
           throw "unknown tool " + toolSpec.type;
@@ -155,7 +155,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     var self = this;
     commands.forEach(function (command) {
-      Smartgraphs.statechart.sendAction(command.action, self, command.literalArgs);
+      Smartgraphs.executor.execute(command.action, command.literalArgs);
     });
   },
   

@@ -35,9 +35,14 @@ Smartgraphs.executor = {
   },
   
   execute: function (name, args) {
-    var command = this.commands[name];
+    var command = this.commands[name],
+        message;
+        
     if (!command) throw "No such command: " + name;
-    command.impl(args || {});
+
+    message = command.impl(args || {});
+    
+    if (message) throw "command '" + name + "' returned error message: " + message;
   }
   
 };
