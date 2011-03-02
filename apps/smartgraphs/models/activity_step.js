@@ -391,7 +391,10 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     
     @property {Boolean}
   */
-  nextButtonShouldSubmit: SC.Record.attr(Boolean)
+  nextButtonShouldSubmit: SC.Record.attr(Boolean),
+  
+  panesJson: null,
+  jsonEditingFeedback: null
   
   /**
     Not currently implemented. 
