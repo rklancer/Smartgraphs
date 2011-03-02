@@ -135,14 +135,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   startTools: function () {
     var tools = this.get('tools');
     tools.forEach( function (toolSpec) {
-      // FIXME! hastily special-cased for demo purposes until we figure out an extensible way to define the tools
-      switch (toolSpec.type) {
-        case "dataPointTagging":
-          Smartgraphs.executor.execute('startTaggingTool', { annotationName: toolSpec.tagName, datasetName: toolSpec.dataset });
-          break;
-        default:
-          throw "unknown tool " + toolSpec.type;
-      }
+      Smartgraphs.Tool.start(toolSpec.name, toolSpec.setup);
     });
   },
 
