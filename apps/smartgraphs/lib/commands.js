@@ -651,15 +651,15 @@ Smartgraphs.executor.defineCommands(function (def) {
       Color of the HighlightedPoint to create. Currently used only if the HighlightedPoint did not exist before this
       command.
   */
-  def('startInteractiveSelection', function (args) {
+  def('startTaggingTool', function (args) {
     var dataset = Smartgraphs.activityObjectsController.findDataset(args.datasetName),
         annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName);        
     
     // stash the info needed by the state
-    Smartgraphs.interactiveSelectionController.set('annotation', annotation);
-    Smartgraphs.interactiveSelectionController.set('dataset', dataset);
-          
-    Smartgraphs.statechart.gotoState('INTERACTIVE_SELECTION');
+    Smartgraphs.taggingTool.set('annotation', annotation);
+    Smartgraphs.taggingTool.set('dataset', dataset);
+    
+    Smartgraphs.statechart.gotoState('TAGGING_TOOL');
 
   });
   

@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.INTERACTIVE_SELECTION
+// Project:   Smartgraphs.TAGGING_TOOL
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer
 // ==========================================================================
@@ -13,39 +13,24 @@
   @extends SC.State
   @version 0.1
 */
-Smartgraphs.INTERACTIVE_SELECTION = SC.State.extend(
-/** @scope Smartgraphs.INTERACTIVE_SELECTION.prototype */ {
-
-  /**
-   The annotation object we're updating
-   
-   @property {Smartgraphs.Annotation}
-  */
-  annotation: null,
-  
-  /** 
-    The dataset we care about. dataPointSelected events associated with any other dataset will be ignored.
-
-    @property {Smartgraphs.Dataset}
-  */
-  dataset: null,
-  
+Smartgraphs.TAGGING_TOOL = SC.State.extend(
+/** @scope Smartgraphs.TAGGING_TOOL.prototype */ {
   
   enterState: function () {
     // disable submission until a selection is made...
     Smartgraphs.statechart.sendAction('disableSubmission');
     
-    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
+    var dataset = Smartgraphs.taggingTool.get('dataset');
     this._oldIsSelectable = dataset.get('isSelectable');
     dataset.set('isSelectable', NO);
-    Smartgraphs.interactiveSelectionController.setPath('annotation.point', null);    
+    Smartgraphs.taggingTool.setPath('annotation.point', null);    
   },
   
   exitState: function () {
-    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
+    var dataset = Smartgraphs.taggingTool.get('dataset');
     dataset.set('isSelectable', this._oldIsSelectable);
-    Smartgraphs.interactiveSelectionController.set('dataset', null);
-    Smartgraphs.interactiveSelectionController.set('annotation', null);
+    Smartgraphs.taggingTool.set('dataset', null);
+    Smartgraphs.taggingTool.set('annotation', null);
   },
   
   /** 
@@ -59,20 +44,13 @@ Smartgraphs.INTERACTIVE_SELECTION = SC.State.extend(
       The dataPointView that was clicked on
   */
   dataPointSelected: function (dataPointView) {
-    var dataset = Smartgraphs.interactiveSelectionController.get('dataset');
+    var dataset = Smartgraphs.taggingTool.get('dataset');
     var point = dataPointView.get('content');
     
     if (dataset && point.get('dataset') === dataset) {
-      Smartgraphs.interactiveSelectionController.setPath('annotation.point', point);
+      Smartgraphs.taggingTool.setPath('annotation.point', point);
       Smartgraphs.statechart.sendAction('enableSubmission');
     }
-  },
-  
-  /**
-    Not allowed in this state. Returns YES but otherwise does nothing.
-  */
-  startInteractiveSelection: function () {
-    return YES;
   }
   
 }) ;

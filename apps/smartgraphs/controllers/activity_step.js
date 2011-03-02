@@ -138,7 +138,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       // FIXME! hastily special-cased for demo purposes until we figure out an extensible way to define the tools
       switch (toolSpec.type) {
         case "dataPointTagging":
-          Smartgraphs.executor.execute('startInteractiveSelection', { annotationName: toolSpec.tagName, datasetName: toolSpec.dataset });
+          Smartgraphs.executor.execute('startTaggingTool', { annotationName: toolSpec.tagName, datasetName: toolSpec.dataset });
           break;
         default:
           throw "unknown tool " + toolSpec.type;

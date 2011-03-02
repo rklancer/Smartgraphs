@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.INTERACTIVE_SELECTION Unit Test
+// Project:   Smartgraphs.TAGGING_TOOL Unit Test
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer 
 // ==========================================================================
@@ -8,7 +8,7 @@
 var pane, graphView, datasetView;
 var dataset;
 
-module("Smartgraphs.INTERACTIVE_SELECTION", {
+module("Smartgraphs.TAGGING_TOOL", {
   setup: function () {
     
     setup.fixtures(Smartgraphs.Graph, [
@@ -124,7 +124,7 @@ test("startInteractiveSelection should create a point-centered annotation and mo
   var foundAnnotation = Smartgraphs.firstGraphController.findAnnotationByName('test-annotation');
 
   ok( SC.kindOf(foundAnnotation, Smartgraphs.Annotation), "The annotation should have been put on the graph and should be of type Smartgraphs.Annotation");
-  equals(Smartgraphs.statechart.get('currentStates').getEach('name'), 'INTERACTIVE_SELECTION', "startInteractiveSelection should put Smartgraphs in INTERACTIVE_SELECTION state");
+  equals(Smartgraphs.statechart.get('currentStates').getEach('name'), 'TAGGING_TOOL', "startInteractiveSelection should put Smartgraphs in TAGGING_TOOL state");
 });
 
 

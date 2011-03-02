@@ -44,7 +44,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   FREEHAND_INPUT: SC.State.plugin('Smartgraphs.FREEHAND_INPUT'),
   
   
-  INTERACTIVE_SELECTION: SC.State.plugin('Smartgraphs.INTERACTIVE_SELECTION'),
+  TAGGING_TOOL: SC.State.plugin('Smartgraphs.TAGGING_TOOL'),
   
   
   // ..........................................................

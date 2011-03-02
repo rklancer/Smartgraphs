@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.interactiveSelectionController
+// Project:   Smartgraphs.taggingTool
 // Copyright: ©2010 Concord Consortium
 // @author    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -11,11 +11,10 @@
 
   @extends SC.Object
 */
-Smartgraphs.interactiveSelectionController = SC.ObjectController.create(
-/** @scope Smartgraphs.interactiveSelectionController.prototype */ {
+Smartgraphs.taggingTool = SC.Object.create(
+/** @scope Smartgraphs.taggingTool.prototype */ {
 
   annotation: null,
-
   dataset: null
   
 }) ;
