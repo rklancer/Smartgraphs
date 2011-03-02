@@ -699,15 +699,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "startCommands": [
         {
-          "action": "setAnnotationAttribute",
-          "literalArgs": {
+          "name": "setAnnotationAttribute",
+          "args": {
             "name": "first-point-A",
             "pointColor": "#f2b3b3"
           }
         },
         {
-          "action": "setAnnotationAttribute",
-          "literalArgs": {
+          "name": "setAnnotationAttribute",
+          "args": {
             "name": "second-point-A",
             "pointColor": "#f2b3b3"
           }
@@ -1316,15 +1316,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseTemplate": "/components/response-template/open",
       "startCommands": [
         {
-          "action": "setAnnotationAttribute",
-          "literalArgs": {
+          "name": "setAnnotationAttribute",
+          "args": {
             "name": "first-point-B",
             "pointColor": "#f2b3b3"          
           }
         },
         {
-          "action": "setAnnotationAttribute",
-          "literalArgs": {
+          "name": "setAnnotationAttribute",
+          "args": {
             "name": "second-point-B",
             "pointColor": "#f2b3b3"
           }

@@ -150,12 +150,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   executeCommands: function (commands) {
     if (!commands) return;
 
-    // TODO action 'whitelist'?
-    // TODO deal with argument substitution?
-    
-    var self = this;
     commands.forEach(function (command) {
-      Smartgraphs.executor.execute(command.action, command.literalArgs);
+      Smartgraphs.executor.execute(command.name, command.args);
     });
   },
   
