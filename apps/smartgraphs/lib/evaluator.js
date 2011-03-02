@@ -18,8 +18,12 @@ Smartgraphs.evaluator = {
     if (!op.deps) op.deps = [];
     
     op.impl = impl;
-    op.args = this.args;
-    op.dependsOn = this.dependsOn;
+    
+    op.args =      this._args;
+    op.minArgs =   this._minArgs;
+    op.maxArgs =   this._maxArgs;
+    op.dependsOn = this._dependsOn;
+    
     return op;
   },
   
@@ -30,19 +34,29 @@ Smartgraphs.evaluator = {
     
     window.def = function () {
       return self.def.apply(self, arguments);
-    };
-    
+    };    
+
     defsCallback();
-    
+
     window.def = oldDef;
   },
   
-  args: function (argSpec) {
-    this.argSpec = argSpec;
+  _args: function (nArgs) {
+    this.argSpec.n = nArgs;
     return this;
   },
   
-  dependsOn: function () {
+  _minArgs: function (minArgs) {
+    this.argSpec.min = minArgs;
+    return this;
+  },
+
+  _maxArgs: function (maxArgs) {
+    this.argSpec.max = maxArgs;
+    return this;
+  },
+  
+  _dependsOn: function () {
     this.deps = Array.prototype.splice.apply(arguments);
     return this;
   },
@@ -160,7 +174,7 @@ Smartgraphs.evaluator.defs( function () {
       ret += arguments[i];
     }
     return ret;
-  }).args({min: 2});
+  }).minArgs(2);
 
 
   def('-', function () {
@@ -169,37 +183,37 @@ Smartgraphs.evaluator.defs( function () {
       ret -= arguments[i];
     }
     return ret;
-  }).args({min: 2});
+  }).minArgs(2);
 
 
   def('absDiff', function (x, y) {
     return Math.abs(x - y); 
-  }).args({n: 2});
+  }).args(2);
 
 
   def('=', function (x, y) {
     return x === y;
-  }).args({n: 2});
+  }).args(2);
 
 
   def('indexOf', function (name) {
     var annotation = Smartgraphs.activityObjectsController.findAnnotation(name);
     if (!annotation) throw "Annotation " + name + " not found.";
     return annotation.getPath('point.dataset.points').indexOf(annotation.get('point'));
-  }).args({n: 1});
+  }).args(1);
 
 
   def('isNumeric', function (val) {
     // see http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric/1830844#1830844
     return !isNaN(parseFloat(val)) && isFinite(val);  
-  }).args({n: 1});
+  }).args(1);
   
   
   // get a response field using 1-based index of response fields
   def('responseField', function (index) {
     var values = Smartgraphs.responseTemplateController.get('values');
     return values[index - 1];
-  }).args({n: 1}).dependsOn('Smartgraphs.responseTemplateController*values.[]');
+  }).args(1).dependsOn('Smartgraphs.responseTemplateController*values.[]');
 
 
   def('coord', function (axis, annotationName) {
@@ -210,7 +224,7 @@ Smartgraphs.evaluator.defs( function () {
     if (!annotation.get('point')) throw "Annotation " + annotationName + " does not have a 'point' property";
 
     return annotation.get('point').get(axis);
-  }).args({n: 2});
+  }).args(2);
 
 
   def('slope', function (name1, name2) {
@@ -220,12 +234,12 @@ Smartgraphs.evaluator.defs( function () {
     var p2 = anno2.get('point');
   
     return (p1.get('y') - p2.get('y')) / (p1.get('x') - p2.get('x'));
-  }).args({n: 2});
+  }).args(2);
 
 
   def('withinAbsTolerance', function (val1, val2, tolerance) {
     return Math.abs(val1 - val2) < tolerance;
-  }).args({n: 3});
+  }).args(3);
 
 
   def('slopeToolOrder', function (name1, name2) {
@@ -236,7 +250,7 @@ Smartgraphs.evaluator.defs( function () {
   
     // currently, "slope tool order" means points go from left to right
     return p1.get('x') < p2.get('x') ? [name1, name2] : [name2, name1];
-  }).args({n: 2});
+  }).args(2);
 
 
   def('delta', function (axis, namePair) {
@@ -246,7 +260,7 @@ Smartgraphs.evaluator.defs( function () {
     var p2 = anno2.get('point');
   
     return p2.get(axis) - p1.get(axis);
-  }).args({n: 2});
+  }).args(2);
 
 
   def('or', function () {
@@ -254,12 +268,12 @@ Smartgraphs.evaluator.defs( function () {
       if (arguments[i]) return true;
     }
     return false;
-  }).args({min: 1});
+  }).minArgs(1);
 
 
   def('not', function (val) {
     return !val;
-  }).args({n: 1});
+  }).args(1);
 
 
   def('samePoint', function (name1, name2) {
@@ -269,7 +283,7 @@ Smartgraphs.evaluator.defs( function () {
     var p2 = anno2.get('point');
   
     return p1 && p1 === p2;
-  }).args({n: 2});
+  }).args(2);
 
 
   // note this (textLengthIsAtLeast 1 (responseField 0)) is easier to describe in an expression-authoring interface 
@@ -277,29 +291,29 @@ Smartgraphs.evaluator.defs( function () {
 
   def('textLengthIsAtLeast', function (minLength, text) {
     return (text || '').strip().length >= minLength;
-  }).args({n: 2});
+  }).args(2);
 
 
   def('coord', function (axis, annotationName) {
     var annotation = Smartgraphs.activityObjectsController.findAnnotation(annotationName),
         point = annotation.get('point');
     return point.get(axis);
-  }).args({n: 2});
+  }).args(2);
 
 
   def('max', function () {
     return Math.max.apply(Math, arguments);
-  }).args({min: 1});
+  }).minArgs(1);
 
 
   def('min', function () {
     return Math.min.apply(Math, arguments);
-  }).args({min: 1});
+  }).minArgs(1);
 
 
   def('abs', function (val) {
     return Math.abs(val);
-  }).args({n: 1});
+  }).args(1);
 
 
   // note that quantities should carry units with them, not require unit pluralization to be written into a variable
@@ -308,23 +322,23 @@ Smartgraphs.evaluator.defs( function () {
     var units = Smartgraphs.store.find(Smartgraphs.Unit, unitId);
     if (!units) throw "Couldn't find units '%@'".fmt(unitId);
     return units.pluralizeFor(quantity);
-  }).args({n: 2});
+  }).args(2);
 
 
   // dereference a single variable. May want to implement this in the evaluator itself, but first we need to demonstrate
   // a clear need to do so, and consistent rules;  we are NOT trying to implement Scheme in javascript
   def('get', function (name) {
     return Smartgraphs.activityPageController.getFromContext(name);
-  }).args({n: 1});
+  }).args(1);
 
 
   def('/', function (x, y) {
     return x / y;
-  }).args({n: 2});
+  }).args(2);
 
 
   def('listItem', function (index, list) {
     return list[index-1];
-  }).args({n: 2});
+  }).args(2);
 
 });
