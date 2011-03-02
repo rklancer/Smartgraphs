@@ -191,9 +191,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     if ( !which ) return NO;
     
     controller = Smartgraphs.get(which+'TableController');
-    // old code path: annotations is not passed, and annotations are sticky
-    // new code path: annotations are added on a per-step basis, and annotations are not sticky
-    if (annotations) controller.clearAnnotations();
+    controller.clearAnnotations();
     controller.openDataset(dataset);
     controller.addAnnotationsByName(annotations);
     

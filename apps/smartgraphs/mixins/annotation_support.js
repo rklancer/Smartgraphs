@@ -240,9 +240,7 @@ Smartgraphs.AnnotationSupport = {
     
     if (!annotations) return;
 
-    annotations.forEach( function (annotation) {
-      // old code path: annotation is Object with 'name' property; new code path: annotation is just a string  
-      var name = (typeof annotation === 'string') ? annotation : annotation.name;
+    annotations.forEach( function (name) {
       self.addAnnotation(Smartgraphs.activityObjectsController.findAnnotation(name));
     });
   }

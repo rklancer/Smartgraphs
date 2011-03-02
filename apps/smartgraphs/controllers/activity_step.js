@@ -83,29 +83,21 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     switch (config.type) {
       case 'graph':
-        if (!config.name) {
-          // new code path:
-          // temporarily and somewhat hackily creates a Graph object to be opened in the graphController.
-          // (When all activities are switched over to the next json format, we can revisit existence of Graph model.)
-
-          // no existing activities use an 'graphN' as the graph name, and no new ones are going be created, so:
-          id = Smartgraphs.getNextGuid();
-          name = 'graph'+id;
-          Smartgraphs.store.createRecord(Smartgraphs.Graph, {
-            url: id,
-            activity: Smartgraphs.activityController.get('id'),
-            name: name,
-            title: config.title,
-            xAxis: config.xAxis,
-            yAxis: config.yAxis,
-            initialDatasets: config.datasets,
-            initialAnnotations: allAnnotations
-          });
-        }
-        else {
-          // old code path
-          name = config.name;
-        }
+        // temporarily and somewhat hackily creates a Graph object to be opened in the graphController.
+        // no existing activities use an 'graphN' as the graph name, and no new ones are going be created, so:
+        id = Smartgraphs.getNextGuid();
+        name = 'graph'+id;
+        Smartgraphs.store.createRecord(Smartgraphs.Graph, {
+          url: id,
+          activity: Smartgraphs.activityController.get('id'),
+          name: name,
+          title: config.title,
+          xAxis: config.xAxis,
+          yAxis: config.yAxis,
+          initialDatasets: config.datasets,
+          initialAnnotations: allAnnotations
+        });
+          
         // FIXME stop using actions for all this stuff!
         Smartgraphs.statechart.sendAction('showGraph', this, { pane: pane, name: name });
         return;

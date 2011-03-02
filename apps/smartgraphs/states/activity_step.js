@@ -271,8 +271,6 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     
     @param {String} args.name
       The name of the Annotation object.
-    @param {String} [args.graphName]
-      The name of the graph on which the Annotation should be displayed.
     @param {String} args.tableName
       The name of the table (or dataset) on which the Annotation should be displayed.
   */
@@ -282,12 +280,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
         
     if (!annotation) return YES;
 
-    if (args.graphName) {
-      // old code path: graph is specified by graphName      
-      graphController = Smartgraphs.GraphController.controllerForName[args.graphName];
-    }
-    else if (args.pane) {
-      // new code path: graph is specified by pane (temporarily; eventually, addAnnotation won't be used)      
+    if (args.pane) {
       graphController = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
     }
 
@@ -422,20 +415,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   */
   startInteractiveSelection: function (context, args) {
     var dataset = Smartgraphs.activityObjectsController.findDataset(args.datasetName),
-        annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName),
-        graphController,
-        tableController;
-        
-    if (args.graphName) {
-      // old code path (the new code path can safely assume the annotation has been created and added to a graph or table)
-      graphController = Smartgraphs.GraphController.controllerForName[args.graphName];
-      tableController = Smartgraphs.TableController.controllerForDataset[args.datasetName];
-
-      if (!annotation) annotation = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, args.annotationName, { 'color': args.color });  
-
-      graphController.addAnnotation(annotation);
-      if (tableController) tableController.addAnnotation(annotation);
-    } 
+        annotation = Smartgraphs.activityObjectsController.findAnnotation(args.annotationName);        
     
     // stash the info needed by the state
     Smartgraphs.interactiveSelectionController.set('annotation', annotation);
