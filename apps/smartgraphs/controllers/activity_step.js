@@ -53,12 +53,12 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       Smartgraphs.statechart.sendAction('submitStep');
     }
     else {
-      Smartgraphs.statechart.sendAction('waitForResponse');
+      this.waitForResponse();
     }
   },
   
   setupPanes: function () {
-    Smartgraphs.statechart.sendAction('setPaneConfig', this, this.get('paneConfig'));
+    Smartgraphs.activityViewController.setPaneConfig(this.get('paneConfig'));
     
     var panes = this.get('panes');
     for (var key in panes) {
@@ -77,7 +77,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (!pane) return;
     
     if (config === null) {
-      Smartgraphs.statechart.sendAction('hidePane', this, pane);
+      Smartgraphs.activityViewController.hidePane(pane);
       return;
     }
     
@@ -97,15 +97,14 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
           initialDatasets: config.datasets,
           initialAnnotations: allAnnotations
         });
-          
-        // FIXME stop using actions for all this stuff!
-        Smartgraphs.statechart.sendAction('showGraph', this, { pane: pane, name: name });
+        
+        Smartgraphs.activityViewController.showGraph(pane, name);
         return;
       case 'table':
-        Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, dataset: config.datasetName || config.dataset, annotations: allAnnotations } );
+        Smartgraphs.activityViewController.showTable(pane, config.dataset, allAnnotations);
         return;
       case 'image':
-        Smartgraphs.statechart.sendAction('showImage', this, { pane: pane, path: config.path, caption: config.caption });
+        Smartgraphs.activityViewController.showImage(pane, config.path, config.caption);
         return;
     }
   },
@@ -188,6 +187,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   waitForResponse: function () {
+    Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
+    
     var criterion = this.get('submissibilityCriterion');
     if (criterion) {
       var self = this;

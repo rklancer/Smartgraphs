@@ -4,13 +4,6 @@ as Smartgraphs.statechart.sendAction():
 
 errorSavingActivity
 submitStep
-waitForResponse
-setPaneConfig
-hidePane
-showGraph
-showTable
-showImage
-startInteractiveSelection
 enableSubmission
 disableSubmission
 gotoStep
@@ -21,6 +14,14 @@ stopSensor
 openActivity
 gotoNextPage
 dataPointSelected
+
+waitForResponse  (REMOVED)
+setPaneConfig    (REMOVED)
+hidePane         (REMOVED)
+showGraph        (REMOVED)
+showTable        (REMOVED)
+showImage        (REMOVED)
+startInteractiveSelection  (REMOVED; turned into a 'command' in lib/commands)
 
 
 as 'action' property of a control:
@@ -38,12 +39,12 @@ gotoNextPage
 
 Of the above, these don't make sense as actions:
 
-setPaneConfig
-hidePane
-showGraph
-showTable
-showImage
-waitForResponse
+setPaneConfig    (REMOVED)
+hidePane         (REMOVED)
+showGraph        (REMOVED)
+showTable        (REMOVED)
+showImage        (REMOVED)
+waitForResponse  (REMOVED)
 
 
 Of the above, these use "pseudostates" maintained by flags as a legacy of responder-chain limitations:
