@@ -1482,26 +1482,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "y": 15,
       "guid": 11,
       "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 7,
-      "y": 4,
-      "guid": "16-A"
-    },
-    {
-      "x": 10,
-      "y": 2.9,
-      "guid": "16-B"
-    },
-    {
-      "x": 10.5,
-      "y": 1.9,
-      "guid": "16-C"
-    },
-    {
-      "x": 13,
-      "y": 0.9,
-      "guid": "16-D"
     }
   ],
   "annotations": [
