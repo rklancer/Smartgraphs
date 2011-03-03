@@ -60,7 +60,7 @@ Smartgraphs.evaluator = {
   evaluate: function (exp) {
 
     // if 'exp' is an array, it consists of an operator followed by its operands
-    if ( (typeof exp === 'object') && (exp.splice === [].splice) ) {
+    if ( (typeof exp === 'object') && exp !== null && exp.splice === [].splice ) {
       if (exp.length < 1) throw "Evaluator was asked to evaluate an empty expression";
       
       if (exp[0] === "'" || exp[0] === 'quote') return exp[1];      // treat quote operator specially

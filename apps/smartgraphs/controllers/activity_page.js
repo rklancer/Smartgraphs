@@ -35,19 +35,21 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
     @param {String} name
   */
   getFromContext: function (name) {
-    var context = this.get('context');
-    return context.hasOwnProperty(name) ? context[name] : Smartgraphs.activityObjectsController.findVariable(name).get('value');
-  },
-
-  /**
-    Set the specified name in the context ot the specified value
+    var undefined,
+        context = this.get('context'),
+        expression = context.hasOwnProperty(name) && context[name];
     
-    @param {String} name
-    @param value
-  */
-  setInContext: function (name, value) {
-    var context = this.get('context');
-    context[name] = value;
-  }    
+    return (expression !== undefined) ? Smartgraphs.evaluator.evaluate(expression) : Smartgraphs.activityObjectsController.findVariable(name).get('value');
+  },
+  
+  context: function () {
+    var contextVars = this.get('contextVars') || [],
+        ret = {};
+        
+    contextVars.forEach( function (varDef) {
+      ret[varDef.name] = varDef.value;
+    });
+    return ret;
+  }.property('content').cacheable()
   
 });

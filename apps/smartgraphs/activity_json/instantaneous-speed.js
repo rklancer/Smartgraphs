@@ -58,7 +58,19 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "/shared/instantaneous-speed/page/12/step/15",
         "/shared/instantaneous-speed/page/12/step/16"
       ],
-      "firstStep": "/shared/instantaneous-speed/page/12/step/1"
+      "firstStep": "/shared/instantaneous-speed/page/12/step/1",
+      "contextVars": [
+        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
+        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
+        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
+        { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
+        { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
+      ]
     },
     {
       "name": "Instantaneous Speed II",
@@ -85,7 +97,19 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "/shared/instantaneous-speed/page/13/step/15",
         "/shared/instantaneous-speed/page/13/step/16"
       ],
-      "firstStep": "/shared/instantaneous-speed/page/13/step/1"
+      "firstStep": "/shared/instantaneous-speed/page/13/step/1",
+      "contextVars": [
+        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
+        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
+        { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
+        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
+        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
+        { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
+        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
+        { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
+        { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
+      ]
     },
     {
       "name": "Instantaneous Speed III",
@@ -226,18 +250,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "contextVars": [
-        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
-        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
-        { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
-        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
-        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
-        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
-        { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
-        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
-        { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
-        { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
-      ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -862,18 +874,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "contextVars": [
-        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
-        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
-        { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
-        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
-        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
-        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
-        { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
-        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
-        { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
-        { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
-      ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {

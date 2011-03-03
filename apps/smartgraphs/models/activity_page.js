@@ -59,6 +59,14 @@ Smartgraphs.ActivityPage = SC.Record.extend(
     The one ActivityStep to open first.
   */
   firstStep: SC.Record.toOne('Smartgraphs.ActivityStep'),
+
+  /**
+    A set of name:expression pairs, which can be evaluated on demand using the expression ['get', <name>] or using 
+    Smartgraphs.activityPageController.getFromContext(<name>)
+        
+    @property {Array}
+  */
+  contextVars: SC.Record.attr(Array),
   
   /**
     @private

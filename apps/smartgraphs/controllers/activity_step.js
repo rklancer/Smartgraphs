@@ -43,7 +43,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     // enableSubmission *before* executing startCommands -- they might disable submission
     Smartgraphs.statechart.sendAction('enableSubmission');
 
-    this.setContextVars(this.get('contextVars'));
     this.startTools();
     this.executeCommands(this.get('startCommands'));
     this.processSubstitutions(this.get('substitutedExpressions'));
@@ -121,14 +120,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     highlightedAnnotationNames.forEach( function (name) {
       var annotation = Smartgraphs.activityObjectsController.findAnnotation(name);
       if (annotation) annotation.set('isHighlighted', YES);
-    });
-  },
-
-  setContextVars: function (varDefs) {
-    if (!varDefs) return;
-    
-    varDefs.forEach( function (varDef) {
-      Smartgraphs.activityPageController.setInContext(varDef.name, Smartgraphs.evaluator.evaluate(varDef.value));
     });
   },
   
