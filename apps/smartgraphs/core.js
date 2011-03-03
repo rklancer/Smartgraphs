@@ -35,8 +35,7 @@ Smartgraphs = SC.Application.create(
   },
   
   // DEBUG SETTINGS
-  trace: YES,                   // whether to trace firstResponder changes and app actions
-  //useMockResponses: YES,      // whether the data source should use mock responses or real XHR        
+  trace: YES,                   // whether to trace firstResponder changes and app actions      
   logDataSource: YES,           // whether the data source should log
   showOutline: YES              // whether to show the outline on the left by default
   
