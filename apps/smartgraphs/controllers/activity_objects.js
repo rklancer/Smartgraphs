@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.activityObjectsController
-// Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer <rpk@pobox.com>
+// Copyright: ©2010-2011 Concord Consortium
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -12,12 +12,11 @@
   
   This controller handles:
     (a) loading the initial set of datasets and annotations (those defined in the activity document) into the session
-    (b) dynamically creating new datasets or annotations and associating them with the current session
-    (c) finding datasets and annotations by name in the current session
-    (d) maintaining an observable list of dataset and annotation names in the current session
+    (b) finding datasets and annotations by name in the current session
+    (c) TODO: in authoring mode, maintaining a list of the datasets, annotations, etc associated with the activity
   
-  This controller has some complexity because there are a number of Annotation subclasses, and there is no way to
-  create a RecordArray backed by a query for all Annotations subtype instances associated with the current activity.
+  TODO: perhaps eventually this should be an actual ObjectController pointing to an ActivityObjectList associated
+  with the current activity; right now, it's just a gussied-up SC.Object.
 
   @extends SC.Controller
 */
@@ -64,12 +63,9 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     this._variables = {};
           
     findObjects = function (type, typeName, hash) {
-      var query,
-          found;
-          
-      query = SC.Query.local(type, 'activity={activity}', { activity: activity });
-      found = Smartgraphs.store.find(query);
-    
+      var query = SC.Query.local(type, 'activity={activity}', { activity: activity }),
+          found = Smartgraphs.store.find(query);
+
       if ( !(found.get('status') & SC.Record.READY)) {
         throw "predefined %@ records are not READY!".fmt(typeName);
       }
@@ -136,73 +132,6 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   },
   
   /**
-    Create a dataset in the current activity session. This is the canonical way to create a dataset.
-    
-    It is a runtime error to call this method with the name of a dataset that has already been defined in the current
-    session.
-    
-    @param name 
-      The name to give to the newly created dataset.
-
-    @returns {Smartgraphs.Dataset}
-      The newly created datatset
-  */
-  createDataset: function (name, xUnits, yUnits) {    
-    if (this._datasets[name]) {
-      throw "The activity tried to create a dataset with name %@, which is already in use.".fmt(name);
-    }
-    
-    var dataset = Smartgraphs.store.createRecord(Smartgraphs.Dataset, { 
-      activity: Smartgraphs.activityController.get('id'),
-      name: name,
-      points: [], 
-      xUnits: xUnits,
-      yUnits: yUnits
-    });
-    dataset.set('id', Smartgraphs.getNextGuid());
-    
-    this._datasets[name] = dataset;
-    this.notifyPropertyChange('datasetNames');
-    return dataset;
-  },
-  
-  /**
-    Create an annotation in the current activity session.
-    
-    It is a runtime error to call this method with the name of an annotation that has already been defined in the 
-    current session.
-    
-    @param {SC.Annotation} type 
-      Annotation subclass to create
-    @param {String} name 
-      The name to give to the newly created annotation
-    @param {Object} attributes
-      Hash of attributes to pass to SC.Record.create when creating the annotation record. (This implies that related
-      objects must be specified by id in the attributes hash.)
-    
-    @returns {Smartgraphs.Annotation}
-      The newly created annotation
-  */
-  createAnnotation: function (type, name, attributes) {
-    if (this._annotations[name]) {
-      throw "The activity tried to create an annotation with name %@, which is already in use.".fmt(name);
-    }
-    
-    var annotation = Smartgraphs.store.createRecord(type, SC.mixin({
-      activity: Smartgraphs.activityController.get('id'),
-      name: name
-    }, attributes));
-    annotation.set('id', Smartgraphs.getNextGuid());
-    
-    var session = Smartgraphs.sessionController.get('content');
-    if (session) annotation.set('session', session);
-    
-    this._annotations[name] = annotation;
-    this.notifyPropertyChange('annotationNames');
-    return annotation;
-  },
-  
-  /**
     Create a variable in the current activity session.
     
     It is a runtime error to call this method with the name of a variable that has already been defined in the current
@@ -240,27 +169,6 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   */
   getVariable: function (name) {
     return this._variables[name];
-  },
-
-  /**
-    Deletes an annotation in the current activity session.
-
-    Does nothing if no annotation with the specified name has been defined.
-    
-    @param {String} name 
-      The name of the annotation to destroy
-    
-    @returns {Boolean}
-      YES if the annotation was found (and destroyed); NO if the annotation was not found.
-  */
-  deleteAnnotation: function (name) {
-    var annotation = this.findAnnotation(name);
-    if (!annotation) return NO;
-    
-    annotation.destroy();
-    delete this._annotations[name];
-    this.notifyPropertyChange('annotationNames');
-    return YES;
   },
   
   /**
