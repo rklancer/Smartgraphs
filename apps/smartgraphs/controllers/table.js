@@ -57,19 +57,16 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   latestXBinding: '*dataset.latestPoint.xRounded',
   latestYBinding: '*dataset.latestPoint.yRounded',
   
-  pendingDatasetName: null,
-  datasetNamesBinding: 'Smartgraphs.activityObjectsController.datasetNames',
-  datasetNamesBindingDefault: SC.Binding.oneWay(),
-  
   clear: function () {
-    this.set('pendingDatasetName', null);
-  
+    var datasetName = this.get('datasetName');
+    
+    if (datasetName) {
+      Smartgraphs.TableController.controllerForDataset.set(datasetName, null);
+    }
+    
     this.clearAnnotations();
     this.set('content', null);
     this.set('dataset', null);
-    if (this.get('datasetName')) {
-      Smartgraphs.TableController.controllerForDataset.set(this.get('datasetName'), null);
-    }
     this.set('datasetName', null);
   },
   
@@ -80,37 +77,23 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     by that graph controller before setting our content to the set of points in the dataset.
   */
   openDataset: function (datasetName) {
-    var currentDatasetName = this.get('datasetName');
-    if (currentDatasetName === datasetName) return YES;  // Nothing to do - unlikely, though
-
-    this.clear(); 
-
-    this.set('datasetName', datasetName);
-    
+    var currentDatasetName = this.get('datasetName'),
+        dataset;
+        
+    if (currentDatasetName === datasetName) return YES;       // Nothing to do
     if (currentDatasetName) {
       // FIXME this method of handling dataset names will have problems with name collisions
       Smartgraphs.TableController.controllerForDataset.set(currentDatasetName, null);
     }
     Smartgraphs.TableController.controllerForDataset.set(datasetName, this);
-    this.set('pendingDatasetName', datasetName);
-    this.maybeUsePendingDataset();
-  },
-  
-  // a first implementation of lazy loading of activity objects
-  maybeUsePendingDataset: function () {
-    var pendingDatasetName = this.get('pendingDatasetName');
-    if (!pendingDatasetName) return;
     
-    var datasetNames = Smartgraphs.activityObjectsController.get('datasetNames');
-    
-    if (datasetNames && datasetNames.indexOf(pendingDatasetName) >= 0) {
-      var dataset = Smartgraphs.activityObjectsController.findDataset(pendingDatasetName);
-      this.set('dataset', dataset);
-      this.set('content', dataset.get('points'));
-      this.set('pendingDatasetName', null);
-    }
-  }.observes('datasetNames')
+    dataset = Smartgraphs.activityObjectsController.findDataset(datasetName);
+    this.clear(); 
+    this.set('datasetName', datasetName);
+    this.set('dataset', dataset);
+    this.set('content', dataset.get('points'));
+  }
 
-}) ;
+});
 
 Smartgraphs.TableController.controllerForDataset = SC.Object.create({});
