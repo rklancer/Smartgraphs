@@ -1,0 +1,44 @@
+[
+   "********* Examine the use of indirect references to points via tag names in these expressions; is it justified? *******" ,
+
+  ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]],
+
+  ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]],
+
+  ["-", ["get", "end-position"], ["get", "start-position"]],
+
+  ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]],
+
+  ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]],
+
+  ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]],
+
+  ["-", ["get", "end-time"], ["get", "start-time"]],
+
+  ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]],
+
+  ["/", ["get", "change-position"], ["get", "change-time"]],
+
+  ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]],
+
+  ["=", 1, ["absDiff", ["indexInDataset", "first-point-A"], ["indexInDataset", "second-point-A"]]],
+
+  ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+
+  ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+
+  ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+
+  ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
+
+  ["=", 1, ["absDiff", ["indexInDataset", "first-point-B"], ["indexInDataset", "second-point-B"]]],
+
+  ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
+
+  ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
+
+  ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
+
+  ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1]
+
+]
