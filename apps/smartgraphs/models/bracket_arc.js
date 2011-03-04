@@ -45,9 +45,9 @@ Smartgraphs.BracketArc = Smartgraphs.Annotation.extend(
   */
   isLeftOfColumn: SC.Record.attr(Boolean),
   
-  p1: Smartgraphs.Tag.taggedObject('p1', 'p1Point', 'p1Tag'),
+  p1: Smartgraphs.Tag.taggedObject('p1Point', 'p1Tag'),
   
-  p2: Smartgraphs.Tag.taggedObject('p2', 'p2Point', 'p2Tag'),
+  p2: Smartgraphs.Tag.taggedObject('p2Point', 'p2Tag'),
   
   /**
     Optionally, item1Index and item2Index can be derived from 2 DataPoints. This is one of those points.

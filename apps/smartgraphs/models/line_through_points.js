@@ -27,14 +27,14 @@ Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
     
     @property {Smartgraphs.DataPoint}
   */
-  p1: Smartgraphs.Tag.taggedObject('p1', 'p1Point', 'p1Tag'),
+  p1: Smartgraphs.Tag.taggedObject('p1Point', 'p1Tag'),
 
   /**
     The second of the two points which define (but do not limit) the line.
     
     @property {Smartgraphs.DataPoint}
   */
-  p2: Smartgraphs.Tag.taggedObject('p2', 'p2Point', 'p2Tag'),
+  p2: Smartgraphs.Tag.taggedObject('p2Point', 'p2Tag'),
   
   /**
     

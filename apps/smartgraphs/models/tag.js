@@ -21,9 +21,23 @@ Smartgraphs.Tag = SC.Record.extend(
 
 });
 
-Smartgraphs.Tag.taggedObject = function (prop, direct, tag) {
-  return function () {
-    if (arguments.length > 1) this.notifyPropertyChange(prop);
-    return this.get(direct) || this.getPath(tag+'.point');
-  }.property().cacheable().observes(direct, '*'+tag+'.point');
-};
+
+(function () {
+  var i = 0;
+  
+  Smartgraphs.Tag.taggedObject = function (directProperty, tagProperty) {
+    var notifierProperty = '_sgtag_'+(i++);
+    
+    return function () {
+      if (arguments.length > 3) {
+        // we were called as an observer
+        this.notifyPropertyChange(notifierProperty);
+        return;
+      }
+    
+      // we were called as a computed property
+      return this.get(directProperty) || this.getPath(tagProperty+'.point');
+    
+    }.property(notifierProperty).cacheable().observes(directProperty, '*'+tagProperty+'.point');
+  };
+}());
