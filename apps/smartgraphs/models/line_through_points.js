@@ -1,12 +1,13 @@
 // ==========================================================================
 // Project:   Smartgraphs.LineThroughPoints
-// Copyright: ©2010 Concord Consortium
-// @author    Parker Morse <pmorse@cantinaconsulting.com>
+// Copyright: ©2010-2011 Concord Consortium
+// Author:    Parker Morse <pmorse@cantinaconsulting.com>
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('models/tag');
 sc_require('models/annotation');
-sc_require('models/data_point');
 sc_require('views/line_through_points');
 
 /** @class
@@ -26,14 +27,42 @@ Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
     
     @property {Smartgraphs.DataPoint}
   */
-  point1: SC.Record.toOne('Smartgraphs.DataPoint'),
+  point1: Smartgraphs.Tag.taggedObject('point1', 'p1Point', 'p1Tag'),
 
   /**
     The second of the two points which define (but do not limit) the line.
     
     @property {Smartgraphs.DataPoint}
   */
-  point2: SC.Record.toOne('Smartgraphs.DataPoint')
+  point2: Smartgraphs.Tag.taggedObject('point2', 'p2Point', 'p2Tag'),
+  
+  /**
+    
+    @property {Smartgraphs.DataPoint}
+  */
+  p1Point: SC.Record.toOne('Smartgraphs.DataPoint'),
+  
+  /**
+    
+    @property {Smartgraphs.DataPoint}
+  */
+  p2Point: SC.Record.toOne('Smartgraphs.DataPoint'),
+
+  /**
+    Optional Tag object which can be used to indirectly specify point1
+    (TODO: change this from a HighlightedPoint to a Tag)
+
+    @property {Smartgraphs.Tag}
+  */
+  p1Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint'),
+
+  /**
+    Optional Tag object which can be used to indirectly specify point2
+    (TODO: change this from a HighlightedPoint to a Tag)
+
+    @property {Smartgraphs.Tag}
+  */
+  p2Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint')
 
 }) ;
 

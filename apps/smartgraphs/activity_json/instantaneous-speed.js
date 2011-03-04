@@ -1505,16 +1505,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "url": "/shared/instantaneous-speed/annotation/slope-line-A",
           "name": "slope-line-A",
           "activity": "/shared/instantaneous-speed",
-          "point1": "first-point-A",
-          "point2": "second-point-A",
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A",
           "color": "#1f77b4"
         },
         {
           "url": "/shared/instantaneous-speed/annotation/slope-line-B",
           "name": "slope-line-B",
           "activity": "/shared/instantaneous-speed",
-          "point1": "first-point-B",
-          "point2": "second-point-B",
+          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B",
           "color": "#ff7f0d"
         }
       ]

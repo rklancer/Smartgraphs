@@ -6,6 +6,7 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('models/tag');
 sc_require('models/annotation');
 sc_require('views/arrow');
 
@@ -68,14 +69,18 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
     @property {String}
   */
   label: SC.Record.attr(String),
+
+  p1: Smartgraphs.Tag.taggedObject('p1', 'p1Point', 'p1Tag'),
   
+  p2: Smartgraphs.Tag.taggedObject('p2', 'p2Point', 'p2Tag'),
+
   /**
     Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
     override calculateCoordinatesFromPoints() to compute (x1, y1) and (x2, y2) from (p1, p2).
     
     @property {Smartgraphs.DataPoint}
   */
-  p1: SC.Record.toOne('Smartgraphs.DataPoint'),
+  p1Point: SC.Record.toOne('Smartgraphs.DataPoint'),
   
   /**
     Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
@@ -83,7 +88,7 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
     
     @property {Smartgraphs.DataPoint}
   */
-  p2: SC.Record.toOne('Smartgraphs.DataPoint'),
+  p2Point: SC.Record.toOne('Smartgraphs.DataPoint'),
 
   /**
     Optional Tag object which can be used to indirectly specify p1
@@ -100,16 +105,6 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
     @property {Smartgraphs.Tag}
   */
   p2Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint'),
-  
-  // use this instead of a one-way binding to 'p1Tag.point' because we may ultimately support a variety of indirection
-  // properties, like p1Tag and p2Tag, which determine p1 and p2
-  _setPointsFromTags: function () {
-    var p1 = this.getPath('p1Tag.point'),
-        p2 = this.getPath('p2Tag.point');
-        
-    if (p1) this.setIfChanged('p1', p1);
-    if (p2) this.setIfChanged('p2', p2);
-  }.observes('*p1Tag.point', '*p2Tag.point'),
   
   _startAndEndDidChange: function () {
     var p1 = this.get('p1'),

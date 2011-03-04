@@ -6,6 +6,7 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
+sc_require('models/tag');
 sc_require('models/annotation');
 sc_require('views/bracket_arc');
 
@@ -44,19 +45,23 @@ Smartgraphs.BracketArc = Smartgraphs.Annotation.extend(
   */
   isLeftOfColumn: SC.Record.attr(Boolean),
   
-  /**
-    Optionally, item1Index and item2Index can be derived from 2 DataPoints. This is one of those points.
-    
-    @property {Smartgraphs.DataPoint}
-  */
-  p1: SC.Record.toOne('Smartgraphs.DataPoint'),
+  p1: Smartgraphs.Tag.taggedObject('p1', 'p1Point', 'p1Tag'),
+  
+  p2: Smartgraphs.Tag.taggedObject('p2', 'p2Point', 'p2Tag'),
   
   /**
     Optionally, item1Index and item2Index can be derived from 2 DataPoints. This is one of those points.
     
     @property {Smartgraphs.DataPoint}
   */
-  p2: SC.Record.toOne('Smartgraphs.DataPoint'),
+  p1Point: SC.Record.toOne('Smartgraphs.DataPoint'),
+  
+  /**
+    Optionally, item1Index and item2Index can be derived from 2 DataPoints. This is one of those points.
+    
+    @property {Smartgraphs.DataPoint}
+  */
+  p2Point: SC.Record.toOne('Smartgraphs.DataPoint'),
 
   /**
     Optional Tag object which can be used to indirectly specify p1
@@ -73,17 +78,6 @@ Smartgraphs.BracketArc = Smartgraphs.Annotation.extend(
     @property {Smartgraphs.Tag}
   */
   p2Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint'),
-  
-  // use this instead of a one-way binding to 'p1Tag.point' because we may ultimately support a variety of indirection
-  // properties, like p1Tag and p2Tag, which determine p1 and p2
-  // TODO: this should migrate to a base class shared by Arrow and BracketArc
-  _setPointsFromTags: function () {
-    var p1 = this.getPath('p1Tag.point'),
-        p2 = this.getPath('p2Tag.point');
-        
-    if (p1) this.setIfChanged('p1', p1);
-    if (p2) this.setIfChanged('p2', p2);
-  }.observes('*p1Tag.point', '*p2Tag.point'),
   
   _pointIndicesDidChange: function () {
     var p1 = this.get('p1'),
