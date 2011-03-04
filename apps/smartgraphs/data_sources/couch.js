@@ -92,7 +92,8 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
           ['Graph',               'graphs'],
           ['ResponseTemplate',    'responseTemplates'],
           ['DataPoint',           'datapoints'],
-          ['Dataset',             'datasets']
+          ['Dataset',             'datasets'],
+          ['Tag',                 'tags']
         ].forEach(function (pair) {
           self.loadRecordsFromArray(store, Smartgraphs[pair[0]], doc[pair[1]]);
         });

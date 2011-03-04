@@ -33,7 +33,11 @@ Smartgraphs.HighlightedPoint = Smartgraphs.Annotation.extend(
     
     @property {Smartgraphs.DataPoint}
   */
-  point: SC.Record.toOne('Smartgraphs.DataPoint'),
+  point: Smartgraphs.Tag.pointFromTag('pointRecord', 'pointTag'),
+  
+  pointRecord: SC.Record.toOne('Smartgraphs.DataPoint'),
+
+  pointTag: SC.Record.toOne('Smartgraphs.Tag'),
   
   viewClass: function () {
     return this.get('displayStyle') === Smartgraphs.HighlightedPoint.HIGHLIGHT_POINT_AND_DIM_BACKGROUND_STYLE ? null : Smartgraphs.HighlightedPointView;

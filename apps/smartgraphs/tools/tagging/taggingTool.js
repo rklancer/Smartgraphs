@@ -17,11 +17,11 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   name: 'tagging',
   state: 'TAGGING_TOOL',
   
-  tag: null,
+  tagName: null,
   datasetName: null,
   
   setup: function (args) {
-    this.set('tag', args.tag);
+    this.set('tagName', args.tag);
     this.set('datasetName', args.dataset);
   },
   
@@ -29,8 +29,8 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
     return Smartgraphs.activityObjectsController.findDataset(this.get('datasetName')) || null;
   }.property('datasetName'),
   
-  annotation: function () {
-    return Smartgraphs.activityObjectsController.findAnnotation(this.get('tag')) || null;
-  }.property('tag')
+  tag: function () {
+    return Smartgraphs.activityObjectsController.findTag(this.get('tagName')) || null;
+  }.property('tagName')
   
 });

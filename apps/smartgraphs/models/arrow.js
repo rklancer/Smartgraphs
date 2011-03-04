@@ -70,9 +70,9 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
   */
   label: SC.Record.attr(String),
 
-  p1: Smartgraphs.Tag.pointFromTag('p1Point', 'p1Tag'),
+  p1: Smartgraphs.Tag.pointFromTag('p1Record', 'p1Tag'),
   
-  p2: Smartgraphs.Tag.pointFromTag('p2Point', 'p2Tag'),
+  p2: Smartgraphs.Tag.pointFromTag('p2Record', 'p2Tag'),
 
   /**
     Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
@@ -80,7 +80,7 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
     
     @property {Smartgraphs.DataPoint}
   */
-  p1Point: SC.Record.toOne('Smartgraphs.DataPoint'),
+  p1Record: SC.Record.toOne('Smartgraphs.DataPoint'),
   
   /**
     Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
@@ -88,7 +88,7 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
     
     @property {Smartgraphs.DataPoint}
   */
-  p2Point: SC.Record.toOne('Smartgraphs.DataPoint'),
+  p2Record: SC.Record.toOne('Smartgraphs.DataPoint'),
 
   /**
     Optional Tag object which can be used to indirectly specify p1
@@ -96,7 +96,7 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
 
     @property {Smartgraphs.Tag}
   */
-  p1Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint'),
+  p1Tag: SC.Record.toOne('Smartgraphs.Tag'),
 
   /**
     Optional Tag object which can be used to indirectly specify p2
@@ -104,7 +104,7 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
 
     @property {Smartgraphs.Tag}
   */
-  p2Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint'),
+  p2Tag: SC.Record.toOne('Smartgraphs.Tag'),
   
   _startAndEndDidChange: function () {
     var p1 = this.get('p1'),

@@ -45,6 +45,13 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   _variables: {},
   
   /**
+    @private
+    
+    All tags available to the activity session, indexed by name.
+  */
+  _tags: {},
+  
+  /**
     When an activity session is started, call this method to populate the registry of dataset and annotation names 
     with the names of the datasets and annotations predefined the activity document (all other datasets and 
     annotations will be removed from the registry).
@@ -61,6 +68,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
     this._datasets = {};
     this._annotations = {};
     this._variables = {};
+    this._tags = {};
           
     findObjects = function (type, typeName, hash) {
       var query = SC.Query.local(type, 'activity={activity}', { activity: activity }),
@@ -88,6 +96,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
       findObjects(Smartgraphs.Dataset,    'dataset',    this._datasets);
       findObjects(Smartgraphs.Annotation, 'annotation', this._annotations);
       findObjects(Smartgraphs.Variable,   'variable',   this._variables);
+      findObjects(Smartgraphs.Tag,        'tag',        this._tags);
     }
     
     this.notifyPropertyChange('datasetNames');
@@ -169,6 +178,16 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   */
   getVariable: function (name) {
     return this._variables[name];
+  },
+  
+  /**
+    Returns a Tag from the current activity session.
+    
+    @param name 
+      The name of the desired Variable.
+  */
+  findTag: function (name) {
+    return this._tags[name];
   },
   
   /**

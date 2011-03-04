@@ -38,9 +38,9 @@ Smartgraphs.evaluator.defineOperators( function (def) {
 
 
   def('indexOf', function (name) {
-    var annotation = Smartgraphs.activityObjectsController.findAnnotation(name);
-    if (!annotation) throw "Annotation " + name + " not found.";
-    return annotation.getPath('point.dataset.points').indexOf(annotation.get('point'));
+    var tag = Smartgraphs.activityObjectsController.findTag(name);
+    if (!tag) throw "Tag " + name + " not found.";
+    return tag.getPath('point.dataset.points').indexOf(tag.get('point'));
   }).args(1);
 
 
@@ -57,22 +57,21 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   }).args(1).dependsOn('Smartgraphs.responseTemplateController*values.[]');
 
 
-  def('coord', function (axis, annotationName) {
-    var annotation = Smartgraphs.activityObjectsController.findAnnotation(annotationName);
+  def('coord', function (axis, tagName) {
+    var tag = Smartgraphs.activityObjectsController.findTag(tagName);
   
     if (axis !== 'x' && axis !== 'y') throw "x or y coordinates only!"
-    if (!annotation) throw "Annotation " + annotationName + " not found.";
-    if (!annotation.get('point')) throw "Annotation " + annotationName + " does not have a 'point' property";
+    if (!tag) throw "Tag " + tagName + " not found.";
 
-    return annotation.get('point').get(axis);
+    return tag.get('point').get(axis);
   }).args(2);
 
 
   def('slope', function (name1, name2) {
-    var anno1 = Smartgraphs.activityObjectsController.findAnnotation(name1);
-    var anno2 = Smartgraphs.activityObjectsController.findAnnotation(name2);
-    var p1 = anno1.get('point');
-    var p2 = anno2.get('point');
+    var tag1 = Smartgraphs.activityObjectsController.findTag(name1);
+    var tag2 = Smartgraphs.activityObjectsController.findTag(name2);
+    var p1 = tag1.get('point');
+    var p2 = tag2.get('point');
   
     return (p1.get('y') - p2.get('y')) / (p1.get('x') - p2.get('x'));
   }).args(2);
@@ -84,10 +83,10 @@ Smartgraphs.evaluator.defineOperators( function (def) {
 
 
   def('slopeToolOrder', function (name1, name2) {
-    var anno1 = Smartgraphs.activityObjectsController.findAnnotation(name1);
-    var anno2 = Smartgraphs.activityObjectsController.findAnnotation(name2);
-    var p1 = anno1.get('point');
-    var p2 = anno2.get('point');
+    var tag1 = Smartgraphs.activityObjectsController.findTag(name1);
+    var tag2 = Smartgraphs.activityObjectsController.findTag(name2);
+    var p1 = tag1.get('point');
+    var p2 = tag2.get('point');
   
     // currently, "slope tool order" means points go from left to right
     return p1.get('x') < p2.get('x') ? [name1, name2] : [name2, name1];
@@ -95,10 +94,10 @@ Smartgraphs.evaluator.defineOperators( function (def) {
 
 
   def('delta', function (axis, namePair) {
-    var anno1 = Smartgraphs.activityObjectsController.findAnnotation(namePair[0]);
-    var anno2 = Smartgraphs.activityObjectsController.findAnnotation(namePair[1]);
-    var p1 = anno1.get('point');
-    var p2 = anno2.get('point');
+    var tag1 = Smartgraphs.activityObjectsController.findTag(namePair[0]);
+    var tag2 = Smartgraphs.activityObjectsController.findTag(namePair[1]);
+    var p1 = tag1.get('point');
+    var p2 = tag2.get('point');
   
     return p2.get(axis) - p1.get(axis);
   }).args(2);
@@ -118,10 +117,10 @@ Smartgraphs.evaluator.defineOperators( function (def) {
 
 
   def('samePoint', function (name1, name2) {
-    var anno1 = Smartgraphs.activityObjectsController.findAnnotation(name1);
-    var anno2 = Smartgraphs.activityObjectsController.findAnnotation(name2);
-    var p1 = anno1.get('point');
-    var p2 = anno2.get('point');
+    var tag1 = Smartgraphs.activityObjectsController.findTag(name1);
+    var tag2 = Smartgraphs.activityObjectsController.findTag(name2);
+    var p1 = tag1.get('point');
+    var p2 = tag2.get('point');
   
     return p1 && p1 === p2;
   }).args(2);
@@ -135,9 +134,9 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   }).args(2);
 
 
-  def('coord', function (axis, annotationName) {
-    var annotation = Smartgraphs.activityObjectsController.findAnnotation(annotationName),
-        point = annotation.get('point');
+  def('coord', function (axis, tagName) {
+    var tag = Smartgraphs.activityObjectsController.findTag(tagName),
+        point = tag.get('point');
     return point.get(axis);
   }).args(2);
 

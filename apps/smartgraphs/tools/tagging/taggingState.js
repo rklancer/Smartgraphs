@@ -23,14 +23,14 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
     var dataset = Smartgraphs.taggingTool.get('dataset');
     this._oldIsSelectable = dataset.get('isSelectable');
     dataset.set('isSelectable', NO);
-    Smartgraphs.taggingTool.setPath('annotation.point', null); 
+    Smartgraphs.taggingTool.setPath('tag.point', null); 
   },
   
   exitState: function () {
     var dataset = Smartgraphs.taggingTool.get('dataset');
     dataset.set('isSelectable', this._oldIsSelectable);
     Smartgraphs.taggingTool.set('datasetName', null);
-    Smartgraphs.taggingTool.set('tag', null);
+    Smartgraphs.taggingTool.set('tagName', null);
   },
   
   /** 
@@ -48,7 +48,7 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
     var point = dataPointView.get('content');
     
     if (dataset && point.get('dataset') === dataset) {
-      Smartgraphs.taggingTool.setPath('annotation.point', point);
+      Smartgraphs.taggingTool.setPath('tag.point', point);
       Smartgraphs.statechart.sendAction('enableSubmission');
     }
   }

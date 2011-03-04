@@ -135,12 +135,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A"]
+          "annotations": ["p1A-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A"]
+          "annotations": ["p1A-highlight"]
         }
       },
       "beforeText": "<p>Select a point and then click <b>OK</b>.</p>",
@@ -166,12 +166,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
@@ -203,12 +203,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
@@ -240,12 +240,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -271,12 +271,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -303,13 +303,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -336,13 +336,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]          
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight"],
           "highlightedAnnotations": ["rise-bracket-A"]      
         }
       },
@@ -370,13 +370,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]          
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight"],
           "highlightedAnnotations": ["rise-bracket-A"]          
         }
       },
@@ -401,13 +401,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
           "highlightedAnnotations": ["run-arrow-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -434,13 +434,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
           "highlightedAnnotations": ["run-arrow-A"]          
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
@@ -467,13 +467,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
           "highlightedAnnotations": ["run-arrow-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "rise-bracket-A"],
           "highlightedAnnotations": ["run-bracket-A"]
         }
       },
@@ -501,13 +501,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "rise-arrow-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
           "highlightedAnnotations": ["run-arrow-A"]          
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "rise-bracket-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "rise-bracket-A"],
           "highlightedAnnotations": ["run-bracket-A"]    
         }
       },
@@ -532,12 +532,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -569,12 +569,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -607,12 +607,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -641,12 +641,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
@@ -700,12 +700,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight"]
         }
       },
       "beforeText": "<p>Choose a point that is different from those you selected earlier. Then click <b>OK</b>.</p>",
@@ -721,14 +721,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "name": "setAnnotationAttribute",
           "args": {
-            "name": "first-point-A",
+            "name": "p1A-highlight",
             "pointColor": "#f2b3b3"
           }
         },
         {
           "name": "setAnnotationAttribute",
           "args": {
-            "name": "second-point-A",
+            "name": "p2A-highlight",
             "pointColor": "#f2b3b3"
           }
         }
@@ -753,12 +753,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight"]
         }
       },
       "beforeText": "<p>Try again.</p><p>Choose a point that is <b>different</b> from those you selected earlier. Then click <b>OK</b>.</p>",
@@ -790,12 +790,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
@@ -827,12 +827,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
@@ -864,12 +864,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -895,12 +895,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -927,13 +927,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"],
           "highlightedAnnotations": ["rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -960,13 +960,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"],
           "highlightedAnnotations": ["rise-arrow-B"]          
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"],
           "highlightedAnnotations": ["rise-bracket-B"]
         }
       },
@@ -994,13 +994,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"],
           "highlightedAnnotations": ["rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"],
           "highlightedAnnotations": ["rise-bracket-B"]
         }
       },
@@ -1025,13 +1025,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
           "highlightedAnnotations": ["run-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -1058,13 +1058,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
           "highlightedAnnotations": ["run-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
@@ -1091,13 +1091,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
           "highlightedAnnotations": ["run-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "rise-bracket-B"],
           "highlightedAnnotations": ["run-bracket-B"]
         }
       },
@@ -1125,13 +1125,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B", "rise-arrow-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
           "highlightedAnnotations": ["run-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "rise-bracket-B"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "rise-bracket-B"],
           "highlightedAnnotations": ["run-bracket-B"]
         }
       },
@@ -1156,12 +1156,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -1193,12 +1193,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -1231,12 +1231,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1265,12 +1265,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B", "slope-line-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["first-point-A", "second-point-A", "first-point-B", "second-point-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
@@ -1324,7 +1324,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["first-point-A", "second-point-A", "slope-line-A", "first-point-B", "second-point-B", "slope-line-B"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         }
       },
       "responseTemplate": "/components/response-template/open",
@@ -1332,14 +1332,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         {
           "name": "setAnnotationAttribute",
           "args": {
-            "name": "first-point-B",
+            "name": "p1B-highlight",
             "pointColor": "#f2b3b3"          
           }
         },
         {
           "name": "setAnnotationAttribute",
           "args": {
-            "name": "second-point-B",
+            "name": "p2B-highlight",
             "pointColor": "#f2b3b3"
           }
         }
@@ -1498,6 +1498,28 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "dataset": "/shared/instantaneous-speed/dataset/slope-data"
     }
   ],
+  "tags": [
+    {
+      "url": "/shared/instantaneous-speed/tag/first-point-A",
+      "activity": "/shared/instantaneous-speed",
+      "name": "first-point-A"
+    },
+    {
+      "url": "/shared/instantaneous-speed/tag/second-point-A",
+      "activity": "/shared/instantaneous-speed",
+      "name": "second-point-A"
+    },
+    {
+      "url": "/shared/instantaneous-speed/tag/first-point-B",
+      "activity": "/shared/instantaneous-speed",
+      "name": "first-point-B"
+    },
+    {
+      "url": "/shared/instantaneous-speed/tag/second-point-B",
+      "activity": "/shared/instantaneous-speed",
+      "name": "second-point-B"
+    }    
+  ],
   "annotations": [
     { "type": "LineThroughPoints",
       "records": [
@@ -1505,16 +1527,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "url": "/shared/instantaneous-speed/annotation/slope-line-A",
           "name": "slope-line-A",
           "activity": "/shared/instantaneous-speed",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A",
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-A",
           "color": "#1f77b4"
         },
         {
           "url": "/shared/instantaneous-speed/annotation/slope-line-B",
           "name": "slope-line-B",
           "activity": "/shared/instantaneous-speed",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B",
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-B",
           "color": "#ff7f0d"
         }
       ]
@@ -1527,16 +1549,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "name": "rise-arrow-A",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A"
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-A"
         },
         {
           "url": "/shared/instantaneous-speed/annotation/rise-arrow-B",
           "name": "rise-arrow-B",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B"
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-B"
         }
       ]
     },
@@ -1548,16 +1570,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "name": "run-arrow-A",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A"
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-A"
         },
         {
           "url": "/shared/instantaneous-speed/annotation/run-arrow-B",
           "name": "run-arrow-B",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B"
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-B"
         }
       ]
     },
@@ -1569,16 +1591,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "name": "rise-bracket-A",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A"
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-A"
         },
         {
           "url": "/shared/instantaneous-speed/annotation/rise-bracket-B",
           "name": "rise-bracket-B",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B"
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-B"
         }
       ]
     },
@@ -1590,16 +1612,16 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "name": "run-bracket-A",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-A",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-A"
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-A",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-A"
         },
         {
           "url": "/shared/instantaneous-speed/annotation/run-bracket-B",
           "name": "run-bracket-B",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
-          "p1Tag": "/shared/instantaneous-speed/annotation/first-point-B",
-          "p2Tag": "/shared/instantaneous-speed/annotation/second-point-B"
+          "p1Tag": "/shared/instantaneous-speed/tag/first-point-B",
+          "p2Tag": "/shared/instantaneous-speed/tag/second-point-B"
         }
       ]
     },
@@ -1607,37 +1629,37 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "type": "HighlightedPoint",
       "records": [
         {
-          "url": "/shared/instantaneous-speed/annotation/first-point-A",
-          "name": "first-point-A",
+          "url": "/shared/instantaneous-speed/annotation/p1A-highlight",
+          "name": "p1A-highlight",
           "activity": "/shared/instantaneous-speed",
-          "point": null,
+          "pointTag": "/shared/instantaneous-speed/tag/first-point-A",
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
           "pointColor": "#1f77b4"
         },
         {
-          "url": "/shared/instantaneous-speed/annotation/second-point-A",
-          "name": "second-point-A",
+          "url": "/shared/instantaneous-speed/annotation/p2A-highlight",
+          "name": "p2A-highlight",
           "activity": "/shared/instantaneous-speed",
-          "point": null,
+          "pointTag": "/shared/instantaneous-speed/tag/second-point-A",          
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
           "pointColor": "#ff7f0e"
         },
         {
-          "url": "/shared/instantaneous-speed/annotation/first-point-B",
-          "name": "first-point-B",
+          "url": "/shared/instantaneous-speed/annotation/p1B-highlight",
+          "name": "p1B-highlight",
           "activity": "/shared/instantaneous-speed",
-          "point": null,
+          "pointTag": "/shared/instantaneous-speed/tag/first-point-B",
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
           "pointColor": "#1f77b4"
         },
         {
-          "url": "/shared/instantaneous-speed/annotation/second-point-B",
-          "name": "second-point-B",
+          "url": "/shared/instantaneous-speed/annotation/p2B-highlight",
+          "name": "p2B-highlight",
           "activity": "/shared/instantaneous-speed",
-          "point": null,
+          "pointTag": "/shared/instantaneous-speed/tag/second-point-B",
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
           "pointColor": "#ff7f0e"

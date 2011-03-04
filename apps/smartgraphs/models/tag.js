@@ -15,9 +15,14 @@
 Smartgraphs.Tag = SC.Record.extend(
 /** @scope Smartgraphs.Tag.prototype */ {
   
+  url: SC.Record.attr(String),
+  primaryKey: 'url',
+  
+  activity: SC.Record.toOne('Smartgraphs.Activity'),
+  
   name: SC.Record.attr(String),
   
-  point: SC.Record.attr('Smartgraphs.DataPoint')
+  point: SC.Record.toOne('Smartgraphs.DataPoint')
 
 });
 
