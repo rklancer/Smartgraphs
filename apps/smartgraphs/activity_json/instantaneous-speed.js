@@ -185,7 +185,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "responseBranches": [
         {
-          "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
+          "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-A"], ["indexInDataset", "second-point-A"]]],
           "step": "/shared/instantaneous-speed/page/12/step/4"
         }
       ],
@@ -222,7 +222,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "responseBranches": [
         {
-          "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-A"], ["indexOf", "second-point-A"]]],
+          "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-A"], ["indexInDataset", "second-point-A"]]],
           "step": "/shared/instantaneous-speed/page/12/step/4"
         }
       ],
@@ -793,7 +793,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "responseBranches": [
         {
-          "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-B"], ["indexOf", "second-point-B"]]],
+          "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-B"], ["indexInDataset", "second-point-B"]]],
           "step": "/shared/instantaneous-speed/page/13/step/4"
         }
       ],
@@ -830,7 +830,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ],
       "responseBranches": [
         {
-          "criterion": ["=", 1, ["absDiff", ["indexOf", "first-point-B"], ["indexOf", "second-point-B"]]],
+          "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-B"], ["indexInDataset", "second-point-B"]]],
           "step": "/shared/instantaneous-speed/page/13/step/4"
         }
       ],

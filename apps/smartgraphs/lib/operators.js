@@ -37,7 +37,7 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   }).args(2);
 
 
-  def('indexOf', function (name) {
+  def('indexInDataset', function (name) {
     var tag = Smartgraphs.activityObjectsController.findTag(name);
     if (!tag) throw "Tag " + name + " not found.";
     return tag.getPath('point.dataset.points').indexOf(tag.get('point'));
