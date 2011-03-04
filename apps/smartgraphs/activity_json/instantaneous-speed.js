@@ -700,12 +700,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight"]
         }
       },
       "beforeText": "<p>Choose a point that is different from those you selected earlier. Then click <b>OK</b>.</p>",
@@ -714,22 +714,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "setup": {
             "tag": "first-point-B",
             "dataset": "slope-data"
-          }
-        }
-      ],
-      "startCommands": [
-        {
-          "name": "setAnnotationAttribute",
-          "args": {
-            "name": "p1A-highlight",
-            "pointColor": "#f2b3b3"
-          }
-        },
-        {
-          "name": "setAnnotationAttribute",
-          "args": {
-            "name": "p2A-highlight",
-            "pointColor": "#f2b3b3"
           }
         }
       ],
@@ -753,12 +737,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight"]
         }
       },
       "beforeText": "<p>Try again.</p><p>Choose a point that is <b>different</b> from those you selected earlier. Then click <b>OK</b>.</p>",
@@ -790,12 +774,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Select a point next to to the first point. Then click <b>OK</b>.</p>",
@@ -827,12 +811,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
@@ -864,12 +848,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -895,12 +879,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -927,13 +911,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"],
           "highlightedAnnotations": ["rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -960,13 +944,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"],
           "highlightedAnnotations": ["rise-arrow-B"]          
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"],
           "highlightedAnnotations": ["rise-bracket-B"]
         }
       },
@@ -994,13 +978,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"],
           "highlightedAnnotations": ["rise-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"],
           "highlightedAnnotations": ["rise-bracket-B"]
         }
       },
@@ -1025,13 +1009,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
           "highlightedAnnotations": ["run-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "rise-bracket-B"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -1058,13 +1042,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
           "highlightedAnnotations": ["run-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "rise-bracket-B"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "rise-bracket-B"]
         }
       },
       "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
@@ -1091,13 +1075,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
           "highlightedAnnotations": ["run-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "rise-bracket-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "rise-bracket-B"],
           "highlightedAnnotations": ["run-bracket-B"]
         }
       },
@@ -1125,13 +1109,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B", "rise-arrow-B"],
           "highlightedAnnotations": ["run-arrow-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "rise-bracket-B"],
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "rise-bracket-B"],
           "highlightedAnnotations": ["run-bracket-B"]
         }
       },
@@ -1156,12 +1140,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -1193,12 +1177,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -1231,12 +1215,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1265,12 +1249,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/15m",
           "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight", "slope-line-B"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight", "slope-line-B"]
         },
         "bottom": {
           "type": "table",
           "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "p1B-highlight", "p2B-highlight"]
+          "annotations": ["p1A-blocker", "p2A-blocker", "p1B-highlight", "p2B-highlight"]
         }
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
@@ -1328,22 +1312,6 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         }
       },
       "responseTemplate": "/components/response-template/open",
-      "startCommands": [
-        {
-          "name": "setAnnotationAttribute",
-          "args": {
-            "name": "p1B-highlight",
-            "pointColor": "#f2b3b3"          
-          }
-        },
-        {
-          "name": "setAnnotationAttribute",
-          "args": {
-            "name": "p2B-highlight",
-            "pointColor": "#f2b3b3"
-          }
-        }
-      ],
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "isFinalStep": true,
       "hideSubmitButton": true,
@@ -1663,6 +1631,22 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "displayStyle": "highlight-point-and-dim-background",
           "datasetColor": "#cccccc",
           "pointColor": "#ff7f0e"
+        },
+        {
+          "url": "/shared/instantaneous-speed/annotation/p1A-blocker",
+          "name": "p1A-blocker",
+          "activity": "/shared/instantaneous-speed",
+          "pointTag": "/shared/instantaneous-speed/tag/first-point-A",
+          "displayStyle": "highlight-point-and-dim-background",
+          "pointColor": "#f2b3b3"
+        },
+        {
+          "url": "/shared/instantaneous-speed/annotation/p2A-blocker",
+          "name": "p2A-blocker",
+          "activity": "/shared/instantaneous-speed",
+          "pointTag": "/shared/instantaneous-speed/tag/second-point-A",
+          "displayStyle": "highlight-point-and-dim-background",
+          "pointColor": "#f2b3b3"
         }
       ]
     }
