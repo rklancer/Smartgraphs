@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.LineThroughPointsView
 // Copyright: ©2010 Concord Consortium
-// @author    Parker Morse <pmorse@cantinaconsulting.com>
+// Author:    Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 
@@ -23,7 +23,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
   strokeOpacity: 0.3,
 
   // SC will call render(context, firstTime == NO) if these properties change
-  displayProperties: 'point1 point2 stroke strokeWidth strokeOpacity'.w(),
+  displayProperties: 'p1.x p1.y p2.x p2.y stroke strokeWidth strokeOpacity'.w(),
 
   // We are using renderCallback in views to call non-SC render methods like
   // RaphaelCanvas.segmentPath with the correct attributes.
@@ -37,32 +37,34 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
-    var graphView = this.get('graphView');
-    var annotation = this.get('item');
+    var graphView = this.get('graphView'),
+        annotation = this.get('item'),
+        p1 = annotation.get('p1'),
+        p2 = annotation.get('p2'),
+        xAxis = graphView.get('xAxis'),
+        yAxis = graphView.get('yAxis'),
+        points = this.getEndPoints(p1, p2, xAxis, yAxis),
+        i,
+        coords, 
+        point,
+        pathComponents = [],
+        pathString,
+        attrs,
+        raphaelPath;
 
-    var point1 = annotation.get('point1');
-    var point2 = annotation.get('point2');
-    var xAxis = graphView.get('xAxis');
-    var yAxis = graphView.get('yAxis');
-
-    var points = this.getEndPoints(point1, point2, xAxis, yAxis);
-
-    var coords, point;
-    var pathComponents = [];
-
-    for (var i = 0, len = points.length; i < len; i++) {
+    for (i = 0; i < points.length; i++) {
       pathComponents.push( i === 0 ? 'M' : 'L');
       point = points[i];
       coords = graphView.coordinatesForPoint(point.x, point.y);
       pathComponents.push(coords.x);
       pathComponents.push(coords.y);
     }
-    var pathString = pathComponents.join(' ');
+    pathString = pathComponents.join(' ');
 
-    var attrs = {
-      d: pathString,
-      stroke: this.get('stroke'),
-      'stroke-width': this.get('strokeWidth'),
+    attrs = {
+      'd':              pathString,
+      'stroke':         this.get('stroke'),
+      'stroke-width':   this.get('strokeWidth'),
       'stroke-opacity': this.get('strokeOpacity')
     };
 
@@ -78,9 +80,9 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
     }
     else {
       // get the Raphael path object from the context
-      var path = context.raphael();
+      raphaelPath = context.raphael();
       // and update it
-      path.attr(attrs);
+      raphaelPath.attr(attrs);
     }
   },
   

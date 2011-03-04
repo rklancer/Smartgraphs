@@ -27,14 +27,14 @@ Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
     
     @property {Smartgraphs.DataPoint}
   */
-  point1: Smartgraphs.Tag.taggedObject('point1', 'p1Point', 'p1Tag'),
+  p1: Smartgraphs.Tag.taggedObject('p1', 'p1Point', 'p1Tag'),
 
   /**
     The second of the two points which define (but do not limit) the line.
     
     @property {Smartgraphs.DataPoint}
   */
-  point2: Smartgraphs.Tag.taggedObject('point2', 'p2Point', 'p2Tag'),
+  p2: Smartgraphs.Tag.taggedObject('p2', 'p2Point', 'p2Tag'),
   
   /**
     
@@ -49,7 +49,7 @@ Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
   p2Point: SC.Record.toOne('Smartgraphs.DataPoint'),
 
   /**
-    Optional Tag object which can be used to indirectly specify point1
+    Optional Tag object which can be used to indirectly specify point 1
     (TODO: change this from a HighlightedPoint to a Tag)
 
     @property {Smartgraphs.Tag}
@@ -57,7 +57,7 @@ Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
   p1Tag: SC.Record.toOne('Smartgraphs.HighlightedPoint'),
 
   /**
-    Optional Tag object which can be used to indirectly specify point2
+    Optional Tag object which can be used to indirectly specify point 2
     (TODO: change this from a HighlightedPoint to a Tag)
 
     @property {Smartgraphs.Tag}
