@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.TAGGING_TOOL
 // Copyright: ©2010 Concord Consortium
-// @author:   Richard Klancer
+// Author:   Richard Klancer
 // ==========================================================================
 /*globals Smartgraphs */
 

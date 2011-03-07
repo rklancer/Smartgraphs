@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.TableView Unit Test
 // Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer
+// Author:    Richard Klancer
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start setup teardown beginSession endSession setupUserAndSessionFixtures restoreUserAndSessionFixtures addPoint disconnectBindings */
 

@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.LabelAnnotationView
 // Copyright: ©2011 Concord Consortium
-// @author    Parker Morse <pmorse@cantinaconsulting.com>
+// Author:    Parker Morse <pmorse@cantinaconsulting.com>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 

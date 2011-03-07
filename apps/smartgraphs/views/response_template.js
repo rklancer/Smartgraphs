@@ -1,8 +1,8 @@
 // ==========================================================================
 // Project:   Smartgraphs.ResponseTemplateView
 // Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer <rpk@pobox.com>
-// @author    Dr. Baba Kofi Weusijana <kofi@edutek.net>
+// Author:    Richard Klancer <rpk@pobox.com>
+// Author:    Dr. Baba Kofi Weusijana <kofi@edutek.net>
 // ==========================================================================
 /*globals Smartgraphs */
 

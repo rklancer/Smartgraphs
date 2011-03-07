@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.LineToAxisView
 // Copyright: ©2010 Concord Consortium
-// @author:   Dr. Baba Kofi Weusijana <kofi@edutek.net>
+// Author:   Dr. Baba Kofi Weusijana <kofi@edutek.net>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 

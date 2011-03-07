@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.activityPagesController
 // Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer <rpk@pobox.com>
+// Author:    Richard Klancer <rpk@pobox.com>
 // Author: Dr. Baba Kofi Weusijana <kofi@edutek.net>
 // ==========================================================================
 /*globals Smartgraphs */

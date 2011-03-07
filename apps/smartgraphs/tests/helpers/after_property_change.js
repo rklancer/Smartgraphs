@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   afterPropertyChange unit test
 // Copyright: ©2010 Concord Consortium
-// @author:   Richard Klancer <rpk@pobox.com>
+// Author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals module test ok equals same afterPropertyChange*/
 

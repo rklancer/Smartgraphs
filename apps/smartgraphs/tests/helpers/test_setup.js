@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Unit test of Smartgraphs test setup/teardown helpers
 // Copyright: ©2010 Concord Consortium
-// @author:   Richard Klancer <rpk@pobox.com>
+// Author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same setup teardown*/
 

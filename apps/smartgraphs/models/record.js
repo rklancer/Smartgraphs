@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs
 // Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer <rpk@pobox.com>
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 
 /** @scope SC.Record.prototype */

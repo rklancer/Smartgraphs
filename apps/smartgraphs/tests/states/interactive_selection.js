@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.TAGGING_TOOL Unit Test
 // Copyright: ©2010 Concord Consortium
-// @author:   Richard Klancer 
+// Author:   Richard Klancer 
 // ==========================================================================
 /*globals Smartgraphs module test ok equals same stop start setup teardown setupUserAndSessionFixtures */
 
