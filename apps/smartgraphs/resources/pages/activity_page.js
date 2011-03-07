@@ -5,7 +5,7 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('pages/main_page');
+sc_require('resources/pages/main_page');
 
 // This is a place to hold the activityView until it's appended to the document
 

@@ -114,16 +114,16 @@ test("showImage sets up panes with images", function() {
   same( Smartgraphs.activityViewController.get('singlePaneNowShowing'), null, 'singlePaneNowShowing is initially null');
   
   Smartgraphs.activityViewController.set('paneIsSplit', NO);
-  Smartgraphs.activityViewController.showImage('single', sc_static('resources/pane_loading.gif'));
-  equals( Smartgraphs.activityViewController.get('firstImageValue'), sc_static('resources/pane_loading.gif'), 'firstImageValue is set to the image path');
+  Smartgraphs.activityViewController.showImage('single', sc_static('resources/images/pane_loading.gif'));
+  equals( Smartgraphs.activityViewController.get('firstImageValue'), sc_static('resources/images/pane_loading.gif'), 'firstImageValue is set to the image path');
   equals( Smartgraphs.activityViewController.get('singlePaneNowShowing'), 'Smartgraphs.activityPage.firstImageView');
 
   Smartgraphs.activityViewController.set('paneIsSplit', YES);
-  Smartgraphs.activityViewController.showImage('top', sc_static('resources/pane_loading.gif'));
-  equals( Smartgraphs.activityViewController.get('firstImageValue'), sc_static('resources/pane_loading.gif'), 'firstImageValue is set to the image path');
+  Smartgraphs.activityViewController.showImage('top', sc_static('resources/images/pane_loading.gif'));
+  equals( Smartgraphs.activityViewController.get('firstImageValue'), sc_static('resources/images/pane_loading.gif'), 'firstImageValue is set to the image path');
   equals( Smartgraphs.activityViewController.get('topPaneNowShowing'), 'Smartgraphs.activityPage.firstImageView');
   
-  Smartgraphs.activityViewController.showImage('bottom', sc_static('resources/pane_loading.gif'));
-  equals( Smartgraphs.activityViewController.get('secondImageValue'), sc_static('resources/pane_loading.gif'), 'secondImageValue is set to the image path');
+  Smartgraphs.activityViewController.showImage('bottom', sc_static('resources/images/pane_loading.gif'));
+  equals( Smartgraphs.activityViewController.get('secondImageValue'), sc_static('resources/images/pane_loading.gif'), 'secondImageValue is set to the image path');
   equals( Smartgraphs.activityViewController.get('bottomPaneNowShowing'), 'Smartgraphs.activityPage.secondImageView');
 });

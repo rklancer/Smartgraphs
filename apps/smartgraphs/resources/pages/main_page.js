@@ -147,7 +147,7 @@ Smartgraphs.mainPage = SC.Page.design({
     
     loadingIconView: SC.ImageView.design({
       layout: { width: 48, height: 48, centerX: 0, centerY: -39 },
-      value: sc_static('resources/pane_loading.gif')
+      value: sc_static('resources/images/pane_loading.gif')
     }),
     
     loadingMessageView: SC.LabelView.design({
