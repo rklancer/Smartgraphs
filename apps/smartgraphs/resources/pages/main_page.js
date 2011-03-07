@@ -69,9 +69,8 @@ Smartgraphs.mainPage = SC.Page.design({
       layoutDirection: SC.LAYOUT_HORIZONTAL,
 
       topLeftView: SC.ScrollView.design({
-        classNames: ['desk'],
         contentView: SC.SourceListView.design({
-          classNames: ['desk'],
+          classNames: ['outline'],
           contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
           contentValueKey: 'title',
           selectionBinding: 'Smartgraphs.activityOutlineController.selection',

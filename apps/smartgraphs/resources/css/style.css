@@ -212,8 +212,13 @@ body.sc-theme {
 .smartgraph-numeric-view-value.sc-label-view.sc-regular-size {
   font-size: 48px;
   line-height: 1.2;
-  color: #666666;
+  color: #666;
 }
+
+.sc-theme .sc-view.ace.sc-collection-view.sc-source-list.outline {
+  background: #666;
+}
+
 
 /* fixes to make sure statically laid out RadioView labels expand to fit wrapped content*/
 .sc-theme .sc-view.ace.sc-radio-view.sc-static-layout .sc-radio-button {
