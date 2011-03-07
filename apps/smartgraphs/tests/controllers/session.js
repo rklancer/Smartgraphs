@@ -200,88 +200,90 @@ test("endSession should throw away changes to activity objects that were made du
 });
 
 
-test("endSession should destroy activity objects created during a session without notifying their observers", function () {
-  expect(4);
-  
-  Smartgraphs.sessionController.beginSession();
-  
-  var highlight = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'highlight 2');
-  
-  var starObserverWasCalled = NO;
-  function starObserver() {
-    starObserverWasCalled = YES;
-  }
-  highlight.addObserver('*', starObserver);
-  
-  var colorObserverWasCalled = NO;
-  function colorObserver() {
-    colorObserverWasCalled = YES;
-  }
-  highlight.addObserver('color', colorObserver);
-  
-  starObserverWasCalled = NO;
-  colorObserverWasCalled = NO;
-  highlight.set('color', '#000000');
-  ok( starObserverWasCalled, "star observer of highlight properties should have been called when highlight color was changed inside a session");
-  ok( colorObserverWasCalled, "observer of highlight 'color' property should have been called when highlight color was changed inside a session");
-  
-  // need to let a runloop run, otherwise the runloop in endSession may cause the observers to fire spuriously
-  SC.RunLoop.begin().end();
-  
-  starObserverWasCalled = NO;
-  colorObserverWasCalled = NO;
-  Smartgraphs.sessionController.endSession();
-  ok( !starObserverWasCalled, "star observer of highlight properties should not have been called when session ended");
-  ok( !colorObserverWasCalled, "observer of highlight 'color' property should not have been called when session ended");
-});
+// !OBSOLETE
+// test("endSession should destroy activity objects created during a session without notifying their observers", function () {
+//   expect(4);
+//   
+//   Smartgraphs.sessionController.beginSession();
+//   
+//   var highlight = Smartgraphs.activityObjectsController.createAnnotation(Smartgraphs.HighlightedPoint, 'highlight 2');
+//   
+//   var starObserverWasCalled = NO;
+//   function starObserver() {
+//     starObserverWasCalled = YES;
+//   }
+//   highlight.addObserver('*', starObserver);
+//   
+//   var colorObserverWasCalled = NO;
+//   function colorObserver() {
+//     colorObserverWasCalled = YES;
+//   }
+//   highlight.addObserver('color', colorObserver);
+//   
+//   starObserverWasCalled = NO;
+//   colorObserverWasCalled = NO;
+//   highlight.set('color', '#000000');
+//   ok( starObserverWasCalled, "star observer of highlight properties should have been called when highlight color was changed inside a session");
+//   ok( colorObserverWasCalled, "observer of highlight 'color' property should have been called when highlight color was changed inside a session");
+//   
+//   // need to let a runloop run, otherwise the runloop in endSession may cause the observers to fire spuriously
+//   SC.RunLoop.begin().end();
+//   
+//   starObserverWasCalled = NO;
+//   colorObserverWasCalled = NO;
+//   Smartgraphs.sessionController.endSession();
+//   ok( !starObserverWasCalled, "star observer of highlight properties should not have been called when session ended");
+//   ok( !colorObserverWasCalled, "observer of highlight 'color' property should not have been called when session ended");
+// });
 
 
-test("endSession should destroy activity objects created during a session without notifying observers indirectly via toOne or toMany relationships", function () {
-  expect(8);
-  
-  Smartgraphs.sessionController.beginSession();
-
-  var dataset = Smartgraphs.activityObjectsController.createDataset('dataset 2');
-  var pointsObserverWasCalled = NO;
-  function pointsObserver() {
-    pointsObserverWasCalled = YES;
-  }
-  dataset.addObserver('points.[]', pointsObserver);
-  
-  var point1 = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: 1, y: 1 });
-  var datasetObserverWasCalled = NO;
-  function datasetObserver() {
-    datasetObserverWasCalled = YES;
-  }
-  point1.addObserver('dataset', datasetObserver);
-
-  pointsObserverWasCalled = NO;  
-  datasetObserverWasCalled = NO;
-  point1.set('dataset', dataset);
-  
-  // show that observer silencing works whether or not records have ids...
-  equals(point1.get('id'), undefined, "point 1 should have no id");
-  ok( pointsObserverWasCalled, "observer of dataset.points.[] should have been called when dataset - point1 relationship was set up");
-  ok( datasetObserverWasCalled, "observer of point.dataset should have been called when dataset - point1 relationship was set up");
-  
-  var point2 = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: 2, y: 2 });
-  point2.set('guid', 'p2');
-  point2.addObserver('dataset', datasetObserver);
-  
-  pointsObserverWasCalled = NO;  
-  datasetObserverWasCalled = NO;
-  point2.set('dataset', dataset);
-  equals(point2.get('id'), 'p2', "point 2 should have an id");
-  ok( pointsObserverWasCalled, "observer of dataset.points.[] should have been called when dataset - point2 relationship was set up");
-  ok( datasetObserverWasCalled, "observer of point.dataset should have been called when dataset - point2 relationship was set up");
-  
-  // need to let a runloop run, otherwise the runloop in endSession will cause the observer to fire spuriously
-  SC.RunLoop.begin().end();
-  
-  pointsObserverWasCalled = NO;
-  datasetObserverWasCalled = NO;
-  Smartgraphs.sessionController.endSession();
-  ok( !pointsObserverWasCalled, "observer of dataset.points.[] should not have been called when session ended");
-  ok( !datasetObserverWasCalled, "observer of [point1|point2].dataset should not have been called when session ended");
-});
+// !OBSOLETE
+// test("endSession should destroy activity objects created during a session without notifying observers indirectly via toOne or toMany relationships", function () {
+//   expect(8);
+//   
+//   Smartgraphs.sessionController.beginSession();
+// 
+//   var dataset = Smartgraphs.activityObjectsController.createDataset('dataset 2');
+//   var pointsObserverWasCalled = NO;
+//   function pointsObserver() {
+//     pointsObserverWasCalled = YES;
+//   }
+//   dataset.addObserver('points.[]', pointsObserver);
+//   
+//   var point1 = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: 1, y: 1 });
+//   var datasetObserverWasCalled = NO;
+//   function datasetObserver() {
+//     datasetObserverWasCalled = YES;
+//   }
+//   point1.addObserver('dataset', datasetObserver);
+// 
+//   pointsObserverWasCalled = NO;  
+//   datasetObserverWasCalled = NO;
+//   point1.set('dataset', dataset);
+//   
+//   // show that observer silencing works whether or not records have ids...
+//   equals(point1.get('id'), undefined, "point 1 should have no id");
+//   ok( pointsObserverWasCalled, "observer of dataset.points.[] should have been called when dataset - point1 relationship was set up");
+//   ok( datasetObserverWasCalled, "observer of point.dataset should have been called when dataset - point1 relationship was set up");
+//   
+//   var point2 = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: 2, y: 2 });
+//   point2.set('guid', 'p2');
+//   point2.addObserver('dataset', datasetObserver);
+//   
+//   pointsObserverWasCalled = NO;  
+//   datasetObserverWasCalled = NO;
+//   point2.set('dataset', dataset);
+//   equals(point2.get('id'), 'p2', "point 2 should have an id");
+//   ok( pointsObserverWasCalled, "observer of dataset.points.[] should have been called when dataset - point2 relationship was set up");
+//   ok( datasetObserverWasCalled, "observer of point.dataset should have been called when dataset - point2 relationship was set up");
+//   
+//   // need to let a runloop run, otherwise the runloop in endSession will cause the observer to fire spuriously
+//   SC.RunLoop.begin().end();
+//   
+//   pointsObserverWasCalled = NO;
+//   datasetObserverWasCalled = NO;
+//   Smartgraphs.sessionController.endSession();
+//   ok( !pointsObserverWasCalled, "observer of dataset.points.[] should not have been called when session ended");
+//   ok( !datasetObserverWasCalled, "observer of [point1|point2].dataset should not have been called when session ended");
+// });
 

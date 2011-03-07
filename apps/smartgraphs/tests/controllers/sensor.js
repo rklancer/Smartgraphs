@@ -13,10 +13,19 @@ module("sensorController <--> SENSOR_* state interactions", {
     setup.store();
     
     setupUserAndSessionFixtures();
-    Smartgraphs.store.find(Smartgraphs.Unit);       // can't lazy load from fixtures after session sets up the nested store.
-    beginSession();
     
-    dataset = Smartgraphs.activityObjectsController.createDataset('test-dataset', '/builtins/units/seconds', '/builtins/units/meters');
+    setup.fixtures(Smartgraphs.Dataset, [
+      { url: 'test-dataset',
+        name: 'test-dataset',
+        xUnits: '/builtins/units/seconds',
+        yUnits: '/builtins/units/meters'
+      }
+    ]);    
+    Smartgraphs.store.find(Smartgraphs.Dataset);
+    Smartgraphs.store.find(Smartgraphs.Unit);       // can't lazy load from fixtures after session sets up the nested store.  
+    
+    beginSession();
+    dataset = Smartgraphs.store.find(Smartgraphs.Dataset, 'test-dataset');    
     
     // mock the applet page so we don't try to append an actual applet
     setup.mock(Smartgraphs, 'appletPage', SC.Page.design({
@@ -58,6 +67,7 @@ module("sensorController <--> SENSOR_* state interactions", {
   }
 });
 
+//!REWRITE after converting to 'sensor tool'
 test("Correct sequence of events should occur when sensor loads and is used in the nominal fashion", function () {
   expect(34);
   // This looks like a lot of assertions for one test, but the dependencies are such that breaking them up
@@ -260,7 +270,7 @@ test("sensor controller should only write to datasets with units of meters versu
 
 test("sensor controller should properly set isStreaming and streamSource properties when it starts recording", function () {
   expect(6);
-
+  
   equals(dataset.get('isStreaming'), NO, "dataset's isStreaming property should be NO before registering");
   
   Smartgraphs.sensorController.register('valid-pane', dataset, 0, 10);

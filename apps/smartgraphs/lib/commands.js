@@ -27,6 +27,14 @@ Smartgraphs.executor.defineCommands(function (def) {
     }
   });
   
+  
+  /**
+    Disable submission
+  */
+  def('disableSubmission', function () {
+    Smartgraphs.statechart.sendAction('disableSubmission');
+  });
+  
   /**
     Begin 'freehand input' on the specified graph, for example to draw a prediction graph. The freehand input mode
     enables the user to create an arbitrary sketch on the graph and turns on the 'clear' button which allows the user

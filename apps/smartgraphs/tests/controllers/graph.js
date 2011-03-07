@@ -3,19 +3,23 @@
 // Copyright: ©2010 Concord Consortium
 // @author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs module test ok equals same stop start setupUserAndSessionFixtures beginSession endSession restoreUserAndSessionFixtures */
+/*globals Smartgraphs module test ok equals same stop start setup teardown setupUserAndSessionFixtures restoreUserAndSessionFixtures beginSession endSession  */
 
-var oldStore;
 var dataset1, dataset2, dataset3;
 
 function setupGraphFixtures() {
 
-  // without some data in a RecordType's FIXTURES, the FixturesDataSource won't allow any records to be committed.
-  Smartgraphs.Dataset.oldFixtures = Smartgraphs.Dataset.FIXTURES;
-  Smartgraphs.Dataset.FIXTURES = [{url: 'dataset-1'}];
+  setup.fixtures(Smartgraphs.Activity, [
+    { url: 'test-activity' }
+  ]);
+
+  setup.fixtures(Smartgraphs.Dataset, [
+    { url: 'test-dataset-1', name: 'test-dataset-1',  activity: 'test-activity'},
+    { url: 'test-dataset-2', name: 'test-dataset-2',  activity: 'test-activity'},
+    { url: 'test-dataset-3', name: 'test-dataset-3',  activity: 'test-activity'}
+  ]);
   
-  Smartgraphs.Axis.oldFixtures = Smartgraphs.Axis.FIXTURES;
-  Smartgraphs.Axis.FIXTURES = [
+  setup.fixtures(Smartgraphs.Axis, [
     { url: 'x-axis',
       min: -5,
       max: 10,
@@ -28,56 +32,52 @@ function setupGraphFixtures() {
       nSteps: 6,
       label: 'y axis'
     }
-  ];
+  ]);
   
-  Smartgraphs.Graph.oldFixtures = Smartgraphs.Graph.FIXTURES;  
-  Smartgraphs.Graph.FIXTURES = [
+  setup.fixtures(Smartgraphs.Graph, [
     { url: 'test',
+      activity: 'test-activity',
       name: 'test',
       title: 'Test Graph',
       xAxis: 'x-axis',
       yAxis: 'y-axis',
       initialDatasets: ['test-dataset-1']
     }
-  ];
-}
+  ]);
 
-function restoreGraphFixtures() {
-  Smartgraphs.Graph.FIXTURES = Smartgraphs.Graph.oldFixtures;
-  Smartgraphs.Dataset.FIXTURES = Smartgraphs.Dataset.oldFixtures;
-  Smartgraphs.Axis.FIXTURES = Smartgraphs.Axis.oldFixtures;  
 }
-
 
 module("Smartgraphs.graphController", {
   setup: function () {
-    oldStore = Smartgraphs.store;
-    Smartgraphs.set('store', SC.Store.create().from(SC.FixturesDataSource.create()));
     
     setupUserAndSessionFixtures();
     setupGraphFixtures();
-    
+    setup.store();
+
+    var activity = Smartgraphs.store.find(Smartgraphs.Activity, 'test-activity');     
+    Smartgraphs.store.find(Smartgraphs.Dataset);
     Smartgraphs.store.find(Smartgraphs.Unit);
-    Smartgraphs.store.find(Smartgraphs.Axis);
-    Smartgraphs.store.find(Smartgraphs.Dataset);    
+    Smartgraphs.store.find(Smartgraphs.Axis); 
     Smartgraphs.store.find(Smartgraphs.Graph);
 
+    Smartgraphs.activityController.set('content', activity);
     beginSession();
-   
-    dataset1 = Smartgraphs.activityObjectsController.createDataset('test-dataset-1');
-    dataset2 = Smartgraphs.activityObjectsController.createDataset('test-dataset-2');
-    dataset3 = Smartgraphs.activityObjectsController.createDataset('test-dataset-3');
+    
+    dataset1 = Smartgraphs.activityObjectsController.findDataset('test-dataset-1');
+    dataset2 = Smartgraphs.activityObjectsController.findDataset('test-dataset-2');
+    dataset3 = Smartgraphs.activityObjectsController.findDataset('test-dataset-3');
   },
   
   teardown: function () {
     Smartgraphs.firstGraphController.clear();
     endSession();
-
+    Smartgraphs.activityController.set('content', null);
+    
     restoreUserAndSessionFixtures();
-    restoreGraphFixtures();
-    Smartgraphs.set('store', oldStore);
+    teardown.all();
   }
 });
+
 
 test("adding dataset to a graph results in assignment of different colors to 'color' property of each dataset", function () {
   expect(8);

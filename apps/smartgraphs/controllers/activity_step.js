@@ -124,7 +124,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   startTools: function () {
-    var tools = this.get('tools');
+    var tools = this.get('tools') || [];
     tools.forEach( function (toolSpec) {
       Smartgraphs.Tool.start(toolSpec.name, toolSpec.setup);
     });
