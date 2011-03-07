@@ -1,11 +1,11 @@
 // ==========================================================================
 // Project:   Smartgraphs.activityPage
 // Copyright: ©2010 Concord Consortium
-// @author    Richard Klancer <rpk@pobox.com>
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('resources/main_page');
+sc_require('pages/main_page');
 
 // This is a place to hold the activityView until it's appended to the document
 
