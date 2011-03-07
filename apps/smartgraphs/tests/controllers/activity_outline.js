@@ -6,10 +6,4 @@
 
 module("Smartgraphs.activityOutlineController");
 
-// TODO: Replace with real unit test for Smartgraphs.activityOutlineController
-test("test description", function() {
-  var expected = "test";
-  var result   = "test";
-  equals(result, expected, "test should equal test");
-});
-
+test("activityOutlineController test");

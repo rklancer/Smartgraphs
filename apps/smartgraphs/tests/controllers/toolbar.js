@@ -6,10 +6,4 @@
 
 module("Smartgraphs.toolbarController");
 
-// TODO: Replace with real unit test for Smartgraphs.toolbarController
-test("test description", function() {
-  var expected = "test";
-  var result   = "test";
-  equals(result, expected, "test should equal test");
-});
-
+test("Smartgraphs.toolbarController test");

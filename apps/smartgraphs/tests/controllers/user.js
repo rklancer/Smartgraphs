@@ -6,12 +6,4 @@
 
 module("Smartgraphs.userController");
 
-// TODO: Replace with real unit test for Smartgraphs.userController
-
-// NOTE: Not really anything to test so far.
-// test("test description", function() {
-//   var expected = "test";
-//   var result   = "test";
-//   equals(result, expected, "test should equal test");
-// });
-// 
+test("Smartgraphs.userController test");
