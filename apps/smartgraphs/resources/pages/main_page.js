@@ -29,7 +29,10 @@ Smartgraphs.mainPage = SC.Page.design({
       
       editButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
-        isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowEditButton',
+        shouldShowEditButtonBinding: 'Smartgraphs.toolbarController.shouldShowEditButton',
+        isVisible: function () {
+          return Smartgraphs.toolbarController.get('shouldShowEditButton') && Smartgraphs.get('allowAuthoring');
+        }.property('shouldShowEditButton'),
         title: 'Edit',
         action: 'openAuthorView'
       }),
@@ -74,7 +77,10 @@ Smartgraphs.mainPage = SC.Page.design({
           contentBinding: 'Smartgraphs.activityOutlineController.arrangedObjects',
           contentValueKey: 'title',
           selectionBinding: 'Smartgraphs.activityOutlineController.selection',
-          isSelectableBinding: 'Smartgraphs.activityOutlineController.isSelectable'
+          isSelectableBinding: 'Smartgraphs.activityOutlineController.isSelectable',
+          exampleView: SC.ListItemView.extend({
+            classNames: ['rk-test']
+          })
         })
       }),
 
