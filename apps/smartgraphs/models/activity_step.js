@@ -138,11 +138,18 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   panes: SC.Record.attr(Object),
   
   /**
+    name of the property whose JSON representation is being edited
+    
+    @property {String}
+  */
+  jsonEditorPropertyName: SC.Record.attr(String),
+
+  /**
     JSON representation of the panes property. 
     
     @property {String}
   */
-  panesJson: SC.Record.attr(String),
+  propertyAsJson: SC.Record.attr(String),
 
   /**
     String containing feedback for authors editing JSON representations of activity step properties.
@@ -301,7 +308,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   nextButtonShouldSubmit: SC.Record.attr(Boolean),
   
-  panesJson: null,
+  propertyAsJson: null,
   jsonEditingFeedback: null
   
   /**

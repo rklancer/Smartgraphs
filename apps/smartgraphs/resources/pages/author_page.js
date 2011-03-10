@@ -12,7 +12,7 @@ sc_require('resources/pages/main_page');
 Smartgraphs.authorPageDef = SC.Page.extend({
 
   authorView: SC.View.design({
-    childViews: ['instructionsWrapper', 'dataWrapper'],
+    childViews: ['instructionsWrapper', 'jsonEditor'],
     
     theme: 'sc-ace',
     
@@ -147,18 +147,101 @@ Smartgraphs.authorPageDef = SC.Page.extend({
     // RIGHT PANE
     //
     // the right pane shows the data the user is manipulating
-    dataWrapper: SC.View.design({
+    jsonEditor: SC.View.design({
       layout: { right: 0, width: 0.55 },
     
-      childViews: 'dataView'.w(),
-    
-      dataView: SC.View.design({
-        layout: { top: 4, right: 4, bottom: 4, left: 4 },
+      childViews: 'editorView'.w(),
+
+      editorView: SC.View.design({
+        layout: { top: 2, right: 2, bottom: 2, left: 2 },
         
-        childViews: 'jsonEditorFeedback panesAsJsonView'.w(),
+        childViews: 'currentlyEditing currentlyEditingProperty changeButton jsonEditorFeedback jsonEditorView propertyPicker'.w(),
         classNames: 'json-editor smartgraph-pane'.w(),
+        
+        currentlyEditing: SC.LabelView.design({
+          layout: { top: 15, left: 10, height: 24, width: 130 },
+          value: 'JSON for property:',
+          classNames: 'json-currently-editing'.w(),
+          escapeHTML: NO
+        }),
+
+        currentlyEditingProperty: SC.LabelView.design({
+          layout: { top: 15, left: 140, height: 24, width: 200 },
+          valueBinding: 'Smartgraphs.activityStepController.jsonEditorPropertyName',
+          classNames: 'json-currently-editing-property'.w(),
+          fontWeight: 'bold',
+          escapeHTML: NO
+        }),
+
+        changeButton: SC.ButtonView.design({
+          layout: { top: 10, right: 10, height: 24, width: 120 },
+          title: 'Choose property',
+          mouseDown: function () {
+            this.setPath('parentView.propertyPicker.showPicker', YES);
+          }
+        }),
+
+        propertyPicker: SC.View.design({
+          layout: { top: 10, right: 5, bottom: 10, left: 5 },
+          classNames: 'json-property-picker shadow roundedCorners'.w(),
+          childViews: 'stepPropertyListLabel stepPropertyList cancelButton'.w(),
+
+          showPicker: NO,
+          showPickerDidChange: function () {
+            this.updateVisible();
+          }.observes('showPicker'),
+          updateVisible: function () {
+            if (this.get('showPicker')) this.$().addClass('visible');
+            else this.$().removeClass('visible');
+          },
+          
+          stepPropertyListLabel: SC.LabelView.design({
+            layout: { top: 10, left: 10, right: 10, height:20 },
+            fontWeight: "bold",
+            textAlign: "center",
+            classNames: 'propertyListLabel'.w(),
+            value: "Activity Step Properties",
+          }),
+          
+          stepPropertyList: SC.ListView.design({
+            layout: { top: 40, left: 40, right: 40, height:300 },
+            classNames: 'propertyList'.w(),
+            content: [ 
+              {"name":"url"}, 
+              {"name":"paneConfig"}, 
+              {"name":"panes"},
+              {"name":"beforeText"},
+              {"name":"afterText"},
+              {"name":"tools"}, 
+              {"name":"responseTemplate"}, 
+              {"name":"responseBranches"}, 
+              {"name":"shouldFinishImmediately"}, 
+              {"name":"submissibilityCriterion"}, 
+              {"name":"isFinalStep"},
+              {"name":"hideSubmitButton"},
+              {"name":"submitButtonTitle"},
+              {"name":"nextButtonShouldSubmit"}
+            ],
+            contentValueKey: "name",
+            actOnSelect: YES,
+            action: function(listItem, event) {
+              var propertyName = listItem.$().text();
+              Smartgraphs.activityStepController.set("jsonEditorPropertyName", propertyName);
+              this.setPath('parentView.showPicker', NO);
+            }
+          }),
+
+          cancelButton: SC.ButtonView.design({
+            layout: { bottom: 10, right: 10, height: 24, width: 80 },
+            title: 'Cancel',
+            mouseDown: function () {
+              this.setPath('parentView.showPicker', NO);
+            }
+          }),
+        }),
 
         jsonEditorFeedback: SC.LabelView.design({
+          layout: { top: 40, right: 0, bottom: 0, left: 0 },
           classNames: 'json-editor-feedback'.w(),
           valueBinding: 'Smartgraphs.activityStepController.jsonEditingFeedback',
           escapeHTML: NO,
@@ -166,9 +249,9 @@ Smartgraphs.authorPageDef = SC.Page.extend({
           isVisibleBinding: SC.Binding.bool('Smartgraphs.activityStepController.jsonEditingFeedback')
         }), // jsonEditorFeedback
 
-        panesAsJsonView: SC.LabelView.design({
-          layout: { top: 10, right: 10, bottom: 10, left: 10 },
-          valueBinding: "Smartgraphs.activityStepController.panesJson",
+        jsonEditorView: SC.LabelView.design({
+          layout: { top: 50, right: 10, bottom: 10, left: 10 },
+          valueBinding: "Smartgraphs.activityStepController.propertyAsJson",
           escapeHTML: YES,
           isEditable: YES,
           isInlineEditorMultiline: YES,
@@ -200,7 +283,7 @@ Smartgraphs.authorPageDef = SC.Page.extend({
           mouseDown: function () {
             this.beginEditing();
           }
-        })
+        })  // jsonEditorView
 
       })
     })
@@ -209,3 +292,5 @@ Smartgraphs.authorPageDef = SC.Page.extend({
 });
 
 Smartgraphs.authorPage = Smartgraphs.authorPageDef.design();
+
+

@@ -106,9 +106,10 @@ body.sc-theme {
 }
 
 .sc-view.json-editor .json-editor-code {
-  border: 1px solid #E5E8EF;
+  border: 1px solid #888888;
   font: normal 12px monospace;
   white-space: pre;
+  background-color: #d8d8d8;
 }
 
 .sc-view.json-editor .json-editor-feedback {
@@ -117,6 +118,33 @@ body.sc-theme {
   background-color: red;
   padding: 3px;
 }
+
+.sc-view.json-editor .json-property-picker {
+  font: bold 12px sans-serif;
+  color: white;
+  background-color: #6699cc;
+  padding: 3px;
+  display:none;
+}
+
+.sc-view.json-editor .json-property-picker.visible {
+  display:block;
+}
+
+.sc-view.json-editor .json-property-picker .propertyListLabel{
+  font-size:12px;
+  color:#E5E8EF;
+  border-bottom:2px solid #E5E8EF
+}
+
+.sc-view.json-editor .json-currently-editing {
+  font:normal 12px monospace;
+}
+
+.sc-view.json-editor .json-currently-editing-property {
+  font-family:monospace;
+}
+
 
 .sc-view.json-editor .sc-view.hovered {
   border: 1px solid #6699cc;
@@ -239,4 +267,16 @@ body.sc-theme {
 /* quick fix to color of SplitDividerView */
 .sc-theme .sc-view.ace.sc-split-divider-view {
   background-color: #ddd;
+}
+
+.shadow {
+	-moz-box-shadow: 3px 3px 4px #222;
+	-webkit-box-shadow: 3px 3px 4px #222;
+	box-shadow: 3px 3px 4px #222;
+}
+
+.roundedCorners {
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
 }

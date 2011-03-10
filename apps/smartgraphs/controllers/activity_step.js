@@ -42,11 +42,11 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
     // enableSubmission *before* executing startCommands -- they might disable submission
     Smartgraphs.statechart.sendAction('enableSubmission');
-
+    
     this.startTools();
     this.executeCommands(this.get('startCommands'));
     this.processSubstitutions(this.get('substitutedExpressions'));
-   
+    
     // does the step goes "straight through"?
     if (this.get('shouldFinishImmediately')) {
       Smartgraphs.statechart.sendAction('submitStep');
@@ -229,31 +229,39 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
-  panesJsonDidChange: function() {
-    var json = this.get("panesJson");
+  propertyAsJsonDidChange: function() {
+    var json = this.get("propertyAsJson");
+    var propertyName = this.get("jsonEditorPropertyName");
     if (json) {
-      var newPanes;
+      var newValue;
       try {
-        newPanes = SC.json.decode(json);
+        newValue = SC.json.decode(json);
         this.set("jsonEditingFeedback", "");
       } 
       catch (e) {
-        this.set("jsonEditingFeedback", "JSON parsing error.");
+        this.set("jsonEditingFeedback", "&nbsp");
         return;
       }
-      var oldPanes = this.get("panes");
-      if (newPanes != oldPanes) {
-        this.set("panes", newPanes);
+      var currentValue = this.get(propertyName);
+      if (newValue != currentValue) {
+        this.set(propertyName, newValue);
       }
     }
-  }.observes("panesJson"),
+  }.observes("propertyAsJson"),
   
-  panesDidChange: function() {
-    var oldJson = this.get("panesJson");
-    var newJson = JSON.stringify(this.get("panes"), null, 2);
+  jsonEditorPropertyNameDidChange: function() {
+    var propertyName = this.get("jsonEditorPropertyName");
+    var propertyValue = this.get(propertyName);
+    var oldJson = this.get("propertyAsJson");
+    var newJson = JSON.stringify(propertyValue, null, 2);
     if (newJson != oldJson) {
-      this.set("panesJson", newJson);
+      this.set("propertyAsJson", newJson);
     }
-  }.observes("panes")
+  }.observes("jsonEditorPropertyName"),
+  
+  contentDidChange: function() {
+    var propertyName = this.get("jsonEditorPropertyName");
+    if (!propertyName) this.set("jsonEditorPropertyName", "url");
+  }.observes("content")
   
 }) ;
