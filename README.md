@@ -16,11 +16,10 @@
     $ rvm use 1.9.2
     $ rvm gemset create Smartgraphs
     $ rvm use 1.9.2@Smartgraphs
-    $ rvm 1.9.2@Smartgraphs gemset import
+    $ bundle install
     $ echo "rvm use 1.9.2@Smartgraphs" > .rvmrc
 
-(Trusting the .rvmrc file later means that whenever you cd into the Smartgraphs directory RVM will execute the .rvmrc 
-script in your shell.)
+Trust the .rvmrc file
 
 ### Import/update the project dependencies via `git submodule`
 
