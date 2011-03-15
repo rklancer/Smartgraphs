@@ -229,39 +229,83 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
-  propertyAsJsonDidChange: function() {
-    var json = this.get("propertyAsJson");
-    var propertyName = this.get("jsonEditorPropertyName");
+  contentDidChange: function() {
+    if (!this.get("jsonEditorCurrentConfig")) {
+      this.set("jsonEditorCurrentConfig", { "objectType":"step", "attribute":"url"} );
+    }
+  }.observes("content"),
+
+  jsonEditorCurrentConfigDidChange: function() {
+    var config = this.get("jsonEditorCurrentConfig");
+    var attribute = this.getAttribute(config);
+    var newJson = attribute ? JSON.stringify(attribute, null, 2) : "";
+    var oldJson = this.get("jsonEditorAttributeAsString");
+    if (newJson != oldJson) {
+      this.set("jsonEditorAttributeAsString", newJson);
+    }
+  }.observes("jsonEditorCurrentConfig"),
+  
+  jsonEditorAttributeAsStringDidChange: function() {
+    var json = this.get("jsonEditorAttributeAsString");
     if (json) {
+
+      // validate json
       var newValue;
       try {
         newValue = SC.json.decode(json);
         this.set("jsonEditingFeedback", "");
       } 
       catch (e) {
-        this.set("jsonEditingFeedback", "&nbsp");
+        this.set("jsonEditingFeedback", "&nbsp;");
         return;
       }
-      var currentValue = this.get(propertyName);
-      if (newValue != currentValue) {
-        this.set(propertyName, newValue);
+
+      // set attribute
+      var config = this.get("jsonEditorCurrentConfig");
+      var oldValue = this.getAttribute(config);
+      if (newValue != oldValue) {
+        this.setAttribute(config, newValue);
       }
     }
-  }.observes("propertyAsJson"),
+  }.observes("jsonEditorAttributeAsString"),
   
-  jsonEditorPropertyNameDidChange: function() {
-    var propertyName = this.get("jsonEditorPropertyName");
-    var propertyValue = this.get(propertyName);
-    var oldJson = this.get("propertyAsJson");
-    var newJson = JSON.stringify(propertyValue, null, 2);
-    if (newJson != oldJson) {
-      this.set("propertyAsJson", newJson);
+  getAttributeOwner: function(jsonEditorConfig) {
+    switch(jsonEditorConfig.objectType) {
+      case "step":
+        return this.get("content");
+      case "page":
+        return this.get("activityPage");
+      case "activity":
+        return this.get("activityPage").get("activity");
+      default:
+        return null;
     }
-  }.observes("jsonEditorPropertyName"),
+  },
   
-  contentDidChange: function() {
-    var propertyName = this.get("jsonEditorPropertyName");
-    if (!propertyName) this.set("jsonEditorPropertyName", "url");
-  }.observes("content")
+  getAttribute: function(jsonEditorConfig) {
+    var owner = this.getAttributeOwner(jsonEditorConfig);
+    if (!owner) return "";
+    
+    if (jsonEditorConfig.serialize) {
+        var obj = owner.get(jsonEditorConfig.attribute);
+        var serialized =  obj.map( function (o) { return o.serialize(); } );
+        return serialized;
+    }
+    else {
+      return owner.readAttribute(jsonEditorConfig.attribute);
+    }
+  },
   
+  setAttribute: function(jsonEditorConfig, jsonObj) {
+    var owner = this.getAttributeOwner(jsonEditorConfig);
+    if (!owner) return;
+
+    if (jsonEditorConfig.serialize) {
+      // TODO: deserialize the json into something that can be passed to owner.set()
+    }
+    else {
+      owner.writeAttribute(jsonEditorConfig.attribute, jsonObj);
+    }
+  }
+
 }) ;
