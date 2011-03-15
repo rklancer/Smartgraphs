@@ -107,9 +107,12 @@ body.sc-theme {
 
 .sc-view.json-editor .json-editor-code {
   border: 1px solid #888888;
+  background-color: #d8d8d8;
+}
+
+.sc-view.json-editor .json-editor-code textarea{
   font: normal 12px monospace;
   white-space: pre;
-  background-color: #d8d8d8;
 }
 
 .sc-view.json-editor .json-editor-feedback {
@@ -119,24 +122,19 @@ body.sc-theme {
   padding: 3px;
 }
 
-.sc-view.json-editor .json-attribute-picker {
+.sc-view .json-attribute-picker {
   font: bold 12px sans-serif;
   color: white;
   background-color: #6699cc;
   padding: 3px;
-  display:none;
 }
 
-.sc-view.json-editor .json-attribute-picker.visible {
-  display:block;
-}
-
-.sc-view.json-editor .json-attribute-picker .attributeListLabel{
+.sc-view .json-attribute-picker .attributeListLabel{
   font-size:12px;
   color:#E5E8EF;
  }
  
-.sc-view.json-editor .json-attribute-picker .attributeList{
+.sc-view .json-attribute-picker .attributeList{
   border:1px solid #E5E8EF
 }
 

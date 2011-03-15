@@ -231,10 +231,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   
   contentDidChange: function() {
     if (!this.get("jsonEditorCurrentConfig")) {
-      this.set("jsonEditorCurrentConfig", { "objectType":"step", "attribute":"url"} );
+      this.set("jsonEditorCurrentConfig", { "objectType":"activity", "attribute":"title"} );
     }
   }.observes("content"),
-
+  
   jsonEditorCurrentConfigDidChange: function() {
     var config = this.get("jsonEditorCurrentConfig");
     var attribute = this.getAttribute(config);
@@ -253,10 +253,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       var newValue;
       try {
         newValue = SC.json.decode(json);
-        this.set("jsonEditingFeedback", "");
+        this.set("jsonEditingIsInvalid", false);
       } 
       catch (e) {
-        this.set("jsonEditingFeedback", "&nbsp;");
+        this.set("jsonEditingIsInvalid", true);
         return;
       }
 
