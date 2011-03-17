@@ -9,3 +9,4 @@ gem "trollop"
 
 # needed for hudson (?) (could be split out)
 gem "git"
+gem "ci_reporter"

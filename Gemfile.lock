@@ -12,6 +12,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
+    builder (3.0.0)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
@@ -24,6 +25,8 @@ GEM
     celerity (0.8.8)
     childprocess (0.1.7)
       ffi (~> 0.6.3)
+    ci_reporter (1.6.4)
+      builder (>= 2.1.2)
     culerity (0.2.15)
     daemon_controller (0.2.6)
     daemons (1.1.0)
@@ -83,6 +86,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ci_reporter
   git
   lebowski
   sc-testdriver!
