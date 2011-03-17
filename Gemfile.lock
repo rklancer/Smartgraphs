@@ -1,8 +1,17 @@
+GIT
+  remote: git://github.com/concord-consortium/capybara-testrunner.git
+  revision: ebfc7ce3df2e1f6919f6874886f4ef126fc4300c
+  branch: gem
+  specs:
+    sc-testdriver (0.1.0)
+      capybara
+      daemon_controller
+      selenium-client
+
 GEM
   remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
-    builder (3.0.0)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
@@ -15,8 +24,6 @@ GEM
     celerity (0.8.8)
     childprocess (0.1.7)
       ffi (~> 0.6.3)
-    ci_reporter (1.6.4)
-      builder (>= 2.1.2)
     culerity (0.2.15)
     daemon_controller (0.2.6)
     daemons (1.1.0)
@@ -36,7 +43,7 @@ GEM
       selenium-client (~> 1.2.18)
     mime-types (1.16)
     nokogiri (1.4.4)
-    rack (1.2.1)
+    rack (1.2.2)
     rack-test (0.5.7)
       rack (>= 1.0)
     rake (0.8.7)
@@ -68,6 +75,7 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.14.6)
+    trollop (1.16.2)
     xpath (0.1.3)
       nokogiri (~> 1.3)
 
@@ -75,11 +83,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara
-  ci_reporter
-  daemon_controller
   git
   lebowski
-  selenium-client
-  selenium-webdriver
+  sc-testdriver!
   sproutcore (~> 1.4)
+  trollop

@@ -2,13 +2,10 @@ source "http://rubygems.org"
 
 gem "sproutcore", "~>1.4"
 gem "lebowski"
-gem "selenium-client"
-gem "selenium-webdriver"
+gem "sc-testdriver", :git => "git://github.com/concord-consortium/capybara-testrunner.git", :branch => "gem"
 
-# needed for capybara-testrunner (could be split out)
-gem "capybara"
-gem "ci_reporter"
-gem "daemon_controller"
+# for bin/hudson.rb:
+gem "trollop" 
 
 # needed for hudson (?) (could be split out)
 gem "git"
