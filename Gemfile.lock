@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/concord-consortium/capybara-testrunner.git
-  revision: ebfc7ce3df2e1f6919f6874886f4ef126fc4300c
+  revision: c2e912a0618a00323ad892b553995837391c60a7
   branch: gem
   specs:
-    sc-testdriver (0.1.0)
+    sc-testdriver (0.1.1)
       capybara
       daemon_controller
       selenium-client
@@ -89,6 +89,6 @@ DEPENDENCIES
   ci_reporter
   git
   lebowski
-  sc-testdriver!
+  sc-testdriver (= 0.1.1)!
   sproutcore (~> 1.4)
   trollop

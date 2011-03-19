@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gem "sproutcore", "~>1.4"
 gem "lebowski"
-gem "sc-testdriver", :git => "git://github.com/concord-consortium/capybara-testrunner.git", :branch => "gem"
+gem "sc-testdriver", "0.1.1", :git => "git://github.com/concord-consortium/capybara-testrunner.git", :branch => "gem"
 
 # for bin/hudson.rb:
 gem "trollop" 
