@@ -229,6 +229,14 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
+  
+  
+  /**** 
+  
+    JSON-editing stuff added by Eric K. TODO: Review this code.
+  
+  ****/
+  
   contentDidChange: function() {
     if (!this.get("jsonEditorCurrentConfig")) {
       this.set("jsonEditorCurrentConfig", { "objectType":"activity", "attribute":"title"} );
@@ -237,6 +245,9 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   
   jsonEditorCurrentConfigDidChange: function() {
     var config = this.get("jsonEditorCurrentConfig");
+    
+    if (!config) return;        // Temporary guard until I can review this json-editing code. RPK 3/20/11
+    
     var attribute = this.getAttribute(config);
     var newJson = attribute ? JSON.stringify(attribute, null, 2) : "";
     var oldJson = this.get("jsonEditorAttributeAsString");
