@@ -120,7 +120,7 @@ Smartgraphs.activityDocs["/shared/example"] =
           "annotations": ["p1-highlight"]
         }
       },
-      "beforeText": "<p>I'm so sorry, but that's just plain wrong.</p>",
+      "beforeText": "<p>Tragically, that's just plain wrong.</p>",
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
       "isFinalStep": true
@@ -195,8 +195,9 @@ Smartgraphs.activityDocs["/shared/example"] =
           "annotations": ["p1-highlight"]
         }
       },
-      "beforeText": "<p>Try to explain why you made your choice. Bonus points for creative combinations of the words &quot;hermeneutic&quot;, &quot;heteroskedacity&quot;, and &quot;sesquipedalian&quot;. Failure is also an option.</p>",
+      "beforeText": "<p>Try to explain why you made your choice. Write at least five characters. Bonus points for creative combinations of the words &quot;hermeneutic&quot;, &quot;heteroskedacity&quot;, and &quot;sesquipedalian&quot;.</p> <p>Failure is also an option.</p>",
       "responseTemplate": "/components/response-template/open",
+      "submissibilityCriterion": ["textLengthIsAtLeast", 5, ["responseField", 1]],
       "defaultBranch": "/shared/example/page/2/step/2",
       "isFinalStep": true,
       "nextButtonShouldSubmit": true
@@ -297,7 +298,7 @@ Smartgraphs.activityDocs["/shared/example"] =
           "It represents a transformative hermeneutic of transgressive anti-hegemonic dialectics belonging to the 1990s",
           "It's not as high.",
           "It's sagging because it's depressed about not being as well-endowed in the area of y-ness as its immediate neighbors.",
-          "It is too higher! You just have to look at it right."
+          "It is too as high! You just have to look at it right."
         ]
       ],
       "initialValues": [
