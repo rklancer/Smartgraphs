@@ -17,6 +17,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
   canSubmit: NO,
   showSubmitButton: NO,
+  jsonEditorCurrentConfig: { objectType: 'activity', attribute: 'title' },
   
   /**
     YES iff there is content (a response template or before/after text) to put in the 'dialog text' area
@@ -229,27 +230,20 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
-  
-  
   /**** 
   
     JSON-editing stuff added by Eric K. TODO: Review this code.
   
   ****/
   
-  contentDidChange: function() {
-    if (!this.get("jsonEditorCurrentConfig")) {
-      this.set("jsonEditorCurrentConfig", { "objectType":"activity", "attribute":"title"} );
-    }
-  }.observes("content"),
-  
+  // make jsonEditorAttributeAsString a computed property with getter & setter
   jsonEditorCurrentConfigDidChange: function() {
     var config = this.get("jsonEditorCurrentConfig");
     
-    if (!config) return;        // Temporary guard until I can review this json-editing code. RPK 3/20/11
-    
     var attribute = this.getAttribute(config);
-    var newJson = attribute ? JSON.stringify(attribute, null, 2) : "";
+    var newJson = attribute ? SC.json.encode(attribute, null, 2) : "";
+
+    // could use use setIfChanged here
     var oldJson = this.get("jsonEditorAttributeAsString");
     if (newJson != oldJson) {
       this.set("jsonEditorAttributeAsString", newJson);
