@@ -201,7 +201,7 @@ Smartgraphs.authorPageDef = SC.Page.extend({
 
         jsonEditorView: SC.TextFieldView.design({
           layout: { top: 50, right: 10, bottom: 10, left: 10 },
-          valueBinding: "Smartgraphs.activityStepController.jsonEditorAttributeAsString",
+          valueBinding: "Smartgraphs.activityStepController.jsonEditorInput",
           escapeHTML: YES,
           isEditing: YES,
           isTextArea: YES,

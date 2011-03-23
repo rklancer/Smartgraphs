@@ -2,6 +2,7 @@
 // Project:   Smartgraphs.activityStepController
 // Copyright: ©2010 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
+// Author:    Eric Kattwinkel
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -232,62 +233,66 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   
   /**** 
   
-    JSON-editing stuff added by Eric K. TODO: Review this code.
+    JSON-editing stuff.
   
   ****/
-  
-  // make jsonEditorAttributeAsString a computed property with getter & setter
-  jsonEditorCurrentConfigDidChange: function() {
-    var config = this.get("jsonEditorCurrentConfig");
+
+  // TODO (possibly): Also observe changes to the focused property; what we have now works as long as nothing changes
+  // the model objects "behind our backs"
+
+  _updateEditorInputValue: function() {
+    var config        = this.get('jsonEditorCurrentConfig'),
+        attribute     = this.getAttribute(config),
+        newEditorText = attribute ? JSON.stringify(attribute, null, 2) : ""; // pretty-printed
+        
+    this.setIfChanged('jsonEditorInput', newEditorText);
+  }.observes('jsonEditorCurrentConfig', 'content'),
+
+
+  _updateAttributeAfterEditorInput: function () {
+    var jsonEditorInput = this.get('jsonEditorInput'),
+        config          = this.get('jsonEditorCurrentConfig'),
+        newAttributeValue,
+        newAttributeJson,
+        oldAttributeJson;
     
-    var attribute = this.getAttribute(config);
-    var newJson = attribute ? SC.json.encode(attribute, null, 2) : "";
-
-    // could use use setIfChanged here
-    var oldJson = this.get("jsonEditorAttributeAsString");
-    if (newJson != oldJson) {
-      this.set("jsonEditorAttributeAsString", newJson);
-    }
-  }.observes("jsonEditorCurrentConfig"),
-  
-  jsonEditorAttributeAsStringDidChange: function() {
-    var json = this.get("jsonEditorAttributeAsString");
-    if (json) {
-
+    if (jsonEditorInput) {
       // validate json
-      var newValue;
       try {
-        newValue = SC.json.decode(json);
-        this.set("jsonEditingIsInvalid", false);
+        newAttributeValue = SC.json.decode(jsonEditorInput);
+        this.set('jsonEditingIsInvalid', false);
       } 
       catch (e) {
-        this.set("jsonEditingIsInvalid", true);
+        this.set('jsonEditingIsInvalid', true);
         return;
       }
 
       // set attribute
-      var config = this.get("jsonEditorCurrentConfig");
-      var oldValue = this.getAttribute(config);
-      if (newValue != oldValue) {
-        this.setAttribute(config, newValue);
+      newAttributeJson = SC.json.encode(newAttributeValue);
+      oldAttributeJson = SC.json.encode(this.getAttribute(config));
+
+      if (newAttributeJson !== oldAttributeJson) {
+        this.setAttribute(config, newAttributeValue);
       }
     }
-  }.observes("jsonEditorAttributeAsString"),
+  }.observes('jsonEditorInput'),
   
-  getAttributeOwner: function(jsonEditorConfig) {
+  
+  getAttributeOwner: function (jsonEditorConfig) {
     switch(jsonEditorConfig.objectType) {
-      case "step":
-        return this.get("content");
-      case "page":
+      case 'step':
+        return this.get('content');
+      case 'page':
         return this.get("activityPage");
-      case "activity":
-        return this.get("activityPage").get("activity");
+      case 'activity':
+        return this.get('activityPage').get('activity');
       default:
         return null;
     }
   },
   
-  getAttribute: function(jsonEditorConfig) {
+  
+  getAttribute: function (jsonEditorConfig) {
     var owner = this.getAttributeOwner(jsonEditorConfig);
     if (!owner) return "";
     
@@ -301,7 +306,8 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
   },
   
-  setAttribute: function(jsonEditorConfig, jsonObj) {
+  
+  setAttribute: function (jsonEditorConfig, jsonObj) {
     var owner = this.getAttributeOwner(jsonEditorConfig);
     if (!owner) return;
 
