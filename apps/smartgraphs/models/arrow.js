@@ -92,7 +92,6 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
 
   /**
     Optional Tag object which can be used to indirectly specify p1
-    (TODO: change this from a HighlightedPoint to a Tag)
 
     @property {Smartgraphs.Tag}
   */
@@ -100,7 +99,6 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
 
   /**
     Optional Tag object which can be used to indirectly specify p2
-    (TODO: change this from a HighlightedPoint to a Tag)
 
     @property {Smartgraphs.Tag}
   */
