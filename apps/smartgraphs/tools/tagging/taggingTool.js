@@ -20,17 +20,30 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   tagName: null,
   datasetName: null,
   
-  setup: function (args) {
-    this.set('tagName', args.tag);
-    this.set('datasetName', args.dataset);
-  },
-  
   dataset: function () {
     return Smartgraphs.activityObjectsController.findDataset(this.get('datasetName')) || null;
   }.property('datasetName'),
   
   tag: function () {
     return Smartgraphs.activityObjectsController.findTag(this.get('tagName')) || null;
-  }.property('tagName')
+  }.property('tagName'),
+  
+  setup: function (args) {
+    this.set('tagName', args.tag);
+    this.set('datasetName', args.dataset);
+  },
+  
+  clearSetup: function () {
+    this.set('tagName', null);
+    this.set('datasetName', null);
+  },
+  
+  setPoint: function (point) {
+    this.setPath('tag.point', point);
+  },
+  
+  clearPoint: function () {
+    this.setPath('tag.point', null);
+  }
   
 });
