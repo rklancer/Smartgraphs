@@ -1,0 +1,131 @@
+DataDefinition
+
+  * The canonical representation of a graphable dataset
+  * Includes api for update from sensors, etc.
+  * Talks to DataSample api
+  * Has subclasses for different types of data: 
+     - point set
+     - x = f(y)
+     - x = f(t); y = g(t)
+     - apply function X to dataset Y (scale, filter, sample, differentiate)
+
+
+DataSample
+
+  * Data from a data definition, windowed and sampled at a certain rate
+  * Can be indexed for fast access. (e.g, by x, y, or i or t)
+  * Data is exclusively accessed via api/getters and setters to allow indexing.
+  * Has api for update from data definition when it changes.
+  * Has api for getting range updates from the data representation, which talks to the graph.
+  * Tells DataRepresentations to update themselves when it changes.
+  * Optionally, like jsxgraph, api for settable sample rate so interactive updates can be fast while static renders are
+    more accurate
+
+  
+DataRepresentation
+
+  * A set of marks with colors and other display options
+  * The marks can be points, points with trendline of some kind, a path element...
+  * Reflects exactly the data in a DataSample
+  * Is what is added to a graph.
+  * Allows the reverse transform from a mark to an (x,y) pair (or to a functional expression that expresses a range)
+  * Subclasses can implement api to do things like hide marks in a certain range (t > t_animation)
+  
+
+Notes:
+
+  1. Make this as automatic as possible. So, if a DataDefinition is just a set of points, the default DataSample should
+     be that point set, windowed (automatically) to the graph, and the DataRepresentation is a set of DataPoints, each
+     of which corresponds to a DataPointView.
+     
+     The api for adding it to a graph or table should be the same as it is now:
+     
+     panes: {
+       top: {
+         type: "graph",
+         ...
+         datasets: ["slope-data"],        // should "just work"
+        }
+      }
+    
+  2. By default, trendlines should derive from the sampled data shown, not the "true" data in the data definition.
+  
+  3. Tagging tool intercepts click on a mark object (e.g., dataPointSelected) and translates that to an 
+     (dataset, (x, y)) pair which is indexed under the tag name
+  
+  4. Objects like HighlightedPoint that reference a tagged point do so using an *expression* which returns an (x,y)
+     value -- not a DataPoint reference -- from a tag. Note that 
+  
+  5. It should be simple to say "this data definition is the blah-blah transform of that data definition" but I would
+     use subclasses for that, in general. On the other hand, you might define a subclass which uses expression 
+     operators to define the data points or function in terms of 0 or more other datapoints or functions.
+  
+  6. In general, it should be possible to specify a region or point via an expression that is "scoped" to a particular
+     dataset's representation.
+     
+      (Region (PointsWithinXAxis (DatasetGraphedIn lowerpane slope-data) 5))
+    
+    might allow you to specify the 
+    
+    Note not having lambdas sort-of hurts here (you can't just pass in the criterion as a boolean expression) but too
+    bad.
+
+  7. Override annotations! Right now we specify override annotations by "target object" (a DataPoint or Dataset
+     record, for instance). Because the "same" graphable object (point, dataset, annotation) might be annotated
+     differently in different annotation contexts (graphs, tables), we have an elaborate scheme for allowing the 
+     views to subscribe to a notification "bulletin board" that is indexed by target object (where the 'target'
+     object is the 'content' object of the annotatable view)
+     
+     What we need to change is: 
+     
+     (1) Override annotations need to indicate either: (a) their target annotation object, or (b) their target 'data 
+     representation' ("dataset" object) and/or (c) their target point or range of points.
+     
+     (2) Override annotations that annotation a point or points need to be able to specify their target point by a
+     criterion of some kind, not via a computed property that returns a DataPoint. Therefore, _targetObjectDidChange
+     needs to observe changes to the evaluated value of the criterion specified. This can be done via a liveExpression
+     "scoped" somehow to the annotation context, which returns a Mark object (a DataPoint).
+     
+     (3) Don't be confused, we still need the "bulletin board". The annotation context doesn't keep track of _all_ of 
+     the graphable items it contains (eg iterating over DataRepresentations to find the Marks) in order to "manhandle"
+     those items. It maintains a bulletin board so those items can update themselves. And it indexes by content objects
+     rather than views because the override annotation can't and shouldn't be expected to furnish view objects...
+     
+
+
+Example setup in ActivityStep (payload):
+
+
+example line from graph setup:
+  datasets: [ ["slope-data", { sample_at: "1", color: "blue" }], "simple-data" ]
+  
+example line from table setup in same step:
+  datasets: [ ["slope-data", { represent_like: "top" } ] ]
+  
+  
+representation options:
+
+sample_at:              -> Rate to sample at, if applicable
+point_color:            ->
+point_type:             ->
+trendline_color:        ->
+trendline_type:         -> "connected", "fit", "llsq", "bezier", etc.
+
+
+represent_like: (pane)  -> Use the same representation options (color, etc) as the same dataset in the pane specified.
+                           Implies sample_like: (pane) & window_like: (pane)
+                           
+sample_like: (pane)     -> Use the sampling rate specified for the same dataset in the pane specified
+window_link: (pane)     -> Use the same sampling window as the dataset in the pane specified.
+
+
+
+
+* a fitted curve is derived data, not an annotation.
+
+* Trend line is part of the data representation.
+
+
+  
+
+
