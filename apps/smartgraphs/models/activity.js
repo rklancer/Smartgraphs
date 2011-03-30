@@ -14,10 +14,6 @@
 */
 Smartgraphs.Activity = SC.Record.extend(
 /** @scope Smartgraphs.Activity.prototype */ {
-
-  init: function () {
-    this.set('annotations', []);
-  },
   
   /** 
     The (relative) URL at which this Activity can be found. Also its primary key in the datastore.
@@ -65,14 +61,20 @@ Smartgraphs.Activity = SC.Record.extend(
     
     @property(Smartgraphs.Datadef[])
   */
-  datadefs: null,
-  
+  datadefs: function () {
+    this._datadefsQuery = this._datadefsQuery || SC.Query.local(Smartgraphs.Datadef, 'activity={activity}', { activity: this });
+    return this.get('store').find(this._datadefsQuery);
+  }.property(),     // note that find() returns a cached copy of the recordarray (whose contents update live)
+    
   /**
     Annotations defined as part of this activity.
     
     @property(Smartgraphs.Annotation[])
   */
-  annotations: null,
+  annotations: function () {
+    this._annotationsQuery = this._annotationsQuery || SC.Query.local(Smartgraphs.Annotation, 'activity={activity}', { activity: this });
+    return this.get('store').find(this._annotationsQuery);
+  }.property(),
   
   /**
     Variables defined as part of this activity.
@@ -124,10 +126,8 @@ Smartgraphs.Activity = SC.Record.extend(
     var serializeSubclasses = function (parentClass) {
       var ret = [];
       parentClass.typeNames().forEach(function (typeName) {
-        var subclassType = Smartgraphs[typeName],
-            query = SC.Query.local(subclassType, 'activity={activity}', {
-              activity: self
-            }),
+        var subclassType    = Smartgraphs[typeName],
+            query           = SC.Query.local(subclassType, 'activity={activity}', { activity: self }),
             subclassObjects = store.find(query).filter(function (obj) { return obj.constructor === subclassType; });
             
         if (subclassObjects.get('length') > 0) {
