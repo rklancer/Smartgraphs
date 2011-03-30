@@ -150,46 +150,50 @@ Smartgraphs.authorPageDef = SC.Page.extend({
     jsonEditor: SC.View.design({
       layout: { right: 0, width: 0.55 },
     
-      childViews: 'editorView attributePicker'.w(),
-
-      showPopup: NO,
-      showPopupDidChange: function () {
-        if (this.get('showPopup')) {
-          this.editorView.set('isVisible', NO);
-          this.attributePicker.set('isVisible', YES);
-        }
-        else {
-          this.editorView.set('isVisible', YES);
-          this.attributePicker.set('isVisible', NO);
-        }
-      }.observes('showPopup'),
+      childViews: 'editorView'.w(),
 
       editorView: SC.View.design({
         layout: { top: 2, right: 2, bottom: 2, left: 2 },
         
-        childViews: 'currentlyEditing currentlyEditingAttribute jsonEditorValidationError jsonEditorView'.w(),
+        childViews: 'propertyOwnerMenu propertyOwnerBtn currentPropertyMenu currentPropertyBtn jsonEditorValidationError jsonEditorView'.w(),  //  currentlyEditing currentlyEditingPropertyLabel 
         classNames: 'json-editor smartgraph-pane'.w(),
         
-        currentlyEditing: SC.LabelView.design({
-          layout: { top: 15, left: 10, height: 24, width: 140 },
-          value: 'editing attribute:',
-          classNames: 'json-currently-editing'.w(),
-          escapeHTML: NO
-        }),
-
-        currentlyEditingAttribute: SC.LabelView.design({
-          layout: { top: 15, left: 150, height: 19, right: 10 },
-          valueBinding: SC.Binding.from("Smartgraphs.activityStepController.jsonEditorCurrentConfig").transform(function(config) {
-            return config.objectType + "." + config.attribute;
-          }),
-          classNames: 'json-currently-editing-attribute'.w(),
-          fontWeight: 'bold',
-          escapeHTML: NO,
+        propertyOwnerBtn: SC.ButtonView.design({
+          layout: { top: 15, left: 10, height: 24, width: 200 },
+          titleBinding: 'Smartgraphs.activityStepController.currentlyEditingPropertyOwnerLabel',
           mouseDown: function () {
-            this.setPath('parentView.parentView.showPopup', YES);
+            this.parentView.propertyOwnerMenu.set('isVisible', YES);
+            this.parentView.propertyOwnerMenu.popup(this);
           }
         }),
-
+        
+        propertyOwnerMenu: SC.MenuPane.design({
+          layout: { width: 200, height: 400 },
+          isVisible: NO,
+          itemsBinding: 'Smartgraphs.activityStepController.jsonEditorMenuItemsOwners',
+          selectionDidChange: function () {
+            Smartgraphs.activityStepController.set("currentlyEditingPropertyOwnerConfig", this.selectedItem.config);
+          }.observes('selectedItem')
+        }),
+        
+        currentPropertyBtn: SC.ButtonView.design({
+          layout: { top: 15, left: 220, height: 24, width: 200 },
+          titleBinding: 'Smartgraphs.activityStepController.currentlyEditingPropertyName',
+          mouseDown: function () {
+            this.parentView.currentPropertyMenu.set('isVisible', YES);
+            this.parentView.currentPropertyMenu.popup(this);
+          }
+        }),
+        
+        currentPropertyMenu: SC.MenuPane.design({
+          layout: { width: 200, height: 400 },
+          isVisible: NO,
+          itemsBinding: 'Smartgraphs.activityStepController.jsonEditorMenuItemsProperties',
+          selectionDidChange: function () {
+            Smartgraphs.activityStepController.set("currentlyEditingPropertyName", this.selectedItem.title);
+          }.observes('selectedItem')
+        }),
+        
         jsonEditorValidationError: SC.LabelView.design({
           layout: { top: 40, right: 0, bottom: 0, left: 0 },
           classNames: 'json-editor-feedback'.w(),
@@ -210,124 +214,6 @@ Smartgraphs.authorPageDef = SC.Page.extend({
           classNames: 'json-editor-code'.w()
         })
 
-      }),
-      
-      attributePicker: SC.View.design({
-        layout: { top: 5, right: 10, bottom: 10, left: 5 },
-        classNames: 'json-attribute-picker shadow roundedCorners'.w(),
-        childViews: 'activityAttributeListLabel activityAttributeList pageAttributeListLabel pageAttributeList stepAttributeListLabel stepAttributeList cancelButton'.w(),
-        isVisible: NO,
-
-        activityAttributeListLabel: SC.LabelView.design({
-          layout: { top: 10, left: 10, width: 170, height:20 },
-          classNames: 'attributeListLabel'.w(),
-          value: "Activity Attributes",
-        }),
-        
-        activityAttributeList: SC.ListView.design({
-          layout: { top: 35, left: 10, width: 170, height:250 },
-          classNames: 'attributeList'.w(),
-          content: [ 
-            {"objectType":"activity", "attribute":"url"},
-            {"objectType":"activity", "attribute":"title"},
-            {"objectType":"activity", "attribute":"owner"},
-            {"objectType":"activity", "attribute":"pages"},
-            {"objectType":"activity", "attribute":"axes", "serialize":true},
-            {"objectType":"activity", "attribute":"units", "serialize":true},
-            {"objectType":"activity", "attribute":"graphs", "serialize":true},
-            {"objectType":"activity", "attribute":"datasets", "serialize":true},
-            //{"objectType":"activity", "attribute":"datapoints", "serialize":true},
-            {"objectType":"activity", "attribute":"annotations", "serialize":true},
-            {"objectType":"activity", "attribute":"tags", "serialize:":true},
-            {"objectType":"activity", "attribute":"responseTemplates"}
-          ],
-          contentValueKey: "attribute",
-          actOnSelect: YES,
-          action: function(listItem, event) {
-            if (listItem) {
-              Smartgraphs.activityStepController.set("jsonEditorCurrentConfig", listItem.content);
-              this.setPath('parentView.parentView.showPopup', NO);
-            }
-          }
-        }),
-
-        pageAttributeListLabel: SC.LabelView.design({
-          layout: { top: 310, left: 10, width: 170, height:20 },
-          classNames: 'attributeListLabel'.w(),
-          value: "Page Attributes",
-        }),
-        
-        pageAttributeList: SC.ListView.design({
-          layout: { top: 335, left: 10, width: 170, bottom:50 },
-          classNames: 'attributeList'.w(),
-          content: [ 
-            {"objectType":"page", "attribute":"url"},
-            {"objectType":"page", "attribute":"activity"},
-            {"objectType":"page", "attribute":"name"},
-            {"objectType":"page", "attribute":"index"},
-            {"objectType":"page", "attribute":"introText"},
-            {"objectType":"page", "attribute":"steps"},
-            {"objectType":"page", "attribute":"firstStep"},
-            {"objectType":"page", "attribute":"contextVars"},
-            {"objectType":"page", "attribute":"pageNumber"}
-          ],
-          contentValueKey: "attribute",
-          actOnSelect: YES,
-          action: function(listItem, event) {
-            if (listItem) {
-              Smartgraphs.activityStepController.set("jsonEditorCurrentConfig", listItem.content);
-              this.setPath('parentView.parentView.showPopup', NO);
-            }
-          }
-        }),
-
-        stepAttributeListLabel: SC.LabelView.design({
-          layout: { top: 10, left: 200, width: 170, height:20 },
-          classNames: 'attributeListLabel'.w(),
-          value: "Step Attributes",
-        }),
-        
-        stepAttributeList: SC.ListView.design({
-          layout: { top: 35, left: 200, width: 170, bottom:50 },
-          classNames: 'attributeList'.w(),
-          content: [ 
-            {"objectType":"step", "attribute":"url"}, 
-            {"objectType":"step", "attribute":"activityPage"}, 
-            {"objectType":"step", "attribute":"paneConfig"}, 
-            {"objectType":"step", "attribute":"panes"}, 
-            {"objectType":"step", "attribute":"beforeText"}, 
-            {"objectType":"step", "attribute":"afterText"}, 
-            {"objectType":"step", "attribute":"substitutedExpressions"}, 
-            {"objectType":"step", "attribute":"tools"}, 
-            {"objectType":"step", "attribute":"startCommands"}, 
-            {"objectType":"step", "attribute":"shouldFinishImmediately"}, 
-            {"objectType":"step", "attribute":"submissibilityCriterion"}, 
-            {"objectType":"step", "attribute":"afterSubmissionCommands"}, 
-            {"objectType":"step", "attribute":"responseTemplate"}, 
-            {"objectType":"step", "attribute":"responseBranches"}, 
-            {"objectType":"step", "attribute":"defaultBranch"}, 
-            {"objectType":"step", "attribute":"isFinalStep"}, 
-            {"objectType":"step", "attribute":"hideSubmitButton"}, 
-            {"objectType":"step", "attribute":"submitButtonTitle"}, 
-            {"objectType":"step", "attribute":"nextButtonShouldSubmit"}, 
-          ],
-          contentValueKey: "attribute",
-          actOnSelect: YES,
-          action: function(listItem, event) {
-            if (listItem) {
-              Smartgraphs.activityStepController.set("jsonEditorCurrentConfig", listItem.content);
-              this.setPath('parentView.parentView.showPopup', NO);
-            }
-          }
-        }),
-
-        cancelButton: SC.ButtonView.design({
-          layout: { bottom: 10, right: 10, height: 24, width: 80 },
-          title: 'Cancel',
-          mouseDown: function () {
-            this.setPath('parentView.parentView.showPopup', NO);
-          }
-        }),
       })
     })
   })

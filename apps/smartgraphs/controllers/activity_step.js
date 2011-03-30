@@ -18,7 +18,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
   canSubmit: NO,
   showSubmitButton: NO,
-  jsonEditorCurrentConfig: { objectType: 'activity', attribute: 'title' },
   
   /**
     YES iff there is content (a response template or before/after text) to put in the 'dialog text' area
@@ -240,18 +239,18 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   // TODO (possibly): Also observe changes to the focused property; what we have now works as long as nothing changes
   // the model objects "behind our backs"
 
+  currentlyEditingPropertyOwnerConfig: { label:'current activity', propertyName:'currentActivity' },
+  currentlyEditingPropertyName: 'url',
+
   _updateEditorInputValue: function() {
-    var config        = this.get('jsonEditorCurrentConfig'),
-        attribute     = this.getAttribute(config),
+    var attribute     = this.getAttribute(),
         newEditorText = attribute ? JSON.stringify(attribute, null, 2) : ""; // pretty-printed
         
     this.setIfChanged('jsonEditorInput', newEditorText);
-  }.observes('jsonEditorCurrentConfig', 'content'),
-
+  }.observes('currentlyEditingPropertyOwnerConfig', 'currentlyEditingPropertyName', 'content'),
 
   _updateAttributeAfterEditorInput: function () {
     var jsonEditorInput = this.get('jsonEditorInput'),
-        config          = this.get('jsonEditorCurrentConfig'),
         newAttributeValue,
         newAttributeJson,
         oldAttributeJson;
@@ -269,54 +268,181 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
       // set attribute
       newAttributeJson = SC.json.encode(newAttributeValue);
-      oldAttributeJson = SC.json.encode(this.getAttribute(config));
+      oldAttributeJson = SC.json.encode(this.getAttribute());
 
       if (newAttributeJson !== oldAttributeJson) {
-        this.setAttribute(config, newAttributeValue);
+        this.setAttribute(newAttributeValue);
       }
     }
   }.observes('jsonEditorInput'),
   
+  getAttribute: function () {
+    var owner        = this.getCurrentPropertyOwner(),
+        propertyName = this.get('currentlyEditingPropertyName');
+        
+    if (owner && propertyName && SC.kindOf(owner[propertyName], SC.RecordAttribute)) { 
+      return owner.readAttribute(propertyName);
+    }
+
+    return null;
+  },
   
-  getAttributeOwner: function (jsonEditorConfig) {
-    switch(jsonEditorConfig.objectType) {
-      case 'step':
-        return this.get('content');
-      case 'page':
-        return this.get("activityPage");
-      case 'activity':
+  setAttribute: function (newAttributeValue) {
+    var owner        = this.getCurrentPropertyOwner(),
+        propertyName = this.get('currentlyEditingPropertyName');
+        
+    if (owner && propertyName && SC.kindOf(owner[propertyName], SC.RecordAttribute)) { 
+      owner.writeAttribute(propertyName, newAttributeValue);
+    }
+  },
+  
+  _owners : null,
+
+  _addToOwners: function(label, propertyName, propertyKey) {
+    this._owners.push({
+      'title':label, 
+      config:{ 
+        'label':label, 
+        'propertyName':propertyName, 
+        'propertyKey':propertyKey 
+      }
+    });
+  },
+  
+  jsonEditorMenuItemsOwners: function() {
+    var activityStep = this.get('content'),
+        activityPage = this.get("activityPage"),
+        activity = this.get('activityPage').get('activity'),
+        axes = activity.get('axes'),
+        graphs = activity.get('graphs'),
+        responseTemplates = activity.get('responseTemplates'),
+        units = activity.get('units'),
+        annotationNames = Smartgraphs.activityObjectsController.get('annotationNames'),
+        datasetNames = Smartgraphs.activityObjectsController.get('datasetNames'),
+        tagNames = Smartgraphs.activityObjectsController.get('tagNames'),
+        variableNames = Smartgraphs.activityObjectsController.get('variableNames'),
+        ind = 0;
+
+    this._owners = [];
+    this._addToOwners('current activity', 'currentActivity', '');
+    this._addToOwners('current page', 'currentPage', '');
+    this._addToOwners('current step', 'currentStep', '');
+    
+    // axes
+    for (ind = 0; ind < axes.length(); ind++) {
+      var axis = axes.objectAt(ind);
+      this._addToOwners(this.getLabelFromUrl('axis', axis), 'axis', ind );
+    }
+    
+    // graphs
+    for (ind = 0; ind < graphs.length(); ind++) {
+      var graph = graphs.objectAt(ind);
+      this._addToOwners(this.getLabelFromUrl('graph', graph), 'graph', ind );
+    }
+    
+    // responseTemplates
+    for (ind = 0; ind < responseTemplates.length(); ind++) {
+      var responseTemplate = responseTemplates.objectAt(ind);
+      this._addToOwners(this.getLabelFromUrl('responseTemplate', responseTemplate), 'responseTemplate', ind );
+    }
+    
+    // units
+    for (ind = 0; ind < units.length(); ind++) {
+      var unit = units.objectAt(ind);
+      this._addToOwners(this.getLabelFromUrl('unit', unit), 'unit', ind );
+    }
+    
+    // annotations
+    for (ind = 0; ind < annotationNames.length; ind++) {
+      var annotationName = annotationNames.objectAt(ind);
+      this._addToOwners('annotation "' + annotationName + '"', 'annotation', annotationName );
+    }
+    
+    // datasets
+    for (ind = 0; ind < datasetNames.length; ind++) {
+      var datasetName = datasetNames.objectAt(ind);
+      this._addToOwners('dataset "' + datasetName + '"', 'dataset', datasetName );
+    }
+    
+    // tags
+    for (ind = 0; ind < tagNames.length; ind++) {
+      var tagName = tagNames.objectAt(ind);
+      this._addToOwners('tag "' + tagName + '"', 'tag', tagName );
+    }
+    
+    // variables
+    for (ind = 0; ind < variableNames.length; ind++) {
+      var variableName = variableNames.objectAt(ind);
+      this._addToOwners('variable "' + variableName + '"', 'variable', variableName );
+    }
+    
+    return this._owners;
+  }.property('content').cacheable(),
+  
+  jsonEditorMenuItemsProperties: function() {
+    var owner = this.getCurrentPropertyOwner();
+    var propertyNames = [ ];
+    
+    for (propertyName in owner) { 
+      if (SC.kindOf(owner[propertyName], SC.RecordAttribute)) { 
+        propertyNames.push( { title:propertyName} );
+        //console.log("%s: %s", propertyName, owner.readAttribute(propertyName)); 
+      } 
+    }
+    if (propertyNames.length > 0) {
+      this.set('currentlyEditingPropertyName', propertyNames[0].title);
+    }
+
+    return propertyNames;
+  }.property('currentlyEditingPropertyOwnerConfig').cacheable(),
+  
+  
+  getCurrentPropertyOwner: function () {
+    var config = this.get('currentlyEditingPropertyOwnerConfig');
+    switch(config.propertyName) {
+      case 'currentActivity':
         return this.get('activityPage').get('activity');
+      case 'currentPage':
+        return this.get("activityPage");
+      case 'currentStep':
+        return this.get('content');
+      case 'axis':
+        var axes = this.get('activityPage').get('activity').get('axes');
+        return axes.objectAt(config.propertyKey);
+      case 'graph':
+        var graphs = this.get('activityPage').get('activity').get('graphs');
+        return graphs.objectAt(config.propertyKey);
+      case 'responseTemplate':
+        var responseTemplates = this.get('activityPage').get('activity').get('responseTemplates');
+        return responseTemplates.objectAt(config.propertyKey);
+      case 'unit':
+        var units = this.get('activityPage').get('activity').get('units');
+        return units.objectAt(config.propertyKey);
+      case 'annotation':
+        var annotationNames = Smartgraphs.activityObjectsController.get('annotationNames');
+        return Smartgraphs.activityObjectsController.findAnnotation(config.propertyKey);
+      case 'dataset':
+        var datasetNames = Smartgraphs.activityObjectsController.get('datasetNames');
+        return Smartgraphs.activityObjectsController.findDataset(config.propertyKey);
+      case 'tag':
+        var tagNames = Smartgraphs.activityObjectsController.get('tagNames');
+        return Smartgraphs.activityObjectsController.findTag(config.propertyKey);
+      case 'variable':
+        var variableNames = Smartgraphs.activityObjectsController.get('variableNames');
+        return Smartgraphs.activityObjectsController.findVariable(config.propertyKey);
       default:
         return null;
     }
   },
   
-  
-  getAttribute: function (jsonEditorConfig) {
-    var owner = this.getAttributeOwner(jsonEditorConfig);
-    if (!owner) return "";
-    
-    if (jsonEditorConfig.serialize) {
-        var obj = owner.get(jsonEditorConfig.attribute);
-        var serialized =  obj.map( function (o) { return o.serialize(); } );
-        return serialized;
-    }
-    else {
-      return owner.readAttribute(jsonEditorConfig.attribute);
-    }
+  getLabelFromUrl: function(propName, property) {
+    var url = property.get('url');
+    return propName + ' "' + url.substring(url.lastIndexOf('/') + 1) + '"';
   },
   
-  
-  setAttribute: function (jsonEditorConfig, jsonObj) {
-    var owner = this.getAttributeOwner(jsonEditorConfig);
-    if (!owner) return;
-
-    if (jsonEditorConfig.serialize) {
-      // TODO: deserialize the json into something that can be passed to owner.set()
-    }
-    else {
-      owner.writeAttribute(jsonEditorConfig.attribute, jsonObj);
-    }
-  }
+  currentlyEditingPropertyOwnerLabel: function() {
+    var config = this.get('currentlyEditingPropertyOwnerConfig');
+    return config.label;
+  }.property('currentlyEditingPropertyOwnerConfig')
 
 }) ;

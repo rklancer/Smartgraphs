@@ -230,6 +230,20 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
       if (this._variables.hasOwnProperty(name)) names.push(name);
     }
     return names;
+  }.property(),
+  
+  /**
+    @property {SC.Array} tagNames
+    
+    Observable list of the names of all tags defined in the current activity session. (Observers are notified 
+    whenever tags are added or removed from this list.)
+  */
+  tagNames: function () {
+    var names = [];
+    for (var name in this._tags) {
+      if (this._tags.hasOwnProperty(name)) names.push(name);
+    }
+    return names;
   }.property()
   
 }) ;
