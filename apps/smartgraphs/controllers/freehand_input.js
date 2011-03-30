@@ -11,7 +11,7 @@
 
   @extends SC.Object
 */
-Smartgraphs.freehandInputController = SC.ObjectController.create(
+Smartgraphs.freehandInputController = SC.Object.create(
 /** @scope Smartgraphs.freehandInputController.prototype */ {
   
   _inputIsEnabled: NO,

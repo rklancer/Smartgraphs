@@ -11,7 +11,7 @@
 
   @extends SC.Object
 */
-Smartgraphs.appWindowController = SC.ObjectController.create(
+Smartgraphs.appWindowController = SC.Object.create(
 /** @scope Smartgraphs.appWindowController.prototype */ {
 
   viewToShow: null,

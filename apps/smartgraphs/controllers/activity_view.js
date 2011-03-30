@@ -7,11 +7,9 @@
 
 /** @class
 
-  (Document Your Controller Here)
-
   @extends SC.Object
 */
-Smartgraphs.activityViewController = SC.ObjectController.create(
+Smartgraphs.activityViewController = SC.Object.create(
 /** @scope Smartgraphs.activityViewController.prototype */ {
 
   dataViewNowShowing: null,

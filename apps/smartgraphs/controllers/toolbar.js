@@ -10,7 +10,7 @@
 
   @extends SC.Object
 */
-Smartgraphs.toolbarController = SC.ObjectController.create(
+Smartgraphs.toolbarController = SC.Object.create(
 /** @scope Smartgraphs.toolbarController.prototype */ {
 
   shouldShowEditButton: NO,

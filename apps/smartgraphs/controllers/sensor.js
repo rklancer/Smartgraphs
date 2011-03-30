@@ -11,7 +11,7 @@
 
   @extends SC.Object
 */
-Smartgraphs.sensorController = SC.ObjectController.create(
+Smartgraphs.sensorController = SC.Object.create(
 /** @scope Smartgraphs.sensorController.prototype */ {
   
   xMin: null,
