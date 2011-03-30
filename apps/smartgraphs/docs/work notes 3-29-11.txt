@@ -1,31 +1,67 @@
-Removed Graph model. GraphController now maintains its own state without the help of a content object. Graph setup is handled ad-hoc inside of activityStepController, which is a clear "monster object".
+Removed Graph model. GraphController now maintains its own state without the help of a content object. Graph setup is
+handled ad-hoc inside of activityStepController, which is becoming a "God object".
+
+We need to create:
+
+Datadef -> UnorderedDataPoints
+        -> FirstOrderDifference
+
+SampleSet   (indexed & windowed discretization of a Datadef)
+        -> TrivialSampleSet
+
+
+DataRepresentation (manages the Marks used to represent a Datadef; talks to the SampleSet
+
+Mark -> Point, 
+        Curve      -> ConnectedPoints
+
 
 To do:
 
-Create DataDefinition record type and a PointSet subtype. 
 
-Serialize/unserialize one from an example activity.
+Create Datadef record type and a UnorderedDataPoints subtype.
 
-Let activityObjectsController find DataDefinitions by name.
+Create an example activity (/shared/calculated-velocity) with two graphs, but no data.
 
-Create a DataSample class (not a record type) that just takes the data from the Data Definition. Make notes about the API DataSample classes will eventually have for update from the data definition and for handling windowing changes from the graph.
+Let activityObjectsController find Datadefs by name (like it used to find Datasets).
 
-Create a DataRepresentation class that manages a set of DataPoints
+Serialize/unserialize Datadefs from the sample activity.
+
+Create a SampleSet class that just takes the data from the UnorderedDataPoints. Make notes about the API DataSample classes will eventually have for update from the data definition and for handling windowing changes from the graph.
+
+create a Mark class and make DataPoint (now not a record type!) which is a subclass of Mark
+
+Create a  class that references its DataSample and manages a set of DataPoints
 
 Change the plumbing of GraphController, GraphView, and DatasetView so that they show datapoints derived from a DataRepresentation
   -- instead of DatasetList, graphController has a list of DataRepresentation subclasses
   -- DataPoints know which DataRepresentation they come from
   -- DataRepresentation names come from DataDefintion by default,  but can be renamed if
 
+
+
+
 GOAL: make an activity where data shows up on a graph without using the old Dataset model
+
+
+
+
 
 Create a FirstOrderDifference DataDefinition
 
 GOAL: show an activity with both position data & velocity data calculated from the position data
 
-allow options to be passed (in the 'panes' json) that cause a 
 
-GOAL: Show trendline in data
+
+
+allow options to be passed (in the 'panes' json) that cause a ConnectedPoints to be added to the graph
+
+(options 'line+points' and 'line'?)
+
+GOAL: Show "connected points" representation of dataset
+
+
+
 
 Update tagging to store (x, y) values instead of DataPoint references
 
@@ -34,6 +70,9 @@ Allow annotations to get their x, y values from an expression instead of from Ta
 
 GOAL: show that you can tag a point and update use a highlightedPoint annotation in both position & velocity graphs to 
 highlight the position & velocity with the chosen x-value
+
+
+
 
 Implement some of the "update" API between DataDefinitions
 
