@@ -1,0 +1,40 @@
+Removed Graph model. GraphController now maintains its own state without the help of a content object. Graph setup is handled ad-hoc inside of activityStepController, which is a clear "monster object".
+
+To do:
+
+Create DataDefinition record type and a PointSet subtype. 
+
+Serialize/unserialize one from an example activity.
+
+Let activityObjectsController find DataDefinitions by name.
+
+Create a DataSample class (not a record type) that just takes the data from the Data Definition. Make notes about the API DataSample classes will eventually have for update from the data definition and for handling windowing changes from the graph.
+
+Create a DataRepresentation class that manages a set of DataPoints
+
+Change the plumbing of GraphController, GraphView, and DatasetView so that they show datapoints derived from a DataRepresentation
+  -- instead of DatasetList, graphController has a list of DataRepresentation subclasses
+  -- DataPoints know which DataRepresentation they come from
+  -- DataRepresentation names come from DataDefintion by default,  but can be renamed if
+
+GOAL: make an activity where data shows up on a graph without using the old Dataset model
+
+Create a FirstOrderDifference DataDefinition
+
+GOAL: show an activity with both position data & velocity data calculated from the position data
+
+allow options to be passed (in the 'panes' json) that cause a 
+
+GOAL: Show trendline in data
+
+Update tagging to store (x, y) values instead of DataPoint references
+
+Allow annotations to get their x, y values from an expression instead of from TagFromPoint
+(This requires updating live expressions somewhat, so they can notify when particular tags change or when the set of datapoints meeting some criteria change)
+
+GOAL: show that you can tag a point and update use a highlightedPoint annotation in both position & velocity graphs to 
+highlight the position & velocity with the chosen x-value
+
+Implement some of the "update" API between DataDefinitions
+
+GOAL: Fixup the 'sensor tool' to work as a tool & with DataDefinitions & with FirstOrderDifferences
