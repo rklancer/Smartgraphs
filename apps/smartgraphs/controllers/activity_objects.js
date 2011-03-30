@@ -8,12 +8,12 @@
 /** @class
 
   This controller maintains a registry of the names of all "activity objects" associated with the current activity
-  session.(Right now, "activity objects" means the datasets and annotations associated with an activity.)
+  session.(Right now, "activity objects" means the datadefs and annotations associated with an activity.)
   
   This controller handles:
-    (a) loading the initial set of datasets and annotations (those defined in the activity document) into the session
-    (b) finding datasets and annotations by name in the current session
-    (c) TODO: in authoring mode, maintaining a list of the datasets, annotations, etc associated with the activity
+    (a) loading the initial set of datadefs and annotations (those defined in the activity document) into the session
+    (b) finding datadefs and annotations by name in the current session
+    (c) TODO: in authoring mode, maintaining a list of the datadefs, annotations, etc associated with the activity
   
   TODO: perhaps eventually this should be an actual ObjectController pointing to an ActivityObjectList associated
   with the current activity; right now, it's just a gussied-up SC.Object.
@@ -33,9 +33,9 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   /**
     @private
     
-    All datasets available to the activity session, indexed by name.
+    All datadefs available to the activity session, indexed by name.
   */
-  _datasets: {},
+  _datadefs: {},
   
   /**
     @private
@@ -52,11 +52,11 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   _tags: {},
   
   /**
-    When an activity session is started, call this method to populate the registry of dataset and annotation names 
-    with the names of the datasets and annotations predefined the activity document (all other datasets and 
+    When an activity session is started, call this method to populate the registry of datadef and annotation names 
+    with the names of the datadefs and annotations predefined the activity document (all other datadefs and 
     annotations will be removed from the registry).
     
-    This method expects that Smartgraphs.store is a "clean slate"; that is, that it contains no dataset or annotation
+    This method expects that Smartgraphs.store is a "clean slate"; that is, that it contains no datadef or annotation
     records which reference the current activity but that were not predefined. This is normally taken care of by the 
     sessionController just before loadPredefinedObjects is called.
   */
@@ -65,7 +65,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
         findObjects,
         self = this;
 
-    this._datasets = {};
+    this._datadefs = {};
     this._annotations = {};
     this._variables = {};
     this._tags = {};
@@ -84,36 +84,33 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
         if (hash[name]) {
           throw "The activity contains multiple %@ records named '%@'".fmt(typeName, name);
         }
-        if (rec.get('session')) {
-          throw "The predefined %@ record '%@' was incorrectly annotated with a session!".fmt(typeName, name);
-        }
         hash[name] = rec;
       });
     };
     
     activity = Smartgraphs.activityController.get('content');
     if (activity) {
-      findObjects(Smartgraphs.Dataset,    'dataset',    this._datasets);
+      findObjects(Smartgraphs.Datadef,    'datadef',    this._datadefs);
       findObjects(Smartgraphs.Annotation, 'annotation', this._annotations);
       findObjects(Smartgraphs.Variable,   'variable',   this._variables);
       findObjects(Smartgraphs.Tag,        'tag',        this._tags);
     }
     
-    this.notifyPropertyChange('datasetNames');
+    this.notifyPropertyChange('datadefNames');
     this.notifyPropertyChange('annotationNames');
     this.notifyPropertyChange('variableNames');
   },
   
   /**
-    Returns the dataset with the given name in the current activity session, or undefined if the specified name does
-    not correspond to a dataset in the current activity session.
+    Returns the datadef with the given name in the current activity session, or undefined if the specified name does
+    not correspond to a datadef in the current activity session.
 
-    @param name The name of the dataset.
+    @param name The name of the datadef.
     
-    @returns {Smartgraphs.Dataset|undefined}
+    @returns {Smartgraphs.Datadef|undefined}
   */
-  findDataset: function (name) {
-    return this._datasets[name];
+  findDatadef: function (name) {
+    return this._datadefs[name];
   },
   
   /**
@@ -191,15 +188,15 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   },
   
   /**
-    @property {SC.Array} datasetNames      
+    @property {SC.Array} datadefNames      
 
-    Observable list of the names of all datasets defined in the current activity session. (Observers are notified 
-    whenever datasets are added or removed from this list.)
+    Observable list of the names of all datadefs defined in the current activity session. (Observers are notified 
+    whenever datadefs are added or removed from this list.)
   */
-  datasetNames: function () {
+  datadefNames: function () {
     var names = [];
-    for (var name in this._datasets) {
-      if (this._datasets.hasOwnProperty(name)) names.push(name);
+    for (var name in this._datadefs) {
+      if (this._datadefs.hasOwnProperty(name)) names.push(name);
     }
     return names;
   }.property(),
