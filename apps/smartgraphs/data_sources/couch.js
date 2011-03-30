@@ -89,7 +89,6 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
           ['ActivityStep',        'steps'],
           ['Unit',                'units'],
           ['Axis',                'axes'],
-          ['Graph',               'graphs'],
           ['ResponseTemplate',    'responseTemplates'],
           ['DataPoint',           'datapoints'],
           ['Dataset',             'datasets'],

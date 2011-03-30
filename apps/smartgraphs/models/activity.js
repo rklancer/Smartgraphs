@@ -117,8 +117,6 @@ Smartgraphs.Activity = SC.Record.extend(
     
     var axes = this.get('axes');
     ret.axes = axes.map( function (axis) { return axis.serialize(); } );
-    var graphs = this.get('graphs');
-    ret.graphs = graphs.map( function (graph) { return graph.serialize(); } );
 
     var responseTemplates = this.get('responseTemplates');
     ret.responseTemplates = responseTemplates.map( function (responseTemplate) { return responseTemplate.serialize(); });

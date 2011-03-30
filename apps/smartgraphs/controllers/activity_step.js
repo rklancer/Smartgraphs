@@ -69,8 +69,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   setupPane: function (pane, config) {
-    var name, id, 
-        allAnnotations = (config.annotations || []).concat(config.highlightedAnnotations || []);
+    var allAnnotations = (config.annotations || []).concat(config.highlightedAnnotations || []);
     
     this._setAnnotationHighlights(config.annotations, config.highlightedAnnotations);
 
@@ -84,22 +83,13 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     switch (config.type) {
       case 'graph':
-        // temporarily and somewhat hackily creates a Graph object to be opened in the graphController.
-        // no existing activities use an 'graphN' as the graph name, and no new ones are going be created, so:
-        id = Smartgraphs.getNextGuid();
-        name = 'graph'+id;
-        Smartgraphs.store.createRecord(Smartgraphs.Graph, {
-          url: id,
-          activity: Smartgraphs.activityController.get('id'),
-          name: name,
+        Smartgraphs.activityViewController.showGraph(pane, {
           title: config.title,
           xAxis: config.xAxis,
           yAxis: config.yAxis,
-          initialDatasets: config.datasets,
-          initialAnnotations: allAnnotations
+          datasets: config.datasets,
+          annotations: allAnnotations
         });
-        
-        Smartgraphs.activityViewController.showGraph(pane, name);
         return;
       case 'table':
         Smartgraphs.activityViewController.showTable(pane, config.dataset, allAnnotations);
@@ -161,7 +151,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (afterText) {
       this.set('afterText', afterText.fmt.apply(afterText, fmtArgs));
     }
-
   },
   
   enableSubmission: function () {

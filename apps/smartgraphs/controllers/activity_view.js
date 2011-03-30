@@ -171,13 +171,13 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return YES;
   },
   
-  showGraph: function (pane, graphName) {
+  showGraph: function (pane, graphConfig) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
     
     if ( !which ) return NO;
     
-    Smartgraphs.get(which+'GraphController').openGraph(graphName);
+    Smartgraphs.get(which+'GraphController').setGraph(graphConfig);
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'GraphPane');
   
     return YES;
