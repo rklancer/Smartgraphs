@@ -17,7 +17,6 @@ Smartgraphs.Activity = SC.Record.extend(
 
   init: function () {
     this.set('annotations', []);
-    this.set('variables', []);
   },
   
   /** 
@@ -83,11 +82,11 @@ Smartgraphs.Activity = SC.Record.extend(
   annotations: null,
   
   /**
-    Variables defined as part of this activity. Not persisted to the database.
+    Variables defined as part of this activity.
     
     @property(Smartgraphs.Variable[])
   */
-  variables: null,
+  variables: SC.Record.toMany('Smartgraphs.Variable', { inverse: 'activity' }),
   
   /**
     ResponseTemplates used in this activity
@@ -126,6 +125,9 @@ Smartgraphs.Activity = SC.Record.extend(
     // FIXME datasets should serialize to an array of points; at the moment, datapoint ids (just integers) are likely to collide
     var datapoints = datasets.map( function (dataset) { return dataset.get('points').map( function (point) { return point.serialize(); } ); } );
     ret.datapoints = Array.prototype.concat.apply([], datapoints);
+
+    var variables = this.get('variables');
+    ret.variables = variables.map( function (variable) { return variable.serialize(); } );
     
     var self = this;
     ret.annotations = [];
@@ -144,14 +146,6 @@ Smartgraphs.Activity = SC.Record.extend(
       }
     });
     
-    ret.variables = [];
-    var query = SC.Query.local(Smartgraphs.Variable, 'activity={activity}', {
-      activity: self
-    });
-    var variables = store.find(query);
-    if (variables.get('length') > 0) {
-      ret.variables = variables.map( function (variable) { return variable.serialize(); } );
-    }
 
     return ret;
   }
