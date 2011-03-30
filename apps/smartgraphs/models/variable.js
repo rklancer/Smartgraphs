@@ -40,25 +40,6 @@ Smartgraphs.Variable = SC.Record.extend(
     @property {Smartgraphs.Activity}
   */
   activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'variables', isMaster: YES, aggregate: YES }),
-  
-  /**
-    @private
-    
-    A hack to deal with the fact that SC.Record.propagateToAggregates isn't recursive.
-  */
-  _statusDidChange: function () {
-    if (this.get('status') & SC.Record.DIRTY) this.invokeLast(this.propagateToAggregates);
-  }.observes('status'),
-  
-  /**
-    The session this variable is associated with. (When a user begins running an activity, any new variables
-    created during the run of the activity, and any modifications to variables pre-defined by the author, are 
-    buffered to a nested data store. When the user's session state is saved, the new or modified variables are
-    uploaded to the server, and the buffered changes are dropped.)
-    
-    @property {Smartgraphs.Session}
-  */
-  session: SC.Record.toOne('Smartgraphs.Session'),
 
   /**
     The value of this variable as a string.

@@ -80,16 +80,6 @@ Smartgraphs.Annotation = SC.Record.extend(
       this._activity = activity;
     }
   }.observes('activity'),
-  
-  /**
-    The session this annotation is associated with. (When a user begins running an activity, any new annotations
-    created during the run of the activity, and any modifications to annotations pre-defined by the author, are 
-    buffered to a nested data store. When the user's session state is saved, the new or modified annotations are
-    uploaded to the server, and the buffered changes are dropped.)
-    
-    @property {Smartgraphs.Session}
-  */
-  session: SC.Record.toOne('Smartgraphs.Session'),
 
   /**
     Color with which to draw the annotation. Defaults to #cc0000, which is red.
