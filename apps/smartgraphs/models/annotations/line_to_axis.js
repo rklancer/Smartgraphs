@@ -7,7 +7,7 @@
 
 
 sc_require('models/annotation');
-sc_require('models/highlighted_point');
+sc_require('models/annotations/highlighted_point');
 sc_require('views/line_to_axis');
 
 /** @class
