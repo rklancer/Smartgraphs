@@ -2,14 +2,14 @@ Datadef
 
   * The canonical representation of a graphable dataset
   * Includes api for update from sensors, etc.
-  * Talks to SampleSet api
+  * Talks to Sampleset api
   * Has subclasses for different types of data: 
      - unordered set of (x, y) points
      - x = f(y)
      - x = f(t); y = g(t)
      - apply function X to dataset Y (scale, filter, sample, differentiate)
 
-SampleSet
+Sampleset
 
   * Data from a data definition, windowed and sampled at a certain rate
   * Can be indexed for fast access. (e.g, by x, y, or i or t)
@@ -26,7 +26,7 @@ DataRepresentation
   * Manages set of Marks to be displayed on table or graph
   * The marks can be points, a line, points plus a line...
   * Accepts color options and other display style options (e.g., whether to show 
-  * Reflects exactly the data in a SampleSet
+  * Reflects exactly the data in a Sampleset
   * Is what is added to a graph.
   * Allows the reverse transform from a mark to an (x,y) pair (or to a functional expression that expresses a range)
   * Subclasses can implement api to do things like hide marks in a certain range (t > t_animation)
@@ -34,7 +34,7 @@ DataRepresentation
 
 Notes:
 
-  1. Make this as automatic as possible. So, if a DataDefinition is just a set of points, the default SampleSet should
+  1. Make this as automatic as possible. So, if a DataDefinition is just a set of points, the default Sampleset should
      be that point set, windowed (automatically) to the graph, and the DataRepresentation is a set of DataPoints, each
      of which corresponds to a DataPointView.
      

@@ -24,10 +24,10 @@
   deriving Datadefs use to update themselves when the source Datadef changes (e.g., when a parameter changes or a data
   point is added by a sensor; how this will work isn't well defined yet.)
   
-  When a Datadef is to be displayed on the screen, a SampleSet object is created which requests information
-  from the Datadef in order to generate a list of sample points in the window to be graphed. The SampleSet can also 
-  access the update callbacks to update itself when the Datadef changes (In this respect, a SampleSet behaves
-  exactly like a Datadef subclass that derives a sampled signal from the Datadef. The difference is that SampleSets
+  When a Datadef is to be displayed on the screen, a Sampleset object is created which requests information
+  from the Datadef in order to generate a list of sample points in the window to be graphed. The Sampleset can also 
+  access the update callbacks to update itself when the Datadef changes (In this respect, a Sampleset behaves
+  exactly like a Datadef subclass that derives a sampled signal from the Datadef. The difference is that Samplesets
   aren't record types, are meant to be transient, and are just for managing display.)  
 
   @extends SC.Record

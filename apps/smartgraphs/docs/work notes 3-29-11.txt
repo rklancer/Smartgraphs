@@ -6,11 +6,11 @@ We need to create:
 Datadef -> UnorderedDataPoints
         -> FirstOrderDifference
 
-SampleSet   (indexed & windowed discretization of a Datadef)
-        -> TrivialSampleSet
+Sampleset   (indexed & windowed discretization of a Datadef)
+        -> TrivialSampleset
 
 
-DataRepresentation (manages the Marks used to represent a Datadef; talks to the SampleSet
+DataRepresentation (manages the Marks used to represent a Datadef; talks to the Sampleset
 
 Mark -> Point, 
         Curve      -> ConnectedPoints
@@ -27,7 +27,7 @@ Let activityObjectsController find Datadefs by name (like it used to find Datase
 
 Serialize/unserialize Datadefs from the sample activity.
 
-Create a SampleSet class that just takes the data from the UnorderedDataPoints. Make notes about the API DataSample classes will eventually have for update from the data definition and for handling windowing changes from the graph.
+Create a Sampleset class that just takes the data from the UnorderedDataPoints. Make notes about the API DataSample classes will eventually have for update from the data definition and for handling windowing changes from the graph.
 
 create a Mark class and make DataPoint (now not a record type!) which is a subclass of Mark
 
