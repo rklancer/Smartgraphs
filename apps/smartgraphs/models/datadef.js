@@ -35,7 +35,7 @@
 */
 Smartgraphs.Datadef = SC.Record.extend(
 /** @scope Smartgraphs.Datadef.prototype */ {
-
+  
   /**
     The primary key of a Datadef record is technically its url. However, datadefs are referenced by name within an 
     activity, so that the activity can be serialized.
@@ -57,7 +57,7 @@ Smartgraphs.Datadef = SC.Record.extend(
     
     @property {Smartgraphs.Activity}
   */
-  activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'datadefs', isMaster: YES, aggregate: YES }),
+  activity: SC.Record.toOne('Smartgraphs.Activity', { aggregate: YES } ),
   
   /**
     The unit of measure for the x values
@@ -102,3 +102,39 @@ Smartgraphs.Datadef = SC.Record.extend(
   yShortLabel: SC.Record.attr(String)
 
 });
+
+// FIXME this is duplicated from Smartgraphs.Annotation
+
+(function () {
+  
+  var types = null;
+  var typeNames = null;
+  
+  function findTypes() {
+    types = [];
+    typeNames = [];
+    for (var prop in Smartgraphs) {
+      if (Smartgraphs.hasOwnProperty(prop) && Smartgraphs[prop] && Smartgraphs[prop].isClass && prop !== 'Datadef' && SC.kindOf(Smartgraphs[prop], Smartgraphs.Datadef)) {
+        types.push(Smartgraphs[prop]);
+        typeNames.push(prop);
+      }
+    }
+  }
+  
+  /**
+    Returns a list of all Datadef subtypes. Value is calculated the first time this function or Smartgraphs.Datadef.typeNames is is called, and cached thereafter.
+  */
+  Smartgraphs.Datadef.types = function () {
+    if (!types) findTypes();
+    return types;
+  };
+  
+  /**
+    Returns a list of the names of all Datadef subtypes. Value is calculated the first time this function or Smartgraphs.Datadef.types is is called, and cached thereafter.
+  */
+  Smartgraphs.Datadef.typeNames = function () {
+    if (!typeNames) findTypes();
+    return typeNames;
+  };
+  
+}());
