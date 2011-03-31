@@ -42,7 +42,7 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/calculated-velocity/axes/12s",
           "yAxis": "/shared/calculated-velocity/axes/10m",
-          "data": [["position-data", { "line-type": "connected" }]],
+          "data": [["position-data", { "point-type": "none", "line-type": "connected" }]],
           "annotations": []
         },
         "bottom": {
