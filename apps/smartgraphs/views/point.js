@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.DataPointView
+// Project:   Smartgraphs.PointView
 // Copyright: ©2010 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -15,7 +15,7 @@ sc_require('views/mixins/annotatable_item_view');
   @extends Smartgraphs.AnnotatableItemView  
 */
 
-Smartgraphs.DataPointView = RaphaelViews.RaphaelView.extend( Smartgraphs.AnnotatableItemView, 
+Smartgraphs.PointView = RaphaelViews.RaphaelView.extend( Smartgraphs.AnnotatableItemView, 
 /** @scope Smartgraphs.DataPointView.prototype */ {
   
   displayProperties: 'content.x content.y isEnabled fill stroke radius'.w(),

@@ -33,8 +33,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   ],
   
   /**
-    The DataRepresentations being shown on this graph.
+    The GraphableObjects being shown on this graph.
   */
+  graphableDataObjects: null,
+  
   dataRepresentations: null,
   
   /**
@@ -60,8 +62,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('title', null);
     this.set('xAxis', null);
     this.set('yAxis', null);
-    this.set('dataRepresentations', []);
-    this.set('datasetList', []);            // keep GraphView from choking, for now. TODO: remove this when obsolete.
+    this.set('graphableDataObjects', []);
+    this.set('dataRepresentations', []);            // keep GraphView from choking, for now. TODO: remove this when obsolete.
     this.clearAnnotations();
   },
   
@@ -99,17 +101,13 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   
   
   /**
-     Add the passed DataRepresentation to the graph
+     Add the graphable objects from the passed DataRepresentation to the graph
      
      @param {Smartgraphs.DataRepresentation} rep The DataRepresentation object to add to the graph
   */
   addDataRepresentation: function (rep) {
     var xAxisUnits = this.getPath('xAxis.units'),
         yAxisUnits = this.getPath('yAxis.units');
-    
-    if (this.get('dataRepresentations').indexOf(rep) >= 0) {
-      return;
-    }
     
     if (xAxisUnits && xAxisUnits !== rep.get('xUnits')) {
       throw "x units of data %@ do not match x axis units (%@)".fmt(rep.get('name'), xAxisUnits.get('pluralName'));
@@ -118,52 +116,49 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       throw "y units of data %@ do not match y axis units (%@)".fmt(rep.get('name'), yAxisUnits.get('pluralName'));
     }
     
-    // get a color for the dataset
-    // TODO: respect the color already set on the rep
+    // TODO: allow DataRepresentatin to handle colors itself    
     rep.set('color', this.getColorForDataRepresentation(rep));
-      
-    this.get('dataRepresentations').pushObject(rep);
-  },
+
+    this.get('dataRepresentations').push(rep);
+    this.get('graphableDataObjects').pushObjects(rep.get('graphableObjects'));
+  },  
   
 
-  /**
-    Remove the named dataset from the graph.
-    
-    @param {String} name The name of the dataset to remove from the graph.
-  */
-  removeDataset: function (name) {
-    var datasetList = this.get('datasetList'),
-        dataset = this.datasteList.findProperty('name', name);
-        
-    if (dataset) datasetList.removeObject(dataset);
-  },
+  // /**
+  //   Remove the named dataset from the graph.
+  //   
+  //   @param {String} name The name of the dataset to remove from the graph.
+  // */
+  // removeDataset: function (name) {
+  //   var datasetList = this.get('datasetList'),
+  //       dataset = this.datasetList.findProperty('name', name);
+  //       
+  //   if (dataset) datasetList.removeObject(dataset);
+  // },
   
   /**
     a simple implementation for now...  Later, we can use color names, handle default colors a little more
     carefully, maybe cycle through colors if we have > 10 datasets on a graph (which we would ... why?)
 
-    @param {Smartgraphs.Dataset} dataset
+    @param {Smartgraphs.DatatRepresentation} rep
   */
   getColorForDataRepresentation: function (rep) {
-    return '#ffffff';
-    // TODO
+    var defaultColor = rep.get('defaultColor'),
+        used = this.get('dataRepresentations').getEach('color'),
+        colors,
+        i, len;
+      
+    if (defaultColor && !used.contains(defaultColor)) {
+      return defaultColor;
+    }
     
-    // var defaultColor = dataset.get('defaultColor'),
-    //     used = this.get('datasetList').getEach('color'),
-    //     colors,
-    //     i, len;
-    //   
-    // if (defaultColor && !used.contains(defaultColor)) {
-    //   return defaultColor;
-    // }
-    // 
-    // colors = this.get('colors');
-    // for (i = 0, len = colors.get('length'); i < len; i++) {
-    //   if ( !used.contains(colors.objectAt(i)) ) return colors.objectAt(i);
-    // }
-    // 
-    // // just default to the first color if none available
-    // return colors.objectAt(0);
+    colors = this.get('colors');
+    for (i = 0, len = colors.get('length'); i < len; i++) {
+      if ( !used.contains(colors.objectAt(i)) ) return colors.objectAt(i);
+    }
+    
+    // just default to the first color if none available
+    return colors.objectAt(0);
   },
 
   /**

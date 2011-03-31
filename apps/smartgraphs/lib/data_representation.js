@@ -18,9 +18,24 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
 /** @scope Smartgraphs.DataRepresentation.prototype */ {
   
   init: function () {
-    this.set('lines', []);
-    this.set('points', []);
+    var pointset = Smartgraphs.Pointset.create({
+      dataRepresentation: this
+    });
+    this.set('pointset', pointset);
+    this.set('graphableObjects', [pointset]);
   },
+
+  pointset: null,
+  graphableObjects: null,
+  
+  xUnits: SC.outlet('sampleset.datadef.xUnits'),
+  yUnits: SC.outlet('sampleset.datadef.yUnits'),
+  name:   SC.outlet('sampleset.datadef.name'),
+  
+  // some representative options
+  color: '#ffffff',
+  pointStyle: null,
+  lineStyle: null,
   
   sampleset: (function () {
     var sampleset;
@@ -33,20 +48,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
       return sampleset;
     }.property();
   }()),
-  
-  xUnits: SC.outlet('sampleset.datadef.xUnits'),
-  yUnits: SC.outlet('sampleset.datadef.yUnits'),
-  name:   SC.outlet('sampleset.datadef.name'),
-  
-  // some representative options
-  color: null,
-  
-  pointStyle: null,
-  points: null,
-  
-  lineStyle: null,
-  lines: null,
-  
+
   didSetSampleset: function () {
     var sampleset = this.get('sampleset');
     sampleset.addObserver('points.[]', this, this._pointsDidChange);
@@ -55,7 +57,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   
   _pointsDidChange: function () {
     var samplePoints = this.getPath('sampleset.points') || [];
-    this.set('points', samplePoints.map( function (pair) { 
+    this.setPath('pointset.points', samplePoints.map( function (pair) { 
       return Smartgraphs.Point.create( { x: pair[0], y: pair[1] });
     }));
   }
