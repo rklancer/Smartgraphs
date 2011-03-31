@@ -32,8 +32,8 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend( Smartgraphs.Annotatable
   selectedFill: '#aa0000',
   selectedStroke: '#aa0000',
   
-  hoveredRadius: 5,
-  notHoveredRadius: 3,
+  hoveredRadius: 4,
+  notHoveredRadius: 2,
   isEnabled: YES,
   isHovered: NO,
   isSelected: NO,
