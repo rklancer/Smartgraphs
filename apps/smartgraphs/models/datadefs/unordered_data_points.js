@@ -18,6 +18,12 @@ sc_require('models/datadef');
 Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
 /** @scope Smartgraphs.UnorderedDataPoints.prototype */ {
   
-  points: SC.Record.attr(Array)
+  points: SC.Record.attr(Array),
+  
+  getNewRepresentation: function () {
+    var sampleset = Smartgraphs.TrivialSampleset.create();
+    sampleset.set('datadef', this);
+    return sampleset.getNewRepresentation();
+  }
   
 });

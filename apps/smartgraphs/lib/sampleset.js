@@ -28,7 +28,13 @@ Smartgraphs.Sampleset = SC.Object.extend(
         if (this.didSetDatadef) this.didSetDatadef();
       }
       return datadef;
-  }())
     }.property();
+  }()),
+  
+  getNewRepresentation: function () {
+    var rep = Smartgraphs.DataRepresentation.create();
+    rep.set('sampleset', this);
+    return rep;
+  }
 
 });

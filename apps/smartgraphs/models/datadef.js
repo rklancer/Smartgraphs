@@ -99,7 +99,17 @@ Smartgraphs.Datadef = SC.Record.extend(
     
     @property {String}
   */
-  yShortLabel: SC.Record.attr(String)
+  yShortLabel: SC.Record.attr(String),
+  
+  /** 
+    Return a new DataRepresentation tied to an appropriate SampleSet for objects of this Datadef class. Options will 
+    eventually allow you to customize the DataRepresentation and reuse SampleSets.
+    
+    @returns {Smartgraphs.DataRepresentation}
+  */
+  getNewRepresentation: function () {
+    throw "This Datadef class needs to override getNewRepresentation()";
+  }
 
 });
 

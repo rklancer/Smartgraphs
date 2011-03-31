@@ -87,7 +87,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
           title: config.title,
           xAxis: config.xAxis,
           yAxis: config.yAxis,
-          datasets: config.datasets,
+          data: config.data,
           annotations: allAnnotations
         });
         return;

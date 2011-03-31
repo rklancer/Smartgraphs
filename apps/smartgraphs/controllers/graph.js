@@ -33,9 +33,9 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   ],
   
   /**
-    The datasets being shown on this graph.
+    The DataRepresentations being shown on this graph.
   */
-  datasetList: null,
+  dataRepresentations: null,
   
   /**
     Mouse events are pushed onto this array when we are in freehand input mode.
@@ -60,16 +60,17 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('title', null);
     this.set('xAxis', null);
     this.set('yAxis', null);
-    this.set('datasetList', []);
+    this.set('dataRepresentations', []);
+    this.set('datasetList', []);            // keep GraphView from choking, for now. TODO: remove this when obsolete.
     this.clearAnnotations();
   },
   
   /**
     Shows a new graph
   */
-  setGraph: function (config) {
-    var datasets = config.datasets || [],
-        self     = this;
+  setupGraph: function (config) {
+    var dataSpecs = config.data || [],
+        self      = this;
     
     this.clear();
   
@@ -77,38 +78,53 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('xAxis', Smartgraphs.store.find(Smartgraphs.Axis, config.xAxis));
     this.set('yAxis', Smartgraphs.store.find(Smartgraphs.Axis, config.yAxis));
 
-    datasets.forEach( function (datasetName) {
-      self.addDataset(Smartgraphs.activityObjectsController.findDataset(datasetName));
+    dataSpecs.forEach( function (dataSpec) {
+      var datadef, rep;
+      
+      if (SC.typeOf(dataSpec) === SC.T_STRING) {
+        // no options
+        datadef = Smartgraphs.activityObjectsController.findDatadef(dataSpec);
+        rep = datadef.getNewRepresentation();
+      }
+      else {
+        // decode options from dataSpec hash and set the relevant options on the dataRepresentation
+        // TODO
+      }
+      
+      self.addDataRepresentation(rep);
     });
     
     this.addAnnotationsByName(config.annotations);
   },
   
+  
   /**
-     Add the passed dataset to the graph
+     Add the passed DataRepresentation to the graph
      
-     @param {Smartgraphs.Dataset} dataset The dataset object to add to the graph
+     @param {Smartgraphs.DataRepresentation} rep The DataRepresentation object to add to the graph
   */
-  addDataset: function (dataset) {
-    if (this.get('datasetList').indexOf(dataset) >= 0) {
+  addDataRepresentation: function (rep) {
+    var xAxisUnits = this.getPath('xAxis.units'),
+        yAxisUnits = this.getPath('yAxis.units');
+    
+    if (this.get('dataRepresentations').indexOf(rep) >= 0) {
       return;
     }
     
-    var xAxisUnits = this.getPath('xAxis.units');
-    var yAxisUnits = this.getPath('yAxis.units');
-    
-    if (xAxisUnits && xAxisUnits !== dataset.get('xUnits')) {
-      throw "x units of dataset %@ do not match x axis units (%@)".fmt(dataset.get('name'), xAxisUnits.get('pluralName'));
+    if (xAxisUnits && xAxisUnits !== rep.get('xUnits')) {
+      throw "x units of data %@ do not match x axis units (%@)".fmt(rep.get('name'), xAxisUnits.get('pluralName'));
     }
-    if (yAxisUnits && yAxisUnits !== dataset.get('yUnits')) {
-      throw "y units of dataset %@ do not match y axis units (%@)".fmt(dataset.get('name'), yAxisUnits.get('pluralName'));
+    if (yAxisUnits && yAxisUnits !== rep.get('yUnits')) {
+      throw "y units of data %@ do not match y axis units (%@)".fmt(rep.get('name'), yAxisUnits.get('pluralName'));
     }
     
     // get a color for the dataset
-    dataset.set('color', this.getColorForDataset(dataset));
-    
-    this.get('datasetList').pushObject(dataset);
+    // TODO: respect the color already set on the rep
+    rep.set('color', this.getColorForDataRepresentation(rep));
+      
+    this.get('dataRepresentations').pushObject(rep);
   },
+  
 
   /**
     Remove the named dataset from the graph.
@@ -128,23 +144,26 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
     @param {Smartgraphs.Dataset} dataset
   */
-  getColorForDataset: function (dataset) {
-    var defaultColor = dataset.get('defaultColor'),
-        used = this.get('datasetList').getEach('color'),
-        colors,
-        i, len;
-  
-    if (defaultColor && !used.contains(defaultColor)) {
-      return defaultColor;
-    }
+  getColorForDataRepresentation: function (rep) {
+    return '#ffffff';
+    // TODO
     
-    colors = this.get('colors');
-    for (i = 0, len = colors.get('length'); i < len; i++) {
-      if ( !used.contains(colors.objectAt(i)) ) return colors.objectAt(i);
-    }
-    
-    // just default to the first color if none available
-    return colors.objectAt(0);
+    // var defaultColor = dataset.get('defaultColor'),
+    //     used = this.get('datasetList').getEach('color'),
+    //     colors,
+    //     i, len;
+    //   
+    // if (defaultColor && !used.contains(defaultColor)) {
+    //   return defaultColor;
+    // }
+    // 
+    // colors = this.get('colors');
+    // for (i = 0, len = colors.get('length'); i < len; i++) {
+    //   if ( !used.contains(colors.objectAt(i)) ) return colors.objectAt(i);
+    // }
+    // 
+    // // just default to the first color if none available
+    // return colors.objectAt(0);
   },
 
   /**

@@ -175,7 +175,7 @@ Smartgraphs.activityViewController = SC.Object.create(
     
     if ( !which ) return NO;
     
-    Smartgraphs.get(which+'GraphController').setGraph(graphConfig);
+    Smartgraphs.get(which+'GraphController').setupGraph(graphConfig);
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'GraphPane');
   
     return YES;
