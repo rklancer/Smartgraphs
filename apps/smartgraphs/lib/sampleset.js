@@ -19,17 +19,25 @@
 Smartgraphs.Sampleset = SC.Object.extend(
 /** @scope Smartgraphs.Sampleset.prototype */ {
   
-  datadef: (function () {
+  init: function () {
     var datadef;
-    return function (key, value) {
-      if (value !== undefined) {
-        if (datadef !== undefined) throw "Attempt to redefine a Sampleset's datadef";
-        datadef = value;
-        if (this.didSetDatadef) this.didSetDatadef();
-      }
+    
+    this._getDatadef = function () {
       return datadef;
-    }.property();
-  }()),
+    };
+    this._setDatadef = function (value) {
+      if (datadef !== undefined) throw "Attempt to redefine a Sampleset's datadef";
+      datadef = value;
+    };
+  },
+  
+  datadef: function (key, value) {
+    if (value !== undefined) {
+      this._setDatadef(value);
+      if (this.didSetDatadef) this.didSetDatadef();
+    }
+    return this._getDatadef();
+  }.property(),
   
   getNewRepresentation: function () {
     var rep = Smartgraphs.DataRepresentation.create();

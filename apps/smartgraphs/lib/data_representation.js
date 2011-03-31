@@ -18,11 +18,21 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
 /** @scope Smartgraphs.DataRepresentation.prototype */ {
   
   init: function () {
-    var pointset = Smartgraphs.Pointset.create({
-      dataRepresentation: this
-    });
+    var sampleset,
+        pointset = Smartgraphs.Pointset.create({
+          dataRepresentation: this
+        });
+        
     this.set('pointset', pointset);
     this.set('graphableObjects', [pointset]);
+    
+    this._getSampleset = function () {
+      return sampleset;
+    };
+    this._setSampleset = function (value) {
+      if (sampleset !== undefined) throw "Attempt to redefine a DataRepresentations's sampleset";
+      sampleset = value;
+    };
   },
 
   pointset: null,
@@ -37,17 +47,13 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   pointStyle: null,
   lineStyle: null,
   
-  sampleset: (function () {
-    var sampleset;
-    return function (key, value) {
-      if (value !== undefined) {
-        if (sampleset !== undefined) throw "Attempt to redefine a DataRepresentations's sampleset";
-        sampleset = value;
-        if (this.didSetSampleset) this.didSetSampleset();
-      }
-      return sampleset;
-    }.property();
-  }()),
+  sampleset: function (key, value) {
+    if (value !== undefined) {
+      this._setSampleset(value);
+      if (this.didSetSampleset) this.didSetSampleset();
+    }
+    return this._getSampleset();
+  }.property(),
 
   didSetSampleset: function () {
     var sampleset = this.get('sampleset');
