@@ -39,8 +39,10 @@ Smartgraphs.Sampleset = SC.Object.extend(
     return this._getDatadef();
   }.property(),
   
-  getNewRepresentation: function () {
-    var rep = Smartgraphs.DataRepresentation.create();
+  getNewRepresentation: function (options) {
+    var rep = Smartgraphs.DataRepresentation.create({
+      options: options
+    });
     rep.set('sampleset', this);
     return rep;
   }

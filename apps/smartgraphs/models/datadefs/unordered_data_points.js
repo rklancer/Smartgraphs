@@ -20,10 +20,10 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
   
   points: SC.Record.attr(Array),
   
-  getNewRepresentation: function () {
+  getNewRepresentation: function (options) {
     var sampleset = Smartgraphs.TrivialSampleset.create();
     sampleset.set('datadef', this);
-    return sampleset.getNewRepresentation();
+    return sampleset.getNewRepresentation(options);
   }
   
 });

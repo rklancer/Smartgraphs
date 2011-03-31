@@ -18,13 +18,25 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
 /** @scope Smartgraphs.DataRepresentation.prototype */ {
   
   init: function () {
-    var sampleset,
-        pointset = Smartgraphs.Pointset.create({
-          dataRepresentation: this
-        });
-        
-    this.set('pointset', pointset);
-    this.set('graphableObjects', [pointset]);
+    var options = this.get('options') || {},
+        graphableObjects = [],
+        pointset,
+        line,
+        sampleset;
+  
+    if (options['point-type'] !== "none") {
+      pointset = Smartgraphs.Pointset.create({
+        dataRepresentation: this
+      });
+      this.set('pointset', pointset);
+      graphableObjects.push(pointset);
+    }
+    
+    if (options['line-type'] === "connected") {
+      //TODO
+    }
+
+    this.set('graphableObjects', graphableObjects);
     
     this._getSampleset = function () {
       return sampleset;
@@ -54,7 +66,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
     }
     return this._getSampleset();
   }.property(),
-
+  
   didSetSampleset: function () {
     var sampleset = this.get('sampleset');
     sampleset.addObserver('points.[]', this, this._pointsDidChange);

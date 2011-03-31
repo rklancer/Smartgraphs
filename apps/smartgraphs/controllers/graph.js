@@ -81,18 +81,27 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('yAxis', Smartgraphs.store.find(Smartgraphs.Axis, config.yAxis));
 
     dataSpecs.forEach( function (dataSpec) {
-      var datadef, rep;
+      var datadefName, 
+          options = {},
+          datadef,
+          rep;
       
       if (SC.typeOf(dataSpec) === SC.T_STRING) {
-        // no options
-        datadef = Smartgraphs.activityObjectsController.findDatadef(dataSpec);
-        rep = datadef.getNewRepresentation();
+        datadefName = dataSpec;
       }
       else {
-        // decode options from dataSpec hash and set the relevant options on the dataRepresentation
-        // TODO
+        // TODO: parse these options somewhere other than in getNewRepresentation?
+        // TODO: adopt a single idiom for passing options in the activity hash (we use an array here,
+        //       hashes in different places, e.g, instead of using an idiom like 
+        //       { type: "HighlightedPoint", "records": [..] } we could have ["HighlightedPoint", {..}, {..}]
+        //       or
+        //       instead of tools: ["name":..., "setup":... } we could have  tools: ["sensor", { <setup> }]
+        datadefName = dataSpec[0];
+        options = dataSpec[1];
       }
       
+      datadef = Smartgraphs.activityObjectsController.findDatadef(datadefName);
+      rep = datadef.getNewRepresentation(options);
       self.addDataRepresentation(rep);
     });
     
