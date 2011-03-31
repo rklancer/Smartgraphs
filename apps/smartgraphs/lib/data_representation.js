@@ -33,7 +33,11 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
     }
     
     if (options['line-type'] === "connected") {
-      //TODO
+      line = Smartgraphs.ConnectedLine.create({
+        dataRepresentation: this
+      });
+      this.set('line', line);
+      graphableObjects.push(line);
     }
 
     this.set('graphableObjects', graphableObjects);
@@ -48,6 +52,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   },
 
   pointset: null,
+  line: null,
   graphableObjects: null,
   
   xUnits: SC.outlet('sampleset.datadef.xUnits'),
@@ -74,10 +79,19 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   },
   
   _pointsDidChange: function () {
-    var samplePoints = this.getPath('sampleset.points') || [];
-    this.setPath('pointset.points', samplePoints.map( function (pair) { 
-      return Smartgraphs.Point.create( { x: pair[0], y: pair[1] });
-    }));
+    var samplePoints = this.getPath('sampleset.points') || [],
+        pointset     = this.get('pointset'),
+        line         = this.get('line');
+         
+    if (pointset) {
+      pointset.set('points', samplePoints.map( function (pair) { 
+        return Smartgraphs.Point.create( { x: pair[0], y: pair[1] });
+      }));
+    }
+    
+    if (line) {
+      line.set('points', samplePoints);
+    }
   }
   
 });
