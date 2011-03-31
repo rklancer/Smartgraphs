@@ -10,3 +10,6 @@
 [submodule "applets"]
 	path = applets
 	url = http://github.com/stepheneb/lightweight-sensor-graphs.git
+[submodule "frameworks/jasmine-sproutcore"]
+	path = frameworks/jasmine-sproutcore
+	url = https://github.com/gmoeck/jasmine-sproutcore.git

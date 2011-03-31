@@ -4,6 +4,8 @@
 # Author:    Richard Klancer <rpk@pobox.com>
 # ===========================================================================
 
+require File.expand_path('../frameworks/jasmine-sproutcore/builders/jasmine_builder', __FILE__)
+
 config :all, :required => [:sproutcore]
 
 config :smartgraphs,
@@ -20,3 +22,10 @@ config 'raphael_views/g_raphael_base',
 
 proxy '/db', :to => 'localhost:5984', :url => ''
 proxy "/jnlp", :to => "localhost:4321"
+
+namespace :build do
+  desc "builds a jasmine unit test"
+  build_task :test do
+    Jasmine::Builder::Test.build ENTRY, DST_PATH
+  end
+end
