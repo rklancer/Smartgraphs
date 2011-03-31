@@ -6,7 +6,6 @@
 /*globals Smartgraphs */
 
 sc_require('models/annotation');
-sc_require('models/data_point');
 sc_require('views/highlighted_segment');
 
 /** @class

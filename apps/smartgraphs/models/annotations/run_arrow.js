@@ -5,7 +5,7 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('models/arrow');
+sc_require('models/annotations/arrow');
 
 /** @class
 
