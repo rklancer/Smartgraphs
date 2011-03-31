@@ -10,6 +10,9 @@ sc_require('lib/sampleset');
 /** @class
 
   A TrivialSampleset just mirrors every item in the 'points' array of a UnsortedDataPoints Datadef
+  
+  Note that it copies (and sorts) the points from the datadef on every change to the points array, so it is not 
+  suitable for use with streaming data from a sensor.
 
   @extends Smartgraphs.Sampleset
   @version 0.1
@@ -25,8 +28,12 @@ Smartgraphs.TrivialSampleset = Smartgraphs.Sampleset.extend(
   
   // TODO: optionally replace this with various callbacks from the Datadef
   _pointsDidChange: function () {
-    var sourcePoints = this.getPath('datadef.points') || [];
-    this.set('points', sourcePoints.map( function (pair) { return pair.copy(); } ));
+    var sourcePoints = this.getPath('datadef.points') || [],
+        points       = sourcePoints.map( function (pair) { return pair.copy(); } );
+    
+    // sort the points by increasing x-value
+    points.sort( function (pair1, pair2) { return pair1[0] - pair2[0]; } );
+    this.set('points', points);
   }
 
 });
