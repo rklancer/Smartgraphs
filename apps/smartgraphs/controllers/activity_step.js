@@ -380,8 +380,9 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   }.property('content').cacheable(),
   
   jsonEditorMenuItemsProperties: function() {
-    var owner = this.getCurrentPropertyOwner();
-    var propertyNames = [ ];
+    var owner = this.getCurrentPropertyOwner(),
+        propertyNames = [],
+        propertyName;
     
     for (propertyName in owner) { 
       if (SC.kindOf(owner[propertyName], SC.RecordAttribute)) { 
