@@ -390,10 +390,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         //console.log("%s: %s", propertyName, owner.readAttribute(propertyName)); 
       } 
     }
-    if (propertyNames.length > 0) {
-      this.set('currentlyEditingPropertyName', propertyNames[0].title);
-    }
-
     return propertyNames;
   }.property('currentlyEditingPropertyOwnerConfig').cacheable(),
   
