@@ -14,7 +14,7 @@ sc_require('mixins/annotation_support');
   in the 'split' configuration, and controls the graph in the only pane if the panes are not split) and
   Smartgraphs.secondGraphController (controls the graph in the bottom pane if split panes are showing).
   
-  This controller operates at a 'logical' level, maintaining lists of model objects that represent the current graph.
+  This controller operates at a 'logical' level, maintaining lists of objects that represent the current graph.
   The corresponding GraphViews observe properties of their controller and dynamically add or
   remove views from the graph to represent the annotations and data requested by the GraphController.
 
@@ -25,50 +25,98 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.GraphController.prototype */ {
   
   /**
-    The set of dataset mark colors.
-    Taken from Protovis 'category10': http://vis.stanford.edu/protovis/docs/color.html
+    @property {String[]}
+    
+    The set of datadef mark colors, taken from Protovis 'category10': http://vis.stanford.edu/protovis/docs/color.html
   */
   colors: [
     "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
   ],
-  
+
   /**
-    The GraphableObjects being shown on this graph.
+    @property {Smartgraphs.DataRepresentation[]}
+    
+    A list of all the DataRepresentations added to this graph, and whose GraphableObjects are being shown on the graph.
+    Each DataRepresentation corresponds to a single Datadef via an intermediating Sampleset object. (However, each 
+    Datadef can have several DataRepresentations.)
+    
+    Each DataRepresentation manages a set of GraphableObjects, each of which corresponds to a different view object
+    in the graph view.
   */
-  graphableDataObjects: null,
-  
   dataRepresentations: null,
   
   /**
+    @property {Smartgraphs.GraphableObject[]}
+    
+    A list of all the GraphableObjects representing data be shown on this graph (annotations are handled separately.)
+    
+    An example GraphableObjects would be a Pointset (a set of data points corresponding to a particular representation 
+    of a Datadef) or a ConnectedLine (a single line corresponding to a particular representation of a Datadef--possibly 
+    the same representation as the Pointset, if the representation specifies the "points + line" style.)
+    
+    GraphViews maintain a set of views in 1:1 correspondence with this list of GraphableObjects.
+  */
+  graphableDataObjects: null,
+
+  /*
+    @property {Smartgraphs.Unit|null}
+    
+    The units on the x (horizontal) axis of the graph, if defined.
+  */
+  xUnits: null,
+  
+  /*
+    @property {Smartgraphs.Unit|null}
+    
+    The units on the y (vertical) axis of the graph, if defined.
+  */
+  yUnits: null,
+  
+  /*
+    @property String
+    
+    The title of the graph.
+  */
+  title: null,
+  
+  /**
+    @property {Object[]}
+    
     Mouse events are pushed onto this array when we are in freehand input mode.
   */
   eventQueue: [],
   
   /**
     @private
+    
     Whether to route mouse events to the eventQueue
   */
   _routeEvents: NO,
   
-  xUnits: null,
-  yUnits: null,
-  title: null,
-  
   /**
-    Clear graph state
+    Clears all graph state (i.e., title, units, data representations, graphable data objects, and annotations).
   */
   clear: function () {
-    // NB This effect can, and probably should, be achieved by swapping out a content object.
+    // NB This effect can, and perhaps should, be achieved by swapping out a content object.
     this.set('title', null);
     this.set('xAxis', null);
     this.set('yAxis', null);
     this.set('graphableDataObjects', []);
-    this.set('dataRepresentations', []);            // keep GraphView from choking, for now. TODO: remove this when obsolete.
+    this.set('dataRepresentations', []);
     this.clearAnnotations();
   },
   
   /**
-    Shows a new graph
+    Clears the current graph and shows a new graph according to the configuration settings in the passed config hash.
+    
+    A DataRepresentation is requested for each item in config.data and an Annotation is added for each item in the 
+    config.annotations
+    
+    Right now, the DataRepresentation is assigned a color using the getColorForDataRepresentation without respect for
+    any color property currently set on the DataRepresentation.
+    
+    @param {Object} config 
+      A hash with config options
   */
   setupGraph: function (config) {
     var dataSpecs = config.data || [],
@@ -108,11 +156,12 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.addAnnotationsByName(config.annotations);
   },
   
-  
   /**
-     Add the graphable objects from the passed DataRepresentation to the graph
+     Adds the passed DataRepresentation to the dataRepresentations array, and adds the GraphableObjects specified by 
+     the DataRepresentation to the graphableDataObjects array (so that they can be displayed by the graph view).
      
-     @param {Smartgraphs.DataRepresentation} rep The DataRepresentation object to add to the graph
+     @param {Smartgraphs.DataRepresentation} rep 
+       The DataRepresentation object to add to the graph
   */
   addDataRepresentation: function (rep) {
     var xAxisUnits = this.getPath('xAxis.units'),
@@ -125,31 +174,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       throw "y units of data %@ do not match y axis units (%@)".fmt(rep.get('name'), yAxisUnits.get('pluralName'));
     }
     
-    // TODO: allow DataRepresentatin to handle colors itself    
+    // TODO: allow DataRepresentation to handle colors itself  
     rep.set('color', this.getColorForDataRepresentation(rep));
 
     this.get('dataRepresentations').push(rep);
     this.get('graphableDataObjects').pushObjects(rep.get('graphableObjects'));
-  },  
-  
+  },
 
-  // /**
-  //   Remove the named dataset from the graph.
-  //   
-  //   @param {String} name The name of the dataset to remove from the graph.
-  // */
-  // removeDataset: function (name) {
-  //   var datasetList = this.get('datasetList'),
-  //       dataset = this.datasetList.findProperty('name', name);
-  //       
-  //   if (dataset) datasetList.removeObject(dataset);
-  // },
-  
   /**
-    a simple implementation for now...  Later, we can use color names, handle default colors a little more
-    carefully, maybe cycle through colors if we have > 10 datasets on a graph (which we would ... why?)
+    Given a DataRepresentation to be shown on the graph, get an unused color to represent it. Right now there is a
+    fixed set of 10 colors.
 
     @param {Smartgraphs.DatatRepresentation} rep
+      The DataRepresentation we are requesting a color for
   */
   getColorForDataRepresentation: function (rep) {
     var defaultColor = rep.get('defaultColor'),
