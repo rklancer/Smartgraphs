@@ -50,6 +50,14 @@ Smartgraphs.AnnotationSupport = {
   annotationList: null,
 
   /**
+    @private
+    Stubbable method to get an annotation given its name.
+  */
+  getAnnotation: function (name) {
+    Smartgraphs.activityObjectsController.findAnnotation(name);
+  },
+  
+  /**
     Add an annotation to this controller
     
     @param {Smartgraphs.Annotation} annotation
@@ -241,7 +249,7 @@ Smartgraphs.AnnotationSupport = {
     if (!annotations) return;
 
     annotations.forEach( function (name) {
-      self.addAnnotation(Smartgraphs.activityObjectsController.findAnnotation(name));
+      self.addAnnotation(self.getAnnotation(name));
     });
   }
   

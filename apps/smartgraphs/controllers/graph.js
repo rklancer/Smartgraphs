@@ -94,6 +94,24 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   _routeEvents: NO,
   
   /**
+   @private
+   
+   Stubbable method to return an axis given its id.
+  */
+  getAxis: function (id) {
+    return Smartgraphs.store.find(Smartgraphs.Axis, id);
+  },
+  
+  /**
+    @private
+
+    Stubbable method to return a datadef given its name.
+  */
+  getDatadef: function (name) {
+    return Smartgraphs.activityObjectsController.findDatadef(name);
+  },
+  
+  /**
     Clears all graph state (i.e., title, units, data representations, graphable data objects, and annotations).
   */
   clear: function () {
@@ -125,8 +143,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.clear();
   
     this.set('title', config.title);
-    this.set('xAxis', Smartgraphs.store.find(Smartgraphs.Axis, config.xAxis));
-    this.set('yAxis', Smartgraphs.store.find(Smartgraphs.Axis, config.yAxis));
+    this.set('xAxis', this.getAxis(config.xAxis));
+    this.set('yAxis', this.getAxis(config.yAxis));
 
     dataSpecs.forEach( function (dataSpec) {
       var datadefName, 
@@ -148,7 +166,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
         options = dataSpec[1];
       }
       
-      datadef = Smartgraphs.activityObjectsController.findDatadef(datadefName);
+      datadef = self.getDatadef(datadefName);
       rep = datadef.getNewRepresentation(options);
       self.addDataRepresentation(rep);
     });
