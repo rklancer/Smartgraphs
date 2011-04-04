@@ -104,7 +104,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   
   /**
     @private
-
+x
     Stubbable method to return a datadef given its name.
   */
   getDatadef: function (name) {
@@ -183,12 +183,14 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   addDataRepresentation: function (rep) {
     var xAxisUnits = this.getPath('xAxis.units'),
-        yAxisUnits = this.getPath('yAxis.units');
+        yAxisUnits = this.getPath('yAxis.units'),
+        repXUnits  = rep.get('xUnits'),
+        repYUnits  = rep.get('yUnits');
     
-    if (xAxisUnits && xAxisUnits !== rep.get('xUnits')) {
+    if (xAxisUnits !== repXUnits) {
       throw "x units of data %@ do not match x axis units (%@)".fmt(rep.get('name'), xAxisUnits.get('pluralName'));
     }
-    if (yAxisUnits && yAxisUnits !== rep.get('yUnits')) {
+    if (yAxisUnits !== repYUnits) {
       throw "y units of data %@ do not match y axis units (%@)".fmt(rep.get('name'), yAxisUnits.get('pluralName'));
     }
     
