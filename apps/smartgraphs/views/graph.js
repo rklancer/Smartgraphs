@@ -19,13 +19,17 @@ Smartgraphs.GraphView = SC.View.extend(
   graphableDataObjectsBinding: '*graphController.graphableDataObjects',
   annotationListBinding: '*graphController.annotationList',
   
+  inputAreaView: SC.outlet('graphCanvasView.axesView.inputAreaView'),
+  xAxisView:     SC.outlet('graphCanvasView.axesView.xAxisView'),
+  yAxisView:     SC.outlet('graphCanvasView.axesView.yAxisView'),
+  
   padding: { top: 15, right: 15, bottom: 45, left: 45 },  
   
   childViews: 'titleView graphCanvasView'.w(),
   
   init: function () {
-    this._viewsByClassAndItem = {};
     sc_super();
+    this._viewsByClassAndItem = {};
   },
   
   viewDidResize: function () {
@@ -81,7 +85,7 @@ Smartgraphs.GraphView = SC.View.extend(
   
     for (classKey in this._viewsByClassAndItem) {
       if (this._viewsByClassAndItem.hasOwnProperty(classKey)) {
-        for (id in this._viewsByClassAndItem[classKey]) {
+        for (itemKey in this._viewsByClassAndItem[classKey]) {
           if (this._viewsByClassAndItem[classKey].hasOwnProperty(itemKey)) {
             oldView = this._viewsByClassAndItem[classKey][itemKey];
           
@@ -216,15 +220,15 @@ Smartgraphs.GraphView = SC.View.extend(
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
     
     childViews: 'axesView annotationsHolder dataHolder'.w(),
-    
+
     axesView: RaphaelViews.RaphaelView.design({
       xAxisBinding: '.parentView.parentView.xAxis',
       yAxisBinding: '.parentView.parentView.yAxis',     
       paddingBinding: '.parentView.parentView.padding',
       
-      childViews: 'inputArea xAxisView yAxisView'.w(),
+      childViews: 'inputAreaView xAxisView yAxisView'.w(),
       
-      inputArea: RaphaelViews.RaphaelView.design({
+      inputAreaView: RaphaelViews.RaphaelView.design({
         // axesBinding: '.parentView.parentView.parentView*axes',    // is this used anywhere?
         
         didCreateLayer: function () {
