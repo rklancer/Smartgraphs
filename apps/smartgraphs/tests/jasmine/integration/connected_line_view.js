@@ -8,7 +8,7 @@ var runAfterEach = function (fn) {
   afterEach( function () { SC.run(fn); });
 };
 
-describe("ConnectedLineView integration test", function () {
+describe("ConnectedLineView, when the points are (x_min, y_min), (x_mid, y_max), (x_max, y_min)", function () {
   
   var pane = SC.MainPane.create(),
       xAxis = SC.Object.create({ min: 0, max: 2 }),

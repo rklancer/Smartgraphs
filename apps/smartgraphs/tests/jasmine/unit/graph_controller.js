@@ -1,5 +1,9 @@
 /*globals Smartgraphs describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
 
+$(function () {
+  $('body').css('overflow', 'auto');
+});
+
 describe("Smartgraphs.GraphController", function () {
   var controller;
   
