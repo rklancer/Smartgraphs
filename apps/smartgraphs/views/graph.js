@@ -19,9 +19,11 @@ Smartgraphs.GraphView = SC.View.extend(
   graphableDataObjectsBinding: '*graphController.graphableDataObjects',
   annotationListBinding: '*graphController.annotationList',
   
-  inputAreaView: SC.outlet('graphCanvasView.axesView.inputAreaView'),
-  xAxisView:     SC.outlet('graphCanvasView.axesView.xAxisView'),
-  yAxisView:     SC.outlet('graphCanvasView.axesView.yAxisView'),
+  inputAreaView:     SC.outlet('graphCanvasView.axesView.inputAreaView'),
+  xAxisView:         SC.outlet('graphCanvasView.axesView.xAxisView'),
+  yAxisView:         SC.outlet('graphCanvasView.axesView.yAxisView'),
+  dataHolder:        SC.outlet('graphCanvasView.dataHolder'),
+  annotationsHolder: SC.outlet('graphCanvasView.annotationsHolder'),  
   
   padding: { top: 15, right: 15, bottom: 45, left: 45 },  
   
@@ -112,10 +114,10 @@ Smartgraphs.GraphView = SC.View.extend(
     
     // append data and annotations 
     if (itemType === 'data') {
-      this.getPath('graphCanvasView.dataHolder').appendChild(view);
+      this.get('dataHolder').appendChild(view);
     }
     else if (itemType === 'annotation') {
-      this.getPath('graphCanvasView.annotationsHolder').appendChild(view);
+      this.get('annotationsHolder').appendChild(view);
     }
 
     if (this._viewsByClassAndItem[classKey] === undefined) {
@@ -136,10 +138,10 @@ Smartgraphs.GraphView = SC.View.extend(
     if (view.willRemoveFromDataView) view.willRemoveFromDataView();
     
     if (itemType === 'data') {
-      this.getPath('graphCanvasView.dataHolder').removeChild(view);
+      this.get('dataHolder').removeChild(view);
     }
     else if (itemType === 'annotation') {
-      this.getPath('graphCanvasView.annotationsHolder').removeChild(view);
+      this.get('annotationsHolder').removeChild(view);
     }
   },  
   
