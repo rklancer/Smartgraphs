@@ -31,7 +31,9 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   statechartDef: SC.Statechart.design({
-    rootState: SC.State.design()
+    rootState: SC.State.design({
+      LABEL_TOOL: SC.State.plugin('Smartgraphs.LABEL_TOOL')
+    })
   }),
   
   /**
