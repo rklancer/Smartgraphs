@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs Statechart
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
@@ -13,8 +13,8 @@ sc_require('states/mixins/resource_loader');
   
   @extends SC.Statechart
 */
-Smartgraphs.statechart = SC.Statechart.create(
-  /** @scope Smartgraphs.statechart.prototype */ {
+Smartgraphs.statechartDef = SC.Statechart.extend(
+  /** @scope Smartgraphs.statechartDef.prototype */ {
   
   trace: YES,
   
@@ -32,8 +32,20 @@ Smartgraphs.statechart = SC.Statechart.create(
     });
   },
   
+  /** 
+    set this to NO to allow initStatechart() to run (facilitating inspection of the statechart for testing purposes)
+    without attempting to enter all the substates
+  */
+  shouldEnterSubstatesAfterInit: YES,
+  
   rootState: SC.State.design({
-    initialSubstate: 'LOGIN',
+    initialSubstate: 'START',
+    
+    START: SC.State.design({
+      enterState: function () {
+        if (this.getPath('statechart.shouldEnterSubstatesAfterInit')) this.gotoState('LOGIN');
+      }
+    }),
     
     LOGIN: SC.State.design({
       
@@ -155,3 +167,5 @@ Smartgraphs.statechart = SC.Statechart.create(
     })
   })
 });
+
+Smartgraphs.statechart = Smartgraphs.statechartDef.create();
