@@ -309,6 +309,30 @@ describe("Smartgraphs.GraphController", function () {
     });
   });
 
+  describe("event forwarding", function () {
+    
+    var statechart;
+    
+    beforeEach(function () {
+      statechart = controller.get('statechart');
+      spyOn(statechart, 'sendAction');
+    });
+    
+    it("should forward inputAreaMouseDown to the statechart's mouseDownAtPoint handler", function () {
+      controller.inputAreaMouseDown(1, 2);
+      expect(statechart.sendAction).toHaveBeenCalledWith('mouseDownAtPoint', controller, {x: 1, y: 2});
+    });
+    
+    it("should forward inputAreaMouseDragged to the statechart's mouseDraggedToPoint handler", function () {
+      controller.inputAreaMouseDragged(1, 2);
+      expect(statechart.sendAction).toHaveBeenCalledWith('mouseDraggedToPoint', controller, {x: 1, y: 2});
+    });
+    
+    it("should forward inputAreaMouseUp to the statechart's mouseUpAtPoint handler", function () {
+      controller.inputAreaMouseUp(1, 2);
+      expect(statechart.sendAction).toHaveBeenCalledWith('mouseUpAtPoint', controller, {x: 1, y: 2});
+    });
+  });
   
   // this is not especially crucial functionality right now
   xdescribe("getColorForDataset method");

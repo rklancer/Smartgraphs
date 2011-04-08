@@ -238,57 +238,75 @@ x
     // just default to the first color if none available
     return colors.objectAt(0);
   },
+  
 
-  /**
-    @param x
-    @param y
-  */
+  // EVENTS
+  
   inputAreaMouseDown: function (x, y) {
-    if (this._routeEvents) {
-      this._eventQueue.pushObject({
-        x: x,
-        y: y,
-        type: Smartgraphs.freehandInputController.START
-      });
-    }
+    this.get('statechart').sendAction('mouseDownAtPoint', this, {x: x, y: y});
   },
   
-  /**
-    @param x
-    @param y
-  */
   inputAreaMouseDragged: function (x, y) {
-    if (this._routeEvents) {
-      this._eventQueue.pushObject({
-        x: x,
-        y: y,
-        type: Smartgraphs.freehandInputController.CONTINUE
-      });
-    }
+    this.get('statechart').sendAction('mouseDraggedToPoint', this, {x: x, y: y});
   },
-  
-  /**
-    @param x
-    @param y
-  */
+
   inputAreaMouseUp: function (x, y) {
-    if (this._routeEvents) {
-      this._eventQueue.pushObject({
-        x: x,
-        y: y,
-        type: Smartgraphs.freehandInputController.END
-      });
-    }
-  },
-  
-  startFreehandInput: function () {
-    this._routeEvents = YES;
-    this._eventQueue = [];
-    this.set('eventQueue', this._eventQueue);
-  },
-  
-  endFreehandInput: function () {   
-    this._routeEvents = NO;
+    this.get('statechart').sendAction('mouseUpAtPoint', this, {x: x, y: y});
   }
+  
+  // See the below for the old way of handling FREEHAND_INPUT; TODO transition to using per-controller statechart to
+  // handle freehand input.
+
+  // /**
+  //   @param x
+  //   @param y
+  // */
+  // inputAreaMouseDown: function (x, y) {
+  //   if (this._routeEvents) {
+  //     this._eventQueue.pushObject({
+  //       x: x,
+  //       y: y,
+  //       type: Smartgraphs.freehandInputController.START
+  //     });
+  //   }
+  // },
+  // 
+  // /**
+  //   @param x
+  //   @param y
+  // */
+  // inputAreaMouseDragged: function (x, y) {
+  //   if (this._routeEvents) {
+  //     this._eventQueue.pushObject({
+  //       x: x,
+  //       y: y,
+  //       type: Smartgraphs.freehandInputController.CONTINUE
+  //     });
+  //   }
+  // },
+  // 
+  // /**
+  //   @param x
+  //   @param y
+  // */
+  // inputAreaMouseUp: function (x, y) {
+  //   if (this._routeEvents) {
+  //     this._eventQueue.pushObject({
+  //       x: x,
+  //       y: y,
+  //       type: Smartgraphs.freehandInputController.END
+  //     });
+  //   }
+  // },
+  //
+  // startFreehandInput: function () {
+  //   this._routeEvents = YES;
+  //   this._eventQueue = [];
+  //   this.set('eventQueue', this._eventQueue);
+  // },
+  // 
+  // endFreehandInput: function () {   
+  //   this._routeEvents = NO;
+  // }
   
 });
