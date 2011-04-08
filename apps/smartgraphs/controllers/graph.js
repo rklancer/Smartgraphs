@@ -24,6 +24,16 @@ sc_require('mixins/annotation_support');
 Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.GraphController.prototype */ {
   
+  init: function () {
+    sc_super();
+    this.set('statechart', this.get('statechartDef').create());
+    this.get('statechart').initStatechart();
+  },
+  
+  statechartDef: SC.Statechart.design({
+    rootState: SC.State.design()
+  }),
+  
   /**
     @property {String[]}
     

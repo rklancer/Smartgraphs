@@ -8,7 +8,35 @@ describe("Smartgraphs.GraphController", function () {
   var controller;
   
   beforeEach( function () {
+    this.addMatchers({
+      toBeA: function (scType) {
+        return SC.kindOf(this.actual, scType);
+      }
+    });
+  });
+  
+  beforeEach( function () {
     controller = Smartgraphs.GraphController.create();
+  });
+  
+  
+  describe("its statechart", function () {
+
+    describe("as soon as the controller is created", function () {
+      
+      it("should be initialized", function () {
+        expect(controller.getPath('statechart.statechartIsInitialized')).toBe(true);
+      });
+    });
+    
+    it("should exist", function () {
+      expect(controller.get('statechart')).toBeA(SC.Statechart);
+    });
+    
+    it("should be unique to this controller instance", function () {
+      var otherController = Smartgraphs.GraphController.create();
+      expect(controller.get('statechart')).not.toBe(otherController.get('statechart'));
+    });
   });
   
   
@@ -281,6 +309,8 @@ describe("Smartgraphs.GraphController", function () {
     });
   });
 
+  
   // this is not especially crucial functionality right now
   xdescribe("getColorForDataset method");
+
 });
