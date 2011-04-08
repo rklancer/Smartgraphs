@@ -22,21 +22,32 @@ describe("Smartgraphs.GraphController", function () {
   
   describe("its statechart", function () {
 
+    var statechart;
+    
+    beforeEach( function () {
+      statechart = controller.get('statechart');
+    });
+    
     describe("as soon as the controller is created", function () {
       
       it("should be initialized", function () {
-        expect(controller.getPath('statechart.statechartIsInitialized')).toBe(true);
+        expect(statechart.get('statechartIsInitialized')).toBe(true);
       });
     });
     
     it("should exist", function () {
-      expect(controller.get('statechart')).toBeA(SC.Statechart);
+      expect(statechart).toBeA(SC.Statechart);
     });
     
     it("should be unique to this controller instance", function () {
       var otherController = Smartgraphs.GraphController.create();
-      expect(controller.get('statechart')).not.toBe(otherController.get('statechart'));
+      expect(statechart).not.toBe(otherController.get('statechart'));
     });
+    
+    it("should have a reference to its owning controller", function () {
+      expect(statechart.get('owner')).toBe(controller);
+    });
+    
   });
   
   

@@ -25,9 +25,14 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.GraphController.prototype */ {
   
   init: function () {
+    var statechart;
     sc_super();
-    this.set('statechart', this.get('statechartDef').create());
-    this.get('statechart').initStatechart();
+    
+    statechart = this.get('statechartDef').create();
+    this.set('statechart', statechart);
+    
+    statechart.initStatechart();
+    statechart.set('owner', this);
   },
   
   statechartDef: SC.Statechart.design({
