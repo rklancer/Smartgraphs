@@ -5,33 +5,41 @@ $(function () {
 });
 
 describe("Smartgraphs.GraphController", function () {
-  var controller;
+  var controller,
+      statechart;
   
   beforeEach( function () {
     this.addMatchers({
       toBeA: function (scType) {
         return SC.kindOf(this.actual, scType);
+      },
+      
+      toBeAChildStateOf: function (state) {
+        return this.actual.get('parentState') === state;
+      },
+      
+      toBeASiblingStateOf: function (state) {
+        return this.actual.get('parentState') === state.get('parentState');
       }
     });
   });
   
   beforeEach( function () {
     controller = Smartgraphs.GraphController.create();
+    statechart = controller.get('statechart');    
   });
   
   
   describe("its statechart", function () {
-
-    var statechart;
-    
-    beforeEach( function () {
-      statechart = controller.get('statechart');
-    });
     
     describe("as soon as the controller is created", function () {
       
       it("should be initialized", function () {
         expect(statechart.get('statechartIsInitialized')).toBe(true);
+      });
+      
+      it("should be in state DEFAULT_STATE", function () {
+        expect(statechart.get('currentStates').getEach('name')).toEqual(['DEFAULT_STATE']);
       });
     });
     
@@ -46,6 +54,36 @@ describe("Smartgraphs.GraphController", function () {
     
     it("should have a reference to its owning controller", function () {
       expect(statechart.get('owner')).toBe(controller);
+    });
+
+    describe("DEFAULT_STATE state", function () {
+      
+      var defaultState;
+      
+      beforeEach( function () {
+        defaultState = statechart.getState('DEFAULT_STATE');
+      });
+      
+      it("should be a child of the rootState", function () {
+        expect(defaultState).toBeAChildStateOf(statechart.get('rootState'));
+      });
+      
+      it("should be a sibling of the TOOLS state", function () {
+        expect(defaultState).toBeASiblingStateOf(statechart.getState('TOOLS'));
+      });
+    });
+      
+    describe("labelToolStartTool action", function () {
+      
+      xit("should enter the LABEL_TOOL state", function () {
+        statechart.sendAction('labelToolStartTool');
+        expect(statechart.get('currentStates').getEach('name')).toContain('LABEL_TOOL');  
+      });
+      
+      it("should set the labelName property of the LABEL_TOOL state", function () {
+        statechart.sendAction('labelToolStartTool', controller, 'the label name');
+        expect(statechart.getState('LABEL_TOOL').get('labelName')).toEqual('the label name');
+      });
     });
     
   });
@@ -88,6 +126,21 @@ describe("Smartgraphs.GraphController", function () {
       controller.clear();
 
       expect(controller.clearAnnotations).toHaveBeenCalled();
+    });
+    
+    it("should ask the statechart to go to the DEFAULT_STATE", function () {
+      spyOn(statechart, 'gotoState');
+      controller.clear();
+      
+      expect(statechart.gotoState).toHaveBeenCalledWith('DEFAULT_STATE');
+    });
+    
+    xit("should effectively turn off tool states", function () {
+      statechart.gotoState('LABEL_TOOL');
+      expect(statechart.get('currentStates').getEach('name')).toContain('LABEL_TOOL');
+      controller.clear();
+      
+      expect(statechart.get('currentStates').getEach('name')).not.toContain('LABEL_TOOL');
     });
   });    
   
@@ -320,29 +373,35 @@ describe("Smartgraphs.GraphController", function () {
     });
   });
 
-  describe("event forwarding", function () {
+  describe("forwarding to statechart", function () {
     
     var statechart;
     
     beforeEach(function () {
       statechart = controller.get('statechart');
-      spyOn(statechart, 'sendAction');
+      spyOn(statechart, 'sendAction');      
     });
-    
+  
     it("should forward inputAreaMouseDown to the statechart's mouseDownAtPoint handler", function () {
       controller.inputAreaMouseDown(1, 2);
       expect(statechart.sendAction).toHaveBeenCalledWith('mouseDownAtPoint', controller, {x: 1, y: 2});
     });
-    
+  
     it("should forward inputAreaMouseDragged to the statechart's mouseDraggedToPoint handler", function () {
       controller.inputAreaMouseDragged(1, 2);
       expect(statechart.sendAction).toHaveBeenCalledWith('mouseDraggedToPoint', controller, {x: 1, y: 2});
     });
-    
+  
     it("should forward inputAreaMouseUp to the statechart's mouseUpAtPoint handler", function () {
       controller.inputAreaMouseUp(1, 2);
       expect(statechart.sendAction).toHaveBeenCalledWith('mouseUpAtPoint', controller, {x: 1, y: 2});
     });
+    
+    it("should forward labelToolStartTool to the statechart's labelToolStartTool handler", function () {
+      controller.labelToolStartTool('the label name');
+      expect(statechart.sendAction).toHaveBeenCalledWith('labelToolStartTool', controller, 'the label name');
+    });
+  
   });
   
   // this is not especially crucial functionality right now

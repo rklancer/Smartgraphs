@@ -37,7 +37,20 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   
   statechartDef: SC.Statechart.design({
     rootState: SC.State.design({
-      LABEL_TOOL: SC.State.plugin('Smartgraphs.LABEL_TOOL')
+      initialSubstate: 'DEFAULT_STATE',
+      
+      labelToolStartTool: function (context, labelName) {
+        this.get('statechart').getState('LABEL_TOOL').set('labelName', labelName);
+        this.gotoState('LABEL_TOOL');
+      },
+      
+      DEFAULT_STATE: SC.State.design(),
+      
+      TOOLS: SC.State.design({
+        substatesAreConcurrent: YES,
+        
+        LABEL_TOOL: SC.State.plugin('Smartgraphs.LABEL_TOOL')
+      })
     })
   }),
   
@@ -97,20 +110,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   title: null,
   
   /**
-    @property {Object[]}
-    
-    Mouse events are pushed onto this array when we are in freehand input mode.
-  */
-  eventQueue: [],
-  
-  /**
-    @private
-    
-    Whether to route mouse events to the eventQueue
-  */
-  _routeEvents: NO,
-  
-  /**
    @private
    
    Stubbable method to return an axis given its id.
@@ -132,7 +131,9 @@ x
     Clears all graph state (i.e., title, units, data representations, graphable data objects, and annotations).
   */
   clear: function () {
-    // NB This effect can, and perhaps should, be achieved by swapping out a content object.
+    this.get('statechart').gotoState('DEFAULT_STATE');
+
+    // n.b. the following could be made to be side effects of entering DEFAULT_STATE
     this.set('title', null);
     this.set('xAxis', null);
     this.set('yAxis', null);
@@ -245,7 +246,11 @@ x
   },
   
 
-  // EVENTS
+  // Events
+  
+  labelToolStartTool: function (labelName) {
+    this.get('statechart').sendAction('labelToolStartTool', this, labelName);
+  },
   
   inputAreaMouseDown: function (x, y) {
     this.get('statechart').sendAction('mouseDownAtPoint', this, {x: x, y: y});
@@ -262,6 +267,20 @@ x
   // See the below for the old way of handling FREEHAND_INPUT; TODO transition to using per-controller statechart to
   // handle freehand input.
 
+  // /**
+  //   @property {Object[]}
+  //   
+  //   Mouse events are pushed onto this array when we are in freehand input mode.
+  // */
+  // eventQueue: [],
+  // 
+  // /**
+  //   @private
+  //   
+  //   Whether to route mouse events to the eventQueue
+  // */
+  // _routeEvents: NO,
+  
   // /**
   //   @param x
   //   @param y
