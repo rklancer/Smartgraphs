@@ -15,6 +15,32 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
 /** @scope Smartgraphs.labelTool.prototype */ {
 
   name: 'label',
-  state: 'LABEL_TOOL'
+  state: 'LABEL_TOOL',
+  
+  graphControllerForPane: function (pane) {
+    return Smartgraphs.activityViewController.graphControllerForPane(pane);
+  },
+  
+  getAnnotation: function (name) {
+    return Smartgraphs.activityObjectsController.findAnnotation(name);
+  },
+  
+  setup: function (args) {
+    var controller = this.graphControllerForPane(args.pane);
+    controller.labelToolStartTool(args.labelName);
+  },
+  
+  createLabel: function (name) {
+    var label = this.getAnnotation(name);
+    
+    label.set('x', null);
+    label.set('y', null);
+    
+    return label;
+  },
+  
+  addLabelToController: function (controller, label) {
+    controller.addAnnotation(label);
+  }
   
 });
