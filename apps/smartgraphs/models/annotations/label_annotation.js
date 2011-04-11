@@ -2,6 +2,7 @@
 // Project:   Smartgraphs.LabelAnnotation
 // Copyright: ©2011 Concord Consortium
 // Author:    Parker Morse <pmorse@cantinaconsulting.com>
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -18,12 +19,20 @@ sc_require('views/label_annotation');
 Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.LabelAnnotation.prototype */ {
 
+  
   /**
-    The point being labeled.
+    The x-value of the point being labeled.
     
-    @property {Smartgraphs.DataPoint}
+    @property {Number}
   */
-  point: SC.Record.toOne('Smartgraphs.DataPoint'),
+  x: SC.Record.attr(Number),
+  
+  /**
+    The y-value of the point being labeled.
+    
+    @property {Number}
+  */
+  y: SC.Record.attr(Number),
   
   /**
     The text of the label being applied.
