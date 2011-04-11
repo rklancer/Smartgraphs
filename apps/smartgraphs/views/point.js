@@ -16,7 +16,7 @@ sc_require('views/mixins/annotatable_item_view');
 */
 
 Smartgraphs.PointView = RaphaelViews.RaphaelView.extend( Smartgraphs.AnnotatableItemView, 
-/** @scope Smartgraphs.DataPointView.prototype */ {
+/** @scope Smartgraphs.PointView.prototype */ {
   
   displayProperties: 'content.x content.y isEnabled fill stroke radius'.w(),
   
