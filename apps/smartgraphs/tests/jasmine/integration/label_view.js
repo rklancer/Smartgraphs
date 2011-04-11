@@ -26,6 +26,10 @@ describe("LabelView behavior", function () {
       toApproximatelyEqual: function (qty, tolerance) {
         if (tolerance === undefined) tolerance = 0.001;
         return Math.abs(qty - this.actual) < tolerance;
+      },
+      
+      toBeNonzero: function () {
+        return (parseFloat(this.actual) === this.actual) && (Math.abs(this.actual) > 0);
       }
     });
   });
@@ -105,6 +109,73 @@ describe("LabelView behavior", function () {
           it("should match the y-value translated by 'coordinatesForPoint'", function () {
             expect(labelView.get('yCoord')).toEqual(graphView.coordinatesForPoint(0, labelView.get('y')).y);
           });
+        });
+      });
+      
+      
+      describe("as the 'x' and 'y' properties are changed", function () {
+        
+        var oldXCoord,
+            oldYCoord,
+            oldAnchorXCoord,
+            oldAnchorYCoord,
+            oldBodyXCoord,
+            oldBodyYCoord,
+            dx,
+            dy,
+            newXCoord,
+            newYCoord,
+            newAnchorXCoord,
+            newAnchorYCoord,
+            newBodyXCoord,
+            newBodyYCoord;
+          
+        beforeEach( function () {
+          oldXCoord = labelView.get('xCoord');
+          oldYCoord = labelView.get('yCoord');
+          oldAnchorXCoord = labelView.get('anchorXCoord');
+          oldAnchorYCoord = labelView.get('anchorYCoord');
+          oldBodyXCoord = labelView.get('bodyXCoord');
+          oldBodyYCoord = labelView.get('bodyYCoord');
+          
+          SC.run( function () {
+            labelRecord.set('x', 2);
+            labelRecord.set('y', 3);
+          });
+          
+          newXCoord = labelView.get('xCoord');
+          newYCoord = labelView.get('yCoord');
+          newAnchorXCoord = labelView.get('anchorXCoord');
+          newAnchorYCoord = labelView.get('anchorYCoord');
+          newBodyXCoord = labelView.get('bodyXCoord');
+          newBodyYCoord = labelView.get('bodyYCoord');
+          
+          dx = newXCoord - oldXCoord;
+          dy = newYCoord - oldYCoord;
+        });
+        
+        it("should update the xCoord value by a nonzero amount", function () {
+          expect(dx).toBeNonzero();
+        });
+        
+        it("should update the yCoord value by a nonzero amount", function () {
+          expect(dy).toBeNonzero();
+        });
+        
+        it("should translate the bodyXCoord by delta(xCoord)", function () {
+          expect(newBodyXCoord - oldBodyXCoord).toEqual(dx);
+        });
+        
+        it("should translate the bodyYCoord by delta(yCoord)", function () {
+          expect(newBodyYCoord - oldBodyYCoord).toEqual(dy);
+        });
+        
+        it("should translate the AnchorXCoord by delta(xCoord)", function () {
+          expect(newAnchorXCoord - oldAnchorXCoord).toEqual(dx);
+        });
+        
+        it("should translate the AnchorYCoord by delta(yCoord)", function () {
+          expect(newAnchorYCoord - oldAnchorYCoord).toEqual(dy);
         });
       });
       
