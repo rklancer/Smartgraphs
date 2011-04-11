@@ -1,16 +1,11 @@
-/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor 
+ clickOn fillIn defineJasmineHelpers runBeforeEach runAfterEach */
+
+defineJasmineHelpers();
 
 $(function () {
   $('body').css('overflow', 'auto');
 });
-
-var runBeforeEach = function (fn) {
-  beforeEach( function () { SC.run(fn); });
-};
-
-var runAfterEach = function (fn) {
-  afterEach( function () { SC.run(fn); });
-};
 
 var fireEvent = function (el, eventName, x, y) {
   var offset = $(el).offset(),
@@ -18,6 +13,7 @@ var fireEvent = function (el, eventName, x, y) {
       
   SC.Event.trigger(el, eventName, evt);
 };
+
 
 describe("GraphView behavior", function () {
   
@@ -28,13 +24,10 @@ describe("GraphView behavior", function () {
 
   beforeEach( function () {
     this.addMatchers({
+      
       toBeInside: function (element) {
         if (element.jquery) element = element[0];
         return $.contains(element, this.actual);
-      },
-      
-      toBeA: function (scType) {
-        return SC.kindOf(this.actual, scType);
       },
       
       toBeAnEarlierSiblingOf: function (element) {

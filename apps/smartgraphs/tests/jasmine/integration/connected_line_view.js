@@ -1,12 +1,7 @@
-/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor 
+ clickOn fillIn defineJasmineHelpers runBeforeEach runAfterEach */
 
-var runBeforeEach = function (fn) {
-  beforeEach( function () { SC.run(fn); });
-};
-
-var runAfterEach = function (fn) {
-  afterEach( function () { SC.run(fn); });
-};
+defineJasmineHelpers();
 
 describe("ConnectedLineView, when the points are (x_min, y_min), (x_mid, y_max), (x_max, y_min)", function () {
   
@@ -17,14 +12,6 @@ describe("ConnectedLineView, when the points are (x_min, y_min), (x_mid, y_max),
       controller, 
       graphView,
       layer;
-  
-  beforeEach( function () {
-    this.addMatchers({
-      toBeA: function (scType) {
-        return SC.kindOf(this.actual, scType);
-      }
-    });
-  });
   
   runBeforeEach( function () {
     connectedLineObject = Smartgraphs.ConnectedLine.create({

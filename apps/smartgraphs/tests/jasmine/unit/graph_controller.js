@@ -1,4 +1,7 @@
-/*globals Smartgraphs describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor 
+ clickOn fillIn defineJasmineHelpers runBeforeEach runAfterEach */
+ 
+defineJasmineHelpers();
 
 $(function () {
   $('body').css('overflow', 'auto');
@@ -9,11 +12,7 @@ describe("Smartgraphs.GraphController", function () {
       statechart;
   
   beforeEach( function () {
-    this.addMatchers({
-      toBeA: function (scType) {
-        return SC.kindOf(this.actual, scType);
-      },
-      
+    this.addMatchers({      
       toBeAChildStateOf: function (state) {
         return this.actual.get('parentState') === state;
       },

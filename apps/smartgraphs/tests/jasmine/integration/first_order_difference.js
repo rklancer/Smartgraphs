@@ -1,23 +1,13 @@
-/*globals Smartgraphs describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor 
+ clickOn fillIn defineJasmineHelpers runBeforeEach runAfterEach */
 
-var runBeforeEach = function (fn) {
-  beforeEach( function () { SC.run(fn); });
-};
+defineJasmineHelpers();
 
 describe("Smartgraphs.FirstOrderDifference calculations", function () {
   
   var unorderedPointsRecord,
       differenceRecord,
       store;
-  
-  beforeEach( function () {
-    this.addMatchers({
-      toBeA: function (scType) {
-        return SC.kindOf(this.actual, scType);
-      }
-    });
-  });
-
   
   runBeforeEach( function () {
     store = SC.Store.create().from(SC.FixturesDataSource.create());

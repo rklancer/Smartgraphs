@@ -1,26 +1,12 @@
-/*globals Smartgraphs describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor 
+ clickOn fillIn defineJasmineHelpers runBeforeEach runAfterEach */
+ 
+defineJasmineHelpers();
 
 describe("Smartgraphs.UnorderedDataPoints representations", function () {
   
   var udpRecord,
       store;
-  
-  beforeEach( function () {
-    this.addMatchers({
-      toBeA: function (scType) {
-        return SC.kindOf(this.actual, scType);
-      },
-      
-      toContainA: function (scType) {
-        var contains = function (array, scType) {
-          if (!array) return false;
-          var el = array.shift();
-          return SC.kindOf(el, scType) || contains(array, scType);
-        };
-        return contains(this.actual, scType);
-      }
-    });
-  });
   
   beforeEach( function () {
     store = SC.Store.create().from(SC.FixturesDataSource.create());

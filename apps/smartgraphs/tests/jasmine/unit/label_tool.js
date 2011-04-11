@@ -1,16 +1,11 @@
-/*globals Smartgraphs describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor clickOn fillIn */
+/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor 
+ clickOn fillIn defineJasmineHelpers runBeforeEach runAfterEach */
+ 
+defineJasmineHelpers();
 
 describe("Smartgraphs.labelTool", function () {
 
   var labelTool;
-  
-  beforeEach( function () {
-    this.addMatchers({
-      toBeA: function (scType) {
-        return SC.kindOf(this.actual, scType);
-      }
-    });
-  });
   
   beforeEach( function () {
     labelTool = Smartgraphs.labelTool;
