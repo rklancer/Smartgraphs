@@ -17,10 +17,22 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
   name: 'label',
   state: 'LABEL_TOOL',
   
+  /**
+    Stubbable method to find the appropriate graph controller to use for a given 'pane' argument
+    
+    @param {String} pane
+      The pane we want the label tool to operate in; generally one of 'top', 'bottom', or 'single'
+  */
   graphControllerForPane: function (pane) {
     return Smartgraphs.activityViewController.graphControllerForPane(pane);
   },
   
+  /**
+    Stubbable method to create/retrieve a label annotation object with a particular name
+    
+    @param {String} name
+      The name of the Label annotation
+  */
   getAnnotation: function (name) {
     return Smartgraphs.activityObjectsController.findAnnotation(name);
   },
@@ -30,11 +42,11 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
     controller.labelToolStartTool(args.labelName);
   },
   
-  createLabel: function (name) {
+  createLabel: function (name, x, y) {
     var label = this.getAnnotation(name);
     
-    label.set('x', null);
-    label.set('y', null);
+    label.set('x', x);
+    label.set('y', y);
     
     return label;
   },

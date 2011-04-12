@@ -72,7 +72,7 @@ describe("Smartgraphs.labelTool", function () {
       spyOn(labelTool, 'getAnnotation').andReturn(store.createRecord(Smartgraphs.LabelAnnotation, {
         url: 'the-annotation'
       }));
-      labelAnnotation = labelTool.createLabel('the label name');
+      labelAnnotation = labelTool.createLabel('the label name', 1, 2);
     });
       
     it("should return the object found by getAnnotation", function () {
@@ -81,12 +81,12 @@ describe("Smartgraphs.labelTool", function () {
     
     describe("the annotation returned by the method", function () {
       
-      it("should have a null x-value", function () {
-        expect(labelAnnotation.get('x')).toBeNull();
+      it("should have an x-value equal to the passed x-value", function () {
+        expect(labelAnnotation.get('x')).toEqual(1);
       });
       
-      it("should have a null y-value", function () {
-        expect(labelAnnotation.get('y')).toBeNull();
+      it("should have a y-value equal to the passed y-value", function () {
+        expect(labelAnnotation.get('y')).toEqual(2);
       });
       
     });
