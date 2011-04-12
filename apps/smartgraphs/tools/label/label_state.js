@@ -20,15 +20,12 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     mouseDownAtPoint: function (context, args) {
       var owner     = this.getPath('statechart.owner'),
           labelName = this.getPath('parentState.labelName'),
-          label     = Smartgraphs.labelTool.createLabel(labelName, args.x, args.y),
-          isOk;
+          label     = Smartgraphs.labelTool.createLabel(labelName, args.x, args.y);
       
       if (label) {
-        isOk = Smartgraphs.labelTool.addLabelToController(owner, label);
-        if (isOk) {
-          this.set('label', label);
-          this.gotoState('LABEL_CREATED');
-        }
+        Smartgraphs.labelTool.addLabelToController(owner, label);
+        this.set('label', label);
+        this.gotoState('LABEL_CREATED');
       }
     }
   }),

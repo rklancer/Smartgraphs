@@ -100,23 +100,7 @@ describe("LABEL_TOOL state", function () {
             it("should not go to the LABEL_CREATED state", function () {
               expect(state.gotoState).not.toHaveBeenCalled();
             });
-          });
-      
-          describe("when the addLabelToController method returns NO", function () {
-        
-            beforeEach( function () {
-              spyOn(labelTool, 'createLabel').andReturn(SC.Object.create());
-              spyOn(labelTool, 'addLabelToController').andReturn(NO);
-              state.mouseDownAtPoint('the action context', {x: 1, y: 2});
-            });
-            
-            it("should not reset its label property", function () {
-              expect(state.get('label')).toEqual('the original label object');
-            });
 
-            it("should not go to the LABEL_CREATED state", function () {
-              expect(state.gotoState).not.toHaveBeenCalled();
-            });
           });
         });
       });
