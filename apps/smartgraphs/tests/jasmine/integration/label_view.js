@@ -3,6 +3,8 @@
  
 defineJasmineHelpers();
 
+var itShouldBehaveCorrectly;
+
 $(function () {
   $('body').css('overflow', 'auto');
 });
@@ -16,7 +18,8 @@ describe("LabelView behavior", function () {
       xAxis,
       yAxis;
   
-  beforeEach( function () {    
+  beforeEach( function () {  
+      
     this.addMatchers({
       toBeInside: function (element) {
         if (element.jquery) element = element[0];
@@ -30,6 +33,11 @@ describe("LabelView behavior", function () {
       
       toBeNonzero: function () {
         return (parseFloat(this.actual) === this.actual) && (Math.abs(this.actual) > 0);
+      },
+      
+      toHaveColor: function (hexColor) {
+        var actual = this.actual.jquery ? this.actual : $(this.actual);
+        return actual.css('color') === $('<div>').css('color', hexColor).css('color');
       }
     });
   });
@@ -67,6 +75,7 @@ describe("LabelView behavior", function () {
       labelRecord = store.createRecord(Smartgraphs.LabelAnnotation, {
         url: 'the url of the label',
         name: 'the name of the label',
+        text: 'test text',
         x: 1,
         y: 2
       });
@@ -88,6 +97,7 @@ describe("LabelView behavior", function () {
       
       
       describe("immediately after creating the graphView", function () {
+        // Contra jslint, itShouldBehaveCorrectly is 'hoisted', so we can leave its definition below, where it belongs.
         itShouldBehaveCorrectly();
       });
 
@@ -387,15 +397,16 @@ describe("LabelView behavior", function () {
         });
 
 
-        describe("its 'labelBody' view", function () {
-          var labelBodyView;
+        describe("its 'labelOutline' view", function () {
+          
+          var labelOutlineView;
 
           beforeEach( function () {
-            labelBodyView = labelView.get('labelBodyView');
+            labelOutlineView = labelView.get('labelOutlineView');
           });
 
           it("should be a child view of the label view", function () {
-            expect(labelView.get('childViews')).toContain(labelBodyView);
+            expect(labelView.get('childViews')).toContain(labelOutlineView);
           });
 
           describe("its raphael object", function () {
@@ -403,7 +414,7 @@ describe("LabelView behavior", function () {
             var attrs;
 
             beforeEach( function () {
-              attrs = labelBodyView.get('layer').raphael.attrs;
+              attrs = labelOutlineView.get('layer').raphael.attrs;
             });
 
             it("should start at (bodyXCoord, bodyYCoord", function () {
@@ -417,6 +428,75 @@ describe("LabelView behavior", function () {
             });
           });
         });
+        
+        
+        describe("its 'labelText' view", function () {
+        
+          var labelTextView;
+          
+          beforeEach( function () {
+            labelTextView = labelView.get('labelTextView');
+          });
+          
+          it("should be a child view of the *graph* view", function () {
+            expect(graphView.get('childViews')).toContain(labelTextView);
+          });
+          
+          it("should not be a RaphaelView", function () {
+            expect(labelTextView).not.toBeA(RaphaelViews.RaphaelView);
+          });
+          
+          describe("its layout", function () {
+            var layout;
+            
+            beforeEach( function () {
+              layout = labelTextView.get('layout');
+            });
+            
+            it("should be placed 10 pixels to the right of the bodyXCoord", function () {
+              expect(layout.left).toEqual(labelView.get('bodyXCoord') + 10);
+            });
+            
+            it("should be placed 5 pixels below bodyYCoord", function () {
+              expect(layout.top).toEqual(labelView.get('bodyYCoord') + 5);
+            });
+            
+            it("should be 20 pixels narrower than the labelView", function () {
+              expect(layout.width).toEqual(labelView.get('width') - 20);
+            });
+            
+            it("should be 10 pixels shorter than the labelView", function () {
+              expect(layout.height).toEqual(labelView.get('height') - 10);
+            });
+          });
+          
+          
+          describe("its layer", function () {
+            
+            it("should have the text specified by the label record", function () {
+              expect(labelTextView.$().text()).toEqual(labelRecord.get('text'));
+            });
+            
+            it("should be in front of the graphCanvasView", function () {
+              expect(labelTextView.$().css('zIndex')).toBeGreaterThan( graphView.get('graphCanvasView').$().css('zIndex'));
+            });
+            
+          });
+          
+          
+          describe("when its labelView is removed from the graph view's annotations holder", function () {
+            
+            beforeEach( function () {
+              graphView.get('annotationsHolder').removeChild(labelView);
+            });
+            
+            it("should be removed from the graphView", function () {
+              expect(graphView.get('childViews')).not.toContain(labelTextView);
+            });
+          });
+
+        });
+        
       }
     });
   });

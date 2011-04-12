@@ -15,12 +15,30 @@
 Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelAnnotationView.prototype */ {
   
+  init: function () {
+    var labelTextView = this.get('labelTextViewDesign').create();
+
+    sc_super();
+    
+    labelTextView.set('labelView', this);
+    this.set('labelTextView', labelTextView);
+
+    if (this.get('parentView')) this.parentViewDidChange();
+  },
+  
+  textBinding: '*item.text',
+  textColor: '#333333',
+  
+  textDidChange: function () {
+    this.get('labelTextView').updateText();
+  }.observes('text', 'textColor'),
+
   stroke: '#000000',
   fill: '#ffffff',
   
   xBinding: '*item.x',
   yBinding: '*item.y',
-    
+  
   xCoord: function () {
     return this.get('graphView').coordinatesForPoint(this.get('x'), 0).x;
   }.property('x'),
@@ -52,10 +70,57 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     this.set('bodyYCoord', yCoord - 30 - height);
     this.set('anchorXCoord', xCoord + width / 2);
     this.set('anchorYCoord', yCoord - 30);
-    
-  }.observes('xCoord', 'yCoord'),
 
-  childViews: 'focusPointView connectingLineView labelBodyView'.w(),
+    this.get('labelTextView').updateLayout();
+        
+  }.observes('xCoord', 'yCoord', 'width', 'height'),
+
+  childViews: 'focusPointView connectingLineView labelOutlineView'.w(),
+  
+  /**
+    This is not a childView of the labelView; it's not part of the RaphaelView hierarchy. Instead, it's a normal
+    HTML view that gets added to or removed from the graphView, and moved around, as needed as the labelView is moved.
+  */
+  labelTextViewDesign: SC.LabelView.design({
+    
+    // implementing any bindings to labelView properties here cause jasmine tests to choke badly once more than a few are run...
+    // (so we'll use these update methods and observers instead)
+    
+    updateText: function () {
+      this.set('value', this.getPath('labelView.text'));
+    },
+
+    updateLayout: function () {
+      var labelView = this.get('labelView');
+      
+      this.adjust('width', labelView.get('width') - 20);
+      this.adjust('height', labelView.get('height') - 10);
+      this.adjust('top', labelView.get('bodyYCoord') + 5);
+      this.adjust('left', labelView.get('bodyXCoord') + 10);
+
+      // mysteries: why don't the layout changes cause this particular view to re-render? Why doesn't updateLayer()
+      // do the trick?
+      this.replaceLayer();
+    }
+  }),
+  
+  /**
+    Add the labelTextView (which is not a Raphael view and not part of this view hierarchy) to our graphView if we
+    were added to the graph view's view hierarchy
+  */
+  parentViewDidChange: function () {
+    sc_super();
+    var labelTextView = this.get('labelTextView');
+    
+    sc_super();
+    
+    if (this.get('parentView')) {
+      this.get('graphView').appendChild(labelTextView);
+    }
+    else {
+      this.get('graphView').removeChild(labelTextView);
+    }
+  },
   
   render: function () {
     sc_super();
@@ -179,7 +244,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     
   }),
   
-  labelBodyView: RaphaelViews.RaphaelView.design({
+  labelOutlineView: RaphaelViews.RaphaelView.design({
     
     displayProperties: 'bodyXCoord bodyYCoord width height stroke fill cornerRadius'.w(),
     
