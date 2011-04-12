@@ -57,12 +57,12 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
       "tools": [
         { "name": "label",
           "setup": {
-            "pane": "top",
+            "pane": "bottom",
             "labelName": "test-label"
           }
         }
       ],
-      "beforeText": "<p>Try clicking an interesting area of the position-time data on the left. Note that the velocity-time data are derived from the position-time data.</p>"
+      "beforeText": "<p>Try clicking an interesting area of the velocity-time data on the left. Note that the velocity-time data are derived from the position-time data.</p>"
     }
   ],
   "units": [
@@ -142,7 +142,8 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
         {
           "url": "/shared/calculated-velocity/annotation/test-label",
           "name": "test-label",
-          "activity": "/shared/calculated-velocity"
+          "activity": "/shared/calculated-velocity",
+          "text": "a label"
         }
       ]
     }
