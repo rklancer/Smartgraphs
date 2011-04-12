@@ -16,6 +16,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelAnnotationView.prototype */ {
   
   stroke: '#000000',
+  fill: '#ffffff',
   
   xBinding: '*item.x',
   yBinding: '*item.y',
@@ -180,13 +181,14 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   
   labelBodyView: RaphaelViews.RaphaelView.design({
     
-    displayProperties: 'bodyXCoord bodyYCoord width height stroke cornerRadius'.w(),
+    displayProperties: 'bodyXCoord bodyYCoord width height stroke fill cornerRadius'.w(),
     
     bodyXCoordBinding: '.parentView.bodyXCoord',
     bodyYCoordBinding: '.parentView.bodyYCoord',
     widthBinding: '.parentView.width',
     heightBinding: '.parentView.height',
     strokeBinding: '.parentView.stroke',
+    fillBinding: '.parentView.fill',
     cornerRadiusBinding: '.parentView.cornerRadius',
     
     renderCallback: function (raphaelCanvas, attrs) {
@@ -199,7 +201,8 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
           bodyXCoord   = this.get('bodyXCoord') || 0,
           bodyYCoord   = this.get('bodyYCoord') || 0,
           cornerRadius = this.get('cornerRadius') || 0,
-          stroke       = this.get('stroke'),          
+          stroke       = this.get('stroke'),
+          fill         = this.get('fill'),       
 
           attrs = {
             x: bodyXCoord,
@@ -207,6 +210,8 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
             width: width,
             height: height,
             stroke: stroke,
+            fill: fill,
+            'fill-opacity': 1.0,
             r: cornerRadius
           },
 
