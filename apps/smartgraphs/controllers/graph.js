@@ -6,6 +6,7 @@
 /*globals Smartgraphs */
 
 sc_require('mixins/annotation_support');
+sc_require('tools/label/label_state');
 
 /** @class
 
@@ -40,7 +41,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       initialSubstate: 'DEFAULT_STATE',
       
       labelToolStartTool: function (context, labelName) {
-        this.get('statechart').getState('LABEL_TOOL').set('labelName', labelName);
+        var state = this.getSubstate('LABEL_TOOL');
+        state.set('labelName', labelName);
         this.gotoState('LABEL_TOOL');
       },
       
@@ -48,8 +50,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       
       TOOLS: SC.State.design({
         substatesAreConcurrent: YES,
-        
-        LABEL_TOOL: SC.State.plugin('Smartgraphs.LABEL_TOOL')
+        LABEL_TOOL: Smartgraphs.LABEL_TOOL.design()
       })
     })
   }),
