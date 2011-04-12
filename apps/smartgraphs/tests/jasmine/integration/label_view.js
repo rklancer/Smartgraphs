@@ -226,28 +226,28 @@ describe("LabelView behavior", function () {
             expect(path.length).toEqual(4);
           });
           
-          it("should start at (xCoord-5, yCoord+5)", function () {
+          it("should start at (xCoord-4, yCoord+4)", function () {
             expect(path[0][0]).toEqual('M');
-            expect(path[0][1]).toEqual(xCoord - 5);
-            expect(path[0][2]).toEqual(yCoord + 5);
+            expect(path[0][1]).toEqual(xCoord - 4);
+            expect(path[0][2]).toEqual(yCoord + 4);
           });
           
-          it("should end at (xCoord+5, yCoord-5)", function () {
+          it("should end at (xCoord+4, yCoord-4)", function () {
             expect(path[1][0]).toEqual('L');
-            expect(path[1][1]).toEqual(xCoord + 5);
-            expect(path[1][2]).toEqual(yCoord - 5);
+            expect(path[1][1]).toEqual(xCoord + 4);
+            expect(path[1][2]).toEqual(yCoord - 4);
           });
           
-          it("should start again at (xCoord-5, yCoord-5)", function () {
+          it("should start again at (xCoord-4, yCoord-4)", function () {
             expect(path[2][0]).toEqual('M');
-            expect(path[2][1]).toEqual(xCoord - 5);
-            expect(path[2][2]).toEqual(yCoord - 5);            
+            expect(path[2][1]).toEqual(xCoord - 4);
+            expect(path[2][2]).toEqual(yCoord - 4);            
           });
           
-          it("should finally end at (xCoord+5, yCoord+5)", function () {
+          it("should finally end at (xCoord+4, yCoord+4)", function () {
             expect(path[3][0]).toEqual('L');
-            expect(path[3][1]).toEqual(xCoord + 5);
-            expect(path[3][2]).toEqual(yCoord + 5);            
+            expect(path[3][1]).toEqual(xCoord + 4);
+            expect(path[3][2]).toEqual(yCoord + 4);            
           });
           
           
@@ -277,10 +277,10 @@ describe("LabelView behavior", function () {
               expect(newPath.length).toEqual(4);
             });
             
-            it("should start at (newXCoord-5, newYCoord+5)", function () {
+            it("should start at (newXCoord-4, newYCoord+4)", function () {
               expect(newPath[0][0]).toEqual('M');
-              expect(newPath[0][1]).toEqual(newXCoord - 5);
-              expect(newPath[0][2]).toEqual(newYCoord + 5);
+              expect(newPath[0][1]).toEqual(newXCoord - 4);
+              expect(newPath[0][2]).toEqual(newYCoord + 4);
             });
           });
             

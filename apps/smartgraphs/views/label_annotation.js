@@ -88,8 +88,8 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     
     xPath: function (xCoord, yCoord) {
       var elements = [],
-          x = xCoord - 5,
-          y = yCoord + 5;
+          x = xCoord - 4,
+          y = yCoord + 4;
           
       if (SC.none(xCoord) || SC.none(yCoord)) return "M 0 0";
       
@@ -97,18 +97,18 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
       elements.push(x);
       elements.push(y);
       elements.push('L');
-      elements.push(x+10);
-      elements.push(y-10);
+      elements.push(x+8);
+      elements.push(y-8);
       
-      x = xCoord - 5;
-      y = yCoord - 5;
+      x = xCoord - 4;
+      y = yCoord - 4;
       
       elements.push('M');
       elements.push(x);
       elements.push(y);
       elements.push('L');
-      elements.push(x+10);
-      elements.push(y+10);
+      elements.push(x+8);
+      elements.push(y+8);
       
       return elements.join(' ');
     }
