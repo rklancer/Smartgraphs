@@ -29,9 +29,9 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   }.property('y'),
   
   width: 100,
-  height: 70,
+  height: 45,
   
-  cornerRadius: 3,
+  cornerRadius: 4,
   
   bodyXCoord: null,
   bodyYCoord: null,
@@ -55,6 +55,17 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   }.observes('xCoord', 'yCoord'),
 
   childViews: 'focusPointView connectingLineView labelBodyView'.w(),
+  
+  render: function () {
+    sc_super();
+    var self = this;
+    this.invokeLast( function () {
+      self.beginPropertyChanges();
+      self.notifyPropertyChange('xCoord');
+      self.notifyPropertyChange('yCoord');
+      self.endPropertyChanges();
+    });
+  },
   
   focusPointView: RaphaelViews.RaphaelView.design({
     displayProperties: 'xCoord yCoord stroke'.w(),
