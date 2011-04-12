@@ -54,6 +54,14 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
           "annotations": []
         }
       },
+      "tools": [
+        { "name": "label",
+          "setup": {
+            "pane": "top",
+            "labelName": "test-label"
+          }
+        }
+      ],
       "beforeText": "<p>Take a look at the position-time data and the velocity-time data derived from it.</p>"
     }
   ],
@@ -129,16 +137,12 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
   ],
   "annotations": [
     {
-      "type": "HighlightedPoint",
+      "type": "LabelAnnotation",
       "records": [
         {
-          "url": "/shared/calculated-velocity/annotation/p1-highlight",
-          "name": "p1-highlight",
-          "activity": "/shared/calculated-velocity",
-          "pointRecord": 6,
-          "displayStyle": "highlight-point-and-dim-background",
-          "datasetColor": "#cccccc",
-          "pointColor": "#ff7f0e"
+          "url": "/shared/calculated-velocity/annotation/test-label",
+          "name": "test-label",
+          "activity": "/shared/calculated-velocity"
         }
       ]
     }
