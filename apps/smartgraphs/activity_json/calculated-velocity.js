@@ -24,7 +24,7 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
       "url": "/shared/calculated-velocity/page/1",
       "activity": "/shared/calculated-velocity",
       "index": 1,
-      "introText": "<h1>Mutliple Choice Question</h1>",                        
+      "introText": "<h1>Labeling Calculated Data</h1>",                        
       "steps": [
         "/shared/calculated-velocity/page/1/step/1"
       ],
@@ -62,7 +62,7 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
           }
         }
       ],
-      "beforeText": "<p>Take a look at the position-time data and the velocity-time data derived from it.</p>"
+      "beforeText": "<p>Try clicking an interesting area of the position-time data on the left. Note that the velocity-time data are derived from the position-time data.</p>"
     }
   ],
   "units": [
