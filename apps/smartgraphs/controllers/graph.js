@@ -263,6 +263,10 @@ x
 
   inputAreaMouseUp: function (x, y) {
     this.get('statechart').sendAction('mouseUpAtPoint', this, {x: x, y: y});
+  },
+  
+  dataPointSelected: function (dataRepresentation, x, y) {
+    this.get('statechart').sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   }
   
   // See the below for the old way of handling FREEHAND_INPUT; TODO transition to using per-controller statechart to

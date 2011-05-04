@@ -21,6 +21,9 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend( Smartgraphs.Annotatable
   displayProperties: 'content.x content.y isEnabled fill stroke radius'.w(),
   
   controllerPath: 'parentView.graphView.graphController',
+  controller: SC.outlet('parentView.graphView.graphController'),
+
+  dataRepresentation: SC.outlet('parentView.dataRepresentation'),
   
   datasetColorBinding: '.parentView.color',
   color: function () {
@@ -63,7 +66,7 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend( Smartgraphs.Annotatable
   },
   
   mouseDown: function () {
-    Smartgraphs.statechart.sendAction('dataPointSelected', this, null);
+    this.get('controller').dataPointSelected(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
     // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
     // also handle it
     return NO;

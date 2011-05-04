@@ -18,9 +18,19 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   NO_LABEL: SC.State.design({
     
     mouseDownAtPoint: function (context, args) {
+      this.addLabelAt(args.x, args.y);
+      return YES;
+    },
+    
+    dataPointSelected: function (context, args) {
+      this.addLabelAt(args.x, args.y);
+      return YES;
+    },
+
+    addLabelAt: function (x, y) {
       var owner     = this.getPath('statechart.owner'),
           labelName = this.getPath('parentState.labelName'),
-          label     = Smartgraphs.labelTool.createLabel(labelName, args.x, args.y);
+          label     = Smartgraphs.labelTool.createLabel(labelName, x, y);
       
       if (label) {
         Smartgraphs.labelTool.addLabelToController(owner, label);
@@ -28,6 +38,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
         this.gotoState('LABEL_CREATED');
       }
     }
+
   }),
   
   LABEL_CREATED: SC.State.design({

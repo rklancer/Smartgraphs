@@ -19,7 +19,9 @@ Smartgraphs.PointsetView = RaphaelViews.RaphaelCollectionView.extend( Smartgraph
   
   modelColorBinding: '.item.color',
   modelColorBindingDefault: SC.Binding.oneWay(),
-
+  
+  dataRepresentation: SC.outlet('item.dataRepresentation'),
+  
   color: function () {
     return this.get('overrideColor') || this.get('modelColor');
   }.property('overrideColor', 'modelColor'),
