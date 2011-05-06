@@ -27,6 +27,8 @@ Smartgraphs.ANIMATION = SC.State.extend(
   },
   
   exitState: function () {
+    var pane = Smartgraphs.animationController.get('pane');
+    
     Smartgraphs.activityViewController.hideAnimation(pane);
     Smartgraphs.activityViewController.hideControls(pane);
   },

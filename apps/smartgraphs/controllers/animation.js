@@ -40,17 +40,18 @@ Smartgraphs.animationController = SC.Object.create(
     Called on entry to ANIMATION_RUNNING state.
   */
   startAnimating: function () {
-    // if (!this._pane || this._isAnimating) return NO;
-    // this._isAnimating = YES;
+    if (!this._pane || this._isAnimating) return NO;
+    this._isAnimating = YES;
+    return YES;
   },
   
   /**
     Called on entry to ANIMATION_STOPPED state.
   */
   stopAnimating: function () {
-    // this._isRecording = NO;
-    // this._dataset.set('isStreaming', NO);
-    // this._appletView.stop();
+    if (!this._pane || !this._isAnimating) return NO;
+    this._isAnimating = NO;
+    return YES;
   },
   
   /**
