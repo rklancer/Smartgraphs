@@ -242,7 +242,7 @@ Smartgraphs.GraphView = SC.View.extend(
         
         renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
           return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-            fill: '#ffffff', stroke: '#ffffff', opacity: 0.7
+            fill: '#f7f8fa', stroke: '#f7f8fa', opacity: 1.0
           });
         },
         
@@ -313,7 +313,7 @@ Smartgraphs.GraphView = SC.View.extend(
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
         return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-          fill: '#888888', stroke: '#888888', opacity: 0.5,
+          fill: '#f7f8fa', stroke: '#f7f8fa', opacity: 1.0,
           "clip-rect": [xLeft+(plotWidth/2), yTop, plotWidth/2, plotHeight].join(',')
         });
       },
