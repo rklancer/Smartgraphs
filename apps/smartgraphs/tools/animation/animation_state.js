@@ -64,7 +64,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     
     // can't animate correctly while the view is resizing
     graphViewDidResize: function() {
-      this.gotoState('ANIMATION_STOPPED');
+      this.gotoState('ANIMATION_CLEARED');
     }
     
   }),
@@ -83,6 +83,11 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     },
     
     clearControlWasClicked: function () {
+      this.gotoState('ANIMATION_CLEARED');
+    },
+    
+    // can't animate correctly if the view is resized
+    graphViewDidResize: function() {
       this.gotoState('ANIMATION_CLEARED');
     }
     

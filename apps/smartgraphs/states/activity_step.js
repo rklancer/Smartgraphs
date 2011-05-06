@@ -47,9 +47,6 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   TAGGING_TOOL: SC.State.plugin('Smartgraphs.TAGGING_TOOL'),
   
   
-  ANIMATION_TOOL: SC.State.plugin('Smartgraphs.ANIMATION_TOOL'),
-  
-  
   // ..........................................................
   // ACTIONS
   // 

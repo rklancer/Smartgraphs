@@ -13,6 +13,8 @@ sc_require('views/mixins/annotatable_parent_view');
 */
 Smartgraphs.PointsetView = RaphaelViews.RaphaelCollectionView.extend( Smartgraphs.AnnotatableParentView, {
 
+  isAnimatable: NO,
+  
   exampleView: Smartgraphs.PointView,
   // keep this set to YES prevents the collection view from redrawing all the points when re-rendering
   useFastPath: YES,

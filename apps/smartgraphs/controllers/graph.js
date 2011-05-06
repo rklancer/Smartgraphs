@@ -7,6 +7,7 @@
 
 sc_require('mixins/annotation_support');
 sc_require('tools/label/label_state');
+sc_require('tools/animation/animation_state');
 
 /** @class
 
@@ -37,6 +38,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   statechartDef: SC.Statechart.design({
+    trace: YES,
     rootState: SC.State.design({
       initialSubstate: 'DEFAULT_STATE',
       
@@ -46,11 +48,17 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
         this.gotoState('LABEL_TOOL');
       },
       
+      animationToolStartTool: function (context) {
+        var state = this.getSubstate('ANIMATION_TOOL');
+        this.gotoState('ANIMATION_TOOL');
+      },
+      
       DEFAULT_STATE: SC.State.design(),
       
       TOOLS: SC.State.design({
         substatesAreConcurrent: YES,
-        LABEL_TOOL: Smartgraphs.LABEL_TOOL.design()
+        LABEL_TOOL: Smartgraphs.LABEL_TOOL.design(),
+        ANIMATION_TOOL: Smartgraphs.ANIMATION_TOOL.design()
       })
     })
   }),
@@ -263,6 +271,10 @@ x
 
   inputAreaMouseUp: function (x, y) {
     this.get('statechart').sendAction('mouseUpAtPoint', this, {x: x, y: y});
+  },
+  
+  animationToolStartTool: function () {
+    this.get('statechart').sendAction('animationToolStartTool', this);
   }
   
   // See the below for the old way of handling FREEHAND_INPUT; TODO transition to using per-controller statechart to

@@ -16,14 +16,24 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   
   name: 'animation',
   state: 'ANIMATION_TOOL',
-
-  _pane: null,
-  length: 3000, // default to three seconds
   
-  foregroundImageURL: '',
+  /**
+    Stubbable method to find the appropriate graph controller to use for a given 'pane' argument
+    
+    @param {String} pane
+      The pane we want the label tool to operate in; generally one of 'top', 'bottom', or 'single'
+  */
+  graphControllerForPane: function (pane) {
+    return Smartgraphs.activityViewController.graphControllerForPane(pane);
+  },
+  
+  _pane: null,
+  
+  backgroundImageURL: '',
   backgroundImageClassName: '',
-  offsetX: 0,
-  offsetY: 0,
+  duration: 3000,   // milliseconds, default is 3 seconds
+  channelWidth: 70, // in pixels
+  animations: [],
   
   pane: function () {
     return this._pane;
@@ -39,21 +49,35 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     
     if (pane) {
       this._pane = pane;
-      this.length = args.length || 3000; // in milliseconds
       
-      this._inAnimating = NO;
-      
-      if (args.foregroundImageURL) this.foregroundImageURL = args.foregroundImageURL;
       if (args.backgroundImageClassName) this.backgroundImageClassName = args.backgroundImageClassName;
-      this.offsetX = args.offsetX || 0;
-      this.offsetY = args.offsetY || 0;
+      if (args.backgroundImageURL) this.backgroundImageURL = args.backgroundImageURL;
+      if (args.duration) this.duration = args.duration ;
+      if (args.channelWidth) this.channelWidth = args.channelWidth ;
       
-      Smartgraphs.statechart.gotoState(this.get('state'));
+      var animation = args.animation || [] ;
+      var cookedAnimations = [];
+      if (animation.length) {
+        animation.forEach(function(hash) {
+          var params = {};
+
+          params.foregroundImageURL = hash.foregroundImageURL || '';
+          params.offsetX = hash.offsetX || 0;
+          params.offsetY = hash.offsetY || 0;
+          cookedAnimations.push(params);
+        });
+        this.animations = cookedAnimations;
+      }
+      
+      this._isAnimating = NO;
+      // Smartgraphs.statechart.gotoState(this.get('state'));
     }
+
+    var controller = this.graphControllerForPane(args.pane);
+    controller.animationToolStartTool();
   },
   
-  _inAnimating: NO,
-  _progress: 0, // in milliseconds
+  _isAnimating: NO,
   
   /**
     Called on entry to ANIMATION_RUNNING state.
@@ -62,8 +86,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     if (!this._pane || this._isAnimating) return NO;
     this._isAnimating = YES;
     var graphPane = this.get('graphPane');
-    graphPane.get('graphView').animate();
-    return YES;
+    return graphPane.get('graphView').animate();
   },
   
   /**
@@ -73,16 +96,16 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     if (!this._pane || !this._isAnimating) return NO;
     this._isAnimating = NO;
     var graphPane = this.get('graphPane');
-    graphPane.get('graphView').stop();
-    return YES;
+    return graphPane.get('graphView').stop();
   },
   
   /**
     Called on entry to ANIMATION_CLEARED state.
   */
   clearAnimation: function () {
+    this._isAnimating = NO;
     var graphPane = this.get('graphPane');
-    graphPane.get('graphView').reset();
+    return graphPane.get('graphView').reset();
   }
 
 });

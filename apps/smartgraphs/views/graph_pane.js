@@ -17,11 +17,18 @@ Smartgraphs.GraphPane = SC.View.extend(
   
   // MUST come before graphView
   animationChannelView: SC.ContainerView.design({
-    layout: { left: 10, top: 15, width: 70, bottom: 0 },
+    layout: { left: 10, top: 15, width: Smartgraphs.animationTool.get('channelWidth'), bottom: 0 },
     isVisibleBinding: '.parentView.showAnimation',
     
     render: function(context) {
       context.setClass(Smartgraphs.animationTool.get('backgroundImageClassName'), true);
+    },
+
+    didCreateLayer: function() {
+      var backgroundImageURL = Smartgraphs.animationTool.get('backgroundImageURL');
+      if (backgroundImageURL) {
+        this.get('layer').style.backgroundImage = ['url(',backgroundImageURL,')'].join('');
+      }
     }
   }),
   
