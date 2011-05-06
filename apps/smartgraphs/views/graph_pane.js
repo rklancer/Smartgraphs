@@ -29,27 +29,28 @@ Smartgraphs.GraphPane = SC.View.extend(
   
   showAnimationDidChange: function () {
     var showAnimation = this.get('showAnimation');
-    var left = 0, 
+    var left = 0,
         width = 0;
     
     if (showAnimation) {
-      left = 35; 
-      width = 35;
+      left = 70;
+      width = 70;
     }
     
     this.get('graphView').adjust('left', left);
     this.get('graphView').set('showAnimation', showAnimation);
+    this.get('controlsContainer').adjust('left', left);
     this.get('animationView').adjust('width', width);
 
   }.observes('showAnimation'),
   
   controlsNowShowingDidChange: function () {
     var nowShowing = this.get('controlsNowShowing');
-    var bottom = 0, 
+    var bottom = 0,
         height = 0;
     
     if (nowShowing) {
-      bottom = 35; 
+      bottom = 35;
       height = 35;
     }
     
