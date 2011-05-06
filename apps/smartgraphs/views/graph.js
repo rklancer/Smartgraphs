@@ -222,7 +222,7 @@ Smartgraphs.GraphView = SC.View.extend(
     
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
     
-    childViews: 'axesView annotationsHolder dataHolder'.w(),
+    childViews: 'axesView annotationsHolder dataHolder animationOverlay'.w(),
 
     axesView: RaphaelViews.RaphaelView.design({
       xAxisBinding: '.parentView.parentView.xAxis',
@@ -306,10 +306,15 @@ Smartgraphs.GraphView = SC.View.extend(
 
     // Holds the dataset views. Should be later in the DOM (and thus "in front of") the annotation views.
     dataHolder: RaphaelViews.RaphaelView.design({
+    }),
+
+    // Holds the animation overlay. Should be later in the DOM (and thus "in front of") the dataset and annotation views.
+    animationOverlay: RaphaelViews.RaphaelView.design({
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-          fill: '#888888', stroke: '#888888', opacity: 0.5
+        return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
+          fill: '#888888', stroke: '#888888', opacity: 0.5,
+          "clip-rect": [xLeft+(plotWidth/2), yTop, plotWidth/2, plotHeight].join(',')
         });
       },
       
@@ -329,9 +334,8 @@ Smartgraphs.GraphView = SC.View.extend(
           var rect = context.raphael();
           rect.attr({x: xLeft, y: yTop, width: plotWidth, height: plotHeight});
         }
-        sc_super();
       }
-      
     })
+
   })
 });
