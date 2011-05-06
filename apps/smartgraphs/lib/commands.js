@@ -114,17 +114,18 @@ Smartgraphs.executor.defineCommands(function (def) {
     
     @param {String} args.pane
       The pane that will be animated, one of: "single", "top" or "bottom".
+    @param {String} args.*
+      Additional members of args are passed as options to Smartgraphs.animationController.register().
   */
   def('showAnimation', function (args) {
-    console.log('showAnimation');
-    console.log(args);
-    
     var pane = args.pane;
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
     if ( !pane ) return "couldn't find the pane";
     
-    if (Smartgraphs.animationController.register(pane)) {
+    delete args.pane; // not part of the options we care about
+    
+    if (Smartgraphs.animationController.register(pane, args)) {
       Smartgraphs.statechart.gotoState('ANIMATION');
     }
   });

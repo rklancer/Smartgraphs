@@ -40,22 +40,17 @@ Smartgraphs.animationController = SC.Object.create(
     return this._pane;
   }.property(),
   
-  register: function (pane) {
+  register: function (pane, options) {
     console.log('Smartgraphs.animationController.register()');
-    // if (this._inputIsEnabled) return NO;    
-    // 
-    pane = Smartgraphs.activityViewController.validPaneFor(pane);
+    console.log(options);
     
-    // var meters = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/meters');
-    // var seconds = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/seconds');
-    // 
+    pane = Smartgraphs.activityViewController.validPaneFor(pane);
+    options = options || {};
+    
     if (pane) {
       this._pane = pane;
-    //   this._dataset = dataset;
-    //   
-    //   if (xMin) this.set('xMin', xMin);
-    //   if (xMax) this.set('xMax', xMax);
-    //   
+      this._speed = options.speed || 1;
+      
       return YES;
     }
     return NO;
