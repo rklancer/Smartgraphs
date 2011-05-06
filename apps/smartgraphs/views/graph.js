@@ -240,9 +240,9 @@ Smartgraphs.GraphView = SC.View.extend(
           this._$graphView = this._graphView.$();
         },
         
-        renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {          
+        renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
           return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-            fill: '#ffffff', stroke: '#ffffff', opacity: 0.7 
+            fill: '#ffffff', stroke: '#ffffff', opacity: 0.7
           });
         },
         
@@ -306,6 +306,32 @@ Smartgraphs.GraphView = SC.View.extend(
 
     // Holds the dataset views. Should be later in the DOM (and thus "in front of") the annotation views.
     dataHolder: RaphaelViews.RaphaelView.design({
+      
+      renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
+        raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
+          fill: '#888888', stroke: '#888888', opacity: 0.5
+        });
+      },
+      
+      render: function (context, firstTime) {
+        var frame = this.getPath('parentView.frame');
+        var padding = this.getPath('parentView.parentView.padding');
+
+        var xLeft = frame.x + padding.left;
+        var yTop = frame.y + padding.top;
+        var plotWidth = frame.width - padding.left - padding.right;
+        var plotHeight = frame.height - padding.top - padding.bottom;
+        
+        if (firstTime) {
+          context.callback(this, this.renderCallback, xLeft, yTop, plotWidth, plotHeight);
+        }
+        else {       
+          var rect = context.raphael();
+          rect.attr({x: xLeft, y: yTop, width: plotWidth, height: plotHeight});
+        }
+        sc_super();
+      }
+      
     })
   })
 });
