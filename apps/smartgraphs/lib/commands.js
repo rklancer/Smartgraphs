@@ -104,4 +104,41 @@ Smartgraphs.executor.defineCommands(function (def) {
     }
   });
   
+  /**
+    Allows animation of a Dataset with the provided name on the specified graph. This command draws the animation
+    channel and displays Start, Stop, and Clear buttons below the graph.
+    
+    The system remains in the ANIMATION state or one of its substates until the user submits the step.
+    
+    @param args
+    
+    @param {String} args.datasetName
+      The name to be given to the Dataset which will hold the sensor-recorded data.
+    @param {String} args.graphName
+      The name of the graph on which the data will be shown.
+  */
+  def('showAnimation', function (args) {
+    console.log('showAnimation');
+    console.log(args);
+    // var dataset = Smartgraphs.activityObjectsController.createDataset(args.datasetName, '/builtins/units/seconds', '/builtins/units/meters');
+    // dataset.set('xLabel', "Time");
+    // dataset.set('xShortLabel', "Time");
+    // dataset.set('yLabel', "Position");
+    // dataset.set('yShortLabel', "Position");
+    // 
+    // var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    // controller.addDataset(dataset);
+    // 
+    // if ( !dataset || !controller ) return "couldn't make dataset or could find graph";        // handled, but invalid graphName or dataset...
+    // 
+    // // TODO let 'args' override these settings if desired
+    // var xMin = controller.getPath('xAxis.min');
+    // var xMax = controller.getPath('xAxis.max');
+    // var pane = Smartgraphs.activityViewController.paneForController(controller);
+    // 
+    // if (Smartgraphs.sensorController.register(pane, dataset, xMin, xMax)) {
+    //   Smartgraphs.statechart.gotoState('SENSOR');
+    // }
+  });
+  
 });
