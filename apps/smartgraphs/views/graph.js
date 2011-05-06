@@ -313,10 +313,24 @@ Smartgraphs.GraphView = SC.View.extend(
     animationOverlay: RaphaelViews.RaphaelView.design({
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-          fill: '#f7f8fa', stroke: '#f7f8fa', opacity: 1.0,
-          "clip-rect": [xLeft+(plotWidth/2), yTop, plotWidth/2, plotHeight].join(',')
-        });
+        var rect, times = 0;
+        
+        function loopAnimation() {
+          if (times++ > 3) return;
+          rect.attr({
+            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+          }).animate({
+            "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
+          }, 3000, loopAnimation);
+        }
+        
+        rect = raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
+          fill: '#f7f8fa', stroke: '#f7f8fa', opacity: 1.0
+        }).animate({
+          "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
+        }, 3000, loopAnimation);
+        
+        return rect;
       },
       
       render: function (context, firstTime) {
