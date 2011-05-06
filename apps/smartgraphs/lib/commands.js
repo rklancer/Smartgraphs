@@ -105,43 +105,25 @@ Smartgraphs.executor.defineCommands(function (def) {
   });
   
   /**
-    Allows animation of a Dataset with the provided name on the specified graph. This command draws the animation
+    Allows animation of a graph with the provided pane. This command draws the animation
     channel and displays Start, Stop, and Clear buttons below the graph.
     
     The system remains in the ANIMATION state or one of its substates until the user submits the step.
     
     @param args
     
-    @param {String} args.datasetName
-      The name to be given to the Dataset which will hold the sensor-recorded data.
-    @param {String} args.graphName
-      The name of the graph on which the data will be shown.
+    @param {String} args.pane
+      The pane that will be animated, one of: "single", "top" or "bottom".
   */
   def('showAnimation', function (args) {
     console.log('showAnimation');
     console.log(args);
     
     var pane = args.pane;
-    // console.log('pane:');
-    // console.log(pane);
-    // var dataset = Smartgraphs.activityObjectsController.createDataset(args.datasetName, '/builtins/units/seconds', '/builtins/units/meters');
-    // dataset.set('xLabel', "Time");
-    // dataset.set('xShortLabel', "Time");
-    // dataset.set('yLabel', "Position");
-    // dataset.set('yShortLabel', "Position");
-    // 
-    // var controller = Smartgraphs.activityViewController.graphControllerForPane(pane);
-    // console.log('controller:');
-    // console.log(controller);
-    // controller.addDataset(dataset);
-    // 
-    // if ( !dataset || !controller ) return "couldn't make dataset or could find graph";        // handled, but invalid graphName or dataset...
-    // 
-    // // TODO let 'args' override these settings if desired
-    // var xMin = controller.getPath('xAxis.min');
-    // var xMax = controller.getPath('xAxis.max');
-    // var pane = Smartgraphs.activityViewController.paneForController(controller);
-    // 
+    pane = Smartgraphs.activityViewController.validPaneFor(pane);
+    
+    if ( !pane ) return "couldn't find the pane";
+    
     if (Smartgraphs.animationController.register(pane)) {
       Smartgraphs.statechart.gotoState('ANIMATION');
     }

@@ -34,7 +34,6 @@ Smartgraphs.ANIMATION = SC.State.extend(
   ANIMATION_CLEARED: SC.State.design({
 
     enterState: function () {
-      Smartgraphs.activityViewController.showSensorLoadingView(Smartgraphs.sensorController.get('pane'));
       Smartgraphs.activityViewController.highlightStartControl();
     },
 
