@@ -68,7 +68,7 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
           "name": "showAnimation",
           "args": {
             "pane": "top",
-            "speed": 4
+            "length": 3000
           }
         }
       ]

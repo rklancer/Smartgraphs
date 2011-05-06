@@ -237,6 +237,26 @@ Smartgraphs.activityViewController = SC.Object.create(
     return YES;
   },
   
+  showAnimation: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+
+    if ( !which ) return NO;
+    
+    this.set(which+'PaneHasAnimation', YES);
+    return YES;
+  },
+  
+  hideAnimation: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+
+    if ( !which ) return NO;
+    
+    this.set(which+'PaneHasAnimation', NO);
+    return YES;
+  },
+  
   showControls: function (pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);

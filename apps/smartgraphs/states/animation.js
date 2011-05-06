@@ -19,12 +19,16 @@ Smartgraphs.ANIMATION = SC.State.extend(
   initialSubstate: 'ANIMATION_CLEARED',
   
   enterState: function () {
+    var pane = Smartgraphs.animationController.get('pane');
+    
     Smartgraphs.activityViewController.revealAllControls();
-    Smartgraphs.activityViewController.showControls(Smartgraphs.animationController.get('pane'));
+    Smartgraphs.activityViewController.showControls(pane);
+    Smartgraphs.activityViewController.showAnimation(pane);
   },
   
   exitState: function () {
-    Smartgraphs.activityViewController.hideControls();
+    Smartgraphs.activityViewController.hideAnimation(pane);
+    Smartgraphs.activityViewController.hideControls(pane);
   },
   
   // ..........................................................
@@ -34,6 +38,7 @@ Smartgraphs.ANIMATION = SC.State.extend(
   ANIMATION_CLEARED: SC.State.design({
 
     enterState: function () {
+      Smartgraphs.animationController.clearAnimation();
       Smartgraphs.activityViewController.highlightStartControl();
     },
 
@@ -47,10 +52,16 @@ Smartgraphs.ANIMATION = SC.State.extend(
   ANIMATION_RUNNING: SC.State.design({
 
     enterState: function () {
+      Smartgraphs.animationController.startAnimating();
       Smartgraphs.activityViewController.highlightStopControl();
     },
     
     stopControlWasClicked: function () {
+      this.gotoState('ANIMATION_STOPPED');
+    },
+    
+    // can't animate correctly while the view is resizing
+    graphViewDidResize: function() {
       this.gotoState('ANIMATION_STOPPED');
     }
     
@@ -60,6 +71,7 @@ Smartgraphs.ANIMATION = SC.State.extend(
   ANIMATION_STOPPED: SC.State.design({
     
     enterState: function () {
+      Smartgraphs.animationController.stopAnimating();
       Smartgraphs.activityViewController.highlightStartControl();
       Smartgraphs.activityViewController.enableClearControl();
     },

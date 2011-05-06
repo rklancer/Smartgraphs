@@ -9,7 +9,7 @@ Smartgraphs.animationController = SC.Object.create(
 /** @scope Smartgraphs.animationController.prototype */ {
   
   _pane: null,
-  _speed: 1,
+  _length: 3000, // default to three seconds
   _loop: true,
   
   pane: function () {
@@ -23,29 +23,25 @@ Smartgraphs.animationController = SC.Object.create(
     
     if (pane) {
       this._pane = pane;
-      this._speed = options.speed || 1;
+      this._length = options.length || 3000; // in milliseconds
       this._loop = (options.loop !== undefined) ? options.loop : true;
       
+      this._inAnimating = NO;
+      this._progress = 0;
       return YES;
     }
     return NO;
   },
   
+  _inAnimating: NO,
+  _progress: 0, // in milliseconds
+  
   /**
     Called on entry to ANIMATION_RUNNING state.
   */
   startAnimating: function () {
-    // this._isRecording = YES;
-    // this._dataset.set('isStreaming', YES);
-    // this._dataset.set('streamSource', this);
-    // 
-    // this._nsamples = 0;
-    // this._appletView.start();
-    // 
-    // // inform the data set record how many points we expect to add, so the display can make room.
-    // var startLength = this._dataset.getPath('points.length');
-    // var expectedLength = startLength + Math.floor(1 + this.get('xMax') / (this.get('downsampleRatio') * this.get('dt')));
-    // this._dataset.set('expectedLength', expectedLength);
+    // if (!this._pane || this._isAnimating) return NO;
+    // this._isAnimating = YES;
   },
   
   /**

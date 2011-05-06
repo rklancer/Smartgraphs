@@ -36,6 +36,7 @@ Smartgraphs.GraphView = SC.View.extend(
   
   viewDidResize: function () {
     sc_super();
+    Smartgraphs.statechart.sendAction('graphViewDidResize');
     this.replaceLayer();
   },
   
