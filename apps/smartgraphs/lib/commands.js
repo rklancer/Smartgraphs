@@ -120,13 +120,19 @@ Smartgraphs.executor.defineCommands(function (def) {
   def('showAnimation', function (args) {
     console.log('showAnimation');
     console.log(args);
+    
+    var pane = args.pane;
+    // console.log('pane:');
+    // console.log(pane);
     // var dataset = Smartgraphs.activityObjectsController.createDataset(args.datasetName, '/builtins/units/seconds', '/builtins/units/meters');
     // dataset.set('xLabel', "Time");
     // dataset.set('xShortLabel', "Time");
     // dataset.set('yLabel', "Position");
     // dataset.set('yShortLabel', "Position");
     // 
-    // var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    // var controller = Smartgraphs.activityViewController.graphControllerForPane(pane);
+    // console.log('controller:');
+    // console.log(controller);
     // controller.addDataset(dataset);
     // 
     // if ( !dataset || !controller ) return "couldn't make dataset or could find graph";        // handled, but invalid graphName or dataset...
@@ -136,9 +142,9 @@ Smartgraphs.executor.defineCommands(function (def) {
     // var xMax = controller.getPath('xAxis.max');
     // var pane = Smartgraphs.activityViewController.paneForController(controller);
     // 
-    // if (Smartgraphs.sensorController.register(pane, dataset, xMin, xMax)) {
-    //   Smartgraphs.statechart.gotoState('SENSOR');
-    // }
+    if (Smartgraphs.animationController.register(pane)) {
+      Smartgraphs.statechart.gotoState('ANIMATION');
+    }
   });
   
 });

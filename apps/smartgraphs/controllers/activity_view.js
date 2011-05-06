@@ -322,6 +322,11 @@ Smartgraphs.activityViewController = SC.Object.create(
     this.set('clearControlIsDefault',  YES);
   },
   
+  enableClearControl: function () {
+    this.set('clearControlIsEnabled',  YES);
+    this.set('clearControlIsDefault',  NO);
+  },
+  
   clear: function () {
     this.hideControls();
     

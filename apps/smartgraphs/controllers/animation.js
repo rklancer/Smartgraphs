@@ -40,21 +40,22 @@ Smartgraphs.animationController = SC.Object.create(
     return this._pane;
   }.property(),
   
-  register: function (pane, dataset, xMin, xMax) {
-    if (this._inputIsEnabled) return NO;    
-
+  register: function (pane) {
+    console.log('Smartgraphs.animationController.register()');
+    // if (this._inputIsEnabled) return NO;    
+    // 
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     
-    var meters = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/meters');
-    var seconds = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/seconds');
-    
-    if (pane && dataset && dataset.get('xUnits') === seconds && dataset.get('yUnits') === meters) {
+    // var meters = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/meters');
+    // var seconds = Smartgraphs.store.find(Smartgraphs.Unit, '/builtins/units/seconds');
+    // 
+    if (pane) {
       this._pane = pane;
-      this._dataset = dataset;
-      
-      if (xMin) this.set('xMin', xMin);
-      if (xMax) this.set('xMax', xMax);
-      
+    //   this._dataset = dataset;
+    //   
+    //   if (xMin) this.set('xMin', xMin);
+    //   if (xMax) this.set('xMax', xMax);
+    //   
       return YES;
     }
     return NO;
