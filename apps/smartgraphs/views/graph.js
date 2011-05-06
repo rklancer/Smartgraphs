@@ -18,6 +18,7 @@ Smartgraphs.GraphView = SC.View.extend(
   yAxisBinding: '*graphController.yAxis',
   graphableDataObjectsBinding: '*graphController.graphableDataObjects',
   annotationListBinding: '*graphController.annotationList',
+  showAnimation: NO,
   
   inputAreaView:     SC.outlet('graphCanvasView.axesView.inputAreaView'),
   xAxisView:         SC.outlet('graphCanvasView.axesView.xAxisView'),
@@ -319,6 +320,8 @@ Smartgraphs.GraphView = SC.View.extend(
       },
       
       render: function (context, firstTime) {
+        var showAnimation = this.getPath('parentView.parentView.showAnimation');
+        if (!showAnimation) return;
         var frame = this.getPath('parentView.frame');
         var padding = this.getPath('parentView.parentView.padding');
 

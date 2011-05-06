@@ -38,6 +38,7 @@ Smartgraphs.GraphPane = SC.View.extend(
     }
     
     this.get('graphView').adjust('left', left);
+    this.get('graphView').set('showAnimation', showAnimation);
     this.get('animationView').adjust('width', width);
 
   }.observes('showAnimation'),
