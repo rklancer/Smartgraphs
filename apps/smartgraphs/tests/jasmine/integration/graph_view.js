@@ -112,8 +112,8 @@ describe("GraphView behavior", function () {
       expect(dataLayer).toBeInside(graphCanvasView.get('layer'));        
     });
     
-    it("should put the annotation holder 'behind' (as an earlier sibling of) the data layer", function () {
-      expect(annotationsLayer).toBeAnEarlierSiblingOf(dataLayer);
+    it("should put the data holder 'behind' (as an earlier sibling of) the annotation layer", function () {
+      expect(dataLayer).toBeAnEarlierSiblingOf(annotationsLayer);
     });
   });
   

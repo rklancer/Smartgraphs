@@ -221,7 +221,7 @@ Smartgraphs.GraphView = SC.View.extend(
     
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
     
-    childViews: 'axesView annotationsHolder dataHolder'.w(),
+    childViews: 'axesView dataHolder annotationsHolder'.w(),
 
     axesView: RaphaelViews.RaphaelView.design({
       xAxisBinding: '.parentView.parentView.xAxis',
@@ -231,7 +231,6 @@ Smartgraphs.GraphView = SC.View.extend(
       childViews: 'inputAreaView xAxisView yAxisView'.w(),
       
       inputAreaView: RaphaelViews.RaphaelView.design({
-        // axesBinding: '.parentView.parentView.parentView*axes',    // is this used anywhere?
         
         didCreateLayer: function () {
           // cache these rather than lookup the jquery object (graphView.$()) per mouse event
@@ -299,12 +298,12 @@ Smartgraphs.GraphView = SC.View.extend(
       })
     }),
     
-    // Holds the annotation views. Should be earlier in the DOM (and thus "behind") the dataset views
-    annotationsHolder: RaphaelViews.RaphaelView.design({
-    }),
-
-    // Holds the dataset views. Should be later in the DOM (and thus "in front of") the annotation views.
+    // Holds the data views. Should be earlier in the DOM (and thus "behind") the annotation views
     dataHolder: RaphaelViews.RaphaelView.design({
+    }),
+    
+    // Holds the annotation views. Should be later in the DOM (and thus "in front of") the data views
+    annotationsHolder: RaphaelViews.RaphaelView.design({
     })
   })
 });
