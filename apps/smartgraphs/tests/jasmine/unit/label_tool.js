@@ -93,23 +93,31 @@ describe("Smartgraphs.labelTool", function () {
   });
   
   
-  describe("addLabelToController method", function () {
+  describe("appendLabel method", function () {
     
     var labelAnnotation,
-        owner;
+        state,
+        controller;
     
     beforeEach( function () {
-      labelAnnotation = SC.Object.create(); 
-      owner = SC.Object.create({
+      labelAnnotation = SC.Object.create();
+      
+      controller = SC.Object.create({
         addAnnotation: function () {}
       });
       
-      spyOn(owner, 'addAnnotation');
-      labelTool.addLabelToController(owner, labelAnnotation);
+      state = SC.Object.create({
+        statechart: SC.Object.create({
+          owner: controller
+        })
+      });
+      
+      spyOn(controller, 'addAnnotation');
+      labelTool.appendLabel(state, labelAnnotation);
     });
     
-    it("should call the addAnnotation method of the supplied owner", function () {
-      expect(owner.get('addAnnotation')).toHaveBeenCalledWith(labelAnnotation);
+    it("should call the addAnnotation method of the state's owning controller", function () {
+      expect(controller.get('addAnnotation')).toHaveBeenCalledWith(labelAnnotation);
     });
   });
   

@@ -14,6 +14,11 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
 /** @scope Smartgraphs.LABEL_TOOL.prototype */ {
   
   initialSubstate: 'NO_LABEL',
+
+  /**
+    The name of the label annotation we care about. Will be set on tool startup.
+  */
+  labelName: null,
   
   NO_LABEL: SC.State.design({
     
@@ -36,12 +41,11 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     },
 
     addLabelAt: function (x, y) {
-      var owner     = this.getPath('statechart.owner'),
-          labelName = this.getPath('parentState.labelName'),
+      var labelName = this.getPath('parentState.labelName'),
           label     = Smartgraphs.labelTool.createLabel(labelName, x, y);
       
       if (label) {
-        Smartgraphs.labelTool.addLabelToController(owner, label);
+        Smartgraphs.labelTool.appendLabel(this, label);
         this.set('label', label);
         this.gotoState('LABEL_CREATED');
       }

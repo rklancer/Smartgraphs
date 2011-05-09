@@ -58,7 +58,7 @@ describe("LABEL_TOOL state", function () {
             labelAnnotation = SC.Object.create(); 
           
             spyOn(labelTool, 'createLabel').andReturn(labelAnnotation);  
-            spyOn(labelTool, 'addLabelToController').andReturn(YES);                    
+            spyOn(labelTool, 'appendLabel').andReturn(YES);                    
             state.mouseDownAtPoint('the action context', {x: 1, y: 2});
           }); 
     
@@ -66,8 +66,8 @@ describe("LABEL_TOOL state", function () {
             expect(labelTool.createLabel).toHaveBeenCalledWith('the label name', 1, 2);
           });
       
-          it("should ask the labelTool to add the label to the owner", function () {
-            expect(labelTool.addLabelToController).toHaveBeenCalledWith(owner, labelAnnotation);
+          it("should ask the labelTool to add the label to the controller", function () {
+            expect(labelTool.appendLabel).toHaveBeenCalledWith(state, labelAnnotation);
           });
         
           it("should set its 'label' property to the new label", function () {

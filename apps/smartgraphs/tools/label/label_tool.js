@@ -37,6 +37,16 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
     return Smartgraphs.activityObjectsController.findAnnotation(name);
   },
   
+  /**
+    Stubbable method to get the graph controller a particular label tool state object is connected to.
+    
+    @param {SC.State} state
+    @returns {Smartgraphs.GraphController} the controller
+  */
+  getControllerForState: function (state) {
+    return state.getPath('statechart.owner');
+  },
+  
   setup: function (args) {
     var controller = this.graphControllerForPane(args.pane);
     controller.labelToolStartTool(args.labelName);
@@ -51,17 +61,17 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
     return label;
   },
   
-  addLabelToController: function (controller, label) {
-    controller.addAnnotation(label);
+  appendLabel: function (state, label) {
+    this.getControllerForState(state).addAnnotation(label);
   },
   
   startPlacement: function (state) {
-    var controller = state.getPath('statechart.owner');
+    var controller = this.getControllerForState(state);
     if (controller && controller.labelToolStartPlacement) controller.labelToolStartPlacement();
   },
   
   placementFinished: function (state) {
-    var controller = state.getPath('statechart.owner');
+    var controller = this.getControllerForState(state);
     if (controller && controller.labelToolPlacementFinished) controller.labelToolPlacementFinished();
   }
   
