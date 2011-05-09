@@ -121,7 +121,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   
   /**
     @private
-x
+
     Stubbable method to return a datadef given its name.
   */
   getDatadef: function (name) {

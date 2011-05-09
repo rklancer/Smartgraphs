@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.ConnectedLi`neView
+// Project:   Smartgraphs.ConnectedLineView
 // Copyright: ©2011 Concord Consortium
 // Author:   Richard Klancer <rpk@pobox.com>
 // ==========================================================================

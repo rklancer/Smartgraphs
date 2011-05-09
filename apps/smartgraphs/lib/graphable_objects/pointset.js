@@ -15,7 +15,7 @@ sc_require('lib/graphable_object');
 Smartgraphs.Pointset = Smartgraphs.GraphableObject.extend(
 /** @scope Smartgraphs.GraphableObject.prototype */ {
 
-  // a set of Points
+  // an array of Smartgraphs.Point objects
   points: null,
   
   viewClass: function () {

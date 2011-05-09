@@ -15,7 +15,7 @@ sc_require('lib/graphable_object');
 Smartgraphs.ConnectedLine = Smartgraphs.GraphableObject.extend(
 /** @scope Smartgraphs.ConnectedLine.prototype */ {
 
-  // a set of Points
+  // an array of [x,y] pairs
   points: null,
   
   viewClass: function () {
