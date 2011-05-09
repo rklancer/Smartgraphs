@@ -53,6 +53,16 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
   
   addLabelToController: function (controller, label) {
     controller.addAnnotation(label);
+  },
+  
+  startPlacement: function (state) {
+    var controller = state.getPath('statechart.owner');
+    if (controller && controller.labelToolStartPlacement) controller.labelToolStartPlacement();
+  },
+  
+  placementFinished: function (state) {
+    var controller = state.getPath('statechart.owner');
+    if (controller && controller.labelToolPlacementFinished) controller.labelToolPlacementFinished();
   }
   
 });

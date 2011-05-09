@@ -17,6 +17,14 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   
   NO_LABEL: SC.State.design({
     
+    enterState: function () {
+      Smartgraphs.labelTool.startPlacement(this);
+    },
+    
+    exitState: function () {
+      Smartgraphs.labelTool.placementFinished(this);
+    },
+    
     mouseDownAtPoint: function (context, args) {
       this.addLabelAt(args.x, args.y);
       return YES;

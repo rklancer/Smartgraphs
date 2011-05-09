@@ -18,7 +18,8 @@ Smartgraphs.GraphView = SC.View.extend(
   yAxisBinding: '*graphController.yAxis',
   graphableDataObjectsBinding: '*graphController.graphableDataObjects',
   annotationListBinding: '*graphController.annotationList',
-  
+  requestedCursorStyleBinding: '*graphController.requestedCursorStyle',
+    
   inputAreaView:     SC.outlet('graphCanvasView.axesView.inputAreaView'),
   xAxisView:         SC.outlet('graphCanvasView.axesView.xAxisView'),
   yAxisView:         SC.outlet('graphCanvasView.axesView.yAxisView'),
@@ -214,10 +215,19 @@ Smartgraphs.GraphView = SC.View.extend(
   
   graphCanvasView: RaphaelViews.RaphaelCanvasView.design({
 
+    init: function () {
+      sc_super();
+      
+      var cursor = SC.Cursor.create();
+      cursor.bind('cursorStyle', this, 'requestedCursorStyle');
+      this.set('cursor', cursor);      
+    },
+      
     layout: { zIndex: 0 },
     
     xAxisBinding: '.parentView.xAxis',
     yAxisBinding: '.parentView.yAxis',
+    requestedCursorStyleBinding: '.parentView.requestedCursorStyle',    
     
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
     

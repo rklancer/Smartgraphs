@@ -89,26 +89,33 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   graphableDataObjects: null,
 
-  /*
+  /**
     @property {Smartgraphs.Unit|null}
     
     The units on the x (horizontal) axis of the graph, if defined.
   */
   xUnits: null,
   
-  /*
+  /**
     @property {Smartgraphs.Unit|null}
     
     The units on the y (vertical) axis of the graph, if defined.
   */
   yUnits: null,
   
-  /*
+  /**
     @property String
     
     The title of the graph.
   */
   title: null,
+  
+  /**
+    @property String
+    
+    Requested cursor type
+  */
+  requestedCursorStyle: 'default',
   
   /**
    @private
@@ -251,6 +258,14 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   
   labelToolStartTool: function (labelName) {
     this.get('statechart').sendAction('labelToolStartTool', this, labelName);
+  },
+  
+  labelToolStartPlacement: function () {
+    this.set('requestedCursorStyle', 'pointer');
+  },
+  
+  labelToolPlacementFinished: function () {
+    this.set('requestedCursorStyle', 'default');
   },
   
   inputAreaMouseDown: function (x, y) {
