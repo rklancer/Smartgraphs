@@ -227,11 +227,17 @@ Smartgraphs.GraphView = SC.View.extend(
     childViews: 'axesView annotationsHolder dataHolder animationView'.w(),
     
     _animate: function() {
-      var raphaelCanvas = this.get('raphaelCanvas'),
-          overlay = this.getPath('dataHolder.childViews.0.layer'), overlayTimes = 0;
+      var ms = 3000, raphaelCanvas = this.get('raphaelCanvas'),
+          overlay = this.getPath('dataHolder.childViews.0.layer'), overlayTimes = 0,
+          dataSetView = this.getPath('dataHolder.childViews.0'), item, points;
       
       if (overlay) overlay = overlay.raphael;
       if (!overlay) return;
+      
+      if (dataSetView) {
+        item = dataSetView.get('item');
+        points = item.get('points') || [];
+      }
       
       var frame = this.get('frame');
       var padding = this.getPath('parentView.padding');
@@ -247,12 +253,12 @@ Smartgraphs.GraphView = SC.View.extend(
           "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
         }).animate({
           "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
-        }, 3000, loopOverlayAnimation);
+        }, ms, loopOverlayAnimation);
       }
       
       overlay.animate({
         "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
-      }, 3000, loopOverlayAnimation);
+      }, ms, loopOverlayAnimation);
       
       var xLeftRect = frame.x + padding.left;
       var yTopRect = frame.y + padding.top;
@@ -260,26 +266,28 @@ Smartgraphs.GraphView = SC.View.extend(
       var plotHeightRect = frame.height - padding.top - padding.bottom;
       var rect = this.getPath('animationView.layer').raphael, times = 0;
     
+      var keyframes = {};
+      
       function loopAnimation() {
         if (times++ > 3) return;
-        rect.attr({
-          "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, plotHeightRect].join(',')
-        }).animateWith(overlay, {
-           "20%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect*0.9].join(',') },
-           "40%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect*0.55].join(',') },
-           "60%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect*0.5].join(',') },
-           "80%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect*0.4].join(',') },
-          "100%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect].join(','), callback: loopAnimation }
-        }, 3000);
+        rect.animate({
+          "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
+        }).animate(keyframes, ms);
       }
-    
-      rect.animateWith(overlay, {
-         "20%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect*0.9].join(',') },
-         "40%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect*0.55].join(',') },
-         "60%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect*0.5].join(',') },
-         "80%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect*0.4].join(',') },
-        "100%": { "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect].join(','), callback: loopAnimation }
-      }, 3000);
+      
+      for (var idx=0, len=points.length; idx<len; ++idx) {
+        var pt = points[idx]; // [x, y]
+        var dist = (pt[0] === 0 ? 0 : pt[0]/12) * 100; // WIDTH
+        var y = pt[1] === 0 ? 0 : pt[1]/10;    // HEIGHT
+        keyframes[dist+'%'] = {
+          "clip-rect": [xLeftRect, yTopRect+(plotHeightRect*(1-y)), plotWidthRect, plotHeightRect*(y)].join(',')
+        };
+        if (idx+1===len) {
+          keyframes[dist+'%'].callback = loopAnimation;
+        }
+      }
+      
+      rect.animate(keyframes, ms);
     },
     
     axesView: RaphaelViews.RaphaelView.design({
