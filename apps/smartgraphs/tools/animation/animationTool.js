@@ -25,6 +25,10 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     return this._pane;
   }.property(),
   
+  graphPane: function () {
+    return Smartgraphs.activityPage.get(Smartgraphs.activityViewController.firstOrSecondFor(this._pane)+'GraphPane');
+  }.property('pane'),
+  
   setup: function (args) {
     args = args || {};
     var pane = Smartgraphs.activityViewController.validPaneFor(args.pane);
@@ -49,6 +53,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   startAnimating: function () {
     if (!this._pane || this._isAnimating) return NO;
     this._isAnimating = YES;
+    var graphPane = this.get('graphPane');
+    graphPane.get('graphView').animate();
     return YES;
   },
   
@@ -58,6 +64,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   stopAnimating: function () {
     if (!this._pane || !this._isAnimating) return NO;
     this._isAnimating = NO;
+    var graphPane = this.get('graphPane');
+    graphPane.get('graphView').stop();
     return YES;
   },
   
@@ -65,22 +73,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     Called on entry to ANIMATION_CLEARED state.
   */
   clearAnimation: function () {
-    // SC.RunLoop.begin();
-    // var points = this._dataset.get('points');
-    // 
-    // // need to cache the items in the 'points' ManyArray as forEach doesn't deal well with points being removed while
-    // // it is iterating over them
-    // var toDestroy = [];
-    // points.forEach( function (point) {
-    //   toDestroy.push(point);
-    // });
-    // 
-    // // set 'dataset' to null or else destroyed points hang around in our 'points' ManyArray, just with DESTROYED status
-    // toDestroy.forEach( function (point) {
-    //   point.set('dataset', null);
-    //   point.destroy();
-    // });
-    // SC.RunLoop.end();
+    var graphPane = this.get('graphPane');
+    graphPane.get('graphView').reset();
   }
 
 });
