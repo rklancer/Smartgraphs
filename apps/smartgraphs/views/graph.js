@@ -279,7 +279,8 @@ Smartgraphs.GraphView = SC.View.extend(
       
       function loopAnimation() {
         rect.attr({
-          "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
+          y: yTopRect+plotHeightRect-30
+          // "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
         }).animate(keyframes, ms);
       }
       
@@ -294,7 +295,8 @@ Smartgraphs.GraphView = SC.View.extend(
         var dist = (pt[0] === 0 ? 0 : pt[0]/xMax) * 100; // WIDTH
         var y = pt[1] === 0 ? 0 : pt[1]/yMax;            // HEIGHT
         keyframes[dist+'%'] = {
-          "clip-rect": [xLeftRect, yTopRect+(plotHeightRect*(1-y)), plotWidthRect, plotHeightRect*(y)].join(',')
+          y: yTopRect+(plotHeightRect*(1-y))-30
+          // "clip-rect": [xLeftRect, yTopRect+(plotHeightRect*(1-y)), plotWidthRect, plotHeightRect*(y)].join(',')
         };
         if (idx+1===len) {
           keyframes[dist+'%'].callback = loopAnimation;
@@ -345,7 +347,8 @@ Smartgraphs.GraphView = SC.View.extend(
       var rect = this.getPath('animationView.layer').raphael;
 
       rect.attr({
-        "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
+        y: yTopRect+plotHeightRect-30
+        // "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
       });
     },
 
@@ -439,9 +442,9 @@ Smartgraphs.GraphView = SC.View.extend(
       isVisibleBinding: '.parentView.parentView.showAnimation',
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-          fill: '#555555', stroke: '#555555', opacity: 0.5,
-          "clip-rect": [xLeft, yTop+plotHeight, plotWidth, 0].join(',')
+        return raphaelCanvas.rect(xLeft, yTop+plotHeight-30, plotWidth, 30).attr({
+          fill: '#555555', stroke: '#555555', opacity: 0.8 //,
+          // "clip-rect": [xLeft, yTop+plotHeight, plotWidth, 0].join(',')
         });
       },
     
@@ -460,7 +463,7 @@ Smartgraphs.GraphView = SC.View.extend(
         }
         else {
           var rect = context.raphael();
-          rect.attr({x: xLeft, y: yTop, width: plotWidth, height: plotHeight});
+          rect.attr({x: xLeft, y: yTop+plotHeight-30, width: plotWidth, height: 30});
         }
       }
     })
