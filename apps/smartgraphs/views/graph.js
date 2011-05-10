@@ -442,8 +442,9 @@ Smartgraphs.GraphView = SC.View.extend(
       isVisibleBinding: '.parentView.parentView.showAnimation',
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        return raphaelCanvas.rect(xLeft, yTop+plotHeight-30, plotWidth, 30).attr({
-          fill: '#555555', stroke: '#555555', opacity: 0.8 //,
+        return raphaelCanvas.image(sc_static('images/car'), xLeft, yTop+plotHeight-30, plotWidth, 30).attr({
+        // return raphaelCanvas.rect(xLeft, yTop+plotHeight-30, plotWidth, 30).attr({
+          // fill: '#555555', stroke: '#555555', opacity: 0.8 //,
           // "clip-rect": [xLeft, yTop+plotHeight, plotWidth, 0].join(',')
         });
       },
