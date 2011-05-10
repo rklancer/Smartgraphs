@@ -47,6 +47,11 @@ Smartgraphs.GraphView = SC.View.extend(
     this.get('graphCanvasView').reset();
   },
   
+  showAnimationDidChange: function() {
+    this.padding = { top: 15, right: 15, bottom: 45, left: 120 };
+    this.replaceLayer();
+  }.observes('showAnimation'),
+  
   viewDidResize: function () {
     sc_super();
     Smartgraphs.statechart.sendAction('graphViewDidResize');
@@ -424,6 +429,7 @@ Smartgraphs.GraphView = SC.View.extend(
       
       yAxisView: Smartgraphs.AxisView.design({
         axisBinding: '.parentView.parentView.parentView.yAxis',
+        // showAnimationBinding: '.parentView.parentView.parentView.showAnimation',
         type: 'y'
       })
     }),
