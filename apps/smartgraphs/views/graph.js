@@ -223,7 +223,7 @@ Smartgraphs.GraphView = SC.View.extend(
     
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
     
-    childViews: 'axesView annotationsHolder dataHolder animationOverlay'.w(),
+    childViews: 'axesView annotationsHolder dataHolder animationOverlay animationView'.w(),
 
     axesView: RaphaelViews.RaphaelView.design({
       xAxisBinding: '.parentView.parentView.xAxis',
@@ -312,6 +312,8 @@ Smartgraphs.GraphView = SC.View.extend(
     // Holds the animation overlay. Should be later in the DOM (and thus "in front of") the dataset and annotation views.
     animationOverlay: RaphaelViews.RaphaelView.design({
       
+      isVisibleBinding: '.parentView.parentView.showAnimation',
+      
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
         var rect, times = 0;
         
@@ -334,8 +336,6 @@ Smartgraphs.GraphView = SC.View.extend(
       },
       
       render: function (context, firstTime) {
-        var showAnimation = this.getPath('parentView.parentView.showAnimation');
-        if (!showAnimation) return;
         var frame = this.getPath('parentView.frame');
         var padding = this.getPath('parentView.parentView.padding');
 
@@ -352,7 +352,53 @@ Smartgraphs.GraphView = SC.View.extend(
           rect.attr({x: xLeft, y: yTop, width: plotWidth, height: plotHeight});
         }
       }
-    })
+    }),
+    
+    // Holds the animation channel. Should be later in the DOM (and thus "in front of") the annotation views.
+    animationView: RaphaelViews.RaphaelView.design({
+      
+      isVisibleBinding: '.parentView.parentView.showAnimation',
+      
+      renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
+        var rect, times = 0;
+      
+        function loopAnimation() {
+          if (times++ > 3) return;
+          rect.attr({
+            "clip-rect": [xLeft, yTop+plotHeight, plotWidth, 0].join(',')
+          }).animate({
+            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+          }, 3000, loopAnimation);
+        }
+      
+        rect = raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
+          fill: '#555555', stroke: '#555555', opacity: 0.5,
+          "clip-rect": [xLeft, yTop+plotHeight, plotWidth, 0].join(',')
+        }).animate({
+          "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+        }, 3000, loopAnimation);
+      
+        return rect;
+      },
+    
+      render: function (context, firstTime) {
+        var frame = this.getPath('parentView.frame');
+        var padding = this.getPath('parentView.parentView.padding');
+        if (frame.width === 0) return;
 
+        var xLeft = frame.x + padding.left;
+        var yTop = frame.y + padding.top;
+        var plotWidth = 70 ;
+        var plotHeight = frame.height - padding.top - padding.bottom;
+      
+        if (firstTime) {
+          context.callback(this, this.renderCallback, xLeft, yTop, plotWidth, plotHeight);
+        }
+        else {
+          var rect = context.raphael();
+          rect.attr({x: xLeft, y: yTop, width: plotWidth, height: plotHeight});
+        }
+      }
+    })
   })
 });

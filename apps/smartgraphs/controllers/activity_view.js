@@ -25,6 +25,9 @@ Smartgraphs.activityViewController = SC.Object.create(
   firstGraphPaneControls: null,
   secondGraphPaneControls: null,
   
+  firstPaneHasAnimation: NO,
+  secondPaneHasAnimation: NO,
+  
   startControlIsVisible: NO,
   startControlIsEnabled: NO,
   startControlIsDefault: NO,
