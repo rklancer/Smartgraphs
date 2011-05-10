@@ -343,7 +343,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       overlay.attr({
         "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(','),
-        "opacity": 0.5
+        "opacity": 0.25
       });
 
       var xLeftRect = frame.x + 10;
