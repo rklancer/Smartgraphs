@@ -230,7 +230,7 @@ Smartgraphs.GraphView = SC.View.extend(
       
       // Now we can start animating.
       var raphaelCanvas = this.get('raphaelCanvas'),
-          overlay = this.getPath('animationOverlay.layer').raphael, times = 0;
+          overlay = this.getPath('animationOverlay.layer').raphael, overlayTimes = 0;
       
       var frame = this.get('frame');
       var padding = this.getPath('parentView.padding');
@@ -241,7 +241,7 @@ Smartgraphs.GraphView = SC.View.extend(
       var plotHeight = frame.height - padding.top - padding.bottom;
 
       function loopOverlayAnimation() {
-        if (times++ > 3) return;
+        if (overlayTimes++ > 3) return;
         overlay.attr({
           "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
         }).animate({
@@ -252,6 +252,25 @@ Smartgraphs.GraphView = SC.View.extend(
       overlay.animate({
         "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
       }, 3000, loopOverlayAnimation);
+      
+      var xLeftRect = frame.x + padding.left;
+      var yTopRect = frame.y + padding.top;
+      var plotWidthRect = 70 ;
+      var plotHeightRect = frame.height - padding.top - padding.bottom;
+      var rect = this.getPath('animationView.layer').raphael, times = 0;
+    
+      function loopAnimation() {
+        if (times++ > 3) return;
+        rect.attr({
+          "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
+        }).animate({
+          "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect].join(',')
+        }, 3000, loopAnimation);
+      }
+    
+      rect.animate({
+        "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect].join(',')
+      }, 3000, loopAnimation);
     },
     
     axesView: RaphaelViews.RaphaelView.design({
@@ -374,25 +393,10 @@ Smartgraphs.GraphView = SC.View.extend(
       isVisibleBinding: '.parentView.parentView.showAnimation',
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        var rect, times = 0;
-      
-        function loopAnimation() {
-          if (times++ > 3) return;
-          rect.attr({
-            "clip-rect": [xLeft, yTop+plotHeight, plotWidth, 0].join(',')
-          }).animate({
-            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
-          }, 3000, loopAnimation);
-        }
-      
-        rect = raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
+        return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
           fill: '#555555', stroke: '#555555', opacity: 0.5,
           "clip-rect": [xLeft, yTop+plotHeight, plotWidth, 0].join(',')
-        }).animate({
-          "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
-        }, 3000, loopAnimation);
-      
-        return rect;
+        });
       },
     
       render: function (context, firstTime) {
