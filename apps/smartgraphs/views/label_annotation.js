@@ -85,7 +85,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
         
   }.observes('xCoord', 'yCoord', 'xOffset', 'yOffset', 'width', 'height'),
 
-  childViews: 'focusPointView connectingLineView labelBodyView'.w(),
+  childViews: 'targetPointView connectingLineView labelBodyView'.w(),
   
   /**
     This is not a childView of the labelView; it's not part of the RaphaelView hierarchy. Instead, it's a normal
@@ -173,7 +173,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     });
   },
   
-  focusPointView: RaphaelViews.RaphaelView.design({
+  targetPointView: RaphaelViews.RaphaelView.design({
     displayProperties: 'xCoord yCoord stroke'.w(),
     
     labelView: SC.outlet('parentView'),
@@ -269,7 +269,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     anchorXCoordBinding: '.labelView.anchorXCoord',
     anchorYCoordBinding: '.labelView.anchorYCoord',
     
-    // How far from the focusPointView's center to start drawing the connecting line
+    // How far from the targetPointView's center to start drawing the connecting line
     startRadius: 9,
     
     renderCallback: function (raphaelCanvas, pathString, stroke, strokeWidth) {

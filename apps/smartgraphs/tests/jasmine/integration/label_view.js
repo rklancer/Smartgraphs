@@ -221,33 +221,33 @@ describe("LabelView behavior", function () {
         });
 
 
-        describe("its 'focusPoint' view", function () {
+        describe("its 'targetPoint' view", function () {
 
-          var focusPointView;
+          var targetPointView;
 
           beforeEach( function () {
-            focusPointView = labelView.get('focusPointView');
+            targetPointView = labelView.get('targetPointView');
           });
 
           it("should be a child view of the label view", function () {
-            expect(labelView.get('childViews')).toContain(focusPointView);
+            expect(labelView.get('childViews')).toContain(targetPointView);
           });
 
           it("should get (xCoord, yCoord) properties from label view", function () {
-            expect(focusPointView.get('xCoord')).toEqual(labelView.get('xCoord'));
-            expect(focusPointView.get('yCoord')).toEqual(labelView.get('yCoord'));
+            expect(targetPointView.get('xCoord')).toEqual(labelView.get('xCoord'));
+            expect(targetPointView.get('yCoord')).toEqual(labelView.get('yCoord'));
           });
 
           describe("its layer", function () {
 
-            var focusPointLayer;
+            var targetPointLayer;
 
             beforeEach( function () {
-              focusPointLayer = focusPointView.get('layer');
+              targetPointLayer = targetPointView.get('layer');
             });
 
             it("should be inside the graph view's layer", function () {
-              expect(focusPointLayer).toBeInside(graphView.$());
+              expect(targetPointLayer).toBeInside(graphView.$());
             });
           });
 
@@ -258,9 +258,9 @@ describe("LabelView behavior", function () {
                 yCoord;
 
             beforeEach( function () {          
-              path = focusPointView.get('layer').raphael.attr().path;
-              xCoord = focusPointView.get('xCoord');
-              yCoord = focusPointView.get('yCoord');
+              path = targetPointView.get('layer').raphael.attr().path;
+              xCoord = targetPointView.get('xCoord');
+              yCoord = targetPointView.get('yCoord');
             });
 
             it("should have 4 elements", function () {
@@ -302,9 +302,9 @@ describe("LabelView behavior", function () {
                   labelRecord.set('x', 3);
                   labelRecord.set('y', 4);
                 });
-                newPath = focusPointView.get('layer').raphael.attr().path;
-                newXCoord = focusPointView.get('xCoord');
-                newYCoord = focusPointView.get('yCoord');
+                newPath = targetPointView.get('layer').raphael.attr().path;
+                newXCoord = targetPointView.get('xCoord');
+                newYCoord = targetPointView.get('yCoord');
               });
 
               describe("newXCoord and newYCoord", function () {
