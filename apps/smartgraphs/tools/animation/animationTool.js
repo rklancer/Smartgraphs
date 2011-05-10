@@ -23,6 +23,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   
   foregroundImageURL: '',
   backgroundImageClassName: '',
+  offsetX: 0,
+  offsetY: 0,
   
   pane: function () {
     return this._pane;
@@ -43,8 +45,12 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
       
       this._inAnimating = NO;
       this._progress = 0;
+      
       if (args.foregroundImageURL) this.foregroundImageURL = args.foregroundImageURL;
       if (args.backgroundImageClassName) this.backgroundImageClassName = args.backgroundImageClassName;
+      this.offsetX = args.offsetX || 0;
+      this.offsetY = args.offsetY || 0;
+      
       Smartgraphs.statechart.gotoState(this.get('state'));
     }
   },

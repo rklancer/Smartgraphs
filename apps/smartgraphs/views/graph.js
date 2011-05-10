@@ -279,12 +279,13 @@ Smartgraphs.GraphView = SC.View.extend(
       var plotWidthRect = 70 ;
       var plotHeightRect = frame.height - padding.top - padding.bottom;
       var rect = this.getPath('animationView.layer').raphael;
-    
+      var offsetY = Smartgraphs.animationTool.get('offsetY');
+      
       var keyframes = {};
       
       function loopAnimation() {
         rect.attr({
-          y: yTopRect+plotHeightRect-30
+          y: yTopRect+plotHeightRect-30+offsetY
           // "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
         }).animate(keyframes, ms);
       }
@@ -300,7 +301,7 @@ Smartgraphs.GraphView = SC.View.extend(
         var dist = (pt[0] === 0 ? 0 : pt[0]/xMax) * 100; // WIDTH
         var y = pt[1] === 0 ? 0 : pt[1]/yMax;            // HEIGHT
         keyframes[dist+'%'] = {
-          y: yTopRect+(plotHeightRect*(1-y))-30
+          y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
           // "clip-rect": [xLeftRect, yTopRect+(plotHeightRect*(1-y)), plotWidthRect, plotHeightRect*(y)].join(',')
         };
         if (idx+1===len) {
@@ -350,9 +351,10 @@ Smartgraphs.GraphView = SC.View.extend(
       var plotWidthRect = 70 ;
       var plotHeightRect = frame.height - padding.top - padding.bottom;
       var rect = this.getPath('animationView.layer').raphael;
+      var offsetY = Smartgraphs.animationTool.get('offsetY');
 
       rect.attr({
-        y: yTopRect+plotHeightRect-30
+        y: yTopRect+plotHeightRect-30+offsetY
         // "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
       });
     },
@@ -460,13 +462,15 @@ Smartgraphs.GraphView = SC.View.extend(
         var yTop = frame.y + padding.top;
         var plotWidth = 70 ;
         var plotHeight = frame.height - padding.top - padding.bottom;
+        var offsetX = Smartgraphs.animationTool.get('offsetX');
+        var offsetY = Smartgraphs.animationTool.get('offsetY');
       
         if (firstTime) {
-          context.callback(this, this.renderCallback, xLeft, yTop, plotWidth, plotHeight);
+          context.callback(this, this.renderCallback, xLeft+offsetX, yTop+offsetY, plotWidth, plotHeight);
         }
         else {
           var rect = context.raphael();
-          rect.attr({x: xLeft, y: yTop+plotHeight-30, width: plotWidth, height: 30});
+          rect.attr({x: xLeft+offsetX, y: yTop+plotHeight-30+offsetY, width: plotWidth, height: 30});
         }
       }
     })

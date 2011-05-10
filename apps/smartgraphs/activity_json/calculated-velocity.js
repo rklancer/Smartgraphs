@@ -69,7 +69,9 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
             "pane": "top",
             "length": 3000,
             "foregroundImageURL": sc_static('images/car'),
-            "backgroundImageClassName": 'road'
+            "backgroundImageClassName": "road",
+            "offsetX": 0,
+            "offsetY": 0
           }
         }
       ]
