@@ -38,7 +38,11 @@ describe("LabelView behavior", function () {
       toHaveColor: function (hexColor) {
         var actual = this.actual.jquery ? this.actual : $(this.actual);
         return actual.css('color') === $('<div>').css('color', hexColor).css('color');
-      }
+      },
+      
+      toBeVisible: function () {
+        return !!this.actual.get('isVisible');
+      }        
     });
   });
   
@@ -79,7 +83,8 @@ describe("LabelView behavior", function () {
         x: 1,
         y: 2,
         xOffset: -10,
-        yOffset: -20
+        yOffset: -20,
+        shouldMarkTargetPoint: YES
       });
       
       graphController.addAnnotation(labelRecord);
@@ -237,6 +242,28 @@ describe("LabelView behavior", function () {
             expect(targetPointView.get('xCoord')).toEqual(labelView.get('xCoord'));
             expect(targetPointView.get('yCoord')).toEqual(labelView.get('yCoord'));
           });
+          
+          describe("when the label's shouldMarkTargetPoint property is YES", function () {
+            
+            runBeforeEach( function () {
+              labelRecord.set('shouldMarkTargetPoint', YES);
+            });
+            
+            it("should be visible", function () {
+              expect(targetPointView).toBeVisible();
+            });
+          });
+          
+          describe("when the label's shouldMarkTargetPoint property is NO", function () {
+            
+            runBeforeEach( function () {
+              labelRecord.set('shouldMarkTargetPoint', NO);
+            });
+            
+            it("should not be visible", function () {
+              expect(targetPointView).not.toBeVisible();
+            });
+          });
 
           describe("its layer", function () {
 
@@ -245,7 +272,7 @@ describe("LabelView behavior", function () {
             beforeEach( function () {
               targetPointLayer = targetPointView.get('layer');
             });
-
+              
             it("should be inside the graph view's layer", function () {
               expect(targetPointLayer).toBeInside(graphView.$());
             });
@@ -326,6 +353,8 @@ describe("LabelView behavior", function () {
             });
 
           });
+        
+        
         });
 
 

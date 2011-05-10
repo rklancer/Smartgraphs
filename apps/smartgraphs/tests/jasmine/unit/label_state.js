@@ -60,10 +60,10 @@ describe("LABEL_TOOL state", function () {
             spyOn(labelTool, 'createLabel').andReturn(labelAnnotation);  
             spyOn(labelTool, 'appendLabel').andReturn(YES);                    
             state.mouseDownAtPoint('the action context', {x: 1, y: 2});
-          }); 
+          });
     
-          it("should ask the labelTool to create a new label annotation with the specified name and coordinates", function () {
-            expect(labelTool.createLabel).toHaveBeenCalledWith('the label name', 1, 2);
+          it("should ask the labelTool to create a new label annotation with the specified name and coordinates, and with shouldMarkTargetPoint equal to YES", function () {
+            expect(labelTool.createLabel).toHaveBeenCalledWith('the label name', 1, 2, YES);
           });
       
           it("should ask the labelTool to add the label to the controller", function () {
@@ -102,6 +102,32 @@ describe("LABEL_TOOL state", function () {
             });
 
           });
+        });
+      });
+    });
+
+    describe('dataPointSelected handler', function () {
+
+      it("should exist", function () {
+        spyOn(state, 'dataPointSelected'); 
+        statechart.sendAction('dataPointSelected', 'the action context', 'the action args');
+        expect(state.dataPointSelected).toHaveBeenCalledWith('the action context', 'the action args');
+      });
+      
+      describe("when called", function () {
+        
+        var labelAnnotation;
+      
+        beforeEach( function () {
+          labelAnnotation = SC.Object.create(); 
+        
+          spyOn(labelTool, 'createLabel').andReturn(labelAnnotation);  
+          spyOn(labelTool, 'appendLabel').andReturn(YES);                    
+          state.dataPointSelected('the action context', {x: 1, y: 2});
+        });
+        
+        it("should ask the labelTool to create a new label annotation with the specified name and coordinates, and with shouldMarkTargetPoint equal to NO", function () {
+          expect(labelTool.createLabel).toHaveBeenCalledWith('the label name', 1, 2, NO);
         });
       });
     });

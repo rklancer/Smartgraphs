@@ -72,23 +72,54 @@ describe("Smartgraphs.labelTool", function () {
       spyOn(labelTool, 'getAnnotation').andReturn(store.createRecord(Smartgraphs.LabelAnnotation, {
         url: 'the-annotation'
       }));
-      labelAnnotation = labelTool.createLabel('the label name', 1, 2);
-    });
-      
-    it("should return the object found by getAnnotation", function () {
-      expect(labelTool.getAnnotation).toHaveBeenCalledWith('the label name');
     });
     
-    describe("the annotation returned by the method", function () {
+    describe("when the shouldMarkTargetPoint argument is YES", function () {
       
-      it("should have an x-value equal to the passed x-value", function () {
-        expect(labelAnnotation.get('x')).toEqual(1);
+      beforeEach( function () {
+        labelAnnotation = labelTool.createLabel('the label name', 1, 2, YES);
+      });
+          
+      it("should return the object found by getAnnotation", function () {
+        expect(labelTool.getAnnotation).toHaveBeenCalledWith('the label name');
+      });
+    
+      describe("the annotation returned by the method", function () {
+      
+        it("should have an x-value equal to the passed x-value", function () {
+          expect(labelAnnotation.get('x')).toEqual(1);
+        });
+      
+        it("should have a y-value equal to the passed y-value", function () {
+          expect(labelAnnotation.get('y')).toEqual(2);
+        });
+      
+        it("should have a shouldMarkTargetPoint value equal to YES", function () {
+          expect(labelAnnotation.get('shouldMarkTargetPoint')).toEqual(YES);
+        });
+      });
+    });
+    
+    describe("when the shouldMarkTargetPoint argument is NO", function () {
+
+      beforeEach( function () {
+        labelAnnotation = labelTool.createLabel('the label name', 1, 2, NO);
       });
       
-      it("should have a y-value equal to the passed y-value", function () {
-        expect(labelAnnotation.get('y')).toEqual(2);
-      });
+      describe("the annotation returned by the method", function () {
+
+        it("should have an x-value equal to the passed x-value", function () {
+          expect(labelAnnotation.get('x')).toEqual(1);
+        });
       
+        it("should have a y-value equal to the passed y-value", function () {
+          expect(labelAnnotation.get('y')).toEqual(2);
+        });
+        
+        it("should have a shouldMarkTargetPoint value equal to NO", function () {
+          expect(labelAnnotation.get('shouldMarkTargetPoint')).toEqual(NO);
+        });
+      });
     });
   });
   
