@@ -1,13 +1,22 @@
 // ==========================================================================
-// Project:   Smartgraphs.animationController
+// Project:   Smartgraphs.animationTool
 // Copyright: ©2011 Concord Consortium
 // Author:    Erich Ocean <erich.ocean@me.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
-Smartgraphs.animationController = SC.Object.create(
-/** @scope Smartgraphs.animationController.prototype */ {
+sc_require('tools/tool');
+
+/** @class
+
+  @extends Smartgraphs.Tool
+*/
+Smartgraphs.animationTool = Smartgraphs.Tool.create(
+/** @scope Smartgraphs.animationTool.prototype */ {
   
+  name: 'animation',
+  state: 'ANIMATION_TOOL',
+
   _pane: null,
   _length: 3000, // default to three seconds
   _loop: true,
@@ -16,21 +25,19 @@ Smartgraphs.animationController = SC.Object.create(
     return this._pane;
   }.property(),
   
-  register: function (pane, options) {
-    // console.log(options);
-    pane = Smartgraphs.activityViewController.validPaneFor(pane);
-    options = options || {};
+  setup: function (args) {
+    args = args || {};
+    var pane = Smartgraphs.activityViewController.validPaneFor(args.pane);
     
     if (pane) {
       this._pane = pane;
-      this._length = options.length || 3000; // in milliseconds
-      this._loop = (options.loop !== undefined) ? options.loop : true;
+      this._length = args.length || 3000; // in milliseconds
+      this._loop = (args.loop !== undefined) ? args.loop : true;
       
       this._inAnimating = NO;
       this._progress = 0;
-      return YES;
+      Smartgraphs.statechart.gotoState(this.get('state'));
     }
-    return NO;
   },
   
   _inAnimating: NO,

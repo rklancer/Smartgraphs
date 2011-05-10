@@ -63,10 +63,9 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
         }
       ],
       "beforeText": "<p>Try clicking an interesting area of the velocity-time data on the left. Note that the velocity-time data are derived from the position-time data.</p>",
-      "startCommands": [
-        {
-          "name": "showAnimation",
-          "args": {
+      "tools": [
+        { "name": "animation",
+          "setup": {
             "pane": "top",
             "length": 3000
           }

@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.SENSOR
+// Project:   Smartgraphs.ANIMATION_TOOL
 // Copyright: ©2011 Concord Consortium
 // Author:    Erich Ocean <erich.ocean@me.com>
 // ==========================================================================
@@ -13,13 +13,13 @@
   @version 0.1
 */
 
-Smartgraphs.ANIMATION = SC.State.extend(
+Smartgraphs.ANIMATION_TOOL = SC.State.extend(
 /** @scope Smartgraphs.ANIMATION.prototype */ {
   
   initialSubstate: 'ANIMATION_CLEARED',
   
   enterState: function () {
-    var pane = Smartgraphs.animationController.get('pane');
+    var pane = Smartgraphs.animationTool.get('pane');
     
     Smartgraphs.activityViewController.revealAllControls();
     Smartgraphs.activityViewController.showControls(pane);
@@ -27,7 +27,7 @@ Smartgraphs.ANIMATION = SC.State.extend(
   },
   
   exitState: function () {
-    var pane = Smartgraphs.animationController.get('pane');
+    var pane = Smartgraphs.animationTool.get('pane');
     
     Smartgraphs.activityViewController.hideAnimation(pane);
     Smartgraphs.activityViewController.hideControls(pane);
@@ -40,7 +40,7 @@ Smartgraphs.ANIMATION = SC.State.extend(
   ANIMATION_CLEARED: SC.State.design({
 
     enterState: function () {
-      Smartgraphs.animationController.clearAnimation();
+      Smartgraphs.animationTool.clearAnimation();
       Smartgraphs.activityViewController.highlightStartControl();
     },
 
@@ -54,7 +54,7 @@ Smartgraphs.ANIMATION = SC.State.extend(
   ANIMATION_RUNNING: SC.State.design({
 
     enterState: function () {
-      Smartgraphs.animationController.startAnimating();
+      Smartgraphs.animationTool.startAnimating();
       Smartgraphs.activityViewController.highlightStopControl();
     },
     
@@ -73,7 +73,7 @@ Smartgraphs.ANIMATION = SC.State.extend(
   ANIMATION_STOPPED: SC.State.design({
     
     enterState: function () {
-      Smartgraphs.animationController.stopAnimating();
+      Smartgraphs.animationTool.stopAnimating();
       Smartgraphs.activityViewController.highlightStartControl();
       Smartgraphs.activityViewController.enableClearControl();
     },

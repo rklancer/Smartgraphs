@@ -104,30 +104,4 @@ Smartgraphs.executor.defineCommands(function (def) {
     }
   });
   
-  /**
-    Allows animation of a graph with the provided pane. This command draws the animation
-    channel and displays Start, Stop, and Clear buttons below the graph.
-    
-    The system remains in the ANIMATION state or one of its substates until the user submits the step.
-    
-    @param args
-    
-    @param {String} args.pane
-      The pane that will be animated, one of: "single", "top" or "bottom".
-    @param {String} args.*
-      Additional members of args are passed as options to Smartgraphs.animationController.register().
-  */
-  def('showAnimation', function (args) {
-    var pane = args.pane;
-    pane = Smartgraphs.activityViewController.validPaneFor(pane);
-    
-    if ( !pane ) return "couldn't find the pane";
-    
-    delete args.pane; // not part of the options we care about
-    
-    if (Smartgraphs.animationController.register(pane, args)) {
-      Smartgraphs.statechart.gotoState('ANIMATION');
-    }
-  });
-  
 });
