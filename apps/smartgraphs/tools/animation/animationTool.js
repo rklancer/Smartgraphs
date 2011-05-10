@@ -21,6 +21,9 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   _length: 3000, // default to three seconds
   _loop: true,
   
+  foregroundImageURL: '',
+  backgroundImageClassName: '',
+  
   pane: function () {
     return this._pane;
   }.property(),
@@ -40,6 +43,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
       
       this._inAnimating = NO;
       this._progress = 0;
+      if (args.foregroundImageURL) this.foregroundImageURL = args.foregroundImageURL;
+      if (args.backgroundImageClassName) this.backgroundImageClassName = args.backgroundImageClassName;
       Smartgraphs.statechart.gotoState(this.get('state'));
     }
   },

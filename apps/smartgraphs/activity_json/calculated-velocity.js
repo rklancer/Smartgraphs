@@ -67,7 +67,9 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
         { "name": "animation",
           "setup": {
             "pane": "top",
-            "length": 3000
+            "length": 3000,
+            "foregroundImageURL": sc_static('images/car'),
+            "backgroundImageClassName": 'road'
           }
         }
       ]

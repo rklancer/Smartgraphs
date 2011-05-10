@@ -447,7 +447,8 @@ Smartgraphs.GraphView = SC.View.extend(
       isVisibleBinding: '.parentView.parentView.showAnimation',
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        return raphaelCanvas.image(sc_static('images/car'), xLeft, yTop+plotHeight-30, plotWidth, 30);
+        var imageURL = Smartgraphs.animationTool.get('foregroundImageURL');
+        return raphaelCanvas.image(imageURL, xLeft, yTop+plotHeight-30, plotWidth, 30);
       },
     
       render: function (context, firstTime) {
