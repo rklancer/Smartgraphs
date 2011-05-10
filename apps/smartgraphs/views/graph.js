@@ -117,6 +117,7 @@ Smartgraphs.GraphView = SC.View.extend(
     // append data and annotations 
     if (itemType === 'data') {
       this.get('dataHolder').appendChild(view);
+      this.graphCanvasView.invokeLast('_animate');
     }
     else if (itemType === 'annotation') {
       this.get('annotationsHolder').appendChild(view);
@@ -223,14 +224,14 @@ Smartgraphs.GraphView = SC.View.extend(
     
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
     
-    childViews: 'axesView annotationsHolder dataHolder animationOverlay animationView'.w(),
+    childViews: 'axesView annotationsHolder dataHolder animationView'.w(),
     
-    didCreateLayer: function() {
-      sc_super(); // populates SVG/Raphael
-      
-      // Now we can start animating.
+    _animate: function() {
       var raphaelCanvas = this.get('raphaelCanvas'),
-          overlay = this.getPath('animationOverlay.layer').raphael, overlayTimes = 0;
+          overlay = this.getPath('dataHolder.childViews.0.layer'), overlayTimes = 0;
+      
+      if (overlay) overlay = overlay.raphael;
+      if (!overlay) return;
       
       var frame = this.get('frame');
       var padding = this.getPath('parentView.padding');
@@ -365,36 +366,6 @@ Smartgraphs.GraphView = SC.View.extend(
     dataHolder: RaphaelViews.RaphaelView.design({
     }),
 
-    // Holds the animation overlay. Should be later in the DOM (and thus "in front of") the dataset and annotation views.
-    animationOverlay: RaphaelViews.RaphaelView.design({
-      
-      isVisibleBinding: '.parentView.parentView.showAnimation',
-      
-      renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
-          fill: '#f7f8fa', stroke: '#f7f8fa', opacity: 1.0
-        });
-      },
-      
-      render: function (context, firstTime) {
-        var frame = this.getPath('parentView.frame');
-        var padding = this.getPath('parentView.parentView.padding');
-
-        var xLeft = frame.x + padding.left;
-        var yTop = frame.y + padding.top;
-        var plotWidth = frame.width - padding.left - padding.right;
-        var plotHeight = frame.height - padding.top - padding.bottom;
-        
-        if (firstTime) {
-          context.callback(this, this.renderCallback, xLeft, yTop, plotWidth, plotHeight);
-        }
-        else {       
-          var rect = context.raphael();
-          rect.attr({x: xLeft, y: yTop, width: plotWidth, height: plotHeight});
-        }
-      }
-    }),
-    
     // Holds the animation channel. Should be later in the DOM (and thus "in front of") the annotation views.
     animationView: RaphaelViews.RaphaelView.design({
       
