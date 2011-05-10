@@ -450,6 +450,15 @@ Smartgraphs.GraphView = SC.View.extend(
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
         var imageURL = Smartgraphs.animationTool.get('foregroundImageURL');
+        if (imageURL.indexOf('.') === -1) {
+          if (imageURL === 'circle') {
+            imageURL = sc_static('images/circle');
+          } else if (imageURL === 'box') {
+            imageURL = sc_static('images/box');
+          } else if (imageURL === 'cross') {
+            imageURL = sc_static('images/cross');
+          }
+        }
         return raphaelCanvas.image(imageURL, xLeft, yTop+plotHeight-30, plotWidth, 30);
       },
     
