@@ -345,7 +345,7 @@ Smartgraphs.GraphView = SC.View.extend(
         "opacity": 0.5
       });
 
-      var xLeftRect = frame.x + padding.left;
+      var xLeftRect = frame.x + 10;
       var yTopRect = frame.y + padding.top;
       var plotWidthRect = 70 ;
       var plotHeightRect = frame.height - padding.top - padding.bottom;
@@ -429,7 +429,6 @@ Smartgraphs.GraphView = SC.View.extend(
       
       yAxisView: Smartgraphs.AxisView.design({
         axisBinding: '.parentView.parentView.parentView.yAxis',
-        // showAnimationBinding: '.parentView.parentView.parentView.showAnimation',
         type: 'y'
       })
     }),
@@ -448,11 +447,7 @@ Smartgraphs.GraphView = SC.View.extend(
       isVisibleBinding: '.parentView.parentView.showAnimation',
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        return raphaelCanvas.image(sc_static('images/car'), xLeft, yTop+plotHeight-30, plotWidth, 30).attr({
-        // return raphaelCanvas.rect(xLeft, yTop+plotHeight-30, plotWidth, 30).attr({
-          // fill: '#555555', stroke: '#555555', opacity: 0.8 //,
-          // "clip-rect": [xLeft, yTop+plotHeight, plotWidth, 0].join(',')
-        });
+        return raphaelCanvas.image(sc_static('images/car'), xLeft, yTop+plotHeight-30, plotWidth, 30);
       },
     
       render: function (context, firstTime) {
@@ -460,7 +455,7 @@ Smartgraphs.GraphView = SC.View.extend(
         var padding = this.getPath('parentView.parentView.padding');
         if (frame.width === 0) return;
 
-        var xLeft = frame.x + padding.left;
+        var xLeft = frame.x + 10;
         var yTop = frame.y + padding.top;
         var plotWidth = 70 ;
         var plotHeight = frame.height - padding.top - padding.bottom;

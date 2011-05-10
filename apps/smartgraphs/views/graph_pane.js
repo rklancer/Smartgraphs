@@ -13,7 +13,14 @@
 Smartgraphs.GraphPane = SC.View.extend(
 /** @scope Smartgraphs.GraphPane.prototype */ {
 
-  childViews: 'graphView controlsContainer'.w(),
+  childViews: 'animationChannelView graphView controlsContainer'.w(),
+  
+  // MUST come before graphView
+  animationChannelView: SC.ContainerView.design({
+    layout: { left: 10, top: 15, width: 70, bottom: 0 },
+    classNames: 'blue'.w(),
+    isVisibleBinding: '.parentView.showAnimation'
+  }),
   
   graphView: Smartgraphs.GraphView.design({
     graphControllerBinding: '.parentView.graphController',
@@ -34,6 +41,7 @@ Smartgraphs.GraphPane = SC.View.extend(
       height = 35;
     }
     
+    this.get('animationChannelView').adjust('bottom', bottom);
     this.get('graphView').adjust('bottom', bottom);
     this.get('controlsContainer').adjust('height', height);
     this.setPath('controlsContainer.nowShowing', nowShowing);
