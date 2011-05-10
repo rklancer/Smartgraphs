@@ -226,7 +226,7 @@ Smartgraphs.GraphView = SC.View.extend(
     childViews: 'axesView annotationsHolder dataHolder animationOverlay animationView'.w(),
     
     didCreateLayer: function() {
-      sc_super(); // populates Raphael
+      sc_super(); // populates SVG/Raphael
       
       // Now we can start animating.
       var raphaelCanvas = this.get('raphaelCanvas'),
@@ -268,7 +268,7 @@ Smartgraphs.GraphView = SC.View.extend(
         }, 3000, loopAnimation);
       }
     
-      rect.animate({
+      rect.animateWith(overlay, {
         "clip-rect": [xLeftRect, yTopRect, plotWidthRect, plotHeightRect].join(',')
       }, 3000, loopAnimation);
     },
