@@ -224,7 +224,36 @@ Smartgraphs.GraphView = SC.View.extend(
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
     
     childViews: 'axesView annotationsHolder dataHolder animationOverlay animationView'.w(),
+    
+    didCreateLayer: function() {
+      sc_super(); // populates Raphael
+      
+      // Now we can start animating.
+      var raphaelCanvas = this.get('raphaelCanvas'),
+          overlay = this.getPath('animationOverlay.layer').raphael, times = 0;
+      
+      var frame = this.get('frame');
+      var padding = this.getPath('parentView.padding');
 
+      var xLeft = frame.x + padding.left;
+      var yTop = frame.y + padding.top;
+      var plotWidth = frame.width - padding.left - padding.right;
+      var plotHeight = frame.height - padding.top - padding.bottom;
+
+      function loopOverlayAnimation() {
+        if (times++ > 3) return;
+        overlay.attr({
+          "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+        }).animate({
+          "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
+        }, 3000, loopOverlayAnimation);
+      }
+      
+      overlay.animate({
+        "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
+      }, 3000, loopOverlayAnimation);
+    },
+    
     axesView: RaphaelViews.RaphaelView.design({
       xAxisBinding: '.parentView.parentView.xAxis',
       yAxisBinding: '.parentView.parentView.yAxis',     
@@ -315,24 +344,9 @@ Smartgraphs.GraphView = SC.View.extend(
       isVisibleBinding: '.parentView.parentView.showAnimation',
       
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        var rect, times = 0;
-        
-        function loopAnimation() {
-          if (times++ > 3) return;
-          rect.attr({
-            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
-          }).animate({
-            "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
-          }, 3000, loopAnimation);
-        }
-        
-        rect = raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
+        return raphaelCanvas.rect(xLeft, yTop, plotWidth, plotHeight).attr({
           fill: '#f7f8fa', stroke: '#f7f8fa', opacity: 1.0
-        }).animate({
-          "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
-        }, 3000, loopAnimation);
-        
-        return rect;
+        });
       },
       
       render: function (context, firstTime) {
