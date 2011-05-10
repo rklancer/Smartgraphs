@@ -19,7 +19,6 @@ sc_require('views/label_annotation');
 Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.LabelAnnotation.prototype */ {
 
-  
   /**
     The x-value of the point being labeled.
     
@@ -39,36 +38,23 @@ Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
     
     @property {String}
   */
-  text: SC.Record.attr(String)
+  text: SC.Record.attr(String),
   
-  // OLD
+  /**
+    x-position of the lower left corner of the label, relative to the point the label is annotating.
+    Note that this is measured in pixels.
+    
+    @property {Number}    
+  */
+  xOffset: SC.Record.attr(Number, { defaultValue: -100 }),
   
-  // /**
-  //   The position of the label is defined relative to the point it is associated with.
-  //   This value (default 0) defines how far the center of the label should be offset 
-  //   horizontally from the x-value of the associated point; negative values will move 
-  //   the label left, and positive values will move it right.
-  //   
-  //   @property {String}
-  // */
-  // xOffset: SC.Record.attr(Number, { defaultValue: 0 }),
-  // 
-  // /**
-  //   The position of the label is defined relative to the point it is associated with.
-  //   This value (default 10) defines how far the center of the label should be offset 
-  //   vertically from the y-value of the associated point; negative values will move 
-  //   the label up, and positive values will move it down.
-  //   
-  //   @property {String}
-  // */
-  // yOffset: SC.Record.attr(Number, { defaultValue: -15 }),
-  // 
-  // /** 
-  //   The pixel size of the label type.
-  //   
-  //   @property {Number}
-  // */
-  // size: SC.Record.attr(Number, { defaultValue: 15 })
+  /**
+    y-position of the lower left corner of the label, relative to the point the label is annotating.
+    Note that this is measured in pixels.
+  
+    @property {Number}
+  */
+  yOffset: SC.Record.attr(Number, { defaultValue: -40})
 
 }) ;
 

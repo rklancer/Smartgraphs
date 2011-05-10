@@ -77,7 +77,9 @@ describe("LabelView behavior", function () {
         name: 'the name of the label',
         text: 'test text',
         x: 1,
-        y: 2
+        y: 2,
+        xOffset: -10,
+        yOffset: -20
       });
       
       graphController.addAnnotation(labelRecord);
@@ -397,16 +399,16 @@ describe("LabelView behavior", function () {
         });
 
 
-        describe("its 'labelOutline' view", function () {
+        describe("its 'labelBody' view", function () {
           
-          var labelOutlineView;
+          var labelBodyView;
 
           beforeEach( function () {
-            labelOutlineView = labelView.get('labelOutlineView');
+            labelBodyView = labelView.get('labelBodyView');
           });
 
           it("should be a child view of the label view", function () {
-            expect(labelView.get('childViews')).toContain(labelOutlineView);
+            expect(labelView.get('childViews')).toContain(labelBodyView);
           });
 
           describe("its raphael object", function () {
@@ -414,7 +416,7 @@ describe("LabelView behavior", function () {
             var attrs;
 
             beforeEach( function () {
-              attrs = labelOutlineView.get('layer').raphael.attrs;
+              attrs = labelBodyView.get('layer').raphael.attrs;
             });
 
             it("should start at (bodyXCoord, bodyYCoord", function () {
