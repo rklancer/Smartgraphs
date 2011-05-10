@@ -267,9 +267,13 @@ Smartgraphs.GraphView = SC.View.extend(
       function loopOverlayAnimation() {
         line.attr({
           "clip-rect": [xLeft, yTop, 0, plotHeight].join(',')
-        }).animate({
-          "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
-        }, ms, loopOverlayAnimation);
+        });
+        
+        setTimeout(function() {
+          line.animate({
+            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+          }, ms, loopOverlayAnimation);
+        }, 50);
       }
       line.attr({ "opacity": 1.0 });
       loopOverlayAnimation();
@@ -287,7 +291,11 @@ Smartgraphs.GraphView = SC.View.extend(
         rect.attr({
           y: yTopRect+plotHeightRect-30+offsetY
           // "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
-        }).animate(keyframes, ms);
+        });
+        
+        setTimeout(function() {
+          rect.animate(keyframes, ms);
+        }, 50);
       }
       
       // FIXME: Scale axis appropriately.
