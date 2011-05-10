@@ -54,7 +54,15 @@ Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
   
     @property {Number}
   */
-  yOffset: SC.Record.attr(Number, { defaultValue: -40})
+  yOffset: SC.Record.attr(Number, { defaultValue: -40}),
+  
+  /**
+    Whether to draw an 'x' (or other marker) at the target point. Should be NO if we are pointing right at a clearly
+    marked data point, for example.
+    
+    @property {Boolean}
+  */
+  shouldMarkTargetPoint: SC.Record.attr(Boolean, { defaultValue: YES })
 
 }) ;
 

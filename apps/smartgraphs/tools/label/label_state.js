@@ -31,18 +31,18 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     },
     
     mouseDownAtPoint: function (context, args) {
-      this.addLabelAt(args.x, args.y);
+      this.addLabelAt(args.x, args.y, YES);
       return YES;
     },
     
     dataPointSelected: function (context, args) {
-      this.addLabelAt(args.x, args.y);
+      this.addLabelAt(args.x, args.y, NO);
       return YES;
     },
 
-    addLabelAt: function (x, y) {
+    addLabelAt: function (x, y, shouldMarkTargetPoint) {
       var labelName = this.getPath('parentState.labelName'),
-          label     = Smartgraphs.labelTool.createLabel(labelName, x, y);
+          label     = Smartgraphs.labelTool.createLabel(labelName, x, y, shouldMarkTargetPoint);
       
       if (label) {
         Smartgraphs.labelTool.appendLabel(this, label);

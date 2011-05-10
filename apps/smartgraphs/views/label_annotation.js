@@ -32,7 +32,10 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   textDidChange: function () {
     this.get('labelTextView').updateText();
   }.observes('text', 'textColor'),
-
+  
+  shouldMarkTargetPointBinding: '*item.shouldMarkTargetPoint',
+  shouldMarkTargetPointBindingDefault: SC.Binding.oneWay(),
+  
   stroke: '#000000',
   fill: '#ffffff',
   
@@ -172,10 +175,22 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   
   focusPointView: RaphaelViews.RaphaelView.design({
     displayProperties: 'xCoord yCoord stroke'.w(),
+    
+    labelView: SC.outlet('parentView'),
 
-    xCoordBinding: '.parentView.xCoord',
-    yCoordBinding: '.parentView.yCoord',
-    strokeBinding: '.parentView.stroke',
+    xCoordBinding: '.labelView.xCoord',
+    yCoordBinding: '.labelView.yCoord',
+    strokeBinding: '.labelView.stroke',
+
+    // Using a computed property for 'isVisible' here because the following locks up the jasmine test for some reason:
+    // isVisibleBinding: '.labelView.shouldMarkTargetPoint',
+    // isVisibleBindingDefault: SC.Binding.oneWay(),
+
+    shouldMarkTargetPointBinding: '.labelView.shouldMarkTargetPoint',
+    
+    isVisible: function () {
+      return this.get('shouldMarkTargetPoint');
+    }.property('shouldMarkTargetPoint'),
     
     renderCallback: function(raphaelCanvas, pathString, stroke) {
       return raphaelCanvas.path(pathString).attr({ stroke: stroke });

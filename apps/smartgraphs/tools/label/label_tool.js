@@ -52,11 +52,12 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
     controller.labelToolStartTool(args.labelName);
   },
   
-  createLabel: function (name, x, y) {
+  createLabel: function (name, x, y, shouldMarkTargetPoint) {
     var label = this.getAnnotation(name);
     
     label.set('x', x);
     label.set('y', y);
+    label.set('shouldMarkTargetPoint', shouldMarkTargetPoint);
     
     return label;
   },
