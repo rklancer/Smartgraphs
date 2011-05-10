@@ -250,15 +250,13 @@ Smartgraphs.GraphView = SC.View.extend(
       function loopOverlayAnimation() {
         if (overlayTimes++ > 3) return;
         overlay.attr({
-          "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+          "clip-rect": [xLeft, yTop, 0, plotHeight].join(',')
         }).animate({
-          "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
+          "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
         }, ms, loopOverlayAnimation);
       }
       
-      overlay.animate({
-        "clip-rect": [xLeft+plotWidth, yTop, 0, plotHeight].join(',')
-      }, ms, loopOverlayAnimation);
+      loopOverlayAnimation();
       
       var xLeftRect = frame.x + padding.left;
       var yTopRect = frame.y + padding.top;
@@ -270,7 +268,7 @@ Smartgraphs.GraphView = SC.View.extend(
       
       function loopAnimation() {
         if (times++ > 3) return;
-        rect.animate({
+        rect.attr({
           "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
         }).animate(keyframes, ms);
       }
