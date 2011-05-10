@@ -244,12 +244,11 @@ Smartgraphs.GraphView = SC.View.extend(
     childViews: 'axesView annotationsHolder dataHolder animationView'.w(),
     
     animate: function() {
-      var ms = 3000, raphaelCanvas = this.get('raphaelCanvas'),
-          overlay = this.getPath('dataHolder.childViews.0.layer'),
+      var line = this.getPath('dataHolder.childViews.0.layer'),
           dataSetView = this.getPath('dataHolder.childViews.0'), item, points;
       
-      if (overlay) overlay = overlay.raphael;
-      if (!overlay) return;
+      if (line) line = line.raphael;
+      if (!line) return;
       
       if (dataSetView) {
         item = dataSetView.get('item');
@@ -263,15 +262,16 @@ Smartgraphs.GraphView = SC.View.extend(
       var yTop = frame.y + padding.top;
       var plotWidth = frame.width - padding.left - padding.right;
       var plotHeight = frame.height - padding.top - padding.bottom;
+      var ms = Smartgraphs.animationTool.get('length'); // ms
 
       function loopOverlayAnimation() {
-        overlay.attr({
+        line.attr({
           "clip-rect": [xLeft, yTop, 0, plotHeight].join(',')
         }).animate({
           "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
         }, ms, loopOverlayAnimation);
       }
-      overlay.attr({ "opacity": 1.0 });
+      line.attr({ "opacity": 1.0 });
       loopOverlayAnimation();
       
       var xLeftRect = frame.x + padding.left;

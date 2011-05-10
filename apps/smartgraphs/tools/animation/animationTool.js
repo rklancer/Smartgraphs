@@ -18,8 +18,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   state: 'ANIMATION_TOOL',
 
   _pane: null,
-  _length: 3000, // default to three seconds
-  _loop: true,
+  length: 3000, // default to three seconds
   
   foregroundImageURL: '',
   backgroundImageClassName: '',
@@ -40,11 +39,9 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     
     if (pane) {
       this._pane = pane;
-      this._length = args.length || 3000; // in milliseconds
-      this._loop = (args.loop !== undefined) ? args.loop : true;
+      this.length = args.length || 3000; // in milliseconds
       
       this._inAnimating = NO;
-      this._progress = 0;
       
       if (args.foregroundImageURL) this.foregroundImageURL = args.foregroundImageURL;
       if (args.backgroundImageClassName) this.backgroundImageClassName = args.backgroundImageClassName;
