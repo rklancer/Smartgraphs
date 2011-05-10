@@ -276,22 +276,19 @@ Smartgraphs.GraphView = SC.View.extend(
       var keyframes = {};
       
       function loopAnimation() {
+        // Without these two, animation will occasionally screw up.
         line.stop();
-        line.attr({
-          "clip-rect": [xLeft, yTop, 0, plotHeight].join(',')
-        });
-        
         rect.stop();
-        rect.attr({
-          y: yTopRect+plotHeightRect-30+offsetY
-        });
+
+        // Reset to beginning.
+        line.attr({ "clip-rect": [xLeft, yTop, 0, plotHeight].join(',') });
+        rect.attr({ y: yTopRect+plotHeightRect-30+offsetY });
         
-        setTimeout(function() {
-          line.animate({
-            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
-          }, ms);
-          rect.animateWith(line, keyframes, ms);
-        }, 50);
+        // Restart animation.
+        line.animate({
+          "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+        }, ms);
+        rect.animateWith(line, keyframes, ms);
       }
       
       // FIXME: Scale axis appropriately.
