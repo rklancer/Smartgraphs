@@ -67,7 +67,7 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
         { "name": "animation",
           "setup": {
             "pane": "top",
-            "length": 12000,
+            "length": 6000,
             // "foregroundImageURL": "circle",
             // "foregroundImageURL": "box",
             // "foregroundImageURL": "cross",

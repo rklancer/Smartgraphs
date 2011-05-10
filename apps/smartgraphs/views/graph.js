@@ -264,19 +264,7 @@ Smartgraphs.GraphView = SC.View.extend(
       var plotHeight = frame.height - padding.top - padding.bottom;
       var ms = Smartgraphs.animationTool.get('length'); // ms
 
-      function loopOverlayAnimation() {
-        line.attr({
-          "clip-rect": [xLeft, yTop, 0, plotHeight].join(',')
-        });
-        
-        setTimeout(function() {
-          line.animate({
-            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
-          }, ms, loopOverlayAnimation);
-        }, 50);
-      }
       line.attr({ "opacity": 1.0 });
-      loopOverlayAnimation();
       
       var xLeftRect = frame.x + padding.left;
       var yTopRect = frame.y + padding.top;
@@ -288,13 +276,21 @@ Smartgraphs.GraphView = SC.View.extend(
       var keyframes = {};
       
       function loopAnimation() {
+        line.stop();
+        line.attr({
+          "clip-rect": [xLeft, yTop, 0, plotHeight].join(',')
+        });
+        
+        rect.stop();
         rect.attr({
           y: yTopRect+plotHeightRect-30+offsetY
-          // "clip-rect": [xLeftRect, yTopRect+plotHeightRect, plotWidthRect, 0].join(',')
         });
         
         setTimeout(function() {
-          rect.animate(keyframes, ms);
+          line.animate({
+            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+          }, ms);
+          rect.animateWith(line, keyframes, ms);
         }, 50);
       }
       
@@ -310,7 +306,6 @@ Smartgraphs.GraphView = SC.View.extend(
         var y = pt[1] === 0 ? 0 : pt[1]/yMax;            // HEIGHT
         keyframes[dist+'%'] = {
           y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
-          // "clip-rect": [xLeftRect, yTopRect+(plotHeightRect*(1-y)), plotWidthRect, plotHeightRect*(y)].join(',')
         };
         if (idx+1===len) {
           keyframes[dist+'%'].callback = loopAnimation;
