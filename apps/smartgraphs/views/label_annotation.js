@@ -37,6 +37,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   shouldMarkTargetPointBindingDefault: SC.Binding.oneWay(),
   
   stroke: '#000000',
+  highlightedStroke: '#6699ff',
   fill: '#ffffff',
   
   isBodyDragging: NO,
@@ -251,7 +252,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     labelView: SC.outlet('parentView'),
     
     defaultStrokeBinding: '.labelView.stroke',
-    highlightedStroke: '#6699ff',
+    highlightedStrokeBinding: '.labelView.highlightedStroke',
     defaultStrokeWidth: 1,
     highlightedStrokeWidth: 2,
     isHighlightedBinding: '.labelView.isBodyDragging',
@@ -327,7 +328,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     heightBinding: '.labelView.height',
 
     defaultStrokeBinding: '.labelView.stroke',
-    highlightedStroke: '#6699ff',
+    highlightedStrokeBinding: '.labelView.highlightedStroke',
     defaultStrokeWidth: 1,
     highlightedStrokeWidth: 2,
     isHighlightedBinding: '.labelView.isBodyDragging',
