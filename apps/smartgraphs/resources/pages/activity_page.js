@@ -285,6 +285,16 @@ Smartgraphs.activityPageDef = SC.Page.extend({
     classNames: 'sensor-message'.w(),
     textAlign: SC.ALIGN_CENTER,
     value: 'Loading sensor...'
+  }),
+  
+  firstHtmlView: SC.StaticContentView.design({   
+    contentBinding: 'Smartgraphs.activityViewController.firstPaneHtml',
+    classNames: ['html-pane']
+  }),
+
+  secondHtmlView: SC.StaticContentView.design({
+    contentBinding: 'Smartgraphs.activityViewController.secondPaneHtml',
+    classNames: ['html-pane']    
   })
   
 });

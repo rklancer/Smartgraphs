@@ -208,3 +208,9 @@ body.sc-theme {
 .sc-theme .sc-view.ace.sc-split-divider-view {
   background-color: #ddd;
 }
+
+/* html pane for demo */
+.sc-view.sc-static-content-view.html-pane {
+  position: absolute;
+  background-color: #FFFFFF;
+}

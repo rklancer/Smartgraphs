@@ -24,6 +24,9 @@ Smartgraphs.activityViewController = SC.Object.create(
   secondImageValue: null,
   secondImageCaption: null,
   
+  firstPaneHtml: null,
+  secondPaneHtml: null,
+  
   firstGraphPaneControls: null,
   secondGraphPaneControls: null,
   
@@ -178,6 +181,18 @@ Smartgraphs.activityViewController = SC.Object.create(
     
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'TableView');
 
+    return YES;
+  },
+  
+  showHtml: function (pane, html) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+    
+    if ( !which ) return NO;
+    
+    this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'HtmlView');
+    this.set(which+'PaneHtml', html);
+  
     return YES;
   },
   
