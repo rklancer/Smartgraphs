@@ -124,6 +124,15 @@ Smartgraphs.activityDocs["/shared/probesight"] =
       "beforeText": null,
       "responseTemplate": null,
       "submissibilityCriterion": null,
+      "startCommands": [
+        {
+          "name": "startSensorInput",
+          "args": {
+            "pane": "top",
+            "dataset": "sensor-data"
+          }
+        }
+      ],
       "defaultBranch": null,
       "isFinalStep": true,
       "nextButtonShouldSubmit": true
