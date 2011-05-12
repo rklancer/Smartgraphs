@@ -227,33 +227,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (defaultBranch) {
       Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
     }
-  },
-  
-  panesJsonDidChange: function() {
-    var json = this.get("panesJson");
-    if (json) {
-      var newPanes;
-      try {
-        newPanes = SC.json.decode(json);
-        this.set("jsonEditingFeedback", "");
-      } 
-      catch (e) {
-        this.set("jsonEditingFeedback", "JSON parsing error.");
-        return;
-      }
-      var oldPanes = this.get("panes");
-      if (newPanes != oldPanes) {
-        this.set("panes", newPanes);
-      }
-    }
-  }.observes("panesJson"),
-  
-  panesDidChange: function() {
-    var oldJson = this.get("panesJson");
-    var newJson = JSON.stringify(this.get("panes"), null, 2);
-    if (newJson != oldJson) {
-      this.set("panesJson", newJson);
-    }
-  }.observes("panes")
+  }
   
 }) ;
