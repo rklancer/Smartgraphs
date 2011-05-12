@@ -11,7 +11,7 @@
 
   @extends SC.Object
 */
-Smartgraphs.activityViewController = SC.ObjectController.create(
+Smartgraphs.activityViewController = SC.Object.create(
 /** @scope Smartgraphs.activityViewController.prototype */ {
 
   dataViewNowShowing: null,
@@ -45,29 +45,14 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
   // ACTIVITY VIEW BUTTON STATE
   //
   
-  canGotoNextPage: null,
-  canGotoNextPageBinding: 'Smartgraphs.activityController.canGotoNextPage',
+  canGotoNextPageBinding:        SC.Binding.oneWay('Smartgraphs.activityController.canGotoNextPage'),
+  canSubmitBinding:              SC.Binding.oneWay('Smartgraphs.activityStepController.canSubmit'),
+  isFinalStepBinding:            SC.Binding.oneWay('Smartgraphs.activityStepController.isFinalStep'),  
+  hideSubmitButtonBinding:       SC.Binding.oneWay('Smartgraphs.activityStepController.hideSubmitButton'),
+  nextButtonShouldSubmitBinding: SC.Binding.oneWay('Smartgraphs.activityStepController.nextButtonShouldSubmit'),
 
-  canSubmit: null,
-  canSubmitBinding: 'Smartgraphs.activityStepController.canSubmit',
-  canSubmitBindingDefault: SC.Binding.oneWay(),
-
-  isFinalStep: null,
-  isFinalStepBinding: 'Smartgraphs.activityStepController.isFinalStep',
-  isFinalStepBindingDefault: SC.Binding.oneWay(),
-  
-  hideSubmitButton: null,
-  hideSubmitButtonBinding: 'Smartgraphs.activityStepController.hideSubmitButton',
-  hideSubmitButtonBindingDefault: SC.Binding.oneWay(),
-  
-  nextButtonShouldSubmit: null,
-  nextButtonShouldSubmitBinding: 'Smartgraphs.activityStepController.nextButtonShouldSubmit',
-  nextButtonShouldSubmitBindingDefault: SC.Binding.oneWay(),
-
-  isFirstPage: NO,
   isFirstPageBinding: 'Smartgraphs.activityPagesController.isFirstPage',
-  isLastPage: NO,
-  isLastPageBinding: 'Smartgraphs.activityPagesController.isLastPage',
+  isLastPageBinding:  'Smartgraphs.activityPagesController.isLastPage',
   
   enableBackAndForward: NO,
   
@@ -75,11 +60,7 @@ Smartgraphs.activityViewController = SC.ObjectController.create(
     return !(this.get('hideSubmitButton') || this.get('nextButtonShouldSubmit'));
   }.property('hideSubmitButton', 'nextButtonShouldSubmit').cacheable(),
     
-  enableSubmitButton: null,
-  enableSubmitButtonBinding: 'Smartgraphs.activityStepController.canSubmit',
-  enableSubmitButtonBindingDefault: SC.Binding.oneWay(),
-    
-  showNextPageButton: null,
+  enableSubmitButtonBinding: SC.Binding.oneWay('Smartgraphs.activityStepController.canSubmit'),
   showNextPageButtonBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage'),
   
   highlightNextPageButton: function () {
