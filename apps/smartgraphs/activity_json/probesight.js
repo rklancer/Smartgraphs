@@ -36,7 +36,7 @@ Smartgraphs.activityDocs["/shared/probesight"] =
       "url": "/shared/probesight/page/1",
       "activity": "/shared/probesight",
       "index": 1,
-      "introText": "<h1>Page 1</h1><p>Text goes here.</p>",                        
+      "introText": "<h1>SmartGraphs</h1><p>The SmartGraphs project is developing <i>open source, browser-based</i> activities that help students learn the meaning of graphs. </p><p> Activities run directly in a modern Web browser such as Firefox.  Programming is done in Javascript using the Sproutcore framework.  This demo does not use Java or Flash.</p><p>Click the <b>Next</b> button for a demo.<p>",                        
       "steps": [
         "/shared/probesight/page/1/step/1"
       ],
@@ -47,7 +47,7 @@ Smartgraphs.activityDocs["/shared/probesight"] =
       "url": "/shared/probesight/page/2",
       "activity": "/shared/probesight",
       "index": 2,
-      "introText": "<h1>Page 2</h1><p>Text goes here.</p>",                    
+      "introText": "<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",                    
       "steps": [
         "/shared/probesight/page/2/step/1"
       ],
@@ -58,7 +58,7 @@ Smartgraphs.activityDocs["/shared/probesight"] =
       "url": "/shared/probesight/page/3",
       "activity": "/shared/probesight",
       "index": 3,
-      "introText": "<h1>Page 3</h1><p>Text goes here.</p>",                    
+      "introText": "<h1>SmartGraphs</h1><p>Thank you for trying this demo.</p><p>We hope you will visit the Concord Consortium's <a href=\"http://www.concord.org/projects/smartgraphs\">SmartGraphs website</a>.</p>",                    
       "steps": [
         "/shared/probesight/page/3/step/1"
       ],
