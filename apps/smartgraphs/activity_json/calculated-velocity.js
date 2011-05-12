@@ -62,7 +62,8 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
           }
         }
       ],
-      "beforeText": "<p>Try clicking an interesting area of the velocity-time data on the left. Note that the velocity-time data are derived from the position-time data.</p>"
+      "beforeText": "<p>Try clicking an interesting area of the velocity-time data on the left. Note that the velocity-time data are derived from the position-time data.</p>",
+      "hideSubmitButton": true
     }
   ],
   "units": [
