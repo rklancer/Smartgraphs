@@ -83,23 +83,17 @@ Smartgraphs.executor.defineCommands(function (def) {
       The name of the graph on which the data will be shown.
   */
   def('startSensorInput', function (args) {
-    var dataset = Smartgraphs.activityObjectsController.createDataset(args.datasetName, '/builtins/units/seconds', '/builtins/units/meters');
-    dataset.set('xLabel', "Time");
-    dataset.set('xShortLabel', "Time");
-    dataset.set('yLabel', "Position");
-    dataset.set('yShortLabel', "Position");
+    var dataset   = Smartgraphs.activityObjectsController.findDataset(args.dataset),
+        controller = Smartgraphs.activityViewController.graphControllerForPane(args.pane);
     
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
+    if ( !dataset || !controller ) throw "couldn't find dataset or pane"
     controller.addDataset(dataset);
-    
-    if ( !dataset || !controller ) return "couldn't make dataset or could find graph";        // handled, but invalid graphName or dataset...
-    
+        
     // TODO let 'args' override these settings if desired
     var xMin = controller.getPath('xAxis.min');
     var xMax = controller.getPath('xAxis.max');
-    var pane = Smartgraphs.activityViewController.paneForController(controller);
     
-    if (Smartgraphs.sensorController.register(pane, dataset, xMin, xMax)) {
+    if (Smartgraphs.sensorController.register(args.pane, dataset, xMin, xMax)) {
       Smartgraphs.statechart.gotoState('SENSOR');
     }
   });
