@@ -55,9 +55,10 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   line: null,
   graphableObjects: null,
   
-  xUnits: SC.outlet('sampleset.datadef.xUnits'),
-  yUnits: SC.outlet('sampleset.datadef.yUnits'),
-  name:   SC.outlet('sampleset.datadef.name'),
+  datadef: SC.outlet('sampleset.datadef'),
+  xUnits:  SC.outlet('sampleset.datadef.xUnits'),
+  yUnits:  SC.outlet('sampleset.datadef.yUnits'),
+  name:    SC.outlet('sampleset.datadef.name'),
   
   // some representative options
   color: '#ffffff',
