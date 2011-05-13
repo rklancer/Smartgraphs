@@ -26,7 +26,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   datadef: null,
   pointset: null,
   
-  // TODO: connect our selected Point to the datadef's selected (x,y)
+  selectionBinding:    '*pointset.selection',
   isSelectableBinding: '*datadef.isSelectable',
   isStreamingBinding:  '*datadef.isStreaming',
   latestXBinding:      '*datadef.latestX',
@@ -37,7 +37,9 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   yShortLabelBinding:  '*datadef.yShortLabel',
   
   /**
-    Whether to display the table at all and latest datapoint to display
+    Whether to display the table (or else the numeric view)
+    
+    @property {Boolean}
   */
   showTable: function () {
     return !this.get('isStreaming');

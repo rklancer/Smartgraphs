@@ -101,6 +101,21 @@ Smartgraphs.Datadef = SC.Record.extend(
   */
   yShortLabel: SC.Record.attr(String),
   
+  /**
+    x-value of currently selected point, or null if no point is selected. Transient.
+    
+    @property {Number|null}
+  */
+  selectedX: null,
+
+  /**
+    y-value of currently selected point, or null if no point is selected. Transient.
+    
+    @property {Number|null}
+  */
+  selectedY: null,
+  
+
   /** 
     Return a new DataRepresentation tied to an appropriate SampleSet for objects of this Datadef class. Options will 
     eventually allow you to customize the DataRepresentation and reuse SampleSets.
