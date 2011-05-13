@@ -166,18 +166,14 @@ Smartgraphs.activityViewController = SC.Object.create(
     return YES;
   },
   
-  showTable: function (pane, dataset, annotations) {
+  showTable: function (pane, tableConfig) {
     pane = this.validPaneFor(pane);
-    var which = this.firstOrSecondFor(pane),
-        controller;
+
+    var which = this.firstOrSecondFor(pane);
     
     if ( !which ) return NO;
     
-    controller = Smartgraphs.get(which+'TableController');
-    controller.clearAnnotations();
-    controller.openDataset(dataset);
-    controller.addAnnotationsByName(annotations);
-    
+    Smartgraphs.get(which+'TableController').setupTable(tableConfig);
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'TableView');
 
     return YES;

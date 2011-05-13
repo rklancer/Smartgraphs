@@ -92,7 +92,10 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         });
         return;
       case 'table':
-        Smartgraphs.activityViewController.showTable(pane, config.dataset, allAnnotations);
+        Smartgraphs.activityViewController.showTable(pane, {
+          data: config.data, 
+          annotations: allAnnotations
+        });
         return;
       case 'image':
         Smartgraphs.activityViewController.showImage(pane, config.path, config.caption);
