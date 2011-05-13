@@ -26,11 +26,15 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   datadef: null,
   pointset: null,
   
-  // TODO: connect our selected Point to datadef's selected (x,y)
+  // TODO: connect our selected Point to the datadef's selected (x,y)
   isSelectableBinding: '*datadef.isSelectable',
   isStreamingBinding:  '*datadef.isStreaming',
   latestXBinding:      '*datadef.latestX',
-  latestYBinding:      '*datadef.latestY',  
+  latestYBinding:      '*datadef.latestY',
+  xUnitsBinding:       '*datadef.xUnits',
+  yUnitsBinding:       '*datadef.yUnits',
+  xShortLabelBinding:  '*datadef.xShortLabel',
+  yShortLabelBinding:  '*datadef.yShortLabel',
   
   /**
     Whether to display the table at all and latest datapoint to display
@@ -39,11 +43,12 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     return !this.get('isStreaming');
   }.property('isStreaming').cacheable(),
   
+  
   clear: function () {
     this.clearAnnotations();
-    this.set('content', []);
     this.set('datadef', null);
     this.set('pointset', null);
+    this.set('content', []);    
   },
   
   setupTable: function (config) {      
@@ -64,7 +69,8 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
 
     datadef = Smartgraphs.activityObjectsController.findDatadef(datadefName);
     rep = datadef.getNewRepresentation(options);
-    
+
+    this.set('datadef', datadef);
     this.set('pointset', rep.get('pointset'));
     this.set('content', this.getPath('pointset.points'));
   }
