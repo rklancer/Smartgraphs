@@ -52,28 +52,22 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
     controller.labelToolStartTool(args.labelName);
   },
   
-  createLabel: function (name, x, y, shouldMarkTargetPoint) {
-    var label = this.getAnnotation(name);
-    
-    label.set('x', x);
-    label.set('y', y);
-    label.set('shouldMarkTargetPoint', shouldMarkTargetPoint);
-    
-    return label;
+  getLabel: function (name, x, y, shouldMarkTargetPoint) {
+    return this.getAnnotation(name);
   },
   
   appendLabel: function (state, label) {
     this.getControllerForState(state).addAnnotation(label);
   },
   
-  startPlacement: function (state) {
+  addLabelsStarting: function (state) {
     var controller = this.getControllerForState(state);
-    if (controller && controller.labelToolStartPlacement) controller.labelToolStartPlacement();
+    if (controller && controller.labelToolAddLabelsStarting) controller.labelToolAddLabelsStarting();
   },
   
-  placementFinished: function (state) {
+  addLabelsFinished: function (state) {
     var controller = this.getControllerForState(state);
-    if (controller && controller.labelToolPlacementFinished) controller.labelToolPlacementFinished();
+    if (controller && controller.labelToolAddLabelsFinished) controller.labelToolAddLabelsFinished();
   }
   
 });

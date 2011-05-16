@@ -13,7 +13,7 @@
 Smartgraphs.LABEL_TOOL = SC.State.extend(
 /** @scope Smartgraphs.LABEL_TOOL.prototype */ {
   
-  initialSubstate: 'NO_LABEL',
+  initialSubstate: 'NOT_ADDED',
 
   /**
     The name of the label annotation we care about. Will be set on tool startup.
@@ -22,40 +22,45 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   */
   labelName: null,
   
-  NO_LABEL: SC.State.design({
+  mouseDownAtPoint: function (context, args) {
+    this.get('statechart').sendAction('addLabel', this, {x: args.x, y: args.y, shouldMarkTargetPoint: YES});
+    return YES;
+  },
+  
+  dataPointSelected: function (context, args) {
+    this.get('statechart').sendAction('addLabel', this, {x: args.x, y: args.y, shouldMarkTargetPoint: NO});
+    return YES;
+  },
+  
+  NOT_ADDED: SC.State.design({
     
     enterState: function () {
-      Smartgraphs.labelTool.startPlacement(this);
+      Smartgraphs.labelTool.addLabelsStarting(this);
     },
     
     exitState: function () {
-      Smartgraphs.labelTool.placementFinished(this);
-    },
-    
-    mouseDownAtPoint: function (context, args) {
-      this.addLabelAt(args.x, args.y, YES);
-      return YES;
-    },
-    
-    dataPointSelected: function (context, args) {
-      this.addLabelAt(args.x, args.y, NO);
-      return YES;
+      Smartgraphs.labelTool.addLabelsFinished(this);
     },
 
-    addLabelAt: function (x, y, shouldMarkTargetPoint) {
+    addLabel: function (context, args) {
       var labelName = this.getPath('parentState.labelName'),
-          label     = Smartgraphs.labelTool.createLabel(labelName, x, y, shouldMarkTargetPoint);
+          label     = Smartgraphs.labelTool.getLabel(labelName);
       
       if (label) {
+        label.set('x', args.x);
+        label.set('y', args.y);
+        label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
+        
         Smartgraphs.labelTool.appendLabel(this, label);
+        
         this.set('label', label);
-        this.gotoState('LABEL_CREATED');
+        this.gotoState('ADDED');
       }
     }
 
   }),
   
-  LABEL_CREATED: SC.State.design({
+  ADDED: SC.State.design({
   })
   
 }) ;

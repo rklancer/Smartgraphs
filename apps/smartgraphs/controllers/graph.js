@@ -260,11 +260,11 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.get('statechart').sendAction('labelToolStartTool', this, labelName);
   },
   
-  labelToolStartPlacement: function () {
+  labelToolAddLabelsStarting: function () {
     this.set('requestedCursorStyle', 'pointer');
   },
   
-  labelToolPlacementFinished: function () {
+  labelToolAddLabelsFinished: function () {
     this.set('requestedCursorStyle', 'default');
   },
   
