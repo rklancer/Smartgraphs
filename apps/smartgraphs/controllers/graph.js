@@ -40,9 +40,9 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     rootState: SC.State.design({
       initialSubstate: 'DEFAULT_STATE',
       
-      labelToolStartTool: function (context, labelName) {
+      labelToolStartTool: function (context, annotationName) {
         var state = this.getSubstate('LABEL_TOOL');
-        state.set('labelName', labelName);
+        state.set('annotationName', annotationName);
         this.gotoState('LABEL_TOOL');
       },
       
@@ -256,8 +256,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
   // Events
   
-  labelToolStartTool: function (labelName) {
-    this.get('statechart').sendAction('labelToolStartTool', this, labelName);
+  labelToolStartTool: function (annotationName) {
+    this.get('statechart').sendAction('labelToolStartTool', this, annotationName);
   },
   
   labelToolAddLabelsStarting: function () {

@@ -28,7 +28,7 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
   },
   
   /**
-    Stubbable method to create/retrieve a label annotation object with a particular name
+    Stubbable method retrieve the label or label set object with a particular name
     
     @param {String} name
       The name of the Label annotation
@@ -48,12 +48,10 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
   },
   
   setup: function (args) {
-    var controller = this.graphControllerForPane(args.pane);
-    controller.labelToolStartTool(args.labelName);
-  },
-  
-  getLabel: function (name, x, y, shouldMarkTargetPoint) {
-    return this.getAnnotation(name);
+    var controller = this.graphControllerForPane(args.pane),
+        annotationName = args.labelName || args.labelSetName;
+        
+    controller.labelToolStartTool(annotationName);
   },
   
   appendLabel: function (state, label) {
