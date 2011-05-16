@@ -81,6 +81,10 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
       found.forEach(function (rec) {
         var name = rec.get('name');
         
+        // don't index anonymous annotations (which must therefore be referenced by a collection annotation, e.g, a 
+        // LabelSet manages a set of nameless LabelAnnotations)
+        if (SC.none(name)) return;
+        
         if (hash[name]) {
           throw "The activity contains multiple %@ records named '%@'".fmt(typeName, name);
         }
