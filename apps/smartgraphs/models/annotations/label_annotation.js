@@ -62,7 +62,17 @@ Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
     
     @property {Boolean}
   */
-  shouldMarkTargetPoint: SC.Record.attr(Boolean, { defaultValue: YES })
+  shouldMarkTargetPoint: SC.Record.attr(Boolean, { defaultValue: YES }),
+  
+  enableRemoval: function () {
+    // TODO
+  },
+  
+  disableRemoval: function () {
+    // TODO
+  }
+  
+  
 
 }) ;
 
