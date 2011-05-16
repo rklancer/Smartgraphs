@@ -19,4 +19,4 @@ config 'raphael_views/g_raphael_base',
   :required => 'raphael_views/raphael'
 
 proxy '/db', :to => 'localhost:5984', :url => ''
-proxy "/jnlp", :to => "localhost:4321"
+proxy "/jnlpserver/jnlp", :to => "localhost:4321", :url => '/jnlp'
