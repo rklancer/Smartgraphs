@@ -35,7 +35,6 @@ Smartgraphs.Pointset = Smartgraphs.GraphableObject.extend(
         ret;
     
     if (value !== undefined) {
-      console.log('setting selection...');
       point = value.toArray().get('firstObject');
       this.set('selectedX', point ? point.get('x') : null);
       this.set('selectedY', point ? point.get('y') : null);
