@@ -113,7 +113,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   /**
     @property String
     
-    Requested cursor type
+    Requested cursor type to show when mousing over this graph.
   */
   requestedCursorStyle: 'default',
   

@@ -17,6 +17,8 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
 
   /**
     The name of the label annotation we care about. Will be set on tool startup.
+    
+    @property {String}
   */
   labelName: null,
   
