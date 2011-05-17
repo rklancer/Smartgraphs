@@ -60,9 +60,15 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
             "pane": "bottom",
             "labelName": "test-label"
           }
+        },
+        { "name": "label",
+          "setup": {
+            "pane": "top",
+            "labelSetName": "test-label-set"
+          }
         }
       ],
-      "beforeText": "<p>Try clicking an interesting area of the velocity-time data on the left. Note that the velocity-time data are derived from the position-time data.</p>",
+      "beforeText": "<p>Try creating several labels in the upper pane and one label in the lower pane. Note that the velocity-time data are derived from the position-time data.</p>",
       "hideSubmitButton": true
     }
   ],
@@ -145,6 +151,22 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
           "name": "test-label",
           "activity": "/shared/calculated-velocity",
           "text": "a label"
+        },
+        {
+          "url": "/shared/calculated-velocity/annotation/test-label-2",
+          "name": "test-label-2",
+          "activity": "/shared/calculated-velocity",
+          "text": "a second label"
+        }
+      ]
+    },
+    {
+      "type": "LabelSet",
+      "records": [
+        {
+          "url": "/shared/calculated-velocity/annotation/test-label-set",
+          "name": "test-label-set",
+          "activity": "/shared/calculated-velocity"
         }
       ]
     }

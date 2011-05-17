@@ -57,7 +57,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
       var annotationName = this.getPath('parentState.annotationName'),
           annotation     = Smartgraphs.labelTool.getAnnotation(annotationName);
 
-      this.get('parentState').set('annotation', annotation);
+      this.setPath('parentState.annotation', annotation);
       
       if (SC.kindOf(annotation, Smartgraphs.LabelAnnotation)) {
         this.gotoState('LABEL_ONE');
@@ -117,8 +117,9 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   LABEL_MANY: SC.State.design({
     
     enterState: function () {
+      var labelSet = this.getPath('parentState.annotation');
+      Smartgraphs.labelTool.appendLabelSet(this, labelSet);
       Smartgraphs.labelTool.addLabelsStarting(this);
-      this.get('annotation').enableRemoval();
     },
   
     exitState: function () {
@@ -132,18 +133,12 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
       label.set('x', args.x);
       label.set('y', args.y);
       label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
-    
-      Smartgraphs.labelTool.appendLabel(this, label);
     },
     
     removeLabel: function (context, args) {
       var labelSet = this.getPath('parentState.annotation');
-      
-      if (labelSet.containsLabel(args.label)) {
-        labelSet.removeLabel(args.label);
-        Smartgraphs.labelTool.removeLabel(this, args.label);
-      }
+      labelSet.removeLabel(args.label);
     }
-  })
-  
-}) ;
+  })  
+
+});

@@ -58,6 +58,14 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
     this.getControllerForState(state).addAnnotation(label);
   },
   
+  appendLabelSet: function (state, labelSet) {
+    this.getControllerForState(state).addAnnotation(labelSet);
+  },
+  
+  removeLabel: function (state, label) {
+    this.getControllerForState(state).removeAnnotation(label);
+  },
+  
   addLabelsStarting: function (state) {
     var controller = this.getControllerForState(state);
     if (controller && controller.labelToolAddLabelsStarting) controller.labelToolAddLabelsStarting();

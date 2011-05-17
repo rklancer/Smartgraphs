@@ -71,10 +71,8 @@ Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
   disableRemoval: function () {
     // TODO
   }
-  
-  
 
-}) ;
+});
 
 // let the graph view know how to instantiate a view class to display this item
 Smartgraphs.LabelAnnotation.viewClass = Smartgraphs.LabelAnnotationView;

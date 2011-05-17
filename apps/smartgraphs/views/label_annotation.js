@@ -26,6 +26,16 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     if (this.get('parentView')) this.parentViewDidChange();
   },
   
+  // this is overwritten if we're added to the graphView directly
+  item: function () {
+    return this.get('content');
+  }.property().cacheable(),
+  
+  // this is overwritten if we're added to the graphView directly.
+  graphView: function () {
+    return this.getPath('parentView.graphView');
+  }.property().cacheable(),
+  
   textBinding: '*item.text',
   textColor: '#333333',
   
