@@ -92,6 +92,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
       
         Smartgraphs.labelTool.appendLabel(this, label);
         this.gotoState('ADDED');
+        return YES;
       }
     }),
   
@@ -133,11 +134,13 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
       label.set('x', args.x);
       label.set('y', args.y);
       label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
+      return YES;
     },
     
     removeLabel: function (context, args) {
       var labelSet = this.getPath('parentState.annotation');
       labelSet.removeLabel(args.label);
+      return YES;
     }
   })  
 
