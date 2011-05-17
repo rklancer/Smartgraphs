@@ -79,6 +79,11 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
             
   }.observes('xCoord', 'yCoord', 'xOffset', 'yOffset', 'width', 'height'),
 
+  didCreateLayer: function () {
+    sc_super();
+    this.$().css('cursor', 'default');
+  },
+  
   childViews: 'targetPointView connectingLineView labelBodyView'.w(),
     
   targetPointView: RaphaelViews.RaphaelView.design({
