@@ -15,14 +15,19 @@
 Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelAnnotationView.prototype */ {
     
-  // this is overwritten if we're added to the graphView directly
+  // The 'item', 'graphView', and 'controller' will be set for us (overwriting the below) if we are added directly
+  // to the graphView. If we are the exampleView of a LabelSet collection view, on the other hand, we need to find the
+  // properties as shown below. Note that these values, once set, should be cached.
   item: function () {
     return this.get('content');
   }.property().cacheable(),
   
-  // this is overwritten if we're added to the graphView directly.
   graphView: function () {
     return this.getPath('parentView.graphView');
+  }.property().cacheable(),
+  
+  controller: function () {
+    return this.getPath('parentView.controller');
   }.property().cacheable(),
   
   textBinding: '*item.text',
@@ -227,7 +232,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   
   labelBodyView: RaphaelViews.RaphaelView.design({
     
-    childViews: ['labelTextView'],
+    childViews: 'labelTextView removeButtonView'.w(),
     
     labelView: SC.outlet('parentView'),
     
@@ -332,6 +337,47 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
       }
     }),
     
+    removeButtonView: RaphaelViews.RaphaelView.design({
+      
+      displayProperties: 'bodyXCoord bodyYCoord width'.w(),
+      
+      labelView:     SC.outlet('parentView.labelView'),
+      labelBodyView: SC.outlet('parentView'),
+      
+      widthBinding:      '.labelBodyView.width',
+      bodyXCoordBinding: '.labelBodyView.bodyXCoord',
+      bodyYCoordBinding: '.labelBodyView.bodyYCoord',
+      
+      renderCallback: function (raphaelCanvas, attrs) {
+        return raphaelCanvas.circle().attr(attrs);
+      },
+      
+      render: function (context, firstTime) {
+        var attrs = {
+              r:    5, 
+              cx:     this.get('bodyXCoord') + this.get('width') - 10,
+              cy:     this.get('bodyYCoord') + 10,
+              stroke: '#999999',
+              fill:   '#999999'
+            },
+
+            raphaelCircle;
+            
+        if (firstTime) {
+          context.callback(this, this.renderCallback, attrs);
+        }
+        else {
+          raphaelCircle = this.get('raphaelObject');
+          raphaelCircle.attr(attrs);
+        }   
+      },
+      
+      mouseDown: function () {
+        this.get('labelView').remove();
+      }
+
+    }),
+    
     // Dragging. Note that dragging is 'stateless' in the sense that you can always drag a label view. So we won't hook
     // into states or the controller layer. We also assume until proven otherwise that we can modify our own cursor
     // without consequence.
@@ -379,6 +425,10 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
       this.$().css('cursor', 'default');
     }
     
-  })
+  }),
+    
+  remove: function () {
+    this.get('controller').labelViewRemoveLabel(this.get('item'));
+  }
   
 });

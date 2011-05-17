@@ -268,6 +268,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.set('requestedCursorStyle', 'default');
   },
   
+  labelViewRemoveLabel: function (label) {
+    this.get('statechart').sendAction('removeLabel', this, { label: label });
+  },
+  
   inputAreaMouseDown: function (x, y) {
     this.get('statechart').sendAction('mouseDownAtPoint', this, {x: x, y: y});
   },

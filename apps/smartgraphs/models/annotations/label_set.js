@@ -30,7 +30,8 @@ Smartgraphs.LabelSet = Smartgraphs.Annotation.extend(
     return label;
   },
   
-  removeLabel: function () {
+  removeLabel: function (label) {
+    this.get('labels').removeObject(label);
   },
   
   enableRemoval: function () {
