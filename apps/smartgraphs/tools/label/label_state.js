@@ -119,11 +119,14 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     
     enterState: function () {
       var labelSet = this.getPath('parentState.annotation');
+      labelSet.enableRemoval();
       Smartgraphs.labelTool.appendLabelSet(this, labelSet);
       Smartgraphs.labelTool.addLabelsStarting(this);
     },
   
     exitState: function () {
+      var labelSet = this.getPath('parentState.annotation');      
+      labelSet.disableRemoval();
       Smartgraphs.labelTool.addLabelsFinished(this);
     },
     

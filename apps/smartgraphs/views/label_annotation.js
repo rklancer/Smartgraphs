@@ -48,6 +48,8 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   xOffsetBinding: '*item.xOffset',
   yOffsetBinding: '*item.yOffset',
   
+  isRemovalEnabledBinding: '*item.isRemovalEnabled',
+  
   xCoord: function () {
     return this.get('graphView').coordinatesForPoint(this.get('x'), 0).x;
   }.property('x'),
@@ -348,6 +350,12 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
       bodyXCoordBinding: '.labelBodyView.bodyXCoord',
       bodyYCoordBinding: '.labelBodyView.bodyYCoord',
       
+      isRemovalEnabledBinding: '.labelView.isRemovalEnabled',
+
+      isVisible: function () {
+        return this.get('isRemovalEnabled');
+      }.property('isRemovalEnabled'),
+      
       renderCallback: function (raphaelCanvas, attrs) {
         return raphaelCanvas.circle().attr(attrs);
       },
@@ -428,7 +436,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
   }),
     
   remove: function () {
-    this.get('controller').labelViewRemoveLabel(this.get('item'));
+    if (this.get('isRemovalEnabled')) this.get('controller').labelViewRemoveLabel(this.get('item'));
   }
   
 });

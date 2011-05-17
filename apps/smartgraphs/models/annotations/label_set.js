@@ -19,6 +19,8 @@ Smartgraphs.LabelSet = Smartgraphs.Annotation.extend(
 
   labels: SC.Record.toMany('Smartgraphs.LabelAnnotation'),
   
+  isRemovalEnabled: NO,
+  
   createChildLabel: function () {
     var label = this.get('store').createRecord(Smartgraphs.LabelAnnotation, {
       activity: this.getPath('activity.id'),
@@ -26,6 +28,7 @@ Smartgraphs.LabelSet = Smartgraphs.Annotation.extend(
       name:     null,      // anonymous label
       text:    'New Label'
     });
+    label.set('labelSet', this);
     this.get('labels').pushObject(label);
     return label;
   },
@@ -35,9 +38,13 @@ Smartgraphs.LabelSet = Smartgraphs.Annotation.extend(
   },
   
   enableRemoval: function () {
+    this.set('isRemovalEnabled', YES);
+    this.get('labels').invoke('notifyPropertyChange', 'isRemovalEnabled');
   },
   
   disableRemoval: function () {
+    this.set('isRemovalEnabled', NO);
+    this.get('labels').invoke('notifyPropertyChange', 'isRemovalEnabled');    
   }
 
 });

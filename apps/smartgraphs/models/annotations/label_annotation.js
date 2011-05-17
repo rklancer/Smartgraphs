@@ -64,12 +64,25 @@ Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
   */
   shouldMarkTargetPoint: SC.Record.attr(Boolean, { defaultValue: YES }),
   
+  labelSet: null,
+  
+  isRemovalEnabled: function () {
+    if (this.get('labelSet')) {
+      return this.getPath('labelSet.isRemovalEnabled');
+    }
+    else {
+      return this._isRemovalEnabled || NO;
+    }
+  }.property(),
+  
   enableRemoval: function () {
-    // TODO
+    this._isRemovalEnabled = YES;
+    this.notifyPropertyChange('isRemovalEnabled');
   },
   
   disableRemoval: function () {
-    // TODO
+    this._isRemovalEnabled = NO;
+    this.notifyPropertyChange('isRemovalEnabled');
   }
 
 });
