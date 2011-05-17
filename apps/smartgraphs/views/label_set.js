@@ -12,11 +12,6 @@
 */
 Smartgraphs.LabelSetView = RaphaelViews.RaphaelCollectionView.extend({
   
-  init: function () {
-    sc_super();
-    window.lsv = this;
-  },
-
   exampleView: Smartgraphs.LabelAnnotationView,
   // unfortunately, the current CollectionViewFastPath implementation confuses labels
   useFastPath: NO,
