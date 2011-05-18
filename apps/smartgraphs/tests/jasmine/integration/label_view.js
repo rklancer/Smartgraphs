@@ -465,80 +465,11 @@ describe("LabelView behavior", function () {
           });
         });
         
-        
-        describe("its 'labelText' view", function () {
-        
-          var labelTextView;
-          
-          beforeEach( function () {
-            labelTextView = labelView.get('labelTextView');
-          });
-          
-          it("should be a child view of the *graph* view", function () {
-            expect(graphView.get('childViews')).toContain(labelTextView);
-          });
-          
-          it("should not be a RaphaelView", function () {
-            expect(labelTextView).not.toBeA(RaphaelViews.RaphaelView);
-          });
-          
-          describe("its layout", function () {
-            var layout;
-            
-            beforeEach( function () {
-              layout = labelTextView.get('layout');
-            });
-            
-            it("should be placed 10 pixels to the right of the bodyXCoord", function () {
-              expect(layout.left).toEqual(labelView.get('bodyXCoord') + 10);
-            });
-            
-            it("should be placed 5 pixels below bodyYCoord", function () {
-              expect(layout.top).toEqual(labelView.get('bodyYCoord') + 5);
-            });
-            
-            it("should be 20 pixels narrower than the labelView", function () {
-              expect(layout.width).toEqual(labelView.get('width') - 20);
-            });
-            
-            it("should be 10 pixels shorter than the labelView", function () {
-              expect(layout.height).toEqual(labelView.get('height') - 10);
-            });
-          });
-          
-          
-          describe("its layer", function () {
-            
-            it("should have the text specified by the label record", function () {
-              expect(labelTextView.$().text()).toEqual(labelRecord.get('text'));
-            });
-            
-            it("should be in front of the graphCanvasView", function () {
-              expect(labelTextView.$().css('zIndex')).toBeGreaterThan( graphView.get('graphCanvasView').$().css('zIndex'));
-            });
-            
-          });
-          
-          
-          describe("when its labelView is removed from the graph view's annotations holder", function () {
-            
-            beforeEach( function () {
-              graphView.get('annotationsHolder').removeChild(labelView);
-            });
-            
-            it("should be removed from the graphView", function () {
-              expect(graphView.get('childViews')).not.toContain(labelTextView);
-            });
-          });
-
-        });
-        
       }
-
+      
       describe("dragging the label", function () {
-
-        var target,
-            leftX,
+      
+        var leftX,
             topY;
         
         function fireEvent(el, eventName, x, y) {
@@ -546,112 +477,94 @@ describe("LabelView behavior", function () {
           SC.Event.trigger(el, eventName, evt);
         }
       
-        describe("when the user's target is the 'labelText' view", function () {
-
-          beforeEach( function () {
-            target = labelView.get('labelTextView');
-          });
-        
-          itShouldDragCorrectly();
-        });
-      
-        describe("when the user's target is the 'labelBody' view itself", function () {
-        
-          beforeEach( function () {
-            target = labelView.get('labelBodyView');
-          });
-        
-          itShouldDragCorrectly();
-        });
-      
-        // this definition is 'hoisted'
-        function itShouldDragCorrectly() {
-      
-          describe("when the user mouses down on the target at (10, 20)", function () {
-            
-            var xOffset,
-                yOffset;
-                
-            beforeEach( function () {
-              var offset = $(target.get('layer')).offset();
-              leftX  = offset.left;
-              topY   = offset.top;
-
-              // start by clearing any possible stale drag state              
-              fireEvent(target.get('layer'), 'mouseup', 0, 0);
+        describe("when the user mouses down on the label body at (10, 20)", function () {
+          
+          var target,
+              xOffset,
+              yOffset;
               
-              fireEvent(target.get('layer'), 'mousedown', 10, 20);
-
-              xOffset = labelRecord.get('xOffset');
-              yOffset = labelRecord.get('yOffset');
+          beforeEach( function () {
+            var offset;
+            
+            target = labelView.get('labelBodyView');
+            offset = $(target.get('layer')).offset();
+            leftX  = offset.left;
+            topY   = offset.top;
+    
+            // start by clearing any possible stale drag state              
+            fireEvent(target.get('layer'), 'mouseup', 0, 0);
+            
+            fireEvent(target.get('layer'), 'mousedown', 10, 20);
+    
+            xOffset = labelRecord.get('xOffset');
+            yOffset = labelRecord.get('yOffset');
+          });
+          
+          it("should highlight the labelBodyView", function () {
+            expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
+          });
+          
+          it("should highlight the connectingLineView", function () {
+            expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
+          });
+    
+          it("should not highlight the targetPointView", function () {
+            expect(labelView.getPath('targetPointView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));              
+          });
+    
+          describe("and the mouse is released at the same point (10, 20)", function () {
+    
+            beforeEach( function () {
+              fireEvent(target.get('layer'), 'mouseup', 10, 20);   
             });
             
-            it("should highlight the labelBodyView", function () {
-              expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
+            it("should unhighlight the labelBodyView", function () {
+              expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
+            });
+    
+            it("should unhighlight the connectingLineView", function () {
+              expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
             });
             
-            it("should highlight the connectingLineView", function () {
-              expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
+            it("should not affect (xOffset, yOffset) of the label record", function () {
+              expect(labelRecord.get('xOffset')).toEqual(xOffset);
+              expect(labelRecord.get('yOffset')).toEqual(yOffset);
             });
-
-            it("should not highlight the targetPointView", function () {
-              expect(labelView.getPath('targetPointView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));              
-            });
+            
+          });
       
-            describe("and the mouse is released at the same point (10, 20)", function () {
-
+          describe("and the mouse is moved to (15, 25)", function () {
+            
+            beforeEach( function () {
+              fireEvent(target.get('layer'), 'mousemove', 15, 25);                               
+            });
+            
+            it("should update (xOffset, yOffset) of the label record by (+5, +5)", function () {
+              expect(labelRecord.get('xOffset')).toEqual(xOffset + 5);
+              expect(labelRecord.get('yOffset')).toEqual(yOffset + 5);
+            });
+                           
+            describe("and the mouse is released at (20, 30)", function () {
+    
               beforeEach( function () {
-                fireEvent(target.get('layer'), 'mouseup', 10, 20);   
+                fireEvent(target.get('layer'), 'mouseup', 20, 30);
               });
               
               it("should unhighlight the labelBodyView", function () {
                 expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
               });
-
+    
               it("should unhighlight the connectingLineView", function () {
                 expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
               });
-              
-              it("should not affect (xOffset, yOffset) of the label record", function () {
-                expect(labelRecord.get('xOffset')).toEqual(xOffset);
-                expect(labelRecord.get('yOffset')).toEqual(yOffset);
-              });
-              
-            });
-        
-            describe("and the mouse is moved to (15, 25)", function () {
-              
-              beforeEach( function () {
-                fireEvent(target.get('layer'), 'mousemove', 15, 25);                               
-              });
-              
-              it("should update (xOffset, yOffset) of the label record by (+5, +5)", function () {
-                expect(labelRecord.get('xOffset')).toEqual(xOffset + 5);
-                expect(labelRecord.get('yOffset')).toEqual(yOffset + 5);
-              });
-                             
-              describe("and the mouse is released at (20, 30)", function () {
-
-                beforeEach( function () {
-                  fireEvent(target.get('layer'), 'mouseup', 20, 30);
-                });
-                
-                it("should unhighlight the labelBodyView", function () {
-                  expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
-                });
-
-                it("should unhighlight the connectingLineView", function () {
-                  expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
-                });
-
-                it("should update (xOffset, yOffset) of the label record by (+10, +10)", function () {
-                  expect(labelRecord.get('xOffset')).toEqual(xOffset + 10);
-                  expect(labelRecord.get('yOffset')).toEqual(yOffset + 10);
-                });
+    
+              it("should update (xOffset, yOffset) of the label record by (+10, +10)", function () {
+                expect(labelRecord.get('xOffset')).toEqual(xOffset + 10);
+                expect(labelRecord.get('yOffset')).toEqual(yOffset + 10);
               });
             });
           });
-        }
+        });
       });
     });
   });
