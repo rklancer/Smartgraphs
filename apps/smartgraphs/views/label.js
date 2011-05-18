@@ -50,13 +50,14 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   
   isRemovalEnabledBinding: '*item.isRemovalEnabled',
   
+  // graphScale isn't a real property, just a token we use to invalidate (xCoord, yCoord)
   xCoord: function () {
     return this.get('graphView').coordinatesForPoint(this.get('x'), 0).x;
-  }.property('x'),
+  }.property('x', 'graphScale'),
   
   yCoord: function () {
     return this.get('graphView').coordinatesForPoint(0, this.get('y')).y;
-  }.property('y'),
+  }.property('y', 'graphScale'),
   
   width: 100,
   height: 45,
@@ -89,6 +90,14 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   didCreateLayer: function () {
     sc_super();
     this.$().css('cursor', 'default');
+  },
+  
+  viewDidResize: function () {
+    this.invokeLast(this.notifyGraphScaleChange);
+  },
+  
+  notifyGraphScaleChange: function () {
+    this.notifyPropertyChange('graphScale');
   },
   
   childViews: 'targetPointView connectingLineView labelBodyView'.w(),
