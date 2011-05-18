@@ -341,7 +341,7 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
     
     removeButtonView: RaphaelViews.RaphaelView.design({
       
-      displayProperties: 'bodyXCoord bodyYCoord width'.w(),
+      displayProperties: 'bodyXCoord bodyYCoord width isHighlighted'.w(),
       
       labelView:     SC.outlet('parentView.labelView'),
       labelBodyView: SC.outlet('parentView'),
@@ -356,34 +356,78 @@ Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
         return this.get('isRemovalEnabled');
       }.property('isRemovalEnabled'),
       
-      renderCallback: function (raphaelCanvas, attrs) {
-        return raphaelCanvas.circle().attr(attrs);
+      isHighlighted: NO,
+      
+      highlightedCircleColor:    '#999999',
+      notHighlightedCircleColor: '#ffffff',
+      highlightedXStroke:        '#ffffff',
+      notHighlightedXStroke:     '#999999',
+      
+      circleColor: function () {
+        return this.get('isHighlighted') ? this.get('highlightedCircleColor') : this.get('notHighlightedCircleColor');
+      }.property('isHighlighted', 'highlightedCircleColor', 'notHighlightedCircleColor').cacheable(),
+      
+      xStroke: function () {
+        return this.get('isHighlighted') ? this.get('highlightedXStroke') : this.get('notHighlightedXStroke');
+      }.property('isHighlighted', 'highlightedXStroke', 'notHighlightedXStroke').cacheable(),  
+      
+      renderCallback: function (raphaelCanvas, circleAttrs, xAttrs) {
+        return raphaelCanvas.set().push(
+          raphaelCanvas.circle().attr(circleAttrs),
+          raphaelCanvas.path().attr(xAttrs)
+        );
       },
       
       render: function (context, firstTime) {
-        var attrs = {
-              r:    5, 
-              cx:     this.get('bodyXCoord') + this.get('width') - 10,
-              cy:     this.get('bodyYCoord') + 10,
-              stroke: '#999999',
-              fill:   '#999999'
+        var centerX = this.get('bodyXCoord') + this.get('width') - 10 || 0,
+            centerY = this.get('bodyYCoord') + 10 || 0,
+            
+            circleAttrs = {
+              r:      6, 
+              cx:     centerX,
+              cy:     centerY,
+              stroke: this.get('circleColor'),
+              fill:   this.get('circleColor')
+            },
+            
+            xPath = ['M', centerX - 3, centerY - 3, 'L', centerX + 3, centerY + 3, 
+                     'M', centerX - 3, centerY + 3, 'L', centerX + 3, centerY - 3].join(' '),
+                     
+            xAttrs = {
+              path:           xPath,
+              'stroke-width': 2,
+              stroke:         this.get('xStroke')
             },
 
-            raphaelCircle;
+            raphaelObj,
+            raphaelCircle,
+            raphaelX;
             
         if (firstTime) {
-          context.callback(this, this.renderCallback, attrs);
+          context.callback(this, this.renderCallback, circleAttrs, xAttrs);
         }
         else {
-          raphaelCircle = this.get('raphaelObject');
-          raphaelCircle.attr(attrs);
+          raphaelObj    = this.get('raphaelObject');
+          raphaelCircle = raphaelObj.items[0];
+          raphaelX      = raphaelObj.items[1];
+          
+          raphaelCircle.attr(circleAttrs);
+          raphaelX.attr(xAttrs);
         }   
       },
       
       mouseDown: function () {
         this.get('labelView').remove();
+      },
+      
+      mouseEntered: function () {
+        this.set('isHighlighted', YES);
+      },
+      
+      mouseExited: function () {
+        this.set('isHighlighted', NO);
       }
-
+      
     }),
     
     // Dragging. Note that dragging is 'stateless' in the sense that you can always drag a label view. So we won't hook
