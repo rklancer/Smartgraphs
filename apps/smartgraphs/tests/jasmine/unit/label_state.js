@@ -52,12 +52,12 @@ describe("LABEL_TOOL state", function () {
 
         describe("when the labelTool methods return YES", function () {
 
-          var labelAnnotation;
+          var label;
         
           beforeEach( function () {
-            labelAnnotation = SC.Object.create(); 
+            label = SC.Object.create(); 
           
-            spyOn(labelTool, 'createLabel').andReturn(labelAnnotation);  
+            spyOn(labelTool, 'createLabel').andReturn(label);  
             spyOn(labelTool, 'appendLabel').andReturn(YES);                    
             state.mouseDownAtPoint('the action context', {x: 1, y: 2});
           });
@@ -67,11 +67,11 @@ describe("LABEL_TOOL state", function () {
           });
       
           it("should ask the labelTool to add the label to the controller", function () {
-            expect(labelTool.appendLabel).toHaveBeenCalledWith(state, labelAnnotation);
+            expect(labelTool.appendLabel).toHaveBeenCalledWith(state, label);
           });
         
           it("should set its 'label' property to the new label", function () {
-            expect(state.get('label')).toEqual(labelAnnotation);
+            expect(state.get('label')).toEqual(label);
           });
         
           it("should go to to the LABEL_CREATED state", function () {
@@ -116,12 +116,12 @@ describe("LABEL_TOOL state", function () {
       
       describe("when called", function () {
         
-        var labelAnnotation;
+        var label;
       
         beforeEach( function () {
-          labelAnnotation = SC.Object.create(); 
+          label = SC.Object.create(); 
         
-          spyOn(labelTool, 'createLabel').andReturn(labelAnnotation);  
+          spyOn(labelTool, 'createLabel').andReturn(label);  
           spyOn(labelTool, 'appendLabel').andReturn(YES);                    
           state.dataPointSelected('the action context', {x: 1, y: 2});
         });

@@ -48,7 +48,7 @@ Smartgraphs.Annotation = SC.Record.extend(
     Name of the annotation. This should be unique within a Session or Activity. 
     
     If null or undefined, the annotation is considered anonymous. Such annotations are useful when they are managed by
-    a collection annotation, e.g, an arbitrary number of nameless LabelAnnotations can be managed by a single LabelSet
+    a collection annotation, e.g, an arbitrary number of nameless Labels can be managed by a single LabelSet
     annotation, which is named. That way an author can allow the user to create an arbitrary number of labels in one
     step, and cause those labels to show up in a later step (by specifying the LabelSet's name) without having to
     predecide either the number of inidividual nor their individual names.

@@ -23,7 +23,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   /**
     The label or labelset we are managing. Set during entry to LABEL_TOOL state and unset on state exit.
     
-    @property {Smartgraphs.LabelAnnotation|Smartgraphs.LabelSet}
+    @property {Smartgraphs.Label|Smartgraphs.LabelSet}
   */
   annotation: null,
   
@@ -59,7 +59,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
 
       this.setPath('parentState.annotation', annotation);
       
-      if (SC.kindOf(annotation, Smartgraphs.LabelAnnotation)) {
+      if (SC.kindOf(annotation, Smartgraphs.Label)) {
         this.gotoState('LABEL_ONE');
       }
       else if (SC.kindOf(annotation, Smartgraphs.LabelSet)) {

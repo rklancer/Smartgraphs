@@ -76,7 +76,7 @@ describe("LabelView behavior", function () {
     runBeforeEach( function () {
       store = SC.Store.create().from(SC.FixturesDataSource.create());
       
-      labelRecord = store.createRecord(Smartgraphs.LabelAnnotation, {
+      labelRecord = store.createRecord(Smartgraphs.Label, {
         url: 'the url of the label',
         name: 'the name of the label',
         text: 'test text',
@@ -98,8 +98,8 @@ describe("LabelView behavior", function () {
         labelView = graphView.getPath('annotationsHolder.childViews').objectAt(0);
       });
       
-      it("should be the correct class for a LabelAnnotation object", function () {
-        expect(labelView).toBeA(Smartgraphs.LabelAnnotation.viewClass);
+      it("should be the correct class for a Label object", function () {
+        expect(labelView).toBeA(Smartgraphs.Label.viewClass);
       });
       
       

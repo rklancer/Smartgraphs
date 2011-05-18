@@ -17,12 +17,12 @@ sc_require('views/label_set');
 Smartgraphs.LabelSet = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.LabelSet.prototype */ {
 
-  labels: SC.Record.toMany('Smartgraphs.LabelAnnotation'),
+  labels: SC.Record.toMany('Smartgraphs.Label'),
   
   isRemovalEnabled: NO,
   
   createChildLabel: function () {
-    var label = this.get('store').createRecord(Smartgraphs.LabelAnnotation, {
+    var label = this.get('store').createRecord(Smartgraphs.Label, {
       activity: this.getPath('activity.id'),
       url:      Smartgraphs.getNextGuid(),
       name:     null,      // anonymous label

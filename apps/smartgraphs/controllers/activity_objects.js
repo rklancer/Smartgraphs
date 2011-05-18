@@ -82,7 +82,7 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
         var name = rec.get('name');
         
         // don't index anonymous annotations (which must therefore be referenced by a collection annotation, e.g, a 
-        // LabelSet manages a set of nameless LabelAnnotations)
+        // LabelSet manages a set of nameless Labels)
         if (SC.none(name)) return;
         
         if (hash[name]) {

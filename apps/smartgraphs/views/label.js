@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.LabelAnnotationView
+// Project:   Smartgraphs.LabelView
 // Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
@@ -12,8 +12,8 @@
 
   @extends SC.View
 */
-Smartgraphs.LabelAnnotationView = RaphaelViews.RaphaelView.extend(
-/** @scope Smartgraphs.LabelAnnotationView.prototype */ {
+Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
+/** @scope Smartgraphs.LabelView.prototype */ {
     
   // The 'item', 'graphView', and 'controller' will be set for us (overwriting the below) if we are added directly
   // to the graphView. If we are the exampleView of a LabelSet collection view, on the other hand, we need to find the

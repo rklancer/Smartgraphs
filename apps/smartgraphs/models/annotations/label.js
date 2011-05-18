@@ -1,5 +1,5 @@
 // ==========================================================================
-// Project:   Smartgraphs.LabelAnnotation
+// Project:   Smartgraphs.Label
 // Copyright: ©2011 Concord Consortium
 // Author:    Parker Morse <pmorse@cantinaconsulting.com>
 // Author:    Richard Klancer <rpk@pobox.com>
@@ -7,7 +7,7 @@
 /*globals Smartgraphs */
 
 sc_require('models/annotation');
-sc_require('views/label_annotation');
+sc_require('views/label');
 
 /** @class
 
@@ -16,8 +16,8 @@ sc_require('views/label_annotation');
   @extends Smartgraphs.Annotation
   @version 0.1
 */
-Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
-/** @scope Smartgraphs.LabelAnnotation.prototype */ {
+Smartgraphs.Label = Smartgraphs.Annotation.extend(
+/** @scope Smartgraphs.Label.prototype */ {
 
   /**
     The x-value of the point being labeled.
@@ -88,4 +88,4 @@ Smartgraphs.LabelAnnotation = Smartgraphs.Annotation.extend(
 });
 
 // let the graph view know how to instantiate a view class to display this item
-Smartgraphs.LabelAnnotation.viewClass = Smartgraphs.LabelAnnotationView;
+Smartgraphs.Label.viewClass = Smartgraphs.LabelView;

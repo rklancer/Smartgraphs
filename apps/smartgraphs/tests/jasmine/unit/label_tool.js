@@ -65,11 +65,11 @@ describe("Smartgraphs.labelTool", function () {
   
   describe("createLabel method", function () {
     
-    var labelAnnotation;
+    var label;
     
     beforeEach( function () {
       var store = SC.Store.create().from(SC.FixturesDataSource.create());
-      spyOn(labelTool, 'getAnnotation').andReturn(store.createRecord(Smartgraphs.LabelAnnotation, {
+      spyOn(labelTool, 'getAnnotation').andReturn(store.createRecord(Smartgraphs.Label, {
         url: 'the-annotation'
       }));
     });
@@ -77,7 +77,7 @@ describe("Smartgraphs.labelTool", function () {
     describe("when the shouldMarkTargetPoint argument is YES", function () {
       
       beforeEach( function () {
-        labelAnnotation = labelTool.createLabel('the label name', 1, 2, YES);
+        label = labelTool.createLabel('the label name', 1, 2, YES);
       });
           
       it("should return the object found by getAnnotation", function () {
@@ -87,15 +87,15 @@ describe("Smartgraphs.labelTool", function () {
       describe("the annotation returned by the method", function () {
       
         it("should have an x-value equal to the passed x-value", function () {
-          expect(labelAnnotation.get('x')).toEqual(1);
+          expect(label.get('x')).toEqual(1);
         });
       
         it("should have a y-value equal to the passed y-value", function () {
-          expect(labelAnnotation.get('y')).toEqual(2);
+          expect(label.get('y')).toEqual(2);
         });
       
         it("should have a shouldMarkTargetPoint value equal to YES", function () {
-          expect(labelAnnotation.get('shouldMarkTargetPoint')).toEqual(YES);
+          expect(label.get('shouldMarkTargetPoint')).toEqual(YES);
         });
       });
     });
@@ -103,21 +103,21 @@ describe("Smartgraphs.labelTool", function () {
     describe("when the shouldMarkTargetPoint argument is NO", function () {
 
       beforeEach( function () {
-        labelAnnotation = labelTool.createLabel('the label name', 1, 2, NO);
+        label = labelTool.createLabel('the label name', 1, 2, NO);
       });
       
       describe("the annotation returned by the method", function () {
 
         it("should have an x-value equal to the passed x-value", function () {
-          expect(labelAnnotation.get('x')).toEqual(1);
+          expect(label.get('x')).toEqual(1);
         });
       
         it("should have a y-value equal to the passed y-value", function () {
-          expect(labelAnnotation.get('y')).toEqual(2);
+          expect(label.get('y')).toEqual(2);
         });
         
         it("should have a shouldMarkTargetPoint value equal to NO", function () {
-          expect(labelAnnotation.get('shouldMarkTargetPoint')).toEqual(NO);
+          expect(label.get('shouldMarkTargetPoint')).toEqual(NO);
         });
       });
     });
@@ -126,12 +126,12 @@ describe("Smartgraphs.labelTool", function () {
   
   describe("appendLabel method", function () {
     
-    var labelAnnotation,
+    var label,
         state,
         controller;
     
     beforeEach( function () {
-      labelAnnotation = SC.Object.create();
+      label = SC.Object.create();
       
       controller = SC.Object.create({
         addAnnotation: function () {}
@@ -144,11 +144,11 @@ describe("Smartgraphs.labelTool", function () {
       });
       
       spyOn(controller, 'addAnnotation');
-      labelTool.appendLabel(state, labelAnnotation);
+      labelTool.appendLabel(state, label);
     });
     
     it("should call the addAnnotation method of the state's owning controller", function () {
-      expect(controller.get('addAnnotation')).toHaveBeenCalledWith(labelAnnotation);
+      expect(controller.get('addAnnotation')).toHaveBeenCalledWith(label);
     });
   });
   

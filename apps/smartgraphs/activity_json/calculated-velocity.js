@@ -144,7 +144,7 @@ Smartgraphs.activityDocs["/shared/calculated-velocity"] =
   ],
   "annotations": [
     {
-      "type": "LabelAnnotation",
+      "type": "Label",
       "records": [
         {
           "url": "/shared/calculated-velocity/annotation/test-label",
