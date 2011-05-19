@@ -63,67 +63,6 @@ describe("Smartgraphs.labelTool", function () {
   });
   
   
-  describe("createLabel method", function () {
-    
-    var label;
-    
-    beforeEach( function () {
-      var store = SC.Store.create().from(SC.FixturesDataSource.create());
-      spyOn(labelTool, 'getAnnotation').andReturn(store.createRecord(Smartgraphs.Label, {
-        url: 'the-annotation'
-      }));
-    });
-    
-    describe("when the shouldMarkTargetPoint argument is YES", function () {
-      
-      beforeEach( function () {
-        label = labelTool.createLabel('the label name', 1, 2, YES);
-      });
-          
-      it("should return the object found by getAnnotation", function () {
-        expect(labelTool.getAnnotation).toHaveBeenCalledWith('the label name');
-      });
-    
-      describe("the annotation returned by the method", function () {
-      
-        it("should have an x-value equal to the passed x-value", function () {
-          expect(label.get('x')).toEqual(1);
-        });
-      
-        it("should have a y-value equal to the passed y-value", function () {
-          expect(label.get('y')).toEqual(2);
-        });
-      
-        it("should have a shouldMarkTargetPoint value equal to YES", function () {
-          expect(label.get('shouldMarkTargetPoint')).toEqual(YES);
-        });
-      });
-    });
-    
-    describe("when the shouldMarkTargetPoint argument is NO", function () {
-
-      beforeEach( function () {
-        label = labelTool.createLabel('the label name', 1, 2, NO);
-      });
-      
-      describe("the annotation returned by the method", function () {
-
-        it("should have an x-value equal to the passed x-value", function () {
-          expect(label.get('x')).toEqual(1);
-        });
-      
-        it("should have a y-value equal to the passed y-value", function () {
-          expect(label.get('y')).toEqual(2);
-        });
-        
-        it("should have a shouldMarkTargetPoint value equal to NO", function () {
-          expect(label.get('shouldMarkTargetPoint')).toEqual(NO);
-        });
-      });
-    });
-  });
-  
-  
   describe("appendLabel method", function () {
     
     var label,
