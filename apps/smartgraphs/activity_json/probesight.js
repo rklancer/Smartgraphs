@@ -36,7 +36,7 @@ Smartgraphs.activityDocs["/shared/probesight"] =
       "url": "/shared/probesight/page/1",
       "activity": "/shared/probesight",
       "index": 1,
-      "introText": "<h1>SmartGraphs</h1><p>The SmartGraphs project is developing <i>open source, browser-based</i> activities that help students learn the meaning of graphs. </p><p> Activities run directly in a modern Web browser such as Firefox.  Programming is done in Javascript using the Sproutcore framework.  This demo does not use Java or Flash.</p><p>Click the <b>Next</b> button for a demo.<p>",                        
+      "introText": "<h1>SmartGraphs</h1><p>The SmartGraphs project is developing <i>open source, browser-based</i> activities that help students learn the meaning of graphs. </p><p> Activities run directly in a modern Web browser such as Firefox.  Programming is done in Javascript using the Sproutcore framework. This demo does not use Flash.</p><p>Click the <b>Next</b> button for a demo.<p>",                     
       "steps": [
         "/shared/probesight/page/1/step/1"
       ],
