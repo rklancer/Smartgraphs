@@ -13,8 +13,7 @@ Smartgraphs.appletPage = SC.Page.design({
 
   sensorAppletView: CC.SensorAppletView.design({
     layout: { width: 1, height: 1 },
-    listenerPath: 'Smartgraphs.sensorController',   // path to object that will receive applet callbacks
-    codebase: '/jnlpserver/jnlp'
+    listenerPath: 'Smartgraphs.sensorController'   // path to object that will receive applet callbacks
   })
   
 });
