@@ -79,9 +79,9 @@ describe("Smartgraphs.GraphController", function () {
         expect(statechart.get('currentStates').getEach('name')).toContain('LABEL_TOOL');  
       });
       
-      it("should set the labelName property of the LABEL_TOOL state", function () {
+      it("should set the annotationName property of the LABEL_TOOL state", function () {
         statechart.sendAction('labelToolStartTool', controller, 'the label name');
-        expect(statechart.getState('LABEL_TOOL').get('labelName')).toEqual('the label name');
+        expect(statechart.getState('LABEL_TOOL').get('annotationName')).toEqual('the label name');
       });
     });
     
