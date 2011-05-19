@@ -27,7 +27,21 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
   */
   annotation: null,
   
-  initialSubstate: 'START',
+  initialSubstate: 'DUMMY',
+
+  enterState: function () {
+    var annotationName = this.get('annotationName'),
+        annotation     = Smartgraphs.labelTool.getAnnotation(annotationName);
+
+    this.set('annotation', annotation);
+    
+    if (SC.kindOf(annotation, Smartgraphs.Label)) {
+      this.gotoState('LABEL_ONE');
+    }
+    else if (SC.kindOf(annotation, Smartgraphs.LabelSet)) {
+      this.gotoState('LABEL_MANY');
+    }
+  },
 
   exitState: function () {
     this.get('annotation').disableRemoval();
@@ -35,7 +49,6 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     this.set('annotationName', null);
   },
   
-
   // EVENT HANDLERS
   
   mouseDownAtPoint: function (context, args) {
@@ -48,27 +61,11 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     return YES;
   },
   
-
   // SUBSTATES
   
-  START: SC.State.design({
-    
-    enterState: function () {
-      var annotationName = this.getPath('parentState.annotationName'),
-          annotation     = Smartgraphs.labelTool.getAnnotation(annotationName);
-
-      this.setPath('parentState.annotation', annotation);
-      
-      if (SC.kindOf(annotation, Smartgraphs.Label)) {
-        this.gotoState('LABEL_ONE');
-      }
-      else if (SC.kindOf(annotation, Smartgraphs.LabelSet)) {
-        this.gotoState('LABEL_MANY');
-      }
-    }
-  }),
+  DUMMY: SC.State.design(),
   
-  
+   
   LABEL_ONE: SC.State.design({
     
     initialSubstate: 'NOT_ADDED',

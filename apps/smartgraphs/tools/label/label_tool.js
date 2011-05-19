@@ -22,19 +22,10 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
     
     @param {String} pane
       The pane we want the label tool to operate in; generally one of 'top', 'bottom', or 'single'
+    @returns {Smartgraphs.GraphController} the controller      
   */
   graphControllerForPane: function (pane) {
     return Smartgraphs.activityViewController.graphControllerForPane(pane);
-  },
-  
-  /**
-    Stubbable method retrieve the label or label set object with a particular name
-    
-    @param {String} name
-      The name of the Label annotation
-  */
-  getAnnotation: function (name) {
-    return Smartgraphs.activityObjectsController.findAnnotation(name);
   },
   
   /**
@@ -43,8 +34,19 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
     @param {SC.State} state
     @returns {Smartgraphs.GraphController} the controller
   */
-  getControllerForState: function (state) {
+  graphControllerForState: function (state) {
     return state.getPath('statechart.owner');
+  },
+  
+  /**
+    Stubbable method retrieve the label or label set object with a particular name
+    
+    @param {String} name
+      The name of the Label annotation
+    @returns {Smartgraphs.Annotation} the Label or LabelSet corresponding to 'name'
+  */
+  getAnnotation: function (name) {
+    return Smartgraphs.activityObjectsController.findAnnotation(name);
   },
   
   setup: function (args) {
@@ -55,24 +57,24 @@ Smartgraphs.labelTool = Smartgraphs.Tool.create(
   },
   
   appendLabel: function (state, label) {
-    this.getControllerForState(state).addAnnotation(label);
+    this.graphControllerForState(state).addAnnotation(label);
   },
   
   appendLabelSet: function (state, labelSet) {
-    this.getControllerForState(state).addAnnotation(labelSet);
+    this.graphControllerForState(state).addAnnotation(labelSet);
   },
   
   removeLabel: function (state, label) {
-    this.getControllerForState(state).removeAnnotation(label);
+    this.graphControllerForState(state).removeAnnotation(label);
   },
   
   addLabelsStarting: function (state) {
-    var controller = this.getControllerForState(state);
+    var controller = this.graphControllerForState(state);
     if (controller && controller.labelToolAddLabelsStarting) controller.labelToolAddLabelsStarting();
   },
   
   addLabelsFinished: function (state) {
-    var controller = this.getControllerForState(state);
+    var controller = this.graphControllerForState(state);
     if (controller && controller.labelToolAddLabelsFinished) controller.labelToolAddLabelsFinished();
   }
   
