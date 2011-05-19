@@ -472,10 +472,10 @@ describe("LabelView behavior", function () {
         var leftX,
             topY;
         
-        function fireEvent(el, eventName, x, y) {
-          var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
-          SC.Event.trigger(el, eventName, evt);
-        }
+            function fireEvent(el, eventName, x, y) {
+              var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
+              SC.Event.trigger(el, eventName, evt);
+            }
       
         describe("when the user mouses down on the label body at (10, 20)", function () {
           
@@ -566,6 +566,83 @@ describe("LabelView behavior", function () {
           });
         });
       });
+
+
+      describe("removing the label", function () {
+        
+        var removeButtonView;
+        
+        function fireEventOnElement(el, eventName, x, y) {
+          var offset = $(el).offset(),
+              leftX  = offset.left,
+              topY   = offset.top,
+              evt    = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
+              
+          SC.Event.trigger(el, eventName, evt);
+        }
+        
+        beforeEach( function () {
+          removeButtonView = labelView.getPath('labelBodyView.removeButtonView');
+        });
+        
+        describe("after calling the label record's enableRemoval method", function () {
+          
+          runBeforeEach( function () {
+            labelRecord.enableRemoval();
+          });
+          
+          describe("the remove-button view", function () {
+
+            it("should be visible", function () {
+              expect(removeButtonView).toBeVisible();
+            });
+          
+            describe("when the user clicks on it", function () {
+
+              beforeEach( function () {            
+                spyOn(graphController, 'labelViewRemoveLabel');
+                fireEventOnElement(removeButtonView.get('layer'), 'mousedown', 0, 0);
+              });
+            
+              it("should ask the graph controller to remove it by passing the label record to the controller's labelViewRemoveLabel method", function () {
+                expect(graphController.labelViewRemoveLabel).toHaveBeenCalledWith(labelRecord);
+              });
+
+            });
+          });          
+        });
+        
+        describe("after calling the label record's disableRemoval method", function () {
+
+          runBeforeEach( function () {
+            labelRecord.disableRemoval();
+          });          
+          
+          describe("the remove-button view", function () {
+
+            it("should not be visible", function () {
+              expect(removeButtonView).not.toBeVisible();
+            });
+          
+            describe("if the user somehow clicks on it", function () {
+
+              beforeEach( function () {    
+                spyOn(graphController, 'labelViewRemoveLabel');
+                fireEventOnElement(removeButtonView.get('layer'), 'mousedown', 0, 0);
+              });
+            
+              it("should not call the graph controller's labelViewRemoveLabel method", function () {
+                expect(graphController.labelViewRemoveLabel).not.toHaveBeenCalled();
+              });
+
+            });
+          });
+          
+        });
+        
+      });
+      
+      
     });
   });
 });
