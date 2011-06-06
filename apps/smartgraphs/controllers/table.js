@@ -26,8 +26,8 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   datadef: null,
   pointset: null,
   
+  isSelectable:        YES,
   selectionBinding:    '*pointset.selection',
-  isSelectableBinding: '*datadef.isSelectable',
   isStreamingBinding:  '*datadef.isStreaming',
   latestXBinding:      '*datadef.latestX',
   latestYBinding:      '*datadef.latestY',
