@@ -296,14 +296,14 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     
     @property {String}
   */
-  jsonEditorInput: null,
+  jsonEditorInput: SC.Record.attr(String),
 
   /**
     Flag indicating whether the JSON editor contains invalid JSON.
     
     @property {Boolean}
   */
-  jsonEditingIsInvalid: null,
+  jsonEditingIsInvalid: SC.Record.attr(Boolean),
 
   /**
     Not currently implemented. 
