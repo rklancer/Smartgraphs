@@ -31,6 +31,7 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   setup: function (args) {
     this.set('tagName', args.tag);
     this.set('datasetName', args.dataset);
+    Smartgraphs.statechart.gotoState(this.get('state'));
   },
   
   clearSetup: function () {

@@ -50,6 +50,14 @@ Smartgraphs.AnnotationSupport = {
   annotationList: null,
 
   /**
+    @private
+    Stubbable method to get an annotation given its name.
+  */
+  getAnnotation: function (name) {
+    Smartgraphs.activityObjectsController.findAnnotation(name);
+  },
+  
+  /**
     Add an annotation to this controller
     
     @param {Smartgraphs.Annotation} annotation
@@ -205,13 +213,14 @@ Smartgraphs.AnnotationSupport = {
   },
   
   /**
-    Remove the named annotation from this controller.
+    Remove the annotation from this controller.
     
-    @param {String} name
-      The name of the annotation to be removed.
+    @param {Smartgraphs.Annotation|String} annotationOrName
+      The annotation, or name of the annotation, to remove.
   */
-  removeAnnotation: function (name) {
-    var annotation = this.findAnnotationByName(name);
+  removeAnnotation: function (annotationOrName) {
+    var annotation = (SC.typeOf(annotationOrName) === SC.T_STRING) ? this.findAnnotationByName(annotationOrName) : annotationOrName;
+
     if (annotation) {
       var self = this;
       var overrides = annotation.get('propertyOverrides') || [];
@@ -241,7 +250,7 @@ Smartgraphs.AnnotationSupport = {
     if (!annotations) return;
 
     annotations.forEach( function (name) {
-      self.addAnnotation(Smartgraphs.activityObjectsController.findAnnotation(name));
+      self.addAnnotation(self.getAnnotation(name));
     });
   }
   

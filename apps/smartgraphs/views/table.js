@@ -18,20 +18,21 @@ sc_require('views/table_item');
 Smartgraphs.TableView = SC.View.extend(
 /** @scope Smartgraphs.TableView.prototype */ {
   
-  showTableBinding: '*tableController.showTable',
-  datasetBinding: '*tableController.dataset',
-  xUnitsAbbreviatedBinding: '*tableController.dataset.xUnits.abbreviation',
-  xShortLabelBinding: '*tableController.dataset.xShortLabel',
-  yUnitsAbbreviatedBinding: '*tableController.dataset.yUnits.abbreviation',
-  yShortLabelBinding: '*tableController.dataset.yShortLabel',  
-  yUnitsBinding: '*tableController.dataset.yUnits',
-  latestXBinding: '*tableController.latestX',
-  latestYBinding: '*tableController.latestY',
-  annotationListBinding: '*tableController.annotationList',
+  showTableBinding:         '*tableController.showTable',
+  annotationListBinding:    '*tableController.annotationList',  
+  datadefBinding:           '*tableController.datadef',  
+  latestXBinding:           '*tableController.latestX',
+  latestYBinding:           '*tableController.latestY',
   
-  columnsView: SC.outlet('tableColumnView.scrollView.contentView'),
-  xsView: SC.outlet('columnsView.xsView'),
-  ysView: SC.outlet('columnsView.ysView'),
+  xUnitsAbbreviatedBinding: '*tableController.xUnits.abbreviation',
+  xShortLabelBinding:       '*tableController.xShortLabel',
+  yUnitsAbbreviatedBinding: '*tableController.yUnits.abbreviation',
+  yShortLabelBinding:       '*tableController.yShortLabel',  
+  yUnitsBinding:            '*tableController.yUnits',  
+
+  columnsView:  SC.outlet('tableColumnView.scrollView.contentView'),
+  xsView:       SC.outlet('columnsView.xsView'),
+  ysView:       SC.outlet('columnsView.ysView'),
   backdropView: SC.outlet('columnsView.backdropView'),
   
   xLabel: function () {
@@ -141,12 +142,13 @@ Smartgraphs.TableView = SC.View.extend(
     
       contentView: SC.View.design({
         rowHeight: 20,
+        
         tableControllerBinding: '.parentView.parentView.parentView.parentView*tableController',
-        contentBinding: '.parentView.parentView.parentView.parentView*tableController.arrangedObjects',
-        selectionBinding: '.parentView.parentView.parentView.parentView*tableController.selection',
-        isSelectableBinding: '.parentView.parentView.parentView.parentView*tableController.isSelectable',
-        contentLengthBinding: '.content.length',
-        annotationsListBinding: '.parentView.parentView.parentView.parentView*tableController.annotationsList',
+        contentBinding:         '*tableController.arrangedObjects',
+        selectionBinding:       '*tableController.selection',
+        isSelectableBinding:    '*tableController.isSelectable',
+        annotationsListBinding: '*tableController.annotationsList',
+        contentLengthBinding:   '*content.length',        
 
         contentLengthDidChange: function () {
           this.adjustHeightForContentLength();
@@ -201,9 +203,9 @@ Smartgraphs.TableView = SC.View.extend(
     })
   }),
   
-  datasetDidChange: function () {
+  datadefDidChange: function () {
     this.invokeOnce('adjustViews');
-  }.observes('dataset'),
+  }.observes('datadef'),
   
   showTableDidChange: function () {
     this.invokeOnce('adjustViews'); 
@@ -215,7 +217,7 @@ Smartgraphs.TableView = SC.View.extend(
     var item, classKey, id;
     var desiredViewsByClassAndId = {};
 
-    // add views for items (datasets or annotations) not currently in the list of child views
+    // add views for items (datadefss or annotations) not currently in the list of child views
     for (var i = 0, ii = list.get('length'); i < ii; i++) {
       item = list.objectAt(i);
 

@@ -28,11 +28,6 @@
 Smartgraphs.Annotation = SC.Record.extend(
 /** @scope Smartgraphs.Annotation.prototype */ {
 
-  init: function () {
-    this.invokeLast(this._updateAnnotationsList);
-    sc_super();
-  },
-  
   /**
     The primary key of an Annotation record is technically its url. However, annotations are referenced by type
     and name within the serialized format of an activity.
@@ -50,7 +45,13 @@ Smartgraphs.Annotation = SC.Record.extend(
   isAnnotation: YES,
   
   /**
-    Name of the annotation. This should be unique within a Session or Activity.
+    Name of the annotation. This should be unique within a Session or Activity. 
+    
+    If null or undefined, the annotation is considered anonymous. Such annotations are useful when they are managed by
+    a collection annotation, e.g, an arbitrary number of nameless Labels can be managed by a single LabelSet
+    annotation, which is named. That way an author can allow the user to create an arbitrary number of labels in one
+    step, and cause those labels to show up in a later step (by specifying the LabelSet's name) without having to
+    predecide either the number of inidividual nor their individual names.
     
     @property {String}
   */
@@ -63,33 +64,6 @@ Smartgraphs.Annotation = SC.Record.extend(
     @property {Smartgraphs.Activity}
   */
   activity: SC.Record.toOne('Smartgraphs.Activity', { aggregate: YES } ),
-  
-  /**
-    @private
-    
-    Once the activity is defined, add this to the activity's list of annotations (which can't be a ManyArray because
-    ManyArray doesn't support polymorphic relationships)
-  */
-  _updateAnnotationsList: function () {
-    var activity = this.get('activity');
-    
-    if (activity) {
-      console.log('updating activity');
-      if (this._activity) this._activity.get('annotations').removeObject(this);
-      activity.get('annotations').pushObject(this);
-      this._activity = activity;
-    }
-  }.observes('activity'),
-  
-  /**
-    The session this annotation is associated with. (When a user begins running an activity, any new annotations
-    created during the run of the activity, and any modifications to annotations pre-defined by the author, are 
-    buffered to a nested data store. When the user's session state is saved, the new or modified annotations are
-    uploaded to the server, and the buffered changes are dropped.)
-    
-    @property {Smartgraphs.Session}
-  */
-  session: SC.Record.toOne('Smartgraphs.Session'),
 
   /**
     Color with which to draw the annotation. Defaults to #cc0000, which is red.

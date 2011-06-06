@@ -28,5 +28,4 @@ Smartgraphs.Tool.start = function (name, setupArgs) {
   if (!tool) throw "Could not start tool '" + name + "' (tool is not defined).";
   
   tool.setup.call(tool.context, setupArgs);
-  Smartgraphs.statechart.gotoState(tool.state);
 };

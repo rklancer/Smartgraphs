@@ -11,7 +11,7 @@
 
   @extends SC.Object
 */
-Smartgraphs.loadingActivityController = SC.ObjectController.create(
+Smartgraphs.loadingActivityController = SC.Object.create(
 /** @scope Smartgraphs.loadingActivityController.prototype */ {
 
   openAuthorViewAfterLoading: NO

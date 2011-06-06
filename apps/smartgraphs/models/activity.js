@@ -14,11 +14,6 @@
 */
 Smartgraphs.Activity = SC.Record.extend(
 /** @scope Smartgraphs.Activity.prototype */ {
-
-  init: function () {
-    this.set('annotations', []);
-    this.set('variables', []);
-  },
   
   /** 
     The (relative) URL at which this Activity can be found. Also its primary key in the datastore.
@@ -62,32 +57,31 @@ Smartgraphs.Activity = SC.Record.extend(
   units: SC.Record.toMany('Smartgraphs.Unit', { inverse: 'activity' }),
   
   /**
-    Graphs that are part of the activity
+    Datadefs that are part of the activity.
     
-    @property(Smartgraphs.Graph[])
+    @property(Smartgraphs.Datadef[])
   */
-  graphs: SC.Record.toMany('Smartgraphs.Graph', { inverse: 'activity' }),
-  
-  /**
-    Datasets that are part of the activity
+  datadefs: function () {
+    this._datadefsQuery = this._datadefsQuery || SC.Query.local(Smartgraphs.Datadef, 'activity={activity}', { activity: this });
+    return this.get('store').find(this._datadefsQuery);
+  }.property(),     // note that find() returns a cached copy of the recordarray (whose contents update live)
     
-    @property(Smartgraphs.Dataset[])
-  */
-  datasets: SC.Record.toMany('Smartgraphs.Dataset', { inverse: 'activity' }),
-  
   /**
-    Annotations defined as part of this activity. Not persisted to the database.
+    Annotations defined as part of this activity.
     
     @property(Smartgraphs.Annotation[])
   */
-  annotations: null,
+  annotations: function () {
+    this._annotationsQuery = this._annotationsQuery || SC.Query.local(Smartgraphs.Annotation, 'activity={activity}', { activity: this });
+    return this.get('store').find(this._annotationsQuery);
+  }.property(),
   
   /**
-    Variables defined as part of this activity. Not persisted to the database.
+    Variables defined as part of this activity.
     
     @property(Smartgraphs.Variable[])
   */
-  variables: null,
+  variables: SC.Record.toMany('Smartgraphs.Variable', { inverse: 'activity' }),
   
   /**
     ResponseTemplates used in this activity
@@ -109,6 +103,7 @@ Smartgraphs.Activity = SC.Record.extend(
     
     var pages = this.get('pages');
     ret.pages = pages.map( function (page) { return page.serialize(); } );
+
     var steps = pages.map( function (page) { return page.get('steps').map( function (step) { return step.serialize(); } ); } );
     ret.steps = Array.prototype.concat.apply([], steps);
 
@@ -117,43 +112,36 @@ Smartgraphs.Activity = SC.Record.extend(
     
     var axes = this.get('axes');
     ret.axes = axes.map( function (axis) { return axis.serialize(); } );
-    var graphs = this.get('graphs');
-    ret.graphs = graphs.map( function (graph) { return graph.serialize(); } );
 
     var responseTemplates = this.get('responseTemplates');
     ret.responseTemplates = responseTemplates.map( function (responseTemplate) { return responseTemplate.serialize(); });
-    
-    var datasets = this.get('datasets');
-    ret.datasets = datasets.map( function (dataset) { return dataset.serialize(); } );
-    // FIXME datasets should serialize to an array of points; at the moment, datapoint ids (just integers) are likely to collide
-    var datapoints = datasets.map( function (dataset) { return dataset.get('points').map( function (point) { return point.serialize(); } ); } );
-    ret.datapoints = Array.prototype.concat.apply([], datapoints);
+
+    var variables = this.get('variables');
+    ret.variables = variables.map( function (variable) { return variable.serialize(); } );
     
     var self = this;
-    ret.annotations = [];
-    Smartgraphs.Annotation.typeNames().forEach(function (typeName) {
-      var annotationType = Smartgraphs[typeName],
-          query = SC.Query.local(annotationType, 'activity={activity}', {
-            activity: self
-          }),
-          annotations = store.find(query).filter(function (annotation) { return annotation.constructor === annotationType; });
-      
-      if (annotations.get('length') > 0) {
-        ret.annotations.push({
-          type: typeName,
-          records: annotations.map( function (annotation) { return annotation.serialize(); } )
-        });
-      }
-    });
+
+    // Serialize both Datadefs and Annotations as [ { type: blah, records: [ {<one record}, ...] }, { type: } ]
     
-    ret.variables = [];
-    var query = SC.Query.local(Smartgraphs.Variable, 'activity={activity}', {
-      activity: self
-    });
-    var variables = store.find(query);
-    if (variables.get('length') > 0) {
-      ret.variables = variables.map( function (variable) { return variable.serialize(); } );
-    }
+    var serializeSubclasses = function (parentClass) {
+      var ret = [];
+      parentClass.typeNames().forEach(function (typeName) {
+        var subclassType    = Smartgraphs[typeName],
+            query           = SC.Query.local(subclassType, 'activity={activity}', { activity: self }),
+            subclassObjects = store.find(query).filter(function (obj) { return obj.constructor === subclassType; });
+            
+        if (subclassObjects.get('length') > 0) {
+          ret.push({
+            type: typeName,
+            records: subclassObjects.map( function (obj) { return obj.serialize(); } )
+          });
+        }
+      });
+      return ret;
+    };
+    
+    ret.datadefs = serializeSubclasses(Smartgraphs.Datadef);      
+    ret.annotations = serializeSubclasses(Smartgraphs.Annotation);
 
     return ret;
   }

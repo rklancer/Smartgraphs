@@ -5,11 +5,17 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-sc_require('mixins/annotation_support');
+sc_require('mixins/annotation_support');  
 
 /** @class
 
-  Initial implementation of table controller. Currently only allows displaying a single dataset
+  The table controller manages a set of Smartgraphs.Point objects that represent a particular sampling of a
+  DataDef. It is intended to be the content of a Smartgraphs.TableView.
+  
+  At the moment, it also instructs the tableview when to switch between 'table display' and 'numeric display' mode.
+  This is done when data is streaming into the datadef from a sensor, because the table view is inefficient at 
+  appending new elements and cannot do so at interactive speeds. ('Numeric display' mode displays just the latest
+  sensor reading, instead of trying to append the latest sensor reading to a table.)
   
   @extends SC.Object
   @extends Smartgraphs.AnnotationSupport
@@ -17,83 +23,58 @@ sc_require('mixins/annotation_support');
 Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.tableController.prototype */ {
   
-  /**
-    The graph controller that has this dataset open. (Currently we require a dataset to be opened in a graph view
-    before it can be viewed in a table, but this will change.)
-  */
-  graphController: null,
+  datadef: null,
+  pointset: null,
+  
+  isSelectable:        YES,
+  selectionBinding:    '*pointset.selection',
+  isStreamingBinding:  '*datadef.isStreaming',
+  latestXBinding:      '*datadef.latestX',
+  latestYBinding:      '*datadef.latestY',
+  xUnitsBinding:       '*datadef.xUnits',
+  yUnitsBinding:       '*datadef.yUnits',
+  xShortLabelBinding:  '*datadef.xShortLabel',
+  yShortLabelBinding:  '*datadef.yShortLabel',
   
   /**
-    The name of the graph opened by the graphController. We find the graph controller by name.
-  */
-  graphName: null,
-  
-  /**
-    The name of the dataset being displayed. We find the dataset by name.
-  */
-  datasetName: null,
-
-  /**
-    The dataset being displayed, if any.
-  */
-  dataset: null,
-  
-  selectionBinding: '*dataset.selection',
-  isSelectableBinding: '*dataset.isSelectable',
-
-  // These properties will be used to communicate to the table view. (These will change as the view becomes more
-  // sophisticated.)
-  
-  isStreamingBinding: '*dataset.isStreaming',
-  
-  /**
-    Whether to display the table at all and latest datapoint to display
+    Whether to display the table (or else the numeric view)
+    
+    @property {Boolean}
   */
   showTable: function () {
-    // SC.Binding.not() creates a single Binding object that ends up being shared by all TableController instances
     return !this.get('isStreaming');
   }.property('isStreaming').cacheable(),
   
-  latestXBinding: '*dataset.latestPoint.xRounded',
-  latestYBinding: '*dataset.latestPoint.yRounded',
   
   clear: function () {
-    var datasetName = this.get('datasetName');
-    
-    if (datasetName) {
-      Smartgraphs.TableController.controllerForDataset.set(datasetName, null);
-    }
-    
     this.clearAnnotations();
-    this.set('content', null);
-    this.set('dataset', null);
-    this.set('datasetName', null);
+    this.set('datadef', null);
+    this.set('pointset', null);
+    this.set('content', []);    
   },
   
-  /**
-    Causes the table to display dataset `datasetName`.
-    
-    Waits for the specified graph to be opened by one of the graph controllers and waits for the dataset to be opened
-    by that graph controller before setting our content to the set of points in the dataset.
-  */
-  openDataset: function (datasetName) {
-    var currentDatasetName = this.get('datasetName'),
-        dataset;
+  setupTable: function (config) {      
+    var datadef,
+        datadefName,
+        options = {},
+        rep;
         
-    if (currentDatasetName === datasetName) return YES;       // Nothing to do
-    if (currentDatasetName) {
-      // FIXME this method of handling dataset names will have problems with name collisions
-      Smartgraphs.TableController.controllerForDataset.set(currentDatasetName, null);
-    }
-    Smartgraphs.TableController.controllerForDataset.set(datasetName, this);
+    this.clear();
     
-    dataset = Smartgraphs.activityObjectsController.findDataset(datasetName);
-    this.clear(); 
-    this.set('datasetName', datasetName);
-    this.set('dataset', dataset);
-    this.set('content', dataset.get('points'));
+    if (SC.typeOf(config.data) === SC.T_STRING) {
+      datadefName = config.data;
+    }
+    else {
+      datadefName = config.data[0];
+      options = config.data[1];
+    }
+
+    datadef = Smartgraphs.activityObjectsController.findDatadef(datadefName);
+    rep = datadef.getNewRepresentation(options);
+
+    this.set('datadef', datadef);
+    this.set('pointset', rep.get('pointset'));
+    this.set('content', this.getPath('pointset.points'));
   }
 
 });
-
-Smartgraphs.TableController.controllerForDataset = SC.Object.create({});

@@ -3,17 +3,17 @@
 Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
 Smartgraphs.activityDocs["/shared/instantaneous-speed"] = 
 {
-  "_id": "instantanous-speed.df5",
-  "_rev": "10-bfcf2cf128db41df9bd9141454564e9d",
-  "data_format_version": 5,
+  "_id": "instantanous-speed.df6",
+  "_rev": "0",
+  "data_format_version": 6,
   "activity": {
     "title": "Instantaneous Speed (Slope Tool)",
     "url": "/shared/instantaneous-speed",
     "owner": "shared",
     "pages": [   
-      "/shared/instantaneous-speed/page/12",
-      "/shared/instantaneous-speed/page/13",
-      "/shared/instantaneous-speed/page/14"
+      "/shared/instantaneous-speed/page/1",
+      "/shared/instantaneous-speed/page/2",
+      "/shared/instantaneous-speed/page/3"
     ],
     "datasets": [
       "/shared/instantaneous-speed/dataset/slope-data"
@@ -36,29 +36,29 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
   "pages": [
     {
       "name": "Instantaneous Speed I",
-      "url": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1",
       "activity": "/shared/instantaneous-speed",
-      "index": 12,
+      "index": 1,
       "introText": "<h1>Analysis</h1><p>Suppose you collected some actual position-time data while walking from 0 to 15 meters and displayed your data to the right. Let's find out how fast you walked during different time intervals.</p><p>First you will pick two points that are next to each other and find the velocity between those points. This calculation will be close to your <b>instantaneous</b> velocity. </p>",                        
       "steps": [
-        "/shared/instantaneous-speed/page/12/step/1",
-        "/shared/instantaneous-speed/page/12/step/2",
-        "/shared/instantaneous-speed/page/12/step/3",
-        "/shared/instantaneous-speed/page/12/step/4",
-        "/shared/instantaneous-speed/page/12/step/5",
-        "/shared/instantaneous-speed/page/12/step/6",
-        "/shared/instantaneous-speed/page/12/step/7",
-        "/shared/instantaneous-speed/page/12/step/8",
-        "/shared/instantaneous-speed/page/12/step/9",
-        "/shared/instantaneous-speed/page/12/step/10",
-        "/shared/instantaneous-speed/page/12/step/11",
-        "/shared/instantaneous-speed/page/12/step/12",
-        "/shared/instantaneous-speed/page/12/step/13",
-        "/shared/instantaneous-speed/page/12/step/14",
-        "/shared/instantaneous-speed/page/12/step/15",
-        "/shared/instantaneous-speed/page/12/step/16"
+        "/shared/instantaneous-speed/page/1/step/1",
+        "/shared/instantaneous-speed/page/1/step/2",
+        "/shared/instantaneous-speed/page/1/step/3",
+        "/shared/instantaneous-speed/page/1/step/4",
+        "/shared/instantaneous-speed/page/1/step/5",
+        "/shared/instantaneous-speed/page/1/step/6",
+        "/shared/instantaneous-speed/page/1/step/7",
+        "/shared/instantaneous-speed/page/1/step/8",
+        "/shared/instantaneous-speed/page/1/step/9",
+        "/shared/instantaneous-speed/page/1/step/10",
+        "/shared/instantaneous-speed/page/1/step/11",
+        "/shared/instantaneous-speed/page/1/step/12",
+        "/shared/instantaneous-speed/page/1/step/13",
+        "/shared/instantaneous-speed/page/1/step/14",
+        "/shared/instantaneous-speed/page/1/step/15",
+        "/shared/instantaneous-speed/page/1/step/16"
       ],
-      "firstStep": "/shared/instantaneous-speed/page/12/step/1",
+      "firstStep": "/shared/instantaneous-speed/page/1/step/1",
       "contextVars": [
         { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
         { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
@@ -74,30 +74,30 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
     },
     {
       "name": "Instantaneous Speed II",
-      "url": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2",
       "activity": "/shared/instantaneous-speed",
-      "index": 13,
+      "index": 2,
       "introText": "<h1>Analysis</h1><p>Now you will pick another set of points that are next to each other and find the velocity between those points.</p>",                    
       "steps": [
-        "/shared/instantaneous-speed/page/13/step/1",
-        "/shared/instantaneous-speed/page/13/step/1a",
-        "/shared/instantaneous-speed/page/13/step/2",
-        "/shared/instantaneous-speed/page/13/step/3",
-        "/shared/instantaneous-speed/page/13/step/4",
-        "/shared/instantaneous-speed/page/13/step/5",
-        "/shared/instantaneous-speed/page/13/step/6",
-        "/shared/instantaneous-speed/page/13/step/7",
-        "/shared/instantaneous-speed/page/13/step/8",
-        "/shared/instantaneous-speed/page/13/step/9",
-        "/shared/instantaneous-speed/page/13/step/10",
-        "/shared/instantaneous-speed/page/13/step/11",
-        "/shared/instantaneous-speed/page/13/step/12",
-        "/shared/instantaneous-speed/page/13/step/13",
-        "/shared/instantaneous-speed/page/13/step/14",
-        "/shared/instantaneous-speed/page/13/step/15",
-        "/shared/instantaneous-speed/page/13/step/16"
+        "/shared/instantaneous-speed/page/2/step/1",
+        "/shared/instantaneous-speed/page/2/step/1a",
+        "/shared/instantaneous-speed/page/2/step/2",
+        "/shared/instantaneous-speed/page/2/step/3",
+        "/shared/instantaneous-speed/page/2/step/4",
+        "/shared/instantaneous-speed/page/2/step/5",
+        "/shared/instantaneous-speed/page/2/step/6",
+        "/shared/instantaneous-speed/page/2/step/7",
+        "/shared/instantaneous-speed/page/2/step/8",
+        "/shared/instantaneous-speed/page/2/step/9",
+        "/shared/instantaneous-speed/page/2/step/10",
+        "/shared/instantaneous-speed/page/2/step/11",
+        "/shared/instantaneous-speed/page/2/step/12",
+        "/shared/instantaneous-speed/page/2/step/13",
+        "/shared/instantaneous-speed/page/2/step/14",
+        "/shared/instantaneous-speed/page/2/step/15",
+        "/shared/instantaneous-speed/page/2/step/16"
       ],
-      "firstStep": "/shared/instantaneous-speed/page/13/step/1",
+      "firstStep": "/shared/instantaneous-speed/page/2/step/1",
       "contextVars": [
         { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
         { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-B", "second-point-B"]]] },
@@ -113,20 +113,20 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
     },
     {
       "name": "Instantaneous Speed III",
-      "url": "/shared/instantaneous-speed/page/14",
+      "url": "/shared/instantaneous-speed/page/3",
       "activity": "/shared/instantaneous-speed",
-      "index": 14,            
+      "index": 3,            
       "steps": [
-        "/shared/instantaneous-speed/page/14/step/1"
+        "/shared/instantaneous-speed/page/3/step/1"
       ],
-      "firstStep": "/shared/instantaneous-speed/page/14/step/1",
+      "firstStep": "/shared/instantaneous-speed/page/3/step/1",
       "introText": "<h1>Analysis</h1><p>Was your velocity the same during the two different time intervals? If not, during which interval were you going faster? Explain how you know.</p>"
     }
   ],  
   "steps": [
     {
-      "url": "/shared/instantaneous-speed/page/12/step/1",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/1",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -134,30 +134,30 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
-          "annotations": ["p1A-highlight"]
-        },
-        "bottom": {
-          "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight"]
-        }
+          "data": ["slope-data"],
+          "annotations": []
+        }//,
+        // "bottom": {
+        //   "type": "table",
+        //   "dataset": "slope-data",
+        //   "annotations": []
+        // }
       },
       "beforeText": "<p>Select a point and then click <b>OK</b>.</p>",
       "tools": [
-        { "name": "tagging",
-          "setup": {
-            "tag": "first-point-A",
-            "dataset": "slope-data"
-          }
-        }
+        // { "name": "tagging",
+        //   "setup": {
+        //     "tag": "first-point-A",
+        //     "dataset": "slope-data"
+        //   }
+        // }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/2",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/2",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/2",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/2",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -186,15 +186,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-A"], ["indexInDataset", "second-point-A"]]],
-          "step": "/shared/instantaneous-speed/page/12/step/4"
+          "step": "/shared/instantaneous-speed/page/1/step/4"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/3",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/3",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/3",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/3",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -223,15 +223,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-A"], ["indexInDataset", "second-point-A"]]],
-          "step": "/shared/instantaneous-speed/page/12/step/4"
+          "step": "/shared/instantaneous-speed/page/1/step/4"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/3",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/3",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/4",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/4",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -254,15 +254,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/16"
+          "step": "/shared/instantaneous-speed/page/1/step/16"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/5",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/5",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/5",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/5",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -286,15 +286,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/16"
+          "step": "/shared/instantaneous-speed/page/1/step/16"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/6",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/6",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/6",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/6",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -319,15 +319,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/10"
+          "step": "/shared/instantaneous-speed/page/1/step/10"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/7",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/7",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/7",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/7",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -353,15 +353,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/10"
+          "step": "/shared/instantaneous-speed/page/1/step/10"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/8",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/8",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/8",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/8",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -387,12 +387,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-position",
         "change-position-units"
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/9",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/9",
       "submitButtonTitle": "Continue"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/9",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/9",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -417,15 +417,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/13"
+          "step": "/shared/instantaneous-speed/page/1/step/13"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/11",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/11",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/10",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/10",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -450,15 +450,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/13"
+          "step": "/shared/instantaneous-speed/page/1/step/13"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/11",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/11",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/11",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/11",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -484,15 +484,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/13"
+          "step": "/shared/instantaneous-speed/page/1/step/13"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/12",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/12",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/12",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/12",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -518,12 +518,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-time",
         "change-time-units"
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/13",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/13",
       "submitButtonTitle": "Continue"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/13",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/13",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -552,15 +552,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/16"
+          "step": "/shared/instantaneous-speed/page/1/step/16"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/14",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/14",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/14",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/14",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -590,15 +590,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/12/step/16"
+          "step": "/shared/instantaneous-speed/page/1/step/16"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/12/step/15",
+      "defaultBranch": "/shared/instantaneous-speed/page/1/step/15",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/15",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/15",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -631,8 +631,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "hideSubmitButton": true
     },
     {
-      "url": "/shared/instantaneous-speed/page/12/step/16",
-      "activityPage": "/shared/instantaneous-speed/page/12",
+      "url": "/shared/instantaneous-speed/page/1/step/16",
+      "activityPage": "/shared/instantaneous-speed/page/1",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -690,8 +690,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
 
 
     {
-      "url": "/shared/instantaneous-speed/page/13/step/1",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/1",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -720,15 +720,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
-          "step": "/shared/instantaneous-speed/page/13/step/1a"
+          "step": "/shared/instantaneous-speed/page/2/step/1a"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/2",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/2",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/1a",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/1a",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -757,15 +757,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["or", ["samePoint", "first-point-B", "first-point-A"], ["samePoint", "first-point-B", "second-point-A"]],
-          "step": "/shared/instantaneous-speed/page/13/step/1a"
+          "step": "/shared/instantaneous-speed/page/2/step/1a"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/2",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/2",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/2",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/2",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -794,15 +794,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-B"], ["indexInDataset", "second-point-B"]]],
-          "step": "/shared/instantaneous-speed/page/13/step/4"
+          "step": "/shared/instantaneous-speed/page/2/step/4"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/3",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/3",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/3",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/3",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -831,15 +831,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-B"], ["indexInDataset", "second-point-B"]]],
-          "step": "/shared/instantaneous-speed/page/13/step/4"
+          "step": "/shared/instantaneous-speed/page/2/step/4"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/3",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/3",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/4",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/4",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -862,15 +862,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/16"
+          "step": "/shared/instantaneous-speed/page/2/step/16"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/5",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/5",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/5",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/5",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -894,15 +894,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/16"
+          "step": "/shared/instantaneous-speed/page/2/step/16"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/6",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/6",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/6",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/6",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -927,15 +927,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/10"
+          "step": "/shared/instantaneous-speed/page/2/step/10"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/7",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/7",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/7",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/7",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -961,15 +961,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/10"
+          "step": "/shared/instantaneous-speed/page/2/step/10"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/8",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/8",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/8",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/8",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -995,12 +995,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-position",
         "change-position-units"
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/9",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/9",
       "submitButtonTitle": "Continue"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/9",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/9",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1025,15 +1025,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/13"
+          "step": "/shared/instantaneous-speed/page/2/step/13"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/11",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/11",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/10",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/10",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1058,15 +1058,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/13"
+          "step": "/shared/instantaneous-speed/page/2/step/13"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/11",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/11",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/11",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/11",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1092,15 +1092,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-B", "second-point-B"]], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/13"
+          "step": "/shared/instantaneous-speed/page/2/step/13"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/12",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/12",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/12",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/12",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1126,12 +1126,12 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "change-time",
         "change-time-units"
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/13",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/13",
       "submitButtonTitle": "Continue"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/13",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/13",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1160,15 +1160,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/16"
+          "step": "/shared/instantaneous-speed/page/2/step/16"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/14",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/14",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/14",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/14",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1198,15 +1198,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-B", "second-point-B"], ["responseField", 1], 0.1],
-          "step": "/shared/instantaneous-speed/page/13/step/16"
+          "step": "/shared/instantaneous-speed/page/2/step/16"
         }
       ],
-      "defaultBranch": "/shared/instantaneous-speed/page/13/step/15",
+      "defaultBranch": "/shared/instantaneous-speed/page/2/step/15",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/15",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/15",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1239,8 +1239,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "hideSubmitButton": true
     },
     {
-      "url": "/shared/instantaneous-speed/page/13/step/16",
-      "activityPage": "/shared/instantaneous-speed/page/13",
+      "url": "/shared/instantaneous-speed/page/2/step/16",
+      "activityPage": "/shared/instantaneous-speed/page/2",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1298,8 +1298,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
 
 
     {
-      "url": "/shared/instantaneous-speed/page/14/step/1",
-      "activityPage": "/shared/instantaneous-speed/page/14",
+      "url": "/shared/instantaneous-speed/page/3/step/1",
+      "activityPage": "/shared/instantaneous-speed/page/3",
       "paneConfig": "split",
       "panes": {
         "top": {
@@ -1339,7 +1339,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       "label": "Position"
     }
   ],
-  "graphs": [
+  "variables": [
   
   ],
   "responseTemplates": [
@@ -1370,100 +1370,23 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
       ]
     }
   ],
-  "datasets": [
+  "datadefs": [
     {
-      "url": "/shared/instantaneous-speed/dataset/slope-data",
-      "name": "slope-data",
-      "activity": "/shared/instantaneous-speed",
-      "xUnits": "/builtins/units/seconds",
-      "xLabel": "Time",
-      "xShortLabel": "Time",
-      "yUnits": "/builtins/units/meters",
-      "yLabel": "Position",
-      "yShortLabel": "Position",
-      "points": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
-      "session": null,
-      "defaultColor": null
-    }
-  ],
-  "datapoints": [
-    {
-      "x": 0,
-      "y": 0,
-      "guid": 1,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 1,
-      "y": 2,
-      "guid": 2,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 2,
-      "y": 4,
-      "guid": 3,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 3,
-      "y": 5,
-      "guid": 4,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 4,
-      "y": 6,
-      "guid": 5,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 5,
-      "y": 4,
-      "guid": 6,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 6,
-      "y": 8,
-      "guid": 7,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 7,
-      "y": 10,
-      "guid": 8,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 8,
-      "y": 11,
-      "guid": 9,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 9,
-      "y": 12,
-      "guid": 10,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
-    },
-    {
-      "x": 10,
-      "y": 15,
-      "guid": 11,
-      "dataset": "/shared/instantaneous-speed/dataset/slope-data"
+      "type": "UnorderedDataPoints",
+      "records": [
+        {    
+          "url": "/shared/instantaneous-speed/datadef/slope-data",
+          "name": "slope-data",
+          "activity": "/shared/instantaneous-speed",
+          "xUnits": "/builtins/units/seconds",
+          "xLabel": "Time",
+          "xShortLabel": "Time",
+          "yUnits": "/builtins/units/meters",
+          "yLabel": "Position",
+          "yShortLabel": "Position",
+          "points": [[0,0], [1,2], [2,4], [3,5], [4,6], [5,4], [6,8], [7,10], [8,11], [9,12], [10,15]]
+        }
+      ]
     }
   ],
   "tags": [

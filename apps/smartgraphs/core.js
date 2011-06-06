@@ -18,7 +18,7 @@ Smartgraphs = SC.Application.create(
   VERSION: '0.1.0',
   
   // Only attempt to read data from JSON documents with doc.data_format_version that matches the version below
-  DATA_FORMAT_VERSION: 5,
+  DATA_FORMAT_VERSION: 6,
   
   rootStore: function () {
     var ret = Smartgraphs.store;
