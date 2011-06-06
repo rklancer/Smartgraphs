@@ -18,7 +18,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
   canSubmit: NO,
   showSubmitButton: NO,
-  jsonEditorCurrentConfig: { objectType: 'activity', attribute: 'title' },
   
   /**
     YES iff there is content (a response template or before/after text) to put in the 'dialog text' area
@@ -220,94 +219,6 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     
     if (defaultBranch) {
       Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
-    }
-  },
-  
-  /**** 
-  
-    JSON-editing stuff.
-  
-  ****/
-
-  // TODO (possibly): Also observe changes to the focused property; what we have now works as long as nothing changes
-  // the model objects "behind our backs"
-
-  _updateEditorInputValue: function() {
-    var config        = this.get('jsonEditorCurrentConfig'),
-        attribute     = this.getAttribute(config),
-        newEditorText = attribute ? JSON.stringify(attribute, null, 2) : ""; // pretty-printed
-        
-    this.setIfChanged('jsonEditorInput', newEditorText);
-  }.observes('jsonEditorCurrentConfig', 'content'),
-
-
-  _updateAttributeAfterEditorInput: function () {
-    var jsonEditorInput = this.get('jsonEditorInput'),
-        config          = this.get('jsonEditorCurrentConfig'),
-        newAttributeValue,
-        newAttributeJson,
-        oldAttributeJson;
-    
-    if (jsonEditorInput) {
-      // validate json
-      try {
-        newAttributeValue = SC.json.decode(jsonEditorInput);
-        this.set('jsonEditingIsInvalid', false);
-      } 
-      catch (e) {
-        this.set('jsonEditingIsInvalid', true);
-        return;
-      }
-
-      // set attribute
-      newAttributeJson = SC.json.encode(newAttributeValue);
-      oldAttributeJson = SC.json.encode(this.getAttribute(config));
-
-      if (newAttributeJson !== oldAttributeJson) {
-        this.setAttribute(config, newAttributeValue);
-      }
-    }
-  }.observes('jsonEditorInput'),
-  
-  
-  getAttributeOwner: function (jsonEditorConfig) {
-    switch(jsonEditorConfig.objectType) {
-      case 'step':
-        return this.get('content');
-      case 'page':
-        return this.get("activityPage");
-      case 'activity':
-        return this.get('activityPage').get('activity');
-      default:
-        return null;
-    }
-  },
-  
-  
-  getAttribute: function (jsonEditorConfig) {
-    var owner = this.getAttributeOwner(jsonEditorConfig);
-    if (!owner) return "";
-    
-    if (jsonEditorConfig.serialize) {
-        var obj = owner.get(jsonEditorConfig.attribute);
-        var serialized =  obj.map( function (o) { return o.serialize(); } );
-        return serialized;
-    }
-    else {
-      return owner.readAttribute(jsonEditorConfig.attribute);
-    }
-  },
-  
-  
-  setAttribute: function (jsonEditorConfig, jsonObj) {
-    var owner = this.getAttributeOwner(jsonEditorConfig);
-    if (!owner) return;
-
-    if (jsonEditorConfig.serialize) {
-      // TODO: deserialize the json into something that can be passed to owner.set()
-    }
-    else {
-      owner.writeAttribute(jsonEditorConfig.attribute, jsonObj);
     }
   }
 

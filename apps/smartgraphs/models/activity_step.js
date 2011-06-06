@@ -285,25 +285,12 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     
     @property {Boolean}
   */
-  nextButtonShouldSubmit: SC.Record.attr(Boolean),
+  nextButtonShouldSubmit: SC.Record.attr(Boolean)
   
   
   // make 'current config' belong to the step controller
   // make 'attribute as string' and 'editing is invalid' transient properties
 
-  /**
-    JSON representation of the panes property. 
-    
-    @property {String}
-  */
-  jsonEditorInput: SC.Record.attr(String),
-
-  /**
-    Flag indicating whether the JSON editor contains invalid JSON.
-    
-    @property {Boolean}
-  */
-  jsonEditingIsInvalid: SC.Record.attr(Boolean),
 
   /**
     Not currently implemented. 
