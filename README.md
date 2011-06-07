@@ -1,7 +1,9 @@
 # Smartgraphs
-### Copyright: ©2010 Concord Consortium
+### Copyright: ©2010-2011 Concord Consortium
 
 ## To install:
+    
+### Clone the repository:
     
     $ git clone git://github.com/rklancer/Smartgraphs.git
     $ cd Smartgraphs
@@ -32,11 +34,11 @@ Trust the .rvmrc file
 
 ### Install CouchDB on your system
 
-See below for instructions for installing CouchDB on OS X using MacPorts or Homebrew.
+(This step is temporarily unnecessary.) See below for instructions for installing CouchDB on OS X using MacPorts or Homebrew.
 
 ### Set up the `smartgraphs` database in CouchDB and replicate the Smartgraphs code
 
-Try the following:
+(This step is temporarily unnecessary.) Try the following:
   
      $ curl http://127.0.0.1:5984/
   
@@ -79,7 +81,91 @@ The response should be something like:
 
 More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
 
-### Set up an Apache to proxy SproutCore + CouchDB development on your local machine.
+### Start the applets server
+
+If you will be using the sensor applet, start the applet server in another console window:
+
+    $ ruby applets/bin/local_server.rb
+
+### Start the development server
+
+(in the root of the Smartgraphs project:)
+
+    $ sc-server -v
+
+This will take over the Terminal window. Do subsequent work in a new Terminal window.
+
+
+### Visit the Smartgraphs site:
+
+If you visit <http://localhost:4020/> you should be greeted by the SproutCore Welcome app; if you visit 
+<http://localhost:4020/db/_utils/> you should be greeted by the CouchDB web administration app, Futon.
+
+If these addresses work, visit <http://localhost:4020/smartgraphs> to see Smartgraphs in action.
+
+
+### To see test results:
+
+To use TestRunner, open <http://localhost:4020/sproutcore/tests> The currently valid tests are written using Jasmine. Ignore the QUnit folder.
+
+To visit all integration tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests/jasmine/integration.html>
+
+To visit all unit tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests/jasmine/integration.html>
+
+
+## Miscellaneous reference:
+
+#### How to install CouchDB on OS X using [macports](http://www.macports.org/)
+
+    $ sudo port install couchdb
+    $ sudo dscl localhost
+     > cd /Local/Default/Users
+    /Local/Default/Users > change couchdb dsAttrTypeNative:home /dev/null /opt/local/var/lib/couchdb
+    /Local/Default/Users > change couchdb dsAttrTypeNative:shell /dev/null /bin/bash
+
+    $ sudo chown -R couchdb:couchdb /opt/local/var/lib/couchdb
+    $ sudo chown -R couchdb:couchdb /opt/local/var/log/couchdb
+    $ sudo chown -R couchdb:couchdb /opt/local/etc/couchdb
+    $ sudo launchctl load -w /Library/LaunchDaemons/org.apache.couchdb.plist
+    
+#### How to install CouchDB on Mac OS X using [homebrew](http://github.com/mxcl/homebrew)
+
+    $ brew install couchdb
+
+Follow the instructions displayed after a successful installation. 
+
+These instructions can also be displayed with the following command:
+
+    $ brew info couchdb
+    couchdb 1.0.1
+    http://couchdb.apache.org/
+    Depends on: spidermonkey, icu4c, erlang
+    /usr/local/Cellar/couchdb/1.0.1 (281 files, 2.4M)
+
+    If this is your first install, automatically load on login with:
+        cp /usr/local/Cellar/couchdb/1.0.1/Library/LaunchDaemons/org.apache.couchdb.plist ~/Library/LaunchAgents
+        launchctl load -w ~/Library/LaunchAgents/org.apache.couchdb.plist
+
+    If this is an upgrade and you already have the org.apache.couchdb.plist loaded:
+        launchctl unload -w ~/Library/LaunchAgents/org.apache.couchdb.plist
+        cp /usr/local/Cellar/couchdb/1.0.1/Library/LaunchDaemons/org.apache.couchdb.plist ~/Library/LaunchAgents
+        launchctl load -w ~/Library/LaunchAgents/org.apache.couchdb.plist
+
+    Or start manually with:
+        couchdb
+
+    http://github.com/mxcl/homebrew/commits/master/Library/Formula/couchdb.rb                                                                                                                 
+    
+### Replicating a remote smartgraphs couchdb databse to your local couchdb instance using curl
+
+    $ curl -i -H 'Content-Type: application/json' -X POST \
+    -d '{"source":"http://<remote_host>/smartgraphs","target":"http://<user>:<password>@127.0.0.1:5984/smartgraphs"}' http://127.0.0.1:5984/_replicate
+
+Do not include the `<user>:<password>@` section in the target url unless it is required to write to your local database.
+
+More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
+
+### Optionally set up an Apache to proxy SproutCore + CouchDB development on your local machine.
 
 On OS X, turn on Web Sharing via (Apple Menu) -> System Preferences -> Sharing -> Web Sharing
 
@@ -139,93 +225,10 @@ It might be necessary to flush the local DNS cache:
 
     $ sudo dscacheutil -flushcache
 
-### Start the applets server
-
-If you are using applets start the applet server in another console window:
-
-    ruby applets/bin/local_server.rb
-
-### Start the development server
-
-(in the root of the Smartgraphs project:)
-
-    $ sc-server -v
-
-This will take over the Terminal window. Do subsequent work in a new Terminal window.
-
-
-### Visit the Smartgraphs site:
-
-If you visit <http://sc.local/> you should be greeted by the SproutCore Welcome app; if you visit 
-<http://sc.local/db/_utils/> you should be greeted by the CouchDB web administration app, Futon.
-
-If these addresses work, visit <http://sc.local/smartgraphs> to see Smartgraphs in action.
-
-
-### To see test results:
-
-To use TestRunner, open <http://localhost:4020/sproutcore/tests>
-
-To visit all tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests.html>
-
-
-## Miscellaneous reference:
-
-#### How to install CouchDB on OS X using [macports](http://www.macports.org/)
-
-    $ sudo port install couchdb
-    $ sudo dscl localhost
-     > cd /Local/Default/Users
-    /Local/Default/Users > change couchdb dsAttrTypeNative:home /dev/null /opt/local/var/lib/couchdb
-    /Local/Default/Users > change couchdb dsAttrTypeNative:shell /dev/null /bin/bash
-
-    $ sudo chown -R couchdb:couchdb /opt/local/var/lib/couchdb
-    $ sudo chown -R couchdb:couchdb /opt/local/var/log/couchdb
-    $ sudo chown -R couchdb:couchdb /opt/local/etc/couchdb
-    $ sudo launchctl load -w /Library/LaunchDaemons/org.apache.couchdb.plist
-    
-#### How to install CouchDB on Mac OS X using [homebrew](http://github.com/mxcl/homebrew)
-
-    $ brew install couchdb
-
-Follow the instructions displayed after a successful installation. 
-
-These instructions can also be displayed with the following command:
-
-    $ brew info couchdb
-    couchdb 1.0.1
-    http://couchdb.apache.org/
-    Depends on: spidermonkey, icu4c, erlang
-    /usr/local/Cellar/couchdb/1.0.1 (281 files, 2.4M)
-
-    If this is your first install, automatically load on login with:
-        cp /usr/local/Cellar/couchdb/1.0.1/Library/LaunchDaemons/org.apache.couchdb.plist ~/Library/LaunchAgents
-        launchctl load -w ~/Library/LaunchAgents/org.apache.couchdb.plist
-
-    If this is an upgrade and you already have the org.apache.couchdb.plist loaded:
-        launchctl unload -w ~/Library/LaunchAgents/org.apache.couchdb.plist
-        cp /usr/local/Cellar/couchdb/1.0.1/Library/LaunchDaemons/org.apache.couchdb.plist ~/Library/LaunchAgents
-        launchctl load -w ~/Library/LaunchAgents/org.apache.couchdb.plist
-
-    Or start manually with:
-        couchdb
-
-    http://github.com/mxcl/homebrew/commits/master/Library/Formula/couchdb.rb                                                                                                                 
-    
-### Replicating a remote smartgraphs couchdb databse to your local couchdb instance using curl
-
-    $ curl -i -H 'Content-Type: application/json' -X POST \
-    -d '{"source":"http://<remote_host>/smartgraphs","target":"http://<user>:<password>@127.0.0.1:5984/smartgraphs"}' http://127.0.0.1:5984/_replicate
-
-Do not include the `<user>:<password>@` section in the target url unless it is required to write to your local database.
-
-More information about [replicating couchdb databases](http://wiki.apache.org/couchdb/Replication)    
-
 
 ### Get the latest build number like this:
 
     sc-build-number smartgraphs    
-
 
 ### Recommended git practice.
 
