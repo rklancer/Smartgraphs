@@ -54,7 +54,7 @@ Smartgraphs.AnnotationSupport = {
     Stubbable method to get an annotation given its name.
   */
   getAnnotation: function (name) {
-    Smartgraphs.activityObjectsController.findAnnotation(name);
+    return Smartgraphs.activityObjectsController.findAnnotation(name);
   },
   
   /**
