@@ -22,7 +22,9 @@ Smartgraphs.Tag = SC.Record.extend(
   
   name: SC.Record.attr(String),
   
-  point: SC.Record.toOne('Smartgraphs.DataPoint')
+  datadef: SC.Record.toOne('Smartgraphs.Datadef'),
+  
+  value: SC.Record.attr(Number)
 
 });
 
@@ -31,33 +33,33 @@ Smartgraphs.Tag = SC.Record.extend(
   var i = 0;
   
   /**
-    Returns a computed property that returns the datapoint from this.<directProperty> or, failing that, from 
-    this.<tagProperty>.point.
+    Returns a computed property that returns the x or y-value from this.<directProperty> or, failing that, from 
+    this.<tagProperty>.value
   
     @param directProperty {String}
-    @param tagProperty {String}
+    @param tagPropertyPath {String}
   */
-  Smartgraphs.Tag.pointFromTag = function (directProperty, tagProperty) {
+  Smartgraphs.Tag.valueFrom = function (tagProperty, directProperty) {
 
-    // pointFromTag returns a computed property definition, but because it's called in the process of settin up a class,
+    // valueFrom returns a computed property definition, but because it's called in the process of setting up a class,
     // it can't know what name it's being assigned to in the class being defined. In order to be able to notify 
     // observers of the property we're defining (whose name we don't know) we notify the (nonexistent) 
     // property _sgtag_<nnn> of the object we're a property of; _sgtag_<nnn> in turn invalidates the property we
     // return, courtesy of the .property() declaration below
 
-    var notifierProperty = '_sgtag_'+(i++),    // used to pass notification to the property defined below
-        tagPath = tagProperty + '.point';
+    var notifierProperty = '_sgtag_'+(i++),   // used to pass notification to the property defined below
+        tagPath = tagProperty + '.value';
     
-    // we return a computed property definition, that has to be invalidated when this.tagProperty.point changes.
-    // Because .property(directProperty, tagProperty+'.point') doesn't work in this version of Sproutcore, 
-    // we set ourselves up as BOTH a computed property AND an observer of directProperty and *<tagProperty>.point
-    // on the object we're a computed property of (we don't have access to that object when pointFromTag() is called,
+    // we return a computed property definition, that has to be invalidated when this.tagProperty.value changes.
+    // Because .property('x', 'xTag.value') doesn't work in this version of Sproutcore, 
+    // we set ourselves up as BOTH a computed property AND an observer of directProperty and *<tagProperty>.value
+    // on the object we're a computed property of (we don't have access to that object when valueFrom() is called,
     // so we can't just setup an observer via addObserver)
     
     return function () {
 
       // we can be called as an observer or as a computed property; if arguments.length > 3, we were called as an
-      // observer of <directProperty> or *<tagProperty>.point
+      // observer of <directProperty> or *<tagPropertyPath>
       if (arguments.length > 3) {
         this.notifyPropertyChange(notifierProperty);
         return;
