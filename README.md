@@ -110,7 +110,7 @@ To use TestRunner, open <http://localhost:4020/sproutcore/tests> The currently v
 
 To visit all integration tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests/jasmine/integration.html>
 
-To visit all unit tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests/jasmine/integration.html>
+To visit all unit tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests/jasmine/unit.html>
 
 
 ## Miscellaneous reference:
