@@ -20,15 +20,15 @@ Smartgraphs.TableItemView = SC.ListItemView.extend(
   
   classNames: ['table-item'],
   
-  controllerPath: 'parentView.parentView.tableController',
+  controller: SC.outlet('parentView.parentView.tableController'),
+  dataRepresentation: SC.outlet('controller.dataRepresentation'),  
   
   backgroundColor: function () {
     return this.get('overrideColor') || '';
   }.property('overrideColor').cacheable(),
   
   mouseDown: function () {
-    // Borrowed from DataPointView in the graph
-    Smartgraphs.statechart.sendAction('dataPointSelected', this, null);
+    this.get('controller').dataPointSelected(this.get('dataRepresentation'), this.getPath('content.x'), this.getPath('content.y'));
     // 'tee' the dataPointSelected event, but don't consider the mouseDown handled; let the parent collection view
     // also handle it
     return NO;

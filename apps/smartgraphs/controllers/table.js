@@ -24,6 +24,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
 /** @scope Smartgraphs.tableController.prototype */ {
   
   datadef: null,
+  dataRepresentation: null,
   pointset: null,
   
   isSelectable:        YES,
@@ -49,6 +50,7 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   clear: function () {
     this.clearAnnotations();
     this.set('datadef', null);
+    this.set('dataRepresentation', null);    
     this.set('pointset', null);
     this.set('content', []);    
   },
@@ -73,8 +75,13 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     rep = datadef.getNewRepresentation(options);
 
     this.set('datadef', datadef);
+    this.set('dataRepresentation', rep);
     this.set('pointset', rep.get('pointset'));
     this.set('content', this.getPath('pointset.points'));
+  },
+  
+  dataPointSelected: function (dataRepresentation, x, y) {
+    Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   }
 
 });

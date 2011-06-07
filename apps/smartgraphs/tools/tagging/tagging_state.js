@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.TAGGING_TOOL
-// Copyright: ©2010 Concord Consortium
-// Author:   Richard Klancer
+// Copyright: ©2011 Concord Consortium
+// Author:    Richard Klancer
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -17,18 +17,16 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
 /** @scope Smartgraphs.TAGGING_TOOL.prototype */ {
   
   enterState: function () {
+    var datadef = Smartgraphs.taggingTool.get('datadef');
     // disable submission until a selection is made...
     Smartgraphs.statechart.sendAction('disableSubmission');
-    
-    var dataset = Smartgraphs.taggingTool.get('dataset');
-    this._oldIsSelectable = dataset.get('isSelectable');
-    dataset.set('isSelectable', NO);
+    datadef.set('isSelectable', NO);
     Smartgraphs.taggingTool.clearPoint();
   },
   
   exitState: function () {
-    var dataset = Smartgraphs.taggingTool.get('dataset');
-    dataset.set('isSelectable', this._oldIsSelectable);
+    var datadef = Smartgraphs.taggingTool.get('datadef');
+    datadef.set('isSelectable', this._oldIsSelectable);
     Smartgraphs.taggingTool.clearSetup();
   },
   
@@ -42,12 +40,12 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
     @param {Smartgraphs.DataPointView} dataPointView 
       The dataPointView that was clicked on
   */
-  dataPointSelected: function (dataPointView) {
-    var dataset = Smartgraphs.taggingTool.get('dataset');
-    var point = dataPointView.get('content');
+  dataPointSelected: function (context, args) {
+    var datadef = Smartgraphs.taggingTool.get('datadef'),
+        rep = args.dataRepresentation;
     
-    if (dataset && point.get('dataset') === dataset) {
-      Smartgraphs.taggingTool.setPoint(point);
+    if (rep && rep.get('datadef') === datadef) {
+      Smartgraphs.taggingTool.setPoint(args.x, args.y);
       Smartgraphs.statechart.sendAction('enableSubmission');
     }
   }

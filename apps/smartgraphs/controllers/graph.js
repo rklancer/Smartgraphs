@@ -285,6 +285,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   dataPointSelected: function (dataRepresentation, x, y) {
+    Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
     this.get('statechart').sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   }
   

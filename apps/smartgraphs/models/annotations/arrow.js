@@ -70,9 +70,9 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
   */
   label: SC.Record.attr(String),
 
-  p1: Smartgraphs.Tag.pointFromTag('p1Record', 'p1Tag'),
+  //p1: Smartgraphs.Tag.pointFromTag('p1Record', 'p1Tag'),
   
-  p2: Smartgraphs.Tag.pointFromTag('p2Record', 'p2Tag'),
+  //p2: Smartgraphs.Tag.pointFromTag('p2Record', 'p2Tag'),
 
   /**
     Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
