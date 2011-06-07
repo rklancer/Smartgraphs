@@ -5,17 +5,14 @@
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews*/
 
-sc_require('views/mixins/annotatable_item_view');
-
 /** @class
 
   (Document Your View Here)
 
   @extends SC.View
-  @extends Smartgraphs.AnnotatableItemView  
 */
 
-Smartgraphs.PointView = RaphaelViews.RaphaelView.extend( Smartgraphs.AnnotatableItemView, 
+Smartgraphs.PointView = RaphaelViews.RaphaelView.extend( 
 /** @scope Smartgraphs.PointView.prototype */ {
   
   displayProperties: 'content.x content.y isEnabled fill stroke radius'.w(),

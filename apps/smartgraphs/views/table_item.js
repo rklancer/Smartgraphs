@@ -11,12 +11,9 @@
   The addition here is support for background highlighting based on annotations.
 
   @extends SC.View
-  @extends Smartgraphs.AnnotatableItemView
 */
 
-sc_require('views/mixins/annotatable_item_view');
-
-Smartgraphs.TableItemView = SC.ListItemView.extend( Smartgraphs.AnnotatableItemView, 
+Smartgraphs.TableItemView = SC.ListItemView.extend( 
 /** @scope Smartgraphs.TableItemView.prototype */ {
 
   displayProperties: ['backgroundColor'],

@@ -1,17 +1,15 @@
 // ==========================================================================
 // Project:   Smartgraphs.PointsetView
 // Copyright: ©2010 Concord Consortium
-// Author:   Richard Klancer <rpk@pobox.com>
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
-
-sc_require('views/mixins/annotatable_parent_view');
 
 /** @class
 
   @extends RaphaelViews.RaphaelCollectionView
 */
-Smartgraphs.PointsetView = RaphaelViews.RaphaelCollectionView.extend( Smartgraphs.AnnotatableParentView, {
+Smartgraphs.PointsetView = RaphaelViews.RaphaelCollectionView.extend({
 
   exampleView: Smartgraphs.PointView,
   // keep this set to YES prevents the collection view from redrawing all the points when re-rendering
