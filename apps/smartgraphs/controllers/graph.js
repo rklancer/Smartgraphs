@@ -49,7 +49,12 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       DEFAULT_STATE: SC.State.design(),
       
       TOOLS: SC.State.design({
-        substatesAreConcurrent: YES,
+        // can't have these two on at once. My guess is to have them operate simultaneously, you'd need each to have
+        // an "on" or "off" substate
+        substatesAreConcurrent: NO,
+        initialSubstate: 'NO_TOOL',
+
+        NO_TOOL: SC.State.design(),
         LABEL_TOOL: Smartgraphs.LABEL_TOOL.design()
       })
     })
@@ -285,7 +290,9 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   dataPointSelected: function (dataRepresentation, x, y) {
-    Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
+    if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
+      Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
+    }
     this.get('statechart').sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   }
   
