@@ -569,7 +569,8 @@ Smartgraphs.GraphView = SC.View.extend(
             points = dataSetView.getPath('item.points') || [],
             pt = points[0], // [x, y]
             y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin),
-            imageURL = Smartgraphs.animationTool.animations[idx].foregroundImageURL;
+            animation = Smartgraphs.animationTool.animations[idx],
+            imageURL = animation ? animation.foregroundImageURL : '';
 
         if (!dataSetView.get('isAnimatable')) {
           SC.Logger.debug('Data set is not animatable. Skipping.');
@@ -598,8 +599,9 @@ Smartgraphs.GraphView = SC.View.extend(
             yTop = frame.y + padding.top,
             plotWidth = Smartgraphs.animationTool.get('channelWidth'),
             plotHeight = frame.height - padding.top - padding.bottom,
-            offsetX = Smartgraphs.animationTool.animations[0].offsetX,
-            offsetY = Smartgraphs.animationTool.animations[0].offsetY,
+            animations = Smartgraphs.animationTool.animations,
+            offsetX = animations.length > 0 ? animations[0].offsetX : 0,
+            offsetY = animations.length > 0 ? animations[0].offsetY : 0,
             yAxis = this.getPath('parentView.parentView.yAxis'),
             yMin = yAxis ? yAxis.get('min') : 0,
             yMax = yAxis ? yAxis.get('max') : 1,
