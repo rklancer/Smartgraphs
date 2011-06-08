@@ -80,6 +80,12 @@ describe("ConnectedLineView, when the points are (x_min, y_min), (x_mid, y_max),
           right  = left + width; 
               
           path = connectedLineView.get('layer').raphael.attr().path;
+
+          this.addMatchers({
+            toBeWithinOneUnitOf: function (value) {
+              return Math.abs(this.actual - value) <= 1;
+            }
+          });
         });
         
         it("should have 3 elements", function () {
@@ -88,20 +94,20 @@ describe("ConnectedLineView, when the points are (x_min, y_min), (x_mid, y_max),
         
         it("should start at the lower left", function () {
           expect(path[0][0]).toEqual('M');
-          expect(path[0][1]).toEqual(left);
-          expect(path[0][2]).toEqual(bottom);
+          expect(path[0][1]).toBeWithinOneUnitOf(left);
+          expect(path[0][2]).toBeWithinOneUnitOf(bottom);
         });
         
         it("should continue at the middle top", function () {
           expect(path[1][0]).toEqual('L');
-          expect(path[1][1]).toEqual( (left + right)/2 );
-          expect(path[1][2]).toEqual(top);
+          expect(path[1][1]).toBeWithinOneUnitOf( (left + right)/2 );
+          expect(path[1][2]).toBeWithinOneUnitOf(top);
         });
         
         it("should finish at the lower right", function () {
           expect(path[2][0]).toEqual('L');
-          expect(path[2][1]).toEqual(right);
-          expect(path[2][2]).toEqual(bottom);
+          expect(path[2][1]).toBeWithinOneUnitOf(right);
+          expect(path[2][2]).toBeWithinOneUnitOf(bottom);
         });
       });
     });
