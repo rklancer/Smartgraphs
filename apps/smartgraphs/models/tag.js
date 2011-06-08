@@ -24,7 +24,9 @@ Smartgraphs.Tag = SC.Record.extend(
   
   datadef: SC.Record.toOne('Smartgraphs.Datadef'),
   
-  value: SC.Record.attr(Number)
+  x: SC.Record.attr(Number),
+  
+  y: SC.Record.attr(Number)
 
 });
 
@@ -39,7 +41,7 @@ Smartgraphs.Tag = SC.Record.extend(
     @param directProperty {String}
     @param tagPropertyPath {String}
   */
-  Smartgraphs.Tag.valueFrom = function (tagProperty, directProperty) {
+  Smartgraphs.Tag.valueFrom = function (tagProperty, tagValueProperty, directProperty) {
 
     // valueFrom returns a computed property definition, but because it's called in the process of setting up a class,
     // it can't know what name it's being assigned to in the class being defined. In order to be able to notify 
@@ -48,7 +50,7 @@ Smartgraphs.Tag = SC.Record.extend(
     // return, courtesy of the .property() declaration below
 
     var notifierProperty = '_sgtag_'+(i++),   // used to pass notification to the property defined below
-        tagPath = tagProperty + '.value';
+        tagPath = tagProperty + '.' + tagValueProperty;
     
     // we return a computed property definition, that has to be invalidated when this.tagProperty.value changes.
     // Because .property('x', 'xTag.value') doesn't work in this version of Sproutcore, 

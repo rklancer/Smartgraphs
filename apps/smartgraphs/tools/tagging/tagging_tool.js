@@ -18,25 +18,19 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   state: 'TAGGING_TOOL',
   
   datadefName: null,
-  xTagName: null,
-  yTagName: null,
+  tagName: null,
   
   datadef: function () {
     return Smartgraphs.activityObjectsController.findDatadef(this.get('datadefName')) || null;
   }.property('datadefName'),
   
-  xTag: function () {
-    return Smartgraphs.activityObjectsController.findTag(this.get('xTagName')) || null;
-  }.property('xTagName'),
-  
-  yTag: function () {
-    return Smartgraphs.activityObjectsController.findTag(this.get('yTagName')) || null;
-  }.property('yTagName'),
+  tag: function () {
+    return Smartgraphs.activityObjectsController.findTag(this.get('tagName')) || null;
+  }.property('tagName'),
   
   setup: function (args) {
-    this.set('datadefName', args.datadef);
-    this.set('xTagName', args.xTag);
-    this.set('yTagName', args.yTag);
+    this.set('datadefName', args.data);
+    this.set('tagName', args.tag);
     Smartgraphs.statechart.gotoState(this.get('state'));
   },
   
@@ -46,13 +40,17 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   },
   
   setPoint: function (x, y) {
-    this.setPath('xTag.value', x);
-    this.setPath('yTag.value', y);
+    this.get('tag').beginPropertyChanges();
+    this.setPath('tag.x', x);
+    this.setPath('tag.y', y);
+    this.get('tag').endPropertyChanges();
   },
   
   clearPoint: function () {
-    this.setPath('xTag.value', null);
-    this.setPath('yTag.value', null);
+    this.get('tag').beginPropertyChanges();
+    this.setPath('tag.x', null);
+    this.setPath('tag.y', null);
+    this.get('tag').endPropertyChanges();    
   }
   
 });
