@@ -304,17 +304,13 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       }
     },
 
-    // adjustBoxSize: function() {
-    //   console.log("adjustBoxSize");
-    //   raphaelRect.attr('width',this.get('textWidth'));
-    //   raphaelRect.attr('height',this.get('textHeight'));
-    // },
+    
 
 
     /***********************************************************/
     labelTextView: RaphaelViews.RaphaelView.design(SC.Editable, {
       
-      displayProperties: 'text textColor width height bodyXCoord bodyYCoord'.w(),
+      displayProperties: 'text textColor width height bodyXCoord bodyYCoord isEditable'.w(),
       
       labelView:     SC.outlet('parentView.labelView'),
       labelBodyView: SC.outlet('parentView'),
@@ -334,41 +330,59 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       isEditing:         NO,
       isEnabled:         YES,
 
+      didLoseKeyResponderTo: function(arg) {
+        this.commitEditing();
+      },
       acceptsFirstResponder: function() {
         return this.get('isEnabled');
       }.property('isEnabled'),
 
       renderCallback: function (raphaelCanvas, attrs) {
+        this.backgroundBox = raphaelCanvas.rect(attrs);
+        this.backgroundBox.attr('fill', '#ff0');
+        this.backgroundBox.attr('opacity', 0.1);
+        this.backgroundBox.hide();
         return raphaelCanvas.text().attr(attrs);
       },
-      
+
       render: function (context, firstTime) {
-        var height = this.get('height'),
-            
-            attrs = {
+        var height = this.get('height');
+        var attrs = {
               text:          this.get('text'),
-              width:         this.get('width') - 20,
-              height:        height - 10,
               x:             this.get('bodyXCoord') + 10,
               y:             this.get('bodyYCoord') + height/2,
               fill:          this.get('textColor'),
               'font-size':   12,
               'text-anchor': 'start'
-            },
+            };
 
-            raphaelText;
-            
+        var raphaelText;
+        var bounds;
+        var editing = this.get('isEditing');
         if (firstTime) {
           context.callback(this, this.renderCallback, attrs);
         }
         else {
           raphaelText = this.get('raphaelObject');
           raphaelText.attr(attrs);
+          raphaelText = this.get('raphaelObject');
+          if (editing) {
+            raphaelText.attr('text', this.get('text') + " »");
+          }
+          bounds  = raphaelText.getBBox();
+          this.set('width',bounds.width + 30);
+          this.set('height',bounds.height + 30);
+          if (editing) {
+            this.backgroundBox.attr('x', bounds.x - 2);
+            this.backgroundBox.attr('y', bounds.y - 2);
+            this.backgroundBox.attr('width', bounds.width + 4);
+            this.backgroundBox.attr('height', bounds.height + 4);
+          }
         }   
       },
       
       // TODO: Seems like SC re-wraps click and dblclick
-      mouseDown: function(evt) {}, // Required to trigger mouseUp (!?)
+      mouseDown: function(evt) { return YES;}, // Required to trigger mouseUp (!?)
       mouseUp: function(evt) {
         var now = new Date().getTime();
         var interval = 202; // ms
@@ -376,13 +390,16 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         if (typeof this.lastUp != 'undefined' && this.lastUp) {
           interval  = now - this.lastUp;
           if (interval < maxTime) {
-            this.doubleClick(evt);
+            return this.doubleClick(evt);
           }
         }
         this.lastUp = now;
+        return NO;
       },
+
       doubleClick: function(evt) {
         this.beginEditing();
+        return YES;
       },
       
       beginEditing: function() {
@@ -394,17 +411,20 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         this.set('isEditing', YES) ;
         this.becomeFirstResponder() ;
         this.endPropertyChanges();
+        this.backgroundBox.show();
         return YES ;
       },
 
       discardEditing: function() {
         // if we are not editing, return YES, otherwise NO.
         this.set('isEditing', NO);
+        this.backgroundBox.hide();
         return !this.get('isEditing');
       },
 
       commitEditing: function() {
         if (!this.get('isEditing')) return YES;
+        this.backgroundBox.hide();
         this.set('isEditing', NO) ;
         this.resignFirstResponder() ;
         return YES ;
@@ -412,12 +432,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
       updateText: function(newtext) {
         this.set('text',newtext);
-        var label = this.get('labelBodyView');
-        // label.adjustBoxSize();
-        var raph = this.get('raphaelObject');
-        var bounds  = raph.getBBox();
-        this.set('width',bounds.width + 30);
-        this.set('height',bounds.height + 30);
       },
 
       addChar: function(charst) {
