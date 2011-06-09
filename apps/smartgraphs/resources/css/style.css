@@ -7,6 +7,10 @@
 
 /*** loading ***/
 
+.road {
+  background-image: static_url('images/road');
+}
+
 body.sc-theme {
   background-color: #B4C0D7;
   overflow: hidden;

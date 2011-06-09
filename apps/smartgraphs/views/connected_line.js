@@ -14,6 +14,8 @@
 Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.ConnectedLineView.prototype */ {
   
+  isAnimatable: YES,
+  
   strokeBinding: '*item.color',
   strokeOpacity: 0.9,
   strokeWidth: 1,

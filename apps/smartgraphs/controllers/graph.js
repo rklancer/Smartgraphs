@@ -7,6 +7,7 @@
 
 sc_require('mixins/annotation_support');
 sc_require('tools/label/label_state');
+sc_require('tools/animation/animation_state');
 
 /** @class
 
@@ -37,6 +38,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   statechartDef: SC.Statechart.design({
+    trace: YES,
     rootState: SC.State.design({
       initialSubstate: 'DEFAULT_STATE',
       
@@ -44,6 +46,11 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
         var state = this.getSubstate('LABEL_TOOL');
         state.set('annotationName', annotationName);
         this.gotoState('LABEL_TOOL');
+      },
+      
+      animationToolStartTool: function (context) {
+        var state = this.getSubstate('ANIMATION_TOOL');
+        this.gotoState('ANIMATION_TOOL');
       },
       
       DEFAULT_STATE: SC.State.design(),
@@ -55,7 +62,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
         initialSubstate: 'NO_TOOL',
 
         NO_TOOL: SC.State.design(),
-        LABEL_TOOL: Smartgraphs.LABEL_TOOL.design()
+        LABEL_TOOL: Smartgraphs.LABEL_TOOL.design(),
+        ANIMATION_TOOL: Smartgraphs.ANIMATION_TOOL.design()
       })
     })
   }),
@@ -294,6 +302,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
     }
     this.get('statechart').sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
+  },
+  
+  animationToolStartTool: function () {
+    this.get('statechart').sendAction('animationToolStartTool', this);
   }
   
   // See the below for the old way of handling FREEHAND_INPUT; TODO transition to using per-controller statechart to
