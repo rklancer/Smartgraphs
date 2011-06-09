@@ -23,34 +23,40 @@ Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.LineThroughPoints.prototype */ {
 
   /**
-    The first of the two points which define (but do not limit) the line.
+    x-value of the first of the two points which define (but do not limit) the line.
     
-    @property {Smartgraphs.DataPoint}
+    @property {Number}
   */
-  //p1: Smartgraphs.Tag.pointFromTag('p1Record', 'p1Tag'),
+  x1: Smartgraphs.Tag.valueFrom('p1Tag', 'x', 'x1Record'),
 
   /**
-    The second of the two points which define (but do not limit) the line.
+    x-value of the first of the two points which define (but do not limit) the line.
     
-    @property {Smartgraphs.DataPoint}
+    @property {Number}
   */
-  //p2: Smartgraphs.Tag.pointFromTag('p2Record', 'p2Tag'),
+  y1: Smartgraphs.Tag.valueFrom('p1Tag', 'y', 'y1Record'),
   
   /**
+    x-value of the first of the two points which define (but do not limit) the line.
     
-    @property {Smartgraphs.DataPoint}
+    @property {Number}
   */
-  p1Record: SC.Record.toOne('Smartgraphs.DataPoint'),
+  x2: Smartgraphs.Tag.valueFrom('p2Tag', 'x', 'x2Record'),
   
   /**
+    x-value of the first of the two points which define (but do not limit) the line.
     
-    @property {Smartgraphs.DataPoint}
+    @property {Number}
   */
-  p2Record: SC.Record.toOne('Smartgraphs.DataPoint'),
+  y2: Smartgraphs.Tag.valueFrom('p2Tag', 'y', 'y2Record'),
+  
+  x1Record: SC.Record.attr(Number),
+  y1Record: SC.Record.attr(Number),
+  x2Record: SC.Record.attr(Number),
+  y2Record: SC.Record.attr(Number), 
 
   /**
     Optional Tag object which can be used to indirectly specify point 1
-    (TODO: change this from a HighlightedPoint to a Tag)
 
     @property {Smartgraphs.Tag}
   */
@@ -58,7 +64,6 @@ Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
 
   /**
     Optional Tag object which can be used to indirectly specify point 2
-    (TODO: change this from a HighlightedPoint to a Tag)
 
     @property {Smartgraphs.Tag}
   */
