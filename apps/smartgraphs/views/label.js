@@ -329,7 +329,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       isEditable:        YES,
       isEditing:         NO,
       isEnabled:         YES,
-
+      isKeyResponder:    YES,
       didLoseKeyResponderTo: function(arg) {
         this.commitEditing();
       },
@@ -434,65 +434,84 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         this.set('text',newtext);
       },
 
-      addChar: function(charst) {
+      insertText: function(charst) {
         var text = this.get('text');
         text = text + charst;
         this.updateText(text);
+        return YES;
+      },
+ 
+      insertNewline: function() {
+        this.insertText("\n");
       },
 
-      backspace: function() {
-        var t = this.get('text');
-        var newText = t.substr(0,t.length-1);
-        this.updateText(newText);
-      },
-
-      enter: function() {
-        this.addChar("\n");
-      },
-
-      tab: function() {
+      insertTab: function() {
         this.commitEditing();
       },
 
-      escape: function() {
+      cancel: function() {
         this.commitEditing();
       },
 
-
-      keyUp: function(evt) {
+      keyDown: function(evt) {
         evt.preventDefault(); // disable backspace, enter,tab
-        // var code, actualKey;
-        var code = evt.charCode? evt.charCode : evt.keyCode;
-        if (code == 46 || code == 8) {
-          this.backspace();
-          return true;
-        }
-        if (code == 13) {
-          this.enter();
-          return true;
-        }
-        if (code == 27) {
-          this.escape();
-          return true;
-        }
-        if (code == 9) {
-          this.tab();
-          return true;
-        }
-        this.handleAlpha(evt);
+        debugger;
+        return this.interpretKeyEvents(evt) ? YES : NO;
       },
 
-      handleAlpha: function(evt) {
-          var code, actualKey;
-          code = evt.charCode? evt.charCode : evt.keyCode;
-          actualkey=String.fromCharCode(code);
-          if (! evt.shiftKey) {
-            actualkey=actualkey.toLowerCase();
-          }
-          if (actualkey == "\t") { this.tab();   }
-          else if (actualkey == "\n") { this.enter(); }
-          else { this.addChar(actualkey); }
+      deleteBackward: function() {
+          var t = this.get('text');
+          var newText = t.substr(0,t.length-1);
+          this.updateText(newText);
+        return YES;
       },
+
+      deleteForward: function() {
+          var t = this.get('text');
+          var newText = t.substr(0,t.length-1);
+          this.updateText(newText);
+        return YES;
+      },
+
+      // keyPress: function(evt) {
+      //   console.log(evt.charCode);
+      // },
+
+      // keyUp: function(evt) {
+      //   evt.preventDefault(); // disable backspace, enter,tab
+      //   // var code, actualKey;
+      //   var code = evt.charCode? evt.charCode : evt.keyCode;
+      //   if (code == 46 || code == 8) {
+      //     this.backspace();
+      //     return YES;
+      //   }
+      //   if (code == 13) {
+      //     this.enter();
+      //     return YES;
+      //   }
+      //   if (code == 27) {
+      //     this.escape();
+      //     return YES;
+      //   }
+      //   if (code == 9) {
+      //     this.tab();
+      //     return YES;
+      //   }
+      //   return NO;
+      //   // this.handleAlpha(evt);
+      // },
+
+      // handleAlpha: function(evt) {
+      //     var code, actualKey;
+      //     code = evt.charCode? evt.charCode : evt.keyCode;
+      //     actualkey=String.fromCharCode(code);
+      //     if (! evt.shiftKey) {
+      //       actualkey=actualkey.toLowerCase();
+      //     }
+      //     if (actualkey == "\t") { this.tab();   }
+      //     else if (actualkey == "\n") { this.enter(); }
+      //     else { this.insertText(actualkey); }
+      // },
 
     }),
     /***********************************************************/
