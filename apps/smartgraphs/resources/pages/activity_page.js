@@ -216,11 +216,13 @@ Smartgraphs.activityPageDef = SC.Page.extend({
   
   firstGraphPane: Smartgraphs.GraphPane.design({
     graphControllerBinding: 'Smartgraphs.firstGraphController',
+    showAnimationBinding: 'Smartgraphs.activityViewController.firstPaneHasAnimation',
     controlsNowShowingBinding: 'Smartgraphs.activityViewController.firstGraphPaneControls'
   }),
   
   secondGraphPane: Smartgraphs.GraphPane.design({
     graphControllerBinding: 'Smartgraphs.secondGraphController',
+    showAnimationBinding: 'Smartgraphs.activityViewController.secondPaneHasAnimation',
     controlsNowShowingBinding: 'Smartgraphs.activityViewController.secondGraphPaneControls'
   }),
   
@@ -252,31 +254,40 @@ Smartgraphs.activityPageDef = SC.Page.extend({
     startControl: SC.ButtonView.design({
       layout: { centerX: -110, bottom: 10, width: 80, height: 24 },
       isVisibleBinding: 'Smartgraphs.activityViewController.startControlIsVisible',
-      isEnabledBinding: 'Smartgraphs.activityViewController.startControlIsEnabled',      
+      isEnabledBinding: 'Smartgraphs.activityViewController.startControlIsEnabled',
       isDefaultBinding: 'Smartgraphs.activityViewController.startControlIsDefault',
       
       title: 'Start',
-      action: 'startControlWasClicked'
+      action: 'startControlWasClicked',
+      target: function() {
+        return this.getPath('parentView.parentView.parentView.graphController.statechart');
+      }.property()
     }),
     
     stopControl: SC.ButtonView.design({
       layout: { centerX: 0, bottom: 10, width: 80, height: 24 },
       isVisibleBinding: 'Smartgraphs.activityViewController.stopControlIsVisible',
-      isEnabledBinding: 'Smartgraphs.activityViewController.stopControlIsEnabled',      
+      isEnabledBinding: 'Smartgraphs.activityViewController.stopControlIsEnabled',
       isDefaultBinding: 'Smartgraphs.activityViewController.stopControlIsDefault',
       
       title: 'Stop',
-      action: 'stopControlWasClicked'
+      action: 'stopControlWasClicked',
+      target: function() {
+        return this.getPath('parentView.parentView.parentView.graphController.statechart');
+      }.property()
     }),
     
     clearControl: SC.ButtonView.design({
       layout: { centerX: 110, bottom: 10, width: 80, height: 24 },
       isVisibleBinding: 'Smartgraphs.activityViewController.clearControlIsVisible',
-      isEnabledBinding: 'Smartgraphs.activityViewController.clearControlIsEnabled',      
+      isEnabledBinding: 'Smartgraphs.activityViewController.clearControlIsEnabled',
       isDefaultBinding: 'Smartgraphs.activityViewController.clearControlIsDefault',
       
-      title: 'Clear',
-      action: 'clearControlWasClicked'
+      title: 'Reset',
+      action: 'clearControlWasClicked',
+      target: function() {
+        return this.getPath('parentView.parentView.parentView.graphController.statechart');
+      }.property()
     })
   }),
   

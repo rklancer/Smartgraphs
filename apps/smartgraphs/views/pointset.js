@@ -11,6 +11,8 @@
 */
 Smartgraphs.PointsetView = RaphaelViews.RaphaelCollectionView.extend({
 
+  isAnimatable: NO,
+  
   exampleView: Smartgraphs.PointView,
   // keep this set to YES prevents the collection view from redrawing all the points when re-rendering
   useFastPath: YES,

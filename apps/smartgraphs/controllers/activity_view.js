@@ -25,6 +25,9 @@ Smartgraphs.activityViewController = SC.Object.create(
   firstGraphPaneControls: null,
   secondGraphPaneControls: null,
   
+  firstPaneHasAnimation: NO,
+  secondPaneHasAnimation: NO,
+  
   startControlIsVisible: NO,
   startControlIsEnabled: NO,
   startControlIsDefault: NO,
@@ -218,6 +221,26 @@ Smartgraphs.activityViewController = SC.Object.create(
     return YES;
   },
   
+  showAnimation: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+
+    if ( !which ) return NO;
+    
+    this.set(which+'PaneHasAnimation', YES);
+    return YES;
+  },
+  
+  hideAnimation: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+
+    if ( !which ) return NO;
+    
+    this.set(which+'PaneHasAnimation', NO);
+    return YES;
+  },
+  
   showControls: function (pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
@@ -301,6 +324,11 @@ Smartgraphs.activityViewController = SC.Object.create(
 
     this.set('clearControlIsEnabled',  YES);
     this.set('clearControlIsDefault',  YES);
+  },
+  
+  enableClearControl: function () {
+    this.set('clearControlIsEnabled',  YES);
+    this.set('clearControlIsDefault',  NO);
   },
   
   clear: function () {

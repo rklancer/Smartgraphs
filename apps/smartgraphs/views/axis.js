@@ -92,7 +92,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
       rotation = 0;
     }
     else {
-      x = 10;
+      x = padding.left - 30;
       y = (padding.top + frame.height - padding.bottom) / 2;
       rotation = 270;
     }
