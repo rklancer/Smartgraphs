@@ -22,7 +22,7 @@ Smartgraphs.Tag = SC.Record.extend(
   
   name: SC.Record.attr(String),
   
-  datadef: SC.Record.toOne('Smartgraphs.Datadef'),
+  datadefName: SC.Record.attr(String),
   
   x: SC.Record.attr(Number),
   

@@ -20,10 +20,6 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   datadefName: null,
   tagName: null,
   
-  datadef: function () {
-    return Smartgraphs.activityObjectsController.findDatadef(this.get('datadefName')) || null;
-  }.property('datadefName'),
-  
   tag: function () {
     return Smartgraphs.activityObjectsController.findTag(this.get('tagName')) || null;
   }.property('tagName'),
@@ -41,6 +37,7 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   
   setPoint: function (x, y) {
     this.get('tag').beginPropertyChanges();
+    this.setPath('tag.datadefName', this.get('datadefName'));
     this.setPath('tag.x', x);
     this.setPath('tag.y', y);
     this.get('tag').endPropertyChanges();
@@ -48,6 +45,7 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   
   clearPoint: function () {
     this.get('tag').beginPropertyChanges();
+    this.setPath('tag.datadefName', null);
     this.setPath('tag.x', null);
     this.setPath('tag.y', null);
     this.get('tag').endPropertyChanges();    
