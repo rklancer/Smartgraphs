@@ -89,17 +89,19 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     if (axis !== 'x' && axis !== 'y') throw "x or y coordinates only!"
     if (!tag) throw "Tag " + tagName + " not found.";
 
-    return tag.get('point').get(axis);
+    return tag.get(axis);
   }).args(2);
 
 
   def('slope', function (name1, name2) {
-    var tag1 = Smartgraphs.activityObjectsController.findTag(name1);
-    var tag2 = Smartgraphs.activityObjectsController.findTag(name2);
-    var p1 = tag1.get('point');
-    var p2 = tag2.get('point');
+    var tag1 = Smartgraphs.activityObjectsController.findTag(name1),
+        tag2 = Smartgraphs.activityObjectsController.findTag(name2),
+        x1   = tag1.get('x'),
+        y1   = tag1.get('y'),
+        x2   = tag2.get('x'),
+        y2   = tag2.get('y');
   
-    return (p1.get('y') - p2.get('y')) / (p1.get('x') - p2.get('x'));
+    return (y1 - y2) / (x1 - x2);
   }).args(2);
 
 
@@ -109,23 +111,21 @@ Smartgraphs.evaluator.defineOperators( function (def) {
 
 
   def('slopeToolOrder', function (name1, name2) {
-    var tag1 = Smartgraphs.activityObjectsController.findTag(name1);
-    var tag2 = Smartgraphs.activityObjectsController.findTag(name2);
-    var p1 = tag1.get('point');
-    var p2 = tag2.get('point');
+    var tag1 = Smartgraphs.activityObjectsController.findTag(name1),
+        tag2 = Smartgraphs.activityObjectsController.findTag(name2),
+        x1   = tag1.get('x'),
+        x2   = tag2.get('x');
   
     // currently, "slope tool order" means points go from left to right
-    return p1.get('x') < p2.get('x') ? [name1, name2] : [name2, name1];
+    return x1 < x2 ? [name1, name2] : [name2, name1];
   }).args(2);
 
 
   def('delta', function (axis, namePair) {
-    var tag1 = Smartgraphs.activityObjectsController.findTag(namePair[0]);
-    var tag2 = Smartgraphs.activityObjectsController.findTag(namePair[1]);
-    var p1 = tag1.get('point');
-    var p2 = tag2.get('point');
-  
-    return p2.get(axis) - p1.get(axis);
+    var tag1 = Smartgraphs.activityObjectsController.findTag(namePair[0]),
+        tag2 = Smartgraphs.activityObjectsController.findTag(namePair[1]);
+
+    return tag1.get(axis) - tag2.get(axis);
   }).args(2);
 
 
@@ -143,12 +143,10 @@ Smartgraphs.evaluator.defineOperators( function (def) {
 
 
   def('samePoint', function (name1, name2) {
-    var tag1 = Smartgraphs.activityObjectsController.findTag(name1);
-    var tag2 = Smartgraphs.activityObjectsController.findTag(name2);
-    var p1 = tag1.get('point');
-    var p2 = tag2.get('point');
+    var tag1 = Smartgraphs.activityObjectsController.findTag(name1),
+        tag2 = Smartgraphs.activityObjectsController.findTag(name2);
   
-    return p1 && p1 === p2;
+    return tag1 && tag2 && tag1.get('x') === tag2.get('x') && tag1.get('y') === tag2.get('y');
   }).args(2);
 
 
@@ -161,9 +159,8 @@ Smartgraphs.evaluator.defineOperators( function (def) {
 
 
   def('coord', function (axis, tagName) {
-    var tag = Smartgraphs.activityObjectsController.findTag(tagName),
-        point = tag.get('point');
-    return point.get(axis);
+    var tag = Smartgraphs.activityObjectsController.findTag(tagName);
+    return tag.get(axis);
   }).args(2);
 
 
