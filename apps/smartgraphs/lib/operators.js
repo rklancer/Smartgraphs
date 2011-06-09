@@ -38,9 +38,35 @@ Smartgraphs.evaluator.defineOperators( function (def) {
 
 
   def('indexInDataset', function (name) {
-    var tag = Smartgraphs.activityObjectsController.findTag(name);
+    var tag = Smartgraphs.activityObjectsController.findTag(name),
+        datadef,
+        points,
+        x,
+        y,
+        i,
+        len,
+        point;
+        
     if (!tag) throw "Tag " + name + " not found.";
-    return tag.getPath('point.dataset.points').indexOf(tag.get('point'));
+    
+    datadef = Smartgraphs.activityObjectsController.findDatadef(tag.get('datadefName'));
+    
+    if (!datadef) throw "Tag " + name + "'s datadef not found";
+    
+    points = datadef.get('points');
+    
+    if (!points) throw "Tag " + name + "'s datadef does not have a 'points' array.";
+    
+    points = points.map( function (pair) { return pair.copy(); } ).sort( function (pair1, pair2) { return pair1[0] - pair2[0]; } );
+    
+    x = tag.get('x');
+    y = tag.get('y');
+    
+    for (i = 0, len = points.get('length'); i < len; i++) {
+      point = points.objectAt(i);
+      if (point[0] === x && point[1] === y) return i + 1;     // 1-based index
+    }
+    return -1;
   }).args(1);
 
 
