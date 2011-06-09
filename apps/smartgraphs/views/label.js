@@ -303,8 +303,16 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         raphaelRect.attr(attrs);
       }
     },
-    
-    labelTextView: RaphaelViews.RaphaelView.design({
+
+    // adjustBoxSize: function() {
+    //   console.log("adjustBoxSize");
+    //   raphaelRect.attr('width',this.get('textWidth'));
+    //   raphaelRect.attr('height',this.get('textHeight'));
+    // },
+
+
+    /***********************************************************/
+    labelTextView: RaphaelViews.RaphaelView.design(SC.Editable, {
       
       displayProperties: 'text textColor width height bodyXCoord bodyYCoord'.w(),
       
@@ -312,12 +320,24 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       labelBodyView: SC.outlet('parentView'),
       
       textBinding:       '.labelView.text',
-      textColorBinding:  '.labelView.textColor',  
+      textColorBinding:  '.labelView.textColor',
+
+      // width: 
       widthBinding:      '.labelBodyView.width',
       heightBinding:     '.labelBodyView.height',
       bodyXCoordBinding: '.labelBodyView.bodyXCoord',
       bodyYCoordBinding: '.labelBodyView.bodyYCoord',
       
+      
+      // TODO: something more reasonable with properties in parent:
+      isEditable:        YES,
+      isEditing:         NO,
+      isEnabled:         YES,
+
+      acceptsFirstResponder: function() {
+        return this.get('isEnabled');
+      }.property('isEnabled'),
+
       renderCallback: function (raphaelCanvas, attrs) {
         return raphaelCanvas.text().attr(attrs);
       },
@@ -345,9 +365,127 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           raphaelText = this.get('raphaelObject');
           raphaelText.attr(attrs);
         }   
-      }
+      },
+      
+      // TODO: Seems like SC re-wraps click and dblclick
+      mouseDown: function(evt) {}, // Required to trigger mouseUp (!?)
+      mouseUp: function(evt) {
+        var now = new Date().getTime();
+        var interval = 202; // ms
+        var maxTime = 200;  // ms
+        if (typeof this.lastUp != 'undefined' && this.lastUp) {
+          interval  = now - this.lastUp;
+          if (interval < maxTime) {
+            this.doubleClick(evt);
+          }
+        }
+        this.lastUp = now;
+      },
+      doubleClick: function(evt) {
+        this.beginEditing();
+      },
+      
+      beginEditing: function() {
+        if (!this.get('isEditable')) return NO ;
+        if (this.get('isEditing')) return YES ;
+        
+        // begin editing
+        this.beginPropertyChanges();
+        this.set('isEditing', YES) ;
+        this.becomeFirstResponder() ;
+        this.endPropertyChanges();
+        return YES ;
+      },
+
+      discardEditing: function() {
+        // if we are not editing, return YES, otherwise NO.
+        this.set('isEditing', NO);
+        return !this.get('isEditing');
+      },
+
+      commitEditing: function() {
+        if (!this.get('isEditing')) return YES;
+        this.set('isEditing', NO) ;
+        this.resignFirstResponder() ;
+        return YES ;
+      },
+
+      updateText: function(newtext) {
+        this.set('text',newtext);
+        var label = this.get('labelBodyView');
+        // label.adjustBoxSize();
+        var raph = this.get('raphaelObject');
+        var bounds  = raph.getBBox();
+        this.set('width',bounds.width + 30);
+        this.set('height',bounds.height + 30);
+      },
+
+      addChar: function(charst) {
+        var text = this.get('text');
+        text = text + charst;
+        this.updateText(text);
+      },
+
+      backspace: function() {
+        var t = this.get('text');
+        var newText = t.substr(0,t.length-1);
+        this.updateText(newText);
+      },
+      
+      enter: function() {
+        this.addChar("\n");
+      },
+
+      tab: function() {
+        this.commitEditing();
+      },
+
+      escape: function() {
+        this.commitEditing();
+      },
+
+
+      keyUp: function(evt) {
+        evt.preventDefault(); // disable backspace, enter,tab
+        // var code, actualKey;
+        var code = evt.charCode? evt.charCode : evt.keyCode;
+        if (code == 46 || code == 8) {
+          this.backspace();
+          return true;
+        }
+        if (code == 13) {
+          this.enter();
+          return true;
+        }
+        if (code == 27) {
+          this.escape();
+          return true;
+        }
+        if (code == 9) {
+          this.tab();
+          return true;
+        }
+        this.handleAlpha(evt);
+      },
+
+      handleAlpha: function(evt) {
+          var code, actualKey;
+          code = evt.charCode? evt.charCode : evt.keyCode;
+          actualkey=String.fromCharCode(code);
+          if (! evt.shiftKey) { 
+            actualkey=actualkey.toLowerCase();
+          }
+          if (actualkey == "\t") { this.tab();   }
+          else if (actualkey == "\n") { this.enter(); }
+          else { this.addChar(actualkey); }
+      },
+
     }),
-    
+    /***********************************************************/
+
+
+
+
     removeButtonView: RaphaelViews.RaphaelView.design({
       
       displayProperties: 'bodyXCoord bodyYCoord width isHighlighted'.w(),
