@@ -57,6 +57,8 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
           "annotations": []
         }
       },
+      "beforeText": "<p>Click Start, Reset, and Stop to see the animation in the top graph. Note that you can also label one point bottom graph.</p>",
+      "hideSubmitButton": true,
       "tools": [
         { "name": "label",
           "setup": {
@@ -64,16 +66,6 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
             "labelName": "test-label"
           }
         },
-        { "name": "label",
-          "setup": {
-            "pane": "top",
-            "labelSetName": "test-label-set"
-          }
-        }
-      ],
-      "beforeText": "<p>Try clicking an interesting area of the velocity-time data on the left. Note that the velocity-time data are derived from the position-time data.</p>",
-      "hideSubmitButton": true,
-      "tools": [
         { "name": "animation",
           "setup": {
             "pane": "top",
