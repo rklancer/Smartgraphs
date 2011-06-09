@@ -26,7 +26,7 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
   
   exitState: function () {
     var datadef = Smartgraphs.taggingTool.get('datadef');
-    datadef.set('isSelectable', this._oldIsSelectable);
+    //datadef.set('isSelectable', this._oldIsSelectable);
     Smartgraphs.taggingTool.clearSetup();
   },
   
