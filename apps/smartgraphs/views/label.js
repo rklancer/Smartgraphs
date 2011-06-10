@@ -379,8 +379,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
 
-
-
     /***********************************************************/
     labelTextView: RaphaelViews.RaphaelView.design(SC.Editable, {
 
@@ -397,7 +395,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       heightBinding:     '.labelBodyView.height',
       bodyXCoordBinding: '.labelBodyView.bodyXCoord',
       bodyYCoordBinding: '.labelBodyView.bodyYCoord',
-
 
       // TODO: something more reasonable with properties in parent:
       isEditable:        YES,
