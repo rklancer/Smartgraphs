@@ -15,6 +15,8 @@ sc_require('lib/graphable_object');
 Smartgraphs.Pointset = Smartgraphs.GraphableObject.extend(
 /** @scope Smartgraphs.GraphableObject.prototype */ {
   
+  isSelectable: NO,
+  
   // an array of Smartgraphs.Point objects
   points: null,
   
