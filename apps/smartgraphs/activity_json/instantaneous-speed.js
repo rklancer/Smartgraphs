@@ -270,13 +270,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -302,14 +302,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -335,15 +335,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]          
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]      
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight"],
+          //"highlightedAnnotations": ["rise-bracket-A"]      
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -369,15 +369,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]          
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]          
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight"],
+          //"highlightedAnnotations": ["rise-bracket-A"]          
         }
       },
       "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -400,14 +400,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
           "highlightedAnnotations": ["run-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "rise-bracket-A"]
+          "data": "slope-data",
+          "annotations": [] // ["p1A-highlight", "p2A-highlight", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -433,14 +433,14 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
           "highlightedAnnotations": ["run-arrow-A"]          
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "rise-bracket-A"]
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight", "rise-bracket-A"]
         }
       },
       "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
@@ -466,15 +466,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
           "highlightedAnnotations": ["run-arrow-A"]
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "rise-bracket-A"],
-          "highlightedAnnotations": ["run-bracket-A"]
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight", "rise-bracket-A"],
+          //"highlightedAnnotations": ["run-bracket-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
@@ -500,15 +500,15 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
           "highlightedAnnotations": ["run-arrow-A"]          
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight", "rise-bracket-A"],
-          "highlightedAnnotations": ["run-bracket-A"]    
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight", "rise-bracket-A"],
+          //"highlightedAnnotations": ["run-bracket-A"]    
         }
       },
       "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -531,13 +531,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -568,13 +568,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -606,13 +606,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -640,13 +640,13 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/instantaneous-speed/axes/10s",
           "yAxis": "/shared/instantaneous-speed/axes/16m",
-          "datasets": ["slope-data"],
+          "data": ["slope-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
-          "dataset": "slope-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "data": "slope-data",
+          "annotations": [] //["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Correct!</p><p>The position changed <b>%@</b> %@ in <b>%@</b> %@, so the velocity was <b>%@</b> %@.</p>",
