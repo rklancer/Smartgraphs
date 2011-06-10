@@ -265,7 +265,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     // just default to the first color if none available
     return colors.objectAt(0);
   },
-
+  
+  dimRepresentation: function (name) {
+    var rep = this.get('dataRepresentations').findProperty('name', name);
+    
+    if (rep) {
+      rep.set('isDimmed', YES);
+    }
+  },
+  
+  unDimRepresentations: function () {
+    this.get('dataRepresentations').setEach('isDimmed', NO);
+  },
+  
   // Events
   
   labelToolStartTool: function (annotationName) {

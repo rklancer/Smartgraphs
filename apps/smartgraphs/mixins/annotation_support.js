@@ -125,15 +125,29 @@ Smartgraphs.AnnotationSupport = {
         modifiers = {},
         i,
         len,
-        annotation;
+        annotation,
+        x,
+        y,
+        datadefName;
       
     annotationList = this.get('annotationList');
   
+    if (this.unDimRepresentations) this.unDimRepresentations();
+    
     for (i = 0, len = annotationList.get('length'); i < len; i++) {
       annotation = annotationList.objectAt(i);
       if (!annotation.get('isModifierAnnotation')) continue;
+      
+      x = annotation.get('x');
+      y = annotation.get('y');
+      datadefName = annotation.get('datadefName');
     
-      modifiers[[annotation.get('x'), annotation.get('y'), annotation.get('datadefName')]] = annotation;
+      modifiers[[x, y, datadefName]] = annotation;
+      
+      if (!SC.none(x) && !SC.none(y)) {
+        if (this.dimRepresentation) this.dimRepresentation(datadefName);
+      }
+      
     }
   
     this.set('modifiers', modifiers);

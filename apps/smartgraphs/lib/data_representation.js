@@ -62,6 +62,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   
   // some representative options
   color: '#ffffff',
+  isDimmed: NO,
   pointStyle: null,
   lineStyle: null,
   

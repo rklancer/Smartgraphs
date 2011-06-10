@@ -21,40 +21,36 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   controller: SC.outlet('parentView.graphView.graphController'),
 
   dataRepresentation: SC.outlet('parentView.dataRepresentation'),
-  datadefName: SC.outlet('dataRepresentation.datadef.name'),
+  datadef: SC.outlet('dataRepresentation.datadef'),
+  datadefName: SC.outlet('datadef.name'),
+
+  modifiersBinding: '.controller.modifiers',
+  modifiersBindingDefault: SC.Binding.oneWay(),
   
   datasetColorBinding: '.parentView.color',
   overrideColor: null,
   
-  color: function () {
-    return this.get('overrideColor') || this.get('datasetColor');
-  }.property('overrideColor', 'datasetColor'),
-  
-  modifiersBinding: '.controller.modifiers',
-  modifiersBindingDefault: SC.Binding.oneWay(),
-    
-  notSelectedFillBinding: '.color',
-  notSelectedStrokeBinding: '.color',
-  selectedFill: '#aa0000',
-  selectedStroke: '#aa0000',
+  isDimmedBinding: '.dataRepresentation.isDimmed',
+  isDimmedBindingDefault: SC.Binding.oneWay(),
+
+  dimmedColor: '#cccccc',
+
   
   hoveredRadius: 4,
   notHoveredRadius: 2,
   isEnabled: YES,
   isHovered: NO,
-  isSelected: NO,
 
   // required by CollectionFastPath
   layerIsCacheable: YES,
   isPoolable: YES,
   
-  fill: function () {
-    return (this.get('isSelected') ? this.get('selectedFill') : this.get('notSelectedFill'));
-  }.property('isSelected', 'selectedFill', 'notSelectedFill').cacheable(),
+  color: function () {
+    return this.get('overrideColor') ? this.get('overrideColor') : ( this.get('isDimmed') ? this.get('dimmedColor') : this.get('datasetColor') );
+  }.property('overrideColor', 'isDimmed', 'dimmedFill', 'datasetColor').cacheable(),
   
-  stroke: function () {
-    return (this.get('isSelected') ? this.get('selectedStroke') : this.get('notSelectedStroke'));
-  }.property('isSelected', 'selectedStroke', 'notSelectedStroke').cacheable(),
+  fillBinding: '.color',
+  strokeBinding: '.color',
   
   radius: function () {
     return (this.get('isHovered') ? this.get('hoveredRadius') : this.get('notHoveredRadius'));

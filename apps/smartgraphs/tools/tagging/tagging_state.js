@@ -18,15 +18,11 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
   
   enterState: function () {
     //var datadef = Smartgraphs.taggingTool.get('datadef');
-    // disable submission until a selection is made...
     Smartgraphs.statechart.sendAction('disableSubmission');
-    //datadef.set('isSelectable', NO);
     Smartgraphs.taggingTool.clearPoint();
   },
   
   exitState: function () {
-    var datadef = Smartgraphs.taggingTool.get('datadef');
-    //datadef.set('isSelectable', this._oldIsSelectable);
     Smartgraphs.taggingTool.clearSetup();
   },
   
