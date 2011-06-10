@@ -21,11 +21,17 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   controller: SC.outlet('parentView.graphView.graphController'),
 
   dataRepresentation: SC.outlet('parentView.dataRepresentation'),
+  datadefName: SC.outlet('dataRepresentation.datadef.name'),
   
   datasetColorBinding: '.parentView.color',
+  overrideColor: null,
+  
   color: function () {
     return this.get('overrideColor') || this.get('datasetColor');
   }.property('overrideColor', 'datasetColor'),
+  
+  modifiersBinding: '.controller.modifiers',
+  modifiersBindingDefault: SC.Binding.oneWay(),
     
   notSelectedFillBinding: '.color',
   notSelectedStrokeBinding: '.color',
@@ -54,6 +60,21 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     return (this.get('isHovered') ? this.get('hoveredRadius') : this.get('notHoveredRadius'));
   }.property('isHovered', 'hoveredRadius', 'notHoveredRadius').cacheable(),
   
+  modifiersDidChange: function () {    
+    var modifiers = this.get('modifiers') || {},
+        x = this.getPath('content.x'),
+        y = this.getPath('content.y'),
+        datadefName = this.get('datadefName'),
+        color;
+        
+    if (modifiers[[x, y, datadefName]]) {
+      this.set('overrideColor', modifiers[[x, y, datadefName]].get('color'));
+    }
+    else {
+      this.set('overrideColor', null);
+    }
+  }.observes('modifiers'),
+
   mouseEntered: function () {
     this.set('isHovered', YES);
   },

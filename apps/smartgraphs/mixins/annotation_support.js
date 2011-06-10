@@ -24,6 +24,12 @@ Smartgraphs.AnnotationSupport = {
   */
   annotationList: null,
 
+
+  /**
+    Modifier annotations indexed by the (x, y, datadefName) they care about
+  */
+  modifiers: null,
+  
   /**
     @private
     Stubbable method to get an annotation given its name.
@@ -43,6 +49,10 @@ Smartgraphs.AnnotationSupport = {
       return; // Nothing to be done
     }
     this.get('annotationList').pushObject(annotation);
+
+    if (annotation.get('isModifierAnnotation')) {
+      this.didAddModifierAnnotation(annotation);
+    }
   },  
   
   /** 
@@ -69,7 +79,10 @@ Smartgraphs.AnnotationSupport = {
     var annotation = (SC.typeOf(annotationOrName) === SC.T_STRING) ? this.findAnnotationByName(annotationOrName) : annotationOrName;
 
     if (annotation) {
-      this.get('annotationList').removeObject(annotation);
+      this.get('annotationList').removeObject(annotation);    
+      if (annotation.get('isModifierAnnotation')) {
+        this.didRemoveModifierAnnotation(annotation);
+      }
     }
   },
   
@@ -93,6 +106,37 @@ Smartgraphs.AnnotationSupport = {
     annotations.forEach( function (name) {
       self.addAnnotation(self.getAnnotation(name));
     });
+  },
+  
+  didAddModifierAnnotation: function (annotation) {
+    annotation.addObserver('x', this, this.updateModifiers);
+    annotation.addObserver('y', this, this.updateModifiers);
+    this.updateModifiers();
+  },  
+  
+  didRemoveModifierAnnotation: function (annotation) {
+    annotation.removeObserver('x', this, this.updateModifiers);
+    annotation.removeObserver('y', this, this.updateModifiers);
+    this.updateModifiers();
+  },
+  
+  updateModifiers: function () {    
+    var annotationList,
+        modifiers = {},
+        i,
+        len,
+        annotation;
+      
+    annotationList = this.get('annotationList');
+  
+    for (i = 0, len = annotationList.get('length'); i < len; i++) {
+      annotation = annotationList.objectAt(i);
+      if (!annotation.get('isModifierAnnotation')) continue;
+    
+      modifiers[[annotation.get('x'), annotation.get('y'), annotation.get('datadefName')]] = annotation;
+    }
+  
+    this.set('modifiers', modifiers);
   }
   
 };

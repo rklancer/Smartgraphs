@@ -265,7 +265,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     // just default to the first color if none available
     return colors.objectAt(0);
   },
-  
 
   // Events
   

@@ -221,6 +221,9 @@ Smartgraphs.TableView = SC.View.extend(
     for (var i = 0, ii = list.get('length'); i < ii; i++) {
       item = list.objectAt(i);
 
+      // don't try to add or remove modifier annotations
+      if (item.get('isModifierAnnotation')) continue;
+      
       // I believe this is the most cross-browser-compatible way to get a unique key representing the class of the item
       classKey = SC.guidFor(item.constructor);
       id = item.get('id');

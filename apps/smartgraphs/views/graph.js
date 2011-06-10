@@ -86,6 +86,9 @@ Smartgraphs.GraphView = SC.View.extend(
       // add views for items (DataRepresentations or Annotations) not currently in the list of child views
       for (i = 0, len = list.get('length'); i < len; i++) {
         item = list.objectAt(i);
+        
+        // skip modifier annotations (which have no view) in the calculation of which views to add or remove
+        if (item.get('isModifierAnnotation')) continue;
 
         // I believe this is the most cross-browser-compatible way to get a unique key representing the class of the item
         classKey = SC.guidFor(item.constructor);

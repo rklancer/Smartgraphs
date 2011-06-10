@@ -1,6 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.TableItemView
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2011 Concord Consortium
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -21,7 +22,27 @@ Smartgraphs.TableItemView = SC.ListItemView.extend(
   classNames: ['table-item'],
   
   controller: SC.outlet('parentView.parentView.tableController'),
-  dataRepresentation: SC.outlet('controller.dataRepresentation'),  
+  dataRepresentation: SC.outlet('controller.dataRepresentation'),
+  
+  datadefName: SC.outlet('dataRepresentation.datadef.name'),
+  
+  modifiersBinding: '.controller.modifiers',
+  modifiersBindingDefault: SC.Binding.oneWay(),
+  
+  modifiersDidChange: function () {    
+    var modifiers = this.get('modifiers') || {},
+        x = this.getPath('content.x'),
+        y = this.getPath('content.y'),
+        datadefName = this.get('datadefName'),
+        color;
+        
+    if (modifiers[[x, y, datadefName]]) {
+      this.set('overrideColor', modifiers[[x, y, datadefName]].get('color'));
+    }
+    else {
+      this.set('overrideColor', null);
+    }
+  }.observes('modifiers'),
   
   backgroundColor: function () {
     return this.get('overrideColor') || '';
