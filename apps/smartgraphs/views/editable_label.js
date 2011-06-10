@@ -17,6 +17,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 /** @scope Smartgraphs.EditableLabelView.prototype */
 
   isEditing: NO,
+  fontSize:  12,
   displayProperties: 'text textColor width height bodyXCoord bodyYCoord isEditable'.w(),
 
   labelBodyView: SC.outlet('parentView'),
@@ -49,7 +50,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
       x:             this.get('bodyXCoord') + 10,
       y:             this.get('bodyYCoord') + height/2,
       fill:          this.get('textColor'),
-      'font-size':   12,
+      'font-size':   this.get('fontSize'),
       'text-anchor': 'start'
     };
 

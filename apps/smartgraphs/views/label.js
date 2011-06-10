@@ -381,7 +381,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     labelTextView: Smartgraphs.EditableLabelView.design({
       isEditable: YES,
-      fontSize: 12
+      fontSize: 20
     }),
 
     removeButtonView: RaphaelViews.RaphaelView.design({
