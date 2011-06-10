@@ -401,7 +401,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       isEditing:         NO,
       isEnabled:         YES,
       isKeyResponder:    YES,
-      isMouseResponder:  NO,
+
       didLoseKeyResponderTo: function(arg) {
         this.commitEditing();
       },
@@ -439,7 +439,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           raphaelText.attr(attrs);
           raphaelText = this.get('raphaelObject');
           if (editing) {
-            raphaelText.attr('text', this.get('text') + " »");
+            raphaelText.attr('text', this.get('text') + "_");
           }
           bounds  = raphaelText.getBBox();
           this.set('width',bounds.width + 30);
@@ -467,7 +467,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       },
 
       discardEditing: function() {
-        // if we are not editing, return YES, otherwise NO.
         this.set('isEditing', NO);
         this.backgroundBox.hide();
         return !this.get('isEditing');
@@ -485,9 +484,20 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         this.set('text',newtext);
       },
 
-      insertText: function(charst) {
-        var text = this.get('text');
-        text = text + charst;
+      keyDown: function(evt) {
+        var chr = null;
+        if (evt.type == 'keypress') {
+          chr = evt.getCharString();
+          if (chr) {
+            this.insertText(chr);
+            return YES;
+          }
+        }
+        return this.interpretKeyEvents(evt) ? YES : NO;
+      },
+
+      insertText: function(chr, evt) {
+        var text = this.get('text') + chr;
         this.updateText(text);
         return YES;
       },
@@ -502,11 +512,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
       cancel: function() {
         this.commitEditing();
-      },
-
-      keyDown: function(evt) {
-        evt.preventDefault(); // disable backspace, enter,tab
-        return this.interpretKeyEvents(evt) ? YES : NO;
       },
 
       deleteBackward: function() {
