@@ -303,6 +303,80 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         raphaelRect.attr(attrs);
       }
     },
+    
+    mouseEntered: function () { return YES; },
+
+    mouseExited: function (evt) {
+      if (evt.toElement != this.labelTextView.backgroundBox.node) {
+        if (this.labelTextView.get('isEditing')) {
+          this.labelTextView.commitEditing()
+        }
+        return YES;
+      }
+      return NO;
+    },
+
+    // Dragging. Note that dragging is 'stateless' in the sense that you can always drag a label view. So we won't hook
+    // into states or the controller layer. We also assume until proven otherwise that we can modify our own cursor
+    // without consequence.
+    mouseDown: function (evt) {
+      this.startDrag(evt);
+    },
+
+    mouseUp: function(evt) {
+      this.endDrag(evt);
+      var now = new Date().getTime();
+      var interval = 202; // ms
+      var maxTime = 200;  // ms
+      if (typeof this.lastUp != 'undefined' && this.lastUp) {
+        interval  = now - this.lastUp;
+        if (interval < maxTime) {
+          return this.doubleClick(evt);
+        }
+      }
+      this.lastUp = now;
+      return NO;
+    },
+
+    doubleClick: function(evt) {
+      this.labelTextView.beginEditing();
+      return YES;
+    },
+
+    mouseDragged: function (evt) {
+      this.drag(evt);
+    },
+
+    startDrag: function (evt) {
+      this.setPath('labelView.isBodyDragging', YES);
+
+      this._isDragging = YES;
+      this._dragX = evt.pageX;
+      this._dragY = evt.pageY;
+
+      // our layer doesn't respect SC.Cursor, so set the cursors manually
+      this.$().css('cursor', 'move');
+    },
+
+    drag: function (evt) {
+      var xOffset = this.get('xOffset'),
+          yOffset = this.get('yOffset');
+
+      if (!this._isDragging) return;
+
+      this.set('xOffset', xOffset + evt.pageX - this._dragX);
+      this.set('yOffset', yOffset + evt.pageY - this._dragY);
+      this._dragX = evt.pageX;
+      this._dragY = evt.pageY;
+    },
+
+    endDrag: function (evt) {
+      this.drag(evt);
+      this.setPath('labelView.isBodyDragging', NO);
+      this._isDragging = NO;
+
+      this.$().css('cursor', 'default');
+    },
 
 
 
@@ -330,6 +404,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       isEditing:         NO,
       isEnabled:         YES,
       isKeyResponder:    YES,
+      isMouseResponder:  NO,
       didLoseKeyResponderTo: function(arg) {
         this.commitEditing();
       },
@@ -379,27 +454,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
             this.backgroundBox.attr('height', bounds.height + 4);
           }
         }
-      },
-
-      // TODO: Seems like SC re-wraps click and dblclick
-      mouseDown: function(evt) { return YES;}, // Required to trigger mouseUp (!?)
-      mouseUp: function(evt) {
-        var now = new Date().getTime();
-        var interval = 202; // ms
-        var maxTime = 200;  // ms
-        if (typeof this.lastUp != 'undefined' && this.lastUp) {
-          interval  = now - this.lastUp;
-          if (interval < maxTime) {
-            return this.doubleClick(evt);
-          }
-        }
-        this.lastUp = now;
-        return NO;
-      },
-
-      doubleClick: function(evt) {
-        this.beginEditing();
-        return YES;
       },
 
       beginEditing: function() {
@@ -455,7 +509,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
       keyDown: function(evt) {
         evt.preventDefault(); // disable backspace, enter,tab
-        debugger;
         return this.interpretKeyEvents(evt) ? YES : NO;
       },
 
@@ -471,8 +524,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           var newText = t.substr(0,t.length-1);
           this.updateText(newText);
         return YES;
-      },
-
+      }
       // keyPress: function(evt) {
       //   console.log(evt.charCode);
       // },
@@ -608,54 +660,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         this.set('isHighlighted', NO);
       }
 
-    }),
+    })
 
-    // Dragging. Note that dragging is 'stateless' in the sense that you can always drag a label view. So we won't hook
-    // into states or the controller layer. We also assume until proven otherwise that we can modify our own cursor
-    // without consequence.
-
-    mouseDown: function (evt) {
-      this.startDrag(evt);
-    },
-
-    mouseUp: function (evt) {
-      this.endDrag(evt);
-    },
-
-    mouseDragged: function (evt) {
-      this.drag(evt);
-    },
-
-    startDrag: function (evt) {
-      this.setPath('labelView.isBodyDragging', YES);
-
-      this._isDragging = YES;
-      this._dragX = evt.pageX;
-      this._dragY = evt.pageY;
-
-      // our layer doesn't respect SC.Cursor, so set the cursors manually
-      this.$().css('cursor', 'move');
-    },
-
-    drag: function (evt) {
-      var xOffset = this.get('xOffset'),
-          yOffset = this.get('yOffset');
-
-      if (!this._isDragging) return;
-
-      this.set('xOffset', xOffset + evt.pageX - this._dragX);
-      this.set('yOffset', yOffset + evt.pageY - this._dragY);
-      this._dragX = evt.pageX;
-      this._dragY = evt.pageY;
-    },
-
-    endDrag: function (evt) {
-      this.drag(evt);
-      this.setPath('labelView.isBodyDragging', NO);
-      this._isDragging = NO;
-
-      this.$().css('cursor', 'default');
-    }
 
   }),
 
