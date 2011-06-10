@@ -342,8 +342,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "data": "slope-data",
-          "annotations": [] //["p1A-highlight", "p2A-highlight"],
-          //"highlightedAnnotations": ["rise-bracket-A"]      
+          "annotations": [], //["p1A-highlight", "p2A-highlight"],
+          "highlightedAnnotations": ["rise-bracket-A"]      
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
@@ -376,8 +376,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "data": "slope-data",
-          "annotations": [] //["p1A-highlight", "p2A-highlight"],
-          //"highlightedAnnotations": ["rise-bracket-A"]          
+          "annotations": [], //["p1A-highlight", "p2A-highlight"],
+          "highlightedAnnotations": ["rise-bracket-A"]          
         }
       },
       "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -407,7 +407,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "data": "slope-data",
-          "annotations": [] // ["p1A-highlight", "p2A-highlight", "rise-bracket-A"]
+          "annotations": ["rise-bracket-A"] // ["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -440,7 +440,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "data": "slope-data",
-          "annotations": [] //["p1A-highlight", "p2A-highlight", "rise-bracket-A"]
+          "annotations": ["rise-bracket-A"] //["p1A-highlight", "p2A-highlight"]
         }
       },
       "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
@@ -473,8 +473,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "data": "slope-data",
-          "annotations": [] //["p1A-highlight", "p2A-highlight", "rise-bracket-A"],
-          //"highlightedAnnotations": ["run-bracket-A"]
+          "annotations": ["rise-bracket-A"], //["p1A-highlight", "p2A-highlight"],
+          "highlightedAnnotations": ["run-bracket-A"]
         }
       },
       "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
@@ -507,8 +507,8 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
         "bottom": {
           "type": "table",
           "data": "slope-data",
-          "annotations": [] //["p1A-highlight", "p2A-highlight", "rise-bracket-A"],
-          //"highlightedAnnotations": ["run-bracket-A"]    
+          "annotations": ["rise-bracket-A"], //["p1A-highlight", "p2A-highlight"],
+          "highlightedAnnotations": ["run-bracket-A"]    
         }
       },
       "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1482,6 +1482,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "name": "rise-bracket-A",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
+          "datadefName": "slope-data",
           "p1Tag": "/shared/instantaneous-speed/tag/first-point-A",
           "p2Tag": "/shared/instantaneous-speed/tag/second-point-A"
         },
@@ -1490,6 +1491,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "name": "rise-bracket-B",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
+          "datadefName": "slope-data",          
           "p1Tag": "/shared/instantaneous-speed/tag/first-point-B",
           "p2Tag": "/shared/instantaneous-speed/tag/second-point-B"
         }
@@ -1503,6 +1505,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "name": "run-bracket-A",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
+          "datadefName": "slope-data",          
           "p1Tag": "/shared/instantaneous-speed/tag/first-point-A",
           "p2Tag": "/shared/instantaneous-speed/tag/second-point-A"
         },
@@ -1511,6 +1514,7 @@ Smartgraphs.activityDocs["/shared/instantaneous-speed"] =
           "name": "run-bracket-B",
           "activity": "/shared/instantaneous-speed",
           "color": "#cccccc",
+          "datadefName": "slope-data",          
           "p1Tag": "/shared/instantaneous-speed/tag/first-point-B",
           "p2Tag": "/shared/instantaneous-speed/tag/second-point-B"
         }
