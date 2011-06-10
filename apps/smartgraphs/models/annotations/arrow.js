@@ -22,46 +22,52 @@ sc_require('views/arrow');
 Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.Arrow.prototype */ {
 
+  // these are computed properties
+  x1: null,
+  y1: null,
+  x2: null,
+  y2: null,
+
   /**
     x-coordinate of start point
 
     @property {Number}
   */
-  x1: SC.Record.attr(Number),
+  x1Record: SC.Record.attr(Number),
 
   /**
     y-coordinate of start point
     
     @property {Number}
   */
-  y1: SC.Record.attr(Number),
+  y1Record: SC.Record.attr(Number),
   
   /**
     x-coordinate of end point
     
     @property {Number}
   */
-  x2: SC.Record.attr(Number),
+  x2Record: SC.Record.attr(Number),
 
   /**
     y-coordinate of end point
 
     @property {Number}
   */
-  y2: SC.Record.attr(Number),
+  y2Record: SC.Record.attr(Number),
   
-  // TODO:
-  // /**
-  //   This bitfield specifies what arrowheads should be drawn:
-  //   
-  //     no arrowheads (Smartgraphs.Arrow.NO_ARROW_HEADS),
-  //     an arrowhead at the start (Smartgraphs.Arrow.ARROW_HEAD_AT_START),
-  //     an arrowhead at the end (Smartgraphs.Arrow.ARROW_HEAD_AT_END),
-  //     an arrowhead at both ends (Smartgraphs.Arrow.ARROW_HEAD_AT_START_AND_END)
-  //   
-  //   @property {Number}
-  // */    
-  // arrowHeadsToShow: SC.Record.attr(Number, {defaultValue: 2}),    // FIXME: what's a good way to set this to Smartgraphs.Arrow.ARROW_HEAD_AT_END? 
+  p1Tag: SC.Record.toOne('Smartgraphs.Tag'),
+  
+  p2Tag: SC.Record.toOne('Smartgraphs.Tag'),
+  
+  p1x: Smartgraphs.Tag.valueFrom('p1Tag', 'x', 'x1Record'),
+  
+  p1y: Smartgraphs.Tag.valueFrom('p1Tag', 'y', 'y1Record'),
+
+  p2x: Smartgraphs.Tag.valueFrom('p2Tag', 'x', 'x2Record'),
+
+  p2y: Smartgraphs.Tag.valueFrom('p2Tag', 'y', 'y2Record'),
+
 
   /**
     The optional text label for the arrow.
@@ -69,67 +75,35 @@ Smartgraphs.Arrow = Smartgraphs.Annotation.extend(
     @property {String}
   */
   label: SC.Record.attr(String),
-
-  //p1: Smartgraphs.Tag.pointFromTag('p1Record', 'p1Tag'),
-  
-  //p2: Smartgraphs.Tag.pointFromTag('p2Record', 'p2Tag'),
-
-  /**
-    Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
-    override calculateCoordinatesFromPoints() to compute (x1, y1) and (x2, y2) from (p1, p2).
-    
-    @property {Smartgraphs.DataPoint}
-  */
-  p1Record: SC.Record.toOne('Smartgraphs.DataPoint'),
-  
-  /**
-    Optionally, (x1, y1) and (x2, y2) can be derived from 2 DataPoints. This is one of those points. Subclasses can 
-    override calculateCoordinatesFromPoints () to compute (x1, y1) and (x2, y2) from (p1, p2).
-    
-    @property {Smartgraphs.DataPoint}
-  */
-  p2Record: SC.Record.toOne('Smartgraphs.DataPoint'),
-
-  /**
-    Optional Tag object which can be used to indirectly specify p1
-
-    @property {Smartgraphs.Tag}
-  */
-  p1Tag: SC.Record.toOne('Smartgraphs.Tag'),
-
-  /**
-    Optional Tag object which can be used to indirectly specify p2
-
-    @property {Smartgraphs.Tag}
-  */
-  p2Tag: SC.Record.toOne('Smartgraphs.Tag'),
   
   _startAndEndDidChange: function () {
-    var p1 = this.get('p1'),
-        p2 = this.get('p2'),
+    var p1x = this.get('p1x'),
+        p1y = this.get('p1y'),
+        p2x = this.get('p2x'),
+        p2y = this.get('p2y'),
         coords;
-
-    if (!p1 || !p2) return;
+        
+    if (SC.none(p1x) || SC.none(p1y) || SC.none(p2x) || SC.none(p2y)) return;
     
-    coords = this.calculateCoordinatesFromPoints(this.get('p1'), this.get('p2'));
+    coords = this.calculateCoordinatesFromPoints(p1x, p1y, p2x, p2y);
     
     this.setIfChanged('x1', coords.x1);
     this.setIfChanged('y1', coords.y1);
     this.setIfChanged('x2', coords.x2);
     this.setIfChanged('y2', coords.y2);
-  }.observes('*p1.x', '*p1.y', '*p2.x', '*p2.y'),
+  }.observes('p1x', 'p1y', 'p2x', 'p2y'),
   
   /**
     Calculate (x1, y1) and (x2, y2) from (p1, p2). The base class implementation sets x1 = p1.x, y1 = p1.y, etc, in 
     order to draw an arrow that starts and p1 and ends at p2. Subclasses can override this method to draw an arrow
     with different semantics.
   */  
-  calculateCoordinatesFromPoints: function (p1, p2) {
+  calculateCoordinatesFromPoints: function (p1x, p1y, p2x, p2y) {
     return {
-      x1: p1.get('x'),
-      y1: p1.get('y'),
-      x2: p2.get('x'),
-      y2: p2.get('y')
+      x1: p1x,
+      y1: p1y,
+      x2: p2x,
+      y2: p2y
     };
   }
   

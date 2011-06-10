@@ -23,7 +23,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
   strokeOpacity: 0.3,
 
   // SC will call render(context, firstTime == NO) if these properties change
-  displayProperties: 'p1.x p1.y p2.x p2.y stroke strokeWidth strokeOpacity'.w(),
+  displayProperties: 'x1 y1 x2 y2 stroke strokeWidth strokeOpacity'.w(),
 
   // We are using renderCallback in views to call non-SC render methods like
   // RaphaelCanvas.segmentPath with the correct attributes.
@@ -39,11 +39,13 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
   render: function(context, firstTime) {
     var graphView = this.get('graphView'),
         annotation = this.get('item'),
-        p1 = annotation.get('p1'),
-        p2 = annotation.get('p2'),
+        x1 = annotation.get('x1'),
+        y1 = annotation.get('y1'),
+        x2 = annotation.get('x2'),
+        y2 = annotation.get('y2'),
         xAxis = graphView.get('xAxis'),
         yAxis = graphView.get('yAxis'),
-        points = this.getEndPoints(p1, p2, xAxis, yAxis),
+        points = this.getEndPoints(x1, y1, x2, y2, xAxis, yAxis),
         i,
         coords, 
         point,
@@ -122,18 +124,13 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
     Find the end points of a line segment through point1 and point2 that is bounded by the xMin, xMax, yMin, yMax of 
     the axes
   */
-  getEndPoints: function (point1, point2, xAxis, yAxis) {
+  getEndPoints: function (x1, y1, x2, y2, xAxis, yAxis) {
     var xMax = xAxis.get('max');
     var xMin = xAxis.get('min');
     var yMax = yAxis.get('max');
     var yMin = yAxis.get('min');
 
     var points = [];
-    
-    var x1 = point1.get('x'),
-        y1 = point1.get('y'),
-        x2 = point2.get('x'),
-        y2 = point2.get('y');
 
     // case 1: vertical line
     if (x1 === x2) {

@@ -27,15 +27,31 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   dataRepresentation: null,
   pointset: null,
   
-  isSelectable:        YES,
+  isSelectable: YES,
+  
   selectionBinding:    '*pointset.selection',
+  selectionBindingDefault: SC.Binding.oneWay(),
+  
   isStreamingBinding:  '*datadef.isStreaming',
+  isStreamingBindingDefault:  SC.Binding.oneWay(),
+  
   latestXBinding:      '*datadef.latestX',
+  latestXBindingDefault: SC.Binding.oneWay(),
+  
   latestYBinding:      '*datadef.latestY',
+  latestYBindingDefault: SC.Binding.oneWay(),
+
   xUnitsBinding:       '*datadef.xUnits',
+  xUnitsBindingDefault: SC.Binding.oneWay(),
+  
   yUnitsBinding:       '*datadef.yUnits',
+  yUnitsBindingDefault: SC.Binding.oneWay(),
+    
   xShortLabelBinding:  '*datadef.xShortLabel',
+  xShortLabelBindingDefault: SC.Binding.oneWay(),
+  
   yShortLabelBinding:  '*datadef.yShortLabel',
+  yShortLabelBindingDefault: SC.Binding.oneWay(),  
   
   /**
     Whether to display the table (or else the numeric view)

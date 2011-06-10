@@ -31,16 +31,14 @@ Smartgraphs.RiseArrow = Smartgraphs.Arrow.extend(
     
     FIXME: This policy is reimplemented in a different context in the 'slopeToolOrder' expression in the evaluator
   */
-  calculateCoordinatesFromPoints: function (p1, p2) {    
-    var p1x = p1.get('x'),
-        p2x = p2.get('x'),
-        points = (p1x < p2x) ? { left: p1, right: p2 } : { left: p2, right: p1 };
+  calculateCoordinatesFromPoints: function (p1x, p1y, p2x, p2y) {    
+    var points = (p1x < p2x) ? { left: [p1x, p1y] , right: [p2x, p2y] } : { left: [p2x, p2y], right: [p1x, p1y] };
     
     return {
-      x1: points.left.get('x'),
-      y1: points.left.get('y'),
-      x2: points.left.get('x'),
-      y2: points.right.get('y')
+      x1: points.left[0],
+      y1: points.left[1],
+      x2: points.left[0],
+      y2: points.right[1]
     };
   }
   

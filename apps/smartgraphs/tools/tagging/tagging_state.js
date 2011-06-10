@@ -17,16 +17,16 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
 /** @scope Smartgraphs.TAGGING_TOOL.prototype */ {
   
   enterState: function () {
-    var datadef = Smartgraphs.taggingTool.get('datadef');
+    //var datadef = Smartgraphs.taggingTool.get('datadef');
     // disable submission until a selection is made...
     Smartgraphs.statechart.sendAction('disableSubmission');
-    datadef.set('isSelectable', NO);
+    //datadef.set('isSelectable', NO);
     Smartgraphs.taggingTool.clearPoint();
   },
   
   exitState: function () {
     var datadef = Smartgraphs.taggingTool.get('datadef');
-    datadef.set('isSelectable', this._oldIsSelectable);
+    //datadef.set('isSelectable', this._oldIsSelectable);
     Smartgraphs.taggingTool.clearSetup();
   },
   
@@ -41,10 +41,10 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
       The dataPointView that was clicked on
   */
   dataPointSelected: function (context, args) {
-    var datadef = Smartgraphs.taggingTool.get('datadef'),
+    var datadefName = Smartgraphs.taggingTool.get('datadefName'),
         rep = args.dataRepresentation;
     
-    if (rep && rep.get('datadef') === datadef) {
+    if (rep && rep.getPath('datadef.name') === datadefName) {
       Smartgraphs.taggingTool.setPoint(args.x, args.y);
       Smartgraphs.statechart.sendAction('enableSubmission');
     }
