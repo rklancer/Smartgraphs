@@ -12,6 +12,7 @@
 
   @extends SC.View
 */
+sc_require('views/editable_label');
 Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelView.prototype */ {
 
@@ -378,200 +379,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       this.$().css('cursor', 'default');
     },
 
-
-    /***********************************************************/
-    labelTextView: RaphaelViews.RaphaelView.design(SC.Editable, {
-
-      displayProperties: 'text textColor width height bodyXCoord bodyYCoord isEditable'.w(),
-
-      labelView:     SC.outlet('parentView.labelView'),
-      labelBodyView: SC.outlet('parentView'),
-
-      textBinding:       '.labelView.text',
-      textColorBinding:  '.labelView.textColor',
-
-      // width:
-      widthBinding:      '.labelBodyView.width',
-      heightBinding:     '.labelBodyView.height',
-      bodyXCoordBinding: '.labelBodyView.bodyXCoord',
-      bodyYCoordBinding: '.labelBodyView.bodyYCoord',
-
-      // TODO: something more reasonable with properties in parent:
-      isEditable:        YES,
-      isEditing:         NO,
-      isEnabled:         YES,
-      isKeyResponder:    YES,
-
-      didLoseKeyResponderTo: function(arg) {
-        this.commitEditing();
-      },
-      acceptsFirstResponder: function() {
-        return this.get('isEnabled');
-      }.property('isEnabled'),
-
-      renderCallback: function (raphaelCanvas, attrs) {
-        this.backgroundBox = raphaelCanvas.rect(attrs);
-        this.backgroundBox.attr('fill', '#ff0');
-        this.backgroundBox.attr('opacity', 0.1);
-        this.backgroundBox.hide();
-        return raphaelCanvas.text().attr(attrs);
-      },
-
-      render: function (context, firstTime) {
-        var height = this.get('height');
-        var attrs = {
-              text:          this.get('text'),
-              x:             this.get('bodyXCoord') + 10,
-              y:             this.get('bodyYCoord') + height/2,
-              fill:          this.get('textColor'),
-              'font-size':   12,
-              'text-anchor': 'start'
-            };
-
-        var raphaelText;
-        var bounds;
-        var editing = this.get('isEditing');
-        if (firstTime) {
-          context.callback(this, this.renderCallback, attrs);
-        }
-        else {
-          raphaelText = this.get('raphaelObject');
-          raphaelText.attr(attrs);
-          raphaelText = this.get('raphaelObject');
-          if (editing) {
-            raphaelText.attr('text', this.get('text') + "_");
-          }
-          bounds  = raphaelText.getBBox();
-          this.set('width',bounds.width + 30);
-          this.set('height',bounds.height + 30);
-          if (editing) {
-            this.backgroundBox.attr('x', bounds.x - 2);
-            this.backgroundBox.attr('y', bounds.y - 2);
-            this.backgroundBox.attr('width', bounds.width + 4);
-            this.backgroundBox.attr('height', bounds.height + 4);
-          }
-        }
-      },
-
-      beginEditing: function() {
-        if (!this.get('isEditable')) return NO ;
-        if (this.get('isEditing')) return YES ;
-
-        // begin editing
-        this.beginPropertyChanges();
-        this.set('isEditing', YES) ;
-        this.becomeFirstResponder() ;
-        this.endPropertyChanges();
-        this.backgroundBox.show();
-        return YES ;
-      },
-
-      discardEditing: function() {
-        this.set('isEditing', NO);
-        this.backgroundBox.hide();
-        return !this.get('isEditing');
-      },
-
-      commitEditing: function() {
-        if (!this.get('isEditing')) return YES;
-        this.backgroundBox.hide();
-        this.set('isEditing', NO) ;
-        this.resignFirstResponder() ;
-        return YES ;
-      },
-
-      updateText: function(newtext) {
-        this.set('text',newtext);
-      },
-
-      keyDown: function(evt) {
-        var chr = null;
-        if (evt.type == 'keypress') {
-          chr = evt.getCharString();
-          if (chr) {
-            this.insertText(chr);
-            return YES;
-          }
-        }
-        return this.interpretKeyEvents(evt) ? YES : NO;
-      },
-
-      insertText: function(chr, evt) {
-        var text = this.get('text') + chr;
-        this.updateText(text);
-        return YES;
-      },
- 
-      insertNewline: function() {
-        this.insertText("\n");
-      },
-
-      insertTab: function() {
-        this.commitEditing();
-      },
-
-      cancel: function() {
-        this.commitEditing();
-      },
-
-      deleteBackward: function() {
-          var t = this.get('text');
-          var newText = t.substr(0,t.length-1);
-          this.updateText(newText);
-        return YES;
-      },
-
-      deleteForward: function() {
-          var t = this.get('text');
-          var newText = t.substr(0,t.length-1);
-          this.updateText(newText);
-        return YES;
-      }
-      // keyPress: function(evt) {
-      //   console.log(evt.charCode);
-      // },
-
-      // keyUp: function(evt) {
-      //   evt.preventDefault(); // disable backspace, enter,tab
-      //   // var code, actualKey;
-      //   var code = evt.charCode? evt.charCode : evt.keyCode;
-      //   if (code == 46 || code == 8) {
-      //     this.backspace();
-      //     return YES;
-      //   }
-      //   if (code == 13) {
-      //     this.enter();
-      //     return YES;
-      //   }
-      //   if (code == 27) {
-      //     this.escape();
-      //     return YES;
-      //   }
-      //   if (code == 9) {
-      //     this.tab();
-      //     return YES;
-      //   }
-      //   return NO;
-      //   // this.handleAlpha(evt);
-      // },
-
-      // handleAlpha: function(evt) {
-      //     var code, actualKey;
-      //     code = evt.charCode? evt.charCode : evt.keyCode;
-      //     actualkey=String.fromCharCode(code);
-      //     if (! evt.shiftKey) {
-      //       actualkey=actualkey.toLowerCase();
-      //     }
-      //     if (actualkey == "\t") { this.tab();   }
-      //     else if (actualkey == "\n") { this.enter(); }
-      //     else { this.insertText(actualkey); }
-      // },
-
+    labelTextView: Smartgraphs.EditableLabelView.design({
+      isEditable: YES,
+      fontSize: 12
     }),
-    /***********************************************************/
-
-
-
 
     removeButtonView: RaphaelViews.RaphaelView.design({
 
@@ -661,10 +472,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       mouseExited: function () {
         this.set('isHighlighted', NO);
       }
-
     })
-
-
   }),
 
   remove: function () {
