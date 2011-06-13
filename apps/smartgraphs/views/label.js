@@ -102,21 +102,41 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   },
 
   childViews: 'targetPointView connectingLineView labelBodyView'.w(),
+  //childViews: 'connectingLineView labelBodyView'.w(),
 
-  targetPointView: RaphaelViews.RaphaelView.design({
-    displayProperties: 'xCoord yCoord stroke'.w(),
+  targetPointView: RaphaelViews.RaphaelView.design(Smartgraphs.ArrowDrawing, {
 
     labelView: SC.outlet('parentView'),
 
     xCoordBinding: '.labelView.xCoord',
     yCoordBinding: '.labelView.yCoord',
+    anchorXCoordBinding: '.labelView.anchorXCoord',
+    anchorYCoordBinding: '.labelView.anchorYCoord',
+
     strokeBinding: '.labelView.stroke',
+    arrowLength: 15,
+    arrowWidth:  15,
 
     // Using a computed property for 'isVisible' here because the following locks up the jasmine test for some reason:
     // isVisibleBinding: '.labelView.shouldMarkTargetPoint',
     // isVisibleBindingDefault: SC.Binding.oneWay(),
 
     shouldMarkTargetPointBinding: '.labelView.shouldMarkTargetPoint',
+    
+    defaultFillBinding: '.labelView.stroke',
+    highlightedFillBinding: '.labelView.highlightedStroke',
+    isHighlightedBinding: '.labelView.isBodyDragging',
+
+    fill: function () {
+      return this.get('isHighlighted') ? this.get('highlightedFill') : this.get('defaultFill');
+    }.property('isHighlighted', 'highlightedFill', 'defaultFill').cacheable(),
+
+    strokeWidth: function () {
+      return this.get('isHighlighted') ? this.get('highlightedStrokeWidth') : this.get('defaultStrokeWidth');
+    }.property('isHighlighted', 'highlightedStrokeWidth', 'defaultStrokeWidth').cacheable(),
+
+ 
+    displayProperties: 'xCoord yCoord anchorXCoord isHighlighted anchorYCoord stroke startRadius'.w(),
 
     isVisible: function () {
       return this.get('shouldMarkTargetPoint');
@@ -129,20 +149,34 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     render: function (context, firstTime) {
       var xCoord     = this.get('xCoord'),
           yCoord     = this.get('yCoord'),
-          stroke     = this.get('stroke'),
-          pathString = this.xPath(xCoord, yCoord),
+          fill       = this.get('fill'),
+          // pathString = this.xPath(xCoord, yCoord),
+          pathString,
           raphaelPath;
 
+      pathString = this.arrow_path();
       if (firstTime) {
-        context.callback(this, this.renderCallback, pathString, stroke);
+        context.callback(this, this.renderCallback, pathString, fill);
       }
       else {
         raphaelPath = this.get('raphaelObject');
         raphaelPath.attr({
           path: pathString,
-          stroke: stroke
+          fill: fill,
+          stroke: fill
         });
       }
+    },
+
+    arrow_path: function() {
+      var startx = this.get('anchorXCoord');
+      var starty = this.get('anchorYCoord');
+      var endx = this.get('xCoord');
+      var endy = this.get('yCoord');
+      var len = this.get('arrowLength');
+      var angle = this.get('arrowWidth');
+      if (SC.none(endx) || SC.none(endy)) return "M 0 0";
+      return this.arrowPath(startx,starty,endx,endy,len,angle);
     },
 
     xPath: function (xCoord, yCoord) {
@@ -151,7 +185,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           y = yCoord + 4;
 
       if (SC.none(xCoord) || SC.none(yCoord)) return "M 0 0";
-
       elements.push('M');
       elements.push(x);
       elements.push(y);
@@ -216,19 +249,21 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           startRadius  = this.get('startRadius'),
           dx           = anchorXCoord - xCoord,
           dy           = anchorYCoord - yCoord,
+
           length       = Math.sqrt( dx*dx + dy*dy ), // dist. between (xCoord, yCoord) and (anchorXCoord, anchorYCoord)
           startX,
           startY,
           pathString,
-          raphaelPath;
+          raphaelPath,
+          arrowP;
 
       if (SC.none(xCoord) || SC.none(yCoord) || SC.none(anchorXCoord) || SC.none(anchorYCoord)) {
         pathString = 'M 0 0';
       }
       else {
-        startX       = xCoord + (startRadius / length) * dx;
-        startY       = yCoord + (startRadius / length) * dy;
-        pathString   = ['M', startX, startY, 'L', anchorXCoord, anchorYCoord].join(' ');
+        startX     = xCoord;// + (startRadius / length) * dx;
+        startY     = yCoord;// + (startRadius / length) * dy;
+        pathString = ['M', startX, startY, 'L', anchorXCoord, anchorYCoord].join(' ');
       }
 
       if (firstTime) {
