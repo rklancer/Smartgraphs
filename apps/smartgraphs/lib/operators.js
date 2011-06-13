@@ -125,7 +125,7 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     var tag1 = Smartgraphs.activityObjectsController.findTag(namePair[0]),
         tag2 = Smartgraphs.activityObjectsController.findTag(namePair[1]);
 
-    return tag1.get(axis) - tag2.get(axis);
+    return tag2.get(axis) - tag1.get(axis);
   }).args(2);
 
 
