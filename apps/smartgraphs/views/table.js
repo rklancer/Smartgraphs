@@ -27,8 +27,7 @@ Smartgraphs.TableView = SC.View.extend(
   xUnitsAbbreviatedBinding: '*tableController.xUnits.abbreviation',
   xShortLabelBinding:       '*tableController.xShortLabel',
   yUnitsAbbreviatedBinding: '*tableController.yUnits.abbreviation',
-  yShortLabelBinding:       '*tableController.yShortLabel',  
-  yUnitsBinding:            '*tableController.yUnits',  
+  yShortLabelBinding:       '*tableController.yShortLabel',
 
   columnsView:  SC.outlet('tableColumnView.scrollView.contentView'),
   xsView:       SC.outlet('columnsView.xsView'),

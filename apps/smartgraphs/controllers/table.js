@@ -53,6 +53,11 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   yShortLabelBinding:  '*datadef.yShortLabel',
   yShortLabelBindingDefault: SC.Binding.oneWay(),  
   
+  xUnitsDidChange: function () {    
+    console.log('**** xUnits changed: %s', this.get('xUnits') ? this.get('xUnits').toString() : '(falsy)');
+    console.log('**** datadef.xUnits: %s', this.getPath('datadef.xUnits') ? this.getPath('datadef.xUnits').toString() : '(falsy)');
+  }.observes('xUnits'),
+  
   /**
     Whether to display the table (or else the numeric view)
     
@@ -77,7 +82,11 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
         options = {},
         rep;
         
+    // do this in a runloop because setting 'datadef' twice (in clear() and below) in the same runloop confuses the self-binding
+    // (xUnitsBinding)
+    SC.RunLoop.begin();
     this.clear();
+    SC.RunLoop.end();
     
     if (SC.typeOf(config.data) === SC.T_STRING) {
       datadefName = config.data;
