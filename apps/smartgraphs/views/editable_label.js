@@ -3,7 +3,9 @@
 // Copyright: ©2011 Concord Consortium
 // Author:    Noah Paessel <knowuh@gmail.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews*/
+/*globals Smartgraphs,  RaphaelViews, SC, YES, NO */
+/*jslint sloppy: true, vars: true, white: true, maxerr: 50, indent: 2 */
+
 
 /** @class
 
@@ -15,6 +17,8 @@
 */
 Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 /** @scope Smartgraphs.EditableLabelView.prototype */
+
+  childViews: 'editBoxView '.w(),
 
   isEditing: NO,
   fontSize:  12,
@@ -32,8 +36,6 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   boundsX:           null,
   boundsY:           null,
 
-  // A background highlighted editing box:
-  backgroundBox:     null,
 
   // shared attributes with our parent view:
   bodyXCoordBinding: '.labelBodyView.bodyXCoord',
@@ -46,29 +48,21 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   }.property('isEnabled'),
 
   renderCallback: function (raphaelCanvas, attrs) {
-    var backgroundBox = raphaelCanvas.rect(attrs);
-    backgroundBox.attr('fill', '#ff0');
-    backgroundBox.attr('opacity', 0.1);
-    backgroundBox.hide();
-    this.set('backgroundBox',backgroundBox);
     return raphaelCanvas.text().attr(attrs);
   },
 
   render: function (context, firstTime) {
-    var height = this.get('height');
-    var attrs = {
-      text:          this.get('text'),
-      x:             this.get('bodyXCoord') + 10,
-      y:             this.get('bodyYCoord') + height/2,
-      fill:          this.get('textColor'),
-      'font-size':   this.get('fontSize'),
-      'text-anchor': 'start'
-    };
-
-    var raphaelText;
-    var bounds;
-    var editing = this.get('isEditing');
-    var backgroundBox;
+    var height = this.get('height'),
+        attrs = {
+          text:          this.get('text'),
+          x:             this.get('bodyXCoord') + 10,
+          y:             this.get('bodyYCoord') + height/2,
+          fill:          this.get('textColor'),
+          'font-size':   this.get('fontSize'),
+          'text-anchor': 'start'
+        },
+        editing = this.get('isEditing'),
+        raphaelText;
 
     if (firstTime) {
       context.callback(this, this.renderCallback, attrs);
@@ -80,24 +74,11 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
       }
       raphaelText.attr(attrs);
       this.adjustMetrics();
-      backgroundBox = this.get('backgroundBox');
-      if (backgroundBox) {
-        if (editing) {
-          backgroundBox.attr('x', this.get('boundsX') - 2);
-          backgroundBox.attr('y', this.get('boundsY') - 2);
-          backgroundBox.attr('width', this.get('boundsWidth') + 4);
-          backgroundBox.attr('height', this.get('boundsHeight') + 4);
-          backgroundBox.show();
-        }
-        else {
-          backgroundBox.hide();
-        }
-      }
     }
   },
 
   beginEditing: function() {
-    if (!this.get('isEditable')) return NO ;
+    if (!this.get('isEditable')) { return NO ; }
     this.beginPropertyChanges();
     this.set('isEditing', YES);
     this.becomeFirstResponder();
@@ -122,8 +103,10 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   },
 
   adjustMetrics: function() {
-    var editing = this.get('isEditing');
-    raphaelText = this.get('raphaelObject');
+    var editing = this.get('isEditing'),
+        raphaelText = this.get('raphaelObject'),
+        bounds;
+
     if (raphaelText) {
       if (editing) { raphaelText.attr('text', this.get('text') + "_"); }
       bounds  = raphaelText.getBBox();
@@ -135,15 +118,16 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     this.updateParentBoundDimensions();
   },
 
+  // This will update our parrents attributes,
+  // and might cause some bad recursion in view rendering.
   updateParentBoundDimensions: function() {
-    // This will update our parrents attributes too:
     this.set('width', this.get('boundsWidth') + 30);
     this.set('height', this.get('boundsHeight') + 30);
   },
 
   keyDown: function(evt) {
     var chr = null;
-    if (evt.type == 'keypress') {
+    if (evt.type === 'keypress') {
       chr = evt.getCharString();
       if (chr) {
         this.insertText(chr);
@@ -153,7 +137,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return this.interpretKeyEvents(evt) ? YES : NO;
   },
 
-  insertText: function(chr, evt) {
+  insertText: function(chr) {
     this.updateText(this.get('text') + chr);
     return YES;
   },
@@ -171,16 +155,84 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   },
 
   deleteBackward: function() {
-      var t = this.get('text');
-      var newText = t.substr(0,t.length-1);
+      var t       = this.get('text'),
+          newText = t.substr(0,t.length-1);
+
       this.updateText(newText);
     return YES;
   },
 
   deleteForward: function() {
-      var t = this.get('text');
-      var newText = t.substr(0,t.length-1);
+      var t       = this.get('text'),
+          newText = t.substr(0,t.length-1);
+
       this.updateText(newText);
     return YES;
-  }
+  },
+
+  editBoxView: RaphaelViews.RaphaelView.design({
+    displayProperties:    'x y width height isVisible'.w(),
+    labelView:            SC.outlet('parentView'),
+    isVisibleBinding:     'labelView.isEditing',
+    parentsWidthBinding:  'labelView.boundsWidth',
+    parentsHeightBinding: 'labelView.boundsHeight',
+    parentsXBinding:      'labelView.boundsX',
+    parentsYBinding:      'labelView.boundsY',
+    fill:                 '#330',
+    opacity:              0.2,
+    isVisible:            YES,
+
+    twoMargin: function() {
+      return this.get('margin') * 2;
+    }.property().cacheable(),
+
+    width: 100,
+    height: 30,
+    x: 100,
+    y: 30,
+    // x: function() {
+    //   return this.get('parentsX') - this.get('margin');
+    // }.property(),
+
+    // y: function() {
+    //   return this.get('parentsY') - this.get('margin');
+    // }.property(),
+
+    // width: function() {
+    //   return this.get('parentsWidth') + this.get('twoMargin');
+    // },
+
+    // height: function () {
+    //   return this.get('parentsHeight') + this.get('twoMargin');
+    // }.property(),
+
+    renderCallback: function (raphaelCanvas, attrs) {
+      return raphaelCanvas.rect().attr(attrs);
+    },
+
+    render: function (context, firstTime) {
+      var raphaelRect,
+          attrs = {
+             'fill':    this.get('fill'),
+             'opacity': this.get('opacity'),
+             'x':       this.get('x'),
+             'y':       this.get('y'),
+             'width':   this.get('width'),
+             'height':  this.get('height')
+          };
+
+      if (firstTime) {
+        context.callback(this, this.renderCallback, attrs);
+        console.log("rendering for the first time with:");
+        console.log(attrs);
+      }
+      else {
+        raphaelRect = this.get('raphaelObject');
+        raphaelRect.attr(attrs);
+        console.log("rendering for the first time with:");
+        console.log(attrs);
+      }
+    } // render
+
+  })
 });
