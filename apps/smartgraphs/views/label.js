@@ -375,7 +375,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     mouseEntered: function () { return YES; },
 
     mouseExited: function (evt) {
-      if (evt.toElement != this.labelTextView.backgroundBox.node) {
+      if (evt.toElement != this.labelTextView) {
         if (this.labelTextView.get('isEditing')) {
           this.labelTextView.commitEditing()
         }
