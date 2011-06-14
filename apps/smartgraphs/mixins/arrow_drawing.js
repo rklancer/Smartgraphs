@@ -2,6 +2,7 @@
 // Project:   Smartgraphs.ArrowDrawing
 // Copyright: ©2010 Concord Consortium
 // Author:    Parker Morse <pmorse@cantinaconsulting.com>
+// Author:    Noa Paessel  <knowuh@gmail.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
@@ -14,7 +15,8 @@
 Smartgraphs.ArrowDrawing = {
 
   /**
-    Returns a Raphael path string which draws an arrow. Parameters should be actual screen coordinates, not dataset coordinates.
+    Returns a Raphael path string which draws an arrow. 
+    Parameters should be actual screen coordinates, not dataset coordinates.
     
     Original from Noah Paessel, https://gist.github.com/550233
     
@@ -23,7 +25,9 @@ Smartgraphs.ArrowDrawing = {
     @params endx {Number} X-coordinate of the end point
     @params endy {Number} Y-coordinate of the end point
     @params len {Number} Length of the "tip" of the arrowhead
-    @params angle {Number} Angle in degrees between the line and each wing of the arrowhead. Should be less than 90.
+    @params angle {Number} Angle in degrees 
+      between the line and each wing of the arrowhead. 
+      Should be less than 90.
   */
   arrowPath: function(startx,starty,endx,endy,len,angle) {    
     var theta  = Math.atan2((endy-starty),(endx-startx)),
@@ -37,9 +41,13 @@ Smartgraphs.ArrowDrawing = {
         baseBY     = endy - len * Math.sin(baseAngleB),
         pathData;
 
-    // Limit precision of decimals for webkit SVG rendering
-    // otherwise we get error messsages like so:
-    // "Error: Problem parsing d='<svg string with long dec>'"
+    /* 
+    *   Limit precision of decimals for SVG rendering.
+    *   otherwise we get really long SVG strings, 
+    *   and webkit error messsages like of this sort:
+    *   "Error: Problem parsing d='<svg string with long dec>'"
+    */
+
     startx = Math.round(startx * 1000)/1000;
     starty = Math.round(starty * 1000)/1000;
     tipX   = Math.round(tipX   * 1000)/1000;
