@@ -31,23 +31,22 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     return this.getPath('parentView.controller');
   }.property().cacheable(),
 
-  textBinding: '*item.text',
-  textColor:   '#333333',
+  textBinding:       '*item.text',
+  textColor:         '#333333',
+  stroke:            '#000000',
+  highlightedStroke: '#6699ff',
+  fill:              '#ffffff',
 
   shouldMarkTargetPointBinding: '*item.shouldMarkTargetPoint',
   shouldMarkTargetPointBindingDefault: SC.Binding.oneWay(),
-
-  stroke: '#000000',
-  highlightedStroke: '#6699ff',
-  fill: '#ffffff',
 
   isBodyDragging: NO,
 
   markerStyle: 'arrow', // 'arrow', 'x', or 'none'
   markerSize:  10,
 
-  xBinding: '*item.x',
-  yBinding: '*item.y',
+  xBinding:       '*item.x',
+  yBinding:       '*item.y',
 
   xOffsetBinding: '*item.xOffset',
   yOffsetBinding: '*item.yOffset',
@@ -105,7 +104,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
   },
 
   childViews: 'targetPointView connectingLineView labelBodyView'.w(),
-  //childViews: 'connectingLineView labelBodyView'.w(),
 
   targetPointView: RaphaelViews.RaphaelView.design(Smartgraphs.ArrowDrawing, {
 
@@ -125,10 +123,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     // isVisibleBindingDefault: SC.Binding.oneWay(),
 
     shouldMarkTargetPointBinding: '.labelView.shouldMarkTargetPoint',
-
-    defaultFillBinding: '.labelView.stroke',
-    highlightedFillBinding: '.labelView.highlightedStroke',
-    isHighlightedBinding: '.labelView.isBodyDragging',
+    defaultFillBinding:           '.labelView.stroke',
+    highlightedFillBinding:       '.labelView.highlightedStroke',
+    isHighlightedBinding:         '.labelView.isBodyDragging',
 
     fill: function () {
       return this.get('isHighlighted') ? this.get('highlightedFill') : this.get('defaultFill');
@@ -137,7 +134,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     strokeWidth: function () {
       return this.get('isHighlighted') ? this.get('highlightedStrokeWidth') : this.get('defaultStrokeWidth');
     }.property('isHighlighted', 'highlightedStrokeWidth', 'defaultStrokeWidth').cacheable(),
-
 
     displayProperties: 'xCoord yCoord anchorXCoord isHighlighted anchorYCoord stroke startRadius'.w(),
 
@@ -153,7 +149,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       var xCoord     = this.get('xCoord'),
           yCoord     = this.get('yCoord'),
           fill       = this.get('fill'),
-          // pathString = this.xPath(xCoord, yCoord),
           pathString,
           raphaelPath;
 
@@ -172,7 +167,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
     /*
-    *  Render the markerStyle at  this.xCoord, this.yCoord.
+    *  Render the marker at this.xCoord, this.yCoord.
     */
     markPath: function() {
       if( this.get('markerStyle') == 'arrow') {
@@ -181,9 +176,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       if (this.get('markerStyle') == 'x') {
         return this.xMark();
       }
-      if (this.get('markerStyle') == 'none') {
-        return this.emptyPath();
-      }
+      // if (this.get('markerStyle') == 'none') {
+      //   return this.emptyPath();
+      // }
       // TODO: should we note that no marker was specified?
       return this.emptyPath();
     },
@@ -453,7 +448,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     labelTextView: Smartgraphs.EditableLabelView.design({
       isEditable: YES,
-      fontSize: 20
+      fontSize: 14,
     }),
 
     removeButtonView: RaphaelViews.RaphaelView.design({
