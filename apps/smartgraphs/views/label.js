@@ -169,16 +169,21 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
     arrow_path: function() {
-      var startx = this.get('anchorXCoord');
-      var starty = this.get('anchorYCoord');
-      var endx = this.get('xCoord');
-      var endy = this.get('yCoord');
-      var len = this.get('arrowLength');
-      var angle = this.get('arrowWidth');
+      var startx = this.get('anchorXCoord'),
+        starty   = this.get('anchorYCoord'),
+        endx     = this.get('xCoord'),
+        endy     = this.get('yCoord'),
+        len      = this.get('arrowLength'),
+        angle    = this.get('arrowWidth');
       if (SC.none(endx) || SC.none(endy)) return "M 0 0";
       return this.arrowPath(startx,starty,endx,endy,len,angle);
     },
 
+    /*
+    *  Render an "x" marks the spot style mark at
+    *  @params xCoord {Number} X-coordinate of the center point
+    *  @params yCoord {Number} Y-coordinate of the center point
+    */
     xPath: function (xCoord, yCoord) {
       var elements = [],
           x = xCoord - 4,
@@ -204,7 +209,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
       return elements.join(' ');
     }
-
   }),
 
   connectingLineView: RaphaelViews.RaphaelView.design({
@@ -250,7 +254,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           dx           = anchorXCoord - xCoord,
           dy           = anchorYCoord - yCoord,
 
-          length       = Math.sqrt( dx*dx + dy*dy ), // dist. between (xCoord, yCoord) and (anchorXCoord, anchorYCoord)
+          // dist. between (xCoord, yCoord) and (anchorXCoord, anchorYCoord)
+          length       = Math.sqrt( dx*dx + dy*dy ), 
           startX,
           startY,
           pathString,
