@@ -26,21 +26,34 @@ Smartgraphs.ArrowDrawing = {
     @params angle {Number} Angle in degrees between the line and each wing of the arrowhead. Should be less than 90.
   */
   arrowPath: function(startx,starty,endx,endy,len,angle) {    
-    var theta = Math.atan2((endy-starty),(endx-startx));
-    var baseAngleA = theta + angle * Math.PI/180;
-    var baseAngleB = theta - angle * Math.PI/180;
-    var tipX = endx;
-    var tipY = endy;
-    var baseAX = endx - len * Math.cos(baseAngleA);
-    var baseAY = endy - len * Math.sin(baseAngleA);
-    var baseBX = endx - len * Math.cos(baseAngleB);
-    var baseBY = endy - len * Math.sin(baseAngleB);
-    var pathData = " M " + startx  + " " + starty +
-                   " L " + tipX      + " " + tipY +
-                   " L " + baseAX  + " " + baseAY +
-                   " L " + baseBX  + " " + baseBY +
-                   " L " + tipX    + " " + tipY;
+    var theta  = Math.atan2((endy-starty),(endx-startx)),
+        baseAngleA = theta + angle * Math.PI/180,
+        baseAngleB = theta - angle * Math.PI/180,
+        tipX       = endx,
+        tipY       = endy,
+        baseAX     = endx - len * Math.cos(baseAngleA),
+        baseAY     = endy - len * Math.sin(baseAngleA),
+        baseBX     = endx - len * Math.cos(baseAngleB),
+        baseBY     = endy - len * Math.sin(baseAngleB),
+        pathData;
+
+    // Limit precision of decimals for webkit SVG rendering
+    // otherwise we get error messsages like so:
+    // "Error: Problem parsing d='<svg string with long dec>'"
+    startx = Math.round(startx * 1000)/1000;
+    starty = Math.round(starty * 1000)/1000;
+    tipX   = Math.round(tipX   * 1000)/1000;
+    tipY   = Math.round(tipY   * 1000)/1000;
+    baseAY = Math.round(baseAY * 1000)/1000;
+    baseBX = Math.round(baseBX * 1000)/1000;
+    baseBY = Math.round(baseBY * 1000)/1000;
+
+    pathData = " M " + startx + "  " + starty +
+               " L " + tipX   + "  " + tipY   +
+               " L " + baseAX + "  " + baseAY +
+               " L " + baseBX + "  " + baseBY +
+               " L " + tipX   + "  " + tipY;
+
     return pathData;
   }
-
 };
