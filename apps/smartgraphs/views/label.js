@@ -43,6 +43,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
   isBodyDragging: NO,
 
+  markerStyle: 'arrow', // 'arrow', 'x', or 'none'
+  markerSize:  10,
+
   xBinding: '*item.x',
   yBinding: '*item.y',
 
@@ -108,21 +111,21 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     labelView: SC.outlet('parentView'),
 
-    xCoordBinding: '.labelView.xCoord',
-    yCoordBinding: '.labelView.yCoord',
+    xCoordBinding:       '.labelView.xCoord',
+    yCoordBinding:       '.labelView.yCoord',
     anchorXCoordBinding: '.labelView.anchorXCoord',
     anchorYCoordBinding: '.labelView.anchorYCoord',
+    strokeBinding:       '.labelView.stroke',
+    markerStyleBinding:  '.labelView.markerStyle',
+    markerSizeBinding:   '.labelView.markerSize',
 
-    strokeBinding: '.labelView.stroke',
-    arrowLength: 15,
-    arrowWidth:  15,
-
-    // Using a computed property for 'isVisible' here because the following locks up the jasmine test for some reason:
+    // Using a computed property for 'isVisible' here
+    // because the following locks up the jasmine test for some reason:
     // isVisibleBinding: '.labelView.shouldMarkTargetPoint',
     // isVisibleBindingDefault: SC.Binding.oneWay(),
 
     shouldMarkTargetPointBinding: '.labelView.shouldMarkTargetPoint',
-    
+
     defaultFillBinding: '.labelView.stroke',
     highlightedFillBinding: '.labelView.highlightedStroke',
     isHighlightedBinding: '.labelView.isBodyDragging',
@@ -135,7 +138,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       return this.get('isHighlighted') ? this.get('highlightedStrokeWidth') : this.get('defaultStrokeWidth');
     }.property('isHighlighted', 'highlightedStrokeWidth', 'defaultStrokeWidth').cacheable(),
 
- 
+
     displayProperties: 'xCoord yCoord anchorXCoord isHighlighted anchorYCoord stroke startRadius'.w(),
 
     isVisible: function () {
@@ -154,7 +157,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           pathString,
           raphaelPath;
 
-      pathString = this.arrow_path();
+      pathString = this.markPath();
       if (firstTime) {
         context.callback(this, this.renderCallback, pathString, fill);
       }
@@ -168,47 +171,76 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       }
     },
 
-    arrow_path: function() {
+    /*
+    *  Render the markerStyle at  this.xCoord, this.yCoord.
+    */
+    markPath: function() {
+      if( this.get('markerStyle') == 'arrow') {
+        return this.arrowMark();
+      }
+      if (this.get('markerStyle') == 'x') {
+        return this.xMark();
+      }
+      if (this.get('markerStyle') == 'none') {
+        return this.emptyPath();
+      }
+      // TODO: should we note that no marker was specified?
+      return this.emptyPath();
+    },
+
+    /*
+    *  Render an empty path for no marker.
+    */
+    emptyPath: function() {
+      return "M 0 0";
+    },
+
+    /*
+    *  Render an arrow -> mark at  this.xCoord, this.yCoord.
+    */
+    arrowMark: function() {
       var startx = this.get('anchorXCoord'),
         starty   = this.get('anchorYCoord'),
         endx     = this.get('xCoord'),
         endy     = this.get('yCoord'),
-        len      = this.get('arrowLength'),
-        angle    = this.get('arrowWidth');
-      if (SC.none(endx) || SC.none(endy)) return "M 0 0";
+        len      = this.get('markerSize'),
+        angle    = 20;
+      if (SC.none(endx) || SC.none(endy)) return this.emptyPath();
       return this.arrowPath(startx,starty,endx,endy,len,angle);
     },
 
     /*
-    *  Render an "x" marks the spot style mark at
-    *  @params xCoord {Number} X-coordinate of the center point
-    *  @params yCoord {Number} Y-coordinate of the center point
+    *  Render an "x" mark at  this.xCoord, this.yCoord.
     */
-    xPath: function (xCoord, yCoord) {
+    xMark: function () {
       var elements = [],
-          x = xCoord - 4,
-          y = yCoord + 4;
+          xCoord   = this.get('xCoord'),
+          yCoord   = this.get('yCoord'),
+          diameter = this.get('markerSize'),
+          radius   = diameter / 2,
+          x        = xCoord - radius,
+          y        = yCoord + radius;
 
-      if (SC.none(xCoord) || SC.none(yCoord)) return "M 0 0";
+      if (SC.none(xCoord) || SC.none(yCoord)) return this.emptyPath();
       elements.push('M');
       elements.push(x);
       elements.push(y);
       elements.push('L');
-      elements.push(x+8);
-      elements.push(y-8);
+      elements.push(x + diameter);
+      elements.push(y - diameter);
 
-      x = xCoord - 4;
-      y = yCoord - 4;
+      x = xCoord - radius;
+      y = yCoord - radius;
 
       elements.push('M');
       elements.push(x);
       elements.push(y);
       elements.push('L');
-      elements.push(x+8);
-      elements.push(y+8);
+      elements.push(x + diameter);
+      elements.push(y + diameter);
 
       return elements.join(' ');
-    }
+    },
   }),
 
   connectingLineView: RaphaelViews.RaphaelView.design({
@@ -255,7 +287,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           dy           = anchorYCoord - yCoord,
 
           // dist. between (xCoord, yCoord) and (anchorXCoord, anchorYCoord)
-          length       = Math.sqrt( dx*dx + dy*dy ), 
+          length       = Math.sqrt( dx*dx + dy*dy ),
           startX,
           startY,
           pathString,
@@ -344,7 +376,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         raphaelRect.attr(attrs);
       }
     },
-    
+
     mouseEntered: function () { return YES; },
 
     mouseExited: function (evt) {
