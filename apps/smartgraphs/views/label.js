@@ -176,9 +176,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       if (this.get('markerStyle') == 'x') {
         return this.xMark();
       }
-      // if (this.get('markerStyle') == 'none') {
-      //   return this.emptyPath();
-      // }
       // TODO: should we note that no marker was specified?
       return this.emptyPath();
     },
@@ -235,7 +232,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       elements.push(y + diameter);
 
       return elements.join(' ');
-    },
+    }
   }),
 
   connectingLineView: RaphaelViews.RaphaelView.design({
@@ -244,11 +241,16 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     labelView: SC.outlet('parentView'),
 
-    defaultStrokeBinding: '.labelView.stroke',
+    defaultStrokeWidth:       1,
+    highlightedStrokeWidth:   2,
+    
+    defaultStrokeBinding:     '.labelView.stroke',
     highlightedStrokeBinding: '.labelView.highlightedStroke',
-    defaultStrokeWidth: 1,
-    highlightedStrokeWidth: 2,
-    isHighlightedBinding: '.labelView.isBodyDragging',
+    isHighlightedBinding:     '.labelView.isBodyDragging',
+    xCoordBinding:            '.labelView.xCoord',
+    yCoordBinding:            '.labelView.yCoord',
+    anchorXCoordBinding:      '.labelView.anchorXCoord',
+    anchorYCoordBinding:      '.labelView.anchorYCoord',
 
     stroke: function () {
       return this.get('isHighlighted') ? this.get('highlightedStroke') : this.get('defaultStroke');
@@ -258,10 +260,6 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       return this.get('isHighlighted') ? this.get('highlightedStrokeWidth') : this.get('defaultStrokeWidth');
     }.property('isHighlighted', 'highlightedStrokeWidth', 'defaultStrokeWidth').cacheable(),
 
-    xCoordBinding: '.labelView.xCoord',
-    yCoordBinding: '.labelView.yCoord',
-    anchorXCoordBinding: '.labelView.anchorXCoord',
-    anchorYCoordBinding: '.labelView.anchorYCoord',
 
     // How far from the targetPointView's center to start drawing the connecting line
     startRadius: 9,
@@ -300,6 +298,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
       if (firstTime) {
         context.callback(this, this.renderCallback, pathString, stroke, strokeWidth);
+        this.renderChildViews(context, firstTime);
       }
       else {
         raphaelPath = this.get('raphaelObject');
@@ -313,9 +312,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     childViews: 'labelTextView removeButtonView'.w(),
 
-    labelView: SC.outlet('parentView'),
+    parentLabelView: SC.outlet('parentView'),
 
-    displayProperties: 'bodyXCoord bodyYCoord width height stroke strokeWidth fill cornerRadius'.w(),
+    displayProperties:   'bodyXCoord bodyYCoord width height stroke strokeWidth fill cornerRadius'.w(),
 
     textBinding:         '.parentLabelView.text',
     textColorBinding:    '.parentLabelView.textColor',
@@ -352,13 +351,13 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     render: function (context, firstTime) {
       var attrs = {
-            x:              this.get('bodyXCoord') || 0,
-            y:              this.get('bodyYCoord') || 0,
-            width:          this.get('width') || 0,
-            height:         this.get('height') || 0,
+            x:              this.get('bodyXCoord')   || 0,
+            y:              this.get('bodyYCoord')   || 0,
+            width:          this.get('width')        || 0,
+            height:         this.get('height')       || 0,
             r:              this.get('cornerRadius') || 0,
             stroke:         this.get('stroke'),
-            'stroke-width': this.get('strokeWidth'),
+            'stroke-width': this.get('strokeWidth')  || 1,
             fill:           this.get('fill'),
             'fill-opacity': 1.0
           },
@@ -396,9 +395,10 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     mouseUp: function(evt) {
       this.endDrag(evt);
-      var now = new Date().getTime();
-      var interval = 202; // ms
-      var maxTime = 200;  // ms
+      var now      = new Date().getTime(),// ms
+          interval = 202,                 // ms
+          maxTime  = 200;                 // ms
+
       if (typeof this.lastUp != 'undefined' && this.lastUp) {
         interval  = now - this.lastUp;
         if (interval < maxTime) {
