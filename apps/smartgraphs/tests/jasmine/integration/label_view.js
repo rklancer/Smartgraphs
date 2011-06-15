@@ -42,6 +42,29 @@ describe("LabelView behavior", function () {
 
       toBeVisible: function () {
         return !!this.actual.get('isVisible');
+      },
+
+      toBeLikeAnArrow: function(startx,starty,endx,endy,len,angle) {
+        // this happens to be our arrows default angle (deg from base)
+        if (typeof angle == 'undefined'){ angle == 20; }
+        var path = Smartgraphs.ArrowDrawing.arrowPath(startx,starty,endx,endy,len,angle),
+            i = 0, ii = 0,
+            actual = this.actual,
+            flatArray;
+
+        if (typeof actual == 'string') { return (actual == path);}
+
+        if (typeof actual        == 'undefined')   { return false; }
+        if (typeof actual.length == 'undefined')   { return false; }
+
+        ii = actual.size;
+        flatArray = [];
+        for (i = 0 ; i < actual.length ; i++ ) {
+          for (ii = 0; ii < actual[i].length ; ii++) {
+            flatArray.push(actual[i][ii]);
+          }
+        }
+        return (path  == flatArray.join(" "));
       }
     });
   });
@@ -274,13 +297,17 @@ describe("LabelView behavior", function () {
             var attrs,
                 path,
                 xCoord,
-                yCoord;
+                yCoord,
+                anchorX,
+                anchorY;
 
             beforeEach( function () {
               attrs  = targetPointView.get('layer').raphael.attr();
               path   = attrs.path;
               xCoord = targetPointView.get('xCoord');
               yCoord = targetPointView.get('yCoord');
+              anchorX= labelView.get('anchorXCoord');
+              anchorY= labelView.get('anchorYCoord');
             });
 
             it("should have 5 elements", function () {
@@ -297,23 +324,9 @@ describe("LabelView behavior", function () {
               expect(path[1][2]).toEqual(yCoord);
             });
 
-            // it("should end at (xCoord, yCoord)", function () {
-            //   expect(path[1][0]).toEqual('L');
-            //   expect(path[1][1]).toEqual(xCoord);
-            //   expect(path[1][2]).toEqual(yCoord);
-            // });
-
-            // it("should start again at (xCoord, yCoord)", function () {
-            //   expect(path[2][0]).toEqual('M');
-            //   expect(path[2][1]).toEqual(xCoord);
-            //   expect(path[2][2]).toEqual(yCoord);
-            // });
-
-            // it("should finally end at (xCoord, yCoord)", function () {
-            //   expect(path[3][0]).toEqual('L');
-            //   expect(path[3][1]).toEqual(xCoord);
-            //   expect(path[3][2]).toEqual(yCoord);
-            // });
+            it("should have an arrow marker at xCoord, yCoord", function () {
+              expect(path).toBeLikeAnArrow(anchorX,anchorY,xCoord,yCoord,10,20);
+            });
 
             it("should have a 'stroke' attribute equal to the label view's 'stroke' property", function () {
               expect(attrs.stroke).toEqual(labelView.get('stroke'));
@@ -354,6 +367,7 @@ describe("LabelView behavior", function () {
                 expect(newPath[1][1]).toEqual(newXCoord);
                 expect(newPath[1][2]).toEqual(newYCoord);
               });
+
             });
 
           });
@@ -652,6 +666,62 @@ describe("LabelView behavior", function () {
 
       });
 
+      describe("editing the label", function () {
+        var leftX,
+            topY;
+
+        function fireEvent(el, eventName, x, y) {
+            var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
+            SC.run( function () {
+              SC.Event.trigger(el, eventName, evt);
+            });
+        }
+
+        describe("before a double click", function () {
+          it("should not be in edit mode", function () {
+            expect(labelView.getPath('labelBodyView.labelTextView.isEditing')).toEqual(NO);
+          });
+          // it("should not have a highlighted background", function () {
+          //   expect(labelView.getPath('labelBodyView.labelTextView.editBoxView.isVisible')).toEqual(NO);
+          // });
+        });
+
+        describe("after a double click", function () {
+          beforeEach( function () {
+            fireEvent(target.get('layer'), 'mouseup', 10,10);
+            fireEvent(target.get('layer'), 'down', 10,10);
+            fireEvent(target.get('layer'), 'mouseup', 10,10);
+          });
+
+          it("should be in the edit mode", function () {
+            expect(labelView.getPath('labelBodyView.labelTextView.isEditing')).toEqual(YES);
+          });
+          // it("should have a highlighted background", function () {
+          //   expect(labelView.getPath('labelBodyView.labelTextView.editBoxView.isVisible')).toEqual(YES);
+          // });
+        });
+
+        beforeEach( function () {
+          var offset;
+
+          target = labelView.get('labelBodyView');
+          offset = $(target.get('layer')).offset();
+          leftX  = offset.left;
+          topY   = offset.top;
+
+          // start by clearing any possible stale drag state
+          fireEvent(target.get('layer'), 'mouseup', 0, 0);
+
+          fireEvent(target.get('layer'), 'mousedown', 10, 20);
+
+          xOffset = labelRecord.get('xOffset');
+          yOffset = labelRecord.get('yOffset');
+        });
+
+        it("should highlight the labelBodyView", function () {
+          expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
+        });
+      }); // dragging the label
 
     });
   });
