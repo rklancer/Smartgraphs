@@ -317,22 +317,25 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     displayProperties: 'bodyXCoord bodyYCoord width height stroke strokeWidth fill cornerRadius'.w(),
 
-    bodyXCoordBinding:   '.labelView.bodyXCoord',
-    bodyYCoordBinding:   '.labelView.bodyYCoord',
-    xOffsetBinding:      '.labelView.xOffset',
-    yOffsetBinding:      '.labelView.yOffset',
-    widthBinding:        '.labelView.width',
-    heightBinding:       '.labelView.height',
+    textBinding:         '.parentLabelView.text',
+    textColorBinding:    '.parentLabelView.textColor',
 
-    fillBinding:         '.labelView.fill',
-    cornerRadiusBinding: '.labelView.cornerRadius',
+    bodyXCoordBinding:   '.parentLabelView.bodyXCoord',
+    bodyYCoordBinding:   '.parentLabelView.bodyYCoord',
+    xOffsetBinding:      '.parentLabelView.xOffset',
+    yOffsetBinding:      '.parentLabelView.yOffset',
+    widthBinding:        '.parentLabelView.width',
+    heightBinding:       '.parentLabelView.height',
 
-    defaultStrokeBinding:     '.labelView.stroke',
-    highlightedStrokeBinding: '.labelView.highlightedStroke',
+    fillBinding:         '.parentLabelView.fill',
+    cornerRadiusBinding: '.parentLabelView.cornerRadius',
+
+    defaultStrokeBinding:     '.parentLabelView.stroke',
+    highlightedStrokeBinding: '.parentLabelView.highlightedStroke',
     defaultStrokeWidth:       1,
     highlightedStrokeWidth:   2,
 
-    isHighlightedBinding:     '.labelView.isBodyDragging',
+    isHighlightedBinding:     '.parentLabelView.isBodyDragging',
 
     stroke: function () {
       return this.get('isHighlighted') ? this.get('highlightedStroke') : this.get('defaultStroke');
@@ -416,7 +419,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     },
 
     startDrag: function (evt) {
-      this.setPath('labelView.isBodyDragging', YES);
+      this.setPath('parentLabelView.isBodyDragging', YES);
 
       this._isDragging = YES;
       this._dragX = evt.pageX;
@@ -440,7 +443,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     endDrag: function (evt) {
       this.drag(evt);
-      this.setPath('labelView.isBodyDragging', NO);
+      this.setPath('parentLabelView.isBodyDragging', NO);
       this._isDragging = NO;
 
       this.$().css('cursor', 'default');
@@ -455,8 +458,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
       displayProperties: 'bodyXCoord bodyYCoord width isHighlighted'.w(),
 
-      labelView:     SC.outlet('parentView.labelView'),
       labelBodyView: SC.outlet('parentView'),
+      labelView:     SC.outlet('parentView.parentLabelView'),
 
       widthBinding:      '.labelBodyView.width',
       bodyXCoordBinding: '.labelBodyView.bodyXCoord',
