@@ -155,6 +155,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       pathString = this.markPath();
       if (firstTime) {
         context.callback(this, this.renderCallback, pathString, fill);
+        this.renderChildViews(context, firstTime);
       }
       else {
         raphaelPath = this.get('raphaelObject');
