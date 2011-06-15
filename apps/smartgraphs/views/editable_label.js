@@ -23,7 +23,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   isEditing: NO,
   fontSize:  12,
-  displayProperties: 'text textColor bodyXCoord bodyYCoord isEditing'.w(),
+  displayProperties: 'text textColor x y isEditing'.w(),
 
   labelBodyView: SC.outlet('parentView'),
   labelView:     SC.outlet('parentView.labelView'),
@@ -52,12 +52,19 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return raphaelCanvas.text().attr(attrs);
   },
 
+  x: function () {
+    return this.get('bodyXCoord') + 10;
+  }.property('bodyXCoord'),
+  
+  y: function () {
+    return this.get('bodyYCoord') + this.get('height')/2;
+  }.property('bodyYcoord'),
+
   render: function (context, firstTime) {
-    var height = this.get('height'),
-        attrs = {
+    var attrs = {
           text:          this.get('text'),
-          x:             this.get('bodyXCoord') + 10,
-          y:             this.get('bodyYCoord') + height/2,
+          x:             this.get('x'),
+          y:             this.get('y'),
           fill:          this.get('textColor'),
           'font-size':   this.get('fontSize'),
           'text-anchor': 'start'
