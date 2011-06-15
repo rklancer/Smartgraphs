@@ -443,7 +443,7 @@ Smartgraphs.GraphView = SC.View.extend(
             points = dataSetView.getPath('item.points') || [],
             pt = points[0], // [x, y]
             y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin),
-            offsetY = animations[idx].offsetY || 0;
+            offsetY = animations[idx] ? animations[idx].offsetY : 0;
 
         if (raphaelForGraph) raphaelForGraph.attr(graphResetAttributes);
         if (raphaelForImage) {
@@ -615,7 +615,8 @@ Smartgraphs.GraphView = SC.View.extend(
 
         if (firstTime) {
           context.callback(this, this.renderCallback, xLeft+offsetX, yTop+offsetY, plotWidth, plotHeight);
-        } else {
+        } 
+        else {
           this.getPath('parentView.dataHolder.childViews').forEach(function(dataSetView, idx) {
             var image = images[idx],
                 points = dataSetView.getPath('item.points') || [],
@@ -624,13 +625,16 @@ Smartgraphs.GraphView = SC.View.extend(
 
             if (!image) {
               that._renderDataSetImageFirstTime(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight);
-            } else if (dataSetView.get('isAnimatable')) {
-              image.raphael.attr({
-                x: xLeft+offsetX,
-                y: yTop+(plotHeight*(1-y))-30+offsetY,
-                width: plotWidth,
-                height: 30
-              });
+            } 
+            else if (dataSetView.get('isAnimatable')) {
+              if (image.raphael) {
+                image.raphael.attr({
+                  x: xLeft+offsetX,
+                  y: yTop+(plotHeight*(1-y))-30+offsetY,
+                  width: plotWidth,
+                  height: 30
+                });
+              }
             }
           });
         }
