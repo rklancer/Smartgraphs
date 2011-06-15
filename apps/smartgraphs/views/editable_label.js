@@ -174,12 +174,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   editBoxView: RaphaelViews.RaphaelView.design({
     displayProperties:    'x y width height isVisible'.w(),
-    labelView:            SC.outlet('parentView'),
-    isVisibleBinding:     '.labelView.isEditing',
-    parentsWidthBinding:  '.labelView.boundsWidth',
-    parentsHeightBinding: '.labelView.boundsHeight',
-    parentsXBinding:      '.labelView.boundsX',
-    parentsYBinding:      '.labelView.boundsY',
+    textLabelView:        SC.outlet('parentView'),
+    isVisibleBinding:     '.textLabelView.isEditing',
+    parentsWidthBinding:  '.textLabelView.boundsWidth',
+    parentsHeightBinding: '.textLabelView.boundsHeight',
+    parentsXBinding:      '.textLabelView.boundsX',
+    parentsYBinding:      '.textLabelView.boundsY',
     fill:                 '#ff5',
     opacity:              0.2,
     margin:               2,
