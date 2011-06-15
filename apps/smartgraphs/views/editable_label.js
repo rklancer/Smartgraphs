@@ -10,6 +10,7 @@
 /** @class
 
   RaphaelView for an editable label.
+  
 
   @extends SC.View
   @extends RaphaelViews.RenderSupport
@@ -18,7 +19,7 @@
 Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 /** @scope Smartgraphs.EditableLabelView.prototype */
 
-  childViews: 'editBoxView '.w(),
+  childViews: ['editBoxView'],
 
   isEditing: NO,
   fontSize:  12,
@@ -43,7 +44,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   widthBinding:      '.labelBodyView.width',
   heightBinding:     '.labelBodyView.height',
 
-  acceptsFirstResponder: function() {
+  acceptsFirstResponder: function () {
     return this.get('isEnabled');
   }.property('isEnabled'),
 
@@ -66,6 +67,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
     if (firstTime) {
       context.callback(this, this.renderCallback, attrs);
+      this.renderChildViews(context,firstTime);
     }
     else {
       raphaelText = this.get('raphaelObject');
@@ -77,7 +79,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     }
   },
 
-  beginEditing: function() {
+  beginEditing: function () {
     if (!this.get('isEditable')) { return NO ; }
     this.beginPropertyChanges();
     this.set('isEditing', YES);
@@ -86,11 +88,11 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return YES ;
   },
 
-  discardEditing: function() {
+  discardEditing: function () {
     this.commitEditing();
   },
 
-  commitEditing: function() {
+  commitEditing: function () {
     this.beginPropertyChanges();
     this.resignFirstResponder();
     this.set('isEditing', NO) ;
@@ -98,11 +100,11 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return YES ;
   },
 
-  updateText: function(newtext) {
+  updateText: function (newtext) {
     this.set('text',newtext);
   },
 
-  adjustMetrics: function() {
+  adjustMetrics: function () {
     var editing = this.get('isEditing'),
         raphaelText = this.get('raphaelObject'),
         bounds;
@@ -120,12 +122,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   // This will update our parrents attributes,
   // and might cause some bad recursion in view rendering.
-  updateParentBoundDimensions: function() {
+  updateParentBoundDimensions: function () {
     this.set('width', this.get('boundsWidth') + 30);
     this.set('height', this.get('boundsHeight') + 30);
   },
 
-  keyDown: function(evt) {
+  keyDown: function (evt) {
     var chr = null;
     if (evt.type === 'keypress') {
       chr = evt.getCharString();
@@ -137,24 +139,24 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return this.interpretKeyEvents(evt) ? YES : NO;
   },
 
-  insertText: function(chr) {
+  insertText: function (chr) {
     this.updateText(this.get('text') + chr);
     return YES;
   },
 
-  insertNewline: function() {
+  insertNewline: function () {
     this.insertText("\n");
   },
 
-  insertTab: function() {
+  insertTab: function () {
     this.commitEditing();
   },
 
-  cancel: function() {
+  cancel: function () {
     this.discardEditing();
   },
 
-  deleteBackward: function() {
+  deleteBackward: function () {
       var t       = this.get('text'),
           newText = t.substr(0,t.length-1);
 
@@ -162,7 +164,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return YES;
   },
 
-  deleteForward: function() {
+  deleteForward: function () {
       var t       = this.get('text'),
           newText = t.substr(0,t.length-1);
 
@@ -173,38 +175,34 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   editBoxView: RaphaelViews.RaphaelView.design({
     displayProperties:    'x y width height isVisible'.w(),
     labelView:            SC.outlet('parentView'),
-    isVisibleBinding:     'labelView.isEditing',
-    parentsWidthBinding:  'labelView.boundsWidth',
-    parentsHeightBinding: 'labelView.boundsHeight',
-    parentsXBinding:      'labelView.boundsX',
-    parentsYBinding:      'labelView.boundsY',
-    fill:                 '#330',
+    isVisibleBinding:     '.labelView.isEditing',
+    parentsWidthBinding:  '.labelView.boundsWidth',
+    parentsHeightBinding: '.labelView.boundsHeight',
+    parentsXBinding:      '.labelView.boundsX',
+    parentsYBinding:      '.labelView.boundsY',
+    fill:                 '#ff5',
     opacity:              0.2,
-    isVisible:            YES,
+    margin:               2,
 
-    twoMargin: function() {
+    twoMargin: function () {
       return this.get('margin') * 2;
     }.property().cacheable(),
 
-    width: 100,
-    height: 30,
-    x: 100,
-    y: 30,
-    // x: function() {
-    //   return this.get('parentsX') - this.get('margin');
-    // }.property(),
+    x: function () {
+      return this.get('parentsX') - this.get('margin');
+    }.property('parentsX'),
 
-    // y: function() {
-    //   return this.get('parentsY') - this.get('margin');
-    // }.property(),
+    y: function () {
+      return this.get('parentsY') - this.get('margin');
+    }.property('parentsY'),
 
-    // width: function() {
-    //   return this.get('parentsWidth') + this.get('twoMargin');
-    // },
+    width: function () {
+      return this.get('parentsWidth') + this.get('twoMargin');
+    }.property('parentsWidth'),
 
-    // height: function () {
-    //   return this.get('parentsHeight') + this.get('twoMargin');
-    // }.property(),
+    height: function () {
+      return this.get('parentsHeight') + this.get('twoMargin');
+    }.property('parentsHeight'),
 
     renderCallback: function (raphaelCanvas, attrs) {
       return raphaelCanvas.rect().attr(attrs);
@@ -223,14 +221,10 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
       if (firstTime) {
         context.callback(this, this.renderCallback, attrs);
-        console.log("rendering for the first time with:");
-        console.log(attrs);
       }
       else {
         raphaelRect = this.get('raphaelObject');
         raphaelRect.attr(attrs);
-        console.log("rendering for the first time with:");
-        console.log(attrs);
       }
     } // render
 
