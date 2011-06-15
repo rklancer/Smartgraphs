@@ -1,6 +1,6 @@
-/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor 
+/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor
  clickOn fillIn defineJasmineHelpers runBeforeEach runAfterEach */
- 
+
 defineJasmineHelpers();
 
 var itShouldBehaveCorrectly, itShouldDragCorrectly;
@@ -11,45 +11,45 @@ $(function () {
 
 
 describe("LabelView behavior", function () {
-  
+
   var pane = SC.MainPane.create(),
       graphController,
       graphView,
       xAxis,
       yAxis;
-  
-  beforeEach( function () {  
-      
+
+  beforeEach( function () {
+
     this.addMatchers({
       toBeInside: function (element) {
         if (element.jquery) element = element[0];
         return $.contains(element, this.actual);
       },
-      
+
       toApproximatelyEqual: function (qty, tolerance) {
         if (tolerance === undefined) tolerance = 0.001;
         return Math.abs(qty - this.actual) < tolerance;
       },
-      
+
       toBeNonzero: function () {
         return (parseFloat(this.actual) === this.actual) && (Math.abs(this.actual) > 0);
       },
-      
+
       toHaveColor: function (hexColor) {
         var actual = this.actual.jquery ? this.actual : $(this.actual);
         return actual.css('color') === $('<div>').css('color', hexColor).css('color');
       },
-      
+
       toBeVisible: function () {
         return !!this.actual.get('isVisible');
-      }        
+      }
     });
   });
-  
+
   runBeforeEach( function () {
     graphController = Smartgraphs.GraphController.create();
     graphController.clear();
-      
+
     xAxis = SC.Object.create({ min: 0, max: 10 });
     yAxis = SC.Object.create({ min: 0, max: 10 });
     graphController.set('xAxis', xAxis);
@@ -67,15 +67,15 @@ describe("LabelView behavior", function () {
     pane.removeAllChildren();
     pane.remove();
   });
-  
+
   describe("when a label annotation has been added to the graph controller", function () {
-    
+
     var store,
         labelRecord;
-        
+
     runBeforeEach( function () {
       store = SC.Store.create().from(SC.FixturesDataSource.create());
-      
+
       labelRecord = store.createRecord(Smartgraphs.Label, {
         url: 'the url of the label',
         name: 'the name of the label',
@@ -86,23 +86,23 @@ describe("LabelView behavior", function () {
         yOffset: -20,
         shouldMarkTargetPoint: YES
       });
-      
+
       graphController.addAnnotation(labelRecord);
     });
-    
+
     describe("the label view", function () {
-      
+
       var labelView;
-      
+
       beforeEach( function () {
         labelView = graphView.getPath('annotationsHolder.childViews').objectAt(0);
       });
-      
+
       it("should be the correct class for a Label object", function () {
         expect(labelView).toBeA(Smartgraphs.Label.viewClass);
       });
-      
-      
+
+
       describe("immediately after creating the graphView", function () {
         // Contra jslint, itShouldBehaveCorrectly is 'hoisted', so we can leave its definition below, where it belongs.
         itShouldBehaveCorrectly();
@@ -110,16 +110,16 @@ describe("LabelView behavior", function () {
 
 
       describe("after resizing the graphView", function () {
-        
+
         runBeforeEach( function () {
           graphView.adjust('height', 300);
           graphView.adjust('width', 500);
         });
-        
+
         itShouldBehaveCorrectly();
       });
 
-      
+
       function itShouldBehaveCorrectly() {
 
         describe("its coordinate properties", function () {
@@ -233,24 +233,24 @@ describe("LabelView behavior", function () {
             expect(targetPointView.get('xCoord')).toEqual(labelView.get('xCoord'));
             expect(targetPointView.get('yCoord')).toEqual(labelView.get('yCoord'));
           });
-          
+
           describe("when the label's shouldMarkTargetPoint property is YES", function () {
-            
+
             runBeforeEach( function () {
               labelRecord.set('shouldMarkTargetPoint', YES);
             });
-            
+
             it("should be visible", function () {
               expect(targetPointView).toBeVisible();
             });
           });
-          
+
           describe("when the label's shouldMarkTargetPoint property is NO", function () {
-            
+
             runBeforeEach( function () {
               labelRecord.set('shouldMarkTargetPoint', NO);
             });
-            
+
             it("should not be visible", function () {
               expect(targetPointView).not.toBeVisible();
             });
@@ -263,7 +263,7 @@ describe("LabelView behavior", function () {
             beforeEach( function () {
               targetPointLayer = targetPointView.get('layer');
             });
-              
+
             it("should be inside the graph view's layer", function () {
               expect(targetPointLayer).toBeInside(graphView.$());
             });
@@ -288,7 +288,7 @@ describe("LabelView behavior", function () {
             });
 
             it("should start at (xCoord, yCoord)", function () {
-              // NP: All markers will draw differently, so this is 
+              // NP: All markers will draw differently, so this is
               // a hard test to write. This here is for an Arrow marker
               // that is 10 pixels in size.
               expect(path[0][0]).toEqual('M');
@@ -306,13 +306,13 @@ describe("LabelView behavior", function () {
             // it("should start again at (xCoord, yCoord)", function () {
             //   expect(path[2][0]).toEqual('M');
             //   expect(path[2][1]).toEqual(xCoord);
-            //   expect(path[2][2]).toEqual(yCoord);            
+            //   expect(path[2][2]).toEqual(yCoord);
             // });
 
             // it("should finally end at (xCoord, yCoord)", function () {
             //   expect(path[3][0]).toEqual('L');
             //   expect(path[3][1]).toEqual(xCoord);
-            //   expect(path[3][2]).toEqual(yCoord);            
+            //   expect(path[3][2]).toEqual(yCoord);
             // });
 
             it("should have a 'stroke' attribute equal to the label view's 'stroke' property", function () {
@@ -346,7 +346,7 @@ describe("LabelView behavior", function () {
               });
 
               it("should start at (newXCoord, newYCoord)", function () {
-                // NP: All markers will draw differently, so this is 
+                // NP: All markers will draw differently, so this is
                 // a hard test to write. This here is for an Arrow marker
                 // that is 10 pixels in size.
                 expect(newPath[0][0]).toEqual('M');
@@ -357,7 +357,7 @@ describe("LabelView behavior", function () {
             });
 
           });
-        
+
         });
 
 
@@ -380,7 +380,7 @@ describe("LabelView behavior", function () {
                 anchorXCoord,
                 anchorYCoord;
 
-            beforeEach( function () {          
+            beforeEach( function () {
               attrs        = connectingLineView.get('layer').raphael.attr();
               path         = attrs.path;
               xCoord       = labelView.get('xCoord');
@@ -396,7 +396,7 @@ describe("LabelView behavior", function () {
             it("should have a 'stroke' attribute equal to the label view's 'stroke' property", function () {
               expect(attrs.stroke).toEqual(labelView.get('stroke'));
             });
-            
+
             describe("its starting point", function () {
 
               var x, y;
@@ -438,7 +438,7 @@ describe("LabelView behavior", function () {
 
 
         describe("its 'labelBody' view", function () {
-          
+
           var labelBodyView;
 
           beforeEach( function () {
@@ -462,7 +462,7 @@ describe("LabelView behavior", function () {
             it("should have a 'stroke' attribute equal to the label view's 'stroke' property", function () {
               expect(attrs.stroke).toEqual(labelView.get('stroke'));
             });
-            
+
             it("should start at (bodyXCoord, bodyYCoord", function () {
               expect(attrs.x).toEqual(labelView.get('bodyXCoord'));
               expect(attrs.y).toEqual(labelView.get('bodyYCoord'));
@@ -474,100 +474,100 @@ describe("LabelView behavior", function () {
             });
           });
         });
-        
+
       }
-      
+
       describe("dragging the label", function () {
-      
+
         var leftX,
             topY;
-        
+
             function fireEvent(el, eventName, x, y) {
               var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
               SC.Event.trigger(el, eventName, evt);
             }
-      
+
         describe("when the user mouses down on the label body at (10, 20)", function () {
-          
+
           var target,
               xOffset,
               yOffset;
-              
+
           beforeEach( function () {
             var offset;
-            
+
             target = labelView.get('labelBodyView');
             offset = $(target.get('layer')).offset();
             leftX  = offset.left;
             topY   = offset.top;
-    
-            // start by clearing any possible stale drag state              
+
+            // start by clearing any possible stale drag state
             fireEvent(target.get('layer'), 'mouseup', 0, 0);
-            
+
             fireEvent(target.get('layer'), 'mousedown', 10, 20);
-    
+
             xOffset = labelRecord.get('xOffset');
             yOffset = labelRecord.get('yOffset');
           });
-          
+
           it("should highlight the labelBodyView", function () {
             expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
           });
-          
+
           it("should highlight the connectingLineView", function () {
             expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
           });
-    
+
           it("should also highlight the arrow", function () {
             expect(labelView.getPath('targetPointView.layer').raphael.attr().fill).toEqual(labelView.get('highlightedStroke'));
           });
 
           describe("and the mouse is released at the same point (10, 20)", function () {
-    
+
             beforeEach( function () {
-              fireEvent(target.get('layer'), 'mouseup', 10, 20);   
+              fireEvent(target.get('layer'), 'mouseup', 10, 20);
             });
-            
+
             it("should unhighlight the labelBodyView", function () {
               expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
             });
-    
+
             it("should unhighlight the connectingLineView", function () {
               expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
             });
-            
+
             it("should not affect (xOffset, yOffset) of the label record", function () {
               expect(labelRecord.get('xOffset')).toEqual(xOffset);
               expect(labelRecord.get('yOffset')).toEqual(yOffset);
             });
-            
+
           });
-      
+
           describe("and the mouse is moved to (15, 25)", function () {
-            
+
             beforeEach( function () {
-              fireEvent(target.get('layer'), 'mousemove', 15, 25);                               
+              fireEvent(target.get('layer'), 'mousemove', 15, 25);
             });
-            
+
             it("should update (xOffset, yOffset) of the label record by (+5, +5)", function () {
               expect(labelRecord.get('xOffset')).toEqual(xOffset + 5);
               expect(labelRecord.get('yOffset')).toEqual(yOffset + 5);
             });
-                           
+
             describe("and the mouse is released at (20, 30)", function () {
-    
+
               beforeEach( function () {
                 fireEvent(target.get('layer'), 'mouseup', 20, 30);
               });
-              
+
               it("should unhighlight the labelBodyView", function () {
                 expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
               });
-    
+
               it("should unhighlight the connectingLineView", function () {
                 expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));
               });
-    
+
               it("should update (xOffset, yOffset) of the label record by (+10, +10)", function () {
                 expect(labelRecord.get('xOffset')).toEqual(xOffset + 10);
                 expect(labelRecord.get('yOffset')).toEqual(yOffset + 10);
@@ -579,80 +579,80 @@ describe("LabelView behavior", function () {
 
 
       describe("removing the label", function () {
-        
+
         var removeButtonView;
-        
+
         function fireEventOnElement(el, eventName, x, y) {
           var offset = $(el).offset(),
               leftX  = offset.left,
               topY   = offset.top,
               evt    = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
-              
+
           SC.Event.trigger(el, eventName, evt);
         }
-        
+
         beforeEach( function () {
           removeButtonView = labelView.getPath('labelBodyView.removeButtonView');
         });
-        
+
         describe("after calling the label record's enableRemoval method", function () {
-          
+
           runBeforeEach( function () {
             labelRecord.enableRemoval();
           });
-          
+
           describe("the remove-button view", function () {
 
             it("should be visible", function () {
               expect(removeButtonView).toBeVisible();
             });
-          
+
             describe("when the user clicks on it", function () {
 
-              beforeEach( function () {            
+              beforeEach( function () {
                 spyOn(graphController, 'labelViewRemoveLabel');
                 fireEventOnElement(removeButtonView.get('layer'), 'mousedown', 0, 0);
               });
-            
+
               it("should ask the graph controller to remove it by passing the label record to the controller's labelViewRemoveLabel method", function () {
                 expect(graphController.labelViewRemoveLabel).toHaveBeenCalledWith(labelRecord);
               });
 
             });
-          });          
+          });
         });
-        
+
         describe("after calling the label record's disableRemoval method", function () {
 
           runBeforeEach( function () {
             labelRecord.disableRemoval();
-          });          
-          
+          });
+
           describe("the remove-button view", function () {
 
             it("should not be visible", function () {
               expect(removeButtonView).not.toBeVisible();
             });
-          
+
             describe("if the user somehow clicks on it", function () {
 
-              beforeEach( function () {    
+              beforeEach( function () {
                 spyOn(graphController, 'labelViewRemoveLabel');
                 fireEventOnElement(removeButtonView.get('layer'), 'mousedown', 0, 0);
               });
-            
+
               it("should not call the graph controller's labelViewRemoveLabel method", function () {
                 expect(graphController.labelViewRemoveLabel).not.toHaveBeenCalled();
               });
 
             });
           });
-          
+
         });
-        
+
       });
-      
-      
+
+
     });
   });
 });
