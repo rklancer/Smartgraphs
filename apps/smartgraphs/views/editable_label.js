@@ -117,11 +117,13 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
     if (raphaelText) {
       if (editing) { raphaelText.attr('text', this.get('text') + "_"); }
+
       bounds  = raphaelText.getBBox();
-      this.set('boundsWidth',bounds.width);
-      this.set('boundsHeight',bounds.height);
-      this.set('boundsX', bounds.x);
-      this.set('boundsY', bounds.y);
+
+      this.set('boundsWidth'  , bounds.width);
+      this.set('boundsHeight' , bounds.height);
+      this.set('boundsX'      , bounds.x);
+      this.set('boundsY'      , bounds.y);
     }
     this.updateParentBoundDimensions();
   },
