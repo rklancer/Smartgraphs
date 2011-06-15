@@ -283,33 +283,37 @@ describe("LabelView behavior", function () {
               yCoord = targetPointView.get('yCoord');
             });
 
-            it("should have 4 elements", function () {
-              expect(path.length).toEqual(4);
+            it("should have 5 elements", function () {
+              expect(path.length).toEqual(5);
             });
 
-            it("should start at (xCoord-4, yCoord+4)", function () {
+            it("should start at (xCoord, yCoord)", function () {
+              // NP: All markers will draw differently, so this is 
+              // a hard test to write. This here is for an Arrow marker
+              // that is 10 pixels in size.
               expect(path[0][0]).toEqual('M');
-              expect(path[0][1]).toEqual(xCoord - 4);
-              expect(path[0][2]).toEqual(yCoord + 4);
-            });
-
-            it("should end at (xCoord+4, yCoord-4)", function () {
               expect(path[1][0]).toEqual('L');
-              expect(path[1][1]).toEqual(xCoord + 4);
-              expect(path[1][2]).toEqual(yCoord - 4);
+              expect(path[1][1]).toEqual(xCoord);
+              expect(path[1][2]).toEqual(yCoord);
             });
 
-            it("should start again at (xCoord-4, yCoord-4)", function () {
-              expect(path[2][0]).toEqual('M');
-              expect(path[2][1]).toEqual(xCoord - 4);
-              expect(path[2][2]).toEqual(yCoord - 4);            
-            });
+            // it("should end at (xCoord, yCoord)", function () {
+            //   expect(path[1][0]).toEqual('L');
+            //   expect(path[1][1]).toEqual(xCoord);
+            //   expect(path[1][2]).toEqual(yCoord);
+            // });
 
-            it("should finally end at (xCoord+4, yCoord+4)", function () {
-              expect(path[3][0]).toEqual('L');
-              expect(path[3][1]).toEqual(xCoord + 4);
-              expect(path[3][2]).toEqual(yCoord + 4);            
-            });
+            // it("should start again at (xCoord, yCoord)", function () {
+            //   expect(path[2][0]).toEqual('M');
+            //   expect(path[2][1]).toEqual(xCoord);
+            //   expect(path[2][2]).toEqual(yCoord);            
+            // });
+
+            // it("should finally end at (xCoord, yCoord)", function () {
+            //   expect(path[3][0]).toEqual('L');
+            //   expect(path[3][1]).toEqual(xCoord);
+            //   expect(path[3][2]).toEqual(yCoord);            
+            // });
 
             it("should have a 'stroke' attribute equal to the label view's 'stroke' property", function () {
               expect(attrs.stroke).toEqual(labelView.get('stroke'));
@@ -337,14 +341,18 @@ describe("LabelView behavior", function () {
                 });
               });
 
-              it("should still have 4 elements", function () {
-                expect(newPath.length).toEqual(4);
+              it("should still have 5 elements", function () {
+                expect(newPath.length).toEqual(5);
               });
 
-              it("should start at (newXCoord-4, newYCoord+4)", function () {
+              it("should start at (newXCoord, newYCoord)", function () {
+                // NP: All markers will draw differently, so this is 
+                // a hard test to write. This here is for an Arrow marker
+                // that is 10 pixels in size.
                 expect(newPath[0][0]).toEqual('M');
-                expect(newPath[0][1]).toEqual(newXCoord - 4);
-                expect(newPath[0][2]).toEqual(newYCoord + 4);
+                expect(newPath[1][0]).toEqual('L');
+                expect(newPath[1][1]).toEqual(newXCoord);
+                expect(newPath[1][2]).toEqual(newYCoord);
               });
             });
 
@@ -409,8 +417,8 @@ describe("LabelView behavior", function () {
                 expect( y ).toApproximatelyEqual( m*x+b );
               });
 
-              it("should be about 9 pixels from the labeled point", function () {
-                expect(Math.sqrt( (x-xCoord)*(x-xCoord) + (y-yCoord)*(y-yCoord) )).toApproximatelyEqual(9, 1);
+              it("should be at the labeled point", function () {
+                expect(Math.sqrt( (x-xCoord)*(x-xCoord) + (y-yCoord)*(y-yCoord) )).toApproximatelyEqual(0, 1);
               });
             });
 
@@ -510,10 +518,10 @@ describe("LabelView behavior", function () {
             expect(labelView.getPath('connectingLineView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
           });
     
-          it("should not highlight the targetPointView", function () {
-            expect(labelView.getPath('targetPointView.layer').raphael.attr().stroke).toEqual(labelView.get('stroke'));              
+          it("should also highlight the arrow", function () {
+            expect(labelView.getPath('targetPointView.layer').raphael.attr().fill).toEqual(labelView.get('highlightedStroke'));
           });
-    
+
           describe("and the mouse is released at the same point (10, 20)", function () {
     
             beforeEach( function () {
