@@ -49,8 +49,12 @@ Smartgraphs.GraphView = SC.View.extend(
     this.get('graphCanvasView').reset();
   },
 
+  // adjust left border depending on whether we show the animation or not.
   showAnimationDidChange: function() {
-    this.padding = { top: 15, right: 15, bottom: 45, left: Smartgraphs.animationTool.get('channelWidth') + 50 };
+    var showAnimation = this.get('showAnimation'),
+        channelWidth  = Smartgraphs.animationTool.get('channelWidth');
+    
+    this.padding.left = 50 + (showAnimation ? channelWidth : 0);
     this.replaceLayer();
   }.observes('showAnimation'),
 

@@ -16,25 +16,35 @@ Smartgraphs.GraphPane = SC.View.extend(
   childViews: 'animationChannelView graphView controlsContainer'.w(),
   
   // MUST come before graphView
-  animationChannelView: SC.ContainerView.design({
-    layout: { left: 10, top: 15, width: Smartgraphs.animationTool.get('channelWidth'), bottom: 0 },
-    isVisibleBinding: '.parentView.showAnimation',
+  animationChannelView: SC.View.design({
     
-    render: function(context) {
-      context.setClass(Smartgraphs.animationTool.get('backgroundImageClassName'), true);
-    },
+    isVisibleBinding: '.parentView.showAnimation',    
+    backgroundImageURLBinding: 'Smartgraphs.animationTool.backgroundImageURL',
 
-    didCreateLayer: function() {
-      var backgroundImageURL = Smartgraphs.animationTool.get('backgroundImageURL');
-      if (backgroundImageURL) {
-        this.get('layer').style.backgroundImage = ['url(',backgroundImageURL,')'].join('');
+    layout: { left: 10, top: 15, width: Smartgraphs.animationTool.get('channelWidth'), bottom: 0 },
+
+    displayProperties: ['backgroundImageURL'],
+    
+    render: function (context, firstTime) {      
+      sc_super();
+      if (!firstTime) {
+        this._setBackgroundImage(this.get('backgroundImageURL'));
       }
-    }
+    },
+    
+    didCreateLayer: function () {
+      this._setBackgroundImage(this.get('backgroundImageURL'));
+    },
+    
+    _setBackgroundImage: function (url) {
+      var image = url ? ['url(', url, ')'].join('') : '';
+      this.$().css('backgroundImage', image);
+    }    
   }),
   
   graphView: Smartgraphs.GraphView.design({
     graphControllerBinding: '.parentView.graphController',
-    showAnimationBinding: '.parentView.showAnimation'
+    showAnimationBinding:   '.parentView.showAnimation'
   }),
   
   controlsContainer: SC.ContainerView.design({
@@ -42,8 +52,8 @@ Smartgraphs.GraphPane = SC.View.extend(
   }),
   
   controlsNowShowingDidChange: function () {
-    var nowShowing = this.get('controlsNowShowing');
-    var bottom = 0,
+    var nowShowing = this.get('controlsNowShowing'),
+        bottom = 0,
         height = 0;
     
     if (nowShowing) {

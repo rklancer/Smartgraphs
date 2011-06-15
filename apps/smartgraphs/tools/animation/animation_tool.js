@@ -30,7 +30,6 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   _pane: null,
   
   backgroundImageURL: '',
-  backgroundImageClassName: '',
   duration: 3000,   // milliseconds, default is 3 seconds
   channelWidth: 70, // in pixels
   animations: [],
@@ -50,8 +49,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     if (pane) {
       this._pane = pane;
       
-      if (args.backgroundImageClassName) this.backgroundImageClassName = args.backgroundImageClassName;
-      if (args.backgroundImageURL) this.backgroundImageURL = args.backgroundImageURL;
+      if (args.backgroundImageURL) this.set('backgroundImageURL', args.backgroundImageURL);
       if (args.duration) this.duration = args.duration ;
       if (args.channelWidth) this.channelWidth = args.channelWidth ;
       
