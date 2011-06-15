@@ -25,11 +25,10 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   fontSize:  12,
   displayProperties: 'text textColor x y isEditing'.w(),
 
-  labelBodyView: SC.outlet('parentView'),
-  labelView:     SC.outlet('parentView.labelView'),
+  labelBodyView:     SC.outlet('parentView'),
 
-  textBinding:       '.labelView.text',
-  textColorBinding:  '.labelView.textColor',
+  textBinding:       '.labelBodyView.text',
+  textColorBinding:  '.labelBodyView.textColor',
 
   // Bounds need to be calculated by Raphael:
   boundsWidth:       null,
