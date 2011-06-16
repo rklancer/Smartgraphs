@@ -23,7 +23,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   isEditing: NO,
   fontSize:  12,
-  displayProperties: 'text textColor x y isEditing'.w(),
+  displayProperties: 'displayText textColor x y isEditing'.w(),
 
   labelBodyView:     SC.outlet('parentView'),
 
@@ -57,14 +57,20 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   
   y: function () {
     return this.get('bodyYCoord') + this.get('height')/2;
-  }.property('bodyYcoord'),
+  }.property('bodyYcoord','height'),
+
+  displayText: function () {
+    var txt = this.get('text');
+    if (this.get('isEditing')) { txt = txt + "_"; }
+    return txt;
+  }.property('text', 'isEditing'),
 
   render: function (context, firstTime) {
     var attrs = {
-          text:          this.get('text'),
           x:             this.get('x'),
           y:             this.get('y'),
           fill:          this.get('textColor'),
+          text:          this.get('displayText'),
           'font-size':   this.get('fontSize'),
           'text-anchor': 'start'
         },
@@ -77,9 +83,6 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     }
     else {
       raphaelText = this.get('raphaelObject');
-      if (editing) {
-        raphaelText.attr('text', this.get('text') + "_");
-      }
       raphaelText.attr(attrs);
       this.adjustMetrics();
     }
@@ -87,10 +90,8 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   beginEditing: function () {
     if (!this.get('isEditable')) { return NO ; }
-    this.beginPropertyChanges();
     this.set('isEditing', YES);
     this.becomeFirstResponder();
-    this.endPropertyChanges();
     return YES ;
   },
 
@@ -99,10 +100,8 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   },
 
   commitEditing: function () {
-    this.beginPropertyChanges();
     this.resignFirstResponder();
     this.set('isEditing', NO) ;
-    this.endPropertyChanges();
     return YES ;
   },
 
@@ -116,10 +115,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
         bounds;
 
     if (raphaelText) {
-      if (editing) { raphaelText.attr('text', this.get('text') + "_"); }
-
       bounds  = raphaelText.getBBox();
-
       this.set('boundsWidth'  , bounds.width);
       this.set('boundsHeight' , bounds.height);
       this.set('boundsX'      , bounds.x);
@@ -165,19 +161,15 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   },
 
   deleteBackward: function () {
-      var t       = this.get('text'),
-          newText = t.substr(0,t.length-1);
+    var t       = this.get('text'),
+        newText = t.substr(0,t.length-1);
 
-      this.updateText(newText);
+    this.updateText(newText);
     return YES;
   },
 
   deleteForward: function () {
-      var t       = this.get('text'),
-          newText = t.substr(0,t.length-1);
-
-      this.updateText(newText);
-    return YES;
+    return this.deleteBackward();
   },
 
   editBoxView: RaphaelViews.RaphaelView.design({
