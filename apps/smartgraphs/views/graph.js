@@ -165,7 +165,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
     delete this._viewsByClassAndItem[classKey][itemKey];
 
-    if (view.willRemoveFromDataView) view.willRemoveFromDataView();
 
     if (itemType === 'data') {
       this.get('dataHolder').removeChild(view);
@@ -256,147 +255,202 @@ Smartgraphs.GraphView = SC.View.extend(
 
     xAxisBinding: '.parentView.xAxis',
     yAxisBinding: '.parentView.yAxis',
-    requestedCursorStyleBinding: '.parentView.requestedCursorStyle',    
+    requestedCursorStyleBinding: '.parentView.requestedCursorStyle',
 
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
 
     childViews: 'axesView dataHolder annotationsHolder animationView'.w(),
 
-    _restartAnimation: NO,
+    _animationIsPaused: NO,
+    
+    _startAnimationLoop: function (loopParameters, loopAnimation, dataSetView, index, keyframes, raphaelForGraph, raphaelForImage) {
+      console.log("**** _startAnimationLoop()");
+    
+      var points          = dataSetView.getPath('item.points') || [];
+      
+      var   
+          frame            = this.get('frame'),
+          padding          = this.getPath('parentView.padding'),
+          xLeft            = frame.x + padding.left,
+          yTop             = frame.y + padding.top,
+          plotWidth        = frame.width - padding.left - padding.right,
+          plotHeight       = frame.height - padding.top - padding.bottom,
+          yTopRect         = frame.y + padding.top,
+          plotHeightRect   = frame.height - padding.top - padding.bottom,          
+          ms               = Smartgraphs.animationTool.get('duration'), // ms
+      
+          xAxis            = this.getPath('parentView.xAxis'),
+          xMin             = xAxis.get('min'), 
+          xMax             = xAxis.get('max'),
+          yAxis            = this.getPath('parentView.yAxis'),
+          yMin             = yAxis.get('min'),
+          yMax             = yAxis.get('max'),
+          
+          images           = this.getPath('animationView.images'),
+          animations       = Smartgraphs.animationTool.animations,
 
-    animate: function() {
-      var restartAnimation = this._restartAnimation,
-          frame = this.get('frame'),
-          padding = this.getPath('parentView.padding'),
-          xLeft = frame.x + padding.left,
-          yTop = frame.y + padding.top,
-          plotWidth = frame.width - padding.left - padding.right,
-          plotHeight = frame.height - padding.top - padding.bottom,
-          ms = Smartgraphs.animationTool.get('duration'), // ms
-          xLeftRect = frame.x + padding.left,
-          yTopRect = frame.y + padding.top,
-          plotWidthRect = Smartgraphs.animationTool.get('channelWidth'),
-          plotHeightRect = frame.height - padding.top - padding.bottom,
-          xAxis = this.getPath('parentView.xAxis'),
-          xMin = xAxis.get('min'), xMax = xAxis.get('max'),
-          yAxis = this.getPath('parentView.yAxis'),
-          yMin = yAxis.get('min'), yMax = yAxis.get('max'),
-          images = this.getPath('animationView.images'),
-          animations = Smartgraphs.animationTool.animations;
+          offsetY         = animations[index].offsetY;
+      
+      var useTimeRemainingDuration = loopParameters.firstTime,
+          timeRemaining, idx, len, pt, dist, y;
 
-      this.getPath('dataHolder.childViews').forEach(function(dataSetView, index) {
-        var layer = dataSetView.get('layer'),
-            raphaelForGraph = layer ? layer.raphael : null,
-            image = images[index],
-            node = image ? image.node : null,
-            raphaelForImage = node ? node.raphael : null,
-            points = dataSetView.getPath('item.points') || [],
-            offsetY = animations[index].offsetY,
-            clipRect = raphaelForGraph.attrs['clip-rect'],
-            currentX = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
-            width = currentX/plotWidth,
-            scale = 1 - width,
-            progress = width * 100,
-            firstTime, regenerateKeyframes, keyframes, idx, len, pt, dist, scaledDist, y;
+      // Without these two, animation will occasionally screw up.
+      raphaelForGraph.stop();
+      raphaelForImage.stop();
 
-        if (!dataSetView.get('isAnimatable')) return;
-
-        // If the graph is in the "reset" mode, it will not have opacity: 1.0, so set
-        // it here.
-        raphaelForGraph.attr({ "opacity": 1.0 });
-
-        // We need to capture restartAnimation here. If we don't, more than one animation
-        // loop will intefere with each other in the loopAnimation() closure, below.
-        firstTime = restartAnimation;
-        regenerateKeyframes = NO;
-
-        // We have to create these next two items out of order, keyframes because
-        // it is referenced in loopAnimation(), and loopAnimation() because it is
-        // referenced in the initial keyframe setup code below.
+      // The keyframes on the first loop are set below. Once we've looped once,
+      // when restarting a previous animation, we need to regenerate the keyframes
+      // to handle the "full" animation loop. This flag is toggled, below.
+      // Note: Can't move this code lower! We have to wait until the next loop
+      // to regenerate the keyframes.
+      if (loopParameters.regenerateKeyframes) {
+        console.log("**** in loopAnimation: regenerateKeyframes = YES");
         keyframes = {};
-        function loopAnimation() {
-          var useTimeRemainingDuration = firstTime,
-              timeRemaining, idx, len, pt, dist, y;
-
-          // Without these two, animation will occasionally screw up.
-          raphaelForGraph.stop();
-          raphaelForImage.stop();
-
-          // The keyframes on the first loop are set below. Once we've looped once,
-          // when restarting a previous animation, we need to regenerate the keyframes
-          // to handle the "full" animation loop. This flag is toggled, below.
-          // Note: Can't move this code lower! We have to wait until the next loop
-          // to regenerate the keyframes.
-          if (regenerateKeyframes) {
-            keyframes = {};
-            for (idx=0, len=points.length; idx<len; ++idx) {
-              pt = points[idx]; // [x, y]
-              dist = (pt[0] === 0 ? 0 : pt[0]/(xMax-xMin)) * 100; // WIDTH
-              y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);            // HEIGHT
-              keyframes[parseInt(dist, 10)+'%'] = {
-                y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
-              };
-              if (idx+1===len) {
-                keyframes[parseInt(dist, 10)+'%'].callback = loopAnimation;
-              }
-            }
-            regenerateKeyframes = NO; // Should only regenerate keyframes once.
-          }
-
-          if (firstTime) {
-            // Use the keyframes generated below and don't modify the existing
-            // raphael parameters.
-            regenerateKeyframes = YES; // The next loop, we need to regenerate keyframes.
-            firstTime = NO;
-          } else {
-            // Reset raphel parameters to the "beginning".
-            raphaelForGraph.attr({ "clip-rect": [xLeft, yTop, 0, plotHeight].join(',') });
-
-            pt = points[0]; // [x, y]
-            y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
-            raphaelForImage.attr({ y: yTopRect+(plotHeightRect*(1-y))-30+offsetY });
-          }
-
-          // Restart animation. Calculate timeRemaining after animation is stopped (see above).
-          timeRemaining = parseInt(ms - (raphaelForGraph.attrs['clip-rect'][2]/plotWidth)*ms, 10);
-
-          raphaelForGraph.animate({
-            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
-          }, useTimeRemainingDuration ? timeRemaining : ms);
-
-          raphaelForImage.animateWith(raphaelForGraph, keyframes,
-            useTimeRemainingDuration ? timeRemaining : ms
-          );
-        } // function loopAnimation()
-
-        // Calculate the first set of keyframes. This takes into account any
-        // progress already made on animating the graph. The keyframes will
-        // be regenerated in loopAnimation() if we're restarting animation
-        // so that the next loop has a "full" set of keyframes.
         for (idx=0, len=points.length; idx<len; ++idx) {
           pt = points[idx]; // [x, y]
-          dist = (pt[0] === 0 ? 0 : pt[0]/(xMax-xMin)) * 100;
-          scaledDist = (dist - progress) / scale ;
-          if (scaledDist >= 100) scaledDist = 100;
-          if (dist >= progress) {
-            y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
-            keyframes[parseInt(scaledDist, 10)+'%'] = {
-              y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
-            };
-            if (idx+1===len) {
-              keyframes[parseInt(scaledDist, 10)+'%'].callback = loopAnimation;
-            }
+          dist = (pt[0] === 0 ? 0 : pt[0]/(xMax-xMin)) * 100; // WIDTH
+          y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);            // HEIGHT
+          keyframes[parseInt(dist, 10)+'%'] = {
+            y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
+          };
+          if (idx+1===len) {
+            keyframes[parseInt(dist, 10)+'%'].callback = loopAnimation;
           }
         }
+        loopParameters.regenerateKeyframes = NO; // Should only regenerate keyframes once.
+      }
+      else {
+        console.log("**** in loopAnimation: regenerateKeyframes = NO");
+      }
 
-        // Actually start the animation loop.
-        loopAnimation();
-      });
+      if (loopParameters.firstTime) {
+        console.log('**** in loopAnimation: firstTime = YES');
+        // Use the keyframes generated below and don't modify the existing
+        // raphael parameters.
+        loopParameters.regenerateKeyframes = YES; // The next loop, we need to regenerate keyframes.
+        loopParameters.firstTime = NO;
+      } 
+      else {
+        console.log("**** in loopAnimation: firstTime = NO");
+        // Reset raphael parameters to the "beginning".
+        raphaelForGraph.attr({ "clip-rect": [xLeft, yTop, 0, plotHeight].join(',') });
+
+        pt = points[0]; // [x, y]
+        y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
+        raphaelForImage.attr({ y: yTopRect+(plotHeightRect*(1-y))-30+offsetY });
+      }
+
+      // Restart animation. Calculate timeRemaining after animation is stopped (see above).
+      timeRemaining = parseInt(ms - (raphaelForGraph.attrs['clip-rect'][2]/plotWidth)*ms, 10);
+
+      raphaelForGraph.animate({
+        "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(',')
+      }, useTimeRemainingDuration ? timeRemaining : ms);
+
+      raphaelForImage.animateWith(raphaelForGraph, keyframes,
+        useTimeRemainingDuration ? timeRemaining : ms
+      );
+    },
+      
+
+    _animateDataView: function (dataSetView, index) {
+      
+      console.log("**** graphCanvasView._animateDataView(%s, %d)", dataSetView ? dataSetView.toString() : '(null)', index);      
+      
+      if (!dataSetView.get('isAnimatable')) return;      
+      
+      var frame            = this.get('frame'),
+          padding          = this.getPath('parentView.padding'),
+          xLeft            = frame.x + padding.left,
+          yTop             = frame.y + padding.top,
+          plotWidth        = frame.width - padding.left - padding.right,
+          plotHeight       = frame.height - padding.top - padding.bottom,
+          yTopRect         = frame.y + padding.top,
+          plotHeightRect   = frame.height - padding.top - padding.bottom,          
+          ms               = Smartgraphs.animationTool.get('duration'), // ms
+      
+          xAxis            = this.getPath('parentView.xAxis'),
+          xMin             = xAxis.get('min'), 
+          xMax             = xAxis.get('max'),
+          yAxis            = this.getPath('parentView.yAxis'),
+          yMin             = yAxis.get('min'),
+          yMax             = yAxis.get('max'),
+          
+          images           = this.getPath('animationView.images'),
+          animations       = Smartgraphs.animationTool.animations;
+
+
+      var layer           = dataSetView.get('layer'),
+          raphaelForGraph = layer && layer.raphael || null,
+          image           = images[index],
+          raphaelForImage = image && image.node && image.node.raphael || null,
+
+          points          = dataSetView.getPath('item.points') || [],
+
+          offsetY         = animations[index].offsetY,
+
+          clipRect        = raphaelForGraph.attrs['clip-rect'],
+          currentX        = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
+          width           = currentX/plotWidth,
+          scale           = 1 - width,
+          progress        = width * 100,
+
+          keyframes, idx, len, pt, dist, scaledDist, y;
+
+      // If the graph is in the "reset" mode, it will not have opacity: 1.0, so set
+      // it here.
+      raphaelForGraph.attr({ "opacity": 1.0 });
+
+      // We have to create these next two items out of order, keyframes because
+      // it is referenced in loopAnimation(), and loopAnimation() because it is
+      // referenced in the initial keyframe setup code below.
+      keyframes = {};
+      
+      var loopParameters = {
+        firstTime: this._animationIsPaused,
+        regenerateKeyframes: NO
+      },
+      self = this;
+      
+      function loopAnimation() {
+        self._startAnimationLoop(loopParameters, loopAnimation, dataSetView, index, keyframes, raphaelForGraph, raphaelForImage);
+      } // function loopAnimation()
+
+      // Calculate the first set of keyframes. This takes into account any
+      // progress already made on animating the graph. The keyframes will
+      // be regenerated in loopAnimation() if we're restarting animation
+      // so that the next loop has a "full" set of keyframes.
+      for (idx=0, len=points.length; idx<len; ++idx) {
+        pt = points[idx]; // [x, y]
+        dist = (pt[0] === 0 ? 0 : pt[0]/(xMax-xMin)) * 100;
+        scaledDist = (dist - progress) / scale ;
+        if (scaledDist >= 100) scaledDist = 100;
+        if (dist >= progress) {
+          y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
+          keyframes[parseInt(scaledDist, 10)+'%'] = {
+            y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
+          };
+          if (idx+1===len) {
+            keyframes[parseInt(scaledDist, 10)+'%'].callback = loopAnimation;
+          }
+        }
+      }
+
+      // Actually start the animation loop.
+      loopAnimation();
+    },
+    
+    
+    animate: function() {
+      console.log("**** graphCanvasView.animate()");
+    
+      this.getPath('dataHolder.childViews').forEach(this._animateDataView, this);
 
       return YES;
     },
 
     stop: function() {
+      console.log("**** graphCanvasView.stop()");   
       var images = this.getPath('animationView.images') || [];
 
       this.getPath('dataHolder.childViews').forEach(function(dataSetView, idx) {
@@ -410,11 +464,12 @@ Smartgraphs.GraphView = SC.View.extend(
         if (raphaelForImage) raphaelForImage.stop();
       });
 
-      this._restartAnimation = YES;
+      this._animationIsPaused = YES;
       return YES;
     },
 
     reset: function() {
+      console.log("**** graphCanvasView.reset()");
       var frame = this.get('frame'),
           padding = this.getPath('parentView.padding'),
           xLeft = frame.x + padding.left,
@@ -457,7 +512,7 @@ Smartgraphs.GraphView = SC.View.extend(
         }
       });
 
-      this._restartAnimation = NO;
+      this._animationIsPaused = NO;
       return YES;
     },
 
@@ -570,6 +625,8 @@ Smartgraphs.GraphView = SC.View.extend(
 
       // Adds the correct image to the animation channel in Raphael, the first time.
       _renderDataSetImageFirstTime: function(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
+        console.log("**** animationView._renderDataSetImageFirstTime for %s", dataSetView ? dataSetView.toString() : '(null)');
+        
         var yAxis = this.getPath('parentView.parentView.yAxis'),
             yMin = yAxis ? yAxis.get('min') : 0,
             yMax = yAxis ? yAxis.get('max') : 1,
@@ -589,8 +646,10 @@ Smartgraphs.GraphView = SC.View.extend(
       },
 
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
+        console.log("**** animationView.renderCallback()");
         var that = this, images = [];
-
+        
+        console.log("****   in renderCallback: parentView.dataHolder.childViews.length = %d", this.getPath('parentView.dataHolder.childViews.length'));
         this.getPath('parentView.dataHolder.childViews').forEach(function(dataSetView, idx) {
           that._renderDataSetImageFirstTime(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight);
         });
@@ -615,7 +674,12 @@ Smartgraphs.GraphView = SC.View.extend(
             images = this.images,
             raphaelCanvas = this.get('raphaelCanvas');
 
-        if (frame.width === 0) return;
+        console.log("**** animationView.render(firstTime = %s)", firstTime ? 'YES' : 'NO');
+        
+        if (frame.width === 0) {
+          console.log("****   returning because frame.width === 0");
+          return;
+        }
 
         if (firstTime) {
           context.callback(this, this.renderCallback, xLeft+offsetX, yTop+offsetY, plotWidth, plotHeight);
