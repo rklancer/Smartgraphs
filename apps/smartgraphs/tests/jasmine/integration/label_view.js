@@ -759,7 +759,26 @@ describe("LabelView behavior", function () {
               it ("the label text should not change its position after editing", function () {
                 expect(labelTextView.get("x")).toEqual(x);
                 expect(labelTextView.get("y")).toEqual(y);
-                debugger;
+              });
+
+              describe("after re-adding the annotation", function () {
+                beforeEach( function () {
+                  x = labelTextView.get('x');
+                  y = labelTextView.get('y');
+                  SC.run( function () {
+                    graphController.removeAnnotation(labelRecord);
+                    graphController.addAnnotation(labelRecord);
+                    debugger;
+                  });
+                  labelView = graphView.getPath('annotationsHolder.childViews').objectAt(0);
+                  labelTextView = labelView.getPath('labelBodyView.labelTextView');
+                });
+                
+                it ("the label text should not change its position after adding a new record", function () {
+                  expect(labelTextView.get("x")).toEqual(x);
+                  expect(labelTextView.get("y")).toEqual(y);
+                  debugger;
+                });
               });
             });
 
