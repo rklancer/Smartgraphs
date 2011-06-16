@@ -668,60 +668,104 @@ describe("LabelView behavior", function () {
 
       describe("editing the label", function () {
         var leftX,
-            topY;
+            topY,
+            offset,
+            labelTextView;
 
         function fireEvent(el, eventName, x, y) {
-            var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
-            SC.run( function () {
-              SC.Event.trigger(el, eventName, evt);
-            });
+          var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
+          SC.Event.trigger(el, eventName, evt);
         }
 
-        describe("before a double click", function () {
-          it("should not be in edit mode", function () {
+        function simulateKeyPress(el, letter) {
+          var evt = SC.Event.simulateEvent(el, 'keydown', { charCode: letter, which: letter });
+          SC.Event.trigger(el, 'keydown', evt);
+          evt = SC.Event.simulateEvent(el, 'keypress', { charCode: letter, which: letter });
+          SC.Event.trigger(el, 'keypress', evt);
+          evt = SC.Event.simulateEvent(el, 'keyup', { charCode: letter, which: letter });
+          SC.Event.trigger(el, 'keyup', evt);
+        }
+
+        beforeEach( function () {
+          target = labelView.get('labelBodyView');
+          offset = $(target.get('layer')).offset();
+          leftX  = offset.left;
+          topY   = offset.top;
+        });
+
+        describe("when not being edited", function () {
+          beforeEach(function () {
+            labelTextView = labelView.getPath('labelBodyView.labelTextView');
+            fireEvent(target.get('layer'), 'mouseExited', 0, 0);
+            SC.run( function () { labelTextView.commitEditing(); });
+          });
+          it("should not be in the edit mode", function () {
             expect(labelView.getPath('labelBodyView.labelTextView.isEditing')).toEqual(NO);
           });
-          // it("should not have a highlighted background", function () {
-          //   expect(labelView.getPath('labelBodyView.labelTextView.editBoxView.isVisible')).toEqual(NO);
-          // });
+
+          it("should not have a highlighted background", function () {
+            expect(labelView.getPath('labelBodyView.labelTextView.editBoxView.isVisible')).toEqual(NO);
+          });
         });
 
         describe("after a double click", function () {
-          beforeEach( function () {
+          beforeEach(function () {
+            labelTextView = labelView.getPath('labelBodyView.labelTextView');
+            // ensure that we aren't editing at the outset
+            SC.run( function () { labelTextView.commitEditing(); });
+            fireEvent(target.get('layer'), 'mousedown', 10,10);
             fireEvent(target.get('layer'), 'mouseup', 10,10);
-            fireEvent(target.get('layer'), 'down', 10,10);
+            fireEvent(target.get('layer'), 'mousedown', 10,10);
             fireEvent(target.get('layer'), 'mouseup', 10,10);
           });
 
           it("should be in the edit mode", function () {
             expect(labelView.getPath('labelBodyView.labelTextView.isEditing')).toEqual(YES);
           });
-          // it("should have a highlighted background", function () {
-          //   expect(labelView.getPath('labelBodyView.labelTextView.editBoxView.isVisible')).toEqual(YES);
-          // });
+
+          it("should have a highlighted background", function () {
+            expect(labelView.getPath('labelBodyView.labelTextView.editBoxView.isVisible')).toEqual(YES);
+          });
+
+          describe("entering some text", function () {
+            var existingText,
+                textToEnter,
+                expectedText,
+                i;
+
+            beforeEach( function () {
+              existingText = labelTextView.get('text');
+              textToEnter  = "testing testing\n 1 2 3";
+              expectedText = existingText + textToEnter;
+              for (i = 0; i < textToEnter.length; i++) {
+                simulateKeyPress(target.get('layer'),textToEnter.charCodeAt(i));
+              }
+            });
+
+            it("should now have the new text in the label", function () {
+              expect(labelTextView.get('text')).toEqual(expectedText);
+            });
+
+            describe("leaving editing mode", function () {
+              var x,
+                  y;
+
+              beforeEach( function () {
+                x = labelTextView.get("x");
+                y = labelTextView.get("y");
+                SC.run( function () { labelTextView.commitEditing(); });
+              });
+
+              it ("the label text should not change its position after editing", function () {
+                expect(labelTextView.get("x")).toEqual(x);
+                expect(labelTextView.get("y")).toEqual(y);
+                debugger;
+              });
+            });
+
+          });
         });
-
-        beforeEach( function () {
-          var offset;
-
-          target = labelView.get('labelBodyView');
-          offset = $(target.get('layer')).offset();
-          leftX  = offset.left;
-          topY   = offset.top;
-
-          // start by clearing any possible stale drag state
-          fireEvent(target.get('layer'), 'mouseup', 0, 0);
-
-          fireEvent(target.get('layer'), 'mousedown', 10, 20);
-
-          xOffset = labelRecord.get('xOffset');
-          yOffset = labelRecord.get('yOffset');
-        });
-
-        it("should highlight the labelBodyView", function () {
-          expect(labelView.getPath('labelBodyView.layer').raphael.attr().stroke).toEqual(labelView.get('highlightedStroke'));
-        });
-      }); // dragging the label
+      }); // editing the label
 
     });
   });
