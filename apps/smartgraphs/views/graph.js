@@ -263,7 +263,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
     _animationIsPaused: NO,
     
-    _startAnimationLoop: function (loopParameters, loopAnimation, dataSetView, index, keyframes, raphaelForGraph, raphaelForImage) {
+    _startAnimationLoop: function (loopParameters, startAnimationLoop, dataSetView, index, keyframes, raphaelForGraph, raphaelForImage) {
       console.log("**** _startAnimationLoop()");
     
       var points          = dataSetView.getPath('item.points') || [];
@@ -274,9 +274,7 @@ Smartgraphs.GraphView = SC.View.extend(
           xLeft            = frame.x + padding.left,
           yTop             = frame.y + padding.top,
           plotWidth        = frame.width - padding.left - padding.right,
-          plotHeight       = frame.height - padding.top - padding.bottom,
-          yTopRect         = frame.y + padding.top,
-          plotHeightRect   = frame.height - padding.top - padding.bottom,          
+          plotHeight       = frame.height - padding.top - padding.bottom,       
           ms               = Smartgraphs.animationTool.get('duration'), // ms
       
           xAxis            = this.getPath('parentView.xAxis'),
@@ -289,10 +287,11 @@ Smartgraphs.GraphView = SC.View.extend(
           images           = this.getPath('animationView.images'),
           animations       = Smartgraphs.animationTool.animations,
 
-          offsetY         = animations[index].offsetY;
+          offsetY         = animations[index].offsetY,
       
-      var useTimeRemainingDuration = loopParameters.firstTime,
-          timeRemaining, idx, len, pt, dist, y;
+          useTimeRemainingDuration = loopParameters.animationIsRestarting, 
+          
+          timeRemaining, pt, dist, y;
 
       // Without these two, animation will occasionally screw up.
       raphaelForGraph.stop();
@@ -306,30 +305,42 @@ Smartgraphs.GraphView = SC.View.extend(
       
       
       if (loopParameters.regenerateKeyframes) {
-        console.log("**** in loopAnimation: regenerateKeyframes = YES");
-        keyframes = this._calculateKeyframes(points, xMax, xMin, yMin, yMax, 1, 0, plotHeightRect, yTopRect, offsetY, loopAnimation);
+        console.log("**** in startAnimationLoop: regenerateKeyframes = YES");
+        keyframes = this._calculateKeyframes(points, xMax, xMin, yMin, yMax, 1, 0, plotHeight, yTop, offsetY, startAnimationLoop);
         loopParameters.regenerateKeyframes = NO; // Should only regenerate keyframes once.
       }
       else {
-        console.log("**** in loopAnimation: regenerateKeyframes = NO");
+        console.log("**** in startAnimationLoop: regenerateKeyframes = NO");
       }
 
-      if (loopParameters.firstTime) {
-        console.log('**** in loopAnimation: firstTime = YES');
+      if (loopParameters.animationIsRestarting) {
+        console.log('**** in startAnimationLoop: animationIsRestarting = YES');
         // Use the keyframes generated below and don't modify the existing
         // raphael parameters.
-        loopParameters.regenerateKeyframes = YES; // The next loop, we need to regenerate keyframes.
-        loopParameters.firstTime = NO;
-      } 
+        loopParameters.regenerateKeyframes = YES;   // The next loop, we need to regenerate keyframes.
+        loopParameters.animationIsRestarting = NO;
+      }
       else {
-        console.log("**** in loopAnimation: firstTime = NO");
+        console.log("**** in startAnimationLoop: firstTime = NO");
         // Reset raphael parameters to the "beginning".
         raphaelForGraph.attr({ "clip-rect": [xLeft, yTop, 0, plotHeight].join(',') });
 
         pt = points[0]; // [x, y]
         y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
-        raphaelForImage.attr({ y: yTopRect+(plotHeightRect*(1-y))-30+offsetY });
+        raphaelForImage.attr({ y: yTop+(plotHeight*(1-y))-30+offsetY });
       }
+      
+    
+      // "really" need to know:
+
+      // plotWidth
+      // plotHeight
+      // xLeft
+      // yTop
+      // offsetY
+
+      // xMax, xMin, yMax, yMin
+      
 
       // Restart animation. Calculate timeRemaining after animation is stopped (see above).
       timeRemaining = parseInt(ms - (raphaelForGraph.attrs['clip-rect'][2]/plotWidth)*ms, 10);
@@ -342,30 +353,31 @@ Smartgraphs.GraphView = SC.View.extend(
         useTimeRemainingDuration ? timeRemaining : ms
       );
     },    
-    
-    
-    _calculateKeyframes: function (points, xMax, xMin, yMin, yMax, scale, progress, plotHeightRect, yTopRect, offsetY, loopAnimation) {
+
+       
+    _calculateKeyframes: function (points, xMax, xMin, yMin, yMax, scale, progress, plotHeight, yTop, offsetY, startAnimationLoop) {
       var keyframes = {},
           idx, len, pt, dist, scaledDist, y;
 
       for (idx=0, len=points.length; idx<len; ++idx) {
         pt = points[idx]; // [x, y]
-        dist = (pt[0] === 0 ? 0 : pt[0]/(xMax-xMin)) * 100;
+        dist = (pt[0] === 0 ? 0 : pt[0] / (xMax - xMin)) * 100;
         scaledDist = (dist - progress) / scale ;
         if (scaledDist >= 100) scaledDist = 100;
         if (dist >= progress) {
-          y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
+          y = pt[1] === 0 ? 0 : pt[1] / (yMax - yMin);
           keyframes[parseInt(scaledDist, 10)+'%'] = {
-            y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
+            y: yTop + (plotHeight * (1-y)) - 30 + offsetY
           };
           if (idx+1===len) {
-            keyframes[parseInt(scaledDist, 10)+'%'].callback = loopAnimation;
+            keyframes[parseInt(scaledDist, 10)+'%'].callback = startAnimationLoop;
           }
         }
       }
       
       return keyframes;
     },
+
     
     _animateDataView: function (dataSetView, index) {
       
@@ -375,12 +387,13 @@ Smartgraphs.GraphView = SC.View.extend(
       
       var frame            = this.get('frame'),
           padding          = this.getPath('parentView.padding'),
+
           xLeft            = frame.x + padding.left,
           yTop             = frame.y + padding.top,
+          
           plotWidth        = frame.width - padding.left - padding.right,
           plotHeight       = frame.height - padding.top - padding.bottom,
-          yTopRect         = frame.y + padding.top,
-          plotHeightRect   = frame.height - padding.top - padding.bottom,          
+      
           ms               = Smartgraphs.animationTool.get('duration'), // ms
       
           xAxis            = this.getPath('parentView.xAxis'),
@@ -411,7 +424,7 @@ Smartgraphs.GraphView = SC.View.extend(
           keyframes,
           
           loopParameters = {
-            firstTime: this._animationIsPaused,
+            animationIsRestarting: this._animationIsPaused,
             regenerateKeyframes: NO
           },
           self = this;
@@ -422,21 +435,20 @@ Smartgraphs.GraphView = SC.View.extend(
 
       keyframes = {};
       
-      function loopAnimation() {
-        self._startAnimationLoop(loopParameters, loopAnimation, dataSetView, index, keyframes, raphaelForGraph, raphaelForImage);
+      function startAnimationLoop() {
+        self._startAnimationLoop(loopParameters, startAnimationLoop, dataSetView, index, keyframes, raphaelForGraph, raphaelForImage);
       }
 
       // Calculate the first set of keyframes. This takes into account any
       // progress already made on animating the graph. The keyframes will
-      // be regenerated in loopAnimation() if we're restarting animation
+      // be regenerated in startAnimationLoop() if we're restarting animation
       // so that the next loop has a "full" set of keyframes.
       
-      keyframes = this._calculateKeyframes(points, xMax, xMin, yMin, yMax, scale, progress, plotHeightRect, yTopRect, offsetY, loopAnimation);
+      keyframes = this._calculateKeyframes(points, xMax, xMin, yMin, yMax, scale, progress, plotHeight, yTop, offsetY, startAnimationLoop);
 
       // Actually start the animation loop.
-      loopAnimation();
+      startAnimationLoop();
     },
-    
     
     animate: function() {
       console.log("**** graphCanvasView.animate()");
