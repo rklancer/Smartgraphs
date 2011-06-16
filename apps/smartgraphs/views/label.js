@@ -62,9 +62,11 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     return this.get('graphView').coordinatesForPoint(0, this.get('y')).y;
   }.property('y', 'graphScale'),
 
-  width: 100,
-  height: 45,
-
+  defaultWidth: 100,
+  defaultHeight: 45,
+  
+  labelBodyWidthBinding:  '.labelBodyView.width',
+  labelBodyHeightBinding: '.labelBodyView.height',
   cornerRadius: 4,
 
   bodyXCoord: null,
@@ -78,8 +80,8 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         yCoord  = this.get('yCoord'),
         xOffset = this.get('xOffset'),
         yOffset = this.get('yOffset'),
-        height  = this.get('height'),
-        width   = this.get('width');
+        height  = this.get('labelBodyHeight'),
+        width   = this.get('labelBodyWidth');
 
     // need to calculate an offset more intelligently, but for now...
 
@@ -88,7 +90,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     this.set('anchorXCoord', xCoord + xOffset + width / 2);
     this.set('anchorYCoord', yCoord + yOffset);
 
-  }.observes('xCoord', 'yCoord', 'xOffset', 'yOffset', 'width', 'height'),
+  }.observes('xCoord', 'yCoord', 'xOffset', 'yOffset', 'labelBodyWidth', 'labelBodyHeight'),
 
   didCreateLayer: function () {
     sc_super();
@@ -139,7 +141,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     isVisible: function () {
       return this.get('shouldMarkTargetPoint');
-    }.property('shouldMarkTargetPoint'),
+    }.property('shouldMarkTargetPoint').cacheable(),
 
     renderCallback: function(raphaelCanvas, pathString, stroke) {
       return raphaelCanvas.path(pathString).attr({ stroke: stroke });
@@ -198,7 +200,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
         endy     = this.get('yCoord'),
         len      = this.get('markerSize'),
         angle    = 20;
-      if (SC.none(endx) || SC.none(endy)) return this.emptyPath();
+      if (SC.none(startx) || SC.none(starty) || SC.none(endx) || SC.none(endy) || SC.none(angle)) {
+        return this.emptyPath();
+      }
       return this.arrowPath(startx,starty,endx,endy,len,angle);
     },
 
@@ -324,8 +328,9 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     bodyYCoordBinding:   '.parentLabelView.bodyYCoord',
     xOffsetBinding:      '.parentLabelView.xOffset',
     yOffsetBinding:      '.parentLabelView.yOffset',
-    widthBinding:        '.parentLabelView.width',
-    heightBinding:       '.parentLabelView.height',
+
+    textWidthBinding:    '.labelTextView.width',
+    textHeightBinding:   '.labelTextView.height',
 
     fillBinding:         '.parentLabelView.fill',
     cornerRadiusBinding: '.parentLabelView.cornerRadius',
@@ -334,8 +339,24 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     highlightedStrokeBinding: '.parentLabelView.highlightedStroke',
     defaultStrokeWidth:       1,
     highlightedStrokeWidth:   2,
-
+    margin:                   30,
     isHighlightedBinding:     '.parentLabelView.isBodyDragging',
+
+    width: function () {
+      var textWidth = this.get('textWidth');
+      if (textWidth) {
+        return this.get('textWidth') + (this.get('margin') * 2);
+      }
+      return 100;
+    }.property('textWidth').cacheable(),
+
+    height: function () {
+      var textHeight = this.get('textHeight');
+      if (textHeight) {
+        return this.get('textHeight') + (this.get('margin') * 2);
+      }
+      return 30;
+    }.property('textHeight').cacheable(),
 
     stroke: function () {
       return this.get('isHighlighted') ? this.get('highlightedStroke') : this.get('defaultStroke');
@@ -392,6 +413,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     // without consequence.
     mouseDown: function (evt) {
       this.startDrag(evt);
+      return YES;
     },
 
     mouseUp: function(evt) {
@@ -417,6 +439,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     mouseDragged: function (evt) {
       this.drag(evt);
+      return YES;
     },
 
     startDrag: function (evt) {
@@ -428,6 +451,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
       // our layer doesn't respect SC.Cursor, so set the cursors manually
       this.$().css('cursor', 'move');
+      return YES;
     },
 
     drag: function (evt) {
@@ -448,6 +472,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
       this._isDragging = NO;
 
       this.$().css('cursor', 'default');
+      return YES;
     },
 
     labelTextView: Smartgraphs.EditableLabelView.design({
