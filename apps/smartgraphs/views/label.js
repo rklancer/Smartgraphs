@@ -380,7 +380,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     mouseExited: function (evt) {
       if (evt.toElement != this.labelTextView) {
         if (this.labelTextView.get('isEditing')) {
-          this.labelTextView.commitEditing()
+          this.labelTextView.commitEditing();
         }
         return YES;
       }
@@ -452,7 +452,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     labelTextView: Smartgraphs.EditableLabelView.design({
       isEditable: YES,
-      fontSize: 14,
+      fontSize: 14
     }),
 
     removeButtonView: RaphaelViews.RaphaelView.design({
