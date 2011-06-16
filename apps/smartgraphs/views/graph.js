@@ -303,20 +303,11 @@ Smartgraphs.GraphView = SC.View.extend(
       // to handle the "full" animation loop. This flag is toggled, below.
       // Note: Can't move this code lower! We have to wait until the next loop
       // to regenerate the keyframes.
+      
+      
       if (loopParameters.regenerateKeyframes) {
         console.log("**** in loopAnimation: regenerateKeyframes = YES");
-        keyframes = {};
-        for (idx=0, len=points.length; idx<len; ++idx) {
-          pt = points[idx]; // [x, y]
-          dist = (pt[0] === 0 ? 0 : pt[0]/(xMax-xMin)) * 100; // WIDTH
-          y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);            // HEIGHT
-          keyframes[parseInt(dist, 10)+'%'] = {
-            y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
-          };
-          if (idx+1===len) {
-            keyframes[parseInt(dist, 10)+'%'].callback = loopAnimation;
-          }
-        }
+        keyframes = this._calculateKeyframes(points, xMax, xMin, yMin, yMax, 1, 0, plotHeightRect, yTopRect, offsetY, loopAnimation);
         loopParameters.regenerateKeyframes = NO; // Should only regenerate keyframes once.
       }
       else {
@@ -350,14 +341,37 @@ Smartgraphs.GraphView = SC.View.extend(
       raphaelForImage.animateWith(raphaelForGraph, keyframes,
         useTimeRemainingDuration ? timeRemaining : ms
       );
-    },
-      
+    },    
+    
+    
+    _calculateKeyframes: function (points, xMax, xMin, yMin, yMax, scale, progress, plotHeightRect, yTopRect, offsetY, loopAnimation) {
+      var keyframes = {},
+          idx, len, pt, dist, scaledDist, y;
 
+      for (idx=0, len=points.length; idx<len; ++idx) {
+        pt = points[idx]; // [x, y]
+        dist = (pt[0] === 0 ? 0 : pt[0]/(xMax-xMin)) * 100;
+        scaledDist = (dist - progress) / scale ;
+        if (scaledDist >= 100) scaledDist = 100;
+        if (dist >= progress) {
+          y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
+          keyframes[parseInt(scaledDist, 10)+'%'] = {
+            y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
+          };
+          if (idx+1===len) {
+            keyframes[parseInt(scaledDist, 10)+'%'].callback = loopAnimation;
+          }
+        }
+      }
+      
+      return keyframes;
+    },
+    
     _animateDataView: function (dataSetView, index) {
       
       console.log("**** graphCanvasView._animateDataView(%s, %d)", dataSetView ? dataSetView.toString() : '(null)', index);      
       
-      if (!dataSetView.get('isAnimatable')) return;      
+      if (!dataSetView.get('isAnimatable')) return;
       
       var frame            = this.get('frame'),
           padding          = this.getPath('parentView.padding'),
@@ -379,7 +393,6 @@ Smartgraphs.GraphView = SC.View.extend(
           images           = this.getPath('animationView.images'),
           animations       = Smartgraphs.animationTool.animations;
 
-
       var layer           = dataSetView.get('layer'),
           raphaelForGraph = layer && layer.raphael || null,
           image           = images[index],
@@ -395,46 +408,30 @@ Smartgraphs.GraphView = SC.View.extend(
           scale           = 1 - width,
           progress        = width * 100,
 
-          keyframes, idx, len, pt, dist, scaledDist, y;
+          keyframes,
+          
+          loopParameters = {
+            firstTime: this._animationIsPaused,
+            regenerateKeyframes: NO
+          },
+          self = this;
 
       // If the graph is in the "reset" mode, it will not have opacity: 1.0, so set
       // it here.
       raphaelForGraph.attr({ "opacity": 1.0 });
 
-      // We have to create these next two items out of order, keyframes because
-      // it is referenced in loopAnimation(), and loopAnimation() because it is
-      // referenced in the initial keyframe setup code below.
       keyframes = {};
-      
-      var loopParameters = {
-        firstTime: this._animationIsPaused,
-        regenerateKeyframes: NO
-      },
-      self = this;
       
       function loopAnimation() {
         self._startAnimationLoop(loopParameters, loopAnimation, dataSetView, index, keyframes, raphaelForGraph, raphaelForImage);
-      } // function loopAnimation()
+      }
 
       // Calculate the first set of keyframes. This takes into account any
       // progress already made on animating the graph. The keyframes will
       // be regenerated in loopAnimation() if we're restarting animation
       // so that the next loop has a "full" set of keyframes.
-      for (idx=0, len=points.length; idx<len; ++idx) {
-        pt = points[idx]; // [x, y]
-        dist = (pt[0] === 0 ? 0 : pt[0]/(xMax-xMin)) * 100;
-        scaledDist = (dist - progress) / scale ;
-        if (scaledDist >= 100) scaledDist = 100;
-        if (dist >= progress) {
-          y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
-          keyframes[parseInt(scaledDist, 10)+'%'] = {
-            y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
-          };
-          if (idx+1===len) {
-            keyframes[parseInt(scaledDist, 10)+'%'].callback = loopAnimation;
-          }
-        }
-      }
+      
+      keyframes = this._calculateKeyframes(points, xMax, xMin, yMin, yMax, scale, progress, plotHeightRect, yTopRect, offsetY, loopAnimation);
 
       // Actually start the animation loop.
       loopAnimation();
