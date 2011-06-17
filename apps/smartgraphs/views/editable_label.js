@@ -66,9 +66,16 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return this.get('isEnabled');
   }.property('isEnabled').cacheable(),
 
+  willLoseFirstResponder: function () {
+    console.log("loosing first responder");
+    this.set('isEditing', NO);
+    this.set('isAllSelected', NO);
+  },
+
   renderCallback: function (raphaelCanvas, attrs) {
     return raphaelCanvas.text().attr(attrs);
   },
+
 
   // height: function () {
   //   var raphaelText = this.get('raphaelObject'),
