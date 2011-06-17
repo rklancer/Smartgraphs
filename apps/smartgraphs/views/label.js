@@ -219,23 +219,14 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
           y        = yCoord + radius;
 
       if (SC.none(xCoord) || SC.none(yCoord)) return this.emptyPath();
-      elements.push('M');
-      elements.push(x);
-      elements.push(y);
-      elements.push('L');
-      elements.push(x + diameter);
-      elements.push(y - diameter);
+      elements.push('M', x, y);
+      elements.push('L', x + diameter, y - diameter);
 
       x = xCoord - radius;
       y = yCoord - radius;
 
-      elements.push('M');
-      elements.push(x);
-      elements.push(y);
-      elements.push('L');
-      elements.push(x + diameter);
-      elements.push(y + diameter);
-
+      elements.push('M', x , y);
+      elements.push('L', x + diameter, y + diameter);
       return elements.join(' ');
     }
   }),
