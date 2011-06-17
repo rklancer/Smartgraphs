@@ -21,11 +21,13 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   childViews: ['editBoxView'],
 
-  isEditing: NO,
-  fontSize:  12,
-  displayProperties: 'displayText textColor x raphTextY isEditing'.w(),
+  isEditing:           NO,
+  isAllSelected:       NO,
 
-  labelBodyView:     SC.outlet('parentView'),
+  fontSize:            12,
+  displayProperties:   'displayText textColor x raphTextY isEditing'.w(),
+
+  labelBodyView:       SC.outlet('parentView'),
 
   textBinding:         '.labelBodyView.text',
   textColorBinding:    '.labelBodyView.textColor',
@@ -39,6 +41,13 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   // width:       100,
   // height:      20,
   
+  init: function () {
+    sc_super();
+    if (this.get('isEditable')) {
+      this.beginEditing();
+    }
+  },
+
   // our parent view is going to modify our position
   // but we will modify our parents width and height
   x: function () {
@@ -129,7 +138,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     }
   },
 
+  toggle: function (paramName) {
+    this.set(paramName, (! this.get(paramName)));
+  },
+
   beginEditing: function () {
+    this.toggle('isAllSelected');
     if (!this.get('isEditable')) { return NO ; }
     this.set('isEditing', YES);
     this.becomeFirstResponder();
@@ -212,16 +226,20 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   // },
 
   editBoxView: RaphaelViews.RaphaelView.design({
-    displayProperties:    'parentsX parentsY width height isVisible'.w(),
+    displayProperties:    'parentsX parentsY width height isVisible isAllSelected'.w(),
     textLabelView:        SC.outlet('parentView'),
     isVisibleBinding:     '.textLabelView.isEditing',
     parentsWidthBinding:  '.textLabelView.width',
     parentsHeightBinding: '.textLabelView.height',
     parentsXBinding:      '.textLabelView.x',
     parentsYBinding:      '.textLabelView.y',
-    fill:                 '#ff5',
-    opacity:              0.2,
-    margin:               2,
+    isAllSelectedBinding: '.textLabelView.isAllSelected',
+    fill:                 '#FF5',
+    strokeWidth:          1,
+    stroke:               '#CCC',
+    editingOpacity:       0.3,
+    normalOpacity:        0.05,
+    margin:               3,
 
     twoMargin: function () {
       return this.get('margin') * 2;
@@ -249,9 +267,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
     render: function (context, firstTime) {
       var raphaelRect,
+          opacity = this.get('isAllSelected') ? this.get('editingOpacity') : this.get('normalOpacity'),
           attrs = {
              'fill':    this.get('fill'),
-             'opacity': this.get('opacity'),
+             'fill-opacity': opacity,
+             'stroke-width': this.get('strokeWidth'),
+             'stroke':       this.get('stroke'),
              'x':       this.get('x'),
              'y':       this.get('y'),
              'width':   this.get('width'),
