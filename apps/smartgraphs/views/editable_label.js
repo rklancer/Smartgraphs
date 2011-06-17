@@ -76,7 +76,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return raphaelCanvas.text().attr(attrs);
   },
 
-
+  // TODO: The following methods for computing width and hight 
+  // seems like it would be a good direction to move in.
+  //
+  // *HOWEVER*, they cause the browser
+  // to die. There is some unwanted recursion happening.
+  //
   // height: function () {
   //   var raphaelText = this.get('raphaelObject'),
   //       bounds;
