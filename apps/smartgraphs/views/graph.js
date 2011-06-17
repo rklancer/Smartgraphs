@@ -293,8 +293,7 @@ Smartgraphs.GraphView = SC.View.extend(
       };
     },
     
-    
-    _startAnimationLoop: function (loopParameters, callback, dataSetView, index, raphaelForGraph, raphaelForImage) {
+    _startAnimationLoop: function (loopParameters, loopCallback, dataSetView, index, raphaelForGraph, raphaelForImage) {
       console.log("**** _startAnimationLoop()");
     
       var points        = dataSetView.getPath('item.points') || [],
@@ -320,7 +319,7 @@ Smartgraphs.GraphView = SC.View.extend(
       if (loopParameters.regenerateKeyframes) {
         console.log("**** in startAnimationLoop: regenerateKeyframes = YES");
         loopParameters.keyframes = {};
-        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, 1, 0, callback);
+        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, 1, 0, loopCallback);
         loopParameters.regenerateKeyframes = NO; // Should only regenerate keyframes once.
       }
       else {
@@ -355,9 +354,8 @@ Smartgraphs.GraphView = SC.View.extend(
 
       raphaelForImage.animateWith(raphaelForGraph, loopParameters.keyframes,  animationTime);
     },
-
-       
-    _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, offsetY, scale, progress, callback) {
+ 
+    _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, offsetY, scale, progress, loopCallback) {
       var idx, len, pt, dist, scaledDist, y;
 
       for (idx=0, len=points.length; idx<len; ++idx) {
@@ -372,13 +370,12 @@ Smartgraphs.GraphView = SC.View.extend(
           };
           console.log("keyframes[%s] = %d", parseInt(scaledDist, 10)+'%', keyframes[parseInt(scaledDist, 10)+'%'].y);
           if (idx+1===len) {
-            keyframes[parseInt(scaledDist, 10)+'%'].callback = callback;
+            keyframes[parseInt(scaledDist, 10)+'%'].callback = loopCallback;
           }
         }
       }
     },
 
-    
     _animateDataView: function (dataSetView, index) {
       
       console.log("**** graphCanvasView._animateDataView(%s, %d)", dataSetView ? dataSetView.toString() : '(null)', index);      
@@ -389,13 +386,13 @@ Smartgraphs.GraphView = SC.View.extend(
           logicalBounds   = this._getLogicalBounds(),
           layer           = dataSetView.get('layer'),
           raphaelForGraph = layer && layer.raphael || null,
-          images           = this.getPath('animationView.images'),
+          images          = this.getPath('animationView.images'),
           image           = images && images[index],
           raphaelForImage = image && image.node && image.node.raphael || null,
 
           points          = dataSetView.getPath('item.points') || [],
 
-          animations    = Smartgraphs.animationTool.animations,
+          animations      = Smartgraphs.animationTool.animations,
           offsetY         = animations[index].offsetY,
 
           clipRect        = raphaelForGraph.attrs['clip-rect'],
@@ -406,9 +403,10 @@ Smartgraphs.GraphView = SC.View.extend(
           
           loopParameters = {
             animationIsRestarting: this._animationIsPaused,
-            regenerateKeyframes: NO,
-            keyframes: {}
+            regenerateKeyframes:   NO,
+            keyframes:             {}
           },
+          
           self = this;
 
       // If the graph is in the "reset" mode, it will not have opacity: 1.0, so set
@@ -432,10 +430,7 @@ Smartgraphs.GraphView = SC.View.extend(
     
     animate: function() {
       console.log("**** graphCanvasView.animate()");
-    
       this.getPath('dataHolder.childViews').forEach(this._animateDataView, this);
-
-      return YES;
     },
 
     stop: function() {
@@ -454,7 +449,6 @@ Smartgraphs.GraphView = SC.View.extend(
       });
 
       this._animationIsPaused = YES;
-      return YES;
     },
 
     reset: function() {
@@ -488,7 +482,6 @@ Smartgraphs.GraphView = SC.View.extend(
       });
 
       this._animationIsPaused = NO;
-      return YES;
     },
 
     axesView: RaphaelViews.RaphaelView.design({
