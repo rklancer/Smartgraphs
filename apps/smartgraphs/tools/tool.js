@@ -17,8 +17,6 @@ Smartgraphs.Tool = SC.Object.extend({
 Smartgraphs.Tool.tools = {};
 
 Smartgraphs.Tool.register = function (name, context, setup, state) {
-  if (!Smartgraphs.Tool.tools[name]) Smartgraphs.Tool.tools[name] = {};
-  
   Smartgraphs.Tool.tools[name] = { context: context, setup: setup, state: state };
 };
 
