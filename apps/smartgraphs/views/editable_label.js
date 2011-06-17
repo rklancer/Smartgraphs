@@ -154,44 +154,62 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   keyDown: function (evt) {
     var chr = null;
+    if (this.interpretKeyEvents(evt)) {
+      return YES;
+    }
     if (evt.type === 'keypress') {
       chr = evt.getCharString();
       if (chr) {
-        this.insertText(chr);
+        this.appendText(chr);
         return YES;
       }
     }
-    return this.interpretKeyEvents(evt) ? YES : NO;
+    return NO;
   },
 
-  insertText: function (chr) {
+  appendText: function (chr) {
+    this.set('isAllSelected', NO);
     this.updateText(this.get('text') + chr);
     return YES;
   },
 
+  // @see frameworks/sproutcore/frameworks/desktop/system/key_bindings.js
   insertNewline: function () {
-    this.insertText("\n");
+    this.appendText("\n");
   },
 
+  // @see frameworks/sproutcore/frameworks/desktop/system/key_bindings.js
   insertTab: function () {
     this.commitEditing();
   },
 
+  // @see frameworks/sproutcore/frameworks/desktop/system/key_bindings.js
   cancel: function () {
     this.discardEditing();
   },
 
+  // @see frameworks/sproutcore/frameworks/desktop/system/key_bindings.js
+  selectAll: function() {
+    this.set('isAllSelected', YES);
+  },
+
+  // @see frameworks/sproutcore/frameworks/desktop/system/key_bindings.js
   deleteBackward: function () {
     var t       = this.get('text'),
         newText = t.substr(0,t.length-1);
 
+    if (this.get('isAllSelected')) {
+      newText = "";
+    }
     this.updateText(newText);
     return YES;
   },
 
-  deleteForward: function () {
-    return this.deleteBackward();
-  },
+  // @see frameworks/sproutcore/frameworks/desktop/system/key_bindings.js
+  // only problem is that deleteForward seems bound to "."
+  // deleteForward: function () {
+  //   return this.deleteBackward();
+  // },
 
   editBoxView: RaphaelViews.RaphaelView.design({
     displayProperties:    'parentsX parentsY width height isVisible'.w(),
