@@ -61,21 +61,7 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
             "pane": "single",
             "labelSetName": "test-label-set"
           }
-        }//,
-        // { "name": "animation",
-        //   "setup": {
-        //     "pane": "single",
-        //     "duration": 9000, // ms
-        //     "channelWidth": 70, // same as the default
-        //     // "backgroundImageClassName": "road",
-        //     "backgroundImageURL": sc_static('images/road'),
-        //     "animation": [{
-        //         "foregroundImageURL": sc_static('images/car'),
-        //         "offsetX": 0,
-        //         "offsetY": 0
-        //       }]
-        //   }
-        // }
+        }
       ]
     },
     {
@@ -100,21 +86,15 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
       "submitButtonTitle": "Onward!",
       "defaultBranch": "/shared/velocity-2/page/1/step/3",
       "tools": [
-        // { "name": "label",
-        //   "setup": {
-        //     "pane": "single",
-        //     "labelSetName": "test-label-set"
-        //   }
-        // }//,
         { "name": "animation",
           "setup": {
             "pane": "single",
             "duration": 9000, // ms
-            "channelWidth": 70, // same as the default
-            // "backgroundImageClassName": "road",
-            "backgroundImageURL": sc_static('images/road'),
-            "animation": [{
-                "foregroundImageURL": sc_static('images/car'),
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/road'),
+            "animations": [{
+                "data": "position-data",
+                "image": sc_static('images/car'),
                 "offsetX": 0,
                 "offsetY": 0
               }]
@@ -140,29 +120,7 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
         }
       },
       "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>(Your description here.)</p><p><b>Play</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double click</b> inside the label and start typing.</p>",
-      "hideSubmitButton": true,
-      "tools": [
-        // { "name": "label",
-        //   "setup": {
-        //     "pane": "single",
-        //     "labelSetName": "test-label-set"
-        //   }
-        // }//,
-        // { "name": "animation",
-        //   "setup": {
-        //     "pane": "single",
-        //     "duration": 9000, // ms
-        //     "channelWidth": 70, // same as the default
-        //     // "backgroundImageClassName": "road",
-        //     "backgroundImageURL": sc_static('images/road'),
-        //     "animation": [{
-        //         "foregroundImageURL": sc_static('images/car'),
-        //         "offsetX": 0,
-        //         "offsetY": 0
-        //       }]
-        //   }
-        // }
-      ]
+      "hideSubmitButton": true
     }        
   ],
   "units": [

@@ -54,27 +54,25 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     args = args || {};
     
     var pane = Smartgraphs.activityViewController.validPaneFor(args.pane),
-        cookedAnimations = [],
-        animation = args.animation || [],
+        animationHashes = args.animations || [],
         controller;
     
     if (!pane) return;
     
     this._pane = pane;
     
-    if (args.backgroundImageURL) this.set('backgroundImageURL', args.backgroundImageURL);
-    if (args.duration) this.duration = args.duration ;
-    if (args.channelWidth) this.channelWidth = args.channelWidth ;
+    if (args.backgroundImage) this.set('backgroundImageURL', args.backgroundImage);
+    if (args.duration) this.duration = args.duration;
+    if (args.channelWidth) this.channelWidth = args.channelWidth;
   
-    animation.forEach(function(hash) {
-      var params = {};
-
-      params.foregroundImageURL = hash.foregroundImageURL || '';
-      params.offsetX = hash.offsetX || 0;
-      params.offsetY = hash.offsetY || 0;
-      cookedAnimations.push(params);
-    });
-    this.set('animations', cookedAnimations);
+    this.set('animations', animationHashes.map(function (hash) {
+      return {
+        datadefName:        hash.data,
+        foregroundImageURL: hash.image   || '',
+        offsetX:            hash.offsetX || 0,
+        offsetY:            hash.offsetY || 0
+      };
+    }));
     
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
