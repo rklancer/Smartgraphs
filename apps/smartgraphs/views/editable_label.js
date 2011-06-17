@@ -10,7 +10,7 @@
 /** @class
 
   RaphaelView for an editable label.
-  
+
 
   @extends SC.View
   @extends RaphaelViews.RenderSupport
@@ -25,7 +25,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   isAllSelected:       NO,
 
   fontSize:            12,
-  displayProperties:   'displayText textColor x raphTextY isEditing'.w(),
+  displayProperties:   'displayText textColor displayText x raphTextY isEditing'.w(),
 
   labelBodyView:       SC.outlet('parentView'),
 
@@ -34,13 +34,13 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   parentXBinding:      '.labelBodyView.bodyXCoord',
   parentYBinding:      '.labelBodyView.bodyYCoord',
   parentMarginBinding: '.labelBodyView.margin',
- 
+
   // Bounds need to be calculated by Raphael:
   minHeight: 30,
   minWidth: 100,
   // width:       100,
   // height:      20,
-  
+
   init: function () {
     sc_super();
     if (this.get('isEditable')) {
@@ -76,30 +76,6 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     return raphaelCanvas.text().attr(attrs);
   },
 
-  // TODO: The following methods for computing width and hight 
-  // seems like it would be a good direction to move in.
-  //
-  // *HOWEVER*, they cause the browser
-  // to die. There is some unwanted recursion happening.
-  //
-  // height: function () {
-  //   var raphaelText = this.get('raphaelObject'),
-  //       bounds;
-  //   if (SC.none(raphaelText) || SC.none(raphaelText.getBBox() || SC.none(raphaelText.getBBox().height))) {
-  //     return minHeight;
-  //   }
-  //   return raphaelText.getBBox().height;
-  // }.property('raphaelObject', 'displayText').cacheable(),
-
-  // width: function () {
-  //   var raphaelText = this.get('raphaelObject'),
-  //       bounds;
-  //   if (SC.none(raphaelText) || SC.none(raphaelText.getBBox() || SC.none(raphaelText.getBBox().width))) {
-  //     return minWidth;
-  //   }
-  //   return raphaelText.getBBox().width;
-  // }.property('raphaelObject', 'displayText').cacheable(),
-
   displayText: function () {
     var txt = this.get('text');
     if (this.get('isEditing')) { txt = txt + "_"; }
@@ -125,7 +101,6 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     else {
       raphaelText = this.get('raphaelObject');
       raphaelText.attr(attrs);
-      this.adjustMetrics();
     }
   },
 
@@ -137,18 +112,19 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
         minHeight = this.get('minHeight'),
         width,
         height;
-        
+
     if (raphaelText) {
+      raphaelText.attr('text',this.get('displayText'));
       bounds = raphaelText.getBBox();
       width  = bounds.width  < minWidth  ? minWidth  : bounds.width;
       height = bounds.height < minHeight ? minHeight : bounds.height;
-      
+
       this.beginPropertyChanges();
       this.set('width'  , width);
       this.set('height' , height);
       this.endPropertyChanges();
     }
-  },
+  }.observes('displayText'),
 
   toggle: function (paramName) {
     this.set(paramName, (! this.get(paramName)));
