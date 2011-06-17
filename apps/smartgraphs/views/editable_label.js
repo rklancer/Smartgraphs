@@ -34,8 +34,10 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   parentMarginBinding: '.labelBodyView.margin',
  
   // Bounds need to be calculated by Raphael:
-  width:       100,
-  height:      20,
+  minHeight: 30,
+  minWidth: 100,
+  // width:       100,
+  // height:      20,
   
   // our parent view is going to modify our position
   // but we will modify our parents width and height
@@ -63,7 +65,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   //   var raphaelText = this.get('raphaelObject'),
   //       bounds;
   //   if (SC.none(raphaelText) || SC.none(raphaelText.getBBox() || SC.none(raphaelText.getBBox().height))) {
-  //     return 30;
+  //     return minHeight;
   //   }
   //   return raphaelText.getBBox().height;
   // }.property('raphaelObject', 'displayText').cacheable(),
@@ -72,7 +74,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   //   var raphaelText = this.get('raphaelObject'),
   //       bounds;
   //   if (SC.none(raphaelText) || SC.none(raphaelText.getBBox() || SC.none(raphaelText.getBBox().width))) {
-  //     return 100;
+  //     return minWidth;
   //   }
   //   return raphaelText.getBBox().width;
   // }.property('raphaelObject', 'displayText').cacheable(),
@@ -109,13 +111,20 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   adjustMetrics: function () {
     var editing = this.get('isEditing'),
         raphaelText = this.get('raphaelObject'),
-        bounds;
-
+        bounds,
+        minWidth = this.get('minWidth'),
+        minHeight = this.get('minHeight'),
+        width,
+        height;
+        
     if (raphaelText) {
-      bounds  = raphaelText.getBBox();
+      bounds = raphaelText.getBBox();
+      width  = bounds.width  < minWidth  ? minWidth  : bounds.width;
+      height = bounds.height < minHeight ? minHeight : bounds.height;
+      
       this.beginPropertyChanges();
-      this.set('width'  , bounds.width);
-      this.set('height' , bounds.height);
+      this.set('width'  , width);
+      this.set('height' , height);
       this.endPropertyChanges();
     }
   },
