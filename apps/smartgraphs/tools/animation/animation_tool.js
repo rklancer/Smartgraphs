@@ -9,6 +9,9 @@ sc_require('tools/tool');
 
 /** @class
 
+  // TODO move the animation tool's stateful properties out of this object and into the corresponding SC.State objects
+  // so that each graph can have its own animation tool instance. RPK 6-17-11
+  
   @extends Smartgraphs.Tool
 */
 Smartgraphs.animationTool = Smartgraphs.Tool.create(
@@ -28,6 +31,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   },
   
   _pane: null,
+  _isAnimating: NO,  
   
   backgroundImageURL: '',
   duration: 3000,   // milliseconds, default is 3 seconds
@@ -42,40 +46,47 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     return Smartgraphs.activityPage.get(Smartgraphs.activityViewController.firstOrSecondFor(this._pane)+'GraphPane');
   }.property('pane'),
   
+  isAnimating: function () {
+    return this._isAnimating;
+  }.property().cacheable(),
+  
   setup: function (args) {
     args = args || {};
-    var pane = Smartgraphs.activityViewController.validPaneFor(args.pane);
     
-    if (pane) {
-      this._pane = pane;
-      
-      if (args.backgroundImageURL) this.set('backgroundImageURL', args.backgroundImageURL);
-      if (args.duration) this.duration = args.duration ;
-      if (args.channelWidth) this.channelWidth = args.channelWidth ;
-      
-      var animation = args.animation || [] ;
-      var cookedAnimations = [];
-      if (animation.length) {
-        animation.forEach(function(hash) {
-          var params = {};
+    var pane = Smartgraphs.activityViewController.validPaneFor(args.pane),
+        cookedAnimations = [],
+        animation = args.animation || [],
+        controller;
+    
+    if (!pane) return;
+    
+    this._pane = pane;
+    
+    if (args.backgroundImageURL) this.set('backgroundImageURL', args.backgroundImageURL);
+    if (args.duration) this.duration = args.duration ;
+    if (args.channelWidth) this.channelWidth = args.channelWidth ;
+  
+    animation.forEach(function(hash) {
+      var params = {};
 
-          params.foregroundImageURL = hash.foregroundImageURL || '';
-          params.offsetX = hash.offsetX || 0;
-          params.offsetY = hash.offsetY || 0;
-          cookedAnimations.push(params);
-        });
-        this.animations = cookedAnimations;
-      }
-      
-      this._isAnimating = NO;
-      // Smartgraphs.statechart.gotoState(this.get('state'));
-    }
+      params.foregroundImageURL = hash.foregroundImageURL || '';
+      params.offsetX = hash.offsetX || 0;
+      params.offsetY = hash.offsetY || 0;
+      cookedAnimations.push(params);
+    });
+    this.set('animations', cookedAnimations);
+    
+    this._isAnimating = NO;
+    this.notifyPropertyChange('isAnimating');
 
-    var controller = this.graphControllerForPane(args.pane);
+    controller = this.graphControllerForPane(args.pane);
     controller.animationToolStartTool();
   },
   
-  _isAnimating: NO,
+  clear: function () {
+    this.stopAnimating();
+    this.set('animations', []);
+  },
   
   /**
     Called on entry to ANIMATION_RUNNING state.
@@ -83,8 +94,9 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   startAnimating: function () {
     if (!this._pane || this._isAnimating) return NO;
     this._isAnimating = YES;
+    this.notifyPropertyChange('isAnimating');
     var graphPane = this.get('graphPane');
-    return graphPane.get('graphView').animate();
+    graphPane.get('graphView').animate();
   },
   
   /**
@@ -93,8 +105,9 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   stopAnimating: function () {
     if (!this._pane || !this._isAnimating) return NO;
     this._isAnimating = NO;
+    this.notifyPropertyChange('isAnimating');    
     var graphPane = this.get('graphPane');
-    return graphPane.get('graphView').stop();
+    graphPane.get('graphView').stop();
   },
   
   /**
@@ -102,8 +115,9 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   */
   clearAnimation: function () {
     this._isAnimating = NO;
+    this.notifyPropertyChange('isAnimating');
     var graphPane = this.get('graphPane');
-    return graphPane.get('graphView').reset();
+    graphPane.get('graphView').reset();
   }
 
 });
