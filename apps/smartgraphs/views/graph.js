@@ -158,13 +158,12 @@ Smartgraphs.GraphView = SC.View.extend(
 
 
   _removeView: function (view) {
-    var item = view.get('item'),
+    var item     = view.get('item'),
         itemType = view.get('itemType'),
         classKey = SC.guidFor(item.constructor),
-        itemKey = SC.guidFor(item);
+        itemKey  = SC.guidFor(item);
 
     delete this._viewsByClassAndItem[classKey][itemKey];
-
 
     if (itemType === 'data') {
       this.get('dataHolder').removeChild(view);
@@ -300,7 +299,7 @@ Smartgraphs.GraphView = SC.View.extend(
           logicalBounds = this._getLogicalBounds(),
           screenBounds  = this._getScreenBounds(),
           ms            = Smartgraphs.animationTool.get('duration'),
-          animations    = Smartgraphs.animationTool.animations,
+          animations    = this.getPath('parentView.graphController.animations'),
           offsetY       = animations[index].offsetY,
           
           animationTime, pt, dist, y;
@@ -334,7 +333,7 @@ Smartgraphs.GraphView = SC.View.extend(
         raphaelForGraph.attr({ "clip-rect": [screenBounds.xLeft, screenBounds.yTop, 0, screenBounds.plotHeight].join(',') });
 
         pt = points[0]; // [x, y]
-        y = pt[1]/(logicalBounds.yMax-logicalBounds.yMin);
+        y = pt[1] / (logicalBounds.yMax - logicalBounds.yMin);
         raphaelForImage.attr({ y: screenBounds.yTop + (screenBounds.plotHeight*(1-y))-30+offsetY });
         animationTime = ms;
       }
@@ -394,7 +393,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
           points          = dataSetView.getPath('item.points') || [],
 
-          animations      = Smartgraphs.animationTool.animations,
+          animations      = this.getPath('parentView.graphController.animations'),
           offsetY         = animations[index].offsetY,
 
           clipRect        = raphaelForGraph.attrs['clip-rect'],
@@ -457,7 +456,7 @@ Smartgraphs.GraphView = SC.View.extend(
       var screenBounds  = this._getScreenBounds(),
           logicalBounds = this._getLogicalBounds(),
           images        = this.getPath('animationView.images') || [],          
-          animations    = Smartgraphs.animationTool.animations || [],
+          animations    = this.getPath('parentView.graphController.animations'),
           graphResetAttributes = {
             "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(','),
             "opacity": 0.25
@@ -571,22 +570,21 @@ Smartgraphs.GraphView = SC.View.extend(
     animationView: RaphaelViews.RaphaelView.design({
 
       isVisibleBinding: '.parentView.parentView.showAnimation',
+      animationsBinding: '.parentView.parentView*graphController.animations',
 
       images: [],
 
       // Handle the special shapes we allow authors to use.
-      _nomalizeImageURL: function(imageURL) {
+      _nomalizeImageURL: function (imageURL) {
         if (imageURL.indexOf('.') === -1) {
-          if (imageURL === 'circle') {
-            imageURL = sc_static('images/circle');
-          } else if (imageURL === 'box') {
-            imageURL = sc_static('images/box');
-          } else if (imageURL === 'cross') {
-            imageURL = sc_static('images/cross');
-          } else {
-            // Default to cross.
-            imageURL = sc_static('images/cross');
-          }
+          
+          var longURL = {
+                circle: sc_static('images/circle'),
+                box:    sc_static('images/box'),
+                cross:  sc_static('images/cross')
+              }[imageURL];
+            
+          imageURL = longURL || sc_static('images/cross');
         }
         return imageURL;
       },
@@ -594,7 +592,7 @@ Smartgraphs.GraphView = SC.View.extend(
       // Adds the correct image to the animation channel in Raphael, the first time.
       _renderDataSetImageFirstTime: function(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
         console.log("**** animationView._renderDataSetImageFirstTime for %s", dataSetView ? dataSetView.toString() : '(null)');
-        
+
         // quick hack to make sure we can get rid of the images when not animating
         if (Smartgraphs.animationTool.getPath('animations.length') === 0) {
           console.log('not rendering images because there are no animations');
@@ -605,9 +603,9 @@ Smartgraphs.GraphView = SC.View.extend(
             yMax = yAxis ? yAxis.get('max') : 1,
             points = dataSetView.getPath('item.points') || [],
             pt = points[0], // [x, y]
-            y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin),
-            animation = Smartgraphs.animationTool.animations[idx],
-            imageURL = animation ? animation.foregroundImageURL : '';
+            y = pt[1]/(yMax-yMin),
+            animations = this.get('animations') || [],
+            imageURL = animations[idx] ? animations[idx].foregroundImageURL : '';
 
         if (!dataSetView.get('isAnimatable')) {
           SC.Logger.debug('Data set is not animatable. Skipping.');
@@ -638,7 +636,7 @@ Smartgraphs.GraphView = SC.View.extend(
             yTop = frame.y + padding.top,
             plotWidth = Smartgraphs.animationTool.get('channelWidth'),
             plotHeight = frame.height - padding.top - padding.bottom,
-            animations = Smartgraphs.animationTool.animations,
+            animations = this.get('animations') || [],
             offsetX = animations.length > 0 ? animations[0].offsetX : 0,
             offsetY = animations.length > 0 ? animations[0].offsetY : 0,
             yAxis = this.getPath('parentView.parentView.yAxis'),
@@ -648,6 +646,9 @@ Smartgraphs.GraphView = SC.View.extend(
             raphaelCanvas = this.get('raphaelCanvas');
 
         console.log("**** animationView.render(firstTime = %s)", firstTime ? 'YES' : 'NO');
+        
+        
+        window.animationView = this;
         
         if (frame.width === 0) {
           console.log("****   returning because frame.width === 0");

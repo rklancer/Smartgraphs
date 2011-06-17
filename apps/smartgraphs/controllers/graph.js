@@ -25,6 +25,10 @@ sc_require('tools/animation/animation_state');
 
 Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.GraphController.prototype */ {
+
+  // FIXME: make animationTool store its state somewhere in this controller, instead of in an external singleton
+  // (which is bound by BOTH graph controllers)
+  animationsBinding: 'Smartgraphs.animationTool.animations',
   
   init: function () {
     var statechart;
