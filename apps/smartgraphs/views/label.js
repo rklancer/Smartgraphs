@@ -339,7 +339,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
     highlightedStrokeBinding: '.parentLabelView.highlightedStroke',
     defaultStrokeWidth:       1,
     highlightedStrokeWidth:   2,
-    margin:                   30,
+    margin:                   20,
     isHighlightedBinding:     '.parentLabelView.isBodyDragging',
 
     width: function () {
