@@ -308,45 +308,36 @@ Smartgraphs.GraphView = SC.View.extend(
       // Without these two, animation will occasionally screw up.
       raphaelForGraph.stop();
       raphaelForImage.stop();
-
+      
+      console.log("**** in startAnimationLoop: regenerateKeyframes = %s", loopParameters.regenerateKeyframes ? "YES" : "NO");
+      console.log("**** in startAnimationLoop: animationIsRestarting = %s", loopParameters.animationIsRestarting ? "YES" : "NO");
+      
       // The keyframes on the first loop are set below. Once we've looped once,
       // when restarting a previous animation, we need to regenerate the keyframes
       // to handle the "full" animation loop. This flag is toggled, below.
       // Note: Can't move this code lower! We have to wait until the next loop
       // to regenerate the keyframes.
-      
-      
+
       if (loopParameters.regenerateKeyframes) {
-        console.log("**** in startAnimationLoop: regenerateKeyframes = YES");
         loopParameters.keyframes = {};
-        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, 1, 0, loopCallback);
+        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, 0, loopCallback);
         loopParameters.regenerateKeyframes = NO; // Should only regenerate keyframes once.
-      }
-      else {
-        console.log("**** in startAnimationLoop: regenerateKeyframes = NO");
       }
 
       if (loopParameters.animationIsRestarting) {
-        console.log('**** in startAnimationLoop: animationIsRestarting = YES');
-        // Use the keyframes generated below and don't modify the existing
-        // raphael parameters.
         loopParameters.regenerateKeyframes   = YES;   // The next loop, we need to regenerate keyframes.
         loopParameters.animationIsRestarting = NO;
         animationTime = parseInt(ms - (raphaelForGraph.attrs['clip-rect'][2]/screenBounds.plotWidth)*ms, 10);      
       }
       else {
-        console.log("**** in startAnimationLoop: animationIsRestarting = NO");
         // Reset raphael parameters to the "beginning".
         raphaelForGraph.attr({ "clip-rect": [screenBounds.xLeft, screenBounds.yTop, 0, screenBounds.plotHeight].join(',') });
 
         pt = points[0]; // [x, y]
-        y = pt[1] === 0 ? 0 : pt[1]/(logicalBounds.yMax-logicalBounds.yMin);
+        y = pt[1]/(logicalBounds.yMax-logicalBounds.yMin);
         raphaelForImage.attr({ y: screenBounds.yTop + (screenBounds.plotHeight*(1-y))-30+offsetY });
         animationTime = ms;
       }
-
-      console.log("using animationTime = %d", animationTime);
-      window.keyframes = loopParameters.keyframes;
       
       raphaelForGraph.animate({
         "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(',')
@@ -355,22 +346,33 @@ Smartgraphs.GraphView = SC.View.extend(
       raphaelForImage.animateWith(raphaelForGraph, loopParameters.keyframes,  animationTime);
     },
  
-    _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, offsetY, scale, progress, loopCallback) {
-      var idx, len, pt, dist, scaledDist, y;
+    _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, offsetY, startingXFrac, loopCallback) {
+      var xScale              = 1 / (logicalBounds.xMax - logicalBounds.xMin),
+          yScale              = 1 / (logicalBounds.yMax - logicalBounds.yMin),
+          startingXPercentage = startingXFrac * 100,        // if restarting, percentage along the x-axis to start from
+          
+          idx, len, pt, xPercentage, scaledXPercentage, xFrac, yFrac;
 
       for (idx=0, len=points.length; idx<len; ++idx) {
-        pt = points[idx]; // [x, y]
-        dist = (pt[0] === 0 ? 0 : pt[0] / (logicalBounds.xMax - logicalBounds.xMin)) * 100;
-        scaledDist = (dist - progress) / scale ;
-        if (scaledDist >= 100) scaledDist = 100;
-        if (dist >= progress) {
-          y = pt[1] === 0 ? 0 : pt[1] / (logicalBounds.yMax - logicalBounds.yMin);
-          keyframes[parseInt(scaledDist, 10)+'%'] = {
-            y: screenBounds.yTop + (screenBounds.plotHeight * (1-y)) - 30 + offsetY
+        pt = points[idx];
+        xFrac = pt[0] * xScale;             // the fractional progress along x-axis
+        xPercentage = xFrac * 100;
+        
+        // only insert keyframes for points to the right of the x-value we're restarting the animation at
+        if (xPercentage >= startingXPercentage) { 
+          
+          // rescale the percentage to account for starting in the middle (a point right at startingXPercentage should be keyframe '0%')
+          scaledXPercentage = (xPercentage - startingXPercentage) / (1 - startingXFrac);
+          if (scaledXPercentage >= 100) scaledXPercentage = 100;
+          
+          yFrac = pt[1] * yScale;         // the fractional distance along y-axis at which the icon should display
+          
+          keyframes[parseInt(scaledXPercentage, 10)+'%'] = {
+            y: screenBounds.yTop + (screenBounds.plotHeight * (1-yFrac)) - 30 + offsetY
           };
-          console.log("keyframes[%s] = %d", parseInt(scaledDist, 10)+'%', keyframes[parseInt(scaledDist, 10)+'%'].y);
+          
           if (idx+1===len) {
-            keyframes[parseInt(scaledDist, 10)+'%'].callback = loopCallback;
+            keyframes[parseInt(scaledXPercentage, 10)+'%'].callback = loopCallback;
           }
         }
       }
@@ -397,9 +399,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
           clipRect        = raphaelForGraph.attrs['clip-rect'],
           currentX        = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
-          width           = currentX / screenBounds.plotWidth,
-          scale           = 1 - width,
-          progress        = width * 100,
+          currentXFrac    = currentX / screenBounds.plotWidth,
           
           loopParameters = {
             animationIsRestarting: this._animationIsPaused,
@@ -422,7 +422,7 @@ Smartgraphs.GraphView = SC.View.extend(
       // be regenerated in startAnimationLoop() if we're restarting animation
       // so that the next loop has a "full" set of keyframes.
       
-      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, scale, progress, startAnimationLoop);
+      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, currentXFrac, startAnimationLoop);
 
       // Actually start the animation loop.
       startAnimationLoop();
@@ -594,6 +594,11 @@ Smartgraphs.GraphView = SC.View.extend(
       // Adds the correct image to the animation channel in Raphael, the first time.
       _renderDataSetImageFirstTime: function(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
         console.log("**** animationView._renderDataSetImageFirstTime for %s", dataSetView ? dataSetView.toString() : '(null)');
+        
+        // quick hack to make sure we can get rid of the images when not animating
+        if (Smartgraphs.animationTool.getPath('animations.length') === 0) {
+          console.log('not rendering images because there are no animations');
+        }
         
         var yAxis = this.getPath('parentView.parentView.yAxis'),
             yMin = yAxis ? yAxis.get('min') : 0,
