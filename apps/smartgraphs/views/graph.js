@@ -267,6 +267,8 @@ Smartgraphs.GraphView = SC.View.extend(
       var frame   = this.get('frame'),
           padding = this.getPath('parentView.padding');
           
+      if (!padding) return;
+          
       return {
         xLeft:      frame.x + padding.left,
         xRight:     frame.x + frame.width - padding.right,
@@ -280,6 +282,8 @@ Smartgraphs.GraphView = SC.View.extend(
     _getLogicalBounds: function () {
       var xAxis = this.getPath('parentView.xAxis'),
           yAxis = this.getPath('parentView.yAxis');
+          
+      if (!xAxis || !yAxis) return;
       
       return {        
         xMin: xAxis.get('min'), 
@@ -438,11 +442,11 @@ Smartgraphs.GraphView = SC.View.extend(
       console.log("**** graphCanvasView.stop()");   
       var images = this.getPath('animationView.images') || [];
 
-      this.getPath('dataHolder.childViews').forEach(function(dataSetView, idx) {
-        var layer = dataSetView.get('layer'),
+      this.getPath('dataHolder.childViews').forEach(function (dataSetView, idx) {
+        var layer           = dataSetView.get('layer'),
             raphaelForGraph = layer ? layer.raphael : null,
-            image = images[idx],
-            node = image ? image.node : null,
+            image           = images[idx],
+            node            = image ? image.node  : null,
             raphaelForImage = node ? node.raphael : null;
 
         if (raphaelForGraph) raphaelForGraph.stop();
@@ -455,44 +459,30 @@ Smartgraphs.GraphView = SC.View.extend(
 
     reset: function() {
       console.log("**** graphCanvasView.reset()");
-      var frame = this.get('frame'),
-          padding = this.getPath('parentView.padding'),
-          xLeft = frame.x + padding.left,
-          yTop = frame.y + padding.top,
-          plotWidth = frame.width - padding.left - padding.right,
-          plotHeight = frame.height - padding.top - padding.bottom,
-          xLeftRect = frame.x + 10,
-          yTopRect = frame.y + padding.top,
-          plotWidthRect = Smartgraphs.animationTool.get('channelWidth'),
-          plotHeightRect = frame.height - padding.top - padding.bottom,
-          images = this.getPath('animationView.images') || [],
-          xAxis = this.getPath('parentView.xAxis'),
-          xMin = xAxis ? xAxis.get('min') : 0,
-          xMax = xAxis ? xAxis.get('max') : 1,
-          yAxis = this.getPath('parentView.yAxis'),
-          yMin = yAxis ? yAxis.get('min') : 0,
-          yMax = yAxis ? yAxis.get('max') : 1,
+      
+      var screenBounds  = this._getScreenBounds(),
+          logicalBounds = this._getLogicalBounds(),
+          images        = this.getPath('animationView.images') || [],          
+          animations    = Smartgraphs.animationTool.animations || [],
           graphResetAttributes = {
-            "clip-rect": [xLeft, yTop, plotWidth, plotHeight].join(','),
+            "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(','),
             "opacity": 0.25
-          },
-          animations = Smartgraphs.animationTool.animations || [];
+          };
 
-      this.getPath('dataHolder.childViews').forEach(function(dataSetView, idx) {
-        var layer = dataSetView.get('layer'),
+      this.getPath('dataHolder.childViews').forEach(function (dataSetView, idx) {
+        var layer           = dataSetView.get('layer'),
             raphaelForGraph = layer ? layer.raphael : null,
-            image = images[idx],
-            node = image ? image.node : null,
+            image           = images[idx],
+            node            = image ? image.node : null,
             raphaelForImage = node ? node.raphael : null,
-            points = dataSetView.getPath('item.points') || [],
-            pt = points[0], // [x, y]
-            y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin),
-            offsetY = animations[idx] ? animations[idx].offsetY : 0;
+            points          = dataSetView.getPath('item.points') || [],
+            y               = points[0][1] / (logicalBounds.yMax - logicalBounds.yMin),
+            offsetY         = animations[idx] ? animations[idx].offsetY : 0;
 
         if (raphaelForGraph) raphaelForGraph.attr(graphResetAttributes);
         if (raphaelForImage) {
           raphaelForImage.attr({
-            y: yTopRect+(plotHeightRect*(1-y))-30+offsetY
+            y: screenBounds.yTop + screenBounds.plotHeight * (1-y) - 30 + offsetY
           });
         }
       });
