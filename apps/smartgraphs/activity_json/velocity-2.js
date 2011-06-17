@@ -95,8 +95,8 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
             "animations": [{
                 "data": "position-data",
                 "image": sc_static('images/car'),
-                "offsetX": 0,
-                "offsetY": 0
+                "xOffset": 0,
+                "yOffset": 0
               }]
           }
         }

@@ -75,13 +75,13 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
             "animations": [{
                 "data": "position-data2",
                 "image": sc_static('images/car'),
-                "offsetX": 0,
-                "offsetY": 0
+                "xOffset": 0,
+                "yOffset": 0
               }, {
                 "data": "position-data",
                 "image": "circle",
-                "offsetX": -10,
-                "offsetY": 0
+                "xOffset": -10,
+                "yOffset": 0
             }]
           }
         }

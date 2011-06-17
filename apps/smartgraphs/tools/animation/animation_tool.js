@@ -69,8 +69,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
       return {
         datadefName:        hash.data,
         foregroundImageURL: hash.image   || '',
-        offsetX:            hash.offsetX || 0,
-        offsetY:            hash.offsetY || 0
+        xOffset:            hash.xOffset || 0,
+        yOffset:            hash.yOffset || 0
       };
     }));
     

@@ -300,7 +300,7 @@ Smartgraphs.GraphView = SC.View.extend(
           screenBounds  = this._getScreenBounds(),
           ms            = Smartgraphs.animationTool.get('duration'),
           animations    = this.getPath('parentView.graphController.animations'),
-          offsetY       = animations[index].offsetY,
+          yOffset       = animations[index].yOffset,
           
           animationTime, pt, dist, y;
 
@@ -319,7 +319,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       if (loopParameters.regenerateKeyframes) {
         loopParameters.keyframes = {};
-        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, 0, loopCallback);
+        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, 0, loopCallback);
         loopParameters.regenerateKeyframes = NO; // Should only regenerate keyframes once.
       }
 
@@ -334,7 +334,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
         pt = points[0]; // [x, y]
         y = pt[1] / (logicalBounds.yMax - logicalBounds.yMin);
-        raphaelForImage.attr({ y: screenBounds.yTop + (screenBounds.plotHeight*(1-y))-30+offsetY });
+        raphaelForImage.attr({ y: screenBounds.yTop + (screenBounds.plotHeight*(1-y))-30+yOffset });
         animationTime = ms;
       }
       
@@ -345,7 +345,7 @@ Smartgraphs.GraphView = SC.View.extend(
       raphaelForImage.animateWith(raphaelForGraph, loopParameters.keyframes,  animationTime);
     },
  
-    _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, offsetY, startingXFrac, loopCallback) {
+    _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, yOffset, startingXFrac, loopCallback) {
       var xScale              = 1 / (logicalBounds.xMax - logicalBounds.xMin),
           yScale              = 1 / (logicalBounds.yMax - logicalBounds.yMin),
           startingXPercentage = startingXFrac * 100,        // if restarting, percentage along the x-axis to start from
@@ -367,7 +367,7 @@ Smartgraphs.GraphView = SC.View.extend(
           yFrac = pt[1] * yScale;         // the fractional distance along y-axis at which the icon should display
           
           keyframes[parseInt(scaledXPercentage, 10)+'%'] = {
-            y: screenBounds.yTop + (screenBounds.plotHeight * (1-yFrac)) - 30 + offsetY
+            y: screenBounds.yTop + (screenBounds.plotHeight * (1-yFrac)) - 30 + yOffset
           };
           
           if (idx+1===len) {
@@ -394,7 +394,7 @@ Smartgraphs.GraphView = SC.View.extend(
           points          = dataSetView.getPath('item.points') || [],
 
           animations      = this.getPath('parentView.graphController.animations'),
-          offsetY         = animations[index].offsetY,
+          yOffset         = animations[index].yOffset,
 
           clipRect        = raphaelForGraph.attrs['clip-rect'],
           currentX        = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
@@ -421,7 +421,7 @@ Smartgraphs.GraphView = SC.View.extend(
       // be regenerated in startAnimationLoop() if we're restarting animation
       // so that the next loop has a "full" set of keyframes.
       
-      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, currentXFrac, startAnimationLoop);
+      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, currentXFrac, startAnimationLoop);
 
       // Actually start the animation loop.
       startAnimationLoop();
@@ -470,12 +470,12 @@ Smartgraphs.GraphView = SC.View.extend(
             raphaelForImage = node ? node.raphael : null,
             points          = dataSetView.getPath('item.points') || [],
             y               = points[0][1] / (logicalBounds.yMax - logicalBounds.yMin),
-            offsetY         = animations[idx] ? animations[idx].offsetY : 0;
+            yOffset         = animations[idx] ? animations[idx].yOffset : 0;
 
         if (raphaelForGraph) raphaelForGraph.attr(graphResetAttributes);
         if (raphaelForImage) {
           raphaelForImage.attr({
-            y: screenBounds.yTop + screenBounds.plotHeight * (1-y) - 30 + offsetY
+            y: screenBounds.yTop + screenBounds.plotHeight * (1-y) - 30 + yOffset
           });
         }
       });
@@ -637,8 +637,8 @@ Smartgraphs.GraphView = SC.View.extend(
             plotWidth = Smartgraphs.animationTool.get('channelWidth'),
             plotHeight = frame.height - padding.top - padding.bottom,
             animations = this.get('animations') || [],
-            offsetX = animations.length > 0 ? animations[0].offsetX : 0,
-            offsetY = animations.length > 0 ? animations[0].offsetY : 0,
+            xOffset = animations.length > 0 ? animations[0].xOffset : 0,
+            yOffset = animations.length > 0 ? animations[0].yOffset : 0,
             yAxis = this.getPath('parentView.parentView.yAxis'),
             yMin = yAxis ? yAxis.get('min') : 0,
             yMax = yAxis ? yAxis.get('max') : 1,
@@ -656,7 +656,7 @@ Smartgraphs.GraphView = SC.View.extend(
         }
 
         if (firstTime) {
-          context.callback(this, this.renderCallback, xLeft+offsetX, yTop+offsetY, plotWidth, plotHeight);
+          context.callback(this, this.renderCallback, xLeft+xOffset, yTop+yOffset, plotWidth, plotHeight);
         } 
         else {
           this.getPath('parentView.dataHolder.childViews').forEach(function(dataSetView, idx) {
@@ -671,8 +671,8 @@ Smartgraphs.GraphView = SC.View.extend(
             else if (dataSetView.get('isAnimatable')) {
               if (image.raphael) {
                 image.raphael.attr({
-                  x: xLeft+offsetX,
-                  y: yTop+(plotHeight*(1-y))-30+offsetY,
+                  x: xLeft+xOffset,
+                  y: yTop+(plotHeight*(1-y))-30+yOffset,
                   width: plotWidth,
                   height: 30
                 });
