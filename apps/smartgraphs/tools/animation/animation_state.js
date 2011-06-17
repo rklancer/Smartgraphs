@@ -14,7 +14,7 @@
 */
 
 Smartgraphs.ANIMATION_TOOL = SC.State.extend(
-/** @scope Smartgraphs.ANIMATION.prototype */ {
+/** @scope Smartgraphs.ANIMATION_TOOL.prototype */ {
   
   initialSubstate: 'ANIMATION_CLEARED',
   
@@ -28,6 +28,9 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
   
   exitState: function () {
     var pane = Smartgraphs.animationTool.get('pane');
+    
+    // make sure the animation is stopped before we leave the activity step!
+    Smartgraphs.animationTool.clear();
     
     Smartgraphs.activityViewController.hideAnimation(pane);
     Smartgraphs.activityViewController.hideControls(pane);
