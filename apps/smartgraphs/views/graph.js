@@ -290,7 +290,7 @@ Smartgraphs.GraphView = SC.View.extend(
     },
     
     
-    _startAnimationLoop: function (loopParameters, startAnimationLoop, dataSetView, index, raphaelForGraph, raphaelForImage) {
+    _startAnimationLoop: function (loopParameters, callback, dataSetView, index, raphaelForGraph, raphaelForImage) {
       console.log("**** _startAnimationLoop()");
     
       var points        = dataSetView.getPath('item.points') || [],
@@ -316,7 +316,7 @@ Smartgraphs.GraphView = SC.View.extend(
       if (loopParameters.regenerateKeyframes) {
         console.log("**** in startAnimationLoop: regenerateKeyframes = YES");
         loopParameters.keyframes = {};
-        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, 1, 0, startAnimationLoop);
+        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, offsetY, 1, 0, callback);
         loopParameters.regenerateKeyframes = NO; // Should only regenerate keyframes once.
       }
       else {
@@ -353,7 +353,7 @@ Smartgraphs.GraphView = SC.View.extend(
     },
 
        
-    _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, offsetY, scale, progress, startAnimationLoop) {
+    _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, offsetY, scale, progress, callback) {
       var idx, len, pt, dist, scaledDist, y;
 
       for (idx=0, len=points.length; idx<len; ++idx) {
@@ -368,7 +368,7 @@ Smartgraphs.GraphView = SC.View.extend(
           };
           console.log("keyframes[%s] = %d", parseInt(scaledDist, 10)+'%', keyframes[parseInt(scaledDist, 10)+'%'].y);
           if (idx+1===len) {
-            keyframes[parseInt(scaledDist, 10)+'%'].callback = startAnimationLoop;
+            keyframes[parseInt(scaledDist, 10)+'%'].callback = callback;
           }
         }
       }
