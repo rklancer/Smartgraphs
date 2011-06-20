@@ -91,10 +91,10 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
             "pane": "single",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/dashedRoad'),
+            "backgroundImage": sc_static('images/roadDashed.png'),
             "animations": [{
                 "data": "position-data",
-                "image": sc_static('images/redcarsmall'),
+                "image": sc_static('images/carWhite.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
