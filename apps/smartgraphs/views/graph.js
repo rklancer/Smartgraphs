@@ -37,20 +37,20 @@ Smartgraphs.GraphView = SC.View.extend(
     this._viewsByClassAndItem = {};
   },
 
-  animate: function() {
+  animate: function () {
     this.get('graphCanvasView').animate();
   },
 
-  stop: function() {
+  stop: function () {
     this.get('graphCanvasView').stop();
   },
 
-  reset: function() {
+  reset: function () {
     this.get('graphCanvasView').reset();
   },
 
   // adjust left border depending on whether we show the animation or not.
-  showAnimationDidChange: function() {
+  showAnimationDidChange: function () {
     var showAnimation = this.get('showAnimation'),
         channelWidth  = Smartgraphs.animationTool.get('channelWidth');
     
@@ -427,12 +427,12 @@ Smartgraphs.GraphView = SC.View.extend(
       startAnimationLoop();
     },
     
-    animate: function() {
+    animate: function () {
       console.log("**** graphCanvasView.animate()");
       this.getPath('dataHolder.childViews').forEach(this._animateDataView, this);
     },
 
-    stop: function() {
+    stop: function () {
       console.log("**** graphCanvasView.stop()");   
       var images = this.getPath('animationView.images') || [];
 
@@ -450,7 +450,7 @@ Smartgraphs.GraphView = SC.View.extend(
       this._animationIsPaused = YES;
     },
 
-    reset: function() {
+    reset: function () {
       console.log("**** graphCanvasView.reset()");
       
       var screenBounds  = this._getScreenBounds(),
@@ -569,10 +569,13 @@ Smartgraphs.GraphView = SC.View.extend(
     // Holds the animation channel. Should be later in the DOM (and thus "in front of") the annotation views.
     animationView: RaphaelViews.RaphaelView.design({
 
-      isVisibleBinding: '.parentView.parentView.showAnimation',
-      animationsBinding: '.parentView.parentView*graphController.animations',
+      isVisibleBinding:  '.parentView.parentView.showAnimation',
+      animationsBinding: '.parentView.parentView*graphController.animations',    
 
       images: [],
+      indexedImages: {},
+
+      displayProperties: 'animations.[]',
 
       // Handle the special shapes we allow authors to use.
       _nomalizeImageURL: function (imageURL) {
@@ -587,6 +590,70 @@ Smartgraphs.GraphView = SC.View.extend(
           imageURL = longURL || sc_static('images/cross');
         }
         return imageURL;
+      },
+      
+      _renderDataImages: function (raphaelCanvas) {
+        var animations             = this.get('animations') || [],
+            dataViews              = this.getPath('parentView.dataHolder.childViews') || [],
+            imagesByDatadefName    = this.get('imagesByDatadefName') || {},
+            dataViewsByDatadefName = {},
+            requestedImageURLs     = {},
+            logicalBounds          = this.get('parentView')._getLogicalBounds(),
+            screenBounds           = this.get('parentView')._getScreenBounds(),
+            datadefName,
+            dataView,
+            points,
+            y;
+
+        animations.forEach( function (animationSpec) {
+          dataViewsByDatadefName[animationSpec.datadefName] = [];
+          requestedImageURLs[animationSpec.datadefName] = animationSpec.foregroundImageURL;
+        });
+        
+        dataViews.forEach( function (dataView) {
+          var datadefName = dataView.getPath('item.dataRepresentation.datadef.name');
+          
+          if (dataViewsByDatadefName[datadefName]) {
+            dataViewsByDatadefName[datadefName].push(dataView);
+          }
+        });
+        
+        for (datadefName in requestedImageURLs) {
+          if (!requestedImageURLs.hasOwnProperty(datadefName)) continue;
+          
+          if (!imagesByDatadefName[datadefName]) {
+            imagesByDatadefName[datadefName] = raphaelCanvas.image(this._normalizeImageURL(requestedImageURLs[datadefName]));
+          }
+        }
+        
+        for (datadefName in imagesByDatadefName) {
+          if (!imagesByDatadefName.hasOwnProperty(datadefName)) continue;
+          
+          // remove images for datadefs we're not animating
+          if (!requestedImageURLs[datadefName]) {
+            imagesByDatadefName[datadefName].remove();
+          }
+          else {
+            // finally, display the right image in the right place.
+            
+            dataView = dataViewsByDatadefName[datadefName][0];        // pick one of the data views we're animating
+            points   = dataView.getPath('item.points');
+            y        = points[0] / (logicalBounds.yMax - logicalBounds.yMin);
+            
+            imagesByDatadefName[datadefName].attr({
+              src:    this._normalizeImageURL(requestedImageURLs[datadefName]),
+              x:      screenBounds.xLeft,
+              y:      screenBounds.yTop + (screenBounds.plotHeight * (1-y)) - 30,
+              width:  screenBounds.plotWidth,
+              height: 30
+            });
+          }
+        }
+        
+        this.set('dataViewsByDatadefName', dataViewsByDatadefName);
+        this.setIfChanged('imagesByDatadefName', imagesByDatadefName);
+                
+        return null;     // we don't generate a layer
       },
 
       // Adds the correct image to the animation channel in Raphael, the first time.
@@ -638,58 +705,74 @@ Smartgraphs.GraphView = SC.View.extend(
       },
 
       render: function (context, firstTime) {
-        var that = this,
-            frame = this.getPath('parentView.frame'),
-            padding = this.getPath('parentView.parentView.padding'),
-            xLeft = frame.x + 10,
-            yTop = frame.y + padding.top,
-            plotWidth = Smartgraphs.animationTool.get('channelWidth'),
-            plotHeight = frame.height - padding.top - padding.bottom,
-            animations = this.get('animations') || [],
-            xOffset = animations.length > 0 ? animations[0].xOffset : 0,
-            yOffset = animations.length > 0 ? animations[0].yOffset : 0,
-            yAxis = this.getPath('parentView.parentView.yAxis'),
-            yMin = yAxis ? yAxis.get('min') : 0,
-            yMax = yAxis ? yAxis.get('max') : 1,
-            images = this.images,
-            raphaelCanvas = this.get('raphaelCanvas');
-
-        console.log("**** animationView.render(firstTime = %s)", firstTime ? 'YES' : 'NO');
-        
-        
         window.animationView = this;
-        
-        if (frame.width === 0) {
-          console.log("****   returning because frame.width === 0");
-          return;
-        }
-
         if (firstTime) {
-          context.callback(this, this.renderCallback, xLeft+xOffset, yTop+yOffset, plotWidth, plotHeight);
-        } 
+          context.callback(this, this._renderDataImages);
+        }
         else {
-          this.getPath('parentView.dataHolder.childViews').forEach(function(dataSetView, idx) {
-            var image = images[idx],
-                points = dataSetView.getPath('item.points') || [],
-                pt = points[0], // [x, y]
-                y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
-
-            if (!image) {
-              that._renderDataSetImageFirstTime(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight);
-            } 
-            else if (dataSetView.get('isAnimatable')) {
-              if (image.raphael) {
-                image.raphael.attr({
-                  x: xLeft+xOffset,
-                  y: yTop+(plotHeight*(1-y))-30+yOffset,
-                  width: plotWidth,
-                  height: 30
-                });
-              }
-            }
-          });
+          this._renderDataImages(this.getPath('parentView.raphaelCanvas'));
         }
       }
+      
+      
+        
+        // 
+        // var that = this,
+        //     frame = this.getPath('parentView.frame'),
+        //     padding = this.getPath('parentView.parentView.padding'),
+        //     xLeft = frame.x + 10,
+        //     yTop = frame.y + padding.top,
+        //     plotWidth = Smartgraphs.animationTool.get('channelWidth'),
+        //     plotHeight = frame.height - padding.top - padding.bottom,
+        //     animations = this.get('animations') || [],
+        //     xOffset = animations.length > 0 ? animations[0].xOffset : 0,
+        //     yOffset = animations.length > 0 ? animations[0].yOffset : 0,
+        //     yAxis = this.getPath('parentView.parentView.yAxis'),
+        //     yMin = yAxis ? yAxis.get('min') : 0,
+        //     yMax = yAxis ? yAxis.get('max') : 1,
+        //     images = this.images,
+        //     raphaelCanvas = this.get('raphaelCanvas');
+        //       
+        // console.log("**** animationView.render(firstTime = %s)", firstTime ? 'YES' : 'NO');
+        // 
+        // 
+        // // iterate over animations and set them here.
+        // 
+        // window.animationView = this;
+        // 
+        // if (frame.width === 0) {
+        //   console.log("****   returning because frame.width === 0");
+        //   return;
+        // }
+        //       
+        // if (firstTime) {
+        //   context.callback(this, this.renderCallback, xLeft+xOffset, yTop+yOffset, plotWidth, plotHeight);
+        // } 
+        // else {
+        //   
+        //   window.animationViewContext = context;
+        //   this.getPath('parentView.dataHolder.childViews').forEach(function(dataSetView, idx) {
+        //     var image = images[idx],
+        //         points = dataSetView.getPath('item.points') || [],
+        //         pt = points[0], // [x, y]
+        //         y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
+        //       
+        //     if (!image) {
+        //       that._renderDataSetImageFirstTime(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight);
+        //     } 
+        //     else if (dataSetView.get('isAnimatable')) {
+        //       if (image.raphael) {
+        //         image.raphael.attr({
+        //           x: xLeft+xOffset,
+        //           y: yTop+(plotHeight*(1-y))-30+yOffset,
+        //           width: plotWidth,
+        //           height: 30
+        //         });
+        //       }
+        //     }
+          // });
+        // }
+      // }
 
     })
   })
