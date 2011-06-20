@@ -288,24 +288,27 @@ Smartgraphs.GraphView = SC.View.extend(
         xMin: xAxis.get('min'), 
         xMax: xAxis.get('max'),
         yMin: yAxis.get('min'),
-        yMax: yAxis.get('max')        
+        yMax: yAxis.get('max')
       };
     },
     
-    _startAnimationLoop: function (loopParameters, loopCallback, dataSetView, index, raphaelForGraph, raphaelForImage) {
+    _startAnimationLoop: function (loopParameters, loopCallback, datadefName, dataViews, raphaelForImage) {
       console.log("**** _startAnimationLoop()");
     
-      var points        = dataSetView.getPath('item.points') || [],
+      var points        = dataViews.objectAt(0).getPath('item.points') || [],
           logicalBounds = this._getLogicalBounds(),
           screenBounds  = this._getScreenBounds(),
           ms            = Smartgraphs.animationTool.get('duration'),
-          animations    = this.getPath('parentView.graphController.animations'),
-          yOffset       = animations[index].yOffset,
+          animationSpec = this.getPath('animationView.animationSpecsByDatadefName')[datadefName],
+          yOffset       = animationSpec.yOffset,
           
-          animationTime, pt, dist, y;
+          raphaelForGraph, raphaelForFirstDataView, i, len, animationTime, pt, dist, y;
 
       // Without these two, animation will occasionally screw up.
-      raphaelForGraph.stop();
+      for (i = 0, len = dataViews.get('length'); i < len; i++) {
+        raphaelForGraph = dataViews.objectAt(i).get('layer').raphael;
+        raphaelForGraph.stop();
+      }
       raphaelForImage.stop();
       
       console.log("**** in startAnimationLoop: regenerateKeyframes = %s", loopParameters.regenerateKeyframes ? "YES" : "NO");
@@ -338,11 +341,21 @@ Smartgraphs.GraphView = SC.View.extend(
         animationTime = ms;
       }
       
-      raphaelForGraph.animate({
+      // and sync the animations together!
+      raphaelForFirstDataView = dataViews.objectAt(0).get('layer').raphael;
+      
+      raphaelForFirstDataView.animate({
         "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(',')
       }, animationTime);
+      
+      for (i = 1, len = dataViews.get('length'); i < len; i++) {
+        raphaelForGraph = dataViews.objectAt(i).get('layer').raphael;
+        raphaelForGraph.animateWith(raphaelForFirstDataView, {
+          "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(',')
+        }, animationTime);
+      }
 
-      raphaelForImage.animateWith(raphaelForGraph, loopParameters.keyframes,  animationTime);
+      raphaelForImage.animateWith(raphaelForFirstDataView, loopParameters.keyframes,  animationTime);
     },
  
     _calculateKeyframes: function (keyframes, points, logicalBounds, screenBounds, yOffset, startingXFrac, loopCallback) {
@@ -376,29 +389,28 @@ Smartgraphs.GraphView = SC.View.extend(
         }
       }
     },
-
-    _animateDataView: function (dataSetView, index) {
+    
+    _animateDataViewsFor: function (datadefName) {
       
-      console.log("**** graphCanvasView._animateDataView(%s, %d)", dataSetView ? dataSetView.toString() : '(null)', index);      
+      console.log("**** graphCanvasView._animateDataViewsFor(%s)", datadefName);
       
-      if (!dataSetView.get('isAnimatable')) return;
-      
-      var screenBounds    = this._getScreenBounds(),
-          logicalBounds   = this._getLogicalBounds(),
-          layer           = dataSetView.get('layer'),
-          raphaelForGraph = layer && layer.raphael || null,
-          images          = this.getPath('animationView.images'),
-          image           = images && images[index],
-          raphaelForImage = image && image.node && image.node.raphael || null,
-
-          points          = dataSetView.getPath('item.points') || [],
-
-          animations      = this.getPath('parentView.graphController.animations'),
-          yOffset         = animations[index].yOffset,
-
-          clipRect        = raphaelForGraph.attrs['clip-rect'],
-          currentX        = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
-          currentXFrac    = currentX / screenBounds.plotWidth,
+      var screenBounds           = this._getScreenBounds(),
+          logicalBounds          = this._getLogicalBounds(),
+          animationSpecsByDatadefName = this.getPath('animationView.animationSpecsByDatadefName') || {},          
+          dataViewsByDatadefName = this.getPath('animationView.dataViewsByDatadefName'),
+          
+          dataViews              = dataViewsByDatadefName[datadefName] || [],
+          firstDataView          = dataViews.objectAt(0),
+          raphaelForDataView     = firstDataView.get('layer') && firstDataView.get('layer').raphael,
+          
+          points                 = firstDataView.getPath('item.points') || [],
+          yOffset                = animationSpecsByDatadefName[datadefName].yOffset,
+          clipRect               = raphaelForDataView.attrs['clip-rect'],
+          currentX               = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
+          currentXFrac           = currentX / screenBounds.plotWidth,          
+          
+          imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
+          raphaelForImage        = imagesByDatadefName[datadefName],
           
           loopParameters = {
             animationIsRestarting: this._animationIsPaused,
@@ -406,14 +418,19 @@ Smartgraphs.GraphView = SC.View.extend(
             keyframes:             {}
           },
           
-          self = this;
-
-      // If the graph is in the "reset" mode, it will not have opacity: 1.0, so set
-      // it here.
-      raphaelForGraph.attr({ "opacity": 1.0 });
+          self = this,
+          dataView,
+          i,
+          len;
+          
+      // If the graph is in the "reset" mode, it will not have opacity: 1.0, so set it here.          
+      for (i = 0, len = dataViews.get('length'); i < len; i++) {
+        dataView = dataViews.objectAt(i);
+        dataView.get('layer').raphael.attr({ "opacity": 1.0 });
+      }
 
       function startAnimationLoop() {
-        self._startAnimationLoop(loopParameters, startAnimationLoop, dataSetView, index, raphaelForGraph, raphaelForImage);
+        self._startAnimationLoop(loopParameters, startAnimationLoop, datadefName, dataViews, raphaelForImage);
       }
 
       // Calculate the first set of keyframes. This takes into account any
@@ -429,22 +446,32 @@ Smartgraphs.GraphView = SC.View.extend(
     
     animate: function () {
       console.log("**** graphCanvasView.animate()");
-      this.getPath('dataHolder.childViews').forEach(this._animateDataView, this);
+      
+      var animations = this.getPath('parentView.graphController.animations'),
+          self = this;
+      
+      animations.forEach( function (animationSpec) {
+        self._animateDataViewsFor(animationSpec.datadefName);
+      });
     },
 
     stop: function () {
       console.log("**** graphCanvasView.stop()");   
-      var images = this.getPath('animationView.images') || [];
-
-      this.getPath('dataHolder.childViews').forEach(function (dataSetView, idx) {
-        var layer           = dataSetView.get('layer'),
-            raphaelForGraph = layer ? layer.raphael : null,
-            image           = images[idx],
-            node            = image ? image.node  : null,
-            raphaelForImage = node ? node.raphael : null;
-
-        if (raphaelForGraph) raphaelForGraph.stop();
-        if (raphaelForImage) raphaelForImage.stop();
+            
+      var animations             = this.getPath('parentView.graphController.animations'),
+          dataViewsByDatadefName = this.getPath('animationView.dataViewsByDatadefName'),
+          imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
+          self = this;
+      
+      animations.forEach( function (animationSpec) {
+        var datadefName     = animationSpec.datadefName,
+            dataViews       = dataViewsByDatadefName[datadefName],
+            raphaelForImage = imagesByDatadefName[datadefName];
+        
+        dataViews.forEach( function (dataView) {
+          dataView.get('layer').raphael.stop();
+        });
+        raphaelForImage.stop();
       });
 
       this._animationIsPaused = YES;
@@ -455,24 +482,33 @@ Smartgraphs.GraphView = SC.View.extend(
       
       var screenBounds  = this._getScreenBounds(),
           logicalBounds = this._getLogicalBounds(),
-          images        = this.getPath('animationView.images') || [],          
-          animations    = this.getPath('parentView.graphController.animations'),
+          
+          animations             = this.getPath('parentView.graphController.animations') || [],
+          dataViewsByDatadefName = this.getPath('animationView.dataViewsByDatadefName'),
+          imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
+
           graphResetAttributes = {
             "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(','),
             "opacity": 0.25
-          };
+          },
 
-      this.getPath('dataHolder.childViews').forEach(function (dataSetView, idx) {
-        var layer           = dataSetView.get('layer'),
-            raphaelForGraph = layer ? layer.raphael : null,
-            image           = images[idx],
-            node            = image ? image.node : null,
-            raphaelForImage = node ? node.raphael : null,
-            points          = dataSetView.getPath('item.points') || [],
+          self = this;
+                
+      animations.forEach( function (animationSpec) {
+        var datadefName     = animationSpec.datadefName,
+            dataViews       = dataViewsByDatadefName[datadefName],
+            raphaelForImage = imagesByDatadefName[datadefName],
+            firstDataView   = dataViews.objectAt(0),
+            points          = firstDataView.getPath('item.points'),
             y               = points[0][1] / (logicalBounds.yMax - logicalBounds.yMin),
-            yOffset         = animations[idx] ? animations[idx].yOffset : 0;
+            yOffset         = animationSpec.yOffset || 0;
+        
 
-        if (raphaelForGraph) raphaelForGraph.attr(graphResetAttributes);
+        dataViews.forEach( function (dataView) {
+          var raphaelForGraph = dataView.get('layer').raphael;
+          raphaelForGraph.attr(graphResetAttributes);
+        });
+        
         if (raphaelForImage) {
           raphaelForImage.attr({
             y: screenBounds.yTop + screenBounds.plotHeight * (1-y) - 30 + yOffset
@@ -578,7 +614,7 @@ Smartgraphs.GraphView = SC.View.extend(
       displayProperties: 'animations.[]',
 
       // Handle the special shapes we allow authors to use.
-      _nomalizeImageURL: function (imageURL) {
+      _normalizeImageURL: function (imageURL) {
         if (imageURL.indexOf('.') === -1) {
           
           var longURL = {
@@ -597,23 +633,29 @@ Smartgraphs.GraphView = SC.View.extend(
             dataViews              = this.getPath('parentView.dataHolder.childViews') || [],
             imagesByDatadefName    = this.get('imagesByDatadefName') || {},
             dataViewsByDatadefName = {},
+            animationSpecsByDatadefName = {},
             requestedImageURLs     = {},
             logicalBounds          = this.get('parentView')._getLogicalBounds(),
             screenBounds           = this.get('parentView')._getScreenBounds(),
             datadefName,
+            animationSpec,
+            imageWidth,
+            imageHeight,
             dataView,
             points,
             y;
 
         animations.forEach( function (animationSpec) {
-          dataViewsByDatadefName[animationSpec.datadefName] = [];
-          requestedImageURLs[animationSpec.datadefName] = animationSpec.foregroundImageURL;
+          var datadefName = animationSpec.datadefName;
+          dataViewsByDatadefName[datadefName] = [];
+          requestedImageURLs[datadefName] = animationSpec.foregroundImageURL;
+          animationSpecsByDatadefName[datadefName] = animationSpec;
         });
         
         dataViews.forEach( function (dataView) {
           var datadefName = dataView.getPath('item.dataRepresentation.datadef.name');
           
-          if (dataViewsByDatadefName[datadefName]) {
+          if (dataViewsByDatadefName[datadefName] && dataView.get('isAnimatable')) {
             dataViewsByDatadefName[datadefName].push(dataView);
           }
         });
@@ -622,6 +664,7 @@ Smartgraphs.GraphView = SC.View.extend(
           if (!requestedImageURLs.hasOwnProperty(datadefName)) continue;
           
           if (!imagesByDatadefName[datadefName]) {
+            console.log('creating new image');
             imagesByDatadefName[datadefName] = raphaelCanvas.image(this._normalizeImageURL(requestedImageURLs[datadefName]));
           }
         }
@@ -631,149 +674,51 @@ Smartgraphs.GraphView = SC.View.extend(
           
           // remove images for datadefs we're not animating
           if (!requestedImageURLs[datadefName]) {
+            console.log('removing image');
             imagesByDatadefName[datadefName].remove();
           }
           else {
             // finally, display the right image in the right place.
-            
-            dataView = dataViewsByDatadefName[datadefName][0];        // pick one of the data views we're animating
-            points   = dataView.getPath('item.points');
-            y        = points[0] / (logicalBounds.yMax - logicalBounds.yMin);
-            
-            imagesByDatadefName[datadefName].attr({
-              src:    this._normalizeImageURL(requestedImageURLs[datadefName]),
-              x:      screenBounds.xLeft,
-              y:      screenBounds.yTop + (screenBounds.plotHeight * (1-y)) - 30,
-              width:  screenBounds.plotWidth,
-              height: 30
-            });
+            dataView = dataViewsByDatadefName[datadefName][0];        // pick one of the data views we're animating            
+            if (dataView) {
+              points        = dataView.getPath('item.points');
+              y             = points[0][1] / (logicalBounds.yMax - logicalBounds.yMin);
+
+              animationSpec = animationSpecsByDatadefName[datadefName];
+              imageWidth    = animationSpec.width  || 70;
+              imageHeight   = animationSpec.height || 30;
+          
+              console.log('adjusting image');      
+
+              imagesByDatadefName[datadefName].attr({
+                src:    this._normalizeImageURL(requestedImageURLs[datadefName]),
+                x:      this.get('frame').x + 10,
+                y:      screenBounds.yTop + (screenBounds.plotHeight * (1-y)) - imageHeight,
+                width:  imageWidth,
+                height: imageHeight
+              });
+            }
           }
         }
         
         this.set('dataViewsByDatadefName', dataViewsByDatadefName);
         this.setIfChanged('imagesByDatadefName', imagesByDatadefName);
+        this.set('animationSpecsByDatadefName', animationSpecsByDatadefName);
                 
         return null;     // we don't generate a layer
       },
 
-      // Adds the correct image to the animation channel in Raphael, the first time.
-      _renderDataSetImageFirstTime: function(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        console.log("**** animationView._renderDataSetImageFirstTime for %s", dataSetView ? dataSetView.toString() : '(null)');
-
-        // quick hack to make sure we can get rid of the images when not animating
-        if (Smartgraphs.animationTool.getPath('animations.length') === 0) {
-          console.log('not rendering images because there are no animations');
-        }
-        
-        var yAxis = this.getPath('parentView.parentView.yAxis'),
-            yMin        = yAxis ? yAxis.get('min') : 0,
-            yMax        = yAxis ? yAxis.get('max') : 1,
-            points      = dataSetView.getPath('item.points') || [],
-            pt          = points[0], // [x, y]
-            y           = pt[1]/(yMax-yMin),
-            animations  = this.get('animations') || [],
-            imageURL    = '',
-            imageHeight = 30,
-            animation   = animations[idx],
-            imageWidth  = plotWidth;
-
-        if (animation) {
-          imageURL = animation.foregroundImageURL ? animation.foregroundImageURL : imageURL;
-          imageWidth    = animation.width  ? animation.width  : imageWidth;
-          imageHeight   = animation.height ? animation.height : imageHeight;
-        }
-
-        if (!dataSetView.get('isAnimatable')) {
-          SC.Logger.debug('Data set is not animatable. Skipping.');
-          return;
-        }
-
-        imageURL = this._nomalizeImageURL(imageURL);
-        images[idx] = raphaelCanvas.image(imageURL, xLeft, yTop+(plotHeight*(1-y))-imageHeight, imageWidth, imageHeight);
-      },
-
-      renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {
-        console.log("**** animationView.renderCallback()");
-        var that = this, images = [];
-        
-        console.log("****   in renderCallback: parentView.dataHolder.childViews.length = %d", this.getPath('parentView.dataHolder.childViews.length'));
-        this.getPath('parentView.dataHolder.childViews').forEach(function(dataSetView, idx) {
-          that._renderDataSetImageFirstTime(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight);
-        });
-
-        this.images = images;
-      },
-
       render: function (context, firstTime) {
+        console.log("animationView.render(firstTime = %s)", firstTime ? "YES" : "NO");
         window.animationView = this;
         if (firstTime) {
+          this.set('imagesByDatadefName', {});    // need to re-render images
           context.callback(this, this._renderDataImages);
         }
         else {
           this._renderDataImages(this.getPath('parentView.raphaelCanvas'));
         }
       }
-      
-      
-        
-        // 
-        // var that = this,
-        //     frame = this.getPath('parentView.frame'),
-        //     padding = this.getPath('parentView.parentView.padding'),
-        //     xLeft = frame.x + 10,
-        //     yTop = frame.y + padding.top,
-        //     plotWidth = Smartgraphs.animationTool.get('channelWidth'),
-        //     plotHeight = frame.height - padding.top - padding.bottom,
-        //     animations = this.get('animations') || [],
-        //     xOffset = animations.length > 0 ? animations[0].xOffset : 0,
-        //     yOffset = animations.length > 0 ? animations[0].yOffset : 0,
-        //     yAxis = this.getPath('parentView.parentView.yAxis'),
-        //     yMin = yAxis ? yAxis.get('min') : 0,
-        //     yMax = yAxis ? yAxis.get('max') : 1,
-        //     images = this.images,
-        //     raphaelCanvas = this.get('raphaelCanvas');
-        //       
-        // console.log("**** animationView.render(firstTime = %s)", firstTime ? 'YES' : 'NO');
-        // 
-        // 
-        // // iterate over animations and set them here.
-        // 
-        // window.animationView = this;
-        // 
-        // if (frame.width === 0) {
-        //   console.log("****   returning because frame.width === 0");
-        //   return;
-        // }
-        //       
-        // if (firstTime) {
-        //   context.callback(this, this.renderCallback, xLeft+xOffset, yTop+yOffset, plotWidth, plotHeight);
-        // } 
-        // else {
-        //   
-        //   window.animationViewContext = context;
-        //   this.getPath('parentView.dataHolder.childViews').forEach(function(dataSetView, idx) {
-        //     var image = images[idx],
-        //         points = dataSetView.getPath('item.points') || [],
-        //         pt = points[0], // [x, y]
-        //         y = pt[1] === 0 ? 0 : pt[1]/(yMax-yMin);
-        //       
-        //     if (!image) {
-        //       that._renderDataSetImageFirstTime(dataSetView, idx, images, raphaelCanvas, xLeft, yTop, plotWidth, plotHeight);
-        //     } 
-        //     else if (dataSetView.get('isAnimatable')) {
-        //       if (image.raphael) {
-        //         image.raphael.attr({
-        //           x: xLeft+xOffset,
-        //           y: yTop+(plotHeight*(1-y))-30+yOffset,
-        //           width: plotWidth,
-        //           height: 30
-        //         });
-        //       }
-        //     }
-          // });
-        // }
-      // }
-
     })
   })
 });
