@@ -599,13 +599,22 @@ Smartgraphs.GraphView = SC.View.extend(
         }
         
         var yAxis = this.getPath('parentView.parentView.yAxis'),
-            yMin = yAxis ? yAxis.get('min') : 0,
-            yMax = yAxis ? yAxis.get('max') : 1,
-            points = dataSetView.getPath('item.points') || [],
-            pt = points[0], // [x, y]
-            y = pt[1]/(yMax-yMin),
-            animations = this.get('animations') || [],
-            imageURL = animations[idx] ? animations[idx].foregroundImageURL : '';
+            yMin        = yAxis ? yAxis.get('min') : 0,
+            yMax        = yAxis ? yAxis.get('max') : 1,
+            points      = dataSetView.getPath('item.points') || [],
+            pt          = points[0], // [x, y]
+            y           = pt[1]/(yMax-yMin),
+            animations  = this.get('animations') || [],
+            imageURL    = '',
+            imageHeight = 30,
+            animation   = animations[idx],
+            imageWidth  = plotWidth;
+
+        if (animation) {
+          imageURL = animation.foregroundImageURL ? animation.foregroundImageURL : imageURL;
+          imageWidth    = animation.width  ? animation.width  : imageWidth;
+          imageHeight   = animation.height ? animation.height : imageHeight;
+        }
 
         if (!dataSetView.get('isAnimatable')) {
           SC.Logger.debug('Data set is not animatable. Skipping.');
@@ -613,7 +622,7 @@ Smartgraphs.GraphView = SC.View.extend(
         }
 
         imageURL = this._nomalizeImageURL(imageURL);
-        images[idx] = raphaelCanvas.image(imageURL, xLeft, yTop+(plotHeight*(1-y))-30, plotWidth, 30);
+        images[idx] = raphaelCanvas.image(imageURL, xLeft, yTop+(plotHeight*(1-y))-imageHeight, imageWidth, imageHeight);
       },
 
       renderCallback: function (raphaelCanvas, xLeft, yTop, plotWidth, plotHeight) {

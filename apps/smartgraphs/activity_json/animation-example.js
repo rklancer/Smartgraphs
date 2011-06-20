@@ -75,6 +75,8 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
             "animations": [{
                 "data": "position-data2",
                 "image": sc_static('images/car'),
+                "width": 70,
+                "height": 30,
                 "xOffset": 0,
                 "yOffset": 0
               }, {

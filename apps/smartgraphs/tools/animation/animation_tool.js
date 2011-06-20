@@ -70,7 +70,9 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
         datadefName:        hash.data,
         foregroundImageURL: hash.image   || '',
         xOffset:            hash.xOffset || 0,
-        yOffset:            hash.yOffset || 0
+        yOffset:            hash.yOffset || 0,
+        width:              hash.width   || 70,
+        height:             hash.height  || 30
       };
     }));
     
