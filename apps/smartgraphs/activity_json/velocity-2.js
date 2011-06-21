@@ -27,8 +27,7 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
       "introText": "<h1>Label the Position-Time Graph</h1>",                        
       "steps": [
         "/shared/velocity-2/page/1/step/1",
-        "/shared/velocity-2/page/1/step/2",
-        "/shared/velocity-2/page/1/step/3"                 
+        "/shared/velocity-2/page/1/step/2"              
       ],
       "firstStep": "/shared/velocity-2/page/1/step/1"
     }
@@ -45,7 +44,7 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
           "xAxis": "/shared/velocity-2/axes/9s",
           "yAxis": "/shared/velocity-2/axes/40m",
           "data": [
-            ["position-data", { "line-type": "connected" }]//,
+            ["position-data", { "point-type": "none", "line-type": "connected" }]//,
             //["position-data2", { "point-type": "none", "line-type": "connected" }]
           ],
           "annotations": []
@@ -61,31 +60,7 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
             "pane": "single",
             "labelSetName": "test-label-set"
           }
-        }
-      ]
-    },
-    {
-      "url": "/shared/velocity-2/page/1/step/2",
-      "activityPage": "/shared/velocity-2/page/1",
-      "paneConfig": "single",
-      "panes": {
-        "single": {
-          "type": "graph",
-          "title": "Position vs. Time",
-          "xAxis": "/shared/velocity-2/axes/9s",
-          "yAxis": "/shared/velocity-2/axes/40m",
-          "data": [
-            ["position-data", { "point-type": "none", "line-type": "connected" }]//,
-            //["position-data2", { "point-type": "none", "line-type": "connected" }]
-          ],
-          "annotations": ["test-label-set"]
-        }
-      },
-      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>(Your description here.)</p><p><b>Play</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double click</b> inside the label and start typing.</p>",
-      "hideSubmitButton": false,
-      "submitButtonTitle": "Onward!",
-      "defaultBranch": "/shared/velocity-2/page/1/step/3",
-      "tools": [
+        },
         { "name": "animation",
           "setup": {
             "pane": "single",
@@ -105,7 +80,7 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
       ]
     },
     {
-      "url": "/shared/velocity-2/page/1/step/3",
+      "url": "/shared/velocity-2/page/1/step/2",
       "activityPage": "/shared/velocity-2/page/1",
       "paneConfig": "single",
       "panes": {
@@ -118,10 +93,10 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
             ["position-data", { "line-type": "connected" }]//,
             //["position-data2", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["test-label-set"]
         }
       },
-      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>(Your description here.)</p><p><b>Play</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double click</b> inside the label and start typing.</p>",
+      "beforeText": "<p>Here are the labels you added.</p>",
       "hideSubmitButton": true
     }        
   ],
