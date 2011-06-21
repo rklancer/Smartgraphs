@@ -25,8 +25,8 @@ describe("label tool plugin to graph controller", function () {
     
     describe("before label tool is started", function () {
 
-      it("should not be in a substate of the LABEL_TOOL state", function () {
-        expect(labelToolState.get('substates').someProperty('isCurrentState')).toEqual(false);
+      it("should not be in a substate of the LABEL_TOOL.ON state", function () {
+        expect(labelToolState.ON.get('substates').someProperty('isCurrentState')).toEqual(false);
       });
     });
     
@@ -36,8 +36,8 @@ describe("label tool plugin to graph controller", function () {
         controller.labelToolStartTool();
       });
 
-      it("should be in a substate of the LABEL_TOOL state", function () {
-        expect(labelToolState.get('substates').someProperty('isCurrentState')).toEqual(true);
+      it("should be in a substate of the LABEL_TOOL.ON state", function () {
+        expect(labelToolState.ON.get('substates').someProperty('isCurrentState')).toEqual(true);
       });
     });
   });
@@ -198,8 +198,8 @@ describe("label tool plugin to graph controller", function () {
 
         describe("the statechart", function () {
           
-          it("should no longer be in a substate of the LABEL_TOOL state", function () {
-            expect(labelToolState.get('substates').someProperty('isCurrentState')).toEqual(false);
+          it("should no longer be in a substate of the LABEL_TOOL.ON state", function () {
+            expect(labelToolState.ON.get('substates').someProperty('isCurrentState')).toEqual(false);
           });
         });
 
@@ -327,8 +327,8 @@ describe("label tool plugin to graph controller", function () {
 
           describe("the statechart", function () {
             
-            it("should no longer be in a substate of the LABEL_TOOL state", function () {
-              expect(labelToolState.get('substates').someProperty('isCurrentState')).toEqual(false);
+            it("should no longer be in a substate of the LABEL_TOOL.ON state", function () {
+              expect(labelToolState.ON.get('substates').someProperty('isCurrentState')).toEqual(false);
             });
           });
              

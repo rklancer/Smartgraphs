@@ -43,10 +43,14 @@ describe("LabelView behavior", function () {
       toBeVisible: function () {
         return !!this.actual.get('isVisible');
       },
-
+      
+      toBeWithinOneUnitOf: function (value) {
+        return Math.abs(this.actual - value) <= 1;
+      },
+        
       toBeLikeAnArrow: function(startx,starty,endx,endy,len,angle) {
         // this happens to be our arrows default angle (deg from base)
-        if (typeof angle == 'undefined'){ angle == 20; }
+        if (typeof angle == 'undefined'){ angle = 20; }
         var path = Smartgraphs.ArrowDrawing.arrowPath(startx,starty,endx,endy,len,angle),
             i = 0, ii = 0,
             actual = this.actual,
@@ -483,8 +487,8 @@ describe("LabelView behavior", function () {
             });
 
             it("should have the same width and height as the width & height properties of the label view", function () {
-              expect(attrs.width).toEqual(labelView.get('width'));
-              expect(attrs.height).toEqual(labelView.get('height'));
+              expect(attrs.width).toEqual(labelView.get('labelBodyWidth'));
+              expect(attrs.height).toEqual(labelView.get('labelBodyHeight'));
             });
           });
         });
@@ -670,7 +674,8 @@ describe("LabelView behavior", function () {
         var leftX,
             topY,
             offset,
-            labelTextView;
+            labelTextView,
+            target;
 
         function fireEvent(el, eventName, x, y) {
           var evt = SC.Event.simulateEvent(el, eventName, { pageX: leftX + x, pageY: topY + y });
@@ -757,8 +762,8 @@ describe("LabelView behavior", function () {
               });
 
               it ("the label text should not change its position after editing", function () {
-                expect(labelTextView.get("x")).toEqual(x);
-                expect(labelTextView.get("y")).toEqual(y);
+                expect(labelTextView.get("x")).toBeWithinOneUnitOf(x);
+                expect(labelTextView.get("y")).toBeWithinOneUnitOf(y);
               });
 
               describe("after re-adding the annotation", function () {
@@ -768,16 +773,14 @@ describe("LabelView behavior", function () {
                   SC.run( function () {
                     graphController.removeAnnotation(labelRecord);
                     graphController.addAnnotation(labelRecord);
-                    debugger;
                   });
                   labelView = graphView.getPath('annotationsHolder.childViews').objectAt(0);
                   labelTextView = labelView.getPath('labelBodyView.labelTextView');
                 });
                 
                 it ("the label text should not change its position after adding a new record", function () {
-                  expect(labelTextView.get("x")).toEqual(x);
-                  expect(labelTextView.get("y")).toEqual(y);
-                  debugger;
+                  expect(labelTextView.get("x")).toBeWithinOneUnitOf(x);
+                  expect(labelTextView.get("y")).toBeWithinOneUnitOf(y);
                 });
               });
             });
