@@ -642,6 +642,7 @@ Smartgraphs.GraphView = SC.View.extend(
             animationSpec,
             imageWidth,
             imageHeight,
+            xOffset,
             dataView,
             points,
             y;
@@ -688,12 +689,13 @@ Smartgraphs.GraphView = SC.View.extend(
               animationSpec = animationSpecsByDatadefName[datadefName];
               imageWidth    = animationSpec.width  || 70;
               imageHeight   = animationSpec.height || 30;
+              xOffset       = animationSpec.xOffset || 0;
           
               console.log('adjusting image');      
 
               imagesByDatadefName[datadefName].attr({
                 src:    this._normalizeImageURL(requestedImageURLs[datadefName]),
-                x:      this.get('frame').x + 10,
+                x:      this.get('frame').x + 10 + xOffset,
                 y:      screenBounds.yTop + (screenBounds.plotHeight * (1-y)) - imageHeight,
                 width:  imageWidth,
                 height: imageHeight
