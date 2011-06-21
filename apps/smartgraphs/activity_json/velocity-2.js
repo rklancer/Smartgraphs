@@ -78,7 +78,7 @@ Smartgraphs.activityDocs["/shared/velocity-2"] =
             ["position-data", { "point-type": "none", "line-type": "connected" }]//,
             //["position-data2", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["test-label-set"]
         }
       },
       "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>(Your description here.)</p><p><b>Play</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double click</b> inside the label and start typing.</p>",
