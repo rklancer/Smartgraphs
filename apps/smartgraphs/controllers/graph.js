@@ -44,31 +44,9 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   statechartDef: SC.Statechart.design({
     trace: YES,
     rootState: SC.State.design({
-      initialSubstate: 'DEFAULT_STATE',
-      
-      labelToolStartTool: function (context, annotationName) {
-        var state = this.getSubstate('LABEL_TOOL');
-        state.set('annotationName', annotationName);
-        this.gotoState('LABEL_TOOL');
-      },
-      
-      animationToolStartTool: function (context) {
-        var state = this.getSubstate('ANIMATION_TOOL');
-        this.gotoState('ANIMATION_TOOL');
-      },
-      
-      DEFAULT_STATE: SC.State.design(),
-      
-      TOOLS: SC.State.design({
-        // can't have these two on at once. My guess is to have them operate simultaneously, you'd need each to have
-        // an "on" or "off" substate
-        substatesAreConcurrent: NO,
-        initialSubstate: 'NO_TOOL',
-
-        NO_TOOL: SC.State.design(),
-        LABEL_TOOL: Smartgraphs.LABEL_TOOL.design(),
-        ANIMATION_TOOL: Smartgraphs.ANIMATION_TOOL.design()
-      })
+      substatesAreConcurrent: YES,
+      LABEL_TOOL: Smartgraphs.LABEL_TOOL.design(),
+      ANIMATION_TOOL: Smartgraphs.ANIMATION_TOOL.design()
     })
   }),
   
@@ -156,7 +134,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     Clears all graph state (i.e., title, units, data representations, graphable data objects, and annotations).
   */
   clear: function () {
-    this.get('statechart').gotoState('DEFAULT_STATE');
+
+    this.get('statechart').sendAction('stopTool');
 
     // n.b. the following could be made to be side effects of entering DEFAULT_STATE
     this.set('title', null);

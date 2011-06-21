@@ -16,84 +16,101 @@
 Smartgraphs.ANIMATION_TOOL = SC.State.extend(
 /** @scope Smartgraphs.ANIMATION_TOOL.prototype */ {
   
-  initialSubstate: 'ANIMATION_CLEARED',
+  initialSubstate: 'OFF',
   
-  enterState: function () {
-    var pane = Smartgraphs.animationTool.get('pane');
-    
-    Smartgraphs.activityViewController.revealAllControls();
-    Smartgraphs.activityViewController.showControls(pane);
-    Smartgraphs.activityViewController.showAnimation(pane);
-  },
-  
-  exitState: function () {
-    var pane = Smartgraphs.animationTool.get('pane');
-    
-    // make sure the animation is stopped before we leave the activity step!
-    Smartgraphs.animationTool.clear();
-    
-    Smartgraphs.activityViewController.hideAnimation(pane);
-    Smartgraphs.activityViewController.hideControls(pane);
-  },
-  
-  // ..........................................................
-  // SUBSTATES
-  //
-  
-  ANIMATION_CLEARED: SC.State.design({
-
-    enterState: function () {
-      Smartgraphs.animationTool.clearAnimation();
-      Smartgraphs.activityViewController.highlightStartControl();
-    },
-
-    startControlWasClicked: function () {
-      this.gotoState('ANIMATION_RUNNING');
+  OFF: SC.State.design({
+    animationToolStartTool: function (context) {
+      var parentState = this.get('parentState');
+      this.gotoState(parentState.get('name') + '.ON');
     }
-
   }),
-  
-  
-  ANIMATION_RUNNING: SC.State.design({
+    
+  ON: SC.State.design({
 
+    initialSubstate: 'ANIMATION_CLEARED',
+    
+    stopTool: function () {
+      var parentState = this.get('parentState');
+      this.gotoState(parentState.get('name') + '.OFF');
+    },
+  
     enterState: function () {
-      Smartgraphs.animationTool.startAnimating();
-      Smartgraphs.activityViewController.highlightStopControl();
+      var pane = Smartgraphs.animationTool.get('pane');
+    
+      Smartgraphs.activityViewController.revealAllControls();
+      Smartgraphs.activityViewController.showControls(pane);
+      Smartgraphs.activityViewController.showAnimation(pane);
     },
+  
+    exitState: function () {
+      var pane = Smartgraphs.animationTool.get('pane');
     
-    stopControlWasClicked: function () {
-      this.gotoState('ANIMATION_STOPPED');
+      // make sure the animation is stopped before we leave the activity step!
+      Smartgraphs.animationTool.clear();
+    
+      Smartgraphs.activityViewController.hideAnimation(pane);
+      Smartgraphs.activityViewController.hideControls(pane);
     },
-    
-    // can't animate correctly while the view is resizing
-    graphViewDidResize: function() {
-      this.gotoState('ANIMATION_CLEARED');
-    }
-    
-  }),
+  
+    // ..........................................................
+    // SUBSTATES
+    //
+  
+    ANIMATION_CLEARED: SC.State.design({
+
+      enterState: function () {
+        Smartgraphs.animationTool.clearAnimation();
+        Smartgraphs.activityViewController.highlightStartControl();
+      },
+
+      startControlWasClicked: function () {
+        this.gotoState('ANIMATION_RUNNING');
+      }
+
+    }),
   
   
-  ANIMATION_STOPPED: SC.State.design({
+    ANIMATION_RUNNING: SC.State.design({
+
+      enterState: function () {
+        Smartgraphs.animationTool.startAnimating();
+        Smartgraphs.activityViewController.highlightStopControl();
+      },
     
-    enterState: function () {
-      Smartgraphs.animationTool.stopAnimating();
-      Smartgraphs.activityViewController.highlightStartControl();
-      Smartgraphs.activityViewController.enableClearControl();
-    },
+      stopControlWasClicked: function () {
+        this.gotoState('ANIMATION_STOPPED');
+      },
     
-    startControlWasClicked: function () {
-      this.gotoState('ANIMATION_RUNNING');
-    },
+      // can't animate correctly while the view is resizing
+      graphViewDidResize: function() {
+        this.gotoState('ANIMATION_CLEARED');
+      }
     
-    clearControlWasClicked: function () {
-      this.gotoState('ANIMATION_CLEARED');
-    },
+    }),
+  
+  
+    ANIMATION_STOPPED: SC.State.design({
     
-    // can't animate correctly if the view is resized
-    graphViewDidResize: function() {
-      this.gotoState('ANIMATION_CLEARED');
-    }
+      enterState: function () {
+        Smartgraphs.animationTool.stopAnimating();
+        Smartgraphs.activityViewController.highlightStartControl();
+        Smartgraphs.activityViewController.enableClearControl();
+      },
     
+      startControlWasClicked: function () {
+        this.gotoState('ANIMATION_RUNNING');
+      },
+    
+      clearControlWasClicked: function () {
+        this.gotoState('ANIMATION_CLEARED');
+      },
+    
+      // can't animate correctly if the view is resized
+      graphViewDidResize: function() {
+        this.gotoState('ANIMATION_CLEARED');
+      }
+    
+    })
   })
   
 });
