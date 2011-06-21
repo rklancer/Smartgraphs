@@ -34,6 +34,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
   init: function () {
     sc_super();
+    this.padding = SC.copy(this.padding);
     this._viewsByClassAndItem = {};
   },
 
