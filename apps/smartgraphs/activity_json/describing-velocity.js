@@ -13,7 +13,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     "pages": [
       "/shared/describing-velocity/page/1",
       "/shared/describing-velocity/page/2",
-      "/shared/describing-velocity/page/3"
+      "/shared/describing-velocity/page/3",
+      "/shared/describing-velocity/page/4"
     ],
     "axes": [
       "/shared/describing-velocity/axes/9s",
@@ -53,6 +54,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/3/step/1"        
       ],
       "firstStep": "/shared/describing-velocity/page/3/step/1"
+    },
+    {
+      "name": "Analyze the Position-Time Graph",
+      "url": "/shared/describing-velocity/page/4",
+      "activity": "/shared/describing-velocity",
+      "index": 2,
+      "introText": "<h1>Analyze the Position-Time Graph</h1>",
+      "steps": [
+        "/shared/describing-velocity/page/4/step/1",
+        "/shared/describing-velocity/page/4/step/2",
+        "/shared/describing-velocity/page/4/step/3"
+      ],
+      "firstStep": "/shared/describing-velocity/page/4/step/1"
     }
   ],
   "steps": [  
@@ -145,6 +159,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>(Your description here.)</p><p><b>Play</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double click</b> inside the label and start typing.</p>",
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
+      "isFinalStep": true,
       "tools": [
         { "name": "label",
           "setup": {
@@ -169,7 +184,40 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ]
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/4/step/1",
+      "activityPage": "/shared/describing-velocity/page/4",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["position-data", { "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "table",
+          "data": "position-data",
+          "annotations": []
+        }
+
+      },
+      "tools": [],
+      "beforeText": "<p>Use the position-time data to <strong>answer</strong> the following questions.</p>  <p>What was the car’s velocity from 0-3 seconds?</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/open",
+      "afterText": "<p><strong>Hint:</strong> Recall that velocity is the slope of a position-time graph<p>",
+      "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
+      "hideSubmitButton": true,
+      "nextButtonShouldSubmit": true,
+      "isFinalStep": true
     }
+
   ],
   "units": [
   ],
