@@ -12,6 +12,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     "owner": "shared",
     "pages": [
       "/shared/describing-velocity/page/1",
+      "/shared/describing-velocity/page/2",
       "/shared/describing-velocity/page/3"
     ],
     "axes": [
@@ -30,6 +31,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/1/step/1"        
       ],
       "firstStep": "/shared/describing-velocity/page/1/step/1"
+    },
+    {
+      "name": "Discovery Question",
+      "url": "/shared/describing-velocity/page/2",
+      "activity": "/shared/describing-velocity",
+      "index": 2,
+      "introText": "<h1>Discovery Question</h1>",
+      "steps": [
+        "/shared/describing-velocity/page/2/step/1"
+      ],
+      "firstStep": "/shared/describing-velocity/page/2/step/1"
     },
     {
       "name": "Label the Position-Time Graph",
@@ -59,6 +71,55 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Imagine you are a TV sports commentator for a major international car race. What techniques could you use to <b>describe</b> the action to your audience?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "afterText": "<p>In this activity, you will explore different ways to communicate how fast an object is moving.</p>",
+      "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
+      "hideSubmitButton": true,
+      "nextButtonShouldSubmit": true,
+      "isFinalStep": true
+    },  
+    
+    {
+      "url": "/shared/describing-velocity/page/2/step/1",
+      "activityPage": "/shared/describing-velocity/page/2",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["position-data", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "label",
+          "setup": {
+            "pane": "top",
+            "labelSetName": "students-segment-labels"
+          }
+        },
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "position-data",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": " <p><strong>How can you describe velocity?</strong></p>  <p>Let’s start by examining the motion of a car traveling from one point to another.</p>  <p><strong>Click</strong> the Play button to the right to watch the car’s journey. <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p> ",
+      "responseTemplate": "/shared/describing-velocity/response-template/open",
+      "afterText": "<p><strong>Word bank:</strong> start, position, time, forward, backward, moving, stopping, velocity, constant, steady, changing, slow, fast, end<p>",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
