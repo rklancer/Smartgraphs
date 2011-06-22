@@ -108,12 +108,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "tools": [
-        { "name": "label",
-          "setup": {
-            "pane": "top",
-            "labelSetName": "students-segment-labels"
-          }
-        },
         { "name": "animation",
           "setup": {
             "pane": "top",
