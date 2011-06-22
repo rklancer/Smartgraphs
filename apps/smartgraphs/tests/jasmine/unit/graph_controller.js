@@ -37,8 +37,14 @@ describe("Smartgraphs.GraphController", function () {
         expect(statechart.get('statechartIsInitialized')).toBe(true);
       });
       
-      it("should be in state DEFAULT_STATE", function () {
-        expect(statechart.get('currentStates').getEach('name')).toEqual(['DEFAULT_STATE']);
+      describe("its tool substates", function () {
+           
+        it("should be in the OFF substate", function () {
+          var stateNames = statechart.get('currentStates').getEach('name');
+          for (var i = 0; i < stateNames.get('length'); i++) {
+            expect(stateNames[i]).toEqual("OFF");
+          }
+        });
       });
     });
     
@@ -53,23 +59,6 @@ describe("Smartgraphs.GraphController", function () {
     
     it("should have a reference to its owning controller", function () {
       expect(statechart.get('owner')).toBe(controller);
-    });
-
-    describe("DEFAULT_STATE state", function () {
-      
-      var defaultState;
-      
-      beforeEach( function () {
-        defaultState = statechart.getState('DEFAULT_STATE');
-      });
-      
-      it("should be a child of the rootState", function () {
-        expect(defaultState).toBeAChildStateOf(statechart.get('rootState'));
-      });
-      
-      it("should be a sibling of the TOOLS state", function () {
-        expect(defaultState).toBeASiblingStateOf(statechart.getState('TOOLS'));
-      });
     });
       
     describe("labelToolStartTool action", function () {
@@ -127,11 +116,11 @@ describe("Smartgraphs.GraphController", function () {
       expect(controller.clearAnnotations).toHaveBeenCalled();
     });
     
-    it("should ask the statechart to go to the DEFAULT_STATE", function () {
-      spyOn(statechart, 'gotoState');
+    it("should send the 'stopTool' method to the statechart", function () {
+      spyOn(statechart, 'sendAction');
       controller.clear();
       
-      expect(statechart.gotoState).toHaveBeenCalledWith('DEFAULT_STATE');
+      expect(statechart.sendAction).toHaveBeenCalledWith('stopTool');
     });
     
     xit("should effectively turn off tool states", function () {

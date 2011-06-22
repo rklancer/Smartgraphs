@@ -38,9 +38,20 @@ describe("ANIMATION_TOOL state", function () {
     expect(state).toBeDefined();
   });
   
-  it("should start in the ANIMATION_CLEARED substate", function () {
-    expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+  it("should start in the OFF substate", function () {
+    expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
   });
+  
+  describe("when turned on", function () {
+    beforeEach( function () {
+      statechart.sendAction('animationToolStartTool');
+    });
+    
+    it("should be in the ANIMATION_CLEARED substate", function () {
+      expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+    });
+  });
+  
   
 //   describe("its NO_LABEL substate", function () {
 //     

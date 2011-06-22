@@ -46,9 +46,10 @@ describe("Smartgraphs.animationTool", function () {
     
     beforeEach( function () {
       graphController = Smartgraphs.GraphController.create();
+      spyOn(Smartgraphs.activityViewController, 'validPaneFor').andReturn('top');
       spyOn(animationTool, 'graphControllerForPane').andReturn(graphController);
       spyOn(graphController, 'animationToolStartTool');
-  
+
       animationTool.setup({ pane: 'top' });
     });
     
@@ -94,17 +95,6 @@ describe("Smartgraphs.animationTool", function () {
       expect(animationTool.graphPane.graphView.animate).toHaveBeenCalled();
     });
     
-    it("should return the result of calling this.graphPane.graphView.animate() when there is a pane, and it's not already animating", function () {
-      animationTool._pane = SC.Object.create();
-      animationTool._isAnimating = NO;
-      animationTool.graphPane = SC.Object.create({
-        graphView: SC.Object.create({
-          animate: function() { return "foo"; }
-        })
-      });
-      expect(animationTool.startAnimating()).toEqual("foo");
-    });
-    
   });
   
   
@@ -138,17 +128,6 @@ describe("Smartgraphs.animationTool", function () {
       expect(animationTool.graphPane.graphView.stop).toHaveBeenCalled();
     });
     
-    it("should return the result of calling this.graphPane.graphView.stop() when there is a pane, and it's animating", function () {
-      animationTool._pane = SC.Object.create();
-      animationTool._isAnimating = YES;
-      animationTool.graphPane = SC.Object.create({
-        graphView: SC.Object.create({
-          stop: function() { return "foo"; }
-        })
-      });
-      expect(animationTool.stopAnimating()).toEqual("foo");
-    });
-    
   });
   
   
@@ -167,15 +146,6 @@ describe("Smartgraphs.animationTool", function () {
       spyOn(animationTool.graphPane.graphView, 'reset');
       animationTool.clearAnimation();
       expect(animationTool.graphPane.graphView.reset).toHaveBeenCalled();
-    });
-    
-    it("should return the result of calling this.graphPane.graphView.reset()", function () {
-      animationTool.graphPane = SC.Object.create({
-        graphView: SC.Object.create({
-          reset: function() { return "foo"; }
-        })
-      });
-      expect(animationTool.clearAnimation()).toEqual("foo");
     });
     
     it("should set this._isAnimating to NO", function () {
