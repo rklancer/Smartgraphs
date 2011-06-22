@@ -30,16 +30,26 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
   
   /**
     Get the specified value from the context, or else the 'global context' (which is, for now, basically just the
-    Variable objects defined by the activityObjectsController
+    Variable objects defined by the activityObjectsController.
     
     @param {String} name
+    
+    @returns the value from the page context or global context, or else undefined
   */
   getFromContext: function (name) {
-    var undefined,
-        context = this.get('context'),
-        expression = context.hasOwnProperty(name) && context[name];
-    
-    return (expression !== undefined) ? Smartgraphs.evaluator.evaluate(expression) : Smartgraphs.activityObjectsController.findVariable(name).get('value');
+    var context    = this.get('context'),
+        expression = context.hasOwnProperty(name) && context[name],
+        variable;
+        
+    if (SC.typeOf(name) !== SC.T_STRING) return;
+        
+    if (expression) {
+      return Smartgraphs.evaluator.evaluate(expression);
+    }
+    else {
+      variable = Smartgraphs.activityObjectsController.findVariable(name);
+      if (variable) return variable.get('value');
+    }
   },
   
   context: function () {
@@ -50,6 +60,6 @@ Smartgraphs.activityPageController = SC.ObjectController.create(
       ret[varDef.name] = varDef.value;
     });
     return ret;
-  }.property('content').cacheable()
+  }.property('content')
   
 });

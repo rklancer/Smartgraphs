@@ -142,16 +142,15 @@ Smartgraphs.activityObjectsController = SC.Controller.create(
   },
   
   /**
-    Create a variable in the current activity session.
-    
-    It is a runtime error to call this method with the name of a variable that has already been defined in the current
-    session.
+    Set the value of a variable in the current activity session, creating one if necessary
     
     @param name 
-      The name to give to the newly created variable.
+      The name of the variable
+    @param value
+      The value to set
 
     @returns {Smartgraphs.Variable}
-      The newly created variable
+      The variable instance
   */
   setVariable: function (name, value) {
     var variable = this._variables[name];

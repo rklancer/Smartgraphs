@@ -226,6 +226,19 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   afterSubmissionCommands: SC.Record.attr(Array),
   
+  /** 
+    A list of zero or more objects of format
+      { name: <variable name>
+        value: <expression>
+      }
+      
+    When the step is complete and the afterSubmissionCommands (if any) have been run, the Variables will be set to
+    the value of the corresponding expressions (the expressions are evaluated in the same way as context vars,
+    so they can be (1) expressions (2) name of context vars (3) name of global vars.
+    
+  */    
+  variableAssignments: SC.Record.attr(Array),
+  
   /**
     An ordered list of criterion -> ActivityStep pairs that is used to choose the next ActivityStep to load after
     the student has submitted the step.

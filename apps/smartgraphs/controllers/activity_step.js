@@ -132,6 +132,17 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     });
   },
   
+  /** sets variables in the global context */
+  setVariables: function (assignments) {
+    assignments = assignments || [];
+    assignments.forEach( function (assignment) {
+      var value = Smartgraphs.activityPageController.getFromContext(assignment.value);
+
+      if (value === undefined) value = Smartgraphs.evaluator.evaluate(assignment.value);
+      Smartgraphs.activityObjectsController.setVariable(assignment.name, value);
+    });
+  },
+  
   processSubstitutions: function (subs) {
     var fmtArgs = [],
         self = this;
@@ -204,6 +215,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         i;
     
     this.executeCommands(this.get('afterSubmissionCommands'));
+    this.setVariables(this.get('variableAssignments'));
   
     if (branches && branches.length > 0) {
       for (i = 0; i < branches.length; i++) {
