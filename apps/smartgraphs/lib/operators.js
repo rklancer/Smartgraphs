@@ -7,7 +7,16 @@
 
 sc_require('lib/evaluator');
 
+
 Smartgraphs.evaluator.defineOperators( function (def) {
+  
+  function checkNumeric() {
+    for (var i = 0; i < arguments.length; i++) {
+      if (typeof arguments[i] !== 'number' || isNaN(arguments[i])) {
+        throw "Non-numeric argument!";
+      }
+    }
+  }
   
   def('+', function () {
     var ret = 0;
@@ -16,7 +25,6 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     }
     return ret;
   }).minArgs(2);
-
 
   def('-', function () {
     var ret = arguments[0];
@@ -35,7 +43,26 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   def('=', function (x, y) {
     return x === y;
   }).args(2);
-
+  
+  def('>', function (x, y) {
+    checkNumeric(x, y);
+    return x > y;
+  }).args(2);
+  
+  def('>=', function (x, y) {
+    checkNumeric(x, y);
+    return x >= y;
+  }).args(2);
+  
+  def('<', function (x, y) {
+    checkNumeric(x, y);
+    return x < y;
+  }).args(2);
+  
+  def('<=', function (x, y) {
+    checkNumeric(x, y);
+    return x <= y;
+  }).args(2);
 
   def('indexInDataset', function (name) {
     var tag = Smartgraphs.activityObjectsController.findTag(name),
@@ -128,7 +155,15 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     return tag2.get(axis) - tag1.get(axis);
   }).args(2);
 
-
+  
+  def('and', function () {
+    for (var i = 0; i < arguments.length; i++) {
+      if (!arguments[i]) return false;
+    }
+    return true;
+  }).minArgs(1);
+  
+  
   def('or', function () {
     for (var i = 0; i < arguments.length; i++) {
       if (arguments[i]) return true;
