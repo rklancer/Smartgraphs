@@ -182,7 +182,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "introText": "<h1>Compare the Graphs</h1>",
       "steps": [
         "/shared/describing-velocity/page/8/step/1",
-        "/shared/describing-velocity/page/8/step/2"        
+        "/shared/describing-velocity/page/8/step/2"
       ],
       "firstStep": "/shared/describing-velocity/page/8/step/1"
     },
@@ -938,7 +938,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/8/step/1",
       "activityPage": "/shared/describing-velocity/page/8",
@@ -987,7 +987,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "defaultBranch": "/shared/describing-velocity/page/8/step/2",
       "submitButtonTitle": "OK"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/8/step/2",
       "activityPage": "/shared/describing-velocity/page/8",
@@ -1066,7 +1066,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submitButtonTitle": "Check My Answer",
       "hideSubmitButton": false
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/9/step/2",
       "activityPage": "/shared/describing-velocity/page/9",
@@ -1095,7 +1095,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submitButtonTitle": "Check My Answer",
       "hideSubmitButton": false
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/9/step/3",
       "activityPage": "/shared/describing-velocity/page/9",
@@ -1124,7 +1124,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submitButtonTitle": "Check My Answer",
       "hideSubmitButton": false
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/9/step/4",
       "activityPage": "/shared/describing-velocity/page/9",
@@ -1153,7 +1153,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submitButtonTitle": "Check My Answer",
       "hideSubmitButton": false
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/9/step/5",
       "activityPage": "/shared/describing-velocity/page/9",
@@ -1174,7 +1174,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "isFinalStep": true
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/9/step/6",
       "activityPage": "/shared/describing-velocity/page/9",
@@ -1318,7 +1318,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     {
       "type": "FirstOrderDifference",
       "records": [
-        {    
+        {
           "url": "/shared/describing-velocity/datadefs/car-velocity",
           "name": "car-velocity",
           "activity": "/shared/describing-velocity",
@@ -1345,7 +1345,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "x": 1.5,
           "y": 0,
           "xOffset": -67,
-          "yOffset": -43        
+          "yOffset": -43
         },
         {
           "url": "/shared/describing-velocity/annotation/velocity-label-2",
@@ -1355,7 +1355,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "x": 4.5,
           "y": 2,
           "xOffset": -117,
-          "yOffset": -76       
+          "yOffset": -76
         },
         {
           "url": "/shared/describing-velocity/annotation/velocity-label-3",
@@ -1365,7 +1365,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "x": 7.5,
           "y": 10,
           "xOffset": -105,
-          "yOffset": -13                 
+          "yOffset": -13
         }
       ]
     },
@@ -1382,7 +1382,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "name": "velocity-labels",
           "activity": "/shared/describing-velocity",
           "labels": ["/shared/describing-velocity/annotation/velocity-label-1", "/shared/describing-velocity/annotation/velocity-label-2", "/shared/describing-velocity/annotation/velocity-label-3"]
-        }        
+        }
       ]
     },
     { "type": "LineThroughPoints",
@@ -1446,7 +1446,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "name": "run-bracket-A",
           "activity": "/shared/describing-velocity",
           "color": "#cccccc",
-          "datadefName": "slope-data",          
+          "datadefName": "slope-data",
           "p1Tag": "/shared/describing-velocity/tag/first-point-A",
           "p2Tag": "/shared/describing-velocity/tag/second-point-A"
         }
