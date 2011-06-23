@@ -886,13 +886,11 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "data": ["position-data"]
         },
         "bottom": {
           "type": "table",
-          "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "data": "position-data"
         }
       },
       "beforeText": "<p>Correct!</p>",
