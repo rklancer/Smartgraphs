@@ -247,7 +247,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": " <p><strong>How can you describe velocity?</strong></p>  <p>Let’s start by examining the motion of a car traveling from one point to another.</p>  <p><strong>Click</strong> the Play button to the right to watch the car’s journey. <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p> ",
+      "beforeText": " <p><strong>How can you describe velocity?</strong></p>  <p>Let’s start by examining the motion of a car traveling from one point to another.</p>  <p><strong>Click</strong> the Start button to the right to watch the car’s journey. <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p> ",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "afterText": "<p><strong>Word bank:</strong> start, position, time, forward, backward, moving, stopping, velocity, constant, steady, changing, slow, fast, end<p>",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
@@ -276,7 +276,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": []
         }
       },
-      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Play</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double click</b> inside the label and start typing.</p>",
+      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double click</b> inside the label and start typing.</p>",
       "substitutedExpressions": ["student-description"],
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
@@ -324,7 +324,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["position-data", { "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["students-segment-labels"]
         },
         "bottom": {
           "type": "table",
@@ -333,14 +333,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
 
       },
-      "tools": [
-        { "name": "label",
-          "setup": {
-            "pane": "top",
-            "labelSetName": "students-segment-labels"
-          }
-        }
-      ],
+      "tools": [],
       "beforeText": "<p>Use the position-time data to <strong>answer</strong> the following questions.</p>  <p>What was the car’s velocity from 0-3 seconds?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p><strong>Hint:</strong> Recall that velocity is the slope of a position-time graph<p>",
@@ -356,7 +349,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       ],
       "defaultBranch": "/shared/describing-velocity/page/4/step/2",
-      "submitButtonTitle": "OK"
+      "submitButtonTitle": "Check My Answer"
     },
     {
       "url": "/shared/describing-velocity/page/4/step/2",
@@ -369,17 +362,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight"]
+          "annotations": ["p1A-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight","students-segment-labels"]
+          "annotations": ["p1A-highlight"]
         }
       },
       "beforeText": "<p><strong>no</strong>  <em>%@</em> is not the velocity for the first segment.</p>",
-      "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "submissibilityCriterion": ["and", [">=", ["coord", "x", "first-point-A"], 0], ["<=", ["coord", "x", "first-point-A"], 3]],
       "substitutedExpressions": [ "student-velocity" ],
       "afterText": "<p>Select a point in the first interval (between 0 and 3 seconds) on the graph. Theb click <b>OK</b></p>",
       "tools": [
@@ -392,8 +383,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["responseField", 1], 0, 0.1],
-          "step": "/shared/describing-velocity/page/4/step/16"
+          "criterion": ["and", [">=", ["coord", "x", "first-point-A"], 0], ["<=", ["coord", "x", "first-point-A"], 3]],
+          "step": "/shared/describing-velocity/page/4/step/4"
         }
       ],
       "defaultBranch": "/shared/describing-velocity/page/4/step/3",
@@ -410,7 +401,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
@@ -418,24 +409,22 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Select a second point in the first interval (between 0 and 3 seconds). Then click <b>OK</b>.</p>",
-      "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "submissibilityCriterion": ["and", [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3],["!=", ["first-point-A", "second-point-A"]]],
+      "beforeText": "<p><b>no</b> Your point is not within the first three seconds.</p> <p>Select apoint in the <b>first interval (between 0 and 3 seconds)</b>. Then click <b>OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "second-point-A",
+            "tag": "first-point-A",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-A"], ["indexInDataset", "second-point-A"]]],
+          "criterion": ["and", [">=", ["coord", "x", "first-point-A"], 0], ["<=", ["coord", "x", "first-point-A"], 3]],
           "step": "/shared/describing-velocity/page/4/step/4"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/9/step/1",
+      "defaultBranch": "/shared/describing-velocity/page/4/step/3",
       "submitButtonTitle": "OK"
     },
     {
@@ -449,7 +438,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
@@ -457,7 +446,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>To calculate velocity in a small time interval, select a point that is next to the first point. Then click <b>OK</b>.</p>",
+      "beforeText": "<p>Select a second point in the first interval (between 0 and 3 seconds). Then click <b>OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -468,11 +457,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "responseBranches": [
         {
-          "criterion": ["=", 1, ["absDiff", ["indexInDataset", "first-point-A"], ["indexInDataset", "second-point-A"]]],
-          "step": "/shared/describing-velocity/page/4/step/4"
+          "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3],["!=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]],
+          // "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3]],
+          "step": "/shared/describing-velocity/page/4/step/6"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/4/step/3",
+      "defaultBranch": "/shared/describing-velocity/page/4/step/5",
       "submitButtonTitle": "OK"
     },
     {
@@ -486,7 +476,44 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+        },
+        "bottom": {
+          "type": "table",
+          "data": "position-data",
+          "annotations": ["p1A-highlight", "p2A-highlight"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Your second point was not within the first three seconds. </p> <p> Please Select a second point in the first interval (between 0 and 3 seconds). Then click <b>OK</b>.</p>",
+      "tools": [
+        { "name": "tagging",
+          "setup": {
+            "tag": "second-point-A",
+            "data": "position-data"
+          }
+        }
+      ],
+      "responseBranches": [
+        {
+          "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3],["!=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]],
+          "step": "/shared/describing-velocity/page/4/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/4/step/5",
+      "submitButtonTitle": "OK"
+    },
+    {
+      "url": "/shared/describing-velocity/page/4/step/6",
+      "activityPage": "/shared/describing-velocity/page/4",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": ["position-data"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
@@ -496,18 +523,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/16"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/4/step/5",
+      "defaultBranch": "/shared/describing-velocity/page/4/step/6",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/describing-velocity/page/4/step/6",
+      "url": "/shared/describing-velocity/page/4/step/7",
       "activityPage": "/shared/describing-velocity/page/4",
       "paneConfig": "split",
       "panes": {
@@ -535,7 +561,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "step": "/shared/describing-velocity/page/4/step/16"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/4/step/6",
+      "defaultBranch": "/shared/describing-velocity/page/4/step/7",
       "submitButtonTitle": "OK"
     },
     {
@@ -1072,7 +1098,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     {
       "url": "/shared/describing-velocity/axes/40m",
       "units": "/builtins/units/meters",
-      "min": 0,
+      "min": -2,
       "max": 40,
       "nSteps": 8,
       "label": "Position"
@@ -1203,6 +1229,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "url": "/shared/describing-velocity/annotation/students-segment-labels",
           "name": "students-segment-labels",
           "activity": "/shared/describing-velocity"
+        }
+      ]
+    },
+    { "type": "LineThroughPoints",
+      "records": [
+        {
+          "url": "/shared/describing-velocity/annotation/slope-line-A",
+          "name": "slope-line-A",
+          "activity": "/shared/describing-velocity",
+          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
+          "p2Tag": "/shared/describing-velocity/tag/second-point-A",
+          "color": "#1f77b4"
         }
       ]
     },
