@@ -178,7 +178,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "url": "/shared/describing-velocity/page/9",
       "activity": "/shared/describing-velocity",
       "index": 9,
-      "introText": "<h1>Analyze the Position-Time Graph</h1>",
+      "introText": "<h1>Analyze the Velocity-Time Graph</h1>",
       "steps": [
         "/shared/describing-velocity/page/9/step/1",
         "/shared/describing-velocity/page/9/step/2",
