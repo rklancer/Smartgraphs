@@ -18,7 +18,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "/shared/describing-velocity/page/5",
       "/shared/describing-velocity/page/6",
       "/shared/describing-velocity/page/8",
-      "/shared/describing-velocity/page/9"
+      "/shared/describing-velocity/page/9",
+      "/shared/describing-velocity/page/10" 
     ],
     "axes": [
       "/shared/describing-velocity/axes/9s",
@@ -201,8 +202,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/9/step/6"
       ],
       "firstStep": "/shared/describing-velocity/page/9/step/1"
+    },
+    {
+      "name": "Compare Your Descriptions",
+      "url": "/shared/describing-velocity/page/10",
+      "activity": "/shared/describing-velocity",
+      "index": 10,
+      "introText": "<h1>Compare the Graphs</h1>",
+      "steps": [
+        "/shared/describing-velocity/page/10/step/1"       
+      ],
+      "firstStep": "/shared/describing-velocity/page/10/step/1"
     }
-
   ],
   "steps": [
     {
@@ -2271,6 +2282,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "beforeText": " <p>Both graphs provide information about the same motion.</p><p><b>Describe</b> how constant velocity is represented on a position-time graph and on a velocity-time graph.</p><p><b>Word bank</b>: constant velocity, flat, straight, tilted, up, down, right, left, segment, horizontal, steep, slope</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
+      "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
+      "nextButtonShouldSubmit": true, 
       "hideSubmitButton": true,
       "isFinalStep": true
     },
@@ -2408,6 +2421,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "beforeText": "<p>Incorrect. The graph is a horizontal segment in which the velocity is 0.</p>",
+      "nextButtonShouldSubmit": true,
       "hideSubmitButton": true,
       "isFinalStep": true
     },
@@ -2429,7 +2443,41 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "beforeText": "<p>Correct! The graph is a horizontal segment in which the velocity is 0.</p>",
+      "nextButtonShouldSubmit": true, 
       "hideSubmitButton": true,
+      "isFinalStep": true
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/10/step/1",
+      "activityPage": "/shared/describing-velocity/page/8",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["position-data", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": ["students-segment-labels"]
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": ["velocity-labels"]
+        }
+      },
+      "beforeText": " <p>The position-time graph of the car's motion displays in the top window and the velocity time graph displays in the bottom.</p><p>How do the labels describing the motion compare in the two graphs?</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/open",
+      "hideSubmitButton": true,
+      "nextButtonShouldSubmit": true,
       "isFinalStep": true
     }
   ],
