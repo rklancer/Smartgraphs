@@ -44,6 +44,10 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     return x === y;
   }).args(2);
   
+  def('!=', function (x, y) {
+    return x != y;
+  }).args(2);
+  
   def('>', function (x, y) {
     checkNumeric(x, y);
     return x > y;
@@ -113,7 +117,7 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   def('coord', function (axis, tagName) {
     var tag = Smartgraphs.activityObjectsController.findTag(tagName);
   
-    if (axis !== 'x' && axis !== 'y') throw "x or y coordinates only!"
+    if (axis !== 'x' && axis !== 'y') throw "x or y coordinates only!";
     if (!tag) throw "Tag " + tagName + " not found.";
 
     return tag.get(axis);
