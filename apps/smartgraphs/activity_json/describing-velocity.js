@@ -14,11 +14,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "/shared/describing-velocity/page/1",
       "/shared/describing-velocity/page/2",
       "/shared/describing-velocity/page/3",
-      "/shared/describing-velocity/page/4"
+      "/shared/describing-velocity/page/4",
+      "/shared/describing-velocity/page/9"
     ],
     "axes": [
       "/shared/describing-velocity/axes/9s",
-      "/shared/describing-velocity/axes/40m"
+      "/shared/describing-velocity/axes/40m",
+      "/shared/describing-velocity/axes/car-mps"
     ]
   },
   "pages": [
@@ -59,7 +61,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "name": "Analyze the Position-Time Graph",
       "url": "/shared/describing-velocity/page/4",
       "activity": "/shared/describing-velocity",
-      "index": 2,
+      "index": 4,
       "introText": "<h1>Analyze the Position-Time Graph</h1>",
       "steps": [
         "/shared/describing-velocity/page/4/step/1",
@@ -67,6 +69,22 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/4/step/3"
       ],
       "firstStep": "/shared/describing-velocity/page/4/step/1"
+    },
+    {
+      "name": "Analyze the Velocity-Time Graph",
+      "url": "/shared/describing-velocity/page/9",
+      "activity": "/shared/describing-velocity",
+      "index": 9,
+      "introText": "<h1>Analyze the Position-Time Graph</h1>",
+      "steps": [
+        "/shared/describing-velocity/page/9/step/1",
+        "/shared/describing-velocity/page/9/step/2",
+        "/shared/describing-velocity/page/9/step/3",
+        "/shared/describing-velocity/page/9/step/4",
+        "/shared/describing-velocity/page/9/step/5",
+        "/shared/describing-velocity/page/9/step/6"
+      ],
+      "firstStep": "/shared/describing-velocity/page/9/step/1"
     }
   ],
   "steps": [  
@@ -219,6 +237,182 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
       "isFinalStep": true
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    {
+      "url": "/shared/describing-velocity/page/9/step/1",
+      "activityPage": "/shared/describing-velocity/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 3],
+          "step": "/shared/describing-velocity/page/9/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/9/step/2",
+      "beforeText": "<p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
+      "submitButtonTitle": "Check My Answer",
+      "hideSubmitButton": false
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/9/step/2",
+      "activityPage": "/shared/describing-velocity/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 3],
+          "step": "/shared/describing-velocity/page/9/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/9/step/3",
+      "beforeText": "<p><b>Incorrect.</b> Hint: Does the velocity change when the car is stopped? Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
+      "submitButtonTitle": "Check My Answer",
+      "hideSubmitButton": false
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/9/step/3",
+      "activityPage": "/shared/describing-velocity/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 3],
+          "step": "/shared/describing-velocity/page/9/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/9/step/4",
+      "beforeText": "<p><b>Incorrect.</b> Hint: What is the velocity when the car is stopped? Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
+      "submitButtonTitle": "Check My Answer",
+      "hideSubmitButton": false
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/9/step/4",
+      "activityPage": "/shared/describing-velocity/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 3],
+          "step": "/shared/describing-velocity/page/9/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/9/step/5",
+      "beforeText": "<p><b>Incorrect.</b> Hint: The velocity of the car is 0 m/s when the car is stopped. Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
+      "submitButtonTitle": "Check My Answer",
+      "hideSubmitButton": false
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/9/step/5",
+      "activityPage": "/shared/describing-velocity/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "beforeText": "<p>Incorrect. The graph is a horizontal segment in which the velocity is 0.</p>",
+      "hideSubmitButton": true,
+      "isFinalStep": true
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/9/step/6",
+      "activityPage": "/shared/describing-velocity/page/9",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "beforeText": "<p>Correct! The graph is a horizontal segment in which the velocity is 0.</p>",
+      "hideSubmitButton": true,
+      "isFinalStep": true
     }
 
   ],
@@ -242,11 +436,11 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "label": "Position"
     },
     {
-      "url": "/shared/describing-velocity/axes/2mps",
+      "url": "/shared/describing-velocity/axes/car-mps",
       "units": "/builtins/units/meters-per-second",
-      "min": 0,
-      "max": 2,
-      "nSteps": 10,
+      "min": -2,
+      "max": 12,
+      "nSteps": 14,
       "label": "Velocity"
     }
   ],
@@ -260,6 +454,25 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "fieldChoicesList": [
         null
+      ],
+      "initialValues": [
+        ""
+      ]
+    },
+    {
+      "url": "/shared/describing-velocity/response-template/velocity-time-question",
+      "templateString": "",
+      "fieldTypes": [
+        "multiplechoice"
+      ],
+      "fieldChoicesList": [
+        [
+          "The resulting segment tilts up and to the right",
+          "The resulting segment tilts down and to the left",
+          "The resulting segment is horizontal and the velocity is 0",
+          "The resulting segment is horizontal and the velocity is positive",
+          "The resulting segment is horizontal and the velocity is negative"
+        ]
       ],
       "initialValues": [
         ""
@@ -292,8 +505,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "type": "FirstOrderDifference",
       "records": [
         {    
-          "url": "/shared/describing-velocity/datadefs/velocity-calculated",
-          "name": "velocity-calculated",
+          "url": "/shared/describing-velocity/datadefs/car-velocity",
+          "name": "car-velocity",
           "activity": "/shared/describing-velocity",
           "xUnits": "/builtins/units/seconds",
           "xLabel": "Time",
