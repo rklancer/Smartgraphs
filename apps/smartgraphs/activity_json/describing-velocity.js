@@ -17,6 +17,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "/shared/describing-velocity/page/4",
       // "/shared/describing-velocity/page/5",
       // "/shared/describing-velocity/page/6",
+      "/shared/describing-velocity/page/8",
       "/shared/describing-velocity/page/9"
     ],
     "axes": [
@@ -172,6 +173,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
       ],
       "firstStep": "/shared/describing-velocity/page/4/step/1"
+    },
+    {
+      "name": "Compare the Graphs",
+      "url": "/shared/describing-velocity/page/8",
+      "activity": "/shared/describing-velocity",
+      "index": 8,
+      "introText": "<h1>Compare the Graphs</h1>",
+      "steps": [
+        "/shared/describing-velocity/page/8/step/1",
+        "/shared/describing-velocity/page/8/step/2"        
+      ],
+      "firstStep": "/shared/describing-velocity/page/8/step/1"
     },
     {
       "name": "Analyze the Velocity-Time Graph",
@@ -899,8 +912,107 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
     },
+    
+    {
+      "url": "/shared/describing-velocity/page/8/step/1",
+      "activityPage": "/shared/describing-velocity/page/8",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["position-data", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "position-data",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": " <p>A <i>velocity-time</i> graph shows the car's <b>velocity</b> over time.</p><p><b>Click</b> the Start button to play the animation again.</p><p>This time, the velocity-time graph of the car's motion displays below the position-time graph.</p>",
+      "defaultBranch": "/shared/describing-velocity/page/8/step/2",
+      "submitButtonTitle": "OK"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/8/step/2",
+      "activityPage": "/shared/describing-velocity/page/8",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["position-data", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": ["velocity-labels"]
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "position-data",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": " <p>Both graphs provide information about the same motion.</p><p><b>Describe</b> how constant velocity is represented on a position-time graph and on a velocity-time graph.</p><p><b>Word bank</b>: constant velocity, flat, straight, tilted, up, down, right, left, segment, horizontal, steep, slope</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/open",
+      "hideSubmitButton": true,
+      "isFinalStep": true
+    },
 
-   {
+    {
       "url": "/shared/describing-velocity/page/9/step/1",
       "activityPage": "/shared/describing-velocity/page/9",
       "paneConfig": "split",
@@ -1080,9 +1192,9 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     {
       "url": "/shared/describing-velocity/axes/car-mps",
       "units": "/builtins/units/meters-per-second",
-      "min": -2,
-      "max": 12,
-      "nSteps": 14,
+      "min": -4,
+      "max": 20,
+      "nSteps": 12,
       "label": "Velocity"
     }
   ],
@@ -1197,13 +1309,54 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
   ],
   "annotations": [
     {
+      "type": "Label",
+      "records": [
+        {
+          "url": "/shared/describing-velocity/annotation/velocity-label-1",
+          "name": "velocity-label-1",
+          "activity": "/shared/calculated-velocity",
+          "text": "Stopped for 3 secs.\nVelocity = 0 m/s",
+          "x": 1.5,
+          "y": 0,
+          "xOffset": -67,
+          "yOffset": -43        
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/velocity-label-2",
+          "name": "velocity-label-2",
+          "activity": "/shared/calculated-velocity",
+          "text": "Slow, steady for 3 secs.\nVelocity = 2 m/s",
+          "x": 4.5,
+          "y": 2,
+          "xOffset": -117,
+          "yOffset": -76       
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/velocity-label-3",
+          "name": "velocity-label-3",
+          "activity": "/shared/calculated-velocity",
+          "text": "Fast, steady for 3 secs.\nVelocity = 10 m/s",
+          "x": 7.5,
+          "y": 10,
+          "xOffset": -105,
+          "yOffset": -13                 
+        }
+      ]
+    },
+    {
       "type": "LabelSet",
       "records": [
         {
           "url": "/shared/describing-velocity/annotation/students-segment-labels",
           "name": "students-segment-labels",
           "activity": "/shared/describing-velocity"
-        }
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/velocity-labels",
+          "name": "velocity-labels",
+          "activity": "/shared/describing-velocity",
+          "labels": ["/shared/describing-velocity/annotation/velocity-label-1", "/shared/describing-velocity/annotation/velocity-label-2", "/shared/describing-velocity/annotation/velocity-label-3"]
+        }        
       ]
     },
     {
