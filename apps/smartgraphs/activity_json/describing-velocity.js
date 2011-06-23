@@ -542,7 +542,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "step": "/shared/describing-velocity/page/4/step/16"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/4/step/6",
+      "defaultBranch": "/shared/describing-velocity/page/4/step/7",
       "submitButtonTitle": "OK"
     },
     {
@@ -556,7 +556,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"]
         },
         "bottom": {
           "type": "table",
@@ -574,11 +574,11 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "step": "/shared/describing-velocity/page/4/step/16"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/4/step/7",
+      "defaultBranch": "/shared/describing-velocity/page/4/step/8",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/describing-velocity/page/4/step/7",
+      "url": "/shared/describing-velocity/page/4/step/8",
       "activityPage": "/shared/describing-velocity/page/4",
       "paneConfig": "split",
       "panes": {
@@ -588,7 +588,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]
         },
         "bottom": {
@@ -607,11 +607,11 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "step": "/shared/describing-velocity/page/4/step/11"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/4/step/8",
+      "defaultBranch": "/shared/describing-velocity/page/4/step/9",
       "submitButtonTitle": "OK"
     },
     {
-      "url": "/shared/describing-velocity/page/4/step/8",
+      "url": "/shared/describing-velocity/page/4/step/9",
       "activityPage": "/shared/describing-velocity/page/4",
       "paneConfig": "split",
       "panes": {
@@ -621,7 +621,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]
         },
         "bottom": {
@@ -1394,6 +1394,61 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "p1Tag": "/shared/describing-velocity/tag/first-point-A",
           "p2Tag": "/shared/describing-velocity/tag/second-point-A",
           "color": "#1f77b4"
+        }
+      ]
+    },
+    {
+      "type": "RiseArrow",
+      "records": [
+        {
+          "url": "/shared/describing-velocity/annotation/rise-arrow-A",
+          "name": "rise-arrow-A",
+          "activity": "/shared/describing-velocity",
+          "color": "#cccccc",
+          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
+          "p2Tag": "/shared/describing-velocity/tag/second-point-A"
+        }
+      ]
+    },
+    {
+      "type": "RunArrow",
+      "records": [
+        {
+          "url": "/shared/describing-velocity/annotation/run-arrow-A",
+          "name": "run-arrow-A",
+          "activity": "/shared/describing-velocity",
+          "color": "#cccccc",
+          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
+          "p2Tag": "/shared/describing-velocity/tag/second-point-A"
+        }
+      ]
+    },
+
+    {
+      "type": "RiseBracket",
+      "records": [
+        {
+          "url": "/shared/describing-velocity/annotation/rise-bracket-A",
+          "name": "rise-bracket-A",
+          "activity": "/shared/describing-velocity",
+          "color": "#cccccc",
+          "datadefName": "slope-data",
+          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
+          "p2Tag": "/shared/describing-velocity/tag/second-point-A"
+        }
+      ]
+    },
+    {
+      "type": "RunBracket",
+      "records": [
+        {
+          "url": "/shared/describing-velocity/annotation/run-bracket-A",
+          "name": "run-bracket-A",
+          "activity": "/shared/describing-velocity",
+          "color": "#cccccc",
+          "datadefName": "slope-data",          
+          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
+          "p2Tag": "/shared/describing-velocity/tag/second-point-A"
         }
       ]
     },
