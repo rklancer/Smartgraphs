@@ -944,7 +944,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "beforeText": "<p>Correct!</p>",
-      "afterText":  "<p>The velocity was <b>0</b> in the first segment</p>",
+      "afterText":  "<p>The velocity was <b>0 m/s</b> in the first segment.</p>",
       "isFinalStep": true,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
@@ -987,7 +987,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       }],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["responseField", 1], 0, 0.1],
+          "criterion": ["withinAbsTolerance", ["responseField", 1], 2, 0.1],
           "step": "/shared/describing-velocity/page/5/step/16"
         }
       ],
@@ -1562,7 +1562,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "beforeText": "<p>Correct!</p>",
-      "afterText":  "<p>The velocity was <b>2</b> in the second segment</p>",
+      "afterText":  "<p>The velocity was <b>2 m/s</b> in the second segment</p>",
       "isFinalStep": true,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
@@ -1604,7 +1604,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       }],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["responseField", 1], 0, 0.1],
+          "criterion": ["withinAbsTolerance", ["responseField", 1], 10, 0.1],
           "step": "/shared/describing-velocity/page/6/step/16"
         }
       ],
@@ -2179,7 +2179,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "beforeText": "<p>Correct!</p>",
-      "afterText":  "<p>The velocity was <b>10</b> in the third segment</p>",
+      "afterText":  "<p>The velocity was <b>10 m/s</b> in the third segment</p>",
       "isFinalStep": true,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
