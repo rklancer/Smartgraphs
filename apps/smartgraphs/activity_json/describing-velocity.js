@@ -932,7 +932,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"]
+          "data": ["position-data"],
+          "annotations": ["students-segment-labels"]
         },
         "bottom": {
           "type": "table",
@@ -1546,7 +1547,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"]
+          "data": ["position-data"],
+          "annotations": ["students-segment-labels"]
         },
         "bottom": {
           "type": "table",
@@ -2160,7 +2162,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"]
+          "data": ["position-data"],
+          "annotations": ["students-segment-labels"]
         },
         "bottom": {
           "type": "table",
