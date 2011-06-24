@@ -3143,8 +3143,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "text": "Stopped for 3 secs.\nVelocity = 0 m/s",
           "x": 1.5,
           "y": 0,
-          "xOffset": -67,
-          "yOffset": -43
+          "xOffset": -73,
+          "yOffset": -26
         },
         {
           "url": "/shared/describing-velocity/annotation/velocity-label-2",
@@ -3153,8 +3153,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "text": "Slow, steady for 3 secs.\nVelocity = 2 m/s",
           "x": 4.5,
           "y": 2,
-          "xOffset": -117,
-          "yOffset": -76
+          "xOffset": -86,
+          "yOffset": 86
         },
         {
           "url": "/shared/describing-velocity/annotation/velocity-label-3",
@@ -3163,8 +3163,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "text": "Fast, steady for 3 secs.\nVelocity = 10 m/s",
           "x": 7.5,
           "y": 10,
-          "xOffset": -105,
-          "yOffset": -13
+          "xOffset": -86,
+          "yOffset": 115
         }
       ]
     },
