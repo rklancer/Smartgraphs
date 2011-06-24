@@ -19,7 +19,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "/shared/describing-velocity/page/6",
       "/shared/describing-velocity/page/8",
       "/shared/describing-velocity/page/9",
-      "/shared/describing-velocity/page/10" 
+      "/shared/describing-velocity/page/10",
+      "/shared/describing-velocity/page/11"      
     ],
     "axes": [
       "/shared/describing-velocity/axes/9s",
@@ -213,6 +214,25 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/10/step/1"       
       ],
       "firstStep": "/shared/describing-velocity/page/10/step/1"
+    },
+    {
+      "name": "Explore Other Motions",
+      "url": "/shared/describing-velocity/page/11",
+      "activity": "/shared/describing-velocity",
+      "index": 11,
+      "introText": "<h1>Explore Other Motions</h1>",  
+      "steps": [
+        "/shared/describing-velocity/page/11/step/1",
+        "/shared/describing-velocity/page/11/step/2",
+        "/shared/describing-velocity/page/11/step/3",
+        "/shared/describing-velocity/page/11/step/4",
+        "/shared/describing-velocity/page/11/step/5",
+        "/shared/describing-velocity/page/11/step/6",
+        "/shared/describing-velocity/page/11/step/7",
+        "/shared/describing-velocity/page/11/step/8",
+        "/shared/describing-velocity/page/11/step/9"                
+      ],
+      "firstStep": "/shared/describing-velocity/page/11/step/1"
     }
   ],
   "steps": [
@@ -2468,7 +2488,468 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
       "isFinalStep": true
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/1",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p>Let's look at another type of motion that you have experienced.</p><p><b>Click</b> the Start button to watch the motion and corresponding position-time graph",
+      "submitButtonTitle": "OK",
+      "defaultBranch": "/shared/describing-velocity/page/11/step/2"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/2",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p>Use the position-time graph to find the car's velocity</p><p><b>Sketch</b> the velocity-time graph for the motion in the bottom area.</p>",
+      "submitButtonTitle": "OK",
+      "defaultBranch": "/shared/describing-velocity/page/11/step/3"      
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/3",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p><b>Click</b> the Start button. <b>Observe</b> the motion and graph multiple times.</p><p>In the top area, the position-time graph displays. In the bottom area, the actual veloicty-time graph displays along with your sketch.</p><p>How does your predicted velocity compare with the actual velocity?</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/open",
+      "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
+      "submitButtonTitle": "OK",
+      "defaultBranch": "/shared/describing-velocity/page/11/step/4"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/4",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p>Based on your observations, which of the following statements is true?",
+      "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        { 
+          "criterion": ["=", ["responseField", 1], 2],
+          "step": "/shared/describing-velocity/page/11/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/11/step/5"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/5",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p><b>Incorrect.</b> Hint 1: Recall that velocity is the change in position divided by the change in time. Try again: </p><p>Based on your observations, which of the following statements is true?",
+      "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        { 
+          "criterion": ["=", ["responseField", 1], 2],
+          "step": "/shared/describing-velocity/page/11/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/11/step/6"      
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/6",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p><b>Incorrect.</b> Hint 2: The change in position is 0 m - 36 m = -36 m. The change in time is 9 s - 0 s = 9 s. Try again: </p><p>Based on your observations, which of the following statements is true?",
+      "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        { 
+          "criterion": ["=", ["responseField", 1], 2],
+          "step": "/shared/describing-velocity/page/11/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/11/step/7"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/7",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p><b>Incorrect.</b> Hint 3: The change in the car's position between the end point and the beginning point, divided by the change in the times of the end point and beginning point, is -36 m / 9 s. Try again: </p><p>Based on your observations, which of the following statements is true?",
+      "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        { 
+          "criterion": ["=", ["responseField", 1], 2],
+          "step": "/shared/describing-velocity/page/11/step/9"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/11/step/8"      
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/8",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p><b>Incorrect.</b> Velocity = change in position / change in time = -36 m / 9 s = -4 m/s. The velocity is negative.",
+      "hideSubmitButton": true,
+      "isFinalStep": true
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/11/step/9",
+      "activityPage": "/shared/describing-velocity/page/11",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        },
+        "bottom": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/car-mps",
+          "data": [
+            ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": []
+        }
+      },
+      "tools": [
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "animations": [{
+                "data": "car-in-reverse-position",
+                "image": sc_static('images/carWhite.png'),
+                "width":  30,
+                "height": 61,
+                "xOffset": 40,
+                "yOffset": 0
+              }]
+          }
+        }
+      ],
+      "beforeText": "<p><b>Correct!</b> Velocity = change in position / change in time = -36 m / 9 s = -4 m/s. The velocity is negative.",
+      "hideSubmitButton": true,
+      "isFinalStep": true
     }
+    
   ],
   "units": [
   ],
@@ -2545,6 +3026,25 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "initialValues": [
         ""
       ]
+    },
+    {
+      "url": "/shared/describing-velocity/response-template/velocity-time-question-2",
+      "templateString": "",
+      "fieldTypes": [
+        "multiplechoice"
+      ],
+      "fieldChoicesList": [
+        [
+          "When the car moves toward the start line, its velocity is positive",
+          "When the car moves toward the start line, its velocity is negative",
+          "When the car moves toward the start line, its velocity is 0",
+          "When the car moves toward the start line, the velocity is positive then becomes negative",
+          "When the car moves toward the start line, the velocity is negative then becomes positive"
+        ]
+      ],
+      "initialValues": [
+        ""
+      ]
     }
   ],
   "tags": [
@@ -2586,6 +3086,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yLabel": "Position",
           "yShortLabel": "Position",
           "points": [[0.00,0.00],[0.10,0.00],[0.20,0.00],[0.30,0.00],[0.40,0.00],[0.50,0.00],[0.60,0.00],[0.70,0.00],[0.80,0.00],[0.90,0.00],[1.00,0.00],[1.10,0.00],[1.20,0.00],[1.30,0.00],[1.40,0.00],[1.50,0.00],[1.60,0.00],[1.70,0.00],[1.80,0.00],[1.90,0.00],[2.00,0.00],[2.10,0.00],[2.20,0.00],[2.30,0.00],[2.40,0.00],[2.50,0.00],[2.60,0.01],[2.70,0.02],[2.80,0.05],[2.90,0.10],[3.00,0.20],[3.10,0.35],[3.20,0.52],[3.30,0.71],[3.40,0.90],[3.50,1.10],[3.60,1.30],[3.70,1.50],[3.80,1.70],[3.90,1.90],[4.00,2.10],[4.10,2.30],[4.20,2.50],[4.30,2.70],[4.40,2.90],[4.50,3.10],[4.60,3.30],[4.70,3.50],[4.80,3.70],[4.90,3.90],[5.00,4.10],[5.10,4.30],[5.20,4.50],[5.30,4.70],[5.40,4.91],[5.50,5.11],[5.60,5.33],[5.70,5.58],[5.80,5.89],[5.90,6.32],[6.00,6.92],[6.10,7.69],[6.20,8.58],[6.30,9.53],[6.40,10.51],[6.50,11.51],[6.60,12.50],[6.70,13.50],[6.80,14.50],[6.90,15.50],[7.00,16.50],[7.10,17.50],[7.20,18.50],[7.30,19.50],[7.40,20.50],[7.50,21.50],[7.60,22.50],[7.70,23.50],[7.80,24.50],[7.90,25.50],[8.00,26.50],[8.10,27.50],[8.20,28.50],[8.30,29.50],[8.40,30.50],[8.50,31.50],[8.60,32.50],[8.70,33.50],[8.80,34.50],[8.90,35.50],[9.00,36.50]]
+        },
+        {
+          "url": "/shared/describing-velocity/datadefs/car-in-reverse-position",
+          "name": "car-in-reverse-position",
+          "activity": "/shared/describing-velocity",
+          "xUnits": "/builtins/units/seconds",
+          "xLabel": "Time",
+          "xShortLabel": "Time",
+          "yUnits": "/builtins/units/meters",
+          "yLabel": "Position",
+          "yShortLabel": "Position",
+          "points": [[0,36],[0.1,35.6],[1,32],[2,28],[3,24],[4,20],[5,16],[6,12],[7,8],[8,4],[9,0]]
         }
       ]
     },
@@ -2603,6 +3115,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yLabel": "Velocity",
           "yShortLabel": "Velocity",
           "source": "/shared/describing-velocity/datadefs/position-data"
+        },
+        {
+          "url": "/shared/describing-velocity/datadefs/car-in-reverse-velocity",
+          "name": "car-in-reverse-velocity",
+          "activity": "/shared/describing-velocity",
+          "xUnits": "/builtins/units/seconds",
+          "xLabel": "Time",
+          "xShortLabel": "Time",
+          "yUnits": "/builtins/units/meters-per-second",
+          "yLabel": "Velocity",
+          "yShortLabel": "Velocity",
+          "source": "/shared/describing-velocity/datadefs/car-in-reverse-position"
         }
       ]
     }
