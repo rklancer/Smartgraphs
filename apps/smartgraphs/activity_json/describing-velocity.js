@@ -1554,7 +1554,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "beforeText": "<p>Correct!</p>",
-      "afterText":  "<p>The velocity was <b>2 m/s</b> in the second segment</p>",
+      "afterText":  "<p>The velocity was <b>2 m/s</b> in the second segment.</p>",
       "isFinalStep": true,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
@@ -2168,7 +2168,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "beforeText": "<p>Correct!</p>",
-      "afterText":  "<p>The velocity was <b>10 m/s</b> in the third segment</p>",
+      "afterText":  "<p>The velocity was <b>10 m/s</b> in the third segment.</p>",
       "isFinalStep": true,
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
