@@ -36,8 +36,8 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   parentMarginBinding: '.labelBodyView.margin',
 
   // Bounds need to be calculated by Raphael:
-  minHeight: 30,
-  minWidth: 100,
+  minHeight: 18,
+  minWidth: 80,
   // width:       100,
   // height:      20,
 
