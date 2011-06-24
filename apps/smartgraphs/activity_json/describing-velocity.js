@@ -2738,44 +2738,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "color": "#1f77b4"
         },
         {
-          "url": "/shared/describing-velocity/annotation/p2A-highliposition-dataght",
+          "url": "/shared/describing-velocity/annotation/p2A-highlight",
           "name": "p2A-highlight",
           "activity": "/shared/describing-velocity",
           "datadefName": "position-data",
           "tag": "/shared/describing-velocity/tag/second-point-A",
           "color": "#ff7f0e"
-        },
-        {
-          "url": "/shared/describing-velocity/annotation/p1B-highlight",
-          "name": "p1B-highlight",
-          "activity": "/shared/describing-velocity",
-          "datadefName": "position-data",
-          "tag": "/shared/describing-velocity/tag/first-point-B",
-          "color": "#1f77b4"
-        },
-        {
-          "url": "/shared/describing-velocity/annotation/p2B-highlight",
-          "name": "p2B-highlight",
-          "activity": "/shared/describing-velocity",
-          "datadefName": "position-data",
-          "tag": "/shared/describing-velocity/tag/second-point-B",
-          "color": "#ff7f0e"
-        },
-        {
-          "url": "/shared/describing-velocity/annotation/p1A-blocker",
-          "name": "p1A-blocker",
-          "activity": "/shared/describing-velocity",
-          "datadefName": "position-data",
-          "tag": "/shared/describing-velocity/tag/first-point-A",
-          "color": "#f2b3b3"
-        },
-        {
-          "url": "/shared/describing-velocity/annotation/p2A-blocker",
-          "name": "p2A-blocker",
-          "activity": "/shared/describing-velocity",
-          "datadefName": "position-data",
-          "tag": "/shared/describing-velocity/tag/second-point-A",
-          "color": "#f2b3b3"
         }
       ]
     }
