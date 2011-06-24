@@ -44,6 +44,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   init: function () {
     sc_super();
     if (this.get('isEditable')) {
+      this.set('isAllSelected',YES);
       this.beginEditing();
     }
   },
@@ -131,10 +132,14 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   },
 
   beginEditing: function () {
-    this.toggle('isAllSelected');
     if (!this.get('isEditable')) { return NO ; }
-    this.set('isEditing', YES);
     this.becomeFirstResponder();
+    if (this.get('isEditing')) {
+      this.toggle('isAllSelected');
+    }
+    else {
+      this.set('isEditing', YES);
+    }
     return YES ;
   },
 
@@ -150,6 +155,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   updateText: function (newtext) {
     this.beginPropertyChanges();
+    this.set('isAllSelected', NO);
     this.set('text',newtext);
     this.endPropertyChanges();
   },
@@ -170,8 +176,12 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   },
 
   appendText: function (chr) {
-    this.set('isAllSelected', NO);
-    this.updateText(this.get('text') + chr);
+    if (this.get('isAllSelected')) {
+      this.updateText(chr);
+    }
+    else {
+      this.updateText(this.get('text') + chr);
+    }
     return YES;
   },
 

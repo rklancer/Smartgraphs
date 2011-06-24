@@ -741,14 +741,35 @@ describe("LabelView behavior", function () {
             beforeEach( function () {
               existingText = labelTextView.get('text');
               textToEnter  = "testing testing\n 1 2 3";
-              expectedText = existingText + textToEnter;
-              for (i = 0; i < textToEnter.length; i++) {
-                simulateKeyPress(target.get('layer'),textToEnter.charCodeAt(i));
-              }
             });
 
-            it("should now have the new text in the label", function () {
-              expect(labelTextView.get('text')).toEqual(expectedText);
+            describe("when the label is all selected", function () {
+              beforeEach( function () {
+                labelView.setPath('labelBodyView.labelTextView.isAllSelected', YES);
+                expectedText = textToEnter;
+                for (i = 0; i < textToEnter.length; i++) {
+                  simulateKeyPress(target.get('layer'),textToEnter.charCodeAt(i));
+                }
+              });
+
+              it("should now have the new text in the label", function () {
+                expect(labelTextView.get('text')).toEqual(expectedText);
+              });
+            });
+
+            describe("when the label is not all selected", function () {
+              beforeEach( function () {
+                labelView.setPath('labelBodyView.labelTextView.isAllSelected', NO);
+                expectedText = existingText + textToEnter;
+                for (i = 0; i < textToEnter.length; i++) {
+                  simulateKeyPress(target.get('layer'),textToEnter.charCodeAt(i));
+                }
+              });
+
+              it("should now have the new text in the label", function () {
+                expect(labelTextView.get('text')).toEqual(expectedText);
+              });
+
             });
 
             describe("leaving editing mode", function () {
