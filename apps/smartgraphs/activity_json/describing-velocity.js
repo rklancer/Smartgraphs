@@ -2974,8 +2974,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     {
       "url": "/shared/describing-velocity/axes/car-mps",
       "units": "/builtins/units/meters-per-second",
-      "min": -4,
-      "max": 20,
+      "min": -12,
+      "max": 12,
       "nSteps": 12,
       "label": "Velocity"
     }
