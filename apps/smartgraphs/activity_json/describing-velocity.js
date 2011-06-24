@@ -2485,6 +2485,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       },
       "beforeText": " <p>The position-time graph of the car's motion displays in the top window and the velocity time graph displays in the bottom.</p><p>How do the labels describing the motion compare in the two graphs?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
+      "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
       "isFinalStep": true
