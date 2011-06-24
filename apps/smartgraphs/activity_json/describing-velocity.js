@@ -331,10 +331,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ]
     },
 
-    // handy expression for making sure the
-    // ["and", [">=", ["coord", "x", "first-point-A"], 0], ["<=", ["coord", "x", "first-point-A"], 3], [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3], ["not", ["=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]]]
-    // or (with context vars segment-start and segment-end defined as (0, 3) or (3, 6), or (6, 9) as appropriate):
-    // ["and", [">=", ["coord", "x", "first-point-A"], ["get", "segment-start"]], ["<=", ["coord", "x", "first-point-A"], ["get", "segment-end"]], [">=", ["coord", "x", "second-point-A"], ["get", "segment-start"]], ["<=", ["coord", "x", "second-point-A"], ["get", "segment-end"]], ["not", ["=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]]]
     {
       "url": "/shared/describing-velocity/page/4/step/1",
       "activityPage": "/shared/describing-velocity/page/4",
@@ -950,10 +946,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "nextButtonShouldSubmit": true
     },
     
-    // handy expression for making sure the
-    // ["and", [">=", ["coord", "x", "first-point-A"], 0], ["<=", ["coord", "x", "first-point-A"], 3], [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3], ["not", ["=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]]]
-    // or (with context vars segment-start and segment-end defined as (0, 3) or (3, 6), or (6, 9) as appropriate):
-    // ["and", [">=", ["coord", "x", "first-point-A"], ["get", "segment-start"]], ["<=", ["coord", "x", "first-point-A"], ["get", "segment-end"]], [">=", ["coord", "x", "second-point-A"], ["get", "segment-start"]], ["<=", ["coord", "x", "second-point-A"], ["get", "segment-end"]], ["not", ["=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]]]
     {
       "url": "/shared/describing-velocity/page/5/step/1",
       "activityPage": "/shared/describing-velocity/page/5",
@@ -1567,10 +1559,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
     },
-    // handy expression for making sure the
-    // ["and", [">=", ["coord", "x", "first-point-A"], 6], ["<=", ["coord", "x", "first-point-A"], 3], [">=", ["coord", "x", "second-point-A"], 6], ["<=", ["coord", "x", "second-point-A"], 3], ["not", ["=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]]]
-    // or (with context vars segment-start and segment-end defined as (0, 3) or (3, 6), or (6, 9) as appropriate):
-    // ["and", [">=", ["coord", "x", "first-point-A"], ["get", "segment-start"]], ["<=", ["coord", "x", "first-point-A"], ["get", "segment-end"]], [">=", ["coord", "x", "second-point-A"], ["get", "segment-start"]], ["<=", ["coord", "x", "second-point-A"], ["get", "segment-end"]], ["not", ["=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]]]
+    
     {
       "url": "/shared/describing-velocity/page/6/step/1",
       "activityPage": "/shared/describing-velocity/page/6",
