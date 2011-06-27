@@ -491,7 +491,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><b>no</b> Your point is not within the first three seconds.</p> <p>Select apoint in the <b>first interval (between 0 and 3 seconds)</b>. Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your point is not within the first three seconds.</p> <p>Select apoint in the <b>first interval (between 0 and 3 seconds)</b>. Then click <b>OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1107,7 +1107,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><b>no</b> Your point is not within the second three seconds.</p> <p>Select apoint in the <b>second interval (between 3 and 6 seconds)</b>. Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your point is not within the second three seconds.</p> <p>Select apoint in the <b>second interval (between 3 and 6 seconds)</b>. Then click <b>OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1722,7 +1722,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><b>no</b> Your point is not within the third three seconds.</p> <p>Select apoint in the <b>third interval (between 6 and 9 seconds)</b>. Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your point is not within the third three seconds.</p> <p>Select apoint in the <b>third interval (between 6 and 9 seconds)</b>. Then click <b>OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
