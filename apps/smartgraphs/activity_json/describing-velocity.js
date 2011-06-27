@@ -20,7 +20,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "/shared/describing-velocity/page/8",
       "/shared/describing-velocity/page/9",
       "/shared/describing-velocity/page/10",
-      "/shared/describing-velocity/page/11"      
+      "/shared/describing-velocity/page/11",
+      "/shared/describing-velocity/page/12"
     ],
     "axes": [
       "/shared/describing-velocity/axes/9s",
@@ -233,6 +234,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/11/step/9"                
       ],
       "firstStep": "/shared/describing-velocity/page/11/step/1"
+    },
+    {
+      "name": "Identify the Motion",
+      "url": "/shared/describing-velocity/page/12",
+      "activity": "/shared/describing-velocity",
+      "index": 12,
+      "introText": "<h1>Identify the Motion</h1>",
+      "steps": [
+        "/shared/describing-velocity/page/12/step/1"
+      ],
+      "firstStep": "/shared/describing-velocity/page/12/step/1"
     }
   ],
   "steps": [
@@ -2951,6 +2963,29 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "beforeText": "<p><b>Correct!</b> Velocity = change in position / change in time = -36 m / 9 s = -4 m/s. The velocity is negative.",
       "hideSubmitButton": true,
+      "shouldFinishImmediately": true,      
+      "isFinalStep": true
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/1",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "hideSubmitButton": true,
       "isFinalStep": true
     }
     
@@ -2980,6 +3015,22 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "min": -12,
       "max": 12,
       "nSteps": 12,
+      "label": "Velocity"
+    },
+    {
+      "url": "/shared/describing-velocity/axes/identify-the-motion-time",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 20,
+      "nSteps": 20,
+      "label": "Time"
+    },
+    {
+      "url": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+      "units": "/builtins/units/meters-per-second",
+      "min": -5,
+      "max": 5,
+      "nSteps": 10,
       "label": "Velocity"
     }
   ],
@@ -3049,6 +3100,25 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "initialValues": [
         ""
       ]
+    },
+    {
+      "url": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "templateString": "",
+      "fieldTypes": [
+        "multiplechoice"
+      ],
+      "fieldChoicesList": [
+        [
+          "Segment A",
+          "Segment B",
+          "Segment C",
+          "Segment D",
+          "Segment E"
+        ]
+      ],
+      "initialValues": [
+        ""
+      ]
     }
   ],
   "tags": [
@@ -3102,6 +3172,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yLabel": "Position",
           "yShortLabel": "Position",
           "points": [[0,36],[0.1,35.6],[1,32],[2,28],[3,24],[4,20],[5,16],[6,12],[7,8],[8,4],[9,0]]
+        },
+        {
+          "url": "/shared/describing-velocity/datadefs/identify-the-motion-data",
+          "name": "identify-the-motion-data",
+          "activity": "/shared/describing-velocity",
+          "xUnits": "/builtins/units/seconds",
+          "xLabel": "Time",
+          "xShortLabel": "Time",
+          "yUnits": "/builtins/units/meters-per-second",
+          "yLabel": "Velocity",
+          "yShortLabel": "Velocity",
+          "points": [[0,0],[5,0],[5,3],[11,3],[11,-3],[20,-3]]
         }
       ]
     },
@@ -3168,7 +3250,57 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "y": 10,
           "xOffset": -86,
           "yOffset": 115
-        }
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/segment-a-label",
+          "name": "segment-a-label",
+          "activity": "/shared/calculated-velocity",
+          "text": "Segment A",
+          "x": 2.5,
+          "y": 0,
+          "xOffset": -50,
+          "yOffset": 114
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/segment-b-label",
+          "name": "segment-b-label",
+          "activity": "/shared/calculated-velocity",
+          "text": "Segment B",
+          "x": 5,
+          "y": 1.5,
+          "xOffset": -110,
+          "yOffset": -62
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/segment-c-label",
+          "name": "segment-c-label",
+          "activity": "/shared/calculated-velocity",
+          "text": "Segment C",
+          "x": 8,
+          "y": 3,
+          "xOffset": -53,
+          "yOffset": -20        
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/segment-d-label",
+          "name": "segment-d-label",
+          "activity": "/shared/calculated-velocity",
+          "text": "Segment D",
+          "x": 11,
+          "y": 0,
+          "xOffset": 23,
+          "yOffset": -71         
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/segment-e-label",
+          "name": "segment-e-label",
+          "activity": "/shared/calculated-velocity",
+          "text": "Segment E",
+          "x": 15.5,
+          "y": -3,
+          "xOffset": -51,
+          "yOffset": -61      
+        }                
       ]
     },
     {
@@ -3184,6 +3316,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "name": "velocity-labels",
           "activity": "/shared/describing-velocity",
           "labels": ["/shared/describing-velocity/annotation/velocity-label-1", "/shared/describing-velocity/annotation/velocity-label-2", "/shared/describing-velocity/annotation/velocity-label-3"]
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/identify-the-motion-labels",
+          "name": "identify-the-motion-labels",
+          "activity": "/shared/describing-velocity",
+          "labels": ["/shared/describing-velocity/annotation/segment-a-label", "/shared/describing-velocity/annotation/segment-b-label", "/shared/describing-velocity/annotation/segment-c-label", "/shared/describing-velocity/annotation/segment-d-label", "/shared/describing-velocity/annotation/segment-e-label"]
         }
       ]
     },
