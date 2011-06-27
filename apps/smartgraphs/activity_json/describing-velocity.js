@@ -333,7 +333,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": " <p><strong>How can you describe velocity?</strong></p>  <p>Let’s start by examining the motion of a car traveling from one point to another.</p>  <p><strong>Click</strong> the Start button to the right to watch the car’s journey. <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p> ",
+      "beforeText": " <p><strong>How can you describe velocity?</strong></p>  <p>Let’s start by examining the motion of a car traveling from one point to another.</p>  <p><b>Click</b> the Start button to the right to watch the car’s journey. <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p> ",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "afterText": "<p><strong>Word bank:</strong> start, position, time, forward, backward, moving, stopping, velocity, constant, steady, changing, slow, fast, end<p>",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
@@ -362,7 +362,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": []
         }
       },
-      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double click</b> inside the label and start typing.</p>",
+      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double-click</b> inside the label and <b>start typing</b>.</p>",
       "substitutedExpressions": ["student-description"],
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
@@ -452,9 +452,9 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><strong>no</strong>  <em>%@</em> is not the velocity for the first segment.</p>",
+      "beforeText": "<p><b>Incorrect.</b> The velocity for this segment is not <em>%@ m/s</em>.</p>",
       "substitutedExpressions": [ "student-velocity" ],
-      "afterText": "<p>Select a point in the first interval (between 0 and 3 seconds) on the graph. Theb click <b>OK</b></p>",
+      "afterText": "<p>Select a point in the first interval (between 0 and 3 seconds) on the graph. Then <b>click OK</b></p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -491,7 +491,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Your point is not within the first three seconds.</p> <p>Select apoint in the <b>first interval (between 0 and 3 seconds)</b>. Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your point is not within the first three seconds.</p> <p>Select apoint in the <b>first interval (between 0 and 3 seconds)</b>. Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -528,7 +528,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Select a second point in the first interval (between 0 and 3 seconds). Then click <b>OK</b>.</p>",
+      "beforeText": "<p>Select a second point in the first interval (between 0 and 3 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -566,7 +566,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Your second point was not within the first three seconds. </p> <p> Please Select a second point in the first interval (between 0 and 3 seconds). Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your second point was not within the first three seconds. </p> <p> Select a second point in the first interval (between 0 and 3 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -633,7 +633,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -666,7 +666,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -700,7 +700,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -734,7 +734,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
+      "beforeText": "<p><b>Incorrect.</b> The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
         "end-position",
         "start-position",
@@ -831,7 +831,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["run-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -938,7 +938,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
         "change-position",
         "change-position-units",
@@ -1037,9 +1037,9 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><strong>no</strong>  <em>%@</em> is not the velocity for the second segment.</p>",
+      "beforeText": "<p><b>Incorrect.</b> The velocity for this segment is not <em>%@ m/s</em>.</p>",
       "substitutedExpressions": [ "student-velocity" ],
-      "afterText": "<p>Select a point in the second interval (between 3 and 6 seconds) on the graph. Theb click <b>OK</b></p>",
+      "afterText": "<p>Select a point in the second interval (between 3 and 6 seconds) on the graph. Then <b>click OK</b></p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1076,7 +1076,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Your point is not within the second three seconds.</p> <p>Select apoint in the <b>second interval (between 3 and 6 seconds)</b>. Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your point is not within the second three seconds.</p> <p>Select apoint in the <b>second interval (between 3 and 6 seconds)</b>. Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1113,7 +1113,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Select a second point in the second interval (between 3 and 6 seconds). Then click <b>OK</b>.</p>",
+      "beforeText": "<p>Select a second point in the second interval (between 3 and 6 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1150,7 +1150,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Your second point was not within the second three seconds. </p> <p> Please Select a second point in the second interval (between 3 and 6 seconds). Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your second point was not within the second three seconds. </p> <p> Select a second point in the second interval (between 3 and 6 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1217,7 +1217,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1250,7 +1250,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1284,7 +1284,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1318,7 +1318,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
+      "beforeText": "<p><b>Incorrect.</b> The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
         "end-position",
         "start-position",
@@ -1415,7 +1415,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["run-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1522,7 +1522,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
         "change-position",
         "change-position-units",
@@ -1621,9 +1621,9 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><strong>no</strong>  <em>%@</em> is not the velocity for the third segment.</p>",
+      "beforeText": "<p><b>Incorrect.</b> The velocity for this segment is not <em>%@ m/s</em>.</p>",
       "substitutedExpressions": [ "student-velocity" ],
-      "afterText": "<p>Select a point in the third interval (between 6 and 9 seconds) on the graph. Theb click <b>OK</b></p>",
+      "afterText": "<p>Select a point in the third interval (between 6 and 9 seconds) on the graph. Then <b>click OK</b></p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1660,7 +1660,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Your point is not within the third three seconds.</p> <p>Select apoint in the <b>third interval (between 6 and 9 seconds)</b>. Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your point is not within the third three seconds.</p> <p>Select apoint in the <b>third interval (between 6 and 9 seconds)</b>. Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1697,7 +1697,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Select a second point in the third interval (between 6 and 9 seconds). Then click <b>OK</b>.</p>",
+      "beforeText": "<p>Select a second point in the third interval (between 6 and 9 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1734,7 +1734,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Your second point was not within the third three seconds. </p> <p> Please Select a second point in the third interval (between 6 and 9 seconds). Then click <b>OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your second point was not within the third three seconds. </p> <p> Select a second point in the third interval (between 6 and 9 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
@@ -1801,7 +1801,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1834,7 +1834,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1868,7 +1868,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1902,7 +1902,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect. The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
+      "beforeText": "<p><b>Incorrect.</b> The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
         "end-position",
         "start-position",
@@ -1999,7 +1999,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "highlightedAnnotations": ["run-bracket-A"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -2106,7 +2106,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
+      "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
         "change-position",
         "change-position-units",
@@ -2381,7 +2381,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": []
         }
       },
-      "beforeText": "<p>Incorrect. The graph is a horizontal segment in which the velocity is 0.</p>",
+      "beforeText": "<p><b>Incorrect.</b> The graph is a horizontal segment in which the velocity is 0.</p>",
       "nextButtonShouldSubmit": true,
       "hideSubmitButton": true,
       "isFinalStep": true
