@@ -242,7 +242,24 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "index": 12,
       "introText": "<h1>Identify the Motion</h1>",
       "steps": [
-        "/shared/describing-velocity/page/12/step/1"
+        "/shared/describing-velocity/page/12/step/1",
+        "/shared/describing-velocity/page/12/step/2",
+        "/shared/describing-velocity/page/12/step/3",
+        "/shared/describing-velocity/page/12/step/4",
+        "/shared/describing-velocity/page/12/step/5",
+        "/shared/describing-velocity/page/12/step/6",
+        "/shared/describing-velocity/page/12/step/7",
+        "/shared/describing-velocity/page/12/step/8",
+        "/shared/describing-velocity/page/12/step/9",
+        "/shared/describing-velocity/page/12/step/10",
+        "/shared/describing-velocity/page/12/step/11",
+        "/shared/describing-velocity/page/12/step/12",
+        "/shared/describing-velocity/page/12/step/13",
+        "/shared/describing-velocity/page/12/step/14",
+        "/shared/describing-velocity/page/12/step/15",
+        "/shared/describing-velocity/page/12/step/16",
+        "/shared/describing-velocity/page/12/step/17",
+        "/shared/describing-velocity/page/12/step/18"                               
       ],
       "firstStep": "/shared/describing-velocity/page/12/step/1"
     }
@@ -2985,7 +3002,486 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       },
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 3],
+          "step": "/shared/describing-velocity/page/12/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/2"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/2",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 1: While an object is moving forward with constant velocity, does its velocity stay the same or change? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 3],
+          "step": "/shared/describing-velocity/page/12/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/3"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/3",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 2: When an object is moving forward, is its velocity positive, negative, or 0? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 3],
+          "step": "/shared/describing-velocity/page/12/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/4"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/4",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows a positive, constant velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 3],
+          "step": "/shared/describing-velocity/page/12/step/6"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/5"      
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/5",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> From 5 to 11 seconds, the velocity was 3 m/s, which means that the object was moving at a steady rate forward. This corresponds to Segment C.</p>",
+      "submitButtonTitle": "OK",
+      "defaultBranch": "/shared/describing-velocity/page/12/step/7"
+    },
+
+    {
+      "url": "/shared/describing-velocity/page/12/step/6",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Correct!</b> From 5 to 11 seconds, the velocity was 3 m/s, which means that the object was moving at a steady rate forward. This corresponds to Segment C.</p>",
+      "submitButtonTitle": "OK",
+      "defaultBranch": "/shared/describing-velocity/page/12/step/7"
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/7",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 1],
+          "step": "/shared/describing-velocity/page/12/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/8"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/8",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 1: While an object is stopped, does its velocity stay the same or change? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 1],
+          "step": "/shared/describing-velocity/page/12/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/9"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/9",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 2: What is an object's velocity when it is not moving? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 1],
+          "step": "/shared/describing-velocity/page/12/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/10"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/10",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows a velocity of 0? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 1],
+          "step": "/shared/describing-velocity/page/12/step/12"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/11"      
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/11",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> From 0 to 5 seconds, the velocity was 0, which means that the object was not moving. This corresponds to Segment A.</p>",
+      "submitButtonTitle": "OK",
+      "defaultBranch": "/shared/describing-velocity/page/12/step/13"
+    },
+
+    {
+      "url": "/shared/describing-velocity/page/12/step/12",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Correct!</b> From 0 to 5 seconds, the velocity was 0, which means that the object was not moving. This corresponds to Segment A.</p>",
+      "submitButtonTitle": "OK",
+      "defaultBranch": "/shared/describing-velocity/page/12/step/13"
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/13",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 5],
+          "step": "/shared/describing-velocity/page/12/step/18"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/14"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/14",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 1: While an object is moving backward with constant velocity, does its velocity stay the same or change? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 5],
+          "step": "/shared/describing-velocity/page/12/step/18"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/15"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/15",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 2: When an object is moving backward, is its velocity positive, negative, or 0? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 5],
+          "step": "/shared/describing-velocity/page/12/step/18"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/16"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/16",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows a negative, constant velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
+      "submitButtonTitle": "Check My Answer",
+      "responseBranches": [
+        {
+          "criterion": ["=", ["responseField", 1], 5],
+          "step": "/shared/describing-velocity/page/12/step/18"
+        }
+      ],
+      "defaultBranch": "/shared/describing-velocity/page/12/step/17"      
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/12/step/17",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b> From 11 to 20 seconds, the velocity was -5 m/s, which means that the object was moving at a steady rate backward. This corresponds to Segment E.</p>",
       "hideSubmitButton": true,
+      "nextButtonShouldSubmit": true,
+      "isFinalStep": true
+    },
+
+    {
+      "url": "/shared/describing-velocity/page/12/step/18",
+      "activityPage": "/shared/describing-velocity/page/12",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "title": "Velocity vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/identify-the-motion-time",
+          "yAxis": "/shared/describing-velocity/axes/identify-the-motion-velocity",
+          "data": [
+            ["identify-the-motion-data", { "line-type": "connected" }]
+          ],
+          "annotations": ["identify-the-motion-labels"]
+        }
+      },
+      "beforeText": "<p><b>Correct!</b> From 11 to 20 seconds, the velocity was -5 m/s, which means that the object was moving at a steady rate backward. This corresponds to Segment E.</p>",
+      "hideSubmitButton": true,
+      "nextButtonShouldSubmit": true,      
       "isFinalStep": true
     }
     
@@ -3225,7 +3721,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "url": "/shared/describing-velocity/annotation/velocity-label-1",
           "name": "velocity-label-1",
           "activity": "/shared/calculated-velocity",
-          "text": "Stopped for 3 secs.\nVelocity = 0 m/s",
+          "text": "Stopped for 3 secs.\nVelocity = 0",
           "x": 1.5,
           "y": 0,
           "xOffset": -73,
