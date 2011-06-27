@@ -855,37 +855,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
-        },
-        "bottom": {
-          "type": "table",
-          "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["run-bracket-A"]
-        }
-      },
-      "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
-      "substitutedExpressions": [
-        "end-time",
-        "start-time",
-        "change-time",
-        "change-time-units"
-      ],
-      "defaultBranch": "/shared/describing-velocity/page/4/step/13",
-      "submitButtonTitle": "Continue"
-    },
-    {
-      "url": "/shared/describing-velocity/page/4/step/13",
-      "activityPage": "/shared/describing-velocity/page/4",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "title": "Position vs. Time",
-          "xAxis": "/shared/describing-velocity/axes/9s",
-          "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
@@ -1470,37 +1439,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
-        },
-        "bottom": {
-          "type": "table",
-          "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["run-bracket-A"]
-        }
-      },
-      "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
-      "substitutedExpressions": [
-        "end-time",
-        "start-time",
-        "change-time",
-        "change-time-units"
-      ],
-      "defaultBranch": "/shared/describing-velocity/page/5/step/13",
-      "submitButtonTitle": "Continue"
-    },
-    {
-      "url": "/shared/describing-velocity/page/5/step/13",
-      "activityPage": "/shared/describing-velocity/page/5",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "title": "Position vs. Time",
-          "xAxis": "/shared/describing-velocity/axes/9s",
-          "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
         },
         "bottom": {
@@ -2073,37 +2011,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/6/step/13",
       "submitButtonTitle": "OK"
-    },
-    {
-      "url": "/shared/describing-velocity/page/6/step/13",
-      "activityPage": "/shared/describing-velocity/page/6",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "title": "Position vs. Time",
-          "xAxis": "/shared/describing-velocity/axes/9s",
-          "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
-        },
-        "bottom": {
-          "type": "table",
-          "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["run-bracket-A"]
-        }
-      },
-      "beforeText": "<p>Incorrect. The change in time is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
-      "substitutedExpressions": [
-        "end-time",
-        "start-time",
-        "change-time",
-        "change-time-units"
-      ],
-      "defaultBranch": "/shared/describing-velocity/page/6/step/13",
-      "submitButtonTitle": "Continue"
     },
     {
       "url": "/shared/describing-velocity/page/6/step/13",
