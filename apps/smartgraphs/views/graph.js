@@ -619,7 +619,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       images: [],
       indexedImages: {},
-
+      startLineGraphics: null,
       displayProperties: 'animations.[]',
 
       // Handle the special shapes we allow authors to use.
@@ -636,7 +636,17 @@ Smartgraphs.GraphView = SC.View.extend(
         }
         return imageURL;
       },
-      
+
+      _renderStatics: function (animationSpec, raphaelCanvas) {
+        var startLineImageUrl = animationSpec.get('startLineImageUrl');
+        if (startLineImageUrl) {
+          this.set('startLineGraphics') raphaelCanvas.image();
+        }
+        else {
+
+        }
+      },
+
       _renderDataImages: function (raphaelCanvas) {
         var animations             = this.get('animations') || [],
             dataViews              = this.getPath('parentView.dataHolder.childViews') || [],
