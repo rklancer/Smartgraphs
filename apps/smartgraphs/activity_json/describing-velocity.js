@@ -21,7 +21,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "/shared/describing-velocity/page/9",
       "/shared/describing-velocity/page/10",
       "/shared/describing-velocity/page/11",
-      "/shared/describing-velocity/page/12"
+      "/shared/describing-velocity/page/12",
+      "/shared/describing-velocity/page/13"
     ],
     "axes": [
       "/shared/describing-velocity/axes/9s",
@@ -262,6 +263,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/12/step/18"                               
       ],
       "firstStep": "/shared/describing-velocity/page/12/step/1"
+    },
+    {
+      "name": "Conclusion",
+      "url": "/shared/describing-velocity/page/13",
+      "activity": "/shared/describing-velocity",
+      "index": 13,
+      "introText": "<h1>Conclusion</h1><p><b>How can you describe velocity?</b></p>",
+      "steps": [
+        "/shared/describing-velocity/page/13/step/1",
+        "/shared/describing-velocity/page/13/step/2"        
+      ],
+      "firstStep": "/shared/describing-velocity/page/13/step/1"
     }
   ],
   "steps": [
@@ -3483,6 +3496,39 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,      
       "isFinalStep": true
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/13/step/1",
+      "activityPage": "/shared/describing-velocity/page/13",
+      "paneConfig": "single",          
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": sc_static("images/NASCAR_practice.jpg"),
+          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+        }
+      },
+      "beforeText": "<p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/concluding-question-responses",
+      "submitButtonTitle": "OK",
+      "defaultBranch": "/shared/describing-velocity/page/13/step/2"
+    },
+    
+    {
+      "url": "/shared/describing-velocity/page/13/step/2",
+      "activityPage": "/shared/describing-velocity/page/13",
+      "paneConfig": "single",          
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": sc_static("images/NASCAR_practice.jpg"),
+          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+        }
+      },
+      "beforeText": "<p><b>Congratulations.</b> You have finished the activity!</p>",
+      "hideSubmitButton": true,
+      "isFinalStep": true
     }
     
   ],
@@ -3610,6 +3656,25 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "Segment C",
           "Segment D",
           "Segment E"
+        ]
+      ],
+      "initialValues": [
+        ""
+      ]
+    },
+    {
+      "url": "/shared/describing-velocity/response-template/concluding-question-responses",
+      "templateString": "",
+      "fieldTypes": [
+        "multiplechoice"
+      ],
+      "fieldChoicesList": [
+        [
+          "A position-time table",
+          "A position-time graph",
+          "A velocity-time graph",
+          "Words such as constant, fast slow, stopped, forward, backward, or changing",
+          "All of the above"
         ]
       ],
       "initialValues": [
