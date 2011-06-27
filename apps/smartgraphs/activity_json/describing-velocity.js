@@ -3933,7 +3933,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "name": "rise-bracket-A",
           "activity": "/shared/describing-velocity",
           "color": "#cccccc",
-          "datadefName": "slope-data",
+          "datadefName": "position-data",
           "p1Tag": "/shared/describing-velocity/tag/first-point-A",
           "p2Tag": "/shared/describing-velocity/tag/second-point-A"
         }
@@ -3947,7 +3947,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "name": "run-bracket-A",
           "activity": "/shared/describing-velocity",
           "color": "#cccccc",
-          "datadefName": "slope-data",
+          "datadefName": "position-data",
           "p1Tag": "/shared/describing-velocity/tag/first-point-A",
           "p2Tag": "/shared/describing-velocity/tag/second-point-A"
         }
