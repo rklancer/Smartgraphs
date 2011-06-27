@@ -453,12 +453,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1A-highlight"]
         }
       },
       "beforeText": "<p><b>no</b> Your point is not within the first three seconds.</p> <p>Select apoint in the <b>first interval (between 0 and 3 seconds)</b>. Then click <b>OK</b>.</p>",
@@ -1069,12 +1069,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1A-highlight"]
         }
       },
       "beforeText": "<p><b>no</b> Your point is not within the second three seconds.</p> <p>Select apoint in the <b>second interval (between 3 and 6 seconds)</b>. Then click <b>OK</b>.</p>",
@@ -1684,12 +1684,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1A-highlight"]
         }
       },
       "beforeText": "<p><b>no</b> Your point is not within the third three seconds.</p> <p>Select apoint in the <b>third interval (between 6 and 9 seconds)</b>. Then click <b>OK</b>.</p>",
