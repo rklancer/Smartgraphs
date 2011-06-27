@@ -797,7 +797,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
+      "beforeText": "<p><b>Correct!</b></p><p>What is the change in time? </p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint:Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -900,7 +900,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Correct.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
+      "beforeText": "<p><b>Correct.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "substitutedExpressions": [
@@ -971,7 +971,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": "position-data"
         }
       },
-      "beforeText": "<p>Correct!</p>",
+      "beforeText": "<p><b>Correct!</b></p>",
       "afterText":  "<p>The velocity was <b>0 m/s</b> in the first segment.</p>",
       "isFinalStep": true,
       "hideSubmitButton": true,
@@ -1381,7 +1381,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
+      "beforeText": "<p><b>Correct!</b></p><p>What is the change in time? </p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint:Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -1484,7 +1484,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Correct.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
+      "beforeText": "<p><b>Correct.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "substitutedExpressions": [
@@ -1555,7 +1555,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": "position-data"
         }
       },
-      "beforeText": "<p>Correct!</p>",
+      "beforeText": "<p><b>Correct!</b></p>",
       "afterText":  "<p>The velocity was <b>2 m/s</b> in the second segment.</p>",
       "isFinalStep": true,
       "hideSubmitButton": true,
@@ -1965,7 +1965,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
+      "beforeText": "<p><b>Correct!</b></p><p>What is the change in time? </p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint:Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
@@ -2068,7 +2068,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight", "p2A-highlight"]
         }
       },
-      "beforeText": "<p>Correct.</p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
+      "beforeText": "<p><b>Correct.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Recall that velocity is the change in position divided by the change in time.</p>",
       "substitutedExpressions": [
@@ -2139,7 +2139,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": "position-data"
         }
       },
-      "beforeText": "<p>Correct!</p>",
+      "beforeText": "<p><b>Correct!</b></p>",
       "afterText":  "<p>The velocity was <b>10 m/s</b> in the third segment.</p>",
       "isFinalStep": true,
       "hideSubmitButton": true,
@@ -2403,7 +2403,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": []
         }
       },
-      "beforeText": "<p>Correct! The graph is a horizontal segment in which the velocity is 0.</p>",
+      "beforeText": "<p><b>Correct!</b> The graph is a horizontal segment in which the velocity is 0.</p>",
       "nextButtonShouldSubmit": true, 
       "hideSubmitButton": true,
       "isFinalStep": true
