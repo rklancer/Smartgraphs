@@ -722,40 +722,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
-        },
-        "bottom": {
-          "type": "table",
-          "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
-        }
-      },
-      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
-      "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "afterText": "<p>Hint: Look at the table and the graph.</p>",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "responseBranches": [
-        {
-          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
-          "step": "/shared/describing-velocity/page/4/step/11"
-        }
-      ],
-      "defaultBranch": "/shared/describing-velocity/page/4/step/9",
-      "submitButtonTitle": "OK"
-    },
-    {
-      "url": "/shared/describing-velocity/page/4/step/9",
-      "activityPage": "/shared/describing-velocity/page/4",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "title": "Position vs. Time",
-          "xAxis": "/shared/describing-velocity/axes/9s",
-          "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]
         },
@@ -1306,40 +1272,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
-        },
-        "bottom": {
-          "type": "table",
-          "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
-        }
-      },
-      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
-      "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "afterText": "<p>Hint: Look at the table and the graph.</p>",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "responseBranches": [
-        {
-          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
-          "step": "/shared/describing-velocity/page/5/step/11"
-        }
-      ],
-      "defaultBranch": "/shared/describing-velocity/page/5/step/9",
-      "submitButtonTitle": "OK"
-    },
-    {
-      "url": "/shared/describing-velocity/page/5/step/9",
-      "activityPage": "/shared/describing-velocity/page/5",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "title": "Position vs. Time",
-          "xAxis": "/shared/describing-velocity/axes/9s",
-          "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"],
           "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
           "highlightedAnnotations": ["rise-arrow-A"]
         },
@@ -1869,40 +1801,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "afterText": "<p>Hint: Look at the graph.</p>",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
-      "responseBranches": [
-        {
-          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
-          "step": "/shared/describing-velocity/page/6/step/11"
-        }
-      ],
-      "defaultBranch": "/shared/describing-velocity/page/6/step/9",
-      "submitButtonTitle": "OK"
-    },
-    {
-      "url": "/shared/describing-velocity/page/6/step/9",
-      "activityPage": "/shared/describing-velocity/page/6",
-      "paneConfig": "split",
-      "panes": {
-        "top": {
-          "type": "graph",
-          "title": "Position vs. Time",
-          "xAxis": "/shared/describing-velocity/axes/9s",
-          "yAxis": "/shared/describing-velocity/axes/40m",
-          "data": ["position-data"],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
-        },
-        "bottom": {
-          "type": "table",
-          "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
-        }
-      },
-      "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
-      "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
