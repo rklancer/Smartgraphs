@@ -80,6 +80,10 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
       stopControlWasClicked: function () {
         this.gotoState('ANIMATION_STOPPED');
       },
+      
+      animationFinished: function () {
+        this.gotoState('ANIMATION_FINISHED');
+      },
     
       // can't animate correctly while the view is resizing
       graphViewDidResize: function() {
@@ -104,13 +108,29 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
       clearControlWasClicked: function () {
         this.gotoState('ANIMATION_CLEARED');
       },
-    
+      
       // can't animate correctly if the view is resized
       graphViewDidResize: function() {
         this.gotoState('ANIMATION_CLEARED');
       }
     
+    }),
+    
+    ANIMATION_FINISHED: SC.State.design({
+      
+      enterState: function () {
+        Smartgraphs.activityViewController.highlightClearControl();
+      },
+      
+      clearControlWasClicked: function () {
+        this.gotoState('ANIMATION_CLEARED');
+      },
+      
+      graphViewDidResize: function() {
+        this.gotoState('ANIMATION_CLEARED');
+      }
     })
+
   })
   
 });
