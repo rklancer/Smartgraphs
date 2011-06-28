@@ -92,14 +92,24 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "contextVars": [
         { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-position_str",    "value": ["toFixedString", ["get", "start-position"], 2] },
         { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-position_str",      "value": ["toFixedString", ["get", "end-position"], 2] },
         { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
-        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "change-position_str",   "value": ["toFixedString", ["get", "change-position"], 2] },
+
         { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-time_str",        "value": ["toFixedString", ["get", "start-time"], 2] },
         { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-time_str",          "value": ["toFixedString", ["get", "end-time"], 2] },
         { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
-        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
+        { "name": "change-time_str",       "value": ["toFixedString", ["get", "change-time"], 2] },
+
         { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
+        { "name": "velocity_str",          "value": ["toFixedString", ["get", "velocity"], 2] },
+
+        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
         { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
       ],
       "firstStep": "/shared/describing-velocity/page/4/step/1"
@@ -130,14 +140,24 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "contextVars": [
         { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-position_str",    "value": ["toFixedString", ["get", "start-position"], 2] },
         { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-position_str",      "value": ["toFixedString", ["get", "end-position"], 2] },
         { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
-        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "change-position_str",   "value": ["toFixedString", ["get", "change-position"], 2] },
+
         { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-time_str",        "value": ["toFixedString", ["get", "start-time"], 2] },
         { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-time_str",          "value": ["toFixedString", ["get", "end-time"], 2] },
         { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
-        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
+        { "name": "change-time_str",       "value": ["toFixedString", ["get", "change-time"], 2] },
+
         { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
+        { "name": "velocity_str",          "value": ["toFixedString", ["get", "velocity"], 2] },
+
+        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
         { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
       ],
       "firstStep": "/shared/describing-velocity/page/5/step/1"
@@ -168,14 +188,24 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "contextVars": [
         { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-position_str",    "value": ["toFixedString", ["get", "start-position"], 2] },
         { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-position_str",      "value": ["toFixedString", ["get", "end-position"], 2] },
         { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
-        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "change-position_str",   "value": ["toFixedString", ["get", "change-position"], 2] },
+
         { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-time_str",        "value": ["toFixedString", ["get", "start-time"], 2] },
         { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-time_str",          "value": ["toFixedString", ["get", "end-time"], 2] },
         { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
-        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
+        { "name": "change-time_str",       "value": ["toFixedString", ["get", "change-time"], 2] },
+
         { "name": "velocity",              "value": ["/", ["get", "change-position"], ["get", "change-time"]] },
+        { "name": "velocity_str",          "value": ["toFixedString", ["get", "velocity"], 2] },
+
+        { "name": "change-position-units", "value": ["pluralizeUnits", "/builtins/units/meters", ["get", "change-position"]] },
+        { "name": "change-time-units",     "value": ["pluralizeUnits", "/builtins/units/seconds", ["get", "change-time"]] },
         { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
       ],
       "firstStep": "/shared/describing-velocity/page/6/step/1"
@@ -738,9 +768,9 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       },
       "beforeText": "<p><b>Incorrect.</b> The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
       "substitutedExpressions": [
-        "end-position",
-        "start-position",
-        "change-position",
+        "end-position_str",
+        "start-position_str",
+        "change-position_str",
         "change-position-units"
       ],
       "defaultBranch": "/shared/describing-velocity/page/4/step/10",
