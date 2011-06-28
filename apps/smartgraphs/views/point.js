@@ -36,8 +36,8 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
   dimmedColor: '#cccccc',
 
   
-  hoveredRadius: 4,
-  notHoveredRadius: 2,
+  hoveredRadius: 5,
+  notHoveredRadius: 3,
   isEnabled: YES,
   isHovered: NO,
 

@@ -20,7 +20,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
   
   strokeBinding: '.item.color',
   strokeWidth: 2,
-  strokeOpacity: 0.3,
+  strokeOpacity: 1.0,
 
   // SC will call render(context, firstTime == NO) if these properties change
   displayProperties: 'x1 y1 x2 y2 stroke strokeWidth strokeOpacity'.w(),

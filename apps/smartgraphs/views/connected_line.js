@@ -17,8 +17,8 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
   isAnimatable: YES,
   
   strokeBinding: '*item.color',
-  strokeOpacity: 0.9,
-  strokeWidth: 1,
+  strokeOpacity: 0.7,
+  strokeWidth: 3,
   
   displayProperties: 'item.points.[] stroke'.w(),
   
