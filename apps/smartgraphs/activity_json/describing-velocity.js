@@ -360,7 +360,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
-                "yOffset": 20
+                "yOffset": 0
               }]
           }
         }
@@ -418,7 +418,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
-                "yOffset": 20
+                "yOffset": 0
               }]
           }
         }
@@ -2120,7 +2120,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
-                "yOffset": 20
+                "yOffset": 0
               }]
           }
         }
@@ -2169,7 +2169,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
-                "yOffset": 20
+                "yOffset": 0
               }]
           }
         }

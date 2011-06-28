@@ -338,7 +338,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
         pt = points[0]; // [x, y]
         y = pt[1] / (logicalBounds.yMax - logicalBounds.yMin);
-        raphaelForImage.attr({ y: screenBounds.yTop + (screenBounds.plotHeight*(1-y))-30+yOffset });
+        raphaelForImage.attr({ y: screenBounds.yTop + (screenBounds.plotHeight*(1-y)) + yOffset });
         animationTime = ms;
       }
       
@@ -381,7 +381,7 @@ Smartgraphs.GraphView = SC.View.extend(
           yFrac = pt[1] * yScale;         // the fractional distance along y-axis at which the icon should display
           
           keyframes[parseInt(scaledXPercentage, 10)+'%'] = {
-            y: screenBounds.yTop + (screenBounds.plotHeight * (1-yFrac)) - 30 + yOffset
+            y: screenBounds.yTop + (screenBounds.plotHeight * (1-yFrac)) + yOffset
           };
           
           if (idx+1===len) {
@@ -512,7 +512,7 @@ Smartgraphs.GraphView = SC.View.extend(
         
         if (raphaelForImage) {
           raphaelForImage.attr({
-            y: screenBounds.yTop + screenBounds.plotHeight * (1-y) - 30 + yOffset
+            y: screenBounds.yTop + screenBounds.plotHeight * (1-y) + yOffset
           });
         }
       });
@@ -643,6 +643,7 @@ Smartgraphs.GraphView = SC.View.extend(
             imageWidth,
             imageHeight,
             xOffset,
+            yOffset,
             dataView,
             points,
             y;
@@ -690,13 +691,14 @@ Smartgraphs.GraphView = SC.View.extend(
               imageWidth    = animationSpec.width  || 70;
               imageHeight   = animationSpec.height || 30;
               xOffset       = animationSpec.xOffset || 0;
+              yOffset       = animationSpec.yOffset || 0;
           
               console.log('adjusting image');      
 
               imagesByDatadefName[datadefName].attr({
                 src:    this._normalizeImageURL(requestedImageURLs[datadefName]),
                 x:      this.get('frame').x + 10 + xOffset,
-                y:      screenBounds.yTop + (screenBounds.plotHeight * (1-y)) - imageHeight,
+                y:      screenBounds.yTop + (screenBounds.plotHeight * (1-y)) + yOffset,
                 width:  imageWidth,
                 height: imageHeight
               });
