@@ -695,7 +695,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1A-highlight", "p2A-highlight"],
+          "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
@@ -1245,7 +1246,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1A-highlight", "p2A-highlight"],
+          "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
@@ -1795,7 +1797,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1A-highlight", "p2A-highlight"],
+          "highlightedAnnotations": ["rise-bracket-A"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
