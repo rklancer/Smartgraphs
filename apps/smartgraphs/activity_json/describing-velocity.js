@@ -2411,7 +2411,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     
     {
       "url": "/shared/describing-velocity/page/10/step/1",
-      "activityPage": "/shared/describing-velocity/page/8",
+      "activityPage": "/shared/describing-velocity/page/10",
       "paneConfig": "split",
       "panes": {
         "top": {
