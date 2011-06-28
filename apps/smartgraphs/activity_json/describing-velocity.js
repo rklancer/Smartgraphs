@@ -2574,7 +2574,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": "<p><b>Click</b> the Start button. <b>Observe</b> the motion and graph multiple times.</p><p>In the top area, the position-time graph displays. In the bottom area, the actual veloicty-time graph displays along with your sketch.</p><p>How does your predicted velocity compare with the actual velocity?</p>",
+      "beforeText": "<p><b>Click</b> the Start button. <b>Observe</b> the motion and graph multiple times.</p><p>In the top area, the position-time graph displays. In the bottom area, the actual velocity-time graph displays along with your sketch.</p><p>How does your predicted velocity compare with the actual velocity?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "submitButtonTitle": "OK",
