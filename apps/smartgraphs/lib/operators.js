@@ -243,4 +243,10 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     return list[index-1];
   }).args(2);
 
+  // given a number 'numeric', return a String representation
+  // with 'decimal_places' fractional digits.
+  def('toFixedString', function (numeric, decimal_places) {
+    return numeric.toFixed(decimal_places); // String value!
+  }).args(2);
+
 });
