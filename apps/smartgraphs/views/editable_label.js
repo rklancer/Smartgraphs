@@ -31,6 +31,8 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
 
   textBinding:         '.labelBodyView.text',
   textColorBinding:    '.labelBodyView.textColor',
+  itemBinding:         '.labelBodyView.item',
+  justAddedBinding:    '*item.justAdded',
   parentXBinding:      '.labelBodyView.bodyXCoord',
   parentYBinding:      '.labelBodyView.bodyYCoord',
   parentMarginBinding: '.labelBodyView.margin',
@@ -38,16 +40,6 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   // Bounds need to be calculated by Raphael:
   minHeight: 18,
   minWidth: 80,
-  // width:       100,
-  // height:      20,
-
-  init: function () {
-    sc_super();
-    if (this.get('isEditable')) {
-      this.set('isAllSelected',YES);
-      this.beginEditing();
-    }
-  },
 
   // our parent view is going to modify our position
   // but we will modify our parents width and height
@@ -130,6 +122,16 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   toggle: function (paramName) {
     this.set(paramName, (! this.get(paramName)));
   },
+
+  editFirstTime: function() {
+    var item = this.get('item'), 
+        firstTime = (!!! item.get('hasBeenDrawn'));
+    if(firstTime) {
+      this.beginEditing();
+      this.beginEditing(); // call twice to force selectAll
+    }
+    item.set('hasBeenDrawn', YES);
+  }.observes('justAdded'),
 
   beginEditing: function () {
     if (!this.get('isEditable')) { return NO ; }

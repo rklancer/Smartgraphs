@@ -312,6 +312,7 @@ Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 
     displayProperties:   'bodyXCoord bodyYCoord width height stroke strokeWidth fill cornerRadius'.w(),
 
+    itemBinding:         '.parentLabelView.item',
     textBinding:         '.parentLabelView.text',
     textColorBinding:    '.parentLabelView.textColor',
 

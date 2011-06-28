@@ -64,6 +64,18 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
   */
   shouldMarkTargetPoint: SC.Record.attr(Boolean, { defaultValue: YES }),
   
+  /**
+    Transient property -- was the label just added to the graph?
+    @property {Boolean}
+  */
+  justAdded: NO,
+
+  /**
+    Transient property -- has the label been drawn yet?
+    @property {Boolean}
+  */
+  hasBeenDrawn: NO,
+
   labelSet: null,
   
   isRemovalEnabled: function () {
