@@ -27,7 +27,9 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     "axes": [
       "/shared/describing-velocity/axes/9s",
       "/shared/describing-velocity/axes/40m",
-      "/shared/describing-velocity/axes/car-mps"
+      "/shared/describing-velocity/axes/car-mps",
+      "/shared/describing-velocity/axes/identify-the-motion-time",
+      "/shared/describing-velocity/axes/identify-the-motion-velocity"
     ]
   },
   "pages": [
