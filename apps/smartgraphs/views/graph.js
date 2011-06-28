@@ -420,6 +420,7 @@ Smartgraphs.GraphView = SC.View.extend(
           },
           
           self = this,
+          loopCallback,
           dataView,
           i,
           len;
@@ -430,16 +431,24 @@ Smartgraphs.GraphView = SC.View.extend(
         dataView.get('layer').raphael.attr({ "opacity": 1.0 });
       }
 
-      function startAnimationLoop() {
-        self._startAnimationLoop(loopParameters, startAnimationLoop, datadefName, dataViews, raphaelForImage);
+      function gotoAnimationFinishedState() {
+        SC.RunLoop.begin();
+        self.getPath('parentView.graphController.statechart').sendAction('animationFinished');
+        SC.RunLoop.end();
       }
+      
+      function startAnimationLoop() {
+        // can pass startAnimationLoop as second parameter of _startAnimationLoop in order to loop
+        self._startAnimationLoop(loopParameters, loopCallback, datadefName, dataViews, raphaelForImage);
+      }
+
+      loopCallback = Smartgraphs.animationTool.get('loop') ? startAnimationLoop : gotoAnimationFinishedState;
 
       // Calculate the first set of keyframes. This takes into account any
       // progress already made on animating the graph. The keyframes will
       // be regenerated in startAnimationLoop() if we're restarting animation
       // so that the next loop has a "full" set of keyframes.
-      
-      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, currentXFrac, startAnimationLoop);
+      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, currentXFrac, loopCallback);
 
       // Actually start the animation loop.
       startAnimationLoop();
@@ -447,6 +456,8 @@ Smartgraphs.GraphView = SC.View.extend(
     
     animate: function () {
       console.log("**** graphCanvasView.animate()");
+      
+      window.gv = this;
       
       var animations = this.getPath('parentView.graphController.animations'),
           self = this;
@@ -489,8 +500,7 @@ Smartgraphs.GraphView = SC.View.extend(
           imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
 
           graphResetAttributes = {
-            "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(','),
-            "opacity": 0.25
+            "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(',')
           },
 
           self = this;

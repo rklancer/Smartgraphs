@@ -72,6 +72,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
             "duration": 3000,   // ms
             "channelWidth": 70, // same as the default
             "backgroundImage": sc_static('images/road'),
+            "loop": true,
             "animations": [{
                 "data": "position-data2",
                 "image": sc_static('images/car'),

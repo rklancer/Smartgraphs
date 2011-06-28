@@ -34,8 +34,13 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   _isAnimating: NO,  
   
   backgroundImageURL: '',
-  duration: 3000,   // milliseconds, default is 3 seconds
-  channelWidth: 70, // in pixels
+  defaultDuration: 3000,   // milliseconds, default is 3 seconds
+  defaultChannelWidth: 70, // in pixels
+  defaultLoop: false,      // whether the animation should loop or just stop at the end
+  duration: 3000,   
+  channelWidth: 70,
+  loop: false,
+
   animations: [],
   
   pane: function () {
@@ -61,10 +66,12 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     
     this._pane = pane;
     
-    if (args.backgroundImage) this.set('backgroundImageURL', args.backgroundImage);
-    if (args.duration) this.duration = args.duration;
-    if (args.channelWidth) this.channelWidth = args.channelWidth;
-  
+    this.set('loop', args.loop === undefined ? this.get('defaultLoop') : args.loop);
+   
+    this.set('backgroundImageURL', args.backgroundImage || '');
+    this.set('duration',           args.duration        || this.get('defaultDuration'));      // note that args.duration of 0 makes no sense
+    this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // note that args.channelWidth of 0 makes no sense
+    
     this.set('animations', animationHashes.map(function (hash) {
       return {
         datadefName:        hash.data,
