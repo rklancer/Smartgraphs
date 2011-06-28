@@ -24,20 +24,20 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
         line,
         sampleset;
   
-    if (options['point-type'] !== "none") {
-      pointset = Smartgraphs.Pointset.create({
-        dataRepresentation: this
-      });
-      this.set('pointset', pointset);
-      graphableObjects.push(pointset);
-    }
-    
     if (options['line-type'] === "connected") {
       line = Smartgraphs.ConnectedLine.create({
         dataRepresentation: this
       });
       this.set('line', line);
       graphableObjects.push(line);
+    }
+
+    if (options['point-type'] !== "none") {
+      pointset = Smartgraphs.Pointset.create({
+        dataRepresentation: this
+      });
+      this.set('pointset', pointset);
+      graphableObjects.push(pointset);
     }
 
     this.set('graphableObjects', graphableObjects);

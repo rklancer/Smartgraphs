@@ -3453,7 +3453,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     {
       "url": "/shared/describing-velocity/axes/40m",
       "units": "/builtins/units/meters",
-      "min": -2,
+      "min": 0,
       "max": 40,
       "nSteps": 8,
       "label": "Position"
