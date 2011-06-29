@@ -267,7 +267,7 @@ Smartgraphs.GraphView = SC.View.extend(
       var frame   = this.get('frame'),
           padding = this.getPath('parentView.padding');
           
-      if (!padding) return;
+      if (!padding) return null;
           
       return {
         xLeft:      frame.x + padding.left,
@@ -283,7 +283,7 @@ Smartgraphs.GraphView = SC.View.extend(
       var xAxis = this.getPath('parentView.xAxis'),
           yAxis = this.getPath('parentView.yAxis');
           
-      if (!xAxis || !yAxis) return;
+      if (!xAxis || !yAxis) return null;
       
       return {        
         xMin: xAxis.get('min'), 
