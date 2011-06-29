@@ -63,6 +63,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     var pane = Smartgraphs.activityViewController.validPaneFor(args.pane),
         animations       = args.animations       || [],
         linkedAnimations = args.linkedAnimations || [],
+        staticImageHashes = args.staticImages || [],
         controller;
     
     if (!pane) return;
@@ -75,14 +76,24 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.set('duration',           args.duration        || this.get('defaultDuration'));      // duration of 0 makes no sense
     this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // channelWidth of 0 makes no sense
     
+    this.set('staticImages', staticImageHashes.map(function (hash) {
+      return {
+        image:              hash.image        || '',
+        xOffset:            hash.xOffset      || 0,
+        yOffset:            hash.yOffset      || 0,
+        width:              hash.width        || 70,
+        height:             hash.height       || 30
+      };
+    }));
+
     this.set('animations', animations.map(function (hash) {
       return {
         datadefName:        hash.data,
-        foregroundImageURL: hash.image   || '',
-        xOffset:            hash.xOffset || 0,
-        yOffset:            hash.yOffset || 0,
-        width:              hash.width   || 70,
-        height:             hash.height  || 30
+        foregroundImageURL: hash.image        || '',
+        xOffset:            hash.xOffset      || 0,
+        yOffset:            hash.yOffset      || 0,
+        width:              hash.width        || 70,
+        height:             hash.height       || 30
       };
     }));
     

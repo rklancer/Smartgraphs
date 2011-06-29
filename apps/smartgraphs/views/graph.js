@@ -615,11 +615,12 @@ Smartgraphs.GraphView = SC.View.extend(
     animationView: RaphaelViews.RaphaelView.design({
 
       isVisibleBinding:  '.parentView.parentView.showAnimation',
-      animationsBinding: '.parentView.parentView*graphController.animations',    
+      animationsBinding: '.parentView.parentView*graphController.animations',
+      staticImagesBinding: '.parentView.parentView*graphController.staticImages',
 
       images: [],
+      staticImagesByName: {},
       indexedImages: {},
-      startLineGraphics: null,
       displayProperties: 'animations.[]',
 
       // Handle the special shapes we allow authors to use.
@@ -637,14 +638,47 @@ Smartgraphs.GraphView = SC.View.extend(
         return imageURL;
       },
 
-      _renderStatics: function (animationSpec, raphaelCanvas) {
-        var startLineImageUrl = animationSpec.get('startLineImageUrl');
-        if (startLineImageUrl) {
-          this.set('startLineGraphics') raphaelCanvas.image();
-        }
-        else {
-
-        }
+      _renderStaticImages: function (raphaelCanvas) {
+        var staticImages =  this.get('staticImages') || [],
+            staticImagesByName = this.get('staticImagesByName'),
+            logicalBounds = this.get('parentView')._getLogicalBounds(),
+            screenBounds  = this.get('parentView')._getScreenBounds(),
+            frame = this.get('frame'),
+            imageUrl    = null,
+            x           = 0,
+            y           = 0,
+            width       = 10,
+            height      = 10;
+        
+          
+        console.log("rendering static images");
+        
+        staticImages.forEach( function (staticImage) {
+          imageUrl = staticImage.image;
+          console.log("static image url " + imageUrl);
+          if (imageUrl && imageUrl !== "") {
+            x             = staticImage.xOffset || x;
+            y             = staticImage.yOffset || y;
+            width         = staticImage.width   || width;
+            hegith        = staticImage.height  || height;
+            if (!staticImagesByName[name]) {
+              console.log('creating new static image');
+              staticImagesByName[name] = raphaelCanvas.image(imageUrl);
+            }
+            console.log('adjusting image');      
+            staticImagesByName[name].attr({
+              src:    imageUrl,
+              x:      frame.x + 10 + x,
+              y:      screenBounds.yTop + screenBounds.plotHeight - y,
+              width:  width,
+              height: height
+            });
+          }
+          else {
+            debugger;
+            // console.log("no image url for static image");
+          }
+        });
       },
 
       _renderDataImages: function (raphaelCanvas) {
@@ -735,9 +769,11 @@ Smartgraphs.GraphView = SC.View.extend(
         console.log("animationView.render(firstTime = %s)", firstTime ? "YES" : "NO");
         if (firstTime) {
           this.set('imagesByDatadefName', {});    // need to re-render images
+          context.callback(this, this._renderStaticImages);
           context.callback(this, this._renderDataImages);
         }
         else {
+          this._renderStaticImages(this.getPath('parentView.raphaelCanvas'));
           this._renderDataImages(this.getPath('parentView.raphaelCanvas'));
         }
       }
