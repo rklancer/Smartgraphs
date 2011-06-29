@@ -16,11 +16,27 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
   
   isAnimatable: YES,
   
-  strokeBinding: '*item.color',
   strokeOpacity: 0.7,
-  strokeWidth: 3,
   
-  displayProperties: 'item.points.[] stroke'.w(),
+  notDimmedColorBinding: '*item.color',
+  dimmedColor: '#cccccc',
+
+  notDimmedStrokeWidth: 3,
+  dimmedStrokeWidth: 2,
+
+  dataRepresentation: SC.outlet('item.dataRepresentation'),  
+  isDimmedBinding: '.dataRepresentation.isDimmed',
+  isDimmedBindingDefault: SC.Binding.oneWay(),
+
+  strokeWidth: function () {
+    return this.get('isDimmed') ? this.get('dimmedStrokeWidth') : this.get('notDimmedStrokeWidth');
+  }.property('isDimmed', 'dimmedStrokeWidth', 'notDimmedStrokeWidth'),
+  
+  color: function () {
+    return this.get('isDimmed') ? this.get('dimmedColor') : this.get('notDimmedColor');
+  }.property('isDimmed', 'dimmedColor', 'notDimmedColor'),
+  
+  displayProperties: 'item.points.[] color strokeWidth'.w(),
   
   renderCallback: function (raphaelCanvas, pathStr, attrs) {
     return raphaelCanvas.path(pathStr).attr(attrs);
@@ -49,7 +65,7 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
     
     pathStr = str.join('') || 'M0 0';         // Raphael won't make path go away in IE if path string = ''
     attrs = {
-      'stroke':         this.get('stroke'),
+      'stroke':         this.get('color'),
       'stroke-width':   this.get('strokeWidth'),
       'stroke-opacity': this.get('strokeOpacity')
     };
