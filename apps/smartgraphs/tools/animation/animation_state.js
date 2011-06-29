@@ -35,20 +35,28 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     },
   
     enterState: function () {
-      var pane = Smartgraphs.animationTool.get('pane');
+      var pane = Smartgraphs.animationTool.get('pane'),
+          linkedAnimations = Smartgraphs.animationTool.get('linkedAnimations');
     
       Smartgraphs.activityViewController.revealAllControls();
       Smartgraphs.activityViewController.showControls(pane);
-      Smartgraphs.activityViewController.showAnimation(pane);
+      Smartgraphs.activityViewController.showAnimation(pane, Smartgraphs.animationTool.get('backgroundImageURL'));
+      linkedAnimations.forEach(function (animation) {
+        Smartgraphs.activityViewController.showAnimation(animation.pane);
+      });
     },
   
     exitState: function () {
-      var pane = Smartgraphs.animationTool.get('pane');
+      var pane = Smartgraphs.animationTool.get('pane'),
+          linkedAnimations = Smartgraphs.animationTool.get('linkedAnimations');
     
       // make sure the animation is stopped before we leave the activity step!
       Smartgraphs.animationTool.clear();
     
       Smartgraphs.activityViewController.hideAnimation(pane);
+      linkedAnimations.forEach(function (animation) {
+        Smartgraphs.activityViewController.hideAnimation(animation.pane);
+      });
       Smartgraphs.activityViewController.hideControls(pane);
     },
   

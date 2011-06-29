@@ -18,8 +18,8 @@ Smartgraphs.GraphPane = SC.View.extend(
   // MUST come before graphView
   animationChannelView: SC.View.design({
     
-    isVisibleBinding: '.parentView.showAnimation',    
-    backgroundImageURLBinding: 'Smartgraphs.animationTool.backgroundImageURL',
+    isVisibleBinding:          '.parentView.showAnimation',
+    backgroundImageURLBinding: '.parentView.backgroundImageURL',
 
     layout: { left: 10, top: 15, width: Smartgraphs.animationTool.get('channelWidth'), bottom: 0 },
 

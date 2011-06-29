@@ -26,8 +26,10 @@ Smartgraphs.activityViewController = SC.Object.create(
   secondGraphPaneControls: null,
   
   firstPaneHasAnimation: NO,
+  firstPaneAnimationBackgroundImageURL: '',  
   secondPaneHasAnimation: NO,
-  
+  secondPaneAnimationBackgroundImageURL: '',
+    
   startControlIsVisible: NO,
   startControlIsEnabled: NO,
   startControlIsDefault: NO,
@@ -221,13 +223,14 @@ Smartgraphs.activityViewController = SC.Object.create(
     return YES;
   },
   
-  showAnimation: function (pane) {
+  showAnimation: function (pane, backgroundImageURL) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
 
     if ( !which ) return NO;
     
     this.set(which+'PaneHasAnimation', YES);
+    if (backgroundImageURL) this.set(which+'PaneAnimationBackgroundImageURL', backgroundImageURL);
     return YES;
   },
   
@@ -238,6 +241,7 @@ Smartgraphs.activityViewController = SC.Object.create(
     if ( !which ) return NO;
     
     this.set(which+'PaneHasAnimation', NO);
+    this.set(which+'PaneAnimationBackgroundImageURL', '');
     return YES;
   },
   

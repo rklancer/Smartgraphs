@@ -9,8 +9,8 @@ sc_require('tools/tool');
 
 /** @class
 
-  // TODO move the animation tool's stateful properties out of this object and into the corresponding SC.State objects
-  // so that each graph can have its own animation tool instance. RPK 6-17-11
+  // TODO(?): move the animation tool's stateful properties out of this object and into the corresponding SC.State 
+  // objects so that each graph can have its own animation tool instance. RPK 6-17-11
   
   @extends Smartgraphs.Tool
 */
@@ -31,17 +31,19 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   },
   
   _pane: null,
-  _isAnimating: NO,  
+  _isAnimating: NO,
   
+  defaultDuration:     3000,  // milliseconds, default is 3 seconds
+  defaultChannelWidth: 70,    // in pixels
+  defaultLoop:         false, // whether the animation should loop or just stop at the end
+
   backgroundImageURL: '',
-  defaultDuration: 3000,   // milliseconds, default is 3 seconds
-  defaultChannelWidth: 70, // in pixels
-  defaultLoop: false,      // whether the animation should loop or just stop at the end
   duration: 3000,   
   channelWidth: 70,
   loop: false,
 
   animations: [],
+  linkedAnimations: [],
   
   pane: function () {
     return this._pane;
@@ -59,7 +61,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     args = args || {};
     
     var pane = Smartgraphs.activityViewController.validPaneFor(args.pane),
-        animationHashes = args.animations || [],
+        animations       = args.animations       || [],
+        linkedAnimations = args.linkedAnimations || [],
         controller;
     
     if (!pane) return;
@@ -69,10 +72,10 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.set('loop', args.loop === undefined ? this.get('defaultLoop') : args.loop);
    
     this.set('backgroundImageURL', args.backgroundImage || '');
-    this.set('duration',           args.duration        || this.get('defaultDuration'));      // note that args.duration of 0 makes no sense
-    this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // note that args.channelWidth of 0 makes no sense
+    this.set('duration',           args.duration        || this.get('defaultDuration'));      // duration of 0 makes no sense
+    this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // channelWidth of 0 makes no sense
     
-    this.set('animations', animationHashes.map(function (hash) {
+    this.set('animations', animations.map(function (hash) {
       return {
         datadefName:        hash.data,
         foregroundImageURL: hash.image   || '',
@@ -83,6 +86,14 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
       };
     }));
     
+    this.set('linkedAnimations', linkedAnimations.map(function (hash) {
+      return {
+        pane: Smartgraphs.activityViewController.validPaneFor(hash.pane)
+        // TODO add information from the 'animations' key
+        // TODO throw error or skip over bad 'pane' argument
+      };
+    }));
+      
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
 
@@ -93,6 +104,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   clear: function () {
     this.stopAnimating();
     this.set('animations', []);
+    this.set('linkedAnimations', []);
   },
   
   /**

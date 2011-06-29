@@ -217,12 +217,14 @@ Smartgraphs.activityPageDef = SC.Page.extend({
   firstGraphPane: Smartgraphs.GraphPane.design({
     graphControllerBinding: 'Smartgraphs.firstGraphController',
     showAnimationBinding: 'Smartgraphs.activityViewController.firstPaneHasAnimation',
+    backgroundImageURLBinding: 'Smartgraphs.activityViewController.firstPaneAnimationBackgroundImageURL',    
     controlsNowShowingBinding: 'Smartgraphs.activityViewController.firstGraphPaneControls'
   }),
   
   secondGraphPane: Smartgraphs.GraphPane.design({
     graphControllerBinding: 'Smartgraphs.secondGraphController',
     showAnimationBinding: 'Smartgraphs.activityViewController.secondPaneHasAnimation',
+    backgroundImageURLBinding: 'Smartgraphs.activityViewController.secondPaneAnimationBackgroundImageURL',   
     controlsNowShowingBinding: 'Smartgraphs.activityViewController.secondGraphPaneControls'
   }),
   
