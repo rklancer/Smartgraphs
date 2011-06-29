@@ -18,6 +18,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
   canSubmit: NO,
   showSubmitButton: NO,
+  submissibilitySubject: null,
   
   /**
     YES iff there is content (a response template or before/after text) to put in the 'dialog text' area
@@ -33,6 +34,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     if (this._liveExpression) {
       this._liveExpression.die();
     }
+    this.set('submissibilitySubject', null);
   },
   
   /**
@@ -175,9 +177,13 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
   },
   
   waitForResponse: function () {
+    var subjectExpr = this.get('submissibilityDependsOn'),
+        criterion   = this.get('submissibilityCriterion');
+    
     Smartgraphs.responseTemplateController.set('editingShouldBeEnabled', YES);
     
-    var criterion = this.get('submissibilityCriterion');
+    if (subjectExpr) this.set('submissibilitySubject', Smartgraphs.evaluator.evaluate(subjectExpr));
+
     if (criterion) {
       var self = this;
       this._liveExpression = Smartgraphs.evaluator.evaluateLive(criterion, function (isSubmissible) {

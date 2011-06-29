@@ -206,13 +206,22 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   */
   shouldFinishImmediately: SC.Record.attr(Boolean),
   
-
-  /** 
-    An expression that is evaluated "live" and turns on submissiblity when its value is YES
+  /**
+    An expression that returns an object that the submissibility expression can watch for changes.
     
-    @property {Object}
+    This value of this expression, if any, is stored at Smartgraphs.activityStepController.submissibilitySubject
+    and this value can be observed by the "live" submissibilityCriterion expression.
+    
+    @property {Array}
   */
-  submissibilityCriterion: SC.Record.attr(Object),
+  submissibilityDependsOn: SC.Record.attr(Array),
+  
+  /** 
+    An expression that is evaluated "live" and turns on submissibility when its value is YES
+    
+    @property {Array}
+  */
+  submissibilityCriterion: SC.Record.attr(Array),
   
   /**
     The list of commands (and their arguments) to be immediately after this ActivityStep is submitted, before the
