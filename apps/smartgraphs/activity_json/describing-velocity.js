@@ -396,6 +396,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       },
       "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, then <b>double-click</b> inside the label and <b>start typing</b>.</p>",
       "substitutedExpressions": ["student-description"],
+      "submissibilityDependsOn": ["annotation", "students-segment-labels"],
+      "submissibilityCriterion": [">", ["numberOfLabels", "students-segment-labels"], 0],
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true,
       "isFinalStep": true,
