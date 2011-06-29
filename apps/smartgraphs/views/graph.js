@@ -662,7 +662,7 @@ Smartgraphs.GraphView = SC.View.extend(
             x             = staticImage.xOffset || x;
             y             = staticImage.yOffset || y;
             width         = staticImage.width   || width;
-            hegith        = staticImage.height  || height;
+            height        = staticImage.height  || height;
             name          = staticImage.name    || imageUrl;
             if (!staticImagesByName[name]) {
               console.log('creating new static image');
