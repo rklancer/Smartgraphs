@@ -675,8 +675,7 @@ Smartgraphs.GraphView = SC.View.extend(
             });
           }
           else {
-            debugger;
-            // console.log("no image url for static image");
+            console.log("no image url for static image");
           }
         });
       },
