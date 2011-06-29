@@ -3,7 +3,8 @@
 // Copyright: ©2010 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews */
+/*globals Smartgraphs RaphaelViews NO YES SC console sc_static sc_super*/
+
 
 /** @class
 
