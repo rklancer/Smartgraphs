@@ -3,7 +3,7 @@
 // Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs */
+/*globals Smartgraphs SC YES NO sc_require sc_super*/
 
 sc_require('mixins/annotation_support');
 sc_require('tools/label/label_state');

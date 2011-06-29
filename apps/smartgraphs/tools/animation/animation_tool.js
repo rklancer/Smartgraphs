@@ -3,7 +3,7 @@
 // Copyright: ©2011 Concord Consortium
 // Author:    Erich Ocean <erich.ocean@me.com>
 // ==========================================================================
-/*globals Smartgraphs */
+/*globals Smartgraphs NO YES sc_require */
 
 sc_require('tools/tool');
 
