@@ -354,6 +354,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "image": sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "position-data",
                 "image": sc_static('images/carWhite.png'),
