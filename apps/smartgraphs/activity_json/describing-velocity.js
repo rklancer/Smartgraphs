@@ -355,7 +355,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
             "staticImages": [{
-                "image": sc_static('images/finish.png'),
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,

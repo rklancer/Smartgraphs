@@ -78,6 +78,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
 
     this.set('staticImages', staticImages.map(function (hash) {
       return {
+        name:               hash.name         || '',
         image:              hash.image        || '',
         xOffset:            hash.xOffset      || 0,
         yOffset:            hash.yOffset      || 0,

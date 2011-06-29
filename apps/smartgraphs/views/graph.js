@@ -645,6 +645,7 @@ Smartgraphs.GraphView = SC.View.extend(
             screenBounds  = this.get('parentView')._getScreenBounds(),
             frame = this.get('frame'),
             imageUrl    = null,
+            name        = '',
             x           = 0,
             y           = 0,
             width       = 10,
@@ -661,6 +662,7 @@ Smartgraphs.GraphView = SC.View.extend(
             y             = staticImage.yOffset || y;
             width         = staticImage.width   || width;
             hegith        = staticImage.height  || height;
+            name          = staticImage.name    || imageUrl;
             if (!staticImagesByName[name]) {
               console.log('creating new static image');
               staticImagesByName[name] = raphaelCanvas.image(imageUrl);
