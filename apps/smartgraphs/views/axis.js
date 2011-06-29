@@ -69,8 +69,8 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
       this._axis = raphaelCanvas.g.axis(xLeft, yBottom, plotWidth, xMin, xMax, xSteps, 0);
     }
     
-    this._axis.all[0].attr({stroke: '#333333'});          // path
-    this._axis.all[1].attr({fill: '#333333'});            // text
+    this._axis.all[0].attr({stroke: '#aaa'});          // path
+    this._axis.all[1].attr({fill: '#333'});            // text
   },
   
   drawLabel: function () {
