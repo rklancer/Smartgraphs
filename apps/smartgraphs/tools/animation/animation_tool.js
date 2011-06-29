@@ -63,7 +63,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     var pane = Smartgraphs.activityViewController.validPaneFor(args.pane),
         animations       = args.animations       || [],
         linkedAnimations = args.linkedAnimations || [],
-        staticImageHashes = args.staticImages || [],
+        staticImages     = args.staticImages     || [],
         controller;
     
     if (!pane) return;
@@ -76,7 +76,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.set('duration',           args.duration        || this.get('defaultDuration'));      // duration of 0 makes no sense
     this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // channelWidth of 0 makes no sense
     
-    this.set('staticImages', staticImageHashes.map(function (hash) {
+    this.set('staticImages', staticImages.map(function (hash) {
       return {
         image:              hash.image        || '',
         xOffset:            hash.xOffset      || 0,
