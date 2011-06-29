@@ -457,8 +457,6 @@ Smartgraphs.GraphView = SC.View.extend(
     animate: function () {
       console.log("**** graphCanvasView.animate()");
       
-      window.gv = this;
-      
       var animations = this.getPath('parentView.graphController.animations'),
           self = this;
       
@@ -725,7 +723,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
       render: function (context, firstTime) {
         console.log("animationView.render(firstTime = %s)", firstTime ? "YES" : "NO");
-        window.animationView = this;
         if (firstTime) {
           this.set('imagesByDatadefName', {});    // need to re-render images
           context.callback(this, this._renderDataImages);

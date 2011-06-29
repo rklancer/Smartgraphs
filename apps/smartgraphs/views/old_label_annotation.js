@@ -253,7 +253,6 @@ Smartgraphs.OldLabelAnnotationView = RaphaelViews.RaphaelView.extend(
   */
   renderCallback: function(raphaelCanvas, attrs) {
     var label = raphaelCanvas.text().attr(attrs);
-    window.label = label;
     return label;
   },
 
