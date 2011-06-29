@@ -116,6 +116,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.notifyPropertyChange('isAnimating');
     var graphPane = this.get('graphPane');
     graphPane.get('graphView').animate();
+    return YES;
   },
   
   /**
@@ -127,6 +128,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.notifyPropertyChange('isAnimating');    
     var graphPane = this.get('graphPane');
     graphPane.get('graphView').stop();
+    return YES;
   },
   
   /**
