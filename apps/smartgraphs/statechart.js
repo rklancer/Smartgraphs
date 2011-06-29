@@ -16,7 +16,7 @@ sc_require('states/mixins/resource_loader');
 Smartgraphs.statechartDef = SC.Statechart.extend(
   /** @scope Smartgraphs.statechartDef.prototype */ {
   
-  trace: YES,
+  trace: Smartgraphs.trace,
   
   init: function () {
     sc_super();

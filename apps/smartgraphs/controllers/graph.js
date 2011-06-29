@@ -42,7 +42,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   statechartDef: SC.Statechart.design({
-    trace: YES,
+    trace: Smartgraphs.trace,
     rootState: SC.State.design({
       substatesAreConcurrent: YES,
       LABEL_TOOL: Smartgraphs.LABEL_TOOL.design(),
