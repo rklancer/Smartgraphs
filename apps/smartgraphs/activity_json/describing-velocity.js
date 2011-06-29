@@ -1,4 +1,4 @@
-/*globals Smartgraphs */
+/*globals Smartgraphs sc_static*/
 
 Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
 Smartgraphs.activityDocs["/shared/describing-velocity"] =
@@ -364,7 +364,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
                 "data": "position-data",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -422,9 +422,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "position-data",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2118,9 +2126,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
               "data": "position-data",
-              "image": sc_static('images/carWhite.png'),
+              "image": sc_static('images/carWhite2.png'),
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -2173,9 +2189,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
               "data": "position-data",
-              "image": sc_static('images/carWhite.png'),
+              "image": sc_static('images/carWhite2.png'),
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -2415,9 +2439,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2463,9 +2495,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2512,9 +2552,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2563,9 +2611,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2619,9 +2675,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2675,9 +2739,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2731,9 +2803,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2787,9 +2867,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2836,9 +2924,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "duration": 9000, // ms
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5
+            }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite.png'),
+                "image": sc_static('images/carWhite2.png'),
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,

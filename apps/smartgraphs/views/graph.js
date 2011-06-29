@@ -5,7 +5,6 @@
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews NO YES SC console sc_static sc_super*/
 
-
 /** @class
 
   (Document Your View Here)
@@ -664,15 +663,19 @@ Smartgraphs.GraphView = SC.View.extend(
             width         = staticImage.width   || width;
             height        = staticImage.height  || height;
             name          = staticImage.name    || imageUrl;
-            if (!staticImagesByName[name]) {
-              console.log('creating new static image');
+
+            if(! staticImagesByName[name]) {
+              console.log('adding static image ' + name);
               staticImagesByName[name] = raphaelCanvas.image(imageUrl);
             }
-            console.log('adjusting image');      
+
+            y = screenBounds.yTop + screenBounds.plotHeight - y;
+            x = frame.x + 10 + x;
+
+            console.log('adjusting image %s: [X:%d ⊗ Y:%d]  ↔%d ↕%d',name, x,y,width,height);
             staticImagesByName[name].attr({
-              src:    imageUrl,
-              x:      frame.x + 10 + x,
-              y:      screenBounds.yTop + screenBounds.plotHeight - y,
+              x:      x,
+              y:      y,
               width:  width,
               height: height
             });
@@ -768,11 +771,15 @@ Smartgraphs.GraphView = SC.View.extend(
       },
 
       render: function (context, firstTime) {
+        var self = this;
         console.log("animationView.render(firstTime = %s)", firstTime ? "YES" : "NO");
         if (firstTime) {
           this.set('imagesByDatadefName', {});    // need to re-render images
-          context.callback(this, this._renderStaticImages);
-          context.callback(this, this._renderDataImages);
+          this.set('staticImagesByName',  {});    // need to re-render images
+          context.callback(this, function () {
+            self._renderStaticImages(self.getPath('parentView.raphaelCanvas'));
+            self._renderDataImages(self.getPath('parentView.raphaelCanvas'));
+          });
         }
         else {
           this._renderStaticImages(this.getPath('parentView.raphaelCanvas'));
