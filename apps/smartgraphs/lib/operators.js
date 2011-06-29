@@ -232,6 +232,19 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   def('get', function (name) {
     return Smartgraphs.activityPageController.getFromContext(name);
   }).args(1);
+  
+  def('annotation', function (name) {
+    return Smartgraphs.activityObjectsController.findAnnotation(name);
+  }).args(1);  
+
+
+  def('numberOfLabels', function (name) {
+    var labelSet = Smartgraphs.activityObjectsController.findAnnotation(name);
+    
+    if (!SC.kindOf(labelSet, Smartgraphs.LabelSet)) throw "operator 'numberOfLabels' was not passed the name of a LabelSet";
+    
+    return labelSet.getPath('labels.length');
+  }).args(1).dependsOn('Smartgraphs.activityStepController*submissibilitySubject.labels.length');
 
 
   def('/', function (x, y) {
