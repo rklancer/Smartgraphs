@@ -2109,13 +2109,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
             "animations": [{
-                "data": "position-data",
-                "image": sc_static('images/carWhite.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "position-data",
+              "image": sc_static('images/carWhite.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-velocity"
               }]
+            }]
           }
         }
       ],
@@ -2158,13 +2164,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
             "animations": [{
-                "data": "position-data",
-                "image": sc_static('images/carWhite.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "position-data",
+              "image": sc_static('images/carWhite.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-velocity"
               }]
+            }]
           }
         }
       ],
