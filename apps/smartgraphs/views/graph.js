@@ -160,18 +160,12 @@ Smartgraphs.GraphView = SC.View.extend(
 
   _removeView: function (view) {
     var item     = view.get('item'),
-        itemType = view.get('itemType'),
         classKey = SC.guidFor(item.constructor),
         itemKey  = SC.guidFor(item);
 
     delete this._viewsByClassAndItem[classKey][itemKey];
 
-    if (itemType === 'data') {
-      this.get('dataHolder').removeChild(view);
-    }
-    else if (itemType === 'annotation') {
-      this.get('annotationsHolder').removeChild(view);
-    }
+    view.removeFromParent();
   },
 
 

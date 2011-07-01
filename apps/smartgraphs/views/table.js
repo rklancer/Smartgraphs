@@ -312,14 +312,13 @@ Smartgraphs.TableView = SC.View.extend(
     Removes an annotation view from the backdrop SVG
   */
   _removeViewFromBackdrop: function (view) {
-    var item = view.get('item');
-    var itemType = view.get('itemType');
-    var classKey = SC.guidFor(item.constructor);
-    var id = item.get('id');
+    var item = view.get('item'),
+        classKey = SC.guidFor(item.constructor),
+        id = item.get('id');
     
     delete this._viewsByClassAndId[classKey][id];
     
-    this.getPath('tableColumnView.scrollView.contentView.backdropView.annotationsHolder').removeChild(view);
+    view.removeFromParent();
   },
   
   /**
