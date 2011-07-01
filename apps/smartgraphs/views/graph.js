@@ -27,6 +27,7 @@ Smartgraphs.GraphView = SC.View.extend(
   yAxisView:         SC.outlet('graphCanvasView.axesView.yAxisView'),
   dataHolder:        SC.outlet('graphCanvasView.dataHolder'),
   annotationsHolder: SC.outlet('graphCanvasView.annotationsHolder'),
+  overlayAnnotationsHolder: SC.outlet('graphCanvasView.overlayAnnotationsHolder'),
 
   padding: { top: 15, right: 15, bottom: 45, left: 45 },
 
@@ -148,7 +149,12 @@ Smartgraphs.GraphView = SC.View.extend(
       // this.graphCanvasView.invokeLast('_animate');
     }
     else if (itemType === 'annotation') {
-      this.get('annotationsHolder').appendChild(view);
+      if (item.get('isOverlayAnnotation')) {
+        this.get('overlayAnnotationsHolder').appendChild(view);
+      }
+      else {
+        this.get('annotationsHolder').appendChild(view);
+      }
     }
 
     if (this._viewsByClassAndItem[classKey] === undefined) {
@@ -253,7 +259,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
 
-    childViews: 'axesView dataHolder annotationsHolder animationView'.w(),
+    childViews: 'axesView dataHolder annotationsHolder overlayAnnotationsHolder animationView'.w(),
 
     _animationIsPaused: NO,
     
@@ -603,6 +609,10 @@ Smartgraphs.GraphView = SC.View.extend(
     
     // Holds the annotation views. Should be later in the DOM (and thus "in front of") the data views
     annotationsHolder: RaphaelViews.RaphaelView.design({
+    }),
+    
+    // Holds the 'overlay annotations' and, crucially, attempts to be transparent to mouse events (TODO)
+    overlayAnnotationsHolder: RaphaelViews.RaphaelView.design({
     }),
 
     // Holds the animation channel. Should be later in the DOM (and thus "in front of") the annotation views.

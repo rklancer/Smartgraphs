@@ -21,6 +21,11 @@ Smartgraphs.SegmentOverlay = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.SegmentOverlay.prototype */ {
 
   /**
+    We are an 'overlay annotation' (put in front of data views, but transparent to mouse events)
+  */
+  isOverlayAnnotation: true,
+  
+  /**
     Name of the datadef to overlay
   */
   datadefName: SC.Record.attr(String),
