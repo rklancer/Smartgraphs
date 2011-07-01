@@ -619,7 +619,7 @@ Smartgraphs.GraphView = SC.View.extend(
       staticImagesBinding: '.parentView.parentView*graphController.staticImages',
 
       images: [],
-      staticImagesByName: {},
+      staticImageCache: [],
       indexedImages: {},
       displayProperties: 'animations.[]',
 
@@ -638,51 +638,61 @@ Smartgraphs.GraphView = SC.View.extend(
         return imageURL;
       },
 
+      _removeOldImages: function() {
+        console.log("Removing old images");
+        this.set('imagesByDatadefName',   {});    // need to re-render images
+        this.get("staticImageCache").forEach( function (raphImage) {
+          raphImage.remove();
+        });
+        this.set('staticImageCache', []);
+      },
+
       _renderStaticImages: function (raphaelCanvas) {
-        var staticImages =  this.get('staticImages') || [],
-            staticImagesByName = this.get('staticImagesByName'),
-            logicalBounds = this.get('parentView')._getLogicalBounds(),
-            screenBounds  = this.get('parentView')._getScreenBounds(),
-            frame = this.get('frame'),
-            imageUrl    = null,
-            name        = '',
-            x           = 0,
-            y           = 0,
-            width       = 10,
-            height      = 10;
-        
-          
-        console.log("rendering static images");
+        var staticImages     = this.get('staticImages') || [],
+        staticImageCache     = this.get("staticImageCache"),
+        logicalBounds        = this.get('parentView')._getLogicalBounds(),
+        screenBounds         = this.get('parentView')._getScreenBounds(),
+        frame                = this.get('frame'),
+        imageUrl             = null,
+        xOffset              = 0,
+        yOffset              = 0,
+        x                    = 0,
+        y                    = 0,
+        width                = 10,
+        raphImages           = [],
+        urlString            = "",
+        height               = 10;
         
         staticImages.forEach( function (staticImage) {
+          var imageInstances   = [],
+              numInstances     = 0,
+              instanceCounter  = 0;
+
           imageUrl = staticImage.image;
-          console.log("static image url " + imageUrl);
-          if (imageUrl && imageUrl !== "") {
-            x             = staticImage.xOffset || x;
-            y             = staticImage.yOffset || y;
-            width         = staticImage.width   || width;
-            height        = staticImage.height  || height;
-            name          = staticImage.name    || imageUrl;
-
-            if(! staticImagesByName[name]) {
-              console.log('adding static image ' + name);
-              staticImagesByName[name] = raphaelCanvas.image(imageUrl);
-            }
-
-            y = screenBounds.yTop + screenBounds.plotHeight - y;
-            x = frame.x + 10 + x;
-
-            console.log('adjusting image %s: [X:%d ⊗ Y:%d]  ↔%d ↕%d',name, x,y,width,height);
-            staticImagesByName[name].attr({
-              x:      x,
-              y:      y,
-              width:  width,
-              height: height
-            });
-          }
-          else {
+          if ((!imageUrl) || imageUrl === "") {
             console.log("no image url for static image");
+            return null; // next in forEach
           }
+          xOffset      = staticImage.xOffset || xOffset;
+          yOffset      = staticImage.yOffset || yOffset;
+          width        = staticImage.width   || width;
+          height       = staticImage.height  || height;
+
+          y            = yOffset + screenBounds.yTop + screenBounds.plotHeight - y;
+          x            = xOffset + frame.x + 10; //TODO: what is this 10 all about?
+          console.log(staticImage.raphImage);
+          if (!staticImage.raphImage) {
+            console.log('adding static image instance for: %s', imageUrl);
+            staticImage.raphImage = raphaelCanvas.image(imageUrl);
+            staticImageCache.push(staticImage.raphImage);
+          }
+
+          staticImage.raphImage.attr({
+            x:      x,
+            y:      y + (staticImage.y || 0),
+            width:  width,
+            height: height
+          });
         });
       },
 
@@ -774,8 +784,7 @@ Smartgraphs.GraphView = SC.View.extend(
         var self = this;
         console.log("animationView.render(firstTime = %s)", firstTime ? "YES" : "NO");
         if (firstTime) {
-          this.set('imagesByDatadefName', {});    // need to re-render images
-          this.set('staticImagesByName',  {});    // need to re-render images
+          this._removeOldImages();
           context.callback(this, function () {
             self._renderStaticImages(self.getPath('parentView.raphaelCanvas'));
             self._renderDataImages(self.getPath('parentView.raphaelCanvas'));
