@@ -360,7 +360,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "position-data",
@@ -428,7 +431,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "position-data",
@@ -2132,7 +2138,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
               "data": "position-data",
@@ -2195,7 +2204,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  {"y": 0 }
+                ]
             }],
             "animations": [{
               "data": "position-data",
@@ -2445,7 +2457,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
@@ -2501,7 +2516,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
@@ -2558,7 +2576,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
@@ -2617,7 +2638,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
@@ -2681,7 +2705,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
@@ -2745,7 +2772,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
@@ -2809,7 +2839,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
@@ -2873,7 +2906,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
@@ -2925,12 +2961,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "channelWidth": 70,
             "backgroundImage": sc_static('images/roadDashed.png'),
             "staticImages": [{
-                "name":  "finish",
                 "image":  sc_static('images/finish.png'),
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
-                "yOffset": 5
+                "yOffset": 5,
+                "instances": [
+                  {"y": 0 }
+                ]
             }],
             "animations": [{
                 "data": "car-in-reverse-position",

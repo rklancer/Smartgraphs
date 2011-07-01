@@ -58,6 +58,9 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   }.property().cacheable(),
 
   setup: function (args) {
+    var retv = [],
+        i;
+
     args = args || {};
 
     var pane = Smartgraphs.activityViewController.validPaneFor(args.pane),
@@ -76,16 +79,23 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.set('duration',           args.duration        || this.get('defaultDuration'));      // duration of 0 makes no sense
     this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // channelWidth of 0 makes no sense
 
-    this.set('staticImages', staticImages.map(function (hash) {
-      return {
-        name:               hash.name         || '',
-        image:              hash.image        || '',
-        xOffset:            hash.xOffset      || 0,
-        yOffset:            hash.yOffset      || 0,
-        width:              hash.width        || 70,
-        height:             hash.height       || 30
-      };
-    }));
+    staticImages.forEach(function (hash) {
+      var instances = hash.instances || [],
+          instance  = null;
+
+      // flatten out the nested authored json into a single record object
+      for (i = 0; i < instances.length; i++) {
+        instance         = instances[i];
+        instance.image   = hash.image    || '';
+        instance.xOffset = hash.xOffset  || 0;
+        instance.yOffset = hash.yOffset  || 0;
+        instance.width   = hash.width    || 70;
+        instance.height  = hash.height   || 30;
+        retv.push(instance);
+      }
+    });
+
+    this.set("staticImages",retv);
 
     this.set('animations', animations.map(function (hash) {
       return {
