@@ -20,6 +20,7 @@ Smartgraphs.Sampleset = SC.Object.extend(
 /** @scope Smartgraphs.Sampleset.prototype */ {
   
   init: function () {
+    sc_super();
     var datadef;
     
     this._getDatadef = function () {

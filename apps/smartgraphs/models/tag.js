@@ -60,16 +60,21 @@ Smartgraphs.Tag = SC.Record.extend(
     
     return function () {
 
+      var directValue;
+      
       // we can be called as an observer or as a computed property; if arguments.length > 3, we were called as an
       // observer of <directProperty> or *<tagPropertyPath>
       if (arguments.length > 3) {
         this.notifyPropertyChange(notifierProperty);
         return;
       }
-    
+
       // we were called as a computed property, so return the value
-      return this.get(directProperty) || this.getPath(tagPath);
       
+      directValue = this.get(directProperty);
+      if (SC.none(directValue)) return this.getPath(tagPath);
+      return directValue;
+            
     }.property(notifierProperty).cacheable().observes(directProperty, '*'+tagPath);
 
   };
