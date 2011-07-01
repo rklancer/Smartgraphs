@@ -662,7 +662,7 @@ Smartgraphs.GraphView = SC.View.extend(
         raphImages           = [],
         urlString            = "",
         height               = 10;
-        
+       
         staticImages.forEach( function (staticImage) {
           var imageInstances   = [],
               numInstances     = 0,
@@ -678,21 +678,22 @@ Smartgraphs.GraphView = SC.View.extend(
           width        = staticImage.width   || width;
           height       = staticImage.height  || height;
 
-          y            = yOffset + screenBounds.yTop + screenBounds.plotHeight - y;
-          x            = xOffset + frame.x + 10; //TODO: what is this 10 all about?
-          console.log(staticImage.raphImage);
           if (!staticImage.raphImage) {
             console.log('adding static image instance for: %s', imageUrl);
             staticImage.raphImage = raphaelCanvas.image(imageUrl);
             staticImageCache.push(staticImage.raphImage);
           }
 
-          staticImage.raphImage.attr({
-            x:      x,
-            y:      y + (staticImage.y || 0),
-            width:  width,
-            height: height
-          });
+          // adjust y positions to graph coordintates:
+          if (logicalBounds) {
+            y     = staticImage.y / (logicalBounds.yMax - logicalBounds.yMin);
+            staticImage.raphImage.attr({
+              x:  xOffset + frame.x + 10, //TODO: what is this 10 all about?
+              y:  screenBounds.yTop + (screenBounds.plotHeight * (1 - y)) - yOffset,
+              width:  width,
+              height: height
+            });
+          }
         });
       },
 

@@ -362,7 +362,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "xOffset": 0,
                 "yOffset": 5,
                 "instances": [
-                  { "y": 0 }
+                  { "y": 0   },
+                  { "y": 35  }
                 ]
             }],
             "animations": [{
