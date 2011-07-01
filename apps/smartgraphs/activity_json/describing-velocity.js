@@ -546,7 +546,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["p1A-highlight"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Your point is not within the first three seconds.</p> <p>Select apoint in the <b>first interval (between 0 and 3 seconds)</b>. Then <b>click OK</b>.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Your point is not within the first three seconds.</p> <p>Select a point in the <b>first interval (between 0 and 3 seconds)</b>. Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
