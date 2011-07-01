@@ -538,7 +538,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "students-segment-labels", "segment-0-3s"]
         },
         "bottom": {
           "type": "table",
@@ -613,7 +613,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "segment-0-3s"]
         },
         "bottom": {
           "type": "table",
@@ -1088,7 +1088,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "students-segment-labels", "segment-3-6s"]
         },
         "bottom": {
           "type": "table",
@@ -1162,7 +1162,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "segment-3-6s"]
         },
         "bottom": {
           "type": "table",
@@ -1637,7 +1637,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "students-segment-labels", "segment-6-9s"]
         },
         "bottom": {
           "type": "table",
@@ -1711,7 +1711,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "segment-6-9s"]
         },
         "bottom": {
           "type": "table",
@@ -3962,6 +3962,35 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "datadefName": "position-data",
           "tag": "/shared/describing-velocity/tag/second-point-A",
           "color": "#ff7f0e"
+        }
+      ]
+    },
+    {
+      "type": "SegmentOverlay",
+      "records": [
+        {
+          "url": "/shared/describing-velocity/annotation/segment-0-3s",
+          "name": "segment-0-3s",
+          "activity": "/shared/describing-velocity",
+          "datadefName": "position-data",
+          "x1Record": 0,
+          "x2Record": 3
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/segment-3-6s",
+          "name": "segment-3-6s",
+          "activity": "/shared/describing-velocity",
+          "datadefName": "position-data",
+          "x1Record": 3,
+          "x2Record": 6
+        },
+        {
+          "url": "/shared/describing-velocity/annotation/segment-6-9s",
+          "name": "segment-6-9s",
+          "activity": "/shared/describing-velocity",
+          "datadefName": "position-data",
+          "x1Record": 6,
+          "x2Record": 9
         }
       ]
     }
