@@ -59,6 +59,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   xUnits:  SC.outlet('sampleset.datadef.xUnits'),
   yUnits:  SC.outlet('sampleset.datadef.yUnits'),
   name:    SC.outlet('sampleset.datadef.name'),
+  points:  SC.outlet('sampleset.points'),
   
   // some representative options
   color: '#ffffff',
@@ -81,7 +82,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   },
   
   _pointsDidChange: function () {
-    var samplePoints = this.getPath('sampleset.points') || [],
+    var samplePoints = this.get('points') || [],
         pointset     = this.get('pointset'),
         line         = this.get('line');
          
