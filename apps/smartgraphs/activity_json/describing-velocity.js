@@ -363,7 +363,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 "yOffset": 5,
                 "instances": [
                   { "y": 0   },
-                  { "y": 35  }
+                  { "y": 36  }
                 ]
             }],
             "animations": [{
@@ -2925,6 +2925,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "beforeText": "<p><b>Incorrect.</b> Velocity = change in position / change in time = -36 m / 9 s = -4 m/s. The velocity is negative.",
       "hideSubmitButton": true,
+      "shouldFinishImmediately": true,      
       "isFinalStep": true
     },
     
