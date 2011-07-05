@@ -44,7 +44,8 @@ Smartgraphs.GraphPane = SC.View.extend(
   
   graphView: Smartgraphs.GraphView.design({
     graphControllerBinding: '.parentView.graphController',
-    showAnimationBinding:   '.parentView.showAnimation'
+    showAnimationBinding:   '.parentView.showAnimation',
+    staticImagesBinding: '.parentView.staticImages'
   }),
   
   controlsContainer: SC.ContainerView.design({

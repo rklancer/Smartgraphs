@@ -660,7 +660,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       isVisibleBinding:  '.parentView.parentView.showAnimation',
       animationsBinding: '.parentView.parentView*graphController.animations',
-      staticImagesBinding: '.parentView.parentView*graphController.staticImages',
+      staticImagesBinding: '.parentView.parentView.staticImages',
 
       images: [],
       staticImageCache: [],

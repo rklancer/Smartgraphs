@@ -127,6 +127,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.stopAnimating();
     this.set('animations', []);
     this.set('linkedAnimations', []);
+    this.set('staticImages', []);
   },
 
   /**

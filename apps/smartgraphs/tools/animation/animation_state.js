@@ -40,7 +40,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     
       Smartgraphs.activityViewController.revealAllControls();
       Smartgraphs.activityViewController.showControls(pane);
-      Smartgraphs.activityViewController.showAnimation(pane, Smartgraphs.animationTool.get('backgroundImageURL'));
+      Smartgraphs.activityViewController.showAnimation(pane, Smartgraphs.animationTool.get('backgroundImageURL'), Smartgraphs.animationTool.get('staticImages'));
       linkedAnimations.forEach(function (animation) {
         Smartgraphs.activityViewController.showAnimation(animation.pane);
       });
