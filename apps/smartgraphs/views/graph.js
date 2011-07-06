@@ -293,7 +293,7 @@ Smartgraphs.GraphView = SC.View.extend(
       };
     },
     
-    _startAnimationLoop: function (loopParameters, loopCallback, datadefName, dataViews, raphaelForImage) {
+    _startAnimationLoop: function (loopParameters, datadefName, dataViews, raphaelForImage) {
       console.log("**** _startAnimationLoop()");
     
       var points        = dataViews.objectAt(0).getPath('item.points') || [],
@@ -323,7 +323,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       if (loopParameters.regenerateKeyframes) {
         loopParameters.keyframes = {};
-        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, 0, loopCallback);
+        this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, 0, loopParameters.callback);
         loopParameters.regenerateKeyframes = NO; // Should only regenerate keyframes once.
       }
 
@@ -413,23 +413,8 @@ Smartgraphs.GraphView = SC.View.extend(
           imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
           raphaelForImage        = imagesByDatadefName[datadefName],
           
-          loopParameters = {
-            animationIsRestarting: this._animationIsPaused,
-            regenerateKeyframes:   NO,
-            keyframes:             {}
-          },
-          
           self = this,
-          loopCallback,
-          dataView,
-          i,
-          len;
-          
-      // If the graph is in the "reset" mode, it will not have opacity: 1.0, so set it here.          
-      for (i = 0, len = dataViews.get('length'); i < len; i++) {
-        dataView = dataViews.objectAt(i);
-        dataView.get('layer').raphael.attr({ "opacity": 1.0 });
-      }
+          loopParameters;
 
       function gotoAnimationFinishedState() {
         SC.RunLoop.begin();
@@ -438,17 +423,21 @@ Smartgraphs.GraphView = SC.View.extend(
       }
       
       function startAnimationLoop() {
-        // can pass startAnimationLoop as second parameter of _startAnimationLoop in order to loop
-        self._startAnimationLoop(loopParameters, loopCallback, datadefName, dataViews, raphaelForImage);
+        self._startAnimationLoop(loopParameters, datadefName, dataViews, raphaelForImage);
       }
-
-      loopCallback = Smartgraphs.animationTool.get('loop') ? startAnimationLoop : gotoAnimationFinishedState;
-
+      
+      loopParameters = {
+        animationIsRestarting: this._animationIsPaused,
+        regenerateKeyframes:   NO,
+        keyframes:             {},
+        callback:              Smartgraphs.animationTool.get('loop') ? startAnimationLoop : gotoAnimationFinishedState
+      };
+      
       // Calculate the first set of keyframes. This takes into account any
       // progress already made on animating the graph. The keyframes will
       // be regenerated in startAnimationLoop() if we're restarting animation
       // so that the next loop has a "full" set of keyframes.
-      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, currentXFrac, loopCallback);
+      this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, currentXFrac, loopParameters.callback);
 
       // Actually start the animation loop.
       startAnimationLoop();
