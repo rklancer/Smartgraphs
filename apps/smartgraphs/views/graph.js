@@ -879,8 +879,8 @@ Smartgraphs.GraphView = SC.View.extend(
           });
         }
         else {
-          this._renderStaticImages(this.getPath('parentView.raphaelCanvas'));
-          this._renderDataImages(this.getPath('parentView.raphaelCanvas'));
+          this._renderStaticImages(this.get('raphaelCanvas'));
+          this._renderDataImages(this.get('raphaelCanvas'));
         }
       }
     })

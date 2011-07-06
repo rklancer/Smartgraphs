@@ -95,7 +95,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
       }
     });
 
-    this.set("staticImages",retv);
+    this.set("staticImages", retv);
 
     this.set('animations', animations.map(function (hash) {
       return {

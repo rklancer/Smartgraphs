@@ -1,8 +1,9 @@
 // ==========================================================================
 // Project:   Smartgraphs.GraphPane
-// Copyright: ©2010 My Company, Inc.
+// Copyright: ©2011 Concord Consortium
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
-/*globals Smartgraphs RaphaelViews */
+/*globals Smartgraphs */
 
 /** @class
 
