@@ -19,7 +19,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
   initialSubstate: 'OFF',
   
   OFF: SC.State.design({
-    animationToolStartTool: function (context) {
+    animationToolStartTool: function () {
       var parentState = this.get('parentState');
       this.gotoState(parentState.get('name') + '.ON');
     }
@@ -35,30 +35,20 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     },
   
     enterState: function () {
-      var pane = Smartgraphs.animationTool.get('pane'),
-          linkedAnimations = Smartgraphs.animationTool.get('linkedAnimations');
-    
+      // show the controls in the 'main' pane, which will animate the data    
       Smartgraphs.activityViewController.revealAllControls();
-      Smartgraphs.activityViewController.showControls(pane);
-      Smartgraphs.activityViewController.showAnimation(pane, Smartgraphs.animationTool.get('backgroundImageURL'), Smartgraphs.animationTool.get('staticImages'));
-      linkedAnimations.forEach(function (animation) {
-        Smartgraphs.activityViewController.showAnimation(animation.pane);
-      });
+      Smartgraphs.activityViewController.showControls(Smartgraphs.animationTool.get('mainPane'));
+      
+      // route animation information to the relevant graph controllers
+      Smartgraphs.animationTool.setupGraphControllers();
     },
   
-    exitState: function () {
-      var pane = Smartgraphs.animationTool.get('pane'),
-          linkedAnimations = Smartgraphs.animationTool.get('linkedAnimations');
-    
-      // make sure the animation is stopped before we leave the activity step!
+    exitState: function () {    
+      Smartgraphs.animationTool.stopAnimating();
+      Smartgraphs.animationTool.clearGraphControllers();    
       Smartgraphs.animationTool.clear();
-    
-      Smartgraphs.activityViewController.hideAnimation(pane);
-      linkedAnimations.forEach(function (animation) {
-        Smartgraphs.activityViewController.hideAnimation(animation.pane);
-      });
-      Smartgraphs.activityViewController.hideControls(pane);
-    },
+      Smartgraphs.activityViewController.hideControls(Smartgraphs.animationTool.get('mainPane'));
+    },    
   
     // ..........................................................
     // SUBSTATES

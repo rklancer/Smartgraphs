@@ -24,64 +24,77 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     Stubbable method to find the appropriate graph controller to use for a given 'pane' argument
 
     @param {String} pane
-      The pane we want the label tool to operate in; generally one of 'top', 'bottom', or 'single'
+      The pane containing the graph we're interested in; one of 'top', 'bottom', or 'single'
+      
+    @returns {Smartgraphs.GraphController}
   */
   graphControllerForPane: function (pane) {
     return Smartgraphs.activityViewController.graphControllerForPane(pane);
   },
-
-  _pane: null,
-  _isAnimating: NO,
+  
+  /**
+    Finds the appropriate graph view for a given 'pane' name
+    
+    @param {String} pane
+      The pane containing the graph we're interested in; one of 'top', 'bottom', or 'single'
+      
+    @returns {Smartgraphs.GraphView}
+  */    
+  graphViewForPane: function (pane) {
+    return Smartgraphs.activityPage.getPath(Smartgraphs.activityViewController.firstOrSecondFor(pane)+'GraphPane.graphView');
+  },
 
   defaultDuration:     3000,  // milliseconds, default is 3 seconds
   defaultChannelWidth: 70,    // in pixels
   defaultLoop:         false, // whether the animation should loop or just stop at the end
+  defaultBackgroundImageURL: '',
 
-  backgroundImageURL: '',
-  duration: 3000,
-  channelWidth: 70,
-  loop: false,
+  duration:            3000,
+  channelWidth:        70,
+  loop:                false,
+  backgroundImageURL:  '',
 
+  staticImages: [],
   animations: [],
-  linkedAnimations: [],
+  linkedAnimationsByPane: {},
 
-  pane: function () {
-    return this._pane;
+  _mainPane: null,
+  mainPane: function () {
+    return this._mainPane;
   }.property(),
 
-  graphPane: function () {
-    return Smartgraphs.activityPage.get(Smartgraphs.activityViewController.firstOrSecondFor(this._pane)+'GraphPane');
-  }.property('pane'),
+  _linkedPanes: [],
+  linkedPanes: function () {
+    return this._linkedPanes;
+  }.property(),
 
+  _isAnimating: NO,  
   isAnimating: function () {
     return this._isAnimating;
-  }.property().cacheable(),
-
+  }.property(),
+  
   setup: function (args) {
-    var retv = [],
-        i;
-
     args = args || {};
-
+    
     var pane = Smartgraphs.activityViewController.validPaneFor(args.pane),
-        animations       = args.animations       || [],
-        linkedAnimations = args.linkedAnimations || [],
-        staticImages     = args.staticImages     || [],
+        animationHashes        = args.animations       || [],
+        linkedAnimationHashes  = args.linkedAnimations || [],
+        staticImageHashes      = args.staticImages     || [],
+        linkedAnimationsByPane = {},
+        staticImages           = [],
         controller;
 
     if (!pane) return;
 
-    this._pane = pane;
-
     this.set('loop', args.loop === undefined ? this.get('defaultLoop') : args.loop);
-
-    this.set('backgroundImageURL', args.backgroundImage || '');
+    this.set('backgroundImageURL', args.backgroundImage || this.get('defaultBackgroundImageURL'));
     this.set('duration',           args.duration        || this.get('defaultDuration'));      // duration of 0 makes no sense
     this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // channelWidth of 0 makes no sense
 
-    staticImages.forEach(function (hash) {
+    staticImageHashes.forEach(function (hash) {
       var instances = hash.instances || [],
-          instance  = null;
+          instance  = null,
+          i;
 
       // flatten out the nested authored json into a single record object
       for (i = 0; i < instances.length; i++) {
@@ -91,67 +104,138 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
         instance.yOffset = hash.yOffset  || 0;
         instance.width   = hash.width    || 70;
         instance.height  = hash.height   || 30;
-        retv.push(instance);
+        staticImages.push(instance);
       }
     });
 
-    this.set("staticImages", retv);
+    this.set("staticImages", staticImages);
 
-    this.set('animations', animations.map(function (hash) {
+    this.set('animations', animationHashes.map(function (hash) {
       return {
         datadefName:        hash.data,
-        foregroundImageURL: hash.image        || '',
-        xOffset:            hash.xOffset      || 0,
-        yOffset:            hash.yOffset      || 0,
-        width:              hash.width        || 70,
-        height:             hash.height       || 30
+        foregroundImageURL: hash.image   || '',
+        xOffset:            hash.xOffset || 0,
+        yOffset:            hash.yOffset || 0,
+        width:              hash.width   || 70,
+        height:             hash.height  || 30
       };
     }));
+    
+    linkedAnimationHashes.forEach(function (hash) {
+      var pane       = Smartgraphs.activityViewController.validPaneFor(hash.pane),
+          animations = hash.animations || [];
+          
+      if (!pane) throw "bad pane argument '@%' in linkedAnimations".fmt(pane);
+      if (linkedAnimationsByPane[pane]) throw "repeated set of linkedAnimations for pane '%@'".fmt(pane);
+      
+      linkedAnimationsByPane[pane] = animations.map(function (hash) {
+        return {
+          datadefName: hash.data
+        };
+      });
+    });
+    
+    this.set('linkedAnimationsByPane', linkedAnimationsByPane);
 
-    this.set('linkedAnimations', linkedAnimations.map(function (hash) {
-      return {
-        pane: Smartgraphs.activityViewController.validPaneFor(hash.pane)
-        // TODO add information from the 'animations' key
-        // TODO throw error or skip over bad 'pane' argument
-      };
-    }));
-
+    this._mainPane = pane;
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
 
     controller = this.graphControllerForPane(args.pane);
-    controller.animationToolStartTool();
+    controller.get('statechart').sendAction('animationToolStartTool');
   },
 
   clear: function () {
-    this.stopAnimating();
+    this._mainPane = null;
     this.set('animations', []);
-    this.set('linkedAnimations', []);
+    this.set('linkedAnimationsByPane', {});
     this.set('staticImages', []);
+  },
+
+  makeAnimationInfoObject: function () {
+    return SC.Object.create({
+      hasAnimation:       YES,
+      duration:           null,
+      loop:               null, 
+      channelWidth:       null,
+      animations:         [],
+      staticImages:       [],
+      backgroundImageURL: '',
+      linkedAnimations:   []
+    });
+  },
+  
+  setupGraphControllers: function () {
+    var linkedAnimationsByPane = this.get('linkedAnimationsByPane'),
+        pane, 
+        controller, 
+        animationInfo;
+    
+    pane = this.get('mainPane');
+    controller = this.graphControllerForPane(pane);
+
+    animationInfo = this.makeAnimationInfoObject();
+    this.copyPropertiesTo(animationInfo, ['channelWidth', 'backgroundImageURL', 'duration', 'loop', 'animations', 'staticImages']);
+    controller.set('animationInfo', animationInfo);
+    
+    for (pane in linkedAnimationsByPane) {
+      if (!linkedAnimationsByPane.hasOwnProperty(pane)) continue;
+      
+      controller = this.graphControllerForPane(pane);
+      
+      animationInfo = this.makeAnimationInfoObject();
+      this.copyPropertiesTo(animationInfo, ['duration', 'loop', 'channelWidth']);
+      animationInfo.set('linkedAnimations', linkedAnimationsByPane[pane]);
+      controller.set('animationInfo', animationInfo);
+    }    
+  },
+  
+  clearGraphControllers: function () {
+    var linkedAnimationsByPane = this.get('linkedAnimationsByPane'),
+        pane, 
+        controller;
+        
+    pane = this.get('mainPane');
+    controller = this.graphControllerForPane(pane);
+    controller.set('animationInfo', null);
+    
+    for (pane in linkedAnimationsByPane) {
+      if (!linkedAnimationsByPane.hasOwnProperty(pane)) continue;
+      
+      controller = this.graphControllerForPane(pane);
+      controller.set('animationInfo', null);
+    }
+  },
+  
+  copyPropertiesTo: function (object, props) {
+    var self = this;
+    object.beginPropertyChanges();
+    props.forEach( function (prop) {
+      object.set(prop, self.get(prop));
+    });
+    object.endPropertyChanges();
   },
 
   /**
     Called on entry to ANIMATION_RUNNING state.
   */
   startAnimating: function () {
-    if (!this._pane || this._isAnimating) return NO;
+    if (!this._mainPane || this._isAnimating) return NO;
     this._isAnimating = YES;
     this.notifyPropertyChange('isAnimating');
-    var graphPane = this.get('graphPane');
-    graphPane.get('graphView').animate();
-    return YES;
+    
+    this.graphViewForPane(this.get('mainPane')).animate();
   },
 
   /**
     Called on entry to ANIMATION_STOPPED state.
   */
   stopAnimating: function () {
-    if (!this._pane || !this._isAnimating) return NO;
+    if (!this._mainPane || !this._isAnimating) return NO;
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
-    var graphPane = this.get('graphPane');
-    graphPane.get('graphView').stop();
-    return YES;
+
+    this.graphViewForPane(this.get('mainPane')).stop();
   },
 
   /**
@@ -160,8 +244,8 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   clearAnimation: function () {
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
-    var graphPane = this.get('graphPane');
-    graphPane.get('graphView').reset();
+    
+    this.graphViewForPane(this.get('mainPane')).reset();
   }
 
 });

@@ -25,10 +25,6 @@ sc_require('tools/animation/animation_state');
 
 Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.GraphController.prototype */ {
-
-  // FIXME: make animationTool store its state somewhere in this controller, instead of in an external singleton
-  // (which is bound by BOTH graph controllers)
-  animationsBinding: 'Smartgraphs.animationTool.animations',
   
   init: function () {
     var statechart;
@@ -106,6 +102,13 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   title: null,
   
   /**
+    @property {SC.Object}
+    
+    A package of animation tool info
+  */
+  animationInfo: null,
+  
+  /**
     @property String
     
     Requested cursor type to show when mousing over this graph.
@@ -134,7 +137,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     Clears all graph state (i.e., title, units, data representations, graphable data objects, and annotations).
   */
   clear: function () {
-
     this.get('statechart').sendAction('stopTool');
 
     // n.b. the following could be made to be side effects of entering DEFAULT_STATE
@@ -296,10 +298,6 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
     }
     this.get('statechart').sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
-  },
-  
-  animationToolStartTool: function () {
-    this.get('statechart').sendAction('animationToolStartTool', this);
   }
   
   // See the below for the old way of handling FREEHAND_INPUT; TODO transition to using per-controller statechart to

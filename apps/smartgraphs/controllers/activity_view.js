@@ -24,13 +24,6 @@ Smartgraphs.activityViewController = SC.Object.create(
   
   firstGraphPaneControls: null,
   secondGraphPaneControls: null,
-  
-  firstPaneHasAnimation: NO,
-  firstPaneAnimationBackgroundImageURL: '',  
-  firstPaneAnimationStaticImages: null,
-  secondPaneHasAnimation: NO,
-  secondPaneAnimationBackgroundImageURL: '',
-  secondPaneAnimationStaticImages: null,
     
   startControlIsVisible: NO,
   startControlIsEnabled: NO,
@@ -222,30 +215,6 @@ Smartgraphs.activityViewController = SC.Object.create(
     this.hideControls();
     this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
     
-    return YES;
-  },
-  
-  showAnimation: function (pane, backgroundImageURL, staticImages) {
-    pane = this.validPaneFor(pane);
-    var which = this.firstOrSecondFor(pane);
-
-    if ( !which ) return NO;
-    
-    this.set(which+'PaneHasAnimation',                YES);
-    this.set(which+'PaneAnimationBackgroundImageURL', backgroundImageURL || '');
-    this.set(which+'PaneAnimationStaticImages',       staticImages       || []);
-    return YES;
-  },
-  
-  hideAnimation: function (pane) {
-    pane = this.validPaneFor(pane);
-    var which = this.firstOrSecondFor(pane);
-
-    if ( !which ) return NO;
-    
-    this.set(which+'PaneHasAnimation', NO);
-    this.set(which+'PaneAnimationBackgroundImageURL', '');
-    this.set(which+'PaneAnimationStaticImages', []);
     return YES;
   },
   
