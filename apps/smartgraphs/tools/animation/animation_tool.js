@@ -9,9 +9,6 @@ sc_require('tools/tool');
 
 /** @class
 
-  // TODO(?): move the animation tool's stateful properties out of this object and into the corresponding SC.State
-  // objects so that each graph can have its own animation tool instance. RPK 6-17-11
-
   @extends Smartgraphs.Tool
 */
 Smartgraphs.animationTool = Smartgraphs.Tool.create(
@@ -71,6 +68,24 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   _isAnimating: NO,  
   isAnimating: function () {
     return this._isAnimating;
+  }.property(),
+  
+  linkedGraphs: function () {
+    var pane,
+        linkedAnimationsByPane = this.get('linkedAnimationsByPane'),
+        ret = [];
+        
+    for (pane in linkedAnimationsByPane) {
+      if ( !linkedAnimationsByPane.hasOwnProperty(pane) ) continue;
+      ret.push(this.graphViewForPane(pane));
+    }
+    return ret;
+  }.property(),
+  
+  allAnimatedGraphs: function () {
+    var ret = this.get('linkedGraphs');
+    ret.insertAt(0, this.graphViewForPane(this.get('mainPane')));
+    return ret;
   }.property(),
   
   setup: function (args) {
@@ -224,7 +239,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this._isAnimating = YES;
     this.notifyPropertyChange('isAnimating');
     
-    this.graphViewForPane(this.get('mainPane')).animate();
+    this.get('allAnimatedGraphs').invoke('animate');
   },
 
   /**
@@ -235,7 +250,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
 
-    this.graphViewForPane(this.get('mainPane')).stop();
+    this.get('allAnimatedGraphs').invoke('stop');
   },
 
   /**
@@ -245,7 +260,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this._isAnimating = NO;
     this.notifyPropertyChange('isAnimating');
     
-    this.graphViewForPane(this.get('mainPane')).reset();
+    this.get('allAnimatedGraphs').invoke('reset');
   }
 
 });

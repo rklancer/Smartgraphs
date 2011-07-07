@@ -336,7 +336,10 @@ Smartgraphs.GraphView = SC.View.extend(
       }
       else {
         // Reset raphael parameters to the "beginning".
-        raphaelForGraph.attr({ "clip-rect": [screenBounds.xLeft, screenBounds.yTop, 0, screenBounds.plotHeight].join(',') });
+        for (i = 0, len = dataViews.get('length'); i < len; i++) {
+          raphaelForGraph = dataViews.objectAt(i).get('layer').raphael;
+          raphaelForGraph.attr({ "clip-rect": [screenBounds.xLeft, screenBounds.yTop, 0, screenBounds.plotHeight].join(',') });
+        }
 
         pt = points[0]; // [x, y]
         y = pt[1] / (logicalBounds.yMax - logicalBounds.yMin);
@@ -393,9 +396,9 @@ Smartgraphs.GraphView = SC.View.extend(
       }
     },
     
-    _animateDataViewsFor: function (datadefName) {
+    _startAnimationForDatadef: function (datadefName) {
       
-      console.log("**** graphCanvasView._animateDataViewsFor(%s)", datadefName);
+      console.log("**** graphCanvasView._startAnimationForDatadef(%s)", datadefName);
       
       var screenBounds           = this._getScreenBounds(),
           logicalBounds          = this._getLogicalBounds(),
@@ -445,21 +448,96 @@ Smartgraphs.GraphView = SC.View.extend(
       startAnimationLoop();
     },
     
+    _dataViewsForDatadefName: function (datadefName) {
+      var ret = [],
+          dataViews = this.getPath('parentView.dataHolder.childViews') || [];
+          
+      dataViews.forEach( function (dataView) {
+        if (dataView.getPath('item.dataRepresentation.datadef.name') === datadefName) ret.push(dataView);
+      });
+      
+      return ret;
+    },
+    
+    _startLinkedAnimationForDatadef: function (datadefName, animationIsRestarting, loopCallback) {
+      console.log("**** _startLinkedAnimationForDatadef('%s')", datadefName);
+      
+      var screenBounds            = this._getScreenBounds(),
+          dataViews               = this._dataViewsForDatadefName(datadefName),
+          firstDataView           = dataViews.objectAt(0),
+          raphaelForFirstDataView = firstDataView.get('layer') && firstDataView.get('layer').raphael,
+          points                  = firstDataView.getPath('item.points') || [],
+          clipRect                = raphaelForFirstDataView.attrs['clip-rect'],
+          currentX                = clipRect ? clipRect[2] : 0, // occasionally, clip-rect is undefined; deal with it gracefully
+          currentXFrac            = currentX / screenBounds.plotWidth,
+          ms                      = this.getPath('animationInfo.duration'),
+          loop                    = this.getPath('animationInfo.loop'),
+          self                    = this,
+          callback,
+          i,
+          len,
+          animationTime,
+          raphaelForGraph;
+  
+      for (i = 0, len = dataViews.get('length'); i < len; i++) {
+        raphaelForGraph = dataViews.objectAt(i).get('layer').raphael;
+        raphaelForGraph.stop();
+      }
+
+      if (animationIsRestarting) {
+        animationTime = parseInt(ms - (raphaelForGraph.attrs['clip-rect'][2]/screenBounds.plotWidth)*ms, 10);
+        animationIsRestarting = NO;
+      }
+      else {
+        raphaelForGraph.attr({ "clip-rect": [screenBounds.xLeft, screenBounds.yTop, 0, screenBounds.plotHeight].join(',') });
+        animationTime = ms;
+      }
+
+      if (loop) {
+        // only generate the following closure on the first loop!
+        if (!loopCallback) console.log('generating loopCallback closure');
+        callback = loopCallback || function () {
+          console.log('in callback');
+          self._startLinkedAnimationForDatadef(datadefName, animationIsRestarting, callback);
+        };
+      }
+      else {
+        callback = null;
+      }
+      
+      raphaelForFirstDataView.animate({
+        "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(',')
+      }, animationTime, callback);
+
+      for (i = 1, len = dataViews.get('length'); i < len; i++) {
+        raphaelForGraph = dataViews.objectAt(i).get('layer').raphael;
+        raphaelForGraph.animateWith(raphaelForFirstDataView, {
+          "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(',')
+        }, animationTime);
+      }
+    },
+    
     animate: function () {
       console.log("**** graphCanvasView.animate()");
       
-      var animations = this.getPath('animationInfo.animations'),
+      var animations = this.getPath('animationInfo.animations')             || [],
+          linkedAnimations = this.getPath('animationInfo.linkedAnimations') || [],
           self = this;
       
       animations.forEach( function (animationSpec) {
-        self._animateDataViewsFor(animationSpec.datadefName);
+        self._startAnimationForDatadef(animationSpec.datadefName);
+      });
+      
+      linkedAnimations.forEach( function (linkedSpec) {
+        self._startLinkedAnimationForDatadef(linkedSpec.datadefName, self._animationIsPaused);
       });
     },
 
     stop: function () {
       console.log("**** graphCanvasView.stop()");   
             
-      var animations             = this.getPath('animationInfo.animations'),
+      var animations             = this.getPath('animationInfo.animations')       || [],
+          linkedAnimations       = this.getPath('animationInfo.linkedAnimations') || [],
           dataViewsByDatadefName = this.getPath('animationView.dataViewsByDatadefName'),
           imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
           self = this;
@@ -474,6 +552,12 @@ Smartgraphs.GraphView = SC.View.extend(
         });
         raphaelForImage.stop();
       });
+      
+      linkedAnimations.forEach( function (linkedSpec) {
+        self._dataViewsForDatadefName(linkedSpec.datadefName).forEach( function (dataView) {
+          dataView.get('layer').raphael.stop();
+        });
+      });
 
       this._animationIsPaused = YES;
     },
@@ -484,7 +568,8 @@ Smartgraphs.GraphView = SC.View.extend(
       var screenBounds  = this._getScreenBounds(),
           logicalBounds = this._getLogicalBounds(),
           
-          animations             = this.getPath('animationInfo.animations') || [],
+          animations             = this.getPath('animationInfo.animations')       || [],
+          linkedAnimations       = this.getPath('animationInfo.linkedAnimations') || [],
           dataViewsByDatadefName = this.getPath('animationView.dataViewsByDatadefName'),
           imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
 
@@ -514,6 +599,12 @@ Smartgraphs.GraphView = SC.View.extend(
             y: screenBounds.yTop + screenBounds.plotHeight * (1-y) + yOffset
           });
         }
+      });
+      
+      linkedAnimations.forEach( function (linkedSpec) {
+        self._dataViewsForDatadefName(linkedSpec.datadefName).forEach( function (dataView) {
+          dataView.get('layer').raphael.attr(graphResetAttributes);
+        });
       });
 
       this._animationIsPaused = NO;
