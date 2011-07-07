@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.GraphView
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews NO YES SC console sc_static sc_super*/
@@ -20,8 +20,10 @@ Smartgraphs.GraphView = SC.View.extend(
   annotationListBinding: '*graphController.annotationList',
   requestedCursorStyleBinding: '*graphController.requestedCursorStyle',
 
-  showAnimation: NO,
-
+  animationInfoBinding: '*graphController.animationInfo',
+  showAnimationBinding: '*animationInfo.hasAnimation',
+  channelWidthBinding: '*animationInfo.channelWidth',
+  
   inputAreaView:     SC.outlet('graphCanvasView.axesView.inputAreaView'),
   xAxisView:         SC.outlet('graphCanvasView.axesView.xAxisView'),
   yAxisView:         SC.outlet('graphCanvasView.axesView.yAxisView'),
@@ -54,7 +56,7 @@ Smartgraphs.GraphView = SC.View.extend(
   // adjust left border depending on whether we show the animation or not.
   showAnimationDidChange: function () {
     var showAnimation = this.get('showAnimation'),
-        channelWidth  = Smartgraphs.animationTool.get('channelWidth');
+        channelWidth  = this.get('channelWidth');
     
     this.padding.left = 50 + (showAnimation ? channelWidth : 0);
     this.replaceLayer();
@@ -146,7 +148,6 @@ Smartgraphs.GraphView = SC.View.extend(
     // append data and annotations
     if (itemType === 'data') {
       this.get('dataHolder').appendChild(view);
-      // this.graphCanvasView.invokeLast('_animate');
     }
     else if (itemType === 'annotation') {
       if (item.get('isOverlayAnnotation')) {
@@ -256,6 +257,7 @@ Smartgraphs.GraphView = SC.View.extend(
     xAxisBinding: '.parentView.xAxis',
     yAxisBinding: '.parentView.yAxis',
     requestedCursorStyleBinding: '.parentView.requestedCursorStyle',
+    animationInfoBinding: '.parentView.animationInfo',
 
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
 
@@ -299,7 +301,7 @@ Smartgraphs.GraphView = SC.View.extend(
       var points        = dataViews.objectAt(0).getPath('item.points') || [],
           logicalBounds = this._getLogicalBounds(),
           screenBounds  = this._getScreenBounds(),
-          ms            = Smartgraphs.animationTool.get('duration'),
+          ms            = this.getPath('animationInfo.duration'),
           animationSpec = this.getPath('animationView.animationSpecsByDatadefName')[datadefName],
           yOffset       = animationSpec.yOffset,
           
@@ -430,7 +432,7 @@ Smartgraphs.GraphView = SC.View.extend(
         animationIsRestarting: this._animationIsPaused,
         regenerateKeyframes:   NO,
         keyframes:             {},
-        callback:              Smartgraphs.animationTool.get('loop') ? startAnimationLoop : gotoAnimationFinishedState
+        callback:              this.getPath('animationInfo.loop') ? startAnimationLoop : gotoAnimationFinishedState
       };
       
       // Calculate the first set of keyframes. This takes into account any
@@ -446,7 +448,7 @@ Smartgraphs.GraphView = SC.View.extend(
     animate: function () {
       console.log("**** graphCanvasView.animate()");
       
-      var animations = this.getPath('parentView.graphController.animations'),
+      var animations = this.getPath('animationInfo.animations'),
           self = this;
       
       animations.forEach( function (animationSpec) {
@@ -457,7 +459,7 @@ Smartgraphs.GraphView = SC.View.extend(
     stop: function () {
       console.log("**** graphCanvasView.stop()");   
             
-      var animations             = this.getPath('parentView.graphController.animations'),
+      var animations             = this.getPath('animationInfo.animations'),
           dataViewsByDatadefName = this.getPath('animationView.dataViewsByDatadefName'),
           imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
           self = this;
@@ -482,7 +484,7 @@ Smartgraphs.GraphView = SC.View.extend(
       var screenBounds  = this._getScreenBounds(),
           logicalBounds = this._getLogicalBounds(),
           
-          animations             = this.getPath('parentView.graphController.animations') || [],
+          animations             = this.getPath('animationInfo.animations') || [],
           dataViewsByDatadefName = this.getPath('animationView.dataViewsByDatadefName'),
           imagesByDatadefName    = this.getPath('animationView.imagesByDatadefName'),
 
@@ -647,9 +649,11 @@ Smartgraphs.GraphView = SC.View.extend(
     // Holds the animation channel. Should be later in the DOM (and thus "in front of") the annotation views.
     animationView: RaphaelViews.RaphaelView.design({
 
-      isVisibleBinding:  '.parentView.parentView.showAnimation',
-      animationsBinding: '.parentView.parentView*graphController.animations',
-      staticImagesBinding: '.parentView.parentView.staticImages',
+      animationInfoBinding: '.parentView.animationInfo',
+      isVisibleBinding:  '*animationInfo.hasAnimation',
+      animationsBinding: '*animationInfo.animations',
+      staticImagesBinding: '*animationInfo.staticImages',
+      dataViewsBinding: '.parentView.dataHolder.childViews',
 
       // used for bookkeeping when rendering data images (i.e, the moving sprites in the animation channel)
       dataViewsByDatadefName: null,
@@ -659,8 +663,8 @@ Smartgraphs.GraphView = SC.View.extend(
       // used for bookkeeping when rendering static images in the animation channel (e.g., start or stop lines overlaid over the channel)
       staticImagesByURL: null,
       
-      displayProperties: 'animations.[] staticImages.[]',
-
+      displayProperties: ['animations.[]','staticImages.[]', 'dataViews.[]'],
+      
       // Handle the special shapes we allow authors to use.
       _normalizeImageURL: function (imageURL) {
         if (imageURL.indexOf('.') === -1) {
@@ -791,7 +795,7 @@ Smartgraphs.GraphView = SC.View.extend(
             dataView,
             points,
             y;
-
+        
         animations.forEach( function (animationSpec) {
           var datadefName = animationSpec.datadefName;
           dataViewsByDatadefName[datadefName] = [];

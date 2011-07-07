@@ -19,22 +19,26 @@ Smartgraphs.GraphPane = SC.View.extend(
   // MUST come before graphView
   animationChannelView: SC.View.design({
     
-    isVisibleBinding:          '.parentView.showAnimation',
-    backgroundImageURLBinding: '.parentView.backgroundImageURL',
+    animationInfoBinding:      '.parentView*graphController.animationInfo',
+    isVisibleBinding:          '*animationInfo.hasAnimation',
+    backgroundImageURLBinding: '*animationInfo.backgroundImageURL',
+    channelWidthBinding:       '*animationInfo.channelWidth',
 
-    layout: { left: 10, top: 15, width: Smartgraphs.animationTool.get('channelWidth'), bottom: 0 },
+    layout: { left: 10, top: 15, width: 0, bottom: 0 },
 
-    displayProperties: ['backgroundImageURL'],
+    displayProperties: ['backgroundImageURL', 'channelWidth'],
     
     render: function (context, firstTime) {      
       sc_super();
       if (!firstTime) {
         this._setBackgroundImage(this.get('backgroundImageURL'));
+        this.adjust('width', this.get('channelWidth'));
       }
     },
     
     didCreateLayer: function () {
       this._setBackgroundImage(this.get('backgroundImageURL'));
+      this.adjust('width', this.get('channelWidth'));
     },
     
     _setBackgroundImage: function (url) {
@@ -44,9 +48,7 @@ Smartgraphs.GraphPane = SC.View.extend(
   }),
   
   graphView: Smartgraphs.GraphView.design({
-    graphControllerBinding: '.parentView.graphController',
-    showAnimationBinding:   '.parentView.showAnimation',
-    staticImagesBinding: '.parentView.staticImages'
+    graphControllerBinding: '.parentView.graphController'
   }),
   
   controlsContainer: SC.ContainerView.design({
