@@ -271,9 +271,15 @@ Smartgraphs.TableView = SC.View.extend(
       tableColumnView.set('isVisible', YES);
       
       // innerView's content depends on parentView, which isn't set until the end of the runloop. Without the 
-      // line below, the scroll view believes it's contentView's height is 0
+      // line below, the scroll view believes its contentView's height is 0
       this.invokeLast(function () {
         innerView.adjustHeightForContentLength();
+        
+        // without the line below, the table columns render blank cells in the following scenario:
+        // * pages A and B both display the same table
+        // * the table is scrolled down (i.e its scroll offset is nonzero)
+        // * and you move from page A to B
+        scrollView.displayDidChange();   
       });
     }
     else {
