@@ -116,8 +116,8 @@ Smartgraphs.BracketArc = Smartgraphs.Annotation.extend(
         i,
         len,
         point,
-        item1Index,
-        item2Index;
+        item1Index = -1,
+        item2Index = -1;
         
     points = points.map( function (pair) { return pair.copy(); } ).sort( function (pair1, pair2) { return pair1[0] - pair2[0]; } );
         
@@ -128,8 +128,8 @@ Smartgraphs.BracketArc = Smartgraphs.Annotation.extend(
     }
     
     return {
-      item1Index: item1Index || -1,
-      item2Index: item2Index || -1
+      item1Index: item1Index,
+      item2Index: item2Index
     };
   }
   
