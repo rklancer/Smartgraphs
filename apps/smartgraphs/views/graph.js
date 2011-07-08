@@ -254,10 +254,12 @@ Smartgraphs.GraphView = SC.View.extend(
       
     layout: { zIndex: 0 },
 
-    xAxisBinding: '.parentView.xAxis',
-    yAxisBinding: '.parentView.yAxis',
-    requestedCursorStyleBinding: '.parentView.requestedCursorStyle',
-    animationInfoBinding: '.parentView.animationInfo',
+    graphView: SC.outlet('parentView'),
+    
+    xAxisBinding: '.graphView.xAxis',
+    yAxisBinding: '.graphView.yAxis',
+    requestedCursorStyleBinding: '.graphView.requestedCursorStyle',
+    animationInfoBinding: '.graphView.animationInfo',
 
     displayProperties: 'xAxis.min xAxis.max yAxis.min yAxis.max'.w(),
 
@@ -267,7 +269,7 @@ Smartgraphs.GraphView = SC.View.extend(
     
     _getScreenBounds: function () {
       var frame   = this.get('frame'),
-          padding = this.getPath('parentView.padding');
+          padding = this.getPath('graphView.padding');
           
       if (!padding) return null;
           
@@ -282,8 +284,8 @@ Smartgraphs.GraphView = SC.View.extend(
     },
     
     _getLogicalBounds: function () {
-      var xAxis = this.getPath('parentView.xAxis'),
-          yAxis = this.getPath('parentView.yAxis');
+      var xAxis = this.getPath('graphView.xAxis'),
+          yAxis = this.getPath('graphView.yAxis');
           
       if (!xAxis || !yAxis) return null;
       
@@ -611,9 +613,11 @@ Smartgraphs.GraphView = SC.View.extend(
     },
 
     axesView: RaphaelViews.RaphaelView.design({
-      xAxisBinding: '.parentView.parentView.xAxis',
-      yAxisBinding: '.parentView.parentView.yAxis',
-      paddingBinding: '.parentView.parentView.padding',
+      graphView: SC.outlet('parentView.graphView'),
+      
+      xAxisBinding: '.graphView.xAxis',
+      yAxisBinding: '.graphView.yAxis',
+      paddingBinding: '.graphView.padding',
 
       childViews: 'inputAreaView xAxisView yAxisView'.w(),
 
@@ -675,12 +679,16 @@ Smartgraphs.GraphView = SC.View.extend(
       }),
 
       xAxisView: Smartgraphs.AxisView.design({
-        axisBinding: '.parentView.parentView.parentView.xAxis',
+        graphView: SC.outlet('parentView.graphView'),
+        axisBinding:         '.graphView.xAxis',
+        otherAxisBinding:    '.graphView.yAxis',
         type: 'x'
       }),
 
       yAxisView: Smartgraphs.AxisView.design({
-        axisBinding: '.parentView.parentView.parentView.yAxis',
+        graphView: SC.outlet('parentView.graphView'),
+        axisBinding:         '.graphView.yAxis',
+        otherAxisBinding:    '.graphView.xAxis',
         type: 'y'
       })
     }),

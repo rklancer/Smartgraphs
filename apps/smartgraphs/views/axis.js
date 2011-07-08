@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.AxisView
-// Copyright: ©2010 Concord Consortium
-// Author:   Richard Klancer <rpk@pobox.com>
+// Copyright: ©2011 Concord Consortium
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 
@@ -14,7 +14,7 @@
 Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.AxisView.prototype */ {
 
-  displayProperties: 'axis.min axis.max axis.nSteps axis.label parentView.parentView.frame'.w(),
+  displayProperties: 'axis otherAxis graphView.graphCanvasView.frame'.w(),
   
   render: function (context, firstTime) {
     // unfortunately, Raphael can't draw text correctly when the svg element is hidden or offscreen (as it is when
@@ -28,8 +28,8 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
   
   didCreateLayer: function () {
     this._label = null;
-    this.invokeLater(this.drawLabel);
-    this.invokeLater(this.drawAxis);
+    this.invokeLast(this.drawLabel);
+    this.invokeLast(this.drawAxis);
   },
   
   drawAxis: function () {
@@ -38,35 +38,32 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
 
     if (this._axis) this._axis.remove();
     
-    var axis = this.get('axis');
+    var axis            = this.get('axis'),
+        min             = axis && axis.get('min'),
+        max             = axis && axis.get('max'),
+        nSteps          = axis && axis.get('nSteps'),
+        otherAxis       = this.get('otherAxis'),
+        graphView       = this.get('graphView'),
+        graphCanvasView = graphView.get('graphCanvasView'),
+        screenBounds    = graphCanvasView._getScreenBounds(),
+        raphaelCanvas   = this.get('raphaelCanvas'),     
+        x,
+        y;
+        
     if (!axis) return;
     
-    var padding = this.getPath('parentView.parentView.parentView.padding');
-    var frame = this.getPath('parentView.parentView.frame');
-
-    var xLeft = frame.x + padding.left;
-    var yBottom = frame.y + frame.height - padding.bottom;
-    
     // for some reason can be display: none, which screws up label drawing
-    var raphaelCanvas = this.get('raphaelCanvas');
     if (raphaelCanvas.canvas.style.display !== 'block') raphaelCanvas.canvas.style.display = 'block';       
     
     if (this.get('type') === 'y') {
-      var yMin = axis.get('min');
-      var yMax = axis.get('max');
-      var ySteps = axis.get('nSteps');
-      var plotHeight = frame.height - padding.top - padding.bottom;
-    
-      this._axis = raphaelCanvas.g.axis(xLeft, yBottom, plotHeight, yMin, yMax, ySteps, 1);
+      // if y=0 is within the graph bounds, draw the x axis at y = 0
+      x = otherAxis.get('min') < 0 && 0 < otherAxis.get('max') ? graphView.coordinatesForPoint(0,0).x : screenBounds.xLeft;
+      this._axis = raphaelCanvas.g.axis(x, screenBounds.yBottom, screenBounds.plotHeight, min, max, nSteps, 1);
     }
     else if (this.get('type') === 'x') {
-      var xMin = axis.get('min');
-      var xMax = axis.get('max');
-      var xSteps = axis.get('nSteps');
-      
-      var plotWidth = frame.width - padding.left - padding.right;
-      
-      this._axis = raphaelCanvas.g.axis(xLeft, yBottom, plotWidth, xMin, xMax, xSteps, 0);
+      // if x=0 is within the graph bounds, draw the y axis at x = 0
+      y = otherAxis.get('min') < 0 && 0 < otherAxis.get('max') ? graphView.coordinatesForPoint(0,0).y : screenBounds.yBottom;
+      this._axis = raphaelCanvas.g.axis(screenBounds.xLeft, y, screenBounds.plotWidth, min, max, nSteps, 0);
     }
     
     this._axis.all[0].attr({stroke: '#aaa'});          // path
@@ -74,25 +71,28 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
   },
   
   drawLabel: function () {
-    var padding = this.getPath('parentView.parentView.parentView.padding');
-    var frame = this.getPath('parentView.parentView.frame');
+    var graphView = this.get('graphView'),
+        padding   = graphView.get('padding'),
+        frame     = graphView.getPath('graphCanvasView.frame'),
+        axis      = this.get('axis'),
+        otherAxis = this.get('otherAxis'),
+        axisLabel = axis && axis.get('label'),
+        unitName  = axis && axis.getPath('units.pluralName'),
+        labelText = unitName ? "%@ (%@)".fmt(axisLabel, unitName) : axisLabel,
+        raphaelCanvas,
+        x, 
+        y, 
+        rotation;
     
-    var axis  = this.get('axis');
     if (!axis) return;
-    
-    var axisLabel = axis.get('label');
-    var unitName = axis.getPath('units.pluralName');
-    var labelText = unitName ? "%@ (%@)".fmt(axisLabel, unitName) : axisLabel;
-    
-    var x, y, rotation;
     
     if (this.get('type') === 'x') {
       x = (padding.left + frame.width - padding.right) / 2;
-      y = frame.height - 15;
+      y = ( otherAxis.get('min') < 0 && 0 < otherAxis.get('max') ? graphView.coordinatesForPoint(0,0).y : frame.height - padding.bottom) + 25;
       rotation = 0;
     }
     else {
-      x = padding.left - 30;
+      x = ( otherAxis.get('min') < 0 && 0 < otherAxis.get('max') ? graphView.coordinatesForPoint(0,0).x : padding.left) - 30;
       y = (padding.top + frame.height - padding.bottom) / 2;
       rotation = 270;
     }
@@ -101,7 +101,7 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
       this._label.attr({text: labelText, x: x, y: y});
     }
     else {
-      var raphaelCanvas = this.get('raphaelCanvas');
+      raphaelCanvas = this.get('raphaelCanvas');
       if (raphaelCanvas.canvas.style.display !== 'block') raphaelCanvas.canvas.style.display = 'block';
       this._label = raphaelCanvas.text(x, y, labelText).attr({font: "14px Arial, sans-serif", fill: '#333333'}).rotate(rotation);
     }
