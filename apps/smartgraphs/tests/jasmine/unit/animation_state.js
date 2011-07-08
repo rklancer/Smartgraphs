@@ -1,15 +1,25 @@
-/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor 
+/*globals Smartgraphs RaphaelViews describe it expect xit xdescribe beforeEach afterEach spyOn runs waits waitsFor
  clickOn fillIn defineJasmineHelpers runBeforeEach runAfterEach */
 
+defineJasmineHelpers();
+
 describe("ANIMATION_TOOL state", function () {
-  
+
   var statechart,
       state,
       owner,
       animationTool;
-  
+
   beforeEach( function () {
     animationTool = Smartgraphs.animationTool;
+    spyOn(animationTool, 'startAnimating');
+    spyOn(animationTool, 'stopAnimating');
+    spyOn(animationTool, 'clearAnimation');
+    spyOn(animationTool, 'clear');
+
+    spyOn(Smartgraphs.activityViewController, 'showAnimation');
+    spyOn(Smartgraphs.activityViewController, 'hideAnimation');
+
     animationTool.graphPane = SC.Object.create({
       graphView: SC.Object.create({
         animate: function() { return YES; },
@@ -17,117 +27,389 @@ describe("ANIMATION_TOOL state", function () {
         reset:   function() { return YES; }
       })
     });
-    spyOn(animationTool.graphPane.graphView, 'animate');
-    spyOn(animationTool.graphPane.graphView, 'stop');
-    spyOn(animationTool.graphPane.graphView, 'reset');
-    
+
     statechart = SC.Statechart.create({
       rootState: SC.State.design({
         initialSubstate: 'ANIMATION_TOOL',
         ANIMATION_TOOL: SC.State.plugin('Smartgraphs.ANIMATION_TOOL')
       })
     });
-    
+
     statechart.initStatechart();
     owner = SC.Object.create();
-    statechart.set('owner', owner);    
+    statechart.set('owner', owner);
     state = statechart.getState('ANIMATION_TOOL');
   });
-  
+
   it("should exist", function () {
     expect(state).toBeDefined();
   });
-  
+
   it("should start in the OFF substate", function () {
     expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
   });
-  
+
   describe("when turned on", function () {
     beforeEach( function () {
       statechart.sendAction('animationToolStartTool');
     });
-    
+
     it("should be in the ANIMATION_CLEARED substate", function () {
       expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
     });
+
+    it("should ask the animation tool to clear animation", function () {
+      expect(animationTool.clearAnimation).toHaveBeenCalled();
+    });
+
+    it("should ask the animation view controller to show animation", function () {
+      expect(Smartgraphs.activityViewController.showAnimation).toHaveBeenCalled();
+    });
+
+    describe("when turned on", function () {
+      beforeEach( function () {
+        statechart.sendAction('animationToolStartTool');
+      });
+
+      it("should be in the ANIMATION_CLEARED substate", function () {
+        expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+      });
+    });
+
+    describe("when turned off", function () {
+      beforeEach( function () {
+        statechart.sendAction('stopTool');
+      });
+
+      it("should be in the OFF substate", function () {
+        expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+      });
+
+      it("should ask the animation tool to clear", function () {
+        expect(animationTool.clear).toHaveBeenCalled();
+      });
+
+      it("should ask the animation view controller to hide animation", function () {
+        expect(Smartgraphs.activityViewController.hideAnimation).toHaveBeenCalled();
+      });
+    });
+
+    describe("when start control is clicked", function () {
+      beforeEach( function () {
+        statechart.sendAction('startControlWasClicked');
+      });
+
+      it("should be in the ANIMATION_RUNNING substate", function () {
+        expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_RUNNING']);
+      });
+
+      it("should ask the animation tool to start animating", function () {
+        expect(animationTool.startAnimating).toHaveBeenCalled();
+      });
+
+      describe("when turned on", function () {
+        beforeEach( function () {
+          statechart.sendAction('animationToolStartTool');
+        });
+
+        it("should be in the ANIMATION_RUNNING substate", function () {
+          expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_RUNNING']);
+        });
+      });
+
+      describe("when turned off", function () {
+        beforeEach( function () {
+          statechart.sendAction('stopTool');
+        });
+
+        it("should be in the OFF substate", function () {
+          expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+        });
+      });
+
+      describe("when start control is clicked", function () {
+        beforeEach( function () {
+          statechart.sendAction('startControlWasClicked');
+        });
+
+        it("should be in the ANIMATION_RUNNING substate", function () {
+          expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_RUNNING']);
+        });
+      });
+
+      describe("when stop control is clicked", function () {
+        beforeEach( function () {
+          statechart.sendAction('stopControlWasClicked');
+        });
+
+        it("should be in the ANIMATION_STOPPED substate", function () {
+          expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_STOPPED']);
+        });
+
+        it("should ask the animation tool to stop animating", function () {
+          expect(animationTool.stopAnimating).toHaveBeenCalled();
+        });
+
+        describe("when turned on", function () {
+          beforeEach( function () {
+            statechart.sendAction('animationToolStartTool');
+          });
+
+          it("should be in the ANIMATION_STOPPED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_STOPPED']);
+          });
+        });
+
+        describe("when turned off", function () {
+          beforeEach( function () {
+            statechart.sendAction('stopTool');
+          });
+
+          it("should be in the OFF substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+          });
+        });
+
+        describe("when start control is clicked", function () {
+          beforeEach( function () {
+            statechart.sendAction('startControlWasClicked');
+          });
+
+          it("should be in the ANIMATION_RUNNING substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_RUNNING']);
+          });
+        });
+
+        describe("when stop control is clicked", function () {
+          beforeEach( function () {
+            statechart.sendAction('stopControlWasClicked');
+          });
+
+          it("should be in the ANIMATION_STOPPED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_STOPPED']);
+          });
+        });
+
+        describe("when clear control is clicked", function () {
+          beforeEach( function () {
+            statechart.sendAction('clearControlWasClicked');
+          });
+
+          it("should be in the ANIMATION_CLEARED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+          });
+        });
+
+        describe("when animation finished", function () {
+          beforeEach( function () {
+            statechart.sendAction('animationFinished');
+          });
+
+          it("should be in the ANIMATION_STOPPED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_STOPPED']);
+          });
+        });
+
+        describe("when graph is resized", function () {
+          beforeEach( function () {
+            statechart.sendAction('graphViewDidResize');
+          });
+
+          it("should be in the ANIMATION_CLEARED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+          });
+        });
+      });
+
+      describe("when clear control is clicked", function () {
+        beforeEach( function () {
+          statechart.sendAction('clearControlWasClicked');
+        });
+
+        it("should be in the ANIMATION_RUNNING substate", function () {
+          expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_RUNNING']);
+        });
+      });
+
+      describe("when animation finished", function () {
+        beforeEach( function () {
+          statechart.sendAction('animationFinished');
+        });
+
+        it("should be in the ANIMATION_FINISHED substate", function () {
+          expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_FINISHED']);
+        });
+
+        describe("when turned off", function () {
+          beforeEach( function () {
+            statechart.sendAction('stopTool');
+          });
+
+          it("should be in the OFF substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+          });
+        });
+
+        describe("when start control is clicked", function () {
+          beforeEach( function () {
+            statechart.sendAction('startControlWasClicked');
+          });
+
+          it("should be in the ANIMATION_FINISHED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_FINISHED']);
+          });
+        });
+
+        describe("when stop control is clicked", function () {
+          beforeEach( function () {
+            statechart.sendAction('stopControlWasClicked');
+          });
+
+          it("should be in the ANIMATION_FINISHED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_FINISHED']);
+          });
+        });
+
+        describe("when clear control is clicked", function () {
+          beforeEach( function () {
+            statechart.sendAction('clearControlWasClicked');
+          });
+
+          it("should be in the ANIMATION_CLEARED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+          });
+        });
+
+        describe("when animation finished", function () {
+          beforeEach( function () {
+            statechart.sendAction('animationFinished');
+          });
+
+          it("should be in the ANIMATION_FINISHED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_FINISHED']);
+          });
+        });
+
+        describe("when graph is resized", function () {
+          beforeEach( function () {
+            statechart.sendAction('graphViewDidResize');
+          });
+
+          it("should be in the ANIMATION_CLEARED substate", function () {
+            expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+          });
+        });
+      });
+
+      describe("when graph is resized", function () {
+        beforeEach( function () {
+          statechart.sendAction('graphViewDidResize');
+        });
+
+        it("should be in the ANIMATION_CLEARED substate", function () {
+          expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+        });
+      });
+    });
+
+    describe("when stop control is clicked", function () {
+      beforeEach( function () {
+        statechart.sendAction('stopControlWasClicked');
+      });
+
+      it("should be in the ANIMATION_CLEARED substate", function () {
+        expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+      });
+    });
+
+    describe("when clear control is clicked", function () {
+      beforeEach( function () {
+        statechart.sendAction('clearControlWasClicked');
+      });
+
+      it("should be in the ANIMATION_CLEARED substate", function () {
+        expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+      });
+    });
+
+    describe("when animation finished", function () {
+      beforeEach( function () {
+        statechart.sendAction('animationFinished');
+      });
+
+      it("should be in the ANIMATION_CLEARED substate", function () {
+        expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+      });
+    });
+
+    describe("when graph is resized", function () {
+      beforeEach( function () {
+        statechart.sendAction('graphViewDidResize');
+      });
+
+      it("should be in the ANIMATION_CLEARED substate", function () {
+        expect(state.get('currentSubstates').getEach('name')).toEqual(['ANIMATION_CLEARED']);
+      });
+    });
   });
-  
-  
-//   describe("its NO_LABEL substate", function () {
-//     
-//     beforeEach( function () {
-//       state = statechart.getState('NO_LABEL');
-//       spyOn(state, 'gotoState');      
-//     });
-//     
-//     describe('mouseDownAtPoint handler', function () {
-// 
-//       it("should exist", function () {
-//         spyOn(state, 'mouseDownAtPoint'); 
-//         statechart.sendAction('mouseDownAtPoint', 'the action context', 'the action args');
-//         expect(state.mouseDownAtPoint).toHaveBeenCalledWith('the action context', 'the action args');
-//       });
-//       
-//       describe("interaction with labelTool object", function () {
-// 
-//         describe("when the labelTool methods return YES", function () {
-// 
-//           var labelAnnotation;
-//         
-//           beforeEach( function () {
-//             labelAnnotation = SC.Object.create(); 
-//           
-//             spyOn(labelTool, 'createLabel').andReturn(labelAnnotation);  
-//             spyOn(labelTool, 'addLabelToController').andReturn(YES);                    
-//             state.mouseDownAtPoint('the action context', {x: 1, y: 2});
-//           }); 
-//     
-//           it("should ask the labelTool to create a new label annotation with the specified name and coordinates", function () {
-//             expect(labelTool.createLabel).toHaveBeenCalledWith('the label name', 1, 2);
-//           });
-//       
-//           it("should ask the labelTool to add the label to the owner", function () {
-//             expect(labelTool.addLabelToController).toHaveBeenCalledWith(owner, labelAnnotation);
-//           });
-//         
-//           it("should set its 'label' property to the new label", function () {
-//             expect(state.get('label')).toEqual(labelAnnotation);
-//           });
-//         
-//           it("should go to to the LABEL_CREATED state", function () {
-//             expect(state.gotoState).toHaveBeenCalledWith('LABEL_CREATED');
-//           });
-//         });
-//         
-//       
-//         describe("when the methods return NO", function () {
-//         
-//           beforeEach( function () {
-//             state.set('label', 'the original label object');
-//           });
-//         
-//           describe("when the createLabel method returns NO", function () {
-//         
-//             beforeEach( function () {
-//               spyOn(labelTool, 'createLabel').andReturn(NO);
-//               state.mouseDownAtPoint('the action context', {x: 1, y: 2});
-//             });
-//         
-//             it("should not reset its label property", function () {
-//               expect(state.get('label')).toEqual('the original label object');
-//             });
-//         
-//             it("should not go to the LABEL_CREATED state", function () {
-//               expect(state.gotoState).not.toHaveBeenCalled();
-//             });
-// 
-//           });
-//         });
-//       });
-//     });
-//   });
-//   
-//   describe("its LABEL_CREATED substate", function () {
-//   });
-  
+
+  describe("when turned off", function () {
+    beforeEach( function () {
+      statechart.sendAction('stopTool');
+    });
+
+    it("should be in the OFF substate", function () {
+      expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+    });
+  });
+
+  describe("when start control is clicked", function () {
+    beforeEach( function () {
+      statechart.sendAction('startControlWasClicked');
+    });
+
+    it("should be in the OFF substate", function () {
+      expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+    });
+  });
+
+  describe("when stop control is clicked", function () {
+    beforeEach( function () {
+      statechart.sendAction('stopControlWasClicked');
+    });
+
+    it("should be in the OFF substate", function () {
+      expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+    });
+  });
+
+  describe("when clear control is clicked", function () {
+    beforeEach( function () {
+      statechart.sendAction('clearControlWasClicked');
+    });
+
+    it("should be in the OFF substate", function () {
+      expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+    });
+  });
+
+  describe("when animation finished", function () {
+    beforeEach( function () {
+      statechart.sendAction('animationFinished');
+    });
+
+    it("should be in the OFF substate", function () {
+      expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+    });
+  });
+
+  describe("when graph is resized", function () {
+    beforeEach( function () {
+      statechart.sendAction('graphViewDidResize');
+    });
+
+    it("should be in the OFF substate", function () {
+      expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
+    });
+  });
 });
