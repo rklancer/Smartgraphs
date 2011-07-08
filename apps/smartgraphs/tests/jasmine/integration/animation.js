@@ -36,9 +36,14 @@ describe("GraphView animation behavior", function () {
   runBeforeEach( function () {
     controller = Smartgraphs.GraphController.create();
     controller.clear();
+    controller.set('animationInfo', SC.Object.create({
+      hasAnimation: YES,
+      duration: 100,
+      channelWidth: 15      
+    }));
+    
     view = Smartgraphs.GraphView.create({
-      graphController: controller,
-      showAnimation: YES
+      graphController: controller
     });
     pane.append();
     pane.appendChild(view);
@@ -124,10 +129,10 @@ describe("GraphView animation behavior", function () {
       graphCanvasView  = view.get('graphCanvasView');
       graphableDataObjects = controller.get('graphableDataObjects');
       
-      spyOn(graphCanvasView, '_animateDataViewsFor').andCallThrough();
+      spyOn(graphCanvasView, '_startAnimationForDatadef').andCallThrough();
 
       // Add in an animation
-      animationTool.set('animations', [{
+      controller.setPath('animationInfo.animations', [{
         datadefName:        "foo",
         foregroundImageURL: "cross",
         xOffset:            0,
@@ -186,7 +191,7 @@ describe("GraphView animation behavior", function () {
           });
 
           it("should be animating", function () {
-            expect(graphCanvasView._animateDataViewsFor).toHaveBeenCalled();
+            expect(graphCanvasView._startAnimationForDatadef).toHaveBeenCalled();
           });
 
           describe("and the animated view should pause", function() {

@@ -8,18 +8,22 @@ describe("ANIMATION_TOOL state", function () {
   var statechart,
       state,
       owner,
-      animationTool;
+      animationTool,
+      controller;
 
   beforeEach( function () {
+    
     animationTool = Smartgraphs.animationTool;
     spyOn(animationTool, 'startAnimating');
     spyOn(animationTool, 'stopAnimating');
     spyOn(animationTool, 'clearAnimation');
     spyOn(animationTool, 'clear');
 
-    spyOn(Smartgraphs.activityViewController, 'showAnimation');
-    spyOn(Smartgraphs.activityViewController, 'hideAnimation');
-
+    spyOn(Smartgraphs.activityViewController, 'showControls').andReturn(YES);
+    spyOn(Smartgraphs.activityViewController, 'hideControls').andReturn(YES);
+    
+    animationTool.mainPane = 'animation-tool-main-pane';
+    
     animationTool.graphPane = SC.Object.create({
       graphView: SC.Object.create({
         animate: function() { return YES; },
@@ -28,6 +32,8 @@ describe("ANIMATION_TOOL state", function () {
       })
     });
 
+    controller = SC.Object.create();
+    
     statechart = SC.Statechart.create({
       rootState: SC.State.design({
         initialSubstate: 'ANIMATION_TOOL',
@@ -50,7 +56,9 @@ describe("ANIMATION_TOOL state", function () {
   });
 
   describe("when turned on", function () {
+
     beforeEach( function () {
+      spyOn(animationTool, 'graphControllerForPane').andReturn(controller);
       statechart.sendAction('animationToolStartTool');
     });
 
@@ -62,8 +70,8 @@ describe("ANIMATION_TOOL state", function () {
       expect(animationTool.clearAnimation).toHaveBeenCalled();
     });
 
-    it("should ask the animation view controller to show animation", function () {
-      expect(Smartgraphs.activityViewController.showAnimation).toHaveBeenCalled();
+    it("should ask the animation view controller to show the controls", function () {
+      expect(Smartgraphs.activityViewController.showControls).toHaveBeenCalledWith('animation-tool-main-pane');
     });
 
     describe("when turned on", function () {
@@ -89,8 +97,8 @@ describe("ANIMATION_TOOL state", function () {
         expect(animationTool.clear).toHaveBeenCalled();
       });
 
-      it("should ask the animation view controller to hide animation", function () {
-        expect(Smartgraphs.activityViewController.hideAnimation).toHaveBeenCalled();
+      it("should ask the animation view controller to hide the controls", function () {
+        expect(Smartgraphs.activityViewController.hideControls).toHaveBeenCalledWith('animation-tool-main-pane');
       });
     });
 
