@@ -3792,7 +3792,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "x": 4.5,
           "y": 2,
           "xOffset": -86,
-          "yOffset": 86
+          "yOffset": 116
         },
         {
           "url": "/shared/describing-velocity/annotation/velocity-label-3",
@@ -3801,8 +3801,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "text": "Fast, steady for 3 secs.\nVelocity = 10 m/s",
           "x": 7.5,
           "y": 10,
-          "xOffset": -86,
-          "yOffset": 115
+          "xOffset": -87,
+          "yOffset": 79
         },
         {
           "url": "/shared/describing-velocity/annotation/segment-a-label",
