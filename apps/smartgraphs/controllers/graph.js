@@ -8,6 +8,7 @@
 sc_require('mixins/annotation_support');
 sc_require('tools/label/label_state');
 sc_require('tools/animation/animation_state');
+sc_require('tools/prediction/prediction_state');
 
 /** @class
 
@@ -41,8 +42,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     trace: Smartgraphs.trace,
     rootState: SC.State.design({
       substatesAreConcurrent: YES,
-      LABEL_TOOL: Smartgraphs.LABEL_TOOL.design(),
-      ANIMATION_TOOL: Smartgraphs.ANIMATION_TOOL.design()
+
+      LABEL_TOOL:      Smartgraphs.LABEL_TOOL.design(),
+      ANIMATION_TOOL:  Smartgraphs.ANIMATION_TOOL.design(),
+      PREDICTION_TOOL: Smartgraphs.PREDICTION_TOOL.design()
     })
   }),
   
@@ -265,6 +268,10 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   
   // Events
   
+  predictionToolStartTool: function (annotationName) {
+    this.get('statechart').sendAction('predictionToolStartTool', this, annotationName);
+  },
+  
   labelToolStartTool: function (annotationName) {
     this.get('statechart').sendAction('labelToolStartTool', this, annotationName);
   },
@@ -299,74 +306,5 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     this.get('statechart').sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   }
-  
-  // See the below for the old way of handling FREEHAND_INPUT; TODO transition to using per-controller statechart to
-  // handle freehand input.
-
-  // /**
-  //   @property {Object[]}
-  //   
-  //   Mouse events are pushed onto this array when we are in freehand input mode.
-  // */
-  // eventQueue: [],
-  // 
-  // /**
-  //   @private
-  //   
-  //   Whether to route mouse events to the eventQueue
-  // */
-  // _routeEvents: NO,
-  
-  // /**
-  //   @param x
-  //   @param y
-  // */
-  // inputAreaMouseDown: function (x, y) {
-  //   if (this._routeEvents) {
-  //     this._eventQueue.pushObject({
-  //       x: x,
-  //       y: y,
-  //       type: Smartgraphs.freehandInputController.START
-  //     });
-  //   }
-  // },
-  // 
-  // /**
-  //   @param x
-  //   @param y
-  // */
-  // inputAreaMouseDragged: function (x, y) {
-  //   if (this._routeEvents) {
-  //     this._eventQueue.pushObject({
-  //       x: x,
-  //       y: y,
-  //       type: Smartgraphs.freehandInputController.CONTINUE
-  //     });
-  //   }
-  // },
-  // 
-  // /**
-  //   @param x
-  //   @param y
-  // */
-  // inputAreaMouseUp: function (x, y) {
-  //   if (this._routeEvents) {
-  //     this._eventQueue.pushObject({
-  //       x: x,
-  //       y: y,
-  //       type: Smartgraphs.freehandInputController.END
-  //     });
-  //   }
-  // },
-  //
-  // startFreehandInput: function () {
-  //   this._routeEvents = YES;
-  //   this._eventQueue = [];
-  //   this.set('eventQueue', this._eventQueue);
-  // },
-  // 
-  // endFreehandInput: function () {   
-  //   this._routeEvents = NO;
-  // }
   
 });

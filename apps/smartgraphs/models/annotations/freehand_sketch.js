@@ -31,7 +31,30 @@ Smartgraphs.FreehandSketch = Smartgraphs.Annotation.extend(
   /**
     Color with which the sketch should be drawn.
   */
-  color: SC.Record.attr(String)
+  color: SC.Record.attr(String),
+  
+  clear: function () {
+    this.set('points', []);
+  },
+  
+  addPoint: function (x, y) {
+    console.log("addPoint(%2f, %2f)", x, y);
+    this.get('points').pushObject([x, y]);
+  },
+  
+  updateLatestPoint: function (x, y) {
+    console.log("updateLatestPoint(%2f, %2f)", x, y);
+    
+    var points = this.get('points'),
+        lastIndex = points.get('length') - 1;
+        
+    if (lastIndex >= 0) {
+      points.beginPropertyChanges();
+      points.popObject();
+      points.pushObject([x, y]);
+      points.endPropertyChanges();
+    }
+  }     
     
 });
 
