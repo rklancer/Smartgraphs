@@ -12,8 +12,7 @@ sc_require('views/freehand_sketch');
 
   A 'freehand sketch' annotation drawn on top of the graph. 
   
-  Note that, unlike a standard Dataset, a sketch consists of an *ordered* list of x,y pairs; also, we don't expect
-  to need to reference individual points that make up the sketch, so there's no need for a 'SketchPoints' model.
+  A sketch consists of an *ordered* list of x, y pairs.
 
   @extends SC.Record
   @version 0.1
@@ -23,20 +22,18 @@ Smartgraphs.FreehandSketch = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.FreehandSketch.prototype */ {
   
   /**
-    Ordered array of {x, y} pairs that make up the sketch.
+    Ordered array of [x, y] pairs that make up the sketch.
     
-    @property {Smartgraphs.DataPoint[]}
+    @property {Array[]}
   */
   points: SC.Record.attr(Array),
-
+  
   /**
-    Currently unused. Whether the sketch is considered 'directional'; i.e. should have an arrow.
-    
-    @property {Boolean}
+    Color with which the sketch should be drawn.
   */
-  isDirectional: SC.Record.attr(Boolean)
+  color: SC.Record.attr(String)
     
-}) ;
+});
 
 // let the graph view know how to instantiate a view class to display this item
 Smartgraphs.FreehandSketch.viewClass = Smartgraphs.FreehandSketchView;

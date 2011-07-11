@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   Smartgraphs.FreehandSketchView
-// Copyright: ©2010 Concord Consortium
-// Author:   Richard Klancer <rpk@pobox.com>
+// Copyright: ©2011 Concord Consortium
+// Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews */
 
@@ -14,39 +14,54 @@
 Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.FreehandSketchView.prototype */ {
   
-  stroke: '#000000',
-  strokeWidth: 2,
+  colorBinding: '.item.color',
+  strokeWidth: 3,
+  strokeOpacity: 0.4,
   
-  displayProperties: 'item.points.[]'.w(),
+  displayProperties: 'item.points.[] color'.w(),
   
-  renderCallback: function (raphaelCanvas, pathStr, stroke, strokeWidth) {
-    return raphaelCanvas.path(pathStr).attr({stroke: stroke, 'stroke-width': strokeWidth});
+  renderCallback: function (raphaelCanvas, attrs) {
+    return raphaelCanvas.path(attrs.path).attr(attrs);
   },
 
   render: function (context, firstTime) {
-    var graphView = this.get('graphView');
-    var sketch = this.get('item');
-    var points = (sketch ? sketch.get('points') : null) || [{x: 0, y: 0}];
+    var graphView = this.get('graphView'),
+        sketch = this.get('item'),
+        points = sketch && sketch.get('points') || [],
+        str = [],
+        point,
+        coords,
+        i,
+        len,
+        pathString,
+        attrs,
+        raphaelPath;
     
-    var str = [];
-    var point, coords;
-    
-    for (var i = 0, ii = points.get('length'); i < ii; i++) {
+    for (i = 0, len = points.get('length'); i < len; i++) {
       point = points.objectAt(i);
-      coords = graphView.coordinatesForPoint(point.x, point.y) || {x: 0, y: 0};
+      coords = graphView.coordinatesForPoint(point[0], point[1]);
       str.push(i === 0 ? 'M' : 'L');
       str.push(Math.round(coords.x));
       str.push(' ');
       str.push(Math.round(coords.y));
     } 
-    var pathStr = str.join('') || 'M0 0';         // Raphael won't make path go away in IE if path string = ''
+    pathString = str.join('') || 'M0 0';         // Raphael won't make path go away in IE if path string = ''
+    
+    attrs = {
+      'path':             pathString,
+      'stroke':           this.get('color'),
+      'stroke-width':     this.get('strokeWidth'),
+      'stroke-opacity':   this.get('strokeOpacity'),
+      'stroke-linecap':  'round',
+      'stroke-linejoin': 'round'
+    };
     
     if (firstTime) {
-      context.callback(this, this.renderCallback, pathStr, this.get('stroke'), this.get('strokeWidth'));
+      context.callback(this, this.renderCallback, attrs);
     }
     else {
-      var path = context.raphael();
-      path.attr({path: pathStr});
+      raphaelPath = context.raphael();
+      raphaelPath.attr(attrs);
     }
   }
 
