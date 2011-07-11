@@ -9,7 +9,7 @@ sc_require('tools/tool');
 
 /** @class
 
-  @extends SC.Object
+  @extends Smartgraphs.Tool
 */
 Smartgraphs.taggingTool = Smartgraphs.Tool.create(
 /** @scope Smartgraphs.taggingTool.prototype */ {

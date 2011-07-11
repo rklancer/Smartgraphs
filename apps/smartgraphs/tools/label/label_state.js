@@ -47,7 +47,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     },
     
     enterState: function () {
-      var parentState      = this.get('parentState'),
+      var parentState    = this.get('parentState'),
           annotationName = parentState.get('annotationName'),
           annotation     = Smartgraphs.labelTool.getAnnotation(annotationName);
 

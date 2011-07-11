@@ -16,18 +16,6 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
 
   name: 'animation',
   state: 'ANIMATION_TOOL',
-
-  /**
-    Stubbable method to find the appropriate graph controller to use for a given 'pane' argument
-
-    @param {String} pane
-      The pane containing the graph we're interested in; one of 'top', 'bottom', or 'single'
-      
-    @returns {Smartgraphs.GraphController}
-  */
-  graphControllerForPane: function (pane) {
-    return Smartgraphs.activityViewController.graphControllerForPane(pane);
-  },
   
   /**
     Finds the appropriate graph view for a given 'pane' name
@@ -160,7 +148,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     controller.get('statechart').sendAction('animationToolStartTool');
   },
 
-  clear: function () {
+  clearSetup: function () {
     this._mainPane = null;
     this.set('animations', []);
     this.set('linkedAnimationsByPane', {});

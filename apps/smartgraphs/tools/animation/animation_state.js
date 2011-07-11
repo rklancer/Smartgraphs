@@ -7,7 +7,7 @@
 
 /** @class
 
-  Superstate representing that the activity step is animatable.
+  In this graph controller state, one pane shows an animation (and in other panes may show 'linked' animations)
 
   @extends SC.State
   @version 0.1
@@ -46,7 +46,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     exitState: function () {    
       Smartgraphs.animationTool.stopAnimating();
       Smartgraphs.animationTool.clearGraphControllers();    
-      Smartgraphs.animationTool.clear();
+      Smartgraphs.animationTool.clearSetup();
       Smartgraphs.activityViewController.hideControls(Smartgraphs.animationTool.get('mainPane'));
     },    
   

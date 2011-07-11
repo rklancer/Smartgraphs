@@ -10,6 +10,45 @@ Smartgraphs.Tool = SC.Object.extend({
   init: function () {
     sc_super();
     Smartgraphs.Tool.register(this.get('name'), this, this.get('setup'), this.get('state'));
+  },
+  
+  /**
+    Stubbable method to find the appropriate graph controller to use for a given 'pane' argument
+    
+    @param {String} pane
+      The pane we want the tool to operate in; generally one of 'top', 'bottom', or 'single'
+    @returns {Smartgraphs.GraphController} the controller      
+  */
+  graphControllerForPane: function (pane) {
+    return Smartgraphs.activityViewController.graphControllerForPane(pane);
+  },
+  
+  /**
+    Stubbable method retrieve the label or label set object with a particular name
+    
+    @param {String} name
+      The name of the Label annotation
+    @returns {Smartgraphs.Annotation} the Label or LabelSet corresponding to 'name'
+  */
+  getAnnotation: function (name) {
+    return Smartgraphs.activityObjectsController.findAnnotation(name);
+  },
+  
+  /**
+    Stubbable method to get the graph controller a particular label tool state object is connected to.
+    
+    @param {SC.State} state
+    @returns {Smartgraphs.GraphController} the controller
+  */
+  graphControllerForState: function (state) {
+    return state.getPath('statechart.owner');
+  },
+  
+  /**
+    Stubbable method to get the pane ("top", "bottom", or "single") for a given graph controller-owned (sub)state
+  */
+  paneForState: function (state) {
+    return Smartgraphs.activityViewController.paneForController(state.getPath('statechart.owner'));
   }
   
 });
