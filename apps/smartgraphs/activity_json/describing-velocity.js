@@ -2505,31 +2505,37 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "tools": [
-        { "name": "animation",
+        // { "name": "animation",
+        //   "setup": {
+        //     "pane": "top",
+        //     "duration": 9000, // ms
+        //     "channelWidth": 70,
+        //     "backgroundImage": sc_static('images/roadDashed.png'),
+        //     "staticImages": [{
+        //         "name":  "finish",
+        //         "image":  sc_static('images/finish.png'),
+        //         "width":  70,
+        //         "height": 10,
+        //         "xOffset": 0,
+        //         "yOffset": 5,
+        //         "instances": [
+        //           { "y": 0 }
+        //         ]
+        //     }],
+        //     "animations": [{
+        //         "data": "car-in-reverse-position",
+        //         "image": sc_static('images/carWhite2.png'),
+        //         "width":  30,
+        //         "height": 61,
+        //         "xOffset": 40,
+        //         "yOffset": 0
+        //       }]
+        //   }
+        // },
+        { "name": "prediction",
           "setup": {
-            "pane": "top",
-            "duration": 9000, // ms
-            "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
-            "staticImages": [{
-                "name":  "finish",
-                "image":  sc_static('images/finish.png'),
-                "width":  70,
-                "height": 10,
-                "xOffset": 0,
-                "yOffset": 5,
-                "instances": [
-                  { "y": 0 }
-                ]
-            }],
-            "animations": [{
-                "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
-              }]
+            "pane": "bottom",
+            "annotationName": "student-velocity-prediction"
           }
         }
       ],
@@ -2561,7 +2567,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["student-velocity-prediction"]
         }
       },
       "tools": [
@@ -2623,7 +2629,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["student-velocity-prediction"]
         }
       },
       "tools": [
@@ -2690,7 +2696,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["student-velocity-prediction"]
         }
       },
       "tools": [
@@ -2757,7 +2763,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["student-velocity-prediction"]
         }
       },
       "tools": [
@@ -2824,7 +2830,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["student-velocity-prediction"]
         }
       },
       "tools": [
@@ -2891,7 +2897,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["student-velocity-prediction"]
         }
       },
       "tools": [
@@ -2952,7 +2958,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": ["student-velocity-prediction"]
         }
       },
       "tools": [
@@ -3966,6 +3972,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       ]
     },
+    {
+      "type": "FreehandSketch",
+      "records": [
+        {
+          "url": "/shared/describing-velocity/annotation/student-velocity-prediction",
+          "name": "student-velocity-prediction",
+          "activity": "/shared/describing-velocity",
+          "color": "#FF00FF",
+          "points": []
+        }
+      ]
+    },      
     {
       "type": "SegmentOverlay",
       "records": [
