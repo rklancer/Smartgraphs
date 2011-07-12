@@ -2539,7 +2539,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": "<p>Use the position-time graph to find the car's velocity</p><p><b>Sketch</b> the velocity-time graph for the motion in the bottom area.</p>",
+      "beforeText": "<p>Use the position-time graph to find the car's velocity</p><p><b>Sketch</b> the velocity-time graph for the motion in the bottom area.</p><p><b>Click</b> the point where you want your sketch to start.</p><p>To continue your sketch, <b>click</b> on each point at which you want the sketch to continue.</p><p><b>Click Reset</b> if you want to erase your sketch and start over.</p>",
       "submitButtonTitle": "OK",
       "defaultBranch": "/shared/describing-velocity/page/11/step/3"      
     },
