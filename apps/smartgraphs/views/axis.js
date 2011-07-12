@@ -75,7 +75,6 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
         padding   = graphView.get('padding'),
         frame     = graphView.getPath('graphCanvasView.frame'),
         axis      = this.get('axis'),
-        otherAxis = this.get('otherAxis'),
         axisLabel = axis && axis.get('label'),
         unitName  = axis && axis.getPath('units.pluralName'),
         labelText = unitName ? "%@ (%@)".fmt(axisLabel, unitName) : axisLabel,
@@ -88,11 +87,11 @@ Smartgraphs.AxisView = RaphaelViews.RaphaelView.extend(
     
     if (this.get('type') === 'x') {
       x = (padding.left + frame.width - padding.right) / 2;
-      y = ( otherAxis.get('min') < 0 && 0 < otherAxis.get('max') ? graphView.coordinatesForPoint(0,0).y : frame.height - padding.bottom) + 25;
+      y = frame.height - padding.bottom + 25;
       rotation = 0;
     }
     else {
-      x = ( otherAxis.get('min') < 0 && 0 < otherAxis.get('max') ? graphView.coordinatesForPoint(0,0).x : padding.left) - 30;
+      x = padding.left - 30;
       y = (padding.top + frame.height - padding.bottom) / 2;
       rotation = 270;
     }
