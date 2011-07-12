@@ -613,7 +613,9 @@ Smartgraphs.GraphView = SC.View.extend(
     },
 
     axesView: RaphaelViews.RaphaelView.design({
-      graphView: SC.outlet('parentView.graphView'),
+
+      graphCanvasView: SC.outlet('parentView'),
+      graphView: SC.outlet('graphCanvasView.graphView'),
       
       xAxisBinding: '.graphView.xAxis',
       yAxisBinding: '.graphView.yAxis',
@@ -623,9 +625,12 @@ Smartgraphs.GraphView = SC.View.extend(
 
       inputAreaView: RaphaelViews.RaphaelView.design({
         
+        graphCanvasView: SC.outlet('parentView.graphCanvasView'),
+        graphView: SC.outlet('parentView.graphView'),
+        
         didCreateLayer: function () {
           // cache these rather than lookup the jquery object (graphView.$()) per mouse event
-          this._graphView = this.getPath('parentView.parentView.parentView');
+          this._graphView = this.get('graphView');
           this._$graphView = this._graphView.$();
         },
         
@@ -636,20 +641,15 @@ Smartgraphs.GraphView = SC.View.extend(
         },
 
         render: function (context, firstTime) {
-          var frame = this.getPath('parentView.parentView.frame');
-          var padding = this.getPath('parentView.parentView.parentView.padding');
-
-          var xLeft = frame.x + padding.left;
-          var yTop = frame.y + padding.top;
-          var plotWidth = frame.width - padding.left - padding.right;
-          var plotHeight = frame.height - padding.top - padding.bottom;
+          var bounds = this.get('graphCanvasView')._getScreenBounds(),
+              raphaelRect;
 
           if (firstTime) {
-            context.callback(this, this.renderCallback, xLeft, yTop, plotWidth, plotHeight);
+            context.callback(this, this.renderCallback, bounds.xLeft, bounds.yTop, bounds.plotWidth, bounds.plotHeight);
           }
           else {
-            var rect = context.raphael();
-            rect.attr({x: xLeft, y: yTop, width: plotWidth, height: plotHeight});
+            raphaelRect = context.raphael();
+            raphaelRect.attr({x: bounds.xLeft, y: bounds.yTop, width: bounds.plotWidth, height: bounds.plotHeight});
           }
         },
 
@@ -659,21 +659,24 @@ Smartgraphs.GraphView = SC.View.extend(
         },
 
         mouseDown: function (evt) {
+          var coords = this.coordsForEvent(evt),
+              point = this._graphView.pointForCoordinates(coords.x, coords.y);          
+
           this._graphController = this._graphView.get('graphController');
-          var coords = this.coordsForEvent(evt);
-          var point = this._graphView.pointForCoordinates(coords.x, coords.y);
           return this._graphController.inputAreaMouseDown(point.x, point.y);
         },
 
         mouseDragged: function (evt) {
-          var coords = this.coordsForEvent(evt);
-          var point = this._graphView.pointForCoordinates(coords.x, coords.y);
+          var coords = this.coordsForEvent(evt),
+              point = this._graphView.pointForCoordinates(coords.x, coords.y);
+              
           return this._graphController.inputAreaMouseDragged(point.x, point.y);
         },
 
         mouseUp: function (evt) {
-          var coords = this.coordsForEvent(evt);
-          var point = this._graphView.pointForCoordinates(coords.x, coords.y);
+          var coords = this.coordsForEvent(evt),
+              point = this._graphView.pointForCoordinates(coords.x, coords.y);
+              
           return this._graphController.inputAreaMouseUp(point.x, point.y);
         }
       }),
