@@ -2505,33 +2505,37 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       },
       "tools": [
-        // { "name": "animation",
-        //   "setup": {
-        //     "pane": "top",
-        //     "duration": 9000, // ms
-        //     "channelWidth": 70,
-        //     "backgroundImage": sc_static('images/roadDashed.png'),
-        //     "staticImages": [{
-        //         "name":  "finish",
-        //         "image":  sc_static('images/finish.png'),
-        //         "width":  70,
-        //         "height": 10,
-        //         "xOffset": 0,
-        //         "yOffset": 5,
-        //         "instances": [
-        //           { "y": 0 }
-        //         ]
-        //     }],
-        //     "animations": [{
-        //         "data": "car-in-reverse-position",
-        //         "image": sc_static('images/carWhite2.png'),
-        //         "width":  30,
-        //         "height": 61,
-        //         "xOffset": 40,
-        //         "yOffset": 0
-        //       }]
-        //   }
-        // },
+        { "name": "animation",
+          "setup": {
+            "pane": "top",
+            "duration": 9000, // ms
+            "channelWidth": 70,
+            "backgroundImage": sc_static('images/roadDashed.png'),
+            "staticImages": [{
+                "name":  "finish",
+                "image":  sc_static('images/finish.png'),
+                "width":  70,
+                "height": 10,
+                "xOffset": 0,
+                "yOffset": 5,
+                "instances": [
+                  { "y": 0 }
+                ]
+            }],
+            "animations": [{
+              "data": "car-in-reverse-position",
+              "image": sc_static('images/carWhite2.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": []
+            }]
+          }
+        },
         { "name": "prediction",
           "setup": {
             "pane": "bottom",
@@ -2589,13 +2593,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-                "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "car-in-reverse-position",
+              "image": sc_static('images/carWhite2.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-in-reverse-velocity"
               }]
+            }]
           }
         }
       ],
@@ -2651,13 +2661,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-                "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "car-in-reverse-position",
+              "image": sc_static('images/carWhite2.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-in-reverse-velocity"
               }]
+            }]
           }
         }
       ],
@@ -2718,13 +2734,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-                "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "car-in-reverse-position",
+              "image": sc_static('images/carWhite2.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-in-reverse-velocity"
               }]
+            }]
           }
         }
       ],
@@ -2785,13 +2807,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-                "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "car-in-reverse-position",
+              "image": sc_static('images/carWhite2.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-in-reverse-velocity"
               }]
+            }]
           }
         }
       ],
@@ -2852,13 +2880,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-                "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "car-in-reverse-position",
+              "image": sc_static('images/carWhite2.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-in-reverse-velocity"
               }]
+            }]
           }
         }
       ],
@@ -2919,13 +2953,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-                "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "car-in-reverse-position",
+              "image": sc_static('images/carWhite2.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-in-reverse-velocity"
               }]
+            }]
           }
         }
       ],
@@ -2979,13 +3019,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-                "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
-                "width":  30,
-                "height": 61,
-                "xOffset": 40,
-                "yOffset": 0
+              "data": "car-in-reverse-position",
+              "image": sc_static('images/carWhite2.png'),
+              "width":  30,
+              "height": 61,
+              "xOffset": 40,
+              "yOffset": 0
+            }],
+            "linkedAnimations": [{
+              "pane": "bottom",
+              "animations": [{
+                "data": "car-in-reverse-velocity"
               }]
+            }]
           }
         }
       ],
