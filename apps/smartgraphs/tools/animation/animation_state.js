@@ -37,7 +37,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
   
     enterState: function () {
       // show the controls in the 'main' pane, which will animate the data    
-      Smartgraphs.activityViewController.revealAllControls();
+      this.get('owner').revealAllControls();
       this.get('owner').showControls();
       
       // route animation information to the relevant graph controllers
@@ -57,9 +57,11 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
   
     ANIMATION_CLEARED: SC.State.design({
 
+      owner: SC.outlet('statechart.owner'),      
+
       enterState: function () {
         Smartgraphs.animationTool.clearAnimation();
-        Smartgraphs.activityViewController.highlightStartControl();
+        this.get('owner').highlightStartControl();
       },
 
       startControlWasClicked: function () {
@@ -70,10 +72,12 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
   
   
     ANIMATION_RUNNING: SC.State.design({
+      
+      owner: SC.outlet('statechart.owner'),
 
       enterState: function () {
         Smartgraphs.animationTool.startAnimating();
-        Smartgraphs.activityViewController.highlightStopControl();
+        this.get('owner').highlightStopControl();
       },
     
       stopControlWasClicked: function () {
@@ -94,10 +98,12 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
   
     ANIMATION_STOPPED: SC.State.design({
     
+      owner: SC.outlet('statechart.owner'),
+      
       enterState: function () {
         Smartgraphs.animationTool.stopAnimating();
-        Smartgraphs.activityViewController.highlightStartControl();
-        Smartgraphs.activityViewController.enableClearControl();
+        this.get('owner').highlightStartControl();
+        this.get('owner').enableClearControl();
       },
     
       startControlWasClicked: function () {
@@ -117,8 +123,10 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     
     ANIMATION_FINISHED: SC.State.design({
       
+      owner: SC.outlet('statechart.owner'),      
+      
       enterState: function () {
-        Smartgraphs.activityViewController.highlightClearControl();
+        this.get('owner').highlightClearControl();
       },
       
       clearControlWasClicked: function () {

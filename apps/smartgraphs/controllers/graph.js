@@ -118,6 +118,18 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   requestedCursorStyle: 'default',
   
+  startControlIsVisible: NO,
+  startControlIsEnabled: NO,
+  startControlIsDefault: NO,
+  
+  stopControlIsVisible: NO,
+  stopControlIsEnabled: NO,
+  stopControlIsDefault: NO,
+
+  clearControlIsVisible: NO,
+  clearControlIsEnabled: NO,
+  clearControlIsDefault: NO,
+  
   /**
     @property String
 
@@ -131,7 +143,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     Show the graph start/stop/reset controls.
   */
   showControls: function () {  
-    //this.disableAllControls();
+    this.disableAllControls();
     this.set('showInControlsPanel', Smartgraphs.GraphController.CONTROLS);
   },
   
@@ -140,6 +152,67 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   hideControls: function (pane) {
     this.set('showInControlsPanel', null);
+  },
+  
+  revealAllControls: function () {
+    this.set('startControlIsVisible',  YES);    
+    this.set('stopControlIsVisible',  YES);
+    this.set('clearControlIsVisible',  YES);    
+  },
+  
+  revealOnlyClearControl: function () {
+    this.set('startControlIsVisible',  NO);    
+    this.set('stopControlIsVisible',  NO);
+    this.set('clearControlIsVisible',  YES);    
+  },
+  
+  disableAllControls: function () {
+    this.set('startControlIsEnabled',  NO);
+    this.set('startControlIsDefault',  NO);
+
+    this.set('stopControlIsEnabled',  NO);
+    this.set('stopControlIsDefault',  NO);
+
+    this.set('clearControlIsEnabled',  NO);
+    this.set('clearControlIsDefault',  NO);
+  },
+      
+  highlightStartControl: function () {
+    this.set('startControlIsEnabled',  YES);
+    this.set('startControlIsDefault',  YES);
+
+    this.set('stopControlIsEnabled',  NO);
+    this.set('stopControlIsDefault',  NO);
+
+    this.set('clearControlIsEnabled',  NO);
+    this.set('clearControlIsDefault',  NO);
+  },
+  
+  highlightStopControl: function () {
+    this.set('startControlIsEnabled',  NO);
+    this.set('startControlIsDefault',  NO);
+
+    this.set('stopControlIsEnabled',  YES);
+    this.set('stopControlIsDefault',  YES);
+
+    this.set('clearControlIsEnabled',  NO);
+    this.set('clearControlIsDefault',  NO);
+  },
+  
+  highlightClearControl: function () {
+    this.set('startControlIsEnabled',  NO);
+    this.set('startControlIsDefault',  NO);
+
+    this.set('stopControlIsEnabled',  NO);
+    this.set('stopControlIsDefault',  NO);
+
+    this.set('clearControlIsEnabled',  YES);
+    this.set('clearControlIsDefault',  YES);
+  },
+  
+  enableClearControl: function () {
+    this.set('clearControlIsEnabled',  YES);
+    this.set('clearControlIsDefault',  NO);
   },
   
   /**

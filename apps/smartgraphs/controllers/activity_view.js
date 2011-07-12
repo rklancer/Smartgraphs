@@ -21,18 +21,6 @@ Smartgraphs.activityViewController = SC.Object.create(
   firstImageCaption: null,
   secondImageValue: null,
   secondImageCaption: null,
-    
-  startControlIsVisible: NO,
-  startControlIsEnabled: NO,
-  startControlIsDefault: NO,
-  
-  stopControlIsVisible: NO,
-  stopControlIsEnabled: NO,
-  stopControlIsDefault: NO,
-
-  clearControlIsVisible: NO,
-  clearControlIsEnabled: NO,
-  clearControlIsDefault: NO,
   
   paneIsSplit: null,
   
@@ -216,67 +204,6 @@ Smartgraphs.activityViewController = SC.Object.create(
   //   
   //   return YES;
   // },
-  
-  revealAllControls: function () {
-    this.set('startControlIsVisible',  YES);    
-    this.set('stopControlIsVisible',  YES);
-    this.set('clearControlIsVisible',  YES);    
-  },
-  
-  revealOnlyClearControl: function () {
-    this.set('startControlIsVisible',  NO);    
-    this.set('stopControlIsVisible',  NO);
-    this.set('clearControlIsVisible',  YES);    
-  },
-  
-  disableAllControls: function () {
-    this.set('startControlIsEnabled',  NO);
-    this.set('startControlIsDefault',  NO);
-
-    this.set('stopControlIsEnabled',  NO);
-    this.set('stopControlIsDefault',  NO);
-
-    this.set('clearControlIsEnabled',  NO);
-    this.set('clearControlIsDefault',  NO);
-  },
-      
-  highlightStartControl: function () {
-    this.set('startControlIsEnabled',  YES);
-    this.set('startControlIsDefault',  YES);
-
-    this.set('stopControlIsEnabled',  NO);
-    this.set('stopControlIsDefault',  NO);
-
-    this.set('clearControlIsEnabled',  NO);
-    this.set('clearControlIsDefault',  NO);
-  },
-  
-  highlightStopControl: function () {
-    this.set('startControlIsEnabled',  NO);
-    this.set('startControlIsDefault',  NO);
-
-    this.set('stopControlIsEnabled',  YES);
-    this.set('stopControlIsDefault',  YES);
-
-    this.set('clearControlIsEnabled',  NO);
-    this.set('clearControlIsDefault',  NO);
-  },
-  
-  highlightClearControl: function () {
-    this.set('startControlIsEnabled',  NO);
-    this.set('startControlIsDefault',  NO);
-
-    this.set('stopControlIsEnabled',  NO);
-    this.set('stopControlIsDefault',  NO);
-
-    this.set('clearControlIsEnabled',  YES);
-    this.set('clearControlIsDefault',  YES);
-  },
-  
-  enableClearControl: function () {
-    this.set('clearControlIsEnabled',  YES);
-    this.set('clearControlIsDefault',  NO);
-  },
   
   clear: function () {    
     if (this.get('paneIsSplit')) {

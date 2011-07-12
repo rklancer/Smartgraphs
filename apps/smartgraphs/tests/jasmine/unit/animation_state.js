@@ -31,7 +31,12 @@ describe("ANIMATION_TOOL state", function () {
 
     controller = SC.Object.create({
       showControls: function () {},
-      hideControls: function () {}
+      hideControls: function () {},
+      revealAllControls: function () {},
+      enableClearControl: function () {},      
+      highlightStartControl: function () {},
+      highlightStopControl: function () {},
+      highlightClearControl: function () {}
     });
     
     spyOn(controller, 'showControls').andReturn(YES);

@@ -88,9 +88,9 @@ Smartgraphs.GraphPane = SC.View.extend(
     
     startControl: SC.ButtonView.design({
       layout: { centerX: -110, bottom: 10, width: 80, height: 24 },
-      isVisibleBinding: 'Smartgraphs.activityViewController.startControlIsVisible',
-      isEnabledBinding: 'Smartgraphs.activityViewController.startControlIsEnabled',
-      isDefaultBinding: 'Smartgraphs.activityViewController.startControlIsDefault',
+      isVisibleBinding: '.parentView*graphController.startControlIsVisible',
+      isEnabledBinding: '.parentView*graphController.startControlIsEnabled',
+      isDefaultBinding: '.parentView*graphController.startControlIsDefault',
       
       title: 'Start',
       action: 'startControlWasClicked',
@@ -99,9 +99,9 @@ Smartgraphs.GraphPane = SC.View.extend(
     
     stopControl: SC.ButtonView.design({
       layout: { centerX: 0, bottom: 10, width: 80, height: 24 },
-      isVisibleBinding: 'Smartgraphs.activityViewController.stopControlIsVisible',
-      isEnabledBinding: 'Smartgraphs.activityViewController.stopControlIsEnabled',
-      isDefaultBinding: 'Smartgraphs.activityViewController.stopControlIsDefault',
+      isVisibleBinding: '.parentView*graphController.stopControlIsVisible',
+      isEnabledBinding: '.parentView*graphController.stopControlIsEnabled',
+      isDefaultBinding: '.parentView*graphController.stopControlIsDefault',
       
       title: 'Stop',
       action: 'stopControlWasClicked',
@@ -110,9 +110,9 @@ Smartgraphs.GraphPane = SC.View.extend(
     
     clearControl: SC.ButtonView.design({
       layout: { centerX: 110, bottom: 10, width: 80, height: 24 },
-      isVisibleBinding: 'Smartgraphs.activityViewController.clearControlIsVisible',
-      isEnabledBinding: 'Smartgraphs.activityViewController.clearControlIsEnabled',
-      isDefaultBinding: 'Smartgraphs.activityViewController.clearControlIsDefault',
+      isVisibleBinding: '.parentView*graphController.clearControlIsVisible',
+      isEnabledBinding: '.parentView*graphController.clearControlIsEnabled',
+      isDefaultBinding: '.parentView*graphController.clearControlIsDefault',
       
       title: 'Reset',
       action: 'clearControlWasClicked',
