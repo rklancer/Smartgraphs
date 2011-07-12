@@ -272,6 +272,14 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     this.get('statechart').sendAction('predictionToolStartTool', this, annotationName);
   },
   
+  predictionToolPredictionStarting: function () {
+    this.set('requestedCursorStyle', 'crosshair');
+  },
+  
+  predictionToolPredictionFinished: function () {
+    this.set('requestedCursorStyle', 'default');
+  },
+  
   labelToolStartTool: function (annotationName) {
     this.get('statechart').sendAction('labelToolStartTool', this, annotationName);
   },

@@ -24,6 +24,16 @@ Smartgraphs.predictionTool = Smartgraphs.Tool.create(
   
   appendSketch: function (state, sketch) {
     this.graphControllerForState(state).addAnnotation(sketch);
+  },
+  
+  predictionStarting: function (state) {
+    var controller = this.graphControllerForState(state);
+    if (controller && controller.predictionToolPredictionStarting) controller.predictionToolPredictionStarting();
+  },
+  
+  predictionFinished: function (state) {
+    var controller = this.graphControllerForState(state);
+    if (controller && controller.predictionToolPredictionFinished) controller.predictionToolPredictionFinished();
   }
 
 });

@@ -49,6 +49,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
 
       annotation.clear();
       Smartgraphs.predictionTool.appendSketch(this, annotation);
+      Smartgraphs.predictionTool.predictionStarting(this);
       
       toolRoot.set('annotation', annotation);
     },
@@ -57,6 +58,8 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
       var toolRoot = this.get('toolRoot');
       
       Smartgraphs.activityViewController.hideControls(Smartgraphs.predictionTool.paneForState(this));
+      Smartgraphs.predictionTool.predictionFinished(this);
+            
       toolRoot.set('annotation', null);
       toolRoot.set('annotationName', null);
     },
@@ -72,7 +75,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
       
       enterState: function () {
         this.getPath('toolRoot.annotation').clear();
-        Smartgraphs.activityViewController.disableAllControls();        
+        Smartgraphs.activityViewController.disableAllControls();
       },
       
       mouseDownAtPoint: function (context, args) {
