@@ -644,6 +644,9 @@ Smartgraphs.GraphView = SC.View.extend(
           var bounds = this.get('graphCanvasView')._getScreenBounds(),
               raphaelRect;
 
+          // cache this for coordsForEvent() below
+          this._screenBounds = bounds;
+          
           if (firstTime) {
             context.callback(this, this.renderCallback, bounds.xLeft, bounds.yTop, bounds.plotWidth, bounds.plotHeight);
           }
@@ -653,9 +656,18 @@ Smartgraphs.GraphView = SC.View.extend(
           }
         },
 
-        coordsForEvent: function (e) {
-          var graphOffset = this._$graphView.offset();
-          return { x: e.pageX - graphOffset.left, y: e.pageY - graphOffset.top };
+        coordsForEvent: function (evt) {
+          var graphOffset = this._$graphView.offset(),
+              bounds      = this._screenBounds,
+              x           = evt.pageX - graphOffset.left,
+              y           = evt.pageY - graphOffset.top,
+              fraction;
+          
+          // clip the event to the inputArea boundaries. Simple clipping seems to work fine        
+          x = (x < bounds.xLeft) ? bounds.xLeft : (x > bounds.xRight)  ? bounds.xRight  : x;
+          y = (y < bounds.yTop)  ? bounds.yTop  : (y > bounds.yBottom) ? bounds.yBottom : y;
+
+          return { x: x, y: y };
         },
 
         mouseDown: function (evt) {
