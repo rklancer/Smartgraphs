@@ -292,9 +292,9 @@ describe("GraphView behavior", function () {
 
       spyOn(view, 'pointForCoordinates').andReturn({x: 1, y: 2});
       
-      spyOn(controller, 'inputAreaMouseDown').andCallThrough();
-      spyOn(controller, 'inputAreaMouseDragged').andCallThrough();
-      spyOn(controller, 'inputAreaMouseUp').andCallThrough();
+      spyOn(controller, 'inputAreaMouseDown').andReturn(YES);
+      spyOn(controller, 'inputAreaMouseDragged').andReturn(YES);
+      spyOn(controller, 'inputAreaMouseUp').andReturn(YES);
     });
     
     describe("when the user clicks the mouse on the input area", function () {

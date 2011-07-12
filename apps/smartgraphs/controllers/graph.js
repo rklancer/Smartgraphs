@@ -293,19 +293,19 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   labelViewRemoveLabel: function (label) {
-    this.get('statechart').sendAction('removeLabel', this, { label: label });
+    return !!this.get('statechart').sendAction('removeLabel', this, { label: label });
   },
   
   inputAreaMouseDown: function (x, y) {
-    this.get('statechart').sendAction('mouseDownAtPoint', this, {x: x, y: y});
+    return !!this.get('statechart').sendAction('mouseDownAtPoint', this, {x: x, y: y});
   },
   
   inputAreaMouseDragged: function (x, y) {
-    this.get('statechart').sendAction('mouseDraggedToPoint', this, {x: x, y: y});
+    return !!this.get('statechart').sendAction('mouseDraggedToPoint', this, {x: x, y: y});
   },
 
   inputAreaMouseUp: function (x, y) {
-    this.get('statechart').sendAction('mouseUpAtPoint', this, {x: x, y: y});
+    return !!this.get('statechart').sendAction('mouseUpAtPoint', this, {x: x, y: y});
   },
   
   dataPointSelected: function (dataRepresentation, x, y) {
