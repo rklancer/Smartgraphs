@@ -119,6 +119,30 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   requestedCursorStyle: 'default',
   
   /**
+    @property String
+
+    What to show in the graph controls 'panel' below the graph.
+    Options are Smartgraphs.GraphController.CONTROLS (show the start/stop/reset controls) and Smartgraphs.GraphController.SENSOR_LOADING 
+    (show a spinny or other message indicating that the sensor is loading) or null (don't show the panel, or don't show anything in it.)
+  */
+  showInControlsPanel: null,
+  
+  /**
+    Show the graph start/stop/reset controls.
+  */
+  showControls: function () {  
+    //this.disableAllControls();
+    this.set('showInControlsPanel', Smartgraphs.GraphController.CONTROLS);
+  },
+  
+  /**
+    Hide the graph start/stop/reset controls.
+  */
+  hideControls: function (pane) {
+    this.set('showInControlsPanel', null);
+  },
+  
+  /**
    @private
    
    Stubbable method to return an axis given its id.
@@ -141,6 +165,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   */
   clear: function () {
     this.get('statechart').sendAction('stopTool');
+    this.hideControls();
 
     // n.b. the following could be made to be side effects of entering DEFAULT_STATE
     this.set('title', null);
@@ -316,3 +341,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   }
   
 });
+
+
+Smartgraphs.GraphController.CONTROLS = 'controls';
+Smartgraphs.GraphController.SENSOR_LOADING = 'sensor-loading';

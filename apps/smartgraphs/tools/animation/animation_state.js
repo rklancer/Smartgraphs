@@ -28,6 +28,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
   ON: SC.State.design({
 
     initialSubstate: 'ANIMATION_CLEARED',
+    owner: SC.outlet('statechart.owner'),
     
     stopTool: function () {
       var parentState = this.get('parentState');
@@ -37,7 +38,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     enterState: function () {
       // show the controls in the 'main' pane, which will animate the data    
       Smartgraphs.activityViewController.revealAllControls();
-      Smartgraphs.activityViewController.showControls(Smartgraphs.animationTool.get('mainPane'));
+      this.get('owner').showControls();
       
       // route animation information to the relevant graph controllers
       Smartgraphs.animationTool.setupGraphControllers();
@@ -47,7 +48,7 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
       Smartgraphs.animationTool.stopAnimating();
       Smartgraphs.animationTool.clearGraphControllers();    
       Smartgraphs.animationTool.clearSetup();
-      Smartgraphs.activityViewController.hideControls(Smartgraphs.animationTool.get('mainPane'));
+      this.get('owner').hideControls();
     },    
   
     // ..........................................................

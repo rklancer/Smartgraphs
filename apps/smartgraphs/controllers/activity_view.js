@@ -21,9 +21,6 @@ Smartgraphs.activityViewController = SC.Object.create(
   firstImageCaption: null,
   secondImageValue: null,
   secondImageCaption: null,
-  
-  firstGraphPaneControls: null,
-  secondGraphPaneControls: null,
     
   startControlIsVisible: NO,
   startControlIsEnabled: NO,
@@ -206,46 +203,19 @@ Smartgraphs.activityViewController = SC.Object.create(
     return NO;
   },
 
-  showSensorLoadingView: function (pane) {
-    pane = this.validPaneFor(pane);
-    var which = this.firstOrSecondFor(pane);
-    
-    if ( !which ) return NO;
-    
-    this.hideControls();
-    this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
-    
-    return YES;
-  },
+  // TODO move to graph controller
   
-  showControls: function (pane) {
-    pane = this.validPaneFor(pane);
-    var which = this.firstOrSecondFor(pane);
-
-    if ( !which ) return NO;
-    
-    this.hideControls();
-    this.disableAllControls();
-    this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.graphControlsView');
-
-    return YES;
-  },
-  
-  hideControls: function (pane) {
-    if (pane) {
-      pane = this.validPaneFor(pane);
-      var which = this.firstOrSecondFor(pane);
-
-      if ( !which ) return NO;
-      
-      this.set(which+'GraphPaneControls', null);
-    }
-    else {  
-      this.set('firstGraphPaneControls', null);
-      this.set('secondGraphPaneControls', null);
-    }
-    return YES;
-  },
+  // showSensorLoadingView: function (pane) {
+  //   pane = this.validPaneFor(pane);
+  //   var which = this.firstOrSecondFor(pane);
+  //   
+  //   if ( !which ) return NO;
+  //   
+  //   this.hideControls();
+  //   this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
+  //   
+  //   return YES;
+  // },
   
   revealAllControls: function () {
     this.set('startControlIsVisible',  YES);    
@@ -308,9 +278,7 @@ Smartgraphs.activityViewController = SC.Object.create(
     this.set('clearControlIsDefault',  NO);
   },
   
-  clear: function () {
-    this.hideControls();
-    
+  clear: function () {    
     if (this.get('paneIsSplit')) {
       this.hidePane('top');
       this.hidePane('bottom');

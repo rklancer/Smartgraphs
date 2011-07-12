@@ -17,10 +17,7 @@ describe("ANIMATION_TOOL state", function () {
     spyOn(animationTool, 'startAnimating');
     spyOn(animationTool, 'stopAnimating');
     spyOn(animationTool, 'clearAnimation');
-    spyOn(animationTool, 'clear');
-
-    spyOn(Smartgraphs.activityViewController, 'showControls').andReturn(YES);
-    spyOn(Smartgraphs.activityViewController, 'hideControls').andReturn(YES);
+    spyOn(animationTool, 'clearSetup');
     
     animationTool.mainPane = 'animation-tool-main-pane';
     
@@ -32,7 +29,13 @@ describe("ANIMATION_TOOL state", function () {
       })
     });
 
-    controller = SC.Object.create();
+    controller = SC.Object.create({
+      showControls: function () {},
+      hideControls: function () {}
+    });
+    
+    spyOn(controller, 'showControls').andReturn(YES);
+    spyOn(controller, 'hideControls').andReturn(YES);
     
     statechart = SC.Statechart.create({
       rootState: SC.State.design({
@@ -42,8 +45,7 @@ describe("ANIMATION_TOOL state", function () {
     });
 
     statechart.initStatechart();
-    owner = SC.Object.create();
-    statechart.set('owner', owner);
+    statechart.set('owner', controller);
     state = statechart.getState('ANIMATION_TOOL');
   });
 
@@ -70,8 +72,8 @@ describe("ANIMATION_TOOL state", function () {
       expect(animationTool.clearAnimation).toHaveBeenCalled();
     });
 
-    it("should ask the animation view controller to show the controls", function () {
-      expect(Smartgraphs.activityViewController.showControls).toHaveBeenCalledWith('animation-tool-main-pane');
+    it("should ask the graph controller to show the controls", function () {
+      expect(controller.showControls).toHaveBeenCalled();
     });
 
     describe("when turned on", function () {
@@ -93,12 +95,12 @@ describe("ANIMATION_TOOL state", function () {
         expect(state.get('currentSubstates').getEach('name')).toEqual(['OFF']);
       });
 
-      it("should ask the animation tool to clear", function () {
-        expect(animationTool.clear).toHaveBeenCalled();
+      it("should ask the animation tool to clear its setup", function () {
+        expect(animationTool.clearSetup).toHaveBeenCalled();
       });
 
-      it("should ask the animation view controller to hide the controls", function () {
-        expect(Smartgraphs.activityViewController.hideControls).toHaveBeenCalledWith('animation-tool-main-pane');
+      it("should ask the graph controller to hide the controls", function () {
+        expect(controller.hideControls).toHaveBeenCalled();
       });
     });
 

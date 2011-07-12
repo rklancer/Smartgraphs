@@ -32,6 +32,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
     
     initialSubstate: 'START',
     toolRoot: SC.outlet('parentState'),
+    owner: SC.outlet('statechart.owner'),
     
     enterState: function () {
       var toolRoot = this.get('toolRoot'),
@@ -44,7 +45,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
       if (!SC.kindOf(annotation, Smartgraphs.FreehandSketch)) {
         throw SC.Error.desc("Prediction tool was started with a non-FreehandSketch annotation name '%@'".fmt(annotationName));
       }
-      Smartgraphs.activityViewController.showControls( Smartgraphs.predictionTool.paneForState(this) );
+      this.get('owner').showControls();
       Smartgraphs.activityViewController.revealOnlyClearControl();
 
       annotation.clear();
@@ -57,7 +58,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
     exitState: function () {
       var toolRoot = this.get('toolRoot');
       
-      Smartgraphs.activityViewController.hideControls(Smartgraphs.predictionTool.paneForState(this));
+      this.get('owner').hideControls();
       Smartgraphs.predictionTool.predictionFinished(this);
             
       toolRoot.set('annotation', null);
