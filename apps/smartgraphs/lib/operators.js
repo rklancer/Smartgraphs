@@ -262,4 +262,27 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     return numeric.toFixed(decimal_places); // String value!
   }).args(2);
 
+
+  // Returns length of the FreehandSketch's projection onto the x-axis. Returns -Infinity if there are fewer than 2
+  // points in the sketch.
+  def("sketchLength", function (name, length) {
+    var sketch = Smartgraphs.activityObjectsController.findAnnotation(name),
+        points,
+        xs,
+        min,
+        max;
+    
+    if (!SC.kindOf(sketch, Smartgraphs.FreehandSketch)) throw "operator 'sketchLengthIsAtLeast' was not passed the name of a FreehandSketch";
+
+    points = sketch.get('points') || [];
+    if (points.get('length') < 2) return -Infinity;
+    
+    xs = points.map( function (pair) { return pair[0]; } );
+    
+    min = Math.min.apply(null, xs);
+    max = Math.max.apply(null, xs);
+    
+    return max - min;
+  }).args(1).dependsOn('Smartgraphs.activityStepController*submissibilitySubject.points.[]');
+
 });
