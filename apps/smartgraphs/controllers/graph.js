@@ -28,16 +28,13 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.GraphController.prototype */ {
   
   init: function () {
-    var statechart;
     sc_super();
-    
-    statechart = this.get('statechartDef').create();
-    this.set('statechart', statechart);
-    
+    var statechart = this.get('statechartDef').create();
     statechart.initStatechart();
     statechart.set('owner', this);
+    this.set('statechart', statechart);
   },
-  
+
   statechartDef: SC.Statechart.design({
     trace: Smartgraphs.trace,
     rootState: SC.State.design({
@@ -48,6 +45,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
       PREDICTION_TOOL: Smartgraphs.PREDICTION_TOOL.design()
     })
   }),
+  
+  statechart: null,
   
   /**
     @property {String[]}
