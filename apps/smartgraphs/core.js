@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
@@ -32,6 +32,20 @@ Smartgraphs = SC.Application.create(
   _nextGuid: 1000,
   getNextGuid: function () {
     return this._nextGuid++;
+  },
+  
+  sendActionToGraphControllers: function (action, context, args) {
+    var ret = [];
+    ret.push( Smartgraphs.firstGraphController.sendAction.apply(Smartgraphs.firstGraphController, arguments) );
+    ret.push( Smartgraphs.secondGraphController.sendAction.apply(Smartgraphs.secondGraphController, arguments) );
+    return ret;
+  },
+  
+  sendActionToTableControllers: function (action, context, args) {
+    var ret = [];
+    ret.push( Smartgraphs.firstTableController.sendAction.apply(Smartgraphs.firstTableController, arguments) );
+    ret.push( Smartgraphs.secondTableController.sendAction.apply(Smartgraphs.secondTableController, arguments) );
+    return ret;
   },
   
   // DEBUG SETTINGS
