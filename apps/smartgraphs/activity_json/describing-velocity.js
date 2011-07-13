@@ -17,6 +17,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "/shared/describing-velocity/page/4",
       "/shared/describing-velocity/page/5",
       "/shared/describing-velocity/page/6",
+      "/shared/describing-velocity/page/7",      
       "/shared/describing-velocity/page/8",
       "/shared/describing-velocity/page/9",
       "/shared/describing-velocity/page/10",
@@ -115,7 +116,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "firstStep": "/shared/describing-velocity/page/4/step/1"
     },
     {
-      "name": "Analyze the Position-Time Graph 2",
+      "name": "Analyze the Position-Time Graph (2)",
       "url": "/shared/describing-velocity/page/5",
       "activity": "/shared/describing-velocity",
       "index": 5,
@@ -163,7 +164,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "firstStep": "/shared/describing-velocity/page/5/step/1"
     },
     {
-      "name": "Analyze the Position-Time Graph 3",
+      "name": "Analyze the Position-Time Graph (3)",
       "url": "/shared/describing-velocity/page/6",
       "activity": "/shared/describing-velocity",
       "index": 6,
@@ -209,6 +210,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         { "name": "velocity-units",        "value": ["pluralizeUnits", "/builtins/units/meters-per-second", ["get", "velocity"]] }
       ],
       "firstStep": "/shared/describing-velocity/page/6/step/1"
+    },
+    {
+      "name": "Label the Position-Time Graph (2)",
+      "url": "/shared/describing-velocity/page/7",
+      "activity": "/shared/describing-velocity",
+      "index": 7,
+      "introText": "<h1>Label the Position-Time Graph</h1>",
+      "steps": [
+        "/shared/describing-velocity/page/7/step/1"
+      ],
+      "firstStep": "/shared/describing-velocity/page/7/step/1"
     },
     {
       "name": "Compare the Graphs",
@@ -2098,7 +2110,27 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "nextButtonShouldSubmit": true
     },
 
-
+    {
+      "url": "/shared/describing-velocity/page/7/step/1",
+      "activityPage": "/shared/describing-velocity/page/7",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "title": "Position vs. Time",
+          "xAxis": "/shared/describing-velocity/axes/9s",
+          "yAxis": "/shared/describing-velocity/axes/40m",
+          "data": [
+            ["position-data", { "point-type": "none", "line-type": "connected" }]
+          ],
+          "annotations": ["students-segment-labels"]
+        }
+      },
+      "beforeText": "<p>Here are the correct velocities: </p><p>Velocity from 0-3 seconds: <b>0 m/s</b></p><p>Velocity from 3-6 seconds: <b>2 m/s</b></p><p>Velocity from 6-9 seconds: <b>10 m/s</b></p><p><b>Insert</b> these values into your labels by <b>double-clicking</b> inside the labels and <b>typing</b>.</p>",
+      "hideSubmitButton": true,
+      "nextButtonShouldSubmit": true,
+      "isFinalStep": true
+    },
 
     {
       "url": "/shared/describing-velocity/page/8/step/1",
