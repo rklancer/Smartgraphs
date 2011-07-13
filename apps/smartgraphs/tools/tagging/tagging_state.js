@@ -17,7 +17,6 @@ Smartgraphs.TAGGING_TOOL = SC.State.extend(
 /** @scope Smartgraphs.TAGGING_TOOL.prototype */ {
   
   enterState: function () {
-    //var datadef = Smartgraphs.taggingTool.get('datadef');
     Smartgraphs.statechart.sendAction('disableSubmission');
     Smartgraphs.taggingTool.clearPoint();
   },

@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.taggingTool
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
@@ -36,19 +36,25 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
   },
   
   setPoint: function (x, y) {
-    this.get('tag').beginPropertyChanges();
-    this.setPath('tag.datadefName', this.get('datadefName'));
-    this.setPath('tag.x', x);
-    this.setPath('tag.y', y);
-    this.get('tag').endPropertyChanges();
+    var tag = this.get('tag');
+    if (!tag) return;
+
+    tag.beginPropertyChanges();
+    tag.set('datadefName', this.get('datadefName'));
+    tag.set('x', x);
+    tag.set('y', y);
+    tag.endPropertyChanges();
   },
   
   clearPoint: function () {
-    this.get('tag').beginPropertyChanges();
-    this.setPath('tag.datadefName', null);
-    this.setPath('tag.x', null);
-    this.setPath('tag.y', null);
-    this.get('tag').endPropertyChanges();    
+    var tag = this.get('tag');
+    if (!tag) return;
+
+    tag.beginPropertyChanges();
+    tag.set('datadefName', null);
+    tag.set('x', null);
+    tag.set('y', null);
+    tag.endPropertyChanges();
   }
   
 });
