@@ -237,7 +237,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     Clears all graph state (i.e., title, units, data representations, graphable data objects, and annotations).
   */
   clear: function () {
-    this.get('statechart').sendAction('stopTool');
+    this.sendAction('stopTool');
     this.hideControls();
 
     // n.b. the following could be made to be side effects of entering DEFAULT_STATE
@@ -365,9 +365,14 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   // Events
-  
+
+  sendAction: function (action, context, args) {
+    var statechart = this.get('statechart');
+    return statechart.sendAction.apply(statechart, arguments);
+  },
+    
   predictionToolStartTool: function (annotationName) {
-    this.get('statechart').sendAction('predictionToolStartTool', this, annotationName);
+    this.sendAction('predictionToolStartTool', this, annotationName);
   },
   
   predictionToolPredictionStarting: function () {
@@ -379,7 +384,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   labelToolStartTool: function (annotationName) {
-    this.get('statechart').sendAction('labelToolStartTool', this, annotationName);
+    this.sendAction('labelToolStartTool', this, annotationName);
   },
   
   labelToolAddLabelsStarting: function () {
@@ -391,26 +396,26 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   labelViewRemoveLabel: function (label) {
-    return !!this.get('statechart').sendAction('removeLabel', this, { label: label });
+    return !!this.sendAction('removeLabel', this, { label: label });
   },
   
   inputAreaMouseDown: function (x, y) {
-    return !!this.get('statechart').sendAction('mouseDownAtPoint', this, {x: x, y: y});
+    return !!this.sendAction('mouseDownAtPoint', this, {x: x, y: y});
   },
   
   inputAreaMouseDragged: function (x, y) {
-    return !!this.get('statechart').sendAction('mouseDraggedToPoint', this, {x: x, y: y});
+    return !!this.sendAction('mouseDraggedToPoint', this, {x: x, y: y});
   },
 
   inputAreaMouseUp: function (x, y) {
-    return !!this.get('statechart').sendAction('mouseUpAtPoint', this, {x: x, y: y});
+    return !!this.sendAction('mouseUpAtPoint', this, {x: x, y: y});
   },
   
   dataPointSelected: function (dataRepresentation, x, y) {
     if (Smartgraphs.statechart && Smartgraphs.statechart.get('statechartIsInitialized')) {
       Smartgraphs.statechart.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
     }
-    this.get('statechart').sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
+    this.sendAction('dataPointSelected', this, { dataRepresentation: dataRepresentation, x: x, y: y });
   }
   
 });

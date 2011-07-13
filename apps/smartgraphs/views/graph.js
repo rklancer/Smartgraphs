@@ -65,7 +65,7 @@ Smartgraphs.GraphView = SC.View.extend(
   viewDidResize: function () {
     sc_super();
     var graphController = this.get('graphController');
-    if (graphController) graphController.statechart.sendAction('graphViewDidResize');
+    if (graphController) graphController.sendAction('graphViewDidResize');
     this.replaceLayer();
   },
 
@@ -425,7 +425,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       function gotoAnimationFinishedState() {
         SC.RunLoop.begin();
-        self.getPath('parentView.graphController.statechart').sendAction('animationFinished');
+        self.getPath('parentView.graphController').sendAction('animationFinished');
         SC.RunLoop.end();
       }
       

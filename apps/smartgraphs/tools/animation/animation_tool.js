@@ -145,7 +145,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.notifyPropertyChange('isAnimating');
 
     controller = this.graphControllerForPane(args.pane);
-    controller.get('statechart').sendAction('animationToolStartTool');
+    controller.sendAction('animationToolStartTool');
   },
 
   clearSetup: function () {
