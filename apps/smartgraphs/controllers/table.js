@@ -22,6 +22,23 @@ sc_require('mixins/annotation_support');
 */
 Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationSupport,
 /** @scope Smartgraphs.tableController.prototype */ {
+
+  init: function () {
+    sc_super();
+    var statechart = this.get('statechartDef').create();
+    statechart.initStatechart();
+    statechart.set('owner', this);
+    this.set('statechart', statechart);
+  },
+
+  statechartDef: SC.Statechart.design({
+    trace: Smartgraphs.trace,
+    rootState: SC.State.design({
+      substatesAreConcurrent: YES
+    })
+  }),
+  
+  statechart: null,
   
   datadef: null,
   dataRepresentation: null,
@@ -100,6 +117,13 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     this.set('content', this.getPath('pointset.points'));
     
     this.addAnnotationsByName(config.annotations);
+  },
+  
+  // Events
+  
+  sendAction: function (action, context, args) {
+    var statechart = this.get('statechart');
+    return statechart.sendAction.apply(statechart, arguments);
   },
   
   dataPointSelected: function (dataRepresentation, x, y) {
