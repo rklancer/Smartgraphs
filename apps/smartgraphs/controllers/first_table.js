@@ -16,7 +16,5 @@ sc_require('controllers/table');
 
 Smartgraphs.firstTableController = Smartgraphs.TableController.create(
 /** @scope Smartgraphs.firstTableController.prototype */ {
-  
-  viewPath: 'activityPage.firstTableView'
 
-}) ;
+});

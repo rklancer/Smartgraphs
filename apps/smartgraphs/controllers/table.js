@@ -53,11 +53,6 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   yShortLabelBinding:  '*datadef.yShortLabel',
   yShortLabelBindingDefault: SC.Binding.oneWay(),  
   
-  xUnitsDidChange: function () {    
-    console.log('**** xUnits changed: %s', this.get('xUnits') ? this.get('xUnits').toString() : '(falsy)');
-    console.log('**** datadef.xUnits: %s', this.getPath('datadef.xUnits') ? this.getPath('datadef.xUnits').toString() : '(falsy)');
-  }.observes('xUnits'),
-  
   /**
     Whether to display the table (or else the numeric view)
     
