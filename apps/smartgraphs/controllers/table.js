@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Smartgraphs.tableController
-// Copyright: ©2010 Concord Consortium
+// Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
@@ -34,7 +34,16 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   statechartDef: SC.Statechart.design({
     trace: Smartgraphs.trace,
     rootState: SC.State.design({
-      substatesAreConcurrent: YES
+      substatesAreConcurrent: YES,
+      
+      DEFAULT: SC.State.design({
+        owner: SC.outlet('statechart.owner'),
+
+        taggingToolDidUpdateTag: function (context, tag) {
+          this.get('owner').updateRecentTagIndexStack(tag);
+          return YES;
+        }
+      })
     })
   }),
   
@@ -43,6 +52,15 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
   datadef: null,
   dataRepresentation: null,
   pointset: null,
+  
+  /**
+    Stack maintaining the indices in the table of recently tagged points. The index of the most recently-tagged point
+    for this datadef is at the end of the array. When this updates, the table view can attempt to scroll the most 
+    recent indices into view.
+    
+    @property {Number[]}
+  */
+  recentTagIndexStack: null,
   
   isSelectable: NO,
   
@@ -117,6 +135,64 @@ Smartgraphs.TableController = SC.ArrayController.extend( Smartgraphs.AnnotationS
     this.set('content', this.getPath('pointset.points'));
     
     this.addAnnotationsByName(config.annotations);
+  },
+  
+  updateRecentTagIndexStack: function (tag) {
+    var currentDatadefName = this.getPath('datadef.name'),
+        tagDatadefName     = tag.get('datadefName'),
+        guid               = SC.guidFor(tag),
+        stack              = this.get('recentTagIndexStack'),
+        stackIndex,
+        tagX               = tag.get('x'),
+        tagY               = tag.get('y'),
+        point,
+        i,
+        len;
+    
+    if (SC.none(stack)) {
+      stack = [];
+      this.set('recentTagIndexStack', []);
+      this._stackIndicesOfTagsByGuid = {};
+    }
+    
+    if (tagDatadefName === null) {
+      // tag was cleared. Remove from stack, regardless.
+      stackIndex = this._stackIndicesOfTagsByGuid[guid];
+
+      if (!SC.none(stackIndex)) {
+        stack.removeAt(stackIndex, 1);
+        delete this._stackIndicesOfTagsByGuid[guid];
+      }
+    }
+    else if (tagDatadefName === currentDatadefName) {
+      // push onto the stack
+
+      // maintain the stack of recently tagged points between activity steps. However, once we start tagging a new
+      // dataset, clear the stack
+      if (currentDatadefName !== this._datadefNameForTagStack) {
+        stack.set('length', 0);
+        this._stackIndicesOfTagsByGuid = {};
+        this._datadefNameForTagStack = currentDatadefName;
+      }
+      
+      stackIndex = this._stackIndicesOfTagsByGuid[guid];
+
+      if (!SC.none(stackIndex)) {
+        stack.removeAt(stackIndex, 1);
+        delete this._stackIndicesOfTagsByGuid[guid];
+      }
+
+      // Find the index, in the table, of the just-tagged point.
+      for (i = 0, len = this.get('length'); i < len; i++) {
+        point = this.objectAt(i);
+        if (point.get('x') === tagX && point.get('y') == tagY) {
+          stack.pushObject(i);
+          stackIndex = stack.get('length') - 1;
+          this._stackIndicesOfTagsByGuid[guid] = stackIndex;
+          break;
+        }
+      }
+    }
   },
   
   // Events
