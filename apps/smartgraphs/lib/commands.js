@@ -35,37 +35,6 @@ Smartgraphs.executor.defineCommands(function (def) {
     Smartgraphs.statechart.sendAction('disableSubmission');
   });
   
-  /**
-    Begin 'freehand input' on the specified graph, for example to draw a prediction graph. The freehand input mode
-    enables the user to create an arbitrary sketch on the graph and turns on the 'clear' button which allows the user
-    to start their sketch over. The sketch is stored as a session-scoped FreehandSketch annotation with the specified
-    name, so that it can be called up later in the activity.
-    
-    The system remains in the FREEHAND_INPUT state or one of its substates until the user submits the step. It is
-    possible to specify a submissibility expression that only allows submission once an appropriate sketch has been 
-    completed.
-    
-    @param args
-    
-    @param {String} args.annotationName
-      The name to be given to the Smartgraphs.FreehandSketch annotation object which will hold the user's sketch.
-    @param {String} args.graphName
-      The name of the graph on which the user will draw (and on which the FreehandSketch annotation will be added.)
-      This graph must be open in the page when this command executes.
-  */
-  def('startFreehandInput', function (args) {
-
-    this.createAnnotation(this, { 
-      graphName: args.graphName,
-      type: Smartgraphs.FreehandSketch,
-      name: args.annotationName
-    });
-
-    var controller = Smartgraphs.GraphController.controllerForName[args.graphName];
-    if (Smartgraphs.freehandInputController.register(controller, args.annotationName)) {
-      Smartgraphs.statechart.gotoState('FREEHAND_INPUT');
-    }
-  });
   
   /**
     Allow sensor input into a Dataset with the provided name on the specified graph. This command starts up the sensor
