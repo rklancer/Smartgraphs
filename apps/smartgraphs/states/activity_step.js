@@ -90,6 +90,14 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
     this.invokeLast(function () {
       Smartgraphs.statechart.sendAction('gotoNextPage');
     });
-  }
+  },
   
+  /**
+    Notify the table controllers that a tag was updated so they can update their indices of recently-tagged points.
+  */
+  taggingToolDidUpdateTag: function (context, args) {
+    Smartgraphs.sendActionToTableControllers('taggingToolDidUpdateTag', context, args);
+    return YES;
+  }
+
 });

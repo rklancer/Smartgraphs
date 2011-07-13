@@ -44,6 +44,8 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
     tag.set('x', x);
     tag.set('y', y);
     tag.endPropertyChanges();
+
+    Smartgraphs.statechart.sendAction('taggingToolDidUpdateTag', this, tag);
   },
   
   clearPoint: function () {
@@ -55,6 +57,8 @@ Smartgraphs.taggingTool = Smartgraphs.Tool.create(
     tag.set('x', null);
     tag.set('y', null);
     tag.endPropertyChanges();
+    
+    Smartgraphs.statechart.sendAction('taggingToolDidUpdateTag', this, tag);
   }
   
 });
