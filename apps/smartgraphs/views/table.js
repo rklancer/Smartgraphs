@@ -140,7 +140,7 @@ Smartgraphs.TableView = SC.View.extend(
       borderStyle: SC.BORDER_NONE,
     
       contentView: SC.View.design({
-        rowHeight: 20,
+        rowHeight: 15,
         
         tableControllerBinding: '.parentView.parentView.parentView.parentView*tableController',
         contentBinding:         '*tableController.arrangedObjects',
