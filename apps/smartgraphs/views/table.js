@@ -28,7 +28,10 @@ Smartgraphs.TableView = SC.View.extend(
   xShortLabelBinding:       '*tableController.xShortLabel',
   yUnitsAbbreviatedBinding: '*tableController.yUnits.abbreviation',
   yShortLabelBinding:       '*tableController.yShortLabel',
+  
+  recentTagIndexStackBinding: '*tableController.recentTagIndexStack',
 
+  scrollView:   SC.outlet('tableColumnView.scrollView'),
   columnsView:  SC.outlet('tableColumnView.scrollView.contentView'),
   xsView:       SC.outlet('columnsView.xsView'),
   ysView:       SC.outlet('columnsView.ysView'),
@@ -359,6 +362,79 @@ Smartgraphs.TableView = SC.View.extend(
       bottom: top + rowHeight,
       right: right
     };
+  },
+  
+  recentTagIndexStackDidChange: function () {
+    this.invokeOnce(this.scrollToRecentTags);
+  }.observes('.recentTagIndexStack.[]'),
+  
+  _scoreScrollPositions: function (stack, lowIndex, highIndex) {
+    var score = 0,
+        i,
+        tagIndex;
+        
+    for (i = stack.length - 1; i >= 0; i--) {
+      tagIndex = stack[i];
+      if (lowIndex <= tagIndex && tagIndex <= highIndex) score += Math.pow(2, i);
+    }
+    return score;
+  },  
+    
+  scrollToRecentTags: function (indices) {
+    var stack       = this.get('recentTagIndexStack'),
+        stackLength = stack.get('length'),
+        tableLength = this.getPath('tableController.length'),
+        rowHeight,
+        tableHeight,
+        xsViewTop,
+        scrollPos,
+        nRows,
+        firstVisibleRow,
+        lastVisibleRow,
+        scrollDownScore,
+        scrollUpScore,
+        currentScore,
+        latestTagIndex,
+        lowIndex,
+        highIndex,
+        scrollToShow;
+        
+    // don't do anything if nothing is showing (tableLength is 0 or undefined)
+    if (!tableLength) return;
+    
+    // don't scroll for removals from the stack
+    if (stackLength >= this._previousTagIndexStackLength || !this._previousTagIndexStackLength) {
+      rowHeight   = this.getPath('columnsView.rowHeight');
+      tableHeight = this.get('scrollView').$().height();
+      xsViewTop   = this.getPath('xsView.layout').top;
+      scrollPos   = this.getPath('scrollView.verticalScrollOffset');
+      nRows       = Math.floor(tableHeight / rowHeight);
+      firstVisibleRow = Math.ceil((scrollPos - xsViewTop) / rowHeight);                   // index of first *fully* visible row
+      lastVisibleRow  = Math.floor((tableHeight + scrollPos - xsViewTop) / rowHeight) - 1;
+      latestTagIndex = stack[stack.length - 1];
+
+      lowIndex = Math.max(0, latestTagIndex - nRows + 1);
+      highIndex = Math.min(tableLength - 1, latestTagIndex + nRows - 1);
+
+      currentScore = this._scoreScrollPositions(stack, firstVisibleRow, lastVisibleRow);
+      scrollUpScore = this._scoreScrollPositions(stack, lowIndex, latestTagIndex);
+      scrollDownScore = this._scoreScrollPositions(stack, latestTagIndex, highIndex);
+      
+      if (scrollDownScore > currentScore) {
+        if (scrollUpScore > scrollDownScore) {
+          // scroll up, but not more than necessary. Find the first index that fits in the window between lowIndex & latestTagIndex.
+          scrollToShow = Math.min.apply(null, stack.filter( function (n) { return lowIndex <= n && n <= latestTagIndex; }));
+        }
+        else {
+          // scroll down, but not more than necessary. Find the last idnex that fits in the window between latestTagIndex & highIndex
+          scrollToShow = Math.min.apply(null, stack.filter( function (n) { return latestTagIndex <= n && n <= highIndex; }));
+        }
+        this.get('scrollView').scrollTo(0, scrollToShow * rowHeight + xsViewTop);        
+      }
+      // if currentScore wins, do nothing!
+    }
+    
+    this._previousTagIndexStackLength = stackLength;
   }
   
 });
