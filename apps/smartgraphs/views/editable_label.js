@@ -44,16 +44,22 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   // our parent view is going to modify our position
   // but we will modify our parents width and height
   x: function () {
-    return this.get('parentX') + this.get('parentMargin');
+    // in IE 8 and 9, parentX is sometimes undefined
+    var parentX = this.get('parentX') || 0;
+    return  parentX + this.get('parentMargin');
   }.property('parentX', 'parentMargin').cacheable(),
 
   y: function () {
-    return this.get('parentY') + this.get('parentMargin');
+    // in IE 8 and 9, parentX is sometimes undefined
+    var parentY = this.get('parentY') || 0;
+    return parentY + this.get('parentMargin');
   }.property('parentY', 'parentMargin').cacheable(),
 
-  raphTextY: function() {
-    return this.get('y') + (this.get('height') / 2);
-  }.property('y','height').cacheable(),
+  raphTextY: function () {
+    // in IE 8 and 9, height is sometimes undefined
+    var h = this.get('height') || 0;
+    return this.get('y') + (h / 2);
+  }.property('y', 'height').cacheable(),
 
   acceptsFirstResponder: function () {
     return this.get('isEnabled');
