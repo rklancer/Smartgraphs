@@ -53,6 +53,13 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
     }
   },
 
+  selectPageId: function (pageId) {
+    var page = Smartgraphs.store.find(Smartgraphs.ActivityPage, pageId);
+    if (page) {
+      this.selectObject(page);
+    }
+  },
+  
   isLastPage: function () {
     return (this.get('currentPageNumber') >= (this.get('length') - 1));
   }.property('currentPageNumber', 'length').cacheable(),

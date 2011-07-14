@@ -75,6 +75,14 @@ Smartgraphs.AUTHOR = SC.State.extend(
   errorSavingActivity: function () {
     this.gotoState('ERROR_SAVING_ACTIVITY');
     return YES;
+  },
+  
+  outlineControllerDidNavigate: function () {
+    Smartgraphs.navigatedLocation = {
+      activityId: Smartgraphs.activityController.get('id'),
+      pageId: Smartgraphs.activityPageController.get('id'),
+      stepId: Smartgraphs.activityStepController.get('id')
+    };
   }
   
 }) ;

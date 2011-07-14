@@ -22,9 +22,23 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   enterState: function() {
     Smartgraphs.sessionController.beginSession();
 
-    var pages = Smartgraphs.activityController.get('pages');
+    var pages = Smartgraphs.activityController.get('pages'),
+        page;
+        
     Smartgraphs.activityPagesController.set('content', pages);
-    Smartgraphs.activityPagesController.selectFirstPage();    
+    
+    if (Smartgraphs.navigatedLocation && Smartgraphs.navigatedLocation.activityId === Smartgraphs.activityController.get('id')) {
+      // go to previously-saved page and step rather than 'real' firstStep of the first page
+      Smartgraphs.activityPagesController.selectPageId(Smartgraphs.navigatedLocation.pageId);
+      page = Smartgraphs.activityPageController.get('content');
+      if (page && Smartgraphs.navigatedLocation.stepId) {
+        page.set('firstStep', Smartgraphs.store.find(Smartgraphs.ActivityStep, Smartgraphs.navigatedLocation.stepId));
+      }
+    }
+    else {
+      // default. go to first page; will enter "real" first step
+      Smartgraphs.activityPagesController.selectFirstPage();
+    }
 
     Smartgraphs.appWindowController.showActivityView();
   },

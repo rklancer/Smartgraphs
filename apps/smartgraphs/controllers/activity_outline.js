@@ -54,10 +54,12 @@ Smartgraphs.activityOutlineController = SC.TreeController.create(
     if (page) {
       Smartgraphs.activityPageController.set('content', page);
       Smartgraphs.activityStepController.set('content', null);
+      Smartgraphs.statechart.sendAction('outlineControllerDidNavigate');
     }
     else if (step) {
       Smartgraphs.activityPageController.set('content', step.get('activityPage'));
       Smartgraphs.activityStepController.set('content', step);
+      Smartgraphs.statechart.sendAction('outlineControllerDidNavigate');      
     }
   }.observes('selection')
   
