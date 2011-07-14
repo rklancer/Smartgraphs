@@ -37,12 +37,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   
   ACTIVITY_PAGE_START: SC.State.design({
     enterState: function () {
-      if (Smartgraphs.savedStep) {
-        Smartgraphs.activityStepController.set('content', Smartgraphs.savedStep);
-      }
-      else {
-        Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
-      }
+      Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
       this.gotoState('ACTIVITY_STEP');
     }
   }),

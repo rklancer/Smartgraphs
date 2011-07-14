@@ -34,10 +34,7 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   }.property('selection', '[]').cacheable(),
 
   selectFirstPage: function () {
-    if (Smartgraphs.savedPage) {
-      this.selectObject(Smartgraphs.savedPage);
-    }
-    else if (this.get('length') > 0) {
+    if (this.get('length') > 0) {
       this.selectObject(this.objectAt(0));
     }
   },
