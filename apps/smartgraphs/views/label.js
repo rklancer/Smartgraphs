@@ -5,6 +5,7 @@
 // ==========================================================================
 /*globals Smartgraphs RaphaelViews*/
 
+sc_require('views/editable_label');
 
 /** @class
 
@@ -12,7 +13,6 @@
 
   @extends SC.View
 */
-sc_require('views/editable_label');
 Smartgraphs.LabelView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LabelView.prototype */ {
 
