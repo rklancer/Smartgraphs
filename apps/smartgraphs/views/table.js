@@ -368,14 +368,28 @@ Smartgraphs.TableView = SC.View.extend(
     this.invokeOnce(this.scrollToRecentTags);
   }.observes('.recentTagIndexStack.[]'),
   
+  /**
+    @private
+  
+    Score a possible scroll to [lowIndex..highIndex] using a powers-of-two scheme so that:
+      * showing the topmost (most recently added) row on the stack beats showing any combination of the other rows,
+      * if the most recently added row is showing, then also showing the next-most-recently added row beats showing
+        any combination of earlier rows,
+      * etc.
+    
+    Higher scores are better.
+    
+    Example: if the window is [3..8] and the stack is [1,5,3] then:
+       * only rows 5 and 3 can be shown
+       * the score is 4 + 2 = 6 (the most recent row, 3, shows and is "worth" 2^2 = 4; the second-most recent row shows
+         and is "worth" 2^1 = 2; the third-most recent row does not show, so it counts for 0 
+  */
   _scoreScrollPositions: function (stack, lowIndex, highIndex) {
     var score = 0,
-        i,
-        tagIndex;
-        
+        i;
+    
     for (i = stack.length - 1; i >= 0; i--) {
-      tagIndex = stack[i];
-      if (lowIndex <= tagIndex && tagIndex <= highIndex) score += Math.pow(2, i);
+      score = (score * 2) + ((lowIndex <= stack[i] && stack[i] <= highIndex) ? 1 : 0);
     }
     return score;
   },  
@@ -384,54 +398,77 @@ Smartgraphs.TableView = SC.View.extend(
     var stack       = this.get('recentTagIndexStack'),
         stackLength = stack.get('length'),
         tableLength = this.getPath('tableController.length'),
+        scrollView,
         rowHeight,
         tableHeight,
-        xsViewTop,
+        paddingTop,
         scrollPos,
         nRows,
         firstVisibleRow,
         lastVisibleRow,
-        scrollDownScore,
-        scrollUpScore,
+        score,
         currentScore,
-        latestTagIndex,
-        lowIndex,
-        highIndex,
-        scrollToShow;
+        windowScores,
+        maxScore,
+        rowsToDisplay,
+        windowStart,
+        windowEnd,
+        topRowToDisplay,
+        bottomRowToDisplay,
+        newTopRow;
         
-    // don't do anything if nothing is showing (tableLength is 0 or undefined)
-    if (!tableLength) return;
+    // don't do anything if nothing is showing or there is nothing newly tagged
+    if (!tableLength || !stackLength) return;
     
-    // don't scroll for removals from the stack
+    // only do something if a tagged point was added or changed (which is to say, skip the following if the stack *shrunk*)
     if (stackLength >= this._previousTagIndexStackLength || !this._previousTagIndexStackLength) {
-      rowHeight   = this.getPath('columnsView.rowHeight');
-      tableHeight = this.get('scrollView').$().height();
-      xsViewTop   = this.getPath('xsView.layout').top;
-      scrollPos   = this.getPath('scrollView.verticalScrollOffset');
-      nRows       = Math.floor(tableHeight / rowHeight);
-      firstVisibleRow = Math.ceil((scrollPos - xsViewTop) / rowHeight);                   // index of first *fully* visible row
-      lastVisibleRow  = Math.floor((tableHeight + scrollPos - xsViewTop) / rowHeight) - 1;
-      latestTagIndex = stack[stack.length - 1];
 
-      lowIndex = Math.max(0, latestTagIndex - nRows + 1);
-      highIndex = Math.min(tableLength - 1, latestTagIndex + nRows - 1);
-
-      currentScore = this._scoreScrollPositions(stack, firstVisibleRow, lastVisibleRow);
-      scrollUpScore = this._scoreScrollPositions(stack, lowIndex, latestTagIndex);
-      scrollDownScore = this._scoreScrollPositions(stack, latestTagIndex, highIndex);
+      scrollView      = this.get('scrollView');
+      rowHeight       = this.getPath('columnsView.rowHeight');
+      tableHeight     = scrollView.$().height();
+      paddingTop      = this.getPath('xsView.layout').top;
+      scrollPos       = scrollView.get('verticalScrollOffset');      
+      nRows           = Math.floor(tableHeight / rowHeight);
+      firstVisibleRow = Math.ceil((scrollPos - paddingTop) / rowHeight);                    // index of first *fully* visible row
+      lastVisibleRow  = Math.floor((tableHeight + scrollPos - paddingTop) / rowHeight) - 1; // index of last  *fully* visible row
       
-      if (scrollDownScore > currentScore) {
-        if (scrollUpScore > scrollDownScore) {
-          // scroll up, but not more than necessary. Find the first index that fits in the window between lowIndex & latestTagIndex.
-          scrollToShow = Math.min.apply(null, stack.filter( function (n) { return lowIndex <= n && n <= latestTagIndex; }));
+      // The idea below is to enumerate all possible "windows" of rows that could be visible at the same time, scored
+      // such that windows that show recently-tagged points score higher. Showing the just-tagged point scores higher
+      // than showing any other combination of points, and so on.
+      
+      // The obvious optimization used is that it's not necessary to score *all* windows, i.e., those starting at 
+      // row 0, row 1, row 2, ...; it's only necessary to score the windows starting at some tagged row. (If rows m and
+      // n are tagged rows, with no rows between m and n being tagged, then the score of a window starting at any row
+      // between m and n must be less than either the score of the window starting at m or the score of the window 
+      // starting at n)
+            
+      score           = this._scoreScrollPositions;
+      currentScore    = score(stack, firstVisibleRow, lastVisibleRow);
+      windowScores    = stack.map( function (row) { return score(stack, row, row + nRows - 1); } );
+      maxScore        = windowScores.max();
+      
+      // now that we have the best-scoring window, we know *what* rows should be scrolled into view. To maintain
+      // context for the user, we find the minimum distance to scroll so that all those rows become visible on the\\
+      // table.
+      
+      if (maxScore > currentScore) {    // don't scroll at all if the currently-showing rows are the rows to show!
+        windowStart   = stack[ windowScores.indexOf(maxScore) ];
+        windowEnd     = Math.min(tableLength - 1, windowStart + nRows - 1);
+        rowsToDisplay = stack.filter( function (n) { return windowStart <= n && n <= windowEnd; });
+        topRowToDisplay    = rowsToDisplay.min();
+        bottomRowToDisplay = rowsToDisplay.max();
+        
+        // the following should scroll the minimum possible amount to show all the rows that are in the best-possible
+        // window.
+        if ( Math.abs(topRowToDisplay - firstVisibleRow) < Math.abs(bottomRowToDisplay - lastVisibleRow) ) {
+          newTopRow = topRowToDisplay;
         }
         else {
-          // scroll down, but not more than necessary. Find the last idnex that fits in the window between latestTagIndex & highIndex
-          scrollToShow = Math.min.apply(null, stack.filter( function (n) { return latestTagIndex <= n && n <= highIndex; }));
+          newTopRow = Math.max(0, bottomRowToDisplay - nRows + 1);
         }
-        this.get('scrollView').scrollTo(0, scrollToShow * rowHeight + xsViewTop);        
+
+        this.get('scrollView').scrollTo(0, newTopRow * rowHeight + paddingTop);
       }
-      // if currentScore wins, do nothing!
     }
     
     this._previousTagIndexStackLength = stackLength;
