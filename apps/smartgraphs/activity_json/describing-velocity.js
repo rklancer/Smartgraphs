@@ -365,7 +365,6 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -377,6 +376,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                   { "y": 0   }
                 ]
             }],
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "animations": [{
                 "data": "position-data",
                 "image": sc_static('images/carWhite2.png'),
@@ -436,7 +436,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2163,7 +2163,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2229,7 +2229,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2482,7 +2482,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2541,7 +2541,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2613,7 +2613,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2681,7 +2681,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2754,7 +2754,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2827,7 +2827,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2900,7 +2900,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -2973,7 +2973,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "name":  "finish",
                 "image":  sc_static('images/finish.png'),
@@ -3040,7 +3040,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/roadDashed.png'),
+            "backgroundImage": sc_static('images/road-dashed.png'),
             "staticImages": [{
                 "image":  sc_static('images/finish.png'),
                 "width":  70,
