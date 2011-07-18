@@ -53,7 +53,7 @@ Smartgraphs.evaluator = {
   },
   
   _dependsOn: function () {
-    this.deps = Array.prototype.splice.call(arguments, 0);
+    this.deps = Array.prototype.slice.call(arguments, 0);
     return this;
   },
   
