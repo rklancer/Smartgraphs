@@ -329,8 +329,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": sc_static("images/NASCAR_practice.jpg"),
-          //TODO shrink and copy to "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
           "caption": "Public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -3582,7 +3581,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": sc_static("images/NASCAR_practice.jpg"),
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
           "caption": "Public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -3599,7 +3598,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": sc_static("images/NASCAR_practice.jpg"),
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
           "caption": "Public domain U.S. Air Force photo by Larry McTighe"
         }
       },
