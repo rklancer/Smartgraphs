@@ -324,7 +324,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif",
-          "caption": "Image courtesy wikipedia.org user DineshAdv"
+          "caption": "CC-BY-SA-3.0 Wikimedia Commons image courtesy Dinesh Advani"
         }
       },
       "beforeText": "<p>Describe another way that you can tell how fast you are moving.</p>",
@@ -367,7 +367,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P."
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "<p><b>Walk</b> approximately 4 meters at your normal walking pace.</p><p>About how many seconds did it take?</p>",
@@ -429,7 +429,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P."          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
       "beforeText": "<p><i>Please choose a number between 1 and 30.</i></p><p><b>Walk</b> approximately 4 meters at your normal walking pace.</p><p>About how many seconds did it take?</p>",
@@ -491,7 +491,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P."          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
       "beforeText": "<p>Based on your observation that you walked <b>4</b> meters in <b>%@</b> %@, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td></tr></table></blockquote>",
@@ -585,7 +585,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P."          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
       "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation of <b>%@</b> %@ for <b>4</b> meters, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>= ?</td></tr></table></blockquote>",
@@ -659,7 +659,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P."          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity would be calculated like this:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>=</td><td style='border-width:0px'><b>%@</b></td></tr></table></blockquote><p>%@</p>",
@@ -732,7 +732,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P."          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
       "beforeText": "<p>Correct.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity is <b>%@</b> %@.</p><p>%@</p>",
@@ -5060,7 +5060,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P."          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
       "beforeText": "<p>What is the difference between instantaneous velocity and average velocity?</p>",
@@ -5105,7 +5105,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P."          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
       "beforeText": "<p>How can you tell how fast you are moving?</p>",
@@ -5149,7 +5149,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif"
+          "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif",
+          "caption": "CC-BY-SA-3.0 Wikimedia Commons image courtesy Dinesh Advani"          
         }
       },
       "beforeText": "",

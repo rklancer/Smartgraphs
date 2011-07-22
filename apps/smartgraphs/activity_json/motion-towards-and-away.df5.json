@@ -203,7 +203,8 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/arrow.jpg?1286295505"
+          "path": "/static/smartgraphs/en/current/resources/arrow.jpg",
+          "caption": "Creative Commons BY-2.0 image courtesy flickr user Khairil Zhafri"
         }
       },
       "beforeText": "",
@@ -1785,7 +1786,8 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/arrow.jpg?1286295505"
+          "path": "/static/smartgraphs/en/current/resources/arrow.jpg",
+          "caption": "Creative Commons BY-2.0 image courtesy flickr user Khairil Zhafri"          
         }
       },
       "beforeText": "",

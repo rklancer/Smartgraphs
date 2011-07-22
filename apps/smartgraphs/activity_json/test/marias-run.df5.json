@@ -151,7 +151,8 @@
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walking_path.jpg?1286256423"
+          "path": "/static/smartgraphs/en/current/resources/walking_path.jpg",
+          "caption": "Creative Commons BY-NC-ND 2.0 image courtesy flickr user altopower"          
         }
       },
       "beforeText": "<p>In this activity, when you see the 'Next Page >>' button turned on, you can go to the next page.</p><p>Go ahead and click on the Next Page button now to see the next page.<p>",
