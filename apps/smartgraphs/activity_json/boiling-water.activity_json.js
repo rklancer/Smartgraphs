@@ -106,7 +106,7 @@ Smartgraphs.activityJson['/shared/boiling-water'] =
       "panes": {
         "single": {
           "type": "html",
-           "html": "<div style=\"width: 440px; margin: 0 auto\"><img src=\"/static/smartgraphs/en/current/resources/smart-graphs-100.png\" style=\"position: relative; top: 60px; left: 10px\"><div style=\"position: relative; top: -40px; left: 120px;\"><h1 style=\"font-size: 48px; margin: 0\">SmartGraphs</h1><p style=\"margin: 5px 2px; font-size: 18px\">A project of the Concord Consortium</p></div></div><div style=\"position: absolute; bottom: 0\"><img src=\"/static/smartgraphs/en/current/resources/nsf-flat-logo.jpg\" style=\"position: absolute; left: 10px; bottom: 20px; width: 100px; height: 100px\"><p style=\"float: right; margin: 0 10px 20px 120px; font-size: 14px; font-style: italic\">This material is based upon work supported by the National Science Foundation under Grant No. DRL-0918522. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</p></div>"
+           "html": "<div style=\"width: 440px; margin: 0 auto\"><img src=\"/static/smartgraphs/en/current/resources/images/smart-graphs-100.png\" style=\"position: relative; top: 60px; left: 10px\"><div style=\"position: relative; top: -40px; left: 120px;\"><h1 style=\"font-size: 48px; margin: 0\">SmartGraphs</h1><p style=\"margin: 5px 2px; font-size: 18px\">A project of the Concord Consortium</p></div></div><div style=\"position: absolute; bottom: 0\"><img src=\"/static/smartgraphs/en/current/resources/images/nsf-flat-logo.jpg\" style=\"position: absolute; left: 10px; bottom: 20px; width: 100px; height: 100px\"><p style=\"float: right; margin: 0 10px 20px 120px; font-size: 14px; font-style: italic\">This material is based upon work supported by the National Science Foundation under Grant No. DRL-0918522. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</p></div>"
         }
       },
       "beforeText": "",
@@ -749,7 +749,7 @@ Smartgraphs.activityJson['/shared/boiling-water'] =
       "panes": {
         "single": {
           "type": "html",
-           "html": "<div style=\"width: 370px; margin: 0 auto; padding-top: 40px\"><img src=\"/static/smartgraphs/en/current/resources/cc-logo-vertical.jpg\"><h1 style=\"margin: 25px 10px 10px 20px\">Our SmartGraphs project team includes:</h1> <ul style=\"padding-left: 10px\"> <li>Eric Kattwinkel</li> <li>Rachel Kay</li> <li>Richard Klancer</li> <li>Carolyn Staudt</li> <li>Robert Tinker</li> <li>Kofi Weusijana</li> <li>Dewi Win</li> <li>Andy Zucker</li> </ul></div>"
+           "html": "<div style=\"width: 370px; margin: 0 auto; padding-top: 40px\"><img src=\"/static/smartgraphs/en/current/resources/images/cc-logo-vertical.jpg\"><h1 style=\"margin: 25px 10px 10px 20px\">Our SmartGraphs project team includes:</h1> <ul style=\"padding-left: 10px\"> <li>Eric Kattwinkel</li> <li>Rachel Kay</li> <li>Richard Klancer</li> <li>Carolyn Staudt</li> <li>Robert Tinker</li> <li>Kofi Weusijana</li> <li>Dewi Win</li> <li>Andy Zucker</li> </ul></div>"
         }
       },
       "beforeText": "",
