@@ -113,7 +113,7 @@ body.sc-theme {
   font-style: italic;
   line-height: 1.0;
   color: #666666;
-  background-image: sc_static('resources/small_loading_icon.gif');
+  background-image: sc_static('resources/images/small_loading_icon.gif');
   background-repeat: no-repeat;
   background-position: left top;
 }
