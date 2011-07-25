@@ -84,7 +84,6 @@ Smartgraphs.ImageView = SC.View.extend(
       $pv.width($pane.width());
 
       console.log("IMAGE RESIZE");
-      if (window.debugIt) debugger;
       
       if (imgHeight / imgWidth > paneHeight / paneWidth) {
         this.$().height('');
