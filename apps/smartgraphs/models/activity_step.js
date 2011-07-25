@@ -133,7 +133,7 @@ Smartgraphs.ActivityStep = SC.Record.extend(
       {
         "single": { 
           "type": "image", 
-          "path": sc_static("resources/arrow.jpg")
+          "path": sc_static("resources/images/arrow.jpg")
       }
     }}}   
     

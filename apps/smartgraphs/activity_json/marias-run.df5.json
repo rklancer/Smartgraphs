@@ -156,7 +156,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walking_path.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walking_path.jpg",
           "caption": "Creative Commons BY-NC-ND 2.0 image courtesy flickr user altopower"
         }
       },

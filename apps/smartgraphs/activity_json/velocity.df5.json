@@ -323,7 +323,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif",
+          "path": "/static/smartgraphs/en/current/resources/images/Animated_Aston_Martin_Speedometer.gif",
           "caption": "CC-BY-SA-3.0 Wikimedia Commons image courtesy Dinesh Advani"
         }
       },
@@ -366,7 +366,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
@@ -428,7 +428,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
@@ -490,7 +490,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
@@ -584,7 +584,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
@@ -658,7 +658,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
@@ -731,7 +731,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
@@ -5059,7 +5059,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
@@ -5104,7 +5104,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/walk_the_wight.jpg",
+          "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
         }
       },
@@ -5149,7 +5149,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/Animated_Aston_Martin_Speedometer.gif",
+          "path": "/static/smartgraphs/en/current/resources/images/Animated_Aston_Martin_Speedometer.gif",
           "caption": "CC-BY-SA-3.0 Wikimedia Commons image courtesy Dinesh Advani"          
         }
       },
