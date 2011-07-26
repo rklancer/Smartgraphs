@@ -31,8 +31,6 @@ Smartgraphs.ImageView = SC.View.extend(
   */
   caption: null,
   captionBindingDefault: SC.Binding.oneWay(),
-    
-  useStaticLayout: YES,
   
   childViews: ['imageView', 'captionView'],
 
@@ -76,14 +74,6 @@ Smartgraphs.ImageView = SC.View.extend(
       this.$().width('');
       imgHeight = this.$().height();
       imgWidth  = this.$().width();
-
-      // For some reason, IE8 stretches our parent view's height and width to fit the <img>, which means that
-      // setting "width: 100%" has no effect. Therefore, force parent view height & width to be pane height & width
-      // FIXME: Are we Doing It Wrong? Is there a way to convince IE8 not to stretch the parent view div?
-      $pv.height($pane.height());
-      $pv.width($pane.width());
-
-      console.log("IMAGE RESIZE");
       
       if (imgHeight / imgWidth > paneHeight / paneWidth) {
         this.$().height('');
