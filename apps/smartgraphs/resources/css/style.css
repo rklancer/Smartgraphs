@@ -156,3 +156,11 @@ body.sc-theme {
 .sc-theme .sc-view.ace.sc-split-divider-view {
   background-color: #ddd;
 }
+
+/* fix for IE8 bug: percentage-height children of div with "overflow: hidden, min-height: xxx" inherit their height from
+  the (potentially smaller) PARENT of the div with min-height set!! This problem is fixed by removing overflow: hidden
+  from the div which has min-height set */
+  
+.sc-view.sg-overflow-fix {
+  overflow: visible;
+}
