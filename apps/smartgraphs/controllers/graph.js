@@ -42,7 +42,23 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
       LABEL_TOOL:      Smartgraphs.LABEL_TOOL.design(),
       ANIMATION_TOOL:  Smartgraphs.ANIMATION_TOOL.design(),
-      PREDICTION_TOOL: Smartgraphs.PREDICTION_TOOL.design()
+      PREDICTION_TOOL: Smartgraphs.PREDICTION_TOOL.design(),
+        
+      /** forward these to the main statechart */
+      startControlWasClicked: function () {
+        Smartgraphs.statechart.sendAction('startControlWasClicked');
+        return NO;
+      },
+      
+      clearControlWasClicked: function () {
+        Smartgraphs.statechart.sendAction('clearControlWasClicked');
+        return NO;
+      },
+      
+      stopControlWasClicked: function () {
+        Smartgraphs.statechart.sendAction('stopControlWasClicked');
+        return NO;
+      }
     })
   }),
   
