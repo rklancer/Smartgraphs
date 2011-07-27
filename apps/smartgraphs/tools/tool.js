@@ -35,6 +35,17 @@ Smartgraphs.Tool = SC.Object.extend({
   },
   
   /**
+    Stubbable method retrieve the datadef object with a particular name
+    
+    @param {String} name
+      The name of the datadef
+    @returns {Smartgraphs.Datadef} the datadef corresponding to 'name'
+  */
+  getDatadef: function (name) {
+    return Smartgraphs.activityObjectsController.findDatadef(name);
+  },
+  
+  /**
     Stubbable method to get the graph controller a particular label tool state object is connected to.
     
     @param {SC.State} state

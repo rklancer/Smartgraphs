@@ -18,6 +18,7 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   state: 'SENSOR_TOOL',
   
   datadefName: null,
+  datadef: null,
   controlsPane: null,
   graphController: null,
   
@@ -25,7 +26,10 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   sensorIsReady: NO,
   
   setup: function (args) {
+    
     this.set('datadefName', args.data);
+    this.set('datadef', this.getDatadef(args.data));
+    
     this.set('controlsPane', args.controlsPane);
     this.set('graphController', this.graphControllerForPane(args.controlsPane));
     
@@ -36,9 +40,23 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   
   clearSetup: function () {
     this.set('datadefName', null);
+    this.set('datdef', null);
     this.set('conrolsPane', null);
     this.set('graphController', null);
-    // don't clear appletView or sensorIsReady
+    // don't clear appletView or sensorIsReady!
+  },
+  
+  
+  startRecording: function () {
+    console.log('startRecording');
+  },
+  
+  stopRecording: function () {
+    console.log('stopRecording');
+  },
+  
+  clearRecordedData: function () {
+    console.log('clearRecordedData');
   },
   
   /**

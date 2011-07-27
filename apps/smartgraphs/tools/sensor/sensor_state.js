@@ -91,12 +91,12 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
     SENSOR_RECORDING:  SC.State.design({
       
       enterState: function () {
-        //Smartgraphs.sensorController.startRecording();
+        Smartgraphs.sensorTool.startRecording();
         Smartgraphs.sensorTool.get('graphController').highlightStopControl();  
       },
 
       exitState: function () {
-        //Smartgraphs.sensorController.stopRecording();
+        Smartgraphs.sensorTool.stopRecording();
       },
 
       stopControlWasClicked: function () {
@@ -121,7 +121,7 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
       },
 
       clearSensor: function () {
-        //Smartgraphs.sensorController.clearRecordedData();
+        Smartgraphs.sensorTool.clearRecordedData();
         this.gotoState('SENSOR_READY');
         return YES;
       }
