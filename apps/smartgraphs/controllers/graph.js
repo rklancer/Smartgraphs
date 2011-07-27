@@ -147,6 +147,13 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   },
   
   /**
+    Show the "spinny" and message that indicate the sensor is loading
+  */
+  showSensorLoadingView: function () {
+    this.set('showInControlsPanel', Smartgraphs.GraphController.SENSOR_LOADING);
+  },
+  
+  /**
     Hide the graph start/stop/reset controls.
   */
   hideControls: function (pane) {

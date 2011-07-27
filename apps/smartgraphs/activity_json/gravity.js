@@ -57,7 +57,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "tools": [
         { "name": "sensor",
           "setup": {
-            "data": "position-time-data"
+            "data": "position-time-data",
+            "controlsPane": "top"
           }
         }
       ],
