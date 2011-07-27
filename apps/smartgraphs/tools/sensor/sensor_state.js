@@ -1,34 +1,34 @@
 // ==========================================================================
-// Project:   Smartgraphs.SENSOR
-// Copyright: ©2010 Concord Consortium
+// Project:   Smartgraphs.SENSOR_TOOL
+// Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  Superstate representing that the sensor applet is being loaded up or has been loaded
+  Superstate representing that the sensor applet is being loaded or has been loaded
 
   @extends SC.State
   @version 0.1
 */
 
-Smartgraphs.SENSOR = SC.State.extend(
-/** @scope Smartgraphs.SENSOR.prototype */ {
+Smartgraphs.SENSOR_TOOL = SC.State.extend(
+/** @scope Smartgraphs.SENSOR_TOOL.prototype */ {
   
   initialSubstate: 'SENSOR_DEFAULT',
   
   enterState: function () {
-    var enableSucceeded = Smartgraphs.sensorController.enableInput();
-    if ( !enableSucceeded ) {
-      // FIXME with SC.Statechart there may be some cleaner way to refuse to enter the state
-      this.gotoState('ACTIVITY_STEP_DEFAULT');
-    }
+    // var enableSucceeded = Smartgraphs.sensorController.enableInput();
+    // if ( !enableSucceeded ) {
+    //   // FIXME with SC.Statechart there may be some cleaner way to refuse to enter the state
+    //   this.gotoState('ACTIVITY_STEP_DEFAULT');
+    // }
   },
   
   exitState: function () {
-    Smartgraphs.sensorController.disableInput();
-    Smartgraphs.activityViewController.hideControls();
+    // Smartgraphs.sensorController.disableInput();
+    // Smartgraphs.activityViewController.hideControls();
   },
   
   // ..........................................................

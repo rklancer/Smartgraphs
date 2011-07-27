@@ -55,6 +55,11 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         }
       },
       "tools": [
+        { "name": "sensor",
+          "setup": {
+            "data": "position-time-data"
+          }
+        }
       ],
       "beforeText": "<p>Attach a sensor and click the Start button. Observe the velocity graph below.</p>",
       "hideSubmitButton": true
