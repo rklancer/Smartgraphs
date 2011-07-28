@@ -61,7 +61,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       ],
       "name": "Experimenting With Motion",
       "firstStep": "/shared/marias-run/page/2/step/1",
-      "introText": "<p>You are going to move in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds.Experiment with different kinds of motions (fast, slow, toward the sensor, away from the sensor\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
+      "introText": "<p>You are going to move in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (fast, slow, toward the sensor, away from the sensor\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
       "url": "/shared/marias-run/page/2",
       "activity": "/shared/marias-run",
       "index": 2
@@ -829,7 +829,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
           "datasetName": "maria"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Find the point that represents when and where Maria stopped.<p>",
+      "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Find the point that represents when and where Maria stopped.<p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -965,7 +965,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
           "datasetName": "maria"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>:Here is where Maria stopped. Find her position (y value) at this point. </p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
+      "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>: Here is where Maria stopped. Find her position (y value) at this point. </p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -1328,7 +1328,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
           "datasetName": "maria"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>:Maria stopped between 4 and 6 minutes. 6-4=?</p>",
+      "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>: Maria stopped between 4 and 6 minutes. 6-4=?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
