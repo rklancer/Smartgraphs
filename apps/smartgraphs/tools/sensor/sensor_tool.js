@@ -67,6 +67,12 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
     this.set('sensorIsReady', YES);
     Smartgraphs.statechart.sendAction('sensorHasLoaded');
     SC.RunLoop.end();
+  },
+  
+  /**
+    applet callback (applet doesn't send useful information with this callback yet)
+  */
+  dataStreamEvent: function () {
   }
 
 });
