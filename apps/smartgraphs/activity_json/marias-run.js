@@ -17,7 +17,8 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "/shared/marias-run/page/5",
       "/shared/marias-run/page/6",
       "/shared/marias-run/page/7",
-      "/shared/marias-run/page/8"
+      "/shared/marias-run/page/8",
+      "/shared/marias-run/page/9"
     ],
     "datasets": [
       "/shared/marias-run/dataset/maria"
@@ -60,7 +61,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       ],
       "name": "Experimenting With Motion",
       "firstStep": "/shared/marias-run/page/2/step/1",
-      "introText": "<p>You are going to try moving in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (walking fast, slow, forward, backward\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
+      "introText": "<p>You are going to move in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds.Experiment with different kinds of motions (fast, slow, toward the sensor, away from the sensor\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
       "url": "/shared/marias-run/page/2",
       "activity": "/shared/marias-run",
       "index": 2
@@ -138,7 +139,6 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
     {
       "steps": [
         "/shared/marias-run/page/8/step/1",
-        "/shared/marias-run/page/8/step/2"
       ],
       "name": "Reflection on Activity",
       "firstStep": "/shared/marias-run/page/8/step/1",
@@ -146,6 +146,17 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "url": "/shared/marias-run/page/8",
       "activity": "/shared/marias-run",
       "index": 8
+    },
+    {
+      "steps": [
+        "/shared/marias-run/page/9/step/1"
+      ],
+      "name": "Congratulations",
+      "firstStep": "/shared/marias-run/page/9/step/1",
+      "introText": "",
+      "url": "/shared/marias-run/page/9",
+      "activity": "/shared/marias-run",
+      "index": 9
     }
   ],
   "steps": [
@@ -818,7 +829,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
           "datasetName": "maria"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Look at the data and find how many minutes passed <b>before</b> Maria stopped.</p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
+      "beforeText": "<p>Incorrect.</p><p><b>Hint 1</b>: Find the point that represents when and where Maria stopped.<p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -954,7 +965,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
           "datasetName": "maria"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>: Here is where Maria stopped. Find her position from the start of the track.</p><p>Try again. Find the y value (position) of this point?</p>",
+      "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>:Here is where Maria stopped. Find her position (y value) at this point. </p><p>Try again. How many meters did Maria run before she stopped to talk to her coach?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -1317,7 +1328,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
           "datasetName": "maria"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>: After four minutes, Maria stopped and did not start moving again until six minutes. So, how many minutes passed?</p><p>Try again. For how many minutes did Maria stop to talk to her coach?</p>",
+      "beforeText": "<p>Incorrect.</p><p><b>Hint 3</b>:Maria stopped between 4 and 6 minutes. 6-4=?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "",
       "startCommands": [
@@ -1424,7 +1435,8 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
           "datasetName": "maria"
         }
       },
-      "beforeText": "<p>Correct! Maria stopped during the horizontal segment of the graph. This is when her position did not change. As you can see, this interval lasted 2 minutes.</p><p>Click Next Page   >> when you are ready.</p>",
+     
+      "beforeText": "<p>Correct! Maria’s position did not change between 4 and 6 minutes. This interval lasted 2 minutes since 6-4=2. <p>Click Next Page   >> when you are ready.</p>",
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
@@ -1466,8 +1478,8 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
           "datasetName": "maria"
         }
       },
-      "beforeText": "<p>Think back on the activities you just did.</p><p>Now that you have had a chance to create your own position versus time graphs, explain what kind of details this graph can tell about motion on a straight track. Give examples of some details that a position versus time graph cannot tell.</p><p>What other elements would make the story complete?</p>",
-      "responseTemplate": "/components/response-template/open",
+      "beforeText": "<p>Think back on the activities you just did and the graphs you saw.</p><p>What details can a position-time graph reveal about motion on a straight track?</p><p>What details does a position-time graph leave out?</p>",
+      "responseTemplate": "/components/response-template/two-text-areas",
       "afterText": "",
       "startCommands": [
         
@@ -1495,35 +1507,31 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       ],
       "responseInspector": null,
       "responseBranches": null,
-      "defaultBranch": "/shared/marias-run/page/8/step/2",
-      "isFinalStep": false,
+      "defaultBranch": "/shared/marias-run/page/9/step/1",
+      "isFinalStep": true,
       "shouldAutoAdvancePage": false,
-      "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
-      "nextButtonShouldSubmit": false
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
     },
     {
-      "url": "/shared/marias-run/page/8/step/2",
-      "activityPage": "/shared/marias-run/page/8",
-      "paneConfig": "split",
+      "url": "/shared/marias-run/page/9/step/1",
+      "activityPage": "/shared/marias-run/page/9",
+      "paneConfig": "single",
       "panes": {
-        "top": {
-          "type": "graph",
-          "name": "maria"
-        },
-        "bottom": {
-          "type": "table",
-          "graphName": "maria",
-          "datasetName": "maria"
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/walking_path.jpg",
+          "caption": "Creative Commons BY-NC-ND 2.0 image courtesy flickr user altopower"
         }
       },
-      "beforeText": "<p>This is the end of the activity.</p>",
+      "beforeText": "<h3>Congratulations!</h3><br/><p>You completed the activity.</p>",
       "responseTemplate": null,
       "afterText": "",
       "startCommands": [
         
       ],
-      "shouldFinishImmediately": false,
+      "shouldFinishImmediately": true,
       "shouldWaitForSubmissibleResponse": false,
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
@@ -1669,7 +1677,23 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "initialValues": [
         ""
       ]
-    }
+    },
+    {
+      "url": "/components/response-template/two-text-areas",
+      "templateString": "",
+      "fieldTypes": [
+        "textarea",
+        "textarea"
+      ],
+      "fieldChoicesList": [
+        null,
+        null
+      ],
+      "initialValues": [
+        "A position-time graph shows ...",
+        "A position-time graph leaves out ..."
+      ]
+    },
   ],
   "datasets": [
     {
