@@ -48,13 +48,17 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
     // turn on or off all datasets selectability
     var enableSelection = this.get('allowSelectionOfDatasets');
+    var resetSelection = this.get('resetDatasetSelection');
     var controllers = [Smartgraphs.firstGraphController, Smartgraphs.secondGraphController];
     controllers.forEach(function(c) {
       if (c.get('datasetList')) {
         c.get('datasetList').setEach('isSelectable',enableSelection);
+        if(resetSelection) {
+          c.get('datasetList').setEach('selection', null);
+        }
       }
     });
-
+  
     Smartgraphs.responseTemplateController.setTemplate(this.get('responseTemplate'));
     // enableSubmission *before* executing startCommands -- they might disable submission
     Smartgraphs.statechart.sendAction('enableSubmission');

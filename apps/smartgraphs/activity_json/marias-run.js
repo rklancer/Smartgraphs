@@ -816,6 +816,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
       "submitButtonTitle": "Check My Answer",
+      "resetDatasetSelection": true,
       "nextButtonShouldSubmit": false
     },
     {

@@ -399,7 +399,17 @@ Smartgraphs.ActivityStep = SC.Record.extend(
   *
   *  if NO, points in the graph and table will not respond to mouse clicks.
   *  if YES, points can be 'selected' by mouse click.
+  *  @property {Boolean}
   */
-  allowSelectionOfDatasets: SC.Record.attr(Boolean)
+  allowSelectionOfDatasets: SC.Record.attr(Boolean),
+
+  /**
+  *  Whether or not the datasets should retain its current selection.
+  *  
+  *  if NO, datasets selection is maintained
+  *  if YES, datasets will loose their current selection.
+  */
+  resetDatasetSelection: SC.Record.attr(Boolean)
+
 
 }) ;
