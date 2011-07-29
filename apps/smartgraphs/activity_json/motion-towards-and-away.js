@@ -548,7 +548,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
           "name": "graph-with-toward-prediction"
         }
       },
-      "beforeText": "<p>How closely do the graphs of your data match your original predictions?</p>",
+      "beforeText": "<p>How does your collected data differ from your predicted data?</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -600,7 +600,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
           "name": "sensor-toward"
         }
       },
-      "beforeText": "<p>How are the two position-time graphs <b>similar</b> to each other?</p>",
+      "beforeText": "<p>How does motion away from the sensor <b>differ</b> from motion toward the sensor on a position-time graph?</b>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -652,7 +652,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
           "name": "sensor-toward"
         }
       },
-      "beforeText": "<p>How does motion away from the sensor <b>differ</b> from motion toward the sensor on a position-time graph?</b>",
+      "beforeText": "<p>How are the two position-time graphs <b>similar</b> to each other?</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -739,7 +739,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
               1
             ]
           },
-          "step": "/shared/motion-towards-and-away/page/6/step/5"
+          "step": "/shared/motion-towards-and-away/page/6/step/3"
         },
         {
           "criterion": {
@@ -757,7 +757,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
               3
             ]
           },
-          "step": "/shared/motion-towards-and-away/page/6/step/3"
+          "step": "/shared/motion-towards-and-away/page/6/step/5"
         },
         {
           "criterion": {
@@ -773,7 +773,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
@@ -825,7 +825,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
               1
             ]
           },
-          "step": "/shared/motion-towards-and-away/page/6/step/5"
+          "step": "/shared/motion-towards-and-away/page/6/step/3"
         },
         {
           "criterion": {
@@ -843,7 +843,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
               3
             ]
           },
-          "step": "/shared/motion-towards-and-away/page/6/step/3"
+          "step": "/shared/motion-towards-and-away/page/6/step/5"
         },
         {
           "criterion": {
@@ -859,7 +859,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
@@ -911,7 +911,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
               1
             ]
           },
-          "step": "/shared/motion-towards-and-away/page/6/step/5"
+          "step": "/shared/motion-towards-and-away/page/6/step/3"
         },
         {
           "criterion": {
@@ -929,7 +929,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
               3
             ]
           },
-          "step": "/shared/motion-towards-and-away/page/6/step/3"
+          "step": "/shared/motion-towards-and-away/page/6/step/5"
         },
         {
           "criterion": {
@@ -945,7 +945,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
@@ -997,7 +997,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
               1
             ]
           },
-          "step": "/shared/motion-towards-and-away/page/6/step/5"
+          "step": "/shared/motion-towards-and-away/page/6/step/3"
         },
         {
           "criterion": {
@@ -1015,7 +1015,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
               3
             ]
           },
-          "step": "/shared/motion-towards-and-away/page/6/step/3"
+          "step": "/shared/motion-towards-and-away/page/6/step/5"
         },
         {
           "criterion": {
@@ -1031,7 +1031,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
@@ -1320,7 +1320,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
@@ -1379,7 +1379,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
@@ -1438,7 +1438,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
@@ -1497,7 +1497,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": false,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": false
     },
     {
@@ -1538,7 +1538,7 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       "isFinalStep": true,
       "shouldAutoAdvancePage": false,
       "hideSubmitButton": false,
-      "submitButtonTitle": "OK",
+      "submitButtonTitle": "Check My Answer",
       "nextButtonShouldSubmit": true
     },
     {
@@ -2034,9 +2034,9 @@ Smartgraphs.activityDocs["/shared/motion-towards-and-away"] =
       ],
       "fieldChoicesList": [
         [
-          "The walker was 4 meters away, getting ready to walk toward the sensor.",
+          "The walker was closest to the motion sensor, getting ready to walk toward the sensor.",
           "The walker was closest to the motion sensor, getting ready to walk away from the sensor.",
-          "The walker was 4 meters away from the motion sensor and did not move.",
+          "The walker was 4 meters away, getting ready to walk toward the sensor.",
           "The walker was 4 meters away from the motion sensor, getting ready to walk away from the sensor."
         ]
       ],
