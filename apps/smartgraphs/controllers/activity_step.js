@@ -39,7 +39,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
     this.set('submissibilityInspectorInstance', null);
   },
-  
+
   /**
     Initializes the ActivityStep. Called when we enter ACTIVITY_STEP state.
   */
@@ -61,7 +61,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     this.executeCommands(this.get('startCommands'));
     this.setupTriggers();
     this.processSubstitutions(this.get('substitutedExpressions'));
-   
+
     // does the step goes "straight through"?
     if (this.get('shouldFinishImmediately')) {
       Smartgraphs.statechart.sendAction('submitStep');
@@ -70,30 +70,30 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       Smartgraphs.statechart.sendAction('waitForResponse');
     }
   },
-  
+
   setupPanes: function () {
     Smartgraphs.statechart.sendAction('setPaneConfig', this, this.get('paneConfig'));
-    
+
     var panes = this.get('panes');
     for (var key in panes) {
       if ( !panes.hasOwnProperty(key) ) continue;
       this.setupPane(key, panes[key]);
     }
   },
-  
+
   setupPane: function (pane, config) {
     pane = Smartgraphs.activityViewController.validPaneFor(pane);
     if (!pane) return;
-    
+
     if (config === null) {
       Smartgraphs.statechart.sendAction('hidePane', this, pane);
       return;
     }
-    
+
     switch (config.type) {
-      case 'graph': 
+      case 'graph':
         Smartgraphs.statechart.sendAction('showGraph', this, { pane: pane, name: config.name });
-        return;        
+        return;
       case 'table':
         Smartgraphs.statechart.sendAction('showTable', this, { pane: pane, datasetName: config.datasetName } );
         return;
@@ -108,17 +108,17 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
 
     // TODO action 'whitelist'?
     // TODO deal with argument substitution?
-    
+
     var self = this;
     commands.forEach(function (command) {
       Smartgraphs.statechart.sendAction(command.action, self, command.literalArgs);
     });
   },
-  
+
   setupTriggers: function () {
       // TODO!!
   },
-  
+
   processSubstitutions: function(expressions) {
     if (!expressions) return;
 
@@ -127,7 +127,7 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     for (var ind in expressions) {
       if ( !expressions.hasOwnProperty(ind) ) continue;
       var expression = expressions[ind];
-      
+
       var inspector = this.makeInspector(expression);
       if (inspector) {
         var value = inspector.inspect();
@@ -146,15 +146,15 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
     }
 
   },
-  
+
   enableSubmission: function () {
     this.set('canSubmit', YES);
   },
-  
+
   disableSubmission: function () {
-    this.set('canSubmit', NO);    
+    this.set('canSubmit', NO);
   },
-  
+
   waitForResponse: function () {
     var inspectorInfo = this.get('submissibilityInspector');
 
@@ -173,14 +173,14 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       }
     }
   },
-  
+
   checkSubmissibility: function () {
     var value = this.getPath('submissibilityInspectorInstance.value');
     var valueIsValid = Smartgraphs.evaluate(this.get('submissibilityCriterion'), value);
     var canSubmit = this.get('canSubmit');
-    
+
     //console.log('evaluating "' + value + '" to: ' + (valueIsValid ? 'VALID' : 'NOT VALID'));
-    
+
     if (valueIsValid && !canSubmit) {
       Smartgraphs.statechart.sendAction('enableSubmission');
     }
@@ -188,33 +188,33 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
       Smartgraphs.statechart.sendAction('disableSubmission');
     }
   },
-  
+
   /**
     Called when the user clicks the 'done' or 'submit' button associated with this step.
-        
+
     Generally this happens in concert with a transition to ACTIVITY_STEP_SUBMITTED. Any 'goto (next) step' commands,
-    or any branching to other steps based on the user-submitted response ('answer checking') should be done 
+    or any branching to other steps based on the user-submitted response ('answer checking') should be done
     here. Step transitions are only allowed during ACTIVITY_STEP_SUBMITTED.
-    
-    Loops in order through the responseBranches associated with this step, evaluates the 'criterion' property of each 
-    in turn (passing in the return value of the responseInspector) and jumps to the step associated with the first 
+
+    Loops in order through the responseBranches associated with this step, evaluates the 'criterion' property of each
+    in turn (passing in the return value of the responseInspector) and jumps to the step associated with the first
     branch whose 'criterion' evaluates to YES.
-    
+
     If there are no Reactions or none evaluate to YES, jumps to the defaultBranch, if any.
-    
+
     Does nothing if no Reactions evaluate to YES and there is no defaultBranch. In this case, it is considered
     an error if the 'isFinalStep' property is NO.
   */
   handleSubmission: function () {
     if ( !this.get('canSubmit') ) return NO;
-    
+
     this.executeCommands(this.get('afterSubmissionCommands'));
-    
+
     var inspector = this.makeInspector(this.get('responseInspector'));
     if (inspector) {
       var value = inspector.inspect();
       var branch, branches = this.get('responseBranches');
-    
+
       for (var i = 0; i < branches.length; i++) {
         branch = branches[i];
         if (Smartgraphs.evaluate(branch.criterion, value)) {
@@ -223,28 +223,28 @@ Smartgraphs.activityStepController = SC.ObjectController.create(
         }
       }
     }
-    
+
     var defaultBranch = this.get('defaultBranch');
-    
+
     if (defaultBranch) {
       Smartgraphs.statechart.sendAction('gotoStep', this, { stepId: defaultBranch.get('id') });
     }
   },
-  
+
   makeInspector: function (inspectorInfo) {
     if (!inspectorInfo || !inspectorInfo.type) {
       return NO;
     }
-    
+
     var klass = SC.objectForPropertyPath(inspectorInfo.type);
-        
+
     if (!klass || !klass.isClass || !SC.kindOf(klass, Smartgraphs.Inspector)) {
       throw "makeInspector was given an non-empty, but invalid, Inspector class name";
     }
-    
+
     return klass.create({
       config: inspectorInfo.config
     });
   }
-  
+
 }) ;
