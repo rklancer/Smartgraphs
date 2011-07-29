@@ -391,6 +391,15 @@ Smartgraphs.ActivityStep = SC.Record.extend(
     nextButtonShouldSubmit because (nominally) it leaves the submit button visible and the next button hidden; unsure
     if we want to implement both this and nextButtonShouldSubmit
   */
-  shouldAutoAdvancePage: SC.Record.attr(Boolean)
+  shouldAutoAdvancePage: SC.Record.attr(Boolean),
+
+  /**
+  *  Whether or not the points in the datagraph or the datatable are
+  *  selectable by mouse click.
+  *
+  *  if NO, points in the graph and table will not respond to mouse clicks.
+  *  if YES, points can be 'selected' by mouse click.
+  */
+  allowSelectionOfDatasets: SC.Record.attr(Boolean)
 
 }) ;

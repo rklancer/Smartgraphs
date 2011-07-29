@@ -396,6 +396,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "startCommands": [
         
       ],
+      "allowSelectionOfDatasets": true,
       "shouldFinishImmediately": false,
       "shouldWaitForSubmissibleResponse": true,
       "submissibilityInspector": {
