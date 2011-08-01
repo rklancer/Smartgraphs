@@ -15,7 +15,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     ],
     "axes": [
       "/shared/gravity/axes/10s",
-      "/shared/gravity/axes/5m"
+      "/shared/gravity/axes/5m",
+      "/shared/gravity/axes/2mps"
     ]
   },
   "pages": [
@@ -50,7 +51,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           "title": "Velocity vs. Time",
           "xAxis": "/shared/gravity/axes/10s",
           "yAxis": "/shared/gravity/axes/2mps",
-          "data": [],
+          "data": ["velocity-time-data"],
           "annotations": []
         }
       },
@@ -88,7 +89,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     {
       "url": "/shared/gravity/axes/2mps",
       "units": "/builtins/units/meters-per-second",
-      "min": 0,
+      "min": -2,
       "max": 2,
       "nSteps": 10,
       "label": "Velocity"
@@ -105,7 +106,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "type": "UnorderedDataPoints",
       "records": [
         {    
-          "url": "/shared/gravity/datadef/position-time-data",
+          "url": "/shared/gravity/datadefs/position-time-data",
           "name": "position-time-data",
           "activity": "/shared/gravity",
           "xUnits": "/builtins/units/seconds",
@@ -120,8 +121,21 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     },
     {
       "type": "FirstOrderDifference",
-      "records": []
-    }  
+      "records": [
+        {    
+          "url": "/shared/gravity/datadefs/velocity-time-data",
+          "name": "velocity-time-data",
+          "activity": "/shared/gravity",
+          "xUnits": "/builtins/units/seconds",
+          "xLabel": "Time",
+          "xShortLabel": "Time",
+          "yUnits": "/builtins/units/meters-per-second",
+          "yLabel": "Velocity",
+          "yShortLabel": "Velocity",
+          "source": "/shared/gravity/datadefs/position-time-data"
+        }
+      ]
+    }
   ],
   "annotations": [
   ]
