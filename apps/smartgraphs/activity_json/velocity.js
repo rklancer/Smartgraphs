@@ -323,8 +323,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/Animated_Aston_Martin_Speedometer.gif",
-          "caption": "CC-BY-SA-3.0 Wikimedia Commons image courtesy Dinesh Advani"
+          "path": "/static/smartgraphs/en/current/resources/images/spedometer.gif",
+          "caption": null
         }
       },
       "beforeText": "<p>Describe another way that you can tell how fast you are moving.</p>",
@@ -5149,8 +5149,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/Animated_Aston_Martin_Speedometer.gif",
-          "caption": "CC-BY-SA-3.0 Wikimedia Commons image courtesy Dinesh Advani"
+          "path": "/static/smartgraphs/en/current/resources/images/spedometer.gif",
+          "caption": null
         }
       },
       "beforeText": "",
