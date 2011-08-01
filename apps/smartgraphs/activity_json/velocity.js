@@ -588,7 +588,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
-      "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation of <b>%@</b> %@ for <b>4</b> meters, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>= ?</td></tr></table></blockquote>",
+      "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation of <b>%@</b> %@ for <b>4</b> meters, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4 meters<hr/>%@ seconds</td><td style='border-width:0px'>= ? m/s</td></tr></table></blockquote>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
@@ -662,7 +662,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity would be calculated like this:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>=</td><td style='border-width:0px'><b>%@</b></td></tr></table></blockquote><p>%@</p>",
+      "beforeText": "<p>Incorrect.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity would be calculated like this:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4 meters<hr/>%@ seconds</td><td style='border-width:0px'>=</td><td style='border-width:0px'><b>%@</b> m/s</td></tr></table></blockquote><p>%@</p>",
       "responseTemplate": null,
       "afterText": "",
       "substitutedExpressions": [
@@ -697,7 +697,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
-            "evalStatement": "[0] == [1] ? '' : 'Rounded to the nearest tenth, that makes <b>[2]</b>.'",
+            "evalStatement": "[0] == [1] ? '' : 'Rounded to the nearest tenth, that makes <b>[2]</b> m/s.'",
             "variableNames": [
               "velocity-based-on-observed-four-meter-walk",
               "rounded-velocity-based-on-observed-four-meter-walk",
@@ -1247,7 +1247,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>You started walking at <b>%@</b> seconds and ended at <b>%@</b> seconds.</p><p>How many seconds were you walking?</p>",
+      "beforeText": "<p>Incorrect.</p><p>Hint: You started walking at <b>%@</b> seconds and ended at <b>%@</b> seconds.</p><p>___ - ___ = ? <p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
@@ -1308,10 +1308,22 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>You started walking at <b>%@</b> seconds and ended at <b>%@</b> seconds, so you were walking for <b>%@</b> seconds</p>",
+      "beforeText": "<p>Incorrect.</p><p>You started walking at <b>%@</b> seconds and ended at <b>%@</b> seconds, so you were walking for <b>%@</b> seconds since <b>%@</b> - <b>%@</b> = <b>%@</b>. </p>",
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "rounded-actual-normal-start-time" }
+        },
+        {
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "rounded-actual-normal-end-time" }
+        },
+        {
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "actual-normal-change-time" }
+        },
         {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-start-time" }
@@ -1363,7 +1375,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>If it took you <b>%@</b> seconds to walk <b>%@</b> meters, then you were walking at a rate of <b>%@</b> meters per second.</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>%@<hr/>%@</td><td style='border-width:0px'>=</td><td style='border-width:0px'>%@</td></tr></table></blockquote>",
+      "beforeText": "<p>If it took you <b>%@</b> seconds to walk <b>%@</b> meters, then you were walking at a rate of <b>%@</b> meters per second.</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>%@ m<hr/>%@ s</td><td style='border-width:0px'>=</td><td style='border-width:0px'>%@ m/s</td></tr></table></blockquote>",
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
@@ -1478,7 +1490,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "name": "sensor-result-normal-walking"
         }
       },
-      "beforeText": "<p>Did your prediction graph of normal, steady motion match the actual data? Explain.</p>",
+      "beforeText": "<p>How does your collected data differ from your predicted data?</p>",
       "responseTemplate": "/components/response-template/open",
       "afterText": "",
       "startCommands": [
@@ -4726,7 +4738,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>Click the point that represents the <b>start</b> of the trip.</p>",
+      "beforeText": "<p>Incorrect.</p><p>Hint: At the start of the trip, both the position and time are 0.</p><p><b>Click</b> the point that represents the <b>start</b> of the trip.",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -4842,7 +4854,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>Click the point that represents the <b>end</b> of the trip.</p>",
+      "beforeText": "<p>Incorrect.</p><p>Hint: What are the position and time at the end of the trip?</p><p><b>Click</b> the point that represents the <b>end</b> of the trip.</p>",
       "responseTemplate": "",
       "afterText": "",
       "startCommands": [
@@ -4901,7 +4913,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       },
       "beforeText": "<p>Here is a line through the two points.</p><p>What was your average velocity during the whole trip?</p>",
       "responseTemplate": "/components/response-template/numeric",
-      "afterText": "<p>Hint: What were your total distance and your total time?</p>",
+      "afterText": "<p>Round your answer to the nearest tenth (m/s).</p><p>Hint: What were your total distance and your total time?</p>",
       "startCommands": [
         {
           "action": "createLineThroughPoints",
