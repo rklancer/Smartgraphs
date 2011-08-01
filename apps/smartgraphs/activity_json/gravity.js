@@ -14,9 +14,9 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "/shared/gravity/page/1"
     ],
     "axes": [
-      "/shared/gravity/axes/10s",
+      "/shared/gravity/axes/20s",
       "/shared/gravity/axes/5m",
-      "/shared/gravity/axes/2mps"
+      "/shared/gravity/axes/3mps"
     ]
   },
   "pages": [
@@ -41,7 +41,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         "top": {
           "type": "graph",
           "title": "Position vs. Time",
-          "xAxis": "/shared/gravity/axes/10s",
+          "xAxis": "/shared/gravity/axes/20s",
           "yAxis": "/shared/gravity/axes/5m",
           "data": ["position-time-data"],
           "annotations": []
@@ -49,8 +49,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         "bottom": {
           "type": "graph",
           "title": "Velocity vs. Time",
-          "xAxis": "/shared/gravity/axes/10s",
-          "yAxis": "/shared/gravity/axes/2mps",
+          "xAxis": "/shared/gravity/axes/20s",
+          "yAxis": "/shared/gravity/axes/3mps",
           "data": ["velocity-time-data"],
           "annotations": []
         }
@@ -71,10 +71,10 @@ Smartgraphs.activityDocs["/shared/gravity"] =
   ],
   "axes": [  
     {
-      "url": "/shared/gravity/axes/10s",
+      "url": "/shared/gravity/axes/20s",
       "units": "/builtins/units/seconds",
       "min": 0,
-      "max": 10,
+      "max": 20,
       "nSteps": 10,
       "label": "Time"
     },
@@ -87,11 +87,11 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "label": "Position"
     },
     {
-      "url": "/shared/gravity/axes/2mps",
+      "url": "/shared/gravity/axes/3mps",
       "units": "/builtins/units/meters-per-second",
-      "min": -2,
-      "max": 2,
-      "nSteps": 10,
+      "min": -1.5,
+      "max": 1.5,
+      "nSteps": 15,
       "label": "Velocity"
     }
   ],
@@ -132,7 +132,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           "yUnits": "/builtins/units/meters-per-second",
           "yLabel": "Velocity",
           "yShortLabel": "Velocity",
-          "source": "/shared/gravity/datadefs/position-time-data"
+          "source": "/shared/gravity/datadefs/position-time-data",
+          "windowLength": 4
         }
       ]
     }
