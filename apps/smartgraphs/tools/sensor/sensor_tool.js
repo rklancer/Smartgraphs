@@ -21,10 +21,13 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   datadef: null,
   controlsPane: null,
   graphController: null,
+  xMin: null,
+  xMax: null,
   
   appletView: null,
   sensorIsReady: NO,
   nSamples: 0,
+  downsampleRatio: 2,     // don't adjust for IE...?
   
   /**
     The time interval between data points returned by the sensor
@@ -32,11 +35,31 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   dt: 0.1,
   
   setup: function (args) {
-    this.set('datadefName', args.data);
-    this.set('datadef', this.getDatadef(args.data));
+    var datadef         = this.getDatadef(args.data),
+        pane            = Smartgraphs.activityViewController.validPaneFor(args.controlsPane),
+        graphController = this.graphControllerForPane(pane),
+        xAxis,
+        xMin,
+        xMax;
     
-    this.set('controlsPane', args.controlsPane);
-    this.set('graphController', this.graphControllerForPane(args.controlsPane));
+    if (!datadef || !pane) {
+      console.error("invalid setup for sensorTool");
+      return;
+    }
+    
+    if (!graphController) {
+      console.error("sensorTool setup couldn't find correct graph controller");
+      return;
+    }
+
+    this.set('datadef', datadef);
+    this.set('datadefName', datadef.get('name'));    
+    this.set('controlsPane', pane);
+    this.set('graphController', graphController);
+    
+    xAxis = graphController.get('xAxis');
+    this.set('xMin', SC.none(args.xMin) ? xAxis && xAxis.get('min') : args.xMin);
+    this.set('xMax', SC.none(args.xMax) ? xAxis && xAxis.get('max') : args.xMax);
     
     if (!this.get('appletView')) this.set('appletView', Smartgraphs.appletPage.sensorAppletView.create());
     
@@ -46,23 +69,20 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   clearSetup: function () {
     this.set('datadefName', null);
     this.set('datdef', null);
-    this.set('conrolsPane', null);
+    this.set('controlsPane', null);
     this.set('graphController', null);
     // don't clear appletView or sensorIsReady!
   },
-  
   
   startRecording: function () {
     this.setPath('datadef.isStreaming', YES);
     this._nSamples = 0;
     this.get('appletView').start();
-    console.log('startRecording');   
   },
   
   stopRecording: function () {
     this.setPath('datadef.isStreaming', NO);
     this.get('appletView').stop();
-    console.log('stopRecording');
   },
   
   clearRecordedData: function () {
@@ -84,46 +104,43 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
     applet callback
   */
   dataReceived: function (type, numPoints, data) {
-    var dt = this.get('dt'),
-        // downsampleRatio = this.get('downsampleRatio');
+    var dt              = this.get('dt'),
+        downsampleRatio = this.get('downsampleRatio'),
         x, 
         y,
         i;
-      // point;
     
     for (i = 0; i < numPoints; i++) {
       x = this._nSamples * dt;
       y = data[i];
       
-      // if (x > this.get('xMax')) {
-      //   
-      //   // 'stopSensor' action results in an applet method being called inline. This does not work well in all
-      //   // browsers (they seem to trip up when the applet method is called from within an applet callback.)
-      //   // Therefore, use setTimeout to trigger the stopSensor action after the callback finishes. Note that using
-      //   // this.invokeLater() rather than setTimeout did not seem to work (the invokeLater blocks queued up 
-      //   // indefinitely.)
-      // 
-      //   setTimeout( function () {
-      //     SC.RunLoop.begin();
-      //     Smartgraphs.statechart.sendAction('stopSensor');
-      //     SC.RunLoop.end();
-      //   }, 10);
-      // 
-      //   return;
-      // }
+      if (x > this.get('xMax')) {
+        
+        // 'stopSensor' action results in an applet method being called inline. This does not work well in all
+        // browsers (they seem to trip up when the applet method is called from within an applet callback.)
+        // Therefore, use setTimeout to trigger the stopSensor action after the callback finishes. Note that using
+        // this.invokeLater() rather than setTimeout did not seem to work (the invokeLater blocks queued up 
+        // indefinitely.)
       
-      // if ( this._nsamples % downsampleRatio === 0 ) {
-      //   SC.RunLoop.begin();
-      //   point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
-      //   this._dataset.set('latestPoint', point);
-      //   this._dataset.get('points').pushObject(point);
-      //   SC.RunLoop.end();
-      // }
+        setTimeout( function () {
+          SC.RunLoop.begin();
+          Smartgraphs.statechart.sendAction('stopSensor');
+          SC.RunLoop.end();
+        }, 10);
       
-      this.get('datadef').addPoint(x, y);
+        return;
+      }
+      
+      if ( this._nSamples % downsampleRatio === 0 ) {
+        SC.RunLoop.begin();
+        this.get('datadef').addPoint(x, y);
+        SC.RunLoop.end();
+      }
+      
       this._nSamples++;
     }
   },
+  
   /**
     applet callback (applet doesn't send useful information with this callback yet)
   */
