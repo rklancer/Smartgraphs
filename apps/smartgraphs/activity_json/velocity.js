@@ -20,7 +20,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "/shared/what-is-velocity/page/8",
       "/shared/what-is-velocity/page/9",
       "/shared/what-is-velocity/page/10",
-      "/shared/what-is-velocity/page/11",      
+      "/shared/what-is-velocity/page/11",
       "/shared/what-is-velocity/page/12",
       "/shared/what-is-velocity/page/13",
       "/shared/what-is-velocity/page/14",
@@ -338,9 +338,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [ 
-          { "length": { "strip": "value" } }, 
-          0 
+        "gt": [
+          { "length": { "strip": "value" } },
+          0
         ]
       },
       "triggeredCommands": [
@@ -406,7 +406,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "responseBranches": [
         {
           "criterion": {
-            "gt": [ 
+            "gt": [
               { "int": { "strip": "value" } },
               30
             ]
@@ -429,7 +429,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "<p><i>Please choose a number between 1 and 30.</i></p><p><b>Walk</b> approximately 4 meters at your normal walking pace.</p><p>About how many seconds did it take?</p>",
@@ -491,21 +491,21 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "<p>Based on your observation that you walked <b>4</b> meters in <b>%@</b> %@, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td></tr></table></blockquote>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
@@ -519,7 +519,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "velocity-based-on-observed-four-meter-walk",
             "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": { 
+            "config": {
               "round" : [
                 { "quotient" : [ 4, { "variable": "observed-duration-four-meter-walk" } ] },
                 5
@@ -532,10 +532,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "rounded-velocity-based-on-observed-four-meter-walk",
             "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": { 
-              "round": [ 
+            "config": {
+              "round": [
                 { "variable": "velocity-based-on-observed-four-meter-walk" },
-                1 
+                1
               ]
             }
           }
@@ -559,10 +559,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "criterion": {
             "equals": [
-              { 
+              {
                 "float": { "variable": "rounded-velocity-based-on-observed-four-meter-walk" }
               },
-              { 
+              {
                 "round": [ { "float": { "strip" : "value" } }, 1 ]
               }
             ]
@@ -585,28 +585,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation of <b>%@</b> %@ for <b>4</b> meters, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>= ?</td></tr></table></blockquote>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
@@ -633,10 +633,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "criterion": {
             "equals": [
-              { 
+              {
                 "float": { "variable": "rounded-velocity-based-on-observed-four-meter-walk" }
               },
-              { 
+              {
                 "float": { "strip" : "value" }
               }
             ]
@@ -659,49 +659,49 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "<p>Incorrect.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity would be calculated like this:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4<hr/>%@</td><td style='border-width:0px'>=</td><td style='border-width:0px'><b>%@</b></td></tr></table></blockquote><p>%@</p>",
       "responseTemplate": null,
       "afterText": "",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == [1] ? '' : 'Rounded to the nearest tenth, that makes <b>[2]</b>.'",
-            "variableNames": [ 
-              "velocity-based-on-observed-four-meter-walk", 
-              "rounded-velocity-based-on-observed-four-meter-walk", 
-              "rounded-velocity-based-on-observed-four-meter-walk" 
+            "variableNames": [
+              "velocity-based-on-observed-four-meter-walk",
+              "rounded-velocity-based-on-observed-four-meter-walk",
+              "rounded-velocity-based-on-observed-four-meter-walk"
             ]
           }
         }
@@ -732,49 +732,49 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "<p>Correct.</p><p>If you walked <b>4</b> meters in <b>%@</b> %@, your velocity is <b>%@</b> %@.</p><p>%@</p>",
       "responseTemplate": null,
       "afterText": "",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
             "variableNames": [ "velocity-based-on-observed-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == [1] ? '' : 'Rounded to the nearest tenth, that makes <b>[2]</b>.'",
-            "variableNames": [ 
-              "velocity-based-on-observed-four-meter-walk", 
-              "rounded-velocity-based-on-observed-four-meter-walk", 
-              "rounded-velocity-based-on-observed-four-meter-walk" 
+            "variableNames": [
+              "velocity-based-on-observed-four-meter-walk",
+              "rounded-velocity-based-on-observed-four-meter-walk",
+              "rounded-velocity-based-on-observed-four-meter-walk"
             ]
           }
         }
@@ -812,28 +812,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == 1 ? 'second' : 'seconds'",
             "variableNames": [ "observed-duration-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "rounded-velocity-based-on-observed-four-meter-walk" ]
           }
         },
-        { 
+        {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
@@ -860,7 +860,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         }
       },
       "submissibilityCriterion": {
-        "gt": [ 
+        "gt": [
           "value",
           0.1
         ]
@@ -918,7 +918,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         }
       },
       "submissibilityCriterion": {
-        "gt": [ 
+        "gt": [
           "value",
           0.1
         ]
@@ -966,9 +966,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [ 
-          { "length": { "strip": "value" } }, 
-          0 
+        "gt": [
+          { "length": { "strip": "value" } },
+          0
         ]
       },
       "triggeredCommands": [
@@ -1028,7 +1028,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "actual-normal-start-time",
             "inspectorType": "Smartgraphs.DatasetAttributeInspector",
-            "config": { 
+            "config": {
               "datasetName": "sensor-normal",
               "attributePath": "points.firstObject.x"
             }
@@ -1039,7 +1039,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "actual-normal-start-position",
             "inspectorType": "Smartgraphs.DatasetAttributeInspector",
-            "config": { 
+            "config": {
               "datasetName": "sensor-normal",
               "attributePath": "points.firstObject.y"
             }
@@ -1050,7 +1050,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "actual-normal-end-time",
             "inspectorType": "Smartgraphs.DatasetAttributeInspector",
-            "config": { 
+            "config": {
               "datasetName": "sensor-normal",
               "attributePath": "points.lastObject.x"
             }
@@ -1061,7 +1061,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "actual-normal-end-position",
             "inspectorType": "Smartgraphs.DatasetAttributeInspector",
-            "config": { 
+            "config": {
               "datasetName": "sensor-normal",
               "attributePath": "points.lastObject.y"
             }
@@ -1106,11 +1106,11 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
             "inspectorType": "Smartgraphs.EvaluatorInspector",
             "config": {
               "round": [
-                { 
+                {
                   "difference": [
                     { "variable": "rounded-actual-normal-end-time" },
                     { "variable": "rounded-actual-normal-start-time" }
-                  ] 
+                  ]
                 },
                 2
               ]
@@ -1122,10 +1122,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "actual-normal-change-position",
             "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": { 
+            "config": {
               "round" : [
                 {
-                  "difference": [  
+                  "difference": [
                     { "variable": "rounded-actual-normal-end-position" },
                     { "variable": "rounded-actual-normal-start-position" }
                   ]
@@ -1140,10 +1140,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "actual-normal-velocity",
             "inspectorType": "Smartgraphs.EvaluatorInspector",
-            "config": { 
+            "config": {
               "round" : [
                 {
-                  "quotient": [  
+                  "quotient": [
                     { "variable": "actual-normal-change-position" },
                     { "variable": "actual-normal-change-time" }
                   ]
@@ -1184,15 +1184,15 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-change-position" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-start-position" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-end-position" }
         }
@@ -1251,11 +1251,11 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-start-time" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-end-time" }
         }
@@ -1312,15 +1312,15 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-start-time" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-end-time" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-change-time" }
         }
@@ -1367,27 +1367,27 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "responseTemplate": "",
       "afterText": "",
       "substitutedExpressions": [
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-change-time" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-change-position" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-velocity" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-change-position" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-change-time" }
         },
-        { 
+        {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "actual-normal-velocity" }
         }
@@ -1490,9 +1490,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [ 
-          { "length": { "strip": "value" } }, 
-          0 
+        "gt": [
+          { "length": { "strip": "value" } },
+          0
         ]
       },
       "triggeredCommands": [
@@ -1701,8 +1701,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.AnnotationInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1764,8 +1764,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.AnnotationInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -1825,7 +1825,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "first-point-A-time",
             "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
+            "config": {
               "name": "first-point-A",
               "attributePath": "point.x"
             }
@@ -1836,7 +1836,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "first-point-A-position",
             "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
+            "config": {
               "name": "first-point-A",
               "attributePath": "point.y"
             }
@@ -1847,7 +1847,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "second-point-A-time",
             "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
+            "config": {
               "name": "second-point-A",
               "attributePath": "point.x"
             }
@@ -1858,7 +1858,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "second-point-A-position",
             "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
+            "config": {
               "name": "second-point-A",
               "attributePath": "point.y"
             }
@@ -1869,7 +1869,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "max-position-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.max([0],[1])",
               "variableNames": [ "first-point-A-position", "second-point-A-position" ]
             }
@@ -1880,7 +1880,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "min-position-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.min([0],[1])",
               "variableNames": [ "first-point-A-position", "second-point-A-position" ]
             }
@@ -1891,7 +1891,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "change-position-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.abs([0]-[1])",
               "variableNames": [ "first-point-A-position", "second-point-A-position" ]
             }
@@ -1902,7 +1902,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "change-position-units-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "[0] == 1 ? ' meter' : ' meters'",
               "variableNames": [ "change-position-A" ]
             }
@@ -1913,7 +1913,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "max-time-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.max([0],[1])",
               "variableNames": [ "first-point-A-time", "second-point-A-time" ]
             }
@@ -1924,7 +1924,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "min-time-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.min([0],[1])",
               "variableNames": [ "first-point-A-time", "second-point-A-time" ]
             }
@@ -1935,7 +1935,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "change-time-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.abs([0]-[1])",
               "variableNames": [ "first-point-A-time", "second-point-A-time" ]
             }
@@ -1946,7 +1946,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "change-time-units-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "[0] == 1 ? ' second' : ' seconds'",
               "variableNames": [ "change-time-A" ]
             }
@@ -1957,7 +1957,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "velocity-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "[0]/[1]",
               "variableNames": [ "change-position-A", "change-time-A" ]
             }
@@ -1968,7 +1968,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "velocity-units-A",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
               "variableNames": [ "velocity-A" ]
             }
@@ -1983,7 +1983,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -1992,8 +1992,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2041,17 +2041,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2115,7 +2115,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -2124,8 +2124,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2193,7 +2193,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -2202,8 +2202,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2249,28 +2249,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "max-position-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "min-position-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-A" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -2280,10 +2280,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -2355,17 +2355,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2373,7 +2373,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -2446,17 +2446,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2464,7 +2464,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -2524,17 +2524,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2542,7 +2542,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -2580,28 +2580,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "max-time-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "min-time-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-A" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -2611,10 +2611,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -2651,28 +2651,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-A" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -2713,17 +2713,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2766,28 +2766,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-A" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -2801,17 +2801,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-A", 
-            "second-point-A" 
+            "first-point-A",
+            "second-point-A"
           ]
         }
       },
@@ -2854,56 +2854,56 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "velocity-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "velocity-units-A" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -2954,42 +2954,42 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "velocity-A" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "velocity-units-A" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -3048,7 +3048,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
             "name": "second-point-A",
             "pointColor": "#f2b3b3"
           }
-        },        
+        },
         {
           "action": "addAnnotation",
           "literalArgs": {
@@ -3062,7 +3062,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "name": "second-point-A",
             "graphName": "slope-graph",
-            "tableName": "slope-data"         
+            "tableName": "slope-data"
           }
         },
         {
@@ -3087,14 +3087,14 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       ],
       "responseInspector": {
         "type": "Smartgraphs.AnnotationAttributeInspector",
-        "config": { 
+        "config": {
           "name": "first-point-B",
           "attributePath": "point.x"
         }
       },
       "responseBranches": [
         {
-          "criterion": { 
+          "criterion": {
             "in" : [
               "value",
               [
@@ -3168,14 +3168,14 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       ],
       "responseInspector": {
         "type": "Smartgraphs.AnnotationAttributeInspector",
-        "config": { 
+        "config": {
           "name": "first-point-B",
           "attributePath": "point.x"
         }
       },
       "responseBranches": [
         {
-          "criterion": { 
+          "criterion": {
             "in" : [
               "value",
               [
@@ -3237,8 +3237,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.AnnotationInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3300,8 +3300,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.AnnotationInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3361,7 +3361,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "first-point-B-time",
             "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
+            "config": {
               "name": "first-point-B",
               "attributePath": "point.x"
             }
@@ -3372,7 +3372,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "first-point-B-position",
             "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
+            "config": {
               "name": "first-point-B",
               "attributePath": "point.y"
             }
@@ -3383,7 +3383,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "second-point-B-time",
             "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
+            "config": {
               "name": "second-point-B",
               "attributePath": "point.x"
             }
@@ -3394,7 +3394,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "second-point-B-position",
             "inspectorType": "Smartgraphs.AnnotationAttributeInspector",
-            "config": { 
+            "config": {
               "name": "second-point-B",
               "attributePath": "point.y"
             }
@@ -3405,7 +3405,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "max-position-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.max([0],[1])",
               "variableNames": [ "first-point-B-position", "second-point-B-position" ]
             }
@@ -3416,7 +3416,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "min-position-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.min([0],[1])",
               "variableNames": [ "first-point-B-position", "second-point-B-position" ]
             }
@@ -3427,7 +3427,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "change-position-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.abs([0]-[1])",
               "variableNames": [ "first-point-B-position", "second-point-B-position" ]
             }
@@ -3438,7 +3438,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "change-position-units-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "[0] == 1 ? ' meter' : ' meters'",
               "variableNames": [ "change-position-B" ]
             }
@@ -3449,7 +3449,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "max-time-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.max([0],[1])",
               "variableNames": [ "first-point-B-time", "second-point-B-time" ]
             }
@@ -3460,7 +3460,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "min-time-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.min([0],[1])",
               "variableNames": [ "first-point-B-time", "second-point-B-time" ]
             }
@@ -3471,7 +3471,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "change-time-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "Math.abs([0]-[1])",
               "variableNames": [ "first-point-B-time", "second-point-B-time" ]
             }
@@ -3482,7 +3482,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "change-time-units-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "[0] == 1 ? ' second' : ' seconds'",
               "variableNames": [ "change-time-B" ]
             }
@@ -3493,7 +3493,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "velocity-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "[0]/[1]",
               "variableNames": [ "change-position-B", "change-time-B" ]
             }
@@ -3504,7 +3504,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "literalArgs": {
             "variableName": "velocity-units-B",
             "inspectorType": "Smartgraphs.VariableInspector",
-            "config": { 
+            "config": {
               "evalStatement": "[0] == 1 ? 'meter per second' : 'meters per second'",
               "variableNames": [ "velocity-B" ]
             }
@@ -3519,7 +3519,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -3528,8 +3528,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3577,17 +3577,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3651,7 +3651,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
 
@@ -3660,8 +3660,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3729,17 +3729,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3785,28 +3785,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "max-position-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "min-position-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-B" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -3816,10 +3816,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -3891,17 +3891,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -3909,7 +3909,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -3982,17 +3982,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -4000,7 +4000,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -4060,17 +4060,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -4078,7 +4078,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "criterion": {
             "delta": {
-              "axis": "x", 
+              "axis": "x",
               "respectOrder": false
             }
           },
@@ -4116,28 +4116,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "max-time-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "min-time-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-B" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -4147,10 +4147,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "submissibilityInspector": null,
       "submissibilityCriterion": null,
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": null,
       "responseBranches": [
@@ -4187,28 +4187,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-B" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -4249,17 +4249,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -4302,28 +4302,28 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-B" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -4337,17 +4337,17 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "isNumeric": { "strip": "value" }
       },
       "triggeredCommands": [
-        
+
       ],
       "afterSubmissionCommands": [
- 
+
       ],
       "responseInspector": {
         "type": "Smartgraphs.ResponseFieldAnnotationsInspector",
         "config": {
           "annotationNames": [
-            "first-point-B", 
-            "second-point-B" 
+            "first-point-B",
+            "second-point-B"
           ]
         }
       },
@@ -4390,56 +4390,56 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "velocity-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "velocity-units-B" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -4490,42 +4490,42 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-position-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-position-units-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "change-time-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "change-time-units-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "[0]",
             "variableNames": [ "velocity-B" ]
-          } 
+          }
         },
         {
           "type": "Smartgraphs.VariableInspector",
           "config" : {
             "evalStatement": "'[0]'",
             "variableNames": [ "velocity-units-B" ]
-          } 
+          }
         }
       ],
       "startCommands": [
@@ -4571,7 +4571,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "action": "setAnnotationAttribute",
           "literalArgs": {
             "name": "first-point-B",
-            "pointColor": "#f2b3b3"          
+            "pointColor": "#f2b3b3"
           }
         },
         {
@@ -4693,7 +4693,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       ],
       "responseInspector": {
         "type": "Smartgraphs.AnnotationAttributeInspector",
-        "config": { 
+        "config": {
           "name": "first-point-C",
           "attributePath": "point.x"
         }
@@ -4752,7 +4752,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       ],
       "responseInspector": {
         "type": "Smartgraphs.AnnotationAttributeInspector",
-        "config": { 
+        "config": {
           "name": "first-point-C",
           "attributePath": "point.x"
         }
@@ -4809,7 +4809,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       ],
       "responseInspector": {
         "type": "Smartgraphs.AnnotationAttributeInspector",
-        "config": { 
+        "config": {
           "name": "second-point-C",
           "attributePath": "point.x"
         }
@@ -4866,7 +4866,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       ],
       "responseInspector": {
         "type": "Smartgraphs.AnnotationAttributeInspector",
-        "config": { 
+        "config": {
           "name": "second-point-C",
           "attributePath": "point.x"
         }
@@ -5060,7 +5060,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "<p>What is the difference between instantaneous velocity and average velocity?</p>",
@@ -5105,7 +5105,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/walk_the_wight.jpg",
-          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"          
+          "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
       "beforeText": "<p>How can you tell how fast you are moving?</p>",
@@ -5150,7 +5150,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/Animated_Aston_Martin_Speedometer.gif",
-          "caption": "CC-BY-SA-3.0 Wikimedia Commons image courtesy Dinesh Advani"          
+          "caption": "CC-BY-SA-3.0 Wikimedia Commons image courtesy Dinesh Advani"
         }
       },
       "beforeText": "",
@@ -5184,7 +5184,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
   "units": [
 
   ],
-  "axes": [  
+  "axes": [
     {
       "url": "/shared/what-is-velocity/axes/10s",
       "units": "/builtins/units/seconds",
@@ -5211,7 +5211,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
     },
     {
       "url": "/shared/what-is-velocity/axes/4.5m",
-      "units": "/builtins/units/meters",      
+      "units": "/builtins/units/meters",
       "min": 0,
       "max": 4.5,
       "nSteps": 9,
@@ -5220,7 +5220,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
 
     {
       "url": "/shared/what-is-velocity/axes/5m",
-      "units": "/builtins/units/meters",      
+      "units": "/builtins/units/meters",
       "min": 0,
       "max": 5,
       "nSteps": 10,
