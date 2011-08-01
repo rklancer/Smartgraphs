@@ -44,6 +44,14 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
     });
     sampleset.set('datadef', this);
     return sampleset.getNewRepresentation(options);
+  },
+  
+  addPoint: function (x, y) {
+    console.log("addPoint(%2  f, %2f)", x, y);
+  },
+  
+  clearPoints: function () {
+    console.log("clearPoints");
   }
   
 });

@@ -24,9 +24,14 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   
   appletView: null,
   sensorIsReady: NO,
+  nSamples: 0,
+  
+  /**
+    The time interval between data points returned by the sensor
+  */
+  dt: 0.1,
   
   setup: function (args) {
-    
     this.set('datadefName', args.data);
     this.set('datadef', this.getDatadef(args.data));
     
@@ -48,15 +53,21 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   
   
   startRecording: function () {
-    console.log('startRecording');
+    this.setPath('datadef.isStreaming', YES);
+    this._nSamples = 0;
+    this.get('appletView').start();
+    console.log('startRecording');   
   },
   
   stopRecording: function () {
+    this.setPath('datadef.isStreaming', NO);
+    this.get('appletView').stop();
     console.log('stopRecording');
   },
   
   clearRecordedData: function () {
     console.log('clearRecordedData');
+    this.get('datadef').clearPoints();
   },
   
   /**
@@ -69,6 +80,50 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
     SC.RunLoop.end();
   },
   
+  /**
+    applet callback
+  */
+  dataReceived: function (type, numPoints, data) {
+    var dt = this.get('dt'),
+        // downsampleRatio = this.get('downsampleRatio');
+        x, 
+        y,
+        i;
+      // point;
+    
+    for (i = 0; i < numPoints; i++) {
+      x = this._nSamples * dt;
+      y = data[i];
+      
+      // if (x > this.get('xMax')) {
+      //   
+      //   // 'stopSensor' action results in an applet method being called inline. This does not work well in all
+      //   // browsers (they seem to trip up when the applet method is called from within an applet callback.)
+      //   // Therefore, use setTimeout to trigger the stopSensor action after the callback finishes. Note that using
+      //   // this.invokeLater() rather than setTimeout did not seem to work (the invokeLater blocks queued up 
+      //   // indefinitely.)
+      // 
+      //   setTimeout( function () {
+      //     SC.RunLoop.begin();
+      //     Smartgraphs.statechart.sendAction('stopSensor');
+      //     SC.RunLoop.end();
+      //   }, 10);
+      // 
+      //   return;
+      // }
+      
+      // if ( this._nsamples % downsampleRatio === 0 ) {
+      //   SC.RunLoop.begin();
+      //   point = Smartgraphs.store.createRecord(Smartgraphs.DataPoint, { x: x, y: y, guid: Smartgraphs.getNextGuid() });
+      //   this._dataset.set('latestPoint', point);
+      //   this._dataset.get('points').pushObject(point);
+      //   SC.RunLoop.end();
+      // }
+      
+      this.get('datadef').addPoint(x, y);
+      this._nSamples++;
+    }
+  },
   /**
     applet callback (applet doesn't send useful information with this callback yet)
   */

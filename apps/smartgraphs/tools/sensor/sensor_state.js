@@ -19,7 +19,7 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
   initialSubstate: 'SENSOR_START',
   
   exitState: function () {
-    // Smartgraphs.sensorController.disableInput();
+    Smartgraphs.sensorTool.stopRecording();
     Smartgraphs.sensorTool.get('graphController').hideControls();
   },
   

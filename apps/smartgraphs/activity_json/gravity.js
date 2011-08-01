@@ -42,7 +42,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           "title": "Position vs. Time",
           "xAxis": "/shared/gravity/axes/10s",
           "yAxis": "/shared/gravity/axes/5m",
-          "data": [],
+          "data": ["position-time-data"],
           "annotations": []
         },
         "bottom": {
@@ -103,7 +103,20 @@ Smartgraphs.activityDocs["/shared/gravity"] =
   "datadefs": [
     {
       "type": "UnorderedDataPoints",
-      "records": []
+      "records": [
+        {    
+          "url": "/shared/gravity/datadef/position-time-data",
+          "name": "position-time-data",
+          "activity": "/shared/gravity",
+          "xUnits": "/builtins/units/seconds",
+          "xLabel": "Time",
+          "xShortLabel": "Time",
+          "yUnits": "/builtins/units/meters",
+          "yLabel": "Position",
+          "yShortLabel": "Position",
+          "points": []
+        }
+      ]
     },
     {
       "type": "FirstOrderDifference",
