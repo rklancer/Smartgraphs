@@ -39,6 +39,10 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
       this.set('pointset', pointset);
       graphableObjects.push(pointset);
     }
+    
+    if (options['color']) {
+      this.set('color', options['color']);
+    }
 
     this.set('graphableObjects', graphableObjects);
     
@@ -61,7 +65,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   name:    SC.outlet('sampleset.datadef.name'),
   
   // some representative options
-  color: '#ffffff',
+  color: null,
   isDimmed: NO,
   pointStyle: null,
   lineStyle: null,

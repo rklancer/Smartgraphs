@@ -342,7 +342,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     
     // TODO: allow DataRepresentation to handle colors itself  
-    rep.set('color', this.getColorForDataRepresentation(rep));
+    if (!rep.get('color')) rep.set('color', this.getColorForDataRepresentation(rep));
 
     this.get('dataRepresentations').push(rep);
     this.get('graphableDataObjects').pushObjects(rep.get('graphableObjects'));
