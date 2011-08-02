@@ -92,16 +92,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/4/step/16"
       ],
       "contextVars": [
-        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "start-position_str",    "value": ["toFixedString", ["get", "start-position"], 2] },
-        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "end-position_str",      "value": ["toFixedString", ["get", "end-position"], 2] },
         { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
         { "name": "change-position_str",   "value": ["toFixedString", ["get", "change-position"], 2] },
 
-        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "start-time_str",        "value": ["toFixedString", ["get", "start-time"], 2] },
-        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "end-time_str",          "value": ["toFixedString", ["get", "end-time"], 2] },
         { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
         { "name": "change-time_str",       "value": ["toFixedString", ["get", "change-time"], 2] },
@@ -140,16 +140,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/5/step/16"
       ],
       "contextVars": [
-        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "start-position_str",    "value": ["toFixedString", ["get", "start-position"], 2] },
-        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "end-position_str",      "value": ["toFixedString", ["get", "end-position"], 2] },
         { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
         { "name": "change-position_str",   "value": ["toFixedString", ["get", "change-position"], 2] },
 
-        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "start-time_str",        "value": ["toFixedString", ["get", "start-time"], 2] },
-        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "end-time_str",          "value": ["toFixedString", ["get", "end-time"], 2] },
         { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
         { "name": "change-time_str",       "value": ["toFixedString", ["get", "change-time"], 2] },
@@ -188,16 +188,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/6/step/16"
       ],
       "contextVars": [
-        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "start-position_str",    "value": ["toFixedString", ["get", "start-position"], 2] },
-        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-position",          "value": ["coord", "y", ["listItem", 2, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "end-position_str",      "value": ["toFixedString", ["get", "end-position"], 2] },
         { "name": "change-position",       "value": ["-", ["get", "end-position"], ["get", "start-position"]] },
         { "name": "change-position_str",   "value": ["toFixedString", ["get", "change-position"], 2] },
 
-        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "start-time",            "value": ["coord", "x", ["listItem", 1, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "start-time_str",        "value": ["toFixedString", ["get", "start-time"], 2] },
-        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point-A", "second-point-A"]]] },
+        { "name": "end-time",              "value": ["coord", "x", ["listItem", 2, ["slopeToolOrder", "first-point", "second-point"]]] },
         { "name": "end-time_str",          "value": ["toFixedString", ["get", "end-time"], 2] },
         { "name": "change-time",           "value": ["-", ["get", "end-time"], ["get", "start-time"]] },
         { "name": "change-time_str",       "value": ["toFixedString", ["get", "change-time"], 2] },
@@ -509,12 +509,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight"]
+          "annotations": ["p1-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> The velocity for this segment is not <em>%@ m/s</em>.</p>",
@@ -523,14 +523,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "first-point-A",
+            "tag": "first-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "first-point-A"], 0], ["<=", ["coord", "x", "first-point-A"], 3]],
+          "criterion": ["and", [">=", ["coord", "x", "first-point"], 0], ["<=", ["coord", "x", "first-point"], 3]],
           "step": "/shared/describing-velocity/page/4/step/4"
         }
       ],
@@ -548,26 +548,26 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels", "segment-0-3s"]
+          "annotations": ["p1-highlight", "students-segment-labels", "segment-0-3s"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight"]
+          "annotations": ["p1-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Your point is not within the first three seconds.</p> <p>Select a point in the <b>first interval (between 0 and 3 seconds)</b>. Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "first-point-A",
+            "tag": "first-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "first-point-A"], 0], ["<=", ["coord", "x", "first-point-A"], 3]],
+          "criterion": ["and", [">=", ["coord", "x", "first-point"], 0], ["<=", ["coord", "x", "first-point"], 3]],
           "step": "/shared/describing-velocity/page/4/step/4"
         }
       ],
@@ -585,27 +585,27 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>Select a second point in the first interval (between 0 and 3 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "second-point-A",
+            "tag": "second-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3],["!=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]],
-          // "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3]],
+          "criterion": ["and", [">=", ["coord", "x", "second-point"], 0], ["<=", ["coord", "x", "second-point"], 3],["!=", ["coord", "x", "first-point"], ["coord", "x", "second-point"]]],
+          // "criterion": ["and", [">=", ["coord", "x", "second-point"], 0], ["<=", ["coord", "x", "second-point"], 3]],
           "step": "/shared/describing-velocity/page/4/step/6"
         }
       ],
@@ -623,26 +623,26 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "segment-0-3s"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-0-3s"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Your second point was not within the first three seconds. </p> <p> Select a second point in the first interval (between 0 and 3 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "second-point-A",
+            "tag": "second-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 0], ["<=", ["coord", "x", "second-point-A"], 3],["!=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]],
+          "criterion": ["and", [">=", ["coord", "x", "second-point"], 0], ["<=", ["coord", "x", "second-point"], 3],["!=", ["coord", "x", "first-point"], ["coord", "x", "second-point"]]],
           "step": "/shared/describing-velocity/page/4/step/6"
         }
       ],
@@ -660,19 +660,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/16"
         }
       ],
@@ -690,12 +690,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -704,7 +704,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/16"
         }
       ],
@@ -722,14 +722,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "highlightedAnnotations": ["rise-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["rise-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
@@ -738,7 +738,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/11"
         }
       ],
@@ -756,14 +756,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"],
+          "highlightedAnnotations": ["rise-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["rise-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -787,13 +787,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -802,7 +802,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/14"
         }
       ],
@@ -820,13 +820,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Correct!</b></p><p>What is the change in time? </p>",
@@ -835,7 +835,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/14"
         }
       ],
@@ -853,14 +853,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["run-bracket-A"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["run-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time?</p>",
@@ -869,7 +869,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/14"
         }
       ],
@@ -887,12 +887,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -906,7 +906,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/16"
         }
       ],
@@ -924,12 +924,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -944,7 +944,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/4/step/16"
         }
       ],
@@ -962,12 +962,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1059,12 +1059,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight"]
+          "annotations": ["p1-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> The velocity for this segment is not <em>%@ m/s</em>.</p>",
@@ -1073,14 +1073,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "first-point-A",
+            "tag": "first-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "first-point-A"], 3], ["<=", ["coord", "x", "first-point-A"], 6]],
+          "criterion": ["and", [">=", ["coord", "x", "first-point"], 3], ["<=", ["coord", "x", "first-point"], 6]],
           "step": "/shared/describing-velocity/page/5/step/4"
         }
       ],
@@ -1098,26 +1098,26 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels", "segment-3-6s"]
+          "annotations": ["p1-highlight", "students-segment-labels", "segment-3-6s"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight"]
+          "annotations": ["p1-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Your point is not within the second three seconds.</p> <p>Select a point in the <b>second interval (between 3 and 6 seconds)</b>. Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "first-point-A",
+            "tag": "first-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "first-point-A"], 3], ["<=", ["coord", "x", "first-point-A"], 6]],
+          "criterion": ["and", [">=", ["coord", "x", "first-point"], 3], ["<=", ["coord", "x", "first-point"], 6]],
           "step": "/shared/describing-velocity/page/5/step/4"
         }
       ],
@@ -1135,26 +1135,26 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>Select a second point in the second interval (between 3 and 6 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "second-point-A",
+            "tag": "second-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 3], ["<=", ["coord", "x", "second-point-A"], 6],["!=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]],
+          "criterion": ["and", [">=", ["coord", "x", "second-point"], 3], ["<=", ["coord", "x", "second-point"], 6],["!=", ["coord", "x", "first-point"], ["coord", "x", "second-point"]]],
           "step": "/shared/describing-velocity/page/5/step/6"
         }
       ],
@@ -1172,26 +1172,26 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "segment-3-6s"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-3-6s"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Your second point was not within the second three seconds. </p> <p> Select a second point in the second interval (between 3 and 6 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "second-point-A",
+            "tag": "second-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 3], ["<=", ["coord", "x", "second-point-A"], 6],["!=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]],
+          "criterion": ["and", [">=", ["coord", "x", "second-point"], 3], ["<=", ["coord", "x", "second-point"], 6],["!=", ["coord", "x", "first-point"], ["coord", "x", "second-point"]]],
           "step": "/shared/describing-velocity/page/5/step/6"
         }
       ],
@@ -1209,19 +1209,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/5/step/16"
         }
       ],
@@ -1239,12 +1239,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -1253,7 +1253,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/5/step/16"
         }
       ],
@@ -1271,14 +1271,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "highlightedAnnotations": ["rise-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["rise-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
@@ -1287,7 +1287,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/5/step/11"
         }
       ],
@@ -1305,14 +1305,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"],
+          "highlightedAnnotations": ["rise-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["rise-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1336,13 +1336,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -1351,7 +1351,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/5/step/14"
         }
       ],
@@ -1369,13 +1369,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Correct!</b></p><p>What is the change in time? </p>",
@@ -1384,7 +1384,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/5/step/14"
         }
       ],
@@ -1402,14 +1402,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["run-bracket-A"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["run-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time?</p>",
@@ -1418,7 +1418,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/5/step/14"
         }
       ],
@@ -1436,12 +1436,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -1455,7 +1455,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/5/step/16"
         }
       ],
@@ -1473,12 +1473,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -1493,7 +1493,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/5/step/16"
         }
       ],
@@ -1511,12 +1511,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1608,12 +1608,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight"]
+          "annotations": ["p1-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> The velocity for this segment is not <em>%@ m/s</em>.</p>",
@@ -1622,14 +1622,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "first-point-A",
+            "tag": "first-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "first-point-A"], 6], ["<=", ["coord", "x", "first-point-A"], 9]],
+          "criterion": ["and", [">=", ["coord", "x", "first-point"], 6], ["<=", ["coord", "x", "first-point"], 9]],
           "step": "/shared/describing-velocity/page/6/step/4"
         }
       ],
@@ -1647,26 +1647,26 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "students-segment-labels", "segment-6-9s"]
+          "annotations": ["p1-highlight", "students-segment-labels", "segment-6-9s"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight"]
+          "annotations": ["p1-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Your point is not within the third three seconds.</p> <p>Select a point in the <b>third interval (between 6 and 9 seconds)</b>. Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "first-point-A",
+            "tag": "first-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "first-point-A"], 6], ["<=", ["coord", "x", "first-point-A"], 9]],
+          "criterion": ["and", [">=", ["coord", "x", "first-point"], 6], ["<=", ["coord", "x", "first-point"], 9]],
           "step": "/shared/describing-velocity/page/6/step/4"
         }
       ],
@@ -1684,26 +1684,26 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>Select a second point in the third interval (between 6 and 9 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "second-point-A",
+            "tag": "second-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 6], ["<=", ["coord", "x", "second-point-A"], 9],["!=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]],
+          "criterion": ["and", [">=", ["coord", "x", "second-point"], 6], ["<=", ["coord", "x", "second-point"], 9],["!=", ["coord", "x", "first-point"], ["coord", "x", "second-point"]]],
           "step": "/shared/describing-velocity/page/6/step/6"
         }
       ],
@@ -1721,26 +1721,26 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "segment-6-9s"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-6-9s"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> Your second point was not within the third three seconds. </p> <p> Select a second point in the third interval (between 6 and 9 seconds). Then <b>click OK</b>.</p>",
       "tools": [
         { "name": "tagging",
           "setup": {
-            "tag": "second-point-A",
+            "tag": "second-point",
             "data": "position-data"
           }
         }
       ],
       "responseBranches": [
         {
-          "criterion": ["and", [">=", ["coord", "x", "second-point-A"], 6], ["<=", ["coord", "x", "second-point-A"], 9],["!=", ["coord", "x", "first-point-A"], ["coord", "x", "second-point-A"]]],
+          "criterion": ["and", [">=", ["coord", "x", "second-point"], 6], ["<=", ["coord", "x", "second-point"], 9],["!=", ["coord", "x", "first-point"], ["coord", "x", "second-point"]]],
           "step": "/shared/describing-velocity/page/6/step/6"
         }
       ],
@@ -1758,19 +1758,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The velocity during this interval is the slope of this line.</p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/6/step/16"
         }
       ],
@@ -1788,12 +1788,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the <b>velocity</b> between the two points, in meters per second?</p>",
@@ -1802,7 +1802,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/6/step/16"
         }
       ],
@@ -1820,14 +1820,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "students-segment-labels", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "highlightedAnnotations": ["rise-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["rise-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in position?</p>",
@@ -1836,7 +1836,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "y", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/6/step/11"
         }
       ],
@@ -1854,14 +1854,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"],
-          "highlightedAnnotations": ["rise-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"],
+          "highlightedAnnotations": ["rise-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["rise-bracket-A"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["rise-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> The change in position is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1885,13 +1885,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>What is the change in time? </p>",
@@ -1900,7 +1900,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/6/step/14"
         }
       ],
@@ -1918,13 +1918,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Correct!</b></p><p>What is the change in time? </p>",
@@ -1933,7 +1933,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/6/step/14"
         }
       ],
@@ -1951,14 +1951,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A", "rise-arrow-A"],
-          "highlightedAnnotations": ["run-arrow-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line", "rise-arrow"],
+          "highlightedAnnotations": ["run-arrow"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["rise-bracket-A", "p1A-highlight", "p2A-highlight"],
-          "highlightedAnnotations": ["run-bracket-A"]
+          "annotations": ["rise-bracket", "p1-highlight", "p2-highlight"],
+          "highlightedAnnotations": ["run-bracket"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time?</p>",
@@ -1967,7 +1967,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point-A", "second-point-A"]], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["delta", "x", ["slopeToolOrder", "first-point", "second-point"]], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/6/step/14"
         }
       ],
@@ -1985,12 +1985,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -2004,7 +2004,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/6/step/16"
         }
       ],
@@ -2022,12 +2022,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, what is the velocity, in meters per second?</p>",
@@ -2042,7 +2042,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
-          "criterion": ["withinAbsTolerance", ["slope", "first-point-A", "second-point-A"], ["responseField", 1], 0.1],
+          "criterion": ["withinAbsTolerance", ["slope", "first-point", "second-point"], ["responseField", 1], 0.1],
           "step": "/shared/describing-velocity/page/6/step/16"
         }
       ],
@@ -2060,12 +2060,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1A-highlight", "p2A-highlight", "slope-line-A"]
+          "annotations": ["p1-highlight", "p2-highlight", "slope-line"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1A-highlight", "p2A-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ and the change in time is <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -3760,24 +3760,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
   ],
   "tags": [
     {
-      "url": "/shared/describing-velocity/tag/first-point-A",
+      "url": "/shared/describing-velocity/tag/first-point",
       "activity": "/shared/describing-velocity",
-      "name": "first-point-A"
+      "name": "first-point"
     },
     {
-      "url": "/shared/describing-velocity/tag/second-point-A",
+      "url": "/shared/describing-velocity/tag/second-point",
       "activity": "/shared/describing-velocity",
-      "name": "second-point-A"
-    },
-    {
-      "url": "/shared/describing-velocity/tag/first-point-B",
-      "activity": "/shared/describing-velocity",
-      "name": "first-point-B"
-    },
-    {
-      "url": "/shared/describing-velocity/tag/second-point-B",
-      "activity": "/shared/describing-velocity",
-      "name": "second-point-B"
+      "name": "second-point"
     }
   ],
   "variables": [
@@ -3965,11 +3955,11 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     { "type": "LineThroughPoints",
       "records": [
         {
-          "url": "/shared/describing-velocity/annotation/slope-line-A",
-          "name": "slope-line-A",
+          "url": "/shared/describing-velocity/annotation/slope-line",
+          "name": "slope-line",
           "activity": "/shared/describing-velocity",
-          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
-          "p2Tag": "/shared/describing-velocity/tag/second-point-A",
+          "p1Tag": "/shared/describing-velocity/tag/first-point",
+          "p2Tag": "/shared/describing-velocity/tag/second-point",
           "color": "#1f77b4"
         }
       ]
@@ -3978,12 +3968,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "type": "RiseArrow",
       "records": [
         {
-          "url": "/shared/describing-velocity/annotation/rise-arrow-A",
-          "name": "rise-arrow-A",
+          "url": "/shared/describing-velocity/annotation/rise-arrow",
+          "name": "rise-arrow",
           "activity": "/shared/describing-velocity",
           "color": "#cccccc",
-          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
-          "p2Tag": "/shared/describing-velocity/tag/second-point-A"
+          "p1Tag": "/shared/describing-velocity/tag/first-point",
+          "p2Tag": "/shared/describing-velocity/tag/second-point"
         }
       ]
     },
@@ -3991,12 +3981,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "type": "RunArrow",
       "records": [
         {
-          "url": "/shared/describing-velocity/annotation/run-arrow-A",
-          "name": "run-arrow-A",
+          "url": "/shared/describing-velocity/annotation/run-arrow",
+          "name": "run-arrow",
           "activity": "/shared/describing-velocity",
           "color": "#cccccc",
-          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
-          "p2Tag": "/shared/describing-velocity/tag/second-point-A"
+          "p1Tag": "/shared/describing-velocity/tag/first-point",
+          "p2Tag": "/shared/describing-velocity/tag/second-point"
         }
       ]
     },
@@ -4005,13 +3995,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "type": "RiseBracket",
       "records": [
         {
-          "url": "/shared/describing-velocity/annotation/rise-bracket-A",
-          "name": "rise-bracket-A",
+          "url": "/shared/describing-velocity/annotation/rise-bracket",
+          "name": "rise-bracket",
           "activity": "/shared/describing-velocity",
           "color": "#cccccc",
           "datadefName": "position-data",
-          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
-          "p2Tag": "/shared/describing-velocity/tag/second-point-A"
+          "p1Tag": "/shared/describing-velocity/tag/first-point",
+          "p2Tag": "/shared/describing-velocity/tag/second-point"
         }
       ]
     },
@@ -4019,13 +4009,13 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "type": "RunBracket",
       "records": [
         {
-          "url": "/shared/describing-velocity/annotation/run-bracket-A",
-          "name": "run-bracket-A",
+          "url": "/shared/describing-velocity/annotation/run-bracket",
+          "name": "run-bracket",
           "activity": "/shared/describing-velocity",
           "color": "#cccccc",
           "datadefName": "position-data",
-          "p1Tag": "/shared/describing-velocity/tag/first-point-A",
-          "p2Tag": "/shared/describing-velocity/tag/second-point-A"
+          "p1Tag": "/shared/describing-velocity/tag/first-point",
+          "p2Tag": "/shared/describing-velocity/tag/second-point"
         }
       ]
     },
@@ -4033,19 +4023,19 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "type": "HighlightedPoint",
       "records": [
         {
-          "url": "/shared/describing-velocity/annotation/p1A-highlight",
-          "name": "p1A-highlight",
+          "url": "/shared/describing-velocity/annotation/p1-highlight",
+          "name": "p1-highlight",
           "activity": "/shared/describing-velocity",
           "datadefName": "position-data",
-          "tag": "/shared/describing-velocity/tag/first-point-A",
+          "tag": "/shared/describing-velocity/tag/first-point",
           "color": "#1f77b4"
         },
         {
-          "url": "/shared/describing-velocity/annotation/p2A-highlight",
-          "name": "p2A-highlight",
+          "url": "/shared/describing-velocity/annotation/p2-highlight",
+          "name": "p2-highlight",
           "activity": "/shared/describing-velocity",
           "datadefName": "position-data",
-          "tag": "/shared/describing-velocity/tag/second-point-A",
+          "tag": "/shared/describing-velocity/tag/second-point",
           "color": "#ff7f0e"
         }
       ]
