@@ -353,7 +353,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [
-            ["position-data", { "point-type": "none", "line-type": "connected" }]
+            ["position-data", { "point-type": "none", "line-type": "connected", "color": "#F7F8FA" }]
           ],
           "annotations": []
         }
