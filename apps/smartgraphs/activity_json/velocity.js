@@ -327,7 +327,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/spedometer.gif",
+          "path": "/static/smartgraphs/en/current/resources/images/speedometer.gif",
           "caption": null
         }
       },
@@ -5739,7 +5739,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/spedometer.gif",
+          "path": "/static/smartgraphs/en/current/resources/images/speedometer.gif",
           "caption": null
         }
       },
