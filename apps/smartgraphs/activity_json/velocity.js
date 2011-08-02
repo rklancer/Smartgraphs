@@ -272,7 +272,11 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
     },
     {
       "steps": [
-        "/shared/what-is-velocity/page/16/step/1"
+        "/shared/what-is-velocity/page/16/step/1",
+        "/shared/what-is-velocity/page/16/step/2",
+        "/shared/what-is-velocity/page/16/step/3",
+        "/shared/what-is-velocity/page/16/step/4",
+        "/shared/what-is-velocity/page/16/step/5"
       ],
       "name": "Analyze/Conclusion",
       "firstStep": "/shared/what-is-velocity/page/16/step/1",
@@ -4960,8 +4964,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
-    },
-    {
+    },{
       "url": "/shared/what-is-velocity/page/16/step/1",
       "activityPage": "/shared/what-is-velocity/page/16",
       "paneConfig": "single",
@@ -4971,8 +4974,8 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "name": "slope-graph-analyze"
         }
       },
-      "beforeText": "<p>Which of the lines in the accompanying graph indicates the fastest velocity? Which indicates the slowest? Explain how you know.</p>",
-      "responseTemplate": "/components/response-template/open",
+      "beforeText": "<p>Which of the lines in the accompanying graph covers the fastest velocity?</p>",
+      "responseTemplate": "/components/response-template/slope-graph-analyze",
       "afterText": "",
       "startCommands": [
         {
@@ -5042,10 +5045,585 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [
-          { "length": { "strip": "value" } },
-          0
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
         ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              1
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              3
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              4
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/2"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/16/step/3",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Check My Answer",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/16/step/2",
+      "activityPage": "/shared/what-is-velocity/page/16",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "slope-graph-analyze"
+        }
+      },
+      "beforeText": "<p>Which of the lines in the accompanying graph covers the fastest velocity?</p>",
+      "responseTemplate": "/components/response-template/slope-graph-analyze",
+      "afterText": "<p><b>Incorrect</b>, Try again. <p>Hint: The steepest line represents the fastest velocity since more distance is covered in the same amount of time.</p>",
+      "startCommands": [
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-A",
+            "point": "16-A",
+            "label": "Line A"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-B",
+            "point": "16-B",
+            "label": "Line B"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-C",
+            "point": "16-C",
+            "label": "Line C"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-D",
+            "point": "16-D",
+            "label": "Line D"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-A",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-B",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-C",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-D",
+            "graphName": "slope-graph-analyze"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              1
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/3"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              3
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/2"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              4
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/2"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/16/step/2",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Check My Answer",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/16/step/3",
+      "activityPage": "/shared/what-is-velocity/page/16",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "slope-graph-analyze"
+        }
+      },
+      "beforeText": "<p><b>Correct!</b>, the steepest line represents the fastest velocity since more distance is covered in the same amount of time.</p><p>Which of the lines in the accompanying graph indicates the <b>slowest</b> velocity?</p>",
+      "responseTemplate": "/components/response-template/slope-graph-analyze",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-A",
+            "point": "16-A",
+            "label": "Line A"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-B",
+            "point": "16-B",
+            "label": "Line B"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-C",
+            "point": "16-C",
+            "label": "Line C"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-D",
+            "point": "16-D",
+            "label": "Line D"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-A",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-B",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-C",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-D",
+            "graphName": "slope-graph-analyze"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              1
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/4"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/4"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              3
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/4"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              4
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/5"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/16/step/4",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Check My Answer",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/16/step/4",
+      "activityPage": "/shared/what-is-velocity/page/16",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "slope-graph-analyze"
+        }
+      },
+      "beforeText": "<p>Which of the lines in the accompanying graph indicates the <b>slowest</b> velocity?</p>",
+      "responseTemplate": "/components/response-template/slope-graph-analyze",
+      "afterText": "<p><b>Incorrect</b>, Try again.</p><p>Hint: The flattest line represents the slowest velocity since less distance is covered in the same amount of time.</p>",
+      "startCommands": [
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-A",
+            "point": "16-A",
+            "label": "Line A"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-B",
+            "point": "16-B",
+            "label": "Line B"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-C",
+            "point": "16-C",
+            "label": "Line C"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-D",
+            "point": "16-D",
+            "label": "Line D"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-A",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-B",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-C",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-D",
+            "graphName": "slope-graph-analyze"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "in": [
+          "value",
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              1
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/4"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              2
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/4"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              3
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/4"
+        },
+        {
+          "criterion": {
+            "equals": [
+              "value",
+              4
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/16/step/5"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/16/step/5",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Check My Answer",
+      "nextButtonShouldSubmit": false
+    },
+    {
+      "url": "/shared/what-is-velocity/page/16/step/5",
+      "activityPage": "/shared/what-is-velocity/page/16",
+      "paneConfig": "single",
+      "panes": {
+        "single": {
+          "type": "graph",
+          "name": "slope-graph-analyze"
+        }
+      },
+      "beforeText": "<p><b>Correct!</b> The flattest line represents the slowest velocity.</p><p>Explain how you know",
+      "responseTemplate": "/components/response-template/open",
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-A",
+            "point": "16-A",
+            "label": "Line A"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-B",
+            "point": "16-B",
+            "label": "Line B"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-C",
+            "point": "16-C",
+            "label": "Line C"
+          }
+        },
+        {
+          "action": "createLabelAnnotation",
+          "literalArgs": {
+            "labelName": "line-label-D",
+            "point": "16-D",
+            "label": "Line D"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-A",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-B",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-C",
+            "graphName": "slope-graph-analyze"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "line-label-D",
+            "graphName": "slope-graph-analyze"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": false,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": {
+
       },
       "triggeredCommands": [
 
@@ -5445,6 +6023,32 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       ],
       "initialValues": [
 
+      ]
+    },
+    {
+      "url": "/components/response-template/slope-graph-analyze",
+      "templateString": "which",
+      "fieldTypes": [
+        "multiplechoice"
+      ],
+      "fieldChoicesList": [
+        [ "Line A", "Line B", "Line C", "Line D"]
+      ],
+      "initialValues": [
+        ""
+      ]
+    },
+    {
+      "url": "/components/response-templates/multiple_b",
+      "templateString": "",
+      "fieldTypes": [
+        "multiplechoice"
+      ],
+      "fieldChoicesList": [
+        [ "Line A", "Line B", "Line C", "Line D"]
+      ],
+      "initialValues": [
+        ""
       ]
     }
   ],
