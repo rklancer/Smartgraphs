@@ -325,7 +325,11 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "introText": "<h1>Conclusion</h1><p><b>How can you describe velocity?</b></p>",
       "steps": [
         "/shared/describing-velocity/page/13/step/1",
-        "/shared/describing-velocity/page/13/step/2"        
+        "/shared/describing-velocity/page/13/step/2",
+        "/shared/describing-velocity/page/13/step/3",
+        "/shared/describing-velocity/page/13/step/4",
+        "/shared/describing-velocity/page/13/step/5",
+        "/shared/describing-velocity/page/13/step/6"                     
       ],
       "firstStep": "/shared/describing-velocity/page/13/step/1"
     }
@@ -3891,22 +3895,29 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     },
     
     {
-      "url": "/shared/describing-velocity/page/13/step/1",
-      "activityPage": "/shared/describing-velocity/page/13",
-      "paneConfig": "single",          
-      "panes": {
-        "single": {
-          "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
-          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
-        }
-      },
-      "beforeText": "<p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
-      "responseTemplate": "/shared/describing-velocity/response-template/concluding-question-responses",
-      "submitButtonTitle": "OK",
-      "defaultBranch": "/shared/describing-velocity/page/13/step/2"
+       "url": "/shared/describing-velocity/page/13/step/1",
+       "activityPage": "/shared/describing-velocity/page/13",
+       "paneConfig": "single",          
+       "panes": {
+         "single": {
+           "type": "image",
+           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
+           "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+         }
+       },
+       "beforeText": "<p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
+       "responseTemplate": "/shared/describing-velocity/response-template/concluding-question-responses",
+       "submitButtonTitle": "Check My Answer",
+       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
+       "responseBranches": [{
+         "criterion": ["=", ["responseField", 1], 5],
+         "step": "/shared/describing-velocity/page/13/step/6"
+       }],
+       "defaultBranch": "/shared/describing-velocity/page/13/step/2"
     },
     
+    
+
     {
       "url": "/shared/describing-velocity/page/13/step/2",
       "activityPage": "/shared/describing-velocity/page/13",
@@ -3918,9 +3929,95 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "caption": "Public domain U.S. Air Force photo by Larry McTighe"
         }
       },
-      "beforeText": "<p><b>Congratulations.</b> You have finished the activity!</p>",
-      "hideSubmitButton": true,
-      "isFinalStep": true
+      "beforeText": "<p><b>Incorrect.</b></p><p>Hint: What data and words can you use to describe velocity? Try again: </p> <p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/concluding-question-responses",
+      "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
+      "responseBranches": [{
+        "criterion": ["=", ["responseField", 1], 5],
+        "step": "/shared/describing-velocity/page/13/step/6"
+      }],
+      "defaultBranch": "/shared/describing-velocity/page/13/step/3"
+    },
+    
+    
+    {
+      "url": "/shared/describing-velocity/page/13/step/3",
+      "activityPage": "/shared/describing-velocity/page/13",
+      "paneConfig": "single",          
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
+          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b></p><p>Hint: Think back on the data you collected and the types of words you used to describe velocity. Try again: </p> <p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/concluding-question-responses",
+      "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
+      "responseBranches": [{
+        "criterion": ["=", ["responseField", 1], 5],
+        "step": "/shared/describing-velocity/page/13/step/6"
+      }],
+      "defaultBranch": "/shared/describing-velocity/page/13/step/4"
+    },
+    
+    
+    {
+      "url": "/shared/describing-velocity/page/13/step/4",
+      "activityPage": "/shared/describing-velocity/page/13",
+      "paneConfig": "single",          
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
+          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b></p><p>Hint: In this activity, you used position-time data, velocity time-data, and words to describe velocity. Try again: </p> <p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
+      "responseTemplate": "/shared/describing-velocity/response-template/concluding-question-responses",
+      "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
+      "responseBranches": [{
+        "criterion": ["=", ["responseField", 1], 5],
+        "step": "/shared/describing-velocity/page/13/step/6"
+      }],
+      "defaultBranch": "/shared/describing-velocity/page/13/step/5"
+    },
+    
+
+    {
+      "url": "/shared/describing-velocity/page/13/step/5",
+      "activityPage": "/shared/describing-velocity/page/13",
+      "paneConfig": "single",          
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
+          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+        }
+      },
+      "beforeText": "<p><b>Incorrect.</b></p><p>To describe velocity, you can use a position-time table or graph, a velocity-time table or graph, or descriptive words.</p>",
+      "afterText": "<p>This is the end of the activity.</p>",
+      "hideSubmitButton": true
+    },
+    
+    
+    {
+      "url": "/shared/describing-velocity/page/13/step/6",
+      "activityPage": "/shared/describing-velocity/page/13",
+      "paneConfig": "single",          
+      "panes": {
+        "single": {
+          "type": "image",
+          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
+          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+        }
+      },
+      "beforeText": "<p><b>Correct!</b></p><p>To describe velocity, you can use a position-time table or graph, a velocity-time table or graph, or descriptive words.</p>",
+      "afterText": "<p>This is the end of the activity.</p>",
+      "hideSubmitButton": true      
     }
     
   ],
@@ -4062,11 +4159,11 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "fieldChoicesList": [
         [
-          "A position-time table",
-          "A position-time graph",
-          "A velocity-time graph",
+          "A position-time table or graph",
+          "A velocity-time table or graph",
           "Words such as constant, fast slow, stopped, forward, backward, or changing",
-          "All of the above"
+          "Two of the above choices",
+          "More than two of the above choices"
         ]
       ],
       "initialValues": [
