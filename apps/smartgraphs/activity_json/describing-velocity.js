@@ -11,8 +11,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     "url": "/shared/describing-velocity",
     "owner": "shared",
     "pages": [
-      // "/shared/describing-velocity/page/1",
-      // "/shared/describing-velocity/page/2",
+      "/shared/describing-velocity/page/1",
+      "/shared/describing-velocity/page/2",  
       "/shared/describing-velocity/page/3",
       "/shared/describing-velocity/page/4",
       "/shared/describing-velocity/page/5",
