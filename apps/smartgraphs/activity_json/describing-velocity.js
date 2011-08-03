@@ -2610,6 +2610,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "hideSubmitButton": false
     },
 
@@ -2639,6 +2640,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint: When a car is stopped, what is its change in position? Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "hideSubmitButton": false
     },
 
@@ -2668,6 +2670,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint: What is the velocity when the car is stopped? Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "hideSubmitButton": false
     },
 
@@ -2697,6 +2700,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint: The velocity of the car is 0 m/s when the car is stopped. Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "hideSubmitButton": false
     },
 
@@ -3032,6 +3036,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Based on your observations, which of the following statements is true?",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         { 
           "criterion": ["=", ["responseField", 1], 2],
@@ -3105,6 +3110,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 1: Recall that velocity is the change in position divided by the change in time. Try again: </p><p>Based on your observations, which of the following statements is true?",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         { 
           "criterion": ["=", ["responseField", 1], 2],
@@ -3178,6 +3184,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 2: The change in position is 0 m - 36 m = -36 m. The change in time is 9 s - 0 s = 9 s. Try again: </p><p>Based on your observations, which of the following statements is true?",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         { 
           "criterion": ["=", ["responseField", 1], 2],
@@ -3251,6 +3258,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 3: The change in the car's position between the end point and the beginning point, divided by the change in the times of the end point and beginning point, is -36 m / 9 s. Try again: </p><p>Based on your observations, which of the following statements is true?",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         { 
           "criterion": ["=", ["responseField", 1], 2],
@@ -3412,6 +3420,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 3],
@@ -3440,6 +3449,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is moving forward with constant velocity, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 3],
@@ -3468,6 +3478,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is moving forward with constant velocity, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 3],
@@ -3496,6 +3507,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows positive velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 3],
@@ -3587,6 +3599,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 1],
@@ -3615,6 +3628,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is stopped, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 1],
@@ -3643,6 +3657,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is stopped, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 1],
@@ -3671,6 +3686,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows 0 velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 1],
@@ -3757,6 +3773,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 5],
@@ -3785,6 +3802,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is moving backward, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 5],
@@ -3813,6 +3831,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is moving backward, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 5],
@@ -3841,6 +3860,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows negative velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 5],
