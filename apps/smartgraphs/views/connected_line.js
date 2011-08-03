@@ -27,6 +27,8 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
   dataRepresentation: SC.outlet('item.dataRepresentation'),  
   isDimmedBinding: '.dataRepresentation.isDimmed',
   isDimmedBindingDefault: SC.Binding.oneWay(),
+  
+  isHiddenForAnimation: NO,
 
   strokeWidth: function () {
     return this.get('isDimmed') ? this.get('dimmedStrokeWidth') : this.get('notDimmedStrokeWidth');
@@ -36,7 +38,7 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
     return this.get('isDimmed') ? this.get('dimmedColor') : this.get('notDimmedColor');
   }.property('isDimmed', 'dimmedColor', 'notDimmedColor'),
   
-  displayProperties: 'item.points.[] color strokeWidth'.w(),
+  displayProperties: 'item.points.[] color strokeWidth isHiddenForAnimation'.w(),
   
   renderCallback: function (raphaelCanvas, pathStr, attrs) {
     return raphaelCanvas.path(pathStr).attr(attrs);
@@ -67,7 +69,7 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
     attrs = {
       'stroke':         this.get('color'),
       'stroke-width':   this.get('strokeWidth'),
-      'stroke-opacity': this.get('strokeOpacity')
+      'stroke-opacity': this.get('isHiddenForAnimation') ? 0 : this.get('strokeOpacity')
     };
     
     if (firstTime) {
@@ -78,5 +80,5 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
       pathObj.attr({d: pathStr}).attr(attrs);
     }
   }
-
+  
 });

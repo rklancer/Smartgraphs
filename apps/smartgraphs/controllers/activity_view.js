@@ -190,20 +190,6 @@ Smartgraphs.activityViewController = SC.Object.create(
     }
     return NO;
   },
-
-  // TODO move to graph controller
-  
-  // showSensorLoadingView: function (pane) {
-  //   pane = this.validPaneFor(pane);
-  //   var which = this.firstOrSecondFor(pane);
-  //   
-  //   if ( !which ) return NO;
-  //   
-  //   this.hideControls();
-  //   this.set(which+'GraphPaneControls', 'Smartgraphs.activityPage.sensorLoadingView');
-  //   
-  //   return YES;
-  // },
   
   clear: function () {    
     if (this.get('paneIsSplit')) {

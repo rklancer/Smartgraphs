@@ -143,11 +143,14 @@ Smartgraphs.GraphView = SC.View.extend(
           controller: this.get('graphController'),
           item: item,
           itemType: itemType
-        });
+        }),
+        
+        animatedDatadefNames = (this.getPath('animationInfo.animations') || []).concat(this.getPath('animationInfo.linkedAnimations')).getEach('datadefName');
 
     // append data and annotations
     if (itemType === 'data') {
-      this.get('dataHolder').appendChild(view);
+      view.set('isHiddenForAnimation', animatedDatadefNames.indexOf(item.getPath('dataRepresentation.datadef.name')) >= 0);
+      this.get('dataHolder').appendChild(view);      
     }
     else if (itemType === 'annotation') {
       if (item.get('isOverlayAnnotation')) {
@@ -174,7 +177,6 @@ Smartgraphs.GraphView = SC.View.extend(
 
     view.removeFromParent();
   },
-
 
   coordinatesForPoint: function (x, y) {
     var xAxis = this.get('xAxis');
@@ -446,6 +448,8 @@ Smartgraphs.GraphView = SC.View.extend(
       // so that the next loop has a "full" set of keyframes.
       this._calculateKeyframes(loopParameters.keyframes, points, logicalBounds, screenBounds, yOffset, currentXFrac, loopParameters.callback);
 
+      dataViews.setEach('isHiddenForAnimation', NO);
+      
       // Actually start the animation loop.
       startAnimationLoop();
     },
@@ -491,15 +495,14 @@ Smartgraphs.GraphView = SC.View.extend(
         animationIsRestarting = NO;
       }
       else {
+        // FIXME iterate over the dataViews
         raphaelForGraph.attr({ "clip-rect": [screenBounds.xLeft, screenBounds.yTop, 0, screenBounds.plotHeight].join(',') });
         animationTime = ms;
       }
 
       if (loop) {
         // only generate the following closure on the first loop!
-        if (!loopCallback) console.log('generating loopCallback closure');
         callback = loopCallback || function () {
-          console.log('in callback');
           self._startLinkedAnimationForDatadef(datadefName, animationIsRestarting, callback);
         };
       }
@@ -507,6 +510,7 @@ Smartgraphs.GraphView = SC.View.extend(
         callback = null;
       }
       
+      dataViews.setEach('isHiddenForAnimation', NO);
       raphaelForFirstDataView.animate({
         "clip-rect": [screenBounds.xLeft, screenBounds.yTop, screenBounds.plotWidth, screenBounds.plotHeight].join(',')
       }, animationTime, callback);
@@ -589,9 +593,9 @@ Smartgraphs.GraphView = SC.View.extend(
             points          = firstDataView.getPath('item.points'),
             y               = points[0][1] / (logicalBounds.yMax - logicalBounds.yMin),
             yOffset         = animationSpec.yOffset || 0;
-        
 
         dataViews.forEach( function (dataView) {
+          dataView.set('isHiddenForAnimation', YES);
           var raphaelForGraph = dataView.get('layer').raphael;
           raphaelForGraph.attr(graphResetAttributes);
         });
@@ -605,6 +609,7 @@ Smartgraphs.GraphView = SC.View.extend(
       
       linkedAnimations.forEach( function (linkedSpec) {
         self._dataViewsForDatadefName(linkedSpec.datadefName).forEach( function (dataView) {
+          dataView.set('isHiddenForAnimation', YES);
           dataView.get('layer').raphael.attr(graphResetAttributes);
         });
       });

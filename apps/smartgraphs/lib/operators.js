@@ -284,5 +284,10 @@ Smartgraphs.evaluator.defineOperators( function (def) {
     
     return max - min;
   }).args(1).dependsOn('Smartgraphs.activityStepController*submissibilitySubject.points.[]');
+  
+  
+  def("playCount", function () {
+    return Smartgraphs.animationTool.get('playCount');
+  }).args(0).dependsOn('Smartgraphs.animationTool.playCount');
 
 });

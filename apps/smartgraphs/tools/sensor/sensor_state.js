@@ -1,34 +1,26 @@
 // ==========================================================================
-// Project:   Smartgraphs.SENSOR
-// Copyright: ©2010 Concord Consortium
+// Project:   Smartgraphs.SENSOR_TOOL
+// Copyright: ©2011 Concord Consortium
 // Author:    Richard Klancer <rpk@pobox.com>
 // ==========================================================================
 /*globals Smartgraphs */
 
 /** @class
 
-  Superstate representing that the sensor applet is being loaded up or has been loaded
+  Superstate representing that the sensor applet is being loaded or has been loaded
 
   @extends SC.State
   @version 0.1
 */
 
-Smartgraphs.SENSOR = SC.State.extend(
-/** @scope Smartgraphs.SENSOR.prototype */ {
+Smartgraphs.SENSOR_TOOL = SC.State.extend(
+/** @scope Smartgraphs.SENSOR_TOOL.prototype */ {
   
-  initialSubstate: 'SENSOR_DEFAULT',
-  
-  enterState: function () {
-    var enableSucceeded = Smartgraphs.sensorController.enableInput();
-    if ( !enableSucceeded ) {
-      // FIXME with SC.Statechart there may be some cleaner way to refuse to enter the state
-      this.gotoState('ACTIVITY_STEP_DEFAULT');
-    }
-  },
+  initialSubstate: 'SENSOR_START',
   
   exitState: function () {
-    Smartgraphs.sensorController.disableInput();
-    Smartgraphs.activityViewController.hideControls();
+    Smartgraphs.sensorTool.stopRecording();
+    Smartgraphs.sensorTool.get('graphController').hideControls();
   },
   
   // ..........................................................
@@ -46,12 +38,25 @@ Smartgraphs.SENSOR = SC.State.extend(
   },
   
   
-  SENSOR_DEFAULT: SC.State.design(),
+  SENSOR_START: SC.State.design({
+
+    enterState: function () {
+      Smartgraphs.mainPage.get('mainPane').appendChild(Smartgraphs.sensorTool.get('appletView'));
+      
+      if (Smartgraphs.sensorTool.get('sensorIsReady')) {
+        Smartgraphs.statechart.sendAction('sensorHasLoaded');
+      }
+      else {
+        Smartgraphs.statechart.sendAction('waitForSensorToLoad');
+      }
+    }
+
+  }),
   
   
   SENSOR_LOADING: SC.State.design({
     enterState: function () {
-      Smartgraphs.activityViewController.showSensorLoadingView(Smartgraphs.sensorController.get('pane'));
+      Smartgraphs.sensorTool.get('graphController').showSensorLoadingView();
     }
   }),
   
@@ -59,8 +64,8 @@ Smartgraphs.SENSOR = SC.State.extend(
   SENSOR_LOADED: SC.State.design({
 
     enterState: function () {
-      Smartgraphs.activityViewController.revealAllControls();
-      Smartgraphs.activityViewController.showControls(Smartgraphs.sensorController.get('pane'));
+      Smartgraphs.sensorTool.get('graphController').revealAllControls();
+      Smartgraphs.sensorTool.get('graphController').showControls();
     },
     
     initialSubstate: 'SENSOR_READY',
@@ -69,7 +74,7 @@ Smartgraphs.SENSOR = SC.State.extend(
     SENSOR_READY: SC.State.design({
       
       enterState: function () {
-        Smartgraphs.activityViewController.highlightStartControl();
+        Smartgraphs.sensorTool.get('graphController').highlightStartControl();
       },
 
       startControlWasClicked: function () {
@@ -86,12 +91,12 @@ Smartgraphs.SENSOR = SC.State.extend(
     SENSOR_RECORDING:  SC.State.design({
       
       enterState: function () {
-        Smartgraphs.sensorController.startRecording();
-        Smartgraphs.activityViewController.highlightStopControl();   
+        Smartgraphs.sensorTool.startRecording();
+        Smartgraphs.sensorTool.get('graphController').highlightStopControl();  
       },
 
       exitState: function () {
-        Smartgraphs.sensorController.stopRecording();
+        Smartgraphs.sensorTool.stopRecording();
       },
 
       stopControlWasClicked: function () {
@@ -108,7 +113,7 @@ Smartgraphs.SENSOR = SC.State.extend(
     SENSOR_STOPPED: SC.State.design({
       
       enterState: function () {
-        Smartgraphs.activityViewController.highlightClearControl();
+        Smartgraphs.sensorTool.get('graphController').highlightClearControl();
       },
 
       clearControlWasClicked: function () {
@@ -116,7 +121,7 @@ Smartgraphs.SENSOR = SC.State.extend(
       },
 
       clearSensor: function () {
-        Smartgraphs.sensorController.clearRecordedData();
+        Smartgraphs.sensorTool.clearRecordedData();
         this.gotoState('SENSOR_READY');
         return YES;
       }

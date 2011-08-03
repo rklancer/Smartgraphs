@@ -42,7 +42,23 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
 
       LABEL_TOOL:      Smartgraphs.LABEL_TOOL.design(),
       ANIMATION_TOOL:  Smartgraphs.ANIMATION_TOOL.design(),
-      PREDICTION_TOOL: Smartgraphs.PREDICTION_TOOL.design()
+      PREDICTION_TOOL: Smartgraphs.PREDICTION_TOOL.design(),
+        
+      /** forward these to the main statechart */
+      startControlWasClicked: function () {
+        Smartgraphs.statechart.sendAction('startControlWasClicked');
+        return NO;
+      },
+      
+      clearControlWasClicked: function () {
+        Smartgraphs.statechart.sendAction('clearControlWasClicked');
+        return NO;
+      },
+      
+      stopControlWasClicked: function () {
+        Smartgraphs.statechart.sendAction('stopControlWasClicked');
+        return NO;
+      }
     })
   }),
   
@@ -144,6 +160,13 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
   showControls: function () {  
     this.disableAllControls();
     this.set('showInControlsPanel', Smartgraphs.GraphController.CONTROLS);
+  },
+  
+  /**
+    Show the "spinny" and message that indicate the sensor is loading
+  */
+  showSensorLoadingView: function () {
+    this.set('showInControlsPanel', Smartgraphs.GraphController.SENSOR_LOADING);
   },
   
   /**
@@ -319,7 +342,7 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     }
     
     // TODO: allow DataRepresentation to handle colors itself  
-    rep.set('color', this.getColorForDataRepresentation(rep));
+    if (!rep.get('color')) rep.set('color', this.getColorForDataRepresentation(rep));
 
     this.get('dataRepresentations').push(rep);
     this.get('graphableDataObjects').pushObjects(rep.get('graphableObjects'));

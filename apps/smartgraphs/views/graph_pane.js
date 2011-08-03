@@ -71,6 +71,9 @@ Smartgraphs.GraphPane = SC.View.extend(
       if (showInControlsPanel === Smartgraphs.GraphController.CONTROLS) {
         this.set('controlsContainerNowShowing', this.get('graphControlsView'));
       }
+      if (showInControlsPanel === Smartgraphs.GraphController.SENSOR_LOADING) {
+        this.set('controlsContainerNowShowing', Smartgraphs.activityPage.sensorLoadingView);
+      }
     }
     
     this.get('animationChannelView').adjust('bottom', bottom);

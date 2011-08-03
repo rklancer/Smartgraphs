@@ -30,6 +30,14 @@ Smartgraphs.FirstOrderDifference = Smartgraphs.UnorderedDataPoints.extend(
   source: SC.Record.toOne('Smartgraphs.UnorderedDataPoints'),
   
   /**
+    @property {Number}
+    
+    Number of samples in the rectangular window used to smooth the first order difference calculation. Here we assume
+    that we don't care to use a fancy window function like a Hamming window.
+  */
+  windowLength: SC.Record.attr(Number, { defaultValue: 1 }),
+  
+  /**
     @property {Array[]}
     
     Array of datapoints that make up this derived dataset. The length of the 'points' array is 1 less than the length
@@ -45,7 +53,6 @@ Smartgraphs.FirstOrderDifference = Smartgraphs.UnorderedDataPoints.extend(
   */
   points: null,
   
-  
   // Note this implementation will change as we evolve an efficient update API for communication between 
   // Datadefs, Samplesets, and DataRepresentations
   
@@ -54,11 +61,28 @@ Smartgraphs.FirstOrderDifference = Smartgraphs.UnorderedDataPoints.extend(
   
   _sourcePointsDidChange: function () {
     var sourcePoints = (this.get('sourcePoints') || []).copy(),
-        points = [];
+        windowedPoints,
+        points,
+        windowLength = this.get('windowLength'),
+        slidingWindow = 0;
 
     // something to catch in a test: we shouldn't accidentally copy the sourcePoints of the UnorderedDataPoints
     sourcePoints.sort( function (pair1, pair2) { return pair1[0] - pair2[0]; } );
-    points = sourcePoints.map( function (pair, index, points) {
+
+    windowedPoints = sourcePoints.map( function (pair, index, points) {    
+      slidingWindow += pair[1];
+      
+      if (0 <= index && index < windowLength) {
+        return [pair[0], slidingWindow / (index + 1)];
+      }
+      else {
+        // index >= windowLength
+        slidingWindow -= sourcePoints[index-windowLength][1];
+        return [pair[0], slidingWindow / windowLength];
+      }
+    });
+    
+    points = windowedPoints.map( function (pair, index, points) {
       return index > 0 ? [pair[0], (pair[1] - points[index-1][1]) / (pair[0] - points[index-1][0])] : null; 
     });
     points.shift();

@@ -42,6 +42,11 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
   staticImages: [],
   animations: [],
   linkedAnimationsByPane: {},
+  
+  /*
+    How many times the animation has played through on this step.
+  */
+  playCount: 0,
 
   _mainPane: null,
   mainPane: function () {
@@ -93,6 +98,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.set('backgroundImageURL', args.backgroundImage || this.get('defaultBackgroundImageURL'));
     this.set('duration',           args.duration        || this.get('defaultDuration'));      // duration of 0 makes no sense
     this.set('channelWidth',       args.channelWidth    || this.get('defaultChannelWidth'));  // channelWidth of 0 makes no sense
+    this.set('playCount', 0);    
 
     staticImageHashes.forEach(function (hash) {
       var instances = hash.instances || [],
@@ -153,6 +159,7 @@ Smartgraphs.animationTool = Smartgraphs.Tool.create(
     this.set('animations', []);
     this.set('linkedAnimationsByPane', {});
     this.set('staticImages', []);
+    this.set('playCount', 0);
   },
 
   makeAnimationInfoObject: function () {

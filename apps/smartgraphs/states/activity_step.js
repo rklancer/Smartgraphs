@@ -38,7 +38,7 @@ Smartgraphs.ACTIVITY_STEP = SC.State.extend(
   ACTIVITY_STEP_DEFAULT: SC.State.design(),
   
   
-  SENSOR: SC.State.plugin('Smartgraphs.SENSOR'),
+  SENSOR_TOOL: SC.State.plugin('Smartgraphs.SENSOR_TOOL'),
     
   
   TAGGING_TOOL: SC.State.plugin('Smartgraphs.TAGGING_TOOL'),

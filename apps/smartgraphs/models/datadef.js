@@ -115,7 +115,13 @@ Smartgraphs.Datadef = SC.Record.extend(
   */
   selectedY: null,
   
-
+  /**
+    Whether data is being streamed into this datadef. Transient.
+    
+    @property {Boolean}
+  */
+  isStreaming: false,
+  
   /** 
     Return a new DataRepresentation tied to an appropriate SampleSet for objects of this Datadef class. Options will 
     eventually allow you to customize the DataRepresentation and reuse SampleSets.
