@@ -4243,7 +4243,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yUnits": "/builtins/units/meters-per-second",
           "yLabel": "Velocity",
           "yShortLabel": "Velocity",
-          "points": [[0,0],[5,0],[5,3],[11,3],[11,-3],[20,-3]]
+          "points": [[0,0],[4.8,0],[5.2,3],[10.6,3],[11.4,-3],[20,-3]]
         }
       ]
     },
