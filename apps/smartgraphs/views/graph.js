@@ -502,9 +502,7 @@ Smartgraphs.GraphView = SC.View.extend(
 
       if (loop) {
         // only generate the following closure on the first loop!
-        if (!loopCallback) console.log('generating loopCallback closure');
         callback = loopCallback || function () {
-          console.log('in callback');
           self._startLinkedAnimationForDatadef(datadefName, animationIsRestarting, callback);
         };
       }
@@ -595,7 +593,6 @@ Smartgraphs.GraphView = SC.View.extend(
             points          = firstDataView.getPath('item.points'),
             y               = points[0][1] / (logicalBounds.yMax - logicalBounds.yMin),
             yOffset         = animationSpec.yOffset || 0;
-        
 
         dataViews.forEach( function (dataView) {
           dataView.set('isHiddenForAnimation', YES);
@@ -612,6 +609,7 @@ Smartgraphs.GraphView = SC.View.extend(
       
       linkedAnimations.forEach( function (linkedSpec) {
         self._dataViewsForDatadefName(linkedSpec.datadefName).forEach( function (dataView) {
+          dataView.set('isHiddenForAnimation', YES);
           dataView.get('layer').raphael.attr(graphResetAttributes);
         });
       });
