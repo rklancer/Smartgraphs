@@ -2632,7 +2632,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       ],
       "defaultBranch": "/shared/describing-velocity/page/9/step/3",
-      "beforeText": "<p><b>Incorrect.</b> Hint: Does the velocity change when the car is stopped? Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint: When a car is stopped, what is its change in position? Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
       "submitButtonTitle": "Check My Answer",
       "hideSubmitButton": false
