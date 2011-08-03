@@ -123,10 +123,11 @@ Smartgraphs.ANIMATION_TOOL = SC.State.extend(
     
     ANIMATION_FINISHED: SC.State.design({
       
-      owner: SC.outlet('statechart.owner'),      
+      owner: SC.outlet('statechart.owner'),
       
       enterState: function () {
         this.get('owner').highlightClearControl();
+        Smartgraphs.animationTool.incrementProperty('playCount');
       },
       
       clearControlWasClicked: function () {
