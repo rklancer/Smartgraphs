@@ -1251,10 +1251,18 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>Hint: You started walking at <b>%@</b> seconds and ended at <b>%@</b> seconds.</p><p>___ - ___ = ? <p>",
+      "beforeText": "<p>Incorrect.</p><p>Hint: You started walking at <b>%@</b> seconds and ended at <b>%@</b> seconds.</p><p>%@ - %@ = ? <p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
+        {
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "rounded-actual-normal-start-time" }
+        },
+        {
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "rounded-actual-normal-end-time" }
+        },        
         {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-start-time" }
@@ -2101,7 +2109,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position, in meters?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the graph.</p>",
       "startCommands": [
@@ -2178,7 +2186,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position, in meters?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "startCommands": [
@@ -2327,7 +2335,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>What is the change in time? </p>",
+      "beforeText": "<p>What is the change in time, in seconds? </p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
@@ -2418,7 +2426,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
+      "beforeText": "<p>Correct!</p><p>What is the change in time, in seconds? </p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
@@ -2509,7 +2517,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the change in time, in seconds?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "startCommands": [
@@ -3637,7 +3645,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position, in meters?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the graph.</p>",
       "startCommands": [
@@ -3714,7 +3722,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in position?</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the change in position, in meters?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "startCommands": [
@@ -3863,7 +3871,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>What is the change in time? </p>",
+      "beforeText": "<p>What is the change in time, in seconds? </p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
@@ -3954,7 +3962,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Correct!</p><p>What is the change in time? </p>",
+      "beforeText": "<p>Correct!</p><p>What is the change in time, in seconds? </p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint:Look at the graph.</p>",
       "startCommands": [
@@ -4045,7 +4053,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Incorrect.</p><p>What is the change in time?</p>",
+      "beforeText": "<p>Incorrect.</p><p>What is the change in time, in seconds?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Hint: Look at the table and the graph.</p>",
       "startCommands": [
@@ -4974,7 +4982,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "name": "slope-graph-analyze"
         }
       },
-      "beforeText": "<p>Which of the lines in the accompanying graph covers the fastest velocity?</p>",
+      "beforeText": "<p>Which of the lines in the accompanying graph indicates the fastest velocity?</p>",
       "responseTemplate": "/components/response-template/slope-graph-analyze",
       "afterText": "",
       "startCommands": [
@@ -5119,7 +5127,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "name": "slope-graph-analyze"
         }
       },
-      "beforeText": "<p>Which of the lines in the accompanying graph covers the fastest velocity?</p>",
+      "beforeText": "<p>Which of the lines in the accompanying graph indicates the fastest velocity?</p>",
       "responseTemplate": "/components/response-template/slope-graph-analyze",
       "afterText": "<p><b>Incorrect</b>, Try again. <p>Hint: The steepest line represents the fastest velocity since more distance is covered in the same amount of time.</p>",
       "startCommands": [
