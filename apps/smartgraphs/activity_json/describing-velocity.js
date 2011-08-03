@@ -4166,7 +4166,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "url": "/shared/describing-velocity/annotation/velocity-label-1",
           "name": "velocity-label-1",
           "activity": "/shared/calculated-velocity",
-          "text": "Stopped for 3 secs.\nVelocity = 0",
+          "text": "Stopped for 3 secs.\nVelocity = 0 m/s",
           "x": 1.5,
           "y": 0,
           "xOffset": -73,
