@@ -3433,7 +3433,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 1: While an object is moving forward with constant velocity, does its velocity stay the same or change? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is moving forward with constant velocity, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
@@ -3461,7 +3461,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 2: When an object is moving forward, is its velocity positive, negative, or 0? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is moving forward with constant velocity, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
@@ -3489,7 +3489,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows a positive, constant velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows positive velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
@@ -3608,7 +3608,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 1: While an object is stopped, does its velocity stay the same or change? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is stopped, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
@@ -3636,7 +3636,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 2: What is an object's velocity when it is not moving? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is stopped, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
@@ -3664,7 +3664,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows a velocity of 0? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows 0 velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
@@ -3778,7 +3778,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 1: While an object is moving backward with constant velocity, does its velocity stay the same or change? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is moving backward, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
@@ -3806,7 +3806,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 2: When an object is moving backward, is its velocity positive, negative, or 0? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is moving backward, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
@@ -3834,7 +3834,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": ["identify-the-motion-labels"]
         }
       },
-      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows a negative, constant velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
+      "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows negative velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
       "responseBranches": [
