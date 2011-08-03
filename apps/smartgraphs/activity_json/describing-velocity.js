@@ -2507,6 +2507,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "beforeText": " <p>A <i>velocity-time</i> graph shows the car's <b>velocity</b> over time.</p><p><b>Click</b> the Start button to play the animation again.</p><p>This time, the velocity-time graph of the car's motion displays below the position-time graph.</p>",
       "defaultBranch": "/shared/describing-velocity/page/8/step/2",
+      "submissibilityCriterion": [">", ["playCount"], 0],
       "submitButtonTitle": "OK"
     },
 
@@ -2819,6 +2820,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         }
       ],
       "beforeText": "<p>Let's look at another type of motion that you have experienced.</p><p><b>Click</b> the Start button to watch the motion and corresponding position-time graph",
+      "submissibilityCriterion": [">", ["playCount"], 0],
       "submitButtonTitle": "OK",
       "defaultBranch": "/shared/describing-velocity/page/11/step/2"
     },
