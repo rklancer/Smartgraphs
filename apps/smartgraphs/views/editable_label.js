@@ -3,9 +3,7 @@
 // Copyright: ©2011 Concord Consortium
 // Author:    Noah Paessel <knowuh@gmail.com>
 // ==========================================================================
-/*globals Smartgraphs,  RaphaelViews, SC, YES, NO */
-/*jslint sloppy: true, vars: true, white: true, maxerr: 50, indent: 2 */
-
+/*globals Smartgraphs, RaphaelViews */
 
 /** @class
 
@@ -32,7 +30,14 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   textBinding:         '.labelBodyView.text',
   textColorBinding:    '.labelBodyView.textColor',
   itemBinding:         '.labelBodyView.item',
-  justAddedBinding:    '*item.justAdded',
+  
+  createdByLabelToolBinding: '*item.createdByLabelTool',
+  hasEditedFirstTimeBinding: '*item.hasEditedFirstTime',
+
+  isEditFirstTimePending: function () {
+    return this.get('createdByLabelTool') && !this.get('hasEditedFirstTime');
+  }.property('createdByLabelTool', 'hasEditedFirstTime'),
+  
   parentXBinding:      '.labelBodyView.bodyXCoord',
   parentYBinding:      '.labelBodyView.bodyYCoord',
   parentMarginBinding: '.labelBodyView.margin',
@@ -40,7 +45,7 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
   // Bounds need to be calculated by Raphael:
   minHeight: 18,
   minWidth: 80,
-
+  
   // our parent view is going to modify our position
   // but we will modify our parents width and height
   x: function () {
@@ -129,15 +134,15 @@ Smartgraphs.EditableLabelView = RaphaelViews.RaphaelView.extend(SC.Editable, {
     this.set(paramName, (! this.get(paramName)));
   },
 
-  editFirstTime: function() {
-    var item = this.get('item'), 
-        firstTime = (!!! item.get('hasBeenDrawn'));
-    if(firstTime) {
+  editFirstTime: function () {
+    var item = this.get('item');
+    
+    if (this.get('isEditFirstTimePending')) {
       this.beginEditing();
       this.beginEditing(); // call twice to force selectAll
+      this.set('hasEditedFirstTime', YES);
     }
-    item.set('hasBeenDrawn', YES);
-  }.observes('justAdded'),
+  }.observes('isEditFirstTimePending'),
 
   beginEditing: function () {
     if (!this.get('isEditable')) { return NO ; }

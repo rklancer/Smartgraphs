@@ -109,7 +109,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
           label.set('x', args.x);
           label.set('y', args.y);
           label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
-          label.set('justAdded', YES);
+          label.set('createdByLabelTool', YES);
       
           Smartgraphs.labelTool.appendLabel(this, label);
           this.gotoState('ADDED');
@@ -156,7 +156,7 @@ Smartgraphs.LABEL_TOOL = SC.State.extend(
     
         label.set('x', args.x);
         label.set('y', args.y);
-        label.set('justAdded', YES);
+        label.set('createdByLabelTool', YES);
         label.set('shouldMarkTargetPoint', args.shouldMarkTargetPoint);
         return YES;
       },

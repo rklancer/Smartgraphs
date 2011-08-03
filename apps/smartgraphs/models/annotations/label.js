@@ -65,16 +65,19 @@ Smartgraphs.Label = Smartgraphs.Annotation.extend(
   shouldMarkTargetPoint: SC.Record.attr(Boolean, { defaultValue: YES }),
   
   /**
-    Transient property -- was the label just added to the graph?
+    Transient property -- was the label added to the graph by the label tool? If NO, assume it was predefined in the
+    activity.
     @property {Boolean}
   */
-  justAdded: NO,
+  createdByLabelTool: NO,
 
   /**
-    Transient property -- has the label been drawn yet?
+    Transient property -- has the label already automatically "selected all for editing"? If so, don't do so again,
+    e.g., when we regain firstResponder.
+    
     @property {Boolean}
   */
-  hasBeenDrawn: NO,
+  hasEditedFirstTime: NO,
 
   labelSet: null,
   
