@@ -261,7 +261,10 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "/shared/what-is-velocity/page/15/step/2",
         "/shared/what-is-velocity/page/15/step/3",
         "/shared/what-is-velocity/page/15/step/4",
-        "/shared/what-is-velocity/page/15/step/5"
+        "/shared/what-is-velocity/page/15/step/5",
+        "/shared/what-is-velocity/page/15/step/6",
+        "/shared/what-is-velocity/page/15/step/7",
+        "/shared/what-is-velocity/page/15/step/8"        
       ],
       "name": "Average Speed",
       "firstStep": "/shared/what-is-velocity/page/15/step/1",
@@ -4908,6 +4911,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "submitButtonTitle": "OK",
       "nextButtonShouldSubmit": false
     },
+    
     {
       "url": "/shared/what-is-velocity/page/15/step/5",
       "activityPage": "/shared/what-is-velocity/page/15",
@@ -4923,7 +4927,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "slope-data"
         }
       },
-      "beforeText": "<p>Here is a line through the two points.</p><p>What was your average velocity during the whole trip?</p>",
+      "beforeText": "<p>Here is a line through the two points.</p><p>What was your average velocity during the whole trip, in meters per second?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p>Round your answer to the nearest tenth (m/s).</p><p>Hint: What were your total distance and your total time?</p>",
       "startCommands": [
@@ -4951,11 +4955,155 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [
-          { "float": { "strip": "value" } },
-          0
-        ]
+        "isNumeric": { "strip": "value" }
       },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              {
+                "float": "value"
+              },
+              1.5
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/15/step/8"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/15/step/6",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Check My Answer",
+      "nextButtonShouldSubmit": false
+    },
+    
+    {
+      "url": "/shared/what-is-velocity/page/15/step/6",
+      "activityPage": "/shared/what-is-velocity/page/15",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>Hint: Remember that velocity is the change in position divided by the change in time</p><p>What was your average velocity during the whole trip, in meters per second?</p>",
+      "responseTemplate": "/components/response-template/numeric",
+      "afterText": "<p>Round your answer to the nearest tenth (m/s).</p><p>Hint: What were your total distance and your total time?</p>",
+      "startCommands": [
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "slope-line-C",
+            "firstPoint": "first-point-C",
+            "secondPoint": "second-point-C",
+            "graphName": "slope-graph",
+            "color": "#1f77b4"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-C",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "submissibilityCriterion": {
+        "isNumeric": { "strip": "value" }
+      },
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": {
+        "type": "Smartgraphs.FirstResponseFieldInspector"
+      },
+      "responseBranches": [
+        {
+          "criterion": {
+            "equals": [
+              {
+                "float": "value"
+              },
+              1.5
+            ]
+          },
+          "step": "/shared/what-is-velocity/page/15/step/8"
+        }
+      ],
+      "defaultBranch": "/shared/what-is-velocity/page/15/step/7",
+      "isFinalStep": false,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": false,
+      "submitButtonTitle": "Check My Answer",
+      "nextButtonShouldSubmit": false
+    },    
+    
+    {
+      "url": "/shared/what-is-velocity/page/15/step/7",
+      "activityPage": "/shared/what-is-velocity/page/15",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Incorrect.</p><p>Your change in position was 15 - 0 = 15 meters in 10 - 0 = 10 seconds, so your velocity was 1.5 m/s.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "slope-line-C",
+            "firstPoint": "first-point-C",
+            "secondPoint": "second-point-C",
+            "graphName": "slope-graph",
+            "color": "#1f77b4"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-C",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
       "triggeredCommands": [
 
       ],
@@ -4972,7 +5120,68 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
       "hideSubmitButton": true,
       "submitButtonTitle": "",
       "nextButtonShouldSubmit": true
-    },{
+    },
+    
+    {
+      "url": "/shared/what-is-velocity/page/15/step/8",
+      "activityPage": "/shared/what-is-velocity/page/15",
+      "paneConfig": "split",
+      "panes": {
+        "top": {
+          "type": "graph",
+          "name": "slope-graph"
+        },
+        "bottom": {
+          "type": "table",
+          "graphName": "slope-graph",
+          "datasetName": "slope-data"
+        }
+      },
+      "beforeText": "<p>Correct!</p><p>Your change in position was 15 - 0 = 15 meters in 10 - 0 = 10 seconds, so your velocity was 1.5 m/s.</p>",
+      "responseTemplate": null,
+      "afterText": "",
+      "startCommands": [
+        {
+          "action": "createLineThroughPoints",
+          "literalArgs": {
+            "lineName": "slope-line-C",
+            "firstPoint": "first-point-C",
+            "secondPoint": "second-point-C",
+            "graphName": "slope-graph",
+            "color": "#1f77b4"
+          }
+        },
+        {
+          "action": "addAnnotation",
+          "literalArgs": {
+            "name": "slope-line-C",
+            "graphName": "slope-graph"
+          }
+        }
+      ],
+      "shouldFinishImmediately": false,
+      "shouldWaitForSubmissibleResponse": true,
+      "submissibilityInspector": null,
+      "submissibilityCriterion": null,
+      "triggeredCommands": [
+
+      ],
+      "afterSubmissionCommands": [
+
+      ],
+      "responseInspector": null,
+      "responseBranches": [
+
+      ],
+      "defaultBranch": null,
+      "isFinalStep": true,
+      "shouldAutoAdvancePage": false,
+      "hideSubmitButton": true,
+      "submitButtonTitle": "",
+      "nextButtonShouldSubmit": true
+    },
+    
+    {
       "url": "/shared/what-is-velocity/page/16/step/1",
       "activityPage": "/shared/what-is-velocity/page/16",
       "paneConfig": "single",
