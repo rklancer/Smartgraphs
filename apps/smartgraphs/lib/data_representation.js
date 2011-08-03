@@ -63,6 +63,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   xUnits:  SC.outlet('sampleset.datadef.xUnits'),
   yUnits:  SC.outlet('sampleset.datadef.yUnits'),
   name:    SC.outlet('sampleset.datadef.name'),
+  points:  SC.outlet('sampleset.points'),
   
   // some representative options
   color: null,
@@ -85,7 +86,7 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
   },
   
   _pointsDidChange: function () {
-    var samplePoints = this.getPath('sampleset.points') || [],
+    var samplePoints = this.getPath('sampleset.points') || [],    // FIXME I don't know why this.get('points') doesn't work
         pointset     = this.get('pointset'),
         line         = this.get('line');
          
