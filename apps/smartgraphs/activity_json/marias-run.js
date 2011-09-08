@@ -30,7 +30,8 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "/shared/marias-run/axes/2000m",
       "/shared/marias-run/axes/10min",
       "/shared/marias-run/axes/5m",
-      "/shared/marias-run/axes/30s"
+      "/shared/marias-run/axes/15s",
+      "/shared/marias-run/axes/20s"
     ],
     "graphs": [
       "/shared/marias-run/graph/maria",
@@ -61,7 +62,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       ],
       "name": "Experimenting With Motion",
       "firstStep": "/shared/marias-run/page/2/step/1",
-      "introText": "<p>You are going to move in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 30 seconds. Experiment with different kinds of motions (fast, slow, toward the sensor, away from the sensor\u2026).</p><p>The sensor will stop after 30 seconds are up. You can click Clear to clear the graph and try again.</p>",
+      "introText": "<p>You are going to move in different ways on a straight path while collecting data with a motion sensor.</p><p>When you are ready, click Start to record the position and time data for your movements. Walk on the path for 20 seconds. Experiment with different kinds of motions (fast, slow, toward the sensor, away from the sensor\u2026).</p><p>The sensor will stop after 20 seconds are up. You can click Clear to clear the graph and try again.</p>",
       "url": "/shared/marias-run/page/2",
       "activity": "/shared/marias-run",
       "index": 2
@@ -72,7 +73,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       ],
       "name": "Motion at Two Speeds",
       "firstStep": "/shared/marias-run/page/3/step/1",
-      "introText": "<p>Next you will try moving at two different speeds.</p><p>Start close to the motion sensor. When you are ready, click Start and walk away from the sensor at a slow, steady pace for 15 seconds, then at a faster, steady pace for 15 seconds. Click Stop when the time is up.</p>",
+      "introText": "<p>Next you will try moving at two different speeds.</p><p>Start close to the motion sensor. When you are ready, click Start and walk away from the sensor at a slow, steady pace for 10 seconds, then at a faster, steady pace for 10 seconds. Click Stop when the time is up.</p>",
       "url": "/shared/marias-run/page/3",
       "activity": "/shared/marias-run",
       "index": 3
@@ -83,7 +84,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       ],
       "name": "Motion: Slow, Stopped, and Faster",
       "firstStep": "/shared/marias-run/page/4/step/1",
-      "introText": "<p>This time, you are going to record your position and time during three different tasks.</p><p>Start close to the motion sensor and click Start. Walk slowly for about 10 seconds, stop for 10 seconds, then walk faster for the remaining 10 seconds.</p>",
+      "introText": "<p>This time, you are going to record your position and time during three different tasks.</p><p>Start close to the motion sensor and click Start. Walk slowly for about 5 seconds, stop for 5 seconds, then walk faster for 5 seconds.</p>",
       "url": "/shared/marias-run/page/4",
       "activity": "/shared/marias-run",
       "index": 4
@@ -138,7 +139,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
     },
     {
       "steps": [
-        "/shared/marias-run/page/8/step/1",
+        "/shared/marias-run/page/8/step/1"
       ],
       "name": "Reflection on Activity",
       "firstStep": "/shared/marias-run/page/8/step/1",
@@ -1576,13 +1577,21 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "nSteps": 10,
       "label": "Time"
     },
-    
     {
-      "url": "/shared/marias-run/axes/30s",
+      "url": "/shared/marias-run/axes/15s",
       "units": "/builtins/units/seconds",
       "min": 0,
-      "max": 30,
-      "nSteps": 6,
+      "max": 15,
+      "nSteps": 3,
+      "label": "Time"
+    },
+    
+    {
+      "url": "/shared/marias-run/axes/20s",
+      "units": "/builtins/units/seconds",
+      "min": 0,
+      "max": 20,
+      "nSteps": 4,
       "label": "Time"
     },
     {
@@ -1616,7 +1625,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "name": "sensor-playing",
       "description": "Playing around with the sensor in page 2",
       "title": "Position vs. Time",
-      "xAxis": "/shared/marias-run/axes/30s",
+      "xAxis": "/shared/marias-run/axes/20s",
       "yAxis": "/shared/marias-run/axes/5m",
       "initialDatasets": [
         
@@ -1631,7 +1640,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "name": "start-stop-start",
       "description": "Starting, stopping, and starting again in page 4",
       "title": "Position vs. Time",
-      "xAxis": "/shared/marias-run/axes/30s",
+      "xAxis": "/shared/marias-run/axes/15s",
       "yAxis": "/shared/marias-run/axes/5m",
       "initialDatasets": [
         
@@ -1646,7 +1655,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
       "name": "two-speeds",
       "description": "Walking at two speeds in page 3",
       "title": "Position vs. Time",
-      "xAxis": "/shared/marias-run/axes/30s",
+      "xAxis": "/shared/marias-run/axes/20s",
       "yAxis": "/shared/marias-run/axes/5m",
       "initialDatasets": [
         
@@ -1698,7 +1707,7 @@ Smartgraphs.activityDocs["/shared/marias-run"] =
         "A position-time graph shows ...",
         "A position-time graph leaves out ..."
       ]
-    },
+    }
   ],
   "datasets": [
     {
