@@ -1187,7 +1187,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "datasetName": "sensor-normal"
         }
       },
-      "beforeText": "<p>At your normal pace you walked <b>%@</b> meters, from <b>%@</b> to <b>%@</b>.</p><p>How many seconds did it take for you to walk that distance?</p>",
+      "beforeText": "<p>At your normal pace you walked <b>%@</b> meters, starting at <b>%@</b> meters and ending at <b>%@</b> meters.</p><p>How many seconds did it take for you to walk that distance?</p>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
@@ -1265,14 +1265,14 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-end-time" }
-        },        
-        {
-          "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-start-time" }
         },
         {
           "type": "Smartgraphs.EvaluatorInspector",
           "config": { "variable": "rounded-actual-normal-end-time" }
+        },                
+        {
+          "type": "Smartgraphs.EvaluatorInspector",
+          "config": { "variable": "rounded-actual-normal-start-time" }
         }
       ],
       "startCommands": [
@@ -1341,11 +1341,11 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         },
         {
           "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-start-time" }
+          "config": { "variable": "rounded-actual-normal-end-time" }
         },
         {
           "type": "Smartgraphs.EvaluatorInspector",
-          "config": { "variable": "rounded-actual-normal-end-time" }
+          "config": { "variable": "rounded-actual-normal-start-time" }
         },
         {
           "type": "Smartgraphs.EvaluatorInspector",
