@@ -400,7 +400,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": " <p><strong>How can you describe velocity?</strong></p>  <p>Let’s start by examining the motion of a car traveling from one point to another.</p>  <p><b>Click</b> the Start button to the right to watch the car’s journey. <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p> ",
+      "beforeText": " <p><strong>How can you describe velocity?</strong></p>  <p>Let’s start by examining the motion of a car traveling from one point to another.</p>  <p><b>Click</b> the Start button to the right to watch the car’s journey. Click the Stop, Reset, and Start buttons to pause and replay the motion multiple times.</p> <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p> ",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "afterText": "<p><strong>Word bank:</strong> start, position, time, forward, backward, moving, stopping, velocity, constant, steady, changing, slow, fast, end, meters, seconds<p>",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
@@ -429,7 +429,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": []
         }
       },
-      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph.</p><p>To add a label, <b>click</b> where you want to add a label, and <b>start typing</b>.</p>",
+      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph. You should have three labels, one for each motion.</p><p>To add a label, <b>click</b> where you want to add a label, and <b>start typing</b>.</p>",
       "substitutedExpressions": ["student-description"],
       "submissibilityDependsOn": ["annotation", "students-segment-labels"],
       "submissibilityCriterion": [">", ["numberOfLabels", "students-segment-labels"], 0],
@@ -2459,7 +2459,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [
-            ["position-data", { "point-type": "none", "line-type": "connected" }]
+            ["position-data-hacky-fix", { "point-type": "none", "line-type": "connected" }]
           ],
           "annotations": []
         },
@@ -2493,7 +2493,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-              "data": "position-data",
+              "data": "position-data-hacky-fix",
               "image": sc_static('images/carWhite2.png'),
               "width":  30,
               "height": 61,
@@ -2526,7 +2526,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [
-            ["position-data", { "point-type": "none", "line-type": "connected" }]
+            ["position-data-hacky-fix", { "point-type": "none", "line-type": "connected" }]
           ],
           "annotations": []
         },
@@ -2560,7 +2560,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-              "data": "position-data",
+              "data": "position-data-hacky-fix",
               "image": sc_static('images/carWhite2.png'),
               "width":  30,
               "height": 61,
@@ -2576,7 +2576,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": " <p>Both graphs provide information about the same motion.</p><p><b>Describe</b> how constant velocity is represented on a position-time graph and on a velocity-time graph.</p><p><b>Word bank</b>: constant velocity, flat, straight, tilted, up, down, right, left, segment, horizontal, steep, slope</p>",
+      "beforeText": " <p>Both graphs provide information about the same motion.</p><p><b>Describe</b> how constant velocity is represented on a position-time graph and on a velocity-time graph. (<b>Click Start</b> if you need to see the motion and graphs again.)</p><p><b>Word bank</b>: constant velocity, flat, straight, tilted, up, down, right, left, segment, horizontal, steep, slope</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "nextButtonShouldSubmit": true, 
@@ -2827,7 +2827,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": "<p>Let's look at another type of motion that you have experienced.</p><p><b>Click</b> the Start button to watch the motion and corresponding position-time graph",
+      "beforeText": "<p>Let's look at another type of motion that you have experienced.</p><p><b>Click</b> the Start button to see the motion and corresponding position-time graph. Watch the motion multiple times.",
       "submissibilityCriterion": [">", ["playCount"], 0],
       "submitButtonTitle": "OK",
       "defaultBranch": "/shared/describing-velocity/page/11/step/2"
@@ -2897,7 +2897,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": "<p>Use the position-time graph to find the car's velocity</p><p><b>Sketch</b> the velocity-time graph for the motion in the bottom area.</p><p><b>Click</b> the point where you want your sketch to start.</p><p>To continue your sketch, <b>click</b> on each point at which you want the sketch to continue.</p><p><b>Click Reset</b> if you want to erase your sketch and start over.</p>",
+      "beforeText": "<p><b>Click Start</b> to see the motion and position-time graph again. <b>Use</b> the position-time graph to find the car's velocity</p><p><b>Sketch</b> the velocity-time graph for the motion in the bottom area.</p><p><b>Click</b> the point where you want your sketch to start.</p><p>To continue your sketch, <b>click</b> on each point at which you want the sketch to continue.</p><p><b>Click Reset</b> under the bottom graph if you want to erase your sketch and start over.</p>",
       "submitButtonTitle": "OK",
       "submissibilityDependsOn": ["annotation", "student-velocity-prediction"],
       "submissibilityCriterion": [">=", ["sketchLength", "student-velocity-prediction"], 0],
@@ -2965,7 +2965,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": "<p><b>Click</b> the Start button. <b>Observe</b> the motion and graph multiple times.</p><p>In the top area, the position-time graph displays. In the bottom area, the actual velocity-time graph displays along with your sketch.</p><p>How does your predicted velocity compare with the actual velocity?</p>",
+      "beforeText": "<p><b>Click</b> the Start button. <b>Observe</b> the motion and graphs multiple times.</p><p>In the top area, the position-time graph displays. In the bottom area, the actual velocity-time graph displays along with your sketch.</p><p>How does your predicted velocity compare with the actual velocity?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "submitButtonTitle": "OK",
@@ -2995,7 +2995,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": ["student-velocity-prediction"]
+          "annotations": []
         }
       },
       "tools": [
@@ -3069,7 +3069,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": ["student-velocity-prediction"]
+          "annotations": []
         }
       },
       "tools": [
@@ -3143,7 +3143,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": ["student-velocity-prediction"]
+          "annotations": []
         }
       },
       "tools": [
@@ -3217,7 +3217,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": ["student-velocity-prediction"]
+          "annotations": []
         }
       },
       "tools": [
@@ -3291,7 +3291,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": ["student-velocity-prediction"]
+          "annotations": []
         }
       },
       "tools": [
@@ -3358,7 +3358,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": ["student-velocity-prediction"]
+          "annotations": []
         }
       },
       "tools": [
@@ -4222,6 +4222,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "points": [[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1.25,0],[1.5,0],[1.75,0],[2,0],[2.25,0],[2.5,0],[2.75,0],[3,0],[3.25,0.5],[3.5,1],[3.75,1.5],[4,2],[4.25,2.5],[4.5,3],[4.75,3.5],[5,4],[5.25,4.5],[5.5,5],[5.75,5.5],[6,6],[6.25,8.5],[6.5,11],[6.75,13.5],[7,16],[7.25,18.5],[7.5,21],[7.75,23.5],[8,26],[8.25,28.5],[8.5,31],[8.75,33.5],[9,36]]
         },
         {
+          "url": "/shared/describing-velocity/datadefs/position-data-hacky-fix",
+          "name": "position-data-hacky-fix",
+          "activity": "/shared/describing-velocity",
+          "xUnits": "/builtins/units/seconds",
+          "xLabel": "Time",
+          "xShortLabel": "Time",
+          "yUnits": "/builtins/units/meters",
+          "yLabel": "Position",
+          "yShortLabel": "Position",
+          "points": [[0,0],[0.001,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1.25,0],[1.5,0],[1.75,0],[2,0],[2.25,0],[2.5,0],[2.75,0],[3,0],[3.25,0.5],[3.5,1],[3.75,1.5],[4,2],[4.25,2.5],[4.5,3],[4.75,3.5],[5,4],[5.25,4.5],[5.5,5],[5.75,5.5],[6,6],[6.25,8.5],[6.5,11],[6.75,13.5],[7,16],[7.25,18.5],[7.5,21],[7.75,23.5],[8,26],[8.25,28.5],[8.5,31],[8.75,33.5],[9,36]]
+        },
+        {
           "url": "/shared/describing-velocity/datadefs/car-in-reverse-position",
           "name": "car-in-reverse-position",
           "activity": "/shared/describing-velocity",
@@ -4260,7 +4272,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yUnits": "/builtins/units/meters-per-second",
           "yLabel": "Velocity",
           "yShortLabel": "Velocity",
-          "source": "/shared/describing-velocity/datadefs/position-data"
+          "source": "/shared/describing-velocity/datadefs/position-data-hacky-fix"
         },
         {
           "url": "/shared/describing-velocity/datadefs/car-in-reverse-velocity",
