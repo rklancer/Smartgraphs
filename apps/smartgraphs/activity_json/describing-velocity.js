@@ -2576,7 +2576,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": " <p>Both graphs provide information about the same motion.</p><p><b>Describe</b> how constant velocity is represented on a position-time graph and on a velocity-time graph.</p><p><b>Word bank</b>: constant velocity, flat, straight, tilted, up, down, right, left, segment, horizontal, steep, slope</p>",
+      "beforeText": " <p>Both graphs provide information about the same motion.</p><p><b>Describe</b> how constant velocity is represented on a position-time graph and on a velocity-time graph. (<b>Click Start</b> if you need to see the motion and graphs again.)</p><p><b>Word bank</b>: constant velocity, flat, straight, tilted, up, down, right, left, segment, horizontal, steep, slope</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
       "nextButtonShouldSubmit": true, 
