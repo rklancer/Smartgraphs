@@ -187,7 +187,7 @@
   }
   
   function intValue(terms, value) {
-    return parseInt(evaluate(terms, value), 10);
+    return parseFloat(evaluate(terms, value), 10);
   }
   
   function floatValue(terms, value) {
