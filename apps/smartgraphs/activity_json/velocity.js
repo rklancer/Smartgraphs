@@ -5289,7 +5289,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
               1
             ]
           },
-          "step": "/shared/what-is-velocity/page/16/step/2"
+          "step": "/shared/what-is-velocity/page/16/step/3"
         },
         {
           "criterion": {
@@ -5481,7 +5481,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "name": "slope-graph-analyze"
         }
       },
-      "beforeText": "<p><b>Correct!</b>, the steepest line represents the fastest velocity since more distance is covered in the same amount of time.</p><p>Which of the lines in the accompanying graph indicates the <b>slowest</b> velocity?</p>",
+      "beforeText": "<p><b>Correct!</b> The steepest line represents the fastest velocity since more distance is covered in the same amount of time.</p><p>Which of the lines in the accompanying graph indicates the <b>slowest</b> velocity?</p>",
       "responseTemplate": "/components/response-template/slope-graph-analyze",
       "afterText": "",
       "startCommands": [
