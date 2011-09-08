@@ -2459,7 +2459,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [
-            ["position-data", { "point-type": "none", "line-type": "connected" }]
+            ["position-data-hacky-fix", { "point-type": "none", "line-type": "connected" }]
           ],
           "annotations": []
         },
@@ -2493,7 +2493,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-              "data": "position-data",
+              "data": "position-data-hacky-fix",
               "image": sc_static('images/carWhite2.png'),
               "width":  30,
               "height": 61,
@@ -2526,7 +2526,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [
-            ["position-data", { "point-type": "none", "line-type": "connected" }]
+            ["position-data-hacky-fix", { "point-type": "none", "line-type": "connected" }]
           ],
           "annotations": []
         },
@@ -2560,7 +2560,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                 ]
             }],
             "animations": [{
-              "data": "position-data",
+              "data": "position-data-hacky-fix",
               "image": sc_static('images/carWhite2.png'),
               "width":  30,
               "height": 61,
@@ -4222,6 +4222,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "points": [[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1.25,0],[1.5,0],[1.75,0],[2,0],[2.25,0],[2.5,0],[2.75,0],[3,0],[3.25,0.5],[3.5,1],[3.75,1.5],[4,2],[4.25,2.5],[4.5,3],[4.75,3.5],[5,4],[5.25,4.5],[5.5,5],[5.75,5.5],[6,6],[6.25,8.5],[6.5,11],[6.75,13.5],[7,16],[7.25,18.5],[7.5,21],[7.75,23.5],[8,26],[8.25,28.5],[8.5,31],[8.75,33.5],[9,36]]
         },
         {
+          "url": "/shared/describing-velocity/datadefs/position-data-hacky-fix",
+          "name": "position-data-hacky-fix",
+          "activity": "/shared/describing-velocity",
+          "xUnits": "/builtins/units/seconds",
+          "xLabel": "Time",
+          "xShortLabel": "Time",
+          "yUnits": "/builtins/units/meters",
+          "yLabel": "Position",
+          "yShortLabel": "Position",
+          "points": [[0,0],[0.001,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1.25,0],[1.5,0],[1.75,0],[2,0],[2.25,0],[2.5,0],[2.75,0],[3,0],[3.25,0.5],[3.5,1],[3.75,1.5],[4,2],[4.25,2.5],[4.5,3],[4.75,3.5],[5,4],[5.25,4.5],[5.5,5],[5.75,5.5],[6,6],[6.25,8.5],[6.5,11],[6.75,13.5],[7,16],[7.25,18.5],[7.5,21],[7.75,23.5],[8,26],[8.25,28.5],[8.5,31],[8.75,33.5],[9,36]]
+        },
+        {
           "url": "/shared/describing-velocity/datadefs/car-in-reverse-position",
           "name": "car-in-reverse-position",
           "activity": "/shared/describing-velocity",
@@ -4260,7 +4272,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yUnits": "/builtins/units/meters-per-second",
           "yLabel": "Velocity",
           "yShortLabel": "Velocity",
-          "source": "/shared/describing-velocity/datadefs/position-data"
+          "source": "/shared/describing-velocity/datadefs/position-data-hacky-fix"
         },
         {
           "url": "/shared/describing-velocity/datadefs/car-in-reverse-velocity",
