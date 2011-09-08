@@ -389,9 +389,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [
-          { "int": { "strip": "value" } },
-          0
+        "and": [
+          { "isNumeric": { "strip": "value" } },
+          { "gt": [{ "int": { "strip": "value" } }, 0] }
         ]
       },
       "triggeredCommands": [
@@ -451,9 +451,9 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
         "type": "Smartgraphs.FirstResponseFieldInspector"
       },
       "submissibilityCriterion": {
-        "gt": [
-          { "int": { "strip": "value" } },
-          0
+        "and": [
+          { "isNumeric": { "strip": "value" } },
+          { "gt": [{ "int": { "strip": "value" } }, 0] }
         ]
       },
       "triggeredCommands": [
@@ -595,7 +595,7 @@ Smartgraphs.activityDocs["/shared/what-is-velocity"] =
           "caption": "Creative Commons BY-NC-SA 2.0 image courtesy flickr user Auntie P"
         }
       },
-      "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation of <b>%@</b> %@ for <b>4</b> meters, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4 meters<hr/>%@ seconds</td><td style='border-width:0px'>= ? m/s</td></tr></table></blockquote>",
+      "beforeText": "<p>Incorrect. Try again.</p><p>Based on your observation that you walked <b>4</b> meters in <b>%@</b> %@, what is your average velocity in meters per second? Remember:</p><blockquote><table cellspacing='2' cellpadding='2' style='text-align:center'><tr><td style='border-width:0px'>average velocity</td><td style='border-width:0px'>=</td><td style='border-width:0px'>total distance<hr/>total time</td><td style='border-width:0px'>=</td><td style='border-width:0px'>4 meters<hr/>%@ seconds</td><td style='border-width:0px'>= ? m/s</td></tr></table></blockquote>",
       "responseTemplate": "/components/response-template/numeric",
       "afterText": "<p><i>Round your answer to the nearest tenth.<i></p>",
       "substitutedExpressions": [
