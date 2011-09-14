@@ -343,10 +343,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
-          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+          "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
-      "beforeText": "<p>Imagine you are a TV sports commentator for a major international car race. What techniques could you use to <b>describe</b> the action to your audience?</p>",
+      "beforeText": "<p>Imagine you are a TV sports commentator for a major car race. What techniques could you use to <b>describe</b> the action to your audience?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "afterText": "<p>In this activity, you will explore different ways to communicate how fast an object is moving.</p>",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
@@ -3922,7 +3922,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
          "single": {
            "type": "image",
            "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
-           "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
          }
        },
        "beforeText": "<p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
@@ -3946,7 +3946,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
-          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+          "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>Hint: What data and words can you use to describe velocity? Try again: </p> <p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
@@ -3969,7 +3969,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
-          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+          "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>Hint: Think back on the data you collected and the types of words you used to describe velocity. Try again: </p> <p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
@@ -3992,7 +3992,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
-          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+          "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>Hint: In this activity, you used position-time data, velocity time-data, and words to describe velocity. Try again: </p> <p>Which of these representations can you use to describe the velocity of an object? Choose the best answer.</p>",
@@ -4015,7 +4015,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
-          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+          "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>To describe velocity, you can use a position-time table or graph, a velocity-time table or graph, or descriptive words.</p>",
@@ -4032,7 +4032,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "single": {
           "type": "image",
           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice.jpg",
-          "caption": "Public domain U.S. Air Force photo by Larry McTighe"
+          "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
       "beforeText": "<p><b>Correct!</b></p><p>To describe velocity, you can use a position-time table or graph, a velocity-time table or graph, or descriptive words.</p>",
