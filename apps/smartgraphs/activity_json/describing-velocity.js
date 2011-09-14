@@ -346,7 +346,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
-      "beforeText": "<p>Imagine you are a TV sports commentator for a major international car race. What techniques could you use to <b>describe</b> the action to your audience?</p>",
+      "beforeText": "<p>Imagine you are a TV sports commentator for a major car race. What techniques could you use to <b>describe</b> the action to your audience?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "afterText": "<p>In this activity, you will explore different ways to communicate how fast an object is moving.</p>",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
