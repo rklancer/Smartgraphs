@@ -1,0 +1,314 @@
+ResponseTemplates:
+
+  open-response
+  
+Annotations:
+
+  FreehandSketch:
+  
+    light-ball-position
+    light-ball-velocity
+    heavy-ball-position
+    heavy-ball-velocity
+
+  LabelSet:
+    heavy-ball-labels
+    light-ball-labels
+
+
+Datadefs:
+
+  UnorderedDataPoints:
+    heavy-ball-position
+    light-ball-position
+  
+  FirstOrderDifference:
+    heavy-ball-velocity
+    light-ball-velocity
+    
+Axes:
+
+  velocity-axis  -2 - 10 m/s (12 ticks)
+  position-axis  0 - 4 m     (4 ticks)
+  time-axis      5 seconds   (5 ticks)
+  
+  
+Page 1
+
+  introText:
+  
+    <h1>Introduction</h1>
+    
+    <p>In the 1600s, Galileo Galilei (1564-1642) hypothesized that objects of different masses would fall at the same
+    rate when they were dropped from the same height and allowed to fall freely. According to legend, Galileo dropped
+    an iron cannon ball and a wooden ball from the Leaning Tower of Pisa to test his hypothesis.</p>
+
+
+  Step 1:
+    
+    (open response)
+    
+    <h1>Do heavier objects fall at the same rate as lighter objects?<h1>
+    
+    <p>What do you think Galileo observed? Explain your reasoning.<p>
+
+
+
+Page 2.
+
+  introText:
+  
+    <h1>Predict the Graphs (Light Ball)</h1>
+    
+    <p>To test Galileo’s hypothesis, you are going to drop same-sized balls of different masses from a fixed
+    height.</p>
+    
+    <p>Decide what you will use for the light and heavy balls. (The heavy ball should be at least five times heavier
+    than the light ball.) Then try dropping each ball from a height of at least 2.5 meters.</p>
+
+  Step 1.
+ 
+    <p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will
+    look like.</p>
+   
+   panes:
+     top:
+       title: Predicted Position vs. Time (Light Ball)
+     bottom:
+       title: Predicted Velocity vs. Time (Light Ball)
+
+  Step 2.
+    
+    <p>Explain any points of interest on the graphs.</p>
+  
+
+
+Page 3.
+
+  introText: 
+  
+    <h1>Set Up the Experiment</h1>
+    
+    <p>Let's test out your predictions.</p>
+    
+    <p>Attach the motion sensor to the ceiling or other support so that it is between 2 and 5 meters above the
+    ground.</p>
+
+  Step 1:
+  
+    <p>Take note of some relevant measurements. What is the height in meters of the motion sensor's location? What is
+    the mass of the light ball in grams?</p>
+    
+    shouldFinishImmediately: true
+    
+
+Page 4.
+
+  introText:
+  
+    <h1>Collect Data (Light Ball)</h1>
+    
+    <p>Have one student place the light ball 10 cm below the motion sensor.</p>
+    
+    <p>The motion sensor will measure the distance of the ball as it falls away from the sensor. In this case, down is
+    the positive direction.</p>
+    
+    <p>Have another student click Start</p>
+    
+    <p>Let the sensor run for 3 seconds and release the ball. Click Stop after the ball hits the ground.</p>
+    
+    <p>You may want to repeat this a few times before you decide to keep the data for this trial. Click Reset whenever
+    you want to clear the graph and try again.</p>
+    
+  Step 1:
+  
+    sensor tool on
+    
+    panes:
+      top: 
+        title: Actual Position vs. Time (Light Ball)
+      bottom:
+        title: Actual Velocity vs. Time (Light Ball)
+  
+
+Page 5.
+
+
+  introText:
+  
+    <h1>Reflect on Predictions (Light Ball)</h1>
+    
+    <p>To the right is your predicted (red) and actual (blue) position-time and velocity-time data for the light
+    ball.</p>
+    
+  Step 1:
+  
+    <p>How does your collected data for the light ball differ from your predicted data?</p>
+    
+    panes:
+      top: 
+        title: Position vs. Time (Light Ball)
+      bottom:
+        title: Velocity vs. Time (Light Ball)
+
+
+Page 6.
+
+  introText:
+
+    <h1>Predict the Graphs (Heavy Ball)</h1>
+    
+  Step 1:
+  
+    <p>To the right, predict what you think the position-time graph and velocity-time graph for the heavy ball will
+    look like when you drop it from the same height.</p>
+    
+    panes:
+      top:
+        title: Predicted Position vs. Time (Heavy Ball)
+      bottom:
+        title: Predicted Velocity vs. Time (Heavy Ball)
+        
+
+Page 7.
+
+  introText: 
+    
+    <h1>Collect Data (Heavy Ball)</h1>
+    
+  
+  Step 1:
+  
+    sensor tool on
+    
+    <p>Have one student place the heavy ball 10 cm below the motion sensor. Have another student click Start.</p>
+    
+    <p>Let the sensor run for 3 seconds and release the ball. Then click Stop.</p>
+    
+    panes:
+      top: 
+        title: Actual Position vs. Time (Heavy Ball)
+      bottom:
+        title: Actual Velocity vs. Time (Heavy Ball)
+      
+      
+
+Page 8.
+
+  introText:
+  
+    <h1>Reflect on Prediction (Heavy Ball)</h1>
+    
+    <p>To the right is your predicted (red) and actual (blue) position-time and velocity-time data for the heavy
+    ball.</p>
+    
+  Step 1:
+    
+    panes:
+      top: 
+        title: Position vs. Time (Heavy Ball)
+      bottom:
+        title: Velocity vs. Time (Heavy Ball)
+        
+    (open response)
+    
+    <p>What happened to the ball's velocity as it approached the ground? Is this what you expected?</p>
+
+
+Page 9.
+
+  introText:
+
+    <h1>Compare the Data I</h1>
+    
+    <p>Here is the actual data you just collected for the light ball and the heavy ball.</p>
+    
+
+  Step 1:
+  
+    panes:
+      top: 
+        title: Actual Velocity vs. Time (Light Ball)
+      bottom:
+        title: Actual Velocity vs. Time (Heavy Ball)
+        
+    <p>How does the velocity-time graph of the light ball compare to the velocity-time graph of the heavy ball?</p>
+    
+
+  Step 2:
+
+    label tool on
+    
+    panes:
+      top: 
+        title: Actual Velocity vs. Time (Light Ball)
+      bottom:
+        title: Actual Velocity vs. Time (Heavy Ball)    
+      
+    <p>On each graph, label what happened to the ball’s velocity as it approached the ground. Make sure to label where
+    the ball’s velocity <i>increased</i>, <i>decreased</i>, or <i>stayed the same</i>. Additionally. make sure to label
+    where the velocity might have been <i>fastest</i>, <i>slowest</i>, or <i>constant</i>.</p>
+
+    
+Page 12.
+
+  introText:
+
+    <h1>Compare the Accelerations</h1>
+    
+    <p>The slope of a velocity-time graph is commonly called the acceleration. The acceleration of an object due to
+    gravity is a constant, called <i>g</i>. The accepted value of <i>g</i> for objects near the surface of the Earth is
+    9.8 m/s<sup>2</sup>.<p>
+    
+    <p>Here is the value of g that you found for the light ball: ... m/s<sup>2</sup></p>
+    
+    <p>Here is the value of g that you found for  the heavy ball: ... m/s<sup>2</sup></p>
+    
+    
+  Step 1:
+    
+    open response 
+    
+    panes:
+      top: 
+        title: Actual Velocity vs. Time (Light Ball)
+      bottom:
+        title: Actual Velocity vs. Time (Heavy Ball)
+    
+  
+    <p>How does your value compare with the accepted value?</p>
+    
+  Step 2:
+  
+    open response
+  
+    panes:
+      top: 
+        title: Actual Velocity vs. Time (Light Ball)
+      bottom:
+        title: Actual Velocity vs. Time (Heavy Ball)
+  
+
+    <p>What factors might have caused errors in your measurements?</p>
+    
+
+Page 13.
+
+  introText:
+    
+    <h1>Conclusion</h1>
+    
+    <p>Do heavier objects fall faster?</p>
+    
+    <p>In this activity, you predicted and tested whether a light ball would fall faster than a heavier ball, just as
+    Galileo likely did.</p>
+    
+    <p>According to legend, Galileo observed that the two balls fell at the same rate. He explained that this
+    phenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>
+    
+  Step 1:
+  
+    open response
+    
+    <p>What did you discover about the velocity of a light ball versus a heavy ball as each falls to the ground?</p>
+    
