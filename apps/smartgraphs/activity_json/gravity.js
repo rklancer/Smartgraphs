@@ -8,40 +8,153 @@
       title: "Was Galileo Right?",
       url: "/shared/gravity",
       owner: "shared",
-      pages: ["/shared/gravity/page/1"],
+      pages: ["/shared/gravity/page/1", "/shared/gravity/page/2", "/shared/gravity/page/3", "/shared/gravity/page/4", "/shared/gravity/page/5", "/shared/gravity/page/6", "/shared/gravity/page/7", "/shared/gravity/page/8", "/shared/gravity/page/9", "/shared/gravity/page/12", "/shared/gravity/page/13"]
     },
     pages: [
       {
-        name: "Real-Time Velocity Measurement",
+        name: "Introduction",
         url: "/shared/gravity/page/1",
         activity: "/shared/gravity",
         index: 1,
-        introText: "<h1>Real-time Velocity Measurement</h1>",
+        introText: '  <h1>Introduction</h1>\n\n  <p>In the 1600s, Galileo Galilei (1564-1642) hypothesized that objects of different masses would fall at the\n  same rate when they were dropped from the same height and allowed to fall freely. According to legend, Galileo\n  dropped an iron cannon ball and a wooden ball from the Leaning Tower of Pisa to test his hypothesis.</p>',
         steps: ["/shared/gravity/page/1/step/1"],
         firstStep: "/shared/gravity/page/1/step/1"
+      }, {
+        name: "Predict the Graphs (Light Ball)",
+        url: "/shared/gravity/page/2",
+        activity: "/shared/gravity",
+        index: 2,
+        introText: '<h1>Predict the Graphs (Light Ball)</h1>\n\n<p>To test Galileo’s hypothesis, you are going to drop same-sized balls of different masses from a fixed\nheight.</p>\n\n<p>Decide what you will use for the light and heavy balls. (The heavy ball should be at least five times\nheavier than the light ball.) Then try dropping each ball from a height of at least 2.5 meters.</p>',
+        steps: ["/shared/gravity/page/2/step/1", "/shared/gravity/page/2/step/2"],
+        firstStep: "/shared/gravity/page/2/step/1"
+      }, {
+        name: "Set Up the Experiment",
+        url: "/shared/gravity/page/3",
+        activity: "/shared/gravity",
+        index: 3,
+        introText: '<h1>Set Up the Experiment</h1>\n\n<p>Let\'s test out your predictions.</p>\n\n<p>Attach the motion sensor to the ceiling or other support so that it is between 2 and 5 meters above the\nground.</p>',
+        steps: ["/shared/gravity/page/3/step/1"],
+        firstStep: "/shared/gravity/page/3/step/1"
+      }, {
+        name: "Collect Data (Light Ball)",
+        url: "/shared/gravity/page/4",
+        activity: "/shared/gravity",
+        index: 4,
+        introText: '<h1>Collect Data (Light Ball)</h1>',
+        steps: ["/shared/gravity/page/4/step/1"],
+        firstStep: "/shared/gravity/page/4/step/1"
+      }, {
+        name: "Reflect on Predictions (Light Ball)",
+        url: "/shared/gravity/page/5",
+        activity: "/shared/gravity",
+        index: 5,
+        introText: '<h1>Reflect on Predictions (Light Ball)</h1>',
+        steps: ["/shared/gravity/page/5/step/1"],
+        firstStep: "/shared/gravity/page/5/step/1"
+      }, {
+        name: "Predict the Graphs (Heavy Ball)",
+        url: "/shared/gravity/page/6",
+        activity: "/shared/gravity",
+        index: 6,
+        introText: '<h1>Predict the Graphs (Heavy Ball)</h1>',
+        steps: ["/shared/gravity/page/6/step/1"],
+        firstStep: "/shared/gravity/page/6/step/1"
+      }, {
+        name: "Collect Data (Heavy Ball)",
+        url: "/shared/gravity/page/7",
+        activity: "/shared/gravity",
+        index: 7,
+        introText: '<h1>Collect Data (Heavy Ball)</h1>',
+        steps: ["/shared/gravity/page/7/step/1"],
+        firstStep: "/shared/gravity/page/7/step/1"
+      }, {
+        name: "Reflect on Prediction (Heavy Ball)",
+        url: "/shared/gravity/page/8",
+        activity: "/shared/gravity",
+        index: 8,
+        introText: '<h1>Reflect on Prediction (Heavy Ball)</h1>\n\n<p>To the right is your predicted (red) and actual (blue) position-time and velocity-time data for the heavy\nball.</p>',
+        steps: ["/shared/gravity/page/8/step/1"],
+        firstStep: "/shared/gravity/page/8/step/1"
+      }, {
+        name: "Compare the Data I",
+        url: "/shared/gravity/page/9",
+        activity: "/shared/gravity",
+        index: 9,
+        introText: '<h1>Compare the Data I</h1>\n\n<p>Here is the actual data you just collected for the light ball and the heavy ball.</p>',
+        steps: ["/shared/gravity/page/9/step/1", "/shared/gravity/page/9/step/2"],
+        firstStep: "/shared/gravity/page/9/step/1"
+      }, {
+        name: "Compare the Accelerations",
+        url: "/shared/gravity/page/12",
+        activity: "/shared/gravity",
+        index: 12,
+        introText: '<h1>Compare the Accelerations</h1>\n\n<p>The slope of a velocity-time graph is commonly called the acceleration. The acceleration of an object due to\ngravity is a constant, called <i>g</i>. The accepted value of <i>g</i> for objects near the surface of the\nEarth is 9.8 m/s<sup>2</sup>.<p>\n\n<p>Here is the value of <i>g</i> that you found for the light ball: ... m/s<sup>2</sup></p>\n\n<p>Here is the value of <i>g</i> that you found for the heavy ball: ... m/s<sup>2</sup></p>',
+        steps: ["/shared/gravity/page/12/step/1", "/shared/gravity/page/12/step/2"],
+        firstStep: "/shared/gravity/page/12/step/1"
+      }, {
+        name: "Conclusion",
+        url: "/shared/gravity/page/13",
+        activity: "/shared/gravity",
+        index: 13,
+        introText: '<h1>Conclusion</h1>\n\n<p>Do heavier objects fall faster?</p>\n\n<p>In this activity, you predicted and tested whether a light ball would fall faster than a heavier ball, just\nas Galileo likely did.</p>\n\n<p>According to legend, Galileo observed that the two balls fell at the same rate. He explained that this\nphenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>',
+        steps: ["/shared/gravity/page/13/step/1", "/shared/gravity/page/13/step/2"],
+        firstStep: "/shared/gravity/page/13/step/1"
       }
     ],
     steps: [
       {
         url: "/shared/gravity/page/1/step/1",
         activityPage: "/shared/gravity/page/1",
-        beforeText: "<p>Attach a sensor and click the Start button. Observe the velocity graph below.</p>",
+        beforeText: '<p>Do heavier objects fall at the same rate as lighter objects?</p>\n\n<p>What do you think Galileo observed? Explain your reasoning.<p>',
+        paneConfig: "single",
+        responseTemplate: "/components/response-template/open",
+        submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/2/step/1",
+        activityPage: "/shared/gravity/page/2",
+        beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will\nlook like.</p>',
+        paneConfig: "split",
+        submitButtonTitle: "OK",
+        defaultBranch: "/shared/gravity/page/2/step/2"
+      }, {
+        url: "/shared/gravity/page/2/step/2",
+        activityPage: "/shared/gravity/page/2",
+        beforeText: '<p>Explain any points of interest on the graphs.</p>',
+        paneConfig: "split",
+        responseTemplate: "/components/response-template/open",
+        submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/3/step/1",
+        activityPage: "/shared/gravity/page/3",
+        beforeText: '<p>Take note of some relevant measurements. What is the height in meters of the motion sensor\'s location? What\nis the mass of the light ball in grams?</p>',
+        paneConfig: "single",
+        shouldFinishImmediately: true,
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/4/step/1",
+        activityPage: "/shared/gravity/page/4",
+        beforeText: '<p>Have one student place the light ball 10 cm below the motion sensor.</p>\n\n<p>The motion sensor will measure the distance of the ball as it falls away from the sensor. In this case,\ndown is the positive direction.</p>\n\n<p>Have another student click Start</p>\n\n<p>Let the sensor run for 3 seconds and release the ball. Click Stop after the ball hits the ground.</p>\n\n<p>You may want to repeat this a few times before you decide to keep the data for this trial. Click Reset\nwhenever you want to clear the graph and try again.</p>',
         paneConfig: "split",
         panes: {
           top: {
             type: "graph",
-            title: "Position vs. Time",
-            xAxis: "/shared/gravity/axes/20s",
-            yAxis: "/shared/gravity/axes/5m",
-            data: ["position-time-data"],
+            title: "Position vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: ["light-ball-position"],
             annotations: []
           },
           bottom: {
             type: "graph",
-            title: "Velocity vs. Time",
-            xAxis: "/shared/gravity/axes/20s",
-            yAxis: "/shared/gravity/axes/3mps",
-            data: ["velocity-time-data"],
+            title: "Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["light-ball-velocity"],
             annotations: []
           }
         },
@@ -49,35 +162,147 @@
           {
             name: "sensor",
             setup: {
-              data: "position-time-data",
+              data: "light-ball-position",
               controlsPane: "top"
             }
           }
         ],
+        hideSubmitButton: true,
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/5/step/1",
+        activityPage: "/shared/gravity/page/5",
+        beforeText: '<p>How does your collected data for the light ball differ from your predicted data?</p>',
+        paneConfig: "split",
+        responseTemplate: "/components/response-template/open",
+        submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/6/step/1",
+        activityPage: "/shared/gravity/page/6",
+        beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph for the heavy ball will\nlook like when you drop it from the same height.</p>',
+        paneConfig: "split",
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/7/step/1",
+        activityPage: "/shared/gravity/page/7",
+        beforeText: '<p>Have one student place the heavy ball 10 cm below the motion sensor. Have another student click Start.</p>\n\n<p>Let the sensor run for 3 seconds and release the ball. Then click Stop.</p>\n\n<p>You may want to repeat this a few times before you decide to keep the data for this trial. Click Reset\nwhenever you want to clear the graph and try again.</p>',
+        paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Position vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: ["heavy-ball-position"],
+            annotations: []
+          },
+          bottom: {
+            type: "graph",
+            title: "Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: []
+          }
+        },
+        tools: [
+          {
+            name: "sensor",
+            setup: {
+              data: "heavy-ball-position",
+              controlsPane: "top"
+            }
+          }
+        ],
+        hideSubmitButton: true,
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/8/step/1",
+        activityPage: "/shared/gravity/page/8",
+        beforeText: '<p>What happened to the ball\'s velocity as it approached the ground? Is this what you expected?</p>',
+        paneConfig: "split",
+        responseTemplate: "/components/response-template/open",
+        submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/9/step/1",
+        activityPage: "/shared/gravity/page/9",
+        beforeText: '<p>How does the velocity-time graph of the light ball compare to the velocity-time graph of the heavy ball?</p>',
+        paneConfig: "split",
+        responseTemplate: "/components/response-template/open",
+        submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
+        submitButtonTitle: "OK",
+        defaultBranch: "/shared/gravity/page/9/step/2"
+      }, {
+        url: "/shared/gravity/page/9/step/2",
+        activityPage: "/shared/gravity/page/9",
+        beforeText: '<p>On each graph, label what happened to the ball’s velocity as it approached the ground.</p>\n<p>Make sure to label where the ball’s velocity <i>increased</i>, <i>decreased</i>, or <i>stayed the same</i>.\nAdditionally. make sure to label where the velocity might have been <i>fastest</i>, <i>slowest</i>, or\n<i>constant</i>.</p>',
+        paneConfig: "split",
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/12/step/1",
+        activityPage: "/shared/gravity/page/12",
+        beforeText: '<p>How does your value compare with the accepted value?</p>',
+        paneConfig: "split",
+        responseTemplate: "/components/response-template/open",
+        submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
+        submitButtonTitle: "OK",
+        defaultBranch: "/shared/gravity/page/12/step/2"
+      }, {
+        url: "/shared/gravity/page/12/step/2",
+        activityPage: "/shared/gravity/page/12",
+        beforeText: '<p>What factors might have caused errors in your measurements?</p>',
+        paneConfig: "split",
+        responseTemplate: "/components/response-template/open",
+        submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/13/step/1",
+        activityPage: "/shared/gravity/page/13",
+        beforeText: '<p>What did you discover about the velocity of a light ball versus a heavy ball as each falls to the ground?</p>',
+        paneConfig: "split",
+        responseTemplate: "/components/response-template/open",
+        submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
+        submitButtonTitle: "OK",
+        defaultBranch: "/shared/gravity/page/13/step/2"
+      }, {
+        url: "/shared/gravity/page/13/step/2",
+        activityPage: "/shared/gravity/page/13",
+        beforeText: '<p>This is the conclusion of the activity</p>',
+        paneConfig: "split",
+        isFinalStep: true,
         hideSubmitButton: true
       }
     ],
     axes: [
       {
-        url: "/shared/gravity/axes/20s",
+        url: "/shared/gravity/axes/time",
         units: "/builtins/units/seconds",
-        min: 0,
-        max: 20,
-        nSteps: 10,
-        label: "Time"
-      }, {
-        url: "/shared/gravity/axes/5m",
-        units: "/builtins/units/meters",
         min: 0,
         max: 5,
         nSteps: 5,
+        label: "Time"
+      }, {
+        url: "/shared/gravity/axes/position",
+        units: "/builtins/units/meters",
+        min: 0,
+        max: 4,
+        nSteps: 4,
         label: "Position"
       }, {
-        url: "/shared/gravity/axes/3mps",
+        url: "/shared/gravity/axes/velocity",
         units: "/builtins/units/meters-per-second",
-        min: -1.5,
-        max: 1.5,
-        nSteps: 15,
+        min: -2,
+        max: 10,
+        nSteps: 12,
         label: "Velocity"
       }
     ],
@@ -86,8 +311,19 @@
         type: "UnorderedDataPoints",
         records: [
           {
-            url: "/shared/gravity/datadefs/position-time-data",
-            name: "position-time-data",
+            url: "/shared/gravity/datadefs/light-ball-position",
+            name: "light-ball-position",
+            activity: "/shared/gravity",
+            xUnits: "/builtins/units/seconds",
+            xLabel: "Time",
+            xShortLabel: "Time",
+            yUnits: "/builtins/units/meters",
+            yLabel: "Position",
+            yShortLabel: "Position",
+            points: []
+          }, {
+            url: "/shared/gravity/datadefs/heavy-ball-position",
+            name: "heavy-ball-position",
             activity: "/shared/gravity",
             xUnits: "/builtins/units/seconds",
             xLabel: "Time",
@@ -102,8 +338,8 @@
         type: "FirstOrderDifference",
         records: [
           {
-            url: "/shared/gravity/datadefs/velocity-time-data",
-            name: "velocity-time-data",
+            url: "/shared/gravity/datadefs/light-ball-velocity",
+            name: "light-ball-velocity",
             activity: "/shared/gravity",
             xUnits: "/builtins/units/seconds",
             xLabel: "Time",
@@ -111,13 +347,33 @@
             yUnits: "/builtins/units/meters-per-second",
             yLabel: "Velocity",
             yShortLabel: "Velocity",
-            source: "/shared/gravity/datadefs/position-time-data",
+            source: "/shared/gravity/datadefs/light-ball-position",
+            windowLength: 4
+          }, {
+            url: "/shared/gravity/datadefs/heavy-ball-velocity",
+            name: "heavy-ball-velocity",
+            activity: "/shared/gravity",
+            xUnits: "/builtins/units/seconds",
+            xLabel: "Time",
+            xShortLabel: "Time",
+            yUnits: "/builtins/units/meters-per-second",
+            yLabel: "Velocity",
+            yShortLabel: "Velocity",
+            source: "/shared/gravity/datadefs/heavy-ball-position",
             windowLength: 4
           }
         ]
       }
     ],
-    responseTemplates: [],
+    responseTemplates: [
+      {
+        url: "/components/response-template/open",
+        templateString: "",
+        fieldTypes: ["textarea"],
+        fieldChoicesList: [null],
+        initialValues: [""]
+      }
+    ],
     tags: [],
     variables: [],
     annotations: [],
