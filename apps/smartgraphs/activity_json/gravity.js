@@ -9,7 +9,6 @@
       url: "/shared/gravity",
       owner: "shared",
       pages: ["/shared/gravity/page/1"],
-      axes: ["/shared/gravity/axes/20s", "/shared/gravity/axes/5m", "/shared/gravity/axes/3mps"]
     },
     pages: [
       {

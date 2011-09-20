@@ -15,11 +15,6 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "/shared/gravity/page/1"
     ]
 
-    axes:  [
-      "/shared/gravity/axes/20s"
-      "/shared/gravity/axes/5m"
-      "/shared/gravity/axes/3mps"
-    ]
 
   pages: [
     name:      "Real-Time Velocity Measurement"
