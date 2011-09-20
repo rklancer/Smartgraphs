@@ -16,6 +16,11 @@ Smartgraphs.sensorController = SC.ObjectController.create(
   
   xMin: null,
   xMax: null,
+  
+  preloadApplet: function () {
+    this._appletView = Smartgraphs.appletPage.sensorAppletView.create();
+    Smartgraphs.mainPage.get('mainPane').appendChild(this._appletView);
+  },
 
   /**
     A downsample ratio of 1 = 1:1 = sample every point
@@ -77,8 +82,7 @@ Smartgraphs.sensorController = SC.ObjectController.create(
     this._inputIsEnabled = YES;
     
     if ( !this._appletView ) {
-      this._appletView = Smartgraphs.appletPage.sensorAppletView.create();
-      Smartgraphs.mainPage.get('mainPane').appendChild(this._appletView);
+      this.preloadApplet();
     }
 
     if (this.get('sensorIsReady')) {

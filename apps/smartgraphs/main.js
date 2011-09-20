@@ -35,6 +35,7 @@ Smartgraphs.main = function main() {
   
   // and kick things off
   Smartgraphs.statechart.initStatechart();
+  Smartgraphs.sensorController.preloadApplet();
 } ;
 
 // hack(?): Preload fixtures so that the any nested store is populated (nested store returns EMPTY record if record
