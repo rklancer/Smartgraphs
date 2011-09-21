@@ -48,7 +48,7 @@
         url: "/shared/gravity/page/5",
         activity: "/shared/gravity",
         index: 5,
-        introText: '<h1>Reflect on Predictions (Light Ball)</h1>',
+        introText: '<h1>Reflect on Predictions (Light Ball)</h1>\n\n<p>To the right is your predicted (red) and actual (blue) position-time and velocity-time data for the light\nball.</p>',
         steps: ["/shared/gravity/page/5/step/1"],
         firstStep: "/shared/gravity/page/5/step/1"
       }, {
@@ -107,6 +107,13 @@
         activityPage: "/shared/gravity/page/1",
         beforeText: '<p>Do heavier objects fall at the same rate as lighter objects?</p>\n\n<p>What do you think Galileo observed? Explain your reasoning.<p>',
         paneConfig: "single",
+        panes: {
+          single: {
+            type: "image",
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg",
+            caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+          }
+        },
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         isFinalStep: true,
@@ -116,6 +123,39 @@
         activityPage: "/shared/gravity/page/2",
         beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will\nlook like.</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Position vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: [],
+            annotations: ["light-ball-position"]
+          },
+          bottom: {
+            type: "graph",
+            title: "Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: [],
+            annotations: ["light-ball-velocity"]
+          }
+        },
+        tools: [
+          {
+            name: "prediction",
+            setup: {
+              pane: "top",
+              annotationName: "light-ball-position"
+            }
+          }, {
+            name: "prediction",
+            setup: {
+              pane: "bottom",
+              annotationName: "light-ball-velocity"
+            }
+          }
+        ],
         submitButtonTitle: "OK",
         defaultBranch: "/shared/gravity/page/2/step/2"
       }, {
@@ -123,6 +163,24 @@
         activityPage: "/shared/gravity/page/2",
         beforeText: '<p>Explain any points of interest on the graphs.</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Position vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: [],
+            annotations: ["light-ball-position"]
+          },
+          bottom: {
+            type: "graph",
+            title: "Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: [],
+            annotations: ["light-ball-velocity"]
+          }
+        },
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         isFinalStep: true,
@@ -175,6 +233,24 @@
         activityPage: "/shared/gravity/page/5",
         beforeText: '<p>How does your collected data for the light ball differ from your predicted data?</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Position vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: ["light-ball-position"],
+            annotations: ["light-ball-position"]
+          },
+          bottom: {
+            type: "graph",
+            title: "Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["light-ball-velocity"],
+            annotations: ["light-ball-velocity"]
+          }
+        },
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         isFinalStep: true,
@@ -184,6 +260,39 @@
         activityPage: "/shared/gravity/page/6",
         beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph for the heavy ball will\nlook like when you drop it from the same height.</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Position vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: [],
+            annotations: ["heavy-ball-position"]
+          },
+          bottom: {
+            type: "graph",
+            title: "Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: [],
+            annotations: ["heavy-ball-velocity"]
+          }
+        },
+        tools: [
+          {
+            name: "prediction",
+            setup: {
+              pane: "top",
+              annotationName: "heavy-ball-position"
+            }
+          }, {
+            name: "prediction",
+            setup: {
+              pane: "bottom",
+              annotationName: "heavy-ball-velocity"
+            }
+          }
+        ],
         isFinalStep: true,
         nextButtonShouldSubmit: true
       }, {
@@ -226,6 +335,24 @@
         activityPage: "/shared/gravity/page/8",
         beforeText: '<p>What happened to the ball\'s velocity as it approached the ground? Is this what you expected?</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Position vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: ["heavy-ball-position"],
+            annotations: ["heavy-ball-position"]
+          },
+          bottom: {
+            type: "graph",
+            title: "Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: ["heavy-ball-velocity"]
+          }
+        },
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         isFinalStep: true,
@@ -235,6 +362,24 @@
         activityPage: "/shared/gravity/page/9",
         beforeText: '<p>How does the velocity-time graph of the light ball compare to the velocity-time graph of the heavy ball?</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["light-ball-velocity"],
+            annotations: []
+          },
+          bottom: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: []
+          }
+        },
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         submitButtonTitle: "OK",
@@ -244,6 +389,39 @@
         activityPage: "/shared/gravity/page/9",
         beforeText: '<p>On each graph, label what happened to the ball’s velocity as it approached the ground.</p>\n<p>Make sure to label where the ball’s velocity <i>increased</i>, <i>decreased</i>, or <i>stayed the same</i>.\nAdditionally. make sure to label where the velocity might have been <i>fastest</i>, <i>slowest</i>, or\n<i>constant</i>.</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["light-ball-velocity"],
+            annotations: []
+          },
+          bottom: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: []
+          }
+        },
+        tools: [
+          {
+            name: "label",
+            setup: {
+              pane: "top",
+              labelSetName: "light-ball-labels"
+            }
+          }, {
+            name: "label",
+            setup: {
+              pane: "bottom",
+              labelSetName: "heavy-ball-labels"
+            }
+          }
+        ],
         isFinalStep: true,
         nextButtonShouldSubmit: true
       }, {
@@ -251,6 +429,24 @@
         activityPage: "/shared/gravity/page/12",
         beforeText: '<p>How does your value compare with the accepted value?</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["light-ball-velocity"],
+            annotations: []
+          },
+          bottom: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: []
+          }
+        },
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         submitButtonTitle: "OK",
@@ -260,6 +456,24 @@
         activityPage: "/shared/gravity/page/12",
         beforeText: '<p>What factors might have caused errors in your measurements?</p>',
         paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["light-ball-velocity"],
+            annotations: []
+          },
+          bottom: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: []
+          }
+        },
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         isFinalStep: true,
@@ -268,7 +482,14 @@
         url: "/shared/gravity/page/13/step/1",
         activityPage: "/shared/gravity/page/13",
         beforeText: '<p>What did you discover about the velocity of a light ball versus a heavy ball as each falls to the ground?</p>',
-        paneConfig: "split",
+        paneConfig: "single",
+        panes: {
+          single: {
+            type: "image",
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg",
+            caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+          }
+        },
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         submitButtonTitle: "OK",
@@ -277,7 +498,14 @@
         url: "/shared/gravity/page/13/step/2",
         activityPage: "/shared/gravity/page/13",
         beforeText: '<p>This is the conclusion of the activity</p>',
-        paneConfig: "split",
+        paneConfig: "single",
+        panes: {
+          single: {
+            type: "image",
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg",
+            caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+          }
+        },
         isFinalStep: true,
         hideSubmitButton: true
       }
@@ -374,9 +602,53 @@
         initialValues: [""]
       }
     ],
+    annotations: [
+      {
+        type: "FreehandSketch",
+        records: [
+          {
+            url: "/shared/gravity/annotation/light-ball-position",
+            name: "light-ball-position",
+            activity: "/shared/gravity",
+            color: "#FF00FF",
+            points: []
+          }, {
+            url: "/shared/gravity/annotation/light-ball-velocity",
+            name: "light-ball-velocity",
+            activity: "/shared/gravity",
+            color: "#FF00FF",
+            points: []
+          }, {
+            url: "/shared/gravity/annotation/heavy-ball-position",
+            name: "heavy-ball-position",
+            activity: "/shared/gravity",
+            color: "#FF00FF",
+            points: []
+          }, {
+            url: "/shared/gravity/annotation/heavy-ball-velocity",
+            name: "heavy-ball-velocity",
+            activity: "/shared/gravity",
+            color: "#FF00FF",
+            points: []
+          }
+        ]
+      }, {
+        type: "LabelSet",
+        records: [
+          {
+            url: "/shared/gravity/annotation/light-ball-labels",
+            name: "light-ball-labels",
+            activity: "/shared/gravity"
+          }, {
+            url: "/shared/gravity/annotation/heavy-ball-labels",
+            name: "heavy-ball-labels",
+            activity: "/shared/gravity"
+          }
+        ]
+      }
+    ],
     tags: [],
     variables: [],
-    annotations: [],
     units: []
   };
 }).call(this);
