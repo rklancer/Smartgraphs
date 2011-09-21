@@ -110,8 +110,8 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg",
-            caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
+            caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary**<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>"
           }
         },
         responseTemplate: "/components/response-template/open",
@@ -486,8 +486,8 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg",
-            caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
+            caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary**<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>"
           }
         },
         responseTemplate: "/components/response-template/open",
@@ -502,8 +502,8 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg",
-            caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
+            caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary**<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>"
           }
         },
         isFinalStep: true,

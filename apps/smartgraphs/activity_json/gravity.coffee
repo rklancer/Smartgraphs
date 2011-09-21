@@ -252,9 +252,10 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       panes: 
         single:
           type:    "image"
-          # source: http://www.flickr.com/photos/virgomerry/315412603/
-          path:    "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg"
-          caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+          # source:   http://www.flickr.com/photos/virgomerry/315412804/
+          # also see: http://www.flickr.com/photos/virgomerry/315412603/
+          path:    "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg"
+          caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary**<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>"
 
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]
@@ -729,9 +730,9 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       panes: 
         single:
           type:    "image"
-          # source: http://www.flickr.com/photos/virgomerry/315412603/
-          path:    "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg"
-          caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+          # source:   http://www.flickr.com/photos/virgomerry/315412804/
+          path:    "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg"
+          caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary**<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>"
           
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]
@@ -751,9 +752,9 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       panes: 
         single:
           type:    "image"
-          # source: http://www.flickr.com/photos/virgomerry/315412603/
-          path:    "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa.jpg"
-          caption: "CC BY-NC-SA 2.0 photo courtesy of flickr user **Mary**<a href=\"http://www.flickr.com/people/virgomerry/\">link</a>"
+          # source:   http://www.flickr.com/photos/virgomerry/315412804/
+          path:    "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg"
+          caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary**<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>"
 
       isFinalStep: true
       hideSubmitButton: true
