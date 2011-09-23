@@ -15,6 +15,10 @@ function defineJasmineHelpers() {
     return contains(this.actual, scType);
   };
   
+  jasmine.Matchers.prototype.toBeEmpty = function () {
+    return typeof this.actual !== 'undefined' && this.actual.get('length') === 0;
+  };
+  
   window.runBeforeEach = function (fn) {
     beforeEach( function () { SC.run(fn); });
   };
