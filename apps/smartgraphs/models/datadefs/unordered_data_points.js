@@ -26,7 +26,7 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
     
     The order of the points in the 'points' array is not significant.
   */
-  points: SC.Record.attr(Array),
+  points: SC.Record.attr(Array, { defaultValue: [] }),
   
   /**
     Returns a DataRepresentation to represent this data. The default behavior is to create a new TrivialSampleset and 
