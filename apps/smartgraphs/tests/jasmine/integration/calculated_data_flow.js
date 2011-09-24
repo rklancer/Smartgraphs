@@ -1,9 +1,9 @@
 (function() {
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   defineJasmineHelpers();
-  $((function() {
+  $(function() {
     return $('body').css('overflow', 'auto');
-  })());
+  });
   describe("Data flow from UnorderedDataPoints record to GraphableObjects", function() {
     var udpRecord;
     udpRecord = null;

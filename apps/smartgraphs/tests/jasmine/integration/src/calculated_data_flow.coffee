@@ -1,5 +1,5 @@
 defineJasmineHelpers()
-$( do -> $('body').css('overflow', 'auto') )
+$ -> $('body').css('overflow', 'auto')
 
 describe "Data flow from UnorderedDataPoints record to GraphableObjects", ->
   
