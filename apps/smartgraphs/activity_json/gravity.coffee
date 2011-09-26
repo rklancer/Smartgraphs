@@ -20,9 +20,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "/shared/gravity/page/6"
       "/shared/gravity/page/7"
       "/shared/gravity/page/8"
-      "/shared/gravity/page/9"
+      "/shared/gravity/page/11"
       "/shared/gravity/page/12"
-      "/shared/gravity/page/13"      
     ]
 
 
@@ -69,18 +68,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      name:      "Set Up the Experiment"
+      name:      "Collect Data (Light Ball)"
       url:       "/shared/gravity/page/3"
       activity:  "/shared/gravity"
       index:     3
       introText: 
         '''
-        <h1>Set Up the Experiment</h1>
-
-        <p>Let's test out your predictions.</p>
-
-        <p>Attach the motion sensor to the ceiling or other support so that it is between 2 and 5 meters above the
-        ground.</p>
+          <h1>Collect Data (Light Ball)</h1>
         '''
       steps:     [
         "/shared/gravity/page/3/step/1"      
@@ -89,25 +83,10 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      name:      "Collect Data (Light Ball)"
+      name:      "Reflect on Predictions (Light Ball)"
       url:       "/shared/gravity/page/4"
       activity:  "/shared/gravity"
       index:     4
-      introText: 
-        '''
-          <h1>Collect Data (Light Ball)</h1>
-        '''
-      steps:     [
-        "/shared/gravity/page/4/step/1"      
-      ]
-      firstStep: "/shared/gravity/page/4/step/1"
-    }
-    
-    {
-      name:      "Reflect on Predictions (Light Ball)"
-      url:       "/shared/gravity/page/5"
-      activity:  "/shared/gravity"
-      index:     5
       introText: 
         '''
         <h1>Reflect on Predictions (Light Ball)</h1>
@@ -116,19 +95,34 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         ball.</p>
         '''
       steps:     [
-        "/shared/gravity/page/5/step/1"      
+        "/shared/gravity/page/4/step/1"      
+      ]
+      firstStep: "/shared/gravity/page/4/step/1"
+    }
+    
+    {
+      name:      "Predict the Graphs (Heavy Ball)"
+      url:       "/shared/gravity/page/5"
+      activity:  "/shared/gravity"
+      index:     5
+      introText: 
+        '''
+        <h1>Predict the Graphs (Heavy Ball)</h1>
+        '''
+      steps:     [
+        "/shared/gravity/page/5/step/1"
       ]
       firstStep: "/shared/gravity/page/5/step/1"
     }
     
     {
-      name:      "Predict the Graphs (Heavy Ball)"
+      name:      "Collect Data (Heavy Ball)"
       url:       "/shared/gravity/page/6"
       activity:  "/shared/gravity"
       index:     6
       introText: 
         '''
-        <h1>Predict the Graphs (Heavy Ball)</h1>
+        <h1>Collect Data (Heavy Ball)</h1>
         '''
       steps:     [
         "/shared/gravity/page/6/step/1"
@@ -137,25 +131,10 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      name:      "Collect Data (Heavy Ball)"
+      name:      "Reflect on Prediction (Heavy Ball)"
       url:       "/shared/gravity/page/7"
       activity:  "/shared/gravity"
       index:     7
-      introText: 
-        '''
-        <h1>Collect Data (Heavy Ball)</h1>
-        '''
-      steps:     [
-        "/shared/gravity/page/7/step/1"
-      ]
-      firstStep: "/shared/gravity/page/7/step/1"
-    }
-    
-    {
-      name:      "Reflect on Prediction (Heavy Ball)"
-      url:       "/shared/gravity/page/8"
-      activity:  "/shared/gravity"
-      index:     8
       introText: 
         '''
         <h1>Reflect on Prediction (Heavy Ball)</h1>
@@ -164,16 +143,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         ball.</p>
         '''
       steps:     [
-        "/shared/gravity/page/8/step/1"
+        "/shared/gravity/page/7/step/1"
       ]
-      firstStep: "/shared/gravity/page/8/step/1"
+      firstStep: "/shared/gravity/page/7/step/1"
     }
     
     {
       name:      "Compare the Data I"
-      url:       "/shared/gravity/page/9"
+      url:       "/shared/gravity/page/8"
       activity:  "/shared/gravity"
-      index:     9
+      index:     8
       introText: 
         '''
         <h1>Compare the Data I</h1>
@@ -181,17 +160,17 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         <p>Here is the actual data you just collected for the light ball and the heavy ball.</p>
         '''
       steps:     [
-        "/shared/gravity/page/9/step/1"
-        "/shared/gravity/page/9/step/2"        
+        "/shared/gravity/page/8/step/1"
+        "/shared/gravity/page/8/step/2"        
       ]
-      firstStep: "/shared/gravity/page/9/step/1"
+      firstStep: "/shared/gravity/page/8/step/1"
     }
     
     {
       name:      "Compare the Accelerations"
-      url:       "/shared/gravity/page/12"
+      url:       "/shared/gravity/page/11"
       activity:  "/shared/gravity"
-      index:     12
+      index:     11
       introText: 
         '''
         <h1>Compare the Accelerations</h1>
@@ -206,17 +185,17 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         
       steps:     [
-        "/shared/gravity/page/12/step/1"
-        "/shared/gravity/page/12/step/2"        
+        "/shared/gravity/page/11/step/1"
+        "/shared/gravity/page/11/step/2"        
       ]
-      firstStep: "/shared/gravity/page/12/step/1"
+      firstStep: "/shared/gravity/page/11/step/1"
     }
     
     {
       name:      "Conclusion"
-      url:       "/shared/gravity/page/13"
+      url:       "/shared/gravity/page/12"
       activity:  "/shared/gravity"
-      index:     13
+      index:     12
       introText: 
         '''
         <h1>Conclusion</h1>
@@ -230,10 +209,10 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         phenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>
         '''
       steps:     [
-        "/shared/gravity/page/13/step/1"
-        "/shared/gravity/page/13/step/2"        
+        "/shared/gravity/page/12/step/1"
+        "/shared/gravity/page/12/step/2"        
       ]
-      firstStep: "/shared/gravity/page/13/step/1"
+      firstStep: "/shared/gravity/page/12/step/1"
     }
   ]
 
@@ -361,8 +340,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      url:          "/shared/gravity/page/4/step/1"
-      activityPage: "/shared/gravity/page/4"
+      url:          "/shared/gravity/page/3/step/1"
+      activityPage: "/shared/gravity/page/3"
 
       beforeText: 
         '''
@@ -411,8 +390,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      url:          "/shared/gravity/page/5/step/1"
-      activityPage: "/shared/gravity/page/5"
+      url:          "/shared/gravity/page/4/step/1"
+      activityPage: "/shared/gravity/page/4"
 
       beforeText: 
         '''
@@ -445,8 +424,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
 
     {
-      url:          "/shared/gravity/page/6/step/1"
-      activityPage: "/shared/gravity/page/6"
+      url:          "/shared/gravity/page/5/step/1"
+      activityPage: "/shared/gravity/page/5"
 
       beforeText: 
         '''
@@ -493,8 +472,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      url:          "/shared/gravity/page/7/step/1"
-      activityPage: "/shared/gravity/page/7"
+      url:          "/shared/gravity/page/6/step/1"
+      activityPage: "/shared/gravity/page/6"
 
       beforeText: 
         '''
@@ -538,8 +517,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      url:          "/shared/gravity/page/8/step/1"
-      activityPage: "/shared/gravity/page/8"
+      url:          "/shared/gravity/page/7/step/1"
+      activityPage: "/shared/gravity/page/7"
       
       beforeText: 
         '''
@@ -571,8 +550,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      url:          "/shared/gravity/page/9/step/1"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity/page/8/step/1"
+      activityPage: "/shared/gravity/page/8"
       
       beforeText: 
         '''
@@ -600,13 +579,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]   
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/9/step/2"
+      defaultBranch: "/shared/gravity/page/8/step/2"
     }
     
     
     {
-      url:          "/shared/gravity/page/9/step/2"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity/page/8/step/2"
+      activityPage: "/shared/gravity/page/8"
       
       beforeText: 
         '''
@@ -654,8 +633,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      url:          "/shared/gravity/page/12/step/1"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity/page/11/step/1"
+      activityPage: "/shared/gravity/page/11"
       
       beforeText: 
         '''
@@ -682,13 +661,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]   
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/12/step/2"
+      defaultBranch: "/shared/gravity/page/11/step/2"
     }
     
     
     {
-      url:          "/shared/gravity/page/12/step/2"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity/page/11/step/2"
+      activityPage: "/shared/gravity/page/11"
       
       beforeText: 
         '''
@@ -719,8 +698,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      url:          "/shared/gravity/page/13/step/1"
-      activityPage: "/shared/gravity/page/13"
+      url:          "/shared/gravity/page/12/step/1"
+      activityPage: "/shared/gravity/page/12"
       
       beforeText: 
         '''
@@ -737,12 +716,12 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/13/step/2"
+      defaultBranch: "/shared/gravity/page/12/step/2"
     }
     
     {
-      url:          "/shared/gravity/page/13/step/2"
-      activityPage: "/shared/gravity/page/13"
+      url:          "/shared/gravity/page/12/step/2"
+      activityPage: "/shared/gravity/page/12"
       
       beforeText: 
         '''
