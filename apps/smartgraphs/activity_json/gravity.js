@@ -8,7 +8,7 @@
       title: "Was Galileo Right?",
       url: "/shared/gravity",
       owner: "shared",
-      pages: ["/shared/gravity/page/1", "/shared/gravity/page/2", "/shared/gravity/page/3", "/shared/gravity/page/4", "/shared/gravity/page/5", "/shared/gravity/page/6", "/shared/gravity/page/7", "/shared/gravity/page/8", "/shared/gravity/page/11", "/shared/gravity/page/12"]
+      pages: ["/shared/gravity/page/9", "/shared/gravity/page/10", "/shared/gravity/page/11", "/shared/gravity/page/12"]
     },
     pages: [
       {
@@ -75,6 +75,22 @@
         introText: '<h1>Compare the Data I</h1>\n\n<p>Here is the actual data you just collected for the light ball and the heavy ball.</p>',
         steps: ["/shared/gravity/page/8/step/1", "/shared/gravity/page/8/step/2"],
         firstStep: "/shared/gravity/page/8/step/1"
+      }, {
+        name: "Find the Slope (Light Ball)",
+        url: "/shared/gravity/page/9",
+        activity: "/shared/gravity",
+        index: 9,
+        introText: '<h1>Find the Slope (Light Ball)</h1>\n\n<p>Let’s look more closely at the velocities of the two balls from the time they were released until the time\nthey reached the ground.</p> \n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n',
+        steps: ["/shared/gravity/page/9/step/1"],
+        firstStep: "/shared/gravity/page/9/step/1"
+      }, {
+        name: "Find the Slope (Heavy Ball)",
+        url: "/shared/gravity/page/10",
+        activity: "/shared/gravity",
+        index: 10,
+        introText: '<h1>Find the Slope (Heavy Ball)</h1>',
+        steps: ["/shared/gravity/page/10/step/1"],
+        firstStep: "/shared/gravity/page/10/step/1"
       }, {
         name: "Compare the Accelerations",
         url: "/shared/gravity/page/11",
@@ -417,6 +433,58 @@
         isFinalStep: true,
         nextButtonShouldSubmit: true
       }, {
+        url: "/shared/gravity/page/9/step/1",
+        activityPage: "/shared/gravity/page/9",
+        beforeText: '<p>Find the slope in m/s<sup>2</sup> of the velocity-time graph of the light ball while the ball was in\nmotion.</p>',
+        paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Actual Position vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: ["light-ball-position"],
+            annotations: []
+          },
+          bottom: {
+            type: "graph",
+            title: "Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["light-ball-velocity"],
+            annotations: []
+          }
+        },
+        hideSubmitButton: true,
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
+        url: "/shared/gravity/page/10/step/1",
+        activityPage: "/shared/gravity/page/10",
+        beforeText: '<p>Find the slope in m/s<sup>2</sup> of the velocity-time graph of the heavy ball while the ball was in\nmotion.</p>',
+        paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Actual Position vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: ["heavy-ball-position"],
+            annotations: []
+          },
+          bottom: {
+            type: "graph",
+            title: "Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: []
+          }
+        },
+        hideSubmitButton: true,
+        isFinalStep: true,
+        nextButtonShouldSubmit: true
+      }, {
         url: "/shared/gravity/page/11/step/1",
         activityPage: "/shared/gravity/page/11",
         beforeText: '<p>How does your value compare with the accepted value?</p>',
@@ -507,8 +575,8 @@
         url: "/shared/gravity/axes/time",
         units: "/builtins/units/seconds",
         min: 0,
-        max: 5,
-        nSteps: 5,
+        max: 1.5,
+        nSteps: 15,
         label: "Time"
       }, {
         url: "/shared/gravity/axes/position",
@@ -540,7 +608,7 @@
             yUnits: "/builtins/units/meters",
             yLabel: "Position",
             yShortLabel: "Position",
-            points: [[0.05, 0.178], [0.1, 0.177], [0.15, 0.165], [0.2, 0.165], [0.25, 0.164], [0.3, 0.164], [0.35, 0.161], [0.4, 0.162], [0.45, 0.159], [0.5, 0.174], [0.55, 0.249], [0.6, 0.352], [0.65, 0.477], [0.7, 0.626], [0.75, 0.801], [0.8, 1], [0.85, 1.223], [0.9, 1.472], [0.95, 1.738], [1, 2.612], [1.05, 2.608], [1.1, 2.468], [1.15, 2.68]]
+            points: [[0.05, 0.178], [0.1, 0.177], [0.15, 0.165], [0.2, 0.165], [0.25, 0.164], [0.3, 0.164], [0.35, 0.161], [0.4, 0.162], [0.45, 0.159], [0.5, 0.174], [0.55, 0.249], [0.6, 0.352], [0.65, 0.477], [0.7, 0.626], [0.75, 0.801], [0.8, 1], [0.85, 1.223], [0.9, 1.472], [0.95, 1.738]]
           }, {
             url: "/shared/gravity/datadefs/heavy-ball-position",
             name: "heavy-ball-position",
@@ -551,7 +619,7 @@
             yUnits: "/builtins/units/meters",
             yLabel: "Position",
             yShortLabel: "Position",
-            points: [[0.05, 0.159], [0.1, 0.159], [0.15, 0.159], [0.2, 0.159], [0.25, 0.16], [0.3, 0.158], [0.35, 0.158], [0.4, 0.157], [0.45, 0.161], [0.5, 0.158], [0.55, 0.208], [0.6, 0.305], [0.65, 0.418], [0.7, 0.565], [0.75, 0.739], [0.8, 0.933], [0.85, 1.153], [0.9, 1.402], [0.95, 1.671], [1, 1.964], [1.05, 2.708], [1.1, 2.58], [1.15, 2.556]]
+            points: [[0.05, 0.159], [0.1, 0.159], [0.15, 0.159], [0.2, 0.159], [0.25, 0.16], [0.3, 0.158], [0.35, 0.158], [0.4, 0.157], [0.45, 0.161], [0.5, 0.158], [0.55, 0.208], [0.6, 0.305], [0.65, 0.418], [0.7, 0.565], [0.75, 0.739], [0.8, 0.933], [0.85, 1.153], [0.9, 1.402], [0.95, 1.671], [1, 1.964]]
           }
         ]
       }, {
