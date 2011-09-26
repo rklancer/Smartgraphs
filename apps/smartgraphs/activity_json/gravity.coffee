@@ -12,14 +12,14 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     owner: "shared"
 
     pages: [
-      # "/shared/gravity/page/1"
-      # "/shared/gravity/page/2"
-      # "/shared/gravity/page/3"
-      # "/shared/gravity/page/4"
-      # "/shared/gravity/page/5"
-      # "/shared/gravity/page/6"
-      # "/shared/gravity/page/7"
-      # "/shared/gravity/page/8"
+      "/shared/gravity/page/1"
+      "/shared/gravity/page/2"
+      "/shared/gravity/page/3"
+      "/shared/gravity/page/4"
+      "/shared/gravity/page/5"
+      "/shared/gravity/page/6"
+      "/shared/gravity/page/7"
+      "/shared/gravity/page/8"
       "/shared/gravity/page/9"
       "/shared/gravity/page/10"      
       "/shared/gravity/page/11"
@@ -56,11 +56,11 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         <h1>Predict the Graphs (Light Ball)</h1>
         
-        <p>To test Galileo’s hypothesis, you are going to drop same-sized balls of different masses from a fixed
-        height.</p>
+        <p>To test Galileo’s hypothesis, you are going to examine data collected when same-sized balls of different
+        masses were dropped from a fixed height.</p>
         
-        <p>Decide what you will use for the light and heavy balls. (The heavy ball should be at least five times
-        heavier than the light ball.) Then try dropping each ball from a height of at least 2.5 meters.</p>
+        <p>To help you predict the motions, find a light ball and heavy ball that are the same size. (The heavy ball
+        should be at least five times heavier than the light ball.)</p>
         '''
       steps:     [
         "/shared/gravity/page/2/step/1"
@@ -70,13 +70,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      name:      "Collect Data (Light Ball)"
+      name:      "Look at the Data (Light Ball)"
       url:       "/shared/gravity/page/3"
       activity:  "/shared/gravity"
       index:     3
       introText: 
         '''
-          <h1>Collect Data (Light Ball)</h1>
+        <h1>Look at the Data (Light Ball)</h1>
+        
+        <p>The data to the right was collected when a 102-gram softball was dropped from a height of about 2 meters.
+        Every second, 20 data samples were collected.</p>      
         '''
       steps:     [
         "/shared/gravity/page/3/step/1"      
@@ -118,13 +121,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      name:      "Collect Data (Heavy Ball)"
+      name:      "Look at the Data (Heavy Ball)"
       url:       "/shared/gravity/page/6"
       activity:  "/shared/gravity"
       index:     6
       introText: 
         '''
-        <h1>Collect Data (Heavy Ball)</h1>
+        <h1>Look at the Data (Heavy Ball)</h1>
+        
+        <p>The data to the right was collected when a heavy (170-gram) ball was dropped from a height of about 2
+        meters. Every second, 20 data samples were collected.</p>
         '''
       steps:     [
         "/shared/gravity/page/6/step/1"
@@ -159,11 +165,12 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         <h1>Compare the Data I</h1>
 
-        <p>Here is the actual data you just collected for the light ball and the heavy ball.</p>
+        <p>Look at the actual data for the light ball and the heavy ball.</p>
         '''
       steps:     [
         "/shared/gravity/page/8/step/1"
-        "/shared/gravity/page/8/step/2"        
+        "/shared/gravity/page/8/step/2"
+        "/shared/gravity/page/8/step/3"
       ]
       firstStep: "/shared/gravity/page/8/step/1"
     }
@@ -242,8 +249,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         
         <p>Do heavier objects fall faster?</p>
         
-        <p>In this activity, you predicted and tested whether a light ball would fall faster than a heavier ball, just
-        as Galileo likely did.</p>
+        <p>In this activity, you predicted and confirmed whether a light ball would fall faster than a heavier ball,
+        just as Galileo likely did.</p>
         
         <p>According to legend, Galileo observed that the two balls fell at the same rate. He explained that this
         phenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>
@@ -288,14 +295,18 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       
       beforeText: 
         '''
+        <p>Try dropping each ball from a height of at least 2.5 meters.</p>
+        
         <p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will
         look like.</p>
+        
+        <p>(Assume that the ground is at 0 meters.)</p>
         '''
       paneConfig: "split"
       panes:
         top:
           type:        "graph"
-          title:       "Position vs. Time (Light Ball)"
+          title:       "Predicted Position vs. Time (Light Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/position"
           data:        []
@@ -303,7 +314,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
         bottom:
           type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
+          title:       "Predicted Velocity vs. Time (Light Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        []
@@ -342,7 +353,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       panes:
         top:
           type:        "graph"
-          title:       "Position vs. Time (Light Ball)"
+          title:       "Predicted Position vs. Time (Light Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/position"
           data:        []
@@ -350,7 +361,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
         bottom:
           type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
+          title:       "Predicted Velocity vs. Time (Light Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        []
@@ -362,47 +373,19 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       nextButtonShouldSubmit: true
     }
     
-    
-    {
-      url:          "/shared/gravity/page/3/step/1"
-      activityPage: "/shared/gravity/page/3"
-      
-      beforeText:
-        '''
-        <p>Take note of some relevant measurements. What is the height in meters of the motion sensor's location? What
-        is the mass of the light ball in grams?</p>
-        '''
-      paneConfig: "single"
-      shouldFinishImmediately: true
-      isFinalStep: true
-      nextButtonShouldSubmit: true
-    }
-    
-    
     {
       url:          "/shared/gravity/page/3/step/1"
       activityPage: "/shared/gravity/page/3"
 
       beforeText: 
         '''
-        <p>Have one student place the light ball 10 cm below the motion sensor.</p>
-        
-        <p>The motion sensor will measure the distance of the ball as it falls away from the sensor. In this case,
-        down is the positive direction.</p>
-        
-        <p>Have another student click Start</p>
-        
-        <p>Let the sensor run for 3 seconds and release the ball. Click Stop after the ball hits the ground.</p>
-        
-        <p>You may want to repeat this a few times before you decide to keep the data for this trial. Click Reset
-        whenever you want to clear the graph and try again.</p>
         '''
 
       paneConfig:   "split"
       panes:
         top:
           type:        "graph"
-          title:       "Position vs. Time (Light Ball)"
+          title:       "Actual Position vs. Time (Light Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/position"
           data:        ["light-ball-position"]
@@ -410,18 +393,11 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
         bottom:
           type:        "graph"
-          title:       "Velocity vs. Time (Light Ball)"
+          title:       "Actual Velocity vs. Time (Light Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
           annotations: []
-
-      tools: [
-        name: "sensor"
-        setup:
-          data:         "light-ball-position"
-          controlsPane: "top"
-      ]
 
       hideSubmitButton: true
       isFinalStep: true
@@ -435,7 +411,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText: 
         '''
-        <p>How does your collected data for the light ball differ from your predicted data?</p>
+        <p>How does the actual data for the light ball differ from your predicted data?</p>
         '''
 
       paneConfig:   "split"
@@ -469,15 +445,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText: 
         '''
-        <p>To the right, predict what you think the position-time graph and velocity-time graph for the heavy ball will
-        look like when you drop it from the same height.</p>
+        <p>To the right, predict what you think the position-time graph and velocity-time graph will look like when the
+        heavy ball is droppedfrom the same height.</p>
         '''
 
       paneConfig:   "split"
       panes:
         top:
           type:        "graph"
-          title:       "Position vs. Time (Heavy Ball)"
+          title:       "Predicted Position vs. Time (Heavy Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/position"
           data:        []
@@ -485,7 +461,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
         bottom:
           type:        "graph"
-          title:       "Velocity vs. Time (Heavy Ball)"
+          title:       "Predicted Velocity vs. Time (Heavy Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        []
@@ -517,19 +493,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText: 
         '''
-        <p>Have one student place the heavy ball 10 cm below the motion sensor. Have another student click Start.</p>
-
-        <p>Let the sensor run for 3 seconds and release the ball. Then click Stop.</p>
-        
-        <p>You may want to repeat this a few times before you decide to keep the data for this trial. Click Reset
-        whenever you want to clear the graph and try again.</p>
         '''
 
       paneConfig:   "split"
       panes:
         top:
           type:        "graph"
-          title:       "Position vs. Time (Heavy Ball)"
+          title:       "Actual Position vs. Time (Heavy Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/position"
           data:        ["heavy-ball-position"]
@@ -537,18 +507,11 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
         bottom:
           type:        "graph"
-          title:       "Velocity vs. Time (Heavy Ball)"
+          title:       "Actual Velocity vs. Time (Heavy Ball)"
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["heavy-ball-velocity"]
           annotations: []
-
-      tools: [
-        name: "sensor"
-        setup:
-          data:         "heavy-ball-position"
-          controlsPane: "top"
-      ]
 
       hideSubmitButton: true
       isFinalStep: true
@@ -631,8 +594,54 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         <p>On each graph, label what happened to the ball’s velocity as it approached the ground.</p>
         <p>Make sure to label where the ball’s velocity <i>increased</i>, <i>decreased</i>, or <i>stayed the same</i>.
-        Additionally. make sure to label where the velocity might have been <i>fastest</i>, <i>slowest</i>, or
-        <i>constant</i>.</p>
+        </p>
+        '''
+      paneConfig: "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Actual Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: []
+
+        bottom:
+          type:        "graph"
+          title:       "Actual Velocity vs. Time (Heavy Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["heavy-ball-velocity"]
+          annotations: []
+
+      tools: [
+        {
+          name: "label"
+          setup:
+            pane: "top"
+            labelSetName: "light-ball-labels"
+        }
+        
+        { 
+          name: "label"
+          setup:
+            pane: "bottom"
+            labelSetName: "heavy-ball-labels"
+        }
+      ]
+      
+      submitButtonTitle: "OK"
+      defaultBranch: "/shared/gravity/page/8/step/3"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/8/step/3"
+      activityPage: "/shared/gravity/page/8"
+      
+      beforeText: 
+        '''
+        <p>On each graph, label where the velocity might have been <i>fastest</i>, <i>slowest</i>, or <i>0</i>.</p>
         '''
       paneConfig: "split"
       panes:
@@ -805,7 +814,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       
       beforeText: 
         '''
-        <p>What did you discover about the velocity of a light ball versus a heavy ball as each falls to the ground?</p>
+        <p>What did you discover about the velocity of a light ball versus a heavy ball as each falls to the
+        ground?</p>
         '''
       paneConfig: "single"
       panes: 

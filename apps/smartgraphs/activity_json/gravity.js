@@ -8,7 +8,7 @@
       title: "Was Galileo Right?",
       url: "/shared/gravity",
       owner: "shared",
-      pages: ["/shared/gravity/page/9", "/shared/gravity/page/10", "/shared/gravity/page/11", "/shared/gravity/page/12"]
+      pages: ["/shared/gravity/page/1", "/shared/gravity/page/2", "/shared/gravity/page/3", "/shared/gravity/page/4", "/shared/gravity/page/5", "/shared/gravity/page/6", "/shared/gravity/page/7", "/shared/gravity/page/8", "/shared/gravity/page/9", "/shared/gravity/page/10", "/shared/gravity/page/11", "/shared/gravity/page/12"]
     },
     pages: [
       {
@@ -24,15 +24,15 @@
         url: "/shared/gravity/page/2",
         activity: "/shared/gravity",
         index: 2,
-        introText: '<h1>Predict the Graphs (Light Ball)</h1>\n\n<p>To test Galileo’s hypothesis, you are going to drop same-sized balls of different masses from a fixed\nheight.</p>\n\n<p>Decide what you will use for the light and heavy balls. (The heavy ball should be at least five times\nheavier than the light ball.) Then try dropping each ball from a height of at least 2.5 meters.</p>',
+        introText: '<h1>Predict the Graphs (Light Ball)</h1>\n\n<p>To test Galileo’s hypothesis, you are going to examine data collected when same-sized balls of different\nmasses were dropped from a fixed height.</p>\n\n<p>To help you predict the motions, find a light ball and heavy ball that are the same size. (The heavy ball\nshould be at least five times heavier than the light ball.)</p>',
         steps: ["/shared/gravity/page/2/step/1", "/shared/gravity/page/2/step/2"],
         firstStep: "/shared/gravity/page/2/step/1"
       }, {
-        name: "Collect Data (Light Ball)",
+        name: "Look at the Data (Light Ball)",
         url: "/shared/gravity/page/3",
         activity: "/shared/gravity",
         index: 3,
-        introText: '<h1>Collect Data (Light Ball)</h1>',
+        introText: '<h1>Look at the Data (Light Ball)</h1>\n\n<p>The data to the right was collected when a 102-gram softball was dropped from a height of about 2 meters.\nEvery second, 20 data samples were collected.</p>      ',
         steps: ["/shared/gravity/page/3/step/1"],
         firstStep: "/shared/gravity/page/3/step/1"
       }, {
@@ -52,11 +52,11 @@
         steps: ["/shared/gravity/page/5/step/1"],
         firstStep: "/shared/gravity/page/5/step/1"
       }, {
-        name: "Collect Data (Heavy Ball)",
+        name: "Look at the Data (Heavy Ball)",
         url: "/shared/gravity/page/6",
         activity: "/shared/gravity",
         index: 6,
-        introText: '<h1>Collect Data (Heavy Ball)</h1>',
+        introText: '<h1>Look at the Data (Heavy Ball)</h1>\n\n<p>The data to the right was collected when a heavy (170-gram) ball was dropped from a height of about 2\nmeters. Every second, 20 data samples were collected.</p>',
         steps: ["/shared/gravity/page/6/step/1"],
         firstStep: "/shared/gravity/page/6/step/1"
       }, {
@@ -72,8 +72,8 @@
         url: "/shared/gravity/page/8",
         activity: "/shared/gravity",
         index: 8,
-        introText: '<h1>Compare the Data I</h1>\n\n<p>Here is the actual data you just collected for the light ball and the heavy ball.</p>',
-        steps: ["/shared/gravity/page/8/step/1", "/shared/gravity/page/8/step/2"],
+        introText: '<h1>Compare the Data I</h1>\n\n<p>Look at the actual data for the light ball and the heavy ball.</p>',
+        steps: ["/shared/gravity/page/8/step/1", "/shared/gravity/page/8/step/2", "/shared/gravity/page/8/step/3"],
         firstStep: "/shared/gravity/page/8/step/1"
       }, {
         name: "Find the Slope (Light Ball)",
@@ -104,7 +104,7 @@
         url: "/shared/gravity/page/12",
         activity: "/shared/gravity",
         index: 12,
-        introText: '<h1>Conclusion</h1>\n\n<p>Do heavier objects fall faster?</p>\n\n<p>In this activity, you predicted and tested whether a light ball would fall faster than a heavier ball, just\nas Galileo likely did.</p>\n\n<p>According to legend, Galileo observed that the two balls fell at the same rate. He explained that this\nphenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>',
+        introText: '<h1>Conclusion</h1>\n\n<p>Do heavier objects fall faster?</p>\n\n<p>In this activity, you predicted and confirmed whether a light ball would fall faster than a heavier ball,\njust as Galileo likely did.</p>\n\n<p>According to legend, Galileo observed that the two balls fell at the same rate. He explained that this\nphenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>',
         steps: ["/shared/gravity/page/12/step/1", "/shared/gravity/page/12/step/2"],
         firstStep: "/shared/gravity/page/12/step/1"
       }
@@ -129,12 +129,12 @@
       }, {
         url: "/shared/gravity/page/2/step/1",
         activityPage: "/shared/gravity/page/2",
-        beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will\nlook like.</p>',
+        beforeText: '<p>Try dropping each ball from a height of at least 2.5 meters.</p>\n\n<p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will\nlook like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
         paneConfig: "split",
         panes: {
           top: {
             type: "graph",
-            title: "Position vs. Time (Light Ball)",
+            title: "Predicted Position vs. Time (Light Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: [],
@@ -142,7 +142,7 @@
           },
           bottom: {
             type: "graph",
-            title: "Velocity vs. Time (Light Ball)",
+            title: "Predicted Velocity vs. Time (Light Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: [],
@@ -174,7 +174,7 @@
         panes: {
           top: {
             type: "graph",
-            title: "Position vs. Time (Light Ball)",
+            title: "Predicted Position vs. Time (Light Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: [],
@@ -182,7 +182,7 @@
           },
           bottom: {
             type: "graph",
-            title: "Velocity vs. Time (Light Ball)",
+            title: "Predicted Velocity vs. Time (Light Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: [],
@@ -196,20 +196,12 @@
       }, {
         url: "/shared/gravity/page/3/step/1",
         activityPage: "/shared/gravity/page/3",
-        beforeText: '<p>Take note of some relevant measurements. What is the height in meters of the motion sensor\'s location? What\nis the mass of the light ball in grams?</p>',
-        paneConfig: "single",
-        shouldFinishImmediately: true,
-        isFinalStep: true,
-        nextButtonShouldSubmit: true
-      }, {
-        url: "/shared/gravity/page/3/step/1",
-        activityPage: "/shared/gravity/page/3",
-        beforeText: '<p>Have one student place the light ball 10 cm below the motion sensor.</p>\n\n<p>The motion sensor will measure the distance of the ball as it falls away from the sensor. In this case,\ndown is the positive direction.</p>\n\n<p>Have another student click Start</p>\n\n<p>Let the sensor run for 3 seconds and release the ball. Click Stop after the ball hits the ground.</p>\n\n<p>You may want to repeat this a few times before you decide to keep the data for this trial. Click Reset\nwhenever you want to clear the graph and try again.</p>',
+        beforeText: '',
         paneConfig: "split",
         panes: {
           top: {
             type: "graph",
-            title: "Position vs. Time (Light Ball)",
+            title: "Actual Position vs. Time (Light Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: ["light-ball-position"],
@@ -217,29 +209,20 @@
           },
           bottom: {
             type: "graph",
-            title: "Velocity vs. Time (Light Ball)",
+            title: "Actual Velocity vs. Time (Light Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
             annotations: []
           }
         },
-        tools: [
-          {
-            name: "sensor",
-            setup: {
-              data: "light-ball-position",
-              controlsPane: "top"
-            }
-          }
-        ],
         hideSubmitButton: true,
         isFinalStep: true,
         nextButtonShouldSubmit: true
       }, {
         url: "/shared/gravity/page/4/step/1",
         activityPage: "/shared/gravity/page/4",
-        beforeText: '<p>How does your collected data for the light ball differ from your predicted data?</p>',
+        beforeText: '<p>How does the actual data for the light ball differ from your predicted data?</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -266,12 +249,12 @@
       }, {
         url: "/shared/gravity/page/5/step/1",
         activityPage: "/shared/gravity/page/5",
-        beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph for the heavy ball will\nlook like when you drop it from the same height.</p>',
+        beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph will look like when the\nheavy ball is droppedfrom the same height.</p>',
         paneConfig: "split",
         panes: {
           top: {
             type: "graph",
-            title: "Position vs. Time (Heavy Ball)",
+            title: "Predicted Position vs. Time (Heavy Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: [],
@@ -279,7 +262,7 @@
           },
           bottom: {
             type: "graph",
-            title: "Velocity vs. Time (Heavy Ball)",
+            title: "Predicted Velocity vs. Time (Heavy Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: [],
@@ -306,12 +289,12 @@
       }, {
         url: "/shared/gravity/page/6/step/1",
         activityPage: "/shared/gravity/page/6",
-        beforeText: '<p>Have one student place the heavy ball 10 cm below the motion sensor. Have another student click Start.</p>\n\n<p>Let the sensor run for 3 seconds and release the ball. Then click Stop.</p>\n\n<p>You may want to repeat this a few times before you decide to keep the data for this trial. Click Reset\nwhenever you want to clear the graph and try again.</p>',
+        beforeText: '',
         paneConfig: "split",
         panes: {
           top: {
             type: "graph",
-            title: "Position vs. Time (Heavy Ball)",
+            title: "Actual Position vs. Time (Heavy Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: ["heavy-ball-position"],
@@ -319,22 +302,13 @@
           },
           bottom: {
             type: "graph",
-            title: "Velocity vs. Time (Heavy Ball)",
+            title: "Actual Velocity vs. Time (Heavy Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
             annotations: []
           }
         },
-        tools: [
-          {
-            name: "sensor",
-            setup: {
-              data: "heavy-ball-position",
-              controlsPane: "top"
-            }
-          }
-        ],
         hideSubmitButton: true,
         isFinalStep: true,
         nextButtonShouldSubmit: true
@@ -395,7 +369,47 @@
       }, {
         url: "/shared/gravity/page/8/step/2",
         activityPage: "/shared/gravity/page/8",
-        beforeText: '<p>On each graph, label what happened to the ball’s velocity as it approached the ground.</p>\n<p>Make sure to label where the ball’s velocity <i>increased</i>, <i>decreased</i>, or <i>stayed the same</i>.\nAdditionally. make sure to label where the velocity might have been <i>fastest</i>, <i>slowest</i>, or\n<i>constant</i>.</p>',
+        beforeText: '<p>On each graph, label what happened to the ball’s velocity as it approached the ground.</p>\n<p>Make sure to label where the ball’s velocity <i>increased</i>, <i>decreased</i>, or <i>stayed the same</i>.\n</p>',
+        paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["light-ball-velocity"],
+            annotations: []
+          },
+          bottom: {
+            type: "graph",
+            title: "Actual Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: []
+          }
+        },
+        tools: [
+          {
+            name: "label",
+            setup: {
+              pane: "top",
+              labelSetName: "light-ball-labels"
+            }
+          }, {
+            name: "label",
+            setup: {
+              pane: "bottom",
+              labelSetName: "heavy-ball-labels"
+            }
+          }
+        ],
+        submitButtonTitle: "OK",
+        defaultBranch: "/shared/gravity/page/8/step/3"
+      }, {
+        url: "/shared/gravity/page/8/step/3",
+        activityPage: "/shared/gravity/page/8",
+        beforeText: '<p>On each graph, label where the velocity might have been <i>fastest</i>, <i>slowest</i>, or <i>0</i>.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -535,7 +549,7 @@
       }, {
         url: "/shared/gravity/page/12/step/1",
         activityPage: "/shared/gravity/page/12",
-        beforeText: '<p>What did you discover about the velocity of a light ball versus a heavy ball as each falls to the ground?</p>',
+        beforeText: '<p>What did you discover about the velocity of a light ball versus a heavy ball as each falls to the\nground?</p>',
         paneConfig: "single",
         panes: {
           single: {
