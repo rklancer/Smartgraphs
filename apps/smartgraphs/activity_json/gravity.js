@@ -440,19 +440,15 @@
         panes: {
           top: {
             type: "graph",
-            title: "Actual Position vs. Time (Light Ball)",
-            xAxis: "/shared/gravity/axes/time",
-            yAxis: "/shared/gravity/axes/position",
-            data: ["light-ball-position"],
-            annotations: []
-          },
-          bottom: {
-            type: "graph",
             title: "Velocity vs. Time (Light Ball)",
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
             annotations: []
+          },
+          bottom: {
+            type: "table",
+            data: ["light-ball-velocity"]
           }
         },
         hideSubmitButton: true,
@@ -464,21 +460,19 @@
         beforeText: '<p>Find the slope in m/s<sup>2</sup> of the velocity-time graph of the heavy ball while the ball was in\nmotion.</p>',
         paneConfig: "split",
         panes: {
-          top: {
-            type: "graph",
-            title: "Actual Position vs. Time (Heavy Ball)",
-            xAxis: "/shared/gravity/axes/time",
-            yAxis: "/shared/gravity/axes/position",
-            data: ["heavy-ball-position"],
-            annotations: []
-          },
-          bottom: {
-            type: "graph",
-            title: "Velocity vs. Time (Heavy Ball)",
-            xAxis: "/shared/gravity/axes/time",
-            yAxis: "/shared/gravity/axes/velocity",
-            data: ["heavy-ball-velocity"],
-            annotations: []
+          panes: {
+            top: {
+              type: "graph",
+              title: "Velocity vs. Time (Light Ball)",
+              xAxis: "/shared/gravity/axes/time",
+              yAxis: "/shared/gravity/axes/velocity",
+              data: ["heavy-ball-velocity"],
+              annotations: []
+            },
+            bottom: {
+              type: "table",
+              data: ["heavy-ball-velocity"]
+            }
           }
         },
         hideSubmitButton: true,
@@ -634,7 +628,7 @@
             xShortLabel: "Time",
             yUnits: "/builtins/units/meters-per-second",
             yLabel: "Velocity",
-            yShortLabel: "Velocity",
+            yShortLabel: "Vel",
             source: "/shared/gravity/datadefs/light-ball-position",
             windowLength: 4
           }, {
@@ -646,7 +640,7 @@
             xShortLabel: "Time",
             yUnits: "/builtins/units/meters-per-second",
             yLabel: "Velocity",
-            yShortLabel: "Velocity",
+            yShortLabel: "Vel",
             source: "/shared/gravity/datadefs/heavy-ball-position",
             windowLength: 4
           }
