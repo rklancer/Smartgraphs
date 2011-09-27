@@ -32,7 +32,7 @@
         url: "/shared/gravity/page/3",
         activity: "/shared/gravity",
         index: 3,
-        introText: '<h1>Look at the Data (Light Ball)</h1>\n\n<p>The data to the right was collected when a 102-gram softball was dropped from a height of about 2 meters.\nEvery second, 20 data samples were collected.</p>      ',
+        introText: '<h1>Look at the Data (Light Ball)</h1>\n\n<p>The data to the right was collected when a light softball was dropped from a height of about 2 meters.\nEvery second, 20 data samples were collected.</p>      ',
         steps: ["/shared/gravity/page/3/step/1"],
         firstStep: "/shared/gravity/page/3/step/1"
       }, {
@@ -56,7 +56,7 @@
         url: "/shared/gravity/page/6",
         activity: "/shared/gravity",
         index: 6,
-        introText: '<h1>Look at the Data (Heavy Ball)</h1>\n\n<p>The data to the right was collected when a heavy (170-gram) ball was dropped from a height of about 2\nmeters. Every second, 20 data samples were collected.</p>',
+        introText: '<h1>Look at the Data (Heavy Ball)</h1>\n\n<p>The data to the right was collected when a heavier softball was dropped from a height of about 2 meters.\nEvery second, 20 data samples were collected.</p>',
         steps: ["/shared/gravity/page/6/step/1"],
         firstStep: "/shared/gravity/page/6/step/1"
       }, {
@@ -1455,15 +1455,15 @@
         url: "/shared/gravity/axes/position",
         units: "/builtins/units/meters",
         min: 0,
-        max: 4,
-        nSteps: 4,
+        max: 2,
+        nSteps: 10,
         label: "Position"
       }, {
         url: "/shared/gravity/axes/velocity",
         units: "/builtins/units/meters-per-second",
-        min: -2,
-        max: 10,
-        nSteps: 12,
+        min: -6,
+        max: 2,
+        nSteps: 8,
         label: "Velocity"
       }
     ],
@@ -1492,7 +1492,7 @@
             yUnits: "/builtins/units/meters",
             yLabel: "Position",
             yShortLabel: "Position",
-            points: [[0.05, 0.159], [0.1, 0.159], [0.15, 0.159], [0.2, 0.159], [0.25, 0.16], [0.3, 0.158], [0.35, 0.158], [0.4, 0.157], [0.45, 0.161], [0.5, 0.158], [0.55, 0.208], [0.6, 0.305], [0.65, 0.418], [0.7, 0.565], [0.75, 0.739], [0.8, 0.933], [0.85, 1.153], [0.9, 1.402], [0.95, 1.671], [1, 1.964]]
+            points: [[0.05, 1.822], [0.1, 1.822], [0.15, 1.821], [0.2, 1.821], [0.25, 1.821], [0.3, 1.82], [0.35, 1.821], [0.4, 1.821], [0.45, 1.825], [0.5, 1.828], [0.55, 1.846], [0.6, 1.847], [0.65, 1.836], [0.7, 1.791], [0.75, 1.724], [0.8, 1.631], [0.85, 1.523], [0.9, 1.386], [0.95, 1.205], [1, 1.031], [1.05, 0.825], [1.1, 0.594], [1.15, 0.342], [1.2, 0.16]]
           }
         ]
       }, {
@@ -1601,8 +1601,8 @@
             name: "heavy-ball-motion-segment",
             activity: "/shared/gravity",
             datadefName: "heavy-ball-velocity",
-            x1Record: 0.55,
-            x2Record: 1.0
+            x1Record: 0.65,
+            x2Record: 1.2
           }
         ]
       }, {
