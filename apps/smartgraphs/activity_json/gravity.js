@@ -474,19 +474,17 @@
         beforeText: '<p>Find the slope in m/s<sup>2</sup> of the velocity-time graph of the heavy ball while the ball was in\nmotion.</p>',
         paneConfig: "split",
         panes: {
-          panes: {
-            top: {
-              type: "graph",
-              title: "Velocity vs. Time (Light Ball)",
-              xAxis: "/shared/gravity/axes/time",
-              yAxis: "/shared/gravity/axes/velocity",
-              data: ["heavy-ball-velocity"],
-              annotations: []
-            },
-            bottom: {
-              type: "table",
-              data: ["heavy-ball-velocity"]
-            }
+          top: {
+            type: "graph",
+            title: "Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: ["heavy-ball-velocity"],
+            annotations: []
+          },
+          bottom: {
+            type: "table",
+            data: ["heavy-ball-velocity"]
           }
         },
         hideSubmitButton: true,
@@ -578,6 +576,15 @@
         hideSubmitButton: true
       }
     ],
+    responseTemplates: [
+      {
+        url: "/components/response-template/open",
+        templateString: "",
+        fieldTypes: ["textarea"],
+        fieldChoicesList: [null],
+        initialValues: [""]
+      }
+    ],
     axes: [
       {
         url: "/shared/gravity/axes/time",
@@ -661,17 +668,79 @@
         ]
       }
     ],
-    responseTemplates: [
+    tags: [
       {
-        url: "/components/response-template/open",
-        templateString: "",
-        fieldTypes: ["textarea"],
-        fieldChoicesList: [null],
-        initialValues: [""]
+        url: "/shared/gravity/tag/light-ball-point-1",
+        activity: "/shared/gravity",
+        name: "light-ball-point-1"
+      }, {
+        url: "/shared/gravity/tag/light-ball-point-2",
+        activity: "/shared/gravity",
+        name: "light-ball-point-2"
+      }, {
+        url: "/shared/gravity/tag/heavy-ball-point-1",
+        activity: "/shared/gravity",
+        name: "heavy-ball-point-1"
+      }, {
+        url: "/shared/gravity/tag/heavy-ball-point-2",
+        activity: "/shared/gravity",
+        name: "heavy-ball-point-2"
       }
     ],
     annotations: [
       {
+        type: "HighlightedPoint",
+        records: [
+          {
+            url: "/shared/gravity/anotation/light-ball-point-1",
+            name: "light-ball-point-1",
+            activity: "/shared/gravity",
+            datadefName: "light-ball-velocity",
+            tag: "/shared/gravity/tag/light-ball-point-1",
+            color: "#1f77b4"
+          }, {
+            url: "/shared/gravity/annotation/light-ball-point-2",
+            name: "light-ball-point-2",
+            activity: "/shared/gravity",
+            datadefName: "light-ball-velocity",
+            tag: "/shared/gravity/tag/light-ball-point-2",
+            color: "#ff7f0e"
+          }, {
+            url: "/shared/gravity/annotation/heavy-ball-point-1",
+            name: "heavy-ball-point-1",
+            activity: "/shared/gravity",
+            datadefName: "heavy-ball-velocity",
+            tag: "/shared/gravity/tag/heavy-ball-point-1",
+            color: "#1f77b4"
+          }, {
+            url: "/shared/gravity/annotation/heavy-ball-point-2",
+            name: "heavy-ball-point-2",
+            activity: "/shared/gravity",
+            datadefName: "heavy-ball-velocity",
+            tag: "/shared/gravity/tag/heavy-ball-point-2",
+            color: "#ff7f0e"
+          }
+        ]
+      }, {
+        type: "SegmentOverlay",
+        records: [
+          {
+            url: "/shared/gravity/annotation/light-ball-motion-segment",
+            name: "light-ball-motion-segment",
+            activity: "/shared/gravity",
+            datadefName: "light-ball-velocity",
+            x1Record: 0.5,
+            x2Record: 0.95
+          }, {
+            url: "/shared/gravity/annotation/heavy-ball-motion-segment",
+            name: "heavy-ball-motion-segment",
+            activity: "/shared/gravity",
+            datadefName: "heavy-ball-velocity",
+            x1Record: 0.55,
+            x2Record: 1.0
+          }
+        ]
+      }, {
         type: "FreehandSketch",
         records: [
           {

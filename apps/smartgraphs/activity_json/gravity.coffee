@@ -21,7 +21,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "/shared/gravity/page/7"
       "/shared/gravity/page/8"
       "/shared/gravity/page/9"
-      "/shared/gravity/page/10"      
+      "/shared/gravity/page/10"  
       "/shared/gravity/page/11"
       "/shared/gravity/page/12"
     ]
@@ -724,18 +724,17 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       paneConfig:   "split"
       panes:
-        panes:
-          top:
-            type:        "graph"
-            title:       "Velocity vs. Time (Light Ball)"
-            xAxis:       "/shared/gravity/axes/time"
-            yAxis:       "/shared/gravity/axes/velocity"
-            data:        ["heavy-ball-velocity"]
-            annotations: []
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["heavy-ball-velocity"]
+          annotations: []
 
-          bottom:
-            type:        "table"
-            data:        ["heavy-ball-velocity"]
+        bottom:
+          type:        "table"
+          data:        ["heavy-ball-velocity"]
 
       hideSubmitButton: true
       isFinalStep: true
@@ -853,6 +852,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         
   ]
 
+  responseTemplates: [
+    {
+      url:              "/components/response-template/open"
+      templateString:   ""
+      fieldTypes:       ["textarea"]
+      fieldChoicesList: [null]
+      initialValues:    [""]
+    }
+  ]
+  
   axes: [
     {
       url:    "/shared/gravity/axes/time"
@@ -944,67 +953,148 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       ]
     }
   ]
-
-  responseTemplates: [
+  
+  tags: [
     {
-      url:              "/components/response-template/open"
-      templateString:   ""
-      fieldTypes:       ["textarea"]
-      fieldChoicesList: [null]
-      initialValues:    [""]
+      url:      "/shared/gravity/tag/light-ball-point-1"
+      activity: "/shared/gravity",
+      name:     "light-ball-point-1"
+    }
+    
+    {
+      url:      "/shared/gravity/tag/light-ball-point-2"
+      activity: "/shared/gravity",
+      name:     "light-ball-point-2"
+    }
+    
+    {
+      url:      "/shared/gravity/tag/heavy-ball-point-1"
+      activity: "/shared/gravity",
+      name:     "heavy-ball-point-1"
+    }
+    
+    {
+      url:      "/shared/gravity/tag/heavy-ball-point-2"
+      activity: "/shared/gravity",
+      name:     "heavy-ball-point-2"
     }
   ]
+  
+  annotations: [
+    {
+      type: "HighlightedPoint",
+      records: [
+        {
+          url:         "/shared/gravity/anotation/light-ball-point-1"
+          name:        "light-ball-point-1"
+          activity:    "/shared/gravity"
+          datadefName: "light-ball-velocity"
+          tag:         "/shared/gravity/tag/light-ball-point-1"
+          color:       "#1f77b4"
+        }
+        
+        {
+          url:         "/shared/gravity/annotation/light-ball-point-2"
+          name:        "light-ball-point-2"
+          activity:    "/shared/gravity"
+          datadefName: "light-ball-velocity"
+          tag:         "/shared/gravity/tag/light-ball-point-2"
+          color:       "#ff7f0e"
+        }
+        
+        {
+          url:         "/shared/gravity/annotation/heavy-ball-point-1"
+          name:        "heavy-ball-point-1"
+          activity:    "/shared/gravity"
+          datadefName: "heavy-ball-velocity"
+          tag:         "/shared/gravity/tag/heavy-ball-point-1"
+          color:       "#1f77b4"
+        }
+        
+        {
+          url:         "/shared/gravity/annotation/heavy-ball-point-2"
+          name:        "heavy-ball-point-2"
+          activity:    "/shared/gravity"
+          datadefName: "heavy-ball-velocity"
+          tag:         "/shared/gravity/tag/heavy-ball-point-2"
+          color:       "#ff7f0e"
+        }
 
-  annotations:       [
+      ]
+    }
+    
+    {
+      type: "SegmentOverlay"
+      records: [
+        {
+          url:         "/shared/gravity/annotation/light-ball-motion-segment"
+          name:        "light-ball-motion-segment"
+          activity:    "/shared/gravity"
+          datadefName: "light-ball-velocity"
+          x1Record:    0.5
+          x2Record:    0.95
+        }
+        
+        {
+          url:         "/shared/gravity/annotation/heavy-ball-motion-segment"
+          name:        "heavy-ball-motion-segment"
+          activity:    "/shared/gravity"
+          datadefName: "heavy-ball-velocity"
+          x1Record:    0.55
+          x2Record:    1.0
+        }
+      ]
+    }
+
     {
       type: "FreehandSketch"
       records: [
         {
-          url:      "/shared/gravity/annotation/light-ball-position",
-          name:     "light-ball-position",
-          activity: "/shared/gravity",
-          color:    "#FF00FF",
+          url:      "/shared/gravity/annotation/light-ball-position"
+          name:     "light-ball-position"
+          activity: "/shared/gravity"
+          color:    "#FF00FF"
           points:   []
         }
         
         {
-          url:      "/shared/gravity/annotation/light-ball-velocity",
-          name:     "light-ball-velocity",
-          activity: "/shared/gravity",
-          color:    "#FF00FF",
+          url:      "/shared/gravity/annotation/light-ball-velocity"
+          name:     "light-ball-velocity"
+          activity: "/shared/gravity"
+          color:    "#FF00FF"
           points:   []
         }
         
         {
-          url:      "/shared/gravity/annotation/heavy-ball-position",
-          name:     "heavy-ball-position",
-          activity: "/shared/gravity",
-          color:    "#FF00FF",
+          url:      "/shared/gravity/annotation/heavy-ball-position"
+          name:     "heavy-ball-position"
+          activity: "/shared/gravity"
+          color:    "#FF00FF"
           points:   []
         }
         
         {
-          url:      "/shared/gravity/annotation/heavy-ball-velocity",
-          name:     "heavy-ball-velocity",
-          activity: "/shared/gravity",
-          color:    "#FF00FF",
+          url:      "/shared/gravity/annotation/heavy-ball-velocity"
+          name:     "heavy-ball-velocity"
+          activity: "/shared/gravity"
+          color:    "#FF00FF"
           points:   []
         }
       ]
     }
     
     {
-      type: "LabelSet",
+      type: "LabelSet"
       records: [
         {
-          url:      "/shared/gravity/annotation/light-ball-labels",
-          name:     "light-ball-labels",
+          url:      "/shared/gravity/annotation/light-ball-labels"
+          name:     "light-ball-labels"
           activity: "/shared/gravity"
         }
         
         {
-          url:      "/shared/gravity/annotation/heavy-ball-labels",
-          name:     "heavy-ball-labels",
+          url:      "/shared/gravity/annotation/heavy-ball-labels"
+          name:     "heavy-ball-labels"
           activity: "/shared/gravity"
         }
       ]
