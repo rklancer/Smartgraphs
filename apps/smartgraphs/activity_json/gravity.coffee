@@ -20,12 +20,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "/shared/gravity/page/6"
       "/shared/gravity/page/7"
       "/shared/gravity/page/8"
+      "/shared/gravity/page/9"      
       "/shared/gravity/page/10"
       "/shared/gravity/page/12"
       "/shared/gravity/page/13"
       "/shared/gravity/page/14"
     ]
-
+    
 
   pages: [
     {
@@ -157,7 +158,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      name:      "Compare the Data I"
+      name:      "Compare the Data"
       url:       "/shared/gravity/page/8"
       activity:  "/shared/gravity"
       index:     8
@@ -173,6 +174,40 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         "/shared/gravity/page/8/step/3"
       ]
       firstStep: "/shared/gravity/page/8/step/1"
+    }
+    
+    {
+      name:      "Choose Points (Light Ball)"
+      url:       "/shared/gravity/page/9"
+      activity:  "/shared/gravity"
+      index:     9
+      introText: 
+        '''
+        <h1>Choose Points (Light Ball)</h1>
+
+        <p>Let’s look more closely at the velocities of the two balls from the time they were released until the time
+        they reached the ground.</p> 
+        
+        <p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>
+        
+        <p>First, you will mark the portion of the graph which you believe <i>best represents</i> the period when the
+        ball was falling.</p>
+        '''
+      steps:     [
+        "/shared/gravity/page/9/step/p1"
+        "/shared/gravity/page/9/step/p1-hint-1"
+        "/shared/gravity/page/9/step/p1-hint-2"
+        "/shared/gravity/page/9/step/p1-hint-3"
+        "/shared/gravity/page/9/step/p1-hint-4"
+        "/shared/gravity/page/9/step/p2"
+        "/shared/gravity/page/9/step/p2-hint-1"
+        "/shared/gravity/page/9/step/p2-hint-2"
+        "/shared/gravity/page/9/step/p2-hint-3"
+        "/shared/gravity/page/9/step/p2-hint-3"        
+        "/shared/gravity/page/9/step/p2-same-point"
+        "/shared/gravity/page/9/step/done"
+      ]
+      firstStep: "/shared/gravity/page/9/step/p1"
     }
     
     {
@@ -683,6 +718,574 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
+      url:          "/shared/gravity/page/9/step/p1"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Select a point at which the ball is falling. (Try to pick the beginning of the region that <i>best
+        represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-1"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        criterion: ["and", [">=", ["coord", "x", "light-ball-point-1"], 0.5], ["<=", ["coord", "x", "light-ball-point-1"], 0.95]]
+        step:      "/shared/gravity/page/9/step/p2"
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p1-hint-1"
+    }
+    
+
+    {
+      url:          "/shared/gravity/page/9/step/p1-hint-1"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Incorrect. The ball was not yet falling at this point.</p>
+        
+        <p>Select a point at which the ball is falling. (Try to pick the beginning of the region that <i>best
+        represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-1"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        criterion: ["and", [">=", ["coord", "x", "light-ball-point-1"], 0.5], ["<=", ["coord", "x", "light-ball-point-1"], 0.95]]
+        step:      "/shared/gravity/page/9/step/p2"
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p1-hint-2"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/9/step/p1-hint-2"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Incorrect. When the velocity is 0 (or nearly 0), the ball is not falling.</p>
+        
+        <p>Select a point at which the ball is falling. (Try to pick the beginning of the region that <i>best
+        represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-1"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        criterion: ["and", [">=", ["coord", "x", "light-ball-point-1"], 0.5], ["<=", ["coord", "x", "light-ball-point-1"], 0.95]]
+        step:      "/shared/gravity/page/9/step/p2"
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p1-hint-3"
+    }
+    
+
+    {
+      url:          "/shared/gravity/page/9/step/p1-hint-3"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Incorrect. The highlighted region shows when the ball had a nonzero velocity and was therefore falling.</p>
+        
+        <p>Select a point at which the ball is falling. (Try to pick the beginning of the region that <i>best
+        represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-motion-segment", "light-ball-point-1"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-1"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        criterion: ["and", [">=", ["coord", "x", "light-ball-point-1"], 0.5], ["<=", ["coord", "x", "light-ball-point-1"], 0.95]]
+        step:      "/shared/gravity/page/9/step/p2"
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p1-hint-4"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/9/step/p1-hint-4"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Incorrect. The point you selected was not in the highlighted region in which the ball was falling. Try
+        again.</p>
+        
+        <p>Select a point at which the ball is falling. (Try to pick the beginning of the region that <i>best
+        represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-motion-segment", "light-ball-point-1"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-1"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        criterion: ["and", [">=", ["coord", "x", "light-ball-point-1"], 0.5], ["<=", ["coord", "x", "light-ball-point-1"], 0.95]]
+        step:      "/shared/gravity/page/9/step/p2"
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p1-hint-4"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/9/step/p2"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Now select a second point at which the ball was falling. (Try to pick the end of the region that <i>best
+        represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-1"], ["coord", "x", "light-ball-point-2"]]
+          step:      "/shared/gravity/page/9/step/same-point"
+        }
+        
+        {
+          criterion: ["and", [">=", ["coord", "x", "light-ball-point-2"], 0.5], ["<=", ["coord", "x", "light-ball-point-2"], 0.95]]
+          step:      "/shared/gravity/page/9/step/done"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p2-hint-1"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/9/step/p2-hint-1"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Incorrect. The ball was not yet falling at this point.</p>
+        
+        <p>Try again. Select a second point at which the ball was falling. (Try to pick the end of the region that
+        <i>best represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-1"], ["coord", "x", "light-ball-point-2"]]
+          step:      "/shared/gravity/page/9/step/same-point"
+        }
+        
+        {
+          criterion: ["and", [">=", ["coord", "x", "light-ball-point-2"], 0.5], ["<=", ["coord", "x", "light-ball-point-2"], 0.95]]
+          step:      "/shared/gravity/page/9/step/done"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p2-hint-2"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/9/step/p2-hint-2"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Incorrect. When the velocity is 0 (or nearly 0), the ball is not falling.</p>
+        
+        <p>Try again. Select a second point at which the ball was falling. (Try to pick the end of the region that
+        <i>best represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-1"], ["coord", "x", "light-ball-point-2"]]
+          step:      "/shared/gravity/page/9/step/same-point"
+        }
+        
+        {
+          criterion: ["and", [">=", ["coord", "x", "light-ball-point-2"], 0.5], ["<=", ["coord", "x", "light-ball-point-2"], 0.95]]
+          step:      "/shared/gravity/page/9/step/done"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p2-hint-3"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/9/step/p2-hint-3"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Incorrect. The velocity was nonzero in the highlighted region of the graph. This is when the ball was
+        falling. Choose a point (different than the first) in this region.</p>
+        
+        <p>Try again. Select a second point at which the ball was falling. (Try to pick the end of the region that
+        <i>best represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-motion-segment", "light-ball-point-1", "light-ball-point-2"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-1"], ["coord", "x", "light-ball-point-2"]]
+          step:      "/shared/gravity/page/9/step/same-point"
+        }
+        
+        {
+          criterion: ["and", [">=", ["coord", "x", "light-ball-point-2"], 0.5], ["<=", ["coord", "x", "light-ball-point-2"], 0.95]]
+          step:      "/shared/gravity/page/9/step/done"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p2-hint-4"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/9/step/p2-hint-4"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Incorrect. The point you selected was not in the highlighted region in which the ball was falling. Try
+        again.</p>
+        
+        <p>Try again. Select a second point at which the ball was falling. (Try to pick the end of the region that
+        <i>best represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-motion-segment", "light-ball-point-1", "light-ball-point-2"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-1"], ["coord", "x", "light-ball-point-2"]]
+          step:      "/shared/gravity/page/9/step/same-point"
+        }
+        
+        {
+          criterion: ["and", [">=", ["coord", "x", "light-ball-point-2"], 0.5], ["<=", ["coord", "x", "light-ball-point-2"], 0.95]]
+          step:      "/shared/gravity/page/9/step/done"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p2-hint-4"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/9/step/same-point"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>The point you selected is the same as the first point you selected. You need two different points in order
+        to calculate the slope of the line between them.</p>
+        
+        <p>Try again. Select a second point at which the ball was falling. (Try to pick the end of the region that
+        <i>best represents</i> when the ball was falling.)</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-1"], ["coord", "x", "light-ball-point-2"]]
+          step:      "/shared/gravity/page/9/step/same-point"
+        }
+        
+        {
+          criterion: ["and", [">=", ["coord", "x", "light-ball-point-2"], 0.5], ["<=", ["coord", "x", "light-ball-point-2"], 0.95]]
+          step:      "/shared/gravity/page/9/step/done"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/9/step/p2-hint-1"
+    }
+    
+    {
+      url:          "/shared/gravity/page/9/step/done"
+      activityPage: "/shared/gravity/page/9"
+
+      beforeText: 
+        '''
+        <p>Here is the region defined by the points you selected.</p>
+        
+        <p>On the next page, you will calculate the slope of the velocity-time graph in this region.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-selected-segment", "light-ball-point-1", "light-ball-point-2"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+      
+      isFinalStep:            true
+      hideSubmitButton:       true
+      nextButtonShouldSubmit: true
+    }
+    
+    
+    {
       url:          "/shared/gravity/page/10/step/1"
       activityPage: "/shared/gravity/page/10"
 
@@ -1036,6 +1639,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         }
         
         {
+          url:         "/shared/gravity/annotation/light-ball-selected-segment"
+          name:        "light-ball-selected-segment"
+          activity:    "/shared/gravity"
+          datadefName: "light-ball-velocity"
+          tag1:        "/shared/gravity/tag/light-ball-point-1"
+          tag2:        "/shared/gravity/tag/light-ball-point-2"
+        }
+        
+        {
           url:         "/shared/gravity/annotation/heavy-ball-motion-segment"
           name:        "heavy-ball-motion-segment"
           activity:    "/shared/gravity"
@@ -1101,7 +1713,6 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
   ]
   
-  tags:      []
   variables: []
   units:     []
 

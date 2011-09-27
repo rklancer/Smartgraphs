@@ -1,7 +1,5 @@
 Let’s look more closely at the velocities of the two balls from the time they were released until the time they reached the ground.
 
-The slope of a velocity-time graph tells us how the velocity of an object changed over time. You will calculate the slope in m/s2 of the velocity-time graph of the light ball while the ball was in motion.
-
 First, you will mark the portion of the graph that <i>best represents</i> the period when the ball was falling.
 
   * Select a point at which the ball is falling. (Try to pick the beginning of the region that <i>best represents</i> when the ball was falling.)
@@ -24,12 +22,16 @@ First, you will mark the portion of the graph that <i>best represents</i> the pe
     
     * Incorrect. The point you selected was not in the highlighted region in which the ball was falling. Try again.
     
-    * Incorrect. The point you selected is the same as the first point you selected. You cannot calculate the slope with this selection.
+  * Incorrect. The point you selected is the same as the first point you selected. You cannot calculate the slope with this selection.
     
+
+The slope of a velocity-time graph tells us how the velocity of an object changed over time. 
+
+You will calculate the slope in m/s2 of the velocity-time graph of the light ball while the ball was in motion.
 
 Here is a line connecting the points you selected.
 
-The slope of the line between the points you selected is a good approximation of the slope of the velocity-time graph for period of time during which the ball fell.
+The slope of the line between the points is a good approximation of the slope of the velocity-time graph for period of time during which the ball fell.
 
   * What is the slope of the line between the points you selected, in m/s<sup>2</sup>?
   
