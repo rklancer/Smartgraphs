@@ -20,7 +20,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "/shared/gravity/page/6"
       "/shared/gravity/page/7"
       "/shared/gravity/page/8"
-      "/shared/gravity/page/9"      
+      "/shared/gravity/page/9"
       "/shared/gravity/page/10"
       "/shared/gravity/page/12"
       "/shared/gravity/page/13"
@@ -219,16 +219,48 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         <h1>Find the Slope (Light Ball)</h1>
 
-        <p>Let’s look more closely at the velocities of the two balls from the time they were released until the time
-        they reached the ground.</p> 
-        
         <p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>
-        
+
+        <p>A line connecting the points you selected is shown to the right. The slope of this line is a good
+        approximation of the slope of the velocity-time graph for the whole time that the ball fell.</p>
+      
         '''
-      steps:     [
-        "/shared/gravity/page/10/step/1"
+        
+      contextVars: [
+        { name: "initial-velocity",           value: ["coord", "y", ["listItem", 1, ["slopeToolOrder", "light-ball-point-1", "light-ball-point-2"]]] }
+        { name: "initial-velocity-as-string", value: ["toFixedString", ["get", "initial-velocity"], 2] }
+        { name: "final-velocity",             value: ["coord", "y", ["listItem", 2, ["slopeToolOrder", "light-ball-point-1", "light-ball-point-2"]]] }
+        { name: "final-velocity-as-string",   value: ["toFixedString", ["get", "final-velocity"], 2] }
+        { name: "delta-velocity",             value: ["-", ["get", "final-velocity"], ["get", "initial-velocity"]] }
+        { name: "delta-velocity-as-string",   value: ["toFixedString", ["get", "delta-velocity"], 2] }
+
+        { name: "initial-time",               value: ["coord", "x", ["listItem", 1, ["slopeToolOrder", "light-ball-point-1", "light-ball-point-2"]]] }
+        { name: "initial-time-as-string",     value: ["toFixedString", ["get", "initial-time"], 2] }
+        { name: "final-time",                 value: ["coord", "x", ["listItem", 2, ["slopeToolOrder", "light-ball-point-1", "light-ball-point-2"]]] }
+        { name: "final-time-as-string",       value: ["toFixedString", ["get", "final-time"], 2] }
+        { name: "delta-time",                 value: ["-", ["get", "final-time"], ["get", "initial-time"]] }
+        { name: "delta-time-as-string",       value: ["toFixedString", ["get", "delta-time"], 2] }
+
+        { name: "slope",                      value: ["/", ["get", "delta-velocity"], ["get", "delta-time"]] }
+        { name: "slope-as-string",            value: ["toFixedString", ["get", "slope"], 2] }
       ]
-      firstStep: "/shared/gravity/page/10/step/1"
+      
+      steps:     [
+        "/shared/gravity/page/10/step/slope-initial"
+        "/shared/gravity/page/10/step/slope-initial-hint"
+        "/shared/gravity/page/10/step/velocity"
+        "/shared/gravity/page/10/step/velocity-hint"
+        "/shared/gravity/page/10/step/velocity-giveaway"
+        "/shared/gravity/page/10/step/time-velocity-incorrect"
+        "/shared/gravity/page/10/step/time-velocity-correct"
+        "/shared/gravity/page/10/step/time-hint"
+        "/shared/gravity/page/10/step/time-giveaway"
+        "/shared/gravity/page/10/step/slope-final-time-incorrect"
+        "/shared/gravity/page/10/step/slope-final-time-correct"
+        "/shared/gravity/page/10/step/slope-final-giveaway"
+        "/shared/gravity/page/10/step/slope-correct"
+      ]
+      firstStep: "/shared/gravity/page/10/step/slope-initial"
     }
     
     
@@ -1286,13 +1318,12 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      url:          "/shared/gravity/page/10/step/1"
+      url:          "/shared/gravity/page/10/step/slope-initial"
       activityPage: "/shared/gravity/page/10"
 
       beforeText: 
         '''
-          <p>Find the slope in m/s<sup>2</sup> of the velocity-time graph of the light ball while the ball was in
-          motion.</p>
+        <p>What is the slope of the line between the points you selected, in m/s<sup>2</sup>?</p>
         '''
 
       paneConfig:   "split"
@@ -1303,14 +1334,449 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: []
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line"]
           
         bottom:
           type:        "table"
           data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/slope-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/slope-initial-hint"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/slope-initial-hint"
+      activityPage: "/shared/gravity/page/10"
 
-      hideSubmitButton: true
-      isFinalStep: true
+      beforeText: 
+        '''
+        <p>Incorrect. Hint: Recall that the slope is the change in the velocity at the two points, divided by the
+        change in the time.</p>
+        
+        <p>What is the slope of the line between the points you selected, in m/s<sup>2</sup>?</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/slope-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/velocity"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/velocity"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>Incorrect. What was the change in the velocity of the ball, in m/s?</p>
+        
+        <p>Hint: Look at the graph.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:                   "graph"
+          title:                  "Velocity vs. Time (Light Ball)"
+          xAxis:                  "/shared/gravity/axes/time"
+          yAxis:                  "/shared/gravity/axes/velocity"
+          data:                   ["light-ball-velocity"]
+          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line"]
+          highlightedAnnotations: ["light-ball-rise-arrow"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "delta-velocity"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/time-velocity-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/velocity-hint"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/velocity-hint"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>Incorrect. What was the change in the velocity of the ball, in m/s?</p>
+        
+        
+        <p>Hint: Look at the table and the graph.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow"]
+          
+        bottom:
+          type:                   "table"
+          data:                   ["light-ball-velocity"]
+          annotations:            ["light-ball-point-1", "light-ball-point-2"]
+          highlightedAnnotations: ["light-ball-rise-bracket"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "delta-velocity"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/time-velocity-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/velocity-giveaway"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/velocity-giveaway"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>Incorrect. The change in the velocity of the ball was %@ m/s - %@ m/s, or %@ m/s</p>
+        '''
+
+      substitutedExpressions: ["final-velocity-as-string", "initial-velocity-as-string", "delta-velocity-as-string"]
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+      
+      submitButtonTitle: "OK"
+      defaultBranch: "/shared/gravity/page/10/step/time-velocity-incorrect"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/time-velocity-correct"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>Correct! What is the change in time between the points you selected, in seconds?</p>
+        
+        <p>Hint: Look at the graph.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:                   "graph"
+          title:                  "Velocity vs. Time (Light Ball)"
+          xAxis:                  "/shared/gravity/axes/time"
+          yAxis:                  "/shared/gravity/axes/velocity"
+          data:                   ["light-ball-velocity"]
+          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow"]
+          highlightedAnnotations: ["light-ball-run-arrow"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/slope-final-time-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/time-hint"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/time-velocity-incorrect"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>What is the change in time between the points you selected, in seconds?</p>
+        
+        <p>Hint: Look at the graph.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:                   "graph"
+          title:                  "Velocity vs. Time (Light Ball)"
+          xAxis:                  "/shared/gravity/axes/time"
+          yAxis:                  "/shared/gravity/axes/velocity"
+          data:                   ["light-ball-velocity"]
+          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow"]
+          highlightedAnnotations: ["light-ball-run-arrow"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/slope-final-time-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/time-hint"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/time-hint"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>Incorrect. What is the change in time between the points you selected, in seconds?</p>
+        
+        <p>Hint: Look at the table and the graph.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
+          
+        bottom:
+          type:                   "table"
+          data:                   ["light-ball-velocity"]
+          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+          highlightedAnnotations: ["light-ball-run-bracket"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "delta-time"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/slope-final-time-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/time-giveaway"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/time-giveaway"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>Incorrect. The change in time between the points is %@ s - %@ s, or %@ s.</p>
+        '''
+
+      substitutedExpressions: ["final-time-as-string", "initial-time-as-string", "delta-time-as-string"]
+        
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+          
+      submitButtonTitle: "OK"
+      defaultBranch: "/shared/gravity/page/10/step/slope-final-time-incorrect"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/slope-final-time-correct"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>Correct! If the change in velocity is %@ m/s during a change in time of %@ s, then what is the slope of the velocity-time graph, in m/s<sup>2</sup>?</p>
+        '''
+
+      substitutedExpressions: ["delta-velocity-as-string", "delta-time-as-string"]
+      
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
+          
+        bottom:
+          type:                   "table"
+          data:                   ["light-ball-velocity"]
+          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/slope-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/slope-final-giveaway"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/slope-final-time-incorrect"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>If the change in velocity is %@ m/s during a change in time of %@ s, then what is the slope of the velocity-time graph, in m/s<sup>2</sup>?</p>
+        '''
+
+      substitutedExpressions: ["delta-velocity-as-string", "delta-time-as-string"]
+      
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
+          
+        bottom:
+          type:                   "table"
+          data:                   ["light-ball-velocity"]
+          annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+      
+      responseTemplate: "/components/response-template/numeric"
+      submitButtonTitle: "Check My Answer"
+      
+      responseBranches: [
+        criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
+        step:      "/shared/gravity/page/10/step/slope-correct"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/slope-final-giveaway"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/slope-final-giveaway"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        <p>Incorrect. If the change in velocity is %@ m/s during a change in time of %@ s, then the slope is %@ m/s<sup>2</sup></p>
+        '''
+
+      substitutedExpressions: ["delta-velocity-as-string", "delta-time-as-string", "slope-as-string"]
+      
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-slope-line", "light-ball-rise-arrow", "light-ball-run-arrow"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+          
+      isFinalStep:            true
+      hideSubmitButton:       true
+      nextButtonShouldSubmit: true
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/slope-correct"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText: 
+        '''
+        Correct! The slope of the velocity-time graph between the points you selected is %@ m/s<sup>2</sup>
+        '''
+
+      substitutedExpressions: ["slope-as-string"]
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+          
+      isFinalStep:            true
+      hideSubmitButton:       true
       nextButtonShouldSubmit: true
     }
     
@@ -1460,6 +1926,14 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       url:              "/components/response-template/open"
       templateString:   ""
       fieldTypes:       ["textarea"]
+      fieldChoicesList: [null]
+      initialValues:    [""]
+    }
+    
+    {
+      url:              "/components/response-template/numeric"
+      templateString:   ""
+      fieldTypes:       ["numeric"]
       fieldChoicesList: [null]
       initialValues:    [""]
     }
@@ -1658,6 +2132,126 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       ]
     }
 
+
+    { 
+      type: "LineThroughPoints"
+      records: [
+        {
+          url:      "/shared/gravity/annotation/light-ball-slope-line"
+          name:     "light-ball-slope-line"
+          activity: "/shared/gravity"
+          p1Tag:    "/shared/gravity/tag/light-ball-point-1"
+          p2Tag:    "/shared/gravity/tag/light-ball-point-2"
+          color:    "#1f77b4"
+        }
+        
+        {
+          url:      "/shared/gravity/annotation/heavy-ball-slope-line"
+          name:     "heavy-ball-slope-line"
+          activity: "/shared/gravity"
+          p1Tag:    "/shared/gravity/tag/heavy-ball-point-1"
+          p2Tag:    "/shared/gravity/tag/heavy-ball-point-2"
+          color:    "#1f77b4"
+        }
+      ]
+    }
+    
+    {
+      type: "RiseArrow"
+      records: [
+        {
+          url:      "/shared/gravity/annotation/light-ball-rise-arrow"
+          name:     "light-ball-rise-arrow"
+          activity: "/shared/gravity"
+          color:    "#cccccc"
+          p1Tag:    "/shared/gravity/tag/light-ball-point-1"
+          p2Tag:    "/shared/gravity/tag/light-ball-point-2"
+        }
+        
+        {
+          url:      "/shared/gravity/annotation/heavy-ball-rise-arrow"
+          name:     "heavy-ball-rise-arrow"
+          activity: "/shared/gravity"
+          color:    "#cccccc"
+          p1Tag:    "/shared/gravity/tag/heavy-ball-point-1"
+          p2Tag:    "/shared/gravity/tag/heavy-ball-point-2"
+        }
+      ]
+    }
+    
+    {
+      type: "RunArrow"
+      records: [
+        {
+          url:      "/shared/gravity/annotation/light-ball-run-arrow"
+          name:     "light-ball-run-arrow"
+          activity: "/shared/gravity"
+          color:    "#cccccc"
+          p1Tag:    "/shared/gravity/tag/light-ball-point-1"
+          p2Tag:    "/shared/gravity/tag/light-ball-point-2"
+        }
+        
+        {
+          url:      "/shared/gravity/annotation/heavy-ball-run-arrow"
+          name:     "heavy-ball-run-arrow"
+          activity: "/shared/gravity"
+          color:    "#cccccc"
+          p1Tag:    "/shared/gravity/tag/heavy-ball-point-1"
+          p2Tag:    "/shared/gravity/tag/heavy-ball-point-2"
+        }
+      ]
+    }
+
+    {
+      type: "RiseBracket"
+      records: [
+        {
+          url:         "/shared/gravity/annotation/light-ball-rise-bracket"
+          name:        "light-ball-rise-bracket"
+          activity:    "/shared/gravity"
+          color:       "#cccccc"
+          datadefName: "light-ball-velocity"
+          p1Tag:       "/shared/gravity/tag/light-ball-point-1"
+          p2Tag:       "/shared/gravity/tag/light-ball-point-2"
+        }
+        
+        {
+          url:         "/shared/gravity/annotation/heavy-ball-rise-bracket"
+          name:        "heavy-ball-rise-bracket"
+          activity:    "/shared/gravity"
+          color:       "#cccccc"
+          datadefName: "light-ball-velocity"
+          p1Tag:       "/shared/gravity/tag/heavy-ball-point-1"
+          p2Tag:       "/shared/gravity/tag/heavy-ball-point-2"
+        }
+      ]
+    }
+    
+    {
+      type: "RunBracket"
+      records: [
+        {
+          url:         "/shared/gravity/annotation/light-ball-run-bracket"
+          name:        "light-ball-run-bracket"
+          activity:    "/shared/gravity"
+          color:       "#cccccc"
+          datadefName: "light-ball-velocity"
+          p1Tag:       "/shared/gravity/tag/light-ball-point-1"
+          p2Tag:       "/shared/gravity/tag/light-ball-point-2"
+        }
+
+        {
+          url:         "/shared/gravity/annotation/heavy-ball-run-bracket"
+          name:        "heavy-ball-run-bracket"
+          activity:    "/shared/gravity"
+          color:       "#cccccc"
+          datadefName: "light-ball-velocity"
+          p1Tag:       "/shared/gravity/tag/heavy-ball-point-1"
+          p2Tag:       "/shared/gravity/tag/heavy-ball-point-2"
+        }
+      ]
+    }
+    
     {
       type: "FreehandSketch"
       records: [
