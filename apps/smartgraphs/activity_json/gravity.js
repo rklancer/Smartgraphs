@@ -8,7 +8,7 @@
       title: "Was Galileo Right?",
       url: "/shared/gravity",
       owner: "shared",
-      pages: ["/shared/gravity/page/1", "/shared/gravity/page/2", "/shared/gravity/page/3", "/shared/gravity/page/4", "/shared/gravity/page/5", "/shared/gravity/page/6", "/shared/gravity/page/7", "/shared/gravity/page/8", "/shared/gravity/page/9", "/shared/gravity/page/10", "/shared/gravity/page/11", "/shared/gravity/page/12"]
+      pages: ["/shared/gravity/page/1", "/shared/gravity/page/2", "/shared/gravity/page/3", "/shared/gravity/page/4", "/shared/gravity/page/5", "/shared/gravity/page/6", "/shared/gravity/page/7", "/shared/gravity/page/8", "/shared/gravity/page/10", "/shared/gravity/page/12", "/shared/gravity/page/13", "/shared/gravity/page/14"]
     },
     pages: [
       {
@@ -77,36 +77,36 @@
         firstStep: "/shared/gravity/page/8/step/1"
       }, {
         name: "Find the Slope (Light Ball)",
-        url: "/shared/gravity/page/9",
-        activity: "/shared/gravity",
-        index: 9,
-        introText: '<h1>Find the Slope (Light Ball)</h1>\n\n<p>Let’s look more closely at the velocities of the two balls from the time they were released until the time\nthey reached the ground.</p> \n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n',
-        steps: ["/shared/gravity/page/9/step/1"],
-        firstStep: "/shared/gravity/page/9/step/1"
-      }, {
-        name: "Find the Slope (Heavy Ball)",
         url: "/shared/gravity/page/10",
         activity: "/shared/gravity",
         index: 10,
-        introText: '<h1>Find the Slope (Heavy Ball)</h1>',
+        introText: '<h1>Find the Slope (Light Ball)</h1>\n\n<p>Let’s look more closely at the velocities of the two balls from the time they were released until the time\nthey reached the ground.</p> \n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n',
         steps: ["/shared/gravity/page/10/step/1"],
         firstStep: "/shared/gravity/page/10/step/1"
       }, {
-        name: "Compare the Accelerations",
-        url: "/shared/gravity/page/11",
-        activity: "/shared/gravity",
-        index: 11,
-        introText: '<h1>Compare the Accelerations</h1>\n\n<p>The slope of a velocity-time graph is commonly called the acceleration. The acceleration of an object due to\ngravity is a constant, called <i>g</i>. The accepted value of <i>g</i> for objects near the surface of the\nEarth is 9.8 m/s<sup>2</sup>.<p>\n\n<p>Here is the value of <i>g</i> that you found for the light ball: ... m/s<sup>2</sup></p>\n\n<p>Here is the value of <i>g</i> that you found for the heavy ball: ... m/s<sup>2</sup></p>',
-        steps: ["/shared/gravity/page/11/step/1", "/shared/gravity/page/11/step/2"],
-        firstStep: "/shared/gravity/page/11/step/1"
-      }, {
-        name: "Conclusion",
+        name: "Find the Slope (Heavy Ball)",
         url: "/shared/gravity/page/12",
         activity: "/shared/gravity",
         index: 12,
-        introText: '<h1>Conclusion</h1>\n\n<p>Do heavier objects fall faster?</p>\n\n<p>In this activity, you predicted and confirmed whether a light ball would fall faster than a heavier ball,\njust as Galileo likely did.</p>\n\n<p>According to legend, Galileo observed that the two balls fell at the same rate. He explained that this\nphenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>',
-        steps: ["/shared/gravity/page/12/step/1", "/shared/gravity/page/12/step/2"],
+        introText: '<h1>Find the Slope (Heavy Ball)</h1>',
+        steps: ["/shared/gravity/page/12/step/1"],
         firstStep: "/shared/gravity/page/12/step/1"
+      }, {
+        name: "Compare the Accelerations",
+        url: "/shared/gravity/page/13",
+        activity: "/shared/gravity",
+        index: 13,
+        introText: '<h1>Compare the Accelerations</h1>\n\n<p>The slope of a velocity-time graph is commonly called the acceleration. The acceleration of an object due to\ngravity is a constant, called <i>g</i>. The accepted value of <i>g</i> for objects near the surface of the\nEarth is 9.8 m/s<sup>2</sup>.<p>\n\n<p>Here is the value of <i>g</i> that you found for the light ball: ... m/s<sup>2</sup></p>\n\n<p>Here is the value of <i>g</i> that you found for the heavy ball: ... m/s<sup>2</sup></p>',
+        steps: ["/shared/gravity/page/13/step/1", "/shared/gravity/page/13/step/2"],
+        firstStep: "/shared/gravity/page/13/step/1"
+      }, {
+        name: "Conclusion",
+        url: "/shared/gravity/page/14",
+        activity: "/shared/gravity",
+        index: 12,
+        introText: '<h1>Conclusion</h1>\n\n<p>Do heavier objects fall faster?</p>\n\n<p>In this activity, you predicted and confirmed whether a light ball would fall faster than a heavier ball,\njust as Galileo likely did.</p>\n\n<p>According to legend, Galileo observed that the two balls fell at the same rate. He explained that this\nphenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>',
+        steps: ["/shared/gravity/page/14/step/1", "/shared/gravity/page/14/step/2"],
+        firstStep: "/shared/gravity/page/14/step/1"
       }
     ],
     steps: [
@@ -447,8 +447,8 @@
         isFinalStep: true,
         nextButtonShouldSubmit: true
       }, {
-        url: "/shared/gravity/page/9/step/1",
-        activityPage: "/shared/gravity/page/9",
+        url: "/shared/gravity/page/10/step/1",
+        activityPage: "/shared/gravity/page/10",
         beforeText: '<p>Find the slope in m/s<sup>2</sup> of the velocity-time graph of the light ball while the ball was in\nmotion.</p>',
         paneConfig: "split",
         panes: {
@@ -469,8 +469,8 @@
         isFinalStep: true,
         nextButtonShouldSubmit: true
       }, {
-        url: "/shared/gravity/page/10/step/1",
-        activityPage: "/shared/gravity/page/10",
+        url: "/shared/gravity/page/12/step/1",
+        activityPage: "/shared/gravity/page/12",
         beforeText: '<p>Find the slope in m/s<sup>2</sup> of the velocity-time graph of the heavy ball while the ball was in\nmotion.</p>',
         paneConfig: "split",
         panes: {
@@ -491,8 +491,8 @@
         isFinalStep: true,
         nextButtonShouldSubmit: true
       }, {
-        url: "/shared/gravity/page/11/step/1",
-        activityPage: "/shared/gravity/page/11",
+        url: "/shared/gravity/page/13/step/1",
+        activityPage: "/shared/gravity/page/13",
         beforeText: '<p>How does your value compare with the accepted value?</p>',
         paneConfig: "split",
         panes: {
@@ -516,10 +516,10 @@
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         submitButtonTitle: "OK",
-        defaultBranch: "/shared/gravity/page/11/step/2"
+        defaultBranch: "/shared/gravity/page/13/step/2"
       }, {
-        url: "/shared/gravity/page/11/step/2",
-        activityPage: "/shared/gravity/page/11",
+        url: "/shared/gravity/page/13/step/2",
+        activityPage: "/shared/gravity/page/13",
         beforeText: '<p>What factors might have caused errors in your measurements?</p>',
         paneConfig: "split",
         panes: {
@@ -545,8 +545,8 @@
         isFinalStep: true,
         nextButtonShouldSubmit: true
       }, {
-        url: "/shared/gravity/page/12/step/1",
-        activityPage: "/shared/gravity/page/12",
+        url: "/shared/gravity/page/14/step/1",
+        activityPage: "/shared/gravity/page/14",
         beforeText: '<p>What did you discover about the velocity of a light ball versus a heavy ball as each falls to the\nground?</p>',
         paneConfig: "single",
         panes: {
@@ -559,10 +559,10 @@
         responseTemplate: "/components/response-template/open",
         submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]],
         submitButtonTitle: "OK",
-        defaultBranch: "/shared/gravity/page/12/step/2"
+        defaultBranch: "/shared/gravity/page/14/step/2"
       }, {
-        url: "/shared/gravity/page/12/step/2",
-        activityPage: "/shared/gravity/page/12",
+        url: "/shared/gravity/page/14/step/2",
+        activityPage: "/shared/gravity/page/14",
         beforeText: '<p>This is the conclusion of the activity</p>',
         paneConfig: "single",
         panes: {

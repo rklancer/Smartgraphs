@@ -20,10 +20,10 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       "/shared/gravity/page/6"
       "/shared/gravity/page/7"
       "/shared/gravity/page/8"
-      "/shared/gravity/page/9"
-      "/shared/gravity/page/10"  
-      "/shared/gravity/page/11"
+      "/shared/gravity/page/10"
       "/shared/gravity/page/12"
+      "/shared/gravity/page/13"
+      "/shared/gravity/page/14"
     ]
 
 
@@ -177,9 +177,9 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     {
       name:      "Find the Slope (Light Ball)"
-      url:       "/shared/gravity/page/9"
+      url:       "/shared/gravity/page/10"
       activity:  "/shared/gravity"
-      index:     9
+      index:     10
       introText: 
         '''
         <h1>Find the Slope (Light Ball)</h1>
@@ -191,22 +191,6 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         
         '''
       steps:     [
-        "/shared/gravity/page/9/step/1"
-      ]
-      firstStep: "/shared/gravity/page/9/step/1"
-    }
-    
-    
-    {
-      name:      "Find the Slope (Heavy Ball)"
-      url:       "/shared/gravity/page/10"
-      activity:  "/shared/gravity"
-      index:     10
-      introText: 
-        '''
-        <h1>Find the Slope (Heavy Ball)</h1>
-        '''
-      steps:     [
         "/shared/gravity/page/10/step/1"
       ]
       firstStep: "/shared/gravity/page/10/step/1"
@@ -214,10 +198,26 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      name:      "Compare the Accelerations"
-      url:       "/shared/gravity/page/11"
+      name:      "Find the Slope (Heavy Ball)"
+      url:       "/shared/gravity/page/12"
       activity:  "/shared/gravity"
-      index:     11
+      index:     12
+      introText: 
+        '''
+        <h1>Find the Slope (Heavy Ball)</h1>
+        '''
+      steps:     [
+        "/shared/gravity/page/12/step/1"
+      ]
+      firstStep: "/shared/gravity/page/12/step/1"
+    }
+    
+    
+    {
+      name:      "Compare the Accelerations"
+      url:       "/shared/gravity/page/13"
+      activity:  "/shared/gravity"
+      index:     13
       introText: 
         '''
         <h1>Compare the Accelerations</h1>
@@ -232,15 +232,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         
       steps:     [
-        "/shared/gravity/page/11/step/1"
-        "/shared/gravity/page/11/step/2"        
+        "/shared/gravity/page/13/step/1"
+        "/shared/gravity/page/13/step/2"        
       ]
-      firstStep: "/shared/gravity/page/11/step/1"
+      firstStep: "/shared/gravity/page/13/step/1"
     }
     
     {
       name:      "Conclusion"
-      url:       "/shared/gravity/page/12"
+      url:       "/shared/gravity/page/14"
       activity:  "/shared/gravity"
       index:     12
       introText: 
@@ -256,10 +256,10 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         phenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>
         '''
       steps:     [
-        "/shared/gravity/page/12/step/1"
-        "/shared/gravity/page/12/step/2"        
+        "/shared/gravity/page/14/step/1"
+        "/shared/gravity/page/14/step/2"        
       ]
-      firstStep: "/shared/gravity/page/12/step/1"
+      firstStep: "/shared/gravity/page/14/step/1"
     }
   ]
 
@@ -683,8 +683,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      url:          "/shared/gravity/page/9/step/1"
-      activityPage: "/shared/gravity/page/9"
+      url:          "/shared/gravity/page/10/step/1"
+      activityPage: "/shared/gravity/page/10"
 
       beforeText: 
         '''
@@ -713,8 +713,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      url:          "/shared/gravity/page/10/step/1"
-      activityPage: "/shared/gravity/page/10"
+      url:          "/shared/gravity/page/12/step/1"
+      activityPage: "/shared/gravity/page/12"
 
       beforeText: 
         '''
@@ -743,8 +743,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
-      url:          "/shared/gravity/page/11/step/1"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity/page/13/step/1"
+      activityPage: "/shared/gravity/page/13"
       
       beforeText: 
         '''
@@ -771,13 +771,13 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]   
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/11/step/2"
+      defaultBranch: "/shared/gravity/page/13/step/2"
     }
     
     
     {
-      url:          "/shared/gravity/page/11/step/2"
-      activityPage: "/shared/gravity/page/11"
+      url:          "/shared/gravity/page/13/step/2"
+      activityPage: "/shared/gravity/page/13"
       
       beforeText: 
         '''
@@ -808,8 +808,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      url:          "/shared/gravity/page/12/step/1"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity/page/14/step/1"
+      activityPage: "/shared/gravity/page/14"
       
       beforeText: 
         '''
@@ -827,12 +827,12 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseTemplate: "/components/response-template/open"
       submissibilityCriterion: ["textLengthIsAtLeast", 1, ["responseField", 1]]
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/12/step/2"
+      defaultBranch: "/shared/gravity/page/14/step/2"
     }
     
     {
-      url:          "/shared/gravity/page/12/step/2"
-      activityPage: "/shared/gravity/page/12"
+      url:          "/shared/gravity/page/14/step/2"
+      activityPage: "/shared/gravity/page/14"
       
       beforeText: 
         '''
