@@ -203,7 +203,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         "/shared/gravity/page/9/step/p2-hint-1"
         "/shared/gravity/page/9/step/p2-hint-2"
         "/shared/gravity/page/9/step/p2-hint-3"
-        "/shared/gravity/page/9/step/p2-hint-3"        
+        "/shared/gravity/page/9/step/p2-hint-4"        
         "/shared/gravity/page/9/step/p2-same-point"
         "/shared/gravity/page/9/step/done"
       ]
@@ -309,7 +309,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       name:      "Conclusion"
       url:       "/shared/gravity/page/14"
       activity:  "/shared/gravity"
-      index:     12
+      index:     14
       introText: 
         '''
         <h1>Conclusion</h1>

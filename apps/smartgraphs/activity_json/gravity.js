@@ -81,7 +81,7 @@
         activity: "/shared/gravity",
         index: 9,
         introText: '<h1>Choose Points (Light Ball)</h1>\n\n<p>Let’s look more closely at the velocities of the two balls from the time they were released until the time\nthey reached the ground.</p> \n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n\n<p>First, you will mark the portion of the graph which you believe <i>best represents</i> the period when the\nball was falling.</p>',
-        steps: ["/shared/gravity/page/9/step/p1", "/shared/gravity/page/9/step/p1-hint-1", "/shared/gravity/page/9/step/p1-hint-2", "/shared/gravity/page/9/step/p1-hint-3", "/shared/gravity/page/9/step/p1-hint-4", "/shared/gravity/page/9/step/p2", "/shared/gravity/page/9/step/p2-hint-1", "/shared/gravity/page/9/step/p2-hint-2", "/shared/gravity/page/9/step/p2-hint-3", "/shared/gravity/page/9/step/p2-hint-3", "/shared/gravity/page/9/step/p2-same-point", "/shared/gravity/page/9/step/done"],
+        steps: ["/shared/gravity/page/9/step/p1", "/shared/gravity/page/9/step/p1-hint-1", "/shared/gravity/page/9/step/p1-hint-2", "/shared/gravity/page/9/step/p1-hint-3", "/shared/gravity/page/9/step/p1-hint-4", "/shared/gravity/page/9/step/p2", "/shared/gravity/page/9/step/p2-hint-1", "/shared/gravity/page/9/step/p2-hint-2", "/shared/gravity/page/9/step/p2-hint-3", "/shared/gravity/page/9/step/p2-hint-4", "/shared/gravity/page/9/step/p2-same-point", "/shared/gravity/page/9/step/done"],
         firstStep: "/shared/gravity/page/9/step/p1"
       }, {
         name: "Find the Slope (Light Ball)",
@@ -156,7 +156,7 @@
         name: "Conclusion",
         url: "/shared/gravity/page/14",
         activity: "/shared/gravity",
-        index: 12,
+        index: 14,
         introText: '<h1>Conclusion</h1>\n\n<p>Do heavier objects fall faster?</p>\n\n<p>In this activity, you predicted and confirmed whether a light ball would fall faster than a heavier ball,\njust as Galileo likely did.</p>\n\n<p>According to legend, Galileo observed that the two balls fell at the same rate. He explained that this\nphenomenon was due to the effects of gravity acting on the two balls in a similar way.</p>',
         steps: ["/shared/gravity/page/14/step/1", "/shared/gravity/page/14/step/2"],
         firstStep: "/shared/gravity/page/14/step/1"
