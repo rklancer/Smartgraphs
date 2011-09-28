@@ -355,7 +355,7 @@
       }, {
         url: "/shared/gravity/page/5/step/1",
         activityPage: "/shared/gravity/page/5",
-        beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph will look like when the\nheavy ball is droppedfrom the same height.</p>',
+        beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph will look like when the\nheavy ball is dropped from the same height.</p>',
         paneConfig: "split",
         panes: {
           top: {

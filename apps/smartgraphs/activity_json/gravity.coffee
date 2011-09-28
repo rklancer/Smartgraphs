@@ -575,7 +575,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       beforeText: 
         '''
         <p>To the right, predict what you think the position-time graph and velocity-time graph will look like when the
-        heavy ball is droppedfrom the same height.</p>
+        heavy ball is dropped from the same height.</p>
         '''
 
       paneConfig:   "split"
