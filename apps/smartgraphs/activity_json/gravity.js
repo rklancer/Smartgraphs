@@ -1711,25 +1711,25 @@
             url: "/shared/gravity/annotation/light-ball-position",
             name: "light-ball-position",
             activity: "/shared/gravity",
-            color: "#FF00FF",
+            color: "#CC0000",
             points: []
           }, {
             url: "/shared/gravity/annotation/light-ball-velocity",
             name: "light-ball-velocity",
             activity: "/shared/gravity",
-            color: "#FF00FF",
+            color: "#CC0000",
             points: []
           }, {
             url: "/shared/gravity/annotation/heavy-ball-position",
             name: "heavy-ball-position",
             activity: "/shared/gravity",
-            color: "#FF00FF",
+            color: "#CC0000",
             points: []
           }, {
             url: "/shared/gravity/annotation/heavy-ball-velocity",
             name: "heavy-ball-velocity",
             activity: "/shared/gravity",
-            color: "#FF00FF",
+            color: "#CC0000",
             points: []
           }
         ]
