@@ -187,6 +187,27 @@ Smartgraphs.evaluator.defineOperators( function (def) {
   
     return tag1 && tag2 && tag1.get('x') === tag2.get('x') && tag1.get('y') === tag2.get('y');
   }).args(2);
+  
+  
+  def('pointInSegment', function (pointTagName, overlaySegmentName) {
+    var tag     = Smartgraphs.activityObjectsController.findTag(pointTagName),
+        segment = Smartgraphs.activityObjectsController.findAnnotation(overlaySegmentName),
+        tagX    = tag && tag.get('x'),
+        x1      = segment && segment.get('x1'),
+        x2      = segment && segment.get('x2'),
+        tmp;
+    
+    if (typeof tag === 'undefined'     || tag === null) return false;
+    if (typeof segment === 'undefined' || segment === null) return false;
+    
+    if (x2 < x1) {
+      tmp = x1;
+      x1 = x2;
+      x2 = tmp;
+    }
+    
+    return x1 <= tagX && tagX <= x2;
+  }).args(2);
 
 
   // note this (textLengthIsAtLeast 1 (responseField 0)) is easier to describe in an expression-authoring interface 
