@@ -1299,7 +1299,7 @@
       }, {
         url: "/shared/gravity/page/10/step/slope-correct",
         activityPage: "/shared/gravity/page/10",
-        beforeText: 'Correct! The slope of the velocity-time graph between the points you selected is %@ m/s<sup>2</sup>',
+        beforeText: '<p>Correct! The slope of the velocity-time graph between the points you selected is %@ m/s<sup>2</sup>.</p>',
         substitutedExpressions: ["slope-as-string"],
         paneConfig: "split",
         panes: {

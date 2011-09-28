@@ -1759,7 +1759,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText: 
         '''
-        Correct! The slope of the velocity-time graph between the points you selected is %@ m/s<sup>2</sup>
+        <p>Correct! The slope of the velocity-time graph between the points you selected is %@ m/s<sup>2</sup>.</p>
         '''
 
       substitutedExpressions: ["slope-as-string"]
