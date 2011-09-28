@@ -211,8 +211,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
         <p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>
 
-        <p>A line connecting the points you selected is shown to the right. The slope of this line is a good
-        approximation of the slope of the velocity-time graph for the whole time that the ball fell.</p>
+        <p>You are going to find the slope of a line that you think best represents the data when the fall was 
+        falling.</p>
         '''
         
       contextVars: [
@@ -235,6 +235,11 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       ]
       
       steps:     [
+        "/shared/gravity/page/10/step/p1"
+        "/shared/gravity/page/10/step/p1-incorrect"
+        "/shared/gravity/page/10/step/p2"        
+        "/shared/gravity/page/10/step/p2-incorrect"
+        "/shared/gravity/page/10/step/p2-same-as-p1"
         "/shared/gravity/page/10/step/slope-initial"
         "/shared/gravity/page/10/step/slope-initial-hint"
         "/shared/gravity/page/10/step/velocity"
@@ -249,7 +254,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         "/shared/gravity/page/10/step/slope-final-giveaway"
         "/shared/gravity/page/10/step/slope-correct"
       ]
-      firstStep: "/shared/gravity/page/10/step/slope-initial"
+      firstStep: "/shared/gravity/page/10/step/p1"
     }
     
     
@@ -1076,11 +1081,249 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     
     
     {
+      url:          "/shared/gravity/page/10/step/p1"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText:
+        '''
+        <p>Select a representative point in the highlighted interval. Then click OK.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-motion-segment"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-1"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: [">=", ["coord", "x", "light-ball-point-1"], 0.45]
+          step:      "/shared/gravity/page/10/step/p2"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/p1-incorrect"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/p1-incorrect"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText:
+        '''
+        <p>Incorrect. Select a point when the ball was falling (between 0.45 and 0.85 seconds). Then click OK.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-motion-segment"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-1"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        criterion: [">=", ["coord", "x", "light-ball-point-1"], 0.45]
+        step:      "/shared/gravity/page/10/step/p2"
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/p1-incorrect"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/p2"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText:
+        '''
+        <p>Select another point in the highlighted interval and then click OK.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-motion-segment"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-2"], ["coord", "x", "light-ball-point-1"]]
+          step:      "/shared/gravity/page/10/step/p2-same-as-p1"
+        }
+
+        {
+          criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
+          step:      "/shared/gravity/page/10/step/slope-initial"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/p2-incorrect"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/p2-incorrect"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText:
+        '''
+        <p>Incorrect. Select a point when the ball was falling (between 0.45 and 0.85 seconds). Then click OK.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-motion-segment"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-2"], ["coord", "x", "light-ball-point-1"]]
+          step:      "/shared/gravity/page/10/step/p2-same-as-p1"
+        }
+
+        {
+          criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
+          step:      "/shared/gravity/page/10/step/slope-initial"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/p2-incorrect"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/10/step/p2-same-as-p1"
+      activityPage: "/shared/gravity/page/10"
+
+      beforeText:
+        '''
+        <p>Incorrect. The point you selected is the same as the first point you selected. You need two different points
+        in order to calculate the slope of the line between them. Try again.</p> 
+        
+        <p>Select another point in the highlighted interval and then click OK.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-motion-segment"]
+          
+        bottom:
+          type:        "table"
+          data:        ["light-ball-velocity"]
+          annotations: ["light-ball-point-1", "light-ball-point-2"]
+
+      tools: [
+        name: "tagging"
+        setup:
+          tag: "light-ball-point-2"
+          data: "light-ball-velocity"
+      ]
+      
+      hideSubmitButton: false
+      submitButtonTitle: "OK"
+      
+      responseBranches: [
+        {
+          criterion: ["=", ["coord", "x", "light-ball-point-2"], ["coord", "x", "light-ball-point-1"]]
+          step:      "/shared/gravity/page/10/step/p2-same-as-p1"
+        }
+
+        {
+          criterion: [">=", ["coord", "x", "light-ball-point-2"], 0.45]
+          step:      "/shared/gravity/page/10/step/slope-initial"
+        }
+      ]
+      defaultBranch: "/shared/gravity/page/10/step/p2-incorrect"
+    }
+    
+    
+    {
       url:          "/shared/gravity/page/10/step/slope-initial"
       activityPage: "/shared/gravity/page/10"
 
-      beforeText: 
+      beforeText:
         '''
+        <p>To the right, a line has been drawn between the points you selected.</p>
+        
         <p>What is the slope of the line between the points you selected, in m/s<sup>2</sup>?</p>
         '''
 
