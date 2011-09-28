@@ -362,7 +362,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       
       beforeText: 
         '''
-        <p>Try dropping each ball from a height of at least 2.5 meters.</p>
+        <p>Try dropping each ball from a height of 2 meters.</p>
         
         <p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will
         look like.</p>
@@ -414,7 +414,11 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       
       beforeText: 
         '''
-        <p>Explain any points of interest on the graphs.</p>
+        <p>Describe how the ball’s motions are represented on your graphs. Try to use as many words from the word bank
+        as possible.</p> 
+        
+        <p><b>Word Bank</b>: ball, released, seconds, meters, position, velocity, increased, decreased, stayed the
+        same, fast, slow, stopped, ground.</p>
         '''
       paneConfig: "split"
       panes:

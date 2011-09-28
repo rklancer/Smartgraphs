@@ -182,7 +182,7 @@
       }, {
         url: "/shared/gravity/page/2/step/1",
         activityPage: "/shared/gravity/page/2",
-        beforeText: '<p>Try dropping each ball from a height of at least 2.5 meters.</p>\n\n<p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will\nlook like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
+        beforeText: '<p>Try dropping each ball from a height of 2 meters.</p>\n\n<p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will\nlook like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -222,7 +222,7 @@
       }, {
         url: "/shared/gravity/page/2/step/2",
         activityPage: "/shared/gravity/page/2",
-        beforeText: '<p>Explain any points of interest on the graphs.</p>',
+        beforeText: '<p>Describe how the ball’s motions are represented on your graphs. Try to use as many words from the word bank\nas possible.</p> \n\n<p><b>Word Bank</b>: ball, released, seconds, meters, position, velocity, increased, decreased, stayed the\nsame, fast, slow, stopped, ground.</p>',
         paneConfig: "split",
         panes: {
           top: {
