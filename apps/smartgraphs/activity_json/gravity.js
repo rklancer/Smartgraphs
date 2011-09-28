@@ -25,7 +25,7 @@
         activity: "/shared/gravity",
         index: 2,
         introText: '<h1>Predict the Graphs (Light Ball)</h1>\n\n<p>To test Galileo’s hypothesis, you are going to examine data collected when same-sized balls of different\nmasses were dropped from a fixed height.</p>\n\n<p>To help you predict the motions, find a light ball and heavy ball that are the same size. (The heavy ball\nshould be at least five times heavier than the light ball.)</p>',
-        steps: ["/shared/gravity/page/2/step/1", "/shared/gravity/page/2/step/2"],
+        steps: ["/shared/gravity/page/2/step/1", "/shared/gravity/page/2/step/2", "/shared/gravity/page/2/step/3"],
         firstStep: "/shared/gravity/page/2/step/1"
       }, {
         name: "Look at the Data (Light Ball)",
@@ -49,7 +49,7 @@
         activity: "/shared/gravity",
         index: 5,
         introText: '<h1>Predict the Graphs (Heavy Ball)</h1>',
-        steps: ["/shared/gravity/page/5/step/1"],
+        steps: ["/shared/gravity/page/5/step/1", "/shared/gravity/page/5/step/2"],
         firstStep: "/shared/gravity/page/5/step/1"
       }, {
         name: "Look at the Data (Heavy Ball)",
@@ -235,7 +235,43 @@
       }, {
         url: "/shared/gravity/page/2/step/1",
         activityPage: "/shared/gravity/page/2",
-        beforeText: '<p>Try dropping each ball from a height of 2 meters.</p>\n\n<p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will\nlook like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
+        beforeText: '<p>Try dropping each ball from a height of 2 meters.</p>\n\n<p>To the right, predict what you think the position-time graph for the light ball will look like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
+        paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Predicted Position vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: [],
+            annotations: ["light-ball-position"]
+          },
+          bottom: {
+            type: "graph",
+            title: "Predicted Velocity vs. Time (Light Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: [],
+            annotations: []
+          }
+        },
+        tools: [
+          {
+            name: "prediction",
+            setup: {
+              pane: "top",
+              annotationName: "light-ball-position"
+            }
+          }
+        ],
+        submissibilityDependsOn: ["annotation", "light-ball-position"],
+        submissibilityCriterion: [">=", ["sketchLength", "light-ball-position"], 0.2],
+        submitButtonTitle: "OK",
+        defaultBranch: "/shared/gravity/page/2/step/2"
+      }, {
+        url: "/shared/gravity/page/2/step/2",
+        activityPage: "/shared/gravity/page/2",
+        beforeText: '        \n<p>To the right, predict what you think the velocity-time graph for the light ball will look like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -259,21 +295,17 @@
           {
             name: "prediction",
             setup: {
-              pane: "top",
-              annotationName: "light-ball-position"
-            }
-          }, {
-            name: "prediction",
-            setup: {
               pane: "bottom",
               annotationName: "light-ball-velocity"
             }
           }
         ],
+        submissibilityDependsOn: ["annotation", "light-ball-velocity"],
+        submissibilityCriterion: [">=", ["sketchLength", "light-ball-velocity"], 0.2],
         submitButtonTitle: "OK",
-        defaultBranch: "/shared/gravity/page/2/step/2"
+        defaultBranch: "/shared/gravity/page/2/step/3"
       }, {
-        url: "/shared/gravity/page/2/step/2",
+        url: "/shared/gravity/page/2/step/3",
         activityPage: "/shared/gravity/page/2",
         beforeText: '<p>Describe how the ball’s motions are represented on your graphs. Try to use as many words from the word bank\nas possible.</p> \n\n<p><b>Word Bank</b>: ball, released, seconds, meters, position, velocity, increased, decreased, stayed the\nsame, fast, slow, stopped, ground.</p>',
         paneConfig: "split",
@@ -355,7 +387,43 @@
       }, {
         url: "/shared/gravity/page/5/step/1",
         activityPage: "/shared/gravity/page/5",
-        beforeText: '<p>To the right, predict what you think the position-time graph and velocity-time graph will look like when the\nheavy ball is dropped from the same height.</p>',
+        beforeText: '<p>To the right, predict what you think the position-time graph will look like when the heavy ball is dropped\nfrom the same height.</p>',
+        paneConfig: "split",
+        panes: {
+          top: {
+            type: "graph",
+            title: "Predicted Position vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/position",
+            data: [],
+            annotations: ["heavy-ball-position"]
+          },
+          bottom: {
+            type: "graph",
+            title: "Predicted Velocity vs. Time (Heavy Ball)",
+            xAxis: "/shared/gravity/axes/time",
+            yAxis: "/shared/gravity/axes/velocity",
+            data: [],
+            annotations: []
+          }
+        },
+        tools: [
+          {
+            name: "prediction",
+            setup: {
+              pane: "top",
+              annotationName: "heavy-ball-position"
+            }
+          }
+        ],
+        submitButtonTitle: "OK",
+        submissibilityDependsOn: ["annotation", "heavy-ball-position"],
+        submissibilityCriterion: [">=", ["sketchLength", "heavy-ball-position"], 0.2],
+        defaultBranch: "/shared/gravity/page/5/step/2"
+      }, {
+        url: "/shared/gravity/page/5/step/2",
+        activityPage: "/shared/gravity/page/5",
+        beforeText: '<p>To the right, predict what you think the velocity-time graph will look like when the heavy ball is dropped\nfrom the same height.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -379,19 +447,15 @@
           {
             name: "prediction",
             setup: {
-              pane: "top",
-              annotationName: "heavy-ball-position"
-            }
-          }, {
-            name: "prediction",
-            setup: {
               pane: "bottom",
               annotationName: "heavy-ball-velocity"
             }
           }
         ],
-        isFinalStep: true,
-        nextButtonShouldSubmit: true
+        submissibilityDependsOn: ["annotation", "heavy-ball-velocity"],
+        submissibilityCriterion: [">=", ["sketchLength", "heavy-ball-velocity"], 0.2],
+        nextButtonShouldSubmit: true,
+        isFinalStep: true
       }, {
         url: "/shared/gravity/page/6/step/1",
         activityPage: "/shared/gravity/page/6",

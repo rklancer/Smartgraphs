@@ -66,7 +66,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
       steps:     [
         "/shared/gravity/page/2/step/1"
-        "/shared/gravity/page/2/step/2"        
+        "/shared/gravity/page/2/step/2"
+        "/shared/gravity/page/2/step/3"          
       ]
       firstStep: "/shared/gravity/page/2/step/1"
     }
@@ -118,6 +119,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
       steps:     [
         "/shared/gravity/page/5/step/1"
+        "/shared/gravity/page/5/step/2"        
       ]
       firstStep: "/shared/gravity/page/5/step/1"
     }
@@ -422,8 +424,50 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         <p>Try dropping each ball from a height of 2 meters.</p>
         
-        <p>To the right, predict what you think the position-time graph and velocity-time graph for the light ball will
-        look like.</p>
+        <p>To the right, predict what you think the position-time graph for the light ball will look like.</p>
+        
+        <p>(Assume that the ground is at 0 meters.)</p>
+        '''
+      paneConfig: "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Predicted Position vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/position"
+          data:        []
+          annotations: ["light-ball-position"]
+
+        bottom:
+          type:        "graph"
+          title:       "Predicted Velocity vs. Time (Light Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        []
+          annotations: []
+
+      tools: [
+        name: "prediction"
+        setup:
+          pane:           "top"
+          annotationName: "light-ball-position"
+      ]
+
+      submissibilityDependsOn: ["annotation", "light-ball-position"]
+      submissibilityCriterion: [">=", ["sketchLength", "light-ball-position"], 0.2]
+      
+      submitButtonTitle: "OK"
+      defaultBranch: "/shared/gravity/page/2/step/2"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/2/step/2"
+      activityPage: "/shared/gravity/page/2"
+      
+      beforeText: 
+        '''        
+        <p>To the right, predict what you think the velocity-time graph for the light ball will look like.</p>
         
         <p>(Assume that the ground is at 0 meters.)</p>
         '''
@@ -446,28 +490,22 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["light-ball-velocity"]
 
       tools: [
-        {
-          name: "prediction"
-          setup:
-            pane:           "top"
-            annotationName: "light-ball-position"
-        }
-
-        {
-          name: "prediction"
-          setup:
-            pane:           "bottom"
-            annotationName: "light-ball-velocity"
-        }
+        name: "prediction"
+        setup:
+          pane:           "bottom"
+          annotationName: "light-ball-velocity"
       ]
 
+      submissibilityDependsOn: ["annotation", "light-ball-velocity"]
+      submissibilityCriterion: [">=", ["sketchLength", "light-ball-velocity"], 0.2]
+      
       submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/2/step/2"
+      defaultBranch: "/shared/gravity/page/2/step/3"
     }
     
     
     {
-      url:          "/shared/gravity/page/2/step/2"
+      url:          "/shared/gravity/page/2/step/3"
       activityPage: "/shared/gravity/page/2"
       
       beforeText: 
@@ -574,8 +612,50 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText: 
         '''
-        <p>To the right, predict what you think the position-time graph and velocity-time graph will look like when the
-        heavy ball is dropped from the same height.</p>
+        <p>To the right, predict what you think the position-time graph will look like when the heavy ball is dropped
+        from the same height.</p>
+        '''
+
+      paneConfig:   "split"
+      panes:
+        top:
+          type:        "graph"
+          title:       "Predicted Position vs. Time (Heavy Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/position"
+          data:        []
+          annotations: ["heavy-ball-position"]
+
+        bottom:
+          type:        "graph"
+          title:       "Predicted Velocity vs. Time (Heavy Ball)"
+          xAxis:       "/shared/gravity/axes/time"
+          yAxis:       "/shared/gravity/axes/velocity"
+          data:        []
+          annotations: []
+
+      tools: [
+        name: "prediction"
+        setup:
+          pane:           "top"
+          annotationName: "heavy-ball-position"
+      ]
+      
+      submitButtonTitle:       "OK"
+      submissibilityDependsOn: ["annotation", "heavy-ball-position"]
+      submissibilityCriterion: [">=", ["sketchLength", "heavy-ball-position"], 0.2]
+      defaultBranch:           "/shared/gravity/page/5/step/2"
+    }
+    
+    
+    {
+      url:          "/shared/gravity/page/5/step/2"
+      activityPage: "/shared/gravity/page/5"
+
+      beforeText: 
+        '''
+        <p>To the right, predict what you think the velocity-time graph will look like when the heavy ball is dropped
+        from the same height.</p>
         '''
 
       paneConfig:   "split"
@@ -597,24 +677,18 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["heavy-ball-velocity"]
 
       tools: [
-        {
-          name: "prediction"
-          setup:
-            pane:           "top"
-            annotationName: "heavy-ball-position"
-        }
-
-        {
-          name: "prediction"
-          setup:
-            pane:           "bottom"
-            annotationName: "heavy-ball-velocity"
-        }
+        name: "prediction"
+        setup:
+          pane:           "bottom"
+          annotationName: "heavy-ball-velocity"
       ]
-            
-      isFinalStep: true
-      nextButtonShouldSubmit: true
+
+      submissibilityDependsOn: ["annotation", "heavy-ball-velocity"]
+      submissibilityCriterion: [">=", ["sketchLength", "heavy-ball-velocity"], 0.2]            
+      nextButtonShouldSubmit:  true
+      isFinalStep:             true
     }
+    
     
     {
       url:          "/shared/gravity/page/6/step/1"
