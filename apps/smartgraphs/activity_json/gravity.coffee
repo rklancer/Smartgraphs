@@ -1948,16 +1948,16 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       url:    "/shared/gravity/axes/time"
       units:  "/builtins/units/seconds"
       min:    0
-      max:    1.5
-      nSteps: 15
+      max:    1.0
+      nSteps: 10
       label:  "Time"
     }
     {
       url:    "/shared/gravity/axes/position"
       units:  "/builtins/units/meters"
       min:    0
-      max:    2
-      nSteps: 10
+      max:    2.4
+      nSteps: 12
       label:  "Position"
     }
     {
@@ -1984,7 +1984,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           yUnits:      "/builtins/units/meters"
           yLabel:      "Position"
           yShortLabel: "Position"
-          points:      [[0.05,0.178], [0.1,0.177], [0.15,0.165], [0.2,0.165], [0.25,0.164], [0.3,0.164], [0.35,0.161], [0.4,0.162], [0.45,0.159], [0.5,0.174], [0.55,0.249], [0.6,0.352], [0.65,0.477], [0.7,0.626], [0.75,0.801], [0.8,1], [0.85,1.223], [0.9,1.472], [0.95,1.738]]
+          points:      [[0.05,1.867], [0.1,1.84], [0.15,1.84], [0.2,1.84], [0.25,1.84], [0.3,1.84], [0.35,1.84], [0.4,1.819], [0.45,1.745], [0.5,1.651], [0.55,1.531], [0.6,1.394], [0.65,1.229], [0.7,1.042], [0.75,.837], [0.8,.607], [0.85,.359]]
         }
         
         {
@@ -1997,7 +1997,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           yUnits:      "/builtins/units/meters"
           yLabel:      "Position"
           yShortLabel: "Position"
-          points:      [[0.05,1.822], [0.1,1.822], [0.15,1.821], [0.2,1.821], [0.25,1.821], [0.3,1.82], [0.35,1.821], [0.4,1.821], [0.45,1.825], [0.5,1.828], [0.55,1.846], [0.6,1.847], [0.65,1.836], [0.7,1.791], [0.75,1.724], [0.8,1.631], [0.85,1.523], [0.9,1.386], [0.95,1.205], [1,1.031], [1.05,0.825], [1.1,0.594], [1.15,0.342], [1.2,0.16]]
+          points:      [[0.05,1.83], [0.1,1.832], [0.15,1.829], [0.2,1.829], [0.25,1.829], [0.3,1.823], [0.35,1.815], [0.4,1.815], [0.45,1.761], [0.5,1.682], [0.55,1.58], [0.6,1.455], [0.65,1.312], [0.7,1.139], [0.75,.942], [0.8,.726], [0.85,.487], [0.9,.244]]
         }
       ]
     }
@@ -2112,8 +2112,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           name:        "light-ball-motion-segment"
           activity:    "/shared/gravity"
           datadefName: "light-ball-velocity"
-          x1Record:    0.5
-          x2Record:    0.95
+          x1Record:    0.45
+          x2Record:    0.85
         }
         
         {
@@ -2130,8 +2130,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           name:        "heavy-ball-motion-segment"
           activity:    "/shared/gravity"
           datadefName: "heavy-ball-velocity"
-          x1Record:    0.65
-          x2Record:    1.2
+          x1Record:    0.45
+          x2Record:    0.9
         }
       ]
     }
