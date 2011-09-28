@@ -1041,6 +1041,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         variableAssignments: [
           {
@@ -1076,6 +1077,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1106,6 +1108,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1136,6 +1139,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1189,6 +1193,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1219,6 +1224,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1249,6 +1255,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1302,6 +1309,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1332,6 +1340,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1877,6 +1886,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         variableAssignments: [
           {
@@ -1912,6 +1922,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1942,6 +1953,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -1972,6 +1984,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -2025,6 +2038,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -2055,6 +2069,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -2085,6 +2100,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -2138,6 +2154,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {
@@ -2168,6 +2185,7 @@
           }
         },
         responseTemplate: "/components/response-template/numeric",
+        submissibilityCriterion: ["isNumeric", ["responseField", 1]],
         submitButtonTitle: "Check My Answer",
         responseBranches: [
           {

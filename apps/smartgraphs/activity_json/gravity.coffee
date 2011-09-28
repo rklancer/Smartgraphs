@@ -1407,6 +1407,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["light-ball-point-1", "light-ball-point-2"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       variableAssignments: [
@@ -1450,6 +1451,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["light-ball-point-1", "light-ball-point-2"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       responseBranches: [
@@ -1488,6 +1490,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["light-ball-point-1", "light-ball-point-2"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       responseBranches: [
@@ -1527,6 +1530,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           highlightedAnnotations: ["light-ball-rise-bracket"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       responseBranches: [
@@ -1596,6 +1600,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       responseBranches: [
@@ -1634,6 +1639,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       responseBranches: [
@@ -1672,6 +1678,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           highlightedAnnotations: ["light-ball-run-bracket"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       responseBranches: [
@@ -1740,6 +1747,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       responseBranches: [
@@ -1777,6 +1785,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations:            ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
       
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
       
       responseBranches: [
@@ -2447,6 +2456,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       variableAssignments: [
@@ -2490,6 +2500,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       responseBranches: [
@@ -2528,6 +2539,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       responseBranches: [
@@ -2567,6 +2579,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           highlightedAnnotations: ["heavy-ball-rise-bracket"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       responseBranches: [
@@ -2636,6 +2649,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       responseBranches: [
@@ -2674,6 +2688,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       responseBranches: [
@@ -2712,6 +2727,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           highlightedAnnotations: ["heavy-ball-run-bracket"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       responseBranches: [
@@ -2780,6 +2796,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations:            ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       responseBranches: [
@@ -2817,6 +2834,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           annotations:            ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
 
       responseTemplate: "/components/response-template/numeric"
+      submissibilityCriterion: ["isNumeric", ["responseField", 1]]
       submitButtonTitle: "Check My Answer"
 
       responseBranches: [
