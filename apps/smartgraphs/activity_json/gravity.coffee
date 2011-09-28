@@ -286,12 +286,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         <p>The slope of a velocity-time graph is commonly called the acceleration. The acceleration of an object due to
         gravity is a constant, called <i>g</i>. The accepted value of <i>g</i> for objects near the surface of the
         Earth is 9.8 m/s<sup>2</sup>.<p>
-        
-        <p>Here is the value of <i>g</i> that you found for the light ball: ... m/s<sup>2</sup></p>
-        
-        <p>Here is the value of <i>g</i> that you found for the heavy ball: ... m/s<sup>2</sup></p>
         '''
-        
+      
       steps:     [
         "/shared/gravity/page/13/step/1"
         "/shared/gravity/page/13/step/2"        
@@ -1345,6 +1341,11 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       responseTemplate: "/components/response-template/numeric"
       submitButtonTitle: "Check My Answer"
       
+      variableAssignments: [
+        name:  "light-ball-slope-as-string"
+        value: ["get", "slope-as-string"]
+      ]
+      
       responseBranches: [
         criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1]
         step:      "/shared/gravity/page/10/step/slope-correct"
@@ -1818,8 +1819,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       
       beforeText: 
         '''
+        <p>Here is the value of <i>g</i> that you found for the light ball: <b>%@ m/s<sup>2</sup></p></b>
+
+        <p>Here is the value of <i>g</i> that you found for the heavy ball: <b>%@ m/s<sup>2</sup></p></b>
+        
         <p>How does your value compare with the accepted value?</p>
         '''
+        
+      substitutedExpressions: ["light-ball-slope-as-string", "heavy-ball-slope-as-string"]
+      
       paneConfig: "split"
       panes:
         top:
@@ -1851,8 +1859,15 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       
       beforeText: 
         '''
+        <p>Here is the value of <i>g</i> that you found for the light ball: <b>%@ m/s<sup>2</sup></p></b>
+
+        <p>Here is the value of <i>g</i> that you found for the heavy ball: <b>%@ m/s<sup>2</sup></p></b>
+
         <p>What factors might have caused errors in your measurements?</p>
         '''
+
+      substitutedExpressions: ["light-ball-slope-as-string", "heavy-ball-slope-as-string"]
+      
       paneConfig: "split"
       panes:
         top:

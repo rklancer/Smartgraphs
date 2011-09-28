@@ -149,7 +149,7 @@
         url: "/shared/gravity/page/13",
         activity: "/shared/gravity",
         index: 13,
-        introText: '<h1>Compare the Accelerations</h1>\n\n<p>The slope of a velocity-time graph is commonly called the acceleration. The acceleration of an object due to\ngravity is a constant, called <i>g</i>. The accepted value of <i>g</i> for objects near the surface of the\nEarth is 9.8 m/s<sup>2</sup>.<p>\n\n<p>Here is the value of <i>g</i> that you found for the light ball: ... m/s<sup>2</sup></p>\n\n<p>Here is the value of <i>g</i> that you found for the heavy ball: ... m/s<sup>2</sup></p>',
+        introText: '<h1>Compare the Accelerations</h1>\n\n<p>The slope of a velocity-time graph is commonly called the acceleration. The acceleration of an object due to\ngravity is a constant, called <i>g</i>. The accepted value of <i>g</i> for objects near the surface of the\nEarth is 9.8 m/s<sup>2</sup>.<p>',
         steps: ["/shared/gravity/page/13/step/1", "/shared/gravity/page/13/step/2"],
         firstStep: "/shared/gravity/page/13/step/1"
       }, {
@@ -989,6 +989,12 @@
         },
         responseTemplate: "/components/response-template/numeric",
         submitButtonTitle: "Check My Answer",
+        variableAssignments: [
+          {
+            name: "light-ball-slope-as-string",
+            value: ["get", "slope-as-string"]
+          }
+        ],
         responseBranches: [
           {
             criterion: ["withinAbsTolerance", ["get", "slope"], ["responseField", 1], 0.1],
@@ -1354,7 +1360,8 @@
       }, {
         url: "/shared/gravity/page/13/step/1",
         activityPage: "/shared/gravity/page/13",
-        beforeText: '<p>How does your value compare with the accepted value?</p>',
+        beforeText: '<p>Here is the value of <i>g</i> that you found for the light ball: <b>%@ m/s<sup>2</sup></p></b>\n\n<p>Here is the value of <i>g</i> that you found for the heavy ball: <b>%@ m/s<sup>2</sup></p></b>\n\n<p>How does your value compare with the accepted value?</p>',
+        substitutedExpressions: ["light-ball-slope-as-string", "heavy-ball-slope-as-string"],
         paneConfig: "split",
         panes: {
           top: {
@@ -1381,7 +1388,8 @@
       }, {
         url: "/shared/gravity/page/13/step/2",
         activityPage: "/shared/gravity/page/13",
-        beforeText: '<p>What factors might have caused errors in your measurements?</p>',
+        beforeText: '<p>Here is the value of <i>g</i> that you found for the light ball: <b>%@ m/s<sup>2</sup></p></b>\n\n<p>Here is the value of <i>g</i> that you found for the heavy ball: <b>%@ m/s<sup>2</sup></p></b>\n\n<p>What factors might have caused errors in your measurements?</p>',
+        substitutedExpressions: ["light-ball-slope-as-string", "heavy-ball-slope-as-string"],
         paneConfig: "split",
         panes: {
           top: {
