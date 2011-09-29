@@ -105,7 +105,7 @@
               udpRecord.addPoint(4, 5);
               return points = line.get('points');
             });
-            describe("the first two pairs", function() {
+            xdescribe("the first two pairs", function() {
               return it("should be exactly the same objects as before", function() {
                 return expect(points.slice(0, 2)).toBeTheSameObjectsAs(pointsBeforeAdd);
               });
@@ -143,7 +143,7 @@
               udpRecord.addPoint(4, 5);
               return points = pointset.get('points');
             });
-            describe("the first two points", function() {
+            xdescribe("the first two points", function() {
               return it("should be exactly the same objects as before", function() {
                 return expect(points.slice(0, 2)).toBeTheSameObjectsAs(pointsBeforeAdd);
               });

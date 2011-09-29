@@ -64,7 +64,7 @@ describe "Data flow from UnorderedDataPoints record to GraphableObjects", ->
             udpRecord.addPoint(4, 5)
             points = line.get('points')
             
-          describe "the first two pairs", ->
+          xdescribe "the first two pairs", ->
             it "should be exactly the same objects as before", ->
               expect(points[0..1]).toBeTheSameObjectsAs pointsBeforeAdd
               
@@ -87,7 +87,7 @@ describe "Data flow from UnorderedDataPoints record to GraphableObjects", ->
             udpRecord.addPoint(4, 5)
             points = pointset.get('points')
             
-          describe "the first two points", ->
+          xdescribe "the first two points", ->
             it "should be exactly the same objects as before", ->
               expect(points[0..1]).toBeTheSameObjectsAs pointsBeforeAdd
           
