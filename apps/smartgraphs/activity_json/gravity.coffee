@@ -640,6 +640,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         name: "prediction"
         setup:
           pane:           "top"
+          uiBehavior:     "freehand"
           annotationName: "heavy-ball-position"
       ]
       
@@ -682,6 +683,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         name: "prediction"
         setup:
           pane:           "bottom"
+          uiBehavior:     "freehand"          
           annotationName: "heavy-ball-velocity"
       ]
 

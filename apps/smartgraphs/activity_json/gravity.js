@@ -414,6 +414,7 @@
             name: "prediction",
             setup: {
               pane: "top",
+              uiBehavior: "freehand",
               annotationName: "heavy-ball-position"
             }
           }
@@ -450,6 +451,7 @@
             name: "prediction",
             setup: {
               pane: "bottom",
+              uiBehavior: "freehand",
               annotationName: "heavy-ball-velocity"
             }
           }
