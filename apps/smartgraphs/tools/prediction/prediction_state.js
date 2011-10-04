@@ -143,7 +143,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
         owner: SC.outlet('statechart.owner'),
       
         enterState: function () {
-          this.get('owner').enableClearControl();
+          this.get('owner').highlightClearControl();
         },
       
         mouseDownAtPoint: function (context, args) {
@@ -212,7 +212,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
                 
         enterState: function () {
           Smartgraphs.predictionTool.predictionFinished(this.get('toolRoot'));
-          this.get('owner').enableClearControl();
+          this.get('owner').highlightClearControl();
         },
         
         clearControlWasClicked: function () {  
