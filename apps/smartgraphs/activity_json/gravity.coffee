@@ -1047,7 +1047,9 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText:
         '''
-        <p>Correct! Click the point best represents the ball's velocity when it was closest to the ground.</p>
+        <p>Correct!</p>
+
+        <p>Now, click the point that best represents the ball's velocity when it was closest to the ground.</p>
         '''
 
       paneConfig:   "split"
@@ -1097,7 +1099,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       beforeText:
         '''
         <p>Incorrect. The ball had not yet started to fall at this point. Try again.</p>
-        <p>Click the point best represents the ball's velocity when it was closest to the ground.</p>
+        <p>Click the point that best represents the ball's velocity when it was closest to the ground.</p>
         '''
 
       paneConfig:   "split"
@@ -1149,7 +1151,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         <p>Incorrect. The ball continued to move closer the ground after this point. Try again.</p>
         
-        <p>Click the point best represents the ball's velocity when it was closest to the ground.</p>
+        <p>Click the point that best represents the ball's velocity when it was closest to the ground.</p>
         '''
 
       paneConfig:   "split"
@@ -2096,7 +2098,9 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText:
         '''
-        <p>Correct! Click the point best represents the ball's velocity when it was closest to the ground.</p>
+        <p>Correct!</p>
+
+        <p>Now, click the point that best represents the ball's velocity when it was closest to the ground.</p>
         '''
 
       paneConfig:   "split"
@@ -2146,7 +2150,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       beforeText:
         '''
         <p>Incorrect. The ball had not yet started to fall at this point. Try again.</p>
-        <p>Click the point best represents the ball's velocity when it was closest to the ground.</p>
+        <p>Click the point that best represents the ball's velocity when it was closest to the ground.</p>
         '''
 
       paneConfig:   "split"
@@ -2198,7 +2202,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         <p>Incorrect. The ball continued to move closer the ground after this point. Try again.</p>
 
-        <p>Click the point best represents the ball's velocity when it was closest to the ground.</p>
+        <p>Click the point that best represents the ball's velocity when it was closest to the ground.</p>
         '''
 
       paneConfig:   "split"

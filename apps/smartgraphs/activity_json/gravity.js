@@ -746,7 +746,7 @@
       }, {
         url: "/shared/gravity/page/9/step/p2",
         activityPage: "/shared/gravity/page/9",
-        beforeText: '<p>Correct! Click the point best represents the ball\'s velocity when it was closest to the ground.</p>',
+        beforeText: '<p>Correct!</p>\n\n<p>Now, click the point that best represents the ball\'s velocity when it was closest to the ground.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -787,7 +787,7 @@
       }, {
         url: "/shared/gravity/page/9/step/p2-incorrect-left",
         activityPage: "/shared/gravity/page/9",
-        beforeText: '<p>Incorrect. The ball had not yet started to fall at this point. Try again.</p>\n<p>Click the point best represents the ball\'s velocity when it was closest to the ground.</p>',
+        beforeText: '<p>Incorrect. The ball had not yet started to fall at this point. Try again.</p>\n<p>Click the point that best represents the ball\'s velocity when it was closest to the ground.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -828,7 +828,7 @@
       }, {
         url: "/shared/gravity/page/9/step/p2-incorrect-right",
         activityPage: "/shared/gravity/page/9",
-        beforeText: '<p>Incorrect. The ball continued to move closer the ground after this point. Try again.</p>\n\n<p>Click the point best represents the ball\'s velocity when it was closest to the ground.</p>',
+        beforeText: '<p>Incorrect. The ball continued to move closer the ground after this point. Try again.</p>\n\n<p>Click the point that best represents the ball\'s velocity when it was closest to the ground.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -1591,7 +1591,7 @@
       }, {
         url: "/shared/gravity/page/11/step/p2",
         activityPage: "/shared/gravity/page/11",
-        beforeText: '<p>Correct! Click the point best represents the ball\'s velocity when it was closest to the ground.</p>',
+        beforeText: '<p>Correct!</p>\n\n<p>Now, click the point that best represents the ball\'s velocity when it was closest to the ground.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -1632,7 +1632,7 @@
       }, {
         url: "/shared/gravity/page/11/step/p2-incorrect-left",
         activityPage: "/shared/gravity/page/11",
-        beforeText: '<p>Incorrect. The ball had not yet started to fall at this point. Try again.</p>\n<p>Click the point best represents the ball\'s velocity when it was closest to the ground.</p>',
+        beforeText: '<p>Incorrect. The ball had not yet started to fall at this point. Try again.</p>\n<p>Click the point that best represents the ball\'s velocity when it was closest to the ground.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -1673,7 +1673,7 @@
       }, {
         url: "/shared/gravity/page/11/step/p2-incorrect-right",
         activityPage: "/shared/gravity/page/11",
-        beforeText: '<p>Incorrect. The ball continued to move closer the ground after this point. Try again.</p>\n\n<p>Click the point best represents the ball\'s velocity when it was closest to the ground.</p>',
+        beforeText: '<p>Incorrect. The ball continued to move closer the ground after this point. Try again.</p>\n\n<p>Click the point that best represents the ball\'s velocity when it was closest to the ground.</p>',
         paneConfig: "split",
         panes: {
           top: {
