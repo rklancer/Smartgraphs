@@ -39,7 +39,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
   ON: SC.State.design({
     
     toolRoot: SC.outlet('parentState'),
-    owner: SC.outlet('statechart.owner'),
+    owner:    SC.outlet('statechart.owner'),
     
     initialSubstate: 'CHOOSE_BEHAVIOR',
     
@@ -54,6 +54,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
       if (!SC.kindOf(annotation, Smartgraphs.FreehandSketch)) {
         throw SC.Error.desc("Prediction tool was started with a non-FreehandSketch annotation name '%@'".fmt(annotationName));
       }
+      
       this.get('owner').showControls();
       this.get('owner').revealOnlyClearControl();
 
@@ -89,7 +90,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
       enterState: function () {
         var uiBehavior = this.getPath('toolRoot.uiBehavior');
 
-        // Awesome. FIXME: this is one of many places where parsing of the activity JSON 
+        // Awesome. FIXME: we parse the activity JSON in many places, including below
         if (uiBehavior === 'extend') {
           this.gotoState(this.getPath('parentState.EXTEND'));
         }
@@ -113,7 +114,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
       START: SC.State.design({
 
         toolRoot: SC.outlet('parentState.toolRoot'),
-        owner: SC.outlet('statechart.owner'),
+        owner:    SC.outlet('statechart.owner'),
       
         enterState: function () {
           this.getPath('toolRoot.annotation').clear();
@@ -124,15 +125,13 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
           this.getPath('toolRoot.annotation').addPoint(args.x, args.y);
         },
       
-        mouseDraggedToPoint: function (context, args) {
-          var toolRoot = this.get('toolRoot');        
+        mouseDraggedToPoint: function (context, args) {       
           this.getPath('toolRoot.annotation').addPoint(args.x, args.y);
-          this.gotoState(toolRoot.get('name')+'.ON.EXTEND.CONTINUE');
+          this.getPath('parentState.CONTINUE');
         },
       
         mouseUpAtPoint: function (context, args) {
-          var toolRoot = this.get('toolRoot');
-          toolRoot.get('annotation').addPoint(args.x, args.y);
+          this.getPath('toolRoot.annotation').addPoint(args.x, args.y);
           this.gotoState(this.getPath('parentState.CONTINUE'));
         }
       
@@ -159,8 +158,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
           this.getPath('toolRoot.annotation').updateLatestPoint(args.x, args.y);
         },
             
-        clearControlWasClicked: function () {
-          var toolRoot = this.get('toolRoot');   
+        clearControlWasClicked: function () { 
           this.gotoState(this.getPath('parentState.START'));
         }
       })
@@ -176,12 +174,12 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
       
       START: SC.State.design({
         toolRoot: SC.outlet('parentState.toolRoot'),
-        owner: SC.outlet('statechart.owner'),
+        owner:    SC.outlet('statechart.owner'),
       
         enterState: function () {
           this.getPath('toolRoot.annotation').clear();
           this.get('owner').disableAllControls();
-          Smartgraphs.predictionTool.predictionStarting(this.get('toolRoot'));          
+          Smartgraphs.predictionTool.predictionStarting(this.get('toolRoot'));
         },
       
         mouseDownAtPoint: function (context, args) {
@@ -192,7 +190,7 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
       
       DRAWING: SC.State.design({
         toolRoot: SC.outlet('parentState.toolRoot'),
-        owner: SC.outlet('statechart.owner'),
+        owner:    SC.outlet('statechart.owner'),
       
         addPoint: function (x, y) {
           this.getPath('toolRoot.annotation').addPoint(x, y);
@@ -208,18 +206,16 @@ Smartgraphs.PREDICTION_TOOL = SC.State.extend(
         }
       }),
       
-      
       DONE: SC.State.design({
         toolRoot: SC.outlet('parentState.toolRoot'),
-        owner: SC.outlet('statechart.owner'),
+        owner:    SC.outlet('statechart.owner'),
                 
         enterState: function () {
           Smartgraphs.predictionTool.predictionFinished(this.get('toolRoot'));
           this.get('owner').enableClearControl();
         },
         
-        clearControlWasClicked: function () {
-          var toolRoot = this.get('toolRoot');   
+        clearControlWasClicked: function () {  
           this.gotoState(this.getPath('parentState.START'));
         }
       })
