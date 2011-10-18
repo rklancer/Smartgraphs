@@ -174,7 +174,6 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       steps:     [
         "/shared/gravity/page/8/step/1"
         "/shared/gravity/page/8/step/2"
-        "/shared/gravity/page/8/step/3"
       ]
       firstStep: "/shared/gravity/page/8/step/1"
     }
@@ -799,9 +798,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       
       beforeText: 
         '''
-        <p>On each graph, label what happened to the ball’s velocity as it approached the ground.</p>
-        <p>Make sure to label where the ball’s velocity <i>increased</i>, <i>decreased</i>, or <i>stayed the same</i>.
-        </p>
+        <p>On each graph, click to label the point where the ball's velocity was fastest.</p>
+
         '''
       paneConfig: "split"
       panes:
@@ -826,61 +824,14 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           name: "label"
           setup:
             pane: "top"
-            labelSetName: "light-ball-labels"
+            labelName: "light-ball-label"
         }
         
         { 
           name: "label"
           setup:
             pane: "bottom"
-            labelSetName: "heavy-ball-labels"
-        }
-      ]
-      
-      submitButtonTitle: "OK"
-      defaultBranch: "/shared/gravity/page/8/step/3"
-    }
-    
-    
-    {
-      url:          "/shared/gravity/page/8/step/3"
-      activityPage: "/shared/gravity/page/8"
-      
-      beforeText: 
-        '''
-        <p>On each graph, label where the velocity might have been <i>fastest</i>, <i>slowest</i>, or <i>0</i>.</p>
-        '''
-      paneConfig: "split"
-      panes:
-        top:
-          type:        "graph"
-          title:       "Actual Velocity vs. Time (Light Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["light-ball-velocity"]
-          annotations: []
-
-        bottom:
-          type:        "graph"
-          title:       "Actual Velocity vs. Time (Heavy Ball)"
-          xAxis:       "/shared/gravity/axes/time"
-          yAxis:       "/shared/gravity/axes/velocity"
-          data:        ["heavy-ball-velocity"]
-          annotations: []
-
-      tools: [
-        {
-          name: "label"
-          setup:
-            pane: "top"
-            labelSetName: "light-ball-labels"
-        }
-        
-        { 
-          name: "label"
-          setup:
-            pane: "bottom"
-            labelSetName: "heavy-ball-labels"
+            labelName: "heavy-ball-label"
         }
       ]
       
@@ -906,7 +857,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-labels", "light-ball-point-1"]
+          annotations: ["light-ball-label", "light-ball-point-1"]
           
         bottom:
           type:        "table"
@@ -958,7 +909,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-labels", "light-ball-point-1"]
+          annotations: ["light-ball-label", "light-ball-point-1"]
           
         bottom:
           type:        "table"
@@ -1009,7 +960,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-labels", "light-ball-point-1"]
+          annotations: ["light-ball-label", "light-ball-point-1"]
           
         bottom:
           type:        "table"
@@ -1060,7 +1011,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-labels", "light-ball-point-1", "light-ball-point-2"]
+          annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
           
         bottom:
           type:        "table"
@@ -1110,7 +1061,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-labels", "light-ball-point-1", "light-ball-point-2"]
+          annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
           
         bottom:
           type:        "table"
@@ -1162,7 +1113,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-labels", "light-ball-point-1", "light-ball-point-2"]
+          annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
           
         bottom:
           type:        "table"
@@ -1211,7 +1162,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["light-ball-velocity"]
-          annotations: ["light-ball-labels", "light-ball-motion-segment", "light-ball-point-1", "light-ball-point-2"]
+          annotations: ["light-ball-label", "light-ball-motion-segment", "light-ball-point-1", "light-ball-point-2"]
           
         bottom:
           type:        "table"
@@ -1957,7 +1908,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-labels", "heavy-ball-point-1"]
+          annotations: ["heavy-ball-label", "heavy-ball-point-1"]
 
         bottom:
           type:        "table"
@@ -2009,7 +1960,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-labels", "heavy-ball-point-1"]
+          annotations: ["heavy-ball-label", "heavy-ball-point-1"]
 
         bottom:
           type:        "table"
@@ -2060,7 +2011,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-labels", "heavy-ball-point-1"]
+          annotations: ["heavy-ball-label", "heavy-ball-point-1"]
 
         bottom:
           type:        "table"
@@ -2111,7 +2062,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-labels", "heavy-ball-point-1", "heavy-ball-point-2"]
+          annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
 
         bottom:
           type:        "table"
@@ -2161,7 +2112,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-labels", "heavy-ball-point-1", "heavy-ball-point-2"]
+          annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
 
         bottom:
           type:        "table"
@@ -2213,7 +2164,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-labels", "heavy-ball-point-1", "heavy-ball-point-2"]
+          annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
 
         bottom:
           type:        "table"
@@ -2262,7 +2213,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
           xAxis:       "/shared/gravity/axes/time"
           yAxis:       "/shared/gravity/axes/velocity"
           data:        ["heavy-ball-velocity"]
-          annotations: ["heavy-ball-labels", "heavy-ball-motion-segment", "heavy-ball-point-1", "heavy-ball-point-2"]
+          annotations: ["heavy-ball-label", "heavy-ball-motion-segment", "heavy-ball-point-1", "heavy-ball-point-2"]
 
         bottom:
           type:        "table"
@@ -3475,18 +3426,20 @@ Smartgraphs.activityDocs["/shared/gravity"] =
     }
     
     {
-      type: "LabelSet"
+      type: "Label"
       records: [
         {
-          url:      "/shared/gravity/annotation/light-ball-labels"
-          name:     "light-ball-labels"
+          url:      "/shared/gravity/annotation/light-ball-label"
+          name:     "light-ball-label"
           activity: "/shared/gravity"
+          text:     "Fastest point"
         }
         
         {
-          url:      "/shared/gravity/annotation/heavy-ball-labels"
-          name:     "heavy-ball-labels"
+          url:      "/shared/gravity/annotation/heavy-ball-label"
+          name:     "heavy-ball-label"
           activity: "/shared/gravity"
+          text:     "Fastest point"
         }
       ]
     }

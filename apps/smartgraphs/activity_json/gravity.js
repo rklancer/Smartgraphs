@@ -73,7 +73,7 @@
         activity: "/shared/gravity",
         index: 8,
         introText: '<h1>Compare the Data I</h1>\n\n<p>Look at the actual data for the light ball and the heavy ball.</p>',
-        steps: ["/shared/gravity/page/8/step/1", "/shared/gravity/page/8/step/2", "/shared/gravity/page/8/step/3"],
+        steps: ["/shared/gravity/page/8/step/1", "/shared/gravity/page/8/step/2"],
         firstStep: "/shared/gravity/page/8/step/1"
       }, {
         name: "Identify the Interval (Light Ball)",
@@ -543,7 +543,7 @@
       }, {
         url: "/shared/gravity/page/8/step/2",
         activityPage: "/shared/gravity/page/8",
-        beforeText: '<p>On each graph, label what happened to the ball’s velocity as it approached the ground.</p>\n<p>Make sure to label where the ball’s velocity <i>increased</i>, <i>decreased</i>, or <i>stayed the same</i>.\n</p>',
+        beforeText: '<p>On each graph, click to label the point where the ball\'s velocity was fastest.</p>\n',
         paneConfig: "split",
         panes: {
           top: {
@@ -568,53 +568,13 @@
             name: "label",
             setup: {
               pane: "top",
-              labelSetName: "light-ball-labels"
+              labelName: "light-ball-label"
             }
           }, {
             name: "label",
             setup: {
               pane: "bottom",
-              labelSetName: "heavy-ball-labels"
-            }
-          }
-        ],
-        submitButtonTitle: "OK",
-        defaultBranch: "/shared/gravity/page/8/step/3"
-      }, {
-        url: "/shared/gravity/page/8/step/3",
-        activityPage: "/shared/gravity/page/8",
-        beforeText: '<p>On each graph, label where the velocity might have been <i>fastest</i>, <i>slowest</i>, or <i>0</i>.</p>',
-        paneConfig: "split",
-        panes: {
-          top: {
-            type: "graph",
-            title: "Actual Velocity vs. Time (Light Ball)",
-            xAxis: "/shared/gravity/axes/time",
-            yAxis: "/shared/gravity/axes/velocity",
-            data: ["light-ball-velocity"],
-            annotations: []
-          },
-          bottom: {
-            type: "graph",
-            title: "Actual Velocity vs. Time (Heavy Ball)",
-            xAxis: "/shared/gravity/axes/time",
-            yAxis: "/shared/gravity/axes/velocity",
-            data: ["heavy-ball-velocity"],
-            annotations: []
-          }
-        },
-        tools: [
-          {
-            name: "label",
-            setup: {
-              pane: "top",
-              labelSetName: "light-ball-labels"
-            }
-          }, {
-            name: "label",
-            setup: {
-              pane: "bottom",
-              labelSetName: "heavy-ball-labels"
+              labelName: "heavy-ball-label"
             }
           }
         ],
@@ -632,7 +592,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-labels", "light-ball-point-1"]
+            annotations: ["light-ball-label", "light-ball-point-1"]
           },
           bottom: {
             type: "table",
@@ -673,7 +633,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-labels", "light-ball-point-1"]
+            annotations: ["light-ball-label", "light-ball-point-1"]
           },
           bottom: {
             type: "table",
@@ -714,7 +674,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-labels", "light-ball-point-1"]
+            annotations: ["light-ball-label", "light-ball-point-1"]
           },
           bottom: {
             type: "table",
@@ -755,7 +715,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-labels", "light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
           },
           bottom: {
             type: "table",
@@ -796,7 +756,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-labels", "light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
           },
           bottom: {
             type: "table",
@@ -837,7 +797,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-labels", "light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-label", "light-ball-point-1", "light-ball-point-2"]
           },
           bottom: {
             type: "table",
@@ -878,7 +838,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-labels", "light-ball-motion-segment", "light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-label", "light-ball-motion-segment", "light-ball-point-1", "light-ball-point-2"]
           },
           bottom: {
             type: "table",
@@ -1477,7 +1437,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-labels", "heavy-ball-point-1"]
+            annotations: ["heavy-ball-label", "heavy-ball-point-1"]
           },
           bottom: {
             type: "table",
@@ -1518,7 +1478,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-labels", "heavy-ball-point-1"]
+            annotations: ["heavy-ball-label", "heavy-ball-point-1"]
           },
           bottom: {
             type: "table",
@@ -1559,7 +1519,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-labels", "heavy-ball-point-1"]
+            annotations: ["heavy-ball-label", "heavy-ball-point-1"]
           },
           bottom: {
             type: "table",
@@ -1600,7 +1560,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-labels", "heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
           },
           bottom: {
             type: "table",
@@ -1641,7 +1601,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-labels", "heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
           },
           bottom: {
             type: "table",
@@ -1682,7 +1642,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-labels", "heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-label", "heavy-ball-point-1", "heavy-ball-point-2"]
           },
           bottom: {
             type: "table",
@@ -1723,7 +1683,7 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-labels", "heavy-ball-motion-segment", "heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-label", "heavy-ball-motion-segment", "heavy-ball-point-1", "heavy-ball-point-2"]
           },
           bottom: {
             type: "table",
@@ -2697,16 +2657,18 @@
           }
         ]
       }, {
-        type: "LabelSet",
+        type: "Label",
         records: [
           {
-            url: "/shared/gravity/annotation/light-ball-labels",
-            name: "light-ball-labels",
-            activity: "/shared/gravity"
+            url: "/shared/gravity/annotation/light-ball-label",
+            name: "light-ball-label",
+            activity: "/shared/gravity",
+            text: "Fastest point"
           }, {
-            url: "/shared/gravity/annotation/heavy-ball-labels",
-            name: "heavy-ball-labels",
-            activity: "/shared/gravity"
+            url: "/shared/gravity/annotation/heavy-ball-label",
+            name: "heavy-ball-label",
+            activity: "/shared/gravity",
+            text: "Fastest point"
           }
         ]
       }
