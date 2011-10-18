@@ -91,7 +91,8 @@ Smartgraphs.DataRepresentation = SC.Object.extend(
         line         = this.get('line');
          
     if (pointset) {
-      pointset.set('points', samplePoints.map( function (pair) { 
+      pointset.set('points', samplePoints.map( function (pair) {
+        window.pointsCreated++;
         return Smartgraphs.Point.create( { x: pair[0], y: pair[1] });
       }));
     }

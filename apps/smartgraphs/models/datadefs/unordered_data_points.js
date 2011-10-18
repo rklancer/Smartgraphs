@@ -26,7 +26,7 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
     
     The order of the points in the 'points' array is not significant.
   */
-  points: SC.Record.attr(Array),
+  points: SC.Record.attr(Array, { defaultValue: [] }),
   
   /**
     Returns a DataRepresentation to represent this data. The default behavior is to create a new TrivialSampleset and 
@@ -47,7 +47,8 @@ Smartgraphs.UnorderedDataPoints = Smartgraphs.Datadef.extend(
   },
   
   addPoint: function (x, y) {
-    console.log("addPoint(%2f, %2f)", x, y);
+    console.log("addPoint(%f, %f)", x, y);
+    if (typeof window.nPoints !== 'undefined') window.nPoints++;
     this.get('points').pushObject([x, y]);
   },
   

@@ -91,6 +91,11 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
     SENSOR_RECORDING:  SC.State.design({
       
       enterState: function () {
+        window.nPoints = 0;
+        window.initialRenders = 0;
+        window.reRenders = 0;
+        window.pairsCopied = 0;
+        window.pointsCreated = 0;
         Smartgraphs.sensorTool.startRecording();
         Smartgraphs.sensorTool.get('graphController').highlightStopControl();  
       },
@@ -113,6 +118,12 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
     SENSOR_STOPPED: SC.State.design({
       
       enterState: function () {
+        console.log("%d points sensed", window.nPoints);
+        console.log("%d initial renders of points", window.initialRenders);
+        console.log("%d re-renders of points", window.reRenders);
+        console.log("%d Smartgraph.Points created", window.pointsCreated);
+        console.log("%d coordinate pairs copied", window.pairsCopied);
+        
         Smartgraphs.sensorTool.get('graphController').highlightClearControl();
       },
 

@@ -35,6 +35,7 @@ Smartgraphs.ImageView = SC.View.extend(
   childViews: ['imageView', 'captionView'],
 
   captionView: SC.LabelView.design({
+    escapeHTML: false,
     valueBinding: '.parentView.caption',
     valueBindingDefault: SC.Binding.oneWay(),
 

@@ -400,7 +400,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": " <p><strong>How can you describe velocity?</strong></p>  <p>Let’s start by examining the motion of a car traveling from one point to another.</p>  <p><b>Click</b> the Start button to the right to watch the car’s journey. Click the Stop, Reset, and Start buttons to pause and replay the motion multiple times.</p> <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p> ",
+      "beforeText": " <p><strong>How can you describe velocity?</strong></p> <p>Let’s start by examining the motion of a car traveling from one point to another.</p> <p><b>Click</b> the Start button to the right to watch the car’s journey. Click the Stop, Reset, and Start buttons to pause and replay the motion multiple times.</p> <p><b>No graph will appear on this page. On the next page, you will be able to see the graph.</b></p> <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "afterText": "<p><strong>Word bank:</strong> start, position, time, forward, backward, moving, stopping, velocity, constant, steady, changing, slow, fast, end, meters, seconds<p>",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],

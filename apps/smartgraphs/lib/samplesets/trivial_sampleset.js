@@ -36,6 +36,7 @@ Smartgraphs.TrivialSampleset = Smartgraphs.Sampleset.extend(
         points = sourcePoints.filter( function (pair) {
           return this.get('xMin') <= pair[0] && pair[0] <= this.get('xMax');
         }, this).map( function (pair) {
+          window.pairsCopied++;
           return pair.copy();
         });
   

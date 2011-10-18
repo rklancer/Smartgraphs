@@ -393,8 +393,8 @@ Smartgraphs.GraphController = SC.Object.extend( Smartgraphs.AnnotationSupport,
     return statechart.sendAction.apply(statechart, arguments);
   },
     
-  predictionToolStartTool: function (annotationName) {
-    this.sendAction('predictionToolStartTool', this, annotationName);
+  predictionToolStartTool: function (args) {
+    this.sendAction('predictionToolStartTool', this, args);
   },
   
   predictionToolPredictionStarting: function () {

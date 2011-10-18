@@ -19,8 +19,8 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
   canShowInTable: NO,
   
   strokeBinding: '.item.color',
-  strokeWidth: 2.5,
-  strokeOpacity: 1.0,
+  strokeWidth: 2,
+  strokeOpacity: 0.7,
 
   // SC will call render(context, firstTime == NO) if these properties change
   displayProperties: 'x1 y1 x2 y2 stroke strokeWidth strokeOpacity'.w(),
@@ -37,15 +37,15 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
 
   // Called by SC (by the parent view)
   render: function(context, firstTime) {
-    var graphView = this.get('graphView'),
+    var graphView  = this.get('graphView'),
         annotation = this.get('item'),
-        x1 = annotation.get('x1'),
-        y1 = annotation.get('y1'),
-        x2 = annotation.get('x2'),
-        y2 = annotation.get('y2'),
-        xAxis = graphView.get('xAxis'),
-        yAxis = graphView.get('yAxis'),
-        points = this.getEndPoints(x1, y1, x2, y2, xAxis, yAxis),
+        x1         = annotation.get('x1'),
+        y1         = annotation.get('y1'),
+        x2         = annotation.get('x2'),
+        y2         = annotation.get('y2'),
+        xAxis      = graphView.get('xAxis'),
+        yAxis      = graphView.get('yAxis'),
+        points     = this.getEndPoints(x1, y1, x2, y2, xAxis, yAxis),
         i,
         coords, 
         point,

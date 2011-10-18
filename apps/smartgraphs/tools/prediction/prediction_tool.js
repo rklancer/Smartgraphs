@@ -19,7 +19,7 @@ Smartgraphs.predictionTool = Smartgraphs.Tool.create(
   
   setup: function (args) {
     var controller = this.graphControllerForPane(args.pane);
-    controller.predictionToolStartTool(args.annotationName);
+    controller.predictionToolStartTool( { annotationName: args.annotationName, uiBehavior: args.uiBehavior });
   },
   
   appendSketch: function (state, sketch) {

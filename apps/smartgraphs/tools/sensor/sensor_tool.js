@@ -27,7 +27,7 @@ Smartgraphs.sensorTool = Smartgraphs.Tool.create(
   appletView: null,
   sensorIsReady: NO,
   nSamples: 0,
-  downsampleRatio: 2,     // don't adjust for IE...?
+  downsampleRatio: 1,     // don't adjust for IE...?
   
   /**
     The time interval between data points returned by the sensor
