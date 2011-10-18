@@ -88,7 +88,7 @@
         url: "/shared/gravity/page/10",
         activity: "/shared/gravity",
         index: 10,
-        introText: '<h1>Find the Slope (Light Ball)</h1>\n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n\n<p>You are going to find the slope of a line that you think best represents the data when the fall was \nfalling.</p>',
+        introText: '<h1>Find the Slope (Light Ball)</h1>\n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n\n<p>You are going to find the slope of a line that you think best represents the data when the ball was \nfalling.</p>',
         contextVars: [
           {
             name: "initial-velocity",
@@ -235,7 +235,7 @@
       }, {
         url: "/shared/gravity/page/2/step/1",
         activityPage: "/shared/gravity/page/2",
-        beforeText: '<p>Try dropping each ball from a height of 2 meters.</p>\n\n<p>To the right, predict what you think the position-time graph for the light ball will look like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
+        beforeText: '<p>Try dropping each ball from a height of 2 meters.</p>\n\n<p>To the right, predict what you think the <b>position-time</b> graph for the light ball will look like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -272,7 +272,7 @@
       }, {
         url: "/shared/gravity/page/2/step/2",
         activityPage: "/shared/gravity/page/2",
-        beforeText: '        \n<p>To the right, predict what you think the velocity-time graph for the light ball will look like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
+        beforeText: '        \n<p>To the right, predict what you think the <b>velocity-time</b> graph for the light ball will look like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -389,7 +389,7 @@
       }, {
         url: "/shared/gravity/page/5/step/1",
         activityPage: "/shared/gravity/page/5",
-        beforeText: '<p>To the right, predict what you think the position-time graph will look like when the heavy ball is dropped\nfrom the same height.</p>',
+        beforeText: '<p>To the right, predict what you think the <b>position-time</b> graph will look like when the heavy ball is\ndropped from the same height.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -426,7 +426,7 @@
       }, {
         url: "/shared/gravity/page/5/step/2",
         activityPage: "/shared/gravity/page/5",
-        beforeText: '<p>To the right, predict what you think the velocity-time graph will look like when the heavy ball is dropped\nfrom the same height.</p>',
+        beforeText: '<p>To the right, predict what you think the <b>velocity-time</b> graph will look like when the heavy ball is \ndropped from the same height.</p>',
         paneConfig: "split",
         panes: {
           top: {

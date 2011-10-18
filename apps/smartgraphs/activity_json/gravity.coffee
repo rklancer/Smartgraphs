@@ -214,7 +214,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
         <p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>
 
-        <p>You are going to find the slope of a line that you think best represents the data when the fall was 
+        <p>You are going to find the slope of a line that you think best represents the data when the ball was 
         falling.</p>
         '''
         
@@ -424,7 +424,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
         '''
         <p>Try dropping each ball from a height of 2 meters.</p>
         
-        <p>To the right, predict what you think the position-time graph for the light ball will look like.</p>
+        <p>To the right, predict what you think the <b>position-time</b> graph for the light ball will look like.</p>
         
         <p>(Assume that the ground is at 0 meters.)</p>
         '''
@@ -468,7 +468,7 @@ Smartgraphs.activityDocs["/shared/gravity"] =
       
       beforeText: 
         '''        
-        <p>To the right, predict what you think the velocity-time graph for the light ball will look like.</p>
+        <p>To the right, predict what you think the <b>velocity-time</b> graph for the light ball will look like.</p>
         
         <p>(Assume that the ground is at 0 meters.)</p>
         '''
@@ -614,8 +614,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText: 
         '''
-        <p>To the right, predict what you think the position-time graph will look like when the heavy ball is dropped
-        from the same height.</p>
+        <p>To the right, predict what you think the <b>position-time</b> graph will look like when the heavy ball is
+        dropped from the same height.</p>
         '''
 
       paneConfig:   "split"
@@ -657,8 +657,8 @@ Smartgraphs.activityDocs["/shared/gravity"] =
 
       beforeText: 
         '''
-        <p>To the right, predict what you think the velocity-time graph will look like when the heavy ball is dropped
-        from the same height.</p>
+        <p>To the right, predict what you think the <b>velocity-time</b> graph will look like when the heavy ball is 
+        dropped from the same height.</p>
         '''
 
       paneConfig:   "split"
