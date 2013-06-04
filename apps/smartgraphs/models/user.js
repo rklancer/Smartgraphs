@@ -16,11 +16,11 @@ Smartgraphs.User = SC.Record.extend(
 /** @scope Smartgraphs.User.prototype */ {
 
   userId: SC.Record.attr(String),
-  
+
   primaryKey: 'userId',
-  
+
   name: SC.Record.attr(String),
-  
+
   sessions: SC.Record.toMany(Smartgraphs.Session, { inverse: 'user' })
 
 }) ;

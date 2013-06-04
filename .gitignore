@@ -6,6 +6,7 @@ sc-docs/
 .DS_Store
 */.DS_Store
 results/
+build/
 server.log
 server.pid.lock
 frameworks/jasmine-sproutcore

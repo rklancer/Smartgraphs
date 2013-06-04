@@ -16,21 +16,21 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
 
   /**
     @private
-    
+
     couchdb _ids for all activity records loaded by this data source, indexed by storeKey
   */
   _ids: {},
 
   /**
     @private
-    
+
     couchdb _revs for all activity records loaded by this data source, indexed by storeKey
   */
   _revs: {},
-  
+
   // ..........................................................
   // QUERY SUPPORT
-  // 
+  //
 
   fetch: function(store, query) {
     // Everything related to the activity should already be in memory. Return NO so the fixtures data source has a
@@ -41,10 +41,10 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
 
   // ..........................................................
   // RECORD SUPPORT
-  // 
-  
+  //
+
   retrieveRecord: function(store, storeKey) {
-    
+
     var recordType = store.recordTypeFor(storeKey);
     var id = store.idFor(storeKey);
 
@@ -56,32 +56,32 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
       var activityId = id;
       var requestUrl = '/db/smartgraphs/_design/app/_view/activities-by-url-and-version?key=["'+activityId+'",'+Smartgraphs.DATA_FORMAT_VERSION+']';
 
-      var response = Smartgraphs.activityDocs[id] ? SC.Object.create({ body: { rows: [ { value: Smartgraphs.activityDocs[id] } ] } }) : SC.Error.create();      
+      var response = Smartgraphs.activityDocs[id] ? SC.Object.create({ body: { rows: [ { value: Smartgraphs.activityDocs[id] } ] } }) : SC.Error.create();
       this.didRetrieveActivity(response, store, storeKey);
       return YES;
     }
-   
+
     this.log(  'returning NO from retrieveRecord');
     return NO;
   },
-  
-  
+
+
   didRetrieveActivity: function (response, store, storeKey) {
 
     if (SC.ok(response)) {
       var body = response.get('body');
       this.log('retrieved response.body = ', body);
-      
+
       if (body && body.rows && body.rows.length === 1 && body.rows[0].value) {
         var doc = body.rows[0].value;
-        
+
         this.log('doc = ', doc);
         this.log('doc.activity = ', doc.activity);
-        
+
         // save the _rev and _id for later
         this._ids[storeKey] = doc._id;
         this._revs[storeKey] = doc._rev;
-        
+
         // push all the associated records into the store
         var self = this;
         [
@@ -96,39 +96,44 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
           self.loadRecordsFromArray(store, Smartgraphs[pair[0]], doc[pair[1]]);
         });
 
-        doc.datadefs.forEach( function (datadefRecs) {
+        doc.datadefs.forEach(function (datadefRecs) {
           self.loadRecordsFromArray(store, Smartgraphs[datadefRecs.type], datadefRecs.records);
         });
-        doc.annotations.forEach( function (annotationRecs) {
+        if (doc.datarefs) {
+          doc.datarefs.forEach(function (datarefRecs) {
+            self.loadRecordsFromArray(store, Smartgraphs[datarefRecs.type], datarefRecs.records);
+          });
+        }
+        doc.annotations.forEach(function (annotationRecs) {
           self.loadRecordsFromArray(store, Smartgraphs[annotationRecs.type], annotationRecs.records);
         });
-        
+
         // and call back to the datastore (which loads the Activity record as well)
         store.dataSourceDidComplete(storeKey, doc.activity);
         return;
       }
     }
-    
+
     // otherwise...
     store.dataSourceDidError(storeKey, response);
   },
-  
+
   loadRecordsFromArray: function (store, recordType, hashes) {
     hashes.forEach(function (hash) {
       store.loadRecord(recordType, hash, hash.url);
     });
   },
-  
+
   createRecord: function(store, storeKey) {
-    
+
     // TODO: Add handlers to submit new records to the data source.
     // call store.dataSourceDidComplete(storeKey) when done.
-    
+
     return NO ; // return YES if you handled the storeKey
   },
-  
+
   /**
-    Applied to 'child' records of an activity record being saved to CouchDB. Marks DIRTY, READY_NEW, and READY_CLEAN 
+    Applied to 'child' records of an activity record being saved to CouchDB. Marks DIRTY, READY_NEW, and READY_CLEAN
     records with the appropriate BUSY states so that they are not edited until CouchDB confirms the write. (It is
     important to mark READY_CLEAN records busy so that they are not edited while the activity they are part of is
     inflight, a.k.a. BUSY)
@@ -137,12 +142,12 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     if (record.get('store') !== store) throw "WHOOPS. Trying to mark a record busy that's from the wrong store";
 
     // adapted from SC.Store.commitRecords
-    
-    var storeKey = record.get('storeKey'); 
+
+    var storeKey = record.get('storeKey');
     var status = store.readStatus(record.get('storeKey'));
     var newStatus;
     var K = SC.Record;
-    
+
     switch (status) {
       case K.EMPTY:
       case K.ERROR:
@@ -151,27 +156,27 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         newStatus = K.BUSY_CREATING;
         break;
       case K.READY_DIRTY:
-      case K.READY_CLEAN: 
+      case K.READY_CLEAN:
         newStatus = K.BUSY_COMMITTING;
         break;
       case K.DESTROYED_DIRTY:
         newStatus = K.BUSY_DESTROYING;
         break;
-      // ignore K.DESTROYED_CLEAN, K.BUSY_LOADING, K.BUSY_CREATING, K.BUSY_COMMITTING, 
+      // ignore K.DESTROYED_CLEAN, K.BUSY_LOADING, K.BUSY_CREATING, K.BUSY_COMMITTING,
       // K.BUSY_REFRESH_CLEAN, K.BUSY_REFRESH_DIRTY, K.BUSY_DESTROYING
     }
-    
+
     if (newStatus) {
       store.writeStatus(storeKey, newStatus);
       store.dataHashDidChange(storeKey, null, YES);
     }
   },
-  
+
   markRecordCommitted: function (store, record) {
     var K = SC.Record;
     var storeKey = record.get('storeKey');
     var status = store.readStatus(storeKey);
-    
+
     if (status === K.BUSY_DESTROYING) {
       store.dataSourceDidDestroy(storeKey);
     }
@@ -180,7 +185,7 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
     }
     // ignore everything else!
   },
-  
+
   applyToChildRecords: function (store, record, fn) {
     var self = this;
 
@@ -197,15 +202,15 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         }
       }
     }
-    
+
     // now find all the annotation records not directly linked to by the activity record
     if (SC.kindOf(record, Smartgraphs.Activity)) {
       record.get('annotations').forEach( function (annotation) { self.applyToChildRecords(store, annotation, fn); } );
     }
   },
-  
+
   updateRecord: function(store, storeKey) {
-    
+
     // if we downloaded it, we can upload it
     if (this._ids[storeKey]) {
       var record = store.find(store.recordTypeFor(storeKey), store.idFor(storeKey));
@@ -214,12 +219,12 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
         var doc = record.serialize();
         doc._rev = this._revs[storeKey];
         doc.data_format_version = Smartgraphs.DATA_FORMAT_VERSION;
-        
+
         // this is a bit obscure at the moment, but it locks 'child' records of the activity (set status to BUSY)
         // until the xhr callback completes.
 
         this.applyToChildRecords(store, record, this.markRecordBusy);
-        
+
         SC.Request.putUrl('/db/smartgraphs/'+this._ids[storeKey])
                   .json()
                   .header('Accept', 'application/json')
@@ -234,9 +239,9 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
 
   didUpdateActivity: function (response, store, storeKey) {
     var K = SC.Record;
-    
+
     var record = store.find(store.recordTypeFor(storeKey), store.idFor(storeKey));
-    
+
     if (SC.ok(response)) {
       this.applyToChildRecords(store, record, this.markRecordCommitted);
       this._revs[storeKey] = response.get('body').rev;
@@ -245,16 +250,16 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
       store.dataSourceDidError(storeKey);
     }
   },
-  
+
   destroyRecord: function(store, storeKey) {
-    
+
     // TODO: Add handlers to destroy records on the data source.
     // call store.dataSourceDidDestroy(storeKey) when done
-    
+
     return NO ; // return YES if you handled the storeKey
   },
-  
-  
+
+
   // ..........................................................
   // SUPPORT
   //
@@ -271,17 +276,12 @@ Smartgraphs.CouchDataSource = SC.DataSource.extend(
 
   log: function() {
     if (Smartgraphs.get('logDataSource')) {
-      if (console.log.apply) {
-        console.log.apply(console, arguments);
-      }
-      else {
-        // IE Dev tools debug mode provides a console.log which throws an error when you try to call the 'apply'
-        // method. In that case, just replace ourself outright with console.log (after this happens, this.log() will
-        // of course no longer check the 'logDataSource' property. This should only be a problem on the off chance
-        // someone attempts to turn off datasource logging mid-session.
-        this.log = console.log;
-      }
+      // console.log.apply won't work because, when IE dev tools are open, the 'console' is a host object whose
+      // 'log' method does not have an 'apply' method. Thus console.log.apply throws an error.
+      // The solution below is from
+      // http://stackoverflow.com/questions/1433697/javascript-problem-with-a-activex-object-and-the-apply-function/1435562#1435562
+      Function.prototype.apply.call(console.log, console, arguments);
     }
   }
-  
+
 }) ;

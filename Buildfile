@@ -9,15 +9,16 @@ require File.expand_path('../frameworks/jasmine-sproutcore/builders/jasmine_buil
 config :all, :required => [:sproutcore]
 
 config :smartgraphs,
-  :required => ['sproutcore/statechart', 'raphael_views/raphael_views', 'raphael_views/g_raphael', 'cc/cc'],
+  :required => ['sproutcore/statechart', 'raphael_views/raphael_views', 'raphael_views/g_raphael'],
   :load_fixtures => true,
+  :layout => 'lib/index.rhtml',
   :theme => :pig
 
-config 'raphael_views/raphael_views', 
+config 'raphael_views/raphael_views',
   :required => 'raphael_views/raphael'
-config 'raphael_views/g_raphael', 
+config 'raphael_views/g_raphael',
   :required => 'raphael_views/g_raphael_base'
-config 'raphael_views/g_raphael_base', 
+config 'raphael_views/g_raphael_base',
   :required => 'raphael_views/raphael'
 
 proxy '/db', :to => 'localhost:5984', :url => ''

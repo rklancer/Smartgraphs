@@ -39,9 +39,9 @@ describe("GraphView animation behavior", function () {
     controller.set('animationInfo', SC.Object.create({
       hasAnimation: YES,
       duration: 100,
-      channelWidth: 15      
+      channelWidth: 15
     }));
-    
+
     view = Smartgraphs.GraphView.create({
       graphController: controller
     });
@@ -128,7 +128,7 @@ describe("GraphView animation behavior", function () {
     beforeEach( function () {
       graphCanvasView  = view.get('graphCanvasView');
       graphableDataObjects = controller.get('graphableDataObjects');
-      
+
       spyOn(graphCanvasView, '_startAnimationForDatadef').andCallThrough();
 
       // Add in an animation

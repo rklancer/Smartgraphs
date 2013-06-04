@@ -22,49 +22,49 @@ Smartgraphs.IndicatingArrow = Smartgraphs.Annotation.extend(
 
   /**
     The x-coordinate of the spot the indicating arrow points at.
-    
+
     @property {Number}
   */
   specificX: SC.Record.attr(Number),
-  
+
   /**
     The y-coordinate of the spot the indicating arrow points at.
-    
+
     @property {Number}
   */
   specificY: SC.Record.attr(Number),
-  
+
   /**
     If the arrow indicates not an arbitrary x, y but a specific Smartgraphs.Annotation (e.g. a HighlightedPoint), it will
     adjust its location appropriately with that Annotation's point.
-    
+
     @property {Smartgraphs.Annotation}
   */
   annotation: SC.Record.toOne("Smartgraphs.HighlightedPoint"),
-  
+
   /**
     The arrow can also indicate a Smartgraphs.DataPoint which is not associated with a HighlightedPoint annotation.
-    
+
     @property {Smartgraphs.DataPoint}
   */
   dataPoint: SC.Record.toOne("Smartgraphs.DataPoint"),
-  
+
   /**
     The angle from which the indicating arrow points. This is in degrees, with 0 meaning the arrow points
     vertically down, 180 vertically up; 90 should bring the arrow in horizontally from the right and 270
     should bring it in horizontally from the left. The default value of 335 should come in from the upper left (north-west).
-    
+
     @property {Number}
   */
   pointAngle: SC.Record.attr(Number, { default_value: 335 }),
-  
+
   /**
     The length of the arrow, from tail to tip, in pixels. Default value is 25.
-    
+
     @property {Number}
   */
   length: SC.Record.attr(Number, { default_value: 25 }),
-  
+
   // The "x" coordinate, depending on what the arrow is given to point at.
   // Returns null if there's not enough information to work from.
   x: function () {

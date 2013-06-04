@@ -1,6 +1,3 @@
-[submodule "frameworks/cc"]
-	path = frameworks/cc
-	url = http://github.com/sfentress/CC-SproutCore.git
 [submodule "frameworks/raphael_views"]
 	path = frameworks/raphael_views
 	url = http://github.com/rklancer/RaphaelViews.git

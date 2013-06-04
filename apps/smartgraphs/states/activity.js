@@ -16,17 +16,17 @@
 
 Smartgraphs.ACTIVITY = SC.State.extend(
   /** @scope Smartgraphs.ACTIVITY.prototype */ {
-  
+
   initialSubstate: 'ACTIVITY_PAGE_START',
-  
+
   enterState: function() {
     Smartgraphs.sessionController.beginSession();
 
     var pages = Smartgraphs.activityController.get('pages'),
         page;
-        
+
     Smartgraphs.activityPagesController.set('content', pages);
-    
+
     if (Smartgraphs.navigatedLocation && Smartgraphs.navigatedLocation.activityId === Smartgraphs.activityController.get('id')) {
       // go to previously-saved page and step rather than 'real' firstStep of the first page
       Smartgraphs.activityPagesController.selectPageId(Smartgraphs.navigatedLocation.pageId);
@@ -47,25 +47,25 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     Smartgraphs.activityController.cleanup();
     Smartgraphs.sessionController.endSession();
   },
-  
-  
+
+
   ACTIVITY_PAGE_START: SC.State.design({
     enterState: function () {
       Smartgraphs.activityStepController.set('content', Smartgraphs.activityPageController.get('firstStep'));
       this.gotoState('ACTIVITY_STEP');
     }
   }),
-  
-  
+
+
   ACTIVITY_STEP: SC.State.plugin('Smartgraphs.ACTIVITY_STEP'),
-  
-  
+
+
   ACTIVITY_STEP_SUBMITTED: SC.State.plugin('Smartgraphs.ACTIVITY_STEP_SUBMITTED'),
-  
-  
+
+
   ACTIVITY_PAGE_DONE: SC.State.design({
-    
-    enterState: function() {    
+
+    enterState: function() {
       if (Smartgraphs.activityPagesController.get('isLastPage')) {
         this.gotoState('ACTIVITY_DONE');
       }
@@ -89,7 +89,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
   // ..........................................................
   // ACTIONS
   //
-  
+
   /**
     Open author's view of the currently running activity.
   */
@@ -97,7 +97,7 @@ Smartgraphs.ACTIVITY = SC.State.extend(
     this.gotoState('AUTHOR');
     return YES;
   },
-  
+
   /**
     Executes if openActivity action is sent within the ACTIVITY state. Instructs the LOADING_ACTIVITY state to switch
     back to the ACTIVITY state (rather than AUTHOR) when the new activity is loaded. Returns NO so that the main

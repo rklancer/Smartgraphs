@@ -12,12 +12,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
     "owner": "shared",
     "pages": [
       "/shared/describing-velocity/page/1",
-      "/shared/describing-velocity/page/2",  
+      "/shared/describing-velocity/page/2",
       "/shared/describing-velocity/page/3",
       "/shared/describing-velocity/page/4",
       "/shared/describing-velocity/page/5",
       "/shared/describing-velocity/page/6",
-      "/shared/describing-velocity/page/7",      
+      "/shared/describing-velocity/page/7",
       "/shared/describing-velocity/page/8",
       "/shared/describing-velocity/page/9",
       "/shared/describing-velocity/page/10",
@@ -143,7 +143,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/5/step/16",
         "/shared/describing-velocity/page/5/step/17",
         "/shared/describing-velocity/page/5/step/18",
-        "/shared/describing-velocity/page/5/step/19"                                
+        "/shared/describing-velocity/page/5/step/19"
       ],
       "contextVars": [
         { "name": "start-position",        "value": ["coord", "y", ["listItem", 1, ["slopeToolOrder", "first-point", "second-point"]]] },
@@ -266,7 +266,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "index": 10,
       "introText": "<h1>Compare the Graphs</h1>",
       "steps": [
-        "/shared/describing-velocity/page/10/step/1"       
+        "/shared/describing-velocity/page/10/step/1"
       ],
       "firstStep": "/shared/describing-velocity/page/10/step/1"
     },
@@ -275,7 +275,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "url": "/shared/describing-velocity/page/11",
       "activity": "/shared/describing-velocity",
       "index": 11,
-      "introText": "<h1>Explore Other Motions</h1>",  
+      "introText": "<h1>Explore Other Motions</h1>",
       "steps": [
         "/shared/describing-velocity/page/11/step/1",
         "/shared/describing-velocity/page/11/step/2",
@@ -285,7 +285,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/11/step/6",
         "/shared/describing-velocity/page/11/step/7",
         "/shared/describing-velocity/page/11/step/8",
-        "/shared/describing-velocity/page/11/step/9"                
+        "/shared/describing-velocity/page/11/step/9"
       ],
       "firstStep": "/shared/describing-velocity/page/11/step/1"
     },
@@ -313,7 +313,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/12/step/15",
         "/shared/describing-velocity/page/12/step/16",
         "/shared/describing-velocity/page/12/step/17",
-        "/shared/describing-velocity/page/12/step/18"                               
+        "/shared/describing-velocity/page/12/step/18"
       ],
       "firstStep": "/shared/describing-velocity/page/12/step/1"
     },
@@ -329,7 +329,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "/shared/describing-velocity/page/13/step/3",
         "/shared/describing-velocity/page/13/step/4",
         "/shared/describing-velocity/page/13/step/5",
-        "/shared/describing-velocity/page/13/step/6"                     
+        "/shared/describing-velocity/page/13/step/6"
       ],
       "firstStep": "/shared/describing-velocity/page/13/step/1"
     }
@@ -342,7 +342,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -375,11 +375,12 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         { "name": "animation",
           "setup": {
             "pane": "top",
+            "hideGraph": true,
             "duration": 9000, // ms
             "channelWidth": 70,
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -388,10 +389,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
                   { "y": 0   }
                 ]
             }],
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "animations": [{
                 "data": "position-data",
-                "image": sc_static('images/carWhite2.png'),
+                "image": "carWhite2.png",
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -400,7 +401,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           }
         }
       ],
-      "beforeText": " <p><strong>How can you describe velocity?</strong></p> <p>Let’s start by examining the motion of a car traveling from one point to another.</p> <p><b>Click</b> the Start button to the right to watch the car’s journey. Click the Stop, Reset, and Start buttons to pause and replay the motion multiple times.</p> <p><b>No graph will appear on this page. On the next page, you will be able to see the graph.</b></p> <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p>",
+      "beforeText": " <p><strong>How can you describe velocity?</strong></p> <p>Let’s start by examining the motion of a car traveling from one point to another.</p> <p><b>Click</b> the Start button to the right to watch the car’s journey. Click the Stop, Reset, and Start buttons to pause and replay the motion multiple times.</p> <p>In the area below, <strong>describe</strong> the motion of the car. Try to use as many key words from the word bank as possible.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "afterText": "<p><strong>Word bank:</strong> start, position, time, forward, backward, moving, stopping, velocity, constant, steady, changing, slow, fast, end, meters, seconds<p>",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
@@ -429,7 +430,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "annotations": []
         }
       },
-      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph. You should have three labels, one for each motion.</p><p>To add a label, <b>click</b> where you want to add a label, and <b>start typing</b>.</p>",
+      "beforeText": "<p>Here is your earlier description of the car's journey:</p><p>&quot;%@&quot;</p><p><b>Start</b> the animation again and <b>observe</b> the resulting position-time graph for the car's motion.</p><p>Using key words from your descriptions, <b>label</b> the motions that occurred during each segment of the position-time graph. You should have three labels, one for each motion.</p><p><b>Click</b> or tap where you want a label. <b>Double-click</b> (or double-tap) in the label to add text and click outside the label when you are done. You can also click and drag to rearrange the labels.</p>",
       "substitutedExpressions": ["student-description"],
       "submissibilityDependsOn": ["annotation", "students-segment-labels"],
       "submissibilityCriterion": [">", ["numberOfLabels", "students-segment-labels"], 0],
@@ -448,10 +449,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -462,7 +463,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
                 "data": "position-data",
-                "image": sc_static('images/carWhite2.png'),
+                "image": "carWhite2.png",
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -486,12 +487,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["students-segment-labels"]
+          "annotations": ["students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": []
+          "annotations": [],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "tools": [],
@@ -523,12 +527,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight"]
+          "annotations": ["p1-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>Select a point in the first interval (between 0 and 3 seconds) on the graph. Then <b>click OK</b>.</p>",
@@ -561,12 +568,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "students-segment-labels", "segment-0-3s"]
-        },
+          "annotations": ["p1-highlight", "students-segment-labels", "segment-0-3s"],
+          "activeDatadefs": ["position-data"]
+     },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight"]
+          "annotations": ["p1-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Your point was not within the first three seconds.</p> <p>Select a point in the <b>first interval (between 0 and 3 seconds)</b>. Then <b>click OK</b>.</p>",
@@ -598,12 +608,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Select a second point in the first interval (between 0 and 3 seconds). Then <b>click OK</b>.</p>",
@@ -635,12 +648,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-0-3s"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-0-3s"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Your point was not within the first three seconds. </p> <p> Select a point in the <b>first interval (between 0 and 3 seconds)</b>. Then <b>click OK</b>.</p>",
@@ -672,12 +688,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The car's velocity during the first interval is the slope of this line.</p><p>What was the car's velocity between the two points, in meters per second?</p>",
@@ -702,12 +721,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the car's the velocity between the two points, in meters per second?</p>",
@@ -735,12 +757,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the change in the car's position between the two points, in meters?</p>",
@@ -768,13 +793,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight"],
-          "highlightedAnnotations": ["rise-bracket"]
+          "highlightedAnnotations": ["rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the change in the car's position between the two points, in meters?</p>",
@@ -789,7 +817,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/4/step/10",
       "submitButtonTitle": "Check My Answer"
-    },        
+    },
     {
       "url": "/shared/describing-velocity/page/4/step/10",
       "activityPage": "/shared/describing-velocity/page/4",
@@ -802,13 +830,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight"],
-          "highlightedAnnotations": ["rise-bracket"]
+          "highlightedAnnotations": ["rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b> <p>The change in the car's position was <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -833,12 +864,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"]
+          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>What is the change in time between the points, in seconds?</p>",
@@ -866,17 +900,20 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"]
+          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p><p>What is the change in time between the points, in seconds?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "afterText": "<p>Hint: Look at the graph.</p>",      
+      "afterText": "<p>Hint: Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -899,13 +936,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+           "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
-          "highlightedAnnotations": ["run-bracket"]
+          "highlightedAnnotations": ["run-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time between the points, in seconds?</p>",
@@ -933,13 +973,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+           "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
-          "highlightedAnnotations": ["run-bracket"]
+          "highlightedAnnotations": ["run-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>The change in time between the points is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -964,12 +1007,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -978,7 +1024,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "change-position",
         "change-position-units",
         "change-time",
-        "change-time-units"        
+        "change-time-units"
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
@@ -1002,12 +1048,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p> <p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -1039,12 +1088,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p> <p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -1077,12 +1129,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1111,11 +1166,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["students-segment-labels"]
+          "annotations": ["students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
-          "data": "position-data"
+          "data": "position-data",
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p> <p>The velocity was <b>0 m/s</b> in the first segment.</p>",
@@ -1137,12 +1195,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["students-segment-labels"]
+          "annotations": ["students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": []
+          "annotations": [],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "tools": [],
@@ -1174,12 +1235,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight"]
+          "annotations": ["p1-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>Select a point in the second interval (between 3 and 6 seconds) on the graph. Then <b>click OK</b>.</p>",
@@ -1212,12 +1276,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "students-segment-labels", "segment-3-6s"]
+          "annotations": ["p1-highlight", "students-segment-labels", "segment-3-6s"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight"]
+          "annotations": ["p1-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Your point was not within the second three seconds.</p> <p>Select a point in the <b>second interval (between 3 and 6 seconds)</b>. Then <b>click OK</b>.</p>",
@@ -1249,12 +1316,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Select a second point in the second interval (between 3 and 6 seconds). Then <b>click OK</b>.</p>",
@@ -1286,12 +1356,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-3-6s"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-3-6s"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Your point was not within the second three seconds. </p> <p> Select a point in the <b>second interval (between 3 and 6 seconds)</b>. Then <b>click OK</b>.</p>",
@@ -1323,12 +1396,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The car's velocity during the second interval is the slope of this line.</p><p>What was the car's velocity between the two points, in meters per second?</p>",
@@ -1353,12 +1429,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the car's the velocity between the two points, in meters per second?</p>",
@@ -1386,12 +1465,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the change in the car's position between the two points, in meters?</p>",
@@ -1419,13 +1501,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight"],
-          "highlightedAnnotations": ["rise-bracket"]
+          "highlightedAnnotations": ["rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the change in the car's position between the two points, in meters?</p>",
@@ -1440,7 +1525,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/5/step/10",
       "submitButtonTitle": "Check My Answer"
-    },        
+    },
     {
       "url": "/shared/describing-velocity/page/5/step/10",
       "activityPage": "/shared/describing-velocity/page/5",
@@ -1453,13 +1538,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight"],
-          "highlightedAnnotations": ["rise-bracket"]
+          "highlightedAnnotations": ["rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b> <p>The change in the car's position was <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1484,12 +1572,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"]
+          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>What is the change in time between the points, in seconds?</p>",
@@ -1517,17 +1608,20 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"]
+          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p><p>What is the change in time between the points, in seconds?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "afterText": "<p>Hint: Look at the graph.</p>",      
+      "afterText": "<p>Hint: Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -1550,13 +1644,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
-          "highlightedAnnotations": ["run-bracket"]
+          "highlightedAnnotations": ["run-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time between the points, in seconds?</p>",
@@ -1584,13 +1681,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
-          "highlightedAnnotations": ["run-bracket"]
+          "highlightedAnnotations": ["run-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>The change in time between the points is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1603,7 +1703,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "defaultBranch": "/shared/describing-velocity/page/5/step/15",
       "submitButtonTitle": "Continue"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/5/step/15",
       "activityPage": "/shared/describing-velocity/page/5",
@@ -1615,12 +1715,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -1629,7 +1732,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "change-position",
         "change-position-units",
         "change-time",
-        "change-time-units"        
+        "change-time-units"
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
@@ -1641,7 +1744,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "defaultBranch": "/shared/describing-velocity/page/5/step/17",
       "submitButtonTitle": "Check My Answer"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/5/step/16",
       "activityPage": "/shared/describing-velocity/page/5",
@@ -1653,12 +1756,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p> <p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -1690,12 +1796,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p> <p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -1728,12 +1837,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -1762,11 +1874,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["students-segment-labels"]
+          "annotations": ["students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
-          "data": "position-data"
+          "data": "position-data",
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p> <p>The velocity was <b>2 m/s</b> in the second segment.</p>",
@@ -1774,9 +1889,9 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
     },
-    
-    
-    
+
+
+
     {
       "url": "/shared/describing-velocity/page/6/step/1",
       "activityPage": "/shared/describing-velocity/page/6",
@@ -1788,12 +1903,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["students-segment-labels"]
+          "annotations": ["students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": []
+          "annotations": [],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "tools": [],
@@ -1825,12 +1943,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight"]
+          "annotations": ["p1-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>Select a point in the third interval (between 6 and 9 seconds) on the graph. Then <b>click OK</b>.</p>",
@@ -1863,12 +1984,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "students-segment-labels", "segment-6-9s"]
+          "annotations": ["p1-highlight", "students-segment-labels", "segment-6-9s"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight"]
+          "annotations": ["p1-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Your point was not within the third three seconds.</p> <p>Select a point in the <b>third interval (between 6 and 9 seconds)</b>. Then <b>click OK</b>.</p>",
@@ -1900,12 +2024,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Select a second point in the third interval (between 6 and 9 seconds). Then <b>click OK</b>.</p>",
@@ -1937,12 +2064,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-6-9s"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "segment-6-9s"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Your point was not within the third three seconds. </p> <p>Select a point in the <b>third interval (between 6 and 9 seconds)</b>. Then <b>click OK</b>.</p>",
@@ -1974,12 +2104,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>Here is the line connecting the two points you selected. The car's velocity during the third interval is the slope of this line.</p><p>What was the car's velocity between the two points, in meters per second?</p>",
@@ -2004,12 +2137,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the car's the velocity between the two points, in meters per second?</p>",
@@ -2037,12 +2173,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the change in the car's position between the two points, in meters?</p>",
@@ -2070,13 +2209,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight"],
-          "highlightedAnnotations": ["rise-bracket"]
+          "highlightedAnnotations": ["rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What was the change in the car's position between the two points, in meters?</p>",
@@ -2091,7 +2233,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/6/step/10",
       "submitButtonTitle": "Check My Answer"
-    },        
+    },
     {
       "url": "/shared/describing-velocity/page/6/step/10",
       "activityPage": "/shared/describing-velocity/page/6",
@@ -2104,13 +2246,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
-          "highlightedAnnotations": ["rise-arrow"]
+          "highlightedAnnotations": ["rise-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight"],
-          "highlightedAnnotations": ["rise-bracket"]
+          "highlightedAnnotations": ["rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b> <p>The change in the car's position was <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -2135,12 +2280,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"]
+          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>What is the change in time between the points, in seconds?</p>",
@@ -2168,17 +2316,20 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"]
+          "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p><p>What is the change in time between the points, in seconds?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/numeric",
-      "afterText": "<p>Hint: Look at the graph.</p>",      
+      "afterText": "<p>Hint: Look at the graph.</p>",
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
@@ -2201,13 +2352,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
-          "highlightedAnnotations": ["run-bracket"]
+          "highlightedAnnotations": ["run-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>What is the change in time between the points, in seconds?</p>",
@@ -2235,13 +2389,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
           "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line", "rise-arrow"],
-          "highlightedAnnotations": ["run-arrow"]
+          "highlightedAnnotations": ["run-arrow"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
           "annotations": ["p1-highlight", "p2-highlight", "rise-bracket"],
-          "highlightedAnnotations": ["run-bracket"]
+          "highlightedAnnotations": ["run-bracket"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>The change in time between the points is <b>%@</b> - <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -2266,12 +2423,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -2280,7 +2440,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
         "change-position",
         "change-position-units",
         "change-time",
-        "change-time-units"        
+        "change-time-units"
       ],
       "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
@@ -2304,12 +2464,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p> <p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -2341,12 +2504,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p> <p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, then what is the velocity, in meters per second?</p>",
@@ -2379,12 +2545,15 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"]
+          "annotations": ["p1-highlight", "p2-highlight", "students-segment-labels", "slope-line"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
           "data": "position-data",
-          "annotations": ["p1-highlight", "p2-highlight"]
+          "annotations": ["p1-highlight", "p2-highlight"],
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Incorrect.</b></p><p>If the change in position is <b>%@</b> %@ during a change in time of <b>%@</b> %@, the velocity is <b>%@</b> divided by <b>%@</b>, or <b>%@</b> %@.</p>",
@@ -2413,11 +2582,14 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "xAxis": "/shared/describing-velocity/axes/9s",
           "yAxis": "/shared/describing-velocity/axes/40m",
           "data": [["position-data", { "line-type": "connected" }]],
-          "annotations": ["students-segment-labels"]
+          "annotations": ["students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "table",
-          "data": "position-data"
+          "data": "position-data",
+          "xLabel": "Time",
+          "yLabel": "Position"
         }
       },
       "beforeText": "<p><b>Correct!</b></p> <p>The velocity was <b>10 m/s</b> in the third segment.</p>",
@@ -2425,7 +2597,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "hideSubmitButton": true,
       "nextButtonShouldSubmit": true
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/7/step/1",
       "activityPage": "/shared/describing-velocity/page/7",
@@ -2439,7 +2611,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["position-data", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": ["students-segment-labels"]
+          "annotations": ["students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         }
       },
       "beforeText": "<p>Here are the correct velocities: </p><p>Velocity from 0-3 seconds: <b>0 m/s</b></p><p>Velocity from 3-6 seconds: <b>2 m/s</b></p><p>Velocity from 6-9 seconds: <b>10 m/s</b></p><p><b>Insert</b> these values into your labels by <b>double-clicking</b> inside the labels and <b>typing</b>.</p>",
@@ -2461,7 +2634,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["position-data-hacky-fix", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["position-data-hacky-fix"]
         },
         "bottom": {
           "type": "graph",
@@ -2480,10 +2654,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -2494,7 +2668,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "position-data-hacky-fix",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -2528,7 +2702,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["position-data-hacky-fix", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["position-data-hacky-fix"]
         },
         "bottom": {
           "type": "graph",
@@ -2547,10 +2722,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -2561,7 +2736,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "position-data-hacky-fix",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -2579,7 +2754,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": " <p>Both graphs provide information about the same motion.</p><p><b>Describe</b> how constant velocity is represented on a position-time graph and on a velocity-time graph. (<b>Click Start</b> if you need to see the motion and graphs again.)</p><p><b>Word bank</b>: constant velocity, flat, straight, tilted, up, down, right, left, segment, horizontal, steep, slope</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/open",
       "submissibilityCriterion": ["textLengthIsAtLeast", 1, ["responseField", 1]],
-      "nextButtonShouldSubmit": true, 
+      "nextButtonShouldSubmit": true,
       "hideSubmitButton": true,
       "isFinalStep": true
     },
@@ -2597,7 +2772,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-velocity"]
         }
       },
       "responseBranches": [
@@ -2627,7 +2803,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-velocity"]
         }
       },
       "responseBranches": [
@@ -2640,7 +2817,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint: When a car is stopped, what is its change in position? Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "hideSubmitButton": false
     },
 
@@ -2657,7 +2834,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-velocity"]
         }
       },
       "responseBranches": [
@@ -2670,7 +2848,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint: What is the velocity when the car is stopped? Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "hideSubmitButton": false
     },
 
@@ -2687,7 +2865,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-velocity"]
         }
       },
       "responseBranches": [
@@ -2700,7 +2879,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint: The velocity of the car is 0 m/s when the car is stopped. Try again:</p><p>On a velocity-time graph, how can you tell if a car is stopped?</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "hideSubmitButton": false
     },
 
@@ -2717,7 +2896,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-velocity"]
         }
       },
       "beforeText": "<p><b>Incorrect.</b> The graph is a horizontal segment in which the velocity is 0.</p>",
@@ -2739,15 +2919,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-velocity", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-velocity"]
         }
       },
       "beforeText": "<p><b>Correct!</b> The graph is a horizontal segment in which the velocity is 0.</p>",
-      "nextButtonShouldSubmit": true, 
+      "nextButtonShouldSubmit": true,
       "hideSubmitButton": true,
       "isFinalStep": true
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/10/step/1",
       "activityPage": "/shared/describing-velocity/page/10",
@@ -2761,7 +2942,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["position-data", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": ["students-segment-labels"]
+          "annotations": ["students-segment-labels"],
+          "activeDatadefs": ["position-data"]
         },
         "bottom": {
           "type": "graph",
@@ -2781,7 +2963,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "nextButtonShouldSubmit": true,
       "isFinalStep": true
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/1",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -2795,7 +2977,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         }
       },
       "tools": [
@@ -2804,10 +2987,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -2818,7 +3001,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
                 "data": "car-in-reverse-position",
-                "image": sc_static('images/carWhite2.png'),
+                "image": "carWhite2.png",
                 "width":  30,
                 "height": 61,
                 "xOffset": 40,
@@ -2832,7 +3015,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submitButtonTitle": "OK",
       "defaultBranch": "/shared/describing-velocity/page/11/step/2"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/2",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -2846,7 +3029,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         },
         "bottom": {
           "type": "graph",
@@ -2864,10 +3048,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -2878,7 +3062,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "car-in-reverse-position",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -2903,7 +3087,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submissibilityCriterion": [">=", ["sketchLength", "student-velocity-prediction"], 0],
       "defaultBranch": "/shared/describing-velocity/page/11/step/3"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/3",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -2917,7 +3101,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         },
         "bottom": {
           "type": "graph",
@@ -2936,10 +3121,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -2950,7 +3135,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "car-in-reverse-position",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -2971,7 +3156,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submitButtonTitle": "OK",
       "defaultBranch": "/shared/describing-velocity/page/11/step/4"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/4",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -2985,7 +3170,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         },
         "bottom": {
           "type": "graph",
@@ -3004,10 +3190,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -3018,7 +3204,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "car-in-reverse-position",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -3036,16 +3222,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Based on your observations, which of the following statements is true?",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
-        { 
+        {
           "criterion": ["=", ["responseField", 1], 2],
           "step": "/shared/describing-velocity/page/11/step/9"
         }
       ],
       "defaultBranch": "/shared/describing-velocity/page/11/step/5"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/5",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -3059,7 +3245,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         },
         "bottom": {
           "type": "graph",
@@ -3078,10 +3265,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -3092,7 +3279,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "car-in-reverse-position",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -3110,16 +3297,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 1: Recall that velocity is the change in position divided by the change in time. Try again: </p><p>Based on your observations, which of the following statements is true?",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
-        { 
+        {
           "criterion": ["=", ["responseField", 1], 2],
           "step": "/shared/describing-velocity/page/11/step/9"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/11/step/6"      
+      "defaultBranch": "/shared/describing-velocity/page/11/step/6"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/6",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -3133,7 +3320,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         },
         "bottom": {
           "type": "graph",
@@ -3152,10 +3340,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -3166,7 +3354,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "car-in-reverse-position",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -3184,16 +3372,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 2: The change in position is 0 m - 36 m = -36 m. The change in time is 9 s - 0 s = 9 s. Try again: </p><p>Based on your observations, which of the following statements is true?",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
-        { 
+        {
           "criterion": ["=", ["responseField", 1], 2],
           "step": "/shared/describing-velocity/page/11/step/9"
         }
       ],
       "defaultBranch": "/shared/describing-velocity/page/11/step/7"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/7",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -3207,7 +3395,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         },
         "bottom": {
           "type": "graph",
@@ -3226,10 +3415,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -3240,7 +3429,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "car-in-reverse-position",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -3258,16 +3447,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 3: The change in the car's position between the end point and the beginning point, divided by the change in the times of the end point and beginning point, is -36 m / 9 s. Try again: </p><p>Based on your observations, which of the following statements is true?",
       "responseTemplate": "/shared/describing-velocity/response-template/velocity-time-question-2",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
-        { 
+        {
           "criterion": ["=", ["responseField", 1], 2],
           "step": "/shared/describing-velocity/page/11/step/9"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/11/step/8"      
+      "defaultBranch": "/shared/describing-velocity/page/11/step/8"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/8",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -3281,7 +3470,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         },
         "bottom": {
           "type": "graph",
@@ -3300,10 +3490,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
                 "name":  "finish",
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -3314,7 +3504,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "car-in-reverse-position",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -3331,10 +3521,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "beforeText": "<p><b>Incorrect.</b> Velocity = change in position / change in time = -36 m / 9 s = -4 m/s. The velocity is negative.",
       "hideSubmitButton": true,
-      "shouldFinishImmediately": true,      
+      "shouldFinishImmediately": true,
       "isFinalStep": true
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/11/step/9",
       "activityPage": "/shared/describing-velocity/page/11",
@@ -3348,7 +3538,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "data": [
             ["car-in-reverse-position", { "point-type": "none", "line-type": "connected" }]
           ],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": ["car-in-reverse-position"]
         },
         "bottom": {
           "type": "graph",
@@ -3367,9 +3558,9 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             "pane": "top",
             "duration": 9000, // ms
             "channelWidth": 70,
-            "backgroundImage": sc_static('images/road-dashed.png'),
+            "backgroundImage": "road-dashed.png",
             "staticImages": [{
-                "image":  sc_static('images/finish.png'),
+                "image":  "finish.png",
                 "width":  70,
                 "height": 10,
                 "xOffset": 0,
@@ -3380,7 +3571,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
             }],
             "animations": [{
               "data": "car-in-reverse-position",
-              "image": sc_static('images/carWhite2.png'),
+              "image": "carWhite2.png",
               "width":  30,
               "height": 61,
               "xOffset": 40,
@@ -3397,10 +3588,10 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "beforeText": "<p><b>Correct!</b> Velocity = change in position / change in time = -36 m / 9 s = -4 m/s. The velocity is negative.",
       "hideSubmitButton": true,
-      "shouldFinishImmediately": true,      
+      "shouldFinishImmediately": true,
       "isFinalStep": true
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/1",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3420,7 +3611,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 3],
@@ -3429,7 +3620,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/2"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/2",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3458,7 +3649,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/3"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/3",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3478,7 +3669,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is moving forward with constant velocity, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 3],
@@ -3487,7 +3678,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/4"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/4",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3507,16 +3698,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows positive velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving forward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 3],
           "step": "/shared/describing-velocity/page/12/step/6"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/12/step/5"      
+      "defaultBranch": "/shared/describing-velocity/page/12/step/5"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/5",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3558,28 +3749,28 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submitButtonTitle": "OK",
       "defaultBranch": "/shared/describing-velocity/page/12/step/7"
     },
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
       "url": "/shared/describing-velocity/page/12/step/7",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3599,7 +3790,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 1],
@@ -3608,7 +3799,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/8"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/8",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3628,7 +3819,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is stopped, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 1],
@@ -3637,7 +3828,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/9"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/9",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3657,7 +3848,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is stopped, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 1],
@@ -3666,7 +3857,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/10"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/10",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3686,16 +3877,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows 0 velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was stopped.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 1],
           "step": "/shared/describing-velocity/page/12/step/12"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/12/step/11"      
+      "defaultBranch": "/shared/describing-velocity/page/12/step/11"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/11",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3737,23 +3928,23 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "submitButtonTitle": "OK",
       "defaultBranch": "/shared/describing-velocity/page/12/step/13"
     },
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
       "url": "/shared/describing-velocity/page/12/step/13",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3773,7 +3964,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 5],
@@ -3782,7 +3973,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/14"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/14",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3802,7 +3993,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 1: If an object is moving backward, what are some possible velocity values? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 5],
@@ -3811,7 +4002,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/15"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/15",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3831,7 +4022,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 2: While an object is moving backward, is its velocity 0, positive, or negative? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 5],
@@ -3840,7 +4031,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       ],
       "defaultBranch": "/shared/describing-velocity/page/12/step/16"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/16",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3860,16 +4051,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "beforeText": "<p><b>Incorrect.</b> Hint 3: Which segment shows negative velocity? Try again:</p><p>Choose the segment in the velocity-time graph that describes where the object was moving backward with a constant velocity.</p>",
       "responseTemplate": "/shared/describing-velocity/response-template/identify-the-motion-responses",
       "submitButtonTitle": "Check My Answer",
-      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],      
+      "submissibilityCriterion": ["isNumeric", ["responseField", 1]],
       "responseBranches": [
         {
           "criterion": ["=", ["responseField", 1], 5],
           "step": "/shared/describing-velocity/page/12/step/18"
         }
       ],
-      "defaultBranch": "/shared/describing-velocity/page/12/step/17"      
+      "defaultBranch": "/shared/describing-velocity/page/12/step/17"
     },
-    
+
     {
       "url": "/shared/describing-velocity/page/12/step/17",
       "activityPage": "/shared/describing-velocity/page/12",
@@ -3910,18 +4101,18 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       },
       "beforeText": "<p><b>Correct!</b> From 11 to 20 seconds, the velocity was -5 m/s, which means that the object was moving at a steady rate backward. This corresponds to Segment E.</p>",
       "hideSubmitButton": true,
-      "nextButtonShouldSubmit": true,      
+      "nextButtonShouldSubmit": true,
       "isFinalStep": true
     },
-    
+
     {
        "url": "/shared/describing-velocity/page/13/step/1",
        "activityPage": "/shared/describing-velocity/page/13",
-       "paneConfig": "single",          
+       "paneConfig": "single",
        "panes": {
          "single": {
            "type": "image",
-           "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
+           "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
            "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
          }
        },
@@ -3935,17 +4126,17 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
        }],
        "defaultBranch": "/shared/describing-velocity/page/13/step/2"
     },
-    
-    
+
+
 
     {
       "url": "/shared/describing-velocity/page/13/step/2",
       "activityPage": "/shared/describing-velocity/page/13",
-      "paneConfig": "single",          
+      "paneConfig": "single",
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -3959,16 +4150,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       }],
       "defaultBranch": "/shared/describing-velocity/page/13/step/3"
     },
-    
-    
+
+
     {
       "url": "/shared/describing-velocity/page/13/step/3",
       "activityPage": "/shared/describing-velocity/page/13",
-      "paneConfig": "single",          
+      "paneConfig": "single",
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -3982,16 +4173,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       }],
       "defaultBranch": "/shared/describing-velocity/page/13/step/4"
     },
-    
-    
+
+
     {
       "url": "/shared/describing-velocity/page/13/step/4",
       "activityPage": "/shared/describing-velocity/page/13",
-      "paneConfig": "single",          
+      "paneConfig": "single",
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -4005,16 +4196,16 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       }],
       "defaultBranch": "/shared/describing-velocity/page/13/step/5"
     },
-    
+
 
     {
       "url": "/shared/describing-velocity/page/13/step/5",
       "activityPage": "/shared/describing-velocity/page/13",
-      "paneConfig": "single",          
+      "paneConfig": "single",
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
@@ -4022,24 +4213,24 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
       "afterText": "<p>This is the end of the activity.</p>",
       "hideSubmitButton": true
     },
-    
-    
+
+
     {
       "url": "/shared/describing-velocity/page/13/step/6",
       "activityPage": "/shared/describing-velocity/page/13",
-      "paneConfig": "single",          
+      "paneConfig": "single",
       "panes": {
         "single": {
           "type": "image",
-          "path": "/static/smartgraphs/en/current/resources/images/NASCAR_practice_modified.jpg",
+          "path": "/static/smartgraphs/en/current/source/resources/images/NASCAR_practice_modified.jpg",
           "caption": "Modified from a public domain U.S. Air Force photo by Larry McTighe"
         }
       },
       "beforeText": "<p><b>Correct!</b></p><p>To describe velocity, you can use a position-time table or graph, a velocity-time table or graph, or descriptive words.</p>",
       "afterText": "<p>This is the end of the activity.</p>",
-      "hideSubmitButton": true      
+      "hideSubmitButton": true
     }
-    
+
   ],
   "units": [
   ],
@@ -4351,7 +4542,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "x": 8,
           "y": 3,
           "xOffset": -53,
-          "yOffset": -20        
+          "yOffset": -20
         },
         {
           "url": "/shared/describing-velocity/annotation/segment-d-label",
@@ -4361,7 +4552,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "x": 11,
           "y": 0,
           "xOffset": 23,
-          "yOffset": -71         
+          "yOffset": -71
         },
         {
           "url": "/shared/describing-velocity/annotation/segment-e-label",
@@ -4371,8 +4562,8 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "x": 15.5,
           "y": -3,
           "xOffset": -51,
-          "yOffset": -61      
-        }                
+          "yOffset": -61
+        }
       ]
     },
     {
@@ -4496,7 +4687,7 @@ Smartgraphs.activityDocs["/shared/describing-velocity"] =
           "points": []
         }
       ]
-    },      
+    },
     {
       "type": "SegmentOverlay",
       "records": [

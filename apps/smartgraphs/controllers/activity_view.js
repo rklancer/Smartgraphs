@@ -21,55 +21,55 @@ Smartgraphs.activityViewController = SC.Object.create(
   firstImageCaption: null,
   secondImageValue: null,
   secondImageCaption: null,
-  
+
   paneIsSplit: null,
-  
+
   // ..........................................................
   // ACTIVITY VIEW BUTTON STATE
   //
-  
+
   // "input" properties
-  
+
   canSubmitBinding:              SC.Binding.oneWay('Smartgraphs.activityStepController.canSubmit'),
-  isFinalStepBinding:            SC.Binding.oneWay('Smartgraphs.activityStepController.isFinalStep'),  
+  isFinalStepBinding:            SC.Binding.oneWay('Smartgraphs.activityStepController.isFinalStep'),
   hideSubmitButtonBinding:       SC.Binding.oneWay('Smartgraphs.activityStepController.hideSubmitButton'),
   nextButtonShouldSubmitBinding: SC.Binding.oneWay('Smartgraphs.activityStepController.nextButtonShouldSubmit'),
   canGotoNextPageBinding:        SC.Binding.oneWay('Smartgraphs.activityController.canGotoNextPage'),
   isFirstPageBinding:            SC.Binding.oneWay('Smartgraphs.activityPagesController.isFirstPage'),
   isLastPageBinding:             SC.Binding.oneWay('Smartgraphs.activityPagesController.isLastPage'),
-  
-  
+
+
   // "output" properties
-  
+
   enableBackAndForward: NO,
-  
+
   showSubmitButton: function () {
     return !(this.get('hideSubmitButton') || this.get('nextButtonShouldSubmit'));
   }.property('hideSubmitButton', 'nextButtonShouldSubmit').cacheable(),
-    
+
   enableSubmitButtonBinding: SC.Binding.oneWay('Smartgraphs.activityStepController.canSubmit'),
   showNextPageButtonBinding: SC.Binding.not('Smartgraphs.activityPagesController.isLastPage'),
-  
+
   highlightNextPageButton: function () {
-    return this.get('canGotoNextPage') || 
+    return this.get('canGotoNextPage') ||
            (this.get('isFinalStep') && this.get('nextButtonShouldSubmit') && this.get('canSubmit'));
   }.property('canGotoNextPage', 'isFinalStep', 'nextButtonShouldSubmit', 'canSubmit').cacheable(),
-  
+
   enableNextPageButton: function () {
     return (this.get('enableBackAndForward') && !this.get('isLastPage')) || this.get('highlightNextPageButton');
   }.property('enableBackAndForward', 'isLastPage', 'highlightNextPageButton').cacheable(),
-  
+
   enableBackPageButton: function () {
     return (this.get('enableBackAndForward') && !this.get('isFirstPage'));
   }.property('enableBackAndForward', 'isFirstPage'),
-  
+
   // ..........................................................
   // PANE NAME HANDLING
   //
 
   firstOrSecondFor: function (pane) {
     var split = this.get('paneIsSplit');
-    
+
     if ( (!split && pane === 'single') || (split && pane === 'top') ) {
       return 'first';
     }
@@ -78,10 +78,10 @@ Smartgraphs.activityViewController = SC.Object.create(
     }
     return NO;
   },
-  
+
   validPaneFor: function (pane) {
     var split = this.get('paneIsSplit');
-    
+
     if ( (!split && pane === 'single') || (split && (pane === 'top' || pane === 'bottom')) ) {
       return pane;
     }
@@ -90,31 +90,42 @@ Smartgraphs.activityViewController = SC.Object.create(
       return NO;
     }
   },
-  
+
   otherPaneFor: function (pane) {
     pane = this.validPaneFor(pane);
-    
+
     if (pane === 'bottom') return 'top';
     if (pane === 'top') return 'bottom';
-    
+
     return NO;
   },
-  
+
   graphControllerForPane: function (pane) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
-    
+
     if (which) {
       return Smartgraphs.get(which + 'GraphController');
     }
-    
+
     return NO;
   },
   
+  tableControllerForPane: function (pane) {
+    pane = this.validPaneFor(pane);
+    var which = this.firstOrSecondFor(pane);
+
+    if (which) {
+      return Smartgraphs.get(which + 'TableController');
+    }
+
+    return NO;
+  },
+
   // ..........................................................
   // ACTIVITY VIEW COMMANDS
   //
-  
+
   setPaneConfig: function (paneConfig) {
     if (paneConfig === 'single') {
       this.set('paneIsSplit', false);
@@ -129,51 +140,51 @@ Smartgraphs.activityViewController = SC.Object.create(
   showImage: function (pane, path, caption) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
-    
+
     if ( !which ) return NO;
-    
+
     this.set(which + 'ImageValue', path);
-    this.set(which + 'ImageCaption', caption || null);    
+    this.set(which + 'ImageCaption', caption || null);
     this.set(pane + 'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'ImageView');
-    
+
     return YES;
   },
-  
+
   showGraph: function (pane, graphConfig) {
     pane = this.validPaneFor(pane);
     var which = this.firstOrSecondFor(pane);
-    
+
     if ( !which ) return NO;
-    
+
     Smartgraphs.get(which+'GraphController').setupGraph(graphConfig);
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'GraphPane');
-  
+
     return YES;
   },
-  
+
   showTable: function (pane, tableConfig) {
     pane = this.validPaneFor(pane);
 
     var which = this.firstOrSecondFor(pane);
-    
+
     if ( !which ) return NO;
-    
+
     Smartgraphs.get(which+'TableController').setupTable(tableConfig);
     this.set(pane+'PaneNowShowing', 'Smartgraphs.activityPage.'+which+'TableView');
 
     return YES;
   },
-  
+
   hidePane: function (pane) {
     pane = this.validPaneFor(pane);
-    
+
     if ( !pane ) return NO;
-    
+
     this.set(pane+'PaneNowShowing', null);
-    
+
     return YES;
   },
-  
+
   paneForController: function (controller) {
     if (this.get('paneIsSplit')) {
       if (controller === Smartgraphs.firstGraphController) {
@@ -190,8 +201,8 @@ Smartgraphs.activityViewController = SC.Object.create(
     }
     return NO;
   },
-  
-  clear: function () {    
+
+  clear: function () {
     if (this.get('paneIsSplit')) {
       this.hidePane('top');
       this.hidePane('bottom');

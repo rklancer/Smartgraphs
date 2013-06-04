@@ -12,15 +12,15 @@ describe("ANIMATION_TOOL state", function () {
       controller;
 
   beforeEach( function () {
-    
+
     animationTool = Smartgraphs.animationTool;
     spyOn(animationTool, 'startAnimating');
     spyOn(animationTool, 'stopAnimating');
     spyOn(animationTool, 'clearAnimation');
     spyOn(animationTool, 'clearSetup');
-    
+
     animationTool.mainPane = 'animation-tool-main-pane';
-    
+
     animationTool.graphPane = SC.Object.create({
       graphView: SC.Object.create({
         animate: function() { return YES; },
@@ -33,15 +33,15 @@ describe("ANIMATION_TOOL state", function () {
       showControls: function () {},
       hideControls: function () {},
       revealAllControls: function () {},
-      enableClearControl: function () {},      
+      enableClearControl: function () {},
       highlightStartControl: function () {},
       highlightStopControl: function () {},
       highlightClearControl: function () {}
     });
-    
+
     spyOn(controller, 'showControls').andReturn(YES);
     spyOn(controller, 'hideControls').andReturn(YES);
-    
+
     statechart = SC.Statechart.create({
       rootState: SC.State.design({
         initialSubstate: 'ANIMATION_TOOL',

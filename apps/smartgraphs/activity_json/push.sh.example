@@ -1,2 +1,0 @@
-#!/bin/bash
-curl -vX POST -H "Content-type: application/json" -d "{\"source\":\"smartgraphs\",\"target\":\"http://username:password@couchdb.cosmos.concord.org/smartgraphs\"}" http://127.0.0.1:5984/_replicate

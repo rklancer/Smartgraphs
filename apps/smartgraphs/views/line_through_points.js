@@ -9,7 +9,7 @@
 
   Display view for the LineThroughPoints annotation model, which represents a line
   running through two defined points and extending to the edges of the graph.
-  
+
   @extends RaphaelViews.RaphaelView
 */
 
@@ -17,7 +17,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.LineThroughPointsView.prototype */ {
 
   canShowInTable: NO,
-  
+
   strokeBinding: '.item.color',
   strokeWidth: 2,
   strokeOpacity: 0.7,
@@ -47,7 +47,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
         yAxis      = graphView.get('yAxis'),
         points     = this.getEndPoints(x1, y1, x2, y2, xAxis, yAxis),
         i,
-        coords, 
+        coords,
         point,
         pathComponents = [],
         pathString,
@@ -87,12 +87,12 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
       raphaelPath.attr(attrs);
     }
   },
-  
+
   /**
    * Find the y coordinate of a line at point x, given x and the slope-intercept numbers (m and b).
-   * 
+   *
    * @private
-   * 
+   *
    * @param {Numeric} x The x coordinate
    * @param {Numeric} m The line's slope
    * @param {Numeric} b The line's y-intercept
@@ -101,12 +101,12 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
   _y: function (x, m, b) {
     return (m * x) + b;
   },
-  
+
   /**
    * Find the x coordinate of a line at point y, given y and the slope-intercept numbers (m and b).
-   * 
+   *
    * @private
-   * 
+   *
    * @param {Numeric} y The y coordinate
    * @param {Numeric} m The line's slope
    * @param {Numeric} b The line's y-intercept
@@ -119,9 +119,9 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
       return (y - b)/m;
     }
   },
-  
+
   /**
-    Find the end points of a line segment through point1 and point2 that is bounded by the xMin, xMax, yMin, yMax of 
+    Find the end points of a line segment through point1 and point2 that is bounded by the xMin, xMax, yMin, yMax of
     the axes
   */
   getEndPoints: function (x1, y1, x2, y2, xAxis, yAxis) {
@@ -144,7 +144,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
     var m = (y2-y1)/(x2-x1);
     // => b = y - mx
     var b = y2 - (m * x2);
-    
+
     // case 2: leftmost point is on the bottom border
     if (this._y(xMin, m, b) < yMin) {
       // start point is on bottom border
@@ -156,7 +156,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
         // end point is on right border
         points.push({ 'x': xMax, 'y': this._y(xMax, m, b) });
       } // Because we started at the bottom and are going left/right, end point can't be on left
-      
+
       return points;
     }
 
@@ -173,10 +173,10 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
         // end point is on top border
         points.push({ 'y': yMax, 'x': this._x(yMax, m, b) });
       }
-      
+
       return points;
     }
-    
+
     // case 4: leftmost point is on the top border
     if (yMax < this._y(xMin, m, b)) {
       points.push({ 'y': yMax, 'x': this._x(yMax, m, b) });
@@ -190,7 +190,7 @@ Smartgraphs.LineThroughPointsView = RaphaelViews.RaphaelView.extend(
 
       return points;
     }
-    
+
     // oops
     return null;
   }

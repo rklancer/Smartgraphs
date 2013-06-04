@@ -1,7 +1,7 @@
 /*globals Smartgraphs */
 
 Smartgraphs.activityDocs = Smartgraphs.activityDocs || {};
-Smartgraphs.activityDocs["/shared/animation-example"] = 
+Smartgraphs.activityDocs["/shared/animation-example"] =
 {
   "_id": "animation-example.df6",
   "_rev": "1",
@@ -10,7 +10,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
     "title": "Animation Tool Example",
     "url": "/shared/animation-example",
     "owner": "shared",
-    "pages": [   
+    "pages": [
       "/shared/animation-example/page/1"
     ],
     "axes": [
@@ -24,7 +24,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
       "url": "/shared/animation-example/page/1",
       "activity": "/shared/animation-example",
       "index": 1,
-      "introText": "<h1>Labeling Calculated Data</h1>",                        
+      "introText": "<h1>Labeling Calculated Data</h1>",
       "steps": [
         "/shared/animation-example/page/1/step/1"
       ],
@@ -54,7 +54,10 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
           "xAxis": "/shared/animation-example/axes/12s",
           "yAxis": "/shared/animation-example/axes/2mps",
           "data": ["velocity-calculated"],
-          "annotations": []
+          "annotations": [],
+          "activeDatadefs": [
+          "velocity-calculated"
+          ]
         }
       },
       "beforeText": "<p>Click Start, Reset, and Stop to see the animation in the top graph. Note that you can also label one point bottom graph.</p>",
@@ -71,18 +74,18 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
             "pane": "top",
             "duration": 3000,   // ms
             "channelWidth": 70, // same as the default
-            "backgroundImage": sc_static('images/road'),
+            "backgroundImage": "road.png",
             "loop": true,
             "animations": [{
                 "data": "position-data2",
-                "image": sc_static('images/car'),
+                "image": "car.png",
                 "width": 70,
                 "height": 30,
                 "xOffset": 0,
                 "yOffset": 0
               }, {
                 "data": "position-data",
-                "image": "circle",
+                "image": "circle.png",
                 "xOffset": -10,
                 "yOffset": 0
             }]
@@ -93,7 +96,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
   ],
   "units": [
   ],
-  "axes": [  
+  "axes": [
     {
       "url": "/shared/animation-example/axes/12s",
       "units": "/builtins/units/seconds",
@@ -121,7 +124,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
   ],
   "responseTemplates": [
   ],
-  "tags": [  
+  "tags": [
   ],
   "variables": [
   ],
@@ -129,7 +132,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
     {
       "type": "UnorderedDataPoints",
       "records": [
-        {    
+        {
           "url": "/shared/animation-example/datadefs/position-data",
           "name": "position-data",
           "activity": "/shared/animation-example",
@@ -141,7 +144,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
           "yShortLabel": "Position",
           "points": [[0.0,0.0],[0.25,0.025],[0.5,0.05],[0.75,0.075],[1.0,0.1],[1.25,0.125],[1.5,0.15],[1.75,0.175],[2.0,0.2],[2.25,0.225],[2.5,0.25],[2.75,0.276],[3.0,0.303],[3.25,0.34],[3.5,0.404],[3.75,0.515],[4.0,0.653],[4.25,0.801],[4.5,0.95],[4.75,1.1],[5.0,1.25],[5.25,1.4],[5.5,1.55],[5.75,1.7],[6.0,1.85],[6.25,2.0],[6.5,2.15],[6.75,2.3],[7.0,2.45],[7.25,2.6],[7.5,2.75],[7.75,2.901],[8.0,3.057],[8.25,3.23],[8.5,3.459],[8.75,3.78],[9.0,4.157],[9.25,4.551],[9.5,4.95],[9.75,5.35],[10.0,5.75],[10.25,6.15],[10.5,6.55],[10.75,6.95],[11.0,7.35],[11.25,7.75],[11.5,8.15],[11.75,8.55],[12.0,8.95]]
         },
-        {    
+        {
           "url": "/shared/animation-example/datadefs/position-data2",
           "name": "position-data2",
           "activity": "/shared/animation-example",
@@ -158,7 +161,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
     {
       "type": "FirstOrderDifference",
       "records": [
-        {    
+        {
           "url": "/shared/animation-example/datadefs/velocity-calculated",
           "name": "velocity-calculated",
           "activity": "/shared/animation-example",
@@ -171,7 +174,7 @@ Smartgraphs.activityDocs["/shared/animation-example"] =
           "source": "/shared/animation-example/datadefs/position-data"
         }
       ]
-    }  
+    }
   ],
   "annotations": [
     {

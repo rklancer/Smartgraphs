@@ -8,9 +8,9 @@
 /** @class
 
   Base class of Sampleset hierarchy.
-  
+
   Samplesets maintain an updated discretization/sampling of the data in a DataDefinition.
-  
+
   Individual DataRepresentation objects can observe the Sampleset to get a list of Marks to display on the screen.
 
   @extends SC.Object
@@ -18,11 +18,11 @@
 */
 Smartgraphs.Sampleset = SC.Object.extend(
 /** @scope Smartgraphs.Sampleset.prototype */ {
-  
+
   init: function () {
     sc_super();
     var datadef;
-    
+
     this._getDatadef = function () {
       return datadef;
     };
@@ -31,7 +31,7 @@ Smartgraphs.Sampleset = SC.Object.extend(
       datadef = value;
     };
   },
-  
+
   datadef: function (key, value) {
     if (value !== undefined) {
       this._setDatadef(value);
@@ -39,7 +39,7 @@ Smartgraphs.Sampleset = SC.Object.extend(
     }
     return this._getDatadef();
   }.property(),
-  
+
   getNewRepresentation: function (options) {
     var rep = Smartgraphs.DataRepresentation.create({
       options: options

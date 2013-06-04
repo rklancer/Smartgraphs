@@ -113,6 +113,18 @@ To visit all integration tests directly, open <http://localhost:4020/static/smar
 To visit all unit tests directly, open <http://localhost:4020/static/smartgraphs/en/current/tests/jasmine/unit.html>
 
 
+## Working with .coffee files ##
+
+The following approach is not ideal but works until we improve it.
+Currently these files are at apps/tests/jasmine/integration/src and apps/tests/jasmine/unit/src 
+When working with them it is most useful to have them be compiled to js files automatically.
+
+1. Install node
+2. Install jitter (note: you might want to learn more about npm so you know what this command is doing)
+    sudo npm install --global jitter
+3. run jitter to watch that folder and compile to the parent
+    jitter apps/smartgraphs/tests/jasmine/integration/src apps/smartgraphs/tests/jasmine/integration
+
 ## Miscellaneous reference:
 
 #### How to install CouchDB on OS X using [macports](http://www.macports.org/)

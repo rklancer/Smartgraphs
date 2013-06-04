@@ -20,7 +20,7 @@ Smartgraphs.CircledPoint = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.CircledPoint.prototype */ {
 
   x: Smartgraphs.Tag.valueFrom('tag', 'x', 'xRecord'),
-  
+
   y: Smartgraphs.Tag.valueFrom('tag', 'y', 'yRecord'),
 
   tag: SC.Record.toOne('Smartgraphs.Tag'),
@@ -29,17 +29,17 @@ Smartgraphs.CircledPoint = Smartgraphs.Annotation.extend(
     x-value of the point to highlight, if explicitly specified by author
   */
   xRecord: SC.Record.attr(Number),
-  
+
   /**
     y-value of the point to highlight, if explicitly specified by author
   */
   yRecord: SC.Record.attr(Number),
-  
+
   /**
     Color of circle around the point
   */
   color: SC.Record.attr(String)
-  
+
 });
 
 // let the graph view know how to instantiate a view class to display this item

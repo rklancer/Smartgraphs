@@ -11,9 +11,9 @@ Smartgraphs.executor.defineCommands(function (def) {
 
   /**
     Set attributes (other than 'name'!) of an attribute
-    
+
     @param args
-  
+
     @param {String} args.name
       The name of the Annotation whose properties will be modified
   */
@@ -26,13 +26,13 @@ Smartgraphs.executor.defineCommands(function (def) {
       annotation.set(prop, args[prop]);
     }
   });
-  
-  
+
+
   /**
     Disable submission
   */
   def('disableSubmission', function () {
     Smartgraphs.statechart.sendAction('disableSubmission');
   });
-  
+
 });

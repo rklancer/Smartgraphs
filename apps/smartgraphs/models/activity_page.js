@@ -7,8 +7,8 @@
 
 /** @class
 
-  A ActivityPage is one 'page' in a learner Activity (which steps learners through a complicated learning activity, and 
-  helps them generate various artifacts during that acitivity, such as a lab book or slide show presentation) 
+  A ActivityPage is one 'page' in a learner Activity (which steps learners through a complicated learning activity, and
+  helps them generate various artifacts during that acitivity, such as a lab book or slide show presentation)
 
   @extends SC.Record
   @version 0.1
@@ -18,21 +18,21 @@ Smartgraphs.ActivityPage = SC.Record.extend(
 
   url: SC.Record.attr(String),
   primaryKey: 'url',
-  
+
   /**
     The Activity this ActivityPage belongs to.
   */
   activity: SC.Record.toOne('Smartgraphs.Activity',  { inverse: 'pages', isMaster: YES, aggregate: YES }),
-  
+
   /**
     @private
-    
+
     A hack to deal with the fact that SC.Record.propagateToAggregates isn't recursive.
   */
   _statusDidChange: function () {
     if (this.get('status') & SC.Record.DIRTY) this.invokeLast(this.propagateToAggregates);
   }.observes('status'),
-  
+
   /**
     A name for this ActivityPage; to be exposed to authors and, possibly, to learners as the heading of the page.
   */
@@ -54,43 +54,43 @@ Smartgraphs.ActivityPage = SC.Record.extend(
     All ActivitySteps associated with this ActivityPage.
   */
   steps: SC.Record.toMany('Smartgraphs.ActivityStep', { inverse: 'activityPage' }),
-  
+
   /**
     The one ActivityStep to open first.
   */
   firstStep: SC.Record.toOne('Smartgraphs.ActivityStep'),
 
   /**
-    A set of name:expression pairs, which can be evaluated on demand using the expression ['get', <name>] or using 
+    A set of name:expression pairs, which can be evaluated on demand using the expression ['get', <name>] or using
     Smartgraphs.activityPageController.getFromContext(<name>)
-        
+
     @property {Array}
   */
   contextVars: SC.Record.attr(Array),
-  
+
   /**
     @private
     Whether the ActivityPage is selectable or not
   */
   isSelectable: NO,
-  
+
   /**
     The page number of this page. Set by the activityPagesController and only valid when this page is part of the
     "current" activity.
   */
   pageNumber: null,
-  
+
   pageNumberAsString: function () {
     return (this.get('pageNumber')+1)+'';
   }.property('pageNumber'),
-  
+
   /**
     @private
-    
+
     The context in which local page variables are kept
   */
   context: null,
-  
+
   init: function () {
     sc_super();
     this.set('context', {});

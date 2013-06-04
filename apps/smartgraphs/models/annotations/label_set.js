@@ -19,9 +19,21 @@ Smartgraphs.LabelSet = Smartgraphs.Annotation.extend(
 /** @scope Smartgraphs.LabelSet.prototype */ {
 
   labels: SC.Record.toMany('Smartgraphs.Label'),
-  
+
+  /**
+    Whether to display this annotation in front of all the data views.
+
+    @property {Boolean}
+  */
+  isTopAnnotation: true,
+
   isRemovalEnabled: NO,
-  
+
+  /*
+   * View associated with this annotation.
+   */
+  view: null,
+
   createChildLabel: function () {
     var label = this.get('store').createRecord(Smartgraphs.Label, {
       activity: this.getPath('activity.id'),
@@ -33,19 +45,21 @@ Smartgraphs.LabelSet = Smartgraphs.Annotation.extend(
     this.get('labels').pushObject(label);
     return label;
   },
-  
+
   removeLabel: function (label) {
     this.get('labels').removeObject(label);
+    var labelView = label.get('view');
+    labelView.didRemoveFromGraphView();
   },
-  
+
   enableRemoval: function () {
     this.set('isRemovalEnabled', YES);
     this.get('labels').invoke('notifyPropertyChange', 'isRemovalEnabled');
   },
-  
+
   disableRemoval: function () {
     this.set('isRemovalEnabled', NO);
-    this.get('labels').invoke('notifyPropertyChange', 'isRemovalEnabled');    
+    this.get('labels').invoke('notifyPropertyChange', 'isRemovalEnabled');
   }
 
 });

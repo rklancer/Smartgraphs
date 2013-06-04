@@ -17,9 +17,9 @@ Smartgraphs.ConnectedLine = Smartgraphs.GraphableObject.extend(
 
   // an array of [x,y] pairs
   points: null,
-  
+
   viewClass: function () {
     return Smartgraphs.ConnectedLineView;
   }.property().cacheable()
-  
+
 });

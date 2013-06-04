@@ -2,10 +2,10 @@
 
 function defineJasmineHelpers() {
 
-  jasmine.Matchers.prototype.toBeA = function (scType) {  
+  jasmine.Matchers.prototype.toBeA = function (scType) {
     return SC.kindOf(this.actual, scType);
   };
-  
+
   jasmine.Matchers.prototype.toContainA = function (scType) {
     var contains = function (array, scType) {
       if (!array) return false;
@@ -14,11 +14,11 @@ function defineJasmineHelpers() {
     };
     return contains(this.actual, scType);
   };
-  
+
   jasmine.Matchers.prototype.toBeEmpty = function () {
     return typeof this.actual !== 'undefined' && this.actual.get('length') === 0;
   };
-  
+
   window.runBeforeEach = function (fn) {
     beforeEach( function () { SC.run(fn); });
   };
@@ -26,5 +26,5 @@ function defineJasmineHelpers() {
   window.runAfterEach = function (fn) {
     afterEach( function () { SC.run(fn); });
   };
-  
+
 }

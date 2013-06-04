@@ -15,5 +15,5 @@ Smartgraphs.loadingActivityController = SC.Object.create(
 /** @scope Smartgraphs.loadingActivityController.prototype */ {
 
   openAuthorViewAfterLoading: NO
-  
+
 }) ;

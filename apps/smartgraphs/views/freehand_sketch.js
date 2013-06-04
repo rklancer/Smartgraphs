@@ -13,13 +13,13 @@
 */
 Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.FreehandSketchView.prototype */ {
-  
+
   colorBinding: '.item.color',
   strokeWidth: 3,
   strokeOpacity: 0.4,
-  
+
   displayProperties: 'item.points.[] color'.w(),
-  
+
   renderCallback: function (raphaelCanvas, attrs) {
     return raphaelCanvas.path(attrs.path).attr(attrs);
   },
@@ -36,7 +36,7 @@ Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
         pathString,
         attrs,
         raphaelPath;
-    
+
     for (i = 0, len = points.get('length'); i < len; i++) {
       point = points.objectAt(i);
       coords = graphView.coordinatesForPoint(point[0], point[1]);
@@ -44,9 +44,9 @@ Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
       str.push(Math.round(coords.x));
       str.push(' ');
       str.push(Math.round(coords.y));
-    } 
+    }
     pathString = str.join('') || 'M0 0';         // Raphael won't make path go away in IE if path string = ''
-    
+
     attrs = {
       'path':             pathString,
       'stroke':           this.get('color'),
@@ -55,7 +55,7 @@ Smartgraphs.FreehandSketchView = RaphaelViews.RaphaelView.extend(
       'stroke-linecap':  'round',
       'stroke-linejoin': 'round'
     };
-    
+
     if (firstTime) {
       context.callback(this, this.renderCallback, attrs);
     }

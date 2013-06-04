@@ -1,2 +1,0 @@
-#!/bin/bash
-curl -vX PUT -H "Content-type: application/json" http://username:password@127.0.0.1:5984/smartgraphs/${1//.json/} -d @$1

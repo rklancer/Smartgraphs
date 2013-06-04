@@ -34,8 +34,8 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
     this.clearChildViews();
     this.addChildViews();
     this.set('viewShouldReset', NO);
-  },      
-    
+  },
+
   clearChildViews: function () {
     this._firstInputFieldView = null;
     this.get('childViews').invoke('destroy');
@@ -47,30 +47,30 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
 
     var fieldChoicesList = this.get('fieldChoicesList');
     var values = this.get('values');
-    
+
     var fieldType;
 
     for (var i = 0, ii = fieldTypes.get('length'); i < ii; i++) {
       fieldType = fieldTypes.objectAt(i);
       this.addChildView(fieldType, fieldChoicesList.objectAt(i), values.objectAt(i), i);
-      
+
       if (i === 0 && (fieldType === 'numeric' || fieldType === 'textarea')) {
         this._firstInputFieldView = this.get('childViews').objectAt(0).get('childViews').objectAt(0);
         this.invokeLater(this._beginEditingFirstView);
       }
     }
   },
-  
+
   addChildView: function (fieldType, fieldChoices, initialValue, fieldIndex) {
     var view;
-    
+
     switch (fieldType) {
       case 'textarea':
         view = this.wrap(this.makeTextAreaDesign(initialValue, fieldIndex), {
           height: 97
         });
         break;
-      case 'numeric': 
+      case 'numeric':
         view = this.wrap(this.makeNumericFieldDesign(initialValue, fieldIndex), {
           height: 22,
           width: 100
@@ -82,10 +82,10 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       default:
         throw "ResponseTemplateView received unexpected field type string '" + fieldType + "'.";
     }
-    
+
     this.appendChild(view);
   },
-  
+
   wrap: function (subViewDesign, layout) {
     return SC.View.design({
       useStaticLayout: YES,
@@ -95,11 +95,11 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       childViews: [subViewDesign]
     }).create();
   },
-  
+
   makeTextAreaDesign: function (initialValue, fieldIndex) {
     return SC.TextFieldView.design({
       isTextArea: YES,
-      hint:  'Enter your answer here...',
+      hint: 'Enter your answer here...',
       fieldIndex: fieldIndex,
       value: initialValue,
       isEnabledBinding: '.parentView.parentView.editingShouldBeEnabled',
@@ -107,10 +107,21 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       valueDidChange: function () {
         var values = this.getPath('parentView.parentView.values');
         if (values) values.replace(this.get('fieldIndex'), 1, this.get('value'));
-      }.observes('value')
+      }.observes('value'),
+
+      /**
+        SC.TextFieldView sets this property to NO to work around an (old?) WebKit bug, but not having a placeholder
+        attribute confuses Mobile Safari, at least in iOS5. (Symptom is that, if you tap to edit the textarea, then
+        the hint text becomes part of your response.)
+
+        It's important to feature-detect placeholder support because IE does not respect the 'placeholder' attribute.
+        SC.TextFieldView therefore makes the textarea *content* equal to the hint text, and removes it when the user
+        starts typing.
+      */
+      _supportsPlaceHolder: Smartgraphs.support.placeholder
     });
   },
-  
+
   makeNumericFieldDesign: function (initialValue, fieldIndex) {
     return SC.TextFieldView.design({
       isTextArea: NO,
@@ -124,25 +135,25 @@ Smartgraphs.ResponseTemplateView = SC.StaticContentView.extend(
       }.observes('value')
     });
   },
-  
+
   makeMultipleChoiceView: function (fieldChoices, initialValue, fieldIndex) {
     var items = [];
-    
+
     // transform ['Choice 1', 'Choice 2'] -> [ {title: 'Choice 1', index: 1}, {title: 'Choice 2', index: 2} ]
     items = fieldChoices.reduce(function (prev, item, index) {
       return prev.concat({ title: item, index: index+1 });
     }, []);
-    
+
     return SC.RadioView.design({
       items: items,
-      itemTitleKey: 'title', 
+      itemTitleKey: 'title',
       itemValueKey: 'index',
-      
+
       fieldIndex: fieldIndex,
       value: initialValue,
       isEnabledBinding: '.parentView.editingShouldBeEnabled',
-      useStaticLayout: YES,     
-      
+      useStaticLayout: YES,
+
       valueDidChange: function () {
         var values = this.getPath('parentView.values');
         if (values) values.replace(this.get('fieldIndex'), 1, this.get('value'));

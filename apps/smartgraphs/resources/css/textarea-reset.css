@@ -1,6 +1,6 @@
 /* outline style for each browser tricky stuff... */
 .safari .sc-view .ace.sc-text-field-view.focus {
-  outline: auto 7px -webkit-focus-ring-color; 
+  outline: auto 7px -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 

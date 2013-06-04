@@ -8,14 +8,14 @@
 /** @class
 
   Draws a circle around the point at the specified x, y.
-  
+
   @extends SC.View
 */
 
 Smartgraphs.CircledPointView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.CircledPointView.prototype */
 {
-  
+
   radius: 6,
   strokeBinding: '.item.color',
   strokeWidth: 2,
@@ -42,9 +42,9 @@ Smartgraphs.CircledPointView = RaphaelViews.RaphaelView.extend(
           'stroke-width':   this.get('strokeWidth'),
           'stroke-opacity': this.get('strokeOpacity')
         },
-        
+
         circle;
-    
+
     if (firstTime) {
       context.callback(this, this.renderCallback, attrs);
     }
