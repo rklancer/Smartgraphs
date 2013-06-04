@@ -24,36 +24,36 @@ Smartgraphs.LineThroughPoints = Smartgraphs.Annotation.extend(
 
   /**
     x-value of the first of the two points which define (but do not limit) the line.
-    
+
     @property {Number}
   */
   x1: Smartgraphs.Tag.valueFrom('p1Tag', 'x', 'x1Record'),
 
   /**
     x-value of the first of the two points which define (but do not limit) the line.
-    
+
     @property {Number}
   */
   y1: Smartgraphs.Tag.valueFrom('p1Tag', 'y', 'y1Record'),
-  
+
   /**
     x-value of the first of the two points which define (but do not limit) the line.
-    
+
     @property {Number}
   */
   x2: Smartgraphs.Tag.valueFrom('p2Tag', 'x', 'x2Record'),
-  
+
   /**
     x-value of the first of the two points which define (but do not limit) the line.
-    
+
     @property {Number}
   */
   y2: Smartgraphs.Tag.valueFrom('p2Tag', 'y', 'y2Record'),
-  
+
   x1Record: SC.Record.attr(Number),
   y1Record: SC.Record.attr(Number),
   x2Record: SC.Record.attr(Number),
-  y2Record: SC.Record.attr(Number), 
+  y2Record: SC.Record.attr(Number),
 
   /**
     Optional Tag object which can be used to indirectly specify point 1

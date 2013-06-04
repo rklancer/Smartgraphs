@@ -10,7 +10,7 @@ function setupUserAndSessionFixtures() {
     }
   ];
 
-  Smartgraphs.Session.oldFixtures = Smartgraphs.Session.FIXTURES;  
+  Smartgraphs.Session.oldFixtures = Smartgraphs.Session.FIXTURES;
   Smartgraphs.Session.FIXTURES = [
     { guid: 'empty-session',
       user: null,

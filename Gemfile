@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "sproutcore", "~>1.4"
+gem "sproutcore", "~>1.6.0.1"
 gem "lebowski"
 gem "sc-testdriver", "0.1.1", :git => "git://github.com/concord-consortium/capybara-testrunner.git", :branch => "gem"
 

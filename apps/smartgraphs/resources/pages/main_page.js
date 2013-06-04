@@ -5,65 +5,55 @@
 // ==========================================================================
 /*globals Smartgraphs */
 
-// This page describes the main user interface  
+// This page describes the main user interface
 Smartgraphs.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
     theme: 'pig',
 
     defaultResponder: 'Smartgraphs.statechart',
-        
+
     childViews: 'topToolbar container bottomToolbar'.w(),
-    
+
     topToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_TOP,
-      
-      childViews: ['title', 'editButton', 'runButton', 'saveButton', 'savingMessage'],
-      
+
+      childViews: ['title', 'editButton', 'runButton', 'creditsButton'],
+
       title: SC.LabelView.design({
         layout: { centerY: 0, height: 24, left: 8, width: 400 },
         controlSize: SC.LARGE_CONTROL_SIZE,
         fontWeight: SC.BOLD_WEIGHT,
         valueBinding:   'Smartgraphs.activityController.title'
       }),
+
+      creditsButton: SC.ButtonView.design({
+        layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowCreditsButton',
+        title: 'Credits',
+        action: 'showCredits'
+      }),
       
       editButton: SC.ButtonView.design({
-        layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        layout: { right: 120, centerY: 0, height: 24, width: 80 },
         shouldShowEditButtonBinding: 'Smartgraphs.toolbarController.shouldShowEditButton',
         isVisible: function () {
-          return Smartgraphs.toolbarController.get('shouldShowEditButton') && Smartgraphs.get('allowAuthoring');
+          return Smartgraphs.toolbarController.get('shouldShowEditButton') && Smartgraphs.get('showEditButton');
         }.property('shouldShowEditButton'),
         title: 'Edit',
         action: 'openAuthorView'
       }),
-      
+
       runButton: SC.ButtonView.design({
-        layout: { right: 20, centerY: 0, height: 24, width: 80 },
+        layout: { right: 120, centerY: 0, height: 24, width: 80 },
         isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowRunButton',
         title: 'Run',
         action: 'runActivity'
-      }),
-      
-      saveButton: SC.ButtonView.design({
-        layout: { right: 120, centerY: 0, height: 24, width: 80 },
-        isVisibleBinding: 'Smartgraphs.toolbarController.shouldShowSaveButton',
-        isEnabledBinding: 'Smartgraphs.activityController.isDirty',
-        title: 'Save',
-        action: 'saveActivity'
-      }),
-      
-      // eventually, we can let the toolbar controller handle message choice & visibility
-      
-      savingMessage: SC.LabelView.design({
-        layout: { right: 200, centerY: 0, height: 16, width: 80 },
-        classNames: ['toolbar-message'],
-        value: "saving...",
-        isVisibleBinding: 'Smartgraphs.activityController.isSaving'
       })
     }),
-    
+
     container: SC.SplitView.design({
-      // this minimum width & height should not overflow on a 1024x768 screen even in a browsing setup with lots of 
+      // this minimum width & height should not overflow on a 1024x768 screen even in a browsing setup with lots of
       // extraneous on-screen chrome (say, in FF or IE running in Windows XP)
 
       layout: { top: 32, bottom: 33, minWidth: 960, minHeight: 502 },
@@ -90,7 +80,7 @@ Smartgraphs.mainPage = SC.Page.design({
       bottomRightView: SC.ContainerView.design({
         nowShowingBinding: 'Smartgraphs.appWindowController.viewToShow'
       }),
-      
+
       shouldShowOutlineBinding: 'Smartgraphs.appWindowController.shouldShowOutline',
       shouldShowOutlineDidChange: function () {
         if (this.get('shouldShowOutline')) {
@@ -105,12 +95,12 @@ Smartgraphs.mainPage = SC.Page.design({
         }
       }.observes('shouldShowOutline')
     }),
-    
+
     bottomToolbar: SC.ToolbarView.design({
       anchorLocation: SC.ANCHOR_BOTTOM,
-      
+
       childViews: ['backButton', 'pageButtons', 'nextButton'],
-      
+
       backButton: SC.ButtonView.design({
         layout: { left: 20, centerY: 0, height: 24, width: 80 },
         title: 'Back',
@@ -121,7 +111,7 @@ Smartgraphs.mainPage = SC.Page.design({
 
         isEnabledBinding: 'Smartgraphs.activityViewController.enableBackPageButton'
       }),
-      
+
       pageButtons: SC.SegmentedView.design({
         layout: { left: 120, right: 120, height: 24, centerY: 0 },
         classNames: ['sc-regular-size'],        // workaround for apparent bug in SC.SegmentedView
@@ -130,7 +120,7 @@ Smartgraphs.mainPage = SC.Page.design({
         itemValueKey: 'pageNumber',
         valueBinding: 'Smartgraphs.activityPagesController.currentPageNumber'
       }),
-      
+
       nextButton: SC.ButtonView.design({
         layout: { right: 20, centerY: 0, height: 24, width: 80 },
         title: 'Next',
@@ -138,24 +128,24 @@ Smartgraphs.mainPage = SC.Page.design({
         theme: 'capsule',
         action: 'gotoNextPage',
         isSwipeRight: YES,
-        
+
         isVisibleBinding: 'Smartgraphs.activityViewController.showNextPageButton',
         isEnabledBinding: 'Smartgraphs.activityViewController.enableNextPageButton',
         isDefaultBinding: 'Smartgraphs.activityViewController.highlightNextPageButton'
       })
     })
   }),
-  
+
   // a generic loading view for whatever is loading into mainPane.container
   loadingView: SC.View.design({
     classNames: 'smartgraph-pane'.w(),
     childViews: 'loadingIconView loadingMessageView'.w(),
-    
+
     loadingIconView: SC.ImageView.design({
       layout: { width: 48, height: 48, centerX: 0, centerY: -39 },
       value: sc_static('resources/images/pane_loading.gif')
     }),
-    
+
     loadingMessageView: SC.LabelView.design({
       classNames: 'loading'.w(),
       layout: { width: 200, height: 24, centerX: 0, centerY: 15 },
@@ -163,5 +153,5 @@ Smartgraphs.mainPage = SC.Page.design({
       valueBinding: 'Smartgraphs.appWindowController.loadingMessage'
     })
   })
-  
+
 });

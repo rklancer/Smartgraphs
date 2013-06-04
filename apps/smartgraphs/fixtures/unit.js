@@ -22,25 +22,25 @@ Smartgraphs.Unit.FIXTURES = [
     "abbreviation": "°C",
     "pluralName": "°C"
   },
-  
+
   { "url": "/builtins/units/seconds",
     "activity": null,
     "name": "second",
     "abbreviation": "s",
     "pluralName": "seconds"
   },
-  
+
   { "url": "/builtins/units/minutes",
     "activity": null,
     "name": "minute",
-    "abbreviation": "min",      
+    "abbreviation": "min",
     "pluralName": "minutes"
   },
-  
+
   { "url": "/builtins/units/meters-per-second",
     "activity": null,
     "name": "meter per second",
-    "abbreviation": "m/s",      
+    "abbreviation": "m/s",
     "pluralName": "meters per second"
   }
 

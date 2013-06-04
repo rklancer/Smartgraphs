@@ -16,7 +16,7 @@
         url: "/shared/gravity/page/1",
         activity: "/shared/gravity",
         index: 1,
-        introText: '  <h1>Introduction</h1>\n\n  <p>In the 1600s, Galileo Galilei (1564-1642) hypothesized that objects of different masses would fall at the\n  same rate when they were dropped from the same height and allowed to fall freely. According to legend, Galileo\n  dropped an iron cannon ball and a wooden ball from the Leaning Tower of Pisa to test his hypothesis.</p>',
+        introText: '<h1>Introduction</h1>\n\n<p>In the 1600s, Galileo Galilei (1564-1642) hypothesized that objects of different masses would fall at the\nsame rate when they were dropped from the same height and allowed to fall freely. According to legend, Galileo\ndropped an iron cannon ball and a wooden ball from the Leaning Tower of Pisa to test his hypothesis.</p>',
         steps: ["/shared/gravity/page/1/step/1"],
         firstStep: "/shared/gravity/page/1/step/1"
       }, {
@@ -32,7 +32,7 @@
         url: "/shared/gravity/page/3",
         activity: "/shared/gravity",
         index: 3,
-        introText: '<h1>Look at the Data (Light Ball)</h1>\n\n<p>The data to the right was collected when a light softball was dropped from a height of about 2 meters.\nEvery second, 20 data samples were collected.</p>      ',
+        introText: '<h1>Look at the Data (Light Ball)</h1>\n\n<p>The data to the right was collected when a light softball was dropped from a height of about 2 meters.\nEvery second, 20 data samples were collected.</p>',
         steps: ["/shared/gravity/page/3/step/1"],
         firstStep: "/shared/gravity/page/3/step/1"
       }, {
@@ -88,7 +88,7 @@
         url: "/shared/gravity/page/10",
         activity: "/shared/gravity",
         index: 10,
-        introText: '<h1>Find the Slope (Light Ball)</h1>\n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n\n<p>You are going to find the slope of a line that you think best represents the data when the ball was \nfalling.</p>',
+        introText: '<h1>Find the Slope (Light Ball)</h1>\n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n\n<p>You are going to find the slope of a line that you think best represents the data when the ball was\nfalling.</p>',
         contextVars: [
           {
             name: "initial-velocity",
@@ -149,7 +149,7 @@
         url: "/shared/gravity/page/12",
         activity: "/shared/gravity",
         index: 12,
-        introText: '<h1>Find the Slope (Heavy Ball)</h1>\n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n\n<p>You are going to find the slope of a line that you think best represents the data when the ball was \nfalling.</p>',
+        introText: '<h1>Find the Slope (Heavy Ball)</h1>\n\n<p>The slope of a velocity-time graph tells us how the velocity of an object changed over time.</p>\n\n<p>You are going to find the slope of a line that you think best represents the data when the ball was\nfalling.</p>',
         contextVars: [
           {
             name: "initial-velocity",
@@ -224,7 +224,7 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
+            path: "/static/smartgraphs/en/current/source/resources/images/leaning-tower-of-pisa-wide.jpg",
             caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary** (<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>)"
           }
         },
@@ -272,7 +272,7 @@
       }, {
         url: "/shared/gravity/page/2/step/2",
         activityPage: "/shared/gravity/page/2",
-        beforeText: '        \n<p>To the right, predict what you think the <b>velocity-time</b> graph for the light ball will look like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
+        beforeText: '<p>To the right, predict what you think the <b>velocity-time</b> graph for the light ball will look like.</p>\n\n<p>(Assume that the ground is at 0 meters.)</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -309,7 +309,7 @@
       }, {
         url: "/shared/gravity/page/2/step/3",
         activityPage: "/shared/gravity/page/2",
-        beforeText: '<p>Describe how the ball’s motions are represented on your graphs. Try to use as many words from the word bank\nas possible.</p> \n\n<p><b>Word Bank</b>: ball, released, seconds, meters, position, velocity, increased, decreased, stayed the\nsame, fast, slow, stopped, ground.</p>',
+        beforeText: '<p>Describe how the ball’s motions are represented on your graphs. Try to use as many words from the word bank\nas possible.</p>\n\n<p><b>Word Bank</b>: ball, released, seconds, meters, position, velocity, increased, decreased, stayed the\nsame, fast, slow, stopped, ground.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -345,7 +345,8 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: ["light-ball-position"],
-            annotations: []
+            annotations: [],
+            activeDatadefs: ["light-ball-position"]
           },
           bottom: {
             type: "graph",
@@ -353,7 +354,8 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["light-ball-velocity"],
-            annotations: []
+            annotations: [],
+            activeDatadefs: ["light-ball-velocity"]
           }
         },
         hideSubmitButton: true,
@@ -372,6 +374,7 @@
             yAxis: "/shared/gravity/axes/position",
             data: ["light-ball-position"],
             annotations: ["light-ball-position"]
+            
           },
           bottom: {
             type: "graph",
@@ -426,7 +429,7 @@
       }, {
         url: "/shared/gravity/page/5/step/2",
         activityPage: "/shared/gravity/page/5",
-        beforeText: '<p>To the right, predict what you think the <b>velocity-time</b> graph will look like when the heavy ball is \ndropped from the same height.</p>',
+        beforeText: '<p>To the right, predict what you think the <b>velocity-time</b> graph will look like when the heavy ball is\ndropped from the same height.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -472,7 +475,8 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/position",
             data: ["heavy-ball-position"],
-            annotations: []
+            annotations: [],
+            activeDatadefs: ["heavy-ball-position"]
           },
           bottom: {
             type: "graph",
@@ -480,7 +484,8 @@
             xAxis: "/shared/gravity/axes/time",
             yAxis: "/shared/gravity/axes/velocity",
             data: ["heavy-ball-velocity"],
-            annotations: []
+            annotations: [],
+            activeDatadefs: ["heavy-ball-velocity"]
           }
         },
         hideSubmitButton: true,
@@ -597,7 +602,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -624,7 +631,7 @@
       }, {
         url: "/shared/gravity/page/9/step/p1-incorrect-left",
         activityPage: "/shared/gravity/page/9",
-        beforeText: '<p>Incorrect. At this point, the ball\'s velocity was (approximately) 0. Therefore, the ball was not moving. Try\nagain.</p>\n   \n<p>Click the earliest point at which the ball was in motion.</p>',
+        beforeText: '<p>Incorrect. At this point, the ball\'s velocity was (approximately) 0. Therefore, the ball was not moving. Try\nagain.</p>\n\n<p>Click the earliest point at which the ball was in motion.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -638,7 +645,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -665,7 +674,7 @@
       }, {
         url: "/shared/gravity/page/9/step/p1-incorrect-right",
         activityPage: "/shared/gravity/page/9",
-        beforeText: '<p>Incorrect. This point does not represent the beginning of the ball\'s motion. Try again.</p>\n   \n<p>Click the earliest point at which the ball was in motion.</p>',
+        beforeText: '<p>Incorrect. This point does not represent the beginning of the ball\'s motion. Try again.</p>\n\n<p>Click the earliest point at which the ball was in motion.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -679,7 +688,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -720,7 +731,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -761,7 +774,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -802,7 +817,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -843,7 +860,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -866,7 +885,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -904,7 +925,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1"]
+            annotations: ["light-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -942,7 +965,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -983,7 +1008,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1010,7 +1037,7 @@
       }, {
         url: "/shared/gravity/page/10/step/p2-same-as-p1",
         activityPage: "/shared/gravity/page/10",
-        beforeText: '<p>Incorrect. The point you selected is the same as the first point you selected. You need two different points\nin order to calculate the slope of the line between them. Try again.</p> \n\n<p>Select another point in the highlighted interval and then click OK.</p>',
+        beforeText: '<p>Incorrect. The point you selected is the same as the first point you selected. You need two different points\nin order to calculate the slope of the line between them. Try again.</p>\n\n<p>Select another point in the highlighted interval and then click OK.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -1024,7 +1051,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1065,7 +1094,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1101,7 +1132,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1132,7 +1165,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1163,7 +1198,9 @@
             type: "table",
             data: ["light-ball-velocity"],
             annotations: ["light-ball-point-1", "light-ball-point-2"],
-            highlightedAnnotations: ["light-ball-rise-bracket"]
+            highlightedAnnotations: ["light-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1194,7 +1231,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         submitButtonTitle: "OK",
@@ -1217,7 +1256,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1248,7 +1289,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1279,7 +1322,9 @@
             type: "table",
             data: ["light-ball-velocity"],
             annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket"],
-            highlightedAnnotations: ["light-ball-run-bracket"]
+            highlightedAnnotations: ["light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1310,7 +1355,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         submitButtonTitle: "OK",
@@ -1333,7 +1380,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1364,7 +1413,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1395,7 +1446,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"]
+            annotations: ["light-ball-point-1", "light-ball-point-2", "light-ball-rise-bracket", "light-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -1419,7 +1472,9 @@
           bottom: {
             type: "table",
             data: ["light-ball-velocity"],
-            annotations: ["light-ball-point-1", "light-ball-point-2"]
+            annotations: ["light-ball-point-1", "light-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -1442,7 +1497,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1483,7 +1540,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1524,7 +1583,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1565,7 +1626,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1606,7 +1669,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1647,7 +1712,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1688,7 +1755,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -1711,7 +1780,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1749,7 +1820,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1"]
+            annotations: ["heavy-ball-point-1"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1787,7 +1860,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1828,7 +1903,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1855,7 +1932,7 @@
       }, {
         url: "/shared/gravity/page/12/step/p2-same-as-p1",
         activityPage: "/shared/gravity/page/12",
-        beforeText: '<p>Incorrect. The point you selected is the same as the first point you selected. You need two different points\nin order to calculate the slope of the line between them. Try again.</p> \n\n<p>Select another point in the highlighted interval and then click OK.</p>',
+        beforeText: '<p>Incorrect. The point you selected is the same as the first point you selected. You need two different points\nin order to calculate the slope of the line between them. Try again.</p>\n\n<p>Select another point in the highlighted interval and then click OK.</p>',
         paneConfig: "split",
         panes: {
           top: {
@@ -1869,7 +1946,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         tools: [
@@ -1910,7 +1989,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1946,7 +2027,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -1977,7 +2060,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2008,7 +2093,9 @@
             type: "table",
             data: ["heavy-ball-velocity"],
             annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
-            highlightedAnnotations: ["heavy-ball-rise-bracket"]
+            highlightedAnnotations: ["heavy-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2039,7 +2126,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         submitButtonTitle: "OK",
@@ -2062,7 +2151,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2093,7 +2184,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2124,7 +2217,9 @@
             type: "table",
             data: ["heavy-ball-velocity"],
             annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket"],
-            highlightedAnnotations: ["heavy-ball-run-bracket"]
+            highlightedAnnotations: ["heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2155,7 +2250,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         submitButtonTitle: "OK",
@@ -2178,7 +2275,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2209,7 +2308,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         responseTemplate: "/components/response-template/numeric",
@@ -2240,7 +2341,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2", "heavy-ball-rise-bracket", "heavy-ball-run-bracket"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -2264,7 +2367,9 @@
           bottom: {
             type: "table",
             data: ["heavy-ball-velocity"],
-            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"]
+            annotations: ["heavy-ball-point-1", "heavy-ball-point-2"],
+            xLabel: "Time",
+            yLabel: "Position"
           }
         },
         isFinalStep: true,
@@ -2334,7 +2439,7 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
+            path: "/static/smartgraphs/en/current/source/resources/images/leaning-tower-of-pisa-wide.jpg",
             caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary** (<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>)"
           }
         },
@@ -2350,7 +2455,7 @@
         panes: {
           single: {
             type: "image",
-            path: "/static/smartgraphs/en/current/resources/images/leaning-tower-of-pisa-wide.jpg",
+            path: "/static/smartgraphs/en/current/source/resources/images/leaning-tower-of-pisa-wide.jpg",
             caption: "Creative Commons BY-NC-SA 2.0 photo courtesy flickr user **Mary** (<a href=\"http://www.flickr.com/photos/virgomerry/315412804/\">link</a>)"
           }
         },

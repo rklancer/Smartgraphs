@@ -9,7 +9,7 @@ sc_require('mixins/arrow_drawing');
 
 /** @class
 
-Display view for the IndicatingArrow subclass of Smartgraphs.Annotation. Draws a stroke 
+Display view for the IndicatingArrow subclass of Smartgraphs.Annotation. Draws a stroke
 to a specified point, with an arrowhead at that point.
 
 @extends RaphaelViews.RaphaelView
@@ -18,14 +18,14 @@ Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.A
 /** @scope Smartgraphs.IndicatingArrowView.prototype */ {
 
   canShowInTable: YES,
-  
+
   strokeBinding: '.item.color',
   isHighlightedBinding: '.item.isHighlighted',
-  
+
   strokeWidth: function () {
     return this.get('isHighlighted') ? 3 : 2;
   }.property('isHighlighted'),
-  
+
   strokeOpacity: function () {
     return this.get('isHighlighted') ? 0.9 : 0.5;
   }.property('isHighlighted'),
@@ -34,7 +34,7 @@ Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.A
     SproutCore will call render(context, firstTime == NO) if these properties change
   */
   displayProperties: 'point1 point2 label stroke isHighlighted strokeWidth strokeOpacity'.w(),
-  
+
   /**
     We are using renderCallback in views to call non-SC render methods like
     RaphaelCanvas.segmentPath with the correct attributes.
@@ -50,7 +50,7 @@ Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.A
   render: function(context, firstTime) {
     var graphView = this.get('graphView');
     var arrowEnds = this.getStartAndEnd(this.get('item'));
-    
+
     var startCoords = graphView ? graphView.coordinatesForPoint(arrowEnds.start.x, arrowEnds.start.y) : {'x': arrowEnds.start.x, 'y': arrowEnds.start.y };
     var endCoords =   graphView ? graphView.coordinatesForPoint(arrowEnds.end.x, arrowEnds.end.y) : {'x': arrowEnds.end.x, 'y': arrowEnds.end.y };
     var pathString = this.arrowPath(startCoords.x, startCoords.y, endCoords.x, endCoords.y, 10, 15);
@@ -79,14 +79,14 @@ Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.A
       path.attr(attrs);
     }
   },
-  
-  /** 
+
+  /**
     Given an annotation, returns the start and end points of the arrow to be drawn, relative to the graph axes. In other
     words, this adjusts for isHorizontal, isVertical and isClockwise values, as well as extracting x and y values from
     the points of the annotation.
-    
+
     Returns an object containing "start" and "end" objects, each of which is a coordinate pair (i.e. "x" and "y" values).
-    
+
     @params annotation {Smartgraphs.IndicatingArrow} The arrow being viewed.
   */
   getStartAndEnd: function(annotation) {
@@ -95,9 +95,9 @@ Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.A
         len = annotation.get('length'),
         angle = annotation.get('pointAngle');
     // console.log('Length: ' + len + ', angle: ' + angle);
-    
+
     var x1, y1, start, end;
-    
+
     if (angle === 0) { // Easy ones first: down from the top
       x1 = x2;
       y1 = y2 + len;
@@ -119,7 +119,7 @@ Smartgraphs.IndicatingArrowView = RaphaelViews.RaphaelView.extend( Smartgraphs.A
       x1 = x2 - len * Math.cos(theta);
       y1 = y2 - len * Math.sin(theta);
     }
-    
+
     start = { x: x1, y: y1 };
     end =   { x: x2, y: y2 };
     return { 'start': start, 'end': end };

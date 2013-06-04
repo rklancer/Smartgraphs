@@ -13,15 +13,15 @@
 */
 
 Smartgraphs.ArrowDrawing = {
-	
+
 	/***
-	*                   ^ <-------- angle  
+	*                   ^ <-------- angle
 	*
 	*                   *   <------ tip (x,y)    ---
 	*                  * *                          |
 	*                 *   *                         |- len
 	*                *     *                        |
-	* baseA(x,y)--> ********* <---- baseB (x,y)  --- 
+	* baseA(x,y)--> ********* <---- baseB (x,y)  ---
 	*                   *
 	*                   *
 	*                   *
@@ -29,39 +29,39 @@ Smartgraphs.ArrowDrawing = {
 	*                   *
 	*                   * <-------- start (x,y)
 	*
-    Returns a Raphael path string which draws an arrow. 
+    Returns a Raphael path string which draws an arrow.
     Parameters should be actual screen coordinates, not dataset coordinates.
-    
+
     Original from Noah Paessel, https://gist.github.com/550233
-    
+
     @params startx {Number} X-coordinate of the start point
     @params starty {Number} Y-coordinate of the start point
     @params endx {Number} X-coordinate of the end point
     @params endy {Number} Y-coordinate of the end point
     @params len {Number} Length of the "tip" of the arrowhead
-    @params angle {Number} Angle in degrees 
-      between the line and each wing of the arrowhead. 
+    @params angle {Number} Angle in degrees
+      between the line and each wing of the arrowhead.
       Should be less than 90.
   */
-  arrowPath: function(startx,starty,endx,endy,len,angle) {    
+  arrowPath: function(startx,starty,endx,endy,len,angle) {
 		return Smartgraphs.ArrowDrawing.arrowPathArray(startx,starty,endx,endy,len,angle).join(" ");
 	},
 
 	/**
-	
+
 	Returns an array representation of the path elements for an arrow
-  
+
 	@params startx {Number} X-coordinate of the start point
     @params starty {Number} Y-coordinate of the start point
     @params endx {Number} X-coordinate of the end point
     @params endy {Number} Y-coordinate of the end point
     @params len {Number} Length of the "tip" of the arrowhead
-    @params angle {Number} Angle in degrees 
-      between the line and each wing of the arrowhead. 
+    @params angle {Number} Angle in degrees
+      between the line and each wing of the arrowhead.
       Should be less than 90.
 
 	**/
-  arrowPathArray: function(startx,starty,endx,endy,len,angle) {    
+  arrowPathArray: function(startx,starty,endx,endy,len,angle) {
     var theta  = Math.atan2((endy-starty),(endx-startx)),
         baseAngleA = theta + angle * Math.PI/180,
         baseAngleB = theta - angle * Math.PI/180,
@@ -73,9 +73,9 @@ Smartgraphs.ArrowDrawing = {
         baseBY     = endy - len * Math.sin(baseAngleB),
         pathData   = [];
 
-    /* 
+    /*
     *   Limit precision of decimals for SVG rendering.
-    *   otherwise we get really long SVG strings, 
+    *   otherwise we get really long SVG strings,
     *   and webkit error messsages like of this sort:
     *   "Error: Problem parsing d='<svg string with long dec>'"
     */

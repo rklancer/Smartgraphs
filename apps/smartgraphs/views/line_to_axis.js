@@ -17,10 +17,11 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
 {
 
   canShowInTable: NO,
-  
+
   // TODO: update these defaults (and also displayProperties)
   radius: 8,
   defaultStroke: '#aa0000',
+  strokeBinding: '.item.color',
   defaultStrokeWidth: 2,
   defaultStrokeOpacity: 0.7,
   fill: '#ffffff',
@@ -31,7 +32,7 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
    even if it is not onscreen and not in the DOM (this will change
    later in the SC framework)
    */
-  displayProperties: 'item.point.x item.point.y'.w(),
+  displayProperties: 'item.x item.y stroke'.w(),
 
   /**
    We are using renderCallback in views to call non-SC render methods like
@@ -52,7 +53,7 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
     }
     linePath.attr({
       'stroke-width': this.defaultStrokeWidth,
-      'stroke': this.defaultStroke,
+      'stroke': (stroke = this.get('stroke')) != null ? stroke : this.defaultStroke,
       'stroke-opacity': this.defaultStrokeOpacity
     }); //.toBack();
     //    console.log("renderCallback returning linePath:", linePath);
@@ -68,19 +69,26 @@ Smartgraphs.LineToAxisView = RaphaelViews.RaphaelView.extend(
 
     /** Collect Raphael attributes for the linePath into attrs */
     var attrs;
-    // TODO: Handle points not in the 1st quadrant and handle lines to the x-axis
-    var startingPoint = annotation.get('point');
-    if (startingPoint) {
-      var linePathStartingCoords = graphView.coordinatesForPoint(startingPoint.get('x'), startingPoint.get('y'));
+    var startingPoint = {x: annotation.get('x'), y: annotation.get('y')};
+    if (startingPoint.x != null && startingPoint.y != null) {
+      var linePathStartingCoords = graphView.coordinatesForPoint(startingPoint.x, startingPoint.y);
       if (linePathStartingCoords) {
         var linePathEndingCoords;
         var axis = annotation.get('axis');
         if (axis == "x") {
           // Make a linePathEndingCoords that matches point on the x-axis
-          linePathEndingCoords = graphView.coordinatesForPoint(startingPoint.get('x'), 0);
+          if (startingPoint.y > 0) { // First or fourth quadrants, line goes down
+              linePathEndingCoords = graphView.coordinatesForPoint(startingPoint.x, Math.max(0, graphView.yAxis.get('min')));
+          } else { // Second or third quadrants, line goes up
+              linePathEndingCoords = graphView.coordinatesForPoint(startingPoint.x, Math.min(0, graphView.yAxis.get('max')));
+          }
         } else {
           // By default, make a linePathEndingCoords that matches point on the y-axis
-          linePathEndingCoords = graphView.coordinatesForPoint(0, startingPoint.get('y'));
+          if (startingPoint.x > 0) { // First or second quadrants, line goes right to left
+              linePathEndingCoords = graphView.coordinatesForPoint(Math.max(0, graphView.xAxis.get('min')), startingPoint.y);
+          } else { // Third or fourth quadrants, line goes left to right
+              linePathEndingCoords = graphView.coordinatesForPoint(Math.min(0, graphView.xAxis.get('max')), startingPoint.y);
+          }
         }
 
         if (linePathEndingCoords) {

@@ -18,49 +18,49 @@
 */
 Smartgraphs.Axis = SC.Record.extend(
 /** @scope Smartgraphs.Axis.prototype */ {
-  
+
   url: SC.Record.attr(String),
   primaryKey: 'url',
-  
+
   /**
     The activity this axis is part of.
-    
+
     @property {Smartgraphs.Activity}
   */
   activity: SC.Record.toOne('Smartgraphs.Activity', { inverse: 'axes', isMaster: YES, aggregate: YES }),
-  
+
   /**
     The units of measure used by this axis. Only Datasets with matching units for the corresponding values are allowed
     to be added to a graph with this axis.
-    
+
     @property {Smartgraphs.Unit}
   */
   units: SC.Record.toOne('Smartgraphs.Unit'),
-  
+
   /**
     Minimum value of the axis
-    
+
     @property {Number}
   */
   min: SC.Record.attr(Number),
 
   /**
     Maximum value of the axis
-    
+
     @property {Number}
   */
   max: SC.Record.attr(Number),
-  
+
   /**
     Number of steps between tick marks on the axis. Generally should be an integer, but this is not a strict
     requirement.
-    
+
     @property {Number}
-  */  
+  */
   nSteps: SC.Record.attr(Number),
-  
+
   /**
-    Label for the axis. If no label is specified here, 
+    Label for the axis. If no label is specified here,
 
     @property {String}
   */

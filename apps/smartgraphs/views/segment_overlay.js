@@ -14,23 +14,23 @@ Smartgraphs.SegmentOverlayView = RaphaelViews.RaphaelView.extend(
 /** @scope Smartgraphs.SegmentOverlayView.prototype */
 {
 
-  canShowInTable: NO,  
+  canShowInTable: NO,
 
   points: null,
   datadefName: '',
   xMin: null,
   xMax: null,
-  
+
   itemColorBinding: '.item.color',
   defaultColor: '#ffff00',
-  
+
   color: function () {
     return this.get('itemColor') || this.get('defaultColor');
   }.property('itemColor', 'defaultColor'),
-  
+
   strokeWidth: 14,
   strokeOpacity: 0.3,
-  
+
   displayProperties: 'points.[] item.datadefName item.xMin item.xMax stroke strokeWidth strokeOpacity'.w(),
 
   renderCallback: function(raphaelCanvas, attrs) {
@@ -52,22 +52,22 @@ Smartgraphs.SegmentOverlayView = RaphaelViews.RaphaelView.extend(
         datadef,
         dataRepresentation,
         path,
-        coords, 
+        coords,
         point,
         i,
         len;
-    
+
     // if our points array is undefined, or defined by a different datadef, or a different range, set the points
     // array first
     if (!points || datadefName !== annotationDatadefName || xMin !== annotationXMin || xMax !== annotationXMax) {
-      
+
       datadefName = annotationDatadefName;
       this.set('datadefName', datadefName);         // remember what datadef our points come from
       xMin = annotationXMin;
       this.set('xMin', xMin);                       // remember what range our points come from
       xMax = annotationXMax;
       this.set('xMax', xMax);
-      
+
       // get a new points array
       datadef = Smartgraphs.activityObjectsController.findDatadef(datadefName);
       dataRepresentation = datadef.getNewRepresentation({xMin: xMin, xMax: xMax, 'point-type': 'none'});
@@ -75,7 +75,7 @@ Smartgraphs.SegmentOverlayView = RaphaelViews.RaphaelView.extend(
       points = dataRepresentation.get('points');
       this.set('points', points);
     }
-    
+
     for (i = 0, len = points.get('length'); i < len; i++) {
       pathComponents.push( i === 0 ? 'M' : 'L');
       point = points.objectAt(i);

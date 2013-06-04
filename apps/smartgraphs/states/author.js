@@ -15,29 +15,27 @@
 */
 Smartgraphs.AUTHOR = SC.State.extend(
 /** @scope Smartgraphs.AUTHOR.prototype */ {
-  
+
   initialSubstate: 'AUTHOR_DEFAULT',
-  
+
   enterState: function () {
     Smartgraphs.appWindowController.showAuthorView();
     Smartgraphs.toolbarController.showRunButton();
-    Smartgraphs.toolbarController.showSaveButton();
     Smartgraphs.activityOutlineController.set('isSelectable', YES);
     Smartgraphs.activityViewController.set('enableBackAndForward', YES);
   },
-  
+
   exitState: function () {
-    Smartgraphs.toolbarController.hideSaveButton();    
     Smartgraphs.activityOutlineController.set('isSelectable', NO);
     Smartgraphs.activityViewController.set('enableBackAndForward', NO);
   },
-  
+
   AUTHOR_DEFAULT: SC.State.design({
   }),
-  
+
   ERROR_SAVING_ACTIVITY: SC.State.design({
     // TODO distinguish between editing conflicts and connectivity problems; give option to retry.
-    enterState: function() { 
+    enterState: function() {
       SC.AlertPane.error("Could not save activity", "Could not save the activity. Someone else may have edited the activity you were working on. Try reloading the page and redoing your edits.");
     }
   }),
@@ -45,38 +43,38 @@ Smartgraphs.AUTHOR = SC.State.extend(
   // ..........................................................
   // ACTIONS
   //
-  
+
   openActivity: function () {
     Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', YES);
     return NO;    // let READY handle the rest.
   },
-  
+
   runActivity: function () {
     Smartgraphs.loadingActivityController.set('openAuthorViewAfterLoading', NO);
     this.gotoState('LOADING_ACTIVITY');
     return YES;
   },
-  
+
   gotoNextPage: function () {
     Smartgraphs.activityPagesController.selectNextPage();
     return YES;
   },
-  
+
   gotoPreviousPage: function () {
     Smartgraphs.activityPagesController.selectPreviousPage();
     return YES;
   },
-  
+
   saveActivity: function () {
     Smartgraphs.activityController.save();
     return YES;
   },
-  
+
   errorSavingActivity: function () {
     this.gotoState('ERROR_SAVING_ACTIVITY');
     return YES;
   },
-  
+
   outlineControllerDidNavigate: function () {
     Smartgraphs.navigatedLocation = {
       activityId: Smartgraphs.activityController.get('id'),
@@ -84,5 +82,5 @@ Smartgraphs.AUTHOR = SC.State.extend(
       stepId: Smartgraphs.activityStepController.get('id')
     };
   }
-  
+
 }) ;

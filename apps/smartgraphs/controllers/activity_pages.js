@@ -22,12 +22,16 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
   currentPageDidChange: function () {
     var content = this.get('content');
     var page = Smartgraphs.activityPageController.get('content');
-    
+
     if (content && content.indexOf(page) >= 0) {
       this.selectObject(page);
     }
+    // Send GA event:
+    if (!!page) {
+      Smartgraphs.sendGaEvent('Page Change', "(" + page.get("index") + ") " + page.get("name"));
+    }
   }.observes('Smartgraphs.activityPageController.content'),
-  
+
   currentPageNumber: function () {
     var indexSet = this.get('selection').indexSetForSource(this);
     return indexSet && indexSet.firstObject();
@@ -45,7 +49,7 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
       this.selectObject(this.objectAt(index + 1));
     }
   },
-  
+
   selectPreviousPage: function () {
     var index = this.get('currentPageNumber');
     if (index > 0) {
@@ -59,22 +63,22 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
       this.selectObject(page);
     }
   },
-  
+
   isLastPage: function () {
     return (this.get('currentPageNumber') >= (this.get('length') - 1));
   }.property('currentPageNumber', 'length').cacheable(),
-  
+
   isFirstPage: function () {
     return (this.get('currentPageNumber') === 0);
   }.property('currentPageNumber').cacheable(),
-  
+
   contentsDidChange: function () {
     var n = 0;
     this.forEach(function (page) {
       page.set('pageNumber', n++);
     });
   }.observes('[]'),
-  
+
   outline: function () {
     var contentLength = this.getPath('content.length') || 0;
 
@@ -104,5 +108,5 @@ Smartgraphs.activityPagesController = SC.ArrayController.create(
     // FIXME this will NOT update when steps are added/removed or have their properties changed
     // (probably want to move the treeItem* properties to the model objects themselves, so 'outline' isn't necessary)
   }.property('[]').cacheable()
-  
+
 });

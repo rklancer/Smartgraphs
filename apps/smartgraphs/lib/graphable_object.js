@@ -16,5 +16,5 @@ Smartgraphs.GraphableObject = SC.Object.extend(
   // the dataRepresentation this belongs to.
   dataRepresentation: null,
   colorBinding: '*dataRepresentation.color'
-  
+
 });

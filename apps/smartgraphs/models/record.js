@@ -8,7 +8,7 @@
 
 /**
   Serialized form of the record suitable for conversion to JSON
-  
+
   @returns {Object}
 */
 SC.Record.prototype.serialize = function () {

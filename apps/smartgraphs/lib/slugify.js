@@ -14,7 +14,7 @@
   	text = text.replace(/\s/gi, "-");
   	return text.toLowerCase();
   }
-  
+
   Smartgraphs.slugify = slugify;
 
 }());

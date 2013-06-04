@@ -24,7 +24,7 @@ Smartgraphs.SegmentOverlay = Smartgraphs.Annotation.extend(
     We are an 'overlay annotation' (put in front of data views, but transparent to mouse events)
   */
   isOverlayAnnotation: true,
-  
+
   /**
     Name of the datadef to overlay
   */
@@ -34,7 +34,7 @@ Smartgraphs.SegmentOverlay = Smartgraphs.Annotation.extend(
     One of the two x-values that define the region to highlight
   */
   x1: Smartgraphs.Tag.valueFrom('tag1', 'x', 'x1Record'),
-  
+
   /**
     One of the two x-values that define the region to highlight
   */
@@ -44,7 +44,7 @@ Smartgraphs.SegmentOverlay = Smartgraphs.Annotation.extend(
     Optional tagged point that defines the region to highlight
   */
   tag1: SC.Record.toOne('Smartgraphs.Tag'),
-  
+
   /**
     Optional tagged point that defines the region to highlight
   */
@@ -54,17 +54,17 @@ Smartgraphs.SegmentOverlay = Smartgraphs.Annotation.extend(
     Optional explicit value for x1
   */
   x1Record: SC.Record.attr(Number),
-  
+
   /**
     Optional explicit value for x2
   */
   x2Record: SC.Record.attr(Number),
-  
+
   /**
     If true, the segment is considered to be [-Infinity, x1] (note -Infinity can't be serialized directly)
   */
   isUnboundedLeft: SC.Record.attr(Boolean, { defaultValue: false }),
-  
+
   /**
     If true, the segment is considered to be [x1, Infinity] (note Infinity can't be serialized directly)
   */
@@ -74,14 +74,14 @@ Smartgraphs.SegmentOverlay = Smartgraphs.Annotation.extend(
     Color of the segment overlay
   */
   color: SC.Record.attr(String),
-  
+
   /**
     Computed property that represents the leftmost x-value of the segment (possibly -Infinity)
   */
   xMin: function () {
     var x1 = this.get('x1'),
         x2 = this.get('x2');
-        
+
     if (this.get('isUnboundedLeft'))  return -Infinity;
     if (this.get('isUnboundedRight')) return x1;
 
@@ -90,20 +90,20 @@ Smartgraphs.SegmentOverlay = Smartgraphs.Annotation.extend(
 
     return Math.min(x1, x2);
   }.property('x1', 'x2', 'isUnboundedLeft', 'isUnboundedRight'),
-  
+
   /**
     Computed property that represents the rightmost x-value of the segment (possibly Infinity)
   */
   xMax: function () {
     var x1 = this.get('x1'),
         x2 = this.get('x2');
-        
+
     if (this.get('isUnboundedLeft'))  return x1;
     if (this.get('isUnboundedRight')) return Infinity;
-    
+
     // if either x1 or x2 is null/undefined, exclude every point from range
     if (SC.none(x1) || SC.none(x2)) return Infinity;
-    
+
     return Math.max(x1, x2);      // undefined behavior if either of these two is undefined
   }.property('x1', 'x2', 'isUnboundedLeft', 'isUnboundedRight')
 

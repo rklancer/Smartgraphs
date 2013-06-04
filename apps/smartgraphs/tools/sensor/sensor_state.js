@@ -15,34 +15,34 @@
 
 Smartgraphs.SENSOR_TOOL = SC.State.extend(
 /** @scope Smartgraphs.SENSOR_TOOL.prototype */ {
-  
+
   initialSubstate: 'SENSOR_START',
-  
+
   exitState: function () {
     Smartgraphs.sensorTool.stopRecording();
     Smartgraphs.sensorTool.get('graphController').hideControls();
   },
-  
+
   // ..........................................................
   // ACTIONS
   //
-  
+
   sensorHasLoaded: function () {
     this.gotoState('SENSOR_LOADED');
     return YES;
   },
-  
+
   waitForSensorToLoad: function () {
     this.gotoState('SENSOR_LOADING');
     return YES;
   },
-  
-  
+
+
   SENSOR_START: SC.State.design({
 
     enterState: function () {
-      Smartgraphs.mainPage.get('mainPane').appendChild(Smartgraphs.sensorTool.get('appletView'));
-      
+      Smartgraphs.sensorAppletController.append({listenerPath: 'Smartgraphs.sensorTool'});
+
       if (Smartgraphs.sensorTool.get('sensorIsReady')) {
         Smartgraphs.statechart.sendAction('sensorHasLoaded');
       }
@@ -52,27 +52,27 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
     }
 
   }),
-  
-  
+
+
   SENSOR_LOADING: SC.State.design({
     enterState: function () {
       Smartgraphs.sensorTool.get('graphController').showSensorLoadingView();
     }
   }),
-  
-  
+
+
   SENSOR_LOADED: SC.State.design({
 
     enterState: function () {
       Smartgraphs.sensorTool.get('graphController').revealAllControls();
       Smartgraphs.sensorTool.get('graphController').showControls();
     },
-    
+
     initialSubstate: 'SENSOR_READY',
 
-    
+
     SENSOR_READY: SC.State.design({
-      
+
       enterState: function () {
         Smartgraphs.sensorTool.get('graphController').highlightStartControl();
       },
@@ -86,18 +86,13 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
         return YES;
       }
     }),
-    
-    
+
+
     SENSOR_RECORDING:  SC.State.design({
-      
+
       enterState: function () {
-        window.nPoints = 0;
-        window.initialRenders = 0;
-        window.reRenders = 0;
-        window.pairsCopied = 0;
-        window.pointsCreated = 0;
         Smartgraphs.sensorTool.startRecording();
-        Smartgraphs.sensorTool.get('graphController').highlightStopControl();  
+        Smartgraphs.sensorTool.get('graphController').highlightStopControl();
       },
 
       exitState: function () {
@@ -113,17 +108,11 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
         return YES;
       }
     }),
-    
-    
+
+
     SENSOR_STOPPED: SC.State.design({
-      
+
       enterState: function () {
-        console.log("%d points sensed", window.nPoints);
-        console.log("%d initial renders of points", window.initialRenders);
-        console.log("%d re-renders of points", window.reRenders);
-        console.log("%d Smartgraph.Points created", window.pointsCreated);
-        console.log("%d coordinate pairs copied", window.pairsCopied);
-        
         Smartgraphs.sensorTool.get('graphController').highlightClearControl();
       },
 
@@ -139,5 +128,5 @@ Smartgraphs.SENSOR_TOOL = SC.State.extend(
     })
 
   })
-  
+
 });

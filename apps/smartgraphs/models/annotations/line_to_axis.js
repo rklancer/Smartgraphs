@@ -20,12 +20,31 @@ sc_require('views/line_to_axis');
 Smartgraphs.LineToAxis = Smartgraphs.Annotation.extend(
   /** @scope Smartgraphs.LineToAxis.prototype */
 {
+  
+  /**
+    x-value of the data point that defines the line
+
+    @property {Number}
+  */
+  x: Smartgraphs.Tag.valueFrom('pTag', 'x', 'xRecord'),
 
   /**
-    The point from which we draw the line
+    x-value of the data point that defines the line
+
+    @property {Number}
   */
-  point: SC.Record.toOne('Smartgraphs.DataPoint'),
-  
+  y: Smartgraphs.Tag.valueFrom('pTag', 'y', 'yRecord'),
+
+  xRecord: SC.Record.attr(Number),
+  yRecord: SC.Record.attr(Number),
+
+  /**
+    Optional Tag object which can be used to indirectly specify point 1
+
+    @property {Smartgraphs.Tag}
+  */
+  pTag: SC.Record.toOne('Smartgraphs.Tag'),
+
   /**
    Whether the linePath should be hidden or not
   */
