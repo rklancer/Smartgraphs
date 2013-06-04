@@ -46,6 +46,10 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
 
   render: function (context, firstTime) {
     var graphView = this.get('graphView'),
+        xMin = graphView.get('xAxis').get('min'),
+        xMax = graphView.get('xAxis').get('max'),
+        yMin = graphView.get('yAxis').get('min'),
+        yMax = graphView.get('yAxis').get('max'),
         line      = this.get('item'),
         points    = (line ? line.get('points') : null) || [{x: 0, y: 0}],
         str       = [],
@@ -54,7 +58,19 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
         i, len,
         pathStr,
         attrs,
-        pathObj;
+        pathObj,
+        clipMin,
+        clipMax,
+        clipRectStr;
+
+    // TODO: points were x < min or x > max value of X axis have
+    // been removed from the points array at this point? These must have been
+    // stripped out earlier?
+
+    // Create a clipping rectangle that contrains the drawing of the line
+    clipMin = graphView.coordinatesForPoint(xMin, yMax);
+    clipMax = graphView.coordinatesForPoint(xMax, yMin);
+    clipRectStr = clipMin.x + ',' + clipMin.y + ',' + (clipMax.x - clipMin.x) + ',' + (clipMax.y - clipMin.y);
 
     for (i = 0, len = points.get('length'); i < len; i++) {
       point = points.objectAt(i);
@@ -67,6 +83,7 @@ Smartgraphs.ConnectedLineView = RaphaelViews.RaphaelView.extend(
 
     pathStr = str.join('') || 'M0 0';         // Raphael won't make path go away in IE if path string = ''
     attrs = {
+      'clip-rect':      clipRectStr,
       'stroke':         this.get('color'),
       'stroke-width':   this.get('strokeWidth'),
       'stroke-opacity': this.get('isHiddenForAnimation') ? 0 : this.get('strokeOpacity')

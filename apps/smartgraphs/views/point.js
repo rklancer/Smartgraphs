@@ -234,14 +234,23 @@ Smartgraphs.PointView = RaphaelViews.RaphaelView.extend(
     var x = this.getPath('content.x'),
         y = this.getPath('content.y');
 
+    var xMin = graphView.get('xAxis').get('min'),
+        xMax = graphView.get('xAxis').get('max'),
+        yMin = graphView.get('yAxis').get('min'),
+        yMax = graphView.get('yAxis').get('max');
+
     var coords = graphView.coordinatesForPoint(x, y);
+    // Create a clipping rectangle that contrains the drawing of the line
+    clipMin = graphView.coordinatesForPoint(xMin, yMax);
+    clipMax = graphView.coordinatesForPoint(xMax, yMin);
+    clipRectStr = clipMin.x + ',' + clipMin.y + ',' + (clipMax.x - clipMin.x) + ',' + (clipMax.y - clipMin.y);
 
     if (firstTime) {
       context.callback(this, this.renderCallback, coords.x, coords.y, radius, color, strokeWidth);
     }
     else {
       var circle = context.raphael();
-      circle.attr({ cx: coords.x, cy: coords.y, r: radius, fill: color, 'stroke-width': strokeWidth });
+      circle.attr({ cx: coords.x, cy: coords.y, r: radius, fill: color, 'stroke-width': strokeWidth, 'clip-rect': clipRectStr });
     }
   }
 
